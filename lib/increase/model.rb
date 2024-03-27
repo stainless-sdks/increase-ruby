@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module Increase
-
   module Converter
     def convert(convert)
       raise NotImplementedError
@@ -23,7 +22,7 @@ module Increase
           value
         end
       else
-        raise StandardError.new("can't coerce #{value.class} to #{type}")
+        raise StandardError, "can't coerce #{value.class} to #{type}"
       end
     end
 
@@ -52,7 +51,8 @@ module Increase
     def self.convert(value)
       value
     end
-    def self.same_type?(value)
+
+    def self.same_type?(_value)
       true
     end
   end
@@ -107,11 +107,11 @@ module Increase
     end
 
     def same_type?(value)
-      if !value.is_a?(Array)
-        false
-      else
+      if value.is_a?(Array)
         items_type = @items_type_fn.call
         value.all? { |item| Converter.same_type?(items_type, item) }
+      else
+        false
       end
     end
   end
@@ -123,7 +123,7 @@ module Increase
     def add_field(name_sym, type_info, mode)
       @fields ||= {}
       type_fn = type_info.is_a?(Proc) ? type_info : -> { type_info }
-      @fields[name_sym] = { type_fn: type_fn, mode: mode }
+      @fields[name_sym] = {type_fn: type_fn, mode: mode}
 
       define_method(name_sym) { @data[name_sym] }
       define_method("#{name_sym}=") { |val| @data[name_sym] = val }
@@ -202,12 +202,10 @@ module Increase
       def initialize(**_data)
         self.class.fields ||= {}
         self.class.included_modules.each do |x|
-          begin
-            f = x.fields
-            self.class.fields.merge!(f)
-          rescue StandardError
-            "none"
-          end
+          f = x.fields
+          self.class.fields.merge!(f)
+        rescue StandardError
+          "none"
         end
         @data = {}
       end

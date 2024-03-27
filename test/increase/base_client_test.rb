@@ -22,7 +22,7 @@ class BaseClientTest < Test::Unit::TestCase
         query: {"d" => ["e"]},
         port: nil
       },
-      Increase::BaseClient.new(server_uri_string: "h://nope/ignored").resolve_uri_elements({url: "h://a.b/c?d=e"}),
+      Increase::BaseClient.new(server_uri_string: "h://nope/ignored").resolve_uri_elements({url: "h://a.b/c?d=e"})
     )
   end
 

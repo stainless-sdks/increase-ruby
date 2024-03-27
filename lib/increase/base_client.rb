@@ -13,7 +13,7 @@ module Increase
     )
       self.requester = PooledNetRequester.new
       env_uri = URI.parse(server_uri_string)
-      @headers = {"Content-Type" => "application/json", "Accept" => "application/json"}.merge (headers || {})
+      @headers = {"Content-Type" => "application/json", "Accept" => "application/json"}.merge(headers || {})
       @host = env_uri.host
       @scheme = env_uri.scheme
       @port = env_uri.port
@@ -27,7 +27,7 @@ module Increase
     end
 
     def self.normalize_path(path)
-      path.gsub(/\/+/, "/")
+      path.gsub(%r{/+}, "/")
     end
 
     def resolve_uri_elements(req)
