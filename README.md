@@ -36,11 +36,11 @@ bundle update increase
 require "increase"
 
 increase = Increase::Client.new(
-api_key: "My API Key", # defaults to ENV["INCREASE_API_KEY"]
-environment: 'sandbox', # defaults to 'production'
+  api_key: "My API Key", # defaults to ENV["INCREASE_API_KEY"]
+  environment: "sandbox" # defaults to 'production'
 )
 
-account = increase.accounts.create(name: "My First Increase Account");
+account = increase.accounts.create(name: "My First Increase Account")
 
 puts account.id
 ```
@@ -53,9 +53,9 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 
 ```ruby
 begin
-  account = increase.accounts.create()
-rescue Increase::HTTP::Error => err
-  puts err.code # 400
+  account = increase.accounts.create
+rescue Increase::HTTP::Error => e
+  puts e.code # 400
 end
 ```
 
@@ -86,11 +86,11 @@ You can use the `max_retries` option to configure or disable this:
 ```ruby
 # Configure the default for all requests:
 increase = Increase::Client.new(
-max_retries: 0, # default is 2
+  max_retries: 0 # default is 2
 )
 
 # Or, configure per-request:
-increase.accounts.create(name: "Jack", max_retries: 5);
+increase.accounts.create(name: "Jack", max_retries: 5)
 ```
 
 ## Versioning
