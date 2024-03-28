@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class File
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class File < BaseModel
       # @!attribute [rw] id
       required :id, String
 

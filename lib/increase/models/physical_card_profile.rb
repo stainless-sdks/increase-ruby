@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class PhysicalCardProfile
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class PhysicalCardProfile < BaseModel
       # @!attribute [rw] id
       required :id, String
 

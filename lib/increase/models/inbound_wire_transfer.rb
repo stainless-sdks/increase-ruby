@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class InboundWireTransfer
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class InboundWireTransfer < BaseModel
       # @!attribute [rw] id
       required :id, String
 

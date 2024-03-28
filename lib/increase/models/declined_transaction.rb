@@ -2,13 +2,89 @@
 
 module Increase
   module Models
-    class DeclinedTransaction
-      class ACHDecline
-        class ACHDecline
-          extend Increase::Model
+    class DeclinedTransaction < BaseModel
+      # @!attribute [rw] id
+      required :id, String
 
-          include Increase::Model::Instance
+      # @!attribute [rw] account_id
+      required :account_id, String
 
+      # @!attribute [rw] amount
+      required :amount, Integer
+
+      # @!attribute [rw] created_at
+      required :created_at, String
+
+      # @!attribute [rw] currency
+      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+
+      # @!attribute [rw] description
+      required :description, String
+
+      # @!attribute [rw] route_id
+      required :route_id, String
+
+      # @!attribute [rw] route_type
+      required :route_type, Increase::Enum.new([:account_number, :card])
+
+      # @!attribute [rw] source
+      required :source, -> { Increase::Models::DeclinedTransaction::Source }
+
+      # @!attribute [rw] type
+      required :type, Increase::Enum.new([:declined_transaction])
+
+      class Source < BaseModel
+        # @!attribute [rw] ach_decline
+        required :ach_decline,
+                 lambda {
+                   Increase::Models::DeclinedTransaction::Source::ACHDecline
+                 }
+
+        # @!attribute [rw] card_decline
+        required :card_decline,
+                 lambda {
+                   Increase::Models::DeclinedTransaction::Source::CardDecline
+                 }
+
+        # @!attribute [rw] category
+        required :category,
+                 Increase::Enum.new(
+                   [
+                     :ach_decline,
+                     :card_decline,
+                     :check_decline,
+                     :inbound_real_time_payments_transfer_decline,
+                     :international_ach_decline,
+                     :wire_decline,
+                     :other
+                   ]
+                 )
+
+        # @!attribute [rw] check_decline
+        required :check_decline,
+                 lambda {
+                   Increase::Models::DeclinedTransaction::Source::CheckDecline
+                 }
+
+        # @!attribute [rw] inbound_real_time_payments_transfer_decline
+        required :inbound_real_time_payments_transfer_decline,
+                 lambda {
+                   Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline
+                 }
+
+        # @!attribute [rw] international_ach_decline
+        required :international_ach_decline,
+                 lambda {
+                   Increase::Models::DeclinedTransaction::Source::InternationalACHDecline
+                 }
+
+        # @!attribute [rw] wire_decline
+        required :wire_decline,
+                 lambda {
+                   Increase::Models::DeclinedTransaction::Source::WireDecline
+                 }
+
+        class ACHDecline < BaseModel
           # @!attribute [rw] id
           required :id, String
 
@@ -61,138 +137,7 @@ module Increase
           required :type, Increase::Enum.new([:ach_decline])
         end
 
-        class Visa
-          class Visa
-            class Visa
-              extend Increase::Model
-
-              include Increase::Model::Instance
-
-              # @!attribute [rw] electronic_commerce_indicator
-              required :electronic_commerce_indicator,
-                       Increase::Enum.new(
-                         [
-                           :mail_phone_order,
-                           :recurring,
-                           :installment,
-                           :unknown_mail_phone_order,
-                           :secure_electronic_commerce,
-                           :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                           :non_authenticated_security_transaction,
-                           :non_secure_transaction
-                         ]
-                       )
-
-              # @!attribute [rw] point_of_service_entry_mode
-              required :point_of_service_entry_mode,
-                       Increase::Enum.new(
-                         [
-                           :unknown,
-                           :manual,
-                           :magnetic_stripe_no_cvv,
-                           :optical_code,
-                           :integrated_circuit_card,
-                           :contactless,
-                           :credential_on_file,
-                           :magnetic_stripe,
-                           :contactless_magnetic_stripe,
-                           :integrated_circuit_card_no_cvv
-                         ]
-                       )
-            end
-
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] category
-            required :category, Increase::Enum.new([:visa])
-
-            # @!attribute [rw] visa
-            required :visa,
-                     lambda {
-                       Increase::Models::DeclinedTransaction::ACHDecline::Visa::Visa::Visa
-                     }
-          end
-
-          class NetworkIdentifiers
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] retrieval_reference_number
-            required :retrieval_reference_number, String
-
-            # @!attribute [rw] trace_number
-            required :trace_number, String
-
-            # @!attribute [rw] transaction_id
-            required :transaction_id, String
-          end
-
-          class CardVerificationCode
-            class CardVerificationCode
-              extend Increase::Model
-
-              include Increase::Model::Instance
-
-              # @!attribute [rw] result
-              required :result,
-                       Increase::Enum.new([:not_checked, :match, :no_match])
-            end
-
-            class CardholderAddress
-              extend Increase::Model
-
-              include Increase::Model::Instance
-
-              # @!attribute [rw] actual_line1
-              required :actual_line1, String
-
-              # @!attribute [rw] actual_postal_code
-              required :actual_postal_code, String
-
-              # @!attribute [rw] provided_line1
-              required :provided_line1, String
-
-              # @!attribute [rw] provided_postal_code
-              required :provided_postal_code, String
-
-              # @!attribute [rw] result
-              required :result,
-                       Increase::Enum.new(
-                         [
-                           :not_checked,
-                           :postal_code_match_address_not_checked,
-                           :postal_code_match_address_no_match,
-                           :postal_code_no_match_address_match,
-                           :match,
-                           :no_match
-                         ]
-                       )
-            end
-
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] card_verification_code
-            required :card_verification_code,
-                     lambda {
-                       Increase::Models::DeclinedTransaction::ACHDecline::Visa::CardVerificationCode::CardVerificationCode
-                     }
-
-            # @!attribute [rw] cardholder_address
-            required :cardholder_address,
-                     lambda {
-                       Increase::Models::DeclinedTransaction::ACHDecline::Visa::CardVerificationCode::CardholderAddress
-                     }
-          end
-
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
+        class CardDecline < BaseModel
           # @!attribute [rw] id
           required :id, String
 
@@ -232,13 +177,13 @@ module Increase
           # @!attribute [rw] network_details
           required :network_details,
                    lambda {
-                     Increase::Models::DeclinedTransaction::ACHDecline::Visa::Visa
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails
                    }
 
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
                    lambda {
-                     Increase::Models::DeclinedTransaction::ACHDecline::Visa::NetworkIdentifiers
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers
                    }
 
           # @!attribute [rw] network_risk_score
@@ -287,15 +232,114 @@ module Increase
           # @!attribute [rw] verification
           required :verification,
                    lambda {
-                     Increase::Models::DeclinedTransaction::ACHDecline::Visa::CardVerificationCode
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
                    }
+
+          class NetworkDetails < BaseModel
+            # @!attribute [rw] category
+            required :category, Increase::Enum.new([:visa])
+
+            # @!attribute [rw] visa
+            required :visa,
+                     lambda {
+                       Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa
+                     }
+
+            class Visa < BaseModel
+              # @!attribute [rw] electronic_commerce_indicator
+              required :electronic_commerce_indicator,
+                       Increase::Enum.new(
+                         [
+                           :mail_phone_order,
+                           :recurring,
+                           :installment,
+                           :unknown_mail_phone_order,
+                           :secure_electronic_commerce,
+                           :non_authenticated_security_transaction_at_3ds_capable_merchant,
+                           :non_authenticated_security_transaction,
+                           :non_secure_transaction
+                         ]
+                       )
+
+              # @!attribute [rw] point_of_service_entry_mode
+              required :point_of_service_entry_mode,
+                       Increase::Enum.new(
+                         [
+                           :unknown,
+                           :manual,
+                           :magnetic_stripe_no_cvv,
+                           :optical_code,
+                           :integrated_circuit_card,
+                           :contactless,
+                           :credential_on_file,
+                           :magnetic_stripe,
+                           :contactless_magnetic_stripe,
+                           :integrated_circuit_card_no_cvv
+                         ]
+                       )
+            end
+          end
+
+          class NetworkIdentifiers < BaseModel
+            # @!attribute [rw] retrieval_reference_number
+            required :retrieval_reference_number, String
+
+            # @!attribute [rw] trace_number
+            required :trace_number, String
+
+            # @!attribute [rw] transaction_id
+            required :transaction_id, String
+          end
+
+          class Verification < BaseModel
+            # @!attribute [rw] card_verification_code
+            required :card_verification_code,
+                     lambda {
+                       Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode
+                     }
+
+            # @!attribute [rw] cardholder_address
+            required :cardholder_address,
+                     lambda {
+                       Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
+                     }
+
+            class CardVerificationCode < BaseModel
+              # @!attribute [rw] result
+              required :result,
+                       Increase::Enum.new([:not_checked, :match, :no_match])
+            end
+
+            class CardholderAddress < BaseModel
+              # @!attribute [rw] actual_line1
+              required :actual_line1, String
+
+              # @!attribute [rw] actual_postal_code
+              required :actual_postal_code, String
+
+              # @!attribute [rw] provided_line1
+              required :provided_line1, String
+
+              # @!attribute [rw] provided_postal_code
+              required :provided_postal_code, String
+
+              # @!attribute [rw] result
+              required :result,
+                       Increase::Enum.new(
+                         [
+                           :not_checked,
+                           :postal_code_match_address_not_checked,
+                           :postal_code_match_address_no_match,
+                           :postal_code_no_match_address_match,
+                           :match,
+                           :no_match
+                         ]
+                       )
+            end
+          end
         end
 
-        class CheckDecline
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
+        class CheckDecline < BaseModel
           # @!attribute [rw] amount
           required :amount, Integer
 
@@ -330,11 +374,7 @@ module Increase
                    )
         end
 
-        class InboundRealTimePaymentsTransferDecline
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
+        class InboundRealTimePaymentsTransferDecline < BaseModel
           # @!attribute [rw] amount
           required :amount, Integer
 
@@ -373,11 +413,7 @@ module Increase
           required :transaction_identification, String
         end
 
-        class InternationalACHDecline
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
+        class InternationalACHDecline < BaseModel
           # @!attribute [rw] amount
           required :amount, Integer
 
@@ -539,11 +575,7 @@ module Increase
           required :trace_number, String
         end
 
-        class WireDecline
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
+        class WireDecline < BaseModel
           # @!attribute [rw] inbound_wire_transfer_id
           required :inbound_wire_transfer_id, String
 
@@ -560,92 +592,7 @@ module Increase
                      ]
                    )
         end
-
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] ach_decline
-        required :ach_decline,
-                 lambda {
-                   Increase::Models::DeclinedTransaction::ACHDecline::ACHDecline
-                 }
-
-        # @!attribute [rw] card_decline
-        required :card_decline, -> { Increase::Models::DeclinedTransaction::ACHDecline::Visa }
-
-        # @!attribute [rw] category
-        required :category,
-                 Increase::Enum.new(
-                   [
-                     :ach_decline,
-                     :card_decline,
-                     :check_decline,
-                     :inbound_real_time_payments_transfer_decline,
-                     :international_ach_decline,
-                     :wire_decline,
-                     :other
-                   ]
-                 )
-
-        # @!attribute [rw] check_decline
-        required :check_decline,
-                 lambda {
-                   Increase::Models::DeclinedTransaction::ACHDecline::CheckDecline
-                 }
-
-        # @!attribute [rw] inbound_real_time_payments_transfer_decline
-        required :inbound_real_time_payments_transfer_decline,
-                 lambda {
-                   Increase::Models::DeclinedTransaction::ACHDecline::InboundRealTimePaymentsTransferDecline
-                 }
-
-        # @!attribute [rw] international_ach_decline
-        required :international_ach_decline,
-                 lambda {
-                   Increase::Models::DeclinedTransaction::ACHDecline::InternationalACHDecline
-                 }
-
-        # @!attribute [rw] wire_decline
-        required :wire_decline,
-                 lambda {
-                   Increase::Models::DeclinedTransaction::ACHDecline::WireDecline
-                 }
       end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
-      # @!attribute [rw] id
-      required :id, String
-
-      # @!attribute [rw] account_id
-      required :account_id, String
-
-      # @!attribute [rw] amount
-      required :amount, Integer
-
-      # @!attribute [rw] created_at
-      required :created_at, String
-
-      # @!attribute [rw] currency
-      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
-
-      # @!attribute [rw] description
-      required :description, String
-
-      # @!attribute [rw] route_id
-      required :route_id, String
-
-      # @!attribute [rw] route_type
-      required :route_type, Increase::Enum.new([:account_number, :card])
-
-      # @!attribute [rw] source
-      required :source, -> { Increase::Models::DeclinedTransaction::ACHDecline }
-
-      # @!attribute [rw] type
-      required :type, Increase::Enum.new([:declined_transaction])
     end
   end
 end

@@ -2,184 +2,7 @@
 
 module Increase
   module Models
-    class CheckTransfer
-      class Approval
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] approved_at
-        required :approved_at, String
-
-        # @!attribute [rw] approved_by
-        required :approved_by, String
-      end
-
-      class Cancellation
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] canceled_at
-        required :canceled_at, String
-
-        # @!attribute [rw] canceled_by
-        required :canceled_by, String
-      end
-
-      class Deposit
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] back_image_file_id
-        required :back_image_file_id, String
-
-        # @!attribute [rw] bank_of_first_deposit_routing_number
-        required :bank_of_first_deposit_routing_number, String
-
-        # @!attribute [rw] deposited_at
-        required :deposited_at, String
-
-        # @!attribute [rw] front_image_file_id
-        required :front_image_file_id, String
-
-        # @!attribute [rw] transaction_id
-        required :transaction_id, String
-
-        # @!attribute [rw] transfer_id
-        required :transfer_id, String
-
-        # @!attribute [rw] type
-        required :type, Increase::Enum.new([:check_transfer_deposit])
-      end
-
-      class Mailing
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] image_id
-        required :image_id, String
-
-        # @!attribute [rw] mailed_at
-        required :mailed_at, String
-      end
-
-      class MailingAddress
-        class MailingAddress
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
-          # @!attribute [rw] city
-          required :city, String
-
-          # @!attribute [rw] line1
-          required :line1, String
-
-          # @!attribute [rw] line2
-          required :line2, String
-
-          # @!attribute [rw] name_
-          required :name_, String
-
-          # @!attribute [rw] postal_code
-          required :postal_code, String
-
-          # @!attribute [rw] state
-          required :state, String
-        end
-
-        class ReturnAddress
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
-          # @!attribute [rw] city
-          required :city, String
-
-          # @!attribute [rw] line1
-          required :line1, String
-
-          # @!attribute [rw] line2
-          required :line2, String
-
-          # @!attribute [rw] name_
-          required :name_, String
-
-          # @!attribute [rw] postal_code
-          required :postal_code, String
-
-          # @!attribute [rw] state
-          required :state, String
-        end
-
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] mailing_address
-        required :mailing_address,
-                 lambda {
-                   Increase::Models::CheckTransfer::MailingAddress::MailingAddress
-                 }
-
-        # @!attribute [rw] memo
-        required :memo, String
-
-        # @!attribute [rw] note
-        required :note, String
-
-        # @!attribute [rw] recipient_name
-        required :recipient_name, String
-
-        # @!attribute [rw] return_address
-        required :return_address,
-                 lambda {
-                   Increase::Models::CheckTransfer::MailingAddress::ReturnAddress
-                 }
-      end
-
-      class StopPaymentRequest
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] reason
-        required :reason,
-                 Increase::Enum.new(
-                   [
-                     :mail_delivery_failed,
-                     :rejected_by_increase,
-                     :not_authorized,
-                     :unknown
-                   ]
-                 )
-
-        # @!attribute [rw] requested_at
-        required :requested_at, String
-
-        # @!attribute [rw] transfer_id
-        required :transfer_id, String
-
-        # @!attribute [rw] type
-        required :type, Increase::Enum.new([:check_transfer_stop_payment_request])
-      end
-
-      class Submission
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] submitted_at
-        required :submitted_at, String
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class CheckTransfer < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -223,7 +46,7 @@ module Increase
       required :pending_transaction_id, String
 
       # @!attribute [rw] physical_check
-      required :physical_check, -> { Increase::Models::CheckTransfer::MailingAddress }
+      required :physical_check, -> { Increase::Models::CheckTransfer::PhysicalCheck }
 
       # @!attribute [rw] routing_number
       required :routing_number, String
@@ -256,6 +79,143 @@ module Increase
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:check_transfer])
+
+      class Approval < BaseModel
+        # @!attribute [rw] approved_at
+        required :approved_at, String
+
+        # @!attribute [rw] approved_by
+        required :approved_by, String
+      end
+
+      class Cancellation < BaseModel
+        # @!attribute [rw] canceled_at
+        required :canceled_at, String
+
+        # @!attribute [rw] canceled_by
+        required :canceled_by, String
+      end
+
+      class Deposit < BaseModel
+        # @!attribute [rw] back_image_file_id
+        required :back_image_file_id, String
+
+        # @!attribute [rw] bank_of_first_deposit_routing_number
+        required :bank_of_first_deposit_routing_number, String
+
+        # @!attribute [rw] deposited_at
+        required :deposited_at, String
+
+        # @!attribute [rw] front_image_file_id
+        required :front_image_file_id, String
+
+        # @!attribute [rw] transaction_id
+        required :transaction_id, String
+
+        # @!attribute [rw] transfer_id
+        required :transfer_id, String
+
+        # @!attribute [rw] type
+        required :type, Increase::Enum.new([:check_transfer_deposit])
+      end
+
+      class Mailing < BaseModel
+        # @!attribute [rw] image_id
+        required :image_id, String
+
+        # @!attribute [rw] mailed_at
+        required :mailed_at, String
+      end
+
+      class PhysicalCheck < BaseModel
+        # @!attribute [rw] mailing_address
+        required :mailing_address,
+                 lambda {
+                   Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress
+                 }
+
+        # @!attribute [rw] memo
+        required :memo, String
+
+        # @!attribute [rw] note
+        required :note, String
+
+        # @!attribute [rw] recipient_name
+        required :recipient_name, String
+
+        # @!attribute [rw] return_address
+        required :return_address,
+                 lambda {
+                   Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress
+                 }
+
+        class MailingAddress < BaseModel
+          # @!attribute [rw] city
+          required :city, String
+
+          # @!attribute [rw] line1
+          required :line1, String
+
+          # @!attribute [rw] line2
+          required :line2, String
+
+          # @!attribute [rw] name_
+          required :name_, String
+
+          # @!attribute [rw] postal_code
+          required :postal_code, String
+
+          # @!attribute [rw] state
+          required :state, String
+        end
+
+        class ReturnAddress < BaseModel
+          # @!attribute [rw] city
+          required :city, String
+
+          # @!attribute [rw] line1
+          required :line1, String
+
+          # @!attribute [rw] line2
+          required :line2, String
+
+          # @!attribute [rw] name_
+          required :name_, String
+
+          # @!attribute [rw] postal_code
+          required :postal_code, String
+
+          # @!attribute [rw] state
+          required :state, String
+        end
+      end
+
+      class StopPaymentRequest < BaseModel
+        # @!attribute [rw] reason
+        required :reason,
+                 Increase::Enum.new(
+                   [
+                     :mail_delivery_failed,
+                     :rejected_by_increase,
+                     :not_authorized,
+                     :unknown
+                   ]
+                 )
+
+        # @!attribute [rw] requested_at
+        required :requested_at, String
+
+        # @!attribute [rw] transfer_id
+        required :transfer_id, String
+
+        # @!attribute [rw] type
+        required :type, Increase::Enum.new([:check_transfer_stop_payment_request])
+      end
+
+      class Submission < BaseModel
+        # @!attribute [rw] submitted_at
+        required :submitted_at, String
+      end
     end
   end
 end

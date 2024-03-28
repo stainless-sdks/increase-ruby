@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class BalanceLookup
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class BalanceLookup < BaseModel
       # @!attribute [rw] account_id
       required :account_id, String
 

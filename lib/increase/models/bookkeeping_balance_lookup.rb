@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class BookkeepingBalanceLookup
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class BookkeepingBalanceLookup < BaseModel
       # @!attribute [rw] balance
       required :balance, Integer
 

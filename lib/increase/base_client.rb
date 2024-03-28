@@ -220,9 +220,6 @@ module Increase
 
       raw_data =
         case response.content_type
-        when "application/problem+json"
-          # TODO(PR #2724) after that PR merges, this block shouldn't be necessary
-          raise StandardError, "Failed with #{response.code}"
         when "application/json"
           begin
             JSON.parse(response.body)
@@ -233,12 +230,6 @@ module Increase
         else
           response.body
         end
-      if options[:page]
-        page =
-          options[:page].new(client: self, json: raw_data, request: options)
-        page.convert(raw_data)
-        return page
-      end
 
       model = options[:model]
 

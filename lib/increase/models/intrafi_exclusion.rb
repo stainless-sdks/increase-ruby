@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class IntrafiExclusion
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class IntrafiExclusion < BaseModel
       # @!attribute [rw] id
       required :id, String
 

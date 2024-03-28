@@ -2,128 +2,57 @@
 
 module Increase
   module Models
-    class Entity
-      class Address
-        class Address
-          extend Increase::Model
+    class Entity < BaseModel
+      # @!attribute [rw] id
+      required :id, String
 
-          include Increase::Model::Instance
+      # @!attribute [rw] corporation
+      required :corporation, -> { Increase::Models::Entity::Corporation }
 
-          # @!attribute [rw] city
-          required :city, String
+      # @!attribute [rw] description
+      required :description, String
 
-          # @!attribute [rw] line1
-          required :line1, String
+      # @!attribute [rw] details_confirmed_at
+      required :details_confirmed_at, String
 
-          # @!attribute [rw] line2
-          required :line2, String
+      # @!attribute [rw] idempotency_key
+      required :idempotency_key, String
 
-          # @!attribute [rw] state
-          required :state, String
+      # @!attribute [rw] joint
+      required :joint, -> { Increase::Models::Entity::Joint }
 
-          # @!attribute [rw] zip
-          required :zip, String
-        end
+      # @!attribute [rw] natural_person
+      required :natural_person, -> { Increase::Models::Entity::NaturalPerson }
 
-        class Address
-          class Address
-            class Address
-              extend Increase::Model
+      # @!attribute [rw] status
+      required :status, Increase::Enum.new([:active, :archived, :disabled])
 
-              include Increase::Model::Instance
+      # @!attribute [rw] structure
+      required :structure, Increase::Enum.new([:corporation, :natural_person, :joint, :trust])
 
-              # @!attribute [rw] city
-              required :city, String
+      # @!attribute [rw] supplemental_documents
+      required :supplemental_documents,
+               Increase::ArrayOf.new(
+                 lambda {
+                   Increase::Models::Entity::SupplementalDocuments
+                 }
+               )
 
-              # @!attribute [rw] line1
-              required :line1, String
+      # @!attribute [rw] trust_
+      required :trust_, -> { Increase::Models::Entity::Trust }
 
-              # @!attribute [rw] line2
-              required :line2, String
+      # @!attribute [rw] type
+      required :type, Increase::Enum.new([:entity])
 
-              # @!attribute [rw] state
-              required :state, String
-
-              # @!attribute [rw] zip
-              required :zip, String
-            end
-
-            class Identification
-              extend Increase::Model
-
-              include Increase::Model::Instance
-
-              # @!attribute [rw] method_
-              required :method_,
-                       Increase::Enum.new(
-                         [
-                           :social_security_number,
-                           :individual_taxpayer_identification_number,
-                           :passport,
-                           :drivers_license,
-                           :other
-                         ]
-                       )
-
-              # @!attribute [rw] number_last4
-              required :number_last4, String
-            end
-
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] address
-            required :address,
-                     lambda {
-                       Increase::Models::Entity::Address::Address::Address::Address
-                     }
-
-            # @!attribute [rw] date_of_birth
-            required :date_of_birth, String
-
-            # @!attribute [rw] identification
-            required :identification,
-                     lambda {
-                       Increase::Models::Entity::Address::Address::Address::Identification
-                     }
-
-            # @!attribute [rw] name_
-            required :name_, String
-          end
-
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
-          # @!attribute [rw] beneficial_owner_id
-          required :beneficial_owner_id, String
-
-          # @!attribute [rw] company_title
-          required :company_title, String
-
-          # @!attribute [rw] individual
-          required :individual,
-                   lambda {
-                     Increase::Models::Entity::Address::Address::Address
-                   }
-
-          # @!attribute [rw] prong
-          required :prong, Increase::Enum.new([:ownership, :control])
-        end
-
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
+      class Corporation < BaseModel
         # @!attribute [rw] address
-        required :address, -> { Increase::Models::Entity::Address::Address }
+        required :address, -> { Increase::Models::Entity::Corporation::Address }
 
         # @!attribute [rw] beneficial_owners
         required :beneficial_owners,
                  Increase::ArrayOf.new(
                    lambda {
-                     Increase::Models::Entity::Address::Address
+                     Increase::Models::Entity::Corporation::BeneficialOwners
                    }
                  )
 
@@ -141,94 +70,8 @@ module Increase
 
         # @!attribute [rw] website
         required :website, String
-      end
 
-      class Address
-        class Address
-          class Address
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] city
-            required :city, String
-
-            # @!attribute [rw] line1
-            required :line1, String
-
-            # @!attribute [rw] line2
-            required :line2, String
-
-            # @!attribute [rw] state
-            required :state, String
-
-            # @!attribute [rw] zip
-            required :zip, String
-          end
-
-          class Identification
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] method_
-            required :method_,
-                     Increase::Enum.new(
-                       [
-                         :social_security_number,
-                         :individual_taxpayer_identification_number,
-                         :passport,
-                         :drivers_license,
-                         :other
-                       ]
-                     )
-
-            # @!attribute [rw] number_last4
-            required :number_last4, String
-          end
-
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
-          # @!attribute [rw] address
-          required :address, -> { Increase::Models::Entity::Address::Address::Address }
-
-          # @!attribute [rw] date_of_birth
-          required :date_of_birth, String
-
-          # @!attribute [rw] identification
-          required :identification,
-                   lambda {
-                     Increase::Models::Entity::Address::Address::Identification
-                   }
-
-          # @!attribute [rw] name_
-          required :name_, String
-        end
-
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] individuals
-        required :individuals,
-                 Increase::ArrayOf.new(
-                   lambda {
-                     Increase::Models::Entity::Address::Address
-                   }
-                 )
-
-        # @!attribute [rw] name_
-        required :name_, String
-      end
-
-      class Address
-        class Address
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
+        class Address < BaseModel
           # @!attribute [rw] city
           required :city, String
 
@@ -245,154 +88,42 @@ module Increase
           required :zip, String
         end
 
-        class Identification
-          extend Increase::Model
+        class BeneficialOwners < BaseModel
+          # @!attribute [rw] beneficial_owner_id
+          required :beneficial_owner_id, String
 
-          include Increase::Model::Instance
+          # @!attribute [rw] company_title
+          required :company_title, String
 
-          # @!attribute [rw] method_
-          required :method_,
-                   Increase::Enum.new(
-                     [
-                       :social_security_number,
-                       :individual_taxpayer_identification_number,
-                       :passport,
-                       :drivers_license,
-                       :other
-                     ]
-                   )
-
-          # @!attribute [rw] number_last4
-          required :number_last4, String
-        end
-
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] address
-        required :address, -> { Increase::Models::Entity::Address::Address }
-
-        # @!attribute [rw] date_of_birth
-        required :date_of_birth, String
-
-        # @!attribute [rw] identification
-        required :identification, -> { Increase::Models::Entity::Address::Identification }
-
-        # @!attribute [rw] name_
-        required :name_, String
-      end
-
-      class SupplementalDocuments
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] created_at
-        required :created_at, String
-
-        # @!attribute [rw] file_id
-        required :file_id, String
-
-        # @!attribute [rw] idempotency_key
-        required :idempotency_key, String
-
-        # @!attribute [rw] type
-        required :type, Increase::Enum.new([:entity_supplemental_document])
-      end
-
-      class Address
-        class Address
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
-          # @!attribute [rw] city
-          required :city, String
-
-          # @!attribute [rw] line1
-          required :line1, String
-
-          # @!attribute [rw] line2
-          required :line2, String
-
-          # @!attribute [rw] state
-          required :state, String
-
-          # @!attribute [rw] zip
-          required :zip, String
-        end
-
-        class Address
-          class Address
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] city
-            required :city, String
-
-            # @!attribute [rw] line1
-            required :line1, String
-
-            # @!attribute [rw] line2
-            required :line2, String
-
-            # @!attribute [rw] state
-            required :state, String
-
-            # @!attribute [rw] zip
-            required :zip, String
-          end
-
-          class Identification
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] method_
-            required :method_,
-                     Increase::Enum.new(
-                       [
-                         :social_security_number,
-                         :individual_taxpayer_identification_number,
-                         :passport,
-                         :drivers_license,
-                         :other
-                       ]
-                     )
-
-            # @!attribute [rw] number_last4
-            required :number_last4, String
-          end
-
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
-          # @!attribute [rw] address
-          required :address, -> { Increase::Models::Entity::Address::Address::Address }
-
-          # @!attribute [rw] date_of_birth
-          required :date_of_birth, String
-
-          # @!attribute [rw] identification
-          required :identification,
+          # @!attribute [rw] individual
+          required :individual,
                    lambda {
-                     Increase::Models::Entity::Address::Address::Identification
+                     Increase::Models::Entity::Corporation::BeneficialOwners::Individual
                    }
 
-          # @!attribute [rw] name_
-          required :name_, String
-        end
+          # @!attribute [rw] prong
+          required :prong, Increase::Enum.new([:ownership, :control])
 
-        class Address
-          class Address
-            class Address
-              extend Increase::Model
+          class Individual < BaseModel
+            # @!attribute [rw] address
+            required :address,
+                     lambda {
+                       Increase::Models::Entity::Corporation::BeneficialOwners::Individual::Address
+                     }
 
-              include Increase::Model::Instance
+            # @!attribute [rw] date_of_birth
+            required :date_of_birth, String
 
+            # @!attribute [rw] identification
+            required :identification,
+                     lambda {
+                       Increase::Models::Entity::Corporation::BeneficialOwners::Individual::Identification
+                     }
+
+            # @!attribute [rw] name_
+            required :name_, String
+
+            class Address < BaseModel
               # @!attribute [rw] city
               required :city, String
 
@@ -409,11 +140,7 @@ module Increase
               required :zip, String
             end
 
-            class Identification
-              extend Increase::Model
-
-              include Increase::Model::Instance
-
+            class Identification < BaseModel
               # @!attribute [rw] method_
               required :method_,
                        Increase::Enum.new(
@@ -429,50 +156,145 @@ module Increase
               # @!attribute [rw] number_last4
               required :number_last4, String
             end
-
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] address
-            required :address,
-                     lambda {
-                       Increase::Models::Entity::Address::Address::Address::Address
-                     }
-
-            # @!attribute [rw] date_of_birth
-            required :date_of_birth, String
-
-            # @!attribute [rw] identification
-            required :identification,
-                     lambda {
-                       Increase::Models::Entity::Address::Address::Address::Identification
-                     }
-
-            # @!attribute [rw] name_
-            required :name_, String
           end
+        end
+      end
 
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
-          # @!attribute [rw] individual
-          required :individual,
+      class Joint < BaseModel
+        # @!attribute [rw] individuals
+        required :individuals,
+                 Increase::ArrayOf.new(
                    lambda {
-                     Increase::Models::Entity::Address::Address::Address
+                     Increase::Models::Entity::Joint::Individuals
+                   }
+                 )
+
+        # @!attribute [rw] name_
+        required :name_, String
+
+        class Individuals < BaseModel
+          # @!attribute [rw] address
+          required :address,
+                   lambda {
+                     Increase::Models::Entity::Joint::Individuals::Address
                    }
 
-          # @!attribute [rw] structure
-          required :structure, Increase::Enum.new([:individual])
+          # @!attribute [rw] date_of_birth
+          required :date_of_birth, String
+
+          # @!attribute [rw] identification
+          required :identification,
+                   lambda {
+                     Increase::Models::Entity::Joint::Individuals::Identification
+                   }
+
+          # @!attribute [rw] name_
+          required :name_, String
+
+          class Address < BaseModel
+            # @!attribute [rw] city
+            required :city, String
+
+            # @!attribute [rw] line1
+            required :line1, String
+
+            # @!attribute [rw] line2
+            required :line2, String
+
+            # @!attribute [rw] state
+            required :state, String
+
+            # @!attribute [rw] zip
+            required :zip, String
+          end
+
+          class Identification < BaseModel
+            # @!attribute [rw] method_
+            required :method_,
+                     Increase::Enum.new(
+                       [
+                         :social_security_number,
+                         :individual_taxpayer_identification_number,
+                         :passport,
+                         :drivers_license,
+                         :other
+                       ]
+                     )
+
+            # @!attribute [rw] number_last4
+            required :number_last4, String
+          end
+        end
+      end
+
+      class NaturalPerson < BaseModel
+        # @!attribute [rw] address
+        required :address, -> { Increase::Models::Entity::NaturalPerson::Address }
+
+        # @!attribute [rw] date_of_birth
+        required :date_of_birth, String
+
+        # @!attribute [rw] identification
+        required :identification,
+                 lambda {
+                   Increase::Models::Entity::NaturalPerson::Identification
+                 }
+
+        # @!attribute [rw] name_
+        required :name_, String
+
+        class Address < BaseModel
+          # @!attribute [rw] city
+          required :city, String
+
+          # @!attribute [rw] line1
+          required :line1, String
+
+          # @!attribute [rw] line2
+          required :line2, String
+
+          # @!attribute [rw] state
+          required :state, String
+
+          # @!attribute [rw] zip
+          required :zip, String
         end
 
-        extend Increase::Model
+        class Identification < BaseModel
+          # @!attribute [rw] method_
+          required :method_,
+                   Increase::Enum.new(
+                     [
+                       :social_security_number,
+                       :individual_taxpayer_identification_number,
+                       :passport,
+                       :drivers_license,
+                       :other
+                     ]
+                   )
 
-        include Increase::Model::Instance
+          # @!attribute [rw] number_last4
+          required :number_last4, String
+        end
+      end
 
+      class SupplementalDocuments < BaseModel
+        # @!attribute [rw] created_at
+        required :created_at, String
+
+        # @!attribute [rw] file_id
+        required :file_id, String
+
+        # @!attribute [rw] idempotency_key
+        required :idempotency_key, String
+
+        # @!attribute [rw] type
+        required :type, Increase::Enum.new([:entity_supplemental_document])
+      end
+
+      class Trust < BaseModel
         # @!attribute [rw] address
-        required :address, -> { Increase::Models::Entity::Address::Address }
+        required :address, -> { Increase::Models::Entity::Trust::Address }
 
         # @!attribute [rw] category
         required :category, Increase::Enum.new([:revocable, :irrevocable])
@@ -484,7 +306,7 @@ module Increase
         required :formation_state, String
 
         # @!attribute [rw] grantor
-        required :grantor, -> { Increase::Models::Entity::Address::Address }
+        required :grantor, -> { Increase::Models::Entity::Trust::Grantor }
 
         # @!attribute [rw] name_
         required :name_, String
@@ -496,55 +318,143 @@ module Increase
         required :trustees,
                  Increase::ArrayOf.new(
                    lambda {
-                     Increase::Models::Entity::Address::Address
+                     Increase::Models::Entity::Trust::Trustees
                    }
                  )
+
+        class Address < BaseModel
+          # @!attribute [rw] city
+          required :city, String
+
+          # @!attribute [rw] line1
+          required :line1, String
+
+          # @!attribute [rw] line2
+          required :line2, String
+
+          # @!attribute [rw] state
+          required :state, String
+
+          # @!attribute [rw] zip
+          required :zip, String
+        end
+
+        class Grantor < BaseModel
+          # @!attribute [rw] address
+          required :address, -> { Increase::Models::Entity::Trust::Grantor::Address }
+
+          # @!attribute [rw] date_of_birth
+          required :date_of_birth, String
+
+          # @!attribute [rw] identification
+          required :identification,
+                   lambda {
+                     Increase::Models::Entity::Trust::Grantor::Identification
+                   }
+
+          # @!attribute [rw] name_
+          required :name_, String
+
+          class Address < BaseModel
+            # @!attribute [rw] city
+            required :city, String
+
+            # @!attribute [rw] line1
+            required :line1, String
+
+            # @!attribute [rw] line2
+            required :line2, String
+
+            # @!attribute [rw] state
+            required :state, String
+
+            # @!attribute [rw] zip
+            required :zip, String
+          end
+
+          class Identification < BaseModel
+            # @!attribute [rw] method_
+            required :method_,
+                     Increase::Enum.new(
+                       [
+                         :social_security_number,
+                         :individual_taxpayer_identification_number,
+                         :passport,
+                         :drivers_license,
+                         :other
+                       ]
+                     )
+
+            # @!attribute [rw] number_last4
+            required :number_last4, String
+          end
+        end
+
+        class Trustees < BaseModel
+          # @!attribute [rw] individual
+          required :individual,
+                   lambda {
+                     Increase::Models::Entity::Trust::Trustees::Individual
+                   }
+
+          # @!attribute [rw] structure
+          required :structure, Increase::Enum.new([:individual])
+
+          class Individual < BaseModel
+            # @!attribute [rw] address
+            required :address,
+                     lambda {
+                       Increase::Models::Entity::Trust::Trustees::Individual::Address
+                     }
+
+            # @!attribute [rw] date_of_birth
+            required :date_of_birth, String
+
+            # @!attribute [rw] identification
+            required :identification,
+                     lambda {
+                       Increase::Models::Entity::Trust::Trustees::Individual::Identification
+                     }
+
+            # @!attribute [rw] name_
+            required :name_, String
+
+            class Address < BaseModel
+              # @!attribute [rw] city
+              required :city, String
+
+              # @!attribute [rw] line1
+              required :line1, String
+
+              # @!attribute [rw] line2
+              required :line2, String
+
+              # @!attribute [rw] state
+              required :state, String
+
+              # @!attribute [rw] zip
+              required :zip, String
+            end
+
+            class Identification < BaseModel
+              # @!attribute [rw] method_
+              required :method_,
+                       Increase::Enum.new(
+                         [
+                           :social_security_number,
+                           :individual_taxpayer_identification_number,
+                           :passport,
+                           :drivers_license,
+                           :other
+                         ]
+                       )
+
+              # @!attribute [rw] number_last4
+              required :number_last4, String
+            end
+          end
+        end
       end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
-      # @!attribute [rw] id
-      required :id, String
-
-      # @!attribute [rw] corporation
-      required :corporation, -> { Increase::Models::Entity::Address }
-
-      # @!attribute [rw] description
-      required :description, String
-
-      # @!attribute [rw] details_confirmed_at
-      required :details_confirmed_at, String
-
-      # @!attribute [rw] idempotency_key
-      required :idempotency_key, String
-
-      # @!attribute [rw] joint
-      required :joint, -> { Increase::Models::Entity::Address }
-
-      # @!attribute [rw] natural_person
-      required :natural_person, -> { Increase::Models::Entity::Address }
-
-      # @!attribute [rw] status
-      required :status, Increase::Enum.new([:active, :archived, :disabled])
-
-      # @!attribute [rw] structure
-      required :structure, Increase::Enum.new([:corporation, :natural_person, :joint, :trust])
-
-      # @!attribute [rw] supplemental_documents
-      required :supplemental_documents,
-               Increase::ArrayOf.new(
-                 lambda {
-                   Increase::Models::Entity::SupplementalDocuments
-                 }
-               )
-
-      # @!attribute [rw] trust_
-      required :trust_, -> { Increase::Models::Entity::Address }
-
-      # @!attribute [rw] type
-      required :type, Increase::Enum.new([:entity])
     end
   end
 end

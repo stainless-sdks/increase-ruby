@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class InboundWireDrawdownRequest
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class InboundWireDrawdownRequest < BaseModel
       # @!attribute [rw] id
       required :id, String
 

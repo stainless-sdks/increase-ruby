@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class ProofOfAuthorizationRequestSubmission
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class ProofOfAuthorizationRequestSubmission < BaseModel
       # @!attribute [rw] id
       required :id, String
 

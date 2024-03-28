@@ -2,12 +2,65 @@
 
 module Increase
   module Models
-    class ACHPrenotification
-      class NotificationsOfChange
-        extend Increase::Model
+    class ACHPrenotification < BaseModel
+      # @!attribute [rw] id
+      required :id, String
 
-        include Increase::Model::Instance
+      # @!attribute [rw] account_number
+      required :account_number, String
 
+      # @!attribute [rw] addendum
+      required :addendum, String
+
+      # @!attribute [rw] company_descriptive_date
+      required :company_descriptive_date, String
+
+      # @!attribute [rw] company_discretionary_data
+      required :company_discretionary_data, String
+
+      # @!attribute [rw] company_entry_description
+      required :company_entry_description, String
+
+      # @!attribute [rw] company_name
+      required :company_name, String
+
+      # @!attribute [rw] created_at
+      required :created_at, String
+
+      # @!attribute [rw] credit_debit_indicator
+      required :credit_debit_indicator, Increase::Enum.new([:credit, :debit])
+
+      # @!attribute [rw] effective_date
+      required :effective_date, String
+
+      # @!attribute [rw] idempotency_key
+      required :idempotency_key, String
+
+      # @!attribute [rw] notifications_of_change
+      required :notifications_of_change,
+               Increase::ArrayOf.new(
+                 lambda {
+                   Increase::Models::ACHPrenotification::NotificationsOfChange
+                 }
+               )
+
+      # @!attribute [rw] prenotification_return
+      required :prenotification_return,
+               lambda {
+                 Increase::Models::ACHPrenotification::PrenotificationReturn
+               }
+
+      # @!attribute [rw] routing_number
+      required :routing_number, String
+
+      # @!attribute [rw] status
+      required :status,
+               Increase::Enum.new([:pending_submitting, :requires_attention, :returned, :submitted])
+
+      # @!attribute [rw] type
+      required :type, Increase::Enum.new([:ach_prenotification])
+
+      class NotificationsOfChange < BaseModel
         # @!attribute [rw] change_code
         required :change_code,
                  Increase::Enum.new(
@@ -41,11 +94,7 @@ module Increase
         required :created_at, String
       end
 
-      class PrenotificationReturn
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
+      class PrenotificationReturn < BaseModel
         # @!attribute [rw] created_at
         required :created_at, String
 
@@ -126,67 +175,6 @@ module Increase
                    ]
                  )
       end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
-      # @!attribute [rw] id
-      required :id, String
-
-      # @!attribute [rw] account_number
-      required :account_number, String
-
-      # @!attribute [rw] addendum
-      required :addendum, String
-
-      # @!attribute [rw] company_descriptive_date
-      required :company_descriptive_date, String
-
-      # @!attribute [rw] company_discretionary_data
-      required :company_discretionary_data, String
-
-      # @!attribute [rw] company_entry_description
-      required :company_entry_description, String
-
-      # @!attribute [rw] company_name
-      required :company_name, String
-
-      # @!attribute [rw] created_at
-      required :created_at, String
-
-      # @!attribute [rw] credit_debit_indicator
-      required :credit_debit_indicator, Increase::Enum.new([:credit, :debit])
-
-      # @!attribute [rw] effective_date
-      required :effective_date, String
-
-      # @!attribute [rw] idempotency_key
-      required :idempotency_key, String
-
-      # @!attribute [rw] notifications_of_change
-      required :notifications_of_change,
-               Increase::ArrayOf.new(
-                 lambda {
-                   Increase::Models::ACHPrenotification::NotificationsOfChange
-                 }
-               )
-
-      # @!attribute [rw] prenotification_return
-      required :prenotification_return,
-               lambda {
-                 Increase::Models::ACHPrenotification::PrenotificationReturn
-               }
-
-      # @!attribute [rw] routing_number
-      required :routing_number, String
-
-      # @!attribute [rw] status
-      required :status,
-               Increase::Enum.new([:pending_submitting, :requires_attention, :returned, :submitted])
-
-      # @!attribute [rw] type
-      required :type, Increase::Enum.new([:ach_prenotification])
     end
   end
 end

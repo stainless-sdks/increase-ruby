@@ -12,7 +12,7 @@ require "connection_pool"
 
 # Package files.
 require "increase/base_client"
-require "increase/model"
+require "increase/base_model"
 require "increase/request_options"
 require "increase/pooled_net_requester"
 require "increase/util"
