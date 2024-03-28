@@ -1,0 +1,100 @@
+# frozen_string_literal: true
+
+module Increase
+  module Resources
+    class WireDrawdownRequestsResource
+      def initialize(client:)
+        @client = client
+      end
+
+      # Create a Wire Drawdown Request
+      #
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [String] :account_number_id The Account Number to which the recipient should send funds.
+      # @option params [Integer] :amount The amount requested from the recipient, in cents.
+      # @option params [String] :message_to_recipient A message the recipient will see as part of the request.
+      # @option params [String] :recipient_account_number The drawdown request's recipient's account number.
+      # @option params [String] :recipient_name The drawdown request's recipient's name.
+      # @option params [String] :recipient_routing_number The drawdown request's recipient's routing number.
+      # @option params [String] :originator_address_line1 The drawdown request originator's address line 1. This is only necessary if
+      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
+      #   associated entity's details.
+      # @option params [String] :originator_address_line2 The drawdown request originator's address line 2. This is only necessary if
+      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
+      #   associated entity's details.
+      # @option params [String] :originator_address_line3 The drawdown request originator's address line 3. This is only necessary if
+      #   you're requesting a payment to a commingled account. Otherwise, we'll use the
+      #   associated entity's details.
+      # @option params [String] :originator_name The drawdown request originator's name. This is only necessary if you're
+      #   requesting a payment to a commingled account. Otherwise, we'll use the
+      #   associated entity's details.
+      # @option params [String] :recipient_address_line1 Line 1 of the drawdown request's recipient's address.
+      # @option params [String] :recipient_address_line2 Line 2 of the drawdown request's recipient's address.
+      # @option params [String] :recipient_address_line3 Line 3 of the drawdown request's recipient's address.
+      #
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @return [Increase::Models::WireDrawdownRequest]
+      def create(params = {}, opts = {})
+        request = {}
+        request[:method] = :post
+        request[:path] = "/wire_drawdown_requests"
+        body_params = [
+          :account_number_id,
+          :amount,
+          :message_to_recipient,
+          :recipient_account_number,
+          :recipient_name,
+          :recipient_routing_number,
+          :originator_address_line1,
+          :originator_address_line2,
+          :originator_address_line3,
+          :originator_name,
+          :recipient_address_line1,
+          :recipient_address_line2,
+          :recipient_address_line3
+        ]
+        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:model] = Increase::Models::WireDrawdownRequest
+        request.merge!(opts)
+        @client.request(request)
+      end
+
+      # Retrieve a Wire Drawdown Request
+      #
+      # @param wire_drawdown_request_id [String] The identifier of the Wire Drawdown Request to retrieve.
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @return [Increase::Models::WireDrawdownRequest]
+      def retrieve(wire_drawdown_request_id, opts = {})
+        request = {}
+        request[:method] = :get
+        request[:path] = "/wire_drawdown_requests/#{wire_drawdown_request_id}"
+        request[:model] = Increase::Models::WireDrawdownRequest
+        request.merge!(opts)
+        @client.request(request)
+      end
+
+      # List Wire Drawdown Requests
+      #
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [String] :cursor Return the page of entries after this one.
+      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #   objects.
+      #
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @return [Increase::Models::WireDrawdownRequest]
+      def list(params = {}, opts = {})
+        request = {}
+        request[:method] = :get
+        request[:path] = "/wire_drawdown_requests"
+        query_params = [:cursor, :limit]
+        request[:query] = params.filter { |k, _| query_params.include?(k) }
+        request[:model] = Increase::Models::WireDrawdownRequest
+        request.merge!(opts)
+        @client.request(request)
+      end
+    end
+  end
+end
