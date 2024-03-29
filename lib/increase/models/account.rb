@@ -11,7 +11,8 @@ module Increase
       required :id, String
 
       # @!attribute [rw] bank
-      required :bank, Increase::Enum.new([:blue_ridge_bank, :first_internet_bank])
+      required :bank,
+               Increase::Enum.new([:blue_ridge_bank, :first_internet_bank, :grasshopper_bank])
 
       # @!attribute [rw] created_at
       required :created_at, String
