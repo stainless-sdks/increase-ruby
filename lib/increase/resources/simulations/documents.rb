@@ -2,8 +2,8 @@
 
 module Increase
   module Resources
-    module Simulations
-      class DocumentsResource
+    class Simulations
+      class Documents
         def initialize(client:)
           @client = client
         end

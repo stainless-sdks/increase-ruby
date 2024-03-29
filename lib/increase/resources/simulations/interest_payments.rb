@@ -2,8 +2,8 @@
 
 module Increase
   module Resources
-    module Simulations
-      class InterestPaymentsResource
+    class Simulations
+      class InterestPayments
         def initialize(client:)
           @client = client
         end

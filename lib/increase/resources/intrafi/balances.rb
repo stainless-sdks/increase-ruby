@@ -2,8 +2,8 @@
 
 module Increase
   module Resources
-    module Intrafi
-      class BalancesResource
+    class Intrafi
+      class Balances
         def initialize(client:)
           @client = client
         end

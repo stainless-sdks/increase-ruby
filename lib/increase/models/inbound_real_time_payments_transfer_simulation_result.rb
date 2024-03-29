@@ -170,8 +170,7 @@ module Increase
             required :card_payment_id, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] digital_wallet_token_id
             required :digital_wallet_token_id, String
@@ -327,13 +326,7 @@ module Increase
               class CardVerificationCode < BaseModel
                 # @!attribute [rw] result
                 required :result,
-                         Increase::Enum.new(
-                           [
-                             :not_checked,
-                             :match,
-                             :no_match
-                           ]
-                         )
+                         Increase::Enum.new([:not_checked, :match, :no_match])
               end
 
               class CardholderAddress < BaseModel
@@ -408,8 +401,7 @@ module Increase
             required :creditor_name, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] debtor_account_number
             required :debtor_account_number, String
@@ -452,13 +444,7 @@ module Increase
 
             # @!attribute [rw] foreign_exchange_indicator
             required :foreign_exchange_indicator,
-                     Increase::Enum.new(
-                       [
-                         :fixed_to_variable,
-                         :variable_to_fixed,
-                         :fixed_to_fixed
-                       ]
-                     )
+                     Increase::Enum.new([:fixed_to_variable, :variable_to_fixed, :fixed_to_fixed])
 
             # @!attribute [rw] foreign_exchange_reference
             required :foreign_exchange_reference, String
@@ -510,21 +496,14 @@ module Increase
             required :originating_currency_code, String
 
             # @!attribute [rw] originating_depository_financial_institution_branch_country
-            required :originating_depository_financial_institution_branch_country,
-                     String
+            required :originating_depository_financial_institution_branch_country, String
 
             # @!attribute [rw] originating_depository_financial_institution_id
             required :originating_depository_financial_institution_id, String
 
             # @!attribute [rw] originating_depository_financial_institution_id_qualifier
             required :originating_depository_financial_institution_id_qualifier,
-                     Increase::Enum.new(
-                       [
-                         :national_clearing_system_number,
-                         :bic_code,
-                         :iban
-                       ]
-                     )
+                     Increase::Enum.new([:national_clearing_system_number, :bic_code, :iban])
 
             # @!attribute [rw] originating_depository_financial_institution_name
             required :originating_depository_financial_institution_name, String
@@ -588,13 +567,7 @@ module Increase
 
             # @!attribute [rw] receiving_depository_financial_institution_id_qualifier
             required :receiving_depository_financial_institution_id_qualifier,
-                     Increase::Enum.new(
-                       [
-                         :national_clearing_system_number,
-                         :bic_code,
-                         :iban
-                       ]
-                     )
+                     Increase::Enum.new([:national_clearing_system_number, :bic_code, :iban])
 
             # @!attribute [rw] receiving_depository_financial_institution_name
             required :receiving_depository_financial_institution_name, String
@@ -721,7 +694,6 @@ module Increase
                        :check_deposit_acceptance,
                        :check_deposit_return,
                        :check_transfer_deposit,
-                       :check_transfer_intention,
                        :check_transfer_stop_payment_request,
                        :fee_payment,
                        :inbound_ach_transfer,
@@ -760,12 +732,6 @@ module Increase
           required :check_transfer_deposit,
                    lambda {
                      Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::CheckTransferDeposit
-                   }
-
-          # @!attribute [rw] check_transfer_intention
-          required :check_transfer_intention,
-                   lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::CheckTransferIntention
                    }
 
           # @!attribute [rw] check_transfer_stop_payment_request
@@ -869,8 +835,7 @@ module Increase
             required :amount, Integer
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] description
             required :description, String
@@ -1020,8 +985,7 @@ module Increase
             required :card_payment_id, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] merchant_acceptor_id
             required :merchant_acceptor_id, String
@@ -1317,8 +1281,7 @@ module Increase
 
                 class Travel < BaseModel
                   # @!attribute [rw] connected_ticket_document_number
-                  required :connected_ticket_document_number,
-                           String
+                  required :connected_ticket_document_number, String
 
                   # @!attribute [rw] credit_reason_indicator
                   required :credit_reason_indicator,
@@ -1332,8 +1295,7 @@ module Increase
                            )
 
                   # @!attribute [rw] passenger_name_or_description
-                  required :passenger_name_or_description,
-                           String
+                  required :passenger_name_or_description, String
 
                   # @!attribute [rw] services
                   required :services,
@@ -1388,8 +1350,7 @@ module Increase
                   required :carrier_code, String
 
                   # @!attribute [rw] destination_city_airport_code
-                  required :destination_city_airport_code,
-                           String
+                  required :destination_city_airport_code, String
 
                   # @!attribute [rw] fare_basis_code
                   required :fare_basis_code, String
@@ -1419,8 +1380,7 @@ module Increase
             required :amount, Integer
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] period_end
             required :period_end, String
@@ -1446,8 +1406,7 @@ module Increase
             required :card_payment_id, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] merchant_acceptor_id
             required :merchant_acceptor_id, String
@@ -1752,8 +1711,7 @@ module Increase
 
                 class Travel < BaseModel
                   # @!attribute [rw] connected_ticket_document_number
-                  required :connected_ticket_document_number,
-                           String
+                  required :connected_ticket_document_number, String
 
                   # @!attribute [rw] credit_reason_indicator
                   required :credit_reason_indicator,
@@ -1767,8 +1725,7 @@ module Increase
                            )
 
                   # @!attribute [rw] passenger_name_or_description
-                  required :passenger_name_or_description,
-                           String
+                  required :passenger_name_or_description, String
 
                   # @!attribute [rw] services
                   required :services,
@@ -1823,8 +1780,7 @@ module Increase
                   required :carrier_code, String
 
                   # @!attribute [rw] destination_city_airport_code
-                  required :destination_city_airport_code,
-                           String
+                  required :destination_city_airport_code, String
 
                   # @!attribute [rw] fare_basis_code
                   required :fare_basis_code, String
@@ -1863,8 +1819,7 @@ module Increase
             required :check_deposit_id, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] routing_number
             required :routing_number, String
@@ -1881,8 +1836,7 @@ module Increase
             required :check_deposit_id, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] return_reason
             required :return_reason,
@@ -1947,36 +1901,6 @@ module Increase
             required :type, Increase::Enum.new([:check_transfer_deposit])
           end
 
-          class CheckTransferIntention < BaseModel
-            # @!attribute [rw] address_city
-            required :address_city, String
-
-            # @!attribute [rw] address_line1
-            required :address_line1, String
-
-            # @!attribute [rw] address_line2
-            required :address_line2, String
-
-            # @!attribute [rw] address_state
-            required :address_state, String
-
-            # @!attribute [rw] address_zip
-            required :address_zip, String
-
-            # @!attribute [rw] amount
-            required :amount, Integer
-
-            # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
-
-            # @!attribute [rw] recipient_name
-            required :recipient_name, String
-
-            # @!attribute [rw] transfer_id
-            required :transfer_id, String
-          end
-
           class CheckTransferStopPaymentRequest < BaseModel
             # @!attribute [rw] reason
             required :reason,
@@ -1996,8 +1920,7 @@ module Increase
             required :transfer_id, String
 
             # @!attribute [rw] type
-            required :type,
-                     Increase::Enum.new([:check_transfer_stop_payment_request])
+            required :type, Increase::Enum.new([:check_transfer_stop_payment_request])
           end
 
           class FeePayment < BaseModel
@@ -2005,8 +1928,7 @@ module Increase
             required :amount, Integer
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] fee_period_start
             required :fee_period_start, String
@@ -2093,8 +2015,7 @@ module Increase
             required :check_rear_image_file_id, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
           end
 
           class InboundInternationalACHTransfer < BaseModel
@@ -2109,13 +2030,7 @@ module Increase
 
             # @!attribute [rw] foreign_exchange_indicator
             required :foreign_exchange_indicator,
-                     Increase::Enum.new(
-                       [
-                         :fixed_to_variable,
-                         :variable_to_fixed,
-                         :fixed_to_fixed
-                       ]
-                     )
+                     Increase::Enum.new([:fixed_to_variable, :variable_to_fixed, :fixed_to_fixed])
 
             # @!attribute [rw] foreign_exchange_reference
             required :foreign_exchange_reference, String
@@ -2167,21 +2082,14 @@ module Increase
             required :originating_currency_code, String
 
             # @!attribute [rw] originating_depository_financial_institution_branch_country
-            required :originating_depository_financial_institution_branch_country,
-                     String
+            required :originating_depository_financial_institution_branch_country, String
 
             # @!attribute [rw] originating_depository_financial_institution_id
             required :originating_depository_financial_institution_id, String
 
             # @!attribute [rw] originating_depository_financial_institution_id_qualifier
             required :originating_depository_financial_institution_id_qualifier,
-                     Increase::Enum.new(
-                       [
-                         :national_clearing_system_number,
-                         :bic_code,
-                         :iban
-                       ]
-                     )
+                     Increase::Enum.new([:national_clearing_system_number, :bic_code, :iban])
 
             # @!attribute [rw] originating_depository_financial_institution_name
             required :originating_depository_financial_institution_name, String
@@ -2245,13 +2153,7 @@ module Increase
 
             # @!attribute [rw] receiving_depository_financial_institution_id_qualifier
             required :receiving_depository_financial_institution_id_qualifier,
-                     Increase::Enum.new(
-                       [
-                         :national_clearing_system_number,
-                         :bic_code,
-                         :iban
-                       ]
-                     )
+                     Increase::Enum.new([:national_clearing_system_number, :bic_code, :iban])
 
             # @!attribute [rw] receiving_depository_financial_institution_name
             required :receiving_depository_financial_institution_name, String
@@ -2268,8 +2170,7 @@ module Increase
             required :creditor_name, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] debtor_account_number
             required :debtor_account_number, String
@@ -2389,8 +2290,7 @@ module Increase
             required :description, String
 
             # @!attribute [rw] financial_institution_to_financial_institution_information
-            required :financial_institution_to_financial_institution_information,
-                     String
+            required :financial_institution_to_financial_institution_information, String
 
             # @!attribute [rw] input_cycle_date
             required :input_cycle_date, String
@@ -2496,8 +2396,7 @@ module Increase
             required :amount, Integer
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] period_end
             required :period_end, String
@@ -2511,8 +2410,7 @@ module Increase
             required :amount, Integer
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] reason
             required :reason,

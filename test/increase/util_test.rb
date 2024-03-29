@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require File.expand_path("test_helper", __dir__)
+require_relative "test_helper"
 
-class MergeTest < Test::Unit::TestCase
+class Increase::Test::UtilTest < Test::Unit::TestCase
   def test_left_map
     assert_equal(Increase::Util.deep_merge({a: 1}, nil), nil)
   end

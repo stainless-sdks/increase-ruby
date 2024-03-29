@@ -2,8 +2,8 @@
 
 module Increase
   module Resources
-    module Intrafi
-      class ExclusionsResource
+    class Intrafi
+      class Exclusions
         def initialize(client:)
           @client = client
         end

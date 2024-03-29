@@ -131,8 +131,7 @@ module Increase
 
       class UnnamedTypeWithobjectParent0 < BaseModel
         # @!attribute [rw] category
-        required :category,
-                 Increase::Enum.new([:freeform, :payment_order_remittance_advice, :other])
+        required :category, Increase::Enum.new([:freeform, :payment_order_remittance_advice, :other])
 
         # @!attribute [rw] freeform
         required :freeform,

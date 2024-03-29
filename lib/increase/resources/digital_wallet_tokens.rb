@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class DigitalWalletTokensResource
+    class DigitalWalletTokens
       def initialize(client:)
         @client = client
       end

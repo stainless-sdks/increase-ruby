@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class EventsResource
+    class Events
       def initialize(client:)
         @client = client
       end

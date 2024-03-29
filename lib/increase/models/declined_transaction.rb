@@ -35,10 +35,7 @@ module Increase
 
       class ACHDecline < BaseModel
         # @!attribute [rw] ach_decline
-        required :ach_decline,
-                 lambda {
-                   Increase::Models::DeclinedTransaction::ACHDecline::ACHDecline
-                 }
+        required :ach_decline, -> { Increase::Models::DeclinedTransaction::ACHDecline::ACHDecline }
 
         # @!attribute [rw] card_decline
         required :card_decline, -> { Increase::Models::DeclinedTransaction::ACHDecline::Visa }
@@ -76,10 +73,7 @@ module Increase
                  }
 
         # @!attribute [rw] wire_decline
-        required :wire_decline,
-                 lambda {
-                   Increase::Models::DeclinedTransaction::ACHDecline::WireDecline
-                 }
+        required :wire_decline, -> { Increase::Models::DeclinedTransaction::ACHDecline::WireDecline }
 
         class ACHDecline < BaseModel
           # @!attribute [rw] id
@@ -303,8 +297,7 @@ module Increase
 
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
-              required :result,
-                       Increase::Enum.new([:not_checked, :match, :no_match])
+              required :result, Increase::Enum.new([:not_checked, :match, :no_match])
             end
 
             class CardholderAddress < BaseModel
@@ -422,13 +415,7 @@ module Increase
 
           # @!attribute [rw] foreign_exchange_indicator
           required :foreign_exchange_indicator,
-                   Increase::Enum.new(
-                     [
-                       :fixed_to_variable,
-                       :variable_to_fixed,
-                       :fixed_to_fixed
-                     ]
-                   )
+                   Increase::Enum.new([:fixed_to_variable, :variable_to_fixed, :fixed_to_fixed])
 
           # @!attribute [rw] foreign_exchange_reference
           required :foreign_exchange_reference, String
@@ -487,13 +474,7 @@ module Increase
 
           # @!attribute [rw] originating_depository_financial_institution_id_qualifier
           required :originating_depository_financial_institution_id_qualifier,
-                   Increase::Enum.new(
-                     [
-                       :national_clearing_system_number,
-                       :bic_code,
-                       :iban
-                     ]
-                   )
+                   Increase::Enum.new([:national_clearing_system_number, :bic_code, :iban])
 
           # @!attribute [rw] originating_depository_financial_institution_name
           required :originating_depository_financial_institution_name, String
@@ -557,13 +538,7 @@ module Increase
 
           # @!attribute [rw] receiving_depository_financial_institution_id_qualifier
           required :receiving_depository_financial_institution_id_qualifier,
-                   Increase::Enum.new(
-                     [
-                       :national_clearing_system_number,
-                       :bic_code,
-                       :iban
-                     ]
-                   )
+                   Increase::Enum.new([:national_clearing_system_number, :bic_code, :iban])
 
           # @!attribute [rw] receiving_depository_financial_institution_name
           required :receiving_depository_financial_institution_name, String

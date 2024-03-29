@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class WireTransfersResource
+    class WireTransfers
       def initialize(client:)
         @client = client
       end

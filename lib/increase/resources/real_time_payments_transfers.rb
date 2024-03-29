@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class RealTimePaymentsTransfersResource
+    class RealTimePaymentsTransfers
       def initialize(client:)
         @client = client
       end

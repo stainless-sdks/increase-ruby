@@ -2,8 +2,8 @@
 
 module Increase
   module Resources
-    module Entities
-      class IndustryCodeResource
+    class Entities
+      class IndustryCode
         def initialize(client:)
           @client = client
         end

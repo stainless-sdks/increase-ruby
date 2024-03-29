@@ -97,7 +97,6 @@ module Increase
                      :check_deposit_acceptance,
                      :check_deposit_return,
                      :check_transfer_deposit,
-                     :check_transfer_intention,
                      :check_transfer_stop_payment_request,
                      :fee_payment,
                      :inbound_ach_transfer,
@@ -136,12 +135,6 @@ module Increase
         required :check_transfer_deposit,
                  lambda {
                    Increase::Models::Transaction::AccountTransferIntention::CheckTransferDeposit
-                 }
-
-        # @!attribute [rw] check_transfer_intention
-        required :check_transfer_intention,
-                 lambda {
-                   Increase::Models::Transaction::AccountTransferIntention::CheckTransferIntention
                  }
 
         # @!attribute [rw] check_transfer_stop_payment_request
@@ -536,12 +529,7 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               required :no_show_indicator,
-                       Increase::Enum.new(
-                         [
-                           :not_applicable,
-                           :no_show_for_specialized_vehicle
-                         ]
-                       )
+                       Increase::Enum.new([:not_applicable, :no_show_for_specialized_vehicle])
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               required :one_way_drop_off_charges_amount, Integer
@@ -596,8 +584,7 @@ module Increase
               required :food_beverage_charges_currency, String
 
               # @!attribute [rw] no_show_indicator
-              required :no_show_indicator,
-                       Increase::Enum.new([:not_applicable, :no_show])
+              required :no_show_indicator, Increase::Enum.new([:not_applicable, :no_show])
 
               # @!attribute [rw] prepaid_expenses_amount
               required :prepaid_expenses_amount, Integer
@@ -664,13 +651,7 @@ module Increase
 
               # @!attribute [rw] ticket_change_indicator
               required :ticket_change_indicator,
-                       Increase::Enum.new(
-                         [
-                           :none,
-                           :change_to_existing_ticket,
-                           :new_ticket
-                         ]
-                       )
+                       Increase::Enum.new([:none, :change_to_existing_ticket, :new_ticket])
 
               # @!attribute [rw] ticket_number
               required :ticket_number, String
@@ -966,12 +947,7 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               required :no_show_indicator,
-                       Increase::Enum.new(
-                         [
-                           :not_applicable,
-                           :no_show_for_specialized_vehicle
-                         ]
-                       )
+                       Increase::Enum.new([:not_applicable, :no_show_for_specialized_vehicle])
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               required :one_way_drop_off_charges_amount, Integer
@@ -1026,8 +1002,7 @@ module Increase
               required :food_beverage_charges_currency, String
 
               # @!attribute [rw] no_show_indicator
-              required :no_show_indicator,
-                       Increase::Enum.new([:not_applicable, :no_show])
+              required :no_show_indicator, Increase::Enum.new([:not_applicable, :no_show])
 
               # @!attribute [rw] prepaid_expenses_amount
               required :prepaid_expenses_amount, Integer
@@ -1094,13 +1069,7 @@ module Increase
 
               # @!attribute [rw] ticket_change_indicator
               required :ticket_change_indicator,
-                       Increase::Enum.new(
-                         [
-                           :none,
-                           :change_to_existing_ticket,
-                           :new_ticket
-                         ]
-                       )
+                       Increase::Enum.new([:none, :change_to_existing_ticket, :new_ticket])
 
               # @!attribute [rw] ticket_number
               required :ticket_number, String
@@ -1311,35 +1280,6 @@ module Increase
           required :type, Increase::Enum.new([:check_transfer_deposit])
         end
 
-        class CheckTransferIntention < BaseModel
-          # @!attribute [rw] address_city
-          required :address_city, String
-
-          # @!attribute [rw] address_line1
-          required :address_line1, String
-
-          # @!attribute [rw] address_line2
-          required :address_line2, String
-
-          # @!attribute [rw] address_state
-          required :address_state, String
-
-          # @!attribute [rw] address_zip
-          required :address_zip, String
-
-          # @!attribute [rw] amount
-          required :amount, Integer
-
-          # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
-
-          # @!attribute [rw] recipient_name
-          required :recipient_name, String
-
-          # @!attribute [rw] transfer_id
-          required :transfer_id, String
-        end
-
         class CheckTransferStopPaymentRequest < BaseModel
           # @!attribute [rw] reason
           required :reason,
@@ -1469,13 +1409,7 @@ module Increase
 
           # @!attribute [rw] foreign_exchange_indicator
           required :foreign_exchange_indicator,
-                   Increase::Enum.new(
-                     [
-                       :fixed_to_variable,
-                       :variable_to_fixed,
-                       :fixed_to_fixed
-                     ]
-                   )
+                   Increase::Enum.new([:fixed_to_variable, :variable_to_fixed, :fixed_to_fixed])
 
           # @!attribute [rw] foreign_exchange_reference
           required :foreign_exchange_reference, String
@@ -1534,13 +1468,7 @@ module Increase
 
           # @!attribute [rw] originating_depository_financial_institution_id_qualifier
           required :originating_depository_financial_institution_id_qualifier,
-                   Increase::Enum.new(
-                     [
-                       :national_clearing_system_number,
-                       :bic_code,
-                       :iban
-                     ]
-                   )
+                   Increase::Enum.new([:national_clearing_system_number, :bic_code, :iban])
 
           # @!attribute [rw] originating_depository_financial_institution_name
           required :originating_depository_financial_institution_name, String
@@ -1604,13 +1532,7 @@ module Increase
 
           # @!attribute [rw] receiving_depository_financial_institution_id_qualifier
           required :receiving_depository_financial_institution_id_qualifier,
-                   Increase::Enum.new(
-                     [
-                       :national_clearing_system_number,
-                       :bic_code,
-                       :iban
-                     ]
-                   )
+                   Increase::Enum.new([:national_clearing_system_number, :bic_code, :iban])
 
           # @!attribute [rw] receiving_depository_financial_institution_name
           required :receiving_depository_financial_institution_name, String

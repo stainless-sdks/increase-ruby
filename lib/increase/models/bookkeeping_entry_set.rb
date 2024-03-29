@@ -13,12 +13,7 @@ module Increase
       required :date, String
 
       # @!attribute [rw] entries
-      required :entries,
-               Increase::ArrayOf.new(
-                 lambda {
-                   Increase::Models::BookkeepingEntrySet::Entries
-                 }
-               )
+      required :entries, Increase::ArrayOf.new(-> { Increase::Models::BookkeepingEntrySet::Entries })
 
       # @!attribute [rw] idempotency_key
       required :idempotency_key, String
