@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class RoutingNumber
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class RoutingNumber < BaseModel
       # @!attribute [rw] ach_transfers
       required :ach_transfers, Increase::Enum.new([:supported, :not_supported])
 

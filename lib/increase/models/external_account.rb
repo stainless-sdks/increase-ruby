@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class ExternalAccount
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class ExternalAccount < BaseModel
       # @!attribute [rw] id
       required :id, String
 

@@ -2,101 +2,7 @@
 
 module Increase
   module Models
-    class WireTransfer
-      class Approval
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] approved_at
-        required :approved_at, String
-
-        # @!attribute [rw] approved_by
-        required :approved_by, String
-      end
-
-      class Cancellation
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] canceled_at
-        required :canceled_at, String
-
-        # @!attribute [rw] canceled_by
-        required :canceled_by, String
-      end
-
-      class Reversal
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] amount
-        required :amount, Integer
-
-        # @!attribute [rw] created_at
-        required :created_at, String
-
-        # @!attribute [rw] description
-        required :description, String
-
-        # @!attribute [rw] financial_institution_to_financial_institution_information
-        required :financial_institution_to_financial_institution_information, String
-
-        # @!attribute [rw] input_cycle_date
-        required :input_cycle_date, String
-
-        # @!attribute [rw] input_message_accountability_data
-        required :input_message_accountability_data, String
-
-        # @!attribute [rw] input_sequence_number
-        required :input_sequence_number, String
-
-        # @!attribute [rw] input_source
-        required :input_source, String
-
-        # @!attribute [rw] originator_routing_number
-        required :originator_routing_number, String
-
-        # @!attribute [rw] previous_message_input_cycle_date
-        required :previous_message_input_cycle_date, String
-
-        # @!attribute [rw] previous_message_input_message_accountability_data
-        required :previous_message_input_message_accountability_data, String
-
-        # @!attribute [rw] previous_message_input_sequence_number
-        required :previous_message_input_sequence_number, String
-
-        # @!attribute [rw] previous_message_input_source
-        required :previous_message_input_source, String
-
-        # @!attribute [rw] receiver_financial_institution_information
-        required :receiver_financial_institution_information, String
-
-        # @!attribute [rw] transaction_id
-        required :transaction_id, String
-
-        # @!attribute [rw] wire_transfer_id
-        required :wire_transfer_id, String
-      end
-
-      class Submission
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] input_message_accountability_data
-        required :input_message_accountability_data, String
-
-        # @!attribute [rw] submitted_at
-        required :submitted_at, String
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class WireTransfer < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -189,6 +95,80 @@ module Increase
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:wire_transfer])
+
+      class Approval < BaseModel
+        # @!attribute [rw] approved_at
+        required :approved_at, String
+
+        # @!attribute [rw] approved_by
+        required :approved_by, String
+      end
+
+      class Cancellation < BaseModel
+        # @!attribute [rw] canceled_at
+        required :canceled_at, String
+
+        # @!attribute [rw] canceled_by
+        required :canceled_by, String
+      end
+
+      class Reversal < BaseModel
+        # @!attribute [rw] amount
+        required :amount, Integer
+
+        # @!attribute [rw] created_at
+        required :created_at, String
+
+        # @!attribute [rw] description
+        required :description, String
+
+        # @!attribute [rw] financial_institution_to_financial_institution_information
+        required :financial_institution_to_financial_institution_information, String
+
+        # @!attribute [rw] input_cycle_date
+        required :input_cycle_date, String
+
+        # @!attribute [rw] input_message_accountability_data
+        required :input_message_accountability_data, String
+
+        # @!attribute [rw] input_sequence_number
+        required :input_sequence_number, String
+
+        # @!attribute [rw] input_source
+        required :input_source, String
+
+        # @!attribute [rw] originator_routing_number
+        required :originator_routing_number, String
+
+        # @!attribute [rw] previous_message_input_cycle_date
+        required :previous_message_input_cycle_date, String
+
+        # @!attribute [rw] previous_message_input_message_accountability_data
+        required :previous_message_input_message_accountability_data, String
+
+        # @!attribute [rw] previous_message_input_sequence_number
+        required :previous_message_input_sequence_number, String
+
+        # @!attribute [rw] previous_message_input_source
+        required :previous_message_input_source, String
+
+        # @!attribute [rw] receiver_financial_institution_information
+        required :receiver_financial_institution_information, String
+
+        # @!attribute [rw] transaction_id
+        required :transaction_id, String
+
+        # @!attribute [rw] wire_transfer_id
+        required :wire_transfer_id, String
+      end
+
+      class Submission < BaseModel
+        # @!attribute [rw] input_message_accountability_data
+        required :input_message_accountability_data, String
+
+        # @!attribute [rw] submitted_at
+        required :submitted_at, String
+      end
     end
   end
 end

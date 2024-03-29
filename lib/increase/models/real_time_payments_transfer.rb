@@ -2,87 +2,7 @@
 
 module Increase
   module Models
-    class RealTimePaymentsTransfer
-      class Approval
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] approved_at
-        required :approved_at, String
-
-        # @!attribute [rw] approved_by
-        required :approved_by, String
-      end
-
-      class Cancellation
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] canceled_at
-        required :canceled_at, String
-
-        # @!attribute [rw] canceled_by
-        required :canceled_by, String
-      end
-
-      class Rejection
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] reject_reason_additional_information
-        required :reject_reason_additional_information, String
-
-        # @!attribute [rw] reject_reason_code
-        required :reject_reason_code,
-                 Increase::Enum.new(
-                   [
-                     :account_closed,
-                     :account_blocked,
-                     :invalid_creditor_account_type,
-                     :invalid_creditor_account_number,
-                     :invalid_creditor_financial_institution_identifier,
-                     :end_customer_deceased,
-                     :narrative,
-                     :transaction_forbidden,
-                     :transaction_type_not_supported,
-                     :unexpected_amount,
-                     :amount_exceeds_bank_limits,
-                     :invalid_creditor_address,
-                     :unknown_end_customer,
-                     :invalid_debtor_address,
-                     :timeout,
-                     :unsupported_message_for_recipient,
-                     :recipient_connection_not_available,
-                     :real_time_payments_suspended,
-                     :instructed_agent_signed_off,
-                     :processing_error,
-                     :other
-                   ]
-                 )
-
-        # @!attribute [rw] rejected_at
-        required :rejected_at, String
-      end
-
-      class Submission
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] submitted_at
-        required :submitted_at, String
-
-        # @!attribute [rw] transaction_identification
-        required :transaction_identification, String
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class RealTimePaymentsTransfer < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -163,6 +83,66 @@ module Increase
 
       # @!attribute [rw] ultimate_debtor_name
       required :ultimate_debtor_name, String
+
+      class Approval < BaseModel
+        # @!attribute [rw] approved_at
+        required :approved_at, String
+
+        # @!attribute [rw] approved_by
+        required :approved_by, String
+      end
+
+      class Cancellation < BaseModel
+        # @!attribute [rw] canceled_at
+        required :canceled_at, String
+
+        # @!attribute [rw] canceled_by
+        required :canceled_by, String
+      end
+
+      class Rejection < BaseModel
+        # @!attribute [rw] reject_reason_additional_information
+        required :reject_reason_additional_information, String
+
+        # @!attribute [rw] reject_reason_code
+        required :reject_reason_code,
+                 Increase::Enum.new(
+                   [
+                     :account_closed,
+                     :account_blocked,
+                     :invalid_creditor_account_type,
+                     :invalid_creditor_account_number,
+                     :invalid_creditor_financial_institution_identifier,
+                     :end_customer_deceased,
+                     :narrative,
+                     :transaction_forbidden,
+                     :transaction_type_not_supported,
+                     :unexpected_amount,
+                     :amount_exceeds_bank_limits,
+                     :invalid_creditor_address,
+                     :unknown_end_customer,
+                     :invalid_debtor_address,
+                     :timeout,
+                     :unsupported_message_for_recipient,
+                     :recipient_connection_not_available,
+                     :real_time_payments_suspended,
+                     :instructed_agent_signed_off,
+                     :processing_error,
+                     :other
+                   ]
+                 )
+
+        # @!attribute [rw] rejected_at
+        required :rejected_at, String
+      end
+
+      class Submission < BaseModel
+        # @!attribute [rw] submitted_at
+        required :submitted_at, String
+
+        # @!attribute [rw] transaction_identification
+        required :transaction_identification, String
+      end
     end
   end
 end

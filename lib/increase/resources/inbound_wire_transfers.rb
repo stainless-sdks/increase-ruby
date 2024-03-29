@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class InboundWireTransfersResource
+    class InboundWireTransfers
       def initialize(client:)
         @client = client
       end

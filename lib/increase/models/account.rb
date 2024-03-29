@@ -2,17 +2,12 @@
 
 module Increase
   module Models
-    class Account
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class Account < BaseModel
       # @!attribute [rw] id
       required :id, String
 
       # @!attribute [rw] bank
-      required :bank,
-               Increase::Enum.new([:blue_ridge_bank, :first_internet_bank, :grasshopper_bank])
+      required :bank, Increase::Enum.new([:blue_ridge_bank, :first_internet_bank])
 
       # @!attribute [rw] created_at
       required :created_at, String
@@ -40,6 +35,9 @@ module Increase
 
       # @!attribute [rw] name_
       required :name_, String
+
+      # @!attribute [rw] program_id
+      required :program_id, String
 
       # @!attribute [rw] status
       required :status, Increase::Enum.new([:open, :closed])

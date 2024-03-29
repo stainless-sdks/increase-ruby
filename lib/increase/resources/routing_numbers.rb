@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class RoutingNumbersResource
+    class RoutingNumbers
       def initialize(client:)
         @client = client
       end

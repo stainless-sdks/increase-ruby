@@ -2,41 +2,7 @@
 
 module Increase
   module Models
-    class CardDispute
-      class Acceptance
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] accepted_at
-        required :accepted_at, String
-
-        # @!attribute [rw] card_dispute_id
-        required :card_dispute_id, String
-
-        # @!attribute [rw] transaction_id
-        required :transaction_id, String
-      end
-
-      class Rejection
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] card_dispute_id
-        required :card_dispute_id, String
-
-        # @!attribute [rw] explanation
-        required :explanation, String
-
-        # @!attribute [rw] rejected_at
-        required :rejected_at, String
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class CardDispute < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -63,6 +29,28 @@ module Increase
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:card_dispute])
+
+      class Acceptance < BaseModel
+        # @!attribute [rw] accepted_at
+        required :accepted_at, String
+
+        # @!attribute [rw] card_dispute_id
+        required :card_dispute_id, String
+
+        # @!attribute [rw] transaction_id
+        required :transaction_id, String
+      end
+
+      class Rejection < BaseModel
+        # @!attribute [rw] card_dispute_id
+        required :card_dispute_id, String
+
+        # @!attribute [rw] explanation
+        required :explanation, String
+
+        # @!attribute [rw] rejected_at
+        required :rejected_at, String
+      end
     end
   end
 end

@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class EventSubscription
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class EventSubscription < BaseModel
       # @!attribute [rw] id
       required :id, String
 

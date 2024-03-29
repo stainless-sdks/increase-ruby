@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class Program
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class Program < BaseModel
       # @!attribute [rw] id
       required :id, String
 

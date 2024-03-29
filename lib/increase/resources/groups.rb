@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class GroupsResource
+    class Groups
       def initialize(client:)
         @client = client
       end

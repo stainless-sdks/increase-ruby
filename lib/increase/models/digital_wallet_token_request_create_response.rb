@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class DigitalWalletTokenRequestCreateResponse
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class DigitalWalletTokenRequestCreateResponse < BaseModel
       # @!attribute [rw] decline_reason
       required :decline_reason,
                Increase::Enum.new(

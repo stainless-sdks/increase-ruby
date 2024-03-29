@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class CardPaymentsResource
+    class CardPayments
       def initialize(client:)
         @client = client
       end

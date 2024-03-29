@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require File.expand_path("test_helper", __dir__)
+require_relative "test_helper"
 
-class BaseClientTest < Test::Unit::TestCase
+class Increase::Test::BaseClientTest < Test::Unit::TestCase
   def test_base_uri_https
     client = Increase::BaseClient.new(server_uri_string: "https://foo.bar/baz")
     assert_equal(URI.parse("https://foo.bar:443/baz"), client.base_uri)

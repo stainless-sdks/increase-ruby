@@ -2,134 +2,7 @@
 
 module Increase
   module Models
-    class InboundACHTransfer
-      class Acceptance
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] accepted_at
-        required :accepted_at, String
-
-        # @!attribute [rw] transaction_id
-        required :transaction_id, String
-      end
-
-      class UnnamedTypeWithobjectParent1
-        class Addenda
-          class Entries
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] payment_related_information
-            required :payment_related_information, String
-          end
-
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
-          # @!attribute [rw] entries
-          required :entries,
-                   Increase::ArrayOf.new(
-                     lambda {
-                       Increase::Models::InboundACHTransfer::UnnamedTypeWithobjectParent1::Addenda::Entries
-                     }
-                   )
-        end
-
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] category
-        required :category, Increase::Enum.new([:freeform])
-
-        # @!attribute [rw] freeform
-        required :freeform,
-                 lambda {
-                   Increase::Models::InboundACHTransfer::UnnamedTypeWithobjectParent1::Addenda
-                 }
-      end
-
-      class Decline
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] declined_at
-        required :declined_at, String
-
-        # @!attribute [rw] declined_transaction_id
-        required :declined_transaction_id, String
-
-        # @!attribute [rw] reason
-        required :reason,
-                 Increase::Enum.new(
-                   [
-                     :ach_route_canceled,
-                     :ach_route_disabled,
-                     :breaches_limit,
-                     :credit_entry_refused_by_receiver,
-                     :duplicate_return,
-                     :entity_not_active,
-                     :group_locked,
-                     :insufficient_funds,
-                     :misrouted_return,
-                     :return_of_erroneous_or_reversing_debit,
-                     :no_ach_route,
-                     :originator_request,
-                     :transaction_not_allowed,
-                     :user_initiated
-                   ]
-                 )
-      end
-
-      class NotificationOfChange
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] updated_account_number
-        required :updated_account_number, String
-
-        # @!attribute [rw] updated_routing_number
-        required :updated_routing_number, String
-      end
-
-      class TransferReturn
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] reason
-        required :reason,
-                 Increase::Enum.new(
-                   [
-                     :returned_per_odfi_request,
-                     :authorization_revoked_by_customer,
-                     :payment_stopped,
-                     :customer_advised_unauthorized_improper_ineligible_or_incomplete,
-                     :representative_payee_deceased_or_unable_to_continue_in_that_capacity,
-                     :beneficiary_or_account_holder_deceased,
-                     :credit_entry_refused_by_receiver,
-                     :duplicate_entry,
-                     :corporate_customer_advised_not_authorized
-                   ]
-                 )
-
-        # @!attribute [rw] returned_at
-        required :returned_at, String
-
-        # @!attribute [rw] transaction_id
-        required :transaction_id, String
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class InboundACHTransfer < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -158,10 +31,7 @@ module Increase
       required :direction, Increase::Enum.new([:credit, :debit])
 
       # @!attribute [rw] notification_of_change
-      required :notification_of_change,
-               lambda {
-                 Increase::Models::InboundACHTransfer::NotificationOfChange
-               }
+      required :notification_of_change, -> { Increase::Models::InboundACHTransfer::NotificationOfChange }
 
       # @!attribute [rw] originator_company_descriptive_date
       required :originator_company_descriptive_date, String
@@ -198,6 +68,101 @@ module Increase
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:inbound_ach_transfer])
+
+      class Acceptance < BaseModel
+        # @!attribute [rw] accepted_at
+        required :accepted_at, String
+
+        # @!attribute [rw] transaction_id
+        required :transaction_id, String
+      end
+
+      class UnnamedTypeWithobjectParent1 < BaseModel
+        # @!attribute [rw] category
+        required :category, Increase::Enum.new([:freeform])
+
+        # @!attribute [rw] freeform
+        required :freeform,
+                 lambda {
+                   Increase::Models::InboundACHTransfer::UnnamedTypeWithobjectParent1::Addenda
+                 }
+
+        class Addenda < BaseModel
+          # @!attribute [rw] entries
+          required :entries,
+                   Increase::ArrayOf.new(
+                     lambda {
+                       Increase::Models::InboundACHTransfer::UnnamedTypeWithobjectParent1::Addenda::Entries
+                     }
+                   )
+
+          class Entries < BaseModel
+            # @!attribute [rw] payment_related_information
+            required :payment_related_information, String
+          end
+        end
+      end
+
+      class Decline < BaseModel
+        # @!attribute [rw] declined_at
+        required :declined_at, String
+
+        # @!attribute [rw] declined_transaction_id
+        required :declined_transaction_id, String
+
+        # @!attribute [rw] reason
+        required :reason,
+                 Increase::Enum.new(
+                   [
+                     :ach_route_canceled,
+                     :ach_route_disabled,
+                     :breaches_limit,
+                     :credit_entry_refused_by_receiver,
+                     :duplicate_return,
+                     :entity_not_active,
+                     :group_locked,
+                     :insufficient_funds,
+                     :misrouted_return,
+                     :return_of_erroneous_or_reversing_debit,
+                     :no_ach_route,
+                     :originator_request,
+                     :transaction_not_allowed,
+                     :user_initiated
+                   ]
+                 )
+      end
+
+      class NotificationOfChange < BaseModel
+        # @!attribute [rw] updated_account_number
+        required :updated_account_number, String
+
+        # @!attribute [rw] updated_routing_number
+        required :updated_routing_number, String
+      end
+
+      class TransferReturn < BaseModel
+        # @!attribute [rw] reason
+        required :reason,
+                 Increase::Enum.new(
+                   [
+                     :returned_per_odfi_request,
+                     :authorization_revoked_by_customer,
+                     :payment_stopped,
+                     :customer_advised_unauthorized_improper_ineligible_or_incomplete,
+                     :representative_payee_deceased_or_unable_to_continue_in_that_capacity,
+                     :beneficiary_or_account_holder_deceased,
+                     :credit_entry_refused_by_receiver,
+                     :duplicate_entry,
+                     :corporate_customer_advised_not_authorized
+                   ]
+                 )
+
+        # @!attribute [rw] returned_at
+        required :returned_at, String
+
+        # @!attribute [rw] transaction_id
+        required :transaction_id, String
+      end
     end
   end
 end

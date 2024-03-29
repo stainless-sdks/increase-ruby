@@ -2,8 +2,8 @@
 
 module Increase
   module Resources
-    module Entities
-      class BeneficialOwnersResource
+    class Entities
+      class BeneficialOwners
         def initialize(client:)
           @client = client
         end

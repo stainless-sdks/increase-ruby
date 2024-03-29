@@ -2,12 +2,31 @@
 
 module Increase
   module Models
-    class CardPurchaseSupplement
-      class Invoice
-        extend Increase::Model
+    class CardPurchaseSupplement < BaseModel
+      # @!attribute [rw] id
+      required :id, String
 
-        include Increase::Model::Instance
+      # @!attribute [rw] card_payment_id
+      required :card_payment_id, String
 
+      # @!attribute [rw] invoice
+      required :invoice, -> { Increase::Models::CardPurchaseSupplement::Invoice }
+
+      # @!attribute [rw] line_items
+      required :line_items,
+               Increase::ArrayOf.new(
+                 lambda {
+                   Increase::Models::CardPurchaseSupplement::LineItems
+                 }
+               )
+
+      # @!attribute [rw] transaction_id
+      required :transaction_id, String
+
+      # @!attribute [rw] type
+      required :type, Increase::Enum.new([:card_purchase_supplement])
+
+      class Invoice < BaseModel
         # @!attribute [rw] discount_amount
         required :discount_amount, Integer
 
@@ -73,11 +92,7 @@ module Increase
         required :unique_value_added_tax_invoice_reference, String
       end
 
-      class LineItems
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
+      class LineItems < BaseModel
         # @!attribute [rw] detail_indicator
         required :detail_indicator, Increase::Enum.new([:normal, :credit, :payment])
 
@@ -133,33 +148,6 @@ module Increase
         # @!attribute [rw] unit_of_measure_code
         required :unit_of_measure_code, String
       end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
-      # @!attribute [rw] id
-      required :id, String
-
-      # @!attribute [rw] card_payment_id
-      required :card_payment_id, String
-
-      # @!attribute [rw] invoice
-      required :invoice, -> { Increase::Models::CardPurchaseSupplement::Invoice }
-
-      # @!attribute [rw] line_items
-      required :line_items,
-               Increase::ArrayOf.new(
-                 lambda {
-                   Increase::Models::CardPurchaseSupplement::LineItems
-                 }
-               )
-
-      # @!attribute [rw] transaction_id
-      required :transaction_id, String
-
-      # @!attribute [rw] type
-      required :type, Increase::Enum.new([:card_purchase_supplement])
     end
   end
 end

@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class WireDrawdownRequestsResource
+    class WireDrawdownRequests
       def initialize(client:)
         @client = client
       end

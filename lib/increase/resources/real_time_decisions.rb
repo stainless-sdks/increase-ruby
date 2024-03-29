@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class RealTimeDecisionsResource
+    class RealTimeDecisions
       def initialize(client:)
         @client = client
       end

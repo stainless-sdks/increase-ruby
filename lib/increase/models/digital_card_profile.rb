@@ -2,26 +2,7 @@
 
 module Increase
   module Models
-    class DigitalCardProfile
-      class TextColor
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] blue
-        required :blue, Integer
-
-        # @!attribute [rw] green
-        required :green, Integer
-
-        # @!attribute [rw] red
-        required :red, Integer
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class DigitalCardProfile < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -66,6 +47,17 @@ module Increase
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:digital_card_profile])
+
+      class TextColor < BaseModel
+        # @!attribute [rw] blue
+        required :blue, Integer
+
+        # @!attribute [rw] green
+        required :green, Integer
+
+        # @!attribute [rw] red
+        required :red, Integer
+      end
     end
   end
 end
