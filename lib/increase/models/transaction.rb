@@ -1183,39 +1183,6 @@ module Increase
           required :type, Increase::Enum.new([:check_transfer_deposit])
         end
 
-        class CheckTransferIntention
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
-          # @!attribute [rw] address_city
-          required :address_city, String
-
-          # @!attribute [rw] address_line1
-          required :address_line1, String
-
-          # @!attribute [rw] address_line2
-          required :address_line2, String
-
-          # @!attribute [rw] address_state
-          required :address_state, String
-
-          # @!attribute [rw] address_zip
-          required :address_zip, String
-
-          # @!attribute [rw] amount
-          required :amount, Integer
-
-          # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
-
-          # @!attribute [rw] recipient_name
-          required :recipient_name, String
-
-          # @!attribute [rw] transfer_id
-          required :transfer_id, String
-        end
-
         class CheckTransferStopPaymentRequest
           extend Increase::Model
 
@@ -1954,7 +1921,6 @@ module Increase
                      :check_deposit_acceptance,
                      :check_deposit_return,
                      :check_transfer_deposit,
-                     :check_transfer_intention,
                      :check_transfer_stop_payment_request,
                      :fee_payment,
                      :inbound_ach_transfer,
@@ -1993,12 +1959,6 @@ module Increase
         required :check_transfer_deposit,
                  lambda {
                    Increase::Models::Transaction::AccountTransferIntention::CheckTransferDeposit
-                 }
-
-        # @!attribute [rw] check_transfer_intention
-        required :check_transfer_intention,
-                 lambda {
-                   Increase::Models::Transaction::AccountTransferIntention::CheckTransferIntention
                  }
 
         # @!attribute [rw] check_transfer_stop_payment_request
