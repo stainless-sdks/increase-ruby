@@ -2,8 +2,8 @@
 
 module Increase
   module Resources
-    module Simulations
-      class DigitalWalletTokenRequestsResource
+    class Simulations
+      class DigitalWalletTokenRequests
         def initialize(client:)
           @client = client
         end

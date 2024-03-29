@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class CheckTransfersResource
+    class CheckTransfers
       def initialize(client:)
         @client = client
       end

@@ -2,8 +2,8 @@
 
 module Increase
   module Resources
-    module Simulations
-      class ACHTransfersResource
+    class Simulations
+      class ACHTransfers
         def initialize(client:)
           @client = client
         end
@@ -75,8 +75,7 @@ module Increase
         def notification_of_change(ach_transfer_id, params = {}, opts = {})
           request = {}
           request[:method] = :post
-          request[:path] =
-            "/simulations/ach_transfers/#{ach_transfer_id}/notification_of_change"
+          request[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/notification_of_change"
           body_params = [:change_code, :corrected_data]
           request[:body] = params.filter { |k, _| body_params.include?(k) }
           request[:model] = Increase::Models::ACHTransfer

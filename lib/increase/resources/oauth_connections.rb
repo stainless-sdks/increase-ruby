@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class OAuthConnectionsResource
+    class OAuthConnections
       def initialize(client:)
         @client = client
       end

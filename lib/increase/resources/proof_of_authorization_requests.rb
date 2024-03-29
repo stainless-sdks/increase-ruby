@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class ProofOfAuthorizationRequestsResource
+    class ProofOfAuthorizationRequests
       def initialize(client:)
         @client = client
       end

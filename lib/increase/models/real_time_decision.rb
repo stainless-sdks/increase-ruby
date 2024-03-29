@@ -115,10 +115,7 @@ module Increase
         required :settlement_currency, String
 
         # @!attribute [rw] verification
-        required :verification,
-                 lambda {
-                   Increase::Models::RealTimeDecision::Visa::CardVerificationCode
-                 }
+        required :verification, -> { Increase::Models::RealTimeDecision::Visa::CardVerificationCode }
 
         class Visa < BaseModel
           # @!attribute [rw] category
@@ -176,12 +173,7 @@ module Increase
         class IncrementalAuthorization < BaseModel
           # @!attribute [rw] category
           required :category,
-                   Increase::Enum.new(
-                     [
-                       :initial_authorization,
-                       :incremental_authorization
-                     ]
-                   )
+                   Increase::Enum.new([:initial_authorization, :incremental_authorization])
 
           # @!attribute [rw] incremental_authorization
           required :incremental_authorization,
@@ -216,8 +208,7 @@ module Increase
 
           class CardVerificationCode < BaseModel
             # @!attribute [rw] result
-            required :result,
-                     Increase::Enum.new([:not_checked, :match, :no_match])
+            required :result, Increase::Enum.new([:not_checked, :match, :no_match])
           end
 
           class CardholderAddress < BaseModel
