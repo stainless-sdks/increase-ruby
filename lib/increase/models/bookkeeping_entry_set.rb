@@ -2,26 +2,7 @@
 
 module Increase
   module Models
-    class BookkeepingEntrySet
-      class Entries
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] id
-        required :id, String
-
-        # @!attribute [rw] account_id
-        required :account_id, String
-
-        # @!attribute [rw] amount
-        required :amount, Integer
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class BookkeepingEntrySet < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -47,6 +28,17 @@ module Increase
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:bookkeeping_entry_set])
+
+      class Entries < BaseModel
+        # @!attribute [rw] id
+        required :id, String
+
+        # @!attribute [rw] account_id
+        required :account_id, String
+
+        # @!attribute [rw] amount
+        required :amount, Integer
+      end
     end
   end
 end

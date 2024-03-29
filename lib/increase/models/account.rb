@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class Account
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class Account < BaseModel
       # @!attribute [rw] id
       required :id, String
 

@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class InboundFundsHoldReleaseResponse
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class InboundFundsHoldReleaseResponse < BaseModel
       # @!attribute [rw] id
       required :id, String
 

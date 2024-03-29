@@ -2,35 +2,7 @@
 
 module Increase
   module Models
-    class AccountTransfer
-      class Approval
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] approved_at
-        required :approved_at, String
-
-        # @!attribute [rw] approved_by
-        required :approved_by, String
-      end
-
-      class Cancellation
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] canceled_at
-        required :canceled_at, String
-
-        # @!attribute [rw] canceled_by
-        required :canceled_by, String
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class AccountTransfer < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -78,6 +50,22 @@ module Increase
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:account_transfer])
+
+      class Approval < BaseModel
+        # @!attribute [rw] approved_at
+        required :approved_at, String
+
+        # @!attribute [rw] approved_by
+        required :approved_by, String
+      end
+
+      class Cancellation < BaseModel
+        # @!attribute [rw] canceled_at
+        required :canceled_at, String
+
+        # @!attribute [rw] canceled_by
+        required :canceled_by, String
+      end
     end
   end
 end

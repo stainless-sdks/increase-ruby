@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class IntrafiAccountEnrollment
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class IntrafiAccountEnrollment < BaseModel
       # @!attribute [rw] id
       required :id, String
 

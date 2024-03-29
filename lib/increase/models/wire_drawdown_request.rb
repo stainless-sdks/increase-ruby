@@ -2,20 +2,7 @@
 
 module Increase
   module Models
-    class WireDrawdownRequest
-      class Submission
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] input_message_accountability_data
-        required :input_message_accountability_data, String
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class WireDrawdownRequest < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -76,6 +63,11 @@ module Increase
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:wire_drawdown_request])
+
+      class Submission < BaseModel
+        # @!attribute [rw] input_message_accountability_data
+        required :input_message_accountability_data, String
+      end
     end
   end
 end
