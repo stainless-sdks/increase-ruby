@@ -280,8 +280,7 @@ module Increase
 
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
-              required :result,
-                       Increase::Enum.new([:not_checked, :match, :no_match])
+              required :result, Increase::Enum.new([:not_checked, :match, :no_match])
             end
 
             class CardholderAddress < BaseModel

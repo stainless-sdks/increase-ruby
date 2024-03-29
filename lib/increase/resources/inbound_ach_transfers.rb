@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class InboundACHTransfersResource
+    class InboundACHTransfers
       def initialize(client:)
         @client = client
       end
@@ -77,8 +77,7 @@ module Increase
       def notification_of_change(inbound_ach_transfer_id, params = {}, opts = {})
         request = {}
         request[:method] = :post
-        request[:path] =
-          "/inbound_ach_transfers/#{inbound_ach_transfer_id}/notification_of_change"
+        request[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/notification_of_change"
         body_params = [:updated_account_number, :updated_routing_number]
         request[:body] = params.filter { |k, _| body_params.include?(k) }
         request[:model] = Increase::Models::InboundACHTransfer

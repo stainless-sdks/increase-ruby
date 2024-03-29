@@ -2,8 +2,8 @@
 
 module Increase
   module Resources
-    module Entities
-      class SupplementalDocumentsResource
+    class Entities
+      class SupplementalDocuments
         def initialize(client:)
           @client = client
         end

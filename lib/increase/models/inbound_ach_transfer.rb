@@ -31,10 +31,7 @@ module Increase
       required :direction, Increase::Enum.new([:credit, :debit])
 
       # @!attribute [rw] notification_of_change
-      required :notification_of_change,
-               lambda {
-                 Increase::Models::InboundACHTransfer::NotificationOfChange
-               }
+      required :notification_of_change, -> { Increase::Models::InboundACHTransfer::NotificationOfChange }
 
       # @!attribute [rw] originator_company_descriptive_date
       required :originator_company_descriptive_date, String

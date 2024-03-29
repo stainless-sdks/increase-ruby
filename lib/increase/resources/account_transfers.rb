@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class AccountTransfersResource
+    class AccountTransfers
       def initialize(client:)
         @client = client
       end
@@ -24,13 +24,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/account_transfers"
-        body_params = [
-          :account_id,
-          :amount,
-          :description,
-          :destination_account_id,
-          :require_approval
-        ]
+        body_params = [:account_id, :amount, :description, :destination_account_id, :require_approval]
         request[:body] = params.filter { |k, _| body_params.include?(k) }
         request[:model] = Increase::Models::AccountTransfer
         request.merge!(opts)
