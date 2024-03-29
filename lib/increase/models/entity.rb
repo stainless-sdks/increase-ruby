@@ -96,10 +96,7 @@ module Increase
           required :company_title, String
 
           # @!attribute [rw] individual
-          required :individual,
-                   lambda {
-                     Increase::Models::Entity::Address::Address::Address
-                   }
+          required :individual, -> { Increase::Models::Entity::Address::Address::Address }
 
           # @!attribute [rw] prong
           required :prong, Increase::Enum.new([:ownership, :control])
@@ -309,12 +306,7 @@ module Increase
         required :tax_identifier, String
 
         # @!attribute [rw] trustees
-        required :trustees,
-                 Increase::ArrayOf.new(
-                   lambda {
-                     Increase::Models::Entity::Address::Address
-                   }
-                 )
+        required :trustees, Increase::ArrayOf.new(-> { Increase::Models::Entity::Address::Address })
 
         class Address < BaseModel
           # @!attribute [rw] city
@@ -386,10 +378,7 @@ module Increase
 
         class Address < BaseModel
           # @!attribute [rw] individual
-          required :individual,
-                   lambda {
-                     Increase::Models::Entity::Address::Address::Address
-                   }
+          required :individual, -> { Increase::Models::Entity::Address::Address::Address }
 
           # @!attribute [rw] structure
           required :structure, Increase::Enum.new([:individual])

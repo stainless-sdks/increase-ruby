@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class ACHTransfersResource
+    class ACHTransfers
       def initialize(client:)
         @client = client
       end

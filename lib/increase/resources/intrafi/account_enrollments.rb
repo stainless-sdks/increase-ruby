@@ -2,8 +2,8 @@
 
 module Increase
   module Resources
-    module Intrafi
-      class AccountEnrollmentsResource
+    class Intrafi
+      class AccountEnrollments
         def initialize(client:)
           @client = client
         end
@@ -79,8 +79,7 @@ module Increase
         def unenroll(intrafi_account_enrollment_id, opts = {})
           request = {}
           request[:method] = :post
-          request[:path] =
-            "/intrafi_account_enrollments/#{intrafi_account_enrollment_id}/unenroll"
+          request[:path] = "/intrafi_account_enrollments/#{intrafi_account_enrollment_id}/unenroll"
           request[:model] = Increase::Models::IntrafiAccountEnrollment
           request.merge!(opts)
           @client.request(request)

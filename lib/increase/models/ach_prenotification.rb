@@ -45,10 +45,7 @@ module Increase
                )
 
       # @!attribute [rw] prenotification_return
-      required :prenotification_return,
-               lambda {
-                 Increase::Models::ACHPrenotification::PrenotificationReturn
-               }
+      required :prenotification_return, -> { Increase::Models::ACHPrenotification::PrenotificationReturn }
 
       # @!attribute [rw] routing_number
       required :routing_number, String

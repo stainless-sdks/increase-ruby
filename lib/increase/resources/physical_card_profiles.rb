@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class PhysicalCardProfilesResource
+    class PhysicalCardProfiles
       def initialize(client:)
         @client = client
       end

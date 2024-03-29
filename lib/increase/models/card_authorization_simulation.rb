@@ -4,10 +4,7 @@ module Increase
   module Models
     class CardAuthorizationSimulation < BaseModel
       # @!attribute [rw] declined_transaction
-      required :declined_transaction,
-               lambda {
-                 Increase::Models::CardAuthorizationSimulation::ACHDecline
-               }
+      required :declined_transaction, -> { Increase::Models::CardAuthorizationSimulation::ACHDecline }
 
       # @!attribute [rw] pending_transaction
       required :pending_transaction,
@@ -44,10 +41,7 @@ module Increase
         required :route_type, Increase::Enum.new([:account_number, :card])
 
         # @!attribute [rw] source
-        required :source,
-                 lambda {
-                   Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline
-                 }
+        required :source, -> { Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline }
 
         # @!attribute [rw] type
         required :type, Increase::Enum.new([:declined_transaction])
@@ -170,8 +164,7 @@ module Increase
             required :card_payment_id, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] digital_wallet_token_id
             required :digital_wallet_token_id, String
@@ -327,13 +320,7 @@ module Increase
               class CardVerificationCode < BaseModel
                 # @!attribute [rw] result
                 required :result,
-                         Increase::Enum.new(
-                           [
-                             :not_checked,
-                             :match,
-                             :no_match
-                           ]
-                         )
+                         Increase::Enum.new([:not_checked, :match, :no_match])
               end
 
               class CardholderAddress < BaseModel
@@ -408,8 +395,7 @@ module Increase
             required :creditor_name, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] debtor_account_number
             required :debtor_account_number, String
@@ -452,13 +438,7 @@ module Increase
 
             # @!attribute [rw] foreign_exchange_indicator
             required :foreign_exchange_indicator,
-                     Increase::Enum.new(
-                       [
-                         :fixed_to_variable,
-                         :variable_to_fixed,
-                         :fixed_to_fixed
-                       ]
-                     )
+                     Increase::Enum.new([:fixed_to_variable, :variable_to_fixed, :fixed_to_fixed])
 
             # @!attribute [rw] foreign_exchange_reference
             required :foreign_exchange_reference, String
@@ -510,21 +490,14 @@ module Increase
             required :originating_currency_code, String
 
             # @!attribute [rw] originating_depository_financial_institution_branch_country
-            required :originating_depository_financial_institution_branch_country,
-                     String
+            required :originating_depository_financial_institution_branch_country, String
 
             # @!attribute [rw] originating_depository_financial_institution_id
             required :originating_depository_financial_institution_id, String
 
             # @!attribute [rw] originating_depository_financial_institution_id_qualifier
             required :originating_depository_financial_institution_id_qualifier,
-                     Increase::Enum.new(
-                       [
-                         :national_clearing_system_number,
-                         :bic_code,
-                         :iban
-                       ]
-                     )
+                     Increase::Enum.new([:national_clearing_system_number, :bic_code, :iban])
 
             # @!attribute [rw] originating_depository_financial_institution_name
             required :originating_depository_financial_institution_name, String
@@ -588,13 +561,7 @@ module Increase
 
             # @!attribute [rw] receiving_depository_financial_institution_id_qualifier
             required :receiving_depository_financial_institution_id_qualifier,
-                     Increase::Enum.new(
-                       [
-                         :national_clearing_system_number,
-                         :bic_code,
-                         :iban
-                       ]
-                     )
+                     Increase::Enum.new([:national_clearing_system_number, :bic_code, :iban])
 
             # @!attribute [rw] receiving_depository_financial_institution_name
             required :receiving_depository_financial_institution_name, String
@@ -733,8 +700,7 @@ module Increase
             required :amount, Integer
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] transfer_id
             required :transfer_id, String
@@ -762,8 +728,7 @@ module Increase
             required :card_payment_id, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] digital_wallet_token_id
             required :digital_wallet_token_id, String
@@ -907,13 +872,7 @@ module Increase
               class CardVerificationCode < BaseModel
                 # @!attribute [rw] result
                 required :result,
-                         Increase::Enum.new(
-                           [
-                             :not_checked,
-                             :match,
-                             :no_match
-                           ]
-                         )
+                         Increase::Enum.new([:not_checked, :match, :no_match])
               end
 
               class CardholderAddress < BaseModel
@@ -956,8 +915,7 @@ module Increase
             required :check_deposit_id, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] front_image_file_id
             required :front_image_file_id, String
@@ -968,8 +926,7 @@ module Increase
             required :amount, Integer
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] transfer_id
             required :transfer_id, String
@@ -989,8 +946,7 @@ module Increase
             required :created_at, String
 
             # @!attribute [rw] currency
-            required :currency,
-                     Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+            required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
 
             # @!attribute [rw] held_transaction_id
             required :held_transaction_id, String

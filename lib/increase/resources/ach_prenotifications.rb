@@ -2,7 +2,7 @@
 
 module Increase
   module Resources
-    class ACHPrenotificationsResource
+    class ACHPrenotifications
       def initialize(client:)
         @client = client
       end

@@ -44,25 +44,16 @@ module Increase
                  }
 
         # @!attribute [rw] card_increment
-        required :card_increment,
-                 lambda {
-                   Increase::Models::CardPayment::Visa::NetworkIdentifiers
-                 }
+        required :card_increment, -> { Increase::Models::CardPayment::Visa::NetworkIdentifiers }
 
         # @!attribute [rw] card_refund
         required :card_refund, -> { Increase::Models::CardPayment::Visa::NetworkIdentifiers }
 
         # @!attribute [rw] card_reversal
-        required :card_reversal,
-                 lambda {
-                   Increase::Models::CardPayment::Visa::NetworkIdentifiers
-                 }
+        required :card_reversal, -> { Increase::Models::CardPayment::Visa::NetworkIdentifiers }
 
         # @!attribute [rw] card_settlement
-        required :card_settlement,
-                 lambda {
-                   Increase::Models::CardPayment::Visa::NetworkIdentifiers
-                 }
+        required :card_settlement, -> { Increase::Models::CardPayment::Visa::NetworkIdentifiers }
 
         # @!attribute [rw] card_validation
         required :card_validation, -> { Increase::Models::CardPayment::Visa::Visa }
@@ -128,10 +119,7 @@ module Increase
           required :merchant_descriptor, String
 
           # @!attribute [rw] network_details
-          required :network_details,
-                   lambda {
-                     Increase::Models::CardPayment::Visa::Visa::Visa
-                   }
+          required :network_details, -> { Increase::Models::CardPayment::Visa::Visa::Visa }
 
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
@@ -178,10 +166,7 @@ module Increase
             required :category, Increase::Enum.new([:visa])
 
             # @!attribute [rw] visa
-            required :visa,
-                     lambda {
-                       Increase::Models::CardPayment::Visa::Visa::Visa::Visa
-                     }
+            required :visa, -> { Increase::Models::CardPayment::Visa::Visa::Visa::Visa }
 
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
@@ -244,8 +229,7 @@ module Increase
 
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
-              required :result,
-                       Increase::Enum.new([:not_checked, :match, :no_match])
+              required :result, Increase::Enum.new([:not_checked, :match, :no_match])
             end
 
             class CardholderAddress < BaseModel
@@ -335,10 +319,7 @@ module Increase
           required :merchant_state, String
 
           # @!attribute [rw] network_details
-          required :network_details,
-                   lambda {
-                     Increase::Models::CardPayment::Visa::Visa::Visa
-                   }
+          required :network_details, -> { Increase::Models::CardPayment::Visa::Visa::Visa }
 
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
@@ -400,10 +381,7 @@ module Increase
             required :category, Increase::Enum.new([:visa])
 
             # @!attribute [rw] visa
-            required :visa,
-                     lambda {
-                       Increase::Models::CardPayment::Visa::Visa::Visa::Visa
-                     }
+            required :visa, -> { Increase::Models::CardPayment::Visa::Visa::Visa::Visa }
 
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
@@ -466,8 +444,7 @@ module Increase
 
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
-              required :result,
-                       Increase::Enum.new([:not_checked, :match, :no_match])
+              required :result, Increase::Enum.new([:not_checked, :match, :no_match])
             end
 
             class CardholderAddress < BaseModel
@@ -743,12 +720,7 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               required :no_show_indicator,
-                       Increase::Enum.new(
-                         [
-                           :not_applicable,
-                           :no_show_for_specialized_vehicle
-                         ]
-                       )
+                       Increase::Enum.new([:not_applicable, :no_show_for_specialized_vehicle])
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               required :one_way_drop_off_charges_amount, Integer
@@ -803,8 +775,7 @@ module Increase
               required :food_beverage_charges_currency, String
 
               # @!attribute [rw] no_show_indicator
-              required :no_show_indicator,
-                       Increase::Enum.new([:not_applicable, :no_show])
+              required :no_show_indicator, Increase::Enum.new([:not_applicable, :no_show])
 
               # @!attribute [rw] prepaid_expenses_amount
               required :prepaid_expenses_amount, Integer
@@ -871,13 +842,7 @@ module Increase
 
               # @!attribute [rw] ticket_change_indicator
               required :ticket_change_indicator,
-                       Increase::Enum.new(
-                         [
-                           :none,
-                           :change_to_existing_ticket,
-                           :new_ticket
-                         ]
-                       )
+                       Increase::Enum.new([:none, :change_to_existing_ticket, :new_ticket])
 
               # @!attribute [rw] ticket_number
               required :ticket_number, String
@@ -1199,12 +1164,7 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               required :no_show_indicator,
-                       Increase::Enum.new(
-                         [
-                           :not_applicable,
-                           :no_show_for_specialized_vehicle
-                         ]
-                       )
+                       Increase::Enum.new([:not_applicable, :no_show_for_specialized_vehicle])
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               required :one_way_drop_off_charges_amount, Integer
@@ -1259,8 +1219,7 @@ module Increase
               required :food_beverage_charges_currency, String
 
               # @!attribute [rw] no_show_indicator
-              required :no_show_indicator,
-                       Increase::Enum.new([:not_applicable, :no_show])
+              required :no_show_indicator, Increase::Enum.new([:not_applicable, :no_show])
 
               # @!attribute [rw] prepaid_expenses_amount
               required :prepaid_expenses_amount, Integer
@@ -1327,13 +1286,7 @@ module Increase
 
               # @!attribute [rw] ticket_change_indicator
               required :ticket_change_indicator,
-                       Increase::Enum.new(
-                         [
-                           :none,
-                           :change_to_existing_ticket,
-                           :new_ticket
-                         ]
-                       )
+                       Increase::Enum.new([:none, :change_to_existing_ticket, :new_ticket])
 
               # @!attribute [rw] ticket_number
               required :ticket_number, String
@@ -1480,10 +1433,7 @@ module Increase
           required :merchant_descriptor, String
 
           # @!attribute [rw] network_details
-          required :network_details,
-                   lambda {
-                     Increase::Models::CardPayment::Visa::Visa::Visa
-                   }
+          required :network_details, -> { Increase::Models::CardPayment::Visa::Visa::Visa }
 
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
@@ -1514,10 +1464,7 @@ module Increase
             required :category, Increase::Enum.new([:visa])
 
             # @!attribute [rw] visa
-            required :visa,
-                     lambda {
-                       Increase::Models::CardPayment::Visa::Visa::Visa::Visa
-                     }
+            required :visa, -> { Increase::Models::CardPayment::Visa::Visa::Visa::Visa }
 
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
@@ -1580,8 +1527,7 @@ module Increase
 
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
-              required :result,
-                       Increase::Enum.new([:not_checked, :match, :no_match])
+              required :result, Increase::Enum.new([:not_checked, :match, :no_match])
             end
 
             class CardholderAddress < BaseModel

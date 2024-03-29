@@ -43,8 +43,7 @@ module Increase
         required :address, -> { Increase::Models::PhysicalCard::Address::Address }
 
         # @!attribute [rw] method_
-        required :method_,
-                 Increase::Enum.new([:usps, :fedex_priority_overnight, :fedex_2_day])
+        required :method_, Increase::Enum.new([:usps, :fedex_priority_overnight, :fedex_2_day])
 
         # @!attribute [rw] status
         required :status,

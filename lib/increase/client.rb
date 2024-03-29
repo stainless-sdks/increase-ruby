@@ -75,52 +75,52 @@ module Increase
       server_uri_string = environments[environment&.to_sym] || base_url
       super(server_uri_string: server_uri_string, headers: @default_headers, max_retries: max_retries || DEFAULT_MAX_RETRIES)
 
-      @accounts = Increase::Resources::AccountsResource.new(client: self)
-      @account_numbers = Increase::Resources::AccountNumbersResource.new(client: self)
-      @bookkeeping_accounts = Increase::Resources::BookkeepingAccountsResource.new(client: self)
-      @bookkeeping_entry_sets = Increase::Resources::BookkeepingEntrySetsResource.new(client: self)
-      @bookkeeping_entries = Increase::Resources::BookkeepingEntriesResource.new(client: self)
-      @real_time_decisions = Increase::Resources::RealTimeDecisionsResource.new(client: self)
-      @real_time_payments_transfers = Increase::Resources::RealTimePaymentsTransfersResource.new(client: self)
-      @cards = Increase::Resources::CardsResource.new(client: self)
-      @card_disputes = Increase::Resources::CardDisputesResource.new(client: self)
-      @card_purchase_supplements = Increase::Resources::CardPurchaseSupplementsResource.new(client: self)
-      @external_accounts = Increase::Resources::ExternalAccountsResource.new(client: self)
-      @exports = Increase::Resources::ExportsResource.new(client: self)
-      @digital_wallet_tokens = Increase::Resources::DigitalWalletTokensResource.new(client: self)
-      @transactions = Increase::Resources::TransactionsResource.new(client: self)
-      @pending_transactions = Increase::Resources::PendingTransactionsResource.new(client: self)
-      @programs = Increase::Resources::ProgramsResource.new(client: self)
-      @declined_transactions = Increase::Resources::DeclinedTransactionsResource.new(client: self)
-      @account_transfers = Increase::Resources::AccountTransfersResource.new(client: self)
-      @ach_transfers = Increase::Resources::ACHTransfersResource.new(client: self)
-      @ach_prenotifications = Increase::Resources::ACHPrenotificationsResource.new(client: self)
-      @documents = Increase::Resources::DocumentsResource.new(client: self)
-      @wire_transfers = Increase::Resources::WireTransfersResource.new(client: self)
-      @check_transfers = Increase::Resources::CheckTransfersResource.new(client: self)
-      @entities = Increase::Resources::EntitiesResource.new(client: self)
-      @inbound_ach_transfers = Increase::Resources::InboundACHTransfersResource.new(client: self)
-      @inbound_wire_drawdown_requests = Increase::Resources::InboundWireDrawdownRequestsResource.new(client: self)
-      @wire_drawdown_requests = Increase::Resources::WireDrawdownRequestsResource.new(client: self)
-      @events = Increase::Resources::EventsResource.new(client: self)
-      @event_subscriptions = Increase::Resources::EventSubscriptionsResource.new(client: self)
-      @files = Increase::Resources::FilesResource.new(client: self)
-      @groups = Increase::Resources::GroupsResource.new(client: self)
-      @oauth_connections = Increase::Resources::OAuthConnectionsResource.new(client: self)
-      @check_deposits = Increase::Resources::CheckDepositsResource.new(client: self)
-      @routing_numbers = Increase::Resources::RoutingNumbersResource.new(client: self)
-      @account_statements = Increase::Resources::AccountStatementsResource.new(client: self)
-      @simulations = Increase::Resources::SimulationsResource.new(client: self)
-      @physical_cards = Increase::Resources::PhysicalCardsResource.new(client: self)
-      @card_payments = Increase::Resources::CardPaymentsResource.new(client: self)
-      @proof_of_authorization_requests = Increase::Resources::ProofOfAuthorizationRequestsResource.new(client: self)
-      @proof_of_authorization_request_submissions = Increase::Resources::ProofOfAuthorizationRequestSubmissionsResource.new(client: self)
-      @intrafi = Increase::Resources::IntrafiResource.new(client: self)
-      @real_time_payments_request_for_payments = Increase::Resources::RealTimePaymentsRequestForPaymentsResource.new(client: self)
-      @oauth_tokens = Increase::Resources::OAuthTokensResource.new(client: self)
-      @inbound_wire_transfers = Increase::Resources::InboundWireTransfersResource.new(client: self)
-      @digital_card_profiles = Increase::Resources::DigitalCardProfilesResource.new(client: self)
-      @physical_card_profiles = Increase::Resources::PhysicalCardProfilesResource.new(client: self)
+      @accounts = Increase::Resources::Accounts.new(client: self)
+      @account_numbers = Increase::Resources::AccountNumbers.new(client: self)
+      @bookkeeping_accounts = Increase::Resources::BookkeepingAccounts.new(client: self)
+      @bookkeeping_entry_sets = Increase::Resources::BookkeepingEntrySets.new(client: self)
+      @bookkeeping_entries = Increase::Resources::BookkeepingEntries.new(client: self)
+      @real_time_decisions = Increase::Resources::RealTimeDecisions.new(client: self)
+      @real_time_payments_transfers = Increase::Resources::RealTimePaymentsTransfers.new(client: self)
+      @cards = Increase::Resources::Cards.new(client: self)
+      @card_disputes = Increase::Resources::CardDisputes.new(client: self)
+      @card_purchase_supplements = Increase::Resources::CardPurchaseSupplements.new(client: self)
+      @external_accounts = Increase::Resources::ExternalAccounts.new(client: self)
+      @exports = Increase::Resources::Exports.new(client: self)
+      @digital_wallet_tokens = Increase::Resources::DigitalWalletTokens.new(client: self)
+      @transactions = Increase::Resources::Transactions.new(client: self)
+      @pending_transactions = Increase::Resources::PendingTransactions.new(client: self)
+      @programs = Increase::Resources::Programs.new(client: self)
+      @declined_transactions = Increase::Resources::DeclinedTransactions.new(client: self)
+      @account_transfers = Increase::Resources::AccountTransfers.new(client: self)
+      @ach_transfers = Increase::Resources::ACHTransfers.new(client: self)
+      @ach_prenotifications = Increase::Resources::ACHPrenotifications.new(client: self)
+      @documents = Increase::Resources::Documents.new(client: self)
+      @wire_transfers = Increase::Resources::WireTransfers.new(client: self)
+      @check_transfers = Increase::Resources::CheckTransfers.new(client: self)
+      @entities = Increase::Resources::Entities.new(client: self)
+      @inbound_ach_transfers = Increase::Resources::InboundACHTransfers.new(client: self)
+      @inbound_wire_drawdown_requests = Increase::Resources::InboundWireDrawdownRequests.new(client: self)
+      @wire_drawdown_requests = Increase::Resources::WireDrawdownRequests.new(client: self)
+      @events = Increase::Resources::Events.new(client: self)
+      @event_subscriptions = Increase::Resources::EventSubscriptions.new(client: self)
+      @files = Increase::Resources::Files.new(client: self)
+      @groups = Increase::Resources::Groups.new(client: self)
+      @oauth_connections = Increase::Resources::OAuthConnections.new(client: self)
+      @check_deposits = Increase::Resources::CheckDeposits.new(client: self)
+      @routing_numbers = Increase::Resources::RoutingNumbers.new(client: self)
+      @account_statements = Increase::Resources::AccountStatements.new(client: self)
+      @simulations = Increase::Resources::Simulations.new(client: self)
+      @physical_cards = Increase::Resources::PhysicalCards.new(client: self)
+      @card_payments = Increase::Resources::CardPayments.new(client: self)
+      @proof_of_authorization_requests = Increase::Resources::ProofOfAuthorizationRequests.new(client: self)
+      @proof_of_authorization_request_submissions = Increase::Resources::ProofOfAuthorizationRequestSubmissions.new(client: self)
+      @intrafi = Increase::Resources::Intrafi.new(client: self)
+      @real_time_payments_request_for_payments = Increase::Resources::RealTimePaymentsRequestForPayments.new(client: self)
+      @oauth_tokens = Increase::Resources::OAuthTokens.new(client: self)
+      @inbound_wire_transfers = Increase::Resources::InboundWireTransfers.new(client: self)
+      @digital_card_profiles = Increase::Resources::DigitalCardProfiles.new(client: self)
+      @physical_card_profiles = Increase::Resources::PhysicalCardProfiles.new(client: self)
       @idempotency_header = "Idempotency-Key"
     end
 
@@ -144,12 +144,9 @@ module Increase
         )
       end
       if type == "invalid_api_key_error"
-        return Increase::HTTP::InvalidAPIKeyError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
+        return Increase::HTTP::InvalidAPIKeyError.new(err_msg: err_msg, response: response, body: body)
       end
+
       if type == "environment_mismatch_error"
         return Increase::HTTP::EnvironmentMismatchError.new(
           err_msg: err_msg,
@@ -165,12 +162,9 @@ module Increase
         )
       end
       if type == "private_feature_error"
-        return Increase::HTTP::PrivateFeatureError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
+        return Increase::HTTP::PrivateFeatureError.new(err_msg: err_msg, response: response, body: body)
       end
+
       if type == "api_method_not_found_error"
         return Increase::HTTP::APIMethodNotFoundError.new(
           err_msg: err_msg,
@@ -179,12 +173,9 @@ module Increase
         )
       end
       if type == "object_not_found_error"
-        return Increase::HTTP::ObjectNotFoundError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
+        return Increase::HTTP::ObjectNotFoundError.new(err_msg: err_msg, response: response, body: body)
       end
+
       if type == "idempotency_key_already_used_error"
         return Increase::HTTP::IdempotencyKeyAlreadyUsedError.new(
           err_msg: err_msg,
@@ -200,18 +191,10 @@ module Increase
         )
       end
       if type == "rate_limited_error"
-        return Increase::HTTP::RateLimitedError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
+        return Increase::HTTP::RateLimitedError.new(err_msg: err_msg, response: response, body: body)
       end
       if type == "internal_server_error"
-        return Increase::HTTP::InternalServerError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
+        return Increase::HTTP::InternalServerError.new(err_msg: err_msg, response: response, body: body)
       end
 
       case response.code.to_i
@@ -234,11 +217,7 @@ module Increase
       when 409
         Increase::HTTP::ConflictError.new(err_msg: err_msg, response: response, body: body)
       when 422
-        Increase::HTTP::UnprocessableEntityError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
+        Increase::HTTP::UnprocessableEntityError.new(err_msg: err_msg, response: response, body: body)
       when 429
         Increase::HTTP::RateLimitError.new(err_msg: err_msg, response: response, body: body)
       else
