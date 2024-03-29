@@ -16,7 +16,7 @@ module Increase
       required :acknowledgement, -> { Increase::Models::ACHTransfer::Acknowledgement }
 
       # @!attribute [rw] addenda
-      required :addenda, -> { Increase::Models::ACHTransfer::Addenda }
+      required :addenda, -> { Increase::Models::ACHTransfer::UnnamedTypeWithobjectParent0 }
 
       # @!attribute [rw] amount
       required :amount, Integer
@@ -129,26 +129,29 @@ module Increase
         required :acknowledged_at, String
       end
 
-      class Addenda < BaseModel
+      class UnnamedTypeWithobjectParent0 < BaseModel
         # @!attribute [rw] category
         required :category,
                  Increase::Enum.new([:freeform, :payment_order_remittance_advice, :other])
 
         # @!attribute [rw] freeform
-        required :freeform, -> { Increase::Models::ACHTransfer::Addenda::Freeform }
+        required :freeform,
+                 lambda {
+                   Increase::Models::ACHTransfer::UnnamedTypeWithobjectParent0::Addenda
+                 }
 
         # @!attribute [rw] payment_order_remittance_advice
         required :payment_order_remittance_advice,
                  lambda {
-                   Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice
+                   Increase::Models::ACHTransfer::UnnamedTypeWithobjectParent0::Addenda
                  }
 
-        class Freeform < BaseModel
+        class Addenda < BaseModel
           # @!attribute [rw] entries
           required :entries,
                    Increase::ArrayOf.new(
                      lambda {
-                       Increase::Models::ACHTransfer::Addenda::Freeform::Entries
+                       Increase::Models::ACHTransfer::UnnamedTypeWithobjectParent0::Addenda::Entries
                      }
                    )
 
@@ -158,12 +161,12 @@ module Increase
           end
         end
 
-        class PaymentOrderRemittanceAdvice < BaseModel
+        class Addenda < BaseModel
           # @!attribute [rw] invoices
           required :invoices,
                    Increase::ArrayOf.new(
                      lambda {
-                       Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoices
+                       Increase::Models::ACHTransfer::UnnamedTypeWithobjectParent0::Addenda::Invoices
                      }
                    )
 

@@ -22,7 +22,7 @@ module Increase
       required :physical_card_profile_id, String
 
       # @!attribute [rw] shipment
-      required :shipment, -> { Increase::Models::PhysicalCard::Shipment }
+      required :shipment, -> { Increase::Models::PhysicalCard::Address }
 
       # @!attribute [rw] status
       required :status, Increase::Enum.new([:active, :disabled, :canceled])
@@ -38,9 +38,9 @@ module Increase
         required :last_name, String
       end
 
-      class Shipment < BaseModel
+      class Address < BaseModel
         # @!attribute [rw] address
-        required :address, -> { Increase::Models::PhysicalCard::Shipment::Address }
+        required :address, -> { Increase::Models::PhysicalCard::Address::Address }
 
         # @!attribute [rw] method_
         required :method_,
@@ -61,7 +61,7 @@ module Increase
                  )
 
         # @!attribute [rw] tracking
-        required :tracking, -> { Increase::Models::PhysicalCard::Shipment::Tracking }
+        required :tracking, -> { Increase::Models::PhysicalCard::Address::Tracking }
 
         class Address < BaseModel
           # @!attribute [rw] city

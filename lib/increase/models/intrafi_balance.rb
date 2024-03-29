@@ -4,7 +4,12 @@ module Increase
   module Models
     class IntrafiBalance < BaseModel
       # @!attribute [rw] balances
-      required :balances, Increase::ArrayOf.new(-> { Increase::Models::IntrafiBalance::Balances })
+      required :balances,
+               Increase::ArrayOf.new(
+                 lambda {
+                   Increase::Models::IntrafiBalance::BankLocation
+                 }
+               )
 
       # @!attribute [rw] currency
       required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
@@ -18,7 +23,7 @@ module Increase
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:intrafi_balance])
 
-      class Balances < BaseModel
+      class BankLocation < BaseModel
         # @!attribute [rw] balance
         required :balance, Integer
 
@@ -28,7 +33,7 @@ module Increase
         # @!attribute [rw] bank_location
         required :bank_location,
                  lambda {
-                   Increase::Models::IntrafiBalance::Balances::BankLocation
+                   Increase::Models::IntrafiBalance::BankLocation::BankLocation
                  }
 
         # @!attribute [rw] fdic_certificate_number

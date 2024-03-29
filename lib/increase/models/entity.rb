@@ -7,7 +7,7 @@ module Increase
       required :id, String
 
       # @!attribute [rw] corporation
-      required :corporation, -> { Increase::Models::Entity::Corporation }
+      required :corporation, -> { Increase::Models::Entity::Address }
 
       # @!attribute [rw] description
       required :description, String
@@ -19,10 +19,10 @@ module Increase
       required :idempotency_key, String
 
       # @!attribute [rw] joint
-      required :joint, -> { Increase::Models::Entity::Joint }
+      required :joint, -> { Increase::Models::Entity::Address }
 
       # @!attribute [rw] natural_person
-      required :natural_person, -> { Increase::Models::Entity::NaturalPerson }
+      required :natural_person, -> { Increase::Models::Entity::Address }
 
       # @!attribute [rw] status
       required :status, Increase::Enum.new([:active, :archived, :disabled])
@@ -39,20 +39,20 @@ module Increase
                )
 
       # @!attribute [rw] trust_
-      required :trust_, -> { Increase::Models::Entity::Trust }
+      required :trust_, -> { Increase::Models::Entity::Address }
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:entity])
 
-      class Corporation < BaseModel
+      class Address < BaseModel
         # @!attribute [rw] address
-        required :address, -> { Increase::Models::Entity::Corporation::Address }
+        required :address, -> { Increase::Models::Entity::Address::Address }
 
         # @!attribute [rw] beneficial_owners
         required :beneficial_owners,
                  Increase::ArrayOf.new(
                    lambda {
-                     Increase::Models::Entity::Corporation::BeneficialOwners
+                     Increase::Models::Entity::Address::Address
                    }
                  )
 
@@ -88,7 +88,7 @@ module Increase
           required :zip, String
         end
 
-        class BeneficialOwners < BaseModel
+        class Address < BaseModel
           # @!attribute [rw] beneficial_owner_id
           required :beneficial_owner_id, String
 
@@ -98,17 +98,17 @@ module Increase
           # @!attribute [rw] individual
           required :individual,
                    lambda {
-                     Increase::Models::Entity::Corporation::BeneficialOwners::Individual
+                     Increase::Models::Entity::Address::Address::Address
                    }
 
           # @!attribute [rw] prong
           required :prong, Increase::Enum.new([:ownership, :control])
 
-          class Individual < BaseModel
+          class Address < BaseModel
             # @!attribute [rw] address
             required :address,
                      lambda {
-                       Increase::Models::Entity::Corporation::BeneficialOwners::Individual::Address
+                       Increase::Models::Entity::Address::Address::Address::Address
                      }
 
             # @!attribute [rw] date_of_birth
@@ -117,7 +117,7 @@ module Increase
             # @!attribute [rw] identification
             required :identification,
                      lambda {
-                       Increase::Models::Entity::Corporation::BeneficialOwners::Individual::Identification
+                       Increase::Models::Entity::Address::Address::Address::Identification
                      }
 
             # @!attribute [rw] name_
@@ -160,24 +160,21 @@ module Increase
         end
       end
 
-      class Joint < BaseModel
+      class Address < BaseModel
         # @!attribute [rw] individuals
         required :individuals,
                  Increase::ArrayOf.new(
                    lambda {
-                     Increase::Models::Entity::Joint::Individuals
+                     Increase::Models::Entity::Address::Address
                    }
                  )
 
         # @!attribute [rw] name_
         required :name_, String
 
-        class Individuals < BaseModel
+        class Address < BaseModel
           # @!attribute [rw] address
-          required :address,
-                   lambda {
-                     Increase::Models::Entity::Joint::Individuals::Address
-                   }
+          required :address, -> { Increase::Models::Entity::Address::Address::Address }
 
           # @!attribute [rw] date_of_birth
           required :date_of_birth, String
@@ -185,7 +182,7 @@ module Increase
           # @!attribute [rw] identification
           required :identification,
                    lambda {
-                     Increase::Models::Entity::Joint::Individuals::Identification
+                     Increase::Models::Entity::Address::Address::Identification
                    }
 
           # @!attribute [rw] name_
@@ -227,18 +224,15 @@ module Increase
         end
       end
 
-      class NaturalPerson < BaseModel
+      class Address < BaseModel
         # @!attribute [rw] address
-        required :address, -> { Increase::Models::Entity::NaturalPerson::Address }
+        required :address, -> { Increase::Models::Entity::Address::Address }
 
         # @!attribute [rw] date_of_birth
         required :date_of_birth, String
 
         # @!attribute [rw] identification
-        required :identification,
-                 lambda {
-                   Increase::Models::Entity::NaturalPerson::Identification
-                 }
+        required :identification, -> { Increase::Models::Entity::Address::Identification }
 
         # @!attribute [rw] name_
         required :name_, String
@@ -292,9 +286,9 @@ module Increase
         required :type, Increase::Enum.new([:entity_supplemental_document])
       end
 
-      class Trust < BaseModel
+      class Address < BaseModel
         # @!attribute [rw] address
-        required :address, -> { Increase::Models::Entity::Trust::Address }
+        required :address, -> { Increase::Models::Entity::Address::Address }
 
         # @!attribute [rw] category
         required :category, Increase::Enum.new([:revocable, :irrevocable])
@@ -306,7 +300,7 @@ module Increase
         required :formation_state, String
 
         # @!attribute [rw] grantor
-        required :grantor, -> { Increase::Models::Entity::Trust::Grantor }
+        required :grantor, -> { Increase::Models::Entity::Address::Address }
 
         # @!attribute [rw] name_
         required :name_, String
@@ -318,7 +312,7 @@ module Increase
         required :trustees,
                  Increase::ArrayOf.new(
                    lambda {
-                     Increase::Models::Entity::Trust::Trustees
+                     Increase::Models::Entity::Address::Address
                    }
                  )
 
@@ -339,9 +333,9 @@ module Increase
           required :zip, String
         end
 
-        class Grantor < BaseModel
+        class Address < BaseModel
           # @!attribute [rw] address
-          required :address, -> { Increase::Models::Entity::Trust::Grantor::Address }
+          required :address, -> { Increase::Models::Entity::Address::Address::Address }
 
           # @!attribute [rw] date_of_birth
           required :date_of_birth, String
@@ -349,7 +343,7 @@ module Increase
           # @!attribute [rw] identification
           required :identification,
                    lambda {
-                     Increase::Models::Entity::Trust::Grantor::Identification
+                     Increase::Models::Entity::Address::Address::Identification
                    }
 
           # @!attribute [rw] name_
@@ -390,21 +384,21 @@ module Increase
           end
         end
 
-        class Trustees < BaseModel
+        class Address < BaseModel
           # @!attribute [rw] individual
           required :individual,
                    lambda {
-                     Increase::Models::Entity::Trust::Trustees::Individual
+                     Increase::Models::Entity::Address::Address::Address
                    }
 
           # @!attribute [rw] structure
           required :structure, Increase::Enum.new([:individual])
 
-          class Individual < BaseModel
+          class Address < BaseModel
             # @!attribute [rw] address
             required :address,
                      lambda {
-                       Increase::Models::Entity::Trust::Trustees::Individual::Address
+                       Increase::Models::Entity::Address::Address::Address::Address
                      }
 
             # @!attribute [rw] date_of_birth
@@ -413,7 +407,7 @@ module Increase
             # @!attribute [rw] identification
             required :identification,
                      lambda {
-                       Increase::Models::Entity::Trust::Trustees::Individual::Identification
+                       Increase::Models::Entity::Address::Address::Address::Identification
                      }
 
             # @!attribute [rw] name_

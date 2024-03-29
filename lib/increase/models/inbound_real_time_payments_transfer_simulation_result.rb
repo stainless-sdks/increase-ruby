@@ -6,19 +6,19 @@ module Increase
       # @!attribute [rw] declined_transaction
       required :declined_transaction,
                lambda {
-                 Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction
+                 Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline
                }
 
       # @!attribute [rw] transaction
       required :transaction,
                lambda {
-                 Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction
+                 Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention
                }
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:inbound_real_time_payments_transfer_simulation_result])
 
-      class DeclinedTransaction < BaseModel
+      class ACHDecline < BaseModel
         # @!attribute [rw] id
         required :id, String
 
@@ -46,23 +46,23 @@ module Increase
         # @!attribute [rw] source
         required :source,
                  lambda {
-                   Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source
+                   Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline
                  }
 
         # @!attribute [rw] type
         required :type, Increase::Enum.new([:declined_transaction])
 
-        class Source < BaseModel
+        class ACHDecline < BaseModel
           # @!attribute [rw] ach_decline
           required :ach_decline,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::ACHDecline
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline::ACHDecline
                    }
 
           # @!attribute [rw] card_decline
           required :card_decline,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline::Visa
                    }
 
           # @!attribute [rw] category
@@ -82,25 +82,25 @@ module Increase
           # @!attribute [rw] check_decline
           required :check_decline,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CheckDecline
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline::CheckDecline
                    }
 
           # @!attribute [rw] inbound_real_time_payments_transfer_decline
           required :inbound_real_time_payments_transfer_decline,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline::InboundRealTimePaymentsTransferDecline
                    }
 
           # @!attribute [rw] international_ach_decline
           required :international_ach_decline,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::InternationalACHDecline
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline::InternationalACHDecline
                    }
 
           # @!attribute [rw] wire_decline
           required :wire_decline,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::WireDecline
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline::WireDecline
                    }
 
           class ACHDecline < BaseModel
@@ -156,7 +156,7 @@ module Increase
             required :type, Increase::Enum.new([:ach_decline])
           end
 
-          class CardDecline < BaseModel
+          class Visa < BaseModel
             # @!attribute [rw] id
             required :id, String
 
@@ -197,13 +197,13 @@ module Increase
             # @!attribute [rw] network_details
             required :network_details,
                      lambda {
-                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::NetworkDetails
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline::Visa::Visa
                      }
 
             # @!attribute [rw] network_identifiers
             required :network_identifiers,
                      lambda {
-                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline::Visa::NetworkIdentifiers
                      }
 
             # @!attribute [rw] network_risk_score
@@ -252,17 +252,17 @@ module Increase
             # @!attribute [rw] verification
             required :verification,
                      lambda {
-                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::Verification
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline::Visa::CardVerificationCode
                      }
 
-            class NetworkDetails < BaseModel
+            class Visa < BaseModel
               # @!attribute [rw] category
               required :category, Increase::Enum.new([:visa])
 
               # @!attribute [rw] visa
               required :visa,
                        lambda {
-                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline::Visa::Visa::Visa
                        }
 
               class Visa < BaseModel
@@ -311,17 +311,17 @@ module Increase
               required :transaction_id, String
             end
 
-            class Verification < BaseModel
+            class CardVerificationCode < BaseModel
               # @!attribute [rw] card_verification_code
               required :card_verification_code,
                        lambda {
-                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline::Visa::CardVerificationCode::CardVerificationCode
                        }
 
               # @!attribute [rw] cardholder_address
               required :cardholder_address,
                        lambda {
-                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::ACHDecline::ACHDecline::Visa::CardVerificationCode::CardholderAddress
                        }
 
               class CardVerificationCode < BaseModel
@@ -623,7 +623,7 @@ module Increase
         end
       end
 
-      class Transaction < BaseModel
+      class AccountTransferIntention < BaseModel
         # @!attribute [rw] id
         required :id, String
 
@@ -651,59 +651,59 @@ module Increase
         # @!attribute [rw] source
         required :source,
                  lambda {
-                   Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source
+                   Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention
                  }
 
         # @!attribute [rw] type
         required :type, Increase::Enum.new([:transaction])
 
-        class Source < BaseModel
+        class AccountTransferIntention < BaseModel
           # @!attribute [rw] account_transfer_intention
           required :account_transfer_intention,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::AccountTransferIntention
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::AccountTransferIntention
                    }
 
           # @!attribute [rw] ach_transfer_intention
           required :ach_transfer_intention,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::ACHTransferIntention
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::ACHTransferIntention
                    }
 
           # @!attribute [rw] ach_transfer_rejection
           required :ach_transfer_rejection,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::ACHTransferRejection
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::ACHTransferRejection
                    }
 
           # @!attribute [rw] ach_transfer_return
           required :ach_transfer_return,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::ACHTransferReturn
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::ACHTransferReturn
                    }
 
           # @!attribute [rw] card_dispute_acceptance
           required :card_dispute_acceptance,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardDisputeAcceptance
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::CardDisputeAcceptance
                    }
 
           # @!attribute [rw] card_refund
           required :card_refund,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers
                    }
 
           # @!attribute [rw] card_revenue_payment
           required :card_revenue_payment,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRevenuePayment
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::CardRevenuePayment
                    }
 
           # @!attribute [rw] card_settlement
           required :card_settlement,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers
                    }
 
           # @!attribute [rw] category
@@ -747,121 +747,121 @@ module Increase
           # @!attribute [rw] check_deposit_acceptance
           required :check_deposit_acceptance,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckDepositAcceptance
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::CheckDepositAcceptance
                    }
 
           # @!attribute [rw] check_deposit_return
           required :check_deposit_return,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckDepositReturn
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::CheckDepositReturn
                    }
 
           # @!attribute [rw] check_transfer_deposit
           required :check_transfer_deposit,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckTransferDeposit
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::CheckTransferDeposit
                    }
 
           # @!attribute [rw] check_transfer_intention
           required :check_transfer_intention,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckTransferIntention
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::CheckTransferIntention
                    }
 
           # @!attribute [rw] check_transfer_stop_payment_request
           required :check_transfer_stop_payment_request,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckTransferStopPaymentRequest
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::CheckTransferStopPaymentRequest
                    }
 
           # @!attribute [rw] fee_payment
           required :fee_payment,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::FeePayment
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::FeePayment
                    }
 
           # @!attribute [rw] inbound_ach_transfer
           required :inbound_ach_transfer,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::Source
                    }
 
           # @!attribute [rw] inbound_check
           required :inbound_check,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundCheck
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::InboundCheck
                    }
 
           # @!attribute [rw] inbound_international_ach_transfer
           required :inbound_international_ach_transfer,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundInternationalACHTransfer
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::InboundInternationalACHTransfer
                    }
 
           # @!attribute [rw] inbound_real_time_payments_transfer_confirmation
           required :inbound_real_time_payments_transfer_confirmation,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundRealTimePaymentsTransferConfirmation
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::InboundRealTimePaymentsTransferConfirmation
                    }
 
           # @!attribute [rw] inbound_wire_drawdown_payment
           required :inbound_wire_drawdown_payment,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireDrawdownPayment
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::InboundWireDrawdownPayment
                    }
 
           # @!attribute [rw] inbound_wire_drawdown_payment_reversal
           required :inbound_wire_drawdown_payment_reversal,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireDrawdownPaymentReversal
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::InboundWireDrawdownPaymentReversal
                    }
 
           # @!attribute [rw] inbound_wire_reversal
           required :inbound_wire_reversal,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireReversal
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::InboundWireReversal
                    }
 
           # @!attribute [rw] inbound_wire_transfer
           required :inbound_wire_transfer,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireTransfer
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::InboundWireTransfer
                    }
 
           # @!attribute [rw] interest_payment
           required :interest_payment,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InterestPayment
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::InterestPayment
                    }
 
           # @!attribute [rw] internal_source
           required :internal_source,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InternalSource
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::InternalSource
                    }
 
           # @!attribute [rw] real_time_payments_transfer_acknowledgement
           required :real_time_payments_transfer_acknowledgement,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::RealTimePaymentsTransferAcknowledgement
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::RealTimePaymentsTransferAcknowledgement
                    }
 
           # @!attribute [rw] sample_funds
           required :sample_funds,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::SampleFunds
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::SampleFunds
                    }
 
           # @!attribute [rw] wire_transfer_intention
           required :wire_transfer_intention,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::WireTransferIntention
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::WireTransferIntention
                    }
 
           # @!attribute [rw] wire_transfer_rejection
           required :wire_transfer_rejection,
                    lambda {
-                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::WireTransferRejection
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::WireTransferRejection
                    }
 
           class AccountTransferIntention < BaseModel
@@ -1009,7 +1009,7 @@ module Increase
             required :transaction_id, String
           end
 
-          class CardRefund < BaseModel
+          class NetworkIdentifiers < BaseModel
             # @!attribute [rw] id
             required :id, String
 
@@ -1044,13 +1044,13 @@ module Increase
             # @!attribute [rw] network_identifiers
             required :network_identifiers,
                      lambda {
-                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::NetworkIdentifiers
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::NetworkIdentifiers
                      }
 
             # @!attribute [rw] purchase_details
             required :purchase_details,
                      lambda {
-                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental
                      }
 
             # @!attribute [rw] transaction_id
@@ -1070,11 +1070,11 @@ module Increase
               required :transaction_id, String
             end
 
-            class PurchaseDetails < BaseModel
+            class CarRental < BaseModel
               # @!attribute [rw] car_rental
               required :car_rental,
                        lambda {
-                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::CarRental
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental::CarRental
                        }
 
               # @!attribute [rw] customer_reference_identifier
@@ -1089,7 +1089,7 @@ module Increase
               # @!attribute [rw] lodging
               required :lodging,
                        lambda {
-                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Lodging
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental::Lodging
                        }
 
               # @!attribute [rw] national_tax_amount
@@ -1116,7 +1116,7 @@ module Increase
               # @!attribute [rw] travel
               required :travel,
                        lambda {
-                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental::PurchaseDetails
                        }
 
               class CarRental < BaseModel
@@ -1247,11 +1247,11 @@ module Increase
                 required :total_tax_currency, String
               end
 
-              class Travel < BaseModel
+              class PurchaseDetails < BaseModel
                 # @!attribute [rw] ancillary
                 required :ancillary,
                          lambda {
-                           Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary
+                           Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental::PurchaseDetails::Travel
                          }
 
                 # @!attribute [rw] computerized_reservation_system
@@ -1311,11 +1311,11 @@ module Increase
                 required :trip_legs,
                          Increase::ArrayOf.new(
                            lambda {
-                             Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLegs
+                             Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental::PurchaseDetails::TripLegs
                            }
                          )
 
-                class Ancillary < BaseModel
+                class Travel < BaseModel
                   # @!attribute [rw] connected_ticket_document_number
                   required :connected_ticket_document_number,
                            String
@@ -1339,7 +1339,7 @@ module Increase
                   required :services,
                            Increase::ArrayOf.new(
                              lambda {
-                               Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Services
+                               Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental::PurchaseDetails::Travel::Services
                              }
                            )
 
@@ -1432,7 +1432,7 @@ module Increase
             required :transacted_on_account_id, String
           end
 
-          class CardSettlement < BaseModel
+          class NetworkIdentifiers < BaseModel
             # @!attribute [rw] id
             required :id, String
 
@@ -1470,7 +1470,7 @@ module Increase
             # @!attribute [rw] network_identifiers
             required :network_identifiers,
                      lambda {
-                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::NetworkIdentifiers
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::NetworkIdentifiers
                      }
 
             # @!attribute [rw] pending_transaction_id
@@ -1485,7 +1485,7 @@ module Increase
             # @!attribute [rw] purchase_details
             required :purchase_details,
                      lambda {
-                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental
                      }
 
             # @!attribute [rw] transaction_id
@@ -1505,11 +1505,11 @@ module Increase
               required :transaction_id, String
             end
 
-            class PurchaseDetails < BaseModel
+            class CarRental < BaseModel
               # @!attribute [rw] car_rental
               required :car_rental,
                        lambda {
-                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::CarRental
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental::CarRental
                        }
 
               # @!attribute [rw] customer_reference_identifier
@@ -1524,7 +1524,7 @@ module Increase
               # @!attribute [rw] lodging
               required :lodging,
                        lambda {
-                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Lodging
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental::Lodging
                        }
 
               # @!attribute [rw] national_tax_amount
@@ -1551,7 +1551,7 @@ module Increase
               # @!attribute [rw] travel
               required :travel,
                        lambda {
-                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental::PurchaseDetails
                        }
 
               class CarRental < BaseModel
@@ -1682,11 +1682,11 @@ module Increase
                 required :total_tax_currency, String
               end
 
-              class Travel < BaseModel
+              class PurchaseDetails < BaseModel
                 # @!attribute [rw] ancillary
                 required :ancillary,
                          lambda {
-                           Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary
+                           Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental::PurchaseDetails::Travel
                          }
 
                 # @!attribute [rw] computerized_reservation_system
@@ -1746,11 +1746,11 @@ module Increase
                 required :trip_legs,
                          Increase::ArrayOf.new(
                            lambda {
-                             Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLegs
+                             Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental::PurchaseDetails::TripLegs
                            }
                          )
 
-                class Ancillary < BaseModel
+                class Travel < BaseModel
                   # @!attribute [rw] connected_ticket_document_number
                   required :connected_ticket_document_number,
                            String
@@ -1774,7 +1774,7 @@ module Increase
                   required :services,
                            Increase::ArrayOf.new(
                              lambda {
-                               Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Services
+                               Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::NetworkIdentifiers::CarRental::PurchaseDetails::Travel::Services
                              }
                            )
 
@@ -2012,11 +2012,11 @@ module Increase
             required :fee_period_start, String
           end
 
-          class InboundACHTransfer < BaseModel
+          class Source < BaseModel
             # @!attribute [rw] addenda
             required :addenda,
                      lambda {
-                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer::Addenda
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::Source::InboundACHTransfer
                      }
 
             # @!attribute [rw] amount
@@ -2049,22 +2049,22 @@ module Increase
             # @!attribute [rw] transfer_id
             required :transfer_id, String
 
-            class Addenda < BaseModel
+            class InboundACHTransfer < BaseModel
               # @!attribute [rw] category
               required :category, Increase::Enum.new([:freeform])
 
               # @!attribute [rw] freeform
               required :freeform,
                        lambda {
-                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer::Addenda::Freeform
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::Source::InboundACHTransfer::Addenda
                        }
 
-              class Freeform < BaseModel
+              class Addenda < BaseModel
                 # @!attribute [rw] entries
                 required :entries,
                          Increase::ArrayOf.new(
                            lambda {
-                             Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entries
+                             Increase::Models::InboundRealTimePaymentsTransferSimulationResult::AccountTransferIntention::AccountTransferIntention::Source::InboundACHTransfer::Addenda::Entries
                            }
                          )
 

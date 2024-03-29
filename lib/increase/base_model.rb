@@ -14,7 +14,7 @@ module Increase
         type.convert(value)
       # Type is a class that mixes in Converter.
       # Currently Unknown and BooleanModel, because we don't make instances of those, as they
-      # dont need to be paramaterized (as e.g. enums do with possible values).
+      # dont need to be parameterized (as e.g. enums do with possible values).
       elsif type.include?(Converter)
         type.convert(value)
       # String, Integer, Float, NilClass, Hash.
