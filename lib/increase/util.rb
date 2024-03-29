@@ -12,21 +12,18 @@ module Increase
     # If the values at a given key are not both hashes, just take the new value.
     # @param concat [true, false] whether to merge sequences by concatenation
     def self.deep_merge(left, right, concat: false)
-      right_cleaned = if right.is_a? Hash
-        right.reject { |_key, value| value == Omit }
+      right_cleaned = if right.is_a?(Hash)
+        right.reject { |_, value| value == Omit }
       else
         right
       end
 
       if left.is_a?(Hash) && right_cleaned.is_a?(Hash)
-        left.reject { |key| right[key] == Omit }
-            .merge(right_cleaned) do |_k, old_val, new_val|
-          deep_merge(
-            old_val,
-            new_val,
-            concat: concat
-          )
-        end
+        left
+          .reject { |key, _| right[key] == Omit }
+          .merge(right_cleaned) do |_k, old_val, new_val|
+            deep_merge(old_val, new_val, concat: concat)
+          end
       elsif left.is_a?(Array) && right_cleaned.is_a?(Array) && concat
         left.concat(right_cleaned)
       else

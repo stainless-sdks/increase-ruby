@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class Document
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class Document < BaseModel
       # @!attribute [rw] id
       required :id, String
 

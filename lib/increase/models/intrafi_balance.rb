@@ -2,44 +2,7 @@
 
 module Increase
   module Models
-    class IntrafiBalance
-      class BankLocation
-        class BankLocation
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
-          # @!attribute [rw] city
-          required :city, String
-
-          # @!attribute [rw] state
-          required :state, String
-        end
-
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] balance
-        required :balance, Integer
-
-        # @!attribute [rw] bank
-        required :bank, String
-
-        # @!attribute [rw] bank_location
-        required :bank_location,
-                 lambda {
-                   Increase::Models::IntrafiBalance::BankLocation::BankLocation
-                 }
-
-        # @!attribute [rw] fdic_certificate_number
-        required :fdic_certificate_number, String
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class IntrafiBalance < BaseModel
       # @!attribute [rw] balances
       required :balances,
                Increase::ArrayOf.new(
@@ -59,6 +22,31 @@ module Increase
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:intrafi_balance])
+
+      class BankLocation < BaseModel
+        # @!attribute [rw] balance
+        required :balance, Integer
+
+        # @!attribute [rw] bank
+        required :bank, String
+
+        # @!attribute [rw] bank_location
+        required :bank_location,
+                 lambda {
+                   Increase::Models::IntrafiBalance::BankLocation::BankLocation
+                 }
+
+        # @!attribute [rw] fdic_certificate_number
+        required :fdic_certificate_number, String
+
+        class BankLocation < BaseModel
+          # @!attribute [rw] city
+          required :city, String
+
+          # @!attribute [rw] state
+          required :state, String
+        end
+      end
     end
   end
 end

@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class Group
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class Group < BaseModel
       # @!attribute [rw] id
       required :id, String
 

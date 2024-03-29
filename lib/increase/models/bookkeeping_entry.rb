@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class BookkeepingEntry
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class BookkeepingEntry < BaseModel
       # @!attribute [rw] id
       required :id, String
 

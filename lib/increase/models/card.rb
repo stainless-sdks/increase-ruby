@@ -2,47 +2,7 @@
 
 module Increase
   module Models
-    class Card
-      class BillingAddress
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] city
-        required :city, String
-
-        # @!attribute [rw] line1
-        required :line1, String
-
-        # @!attribute [rw] line2
-        required :line2, String
-
-        # @!attribute [rw] postal_code
-        required :postal_code, String
-
-        # @!attribute [rw] state
-        required :state, String
-      end
-
-      class DigitalWallet
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] digital_card_profile_id
-        required :digital_card_profile_id, String
-
-        # @!attribute [rw] email
-        required :email, String
-
-        # @!attribute [rw] phone
-        required :phone, String
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class Card < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -81,6 +41,34 @@ module Increase
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:card])
+
+      class BillingAddress < BaseModel
+        # @!attribute [rw] city
+        required :city, String
+
+        # @!attribute [rw] line1
+        required :line1, String
+
+        # @!attribute [rw] line2
+        required :line2, String
+
+        # @!attribute [rw] postal_code
+        required :postal_code, String
+
+        # @!attribute [rw] state
+        required :state, String
+      end
+
+      class DigitalWallet < BaseModel
+        # @!attribute [rw] digital_card_profile_id
+        required :digital_card_profile_id, String
+
+        # @!attribute [rw] email
+        required :email, String
+
+        # @!attribute [rw] phone
+        required :phone, String
+      end
     end
   end
 end

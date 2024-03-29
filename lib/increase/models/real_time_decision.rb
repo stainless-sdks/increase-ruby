@@ -2,172 +2,45 @@
 
 module Increase
   module Models
-    class RealTimeDecision
-      class Visa
-        class Visa
-          class Visa
-            extend Increase::Model
+    class RealTimeDecision < BaseModel
+      # @!attribute [rw] id
+      required :id, String
 
-            include Increase::Model::Instance
+      # @!attribute [rw] card_authorization
+      required :card_authorization, -> { Increase::Models::RealTimeDecision::Visa }
 
-            # @!attribute [rw] electronic_commerce_indicator
-            required :electronic_commerce_indicator,
-                     Increase::Enum.new(
-                       [
-                         :mail_phone_order,
-                         :recurring,
-                         :installment,
-                         :unknown_mail_phone_order,
-                         :secure_electronic_commerce,
-                         :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                         :non_authenticated_security_transaction,
-                         :non_secure_transaction
-                       ]
-                     )
+      # @!attribute [rw] category
+      required :category,
+               Increase::Enum.new(
+                 [
+                   :card_authorization_requested,
+                   :digital_wallet_token_requested,
+                   :digital_wallet_authentication_requested
+                 ]
+               )
 
-            # @!attribute [rw] point_of_service_entry_mode
-            required :point_of_service_entry_mode,
-                     Increase::Enum.new(
-                       [
-                         :unknown,
-                         :manual,
-                         :magnetic_stripe_no_cvv,
-                         :optical_code,
-                         :integrated_circuit_card,
-                         :contactless,
-                         :credential_on_file,
-                         :magnetic_stripe,
-                         :contactless_magnetic_stripe,
-                         :integrated_circuit_card_no_cvv
-                       ]
-                     )
-          end
+      # @!attribute [rw] created_at
+      required :created_at, String
 
-          extend Increase::Model
+      # @!attribute [rw] digital_wallet_authentication
+      required :digital_wallet_authentication,
+               lambda {
+                 Increase::Models::RealTimeDecision::DigitalWalletAuthentication
+               }
 
-          include Increase::Model::Instance
+      # @!attribute [rw] digital_wallet_token
+      required :digital_wallet_token, -> { Increase::Models::RealTimeDecision::DigitalWalletToken }
 
-          # @!attribute [rw] category
-          required :category, Increase::Enum.new([:visa])
+      # @!attribute [rw] status
+      required :status, Increase::Enum.new([:pending, :responded, :timed_out])
 
-          # @!attribute [rw] visa
-          required :visa, -> { Increase::Models::RealTimeDecision::Visa::Visa::Visa }
-        end
+      # @!attribute [rw] timeout_at
+      required :timeout_at, String
 
-        class NetworkIdentifiers
-          extend Increase::Model
+      # @!attribute [rw] type
+      required :type, Increase::Enum.new([:real_time_decision])
 
-          include Increase::Model::Instance
-
-          # @!attribute [rw] retrieval_reference_number
-          required :retrieval_reference_number, String
-
-          # @!attribute [rw] trace_number
-          required :trace_number, String
-
-          # @!attribute [rw] transaction_id
-          required :transaction_id, String
-        end
-
-        class IncrementalAuthorization
-          class IncrementalAuthorization
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] card_payment_id
-            required :card_payment_id, String
-
-            # @!attribute [rw] original_card_authorization_id
-            required :original_card_authorization_id, String
-          end
-
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
-          # @!attribute [rw] category
-          required :category,
-                   Increase::Enum.new(
-                     [
-                       :initial_authorization,
-                       :incremental_authorization
-                     ]
-                   )
-
-          # @!attribute [rw] incremental_authorization
-          required :incremental_authorization,
-                   lambda {
-                     Increase::Models::RealTimeDecision::Visa::IncrementalAuthorization::IncrementalAuthorization
-                   }
-
-          # @!attribute [rw] initial_authorization
-          required :initial_authorization, Increase::Unknown
-        end
-
-        class CardVerificationCode
-          class CardVerificationCode
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] result
-            required :result,
-                     Increase::Enum.new([:not_checked, :match, :no_match])
-          end
-
-          class CardholderAddress
-            extend Increase::Model
-
-            include Increase::Model::Instance
-
-            # @!attribute [rw] actual_line1
-            required :actual_line1, String
-
-            # @!attribute [rw] actual_postal_code
-            required :actual_postal_code, String
-
-            # @!attribute [rw] provided_line1
-            required :provided_line1, String
-
-            # @!attribute [rw] provided_postal_code
-            required :provided_postal_code, String
-
-            # @!attribute [rw] result
-            required :result,
-                     Increase::Enum.new(
-                       [
-                         :not_checked,
-                         :postal_code_match_address_not_checked,
-                         :postal_code_match_address_no_match,
-                         :postal_code_no_match_address_match,
-                         :match,
-                         :no_match
-                       ]
-                     )
-          end
-
-          extend Increase::Model
-
-          include Increase::Model::Instance
-
-          # @!attribute [rw] card_verification_code
-          required :card_verification_code,
-                   lambda {
-                     Increase::Models::RealTimeDecision::Visa::CardVerificationCode::CardVerificationCode
-                   }
-
-          # @!attribute [rw] cardholder_address
-          required :cardholder_address,
-                   lambda {
-                     Increase::Models::RealTimeDecision::Visa::CardVerificationCode::CardholderAddress
-                   }
-        end
-
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
+      class Visa < BaseModel
         # @!attribute [rw] account_id
         required :account_id, String
 
@@ -246,13 +119,137 @@ module Increase
                  lambda {
                    Increase::Models::RealTimeDecision::Visa::CardVerificationCode
                  }
+
+        class Visa < BaseModel
+          # @!attribute [rw] category
+          required :category, Increase::Enum.new([:visa])
+
+          # @!attribute [rw] visa
+          required :visa, -> { Increase::Models::RealTimeDecision::Visa::Visa::Visa }
+
+          class Visa < BaseModel
+            # @!attribute [rw] electronic_commerce_indicator
+            required :electronic_commerce_indicator,
+                     Increase::Enum.new(
+                       [
+                         :mail_phone_order,
+                         :recurring,
+                         :installment,
+                         :unknown_mail_phone_order,
+                         :secure_electronic_commerce,
+                         :non_authenticated_security_transaction_at_3ds_capable_merchant,
+                         :non_authenticated_security_transaction,
+                         :non_secure_transaction
+                       ]
+                     )
+
+            # @!attribute [rw] point_of_service_entry_mode
+            required :point_of_service_entry_mode,
+                     Increase::Enum.new(
+                       [
+                         :unknown,
+                         :manual,
+                         :magnetic_stripe_no_cvv,
+                         :optical_code,
+                         :integrated_circuit_card,
+                         :contactless,
+                         :credential_on_file,
+                         :magnetic_stripe,
+                         :contactless_magnetic_stripe,
+                         :integrated_circuit_card_no_cvv
+                       ]
+                     )
+          end
+        end
+
+        class NetworkIdentifiers < BaseModel
+          # @!attribute [rw] retrieval_reference_number
+          required :retrieval_reference_number, String
+
+          # @!attribute [rw] trace_number
+          required :trace_number, String
+
+          # @!attribute [rw] transaction_id
+          required :transaction_id, String
+        end
+
+        class IncrementalAuthorization < BaseModel
+          # @!attribute [rw] category
+          required :category,
+                   Increase::Enum.new(
+                     [
+                       :initial_authorization,
+                       :incremental_authorization
+                     ]
+                   )
+
+          # @!attribute [rw] incremental_authorization
+          required :incremental_authorization,
+                   lambda {
+                     Increase::Models::RealTimeDecision::Visa::IncrementalAuthorization::IncrementalAuthorization
+                   }
+
+          # @!attribute [rw] initial_authorization
+          required :initial_authorization, Increase::Unknown
+
+          class IncrementalAuthorization < BaseModel
+            # @!attribute [rw] card_payment_id
+            required :card_payment_id, String
+
+            # @!attribute [rw] original_card_authorization_id
+            required :original_card_authorization_id, String
+          end
+        end
+
+        class CardVerificationCode < BaseModel
+          # @!attribute [rw] card_verification_code
+          required :card_verification_code,
+                   lambda {
+                     Increase::Models::RealTimeDecision::Visa::CardVerificationCode::CardVerificationCode
+                   }
+
+          # @!attribute [rw] cardholder_address
+          required :cardholder_address,
+                   lambda {
+                     Increase::Models::RealTimeDecision::Visa::CardVerificationCode::CardholderAddress
+                   }
+
+          class CardVerificationCode < BaseModel
+            # @!attribute [rw] result
+            required :result,
+                     Increase::Enum.new([:not_checked, :match, :no_match])
+          end
+
+          class CardholderAddress < BaseModel
+            # @!attribute [rw] actual_line1
+            required :actual_line1, String
+
+            # @!attribute [rw] actual_postal_code
+            required :actual_postal_code, String
+
+            # @!attribute [rw] provided_line1
+            required :provided_line1, String
+
+            # @!attribute [rw] provided_postal_code
+            required :provided_postal_code, String
+
+            # @!attribute [rw] result
+            required :result,
+                     Increase::Enum.new(
+                       [
+                         :not_checked,
+                         :postal_code_match_address_not_checked,
+                         :postal_code_match_address_no_match,
+                         :postal_code_no_match_address_match,
+                         :match,
+                         :no_match
+                       ]
+                     )
+          end
+        end
       end
 
-      class DigitalWalletAuthentication
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
+      class DigitalWalletAuthentication < BaseModel
         # @!attribute [rw] card_id
         required :card_id, String
 
@@ -275,11 +272,7 @@ module Increase
         required :result, Increase::Enum.new([:success, :failure])
       end
 
-      class DigitalWalletToken
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
+      class DigitalWalletToken < BaseModel
         # @!attribute [rw] card_id
         required :card_id, String
 
@@ -292,47 +285,6 @@ module Increase
         # @!attribute [rw] digital_wallet
         required :digital_wallet, Increase::Enum.new([:apple_pay, :google_pay, :unknown])
       end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
-      # @!attribute [rw] id
-      required :id, String
-
-      # @!attribute [rw] card_authorization
-      required :card_authorization, -> { Increase::Models::RealTimeDecision::Visa }
-
-      # @!attribute [rw] category
-      required :category,
-               Increase::Enum.new(
-                 [
-                   :card_authorization_requested,
-                   :digital_wallet_token_requested,
-                   :digital_wallet_authentication_requested
-                 ]
-               )
-
-      # @!attribute [rw] created_at
-      required :created_at, String
-
-      # @!attribute [rw] digital_wallet_authentication
-      required :digital_wallet_authentication,
-               lambda {
-                 Increase::Models::RealTimeDecision::DigitalWalletAuthentication
-               }
-
-      # @!attribute [rw] digital_wallet_token
-      required :digital_wallet_token, -> { Increase::Models::RealTimeDecision::DigitalWalletToken }
-
-      # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending, :responded, :timed_out])
-
-      # @!attribute [rw] timeout_at
-      required :timeout_at, String
-
-      # @!attribute [rw] type
-      required :type, Increase::Enum.new([:real_time_decision])
     end
   end
 end

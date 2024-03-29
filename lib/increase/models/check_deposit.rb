@@ -2,12 +2,53 @@
 
 module Increase
   module Models
-    class CheckDeposit
-      class DepositAcceptance
-        extend Increase::Model
+    class CheckDeposit < BaseModel
+      # @!attribute [rw] id
+      required :id, String
 
-        include Increase::Model::Instance
+      # @!attribute [rw] account_id
+      required :account_id, String
 
+      # @!attribute [rw] amount
+      required :amount, Integer
+
+      # @!attribute [rw] back_image_file_id
+      required :back_image_file_id, String
+
+      # @!attribute [rw] created_at
+      required :created_at, String
+
+      # @!attribute [rw] currency
+      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+
+      # @!attribute [rw] deposit_acceptance
+      required :deposit_acceptance, -> { Increase::Models::CheckDeposit::DepositAcceptance }
+
+      # @!attribute [rw] deposit_rejection
+      required :deposit_rejection, -> { Increase::Models::CheckDeposit::DepositRejection }
+
+      # @!attribute [rw] deposit_return
+      required :deposit_return, -> { Increase::Models::CheckDeposit::DepositReturn }
+
+      # @!attribute [rw] deposit_submission
+      required :deposit_submission, -> { Increase::Models::CheckDeposit::DepositSubmission }
+
+      # @!attribute [rw] front_image_file_id
+      required :front_image_file_id, String
+
+      # @!attribute [rw] idempotency_key
+      required :idempotency_key, String
+
+      # @!attribute [rw] status
+      required :status, Increase::Enum.new([:pending, :submitted, :rejected, :returned])
+
+      # @!attribute [rw] transaction_id
+      required :transaction_id, String
+
+      # @!attribute [rw] type
+      required :type, Increase::Enum.new([:check_deposit])
+
+      class DepositAcceptance < BaseModel
         # @!attribute [rw] account_number
         required :account_number, String
 
@@ -30,11 +71,7 @@ module Increase
         required :serial_number, String
       end
 
-      class DepositRejection
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
+      class DepositRejection < BaseModel
         # @!attribute [rw] amount
         required :amount, Integer
 
@@ -62,11 +99,7 @@ module Increase
         required :rejected_at, String
       end
 
-      class DepositReturn
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
+      class DepositReturn < BaseModel
         # @!attribute [rw] amount
         required :amount, Integer
 
@@ -116,63 +149,10 @@ module Increase
         required :transaction_id, String
       end
 
-      class DepositSubmission
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
+      class DepositSubmission < BaseModel
         # @!attribute [rw] submitted_at
         required :submitted_at, String
       end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
-      # @!attribute [rw] id
-      required :id, String
-
-      # @!attribute [rw] account_id
-      required :account_id, String
-
-      # @!attribute [rw] amount
-      required :amount, Integer
-
-      # @!attribute [rw] back_image_file_id
-      required :back_image_file_id, String
-
-      # @!attribute [rw] created_at
-      required :created_at, String
-
-      # @!attribute [rw] currency
-      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
-
-      # @!attribute [rw] deposit_acceptance
-      required :deposit_acceptance, -> { Increase::Models::CheckDeposit::DepositAcceptance }
-
-      # @!attribute [rw] deposit_rejection
-      required :deposit_rejection, -> { Increase::Models::CheckDeposit::DepositRejection }
-
-      # @!attribute [rw] deposit_return
-      required :deposit_return, -> { Increase::Models::CheckDeposit::DepositReturn }
-
-      # @!attribute [rw] deposit_submission
-      required :deposit_submission, -> { Increase::Models::CheckDeposit::DepositSubmission }
-
-      # @!attribute [rw] front_image_file_id
-      required :front_image_file_id, String
-
-      # @!attribute [rw] idempotency_key
-      required :idempotency_key, String
-
-      # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending, :submitted, :rejected, :returned])
-
-      # @!attribute [rw] transaction_id
-      required :transaction_id, String
-
-      # @!attribute [rw] type
-      required :type, Increase::Enum.new([:check_deposit])
     end
   end
 end
