@@ -9,13 +9,11 @@ module Increase
       # @!attribute [rw] category
       required :category,
                Increase::Enum.new(
-                 [
-                   :account_statement_ofx,
-                   :transaction_csv,
-                   :balance_csv,
-                   :bookkeeping_account_balance_csv,
-                   :entity_csv
-                 ]
+                 :account_statement_ofx,
+                 :transaction_csv,
+                 :balance_csv,
+                 :bookkeeping_account_balance_csv,
+                 :entity_csv
                )
 
       # @!attribute [rw] created_at
@@ -31,10 +29,10 @@ module Increase
       required :idempotency_key, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending, :complete, :failed])
+      required :status, Increase::Enum.new(:pending, :complete, :failed)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:export])
+      required :type, Increase::Enum.new(:export)
     end
   end
 end

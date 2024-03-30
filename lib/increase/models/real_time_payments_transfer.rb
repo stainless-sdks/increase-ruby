@@ -25,7 +25,7 @@ module Increase
       required :creditor_name, String
 
       # @!attribute [rw] currency
-      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
       # @!attribute [rw] debtor_name
       required :debtor_name, String
@@ -57,16 +57,14 @@ module Increase
       # @!attribute [rw] status
       required :status,
                Increase::Enum.new(
-                 [
-                   :pending_approval,
-                   :canceled,
-                   :pending_reviewing,
-                   :pending_submission,
-                   :submitted,
-                   :complete,
-                   :rejected,
-                   :requires_attention
-                 ]
+                 :pending_approval,
+                 :canceled,
+                 :pending_reviewing,
+                 :pending_submission,
+                 :submitted,
+                 :complete,
+                 :rejected,
+                 :requires_attention
                )
 
       # @!attribute [rw] submission
@@ -76,7 +74,7 @@ module Increase
       required :transaction_id, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:real_time_payments_transfer])
+      required :type, Increase::Enum.new(:real_time_payments_transfer)
 
       # @!attribute [rw] ultimate_creditor_name
       required :ultimate_creditor_name, String
@@ -107,29 +105,27 @@ module Increase
         # @!attribute [rw] reject_reason_code
         required :reject_reason_code,
                  Increase::Enum.new(
-                   [
-                     :account_closed,
-                     :account_blocked,
-                     :invalid_creditor_account_type,
-                     :invalid_creditor_account_number,
-                     :invalid_creditor_financial_institution_identifier,
-                     :end_customer_deceased,
-                     :narrative,
-                     :transaction_forbidden,
-                     :transaction_type_not_supported,
-                     :unexpected_amount,
-                     :amount_exceeds_bank_limits,
-                     :invalid_creditor_address,
-                     :unknown_end_customer,
-                     :invalid_debtor_address,
-                     :timeout,
-                     :unsupported_message_for_recipient,
-                     :recipient_connection_not_available,
-                     :real_time_payments_suspended,
-                     :instructed_agent_signed_off,
-                     :processing_error,
-                     :other
-                   ]
+                   :account_closed,
+                   :account_blocked,
+                   :invalid_creditor_account_type,
+                   :invalid_creditor_account_number,
+                   :invalid_creditor_financial_institution_identifier,
+                   :end_customer_deceased,
+                   :narrative,
+                   :transaction_forbidden,
+                   :transaction_type_not_supported,
+                   :unexpected_amount,
+                   :amount_exceeds_bank_limits,
+                   :invalid_creditor_address,
+                   :unknown_end_customer,
+                   :invalid_debtor_address,
+                   :timeout,
+                   :unsupported_message_for_recipient,
+                   :recipient_connection_not_available,
+                   :real_time_payments_suspended,
+                   :instructed_agent_signed_off,
+                   :processing_error,
+                   :other
                  )
 
         # @!attribute [rw] rejected_at

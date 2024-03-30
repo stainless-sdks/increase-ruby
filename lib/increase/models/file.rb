@@ -13,7 +13,7 @@ module Increase
       required :description, String
 
       # @!attribute [rw] direction
-      required :direction, Increase::Enum.new([:to_increase, :from_increase])
+      required :direction, Increase::Enum.new(:to_increase, :from_increase)
 
       # @!attribute [rw] download_url
       required :download_url, String
@@ -30,31 +30,29 @@ module Increase
       # @!attribute [rw] purpose
       required :purpose,
                Increase::Enum.new(
-                 [
-                   :check_image_front,
-                   :check_image_back,
-                   :mailed_check_image,
-                   :check_deposit_mail_item,
-                   :form_1099_int,
-                   :form_ss_4,
-                   :identity_document,
-                   :increase_statement,
-                   :other,
-                   :trust_formation_document,
-                   :digital_wallet_artwork,
-                   :digital_wallet_app_icon,
-                   :physical_card_front,
-                   :physical_card_back,
-                   :physical_card_carrier,
-                   :document_request,
-                   :entity_supplemental_document,
-                   :export,
-                   :unusual_activity_report_attachment
-                 ]
+                 :check_image_front,
+                 :check_image_back,
+                 :mailed_check_image,
+                 :check_deposit_mail_item,
+                 :form_1099_int,
+                 :form_ss_4,
+                 :identity_document,
+                 :increase_statement,
+                 :other,
+                 :trust_formation_document,
+                 :digital_wallet_artwork,
+                 :digital_wallet_app_icon,
+                 :physical_card_front,
+                 :physical_card_back,
+                 :physical_card_carrier,
+                 :document_request,
+                 :entity_supplemental_document,
+                 :export,
+                 :unusual_activity_report_attachment
                )
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:file])
+      required :type, Increase::Enum.new(:file)
     end
   end
 end

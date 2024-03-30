@@ -16,7 +16,7 @@ module Increase
       required :primary_account_number, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:card_details])
+      required :type, Increase::Enum.new(:card_details)
 
       # @!attribute [rw] verification_code
       required :verification_code, String

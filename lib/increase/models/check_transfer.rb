@@ -28,13 +28,13 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] currency
-      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
       # @!attribute [rw] deposit
       required :deposit, -> { Increase::Models::CheckTransfer::Deposit }
 
       # @!attribute [rw] fulfillment_method
-      required :fulfillment_method, Increase::Enum.new([:physical_check, :third_party])
+      required :fulfillment_method, Increase::Enum.new(:physical_check, :third_party)
 
       # @!attribute [rw] idempotency_key
       required :idempotency_key, String
@@ -57,18 +57,16 @@ module Increase
       # @!attribute [rw] status
       required :status,
                Increase::Enum.new(
-                 [
-                   :pending_approval,
-                   :pending_submission,
-                   :pending_mailing,
-                   :mailed,
-                   :canceled,
-                   :deposited,
-                   :stopped,
-                   :rejected,
-                   :requires_attention,
-                   :returned
-                 ]
+                 :pending_approval,
+                 :pending_submission,
+                 :pending_mailing,
+                 :mailed,
+                 :canceled,
+                 :deposited,
+                 :stopped,
+                 :rejected,
+                 :requires_attention,
+                 :returned
                )
 
       # @!attribute [rw] stop_payment_request
@@ -78,7 +76,7 @@ module Increase
       required :submission, -> { Increase::Models::CheckTransfer::Submission }
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:check_transfer])
+      required :type, Increase::Enum.new(:check_transfer)
 
       class Approval < BaseModel
         # @!attribute [rw] approved_at
@@ -116,7 +114,7 @@ module Increase
         required :transfer_id, String
 
         # @!attribute [rw] type
-        required :type, Increase::Enum.new([:check_transfer_deposit])
+        required :type, Increase::Enum.new(:check_transfer_deposit)
       end
 
       class Mailing < BaseModel
@@ -191,12 +189,10 @@ module Increase
         # @!attribute [rw] reason
         required :reason,
                  Increase::Enum.new(
-                   [
-                     :mail_delivery_failed,
-                     :rejected_by_increase,
-                     :not_authorized,
-                     :unknown
-                   ]
+                   :mail_delivery_failed,
+                   :rejected_by_increase,
+                   :not_authorized,
+                   :unknown
                  )
 
         # @!attribute [rw] requested_at
@@ -206,7 +202,7 @@ module Increase
         required :transfer_id, String
 
         # @!attribute [rw] type
-        required :type, Increase::Enum.new([:check_transfer_stop_payment_request])
+        required :type, Increase::Enum.new(:check_transfer_stop_payment_request)
       end
 
       class Submission < BaseModel

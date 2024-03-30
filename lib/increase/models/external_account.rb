@@ -7,7 +7,7 @@ module Increase
       required :id, String
 
       # @!attribute [rw] account_holder
-      required :account_holder, Increase::Enum.new([:business, :individual, :unknown])
+      required :account_holder, Increase::Enum.new(:business, :individual, :unknown)
 
       # @!attribute [rw] account_number
       required :account_number, String
@@ -19,7 +19,7 @@ module Increase
       required :description, String
 
       # @!attribute [rw] funding
-      required :funding, Increase::Enum.new([:checking, :savings, :other])
+      required :funding, Increase::Enum.new(:checking, :savings, :other)
 
       # @!attribute [rw] idempotency_key
       required :idempotency_key, String
@@ -28,13 +28,13 @@ module Increase
       required :routing_number, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:active, :archived])
+      required :status, Increase::Enum.new(:active, :archived)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:external_account])
+      required :type, Increase::Enum.new(:external_account)
 
       # @!attribute [rw] verification_status
-      required :verification_status, Increase::Enum.new([:unverified, :pending, :verified])
+      required :verification_status, Increase::Enum.new(:unverified, :pending, :verified)
     end
   end
 end

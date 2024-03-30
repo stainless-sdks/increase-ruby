@@ -16,7 +16,7 @@ module Increase
       required :name_, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:program])
+      required :type, Increase::Enum.new(:program)
 
       # @!attribute [rw] updated_at
       required :updated_at, String

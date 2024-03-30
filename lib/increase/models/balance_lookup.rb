@@ -13,7 +13,7 @@ module Increase
       required :current_balance, Integer
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:balance_lookup])
+      required :type, Increase::Enum.new(:balance_lookup)
     end
   end
 end

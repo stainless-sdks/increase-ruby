@@ -31,19 +31,19 @@ module Increase
       required :routing_number, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:active, :disabled, :canceled])
+      required :status, Increase::Enum.new(:active, :disabled, :canceled)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:account_number])
+      required :type, Increase::Enum.new(:account_number)
 
       class InboundACH < BaseModel
         # @!attribute [rw] debit_status
-        required :debit_status, Increase::Enum.new([:allowed, :blocked])
+        required :debit_status, Increase::Enum.new(:allowed, :blocked)
       end
 
       class InboundChecks < BaseModel
         # @!attribute [rw] status
-        required :status, Increase::Enum.new([:allowed, :check_transfers_only])
+        required :status, Increase::Enum.new(:allowed, :check_transfers_only)
       end
     end
   end

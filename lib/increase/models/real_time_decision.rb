@@ -12,11 +12,9 @@ module Increase
       # @!attribute [rw] category
       required :category,
                Increase::Enum.new(
-                 [
-                   :card_authorization_requested,
-                   :digital_wallet_token_requested,
-                   :digital_wallet_authentication_requested
-                 ]
+                 :card_authorization_requested,
+                 :digital_wallet_token_requested,
+                 :digital_wallet_authentication_requested
                )
 
       # @!attribute [rw] created_at
@@ -32,13 +30,13 @@ module Increase
       required :digital_wallet_token, -> { Increase::Models::RealTimeDecision::DigitalWalletToken }
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending, :responded, :timed_out])
+      required :status, Increase::Enum.new(:pending, :responded, :timed_out)
 
       # @!attribute [rw] timeout_at
       required :timeout_at, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:real_time_decision])
+      required :type, Increase::Enum.new(:real_time_decision)
 
       class CardAuthorization < BaseModel
         # @!attribute [rw] account_id
@@ -48,7 +46,7 @@ module Increase
         required :card_id, String
 
         # @!attribute [rw] decision
-        required :decision, Increase::Enum.new([:approve, :decline])
+        required :decision, Increase::Enum.new(:approve, :decline)
 
         # @!attribute [rw] digital_wallet_token_id
         required :digital_wallet_token_id, String
@@ -95,14 +93,12 @@ module Increase
         # @!attribute [rw] processing_category
         required :processing_category,
                  Increase::Enum.new(
-                   [
-                     :account_funding,
-                     :automatic_fuel_dispenser,
-                     :bill_payment,
-                     :purchase,
-                     :quasi_cash,
-                     :refund
-                   ]
+                   :account_funding,
+                   :automatic_fuel_dispenser,
+                   :bill_payment,
+                   :purchase,
+                   :quasi_cash,
+                   :refund
                  )
 
         # @!attribute [rw] request_details
@@ -125,7 +121,7 @@ module Increase
 
         class NetworkDetails < BaseModel
           # @!attribute [rw] category
-          required :category, Increase::Enum.new([:visa])
+          required :category, Increase::Enum.new(:visa)
 
           # @!attribute [rw] visa
           required :visa,
@@ -137,33 +133,29 @@ module Increase
             # @!attribute [rw] electronic_commerce_indicator
             required :electronic_commerce_indicator,
                      Increase::Enum.new(
-                       [
-                         :mail_phone_order,
-                         :recurring,
-                         :installment,
-                         :unknown_mail_phone_order,
-                         :secure_electronic_commerce,
-                         :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                         :non_authenticated_security_transaction,
-                         :non_secure_transaction
-                       ]
+                       :mail_phone_order,
+                       :recurring,
+                       :installment,
+                       :unknown_mail_phone_order,
+                       :secure_electronic_commerce,
+                       :non_authenticated_security_transaction_at_3ds_capable_merchant,
+                       :non_authenticated_security_transaction,
+                       :non_secure_transaction
                      )
 
             # @!attribute [rw] point_of_service_entry_mode
             required :point_of_service_entry_mode,
                      Increase::Enum.new(
-                       [
-                         :unknown,
-                         :manual,
-                         :magnetic_stripe_no_cvv,
-                         :optical_code,
-                         :integrated_circuit_card,
-                         :contactless,
-                         :credential_on_file,
-                         :magnetic_stripe,
-                         :contactless_magnetic_stripe,
-                         :integrated_circuit_card_no_cvv
-                       ]
+                       :unknown,
+                       :manual,
+                       :magnetic_stripe_no_cvv,
+                       :optical_code,
+                       :integrated_circuit_card,
+                       :contactless,
+                       :credential_on_file,
+                       :magnetic_stripe,
+                       :contactless_magnetic_stripe,
+                       :integrated_circuit_card_no_cvv
                      )
           end
         end
@@ -182,7 +174,7 @@ module Increase
         class RequestDetails < BaseModel
           # @!attribute [rw] category
           required :category,
-                   Increase::Enum.new([:initial_authorization, :incremental_authorization])
+                   Increase::Enum.new(:initial_authorization, :incremental_authorization)
 
           # @!attribute [rw] incremental_authorization
           required :incremental_authorization,
@@ -217,7 +209,7 @@ module Increase
 
           class CardVerificationCode < BaseModel
             # @!attribute [rw] result
-            required :result, Increase::Enum.new([:not_checked, :match, :no_match])
+            required :result, Increase::Enum.new(:not_checked, :match, :no_match)
           end
 
           class CardholderAddress < BaseModel
@@ -236,14 +228,12 @@ module Increase
             # @!attribute [rw] result
             required :result,
                      Increase::Enum.new(
-                       [
-                         :not_checked,
-                         :postal_code_match_address_not_checked,
-                         :postal_code_match_address_no_match,
-                         :postal_code_no_match_address_match,
-                         :match,
-                         :no_match
-                       ]
+                       :not_checked,
+                       :postal_code_match_address_not_checked,
+                       :postal_code_match_address_no_match,
+                       :postal_code_no_match_address_match,
+                       :match,
+                       :no_match
                      )
           end
         end
@@ -254,10 +244,10 @@ module Increase
         required :card_id, String
 
         # @!attribute [rw] channel
-        required :channel, Increase::Enum.new([:sms, :email])
+        required :channel, Increase::Enum.new(:sms, :email)
 
         # @!attribute [rw] digital_wallet
-        required :digital_wallet, Increase::Enum.new([:apple_pay, :google_pay, :unknown])
+        required :digital_wallet, Increase::Enum.new(:apple_pay, :google_pay, :unknown)
 
         # @!attribute [rw] email
         required :email, String
@@ -269,7 +259,7 @@ module Increase
         required :phone, String
 
         # @!attribute [rw] result
-        required :result, Increase::Enum.new([:success, :failure])
+        required :result, Increase::Enum.new(:success, :failure)
       end
 
       class DigitalWalletToken < BaseModel
@@ -280,10 +270,10 @@ module Increase
         required :card_profile_id, String
 
         # @!attribute [rw] decision
-        required :decision, Increase::Enum.new([:approve, :decline])
+        required :decision, Increase::Enum.new(:approve, :decline)
 
         # @!attribute [rw] digital_wallet
-        required :digital_wallet, Increase::Enum.new([:apple_pay, :google_pay, :unknown])
+        required :digital_wallet, Increase::Enum.new(:apple_pay, :google_pay, :unknown)
       end
     end
   end

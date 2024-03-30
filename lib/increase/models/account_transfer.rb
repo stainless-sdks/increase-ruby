@@ -22,7 +22,7 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] currency
-      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
       # @!attribute [rw] description
       required :description, String
@@ -37,19 +37,19 @@ module Increase
       required :idempotency_key, String
 
       # @!attribute [rw] network
-      required :network, Increase::Enum.new([:account])
+      required :network, Increase::Enum.new(:account)
 
       # @!attribute [rw] pending_transaction_id
       required :pending_transaction_id, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending_approval, :canceled, :complete])
+      required :status, Increase::Enum.new(:pending_approval, :canceled, :complete)
 
       # @!attribute [rw] transaction_id
       required :transaction_id, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:account_transfer])
+      required :type, Increase::Enum.new(:account_transfer)
 
       class Approval < BaseModel
         # @!attribute [rw] approved_at

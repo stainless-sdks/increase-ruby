@@ -10,7 +10,7 @@ module Increase
       required :bookkeeping_account_id, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:bookkeeping_balance_lookup])
+      required :type, Increase::Enum.new(:bookkeeping_balance_lookup)
     end
   end
 end

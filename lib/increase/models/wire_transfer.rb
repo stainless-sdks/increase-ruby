@@ -37,7 +37,7 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] currency
-      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
       # @!attribute [rw] external_account_id
       required :external_account_id, String
@@ -49,7 +49,7 @@ module Increase
       required :message_to_recipient, String
 
       # @!attribute [rw] network
-      required :network, Increase::Enum.new([:wire])
+      required :network, Increase::Enum.new(:wire)
 
       # @!attribute [rw] originator_address_line1
       required :originator_address_line1, String
@@ -75,16 +75,14 @@ module Increase
       # @!attribute [rw] status
       required :status,
                Increase::Enum.new(
-                 [
-                   :canceled,
-                   :requires_attention,
-                   :pending_reviewing,
-                   :pending_approval,
-                   :rejected,
-                   :reversed,
-                   :complete,
-                   :pending_creating
-                 ]
+                 :canceled,
+                 :requires_attention,
+                 :pending_reviewing,
+                 :pending_approval,
+                 :rejected,
+                 :reversed,
+                 :complete,
+                 :pending_creating
                )
 
       # @!attribute [rw] submission
@@ -94,7 +92,7 @@ module Increase
       required :transaction_id, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:wire_transfer])
+      required :type, Increase::Enum.new(:wire_transfer)
 
       class Approval < BaseModel
         # @!attribute [rw] approved_at

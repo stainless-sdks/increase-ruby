@@ -25,10 +25,10 @@ module Increase
       required :rejection, -> { Increase::Models::CardDispute::Rejection }
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending_reviewing, :accepted, :rejected])
+      required :status, Increase::Enum.new(:pending_reviewing, :accepted, :rejected)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:card_dispute])
+      required :type, Increase::Enum.new(:card_dispute)
 
       class Acceptance < BaseModel
         # @!attribute [rw] accepted_at

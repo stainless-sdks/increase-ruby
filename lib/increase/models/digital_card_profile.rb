@@ -40,13 +40,13 @@ module Increase
       required :issuer_name, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending, :rejected, :active, :archived])
+      required :status, Increase::Enum.new(:pending, :rejected, :active, :archived)
 
       # @!attribute [rw] text_color
       required :text_color, -> { Increase::Models::DigitalCardProfile::TextColor }
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:digital_card_profile])
+      required :type, Increase::Enum.new(:digital_card_profile)
 
       class TextColor < BaseModel
         # @!attribute [rw] blue

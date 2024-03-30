@@ -19,7 +19,7 @@ module Increase
       required :entry_set_id, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:bookkeeping_entry])
+      required :type, Increase::Enum.new(:bookkeeping_entry)
     end
   end
 end

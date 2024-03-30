@@ -22,7 +22,7 @@ module Increase
       required :state, -> { Increase::Models::CardPayment::State }
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:card_payment])
+      required :type, Increase::Enum.new(:card_payment)
 
       class Element < BaseModel
         # @!attribute [rw] card_authorization
@@ -61,18 +61,16 @@ module Increase
         # @!attribute [rw] category
         required :category,
                  Increase::Enum.new(
-                   [
-                     :card_authorization,
-                     :card_validation,
-                     :card_decline,
-                     :card_reversal,
-                     :card_authorization_expiration,
-                     :card_increment,
-                     :card_settlement,
-                     :card_refund,
-                     :card_fuel_confirmation,
-                     :other
-                   ]
+                   :card_authorization,
+                   :card_validation,
+                   :card_decline,
+                   :card_reversal,
+                   :card_authorization_expiration,
+                   :card_increment,
+                   :card_settlement,
+                   :card_refund,
+                   :card_fuel_confirmation,
+                   :other
                  )
 
         # @!attribute [rw] created_at
@@ -83,7 +81,7 @@ module Increase
           required :id, String
 
           # @!attribute [rw] actioner
-          required :actioner, Increase::Enum.new([:user, :increase, :network])
+          required :actioner, Increase::Enum.new(:user, :increase, :network)
 
           # @!attribute [rw] amount
           required :amount, Integer
@@ -92,13 +90,13 @@ module Increase
           required :card_payment_id, String
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] digital_wallet_token_id
           required :digital_wallet_token_id, String
 
           # @!attribute [rw] direction
-          required :direction, Increase::Enum.new([:settlement, :refund])
+          required :direction, Increase::Enum.new(:settlement, :refund)
 
           # @!attribute [rw] expires_at
           required :expires_at, String
@@ -142,21 +140,19 @@ module Increase
           # @!attribute [rw] processing_category
           required :processing_category,
                    Increase::Enum.new(
-                     [
-                       :account_funding,
-                       :automatic_fuel_dispenser,
-                       :bill_payment,
-                       :purchase,
-                       :quasi_cash,
-                       :refund
-                     ]
+                     :account_funding,
+                     :automatic_fuel_dispenser,
+                     :bill_payment,
+                     :purchase,
+                     :quasi_cash,
+                     :refund
                    )
 
           # @!attribute [rw] real_time_decision_id
           required :real_time_decision_id, String
 
           # @!attribute [rw] type
-          required :type, Increase::Enum.new([:card_authorization])
+          required :type, Increase::Enum.new(:card_authorization)
 
           # @!attribute [rw] verification
           required :verification,
@@ -166,7 +162,7 @@ module Increase
 
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
-            required :category, Increase::Enum.new([:visa])
+            required :category, Increase::Enum.new(:visa)
 
             # @!attribute [rw] visa
             required :visa,
@@ -178,33 +174,29 @@ module Increase
               # @!attribute [rw] electronic_commerce_indicator
               required :electronic_commerce_indicator,
                        Increase::Enum.new(
-                         [
-                           :mail_phone_order,
-                           :recurring,
-                           :installment,
-                           :unknown_mail_phone_order,
-                           :secure_electronic_commerce,
-                           :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                           :non_authenticated_security_transaction,
-                           :non_secure_transaction
-                         ]
+                         :mail_phone_order,
+                         :recurring,
+                         :installment,
+                         :unknown_mail_phone_order,
+                         :secure_electronic_commerce,
+                         :non_authenticated_security_transaction_at_3ds_capable_merchant,
+                         :non_authenticated_security_transaction,
+                         :non_secure_transaction
                        )
 
               # @!attribute [rw] point_of_service_entry_mode
               required :point_of_service_entry_mode,
                        Increase::Enum.new(
-                         [
-                           :unknown,
-                           :manual,
-                           :magnetic_stripe_no_cvv,
-                           :optical_code,
-                           :integrated_circuit_card,
-                           :contactless,
-                           :credential_on_file,
-                           :magnetic_stripe,
-                           :contactless_magnetic_stripe,
-                           :integrated_circuit_card_no_cvv
-                         ]
+                         :unknown,
+                         :manual,
+                         :magnetic_stripe_no_cvv,
+                         :optical_code,
+                         :integrated_circuit_card,
+                         :contactless,
+                         :credential_on_file,
+                         :magnetic_stripe,
+                         :contactless_magnetic_stripe,
+                         :integrated_circuit_card_no_cvv
                        )
             end
           end
@@ -235,7 +227,7 @@ module Increase
 
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
-              required :result, Increase::Enum.new([:not_checked, :match, :no_match])
+              required :result, Increase::Enum.new(:not_checked, :match, :no_match)
             end
 
             class CardholderAddress < BaseModel
@@ -254,14 +246,12 @@ module Increase
               # @!attribute [rw] result
               required :result,
                        Increase::Enum.new(
-                         [
-                           :not_checked,
-                           :postal_code_match_address_not_checked,
-                           :postal_code_match_address_no_match,
-                           :postal_code_no_match_address_match,
-                           :match,
-                           :no_match
-                         ]
+                         :not_checked,
+                         :postal_code_match_address_not_checked,
+                         :postal_code_match_address_no_match,
+                         :postal_code_no_match_address_match,
+                         :match,
+                         :no_match
                        )
             end
           end
@@ -275,16 +265,16 @@ module Increase
           required :card_authorization_id, String
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] expired_amount
           required :expired_amount, Integer
 
           # @!attribute [rw] network
-          required :network, Increase::Enum.new([:visa])
+          required :network, Increase::Enum.new(:visa)
 
           # @!attribute [rw] type
-          required :type, Increase::Enum.new([:card_authorization_expiration])
+          required :type, Increase::Enum.new(:card_authorization_expiration)
         end
 
         class CardDecline < BaseModel
@@ -292,7 +282,7 @@ module Increase
           required :id, String
 
           # @!attribute [rw] actioner
-          required :actioner, Increase::Enum.new([:user, :increase, :network])
+          required :actioner, Increase::Enum.new(:user, :increase, :network)
 
           # @!attribute [rw] amount
           required :amount, Integer
@@ -301,7 +291,7 @@ module Increase
           required :card_payment_id, String
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] digital_wallet_token_id
           required :digital_wallet_token_id, String
@@ -345,14 +335,12 @@ module Increase
           # @!attribute [rw] processing_category
           required :processing_category,
                    Increase::Enum.new(
-                     [
-                       :account_funding,
-                       :automatic_fuel_dispenser,
-                       :bill_payment,
-                       :purchase,
-                       :quasi_cash,
-                       :refund
-                     ]
+                     :account_funding,
+                     :automatic_fuel_dispenser,
+                     :bill_payment,
+                     :purchase,
+                     :quasi_cash,
+                     :refund
                    )
 
           # @!attribute [rw] real_time_decision_id
@@ -361,22 +349,20 @@ module Increase
           # @!attribute [rw] reason
           required :reason,
                    Increase::Enum.new(
-                     [
-                       :card_not_active,
-                       :physical_card_not_active,
-                       :entity_not_active,
-                       :group_locked,
-                       :insufficient_funds,
-                       :cvv2_mismatch,
-                       :transaction_not_allowed,
-                       :breaches_limit,
-                       :webhook_declined,
-                       :webhook_timed_out,
-                       :declined_by_stand_in_processing,
-                       :invalid_physical_card,
-                       :missing_original_authorization,
-                       :suspected_fraud
-                     ]
+                     :card_not_active,
+                     :physical_card_not_active,
+                     :entity_not_active,
+                     :group_locked,
+                     :insufficient_funds,
+                     :cvv2_mismatch,
+                     :transaction_not_allowed,
+                     :breaches_limit,
+                     :webhook_declined,
+                     :webhook_timed_out,
+                     :declined_by_stand_in_processing,
+                     :invalid_physical_card,
+                     :missing_original_authorization,
+                     :suspected_fraud
                    )
 
           # @!attribute [rw] verification
@@ -387,7 +373,7 @@ module Increase
 
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
-            required :category, Increase::Enum.new([:visa])
+            required :category, Increase::Enum.new(:visa)
 
             # @!attribute [rw] visa
             required :visa,
@@ -399,33 +385,29 @@ module Increase
               # @!attribute [rw] electronic_commerce_indicator
               required :electronic_commerce_indicator,
                        Increase::Enum.new(
-                         [
-                           :mail_phone_order,
-                           :recurring,
-                           :installment,
-                           :unknown_mail_phone_order,
-                           :secure_electronic_commerce,
-                           :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                           :non_authenticated_security_transaction,
-                           :non_secure_transaction
-                         ]
+                         :mail_phone_order,
+                         :recurring,
+                         :installment,
+                         :unknown_mail_phone_order,
+                         :secure_electronic_commerce,
+                         :non_authenticated_security_transaction_at_3ds_capable_merchant,
+                         :non_authenticated_security_transaction,
+                         :non_secure_transaction
                        )
 
               # @!attribute [rw] point_of_service_entry_mode
               required :point_of_service_entry_mode,
                        Increase::Enum.new(
-                         [
-                           :unknown,
-                           :manual,
-                           :magnetic_stripe_no_cvv,
-                           :optical_code,
-                           :integrated_circuit_card,
-                           :contactless,
-                           :credential_on_file,
-                           :magnetic_stripe,
-                           :contactless_magnetic_stripe,
-                           :integrated_circuit_card_no_cvv
-                         ]
+                         :unknown,
+                         :manual,
+                         :magnetic_stripe_no_cvv,
+                         :optical_code,
+                         :integrated_circuit_card,
+                         :contactless,
+                         :credential_on_file,
+                         :magnetic_stripe,
+                         :contactless_magnetic_stripe,
+                         :integrated_circuit_card_no_cvv
                        )
             end
           end
@@ -456,7 +438,7 @@ module Increase
 
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
-              required :result, Increase::Enum.new([:not_checked, :match, :no_match])
+              required :result, Increase::Enum.new(:not_checked, :match, :no_match)
             end
 
             class CardholderAddress < BaseModel
@@ -475,14 +457,12 @@ module Increase
               # @!attribute [rw] result
               required :result,
                        Increase::Enum.new(
-                         [
-                           :not_checked,
-                           :postal_code_match_address_not_checked,
-                           :postal_code_match_address_no_match,
-                           :postal_code_no_match_address_match,
-                           :match,
-                           :no_match
-                         ]
+                         :not_checked,
+                         :postal_code_match_address_not_checked,
+                         :postal_code_match_address_no_match,
+                         :postal_code_no_match_address_match,
+                         :match,
+                         :no_match
                        )
             end
           end
@@ -496,10 +476,10 @@ module Increase
           required :card_authorization_id, String
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] network
-          required :network, Increase::Enum.new([:visa])
+          required :network, Increase::Enum.new(:visa)
 
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
@@ -511,7 +491,7 @@ module Increase
           required :pending_transaction_id, String
 
           # @!attribute [rw] type
-          required :type, Increase::Enum.new([:card_fuel_confirmation])
+          required :type, Increase::Enum.new(:card_fuel_confirmation)
 
           # @!attribute [rw] updated_authorization_amount
           required :updated_authorization_amount, Integer
@@ -533,7 +513,7 @@ module Increase
           required :id, String
 
           # @!attribute [rw] actioner
-          required :actioner, Increase::Enum.new([:user, :increase, :network])
+          required :actioner, Increase::Enum.new(:user, :increase, :network)
 
           # @!attribute [rw] amount
           required :amount, Integer
@@ -542,10 +522,10 @@ module Increase
           required :card_authorization_id, String
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] network
-          required :network, Increase::Enum.new([:visa])
+          required :network, Increase::Enum.new(:visa)
 
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
@@ -563,7 +543,7 @@ module Increase
           required :real_time_decision_id, String
 
           # @!attribute [rw] type
-          required :type, Increase::Enum.new([:card_increment])
+          required :type, Increase::Enum.new(:card_increment)
 
           # @!attribute [rw] updated_authorization_amount
           required :updated_authorization_amount, Integer
@@ -591,7 +571,7 @@ module Increase
           required :card_payment_id, String
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] merchant_acceptor_id
           required :merchant_acceptor_id, String
@@ -627,7 +607,7 @@ module Increase
           required :transaction_id, String
 
           # @!attribute [rw] type
-          required :type, Increase::Enum.new([:card_refund])
+          required :type, Increase::Enum.new(:card_refund)
 
           class NetworkIdentifiers < BaseModel
             # @!attribute [rw] acquirer_business_id
@@ -674,13 +654,11 @@ module Increase
             # @!attribute [rw] purchase_identifier_format
             required :purchase_identifier_format,
                      Increase::Enum.new(
-                       [
-                         :free_text,
-                         :order_number,
-                         :rental_agreement_number,
-                         :hotel_folio_number,
-                         :invoice_number
-                       ]
+                       :free_text,
+                       :order_number,
+                       :rental_agreement_number,
+                       :hotel_folio_number,
+                       :invoice_number
                      )
 
             # @!attribute [rw] travel
@@ -708,14 +686,12 @@ module Increase
               # @!attribute [rw] extra_charges
               required :extra_charges,
                        Increase::Enum.new(
-                         [
-                           :no_extra_charge,
-                           :gas,
-                           :extra_mileage,
-                           :late_return,
-                           :one_way_service_fee,
-                           :parking_violation
-                         ]
+                         :no_extra_charge,
+                         :gas,
+                         :extra_mileage,
+                         :late_return,
+                         :one_way_service_fee,
+                         :parking_violation
                        )
 
               # @!attribute [rw] fuel_charges_amount
@@ -732,7 +708,7 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               required :no_show_indicator,
-                       Increase::Enum.new([:not_applicable, :no_show_for_specialized_vehicle])
+                       Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               required :one_way_drop_off_charges_amount, Integer
@@ -763,15 +739,13 @@ module Increase
               # @!attribute [rw] extra_charges
               required :extra_charges,
                        Increase::Enum.new(
-                         [
-                           :no_extra_charge,
-                           :restaurant,
-                           :gift_shop,
-                           :mini_bar,
-                           :telephone,
-                           :other,
-                           :laundry
-                         ]
+                         :no_extra_charge,
+                         :restaurant,
+                         :gift_shop,
+                         :mini_bar,
+                         :telephone,
+                         :other,
+                         :laundry
                        )
 
               # @!attribute [rw] folio_cash_advances_amount
@@ -787,7 +761,7 @@ module Increase
               required :food_beverage_charges_currency, String
 
               # @!attribute [rw] no_show_indicator
-              required :no_show_indicator, Increase::Enum.new([:not_applicable, :no_show])
+              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show)
 
               # @!attribute [rw] prepaid_expenses_amount
               required :prepaid_expenses_amount, Integer
@@ -824,14 +798,12 @@ module Increase
               # @!attribute [rw] credit_reason_indicator
               required :credit_reason_indicator,
                        Increase::Enum.new(
-                         [
-                           :no_credit,
-                           :passenger_transport_ancillary_purchase_cancellation,
-                           :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                           :airline_ticket_cancellation,
-                           :other,
-                           :partial_refund_of_airline_ticket
-                         ]
+                         :no_credit,
+                         :passenger_transport_ancillary_purchase_cancellation,
+                         :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
+                         :airline_ticket_cancellation,
+                         :other,
+                         :partial_refund_of_airline_ticket
                        )
 
               # @!attribute [rw] departure_date
@@ -845,16 +817,11 @@ module Increase
 
               # @!attribute [rw] restricted_ticket_indicator
               required :restricted_ticket_indicator,
-                       Increase::Enum.new(
-                         [
-                           :no_restrictions,
-                           :restricted_non_refundable_ticket
-                         ]
-                       )
+                       Increase::Enum.new(:no_restrictions, :restricted_non_refundable_ticket)
 
               # @!attribute [rw] ticket_change_indicator
               required :ticket_change_indicator,
-                       Increase::Enum.new([:none, :change_to_existing_ticket, :new_ticket])
+                       Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
 
               # @!attribute [rw] ticket_number
               required :ticket_number, String
@@ -880,12 +847,10 @@ module Increase
                 # @!attribute [rw] credit_reason_indicator
                 required :credit_reason_indicator,
                          Increase::Enum.new(
-                           [
-                             :no_credit,
-                             :passenger_transport_ancillary_purchase_cancellation,
-                             :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                             :other
-                           ]
+                           :no_credit,
+                           :passenger_transport_ancillary_purchase_cancellation,
+                           :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
+                           :other
                          )
 
                 # @!attribute [rw] passenger_name_or_description
@@ -906,32 +871,30 @@ module Increase
                   # @!attribute [rw] category
                   required :category,
                            Increase::Enum.new(
-                             [
-                               :none,
-                               :bundled_service,
-                               :baggage_fee,
-                               :change_fee,
-                               :cargo,
-                               :carbon_offset,
-                               :frequent_flyer,
-                               :gift_card,
-                               :ground_transport,
-                               :in_flight_entertainment,
-                               :lounge,
-                               :medical,
-                               :meal_beverage,
-                               :other,
-                               :passenger_assist_fee,
-                               :pets,
-                               :seat_fees,
-                               :standby,
-                               :service_fee,
-                               :store,
-                               :travel_service,
-                               :unaccompanied_travel,
-                               :upgrades,
-                               :wifi
-                             ]
+                             :none,
+                             :bundled_service,
+                             :baggage_fee,
+                             :change_fee,
+                             :cargo,
+                             :carbon_offset,
+                             :frequent_flyer,
+                             :gift_card,
+                             :ground_transport,
+                             :in_flight_entertainment,
+                             :lounge,
+                             :medical,
+                             :meal_beverage,
+                             :other,
+                             :passenger_assist_fee,
+                             :pets,
+                             :seat_fees,
+                             :standby,
+                             :service_fee,
+                             :store,
+                             :travel_service,
+                             :unaccompanied_travel,
+                             :upgrades,
+                             :wifi
                            )
 
                   # @!attribute [rw] sub_category
@@ -958,11 +921,9 @@ module Increase
                 # @!attribute [rw] stop_over_code
                 required :stop_over_code,
                          Increase::Enum.new(
-                           [
-                             :none,
-                             :stop_over_allowed,
-                             :stop_over_not_allowed
-                           ]
+                           :none,
+                           :stop_over_allowed,
+                           :stop_over_not_allowed
                          )
               end
             end
@@ -977,10 +938,10 @@ module Increase
           required :card_authorization_id, String
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] network
-          required :network, Increase::Enum.new([:visa])
+          required :network, Increase::Enum.new(:visa)
 
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
@@ -995,7 +956,7 @@ module Increase
           required :reversal_amount, Integer
 
           # @!attribute [rw] type
-          required :type, Increase::Enum.new([:card_reversal])
+          required :type, Increase::Enum.new(:card_reversal)
 
           # @!attribute [rw] updated_authorization_amount
           required :updated_authorization_amount, Integer
@@ -1026,7 +987,7 @@ module Increase
           required :card_payment_id, String
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] merchant_acceptor_id
           required :merchant_acceptor_id, String
@@ -1071,7 +1032,7 @@ module Increase
           required :transaction_id, String
 
           # @!attribute [rw] type
-          required :type, Increase::Enum.new([:card_settlement])
+          required :type, Increase::Enum.new(:card_settlement)
 
           class NetworkIdentifiers < BaseModel
             # @!attribute [rw] acquirer_business_id
@@ -1118,13 +1079,11 @@ module Increase
             # @!attribute [rw] purchase_identifier_format
             required :purchase_identifier_format,
                      Increase::Enum.new(
-                       [
-                         :free_text,
-                         :order_number,
-                         :rental_agreement_number,
-                         :hotel_folio_number,
-                         :invoice_number
-                       ]
+                       :free_text,
+                       :order_number,
+                       :rental_agreement_number,
+                       :hotel_folio_number,
+                       :invoice_number
                      )
 
             # @!attribute [rw] travel
@@ -1152,14 +1111,12 @@ module Increase
               # @!attribute [rw] extra_charges
               required :extra_charges,
                        Increase::Enum.new(
-                         [
-                           :no_extra_charge,
-                           :gas,
-                           :extra_mileage,
-                           :late_return,
-                           :one_way_service_fee,
-                           :parking_violation
-                         ]
+                         :no_extra_charge,
+                         :gas,
+                         :extra_mileage,
+                         :late_return,
+                         :one_way_service_fee,
+                         :parking_violation
                        )
 
               # @!attribute [rw] fuel_charges_amount
@@ -1176,7 +1133,7 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               required :no_show_indicator,
-                       Increase::Enum.new([:not_applicable, :no_show_for_specialized_vehicle])
+                       Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               required :one_way_drop_off_charges_amount, Integer
@@ -1207,15 +1164,13 @@ module Increase
               # @!attribute [rw] extra_charges
               required :extra_charges,
                        Increase::Enum.new(
-                         [
-                           :no_extra_charge,
-                           :restaurant,
-                           :gift_shop,
-                           :mini_bar,
-                           :telephone,
-                           :other,
-                           :laundry
-                         ]
+                         :no_extra_charge,
+                         :restaurant,
+                         :gift_shop,
+                         :mini_bar,
+                         :telephone,
+                         :other,
+                         :laundry
                        )
 
               # @!attribute [rw] folio_cash_advances_amount
@@ -1231,7 +1186,7 @@ module Increase
               required :food_beverage_charges_currency, String
 
               # @!attribute [rw] no_show_indicator
-              required :no_show_indicator, Increase::Enum.new([:not_applicable, :no_show])
+              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show)
 
               # @!attribute [rw] prepaid_expenses_amount
               required :prepaid_expenses_amount, Integer
@@ -1268,14 +1223,12 @@ module Increase
               # @!attribute [rw] credit_reason_indicator
               required :credit_reason_indicator,
                        Increase::Enum.new(
-                         [
-                           :no_credit,
-                           :passenger_transport_ancillary_purchase_cancellation,
-                           :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                           :airline_ticket_cancellation,
-                           :other,
-                           :partial_refund_of_airline_ticket
-                         ]
+                         :no_credit,
+                         :passenger_transport_ancillary_purchase_cancellation,
+                         :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
+                         :airline_ticket_cancellation,
+                         :other,
+                         :partial_refund_of_airline_ticket
                        )
 
               # @!attribute [rw] departure_date
@@ -1289,16 +1242,11 @@ module Increase
 
               # @!attribute [rw] restricted_ticket_indicator
               required :restricted_ticket_indicator,
-                       Increase::Enum.new(
-                         [
-                           :no_restrictions,
-                           :restricted_non_refundable_ticket
-                         ]
-                       )
+                       Increase::Enum.new(:no_restrictions, :restricted_non_refundable_ticket)
 
               # @!attribute [rw] ticket_change_indicator
               required :ticket_change_indicator,
-                       Increase::Enum.new([:none, :change_to_existing_ticket, :new_ticket])
+                       Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
 
               # @!attribute [rw] ticket_number
               required :ticket_number, String
@@ -1324,12 +1272,10 @@ module Increase
                 # @!attribute [rw] credit_reason_indicator
                 required :credit_reason_indicator,
                          Increase::Enum.new(
-                           [
-                             :no_credit,
-                             :passenger_transport_ancillary_purchase_cancellation,
-                             :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                             :other
-                           ]
+                           :no_credit,
+                           :passenger_transport_ancillary_purchase_cancellation,
+                           :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
+                           :other
                          )
 
                 # @!attribute [rw] passenger_name_or_description
@@ -1350,32 +1296,30 @@ module Increase
                   # @!attribute [rw] category
                   required :category,
                            Increase::Enum.new(
-                             [
-                               :none,
-                               :bundled_service,
-                               :baggage_fee,
-                               :change_fee,
-                               :cargo,
-                               :carbon_offset,
-                               :frequent_flyer,
-                               :gift_card,
-                               :ground_transport,
-                               :in_flight_entertainment,
-                               :lounge,
-                               :medical,
-                               :meal_beverage,
-                               :other,
-                               :passenger_assist_fee,
-                               :pets,
-                               :seat_fees,
-                               :standby,
-                               :service_fee,
-                               :store,
-                               :travel_service,
-                               :unaccompanied_travel,
-                               :upgrades,
-                               :wifi
-                             ]
+                             :none,
+                             :bundled_service,
+                             :baggage_fee,
+                             :change_fee,
+                             :cargo,
+                             :carbon_offset,
+                             :frequent_flyer,
+                             :gift_card,
+                             :ground_transport,
+                             :in_flight_entertainment,
+                             :lounge,
+                             :medical,
+                             :meal_beverage,
+                             :other,
+                             :passenger_assist_fee,
+                             :pets,
+                             :seat_fees,
+                             :standby,
+                             :service_fee,
+                             :store,
+                             :travel_service,
+                             :unaccompanied_travel,
+                             :upgrades,
+                             :wifi
                            )
 
                   # @!attribute [rw] sub_category
@@ -1402,11 +1346,9 @@ module Increase
                 # @!attribute [rw] stop_over_code
                 required :stop_over_code,
                          Increase::Enum.new(
-                           [
-                             :none,
-                             :stop_over_allowed,
-                             :stop_over_not_allowed
-                           ]
+                           :none,
+                           :stop_over_allowed,
+                           :stop_over_not_allowed
                          )
               end
             end
@@ -1418,13 +1360,13 @@ module Increase
           required :id, String
 
           # @!attribute [rw] actioner
-          required :actioner, Increase::Enum.new([:user, :increase, :network])
+          required :actioner, Increase::Enum.new(:user, :increase, :network)
 
           # @!attribute [rw] card_payment_id
           required :card_payment_id, String
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] digital_wallet_token_id
           required :digital_wallet_token_id, String
@@ -1466,7 +1408,7 @@ module Increase
           required :real_time_decision_id, String
 
           # @!attribute [rw] type
-          required :type, Increase::Enum.new([:card_validation])
+          required :type, Increase::Enum.new(:card_validation)
 
           # @!attribute [rw] verification
           required :verification,
@@ -1476,7 +1418,7 @@ module Increase
 
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
-            required :category, Increase::Enum.new([:visa])
+            required :category, Increase::Enum.new(:visa)
 
             # @!attribute [rw] visa
             required :visa,
@@ -1488,33 +1430,29 @@ module Increase
               # @!attribute [rw] electronic_commerce_indicator
               required :electronic_commerce_indicator,
                        Increase::Enum.new(
-                         [
-                           :mail_phone_order,
-                           :recurring,
-                           :installment,
-                           :unknown_mail_phone_order,
-                           :secure_electronic_commerce,
-                           :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                           :non_authenticated_security_transaction,
-                           :non_secure_transaction
-                         ]
+                         :mail_phone_order,
+                         :recurring,
+                         :installment,
+                         :unknown_mail_phone_order,
+                         :secure_electronic_commerce,
+                         :non_authenticated_security_transaction_at_3ds_capable_merchant,
+                         :non_authenticated_security_transaction,
+                         :non_secure_transaction
                        )
 
               # @!attribute [rw] point_of_service_entry_mode
               required :point_of_service_entry_mode,
                        Increase::Enum.new(
-                         [
-                           :unknown,
-                           :manual,
-                           :magnetic_stripe_no_cvv,
-                           :optical_code,
-                           :integrated_circuit_card,
-                           :contactless,
-                           :credential_on_file,
-                           :magnetic_stripe,
-                           :contactless_magnetic_stripe,
-                           :integrated_circuit_card_no_cvv
-                         ]
+                         :unknown,
+                         :manual,
+                         :magnetic_stripe_no_cvv,
+                         :optical_code,
+                         :integrated_circuit_card,
+                         :contactless,
+                         :credential_on_file,
+                         :magnetic_stripe,
+                         :contactless_magnetic_stripe,
+                         :integrated_circuit_card_no_cvv
                        )
             end
           end
@@ -1545,7 +1483,7 @@ module Increase
 
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
-              required :result, Increase::Enum.new([:not_checked, :match, :no_match])
+              required :result, Increase::Enum.new(:not_checked, :match, :no_match)
             end
 
             class CardholderAddress < BaseModel
@@ -1564,14 +1502,12 @@ module Increase
               # @!attribute [rw] result
               required :result,
                        Increase::Enum.new(
-                         [
-                           :not_checked,
-                           :postal_code_match_address_not_checked,
-                           :postal_code_match_address_no_match,
-                           :postal_code_no_match_address_match,
-                           :match,
-                           :no_match
-                         ]
+                         :not_checked,
+                         :postal_code_match_address_not_checked,
+                         :postal_code_match_address_no_match,
+                         :postal_code_no_match_address_match,
+                         :match,
+                         :no_match
                        )
             end
           end

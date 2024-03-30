@@ -55,13 +55,13 @@ module Increase
       required :recipient_routing_number, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending_submission, :pending_response, :fulfilled, :refused])
+      required :status, Increase::Enum.new(:pending_submission, :pending_response, :fulfilled, :refused)
 
       # @!attribute [rw] submission
       required :submission, -> { Increase::Models::WireDrawdownRequest::Submission }
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:wire_drawdown_request])
+      required :type, Increase::Enum.new(:wire_drawdown_request)
 
       class Submission < BaseModel
         # @!attribute [rw] input_message_accountability_data

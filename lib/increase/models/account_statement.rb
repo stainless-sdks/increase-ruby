@@ -28,7 +28,7 @@ module Increase
       required :statement_period_start, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:account_statement])
+      required :type, Increase::Enum.new(:account_statement)
     end
   end
 end

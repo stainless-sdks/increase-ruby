@@ -22,7 +22,7 @@ module Increase
       required :transaction_id, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:bookkeeping_entry_set])
+      required :type, Increase::Enum.new(:bookkeeping_entry_set)
 
       class Entry < BaseModel
         # @!attribute [rw] id

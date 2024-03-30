@@ -7,13 +7,13 @@ module Increase
       required :id, String
 
       # @!attribute [rw] bank
-      required :bank, Increase::Enum.new([:blue_ridge_bank, :first_internet_bank])
+      required :bank, Increase::Enum.new(:blue_ridge_bank, :first_internet_bank)
 
       # @!attribute [rw] created_at
       required :created_at, String
 
       # @!attribute [rw] currency
-      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
       # @!attribute [rw] entity_id
       required :entity_id, String
@@ -40,10 +40,10 @@ module Increase
       required :program_id, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:open, :closed])
+      required :status, Increase::Enum.new(:open, :closed)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:account])
+      required :type, Increase::Enum.new(:account)
     end
   end
 end

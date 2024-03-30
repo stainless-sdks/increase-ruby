@@ -13,10 +13,10 @@ module Increase
       required :group_id, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:active, :inactive])
+      required :status, Increase::Enum.new(:active, :inactive)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:oauth_connection])
+      required :type, Increase::Enum.new(:oauth_connection)
     end
   end
 end

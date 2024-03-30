@@ -16,7 +16,7 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] currency
-      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
       # @!attribute [rw] held_transaction_id
       required :held_transaction_id, String
@@ -28,10 +28,10 @@ module Increase
       required :released_at, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:held, :complete])
+      required :status, Increase::Enum.new(:held, :complete)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:inbound_funds_hold])
+      required :type, Increase::Enum.new(:inbound_funds_hold)
     end
   end
 end

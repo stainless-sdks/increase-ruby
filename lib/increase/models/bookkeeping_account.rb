@@ -10,7 +10,7 @@ module Increase
       required :account_id, String
 
       # @!attribute [rw] compliance_category
-      required :compliance_category, Increase::Enum.new([:commingled_cash, :customer_balance])
+      required :compliance_category, Increase::Enum.new(:commingled_cash, :customer_balance)
 
       # @!attribute [rw] entity_id
       required :entity_id, String
@@ -22,7 +22,7 @@ module Increase
       required :name_, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:bookkeeping_account])
+      required :type, Increase::Enum.new(:bookkeeping_account)
     end
   end
 end

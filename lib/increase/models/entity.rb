@@ -25,10 +25,10 @@ module Increase
       required :natural_person, -> { Increase::Models::Entity::NaturalPerson }
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:active, :archived, :disabled])
+      required :status, Increase::Enum.new(:active, :archived, :disabled)
 
       # @!attribute [rw] structure
-      required :structure, Increase::Enum.new([:corporation, :natural_person, :joint, :trust])
+      required :structure, Increase::Enum.new(:corporation, :natural_person, :joint, :trust)
 
       # @!attribute [rw] supplemental_documents
       required :supplemental_documents,
@@ -42,7 +42,7 @@ module Increase
       required :trust_, -> { Increase::Models::Entity::Trust }
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:entity])
+      required :type, Increase::Enum.new(:entity)
 
       class Corporation < BaseModel
         # @!attribute [rw] address
@@ -102,7 +102,7 @@ module Increase
                    }
 
           # @!attribute [rw] prong
-          required :prong, Increase::Enum.new([:ownership, :control])
+          required :prong, Increase::Enum.new(:ownership, :control)
 
           class Individual < BaseModel
             # @!attribute [rw] address
@@ -144,13 +144,11 @@ module Increase
               # @!attribute [rw] method_
               required :method_,
                        Increase::Enum.new(
-                         [
-                           :social_security_number,
-                           :individual_taxpayer_identification_number,
-                           :passport,
-                           :drivers_license,
-                           :other
-                         ]
+                         :social_security_number,
+                         :individual_taxpayer_identification_number,
+                         :passport,
+                         :drivers_license,
+                         :other
                        )
 
               # @!attribute [rw] number_last4
@@ -209,13 +207,11 @@ module Increase
             # @!attribute [rw] method_
             required :method_,
                      Increase::Enum.new(
-                       [
-                         :social_security_number,
-                         :individual_taxpayer_identification_number,
-                         :passport,
-                         :drivers_license,
-                         :other
-                       ]
+                       :social_security_number,
+                       :individual_taxpayer_identification_number,
+                       :passport,
+                       :drivers_license,
+                       :other
                      )
 
             # @!attribute [rw] number_last4
@@ -258,13 +254,11 @@ module Increase
           # @!attribute [rw] method_
           required :method_,
                    Increase::Enum.new(
-                     [
-                       :social_security_number,
-                       :individual_taxpayer_identification_number,
-                       :passport,
-                       :drivers_license,
-                       :other
-                     ]
+                     :social_security_number,
+                     :individual_taxpayer_identification_number,
+                     :passport,
+                     :drivers_license,
+                     :other
                    )
 
           # @!attribute [rw] number_last4
@@ -283,7 +277,7 @@ module Increase
         required :idempotency_key, String
 
         # @!attribute [rw] type
-        required :type, Increase::Enum.new([:entity_supplemental_document])
+        required :type, Increase::Enum.new(:entity_supplemental_document)
       end
 
       class Trust < BaseModel
@@ -291,7 +285,7 @@ module Increase
         required :address, -> { Increase::Models::Entity::Trust::Address }
 
         # @!attribute [rw] category
-        required :category, Increase::Enum.new([:revocable, :irrevocable])
+        required :category, Increase::Enum.new(:revocable, :irrevocable)
 
         # @!attribute [rw] formation_document_file_id
         required :formation_document_file_id, String
@@ -365,13 +359,11 @@ module Increase
             # @!attribute [rw] method_
             required :method_,
                      Increase::Enum.new(
-                       [
-                         :social_security_number,
-                         :individual_taxpayer_identification_number,
-                         :passport,
-                         :drivers_license,
-                         :other
-                       ]
+                       :social_security_number,
+                       :individual_taxpayer_identification_number,
+                       :passport,
+                       :drivers_license,
+                       :other
                      )
 
             # @!attribute [rw] number_last4
@@ -384,7 +376,7 @@ module Increase
           required :individual, -> { Increase::Models::Entity::Trust::Trustee::Individual }
 
           # @!attribute [rw] structure
-          required :structure, Increase::Enum.new([:individual])
+          required :structure, Increase::Enum.new(:individual)
 
           class Individual < BaseModel
             # @!attribute [rw] address
@@ -426,13 +418,11 @@ module Increase
               # @!attribute [rw] method_
               required :method_,
                        Increase::Enum.new(
-                         [
-                           :social_security_number,
-                           :individual_taxpayer_identification_number,
-                           :passport,
-                           :drivers_license,
-                           :other
-                         ]
+                         :social_security_number,
+                         :individual_taxpayer_identification_number,
+                         :passport,
+                         :drivers_license,
+                         :other
                        )
 
               # @!attribute [rw] number_last4

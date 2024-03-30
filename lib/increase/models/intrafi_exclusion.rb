@@ -22,13 +22,13 @@ module Increase
       required :idempotency_key, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending, :completed, :archived])
+      required :status, Increase::Enum.new(:pending, :completed, :archived)
 
       # @!attribute [rw] submitted_at
       required :submitted_at, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:intrafi_exclusion])
+      required :type, Increase::Enum.new(:intrafi_exclusion)
     end
   end
 end

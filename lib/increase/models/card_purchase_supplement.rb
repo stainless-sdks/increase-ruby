@@ -24,7 +24,7 @@ module Increase
       required :transaction_id, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:card_purchase_supplement])
+      required :type, Increase::Enum.new(:card_purchase_supplement)
 
       class Invoice < BaseModel
         # @!attribute [rw] discount_amount
@@ -36,11 +36,9 @@ module Increase
         # @!attribute [rw] discount_treatment_code
         required :discount_treatment_code,
                  Increase::Enum.new(
-                   [
-                     :no_invoice_level_discount_provided,
-                     :tax_calculated_on_post_discount_invoice_total,
-                     :tax_calculated_on_pre_discount_invoice_total
-                   ]
+                   :no_invoice_level_discount_provided,
+                   :tax_calculated_on_post_discount_invoice_total,
+                   :tax_calculated_on_pre_discount_invoice_total
                  )
 
         # @!attribute [rw] duty_tax_amount
@@ -79,13 +77,11 @@ module Increase
         # @!attribute [rw] tax_treatments
         required :tax_treatments,
                  Increase::Enum.new(
-                   [
-                     :no_tax_applies,
-                     :net_price_line_item_level,
-                     :net_price_invoice_level,
-                     :gross_price_line_item_level,
-                     :gross_price_invoice_level
-                   ]
+                   :no_tax_applies,
+                   :net_price_line_item_level,
+                   :net_price_invoice_level,
+                   :gross_price_line_item_level,
+                   :gross_price_invoice_level
                  )
 
         # @!attribute [rw] unique_value_added_tax_invoice_reference
@@ -94,7 +90,7 @@ module Increase
 
       class LineItem < BaseModel
         # @!attribute [rw] detail_indicator
-        required :detail_indicator, Increase::Enum.new([:normal, :credit, :payment])
+        required :detail_indicator, Increase::Enum.new(:normal, :credit, :payment)
 
         # @!attribute [rw] discount_amount
         required :discount_amount, Integer
@@ -105,11 +101,9 @@ module Increase
         # @!attribute [rw] discount_treatment_code
         required :discount_treatment_code,
                  Increase::Enum.new(
-                   [
-                     :no_line_item_level_discount_provided,
-                     :tax_calculated_on_post_discount_line_item_total,
-                     :tax_calculated_on_pre_discount_line_item_total
-                   ]
+                   :no_line_item_level_discount_provided,
+                   :tax_calculated_on_post_discount_line_item_total,
+                   :tax_calculated_on_pre_discount_line_item_total
                  )
 
         # @!attribute [rw] item_commodity_code

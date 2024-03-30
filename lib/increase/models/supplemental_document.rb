@@ -13,7 +13,7 @@ module Increase
       required :idempotency_key, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:entity_supplemental_document])
+      required :type, Increase::Enum.new(:entity_supplemental_document)
     end
   end
 end

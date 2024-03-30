@@ -76,7 +76,7 @@ module Increase
 
     # NB we don't do runtime validation, so `options` is just an FYI
     # for the reader.
-    def initialize(options)
+    def initialize(*options)
       @options = options
     end
 

@@ -8,7 +8,7 @@ module Increase
 
       # @!attribute [rw] category
       required :category,
-               Increase::Enum.new([:form_1099_int, :proof_of_authorization, :company_information])
+               Increase::Enum.new(:form_1099_int, :proof_of_authorization, :company_information)
 
       # @!attribute [rw] created_at
       required :created_at, String
@@ -20,7 +20,7 @@ module Increase
       required :file_id, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:document])
+      required :type, Increase::Enum.new(:document)
     end
   end
 end

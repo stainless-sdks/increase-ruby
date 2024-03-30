@@ -19,7 +19,7 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] currency
-      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
       # @!attribute [rw] description
       required :description, String
@@ -28,16 +28,16 @@ module Increase
       required :route_id, String
 
       # @!attribute [rw] route_type
-      required :route_type, Increase::Enum.new([:account_number, :card])
+      required :route_type, Increase::Enum.new(:account_number, :card)
 
       # @!attribute [rw] source
       required :source, -> { Increase::Models::PendingTransaction::Source }
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending, :complete])
+      required :status, Increase::Enum.new(:pending, :complete)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:pending_transaction])
+      required :type, Increase::Enum.new(:pending_transaction)
 
       class Source < BaseModel
         # @!attribute [rw] account_transfer_instruction
@@ -61,17 +61,15 @@ module Increase
         # @!attribute [rw] category
         required :category,
                  Increase::Enum.new(
-                   [
-                     :account_transfer_instruction,
-                     :ach_transfer_instruction,
-                     :card_authorization,
-                     :check_deposit_instruction,
-                     :check_transfer_instruction,
-                     :inbound_funds_hold,
-                     :real_time_payments_transfer_instruction,
-                     :wire_transfer_instruction,
-                     :other
-                   ]
+                   :account_transfer_instruction,
+                   :ach_transfer_instruction,
+                   :card_authorization,
+                   :check_deposit_instruction,
+                   :check_transfer_instruction,
+                   :inbound_funds_hold,
+                   :real_time_payments_transfer_instruction,
+                   :wire_transfer_instruction,
+                   :other
                  )
 
         # @!attribute [rw] check_deposit_instruction
@@ -109,7 +107,7 @@ module Increase
           required :amount, Integer
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] transfer_id
           required :transfer_id, String
@@ -128,7 +126,7 @@ module Increase
           required :id, String
 
           # @!attribute [rw] actioner
-          required :actioner, Increase::Enum.new([:user, :increase, :network])
+          required :actioner, Increase::Enum.new(:user, :increase, :network)
 
           # @!attribute [rw] amount
           required :amount, Integer
@@ -137,13 +135,13 @@ module Increase
           required :card_payment_id, String
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] digital_wallet_token_id
           required :digital_wallet_token_id, String
 
           # @!attribute [rw] direction
-          required :direction, Increase::Enum.new([:settlement, :refund])
+          required :direction, Increase::Enum.new(:settlement, :refund)
 
           # @!attribute [rw] expires_at
           required :expires_at, String
@@ -187,21 +185,19 @@ module Increase
           # @!attribute [rw] processing_category
           required :processing_category,
                    Increase::Enum.new(
-                     [
-                       :account_funding,
-                       :automatic_fuel_dispenser,
-                       :bill_payment,
-                       :purchase,
-                       :quasi_cash,
-                       :refund
-                     ]
+                     :account_funding,
+                     :automatic_fuel_dispenser,
+                     :bill_payment,
+                     :purchase,
+                     :quasi_cash,
+                     :refund
                    )
 
           # @!attribute [rw] real_time_decision_id
           required :real_time_decision_id, String
 
           # @!attribute [rw] type
-          required :type, Increase::Enum.new([:card_authorization])
+          required :type, Increase::Enum.new(:card_authorization)
 
           # @!attribute [rw] verification
           required :verification,
@@ -211,7 +207,7 @@ module Increase
 
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
-            required :category, Increase::Enum.new([:visa])
+            required :category, Increase::Enum.new(:visa)
 
             # @!attribute [rw] visa
             required :visa,
@@ -223,33 +219,29 @@ module Increase
               # @!attribute [rw] electronic_commerce_indicator
               required :electronic_commerce_indicator,
                        Increase::Enum.new(
-                         [
-                           :mail_phone_order,
-                           :recurring,
-                           :installment,
-                           :unknown_mail_phone_order,
-                           :secure_electronic_commerce,
-                           :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                           :non_authenticated_security_transaction,
-                           :non_secure_transaction
-                         ]
+                         :mail_phone_order,
+                         :recurring,
+                         :installment,
+                         :unknown_mail_phone_order,
+                         :secure_electronic_commerce,
+                         :non_authenticated_security_transaction_at_3ds_capable_merchant,
+                         :non_authenticated_security_transaction,
+                         :non_secure_transaction
                        )
 
               # @!attribute [rw] point_of_service_entry_mode
               required :point_of_service_entry_mode,
                        Increase::Enum.new(
-                         [
-                           :unknown,
-                           :manual,
-                           :magnetic_stripe_no_cvv,
-                           :optical_code,
-                           :integrated_circuit_card,
-                           :contactless,
-                           :credential_on_file,
-                           :magnetic_stripe,
-                           :contactless_magnetic_stripe,
-                           :integrated_circuit_card_no_cvv
-                         ]
+                         :unknown,
+                         :manual,
+                         :magnetic_stripe_no_cvv,
+                         :optical_code,
+                         :integrated_circuit_card,
+                         :contactless,
+                         :credential_on_file,
+                         :magnetic_stripe,
+                         :contactless_magnetic_stripe,
+                         :integrated_circuit_card_no_cvv
                        )
             end
           end
@@ -280,7 +272,7 @@ module Increase
 
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
-              required :result, Increase::Enum.new([:not_checked, :match, :no_match])
+              required :result, Increase::Enum.new(:not_checked, :match, :no_match)
             end
 
             class CardholderAddress < BaseModel
@@ -299,14 +291,12 @@ module Increase
               # @!attribute [rw] result
               required :result,
                        Increase::Enum.new(
-                         [
-                           :not_checked,
-                           :postal_code_match_address_not_checked,
-                           :postal_code_match_address_no_match,
-                           :postal_code_no_match_address_match,
-                           :match,
-                           :no_match
-                         ]
+                         :not_checked,
+                         :postal_code_match_address_not_checked,
+                         :postal_code_match_address_no_match,
+                         :postal_code_no_match_address_match,
+                         :match,
+                         :no_match
                        )
             end
           end
@@ -323,7 +313,7 @@ module Increase
           required :check_deposit_id, String
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] front_image_file_id
           required :front_image_file_id, String
@@ -334,7 +324,7 @@ module Increase
           required :amount, Integer
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] transfer_id
           required :transfer_id, String
@@ -354,7 +344,7 @@ module Increase
           required :created_at, String
 
           # @!attribute [rw] currency
-          required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
           # @!attribute [rw] held_transaction_id
           required :held_transaction_id, String
@@ -366,10 +356,10 @@ module Increase
           required :released_at, String
 
           # @!attribute [rw] status
-          required :status, Increase::Enum.new([:held, :complete])
+          required :status, Increase::Enum.new(:held, :complete)
 
           # @!attribute [rw] type
-          required :type, Increase::Enum.new([:inbound_funds_hold])
+          required :type, Increase::Enum.new(:inbound_funds_hold)
         end
 
         class RealTimePaymentsTransferInstruction < BaseModel

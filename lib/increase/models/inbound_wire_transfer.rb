@@ -67,10 +67,10 @@ module Increase
       required :originator_to_beneficiary_information_line4, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending, :accepted, :declined, :reversed])
+      required :status, Increase::Enum.new(:pending, :accepted, :declined, :reversed)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:inbound_wire_transfer])
+      required :type, Increase::Enum.new(:inbound_wire_transfer)
     end
   end
 end

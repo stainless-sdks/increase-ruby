@@ -19,7 +19,7 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] creator
-      required :creator, Increase::Enum.new([:increase, :user])
+      required :creator, Increase::Enum.new(:increase, :user)
 
       # @!attribute [rw] description
       required :description, String
@@ -36,18 +36,16 @@ module Increase
       # @!attribute [rw] status
       required :status,
                Increase::Enum.new(
-                 [
-                   :pending_creating,
-                   :pending_reviewing,
-                   :rejected,
-                   :pending_submitting,
-                   :active,
-                   :archived
-                 ]
+                 :pending_creating,
+                 :pending_reviewing,
+                 :rejected,
+                 :pending_submitting,
+                 :active,
+                 :archived
                )
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:physical_card_profile])
+      required :type, Increase::Enum.new(:physical_card_profile)
     end
   end
 end

@@ -25,10 +25,10 @@ module Increase
       required :shipment, -> { Increase::Models::PhysicalCard::Shipment }
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:active, :disabled, :canceled])
+      required :status, Increase::Enum.new(:active, :disabled, :canceled)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:physical_card])
+      required :type, Increase::Enum.new(:physical_card)
 
       class Cardholder < BaseModel
         # @!attribute [rw] first_name
@@ -43,20 +43,18 @@ module Increase
         required :address, -> { Increase::Models::PhysicalCard::Shipment::Address }
 
         # @!attribute [rw] method_
-        required :method_, Increase::Enum.new([:usps, :fedex_priority_overnight, :fedex_2_day])
+        required :method_, Increase::Enum.new(:usps, :fedex_priority_overnight, :fedex_2_day)
 
         # @!attribute [rw] status
         required :status,
                  Increase::Enum.new(
-                   [
-                     :pending,
-                     :canceled,
-                     :submitted,
-                     :acknowledged,
-                     :rejected,
-                     :shipped,
-                     :returned
-                   ]
+                   :pending,
+                   :canceled,
+                   :submitted,
+                   :acknowledged,
+                   :rejected,
+                   :shipped,
+                   :returned
                  )
 
         # @!attribute [rw] tracking

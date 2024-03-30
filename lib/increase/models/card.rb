@@ -37,10 +37,10 @@ module Increase
       required :last4, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:active, :disabled, :canceled])
+      required :status, Increase::Enum.new(:active, :disabled, :canceled)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:card])
+      required :type, Increase::Enum.new(:card)
 
       class BillingAddress < BaseModel
         # @!attribute [rw] city

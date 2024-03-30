@@ -28,7 +28,7 @@ module Increase
       required :decline, -> { Increase::Models::InboundACHTransfer::Decline }
 
       # @!attribute [rw] direction
-      required :direction, Increase::Enum.new([:credit, :debit])
+      required :direction, Increase::Enum.new(:credit, :debit)
 
       # @!attribute [rw] notification_of_change
       required :notification_of_change, -> { Increase::Models::InboundACHTransfer::NotificationOfChange }
@@ -58,7 +58,7 @@ module Increase
       required :receiver_name, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending, :declined, :accepted, :returned])
+      required :status, Increase::Enum.new(:pending, :declined, :accepted, :returned)
 
       # @!attribute [rw] trace_number
       required :trace_number, String
@@ -67,7 +67,7 @@ module Increase
       required :transfer_return, -> { Increase::Models::InboundACHTransfer::TransferReturn }
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:inbound_ach_transfer])
+      required :type, Increase::Enum.new(:inbound_ach_transfer)
 
       class Acceptance < BaseModel
         # @!attribute [rw] accepted_at
@@ -79,7 +79,7 @@ module Increase
 
       class Addenda < BaseModel
         # @!attribute [rw] category
-        required :category, Increase::Enum.new([:freeform])
+        required :category, Increase::Enum.new(:freeform)
 
         # @!attribute [rw] freeform
         required :freeform, -> { Increase::Models::InboundACHTransfer::Addenda::Freeform }
@@ -110,22 +110,20 @@ module Increase
         # @!attribute [rw] reason
         required :reason,
                  Increase::Enum.new(
-                   [
-                     :ach_route_canceled,
-                     :ach_route_disabled,
-                     :breaches_limit,
-                     :credit_entry_refused_by_receiver,
-                     :duplicate_return,
-                     :entity_not_active,
-                     :group_locked,
-                     :insufficient_funds,
-                     :misrouted_return,
-                     :return_of_erroneous_or_reversing_debit,
-                     :no_ach_route,
-                     :originator_request,
-                     :transaction_not_allowed,
-                     :user_initiated
-                   ]
+                   :ach_route_canceled,
+                   :ach_route_disabled,
+                   :breaches_limit,
+                   :credit_entry_refused_by_receiver,
+                   :duplicate_return,
+                   :entity_not_active,
+                   :group_locked,
+                   :insufficient_funds,
+                   :misrouted_return,
+                   :return_of_erroneous_or_reversing_debit,
+                   :no_ach_route,
+                   :originator_request,
+                   :transaction_not_allowed,
+                   :user_initiated
                  )
       end
 
@@ -141,17 +139,15 @@ module Increase
         # @!attribute [rw] reason
         required :reason,
                  Increase::Enum.new(
-                   [
-                     :returned_per_odfi_request,
-                     :authorization_revoked_by_customer,
-                     :payment_stopped,
-                     :customer_advised_unauthorized_improper_ineligible_or_incomplete,
-                     :representative_payee_deceased_or_unable_to_continue_in_that_capacity,
-                     :beneficiary_or_account_holder_deceased,
-                     :credit_entry_refused_by_receiver,
-                     :duplicate_entry,
-                     :corporate_customer_advised_not_authorized
-                   ]
+                   :returned_per_odfi_request,
+                   :authorization_revoked_by_customer,
+                   :payment_stopped,
+                   :customer_advised_unauthorized_improper_ineligible_or_incomplete,
+                   :representative_payee_deceased_or_unable_to_continue_in_that_capacity,
+                   :beneficiary_or_account_holder_deceased,
+                   :credit_entry_refused_by_receiver,
+                   :duplicate_entry,
+                   :corporate_customer_advised_not_authorized
                  )
 
         # @!attribute [rw] returned_at

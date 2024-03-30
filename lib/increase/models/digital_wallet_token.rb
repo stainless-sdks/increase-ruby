@@ -13,13 +13,13 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:active, :inactive, :suspended, :deactivated])
+      required :status, Increase::Enum.new(:active, :inactive, :suspended, :deactivated)
 
       # @!attribute [rw] token_requestor
-      required :token_requestor, Increase::Enum.new([:apple_pay, :google_pay, :unknown])
+      required :token_requestor, Increase::Enum.new(:apple_pay, :google_pay, :unknown)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:digital_wallet_token])
+      required :type, Increase::Enum.new(:digital_wallet_token)
     end
   end
 end

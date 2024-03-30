@@ -18,17 +18,15 @@ module Increase
       # @!attribute [rw] status
       required :status,
                Increase::Enum.new(
-                 [
-                   :pending_enrolling,
-                   :enrolled,
-                   :pending_unenrolling,
-                   :unenrolled,
-                   :requires_attention
-                 ]
+                 :pending_enrolling,
+                 :enrolled,
+                 :pending_unenrolling,
+                 :unenrolled,
+                 :requires_attention
                )
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:intrafi_account_enrollment])
+      required :type, Increase::Enum.new(:intrafi_account_enrollment)
     end
   end
 end

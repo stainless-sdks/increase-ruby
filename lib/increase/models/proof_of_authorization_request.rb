@@ -21,7 +21,7 @@ module Increase
       required :due_on, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:proof_of_authorization_request])
+      required :type, Increase::Enum.new(:proof_of_authorization_request)
 
       # @!attribute [rw] updated_at
       required :updated_at, String

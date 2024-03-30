@@ -7,7 +7,7 @@ module Increase
       required :balances, Increase::ArrayOf.new(-> { Increase::Models::IntrafiBalance::Balance })
 
       # @!attribute [rw] currency
-      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
       # @!attribute [rw] effective_date
       required :effective_date, String
@@ -16,7 +16,7 @@ module Increase
       required :total_balance, Integer
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:intrafi_balance])
+      required :type, Increase::Enum.new(:intrafi_balance)
 
       class Balance < BaseModel
         # @!attribute [rw] balance

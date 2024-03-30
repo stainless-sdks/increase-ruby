@@ -19,7 +19,7 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] currency
-      required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
       # @!attribute [rw] deposit_acceptance
       required :deposit_acceptance, -> { Increase::Models::CheckDeposit::DepositAcceptance }
@@ -40,13 +40,13 @@ module Increase
       required :idempotency_key, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending, :submitted, :rejected, :returned])
+      required :status, Increase::Enum.new(:pending, :submitted, :rejected, :returned)
 
       # @!attribute [rw] transaction_id
       required :transaction_id, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:check_deposit])
+      required :type, Increase::Enum.new(:check_deposit)
 
       class DepositAcceptance < BaseModel
         # @!attribute [rw] account_number
@@ -62,7 +62,7 @@ module Increase
         required :check_deposit_id, String
 
         # @!attribute [rw] currency
-        required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+        required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
         # @!attribute [rw] routing_number
         required :routing_number, String
@@ -76,23 +76,21 @@ module Increase
         required :amount, Integer
 
         # @!attribute [rw] currency
-        required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+        required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
         # @!attribute [rw] reason
         required :reason,
                  Increase::Enum.new(
-                   [
-                     :incomplete_image,
-                     :duplicate,
-                     :poor_image_quality,
-                     :incorrect_amount,
-                     :incorrect_recipient,
-                     :not_eligible_for_mobile_deposit,
-                     :missing_required_data_elements,
-                     :suspected_fraud,
-                     :deposit_window_expired,
-                     :unknown
-                   ]
+                   :incomplete_image,
+                   :duplicate,
+                   :poor_image_quality,
+                   :incorrect_amount,
+                   :incorrect_recipient,
+                   :not_eligible_for_mobile_deposit,
+                   :missing_required_data_elements,
+                   :suspected_fraud,
+                   :deposit_window_expired,
+                   :unknown
                  )
 
         # @!attribute [rw] rejected_at
@@ -107,39 +105,37 @@ module Increase
         required :check_deposit_id, String
 
         # @!attribute [rw] currency
-        required :currency, Increase::Enum.new([:CAD, :CHF, :EUR, :GBP, :JPY, :USD])
+        required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
         # @!attribute [rw] return_reason
         required :return_reason,
                  Increase::Enum.new(
-                   [
-                     :ach_conversion_not_supported,
-                     :closed_account,
-                     :duplicate_submission,
-                     :insufficient_funds,
-                     :no_account,
-                     :not_authorized,
-                     :stale_dated,
-                     :stop_payment,
-                     :unknown_reason,
-                     :unmatched_details,
-                     :unreadable_image,
-                     :endorsement_irregular,
-                     :altered_or_fictitious_item,
-                     :frozen_or_blocked_account,
-                     :post_dated,
-                     :endorsement_missing,
-                     :signature_missing,
-                     :stop_payment_suspect,
-                     :unusable_image,
-                     :image_fails_security_check,
-                     :cannot_determine_amount,
-                     :signature_irregular,
-                     :non_cash_item,
-                     :unable_to_process,
-                     :item_exceeds_dollar_limit,
-                     :branch_or_account_sold
-                   ]
+                   :ach_conversion_not_supported,
+                   :closed_account,
+                   :duplicate_submission,
+                   :insufficient_funds,
+                   :no_account,
+                   :not_authorized,
+                   :stale_dated,
+                   :stop_payment,
+                   :unknown_reason,
+                   :unmatched_details,
+                   :unreadable_image,
+                   :endorsement_irregular,
+                   :altered_or_fictitious_item,
+                   :frozen_or_blocked_account,
+                   :post_dated,
+                   :endorsement_missing,
+                   :signature_missing,
+                   :stop_payment_suspect,
+                   :unusable_image,
+                   :image_fails_security_check,
+                   :cannot_determine_amount,
+                   :signature_irregular,
+                   :non_cash_item,
+                   :unable_to_process,
+                   :item_exceeds_dollar_limit,
+                   :branch_or_account_sold
                  )
 
         # @!attribute [rw] returned_at

@@ -37,10 +37,10 @@ module Increase
       required :proof_of_authorization_request_id, String
 
       # @!attribute [rw] status
-      required :status, Increase::Enum.new([:pending_review, :rejected, :pending_sending, :sent])
+      required :status, Increase::Enum.new(:pending_review, :rejected, :pending_sending, :sent)
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:proof_of_authorization_request_submission])
+      required :type, Increase::Enum.new(:proof_of_authorization_request_submission)
 
       # @!attribute [rw] updated_at
       required :updated_at, String

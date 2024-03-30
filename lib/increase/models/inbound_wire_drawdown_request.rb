@@ -67,7 +67,7 @@ module Increase
       required :recipient_account_number_id, String
 
       # @!attribute [rw] type
-      required :type, Increase::Enum.new([:inbound_wire_drawdown_request])
+      required :type, Increase::Enum.new(:inbound_wire_drawdown_request)
     end
   end
 end
