@@ -7,7 +7,6 @@ module Increase
     attr_reader(
       :api_key,
       :webhook_secret,
-      :default_params,
       :accounts,
       :account_numbers,
       :bookkeeping_accounts,
@@ -64,8 +63,7 @@ module Increase
     # Creates and returns a new client for interacting with the API.
     def initialize(environment: nil, api_key: nil, webhook_secret: nil, base_url: nil, max_retries: nil)
       environments = {production: "https://api.increase.com", sandbox: "https://sandbox.increase.com"}
-      @default_headers = {}
-      @default_params = {}
+      default_headers = {}
       @api_key = [
         api_key, ENV["INCREASE_API_KEY"]
       ].find { |value| !value.nil? }
@@ -73,7 +71,7 @@ module Increase
         webhook_secret, ENV["INCREASE_WEBHOOK_SECRET"]
       ].find { |value| !value.nil? }
       server_uri_string = environments[environment&.to_sym] || base_url
-      super(server_uri_string: server_uri_string, headers: @default_headers, max_retries: max_retries || DEFAULT_MAX_RETRIES, idempotency_header: "Idempotency-Key")
+      super(server_uri_string: server_uri_string, headers: default_headers, max_retries: max_retries || DEFAULT_MAX_RETRIES, idempotency_header: "Idempotency-Key")
 
       @accounts = Increase::Resources::Accounts.new(client: self)
       @account_numbers = Increase::Resources::AccountNumbers.new(client: self)
