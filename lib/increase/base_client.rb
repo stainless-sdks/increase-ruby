@@ -3,7 +3,9 @@
 module Increase
   # @!visibility private
   class BaseClient
-    attr_accessor :requester
+    attr_accessor :requester, :idempotency_header
+
+    NO_IDEMPOTENCY_KEY_METHODS = [:get, :head, :options]
 
     def initialize(
       server_uri_string:,
@@ -19,7 +21,7 @@ module Increase
       @port = env_uri.port
       @base_path = self.class.normalize_path env_uri.path
       @max_retries = max_retries || 0
-      @idempotency_header = idempotency_header
+      self.idempotency_header = idempotency_header
     end
 
     def auth_headers
@@ -86,8 +88,8 @@ module Increase
         full_headers = Util.deep_merge(full_headers, options[:extra_headers])
       end
 
-      if @idempotency_header && !headers[@idempotency_header] && method.to_sym != :get
-        full_headers[@idempotency_header] = options[:idempotency_key] || generate_idempotency_key
+      if idempotency_header && !headers[idempotency_header] && !NO_IDEMPOTENCY_KEY_METHODS.include?(method)
+        full_headers[idempotency_header] = options[:idempotency_key] || generate_idempotency_key
       end
 
       {
@@ -186,7 +188,7 @@ module Increase
       request_max_retries = max_retries || @max_retries
       loop do
         begin
-          response = @requester.execute request
+          response = @requester.execute(request)
           is_ok = response.code.to_i < 400
           return response if is_ok
         rescue Net::HTTPBadResponse

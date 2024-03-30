@@ -73,7 +73,7 @@ module Increase
         webhook_secret, ENV["INCREASE_WEBHOOK_SECRET"]
       ].find { |value| !value.nil? }
       server_uri_string = environments[environment&.to_sym] || base_url
-      super(server_uri_string: server_uri_string, headers: @default_headers, max_retries: max_retries || DEFAULT_MAX_RETRIES)
+      super(server_uri_string: server_uri_string, headers: @default_headers, max_retries: max_retries || DEFAULT_MAX_RETRIES, idempotency_header: "Idempotency-Key")
 
       @accounts = Increase::Resources::Accounts.new(client: self)
       @account_numbers = Increase::Resources::AccountNumbers.new(client: self)
@@ -121,7 +121,6 @@ module Increase
       @inbound_wire_transfers = Increase::Resources::InboundWireTransfers.new(client: self)
       @digital_card_profiles = Increase::Resources::DigitalCardProfiles.new(client: self)
       @physical_card_profiles = Increase::Resources::PhysicalCardProfiles.new(client: self)
-      @idempotency_header = "Idempotency-Key"
     end
 
     # @!visibility private
