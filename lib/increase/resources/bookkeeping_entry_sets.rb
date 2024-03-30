@@ -22,8 +22,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/bookkeeping_entry_sets"
-        body_params = [:entries, :date, :transaction_id]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::BookkeepingEntrySet
         request.merge!(opts)
         @client.request(request)

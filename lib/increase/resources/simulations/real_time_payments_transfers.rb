@@ -25,8 +25,7 @@ module Increase
           request[:method] = :post
           request[:path] =
             "/simulations/real_time_payments_transfers/#{real_time_payments_transfer_id}/complete"
-          body_params = [:rejection]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::RealTimePaymentsTransfer
           request.merge!(opts)
           @client.request(request)
@@ -52,16 +51,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/inbound_real_time_payments_transfers"
-          body_params = [
-            :account_number_id,
-            :amount,
-            :debtor_account_number,
-            :debtor_name,
-            :debtor_routing_number,
-            :remittance_information,
-            :request_for_payment_id
-          ]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::InboundRealTimePaymentsTransferSimulationResult
           request.merge!(opts)
           @client.request(request)

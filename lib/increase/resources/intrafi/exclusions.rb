@@ -21,8 +21,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/intrafi_exclusions"
-          body_params = [:bank_name, :entity_id]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::IntrafiExclusion
           request.merge!(opts)
           @client.request(request)

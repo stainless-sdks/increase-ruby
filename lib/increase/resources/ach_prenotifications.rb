@@ -33,21 +33,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/ach_prenotifications"
-        body_params = [
-          :account_number,
-          :routing_number,
-          :addendum,
-          :company_descriptive_date,
-          :company_discretionary_data,
-          :company_entry_description,
-          :company_name,
-          :credit_debit_indicator,
-          :effective_date,
-          :individual_id,
-          :individual_name,
-          :standard_entry_class_code
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::ACHPrenotification
         request.merge!(opts)
         @client.request(request)

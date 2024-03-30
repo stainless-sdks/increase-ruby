@@ -24,8 +24,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/check_deposits"
-        body_params = [:account_id, :amount, :back_image_file_id, :currency, :front_image_file_id]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::CheckDeposit
         request.merge!(opts)
         @client.request(request)

@@ -23,8 +23,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/account_numbers"
-        body_params = [:account_id, :name, :inbound_ach, :inbound_checks]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::AccountNumber
         request.merge!(opts)
         @client.request(request)
@@ -63,8 +62,7 @@ module Increase
         request = {}
         request[:method] = :patch
         request[:path] = "/account_numbers/#{account_number_id}"
-        body_params = [:inbound_ach, :inbound_checks, :name, :status]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::AccountNumber
         request.merge!(opts)
         @client.request(request)

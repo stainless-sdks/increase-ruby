@@ -22,8 +22,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/bookkeeping_accounts"
-        body_params = [:name, :account_id, :compliance_category, :entity_id]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::BookkeepingAccount
         request.merge!(opts)
         @client.request(request)
@@ -43,8 +42,7 @@ module Increase
         request = {}
         request[:method] = :patch
         request[:path] = "/bookkeeping_accounts/#{bookkeeping_account_id}"
-        body_params = [:name]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::BookkeepingAccount
         request.merge!(opts)
         @client.request(request)
@@ -64,8 +62,7 @@ module Increase
         request = {}
         request[:method] = :get
         request[:path] = "/bookkeeping_accounts/#{bookkeeping_account_id}/balance"
-        query_params = [:at_time]
-        request[:query] = params.filter { |k, _| query_params.include?(k) }
+        request[:query] = params
         request[:model] = Increase::Models::BookkeepingBalanceLookup
         request.merge!(opts)
         @client.request(request)

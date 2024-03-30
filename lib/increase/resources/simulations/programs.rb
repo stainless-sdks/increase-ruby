@@ -22,8 +22,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/programs"
-          body_params = [:name]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::Program
           request.merge!(opts)
           @client.request(request)

@@ -40,19 +40,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/card_authorizations"
-          body_params = [
-            :amount,
-            :card_id,
-            :digital_wallet_token_id,
-            :event_subscription_id,
-            :merchant_acceptor_id,
-            :merchant_category_code,
-            :merchant_city,
-            :merchant_country,
-            :merchant_descriptor,
-            :physical_card_id
-          ]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::CardAuthorizationSimulation
           request.merge!(opts)
           @client.request(request)
@@ -78,8 +66,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/card_settlements"
-          body_params = [:card_id, :pending_transaction_id, :amount]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::Transaction
           request.merge!(opts)
           @client.request(request)

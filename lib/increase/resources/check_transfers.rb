@@ -27,15 +27,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/check_transfers"
-        body_params = [
-          :account_id,
-          :amount,
-          :source_account_number_id,
-          :fulfillment_method,
-          :physical_check,
-          :require_approval
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::CheckTransfer
         request.merge!(opts)
         @client.request(request)
@@ -100,8 +92,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/check_transfers/#{check_transfer_id}/stop_payment"
-        body_params = [:reason]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::CheckTransfer
         request.merge!(opts)
         @client.request(request)

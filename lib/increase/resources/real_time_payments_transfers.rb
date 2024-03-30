@@ -34,20 +34,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/real_time_payments_transfers"
-        body_params = [
-          :amount,
-          :creditor_name,
-          :remittance_information,
-          :source_account_number_id,
-          :debtor_name,
-          :destination_account_number,
-          :destination_routing_number,
-          :external_account_id,
-          :require_approval,
-          :ultimate_creditor_name,
-          :ultimate_debtor_name
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::RealTimePaymentsTransfer
         request.merge!(opts)
         @client.request(request)

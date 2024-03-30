@@ -20,8 +20,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/documents"
-          body_params = [:account_id]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::Document
           request.merge!(opts)
           @client.request(request)

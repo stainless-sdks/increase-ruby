@@ -49,25 +49,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/inbound_wire_transfers"
-          body_params = [
-            :account_number_id,
-            :amount,
-            :beneficiary_address_line1,
-            :beneficiary_address_line2,
-            :beneficiary_address_line3,
-            :beneficiary_name,
-            :beneficiary_reference,
-            :originator_address_line1,
-            :originator_address_line2,
-            :originator_address_line3,
-            :originator_name,
-            :originator_routing_number,
-            :originator_to_beneficiary_information_line1,
-            :originator_to_beneficiary_information_line2,
-            :originator_to_beneficiary_information_line3,
-            :originator_to_beneficiary_information_line4
-          ]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::InboundWireTransfer
           request.merge!(opts)
           @client.request(request)

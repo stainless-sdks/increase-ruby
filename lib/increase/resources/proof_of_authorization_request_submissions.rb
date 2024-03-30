@@ -29,20 +29,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/proof_of_authorization_request_submissions"
-        body_params = [
-          :authorization_terms,
-          :authorized_at,
-          :authorizer_email,
-          :authorizer_name,
-          :customer_has_been_offboarded,
-          :proof_of_authorization_request_id,
-          :validated_account_ownership_via_credential,
-          :validated_account_ownership_with_account_statement,
-          :validated_account_ownership_with_microdeposit,
-          :authorizer_company,
-          :authorizer_ip_address
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
         request.merge!(opts)
         @client.request(request)

@@ -22,8 +22,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/entity_beneficial_owners"
-          body_params = [:beneficial_owner, :entity_id]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::Entity
           request.merge!(opts)
           @client.request(request)
@@ -43,8 +42,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/entity_beneficial_owners/archive"
-          body_params = [:beneficial_owner_id, :entity_id]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::Entity
           request.merge!(opts)
           @client.request(request)
@@ -66,8 +64,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/entity_beneficial_owners/address"
-          body_params = [:address, :beneficial_owner_id, :entity_id]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::Entity
           request.merge!(opts)
           @client.request(request)

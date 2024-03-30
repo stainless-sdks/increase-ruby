@@ -23,8 +23,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/event_subscriptions"
-        body_params = [:url, :selected_event_category, :shared_secret]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::EventSubscription
         request.merge!(opts)
         @client.request(request)
@@ -59,8 +58,7 @@ module Increase
         request = {}
         request[:method] = :patch
         request[:path] = "/event_subscriptions/#{event_subscription_id}"
-        body_params = [:status]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::EventSubscription
         request.merge!(opts)
         @client.request(request)

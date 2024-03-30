@@ -21,8 +21,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/account_statements"
-          body_params = [:account_id]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::AccountStatement
           request.merge!(opts)
           @client.request(request)

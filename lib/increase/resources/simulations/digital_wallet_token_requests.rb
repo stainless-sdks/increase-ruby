@@ -21,8 +21,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/digital_wallet_token_requests"
-          body_params = [:card_id]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::DigitalWalletTokenRequestCreateResponse
           request.merge!(opts)
           @client.request(request)

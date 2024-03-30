@@ -54,8 +54,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/simulations/card_authorization_expirations"
-        body_params = [:card_payment_id]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::CardPayment
         request.merge!(opts)
         @client.request(request)
@@ -77,8 +76,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/simulations/card_fuel_confirmations"
-        body_params = [:amount, :card_payment_id]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::CardPayment
         request.merge!(opts)
         @client.request(request)
@@ -102,8 +100,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/simulations/card_increments"
-        body_params = [:amount, :card_payment_id, :event_subscription_id]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::CardPayment
         request.merge!(opts)
         @client.request(request)
@@ -126,8 +123,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/simulations/card_reversals"
-        body_params = [:card_payment_id, :amount]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::CardPayment
         request.merge!(opts)
         @client.request(request)

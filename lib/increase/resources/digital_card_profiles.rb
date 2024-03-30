@@ -27,18 +27,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/digital_card_profiles"
-        body_params = [
-          :app_icon_file_id,
-          :background_image_file_id,
-          :card_description,
-          :description,
-          :issuer_name,
-          :contact_email,
-          :contact_phone,
-          :contact_website,
-          :text_color
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::DigitalCardProfile
         request.merge!(opts)
         @client.request(request)
@@ -96,18 +85,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/digital_card_profiles/#{digital_card_profile_id}/clone"
-        body_params = [
-          :app_icon_file_id,
-          :background_image_file_id,
-          :card_description,
-          :contact_email,
-          :contact_phone,
-          :contact_website,
-          :description,
-          :issuer_name,
-          :text_color
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::DigitalCardProfile
         request.merge!(opts)
         @client.request(request)

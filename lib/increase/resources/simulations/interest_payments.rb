@@ -24,8 +24,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/interest_payment"
-          body_params = [:account_id, :amount, :period_end, :period_start]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::Transaction
           request.merge!(opts)
           @client.request(request)

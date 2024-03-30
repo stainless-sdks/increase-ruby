@@ -53,27 +53,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/ach_transfers"
-        body_params = [
-          :account_id,
-          :amount,
-          :statement_descriptor,
-          :account_number,
-          :addenda,
-          :company_descriptive_date,
-          :company_discretionary_data,
-          :company_entry_description,
-          :company_name,
-          :destination_account_holder,
-          :effective_date,
-          :external_account_id,
-          :funding,
-          :individual_id,
-          :individual_name,
-          :require_approval,
-          :routing_number,
-          :standard_entry_class_code
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::ACHTransfer
         request.merge!(opts)
         @client.request(request)

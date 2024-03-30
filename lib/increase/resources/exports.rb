@@ -28,15 +28,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/exports"
-        body_params = [
-          :category,
-          :account_statement_ofx,
-          :balance_csv,
-          :bookkeeping_account_balance_csv,
-          :entity_csv,
-          :transaction_csv
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::Export
         request.merge!(opts)
         @client.request(request)

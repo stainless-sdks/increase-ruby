@@ -23,8 +23,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/physical_cards"
-        body_params = [:card_id, :cardholder, :shipment, :physical_card_profile_id]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::PhysicalCard
         request.merge!(opts)
         @client.request(request)
@@ -59,8 +58,7 @@ module Increase
         request = {}
         request[:method] = :patch
         request[:path] = "/physical_cards/#{physical_card_id}"
-        body_params = [:status]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::PhysicalCard
         request.merge!(opts)
         @client.request(request)

@@ -22,8 +22,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/physical_card_profiles"
-        body_params = [:carrier_image_file_id, :contact_phone, :description, :front_image_file_id]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::PhysicalCardProfile
         request.merge!(opts)
         @client.request(request)
@@ -78,14 +77,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/physical_card_profiles/#{physical_card_profile_id}/clone"
-        body_params = [
-          :carrier_image_file_id,
-          :contact_phone,
-          :description,
-          :front_image_file_id,
-          :front_text
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::PhysicalCardProfile
         request.merge!(opts)
         @client.request(request)

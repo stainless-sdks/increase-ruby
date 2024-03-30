@@ -24,8 +24,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/physical_cards/#{physical_card_id}/shipment_advance"
-          body_params = [:shipment_status]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::PhysicalCard
           request.merge!(opts)
           @client.request(request)

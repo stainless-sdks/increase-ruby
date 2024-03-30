@@ -39,24 +39,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/wire_transfers"
-        body_params = [
-          :account_id,
-          :amount,
-          :beneficiary_name,
-          :message_to_recipient,
-          :account_number,
-          :beneficiary_address_line1,
-          :beneficiary_address_line2,
-          :beneficiary_address_line3,
-          :external_account_id,
-          :originator_address_line1,
-          :originator_address_line2,
-          :originator_address_line3,
-          :originator_name,
-          :require_approval,
-          :routing_number
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::WireTransfer
         request.merge!(opts)
         @client.request(request)

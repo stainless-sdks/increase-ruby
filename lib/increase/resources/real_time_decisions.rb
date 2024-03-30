@@ -41,8 +41,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/real_time_decisions/#{real_time_decision_id}/action"
-        body_params = [:card_authorization, :digital_wallet_authentication, :digital_wallet_token]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::RealTimeDecision
         request.merge!(opts)
         @client.request(request)

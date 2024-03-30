@@ -24,8 +24,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/account_transfers"
-        body_params = [:account_id, :amount, :description, :destination_account_id, :require_approval]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::AccountTransfer
         request.merge!(opts)
         @client.request(request)

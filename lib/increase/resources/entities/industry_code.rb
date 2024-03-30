@@ -26,8 +26,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/entities/#{entity_id}/industry_code"
-          body_params = [:industry_code]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::Entity
           request.merge!(opts)
           @client.request(request)

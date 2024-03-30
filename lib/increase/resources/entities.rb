@@ -37,17 +37,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/entities"
-        body_params = [
-          :structure,
-          :corporation,
-          :description,
-          :joint,
-          :natural_person,
-          :relationship,
-          :supplemental_documents,
-          :trust
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::Entity
         request.merge!(opts)
         @client.request(request)
@@ -101,8 +91,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/entities/#{entity_id}/confirm"
-        body_params = [:confirmed_at]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::Entity
         request.merge!(opts)
         @client.request(request)
@@ -123,8 +112,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/entities/#{entity_id}/address"
-        body_params = [:address]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::Entity
         request.merge!(opts)
         @client.request(request)

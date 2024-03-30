@@ -24,8 +24,7 @@ module Increase
         request = {}
         request[:method] = :post
         request[:path] = "/accounts"
-        body_params = [:name, :entity_id, :informational_entity_id, :program_id]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::Account
         request.merge!(opts)
         @client.request(request)
@@ -60,8 +59,7 @@ module Increase
         request = {}
         request[:method] = :patch
         request[:path] = "/accounts/#{account_id}"
-        body_params = [:name]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
+        request[:body] = params
         request[:model] = Increase::Models::Account
         request.merge!(opts)
         @client.request(request)
@@ -81,8 +79,7 @@ module Increase
         request = {}
         request[:method] = :get
         request[:path] = "/accounts/#{account_id}/balance"
-        query_params = [:at_time]
-        request[:query] = params.filter { |k, _| query_params.include?(k) }
+        request[:query] = params
         request[:model] = Increase::Models::BalanceLookup
         request.merge!(opts)
         @client.request(request)

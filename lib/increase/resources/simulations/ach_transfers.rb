@@ -41,19 +41,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/inbound_ach_transfers"
-          body_params = [
-            :account_number_id,
-            :amount,
-            :company_descriptive_date,
-            :company_discretionary_data,
-            :company_entry_description,
-            :company_id,
-            :company_name,
-            :receiver_id_number,
-            :receiver_name,
-            :resolve_at
-          ]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::InboundACHTransfer
           request.merge!(opts)
           @client.request(request)
@@ -76,8 +64,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/notification_of_change"
-          body_params = [:change_code, :corrected_data]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::ACHTransfer
           request.merge!(opts)
           @client.request(request)
@@ -100,8 +87,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/return"
-          body_params = [:reason]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::ACHTransfer
           request.merge!(opts)
           @client.request(request)

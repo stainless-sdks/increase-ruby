@@ -21,8 +21,7 @@ module Increase
           request = {}
           request[:method] = :post
           request[:path] = "/intrafi_account_enrollments"
-          body_params = [:account_id, :email_address]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
+          request[:body] = params
           request[:model] = Increase::Models::IntrafiAccountEnrollment
           request.merge!(opts)
           @client.request(request)
