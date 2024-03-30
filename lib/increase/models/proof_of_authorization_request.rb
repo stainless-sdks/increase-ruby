@@ -2,20 +2,7 @@
 
 module Increase
   module Models
-    class ProofOfAuthorizationRequest
-      class ACHTransfers
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] id
-        required :id, String
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class ProofOfAuthorizationRequest < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -38,6 +25,11 @@ module Increase
 
       # @!attribute [rw] updated_at
       required :updated_at, String
+
+      class ACHTransfers < BaseModel
+        # @!attribute [rw] id
+        required :id, String
+      end
     end
   end
 end

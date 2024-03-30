@@ -2,8 +2,8 @@
 
 module Increase
   module Resources
-    module Simulations
-      class CheckTransfersResource
+    class Simulations
+      class CheckTransfers
         def initialize(client:)
           @client = client
         end

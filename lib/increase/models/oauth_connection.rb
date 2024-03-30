@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class OAuthConnection
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class OAuthConnection < BaseModel
       # @!attribute [rw] id
       required :id, String
 

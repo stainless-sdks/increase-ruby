@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class Event
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class Event < BaseModel
       # @!attribute [rw] id
       required :id, String
 

@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class DigitalWalletToken
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class DigitalWalletToken < BaseModel
       # @!attribute [rw] id
       required :id, String
 

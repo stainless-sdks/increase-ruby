@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class CardDetails
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class CardDetails < BaseModel
       # @!attribute [rw] card_id
       required :card_id, String
 

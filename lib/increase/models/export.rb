@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class Export
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class Export < BaseModel
       # @!attribute [rw] id
       required :id, String
 

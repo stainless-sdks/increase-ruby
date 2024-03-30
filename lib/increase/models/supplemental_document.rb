@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class SupplementalDocument
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class SupplementalDocument < BaseModel
       # @!attribute [rw] created_at
       required :created_at, String
 

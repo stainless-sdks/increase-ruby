@@ -2,20 +2,7 @@
 
 module Increase
   module Models
-    class WireDrawdownRequest
-      class Submission
-        extend Increase::Model
-
-        include Increase::Model::Instance
-
-        # @!attribute [rw] input_message_accountability_data
-        required :input_message_accountability_data, String
-      end
-
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class WireDrawdownRequest < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -68,14 +55,18 @@ module Increase
       required :recipient_routing_number, String
 
       # @!attribute [rw] status
-      required :status,
-               Increase::Enum.new([:pending_submission, :pending_response, :fulfilled, :refused])
+      required :status, Increase::Enum.new([:pending_submission, :pending_response, :fulfilled, :refused])
 
       # @!attribute [rw] submission
       required :submission, -> { Increase::Models::WireDrawdownRequest::Submission }
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:wire_drawdown_request])
+
+      class Submission < BaseModel
+        # @!attribute [rw] input_message_accountability_data
+        required :input_message_accountability_data, String
+      end
     end
   end
 end

@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class OAuthToken
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class OAuthToken < BaseModel
       # @!attribute [rw] access_token
       required :access_token, String
 

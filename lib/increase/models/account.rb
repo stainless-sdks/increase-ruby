@@ -2,11 +2,7 @@
 
 module Increase
   module Models
-    class Account
-      extend Increase::Model
-
-      include Increase::Model::Instance
-
+    class Account < BaseModel
       # @!attribute [rw] id
       required :id, String
 
@@ -39,6 +35,9 @@ module Increase
 
       # @!attribute [rw] name_
       required :name_, String
+
+      # @!attribute [rw] program_id
+      required :program_id, String
 
       # @!attribute [rw] status
       required :status, Increase::Enum.new([:open, :closed])
