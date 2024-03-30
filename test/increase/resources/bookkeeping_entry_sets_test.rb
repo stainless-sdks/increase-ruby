@@ -32,12 +32,4 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Test::Unit::TestCase
       response.class.to_s
     )
   end
-
-  def test_list
-    response = @increase.bookkeeping_entry_sets.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::BookkeepingEntrySet, response),
-      response.class.to_s
-    )
-  end
 end

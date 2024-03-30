@@ -59,32 +59,6 @@ module Increase
         @client.request(request)
       end
 
-      # List Card Profiles
-      #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :cursor Return the page of entries after this one.
-      # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      # @option params [Hash] :status
-      #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
-      # @return [Increase::Models::DigitalCardProfile]
-      def list(params = {}, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/digital_card_profiles"
-        query_params = [:cursor, :idempotency_key, :limit, :status]
-        request[:query] = params.filter { |k, _| query_params.include?(k) }
-        request[:model] = Increase::Models::DigitalCardProfile
-        request.merge!(opts)
-        @client.request(request)
-      end
-
       # Archive a Digital Card Profile
       #
       # @param digital_card_profile_id [String] The identifier of the Digital Card Profile to archive.

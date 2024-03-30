@@ -16,7 +16,7 @@ module Increase
       required :line_items,
                Increase::ArrayOf.new(
                  lambda {
-                   Increase::Models::CardPurchaseSupplement::LineItems
+                   Increase::Models::CardPurchaseSupplement::LineItem
                  }
                )
 
@@ -92,7 +92,7 @@ module Increase
         required :unique_value_added_tax_invoice_reference, String
       end
 
-      class LineItems < BaseModel
+      class LineItem < BaseModel
         # @!attribute [rw] detail_indicator
         required :detail_indicator, Increase::Enum.new([:normal, :credit, :payment])
 

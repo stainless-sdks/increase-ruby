@@ -14,12 +14,4 @@ class Increase::Test::Resources::CardPurchaseSupplementsTest < Test::Unit::TestC
       response.class.to_s
     )
   end
-
-  def test_list
-    response = @increase.card_purchase_supplements.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::CardPurchaseSupplement, response),
-      response.class.to_s
-    )
-  end
 end

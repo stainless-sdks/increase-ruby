@@ -28,17 +28,17 @@ module Increase
       required :route_type, Increase::Enum.new([:account_number, :card])
 
       # @!attribute [rw] source
-      required :source, -> { Increase::Models::DeclinedTransaction::ACHDecline }
+      required :source, -> { Increase::Models::DeclinedTransaction::Source }
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:declined_transaction])
 
-      class ACHDecline < BaseModel
+      class Source < BaseModel
         # @!attribute [rw] ach_decline
-        required :ach_decline, -> { Increase::Models::DeclinedTransaction::ACHDecline::ACHDecline }
+        required :ach_decline, -> { Increase::Models::DeclinedTransaction::Source::ACHDecline }
 
         # @!attribute [rw] card_decline
-        required :card_decline, -> { Increase::Models::DeclinedTransaction::ACHDecline::Visa }
+        required :card_decline, -> { Increase::Models::DeclinedTransaction::Source::CardDecline }
 
         # @!attribute [rw] category
         required :category,
@@ -55,25 +55,22 @@ module Increase
                  )
 
         # @!attribute [rw] check_decline
-        required :check_decline,
-                 lambda {
-                   Increase::Models::DeclinedTransaction::ACHDecline::CheckDecline
-                 }
+        required :check_decline, -> { Increase::Models::DeclinedTransaction::Source::CheckDecline }
 
         # @!attribute [rw] inbound_real_time_payments_transfer_decline
         required :inbound_real_time_payments_transfer_decline,
                  lambda {
-                   Increase::Models::DeclinedTransaction::ACHDecline::InboundRealTimePaymentsTransferDecline
+                   Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline
                  }
 
         # @!attribute [rw] international_ach_decline
         required :international_ach_decline,
                  lambda {
-                   Increase::Models::DeclinedTransaction::ACHDecline::InternationalACHDecline
+                   Increase::Models::DeclinedTransaction::Source::InternationalACHDecline
                  }
 
         # @!attribute [rw] wire_decline
-        required :wire_decline, -> { Increase::Models::DeclinedTransaction::ACHDecline::WireDecline }
+        required :wire_decline, -> { Increase::Models::DeclinedTransaction::Source::WireDecline }
 
         class ACHDecline < BaseModel
           # @!attribute [rw] id
@@ -128,7 +125,7 @@ module Increase
           required :type, Increase::Enum.new([:ach_decline])
         end
 
-        class Visa < BaseModel
+        class CardDecline < BaseModel
           # @!attribute [rw] id
           required :id, String
 
@@ -168,13 +165,13 @@ module Increase
           # @!attribute [rw] network_details
           required :network_details,
                    lambda {
-                     Increase::Models::DeclinedTransaction::ACHDecline::Visa::Visa
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails
                    }
 
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
                    lambda {
-                     Increase::Models::DeclinedTransaction::ACHDecline::Visa::NetworkIdentifiers
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers
                    }
 
           # @!attribute [rw] network_risk_score
@@ -223,17 +220,17 @@ module Increase
           # @!attribute [rw] verification
           required :verification,
                    lambda {
-                     Increase::Models::DeclinedTransaction::ACHDecline::Visa::CardVerificationCode
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
                    }
 
-          class Visa < BaseModel
+          class NetworkDetails < BaseModel
             # @!attribute [rw] category
             required :category, Increase::Enum.new([:visa])
 
             # @!attribute [rw] visa
             required :visa,
                      lambda {
-                       Increase::Models::DeclinedTransaction::ACHDecline::Visa::Visa::Visa
+                       Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa
                      }
 
             class Visa < BaseModel
@@ -282,17 +279,17 @@ module Increase
             required :transaction_id, String
           end
 
-          class CardVerificationCode < BaseModel
+          class Verification < BaseModel
             # @!attribute [rw] card_verification_code
             required :card_verification_code,
                      lambda {
-                       Increase::Models::DeclinedTransaction::ACHDecline::Visa::CardVerificationCode::CardVerificationCode
+                       Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode
                      }
 
             # @!attribute [rw] cardholder_address
             required :cardholder_address,
                      lambda {
-                       Increase::Models::DeclinedTransaction::ACHDecline::Visa::CardVerificationCode::CardholderAddress
+                       Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
                      }
 
             class CardVerificationCode < BaseModel

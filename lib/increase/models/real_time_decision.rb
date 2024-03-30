@@ -7,7 +7,7 @@ module Increase
       required :id, String
 
       # @!attribute [rw] card_authorization
-      required :card_authorization, -> { Increase::Models::RealTimeDecision::Visa }
+      required :card_authorization, -> { Increase::Models::RealTimeDecision::CardAuthorization }
 
       # @!attribute [rw] category
       required :category,
@@ -40,7 +40,7 @@ module Increase
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:real_time_decision])
 
-      class Visa < BaseModel
+      class CardAuthorization < BaseModel
         # @!attribute [rw] account_id
         required :account_id, String
 
@@ -69,12 +69,15 @@ module Increase
         required :merchant_descriptor, String
 
         # @!attribute [rw] network_details
-        required :network_details, -> { Increase::Models::RealTimeDecision::Visa::Visa }
+        required :network_details,
+                 lambda {
+                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails
+                 }
 
         # @!attribute [rw] network_identifiers
         required :network_identifiers,
                  lambda {
-                   Increase::Models::RealTimeDecision::Visa::NetworkIdentifiers
+                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers
                  }
 
         # @!attribute [rw] network_risk_score
@@ -105,7 +108,7 @@ module Increase
         # @!attribute [rw] request_details
         required :request_details,
                  lambda {
-                   Increase::Models::RealTimeDecision::Visa::IncrementalAuthorization
+                   Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails
                  }
 
         # @!attribute [rw] settlement_amount
@@ -115,14 +118,20 @@ module Increase
         required :settlement_currency, String
 
         # @!attribute [rw] verification
-        required :verification, -> { Increase::Models::RealTimeDecision::Visa::CardVerificationCode }
+        required :verification,
+                 lambda {
+                   Increase::Models::RealTimeDecision::CardAuthorization::Verification
+                 }
 
-        class Visa < BaseModel
+        class NetworkDetails < BaseModel
           # @!attribute [rw] category
           required :category, Increase::Enum.new([:visa])
 
           # @!attribute [rw] visa
-          required :visa, -> { Increase::Models::RealTimeDecision::Visa::Visa::Visa }
+          required :visa,
+                   lambda {
+                     Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa
+                   }
 
           class Visa < BaseModel
             # @!attribute [rw] electronic_commerce_indicator
@@ -170,7 +179,7 @@ module Increase
           required :transaction_id, String
         end
 
-        class IncrementalAuthorization < BaseModel
+        class RequestDetails < BaseModel
           # @!attribute [rw] category
           required :category,
                    Increase::Enum.new([:initial_authorization, :incremental_authorization])
@@ -178,7 +187,7 @@ module Increase
           # @!attribute [rw] incremental_authorization
           required :incremental_authorization,
                    lambda {
-                     Increase::Models::RealTimeDecision::Visa::IncrementalAuthorization::IncrementalAuthorization
+                     Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization
                    }
 
           # @!attribute [rw] initial_authorization
@@ -193,17 +202,17 @@ module Increase
           end
         end
 
-        class CardVerificationCode < BaseModel
+        class Verification < BaseModel
           # @!attribute [rw] card_verification_code
           required :card_verification_code,
                    lambda {
-                     Increase::Models::RealTimeDecision::Visa::CardVerificationCode::CardVerificationCode
+                     Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode
                    }
 
           # @!attribute [rw] cardholder_address
           required :cardholder_address,
                    lambda {
-                     Increase::Models::RealTimeDecision::Visa::CardVerificationCode::CardholderAddress
+                     Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress
                    }
 
           class CardVerificationCode < BaseModel

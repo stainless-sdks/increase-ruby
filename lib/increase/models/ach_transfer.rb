@@ -16,7 +16,7 @@ module Increase
       required :acknowledgement, -> { Increase::Models::ACHTransfer::Acknowledgement }
 
       # @!attribute [rw] addenda
-      required :addenda, -> { Increase::Models::ACHTransfer::UnnamedTypeWithobjectParent0 }
+      required :addenda, -> { Increase::Models::ACHTransfer::Addenda }
 
       # @!attribute [rw] amount
       required :amount, Integer
@@ -129,47 +129,44 @@ module Increase
         required :acknowledged_at, String
       end
 
-      class UnnamedTypeWithobjectParent0 < BaseModel
+      class Addenda < BaseModel
         # @!attribute [rw] category
         required :category, Increase::Enum.new([:freeform, :payment_order_remittance_advice, :other])
 
         # @!attribute [rw] freeform
-        required :freeform,
-                 lambda {
-                   Increase::Models::ACHTransfer::UnnamedTypeWithobjectParent0::Addenda
-                 }
+        required :freeform, -> { Increase::Models::ACHTransfer::Addenda::Freeform }
 
         # @!attribute [rw] payment_order_remittance_advice
         required :payment_order_remittance_advice,
                  lambda {
-                   Increase::Models::ACHTransfer::UnnamedTypeWithobjectParent0::Addenda
+                   Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice
                  }
 
-        class Addenda < BaseModel
+        class Freeform < BaseModel
           # @!attribute [rw] entries
           required :entries,
                    Increase::ArrayOf.new(
                      lambda {
-                       Increase::Models::ACHTransfer::UnnamedTypeWithobjectParent0::Addenda::Entries
+                       Increase::Models::ACHTransfer::Addenda::Freeform::Entry
                      }
                    )
 
-          class Entries < BaseModel
+          class Entry < BaseModel
             # @!attribute [rw] payment_related_information
             required :payment_related_information, String
           end
         end
 
-        class Addenda < BaseModel
+        class PaymentOrderRemittanceAdvice < BaseModel
           # @!attribute [rw] invoices
           required :invoices,
                    Increase::ArrayOf.new(
                      lambda {
-                       Increase::Models::ACHTransfer::UnnamedTypeWithobjectParent0::Addenda::Invoices
+                       Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice
                      }
                    )
 
-          class Invoices < BaseModel
+          class Invoice < BaseModel
             # @!attribute [rw] invoice_number
             required :invoice_number, String
 

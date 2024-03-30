@@ -16,7 +16,7 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] elements
-      required :elements, Increase::ArrayOf.new(-> { Increase::Models::CardPayment::Visa })
+      required :elements, Increase::ArrayOf.new(-> { Increase::Models::CardPayment::Element })
 
       # @!attribute [rw] state
       required :state, -> { Increase::Models::CardPayment::State }
@@ -24,39 +24,39 @@ module Increase
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:card_payment])
 
-      class Visa < BaseModel
+      class Element < BaseModel
         # @!attribute [rw] card_authorization
-        required :card_authorization, -> { Increase::Models::CardPayment::Visa::Visa }
+        required :card_authorization, -> { Increase::Models::CardPayment::Element::CardAuthorization }
 
         # @!attribute [rw] card_authorization_expiration
         required :card_authorization_expiration,
                  lambda {
-                   Increase::Models::CardPayment::Visa::CardAuthorizationExpiration
+                   Increase::Models::CardPayment::Element::CardAuthorizationExpiration
                  }
 
         # @!attribute [rw] card_decline
-        required :card_decline, -> { Increase::Models::CardPayment::Visa::Visa }
+        required :card_decline, -> { Increase::Models::CardPayment::Element::CardDecline }
 
         # @!attribute [rw] card_fuel_confirmation
         required :card_fuel_confirmation,
                  lambda {
-                   Increase::Models::CardPayment::Visa::NetworkIdentifiers
+                   Increase::Models::CardPayment::Element::CardFuelConfirmation
                  }
 
         # @!attribute [rw] card_increment
-        required :card_increment, -> { Increase::Models::CardPayment::Visa::NetworkIdentifiers }
+        required :card_increment, -> { Increase::Models::CardPayment::Element::CardIncrement }
 
         # @!attribute [rw] card_refund
-        required :card_refund, -> { Increase::Models::CardPayment::Visa::NetworkIdentifiers }
+        required :card_refund, -> { Increase::Models::CardPayment::Element::CardRefund }
 
         # @!attribute [rw] card_reversal
-        required :card_reversal, -> { Increase::Models::CardPayment::Visa::NetworkIdentifiers }
+        required :card_reversal, -> { Increase::Models::CardPayment::Element::CardReversal }
 
         # @!attribute [rw] card_settlement
-        required :card_settlement, -> { Increase::Models::CardPayment::Visa::NetworkIdentifiers }
+        required :card_settlement, -> { Increase::Models::CardPayment::Element::CardSettlement }
 
         # @!attribute [rw] card_validation
-        required :card_validation, -> { Increase::Models::CardPayment::Visa::Visa }
+        required :card_validation, -> { Increase::Models::CardPayment::Element::CardValidation }
 
         # @!attribute [rw] category
         required :category,
@@ -78,7 +78,7 @@ module Increase
         # @!attribute [rw] created_at
         required :created_at, String
 
-        class Visa < BaseModel
+        class CardAuthorization < BaseModel
           # @!attribute [rw] id
           required :id, String
 
@@ -119,12 +119,15 @@ module Increase
           required :merchant_descriptor, String
 
           # @!attribute [rw] network_details
-          required :network_details, -> { Increase::Models::CardPayment::Visa::Visa::Visa }
+          required :network_details,
+                   lambda {
+                     Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails
+                   }
 
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
                    lambda {
-                     Increase::Models::CardPayment::Visa::Visa::NetworkIdentifiers
+                     Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers
                    }
 
           # @!attribute [rw] network_risk_score
@@ -158,15 +161,18 @@ module Increase
           # @!attribute [rw] verification
           required :verification,
                    lambda {
-                     Increase::Models::CardPayment::Visa::Visa::CardVerificationCode
+                     Increase::Models::CardPayment::Element::CardAuthorization::Verification
                    }
 
-          class Visa < BaseModel
+          class NetworkDetails < BaseModel
             # @!attribute [rw] category
             required :category, Increase::Enum.new([:visa])
 
             # @!attribute [rw] visa
-            required :visa, -> { Increase::Models::CardPayment::Visa::Visa::Visa::Visa }
+            required :visa,
+                     lambda {
+                       Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa
+                     }
 
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
@@ -214,17 +220,17 @@ module Increase
             required :transaction_id, String
           end
 
-          class CardVerificationCode < BaseModel
+          class Verification < BaseModel
             # @!attribute [rw] card_verification_code
             required :card_verification_code,
                      lambda {
-                       Increase::Models::CardPayment::Visa::Visa::CardVerificationCode::CardVerificationCode
+                       Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode
                      }
 
             # @!attribute [rw] cardholder_address
             required :cardholder_address,
                      lambda {
-                       Increase::Models::CardPayment::Visa::Visa::CardVerificationCode::CardholderAddress
+                       Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
                      }
 
             class CardVerificationCode < BaseModel
@@ -281,7 +287,7 @@ module Increase
           required :type, Increase::Enum.new([:card_authorization_expiration])
         end
 
-        class Visa < BaseModel
+        class CardDecline < BaseModel
           # @!attribute [rw] id
           required :id, String
 
@@ -319,12 +325,15 @@ module Increase
           required :merchant_state, String
 
           # @!attribute [rw] network_details
-          required :network_details, -> { Increase::Models::CardPayment::Visa::Visa::Visa }
+          required :network_details,
+                   lambda {
+                     Increase::Models::CardPayment::Element::CardDecline::NetworkDetails
+                   }
 
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
                    lambda {
-                     Increase::Models::CardPayment::Visa::Visa::NetworkIdentifiers
+                     Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers
                    }
 
           # @!attribute [rw] network_risk_score
@@ -373,15 +382,18 @@ module Increase
           # @!attribute [rw] verification
           required :verification,
                    lambda {
-                     Increase::Models::CardPayment::Visa::Visa::CardVerificationCode
+                     Increase::Models::CardPayment::Element::CardDecline::Verification
                    }
 
-          class Visa < BaseModel
+          class NetworkDetails < BaseModel
             # @!attribute [rw] category
             required :category, Increase::Enum.new([:visa])
 
             # @!attribute [rw] visa
-            required :visa, -> { Increase::Models::CardPayment::Visa::Visa::Visa::Visa }
+            required :visa,
+                     lambda {
+                       Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa
+                     }
 
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
@@ -429,17 +441,17 @@ module Increase
             required :transaction_id, String
           end
 
-          class CardVerificationCode < BaseModel
+          class Verification < BaseModel
             # @!attribute [rw] card_verification_code
             required :card_verification_code,
                      lambda {
-                       Increase::Models::CardPayment::Visa::Visa::CardVerificationCode::CardVerificationCode
+                       Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode
                      }
 
             # @!attribute [rw] cardholder_address
             required :cardholder_address,
                      lambda {
-                       Increase::Models::CardPayment::Visa::Visa::CardVerificationCode::CardholderAddress
+                       Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress
                      }
 
             class CardVerificationCode < BaseModel
@@ -476,7 +488,7 @@ module Increase
           end
         end
 
-        class NetworkIdentifiers < BaseModel
+        class CardFuelConfirmation < BaseModel
           # @!attribute [rw] id
           required :id, String
 
@@ -492,7 +504,7 @@ module Increase
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
                    lambda {
-                     Increase::Models::CardPayment::Visa::NetworkIdentifiers::NetworkIdentifiers
+                     Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers
                    }
 
           # @!attribute [rw] pending_transaction_id
@@ -516,7 +528,7 @@ module Increase
           end
         end
 
-        class NetworkIdentifiers < BaseModel
+        class CardIncrement < BaseModel
           # @!attribute [rw] id
           required :id, String
 
@@ -538,7 +550,7 @@ module Increase
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
                    lambda {
-                     Increase::Models::CardPayment::Visa::NetworkIdentifiers::NetworkIdentifiers
+                     Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers
                    }
 
           # @!attribute [rw] network_risk_score
@@ -568,7 +580,7 @@ module Increase
           end
         end
 
-        class NetworkIdentifiers < BaseModel
+        class CardRefund < BaseModel
           # @!attribute [rw] id
           required :id, String
 
@@ -602,13 +614,13 @@ module Increase
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
                    lambda {
-                     Increase::Models::CardPayment::Visa::NetworkIdentifiers::NetworkIdentifiers
+                     Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers
                    }
 
           # @!attribute [rw] purchase_details
           required :purchase_details,
                    lambda {
-                     Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental
+                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails
                    }
 
           # @!attribute [rw] transaction_id
@@ -628,11 +640,11 @@ module Increase
             required :transaction_id, String
           end
 
-          class CarRental < BaseModel
+          class PurchaseDetails < BaseModel
             # @!attribute [rw] car_rental
             required :car_rental,
                      lambda {
-                       Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental::CarRental
+                       Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental
                      }
 
             # @!attribute [rw] customer_reference_identifier
@@ -647,7 +659,7 @@ module Increase
             # @!attribute [rw] lodging
             required :lodging,
                      lambda {
-                       Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental::Lodging
+                       Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging
                      }
 
             # @!attribute [rw] national_tax_amount
@@ -674,7 +686,7 @@ module Increase
             # @!attribute [rw] travel
             required :travel,
                      lambda {
-                       Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental::PurchaseDetails
+                       Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel
                      }
 
             class CarRental < BaseModel
@@ -799,11 +811,11 @@ module Increase
               required :total_tax_currency, String
             end
 
-            class PurchaseDetails < BaseModel
+            class Travel < BaseModel
               # @!attribute [rw] ancillary
               required :ancillary,
                        lambda {
-                         Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental::PurchaseDetails::Travel
+                         Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary
                        }
 
               # @!attribute [rw] computerized_reservation_system
@@ -857,11 +869,11 @@ module Increase
               required :trip_legs,
                        Increase::ArrayOf.new(
                          lambda {
-                           Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental::PurchaseDetails::TripLegs
+                           Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg
                          }
                        )
 
-              class Travel < BaseModel
+              class Ancillary < BaseModel
                 # @!attribute [rw] connected_ticket_document_number
                 required :connected_ticket_document_number, String
 
@@ -883,14 +895,14 @@ module Increase
                 required :services,
                          Increase::ArrayOf.new(
                            lambda {
-                             Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental::PurchaseDetails::Travel::Services
+                             Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service
                            }
                          )
 
                 # @!attribute [rw] ticket_document_number
                 required :ticket_document_number, String
 
-                class Services < BaseModel
+                class Service < BaseModel
                   # @!attribute [rw] category
                   required :category,
                            Increase::Enum.new(
@@ -927,7 +939,7 @@ module Increase
                 end
               end
 
-              class TripLegs < BaseModel
+              class TripLeg < BaseModel
                 # @!attribute [rw] carrier_code
                 required :carrier_code, String
 
@@ -957,7 +969,7 @@ module Increase
           end
         end
 
-        class NetworkIdentifiers < BaseModel
+        class CardReversal < BaseModel
           # @!attribute [rw] id
           required :id, String
 
@@ -973,7 +985,7 @@ module Increase
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
                    lambda {
-                     Increase::Models::CardPayment::Visa::NetworkIdentifiers::NetworkIdentifiers
+                     Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers
                    }
 
           # @!attribute [rw] pending_transaction_id
@@ -1000,7 +1012,7 @@ module Increase
           end
         end
 
-        class NetworkIdentifiers < BaseModel
+        class CardSettlement < BaseModel
           # @!attribute [rw] id
           required :id, String
 
@@ -1037,7 +1049,7 @@ module Increase
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
                    lambda {
-                     Increase::Models::CardPayment::Visa::NetworkIdentifiers::NetworkIdentifiers
+                     Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers
                    }
 
           # @!attribute [rw] pending_transaction_id
@@ -1052,7 +1064,7 @@ module Increase
           # @!attribute [rw] purchase_details
           required :purchase_details,
                    lambda {
-                     Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental
+                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails
                    }
 
           # @!attribute [rw] transaction_id
@@ -1072,11 +1084,11 @@ module Increase
             required :transaction_id, String
           end
 
-          class CarRental < BaseModel
+          class PurchaseDetails < BaseModel
             # @!attribute [rw] car_rental
             required :car_rental,
                      lambda {
-                       Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental::CarRental
+                       Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental
                      }
 
             # @!attribute [rw] customer_reference_identifier
@@ -1091,7 +1103,7 @@ module Increase
             # @!attribute [rw] lodging
             required :lodging,
                      lambda {
-                       Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental::Lodging
+                       Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging
                      }
 
             # @!attribute [rw] national_tax_amount
@@ -1118,7 +1130,7 @@ module Increase
             # @!attribute [rw] travel
             required :travel,
                      lambda {
-                       Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental::PurchaseDetails
+                       Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel
                      }
 
             class CarRental < BaseModel
@@ -1243,11 +1255,11 @@ module Increase
               required :total_tax_currency, String
             end
 
-            class PurchaseDetails < BaseModel
+            class Travel < BaseModel
               # @!attribute [rw] ancillary
               required :ancillary,
                        lambda {
-                         Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental::PurchaseDetails::Travel
+                         Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary
                        }
 
               # @!attribute [rw] computerized_reservation_system
@@ -1301,11 +1313,11 @@ module Increase
               required :trip_legs,
                        Increase::ArrayOf.new(
                          lambda {
-                           Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental::PurchaseDetails::TripLegs
+                           Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg
                          }
                        )
 
-              class Travel < BaseModel
+              class Ancillary < BaseModel
                 # @!attribute [rw] connected_ticket_document_number
                 required :connected_ticket_document_number, String
 
@@ -1327,14 +1339,14 @@ module Increase
                 required :services,
                          Increase::ArrayOf.new(
                            lambda {
-                             Increase::Models::CardPayment::Visa::NetworkIdentifiers::CarRental::PurchaseDetails::Travel::Services
+                             Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service
                            }
                          )
 
                 # @!attribute [rw] ticket_document_number
                 required :ticket_document_number, String
 
-                class Services < BaseModel
+                class Service < BaseModel
                   # @!attribute [rw] category
                   required :category,
                            Increase::Enum.new(
@@ -1371,7 +1383,7 @@ module Increase
                 end
               end
 
-              class TripLegs < BaseModel
+              class TripLeg < BaseModel
                 # @!attribute [rw] carrier_code
                 required :carrier_code, String
 
@@ -1401,7 +1413,7 @@ module Increase
           end
         end
 
-        class Visa < BaseModel
+        class CardValidation < BaseModel
           # @!attribute [rw] id
           required :id, String
 
@@ -1433,12 +1445,15 @@ module Increase
           required :merchant_descriptor, String
 
           # @!attribute [rw] network_details
-          required :network_details, -> { Increase::Models::CardPayment::Visa::Visa::Visa }
+          required :network_details,
+                   lambda {
+                     Increase::Models::CardPayment::Element::CardValidation::NetworkDetails
+                   }
 
           # @!attribute [rw] network_identifiers
           required :network_identifiers,
                    lambda {
-                     Increase::Models::CardPayment::Visa::Visa::NetworkIdentifiers
+                     Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers
                    }
 
           # @!attribute [rw] network_risk_score
@@ -1456,15 +1471,18 @@ module Increase
           # @!attribute [rw] verification
           required :verification,
                    lambda {
-                     Increase::Models::CardPayment::Visa::Visa::CardVerificationCode
+                     Increase::Models::CardPayment::Element::CardValidation::Verification
                    }
 
-          class Visa < BaseModel
+          class NetworkDetails < BaseModel
             # @!attribute [rw] category
             required :category, Increase::Enum.new([:visa])
 
             # @!attribute [rw] visa
-            required :visa, -> { Increase::Models::CardPayment::Visa::Visa::Visa::Visa }
+            required :visa,
+                     lambda {
+                       Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa
+                     }
 
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
@@ -1512,17 +1530,17 @@ module Increase
             required :transaction_id, String
           end
 
-          class CardVerificationCode < BaseModel
+          class Verification < BaseModel
             # @!attribute [rw] card_verification_code
             required :card_verification_code,
                      lambda {
-                       Increase::Models::CardPayment::Visa::Visa::CardVerificationCode::CardVerificationCode
+                       Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode
                      }
 
             # @!attribute [rw] cardholder_address
             required :cardholder_address,
                      lambda {
-                       Increase::Models::CardPayment::Visa::Visa::CardVerificationCode::CardholderAddress
+                       Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress
                      }
 
             class CardVerificationCode < BaseModel

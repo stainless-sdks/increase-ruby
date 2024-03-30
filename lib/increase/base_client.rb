@@ -213,9 +213,6 @@ module Increase
 
     def request(options)
       request_args = prep_request(options)
-      # TODO: client-side errors (DNS resolution, timeouts, etc)
-      # TODO: response codes we don't like, 400 etc.
-      # TODO: passing retry config
       response = with_retry(request_args, max_retries: options[:max_retries])
 
       raw_data =

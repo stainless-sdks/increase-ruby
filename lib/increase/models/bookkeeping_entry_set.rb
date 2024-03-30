@@ -13,7 +13,7 @@ module Increase
       required :date, String
 
       # @!attribute [rw] entries
-      required :entries, Increase::ArrayOf.new(-> { Increase::Models::BookkeepingEntrySet::Entries })
+      required :entries, Increase::ArrayOf.new(-> { Increase::Models::BookkeepingEntrySet::Entry })
 
       # @!attribute [rw] idempotency_key
       required :idempotency_key, String
@@ -24,7 +24,7 @@ module Increase
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:bookkeeping_entry_set])
 
-      class Entries < BaseModel
+      class Entry < BaseModel
         # @!attribute [rw] id
         required :id, String
 

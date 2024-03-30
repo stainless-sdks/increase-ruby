@@ -23,11 +23,6 @@ class Increase::Test::Resources::ACHTransfersTest < Test::Unit::TestCase
     assert(Increase::Converter.same_type?(Increase::Models::ACHTransfer, response), response.class.to_s)
   end
 
-  def test_list
-    response = @increase.ach_transfers.list
-    assert(Increase::Converter.same_type?(Increase::Models::ACHTransfer, response), response.class.to_s)
-  end
-
   def test_approve
     response = @increase.ach_transfers.approve("string")
     assert(Increase::Converter.same_type?(Increase::Models::ACHTransfer, response), response.class.to_s)

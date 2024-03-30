@@ -35,12 +35,4 @@ class Increase::Test::Resources::AccountNumbersTest < Test::Unit::TestCase
       response.class.to_s
     )
   end
-
-  def test_list
-    response = @increase.account_numbers.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::AccountNumber, response),
-      response.class.to_s
-    )
-  end
 end

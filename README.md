@@ -11,11 +11,11 @@ The underlying REST API documentation can be found [on increase.com](https://inc
 
 ## Installation
 
-While the gem is in beta development, install directly from GitHub with Bundler
+To use this gem within an application during the beta, install directly from GitHub with Bundler
 by adding the following to your `Gemfile`:
 
 ```ruby
-gem "increase", git: "https://github.com/increase/increase-ruby", branch: "main"
+gem "increase", git: "https://github.com/stainless-sdks/increase-ruby", branch: "main"
 ```
 
 To fetch an initial copy of the gem:
@@ -24,7 +24,7 @@ To fetch an initial copy of the gem:
 bundle install
 ```
 
-To update the version used by your application when a new version is available on GitHub:
+To update the version used by your application when updates are pushed to GitHub:
 
 ```sh
 bundle update increase
@@ -44,6 +44,79 @@ account = increase.accounts.create(name: "My First Increase Account")
 
 puts account.id
 ```
+
+### Resources
+
+Functionality in this library is organized around the resources exposed by the Increase API.
+Methods on those resources correspond to endpoints on the API, e.g.:
+
+```ruby
+card = increase.cards.create({
+  account_id: "account_in71c4amph0vgo2qllky",
+  description: "Card for Alice"
+})
+```
+
+Methods that reference an object will take an identifier for that object as the first argument:
+
+```ruby
+card = increase.cards.retrieve("card_oubs0hwk5rn6knuecxg2")
+```
+
+When data beyond an identifier is needed for a request, such as with create or update, pass a Hash
+with Symbol keys:
+
+```ruby
+updated_card = increase.cards.update(
+  "card_oubs0hwk5rn6knuecxg2",
+  {description: "New description"}
+)
+```
+
+All methods take request options as their last argument. These can be used to modify
+the behaviour of the client for that particular request. This argument can always be omitted
+if not needed. See the `Increase::RequestOptions` docs for details:
+
+```ruby
+card = increase.cards.update(
+  "card_123",
+  {spend_limit: 10_000},
+  {max_retires: 1}
+)
+```
+
+Detailed documentation for all resources can be found in the `Increase::Resources` namespace.
+
+### Models
+
+The library provides Ruby classes for all responses returned by the API. Instances of these classes
+allow convenient access to parsed response data:
+
+```ruby
+card = increase.cards.create({
+  account_id: "account_in71c4amph0vgo2qllky",
+  description: "Card for Bob"
+})
+card.expiration_year
+#=> 2028
+```
+
+You can also access model attribute data using key lookup syntax:
+
+```ruby
+card[:expiration_year]
+#=> 2028
+```
+
+To get all parsed data as a Hash, use `to_h`:
+
+```ruby
+card_data = card.to_h
+card_data.keys
+#=> [:id, :account_id, :created_at, :description, ...]
+```
+
+See the `Increase::Models` docs for details.
 
 ### Errors
 

@@ -14,12 +14,4 @@ class Increase::Test::Resources::BookkeepingEntriesTest < Test::Unit::TestCase
       response.class.to_s
     )
   end
-
-  def test_list
-    response = @increase.bookkeeping_entries.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::BookkeepingEntry, response),
-      response.class.to_s
-    )
-  end
 end

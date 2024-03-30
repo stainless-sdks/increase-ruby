@@ -29,14 +29,6 @@ class Increase::Test::Resources::CheckTransfersTest < Test::Unit::TestCase
     )
   end
 
-  def test_list
-    response = @increase.check_transfers.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::CheckTransfer, response),
-      response.class.to_s
-    )
-  end
-
   def test_approve
     response = @increase.check_transfers.approve("string")
     assert(

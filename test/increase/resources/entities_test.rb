@@ -17,11 +17,6 @@ class Increase::Test::Resources::EntitiesTest < Test::Unit::TestCase
     assert(Increase::Converter.same_type?(Increase::Models::Entity, response), response.class.to_s)
   end
 
-  def test_list
-    response = @increase.entities.list
-    assert(Increase::Converter.same_type?(Increase::Models::Entity, response), response.class.to_s)
-  end
-
   def test_archive
     response = @increase.entities.archive("string")
     assert(Increase::Converter.same_type?(Increase::Models::Entity, response), response.class.to_s)

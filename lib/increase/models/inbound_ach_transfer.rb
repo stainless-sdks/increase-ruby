@@ -16,7 +16,7 @@ module Increase
       required :account_number_id, String
 
       # @!attribute [rw] addenda
-      required :addenda, -> { Increase::Models::InboundACHTransfer::UnnamedTypeWithobjectParent1 }
+      required :addenda, -> { Increase::Models::InboundACHTransfer::Addenda }
 
       # @!attribute [rw] amount
       required :amount, Integer
@@ -77,26 +77,23 @@ module Increase
         required :transaction_id, String
       end
 
-      class UnnamedTypeWithobjectParent1 < BaseModel
+      class Addenda < BaseModel
         # @!attribute [rw] category
         required :category, Increase::Enum.new([:freeform])
 
         # @!attribute [rw] freeform
-        required :freeform,
-                 lambda {
-                   Increase::Models::InboundACHTransfer::UnnamedTypeWithobjectParent1::Addenda
-                 }
+        required :freeform, -> { Increase::Models::InboundACHTransfer::Addenda::Freeform }
 
-        class Addenda < BaseModel
+        class Freeform < BaseModel
           # @!attribute [rw] entries
           required :entries,
                    Increase::ArrayOf.new(
                      lambda {
-                       Increase::Models::InboundACHTransfer::UnnamedTypeWithobjectParent1::Addenda::Entries
+                       Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry
                      }
                    )
 
-          class Entries < BaseModel
+          class Entry < BaseModel
             # @!attribute [rw] payment_related_information
             required :payment_related_information, String
           end

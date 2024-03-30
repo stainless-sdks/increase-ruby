@@ -10,7 +10,7 @@ module Increase
       required :ach_transfers,
                Increase::ArrayOf.new(
                  lambda {
-                   Increase::Models::ProofOfAuthorizationRequest::ACHTransfers
+                   Increase::Models::ProofOfAuthorizationRequest::ACHTransfer
                  }
                )
 
@@ -26,7 +26,7 @@ module Increase
       # @!attribute [rw] updated_at
       required :updated_at, String
 
-      class ACHTransfers < BaseModel
+      class ACHTransfer < BaseModel
         # @!attribute [rw] id
         required :id, String
       end

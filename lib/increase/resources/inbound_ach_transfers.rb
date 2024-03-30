@@ -22,31 +22,6 @@ module Increase
         @client.request(request)
       end
 
-      # List Inbound ACH Transfers
-      #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :account_id Filter Inbound ACH Tranfers to ones belonging to the specified Account.
-      # @option params [String] :account_number_id Filter Inbound ACH Tranfers to ones belonging to the specified Account Number.
-      # @option params [Hash] :created_at
-      # @option params [String] :cursor Return the page of entries after this one.
-      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      # @option params [Symbol] :status Filter Inbound ACH Transfers to those with the specified status.
-      #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
-      # @return [Increase::Models::InboundACHTransfer]
-      def list(params = {}, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/inbound_ach_transfers"
-        query_params = [:account_id, :account_number_id, :created_at, :cursor, :limit, :status]
-        request[:query] = params.filter { |k, _| query_params.include?(k) }
-        request[:model] = Increase::Models::InboundACHTransfer
-        request.merge!(opts)
-        @client.request(request)
-      end
-
       # Decline an Inbound ACH Transfer
       #
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to decline.

@@ -4,18 +4,21 @@ module Increase
   module Models
     class CardAuthorizationSimulation < BaseModel
       # @!attribute [rw] declined_transaction
-      required :declined_transaction, -> { Increase::Models::CardAuthorizationSimulation::ACHDecline }
+      required :declined_transaction,
+               lambda {
+                 Increase::Models::CardAuthorizationSimulation::DeclinedTransaction
+               }
 
       # @!attribute [rw] pending_transaction
       required :pending_transaction,
                lambda {
-                 Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction
+                 Increase::Models::CardAuthorizationSimulation::PendingTransaction
                }
 
       # @!attribute [rw] type
       required :type, Increase::Enum.new([:inbound_card_authorization_simulation_result])
 
-      class ACHDecline < BaseModel
+      class DeclinedTransaction < BaseModel
         # @!attribute [rw] id
         required :id, String
 
@@ -41,22 +44,25 @@ module Increase
         required :route_type, Increase::Enum.new([:account_number, :card])
 
         # @!attribute [rw] source
-        required :source, -> { Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline }
+        required :source,
+                 lambda {
+                   Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source
+                 }
 
         # @!attribute [rw] type
         required :type, Increase::Enum.new([:declined_transaction])
 
-        class ACHDecline < BaseModel
+        class Source < BaseModel
           # @!attribute [rw] ach_decline
           required :ach_decline,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline::ACHDecline
+                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::ACHDecline
                    }
 
           # @!attribute [rw] card_decline
           required :card_decline,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline::Visa
+                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline
                    }
 
           # @!attribute [rw] category
@@ -76,25 +82,25 @@ module Increase
           # @!attribute [rw] check_decline
           required :check_decline,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline::CheckDecline
+                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CheckDecline
                    }
 
           # @!attribute [rw] inbound_real_time_payments_transfer_decline
           required :inbound_real_time_payments_transfer_decline,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline::InboundRealTimePaymentsTransferDecline
+                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline
                    }
 
           # @!attribute [rw] international_ach_decline
           required :international_ach_decline,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline::InternationalACHDecline
+                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::InternationalACHDecline
                    }
 
           # @!attribute [rw] wire_decline
           required :wire_decline,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline::WireDecline
+                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::WireDecline
                    }
 
           class ACHDecline < BaseModel
@@ -150,7 +156,7 @@ module Increase
             required :type, Increase::Enum.new([:ach_decline])
           end
 
-          class Visa < BaseModel
+          class CardDecline < BaseModel
             # @!attribute [rw] id
             required :id, String
 
@@ -190,13 +196,13 @@ module Increase
             # @!attribute [rw] network_details
             required :network_details,
                      lambda {
-                       Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline::Visa::Visa
+                       Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::NetworkDetails
                      }
 
             # @!attribute [rw] network_identifiers
             required :network_identifiers,
                      lambda {
-                       Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline::Visa::NetworkIdentifiers
+                       Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers
                      }
 
             # @!attribute [rw] network_risk_score
@@ -245,17 +251,17 @@ module Increase
             # @!attribute [rw] verification
             required :verification,
                      lambda {
-                       Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline::Visa::CardVerificationCode
+                       Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::Verification
                      }
 
-            class Visa < BaseModel
+            class NetworkDetails < BaseModel
               # @!attribute [rw] category
               required :category, Increase::Enum.new([:visa])
 
               # @!attribute [rw] visa
               required :visa,
                        lambda {
-                         Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline::Visa::Visa::Visa
+                         Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa
                        }
 
               class Visa < BaseModel
@@ -304,17 +310,17 @@ module Increase
               required :transaction_id, String
             end
 
-            class CardVerificationCode < BaseModel
+            class Verification < BaseModel
               # @!attribute [rw] card_verification_code
               required :card_verification_code,
                        lambda {
-                         Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline::Visa::CardVerificationCode::CardVerificationCode
+                         Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode
                        }
 
               # @!attribute [rw] cardholder_address
               required :cardholder_address,
                        lambda {
-                         Increase::Models::CardAuthorizationSimulation::ACHDecline::ACHDecline::Visa::CardVerificationCode::CardholderAddress
+                         Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
                        }
 
               class CardVerificationCode < BaseModel
@@ -590,7 +596,7 @@ module Increase
         end
       end
 
-      class AccountTransferInstruction < BaseModel
+      class PendingTransaction < BaseModel
         # @!attribute [rw] id
         required :id, String
 
@@ -621,7 +627,7 @@ module Increase
         # @!attribute [rw] source
         required :source,
                  lambda {
-                   Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction
+                   Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source
                  }
 
         # @!attribute [rw] status
@@ -630,23 +636,23 @@ module Increase
         # @!attribute [rw] type
         required :type, Increase::Enum.new([:pending_transaction])
 
-        class AccountTransferInstruction < BaseModel
+        class Source < BaseModel
           # @!attribute [rw] account_transfer_instruction
           required :account_transfer_instruction,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::AccountTransferInstruction
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::AccountTransferInstruction
                    }
 
           # @!attribute [rw] ach_transfer_instruction
           required :ach_transfer_instruction,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::ACHTransferInstruction
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::ACHTransferInstruction
                    }
 
           # @!attribute [rw] card_authorization
           required :card_authorization,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::Visa
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization
                    }
 
           # @!attribute [rw] category
@@ -668,31 +674,31 @@ module Increase
           # @!attribute [rw] check_deposit_instruction
           required :check_deposit_instruction,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::CheckDepositInstruction
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CheckDepositInstruction
                    }
 
           # @!attribute [rw] check_transfer_instruction
           required :check_transfer_instruction,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::CheckTransferInstruction
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CheckTransferInstruction
                    }
 
           # @!attribute [rw] inbound_funds_hold
           required :inbound_funds_hold,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::InboundFundsHold
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::InboundFundsHold
                    }
 
           # @!attribute [rw] real_time_payments_transfer_instruction
           required :real_time_payments_transfer_instruction,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::RealTimePaymentsTransferInstruction
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::RealTimePaymentsTransferInstruction
                    }
 
           # @!attribute [rw] wire_transfer_instruction
           required :wire_transfer_instruction,
                    lambda {
-                     Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::WireTransferInstruction
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::WireTransferInstruction
                    }
 
           class AccountTransferInstruction < BaseModel
@@ -714,7 +720,7 @@ module Increase
             required :transfer_id, String
           end
 
-          class Visa < BaseModel
+          class CardAuthorization < BaseModel
             # @!attribute [rw] id
             required :id, String
 
@@ -757,13 +763,13 @@ module Increase
             # @!attribute [rw] network_details
             required :network_details,
                      lambda {
-                       Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::Visa::Visa
+                       Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::NetworkDetails
                      }
 
             # @!attribute [rw] network_identifiers
             required :network_identifiers,
                      lambda {
-                       Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::Visa::NetworkIdentifiers
+                       Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers
                      }
 
             # @!attribute [rw] network_risk_score
@@ -797,17 +803,17 @@ module Increase
             # @!attribute [rw] verification
             required :verification,
                      lambda {
-                       Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::Visa::CardVerificationCode
+                       Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::Verification
                      }
 
-            class Visa < BaseModel
+            class NetworkDetails < BaseModel
               # @!attribute [rw] category
               required :category, Increase::Enum.new([:visa])
 
               # @!attribute [rw] visa
               required :visa,
                        lambda {
-                         Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::Visa::Visa::Visa
+                         Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa
                        }
 
               class Visa < BaseModel
@@ -856,17 +862,17 @@ module Increase
               required :transaction_id, String
             end
 
-            class CardVerificationCode < BaseModel
+            class Verification < BaseModel
               # @!attribute [rw] card_verification_code
               required :card_verification_code,
                        lambda {
-                         Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::Visa::CardVerificationCode::CardVerificationCode
+                         Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode
                        }
 
               # @!attribute [rw] cardholder_address
               required :cardholder_address,
                        lambda {
-                         Increase::Models::CardAuthorizationSimulation::AccountTransferInstruction::AccountTransferInstruction::Visa::CardVerificationCode::CardholderAddress
+                         Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
                        }
 
               class CardVerificationCode < BaseModel

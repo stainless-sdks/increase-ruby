@@ -46,7 +46,7 @@ module Increase
       required :pending_transaction_id, String
 
       # @!attribute [rw] physical_check
-      required :physical_check, -> { Increase::Models::CheckTransfer::MailingAddress }
+      required :physical_check, -> { Increase::Models::CheckTransfer::PhysicalCheck }
 
       # @!attribute [rw] routing_number
       required :routing_number, String
@@ -127,11 +127,11 @@ module Increase
         required :mailed_at, String
       end
 
-      class MailingAddress < BaseModel
+      class PhysicalCheck < BaseModel
         # @!attribute [rw] mailing_address
         required :mailing_address,
                  lambda {
-                   Increase::Models::CheckTransfer::MailingAddress::MailingAddress
+                   Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress
                  }
 
         # @!attribute [rw] memo
@@ -144,10 +144,7 @@ module Increase
         required :recipient_name, String
 
         # @!attribute [rw] return_address
-        required :return_address,
-                 lambda {
-                   Increase::Models::CheckTransfer::MailingAddress::ReturnAddress
-                 }
+        required :return_address, -> { Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress }
 
         class MailingAddress < BaseModel
           # @!attribute [rw] city

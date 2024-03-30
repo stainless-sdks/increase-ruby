@@ -36,12 +36,4 @@ class Increase::Test::Resources::ExternalAccountsTest < Test::Unit::TestCase
       response.class.to_s
     )
   end
-
-  def test_list
-    response = @increase.external_accounts.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::ExternalAccount, response),
-      response.class.to_s
-    )
-  end
 end

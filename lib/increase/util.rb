@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module Increase
-  # Use this to indicate that a value should be explicitly removed from a data structure.
-  # E.g. merging `{a: 1}` and `{a: Omit}` should produce `{}`, where merging `{a: 1}` and
+  # Use this to indicate that a value should be explicitly removed from a data structure
+  # when using `Increase::Util.deep_merge`.
+  # E.g. merging `{a: 1}` and `{a: OMIT}` should produce `{}`, where merging `{a: 1}` and
   # `{}` would produce `{a: 1}`.
-  class Omit # rubocop:disable Lint/EmptyClass
-  end
+  OMIT = Object.new.freeze
 
   class Util
     # Recursively merge one hash with another.
@@ -13,14 +13,14 @@ module Increase
     # @param concat [true, false] whether to merge sequences by concatenation
     def self.deep_merge(left, right, concat: false)
       right_cleaned = if right.is_a?(Hash)
-        right.reject { |_, value| value == Omit }
+        right.reject { |_, value| value == OMIT }
       else
         right
       end
 
       if left.is_a?(Hash) && right_cleaned.is_a?(Hash)
         left
-          .reject { |key, _| right[key] == Omit }
+          .reject { |key, _| right[key] == OMIT }
           .merge(right_cleaned) do |_k, old_val, new_val|
             deep_merge(old_val, new_val, concat: concat)
           end

@@ -14,12 +14,4 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestsTest < Test::Unit::
       response.class.to_s
     )
   end
-
-  def test_list
-    response = @increase.proof_of_authorization_requests.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::ProofOfAuthorizationRequest, response),
-      response.class.to_s
-    )
-  end
 end

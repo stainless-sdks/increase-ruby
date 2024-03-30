@@ -15,14 +15,6 @@ class Increase::Test::Resources::InboundACHTransfersTest < Test::Unit::TestCase
     )
   end
 
-  def test_list
-    response = @increase.inbound_ach_transfers.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::InboundACHTransfer, response),
-      response.class.to_s
-    )
-  end
-
   def test_decline
     response = @increase.inbound_ach_transfers.decline("string")
     assert(
