@@ -15,7 +15,15 @@ module Increase
     )
       self.requester = PooledNetRequester.new
       env_uri = URI.parse(server_uri_string)
-      @headers = {"Content-Type" => "application/json", "Accept" => "application/json"}.merge(headers || {})
+      base_headers = {
+        "X-Stainless-Lang" => "ruby",
+        "X-Stainless-Package-Version" => Increase::VERSION,
+        "X-Stainless-Runtime" => RUBY_ENGINE,
+        "X-Stainless-Runtime-Version" => RUBY_ENGINE_VERSION,
+        "Content-Type" => "application/json",
+        "Accept" => "application/json"
+      }
+      @headers = base_headers.merge(headers || {})
       @host = env_uri.host
       @scheme = env_uri.scheme
       @port = env_uri.port
