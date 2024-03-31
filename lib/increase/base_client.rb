@@ -5,8 +5,6 @@ module Increase
   class BaseClient
     attr_accessor :requester
 
-    NO_IDEMPOTENCY_KEY_METHODS = [:get, :head, :options]
-
     def initialize(
       server_uri_string:,
       headers: nil,
@@ -120,7 +118,7 @@ module Increase
         full_headers = Util.deep_merge(full_headers, options[:extra_headers])
       end
 
-      if @idempotency_header && !headers[@idempotency_header] && !NO_IDEMPOTENCY_KEY_METHODS.include?(method)
+      if @idempotency_header && !headers[@idempotency_header] && ![:get, :head, :options].include?(method)
         full_headers[@idempotency_header] = options[:idempotency_key] || generate_idempotency_key
       end
 
