@@ -55,7 +55,7 @@ module Increase
     # @return [Integer]
     option :max_retries
 
-    # Loookup an option previously set on this instance.
+    # Lookup an option previously set on this instance.
     #
     # @return [Object]
     def [](key)
