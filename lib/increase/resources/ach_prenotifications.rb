@@ -30,13 +30,12 @@ module Increase
       #
       # @return [Increase::Models::ACHPrenotification]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/ach_prenotifications"
-        request[:body] = params
-        request[:model] = Increase::Models::ACHPrenotification
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/ach_prenotifications"
+        req[:body] = params
+        req[:model] = Increase::Models::ACHPrenotification
+        @client.request(req, opts)
       end
 
       # Retrieve an ACH Prenotification
@@ -46,12 +45,11 @@ module Increase
       #
       # @return [Increase::Models::ACHPrenotification]
       def retrieve(ach_prenotification_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/ach_prenotifications/#{ach_prenotification_id}"
-        request[:model] = Increase::Models::ACHPrenotification
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/ach_prenotifications/#{ach_prenotification_id}"
+        req[:model] = Increase::Models::ACHPrenotification
+        @client.request(req, opts)
       end
     end
   end

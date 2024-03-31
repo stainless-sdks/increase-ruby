@@ -18,13 +18,12 @@ module Increase
         #
         # @return [Increase::Models::IntrafiExclusion]
         def create(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/intrafi_exclusions"
-          request[:body] = params
-          request[:model] = Increase::Models::IntrafiExclusion
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/intrafi_exclusions"
+          req[:body] = params
+          req[:model] = Increase::Models::IntrafiExclusion
+          @client.request(req, opts)
         end
 
         # Get an IntraFi Exclusion
@@ -34,12 +33,11 @@ module Increase
         #
         # @return [Increase::Models::IntrafiExclusion]
         def retrieve(intrafi_exclusion_id, opts = {})
-          request = {}
-          request[:method] = :get
-          request[:path] = "/intrafi_exclusions/#{intrafi_exclusion_id}"
-          request[:model] = Increase::Models::IntrafiExclusion
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :get
+          req[:path] = "/intrafi_exclusions/#{intrafi_exclusion_id}"
+          req[:model] = Increase::Models::IntrafiExclusion
+          @client.request(req, opts)
         end
 
         # Archive an IntraFi Exclusion
@@ -51,12 +49,11 @@ module Increase
         #
         # @return [Increase::Models::IntrafiExclusion]
         def archive(intrafi_exclusion_id, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/intrafi_exclusions/#{intrafi_exclusion_id}/archive"
-          request[:model] = Increase::Models::IntrafiExclusion
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/intrafi_exclusions/#{intrafi_exclusion_id}/archive"
+          req[:model] = Increase::Models::IntrafiExclusion
+          @client.request(req, opts)
         end
       end
     end

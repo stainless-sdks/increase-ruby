@@ -16,12 +16,11 @@ module Increase
         #
         # @return [Increase::Models::InboundFundsHoldReleaseResponse]
         def release(inbound_funds_hold_id, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/inbound_funds_holds/#{inbound_funds_hold_id}/release"
-          request[:model] = Increase::Models::InboundFundsHoldReleaseResponse
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/inbound_funds_holds/#{inbound_funds_hold_id}/release"
+          req[:model] = Increase::Models::InboundFundsHoldReleaseResponse
+          @client.request(req, opts)
         end
       end
     end

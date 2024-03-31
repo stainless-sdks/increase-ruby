@@ -23,13 +23,12 @@ module Increase
         #
         # @return [Increase::Models::CardDispute]
         def action(card_dispute_id, params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/card_disputes/#{card_dispute_id}/action"
-          request[:body] = params
-          request[:model] = Increase::Models::CardDispute
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/card_disputes/#{card_dispute_id}/action"
+          req[:body] = params
+          req[:model] = Increase::Models::CardDispute
+          @client.request(req, opts)
         end
       end
     end

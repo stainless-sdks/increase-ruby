@@ -14,12 +14,11 @@ module Increase
       #
       # @return [Increase::Models::Document]
       def retrieve(document_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/documents/#{document_id}"
-        request[:model] = Increase::Models::Document
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/documents/#{document_id}"
+        req[:model] = Increase::Models::Document
+        @client.request(req, opts)
       end
     end
   end

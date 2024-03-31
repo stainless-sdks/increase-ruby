@@ -26,13 +26,12 @@ module Increase
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/proof_of_authorization_request_submissions"
-        request[:body] = params
-        request[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/proof_of_authorization_request_submissions"
+        req[:body] = params
+        req[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
+        @client.request(req, opts)
       end
 
       # Retrieve a Proof of Authorization Request Submission
@@ -42,13 +41,12 @@ module Increase
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def retrieve(proof_of_authorization_request_submission_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] =
+        req = {}
+        req[:method] = :get
+        req[:path] =
           "/proof_of_authorization_request_submissions/#{proof_of_authorization_request_submission_id}"
-        request[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
-        request.merge!(opts)
-        @client.request(request)
+        req[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
+        @client.request(req, opts)
       end
     end
   end

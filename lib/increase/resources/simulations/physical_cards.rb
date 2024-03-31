@@ -21,13 +21,12 @@ module Increase
         #
         # @return [Increase::Models::PhysicalCard]
         def shipment_advance(physical_card_id, params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/physical_cards/#{physical_card_id}/shipment_advance"
-          request[:body] = params
-          request[:model] = Increase::Models::PhysicalCard
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/physical_cards/#{physical_card_id}/shipment_advance"
+          req[:body] = params
+          req[:model] = Increase::Models::PhysicalCard
+          @client.request(req, opts)
         end
       end
     end

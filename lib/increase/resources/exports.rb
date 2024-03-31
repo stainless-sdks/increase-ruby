@@ -25,13 +25,12 @@ module Increase
       #
       # @return [Increase::Models::Export]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/exports"
-        request[:body] = params
-        request[:model] = Increase::Models::Export
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/exports"
+        req[:body] = params
+        req[:model] = Increase::Models::Export
+        @client.request(req, opts)
       end
 
       # Retrieve an Export
@@ -41,12 +40,11 @@ module Increase
       #
       # @return [Increase::Models::Export]
       def retrieve(export_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/exports/#{export_id}"
-        request[:model] = Increase::Models::Export
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/exports/#{export_id}"
+        req[:model] = Increase::Models::Export
+        @client.request(req, opts)
       end
     end
   end

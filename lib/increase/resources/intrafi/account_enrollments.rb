@@ -18,13 +18,12 @@ module Increase
         #
         # @return [Increase::Models::IntrafiAccountEnrollment]
         def create(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/intrafi_account_enrollments"
-          request[:body] = params
-          request[:model] = Increase::Models::IntrafiAccountEnrollment
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/intrafi_account_enrollments"
+          req[:body] = params
+          req[:model] = Increase::Models::IntrafiAccountEnrollment
+          @client.request(req, opts)
         end
 
         # Get an IntraFi Account Enrollment
@@ -34,12 +33,11 @@ module Increase
         #
         # @return [Increase::Models::IntrafiAccountEnrollment]
         def retrieve(intrafi_account_enrollment_id, opts = {})
-          request = {}
-          request[:method] = :get
-          request[:path] = "/intrafi_account_enrollments/#{intrafi_account_enrollment_id}"
-          request[:model] = Increase::Models::IntrafiAccountEnrollment
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :get
+          req[:path] = "/intrafi_account_enrollments/#{intrafi_account_enrollment_id}"
+          req[:model] = Increase::Models::IntrafiAccountEnrollment
+          @client.request(req, opts)
         end
 
         # Unenroll an account from IntraFi.
@@ -49,12 +47,11 @@ module Increase
         #
         # @return [Increase::Models::IntrafiAccountEnrollment]
         def unenroll(intrafi_account_enrollment_id, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/intrafi_account_enrollments/#{intrafi_account_enrollment_id}/unenroll"
-          request[:model] = Increase::Models::IntrafiAccountEnrollment
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/intrafi_account_enrollments/#{intrafi_account_enrollment_id}/unenroll"
+          req[:model] = Increase::Models::IntrafiAccountEnrollment
+          @client.request(req, opts)
         end
       end
     end

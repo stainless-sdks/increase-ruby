@@ -18,13 +18,12 @@ module Increase
         #
         # @return [Increase::Models::AccountStatement]
         def create(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/account_statements"
-          request[:body] = params
-          request[:model] = Increase::Models::AccountStatement
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/account_statements"
+          req[:body] = params
+          req[:model] = Increase::Models::AccountStatement
+          @client.request(req, opts)
         end
       end
     end

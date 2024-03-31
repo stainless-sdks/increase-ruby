@@ -20,13 +20,12 @@ module Increase
       #
       # @return [Increase::Models::PhysicalCard]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/physical_cards"
-        request[:body] = params
-        request[:model] = Increase::Models::PhysicalCard
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/physical_cards"
+        req[:body] = params
+        req[:model] = Increase::Models::PhysicalCard
+        @client.request(req, opts)
       end
 
       # Retrieve a Physical Card
@@ -36,12 +35,11 @@ module Increase
       #
       # @return [Increase::Models::PhysicalCard]
       def retrieve(physical_card_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/physical_cards/#{physical_card_id}"
-        request[:model] = Increase::Models::PhysicalCard
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/physical_cards/#{physical_card_id}"
+        req[:model] = Increase::Models::PhysicalCard
+        @client.request(req, opts)
       end
 
       # Update a Physical Card
@@ -55,13 +53,12 @@ module Increase
       #
       # @return [Increase::Models::PhysicalCard]
       def update(physical_card_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :patch
-        request[:path] = "/physical_cards/#{physical_card_id}"
-        request[:body] = params
-        request[:model] = Increase::Models::PhysicalCard
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :patch
+        req[:path] = "/physical_cards/#{physical_card_id}"
+        req[:body] = params
+        req[:model] = Increase::Models::PhysicalCard
+        @client.request(req, opts)
       end
     end
   end

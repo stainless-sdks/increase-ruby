@@ -14,12 +14,11 @@ module Increase
       #
       # @return [Increase::Models::InboundACHTransfer]
       def retrieve(inbound_ach_transfer_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}"
-        request[:model] = Increase::Models::InboundACHTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}"
+        req[:model] = Increase::Models::InboundACHTransfer
+        @client.request(req, opts)
       end
 
       # Decline an Inbound ACH Transfer
@@ -29,12 +28,11 @@ module Increase
       #
       # @return [Increase::Models::InboundACHTransfer]
       def decline(inbound_ach_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/decline"
-        request[:model] = Increase::Models::InboundACHTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/decline"
+        req[:model] = Increase::Models::InboundACHTransfer
+        @client.request(req, opts)
       end
 
       # Create a notification of change for an Inbound ACH Transfer
@@ -50,13 +48,12 @@ module Increase
       #
       # @return [Increase::Models::InboundACHTransfer]
       def notification_of_change(inbound_ach_transfer_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/notification_of_change"
-        request[:body] = params
-        request[:model] = Increase::Models::InboundACHTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/notification_of_change"
+        req[:body] = params
+        req[:model] = Increase::Models::InboundACHTransfer
+        @client.request(req, opts)
       end
 
       # Return an Inbound ACH Transfer
@@ -72,13 +69,12 @@ module Increase
       #
       # @return [Increase::Models::InboundACHTransfer]
       def transfer_return(inbound_ach_transfer_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/transfer_return"
-        request[:body] = params
-        request[:model] = Increase::Models::InboundACHTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/transfer_return"
+        req[:body] = params
+        req[:model] = Increase::Models::InboundACHTransfer
+        @client.request(req, opts)
       end
     end
   end

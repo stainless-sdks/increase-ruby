@@ -21,13 +21,12 @@ module Increase
         #
         # @return [Increase::Models::Transaction]
         def create(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/interest_payment"
-          request[:body] = params
-          request[:model] = Increase::Models::Transaction
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/interest_payment"
+          req[:body] = params
+          req[:model] = Increase::Models::Transaction
+          @client.request(req, opts)
         end
       end
     end

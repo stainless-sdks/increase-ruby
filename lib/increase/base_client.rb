@@ -3,7 +3,7 @@
 module Increase
   # @!visibility private
   class BaseClient
-    attr_accessor :requester, :idempotency_header
+    attr_accessor :requester
 
     NO_IDEMPOTENCY_KEY_METHODS = [:get, :head, :options]
 
@@ -29,11 +29,33 @@ module Increase
       @port = env_uri.port
       @base_path = self.class.normalize_path env_uri.path
       @max_retries = max_retries || 0
-      self.idempotency_header = idempotency_header
+      @idempotency_header = idempotency_header
     end
 
     def auth_headers
       {}
+    end
+
+    def validate_request(req, opts)
+      if req[:body]
+        req[:body].each_key do |k|
+          unless k.is_a?(Symbol)
+            raise ArgumentError, "Request body keys must be Symbols, got #{k.inspect}"
+          end
+        end
+      end
+      unless opts.is_a?(Hash) || opts.is_a?(Increase::RequestOptions)
+        raise ArgumentError, "Request `opts` must be a Hash or RequestOptions, got #{opts.inspect}"
+      end
+      opts.to_hash.each_key do |k|
+        unless k.is_a?(Symbol)
+          raise ArgumentError, "Request `opts` keys must be Symbols, got #{k.inspect}"
+        end
+        unless Increase::RequestOptions.options.include?(k)
+          raise ArgumentError,
+                "Request `opts` keys must be one of #{Increase::RequestOptions.options.inspect}, got #{k.inspect}"
+        end
+      end
     end
 
     def self.normalize_path(path)
@@ -96,8 +118,8 @@ module Increase
         full_headers = Util.deep_merge(full_headers, options[:extra_headers])
       end
 
-      if idempotency_header && !headers[idempotency_header] && !NO_IDEMPOTENCY_KEY_METHODS.include?(method)
-        full_headers[idempotency_header] = options[:idempotency_key] || generate_idempotency_key
+      if @idempotency_header && !headers[@idempotency_header] && !NO_IDEMPOTENCY_KEY_METHODS.include?(method)
+        full_headers[@idempotency_header] = options[:idempotency_key] || generate_idempotency_key
       end
 
       {
@@ -112,16 +134,6 @@ module Increase
 
     def generate_idempotency_key
       "stainless-ruby-retry-#{SecureRandom.uuid}"
-    end
-
-    def base_uri
-      builder = @scheme.to_sym == :https ? URI::HTTPS : URI::HTTP
-      builder.build(
-        scheme: @scheme,
-        host: @host,
-        port: @port,
-        path: @base_path
-      )
     end
 
     def should_retry?(response)
@@ -221,10 +233,15 @@ module Increase
       end
     end
 
-    def request(options)
+    # Execute the request specified by req + opts. This is the method that all
+    # resource methods call into.
+    # Params req & opts are kept seperate up until this point so that we can
+    # validate opts as it was given to us by the user.
+    def request(req, opts)
+      validate_request(req, opts)
+      options = req.merge(opts)
       request_args = prep_request(options)
       response = with_retry(request_args, max_retries: options[:max_retries])
-
       raw_data =
         case response.content_type
         when "application/json"

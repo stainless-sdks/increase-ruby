@@ -14,12 +14,11 @@ module Increase
       #
       # @return [Increase::Models::Transaction]
       def retrieve(transaction_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/transactions/#{transaction_id}"
-        request[:model] = Increase::Models::Transaction
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/transactions/#{transaction_id}"
+        req[:model] = Increase::Models::Transaction
+        @client.request(req, opts)
       end
     end
   end

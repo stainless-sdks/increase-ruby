@@ -19,13 +19,12 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingAccount]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/bookkeeping_accounts"
-        request[:body] = params
-        request[:model] = Increase::Models::BookkeepingAccount
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/bookkeeping_accounts"
+        req[:body] = params
+        req[:model] = Increase::Models::BookkeepingAccount
+        @client.request(req, opts)
       end
 
       # Update a Bookkeeping Account
@@ -39,13 +38,12 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingAccount]
       def update(bookkeeping_account_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :patch
-        request[:path] = "/bookkeeping_accounts/#{bookkeeping_account_id}"
-        request[:body] = params
-        request[:model] = Increase::Models::BookkeepingAccount
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :patch
+        req[:path] = "/bookkeeping_accounts/#{bookkeeping_account_id}"
+        req[:body] = params
+        req[:model] = Increase::Models::BookkeepingAccount
+        @client.request(req, opts)
       end
 
       # Retrieve a Bookkeeping Account Balance
@@ -59,13 +57,12 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingBalanceLookup]
       def balance(bookkeeping_account_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/bookkeeping_accounts/#{bookkeeping_account_id}/balance"
-        request[:query] = params
-        request[:model] = Increase::Models::BookkeepingBalanceLookup
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/bookkeeping_accounts/#{bookkeeping_account_id}/balance"
+        req[:query] = params
+        req[:model] = Increase::Models::BookkeepingBalanceLookup
+        @client.request(req, opts)
       end
     end
   end

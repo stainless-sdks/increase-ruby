@@ -212,7 +212,6 @@ module Increase
       unless key.instance_of?(Symbol)
         raise ArgumentError, "Expected symbol key for lookup, got #{key.inspect}"
       end
-
       @data[key]
     end
   end

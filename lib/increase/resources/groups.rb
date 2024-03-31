@@ -13,12 +13,11 @@ module Increase
       #
       # @return [Increase::Models::Group]
       def retrieve_details(opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/groups/current"
-        request[:model] = Increase::Models::Group
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/groups/current"
+        req[:model] = Increase::Models::Group
+        @client.request(req, opts)
       end
     end
   end

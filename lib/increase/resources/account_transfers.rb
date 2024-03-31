@@ -21,13 +21,12 @@ module Increase
       #
       # @return [Increase::Models::AccountTransfer]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/account_transfers"
-        request[:body] = params
-        request[:model] = Increase::Models::AccountTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/account_transfers"
+        req[:body] = params
+        req[:model] = Increase::Models::AccountTransfer
+        @client.request(req, opts)
       end
 
       # Retrieve an Account Transfer
@@ -37,12 +36,11 @@ module Increase
       #
       # @return [Increase::Models::AccountTransfer]
       def retrieve(account_transfer_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/account_transfers/#{account_transfer_id}"
-        request[:model] = Increase::Models::AccountTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/account_transfers/#{account_transfer_id}"
+        req[:model] = Increase::Models::AccountTransfer
+        @client.request(req, opts)
       end
 
       # Approve an Account Transfer
@@ -52,12 +50,11 @@ module Increase
       #
       # @return [Increase::Models::AccountTransfer]
       def approve(account_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/account_transfers/#{account_transfer_id}/approve"
-        request[:model] = Increase::Models::AccountTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/account_transfers/#{account_transfer_id}/approve"
+        req[:model] = Increase::Models::AccountTransfer
+        @client.request(req, opts)
       end
 
       # Cancel an Account Transfer
@@ -67,12 +64,11 @@ module Increase
       #
       # @return [Increase::Models::AccountTransfer]
       def cancel(account_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/account_transfers/#{account_transfer_id}/cancel"
-        request[:model] = Increase::Models::AccountTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/account_transfers/#{account_transfer_id}/cancel"
+        req[:model] = Increase::Models::AccountTransfer
+        @client.request(req, opts)
       end
     end
   end

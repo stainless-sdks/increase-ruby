@@ -43,13 +43,12 @@ module Increase
         #
         # @return [Increase::Models::InboundWireDrawdownRequest]
         def create(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/inbound_wire_drawdown_requests"
-          request[:body] = params
-          request[:model] = Increase::Models::InboundWireDrawdownRequest
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/inbound_wire_drawdown_requests"
+          req[:body] = params
+          req[:model] = Increase::Models::InboundWireDrawdownRequest
+          @client.request(req, opts)
         end
       end
     end

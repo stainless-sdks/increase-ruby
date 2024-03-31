@@ -14,12 +14,11 @@ module Increase
       #
       # @return [Increase::Models::AccountStatement]
       def retrieve(account_statement_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/account_statements/#{account_statement_id}"
-        request[:model] = Increase::Models::AccountStatement
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/account_statements/#{account_statement_id}"
+        req[:model] = Increase::Models::AccountStatement
+        @client.request(req, opts)
       end
     end
   end

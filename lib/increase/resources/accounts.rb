@@ -21,13 +21,12 @@ module Increase
       #
       # @return [Increase::Models::Account]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/accounts"
-        request[:body] = params
-        request[:model] = Increase::Models::Account
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/accounts"
+        req[:body] = params
+        req[:model] = Increase::Models::Account
+        @client.request(req, opts)
       end
 
       # Retrieve an Account
@@ -37,12 +36,11 @@ module Increase
       #
       # @return [Increase::Models::Account]
       def retrieve(account_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/accounts/#{account_id}"
-        request[:model] = Increase::Models::Account
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/accounts/#{account_id}"
+        req[:model] = Increase::Models::Account
+        @client.request(req, opts)
       end
 
       # Update an Account
@@ -56,13 +54,12 @@ module Increase
       #
       # @return [Increase::Models::Account]
       def update(account_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :patch
-        request[:path] = "/accounts/#{account_id}"
-        request[:body] = params
-        request[:model] = Increase::Models::Account
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :patch
+        req[:path] = "/accounts/#{account_id}"
+        req[:body] = params
+        req[:model] = Increase::Models::Account
+        @client.request(req, opts)
       end
 
       # Retrieve an Account Balance
@@ -76,13 +73,12 @@ module Increase
       #
       # @return [Increase::Models::BalanceLookup]
       def balance(account_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/accounts/#{account_id}/balance"
-        request[:query] = params
-        request[:model] = Increase::Models::BalanceLookup
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/accounts/#{account_id}/balance"
+        req[:query] = params
+        req[:model] = Increase::Models::BalanceLookup
+        @client.request(req, opts)
       end
 
       # Close an Account
@@ -92,12 +88,11 @@ module Increase
       #
       # @return [Increase::Models::Account]
       def close(account_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/accounts/#{account_id}/close"
-        request[:model] = Increase::Models::Account
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/accounts/#{account_id}/close"
+        req[:model] = Increase::Models::Account
+        @client.request(req, opts)
       end
     end
   end

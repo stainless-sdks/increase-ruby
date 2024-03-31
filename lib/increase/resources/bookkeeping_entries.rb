@@ -14,12 +14,11 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingEntry]
       def retrieve(bookkeeping_entry_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/bookkeeping_entries/#{bookkeeping_entry_id}"
-        request[:model] = Increase::Models::BookkeepingEntry
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/bookkeeping_entries/#{bookkeeping_entry_id}"
+        req[:model] = Increase::Models::BookkeepingEntry
+        @client.request(req, opts)
       end
     end
   end

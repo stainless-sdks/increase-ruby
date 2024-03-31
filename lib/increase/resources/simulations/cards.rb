@@ -37,13 +37,12 @@ module Increase
         #
         # @return [Increase::Models::CardAuthorizationSimulation]
         def authorize(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/card_authorizations"
-          request[:body] = params
-          request[:model] = Increase::Models::CardAuthorizationSimulation
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/card_authorizations"
+          req[:body] = params
+          req[:model] = Increase::Models::CardAuthorizationSimulation
+          @client.request(req, opts)
         end
 
         # Simulates the settlement of an authorization by a card acquirer. After a card
@@ -63,13 +62,12 @@ module Increase
         #
         # @return [Increase::Models::Transaction]
         def settlement(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/card_settlements"
-          request[:body] = params
-          request[:model] = Increase::Models::Transaction
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/card_settlements"
+          req[:body] = params
+          req[:model] = Increase::Models::Transaction
+          @client.request(req, opts)
         end
       end
     end

@@ -15,12 +15,11 @@ module Increase
         #
         # @return [Increase::Models::IntrafiBalance]
         def retrieve(account_id, opts = {})
-          request = {}
-          request[:method] = :get
-          request[:path] = "/intrafi_balances/#{account_id}"
-          request[:model] = Increase::Models::IntrafiBalance
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :get
+          req[:path] = "/intrafi_balances/#{account_id}"
+          req[:model] = Increase::Models::IntrafiBalance
+          @client.request(req, opts)
         end
       end
     end

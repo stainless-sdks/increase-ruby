@@ -24,13 +24,12 @@ module Increase
       #
       # @return [Increase::Models::RealTimePaymentsRequestForPayment]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/real_time_payments_request_for_payments"
-        request[:body] = params
-        request[:model] = Increase::Models::RealTimePaymentsRequestForPayment
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/real_time_payments_request_for_payments"
+        req[:body] = params
+        req[:model] = Increase::Models::RealTimePaymentsRequestForPayment
+        @client.request(req, opts)
       end
 
       # Retrieve a Real-Time Payments Request for Payment
@@ -40,12 +39,11 @@ module Increase
       #
       # @return [Increase::Models::RealTimePaymentsRequestForPayment]
       def retrieve(request_for_payment_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/real_time_payments_request_for_payments/#{request_for_payment_id}"
-        request[:model] = Increase::Models::RealTimePaymentsRequestForPayment
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/real_time_payments_request_for_payments/#{request_for_payment_id}"
+        req[:model] = Increase::Models::RealTimePaymentsRequestForPayment
+        @client.request(req, opts)
       end
     end
   end

@@ -36,13 +36,12 @@ module Increase
       #
       # @return [Increase::Models::WireTransfer]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/wire_transfers"
-        request[:body] = params
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/wire_transfers"
+        req[:body] = params
+        req[:model] = Increase::Models::WireTransfer
+        @client.request(req, opts)
       end
 
       # Retrieve a Wire Transfer
@@ -52,12 +51,11 @@ module Increase
       #
       # @return [Increase::Models::WireTransfer]
       def retrieve(wire_transfer_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/wire_transfers/#{wire_transfer_id}"
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/wire_transfers/#{wire_transfer_id}"
+        req[:model] = Increase::Models::WireTransfer
+        @client.request(req, opts)
       end
 
       # Approve a Wire Transfer
@@ -67,12 +65,11 @@ module Increase
       #
       # @return [Increase::Models::WireTransfer]
       def approve(wire_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/wire_transfers/#{wire_transfer_id}/approve"
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/wire_transfers/#{wire_transfer_id}/approve"
+        req[:model] = Increase::Models::WireTransfer
+        @client.request(req, opts)
       end
 
       # Cancel a pending Wire Transfer
@@ -82,12 +79,11 @@ module Increase
       #
       # @return [Increase::Models::WireTransfer]
       def cancel(wire_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/wire_transfers/#{wire_transfer_id}/cancel"
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/wire_transfers/#{wire_transfer_id}/cancel"
+        req[:model] = Increase::Models::WireTransfer
+        @client.request(req, opts)
       end
 
       # Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
@@ -100,12 +96,11 @@ module Increase
       #
       # @return [Increase::Models::WireTransfer]
       def reverse(wire_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/simulations/wire_transfers/#{wire_transfer_id}/reverse"
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/simulations/wire_transfers/#{wire_transfer_id}/reverse"
+        req[:model] = Increase::Models::WireTransfer
+        @client.request(req, opts)
       end
 
       # Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
@@ -117,12 +112,11 @@ module Increase
       #
       # @return [Increase::Models::WireTransfer]
       def submit(wire_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/simulations/wire_transfers/#{wire_transfer_id}/submit"
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/simulations/wire_transfers/#{wire_transfer_id}/submit"
+        req[:model] = Increase::Models::WireTransfer
+        @client.request(req, opts)
       end
     end
   end

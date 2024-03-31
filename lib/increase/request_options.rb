@@ -7,17 +7,23 @@ module Increase
   # When making a request, you can pass an actual {RequestOptions} instance, or simply pass a Hash
   # with symbol keys matching the attributes on this class.
   class RequestOptions
-    # Returns a new instance of RequestOptions.
-    #
-    # @param values [Hash{Symbol => Object}] initial option values to set on the instance.
-    def initialize(values = {})
-      @_values = values
+    # @!visibility private
+    def self.options
+      @options ||= []
     end
 
     # @!visibility private
     def self.option(name)
       define_method(name) { @_values[name] }
       define_method("#{name}=") { |val| @_values[name] = val }
+      options.push(name)
+    end
+
+    # Returns a new instance of RequestOptions.
+    #
+    # @param values [Hash{Symbol => Object}] initial option values to set on the instance.
+    def initialize(values = {})
+      @_values = values
     end
 
     # @!attribute idempotency_key

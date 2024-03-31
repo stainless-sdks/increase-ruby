@@ -19,13 +19,12 @@ module Increase
         #
         # @return [Increase::Models::Entity]
         def create(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/entity_beneficial_owners"
-          request[:body] = params
-          request[:model] = Increase::Models::Entity
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/entity_beneficial_owners"
+          req[:body] = params
+          req[:model] = Increase::Models::Entity
+          @client.request(req, opts)
         end
 
         # Archive a beneficial owner for a corporate Entity
@@ -39,13 +38,12 @@ module Increase
         #
         # @return [Increase::Models::Entity]
         def archive(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/entity_beneficial_owners/archive"
-          request[:body] = params
-          request[:model] = Increase::Models::Entity
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/entity_beneficial_owners/archive"
+          req[:body] = params
+          req[:model] = Increase::Models::Entity
+          @client.request(req, opts)
         end
 
         # Update the address for a beneficial owner belonging to a corporate Entity
@@ -61,13 +59,12 @@ module Increase
         #
         # @return [Increase::Models::Entity]
         def update_address(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/entity_beneficial_owners/address"
-          request[:body] = params
-          request[:model] = Increase::Models::Entity
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/entity_beneficial_owners/address"
+          req[:body] = params
+          req[:model] = Increase::Models::Entity
+          @client.request(req, opts)
         end
       end
     end

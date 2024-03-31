@@ -14,12 +14,11 @@ module Increase
       #
       # @return [Increase::Models::CardPurchaseSupplement]
       def retrieve(card_purchase_supplement_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/card_purchase_supplements/#{card_purchase_supplement_id}"
-        request[:model] = Increase::Models::CardPurchaseSupplement
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/card_purchase_supplements/#{card_purchase_supplement_id}"
+        req[:model] = Increase::Models::CardPurchaseSupplement
+        @client.request(req, opts)
       end
     end
   end

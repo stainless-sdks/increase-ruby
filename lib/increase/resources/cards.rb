@@ -25,13 +25,12 @@ module Increase
       #
       # @return [Increase::Models::Card]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/cards"
-        request[:body] = params
-        request[:model] = Increase::Models::Card
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/cards"
+        req[:body] = params
+        req[:model] = Increase::Models::Card
+        @client.request(req, opts)
       end
 
       # Retrieve a Card
@@ -41,12 +40,11 @@ module Increase
       #
       # @return [Increase::Models::Card]
       def retrieve(card_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/cards/#{card_id}"
-        request[:model] = Increase::Models::Card
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/cards/#{card_id}"
+        req[:model] = Increase::Models::Card
+        @client.request(req, opts)
       end
 
       # Update a Card
@@ -67,13 +65,12 @@ module Increase
       #
       # @return [Increase::Models::Card]
       def update(card_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :patch
-        request[:path] = "/cards/#{card_id}"
-        request[:body] = params
-        request[:model] = Increase::Models::Card
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :patch
+        req[:path] = "/cards/#{card_id}"
+        req[:body] = params
+        req[:model] = Increase::Models::Card
+        @client.request(req, opts)
       end
 
       # Retrieve sensitive details for a Card
@@ -83,12 +80,11 @@ module Increase
       #
       # @return [Increase::Models::CardDetails]
       def retrieve_sensitive_details(card_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/cards/#{card_id}/details"
-        request[:model] = Increase::Models::CardDetails
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/cards/#{card_id}/details"
+        req[:model] = Increase::Models::CardDetails
+        @client.request(req, opts)
       end
     end
   end

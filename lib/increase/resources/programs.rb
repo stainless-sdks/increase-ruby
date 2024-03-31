@@ -14,12 +14,11 @@ module Increase
       #
       # @return [Increase::Models::Program]
       def retrieve(program_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/programs/#{program_id}"
-        request[:model] = Increase::Models::Program
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/programs/#{program_id}"
+        req[:model] = Increase::Models::Program
+        @client.request(req, opts)
       end
     end
   end

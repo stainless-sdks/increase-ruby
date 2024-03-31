@@ -22,13 +22,12 @@ module Increase
       #
       # @return [Increase::Models::File]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/files"
-        request[:body] = params
-        request[:model] = Increase::Models::File
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/files"
+        req[:body] = params
+        req[:model] = Increase::Models::File
+        @client.request(req, opts)
       end
 
       # Retrieve a File
@@ -38,12 +37,11 @@ module Increase
       #
       # @return [Increase::Models::File]
       def retrieve(file_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/files/#{file_id}"
-        request[:model] = Increase::Models::File
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/files/#{file_id}"
+        req[:model] = Increase::Models::File
+        @client.request(req, opts)
       end
     end
   end

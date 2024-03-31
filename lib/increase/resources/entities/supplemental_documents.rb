@@ -19,13 +19,12 @@ module Increase
         #
         # @return [Increase::Models::Entity]
         def create(entity_id, params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/entities/#{entity_id}/supplemental_documents"
-          request[:body] = params
-          request[:model] = Increase::Models::Entity
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/entities/#{entity_id}/supplemental_documents"
+          req[:body] = params
+          req[:model] = Increase::Models::Entity
+          @client.request(req, opts)
         end
       end
     end

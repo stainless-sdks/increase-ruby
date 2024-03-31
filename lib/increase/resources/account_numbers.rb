@@ -20,13 +20,12 @@ module Increase
       #
       # @return [Increase::Models::AccountNumber]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/account_numbers"
-        request[:body] = params
-        request[:model] = Increase::Models::AccountNumber
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/account_numbers"
+        req[:body] = params
+        req[:model] = Increase::Models::AccountNumber
+        @client.request(req, opts)
       end
 
       # Retrieve an Account Number
@@ -36,12 +35,11 @@ module Increase
       #
       # @return [Increase::Models::AccountNumber]
       def retrieve(account_number_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/account_numbers/#{account_number_id}"
-        request[:model] = Increase::Models::AccountNumber
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/account_numbers/#{account_number_id}"
+        req[:model] = Increase::Models::AccountNumber
+        @client.request(req, opts)
       end
 
       # Update an Account Number
@@ -59,13 +57,12 @@ module Increase
       #
       # @return [Increase::Models::AccountNumber]
       def update(account_number_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :patch
-        request[:path] = "/account_numbers/#{account_number_id}"
-        request[:body] = params
-        request[:model] = Increase::Models::AccountNumber
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :patch
+        req[:path] = "/account_numbers/#{account_number_id}"
+        req[:body] = params
+        req[:model] = Increase::Models::AccountNumber
+        @client.request(req, opts)
       end
     end
   end

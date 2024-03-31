@@ -46,13 +46,12 @@ module Increase
         #
         # @return [Increase::Models::InboundWireTransfer]
         def create_inbound(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/inbound_wire_transfers"
-          request[:body] = params
-          request[:model] = Increase::Models::InboundWireTransfer
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/inbound_wire_transfers"
+          req[:body] = params
+          req[:model] = Increase::Models::InboundWireTransfer
+          @client.request(req, opts)
         end
       end
     end

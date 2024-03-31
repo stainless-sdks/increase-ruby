@@ -24,13 +24,12 @@ module Increase
       #
       # @return [Increase::Models::CheckTransfer]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/check_transfers"
-        request[:body] = params
-        request[:model] = Increase::Models::CheckTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/check_transfers"
+        req[:body] = params
+        req[:model] = Increase::Models::CheckTransfer
+        @client.request(req, opts)
       end
 
       # Retrieve a Check Transfer
@@ -40,12 +39,11 @@ module Increase
       #
       # @return [Increase::Models::CheckTransfer]
       def retrieve(check_transfer_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/check_transfers/#{check_transfer_id}"
-        request[:model] = Increase::Models::CheckTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/check_transfers/#{check_transfer_id}"
+        req[:model] = Increase::Models::CheckTransfer
+        @client.request(req, opts)
       end
 
       # Approve a Check Transfer
@@ -55,12 +53,11 @@ module Increase
       #
       # @return [Increase::Models::CheckTransfer]
       def approve(check_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/check_transfers/#{check_transfer_id}/approve"
-        request[:model] = Increase::Models::CheckTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/check_transfers/#{check_transfer_id}/approve"
+        req[:model] = Increase::Models::CheckTransfer
+        @client.request(req, opts)
       end
 
       # Cancel a pending Check Transfer
@@ -70,12 +67,11 @@ module Increase
       #
       # @return [Increase::Models::CheckTransfer]
       def cancel(check_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/check_transfers/#{check_transfer_id}/cancel"
-        request[:model] = Increase::Models::CheckTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/check_transfers/#{check_transfer_id}/cancel"
+        req[:model] = Increase::Models::CheckTransfer
+        @client.request(req, opts)
       end
 
       # Request a stop payment on a Check Transfer
@@ -89,13 +85,12 @@ module Increase
       #
       # @return [Increase::Models::CheckTransfer]
       def stop_payment(check_transfer_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/check_transfers/#{check_transfer_id}/stop_payment"
-        request[:body] = params
-        request[:model] = Increase::Models::CheckTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/check_transfers/#{check_transfer_id}/stop_payment"
+        req[:body] = params
+        req[:model] = Increase::Models::CheckTransfer
+        @client.request(req, opts)
       end
     end
   end

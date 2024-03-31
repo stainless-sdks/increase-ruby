@@ -20,13 +20,12 @@ module Increase
       #
       # @return [Increase::Models::EventSubscription]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/event_subscriptions"
-        request[:body] = params
-        request[:model] = Increase::Models::EventSubscription
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/event_subscriptions"
+        req[:body] = params
+        req[:model] = Increase::Models::EventSubscription
+        @client.request(req, opts)
       end
 
       # Retrieve an Event Subscription
@@ -36,12 +35,11 @@ module Increase
       #
       # @return [Increase::Models::EventSubscription]
       def retrieve(event_subscription_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/event_subscriptions/#{event_subscription_id}"
-        request[:model] = Increase::Models::EventSubscription
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/event_subscriptions/#{event_subscription_id}"
+        req[:model] = Increase::Models::EventSubscription
+        @client.request(req, opts)
       end
 
       # Update an Event Subscription
@@ -55,13 +53,12 @@ module Increase
       #
       # @return [Increase::Models::EventSubscription]
       def update(event_subscription_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :patch
-        request[:path] = "/event_subscriptions/#{event_subscription_id}"
-        request[:body] = params
-        request[:model] = Increase::Models::EventSubscription
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :patch
+        req[:path] = "/event_subscriptions/#{event_subscription_id}"
+        req[:body] = params
+        req[:model] = Increase::Models::EventSubscription
+        @client.request(req, opts)
       end
     end
   end

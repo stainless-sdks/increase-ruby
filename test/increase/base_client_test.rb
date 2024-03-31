@@ -3,16 +3,6 @@
 require_relative "test_helper"
 
 class Increase::Test::BaseClientTest < Test::Unit::TestCase
-  def test_base_uri_https
-    client = Increase::BaseClient.new(server_uri_string: "https://foo.bar/baz")
-    assert_equal(URI.parse("https://foo.bar:443/baz"), client.base_uri)
-  end
-
-  def test_base_uri_http
-    client = Increase::BaseClient.new(server_uri_string: "http://foo.bar/baz")
-    assert_equal(URI.parse("http://foo.bar/baz"), client.base_uri)
-  end
-
   def test_from_uri_string
     assert_equal(
       {

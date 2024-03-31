@@ -21,13 +21,12 @@ module Increase
       #
       # @return [Increase::Models::CheckDeposit]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/check_deposits"
-        request[:body] = params
-        request[:model] = Increase::Models::CheckDeposit
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/check_deposits"
+        req[:body] = params
+        req[:model] = Increase::Models::CheckDeposit
+        @client.request(req, opts)
       end
 
       # Retrieve a Check Deposit
@@ -37,12 +36,11 @@ module Increase
       #
       # @return [Increase::Models::CheckDeposit]
       def retrieve(check_deposit_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/check_deposits/#{check_deposit_id}"
-        request[:model] = Increase::Models::CheckDeposit
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/check_deposits/#{check_deposit_id}"
+        req[:model] = Increase::Models::CheckDeposit
+        @client.request(req, opts)
       end
     end
   end

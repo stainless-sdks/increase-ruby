@@ -14,12 +14,11 @@ module Increase
       #
       # @return [Increase::Models::Event]
       def retrieve(event_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/events/#{event_id}"
-        request[:model] = Increase::Models::Event
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/events/#{event_id}"
+        req[:model] = Increase::Models::Event
+        @client.request(req, opts)
       end
     end
   end

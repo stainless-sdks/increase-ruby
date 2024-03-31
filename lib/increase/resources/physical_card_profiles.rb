@@ -19,13 +19,12 @@ module Increase
       #
       # @return [Increase::Models::PhysicalCardProfile]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/physical_card_profiles"
-        request[:body] = params
-        request[:model] = Increase::Models::PhysicalCardProfile
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/physical_card_profiles"
+        req[:body] = params
+        req[:model] = Increase::Models::PhysicalCardProfile
+        @client.request(req, opts)
       end
 
       # Retrieve a Card Profile
@@ -35,12 +34,11 @@ module Increase
       #
       # @return [Increase::Models::PhysicalCardProfile]
       def retrieve(physical_card_profile_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/physical_card_profiles/#{physical_card_profile_id}"
-        request[:model] = Increase::Models::PhysicalCardProfile
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/physical_card_profiles/#{physical_card_profile_id}"
+        req[:model] = Increase::Models::PhysicalCardProfile
+        @client.request(req, opts)
       end
 
       # Archive a Physical Card Profile
@@ -50,12 +48,11 @@ module Increase
       #
       # @return [Increase::Models::PhysicalCardProfile]
       def archive(physical_card_profile_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/physical_card_profiles/#{physical_card_profile_id}/archive"
-        request[:model] = Increase::Models::PhysicalCardProfile
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/physical_card_profiles/#{physical_card_profile_id}/archive"
+        req[:model] = Increase::Models::PhysicalCardProfile
+        @client.request(req, opts)
       end
 
       # Clone a Physical Card Profile
@@ -74,13 +71,12 @@ module Increase
       #
       # @return [Increase::Models::PhysicalCardProfile]
       def clone(physical_card_profile_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/physical_card_profiles/#{physical_card_profile_id}/clone"
-        request[:body] = params
-        request[:model] = Increase::Models::PhysicalCardProfile
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/physical_card_profiles/#{physical_card_profile_id}/clone"
+        req[:body] = params
+        req[:model] = Increase::Models::PhysicalCardProfile
+        @client.request(req, opts)
       end
     end
   end

@@ -24,13 +24,12 @@ module Increase
       #
       # @return [Increase::Models::DigitalCardProfile]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/digital_card_profiles"
-        request[:body] = params
-        request[:model] = Increase::Models::DigitalCardProfile
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/digital_card_profiles"
+        req[:body] = params
+        req[:model] = Increase::Models::DigitalCardProfile
+        @client.request(req, opts)
       end
 
       # Retrieve a Digital Card Profile
@@ -40,12 +39,11 @@ module Increase
       #
       # @return [Increase::Models::DigitalCardProfile]
       def retrieve(digital_card_profile_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/digital_card_profiles/#{digital_card_profile_id}"
-        request[:model] = Increase::Models::DigitalCardProfile
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/digital_card_profiles/#{digital_card_profile_id}"
+        req[:model] = Increase::Models::DigitalCardProfile
+        @client.request(req, opts)
       end
 
       # Archive a Digital Card Profile
@@ -55,12 +53,11 @@ module Increase
       #
       # @return [Increase::Models::DigitalCardProfile]
       def archive(digital_card_profile_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/digital_card_profiles/#{digital_card_profile_id}/archive"
-        request[:model] = Increase::Models::DigitalCardProfile
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/digital_card_profiles/#{digital_card_profile_id}/archive"
+        req[:model] = Increase::Models::DigitalCardProfile
+        @client.request(req, opts)
       end
 
       # Clones a Digital Card Profile
@@ -82,13 +79,12 @@ module Increase
       #
       # @return [Increase::Models::DigitalCardProfile]
       def clone(digital_card_profile_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/digital_card_profiles/#{digital_card_profile_id}/clone"
-        request[:body] = params
-        request[:model] = Increase::Models::DigitalCardProfile
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/digital_card_profiles/#{digital_card_profile_id}/clone"
+        req[:body] = params
+        req[:model] = Increase::Models::DigitalCardProfile
+        @client.request(req, opts)
       end
     end
   end

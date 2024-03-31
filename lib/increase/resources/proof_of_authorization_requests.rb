@@ -14,12 +14,11 @@ module Increase
       #
       # @return [Increase::Models::ProofOfAuthorizationRequest]
       def retrieve(proof_of_authorization_request_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/proof_of_authorization_requests/#{proof_of_authorization_request_id}"
-        request[:model] = Increase::Models::ProofOfAuthorizationRequest
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/proof_of_authorization_requests/#{proof_of_authorization_request_id}"
+        req[:model] = Increase::Models::ProofOfAuthorizationRequest
+        @client.request(req, opts)
       end
     end
   end

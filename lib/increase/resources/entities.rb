@@ -34,13 +34,12 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/entities"
-        request[:body] = params
-        request[:model] = Increase::Models::Entity
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/entities"
+        req[:body] = params
+        req[:model] = Increase::Models::Entity
+        @client.request(req, opts)
       end
 
       # Retrieve an Entity
@@ -50,12 +49,11 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def retrieve(entity_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/entities/#{entity_id}"
-        request[:model] = Increase::Models::Entity
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/entities/#{entity_id}"
+        req[:model] = Increase::Models::Entity
+        @client.request(req, opts)
       end
 
       # Archive an Entity
@@ -66,12 +64,11 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def archive(entity_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/entities/#{entity_id}/archive"
-        request[:model] = Increase::Models::Entity
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/entities/#{entity_id}/archive"
+        req[:model] = Increase::Models::Entity
+        @client.request(req, opts)
       end
 
       # Depending on your program, you may be required to re-confirm an Entity's details
@@ -88,13 +85,12 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def confirm(entity_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/entities/#{entity_id}/confirm"
-        request[:body] = params
-        request[:model] = Increase::Models::Entity
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/entities/#{entity_id}/confirm"
+        req[:body] = params
+        req[:model] = Increase::Models::Entity
+        @client.request(req, opts)
       end
 
       # Update a Natural Person or Corporation's address
@@ -109,13 +105,12 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def update_address(entity_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/entities/#{entity_id}/address"
-        request[:body] = params
-        request[:model] = Increase::Models::Entity
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/entities/#{entity_id}/address"
+        req[:body] = params
+        req[:model] = Increase::Models::Entity
+        @client.request(req, opts)
       end
     end
   end

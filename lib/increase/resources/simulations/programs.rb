@@ -19,13 +19,12 @@ module Increase
         #
         # @return [Increase::Models::Program]
         def create(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/programs"
-          request[:body] = params
-          request[:model] = Increase::Models::Program
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/programs"
+          req[:body] = params
+          req[:model] = Increase::Models::Program
+          @client.request(req, opts)
         end
       end
     end

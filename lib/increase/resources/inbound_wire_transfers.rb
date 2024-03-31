@@ -14,12 +14,11 @@ module Increase
       #
       # @return [Increase::Models::InboundWireTransfer]
       def retrieve(inbound_wire_transfer_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/inbound_wire_transfers/#{inbound_wire_transfer_id}"
-        request[:model] = Increase::Models::InboundWireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/inbound_wire_transfers/#{inbound_wire_transfer_id}"
+        req[:model] = Increase::Models::InboundWireTransfer
+        @client.request(req, opts)
       end
     end
   end

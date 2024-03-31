@@ -36,13 +36,12 @@ module Increase
       #
       # @return [Increase::Models::WireDrawdownRequest]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/wire_drawdown_requests"
-        request[:body] = params
-        request[:model] = Increase::Models::WireDrawdownRequest
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/wire_drawdown_requests"
+        req[:body] = params
+        req[:model] = Increase::Models::WireDrawdownRequest
+        @client.request(req, opts)
       end
 
       # Retrieve a Wire Drawdown Request
@@ -52,12 +51,11 @@ module Increase
       #
       # @return [Increase::Models::WireDrawdownRequest]
       def retrieve(wire_drawdown_request_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/wire_drawdown_requests/#{wire_drawdown_request_id}"
-        request[:model] = Increase::Models::WireDrawdownRequest
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/wire_drawdown_requests/#{wire_drawdown_request_id}"
+        req[:model] = Increase::Models::WireDrawdownRequest
+        @client.request(req, opts)
       end
     end
   end

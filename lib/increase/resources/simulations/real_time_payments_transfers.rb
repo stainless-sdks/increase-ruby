@@ -21,14 +21,13 @@ module Increase
         #
         # @return [Increase::Models::RealTimePaymentsTransfer]
         def complete(real_time_payments_transfer_id, params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] =
+          req = {}
+          req[:method] = :post
+          req[:path] =
             "/simulations/real_time_payments_transfers/#{real_time_payments_transfer_id}/complete"
-          request[:body] = params
-          request[:model] = Increase::Models::RealTimePaymentsTransfer
-          request.merge!(opts)
-          @client.request(request)
+          req[:body] = params
+          req[:model] = Increase::Models::RealTimePaymentsTransfer
+          @client.request(req, opts)
         end
 
         # Simulates an inbound Real-Time Payments transfer to your account. Real-Time
@@ -48,13 +47,12 @@ module Increase
         #
         # @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult]
         def create_inbound(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/inbound_real_time_payments_transfers"
-          request[:body] = params
-          request[:model] = Increase::Models::InboundRealTimePaymentsTransferSimulationResult
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/inbound_real_time_payments_transfers"
+          req[:body] = params
+          req[:model] = Increase::Models::InboundRealTimePaymentsTransferSimulationResult
+          @client.request(req, opts)
         end
       end
     end

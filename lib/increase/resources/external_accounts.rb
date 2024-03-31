@@ -21,13 +21,12 @@ module Increase
       #
       # @return [Increase::Models::ExternalAccount]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/external_accounts"
-        request[:body] = params
-        request[:model] = Increase::Models::ExternalAccount
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/external_accounts"
+        req[:body] = params
+        req[:model] = Increase::Models::ExternalAccount
+        @client.request(req, opts)
       end
 
       # Retrieve an External Account
@@ -37,12 +36,11 @@ module Increase
       #
       # @return [Increase::Models::ExternalAccount]
       def retrieve(external_account_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/external_accounts/#{external_account_id}"
-        request[:model] = Increase::Models::ExternalAccount
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/external_accounts/#{external_account_id}"
+        req[:model] = Increase::Models::ExternalAccount
+        @client.request(req, opts)
       end
 
       # Update an External Account
@@ -59,13 +57,12 @@ module Increase
       #
       # @return [Increase::Models::ExternalAccount]
       def update(external_account_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :patch
-        request[:path] = "/external_accounts/#{external_account_id}"
-        request[:body] = params
-        request[:model] = Increase::Models::ExternalAccount
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :patch
+        req[:path] = "/external_accounts/#{external_account_id}"
+        req[:body] = params
+        req[:model] = Increase::Models::ExternalAccount
+        @client.request(req, opts)
       end
     end
   end

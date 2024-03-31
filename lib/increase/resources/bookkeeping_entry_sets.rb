@@ -19,13 +19,12 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingEntrySet]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/bookkeeping_entry_sets"
-        request[:body] = params
-        request[:model] = Increase::Models::BookkeepingEntrySet
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/bookkeeping_entry_sets"
+        req[:body] = params
+        req[:model] = Increase::Models::BookkeepingEntrySet
+        @client.request(req, opts)
       end
 
       # Retrieve a Bookkeeping Entry Set
@@ -35,12 +34,11 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingEntrySet]
       def retrieve(bookkeeping_entry_set_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/bookkeeping_entry_sets/#{bookkeeping_entry_set_id}"
-        request[:model] = Increase::Models::BookkeepingEntrySet
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/bookkeeping_entry_sets/#{bookkeeping_entry_set_id}"
+        req[:model] = Increase::Models::BookkeepingEntrySet
+        @client.request(req, opts)
       end
     end
   end

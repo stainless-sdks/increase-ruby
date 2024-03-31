@@ -143,7 +143,6 @@ module Increase
       if type == "invalid_api_key_error"
         return Increase::HTTP::InvalidAPIKeyError.new(err_msg: err_msg, response: response, body: body)
       end
-
       if type == "environment_mismatch_error"
         return Increase::HTTP::EnvironmentMismatchError.new(
           err_msg: err_msg,
@@ -161,7 +160,6 @@ module Increase
       if type == "private_feature_error"
         return Increase::HTTP::PrivateFeatureError.new(err_msg: err_msg, response: response, body: body)
       end
-
       if type == "api_method_not_found_error"
         return Increase::HTTP::APIMethodNotFoundError.new(
           err_msg: err_msg,
@@ -172,7 +170,6 @@ module Increase
       if type == "object_not_found_error"
         return Increase::HTTP::ObjectNotFoundError.new(err_msg: err_msg, response: response, body: body)
       end
-
       if type == "idempotency_key_already_used_error"
         return Increase::HTTP::IdempotencyKeyAlreadyUsedError.new(
           err_msg: err_msg,
@@ -193,7 +190,6 @@ module Increase
       if type == "internal_server_error"
         return Increase::HTTP::InternalServerError.new(err_msg: err_msg, response: response, body: body)
       end
-
       case response.code.to_i
       when 500, 500..599
         Increase::HTTP::InternalServerError.new(

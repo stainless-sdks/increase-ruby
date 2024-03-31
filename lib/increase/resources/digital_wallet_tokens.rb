@@ -14,12 +14,11 @@ module Increase
       #
       # @return [Increase::Models::DigitalWalletToken]
       def retrieve(digital_wallet_token_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/digital_wallet_tokens/#{digital_wallet_token_id}"
-        request[:model] = Increase::Models::DigitalWalletToken
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/digital_wallet_tokens/#{digital_wallet_token_id}"
+        req[:model] = Increase::Models::DigitalWalletToken
+        @client.request(req, opts)
       end
     end
   end

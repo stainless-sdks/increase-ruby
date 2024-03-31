@@ -14,12 +14,11 @@ module Increase
       #
       # @return [Increase::Models::OAuthConnection]
       def retrieve(oauth_connection_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/oauth_connections/#{oauth_connection_id}"
-        request[:model] = Increase::Models::OAuthConnection
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/oauth_connections/#{oauth_connection_id}"
+        req[:model] = Increase::Models::OAuthConnection
+        @client.request(req, opts)
       end
     end
   end

@@ -18,13 +18,12 @@ module Increase
       #
       # @return [Increase::Models::CardDispute]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/card_disputes"
-        request[:body] = params
-        request[:model] = Increase::Models::CardDispute
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/card_disputes"
+        req[:body] = params
+        req[:model] = Increase::Models::CardDispute
+        @client.request(req, opts)
       end
 
       # Retrieve a Card Dispute
@@ -34,12 +33,11 @@ module Increase
       #
       # @return [Increase::Models::CardDispute]
       def retrieve(card_dispute_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/card_disputes/#{card_dispute_id}"
-        request[:model] = Increase::Models::CardDispute
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/card_disputes/#{card_dispute_id}"
+        req[:model] = Increase::Models::CardDispute
+        @client.request(req, opts)
       end
     end
   end
