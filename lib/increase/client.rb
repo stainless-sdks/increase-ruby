@@ -122,99 +122,32 @@ module Increase
     end
 
     # @!visibility private
-    def make_status_error(err_msg:, body:, response:)
-      type = if body.is_a? Hash
-        body["type"]
-      end
-      if type == "invalid_parameters_error"
-        return Increase::HTTP::InvalidParametersError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
-      end
-      if type == "malformed_request_error"
-        return Increase::HTTP::MalformedRequestError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
-      end
-      if type == "invalid_api_key_error"
-        return Increase::HTTP::InvalidAPIKeyError.new(err_msg: err_msg, response: response, body: body)
-      end
-      if type == "environment_mismatch_error"
-        return Increase::HTTP::EnvironmentMismatchError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
-      end
-      if type == "insufficient_permissions_error"
-        return Increase::HTTP::InsufficientPermissionsError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
-      end
-      if type == "private_feature_error"
-        return Increase::HTTP::PrivateFeatureError.new(err_msg: err_msg, response: response, body: body)
-      end
-      if type == "api_method_not_found_error"
-        return Increase::HTTP::APIMethodNotFoundError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
-      end
-      if type == "object_not_found_error"
-        return Increase::HTTP::ObjectNotFoundError.new(err_msg: err_msg, response: response, body: body)
-      end
-      if type == "idempotency_key_already_used_error"
-        return Increase::HTTP::IdempotencyKeyAlreadyUsedError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
-      end
-      if type == "invalid_operation_error"
-        return Increase::HTTP::InvalidOperationError.new(
-          err_msg: err_msg,
-          response: response,
-          body: body
-        )
-      end
-      if type == "rate_limited_error"
-        return Increase::HTTP::RateLimitedError.new(err_msg: err_msg, response: response, body: body)
-      end
-      if type == "internal_server_error"
-        return Increase::HTTP::InternalServerError.new(err_msg: err_msg, response: response, body: body)
-      end
+    def make_status_error(message:, body:, response:)
       case response.code.to_i
       when 500, 500..599
         Increase::HTTP::InternalServerError.new(
-          err_msg: err_msg,
+          message: message,
           response: response,
           body: {
             detail: nil, status: 500, title: "", type: "internal_server_error"
           }
         )
       when 400
-        Increase::HTTP::BadRequestError.new(err_msg: err_msg, response: response, body: body)
+        Increase::HTTP::BadRequestError.new(message: message, response: response, body: body)
       when 401
-        Increase::HTTP::AuthenticationError.new(err_msg: err_msg, response: response, body: body)
+        Increase::HTTP::AuthenticationError.new(message: message, response: response, body: body)
       when 403
-        Increase::HTTP::PermissionDeniedError.new(err_msg: err_msg, response: response, body: body)
+        Increase::HTTP::PermissionDeniedError.new(message: message, response: response, body: body)
       when 404
-        Increase::HTTP::NotFoundError.new(err_msg: err_msg, response: response, body: body)
+        Increase::HTTP::NotFoundError.new(message: message, response: response, body: body)
       when 409
-        Increase::HTTP::ConflictError.new(err_msg: err_msg, response: response, body: body)
+        Increase::HTTP::ConflictError.new(message: message, response: response, body: body)
       when 422
-        Increase::HTTP::UnprocessableEntityError.new(err_msg: err_msg, response: response, body: body)
+        Increase::HTTP::UnprocessableEntityError.new(message: message, response: response, body: body)
       when 429
-        Increase::HTTP::RateLimitError.new(err_msg: err_msg, response: response, body: body)
+        Increase::HTTP::RateLimitError.new(message: message, response: response, body: body)
       else
-        Increase::HTTP::APIStatusError.new(err_msg: err_msg, response: response, body: body)
+        Increase::HTTP::APIStatusError.new(message: message, response: response, body: body)
       end
     end
   end

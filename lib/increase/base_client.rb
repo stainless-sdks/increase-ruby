@@ -155,7 +155,7 @@ module Increase
       end
     end
 
-    def make_status_error(err_msg:, body:, response:)
+    def make_status_error(message:, body:, response:)
       raise NotImplementedError
     end
 
@@ -167,11 +167,12 @@ module Increase
           response
         end
 
-      # NB: we include the body in the error message as well as returning it,
-      # since logging error messages is a common and quick way to assess what's wrong with a response.
-      err_msg = "Error code: #{response.code}; Response: #{response.body}"
+      # We include the body in the error message as well as returning it
+      # since logging error messages is a common and quick way to assess what's
+      # wrong with a response.
+      message = "Error code: #{response.code}; Response: #{response.body}"
 
-      make_status_error(err_msg: err_msg, body: err_body, response: response)
+      make_status_error(message: message, body: err_body, response: response)
     end
 
     # About the Retry-After header: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After
@@ -213,11 +214,13 @@ module Increase
           return response if is_ok
         rescue Net::HTTPBadResponse
           if retries >= request_max_retries
-            raise HTTP::APIConnectionError.new(request: request)
+            message = "failed to complete the request within #{request_max_retries} retries"
+            raise HTTP::APIConnectionError.new(message: message, request: request)
           end
         rescue Timeout::Error
           if retries >= request_max_retries
-            raise HTTP::APITimeoutError.new(request: request)
+            message = "failed to complete the request within #{request_max_retries} retries"
+            raise HTTP::APITimeoutError.new(message: message, request: request)
           end
         end
 
@@ -266,10 +269,10 @@ module Increase
     end
 
     class ResponseError < Error
-      attr_reader :err_msg, :response, :body, :code
+      attr_reader :response, :body, :code
 
-      def initialize(err_msg:, response:, body:) # rubocop:disable Lint/MissingSuper
-        @err_msg = err_msg
+      def initialize(message:, response:, body:)
+        super(message)
         @response = response
         @body = body
         @code = response.code.to_i
@@ -279,7 +282,8 @@ module Increase
     class RequestError < Error
       attr_reader :request
 
-      def initialize(request:) # rubocop:disable Lint/MissingSuper
+      def initialize(message:, request:)
+        super(message)
         @request = request
       end
     end
