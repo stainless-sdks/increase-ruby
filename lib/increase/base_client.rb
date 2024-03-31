@@ -37,14 +37,16 @@ module Increase
     end
 
     def validate_request(req, opts)
-      if req[:body]
-        req[:body].each_key do |k|
+      # Body can be at least a Hash or Array, just check for Hash shape for now.
+      if (body = req[:body]) && body.is_a?(Hash)
+        body.each_key do |k|
           unless k.is_a?(Symbol)
             raise ArgumentError, "Request body keys must be Symbols, got #{k.inspect}"
           end
         end
       end
-      unless opts.is_a?(Hash) || opts.is_a?(Increase::RequestOptions)
+
+      unless opts.respond_to?(:to_hash)
         raise ArgumentError, "Request `opts` must be a Hash or RequestOptions, got #{opts.inspect}"
       end
       opts.to_hash.each_key do |k|
@@ -235,7 +237,7 @@ module Increase
 
     # Execute the request specified by req + opts. This is the method that all
     # resource methods call into.
-    # Params req & opts are kept seperate up until this point so that we can
+    # Params req & opts are kept separate up until this point so that we can
     # validate opts as it was given to us by the user.
     def request(req, opts)
       validate_request(req, opts)
