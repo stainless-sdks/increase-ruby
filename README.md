@@ -84,7 +84,7 @@ docs for details:
 ```ruby
 card = increase.cards.update(
   "card_ou2s0hwk5rn6kn2e7xg2",
-  {spend_limit: 10_000},
+  {description: "New description"},
   {max_retires: 1}
 )
 ```
