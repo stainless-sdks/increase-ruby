@@ -21,7 +21,7 @@ module Increase
       #   help the customer recognize the transfer. You are highly encouraged to pass
       #   `individual_name` and `company_name` instead of relying on this fallback.
       # @option params [String] :account_number The account number for the destination account.
-      # @option params [Hash] :addenda Additional information that will be sent to the recipient. This is included in
+      # @option params [Addenda] :addenda Additional information that will be sent to the recipient. This is included in
       #   the transfer data sent to the receiving bank.
       # @option params [String] :company_descriptive_date The description of the date of the transfer, usually in the format `YYMMDD`.
       #   This is included in the transfer data sent to the receiving bank.

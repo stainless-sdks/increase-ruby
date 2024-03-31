@@ -11,9 +11,9 @@ module Increase
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id The Account the card should belong to.
-      # @option params [Hash] :billing_address The card's billing address.
+      # @option params [BillingAddress] :billing_address The card's billing address.
       # @option params [String] :description The description you choose to give the card.
-      # @option params [Hash] :digital_wallet The contact information used in the two-factor steps for digital wallet card
+      # @option params [DigitalWallet] :digital_wallet The contact information used in the two-factor steps for digital wallet card
       #   creation. To add the card to a digital wallet, you may supply an email or phone
       #   number with this request. Otherwise, subscribe and then action a Real Time
       #   Decision with the category `digital_wallet_token_requested` or
@@ -52,9 +52,9 @@ module Increase
       # @param card_id [String] The card identifier.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Hash] :billing_address The card's updated billing address.
+      # @option params [BillingAddress] :billing_address The card's updated billing address.
       # @option params [String] :description The description you choose to give the card.
-      # @option params [Hash] :digital_wallet The contact information used in the two-factor steps for digital wallet card
+      # @option params [DigitalWallet] :digital_wallet The contact information used in the two-factor steps for digital wallet card
       #   creation. At least one field must be present to complete the digital wallet
       #   steps.
       # @option params [String] :entity_id The Entity the card belongs to. You only need to supply this in rare situations

@@ -16,18 +16,18 @@ module Increase
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol] :structure The type of Entity to create.
-      # @option params [Hash] :corporation Details of the corporation entity to create. Required if `structure` is equal to
+      # @option params [Corporation] :corporation Details of the corporation entity to create. Required if `structure` is equal to
       #   `corporation`.
       # @option params [String] :description The description you choose to give the entity.
-      # @option params [Hash] :joint Details of the joint entity to create. Required if `structure` is equal to
+      # @option params [Joint] :joint Details of the joint entity to create. Required if `structure` is equal to
       #   `joint`.
-      # @option params [Hash] :natural_person Details of the natural person entity to create. Required if `structure` is equal
+      # @option params [NaturalPerson] :natural_person Details of the natural person entity to create. Required if `structure` is equal
       #   to `natural_person`. Natural people entities should be submitted with
       #   `social_security_number` or `individual_taxpayer_identification_number`
       #   identification methods.
       # @option params [Symbol] :relationship The relationship between your group and the entity.
-      # @option params [Array<Hash>] :supplemental_documents Additional documentation associated with the entity.
-      # @option params [Hash] :trust Details of the trust entity to create. Required if `structure` is equal to
+      # @option params [Array<SupplementalDocument>] :supplemental_documents Additional documentation associated with the entity.
+      # @option params [Trust] :trust Details of the trust entity to create. Required if `structure` is equal to
       #   `trust`.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -98,7 +98,7 @@ module Increase
       # @param entity_id [String] The identifier of the Entity to archive.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Hash] :address The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+      # @option params [Address] :address The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       #   are disallowed.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.

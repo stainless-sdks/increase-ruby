@@ -18,7 +18,7 @@ module Increase
       # @option params [String] :contact_email An email address the user can contact to receive support for their card.
       # @option params [String] :contact_phone A phone number the user can contact to receive support for their card.
       # @option params [String] :contact_website A website the user can visit to view and receive support for their card.
-      # @option params [Hash] :text_color The Card's text color, specified as an RGB triple. The default is white.
+      # @option params [TextColor] :text_color The Card's text color, specified as an RGB triple. The default is white.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -73,7 +73,7 @@ module Increase
       # @option params [String] :contact_website A website the user can visit to view and receive support for their card.
       # @option params [String] :description A description you can use to identify the Card Profile.
       # @option params [String] :issuer_name A user-facing description for whoever is issuing the card.
-      # @option params [Hash] :text_color The Card's text color, specified as an RGB triple. The default is white.
+      # @option params [TextColor] :text_color The Card's text color, specified as an RGB triple. The default is white.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #

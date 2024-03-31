@@ -11,7 +11,7 @@ module Increase
         # Create a beneficial owner for a corporate Entity
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Hash] :beneficial_owner The identifying details of anyone controlling or owning 25% or more of the
+        # @option params [BeneficialOwner] :beneficial_owner The identifying details of anyone controlling or owning 25% or more of the
         #   corporation.
         # @option params [String] :entity_id The identifier of the Entity to associate with the new Beneficial Owner.
         #
@@ -49,7 +49,7 @@ module Increase
         # Update the address for a beneficial owner belonging to a corporate Entity
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Hash] :address The individual's physical address. Mail receiving locations like PO Boxes and
+        # @option params [Address] :address The individual's physical address. Mail receiving locations like PO Boxes and
         #   PMB's are disallowed.
         # @option params [String] :beneficial_owner_id The identifying details of anyone controlling or owning 25% or more of the
         #   corporation.

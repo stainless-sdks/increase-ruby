@@ -11,14 +11,14 @@ module Increase
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol] :category The type of Export to create.
-      # @option params [Hash] :account_statement_ofx Options for the created export. Required if `category` is equal to
+      # @option params [AccountStatementOfx] :account_statement_ofx Options for the created export. Required if `category` is equal to
       #   `account_statement_ofx`.
-      # @option params [Hash] :balance_csv Options for the created export. Required if `category` is equal to
+      # @option params [BalanceCsv] :balance_csv Options for the created export. Required if `category` is equal to
       #   `balance_csv`.
-      # @option params [Hash] :bookkeeping_account_balance_csv Options for the created export. Required if `category` is equal to
+      # @option params [BookkeepingAccountBalanceCsv] :bookkeeping_account_balance_csv Options for the created export. Required if `category` is equal to
       #   `bookkeeping_account_balance_csv`.
-      # @option params [Hash] :entity_csv Options for the created export. Required if `category` is equal to `entity_csv`.
-      # @option params [Hash] :transaction_csv Options for the created export. Required if `category` is equal to
+      # @option params [EntityCsv] :entity_csv Options for the created export. Required if `category` is equal to `entity_csv`.
+      # @option params [TransactionCsv] :transaction_csv Options for the created export. Required if `category` is equal to
       #   `transaction_csv`.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.

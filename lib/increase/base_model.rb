@@ -214,5 +214,15 @@ module Increase
       end
       @data[key]
     end
+
+    # @return [String]
+    def inspect
+      "#<#{self.class.name}:0x#{object_id.to_s(16)} #{@data.inspect}>"
+    end
+
+    # @return [String]
+    def to_s
+      @data.to_s
+    end
   end
 end

@@ -10,7 +10,7 @@ module Increase
       # Create a Bookkeeping Entry Set
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Hash>] :entries The bookkeeping entries.
+      # @option params [Array<Entry>] :entries The bookkeeping entries.
       # @option params [String] :date The date of the transaction. Optional if `transaction_id` is provided, in which
       #   case we use the `date` of that transaction. Required otherwise.
       # @option params [String] :transaction_id The identifier of the Transaction related to this entry set, if any.

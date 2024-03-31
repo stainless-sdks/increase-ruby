@@ -46,10 +46,10 @@ module Increase
         end
       end
 
-      unless opts.respond_to?(:to_hash)
+      unless opts.is_a?(Hash) || opts.is_a?(Increase::RequestOption)
         raise ArgumentError, "Request `opts` must be a Hash or RequestOptions, got #{opts.inspect}"
       end
-      opts.to_hash.each_key do |k|
+      opts.to_h.each_key do |k|
         unless k.is_a?(Symbol)
           raise ArgumentError, "Request `opts` keys must be Symbols, got #{k.inspect}"
         end

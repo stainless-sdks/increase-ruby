@@ -15,7 +15,7 @@ module Increase
       # @option params [String] :source_account_number_id The identifier of the Account Number from which to send the transfer and print
       #   on the check.
       # @option params [Symbol] :fulfillment_method Whether Increase will print and mail the check or if you will do it yourself.
-      # @option params [Hash] :physical_check Details relating to the physical check that Increase will print and mail. This
+      # @option params [PhysicalCheck] :physical_check Details relating to the physical check that Increase will print and mail. This
       #   is required if `fulfillment_method` is equal to `physical_check`. It must not be
       #   included if any other `fulfillment_method` is provided.
       # @option params [Boolean] :require_approval Whether the transfer requires explicit approval via the dashboard or API.

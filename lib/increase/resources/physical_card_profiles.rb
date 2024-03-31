@@ -64,7 +64,7 @@ module Increase
       # @option params [String] :contact_phone A phone number the user can contact to receive support for their card.
       # @option params [String] :description A description you can use to identify the Card Profile.
       # @option params [String] :front_image_file_id The identifier of the File containing the physical card's front image.
-      # @option params [Hash] :front_text Text printed on the front of the card. Reach out to
+      # @option params [FrontText] :front_text Text printed on the front of the card. Reach out to
       #   [support@increase.com](mailto:support@increase.com) for more information.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.

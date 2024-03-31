@@ -11,7 +11,7 @@ module Increase
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Integer] :amount The requested amount in USD cents. Must be positive.
-      # @option params [Hash] :debtor Details of the person being requested to pay.
+      # @option params [Debtor] :debtor Details of the person being requested to pay.
       # @option params [String] :destination_account_number_id The identifier of the Account Number where the funds will land.
       # @option params [String] :expires_at The expiration time for this request, in UTC. The requestee will not be able to
       #   pay after this date.

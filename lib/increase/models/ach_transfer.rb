@@ -4,72 +4,118 @@ module Increase
   module Models
     class ACHTransfer < BaseModel
       # @!attribute [rw] id
+      #   The ACH transfer's identifier.
+      #   @return [String]
       required :id, String
 
       # @!attribute [rw] account_id
+      #   The Account to which the transfer belongs.
+      #   @return [String]
       required :account_id, String
 
       # @!attribute [rw] account_number
+      #   The destination account number.
+      #   @return [String]
       required :account_number, String
 
       # @!attribute [rw] acknowledgement
+      #   After the transfer is acknowledged by FedACH, this will contain supplemental details. The Federal Reserve sends an acknowledgement message for each file that Increase submits.
+      #   @return [Increase::Models::ACHTransfer::Acknowledgement]
       required :acknowledgement, -> { Increase::Models::ACHTransfer::Acknowledgement }
 
       # @!attribute [rw] addenda
+      #   Additional information that will be sent to the recipient.
+      #   @return [Increase::Models::ACHTransfer::Addenda]
       required :addenda, -> { Increase::Models::ACHTransfer::Addenda }
 
       # @!attribute [rw] amount
+      #   The transfer amount in USD cents. A positive amount indicates a credit transfer pushing funds to the receiving account. A negative amount indicates a debit transfer pulling funds from the receiving account.
+      #   @return [Integer]
       required :amount, Integer
 
       # @!attribute [rw] approval
+      #   If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
+      #   @return [Increase::Models::ACHTransfer::Approval]
       required :approval, -> { Increase::Models::ACHTransfer::Approval }
 
       # @!attribute [rw] cancellation
+      #   If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
+      #   @return [Increase::Models::ACHTransfer::Cancellation]
       required :cancellation, -> { Increase::Models::ACHTransfer::Cancellation }
 
       # @!attribute [rw] company_descriptive_date
+      #   The description of the date of the transfer.
+      #   @return [String]
       required :company_descriptive_date, String
 
       # @!attribute [rw] company_discretionary_data
+      #   The data you chose to associate with the transfer.
+      #   @return [String]
       required :company_discretionary_data, String
 
       # @!attribute [rw] company_entry_description
+      #   The description of the transfer you set to be shown to the recipient.
+      #   @return [String]
       required :company_entry_description, String
 
       # @!attribute [rw] company_name
+      #   The name by which the recipient knows you.
+      #   @return [String]
       required :company_name, String
 
       # @!attribute [rw] created_at
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
+      #   @return [String]
       required :created_at, String
 
       # @!attribute [rw] currency
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
+      #   @return [Symbol]
       required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
       # @!attribute [rw] destination_account_holder
+      #   The type of entity that owns the account to which the ACH Transfer is being sent.
+      #   @return [Symbol]
       required :destination_account_holder, Increase::Enum.new(:business, :individual, :unknown)
 
       # @!attribute [rw] effective_date
+      #   The transfer effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+      #   @return [String]
       required :effective_date, String
 
       # @!attribute [rw] external_account_id
+      #   The identifier of the External Account the transfer was made to, if any.
+      #   @return [String]
       required :external_account_id, String
 
       # @!attribute [rw] funding
+      #   The type of the account to which the transfer will be sent.
+      #   @return [Symbol]
       required :funding, Increase::Enum.new(:checking, :savings)
 
       # @!attribute [rw] idempotency_key
+      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   @return [String]
       required :idempotency_key, String
 
       # @!attribute [rw] individual_id
+      #   Your identifier for the transfer recipient.
+      #   @return [String]
       required :individual_id, String
 
       # @!attribute [rw] individual_name
+      #   The name of the transfer recipient. This value is information and not verified by the recipient's bank.
+      #   @return [String]
       required :individual_name, String
 
       # @!attribute [rw] network
+      #   The transfer's network.
+      #   @return [Symbol]
       required :network, Increase::Enum.new(:ach)
 
       # @!attribute [rw] notifications_of_change
+      #   If the receiving bank accepts the transfer but notifies that future transfers should use different details, this will contain those details.
+      #   @return [Array<Increase::Models::ACHTransfer::NotificationsOfChange>]
       required :notifications_of_change,
                Increase::ArrayOf.new(
                  lambda {
@@ -78,15 +124,23 @@ module Increase
                )
 
       # @!attribute [rw] pending_transaction_id
+      #   The ID for the pending transaction representing the transfer. A pending transaction is created when the transfer [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals) by someone else in your organization.
+      #   @return [String]
       required :pending_transaction_id, String
 
       # @!attribute [rw] return_
+      #   If your transfer is returned, this will contain details of the return.
+      #   @return [Increase::Models::ACHTransfer::Return]
       required :return_, -> { Increase::Models::ACHTransfer::Return }
 
       # @!attribute [rw] routing_number
+      #   The American Bankers' Association (ABA) Routing Transit Number (RTN).
+      #   @return [String]
       required :routing_number, String
 
       # @!attribute [rw] standard_entry_class_code
+      #   The Standard Entry Class (SEC) code to use for the transfer.
+      #   @return [Symbol]
       required :standard_entry_class_code,
                Increase::Enum.new(
                  :corporate_credit_or_debit,
@@ -96,9 +150,13 @@ module Increase
                )
 
       # @!attribute [rw] statement_descriptor
+      #   The descriptor that will show on the recipient's bank statement.
+      #   @return [String]
       required :statement_descriptor, String
 
       # @!attribute [rw] status
+      #   The lifecycle status of the transfer.
+      #   @return [Symbol]
       required :status,
                Increase::Enum.new(
                  :pending_approval,
@@ -112,27 +170,41 @@ module Increase
                )
 
       # @!attribute [rw] submission
+      #   After the transfer is submitted to FedACH, this will contain supplemental details. Increase batches transfers and submits a file to the Federal Reserve roughly every 30 minutes. The Federal Reserve processes ACH transfers during weekdays according to their [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
+      #   @return [Increase::Models::ACHTransfer::Submission]
       required :submission, -> { Increase::Models::ACHTransfer::Submission }
 
       # @!attribute [rw] transaction_id
+      #   The ID for the transaction funding the transfer.
+      #   @return [String]
       required :transaction_id, String
 
       # @!attribute [rw] type
+      #   A constant representing the object's type. For this resource it will always be `ach_transfer`.
+      #   @return [Symbol]
       required :type, Increase::Enum.new(:ach_transfer)
 
       class Acknowledgement < BaseModel
         # @!attribute [rw] acknowledged_at
+        #   When the Federal Reserve acknowledged the submitted file containing this transfer.
+        #   @return [String]
         required :acknowledged_at, String
       end
 
       class Addenda < BaseModel
         # @!attribute [rw] category
+        #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+        #   @return [Symbol]
         required :category, Increase::Enum.new(:freeform, :payment_order_remittance_advice, :other)
 
         # @!attribute [rw] freeform
+        #   Unstructured `payment_related_information` passed through with the transfer.
+        #   @return [Increase::Models::ACHTransfer::Addenda::Freeform]
         required :freeform, -> { Increase::Models::ACHTransfer::Addenda::Freeform }
 
         # @!attribute [rw] payment_order_remittance_advice
+        #   Structured ASC X12 820 remittance advice records. Please reach out to [support@increase.com](mailto:support@increase.com) for more information.
+        #   @return [Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice]
         required :payment_order_remittance_advice,
                  lambda {
                    Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice
@@ -140,6 +212,8 @@ module Increase
 
         class Freeform < BaseModel
           # @!attribute [rw] entries
+          #   Each entry represents an addendum sent with the transfer.
+          #   @return [Array<Increase::Models::ACHTransfer::Addenda::Freeform::Entry>]
           required :entries,
                    Increase::ArrayOf.new(
                      lambda {
@@ -149,12 +223,16 @@ module Increase
 
           class Entry < BaseModel
             # @!attribute [rw] payment_related_information
+            #   The payment related information passed in the addendum.
+            #   @return [String]
             required :payment_related_information, String
           end
         end
 
         class PaymentOrderRemittanceAdvice < BaseModel
           # @!attribute [rw] invoices
+          #   ASC X12 RMR records for this specific transfer.
+          #   @return [Array<Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice>]
           required :invoices,
                    Increase::ArrayOf.new(
                      lambda {
@@ -164,9 +242,13 @@ module Increase
 
           class Invoice < BaseModel
             # @!attribute [rw] invoice_number
+            #   The invoice number for this reference, determined in advance with the receiver.
+            #   @return [String]
             required :invoice_number, String
 
             # @!attribute [rw] paid_amount
+            #   The amount that was paid for this invoice in the minor unit of its currency. For dollars, for example, this is cents.
+            #   @return [Integer]
             required :paid_amount, Integer
           end
         end
@@ -174,22 +256,32 @@ module Increase
 
       class Approval < BaseModel
         # @!attribute [rw] approved_at
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
+        #   @return [String]
         required :approved_at, String
 
         # @!attribute [rw] approved_by
+        #   If the Transfer was approved by a user in the dashboard, the email address of that user.
+        #   @return [String]
         required :approved_by, String
       end
 
       class Cancellation < BaseModel
         # @!attribute [rw] canceled_at
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
+        #   @return [String]
         required :canceled_at, String
 
         # @!attribute [rw] canceled_by
+        #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
+        #   @return [String]
         required :canceled_by, String
       end
 
       class NotificationsOfChange < BaseModel
         # @!attribute [rw] change_code
+        #   The required type of change that is being signaled by the receiving financial institution.
+        #   @return [Symbol]
         required :change_code,
                  Increase::Enum.new(
                    :incorrect_account_number,
@@ -214,20 +306,30 @@ module Increase
                  )
 
         # @!attribute [rw] corrected_data
+        #   The corrected data that should be used in future ACHs to this account. This may contain the suggested new  account number or routing number. When the `change_code` is `incorrect_transaction_code`, this field contains an integer. Numbers starting with a 2 encourage changing the `funding` parameter to checking; numbers starting with a 3 encourage changing to savings.
+        #   @return [String]
         required :corrected_data, String
 
         # @!attribute [rw] created_at
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the notification occurred.
+        #   @return [String]
         required :created_at, String
       end
 
       class Return < BaseModel
         # @!attribute [rw] created_at
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
+        #   @return [String]
         required :created_at, String
 
         # @!attribute [rw] raw_return_reason_code
+        #   The three character ACH return code, in the range R01 to R85.
+        #   @return [String]
         required :raw_return_reason_code, String
 
         # @!attribute [rw] return_reason_code
+        #   Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
+        #   @return [Symbol]
         required :return_reason_code,
                  Increase::Enum.new(
                    :insufficient_fund,
@@ -303,23 +405,35 @@ module Increase
                  )
 
         # @!attribute [rw] transaction_id
+        #   The identifier of the Transaction associated with this return.
+        #   @return [String]
         required :transaction_id, String
 
         # @!attribute [rw] transfer_id
+        #   The identifier of the ACH Transfer associated with this return.
+        #   @return [String]
         required :transfer_id, String
       end
 
       class Submission < BaseModel
         # @!attribute [rw] effective_date
+        #   The ACH's effective date sent to the receiving bank. If `effective_date` is configured in the ACH transfer, this will match the value there. Otherwise, it will the date that the ACH transfer was processed, which is usually the current or subsequent business day.
+        #   @return [String]
         required :effective_date, String
 
         # @!attribute [rw] expected_funds_settlement_at
+        #   When the funds transfer is expected to settle in the recipient's account. Credits may be available sooner, at the receiving banks discretion. The FedACH schedule is published [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
+        #   @return [String]
         required :expected_funds_settlement_at, String
 
         # @!attribute [rw] submitted_at
+        #   When the ACH transfer was sent to FedACH.
+        #   @return [String]
         required :submitted_at, String
 
         # @!attribute [rw] trace_number
+        #   A 15 digit number recorded in the Nacha file and transmitted to the receiving bank. Along with the amount, date, and originating routing number, this can be used to identify the ACH transfer at the receiving bank. ACH trace numbers are not unique, but are [used to correlate returns](https://increase.com/documentation/ach#returns).
+        #   @return [String]
         required :trace_number, String
       end
     end

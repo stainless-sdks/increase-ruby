@@ -55,23 +55,25 @@ module Increase
     # @return [Integer]
     option :max_retries
 
+    # Loookup an option previously set on this instance.
+    #
+    # @return [Object]
     def [](key)
       @_values[key]
     end
 
-    # @return [Hash{Symbol => Object}]
-    def to_hash
-      @_values
-    end
-
+    # Return a Hash containing the options set on this instance.
+    #
     # @return [Hash{Symbol => Object}]
     def to_h
       @_values
     end
 
+    alias to_hash to_h
+
     # @return [String]
     def inspect
-      "#<Lithic::RequestOptions:0x#{object_id.to_s(16)} #{@_values.inspect}>"
+      "#<Increase::RequestOptions:0x#{object_id.to_s(16)} #{@_values.inspect}>"
     end
 
     # @return [String]

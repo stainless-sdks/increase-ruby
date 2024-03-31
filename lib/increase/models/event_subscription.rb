@@ -4,15 +4,23 @@ module Increase
   module Models
     class EventSubscription < BaseModel
       # @!attribute [rw] id
+      #   The event subscription identifier.
+      #   @return [String]
       required :id, String
 
       # @!attribute [rw] created_at
+      #   The time the event subscription was created.
+      #   @return [String]
       required :created_at, String
 
       # @!attribute [rw] idempotency_key
+      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   @return [String]
       required :idempotency_key, String
 
       # @!attribute [rw] selected_event_category
+      #   If specified, this subscription will only receive webhooks for Events with the specified `category`.
+      #   @return [Symbol]
       required :selected_event_category,
                Increase::Enum.new(
                  :"account.created",
@@ -96,12 +104,18 @@ module Increase
                )
 
       # @!attribute [rw] status
+      #   This indicates if we'll send notifications to this subscription.
+      #   @return [Symbol]
       required :status, Increase::Enum.new(:active, :disabled, :deleted, :requires_attention)
 
       # @!attribute [rw] type
+      #   A constant representing the object's type. For this resource it will always be `event_subscription`.
+      #   @return [Symbol]
       required :type, Increase::Enum.new(:event_subscription)
 
       # @!attribute [rw] url
+      #   The webhook url where we'll send notifications.
+      #   @return [String]
       required :url, String
     end
   end

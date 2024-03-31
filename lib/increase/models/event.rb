@@ -4,15 +4,23 @@ module Increase
   module Models
     class Event < BaseModel
       # @!attribute [rw] id
+      #   The Event identifier.
+      #   @return [String]
       required :id, String
 
       # @!attribute [rw] associated_object_id
+      #   The identifier of the object that generated this Event.
+      #   @return [String]
       required :associated_object_id, String
 
       # @!attribute [rw] associated_object_type
+      #   The type of the object that generated this Event.
+      #   @return [String]
       required :associated_object_type, String
 
       # @!attribute [rw] category
+      #   The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+      #   @return [Symbol]
       required :category,
                Increase::Enum.new(
                  :"account.created",
@@ -96,9 +104,13 @@ module Increase
                )
 
       # @!attribute [rw] created_at
+      #   The time the Event was created.
+      #   @return [String]
       required :created_at, String
 
       # @!attribute [rw] type
+      #   A constant representing the object's type. For this resource it will always be `event`.
+      #   @return [Symbol]
       required :type, Increase::Enum.new(:event)
     end
   end

@@ -11,8 +11,8 @@ module Increase
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :card_id The underlying card representing this physical card.
-      # @option params [Hash] :cardholder Details about the cardholder, as it will appear on the physical card.
-      # @option params [Hash] :shipment The details used to ship this physical card.
+      # @option params [Cardholder] :cardholder Details about the cardholder, as it will appear on the physical card.
+      # @option params [Shipment] :shipment The details used to ship this physical card.
       # @option params [String] :physical_card_profile_id The physical card profile to use for this physical card. The latest default
       #   physical card profile will be used if not provided.
       #
