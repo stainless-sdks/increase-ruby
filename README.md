@@ -5,7 +5,7 @@ application.
 
 ## Documentation
 
-Documentation for the most recent version of this gem can be found [on RubyDoc](RubyDocInfoURL).
+Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/stainless-sdks/increase-ruby).
 
 The underlying REST API documentation can be found [on increase.com](https://increase.com/documentation).
 
