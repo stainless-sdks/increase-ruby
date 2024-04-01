@@ -38,25 +38,12 @@ module Increase
         #
         # @return [Increase::Models::InboundACHTransfer]
         def create_inbound(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/inbound_ach_transfers"
-          body_params = [
-            :account_number_id,
-            :amount,
-            :company_descriptive_date,
-            :company_discretionary_data,
-            :company_entry_description,
-            :company_id,
-            :company_name,
-            :receiver_id_number,
-            :receiver_name,
-            :resolve_at
-          ]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
-          request[:model] = Increase::Models::InboundACHTransfer
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/inbound_ach_transfers"
+          req[:body] = params
+          req[:model] = Increase::Models::InboundACHTransfer
+          @client.request(req, opts)
         end
 
         # Simulates receiving a Notification of Change for an
@@ -73,14 +60,12 @@ module Increase
         #
         # @return [Increase::Models::ACHTransfer]
         def notification_of_change(ach_transfer_id, params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/notification_of_change"
-          body_params = [:change_code, :corrected_data]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
-          request[:model] = Increase::Models::ACHTransfer
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/notification_of_change"
+          req[:body] = params
+          req[:model] = Increase::Models::ACHTransfer
+          @client.request(req, opts)
         end
 
         # Simulates the return of an [ACH Transfer](#ach-transfers) by the Federal Reserve
@@ -97,14 +82,12 @@ module Increase
         #
         # @return [Increase::Models::ACHTransfer]
         def return_(ach_transfer_id, params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/return"
-          body_params = [:reason]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
-          request[:model] = Increase::Models::ACHTransfer
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/return"
+          req[:body] = params
+          req[:model] = Increase::Models::ACHTransfer
+          @client.request(req, opts)
         end
 
         # Simulates the submission of an [ACH Transfer](#ach-transfers) to the Federal
@@ -119,12 +102,11 @@ module Increase
         #
         # @return [Increase::Models::ACHTransfer]
         def submit(ach_transfer_id, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/submit"
-          request[:model] = Increase::Models::ACHTransfer
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/submit"
+          req[:model] = Increase::Models::ACHTransfer
+          @client.request(req, opts)
         end
       end
     end

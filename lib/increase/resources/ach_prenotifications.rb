@@ -30,27 +30,12 @@ module Increase
       #
       # @return [Increase::Models::ACHPrenotification]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/ach_prenotifications"
-        body_params = [
-          :account_number,
-          :routing_number,
-          :addendum,
-          :company_descriptive_date,
-          :company_discretionary_data,
-          :company_entry_description,
-          :company_name,
-          :credit_debit_indicator,
-          :effective_date,
-          :individual_id,
-          :individual_name,
-          :standard_entry_class_code
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
-        request[:model] = Increase::Models::ACHPrenotification
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/ach_prenotifications"
+        req[:body] = params
+        req[:model] = Increase::Models::ACHPrenotification
+        @client.request(req, opts)
       end
 
       # Retrieve an ACH Prenotification
@@ -60,38 +45,11 @@ module Increase
       #
       # @return [Increase::Models::ACHPrenotification]
       def retrieve(ach_prenotification_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/ach_prenotifications/#{ach_prenotification_id}"
-        request[:model] = Increase::Models::ACHPrenotification
-        request.merge!(opts)
-        @client.request(request)
-      end
-
-      # List ACH Prenotifications
-      #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Hash] :created_at
-      # @option params [String] :cursor Return the page of entries after this one.
-      # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
-      # @return [Increase::Models::ACHPrenotification]
-      def list(params = {}, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/ach_prenotifications"
-        query_params = [:created_at, :cursor, :idempotency_key, :limit]
-        request[:query] = params.filter { |k, _| query_params.include?(k) }
-        request[:model] = Increase::Models::ACHPrenotification
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/ach_prenotifications/#{ach_prenotification_id}"
+        req[:model] = Increase::Models::ACHPrenotification
+        @client.request(req, opts)
       end
     end
   end

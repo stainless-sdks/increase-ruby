@@ -17,14 +17,12 @@ module Increase
         #
         # @return [Increase::Models::Document]
         def create(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/documents"
-          body_params = [:account_id]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
-          request[:model] = Increase::Models::Document
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/documents"
+          req[:body] = params
+          req[:model] = Increase::Models::Document
+          @client.request(req, opts)
         end
       end
     end

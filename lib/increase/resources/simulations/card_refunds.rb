@@ -19,14 +19,12 @@ module Increase
         #
         # @return [Increase::Models::Transaction]
         def create(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/card_refunds"
-          body_params = [:transaction_id]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
-          request[:model] = Increase::Models::Transaction
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/card_refunds"
+          req[:body] = params
+          req[:model] = Increase::Models::Transaction
+          @client.request(req, opts)
         end
       end
     end

@@ -36,28 +36,12 @@ module Increase
       #
       # @return [Increase::Models::WireDrawdownRequest]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/wire_drawdown_requests"
-        body_params = [
-          :account_number_id,
-          :amount,
-          :message_to_recipient,
-          :recipient_account_number,
-          :recipient_name,
-          :recipient_routing_number,
-          :originator_address_line1,
-          :originator_address_line2,
-          :originator_address_line3,
-          :originator_name,
-          :recipient_address_line1,
-          :recipient_address_line2,
-          :recipient_address_line3
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
-        request[:model] = Increase::Models::WireDrawdownRequest
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/wire_drawdown_requests"
+        req[:body] = params
+        req[:model] = Increase::Models::WireDrawdownRequest
+        @client.request(req, opts)
       end
 
       # Retrieve a Wire Drawdown Request
@@ -67,33 +51,11 @@ module Increase
       #
       # @return [Increase::Models::WireDrawdownRequest]
       def retrieve(wire_drawdown_request_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/wire_drawdown_requests/#{wire_drawdown_request_id}"
-        request[:model] = Increase::Models::WireDrawdownRequest
-        request.merge!(opts)
-        @client.request(request)
-      end
-
-      # List Wire Drawdown Requests
-      #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :cursor Return the page of entries after this one.
-      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
-      # @return [Increase::Models::WireDrawdownRequest]
-      def list(params = {}, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/wire_drawdown_requests"
-        query_params = [:cursor, :limit]
-        request[:query] = params.filter { |k, _| query_params.include?(k) }
-        request[:model] = Increase::Models::WireDrawdownRequest
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/wire_drawdown_requests/#{wire_drawdown_request_id}"
+        req[:model] = Increase::Models::WireDrawdownRequest
+        @client.request(req, opts)
       end
     end
   end

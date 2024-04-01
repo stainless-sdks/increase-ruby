@@ -16,12 +16,11 @@ module Increase
         #
         # @return [Increase::Models::CheckTransfer]
         def deposit(check_transfer_id, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/check_transfers/#{check_transfer_id}/deposit"
-          request[:model] = Increase::Models::CheckTransfer
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/check_transfers/#{check_transfer_id}/deposit"
+          req[:model] = Increase::Models::CheckTransfer
+          @client.request(req, opts)
         end
 
         # Simulates the mailing of a [Check Transfer](#check-transfers), which happens
@@ -33,12 +32,11 @@ module Increase
         #
         # @return [Increase::Models::CheckTransfer]
         def mail(check_transfer_id, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/check_transfers/#{check_transfer_id}/mail"
-          request[:model] = Increase::Models::CheckTransfer
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/check_transfers/#{check_transfer_id}/mail"
+          req[:model] = Increase::Models::CheckTransfer
+          @client.request(req, opts)
         end
       end
     end

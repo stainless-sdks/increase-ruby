@@ -11,9 +11,4 @@ class Increase::Test::Resources::FilesTest < Test::Unit::TestCase
     response = @increase.files.retrieve("string")
     assert(Increase::Converter.same_type?(Increase::Models::File, response), response.class.to_s)
   end
-
-  def test_list
-    response = @increase.files.list
-    assert(Increase::Converter.same_type?(Increase::Models::File, response), response.class.to_s)
-  end
 end

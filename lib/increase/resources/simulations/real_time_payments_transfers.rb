@@ -15,21 +15,19 @@ module Increase
         # @param real_time_payments_transfer_id [String] The identifier of the Real-Time Payments Transfer you wish to complete.
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Hash] :rejection If set, the simulation will reject the transfer.
+        # @option params [Rejection] :rejection If set, the simulation will reject the transfer.
         #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::RealTimePaymentsTransfer]
         def complete(real_time_payments_transfer_id, params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] =
+          req = {}
+          req[:method] = :post
+          req[:path] =
             "/simulations/real_time_payments_transfers/#{real_time_payments_transfer_id}/complete"
-          body_params = [:rejection]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
-          request[:model] = Increase::Models::RealTimePaymentsTransfer
-          request.merge!(opts)
-          @client.request(request)
+          req[:body] = params
+          req[:model] = Increase::Models::RealTimePaymentsTransfer
+          @client.request(req, opts)
         end
 
         # Simulates an inbound Real-Time Payments transfer to your account. Real-Time
@@ -49,22 +47,12 @@ module Increase
         #
         # @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult]
         def create_inbound(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/inbound_real_time_payments_transfers"
-          body_params = [
-            :account_number_id,
-            :amount,
-            :debtor_account_number,
-            :debtor_name,
-            :debtor_routing_number,
-            :remittance_information,
-            :request_for_payment_id
-          ]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
-          request[:model] = Increase::Models::InboundRealTimePaymentsTransferSimulationResult
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/inbound_real_time_payments_transfers"
+          req[:body] = params
+          req[:model] = Increase::Models::InboundRealTimePaymentsTransferSimulationResult
+          @client.request(req, opts)
         end
       end
     end

@@ -21,7 +21,7 @@ module Increase
       #   help the customer recognize the transfer. You are highly encouraged to pass
       #   `individual_name` and `company_name` instead of relying on this fallback.
       # @option params [String] :account_number The account number for the destination account.
-      # @option params [Hash] :addenda Additional information that will be sent to the recipient. This is included in
+      # @option params [Addenda] :addenda Additional information that will be sent to the recipient. This is included in
       #   the transfer data sent to the receiving bank.
       # @option params [String] :company_descriptive_date The description of the date of the transfer, usually in the format `YYMMDD`.
       #   This is included in the transfer data sent to the receiving bank.
@@ -50,33 +50,12 @@ module Increase
       #
       # @return [Increase::Models::ACHTransfer]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/ach_transfers"
-        body_params = [
-          :account_id,
-          :amount,
-          :statement_descriptor,
-          :account_number,
-          :addenda,
-          :company_descriptive_date,
-          :company_discretionary_data,
-          :company_entry_description,
-          :company_name,
-          :destination_account_holder,
-          :effective_date,
-          :external_account_id,
-          :funding,
-          :individual_id,
-          :individual_name,
-          :require_approval,
-          :routing_number,
-          :standard_entry_class_code
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
-        request[:model] = Increase::Models::ACHTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/ach_transfers"
+        req[:body] = params
+        req[:model] = Increase::Models::ACHTransfer
+        @client.request(req, opts)
       end
 
       # Retrieve an ACH Transfer
@@ -86,47 +65,11 @@ module Increase
       #
       # @return [Increase::Models::ACHTransfer]
       def retrieve(ach_transfer_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/ach_transfers/#{ach_transfer_id}"
-        request[:model] = Increase::Models::ACHTransfer
-        request.merge!(opts)
-        @client.request(request)
-      end
-
-      # List ACH Transfers
-      #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :account_id Filter ACH Transfers to those that originated from the specified Account.
-      # @option params [Hash] :created_at
-      # @option params [String] :cursor Return the page of entries after this one.
-      # @option params [String] :external_account_id Filter ACH Transfers to those made to the specified External Account.
-      # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
-      # @return [Increase::Models::ACHTransfer]
-      def list(params = {}, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/ach_transfers"
-        query_params = [
-          :account_id,
-          :created_at,
-          :cursor,
-          :external_account_id,
-          :idempotency_key,
-          :limit
-        ]
-        request[:query] = params.filter { |k, _| query_params.include?(k) }
-        request[:model] = Increase::Models::ACHTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/ach_transfers/#{ach_transfer_id}"
+        req[:model] = Increase::Models::ACHTransfer
+        @client.request(req, opts)
       end
 
       # Approves an ACH Transfer in a pending_approval state.
@@ -136,12 +79,11 @@ module Increase
       #
       # @return [Increase::Models::ACHTransfer]
       def approve(ach_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/ach_transfers/#{ach_transfer_id}/approve"
-        request[:model] = Increase::Models::ACHTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/ach_transfers/#{ach_transfer_id}/approve"
+        req[:model] = Increase::Models::ACHTransfer
+        @client.request(req, opts)
       end
 
       # Cancels an ACH Transfer in a pending_approval state.
@@ -151,12 +93,11 @@ module Increase
       #
       # @return [Increase::Models::ACHTransfer]
       def cancel(ach_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/ach_transfers/#{ach_transfer_id}/cancel"
-        request[:model] = Increase::Models::ACHTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/ach_transfers/#{ach_transfer_id}/cancel"
+        req[:model] = Increase::Models::ACHTransfer
+        @client.request(req, opts)
       end
     end
   end

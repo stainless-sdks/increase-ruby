@@ -30,14 +30,6 @@ class Increase::Test::Resources::AccountTransfersTest < Test::Unit::TestCase
     )
   end
 
-  def test_list
-    response = @increase.account_transfers.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::AccountTransfer, response),
-      response.class.to_s
-    )
-  end
-
   def test_approve
     response = @increase.account_transfers.approve("string")
     assert(

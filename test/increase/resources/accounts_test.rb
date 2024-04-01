@@ -22,11 +22,6 @@ class Increase::Test::Resources::AccountsTest < Test::Unit::TestCase
     assert(Increase::Converter.same_type?(Increase::Models::Account, response), response.class.to_s)
   end
 
-  def test_list
-    response = @increase.accounts.list
-    assert(Increase::Converter.same_type?(Increase::Models::Account, response), response.class.to_s)
-  end
-
   def test_balance
     response = @increase.accounts.balance("string")
     assert(

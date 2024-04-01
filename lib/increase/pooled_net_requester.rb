@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: read https://gist.github.com/TheRusskiy/bcec13fda6589d13ef8a658bda561a7e.
-# since it looks like net conn options also change reuse identity.
-# TODO parameterizing this -- max conns, etc
 module Increase
   # @!visibility private
   class PooledNetRequester

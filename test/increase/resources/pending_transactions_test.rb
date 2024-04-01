@@ -14,12 +14,4 @@ class Increase::Test::Resources::PendingTransactionsTest < Test::Unit::TestCase
       response.class.to_s
     )
   end
-
-  def test_list
-    response = @increase.pending_transactions.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::PendingTransaction, response),
-      response.class.to_s
-    )
-  end
 end

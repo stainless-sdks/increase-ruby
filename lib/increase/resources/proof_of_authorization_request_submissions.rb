@@ -26,26 +26,12 @@ module Increase
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/proof_of_authorization_request_submissions"
-        body_params = [
-          :authorization_terms,
-          :authorized_at,
-          :authorizer_email,
-          :authorizer_name,
-          :customer_has_been_offboarded,
-          :proof_of_authorization_request_id,
-          :validated_account_ownership_via_credential,
-          :validated_account_ownership_with_account_statement,
-          :validated_account_ownership_with_microdeposit,
-          :authorizer_company,
-          :authorizer_ip_address
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
-        request[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/proof_of_authorization_request_submissions"
+        req[:body] = params
+        req[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
+        @client.request(req, opts)
       end
 
       # Retrieve a Proof of Authorization Request Submission
@@ -55,39 +41,12 @@ module Increase
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def retrieve(proof_of_authorization_request_submission_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] =
+        req = {}
+        req[:method] = :get
+        req[:path] =
           "/proof_of_authorization_request_submissions/#{proof_of_authorization_request_submission_id}"
-        request[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
-        request.merge!(opts)
-        @client.request(request)
-      end
-
-      # List Proof of Authorization Request Submissions
-      #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :cursor Return the page of entries after this one.
-      # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      # @option params [String] :proof_of_authorization_request_id ID of the proof of authorization request.
-      #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
-      # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
-      def list(params = {}, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/proof_of_authorization_request_submissions"
-        query_params = [:cursor, :idempotency_key, :limit, :proof_of_authorization_request_id]
-        request[:query] = params.filter { |k, _| query_params.include?(k) }
-        request[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
-        request.merge!(opts)
-        @client.request(request)
+        req[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
+        @client.request(req, opts)
       end
     end
   end

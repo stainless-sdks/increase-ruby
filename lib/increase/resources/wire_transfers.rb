@@ -36,30 +36,12 @@ module Increase
       #
       # @return [Increase::Models::WireTransfer]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/wire_transfers"
-        body_params = [
-          :account_id,
-          :amount,
-          :beneficiary_name,
-          :message_to_recipient,
-          :account_number,
-          :beneficiary_address_line1,
-          :beneficiary_address_line2,
-          :beneficiary_address_line3,
-          :external_account_id,
-          :originator_address_line1,
-          :originator_address_line2,
-          :originator_address_line3,
-          :originator_name,
-          :require_approval,
-          :routing_number
-        ]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/wire_transfers"
+        req[:body] = params
+        req[:model] = Increase::Models::WireTransfer
+        @client.request(req, opts)
       end
 
       # Retrieve a Wire Transfer
@@ -69,47 +51,11 @@ module Increase
       #
       # @return [Increase::Models::WireTransfer]
       def retrieve(wire_transfer_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/wire_transfers/#{wire_transfer_id}"
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
-      end
-
-      # List Wire Transfers
-      #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :account_id Filter Wire Transfers to those belonging to the specified Account.
-      # @option params [Hash] :created_at
-      # @option params [String] :cursor Return the page of entries after this one.
-      # @option params [String] :external_account_id Filter Wire Transfers to those made to the specified External Account.
-      # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
-      # @return [Increase::Models::WireTransfer]
-      def list(params = {}, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/wire_transfers"
-        query_params = [
-          :account_id,
-          :created_at,
-          :cursor,
-          :external_account_id,
-          :idempotency_key,
-          :limit
-        ]
-        request[:query] = params.filter { |k, _| query_params.include?(k) }
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/wire_transfers/#{wire_transfer_id}"
+        req[:model] = Increase::Models::WireTransfer
+        @client.request(req, opts)
       end
 
       # Approve a Wire Transfer
@@ -119,12 +65,11 @@ module Increase
       #
       # @return [Increase::Models::WireTransfer]
       def approve(wire_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/wire_transfers/#{wire_transfer_id}/approve"
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/wire_transfers/#{wire_transfer_id}/approve"
+        req[:model] = Increase::Models::WireTransfer
+        @client.request(req, opts)
       end
 
       # Cancel a pending Wire Transfer
@@ -134,12 +79,11 @@ module Increase
       #
       # @return [Increase::Models::WireTransfer]
       def cancel(wire_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/wire_transfers/#{wire_transfer_id}/cancel"
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/wire_transfers/#{wire_transfer_id}/cancel"
+        req[:model] = Increase::Models::WireTransfer
+        @client.request(req, opts)
       end
 
       # Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
@@ -152,12 +96,11 @@ module Increase
       #
       # @return [Increase::Models::WireTransfer]
       def reverse(wire_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/simulations/wire_transfers/#{wire_transfer_id}/reverse"
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/simulations/wire_transfers/#{wire_transfer_id}/reverse"
+        req[:model] = Increase::Models::WireTransfer
+        @client.request(req, opts)
       end
 
       # Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
@@ -169,12 +112,11 @@ module Increase
       #
       # @return [Increase::Models::WireTransfer]
       def submit(wire_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/simulations/wire_transfers/#{wire_transfer_id}/submit"
-        request[:model] = Increase::Models::WireTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/simulations/wire_transfers/#{wire_transfer_id}/submit"
+        req[:model] = Increase::Models::WireTransfer
+        @client.request(req, opts)
       end
     end
   end

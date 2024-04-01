@@ -48,12 +48,4 @@ class Increase::Test::Resources::PhysicalCardsTest < Test::Unit::TestCase
       response.class.to_s
     )
   end
-
-  def test_list
-    response = @increase.physical_cards.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::PhysicalCard, response),
-      response.class.to_s
-    )
-  end
 end

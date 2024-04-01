@@ -37,25 +37,12 @@ module Increase
         #
         # @return [Increase::Models::CardAuthorizationSimulation]
         def authorize(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/card_authorizations"
-          body_params = [
-            :amount,
-            :card_id,
-            :digital_wallet_token_id,
-            :event_subscription_id,
-            :merchant_acceptor_id,
-            :merchant_category_code,
-            :merchant_city,
-            :merchant_country,
-            :merchant_descriptor,
-            :physical_card_id
-          ]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
-          request[:model] = Increase::Models::CardAuthorizationSimulation
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/card_authorizations"
+          req[:body] = params
+          req[:model] = Increase::Models::CardAuthorizationSimulation
+          @client.request(req, opts)
         end
 
         # Simulates the settlement of an authorization by a card acquirer. After a card
@@ -75,14 +62,12 @@ module Increase
         #
         # @return [Increase::Models::Transaction]
         def settlement(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/card_settlements"
-          body_params = [:card_id, :pending_transaction_id, :amount]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
-          request[:model] = Increase::Models::Transaction
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/card_settlements"
+          req[:body] = params
+          req[:model] = Increase::Models::Transaction
+          @client.request(req, opts)
         end
       end
     end

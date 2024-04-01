@@ -43,35 +43,12 @@ module Increase
         #
         # @return [Increase::Models::InboundWireDrawdownRequest]
         def create(params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/simulations/inbound_wire_drawdown_requests"
-          body_params = [
-            :amount,
-            :beneficiary_account_number,
-            :beneficiary_routing_number,
-            :currency,
-            :message_to_recipient,
-            :originator_account_number,
-            :originator_routing_number,
-            :recipient_account_number_id,
-            :beneficiary_address_line1,
-            :beneficiary_address_line2,
-            :beneficiary_address_line3,
-            :beneficiary_name,
-            :originator_address_line1,
-            :originator_address_line2,
-            :originator_address_line3,
-            :originator_name,
-            :originator_to_beneficiary_information_line1,
-            :originator_to_beneficiary_information_line2,
-            :originator_to_beneficiary_information_line3,
-            :originator_to_beneficiary_information_line4
-          ]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
-          request[:model] = Increase::Models::InboundWireDrawdownRequest
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/inbound_wire_drawdown_requests"
+          req[:body] = params
+          req[:model] = Increase::Models::InboundWireDrawdownRequest
+          @client.request(req, opts)
         end
       end
     end

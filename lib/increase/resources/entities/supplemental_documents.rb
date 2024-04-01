@@ -19,40 +19,12 @@ module Increase
         #
         # @return [Increase::Models::Entity]
         def create(entity_id, params = {}, opts = {})
-          request = {}
-          request[:method] = :post
-          request[:path] = "/entities/#{entity_id}/supplemental_documents"
-          body_params = [:file_id]
-          request[:body] = params.filter { |k, _| body_params.include?(k) }
-          request[:model] = Increase::Models::Entity
-          request.merge!(opts)
-          @client.request(request)
-        end
-
-        # List Entity Supplemental Document Submissions
-        #
-        # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :entity_id The identifier of the Entity to list supplemental documents for.
-        # @option params [String] :cursor Return the page of entries after this one.
-        # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-        #   that object. This value is unique across Increase and is used to ensure that a
-        #   request is only processed once. Learn more about
-        #   [idempotency](https://increase.com/documentation/idempotency-keys).
-        # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-        #   objects.
-        #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        #
-        # @return [Increase::Models::SupplementalDocument]
-        def list(params = {}, opts = {})
-          request = {}
-          request[:method] = :get
-          request[:path] = "/entity_supplemental_documents"
-          query_params = [:entity_id, :cursor, :idempotency_key, :limit]
-          request[:query] = params.filter { |k, _| query_params.include?(k) }
-          request[:model] = Increase::Models::SupplementalDocument
-          request.merge!(opts)
-          @client.request(request)
+          req = {}
+          req[:method] = :post
+          req[:path] = "/entities/#{entity_id}/supplemental_documents"
+          req[:body] = params
+          req[:model] = Increase::Models::Entity
+          @client.request(req, opts)
         end
       end
     end

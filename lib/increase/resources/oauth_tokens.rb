@@ -26,14 +26,12 @@ module Increase
       #
       # @return [Increase::Models::OAuthToken]
       def create(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/oauth/tokens"
-        body_params = [:grant_type, :client_id, :client_secret, :code, :production_token]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
-        request[:model] = Increase::Models::OAuthToken
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/oauth/tokens"
+        req[:body] = params
+        req[:model] = Increase::Models::OAuthToken
+        @client.request(req, opts)
       end
     end
   end

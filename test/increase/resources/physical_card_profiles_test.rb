@@ -27,14 +27,6 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Test::Unit::TestCase
     )
   end
 
-  def test_list
-    response = @increase.physical_card_profiles.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response),
-      response.class.to_s
-    )
-  end
-
   def test_archive
     response = @increase.physical_card_profiles.archive("string")
     assert(

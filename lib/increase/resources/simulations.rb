@@ -51,14 +51,12 @@ module Increase
       #
       # @return [Increase::Models::CardPayment]
       def card_authorization_expirations(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/simulations/card_authorization_expirations"
-        body_params = [:card_payment_id]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
-        request[:model] = Increase::Models::CardPayment
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/simulations/card_authorization_expirations"
+        req[:body] = params
+        req[:model] = Increase::Models::CardPayment
+        @client.request(req, opts)
       end
 
       # Simulates the fuel confirmation of an authorization by a card acquirer. This
@@ -74,14 +72,12 @@ module Increase
       #
       # @return [Increase::Models::CardPayment]
       def card_fuel_confirmations(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/simulations/card_fuel_confirmations"
-        body_params = [:amount, :card_payment_id]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
-        request[:model] = Increase::Models::CardPayment
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/simulations/card_fuel_confirmations"
+        req[:body] = params
+        req[:model] = Increase::Models::CardPayment
+        @client.request(req, opts)
       end
 
       # Simulates the increment of an authorization by a card acquirer. An authorization
@@ -99,14 +95,12 @@ module Increase
       #
       # @return [Increase::Models::CardPayment]
       def card_increments(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/simulations/card_increments"
-        body_params = [:amount, :card_payment_id, :event_subscription_id]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
-        request[:model] = Increase::Models::CardPayment
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/simulations/card_increments"
+        req[:body] = params
+        req[:model] = Increase::Models::CardPayment
+        @client.request(req, opts)
       end
 
       # Simulates the reversal of an authorization by a card acquirer. An authorization
@@ -123,14 +117,12 @@ module Increase
       #
       # @return [Increase::Models::CardPayment]
       def card_reversals(params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/simulations/card_reversals"
-        body_params = [:card_payment_id, :amount]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
-        request[:model] = Increase::Models::CardPayment
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/simulations/card_reversals"
+        req[:body] = params
+        req[:model] = Increase::Models::CardPayment
+        @client.request(req, opts)
       end
     end
   end

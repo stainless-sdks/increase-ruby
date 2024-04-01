@@ -14,12 +14,4 @@ class Increase::Test::Resources::OAuthConnectionsTest < Test::Unit::TestCase
       response.class.to_s
     )
   end
-
-  def test_list
-    response = @increase.oauth_connections.list
-    assert(
-      Increase::Converter.same_type?(Increase::Models::OAuthConnection, response),
-      response.class.to_s
-    )
-  end
 end

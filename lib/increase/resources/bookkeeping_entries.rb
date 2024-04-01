@@ -14,33 +14,11 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingEntry]
       def retrieve(bookkeeping_entry_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/bookkeeping_entries/#{bookkeeping_entry_id}"
-        request[:model] = Increase::Models::BookkeepingEntry
-        request.merge!(opts)
-        @client.request(request)
-      end
-
-      # List Bookkeeping Entries
-      #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :cursor Return the page of entries after this one.
-      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
-      # @return [Increase::Models::BookkeepingEntry]
-      def list(params = {}, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/bookkeeping_entries"
-        query_params = [:cursor, :limit]
-        request[:query] = params.filter { |k, _| query_params.include?(k) }
-        request[:model] = Increase::Models::BookkeepingEntry
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/bookkeeping_entries/#{bookkeeping_entry_id}"
+        req[:model] = Increase::Models::BookkeepingEntry
+        @client.request(req, opts)
       end
     end
   end

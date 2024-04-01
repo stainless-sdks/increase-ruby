@@ -14,37 +14,11 @@ module Increase
       #
       # @return [Increase::Models::InboundACHTransfer]
       def retrieve(inbound_ach_transfer_id, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}"
-        request[:model] = Increase::Models::InboundACHTransfer
-        request.merge!(opts)
-        @client.request(request)
-      end
-
-      # List Inbound ACH Transfers
-      #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :account_id Filter Inbound ACH Tranfers to ones belonging to the specified Account.
-      # @option params [String] :account_number_id Filter Inbound ACH Tranfers to ones belonging to the specified Account Number.
-      # @option params [Hash] :created_at
-      # @option params [String] :cursor Return the page of entries after this one.
-      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      # @option params [Symbol] :status Filter Inbound ACH Transfers to those with the specified status.
-      #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
-      # @return [Increase::Models::InboundACHTransfer]
-      def list(params = {}, opts = {})
-        request = {}
-        request[:method] = :get
-        request[:path] = "/inbound_ach_transfers"
-        query_params = [:account_id, :account_number_id, :created_at, :cursor, :limit, :status]
-        request[:query] = params.filter { |k, _| query_params.include?(k) }
-        request[:model] = Increase::Models::InboundACHTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :get
+        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}"
+        req[:model] = Increase::Models::InboundACHTransfer
+        @client.request(req, opts)
       end
 
       # Decline an Inbound ACH Transfer
@@ -54,12 +28,11 @@ module Increase
       #
       # @return [Increase::Models::InboundACHTransfer]
       def decline(inbound_ach_transfer_id, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/decline"
-        request[:model] = Increase::Models::InboundACHTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/decline"
+        req[:model] = Increase::Models::InboundACHTransfer
+        @client.request(req, opts)
       end
 
       # Create a notification of change for an Inbound ACH Transfer
@@ -75,14 +48,12 @@ module Increase
       #
       # @return [Increase::Models::InboundACHTransfer]
       def notification_of_change(inbound_ach_transfer_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/notification_of_change"
-        body_params = [:updated_account_number, :updated_routing_number]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
-        request[:model] = Increase::Models::InboundACHTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/notification_of_change"
+        req[:body] = params
+        req[:model] = Increase::Models::InboundACHTransfer
+        @client.request(req, opts)
       end
 
       # Return an Inbound ACH Transfer
@@ -98,14 +69,12 @@ module Increase
       #
       # @return [Increase::Models::InboundACHTransfer]
       def transfer_return(inbound_ach_transfer_id, params = {}, opts = {})
-        request = {}
-        request[:method] = :post
-        request[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/transfer_return"
-        body_params = [:reason]
-        request[:body] = params.filter { |k, _| body_params.include?(k) }
-        request[:model] = Increase::Models::InboundACHTransfer
-        request.merge!(opts)
-        @client.request(request)
+        req = {}
+        req[:method] = :post
+        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/transfer_return"
+        req[:body] = params
+        req[:model] = Increase::Models::InboundACHTransfer
+        @client.request(req, opts)
       end
     end
   end

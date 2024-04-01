@@ -45,6 +45,10 @@ Layout/MultilineAssignmentLayout:
 Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
 
+# Don't require this extra line break, it can be excessive.
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
 # For arrays, hashes, method arguments, and method params, if they are broken onto multiple lines:
 # * Should have one element per line.
 # * Should have a line break before the first element.

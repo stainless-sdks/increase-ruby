@@ -20,9 +20,4 @@ class Increase::Test::Resources::CardDisputesTest < Test::Unit::TestCase
     response = @increase.card_disputes.retrieve("string")
     assert(Increase::Converter.same_type?(Increase::Models::CardDispute, response), response.class.to_s)
   end
-
-  def test_list
-    response = @increase.card_disputes.list
-    assert(Increase::Converter.same_type?(Increase::Models::CardDispute, response), response.class.to_s)
-  end
 end

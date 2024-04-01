@@ -13,7 +13,15 @@ module Increase
     )
       self.requester = PooledNetRequester.new
       env_uri = URI.parse(server_uri_string)
-      @headers = {"Content-Type" => "application/json", "Accept" => "application/json"}.merge(headers || {})
+      base_headers = {
+        "X-Stainless-Lang" => "ruby",
+        "X-Stainless-Package-Version" => Increase::VERSION,
+        "X-Stainless-Runtime" => RUBY_ENGINE,
+        "X-Stainless-Runtime-Version" => RUBY_ENGINE_VERSION,
+        "Content-Type" => "application/json",
+        "Accept" => "application/json"
+      }
+      @headers = base_headers.merge(headers || {})
       @host = env_uri.host
       @scheme = env_uri.scheme
       @port = env_uri.port
@@ -24,6 +32,30 @@ module Increase
 
     def auth_headers
       {}
+    end
+
+    def validate_request(req, opts)
+      # Body can be at least a Hash or Array, just check for Hash shape for now.
+      if (body = req[:body]) && body.is_a?(Hash)
+        body.each_key do |k|
+          unless k.is_a?(Symbol)
+            raise ArgumentError, "Request body keys must be Symbols, got #{k.inspect}"
+          end
+        end
+      end
+
+      unless opts.is_a?(Hash) || opts.is_a?(Increase::RequestOption)
+        raise ArgumentError, "Request `opts` must be a Hash or RequestOptions, got #{opts.inspect}"
+      end
+      opts.to_h.each_key do |k|
+        unless k.is_a?(Symbol)
+          raise ArgumentError, "Request `opts` keys must be Symbols, got #{k.inspect}"
+        end
+        unless Increase::RequestOptions.options.include?(k)
+          raise ArgumentError,
+                "Request `opts` keys must be one of #{Increase::RequestOptions.options.inspect}, got #{k.inspect}"
+        end
+      end
     end
 
     def self.normalize_path(path)
@@ -86,7 +118,7 @@ module Increase
         full_headers = Util.deep_merge(full_headers, options[:extra_headers])
       end
 
-      if @idempotency_header && !headers[@idempotency_header] && method.to_sym != :get
+      if @idempotency_header && !headers[@idempotency_header] && ![:get, :head, :options].include?(method)
         full_headers[@idempotency_header] = options[:idempotency_key] || generate_idempotency_key
       end
 
@@ -102,16 +134,6 @@ module Increase
 
     def generate_idempotency_key
       "stainless-ruby-retry-#{SecureRandom.uuid}"
-    end
-
-    def base_uri
-      builder = @scheme.to_sym == :https ? URI::HTTPS : URI::HTTP
-      builder.build(
-        scheme: @scheme,
-        host: @host,
-        port: @port,
-        path: @base_path
-      )
     end
 
     def should_retry?(response)
@@ -133,7 +155,7 @@ module Increase
       end
     end
 
-    def make_status_error(err_msg:, body:, response:)
+    def make_status_error(message:, body:, response:)
       raise NotImplementedError
     end
 
@@ -145,11 +167,12 @@ module Increase
           response
         end
 
-      # NB: we include the body in the error message as well as returning it,
-      # since logging error messages is a common and quick way to assess what's wrong with a response.
-      err_msg = "Error code: #{response.code}; Response: #{response.body}"
+      # We include the body in the error message as well as returning it
+      # since logging error messages is a common and quick way to assess what's
+      # wrong with a response.
+      message = "Error code: #{response.code}; Response: #{response.body}"
 
-      make_status_error(err_msg: err_msg, body: err_body, response: response)
+      make_status_error(message: message, body: err_body, response: response)
     end
 
     # About the Retry-After header: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After
@@ -186,16 +209,18 @@ module Increase
       request_max_retries = max_retries || @max_retries
       loop do
         begin
-          response = @requester.execute request
+          response = @requester.execute(request)
           is_ok = response.code.to_i < 400
           return response if is_ok
         rescue Net::HTTPBadResponse
           if retries >= request_max_retries
-            raise HTTP::APIConnectionError.new(request: request)
+            message = "failed to complete the request within #{request_max_retries} retries"
+            raise HTTP::APIConnectionError.new(message: message, request: request)
           end
         rescue Timeout::Error
           if retries >= request_max_retries
-            raise HTTP::APITimeoutError.new(request: request)
+            message = "failed to complete the request within #{request_max_retries} retries"
+            raise HTTP::APITimeoutError.new(message: message, request: request)
           end
         end
 
@@ -211,13 +236,15 @@ module Increase
       end
     end
 
-    def request(options)
+    # Execute the request specified by req + opts. This is the method that all
+    # resource methods call into.
+    # Params req & opts are kept separate up until this point so that we can
+    # validate opts as it was given to us by the user.
+    def request(req, opts)
+      validate_request(req, opts)
+      options = req.merge(opts)
       request_args = prep_request(options)
-      # TODO: client-side errors (DNS resolution, timeouts, etc)
-      # TODO: response codes we don't like, 400 etc.
-      # TODO: passing retry config
       response = with_retry(request_args, max_retries: options[:max_retries])
-
       raw_data =
         case response.content_type
         when "application/json"
@@ -242,10 +269,10 @@ module Increase
     end
 
     class ResponseError < Error
-      attr_reader :err_msg, :response, :body, :code
+      attr_reader :response, :body, :code
 
-      def initialize(err_msg:, response:, body:) # rubocop:disable Lint/MissingSuper
-        @err_msg = err_msg
+      def initialize(message:, response:, body:)
+        super(message)
         @response = response
         @body = body
         @code = response.code.to_i
@@ -255,7 +282,8 @@ module Increase
     class RequestError < Error
       attr_reader :request
 
-      def initialize(request:) # rubocop:disable Lint/MissingSuper
+      def initialize(message:, request:)
+        super(message)
         @request = request
       end
     end
