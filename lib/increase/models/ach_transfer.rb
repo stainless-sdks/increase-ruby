@@ -432,7 +432,7 @@ module Increase
         required :submitted_at, String
 
         # @!attribute [rw] trace_number
-        #   A 15 digit number recorded in the Nacha file and transmitted to the receiving bank. Along with the amount, date, and originating routing number, this can be used to identify the ACH transfer at the receiving bank. ACH trace numbers are not unique, but are [used to correlate returns](https://increase.com/documentation/ach#returns).
+        #   A 15 digit number recorded in the Nacha file and transmitted to the receiving bank. Along with the amount, date, and originating routing number, this can be used to identify the ACH transfer at the receiving bank. ACH trace numbers are not unique, but are [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
         #   @return [String]
         required :trace_number, String
       end

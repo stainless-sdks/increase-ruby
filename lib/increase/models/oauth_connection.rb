@@ -13,6 +13,11 @@ module Increase
       #   @return [String]
       required :created_at, String
 
+      # @!attribute [rw] deleted_at
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth Connection was deleted.
+      #   @return [String]
+      required :deleted_at, String
+
       # @!attribute [rw] group_id
       #   The identifier of the Group that has authorized your OAuth application.
       #   @return [String]
