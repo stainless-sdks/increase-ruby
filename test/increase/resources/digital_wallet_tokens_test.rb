@@ -9,9 +9,6 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @increase.digital_wallet_tokens.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::DigitalWalletToken, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::DigitalWalletToken, response), response.class.to_s)
   end
 end

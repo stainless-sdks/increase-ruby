@@ -22,23 +22,11 @@ class Increase::Test::Resources::RealTimePaymentsRequestForPaymentsTest < Test::
         source_routing_number: "101050001"
       }
     )
-    assert(
-      Increase::Converter.same_type?(
-        Increase::Models::RealTimePaymentsRequestForPayment,
-        response
-      ),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::RealTimePaymentsRequestForPayment, response), response.class.to_s)
   end
 
   def test_retrieve
     response = @increase.real_time_payments_request_for_payments.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(
-        Increase::Models::RealTimePaymentsRequestForPayment,
-        response
-      ),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::RealTimePaymentsRequestForPayment, response), response.class.to_s)
   end
 end

@@ -9,9 +9,6 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestsTest < Test::Unit::
 
   def test_retrieve
     response = @increase.proof_of_authorization_requests.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::ProofOfAuthorizationRequest, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::ProofOfAuthorizationRequest, response), response.class.to_s)
   end
 end

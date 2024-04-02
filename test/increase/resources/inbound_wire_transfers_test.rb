@@ -9,9 +9,6 @@ class Increase::Test::Resources::InboundWireTransfersTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @increase.inbound_wire_transfers.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::InboundWireTransfer, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::InboundWireTransfer, response), response.class.to_s)
   end
 end

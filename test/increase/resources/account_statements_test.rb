@@ -9,9 +9,6 @@ class Increase::Test::Resources::AccountStatementsTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @increase.account_statements.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::AccountStatement, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::AccountStatement, response), response.class.to_s)
   end
 end

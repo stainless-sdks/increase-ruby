@@ -116,12 +116,7 @@ module Increase
       # @!attribute [rw] notifications_of_change
       #   If the receiving bank accepts the transfer but notifies that future transfers should use different details, this will contain those details.
       #   @return [Array<Increase::Models::ACHTransfer::NotificationsOfChange>]
-      required :notifications_of_change,
-               Increase::ArrayOf.new(
-                 lambda {
-                   Increase::Models::ACHTransfer::NotificationsOfChange
-                 }
-               )
+      required :notifications_of_change, Increase::ArrayOf.new(-> { Increase::Models::ACHTransfer::NotificationsOfChange })
 
       # @!attribute [rw] pending_transaction_id
       #   The ID for the pending transaction representing the transfer. A pending transaction is created when the transfer [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals) by someone else in your organization.
@@ -205,21 +200,13 @@ module Increase
         # @!attribute [rw] payment_order_remittance_advice
         #   Structured ASC X12 820 remittance advice records. Please reach out to [support@increase.com](mailto:support@increase.com) for more information.
         #   @return [Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice]
-        required :payment_order_remittance_advice,
-                 lambda {
-                   Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice
-                 }
+        required :payment_order_remittance_advice, -> { Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice }
 
         class Freeform < BaseModel
           # @!attribute [rw] entries
           #   Each entry represents an addendum sent with the transfer.
           #   @return [Array<Increase::Models::ACHTransfer::Addenda::Freeform::Entry>]
-          required :entries,
-                   Increase::ArrayOf.new(
-                     lambda {
-                       Increase::Models::ACHTransfer::Addenda::Freeform::Entry
-                     }
-                   )
+          required :entries, Increase::ArrayOf.new(-> { Increase::Models::ACHTransfer::Addenda::Freeform::Entry })
 
           class Entry < BaseModel
             # @!attribute [rw] payment_related_information
@@ -233,12 +220,7 @@ module Increase
           # @!attribute [rw] invoices
           #   ASC X12 RMR records for this specific transfer.
           #   @return [Array<Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice>]
-          required :invoices,
-                   Increase::ArrayOf.new(
-                     lambda {
-                       Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice
-                     }
-                   )
+          required :invoices, Increase::ArrayOf.new(-> { Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice })
 
           class Invoice < BaseModel
             # @!attribute [rw] invoice_number

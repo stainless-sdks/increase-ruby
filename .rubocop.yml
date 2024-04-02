@@ -30,12 +30,17 @@ Style/SafeNavigation:
 Style/FetchEnvVar:
   Enabled: false
 
+# We prefer nested modules in lib/, but are currently using compact style for tests.
+Style/ClassAndModuleChildren:
+  Exclude:
+    - test/**/*
+
 # Set a reasonable line length; rely on other cops to correct long lines.
-# Allow long comments for YARD docs: @param and similar.
 Layout/LineLength:
   Max: 110
   AllowedPatterns:
-    - ^(\s*#)
+    - '^(\s*#)' # Allow long comments for YARD docs: @param and similar.
+    - 'Increase::(Models|Resources)::\S+' # Fully-qualified class names can be long.
 
 # Start the assignment on the same line variable is mentioned.
 Layout/MultilineAssignmentLayout:

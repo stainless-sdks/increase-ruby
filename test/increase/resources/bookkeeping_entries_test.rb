@@ -9,9 +9,6 @@ class Increase::Test::Resources::BookkeepingEntriesTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @increase.bookkeeping_entries.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::BookkeepingEntry, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::BookkeepingEntry, response), response.class.to_s)
   end
 end

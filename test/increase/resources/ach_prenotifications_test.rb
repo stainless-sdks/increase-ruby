@@ -14,17 +14,11 @@ class Increase::Test::Resources::ACHPrenotificationsTest < Test::Unit::TestCase
         routing_number: "101050001"
       }
     )
-    assert(
-      Increase::Converter.same_type?(Increase::Models::ACHPrenotification, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::ACHPrenotification, response), response.class.to_s)
   end
 
   def test_retrieve
     response = @increase.ach_prenotifications.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::ACHPrenotification, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::ACHPrenotification, response), response.class.to_s)
   end
 end

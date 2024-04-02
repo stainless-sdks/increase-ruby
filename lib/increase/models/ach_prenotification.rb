@@ -61,12 +61,7 @@ module Increase
       # @!attribute [rw] notifications_of_change
       #   If the receiving bank notifies that future transfers should use different details, this will contain those details.
       #   @return [Array<Increase::Models::ACHPrenotification::NotificationsOfChange>]
-      required :notifications_of_change,
-               Increase::ArrayOf.new(
-                 lambda {
-                   Increase::Models::ACHPrenotification::NotificationsOfChange
-                 }
-               )
+      required :notifications_of_change, Increase::ArrayOf.new(-> { Increase::Models::ACHPrenotification::NotificationsOfChange })
 
       # @!attribute [rw] prenotification_return
       #   If your prenotification is returned, this will contain details of the return.

@@ -27,25 +27,16 @@ class Increase::Test::Resources::PhysicalCardsTest < Test::Unit::TestCase
         }
       }
     )
-    assert(
-      Increase::Converter.same_type?(Increase::Models::PhysicalCard, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::PhysicalCard, response), response.class.to_s)
   end
 
   def test_retrieve
     response = @increase.physical_cards.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::PhysicalCard, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::PhysicalCard, response), response.class.to_s)
   end
 
   def test_update_required_params
     response = @increase.physical_cards.update("string", {status: "disabled"})
-    assert(
-      Increase::Converter.same_type?(Increase::Models::PhysicalCard, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::PhysicalCard, response), response.class.to_s)
   end
 end

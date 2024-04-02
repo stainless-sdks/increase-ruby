@@ -52,8 +52,8 @@ module Increase
           raise ArgumentError, "Request `opts` keys must be Symbols, got #{k.inspect}"
         end
         unless Increase::RequestOptions.options.include?(k)
-          raise ArgumentError,
-                "Request `opts` keys must be one of #{Increase::RequestOptions.options.inspect}, got #{k.inspect}"
+          valid_keys = Increase::RequestOptions.options.inspect
+          raise ArgumentError, "Request `opts` keys must be one of #{valid_keys}, got #{k.inspect}"
         end
       end
     end

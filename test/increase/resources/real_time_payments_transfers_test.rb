@@ -16,17 +16,11 @@ class Increase::Test::Resources::RealTimePaymentsTransfersTest < Test::Unit::Tes
         source_account_number_id: "account_number_v18nkfqm6afpsrvy82b2"
       }
     )
-    assert(
-      Increase::Converter.same_type?(Increase::Models::RealTimePaymentsTransfer, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::RealTimePaymentsTransfer, response), response.class.to_s)
   end
 
   def test_retrieve
     response = @increase.real_time_payments_transfers.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::RealTimePaymentsTransfer, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::RealTimePaymentsTransfer, response), response.class.to_s)
   end
 end

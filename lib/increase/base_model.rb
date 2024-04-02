@@ -6,16 +6,14 @@ module Increase
     # Returns a value that conforms to `type`, if possible: either the given `value` if it
     # conforms, or otherwise a new one derived from `value`.
     def self.convert(type, value)
-      # Type is instance of a class that mixes in Converter, indicating that the type
-      # should define .convert on the class.
+      # If `type.is_a?(Converter)`, `type` is instance of a class that mixes in
+      # Converter, indicating that the type should define .convert on the class.
       # Covers most cases including models, enums, arrays.
-      # Models???
-      if type.is_a?(Converter)
-        type.convert(value)
-      # Type is a class that mixes in Converter.
-      # Currently Unknown and BooleanModel, because we don't make instances of those, as they
-      # dont need to be parameterized (as e.g. enums do with possible values).
-      elsif type.include?(Converter)
+      # If `type.include?(Converter)`, `type` is a class that mixes in Converter.
+      # Currently Unknown and BooleanModel, because we don't make instances of
+      # those, as they dont need to be parameterized (as e.g. enums do with
+      # possible values).
+      if type.is_a?(Converter) || type.include?(Converter)
         type.convert(value)
       # String, Integer, Float, NilClass, Hash.
       elsif type.is_a?(Class)
