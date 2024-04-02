@@ -15,16 +15,25 @@ class Increase::Test::Resources::ExternalAccountsTest < Test::Unit::TestCase
         routing_number: "101050001"
       }
     )
-    assert(Increase::Converter.same_type?(Increase::Models::ExternalAccount, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::ExternalAccount, response),
+      response.class.to_s
+    )
   end
 
   def test_retrieve
     response = @increase.external_accounts.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::ExternalAccount, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::ExternalAccount, response),
+      response.class.to_s
+    )
   end
 
   def test_update
     response = @increase.external_accounts.update("string")
-    assert(Increase::Converter.same_type?(Increase::Models::ExternalAccount, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::ExternalAccount, response),
+      response.class.to_s
+    )
   end
 end

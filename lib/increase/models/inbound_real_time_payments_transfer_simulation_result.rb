@@ -6,12 +6,18 @@ module Increase
       # @!attribute [rw] declined_transaction
       #   If the Real-Time Payments Transfer attempt fails, this will contain the resulting [Declined Transaction](#declined-transactions) object. The Declined Transaction's `source` will be of `category: inbound_real_time_payments_transfer_decline`.
       #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction]
-      required :declined_transaction, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction }
+      required :declined_transaction,
+               lambda {
+                 Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction
+               }
 
       # @!attribute [rw] transaction
       #   If the Real-Time Payments Transfer attempt succeeds, this will contain the resulting [Transaction](#transactions) object. The Transaction's `source` will be of `category: inbound_real_time_payments_transfer_confirmation`.
       #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction]
-      required :transaction, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction }
+      required :transaction,
+               lambda {
+                 Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction
+               }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_real_time_payments_transfer_simulation_result`.
@@ -62,7 +68,10 @@ module Increase
         # @!attribute [rw] source
         #   This is an object giving more details on the network-level event that caused the Declined Transaction. For example, for a card transaction this lists the merchant's industry and location. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
         #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source]
-        required :source, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source }
+        required :source,
+                 lambda {
+                   Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source
+                 }
 
         # @!attribute [rw] type
         #   A constant representing the object's type. For this resource it will always be `declined_transaction`.
@@ -73,12 +82,18 @@ module Increase
           # @!attribute [rw] ach_decline
           #   An ACH Decline object. This field will be present in the JSON response if and only if `category` is equal to `ach_decline`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::ACHDecline]
-          required :ach_decline, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::ACHDecline }
+          required :ach_decline,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::ACHDecline
+                   }
 
           # @!attribute [rw] card_decline
           #   A Card Decline object. This field will be present in the JSON response if and only if `category` is equal to `card_decline`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline]
-          required :card_decline, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline }
+          required :card_decline,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline
+                   }
 
           # @!attribute [rw] category
           #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
@@ -97,22 +112,34 @@ module Increase
           # @!attribute [rw] check_decline
           #   A Check Decline object. This field will be present in the JSON response if and only if `category` is equal to `check_decline`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CheckDecline]
-          required :check_decline, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CheckDecline }
+          required :check_decline,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CheckDecline
+                   }
 
           # @!attribute [rw] inbound_real_time_payments_transfer_decline
           #   An Inbound Real-Time Payments Transfer Decline object. This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_decline`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline]
-          required :inbound_real_time_payments_transfer_decline, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline }
+          required :inbound_real_time_payments_transfer_decline,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline
+                   }
 
           # @!attribute [rw] international_ach_decline
           #   An International ACH Decline object. This field will be present in the JSON response if and only if `category` is equal to `international_ach_decline`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::InternationalACHDecline]
-          required :international_ach_decline, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::InternationalACHDecline }
+          required :international_ach_decline,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::InternationalACHDecline
+                   }
 
           # @!attribute [rw] wire_decline
           #   A Wire Decline object. This field will be present in the JSON response if and only if `category` is equal to `wire_decline`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::WireDecline]
-          required :wire_decline, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::WireDecline }
+          required :wire_decline,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::WireDecline
+                   }
 
           class ACHDecline < BaseModel
             # @!attribute [rw] id
@@ -251,12 +278,18 @@ module Increase
             # @!attribute [rw] network_details
             #   Fields specific to the `network`.
             #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::NetworkDetails]
-            required :network_details, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::NetworkDetails }
+            required :network_details,
+                     lambda {
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::NetworkDetails
+                     }
 
             # @!attribute [rw] network_identifiers
             #   Network-specific identifiers for a specific request or transaction.
             #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers]
-            required :network_identifiers, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers }
+            required :network_identifiers,
+                     lambda {
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers
+                     }
 
             # @!attribute [rw] network_risk_score
             #   The risk score generated by the card network. For Visa this is the Visa Advanced Authorization risk score, from 0 to 99, where 99 is the riskiest.
@@ -310,7 +343,10 @@ module Increase
             # @!attribute [rw] verification
             #   Fields related to verification of cardholder-provided values.
             #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::Verification]
-            required :verification, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::Verification }
+            required :verification,
+                     lambda {
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::Verification
+                     }
 
             class NetworkDetails < BaseModel
               # @!attribute [rw] category
@@ -321,7 +357,10 @@ module Increase
               # @!attribute [rw] visa
               #   Fields specific to the `visa` network.
               #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa]
-              required :visa, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa }
+              required :visa,
+                       lambda {
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa
+                       }
 
               class Visa < BaseModel
                 # @!attribute [rw] electronic_commerce_indicator
@@ -379,12 +418,18 @@ module Increase
               # @!attribute [rw] card_verification_code
               #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
               #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode]
-              required :card_verification_code, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode }
+              required :card_verification_code,
+                       lambda {
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode
+                       }
 
               # @!attribute [rw] cardholder_address
               #   Cardholder address provided in the authorization request and the address on file we verified it against.
               #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress]
-              required :cardholder_address, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress }
+              required :cardholder_address,
+                       lambda {
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
+                       }
 
               class CardVerificationCode < BaseModel
                 # @!attribute [rw] result
@@ -806,7 +851,10 @@ module Increase
         # @!attribute [rw] source
         #   This is an object giving more details on the network-level event that caused the Transaction. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
         #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source]
-        required :source, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source }
+        required :source,
+                 lambda {
+                   Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source
+                 }
 
         # @!attribute [rw] type
         #   A constant representing the object's type. For this resource it will always be `transaction`.
@@ -817,42 +865,66 @@ module Increase
           # @!attribute [rw] account_transfer_intention
           #   An Account Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `account_transfer_intention`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::AccountTransferIntention]
-          required :account_transfer_intention, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::AccountTransferIntention }
+          required :account_transfer_intention,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::AccountTransferIntention
+                   }
 
           # @!attribute [rw] ach_transfer_intention
           #   An ACH Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_intention`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::ACHTransferIntention]
-          required :ach_transfer_intention, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::ACHTransferIntention }
+          required :ach_transfer_intention,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::ACHTransferIntention
+                   }
 
           # @!attribute [rw] ach_transfer_rejection
           #   An ACH Transfer Rejection object. This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_rejection`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::ACHTransferRejection]
-          required :ach_transfer_rejection, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::ACHTransferRejection }
+          required :ach_transfer_rejection,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::ACHTransferRejection
+                   }
 
           # @!attribute [rw] ach_transfer_return
           #   An ACH Transfer Return object. This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_return`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::ACHTransferReturn]
-          required :ach_transfer_return, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::ACHTransferReturn }
+          required :ach_transfer_return,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::ACHTransferReturn
+                   }
 
           # @!attribute [rw] card_dispute_acceptance
           #   A Card Dispute Acceptance object. This field will be present in the JSON response if and only if `category` is equal to `card_dispute_acceptance`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardDisputeAcceptance]
-          required :card_dispute_acceptance, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardDisputeAcceptance }
+          required :card_dispute_acceptance,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardDisputeAcceptance
+                   }
 
           # @!attribute [rw] card_refund
           #   A Card Refund object. This field will be present in the JSON response if and only if `category` is equal to `card_refund`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund]
-          required :card_refund, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund }
+          required :card_refund,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund
+                   }
 
           # @!attribute [rw] card_revenue_payment
           #   A Card Revenue Payment object. This field will be present in the JSON response if and only if `category` is equal to `card_revenue_payment`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRevenuePayment]
-          required :card_revenue_payment, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRevenuePayment }
+          required :card_revenue_payment,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRevenuePayment
+                   }
 
           # @!attribute [rw] card_settlement
           #   A Card Settlement object. This field will be present in the JSON response if and only if `category` is equal to `card_settlement`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement]
-          required :card_settlement, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement }
+          required :card_settlement,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement
+                   }
 
           # @!attribute [rw] category
           #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
@@ -894,97 +966,154 @@ module Increase
           # @!attribute [rw] check_deposit_acceptance
           #   A Check Deposit Acceptance object. This field will be present in the JSON response if and only if `category` is equal to `check_deposit_acceptance`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckDepositAcceptance]
-          required :check_deposit_acceptance, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckDepositAcceptance }
+          required :check_deposit_acceptance,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckDepositAcceptance
+                   }
 
           # @!attribute [rw] check_deposit_return
           #   A Check Deposit Return object. This field will be present in the JSON response if and only if `category` is equal to `check_deposit_return`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckDepositReturn]
-          required :check_deposit_return, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckDepositReturn }
+          required :check_deposit_return,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckDepositReturn
+                   }
 
           # @!attribute [rw] check_transfer_deposit
           #   A Check Transfer Deposit object. This field will be present in the JSON response if and only if `category` is equal to `check_transfer_deposit`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckTransferDeposit]
-          required :check_transfer_deposit, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckTransferDeposit }
+          required :check_transfer_deposit,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckTransferDeposit
+                   }
 
           # @!attribute [rw] check_transfer_stop_payment_request
           #   A Check Transfer Stop Payment Request object. This field will be present in the JSON response if and only if `category` is equal to `check_transfer_stop_payment_request`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckTransferStopPaymentRequest]
-          required :check_transfer_stop_payment_request, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckTransferStopPaymentRequest }
+          required :check_transfer_stop_payment_request,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CheckTransferStopPaymentRequest
+                   }
 
           # @!attribute [rw] fee_payment
           #   A Fee Payment object. This field will be present in the JSON response if and only if `category` is equal to `fee_payment`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::FeePayment]
-          required :fee_payment, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::FeePayment }
+          required :fee_payment,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::FeePayment
+                   }
 
           # @!attribute [rw] inbound_ach_transfer
           #   An Inbound ACH Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `inbound_ach_transfer`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer]
-          required :inbound_ach_transfer, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer }
+          required :inbound_ach_transfer,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer
+                   }
 
           # @!attribute [rw] inbound_check
           #   An Inbound Check object. This field will be present in the JSON response if and only if `category` is equal to `inbound_check`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundCheck]
-          required :inbound_check, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundCheck }
+          required :inbound_check,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundCheck
+                   }
 
           # @!attribute [rw] inbound_international_ach_transfer
           #   An Inbound International ACH Transfer object. This field will be present in the JSON response if and only if `category` is equal to `inbound_international_ach_transfer`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundInternationalACHTransfer]
-          required :inbound_international_ach_transfer, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundInternationalACHTransfer }
+          required :inbound_international_ach_transfer,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundInternationalACHTransfer
+                   }
 
           # @!attribute [rw] inbound_real_time_payments_transfer_confirmation
           #   An Inbound Real-Time Payments Transfer Confirmation object. This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_confirmation`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundRealTimePaymentsTransferConfirmation]
-          required :inbound_real_time_payments_transfer_confirmation, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundRealTimePaymentsTransferConfirmation }
+          required :inbound_real_time_payments_transfer_confirmation,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundRealTimePaymentsTransferConfirmation
+                   }
 
           # @!attribute [rw] inbound_wire_drawdown_payment
           #   An Inbound Wire Drawdown Payment object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireDrawdownPayment]
-          required :inbound_wire_drawdown_payment, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireDrawdownPayment }
+          required :inbound_wire_drawdown_payment,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireDrawdownPayment
+                   }
 
           # @!attribute [rw] inbound_wire_drawdown_payment_reversal
           #   An Inbound Wire Drawdown Payment Reversal object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_drawdown_payment_reversal`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireDrawdownPaymentReversal]
-          required :inbound_wire_drawdown_payment_reversal, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireDrawdownPaymentReversal }
+          required :inbound_wire_drawdown_payment_reversal,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireDrawdownPaymentReversal
+                   }
 
           # @!attribute [rw] inbound_wire_reversal
           #   An Inbound Wire Reversal object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_reversal`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireReversal]
-          required :inbound_wire_reversal, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireReversal }
+          required :inbound_wire_reversal,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireReversal
+                   }
 
           # @!attribute [rw] inbound_wire_transfer
           #   An Inbound Wire Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_transfer`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireTransfer]
-          required :inbound_wire_transfer, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireTransfer }
+          required :inbound_wire_transfer,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundWireTransfer
+                   }
 
           # @!attribute [rw] interest_payment
           #   An Interest Payment object. This field will be present in the JSON response if and only if `category` is equal to `interest_payment`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InterestPayment]
-          required :interest_payment, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InterestPayment }
+          required :interest_payment,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InterestPayment
+                   }
 
           # @!attribute [rw] internal_source
           #   An Internal Source object. This field will be present in the JSON response if and only if `category` is equal to `internal_source`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InternalSource]
-          required :internal_source, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InternalSource }
+          required :internal_source,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InternalSource
+                   }
 
           # @!attribute [rw] real_time_payments_transfer_acknowledgement
           #   A Real-Time Payments Transfer Acknowledgement object. This field will be present in the JSON response if and only if `category` is equal to `real_time_payments_transfer_acknowledgement`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::RealTimePaymentsTransferAcknowledgement]
-          required :real_time_payments_transfer_acknowledgement, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::RealTimePaymentsTransferAcknowledgement }
+          required :real_time_payments_transfer_acknowledgement,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::RealTimePaymentsTransferAcknowledgement
+                   }
 
           # @!attribute [rw] sample_funds
           #   A Sample Funds object. This field will be present in the JSON response if and only if `category` is equal to `sample_funds`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::SampleFunds]
-          required :sample_funds, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::SampleFunds }
+          required :sample_funds,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::SampleFunds
+                   }
 
           # @!attribute [rw] wire_transfer_intention
           #   A Wire Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_intention`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::WireTransferIntention]
-          required :wire_transfer_intention, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::WireTransferIntention }
+          required :wire_transfer_intention,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::WireTransferIntention
+                   }
 
           # @!attribute [rw] wire_transfer_rejection
           #   A Wire Transfer Rejection object. This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_rejection`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::WireTransferRejection]
-          required :wire_transfer_rejection, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::WireTransferRejection }
+          required :wire_transfer_rejection,
+                   lambda {
+                     Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::WireTransferRejection
+                   }
 
           class AccountTransferIntention < BaseModel
             # @!attribute [rw] amount
@@ -1222,12 +1351,18 @@ module Increase
             # @!attribute [rw] network_identifiers
             #   Network-specific identifiers for this refund.
             #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::NetworkIdentifiers]
-            required :network_identifiers, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::NetworkIdentifiers }
+            required :network_identifiers,
+                     lambda {
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::NetworkIdentifiers
+                     }
 
             # @!attribute [rw] purchase_details
             #   Additional details about the card purchase, such as tax and industry-specific fields.
             #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails]
-            required :purchase_details, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails }
+            required :purchase_details,
+                     lambda {
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails
+                     }
 
             # @!attribute [rw] transaction_id
             #   The identifier of the Transaction associated with this Transaction.
@@ -1260,7 +1395,10 @@ module Increase
               # @!attribute [rw] car_rental
               #   Fields specific to car rentals.
               #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::CarRental]
-              required :car_rental, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::CarRental }
+              required :car_rental,
+                       lambda {
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::CarRental
+                       }
 
               # @!attribute [rw] customer_reference_identifier
               #   An identifier from the merchant for the customer or consumer.
@@ -1280,7 +1418,10 @@ module Increase
               # @!attribute [rw] lodging
               #   Fields specific to lodging.
               #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Lodging]
-              required :lodging, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Lodging }
+              required :lodging,
+                       lambda {
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Lodging
+                       }
 
               # @!attribute [rw] national_tax_amount
               #   The national tax amount in minor units.
@@ -1312,7 +1453,10 @@ module Increase
               # @!attribute [rw] travel
               #   Fields specific to travel.
               #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel]
-              required :travel, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel }
+              required :travel,
+                       lambda {
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel
+                       }
 
               class CarRental < BaseModel
                 # @!attribute [rw] car_class_code
@@ -1504,7 +1648,10 @@ module Increase
                 # @!attribute [rw] ancillary
                 #   Ancillary purchases in addition to the airfare.
                 #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary]
-                required :ancillary, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary }
+                required :ancillary,
+                         lambda {
+                           Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary
+                         }
 
                 # @!attribute [rw] computerized_reservation_system
                 #   Indicates the computerized reservation system used to book the ticket.
@@ -1576,7 +1723,12 @@ module Increase
                 # @!attribute [rw] trip_legs
                 #   Fields specific to each leg of the journey.
                 #   @return [Array<Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>]
-                required :trip_legs, Increase::ArrayOf.new(-> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg })
+                required :trip_legs,
+                         Increase::ArrayOf.new(
+                           lambda {
+                             Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg
+                           }
+                         )
 
                 class Ancillary < BaseModel
                   # @!attribute [rw] connected_ticket_document_number
@@ -1603,7 +1755,12 @@ module Increase
                   # @!attribute [rw] services
                   #   Additional travel charges, such as baggage fees.
                   #   @return [Array<Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service>]
-                  required :services, Increase::ArrayOf.new(-> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service })
+                  required :services,
+                           Increase::ArrayOf.new(
+                             lambda {
+                               Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service
+                             }
+                           )
 
                   # @!attribute [rw] ticket_document_number
                   #   Ticket document number.
@@ -1775,7 +1932,10 @@ module Increase
             # @!attribute [rw] network_identifiers
             #   Network-specific identifiers for this refund.
             #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::NetworkIdentifiers]
-            required :network_identifiers, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::NetworkIdentifiers }
+            required :network_identifiers,
+                     lambda {
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::NetworkIdentifiers
+                     }
 
             # @!attribute [rw] pending_transaction_id
             #   The identifier of the Pending Transaction associated with this Transaction.
@@ -1795,7 +1955,10 @@ module Increase
             # @!attribute [rw] purchase_details
             #   Additional details about the card purchase, such as tax and industry-specific fields.
             #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails]
-            required :purchase_details, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails }
+            required :purchase_details,
+                     lambda {
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails
+                     }
 
             # @!attribute [rw] transaction_id
             #   The identifier of the Transaction associated with this Transaction.
@@ -1828,7 +1991,10 @@ module Increase
               # @!attribute [rw] car_rental
               #   Fields specific to car rentals.
               #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::CarRental]
-              required :car_rental, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::CarRental }
+              required :car_rental,
+                       lambda {
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::CarRental
+                       }
 
               # @!attribute [rw] customer_reference_identifier
               #   An identifier from the merchant for the customer or consumer.
@@ -1848,7 +2014,10 @@ module Increase
               # @!attribute [rw] lodging
               #   Fields specific to lodging.
               #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Lodging]
-              required :lodging, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Lodging }
+              required :lodging,
+                       lambda {
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Lodging
+                       }
 
               # @!attribute [rw] national_tax_amount
               #   The national tax amount in minor units.
@@ -1880,7 +2049,10 @@ module Increase
               # @!attribute [rw] travel
               #   Fields specific to travel.
               #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel]
-              required :travel, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel }
+              required :travel,
+                       lambda {
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel
+                       }
 
               class CarRental < BaseModel
                 # @!attribute [rw] car_class_code
@@ -2072,7 +2244,10 @@ module Increase
                 # @!attribute [rw] ancillary
                 #   Ancillary purchases in addition to the airfare.
                 #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary]
-                required :ancillary, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary }
+                required :ancillary,
+                         lambda {
+                           Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary
+                         }
 
                 # @!attribute [rw] computerized_reservation_system
                 #   Indicates the computerized reservation system used to book the ticket.
@@ -2144,7 +2319,12 @@ module Increase
                 # @!attribute [rw] trip_legs
                 #   Fields specific to each leg of the journey.
                 #   @return [Array<Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>]
-                required :trip_legs, Increase::ArrayOf.new(-> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg })
+                required :trip_legs,
+                         Increase::ArrayOf.new(
+                           lambda {
+                             Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg
+                           }
+                         )
 
                 class Ancillary < BaseModel
                   # @!attribute [rw] connected_ticket_document_number
@@ -2171,7 +2351,12 @@ module Increase
                   # @!attribute [rw] services
                   #   Additional travel charges, such as baggage fees.
                   #   @return [Array<Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service>]
-                  required :services, Increase::ArrayOf.new(-> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service })
+                  required :services,
+                           Increase::ArrayOf.new(
+                             lambda {
+                               Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service
+                             }
+                           )
 
                   # @!attribute [rw] ticket_document_number
                   #   Ticket document number.
@@ -2440,7 +2625,10 @@ module Increase
             # @!attribute [rw] addenda
             #   Additional information sent from the originator.
             #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer::Addenda]
-            required :addenda, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer::Addenda }
+            required :addenda,
+                     lambda {
+                       Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer::Addenda
+                     }
 
             # @!attribute [rw] amount
             #   The amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
@@ -2501,13 +2689,21 @@ module Increase
               # @!attribute [rw] freeform
               #   Unstructured `payment_related_information` passed through by the originator.
               #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer::Addenda::Freeform]
-              required :freeform, -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer::Addenda::Freeform }
+              required :freeform,
+                       lambda {
+                         Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer::Addenda::Freeform
+                       }
 
               class Freeform < BaseModel
                 # @!attribute [rw] entries
                 #   Each entry represents an addendum received from the originator.
                 #   @return [Array<Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry>]
-                required :entries, Increase::ArrayOf.new(-> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry })
+                required :entries,
+                         Increase::ArrayOf.new(
+                           lambda {
+                             Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry
+                           }
+                         )
 
                 class Entry < BaseModel
                   # @!attribute [rw] payment_related_information

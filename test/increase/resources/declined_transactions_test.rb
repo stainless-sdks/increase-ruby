@@ -9,6 +9,9 @@ class Increase::Test::Resources::DeclinedTransactionsTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @increase.declined_transactions.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::DeclinedTransaction, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::DeclinedTransaction, response),
+      response.class.to_s
+    )
   end
 end

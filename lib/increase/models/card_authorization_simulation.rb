@@ -6,12 +6,18 @@ module Increase
       # @!attribute [rw] declined_transaction
       #   If the authorization attempt fails, this will contain the resulting [Declined Transaction](#declined-transactions) object. The Declined Transaction's `source` will be of `category: card_decline`.
       #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction]
-      required :declined_transaction, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction }
+      required :declined_transaction,
+               lambda {
+                 Increase::Models::CardAuthorizationSimulation::DeclinedTransaction
+               }
 
       # @!attribute [rw] pending_transaction
       #   If the authorization attempt succeeds, this will contain the resulting Pending Transaction object. The Pending Transaction's `source` will be of `category: card_authorization`.
       #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction]
-      required :pending_transaction, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction }
+      required :pending_transaction,
+               lambda {
+                 Increase::Models::CardAuthorizationSimulation::PendingTransaction
+               }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_card_authorization_simulation_result`.
@@ -62,7 +68,10 @@ module Increase
         # @!attribute [rw] source
         #   This is an object giving more details on the network-level event that caused the Declined Transaction. For example, for a card transaction this lists the merchant's industry and location. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
         #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source]
-        required :source, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source }
+        required :source,
+                 lambda {
+                   Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source
+                 }
 
         # @!attribute [rw] type
         #   A constant representing the object's type. For this resource it will always be `declined_transaction`.
@@ -73,12 +82,18 @@ module Increase
           # @!attribute [rw] ach_decline
           #   An ACH Decline object. This field will be present in the JSON response if and only if `category` is equal to `ach_decline`.
           #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::ACHDecline]
-          required :ach_decline, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::ACHDecline }
+          required :ach_decline,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::ACHDecline
+                   }
 
           # @!attribute [rw] card_decline
           #   A Card Decline object. This field will be present in the JSON response if and only if `category` is equal to `card_decline`.
           #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline]
-          required :card_decline, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline }
+          required :card_decline,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline
+                   }
 
           # @!attribute [rw] category
           #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
@@ -97,22 +112,34 @@ module Increase
           # @!attribute [rw] check_decline
           #   A Check Decline object. This field will be present in the JSON response if and only if `category` is equal to `check_decline`.
           #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CheckDecline]
-          required :check_decline, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CheckDecline }
+          required :check_decline,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CheckDecline
+                   }
 
           # @!attribute [rw] inbound_real_time_payments_transfer_decline
           #   An Inbound Real-Time Payments Transfer Decline object. This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_decline`.
           #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline]
-          required :inbound_real_time_payments_transfer_decline, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline }
+          required :inbound_real_time_payments_transfer_decline,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline
+                   }
 
           # @!attribute [rw] international_ach_decline
           #   An International ACH Decline object. This field will be present in the JSON response if and only if `category` is equal to `international_ach_decline`.
           #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::InternationalACHDecline]
-          required :international_ach_decline, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::InternationalACHDecline }
+          required :international_ach_decline,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::InternationalACHDecline
+                   }
 
           # @!attribute [rw] wire_decline
           #   A Wire Decline object. This field will be present in the JSON response if and only if `category` is equal to `wire_decline`.
           #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::WireDecline]
-          required :wire_decline, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::WireDecline }
+          required :wire_decline,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::WireDecline
+                   }
 
           class ACHDecline < BaseModel
             # @!attribute [rw] id
@@ -251,12 +278,18 @@ module Increase
             # @!attribute [rw] network_details
             #   Fields specific to the `network`.
             #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::NetworkDetails]
-            required :network_details, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::NetworkDetails }
+            required :network_details,
+                     lambda {
+                       Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::NetworkDetails
+                     }
 
             # @!attribute [rw] network_identifiers
             #   Network-specific identifiers for a specific request or transaction.
             #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers]
-            required :network_identifiers, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers }
+            required :network_identifiers,
+                     lambda {
+                       Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers
+                     }
 
             # @!attribute [rw] network_risk_score
             #   The risk score generated by the card network. For Visa this is the Visa Advanced Authorization risk score, from 0 to 99, where 99 is the riskiest.
@@ -310,7 +343,10 @@ module Increase
             # @!attribute [rw] verification
             #   Fields related to verification of cardholder-provided values.
             #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::Verification]
-            required :verification, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::Verification }
+            required :verification,
+                     lambda {
+                       Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::Verification
+                     }
 
             class NetworkDetails < BaseModel
               # @!attribute [rw] category
@@ -321,7 +357,10 @@ module Increase
               # @!attribute [rw] visa
               #   Fields specific to the `visa` network.
               #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa]
-              required :visa, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa }
+              required :visa,
+                       lambda {
+                         Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa
+                       }
 
               class Visa < BaseModel
                 # @!attribute [rw] electronic_commerce_indicator
@@ -379,12 +418,18 @@ module Increase
               # @!attribute [rw] card_verification_code
               #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
               #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode]
-              required :card_verification_code, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode }
+              required :card_verification_code,
+                       lambda {
+                         Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode
+                       }
 
               # @!attribute [rw] cardholder_address
               #   Cardholder address provided in the authorization request and the address on file we verified it against.
               #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress]
-              required :cardholder_address, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress }
+              required :cardholder_address,
+                       lambda {
+                         Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
+                       }
 
               class CardVerificationCode < BaseModel
                 # @!attribute [rw] result
@@ -811,7 +856,10 @@ module Increase
         # @!attribute [rw] source
         #   This is an object giving more details on the network-level event that caused the Pending Transaction. For example, for a card transaction this lists the merchant's industry and location.
         #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source]
-        required :source, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source }
+        required :source,
+                 lambda {
+                   Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source
+                 }
 
         # @!attribute [rw] status
         #   Whether the Pending Transaction has been confirmed and has an associated Transaction.
@@ -827,17 +875,26 @@ module Increase
           # @!attribute [rw] account_transfer_instruction
           #   An Account Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `account_transfer_instruction`.
           #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::AccountTransferInstruction]
-          required :account_transfer_instruction, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::AccountTransferInstruction }
+          required :account_transfer_instruction,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::AccountTransferInstruction
+                   }
 
           # @!attribute [rw] ach_transfer_instruction
           #   An ACH Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_instruction`.
           #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::ACHTransferInstruction]
-          required :ach_transfer_instruction, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::ACHTransferInstruction }
+          required :ach_transfer_instruction,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::ACHTransferInstruction
+                   }
 
           # @!attribute [rw] card_authorization
           #   A Card Authorization object. This field will be present in the JSON response if and only if `category` is equal to `card_authorization`.
           #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization]
-          required :card_authorization, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization }
+          required :card_authorization,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization
+                   }
 
           # @!attribute [rw] category
           #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
@@ -858,27 +915,42 @@ module Increase
           # @!attribute [rw] check_deposit_instruction
           #   A Check Deposit Instruction object. This field will be present in the JSON response if and only if `category` is equal to `check_deposit_instruction`.
           #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CheckDepositInstruction]
-          required :check_deposit_instruction, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CheckDepositInstruction }
+          required :check_deposit_instruction,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CheckDepositInstruction
+                   }
 
           # @!attribute [rw] check_transfer_instruction
           #   A Check Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `check_transfer_instruction`.
           #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CheckTransferInstruction]
-          required :check_transfer_instruction, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CheckTransferInstruction }
+          required :check_transfer_instruction,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CheckTransferInstruction
+                   }
 
           # @!attribute [rw] inbound_funds_hold
           #   An Inbound Funds Hold object. This field will be present in the JSON response if and only if `category` is equal to `inbound_funds_hold`.
           #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::InboundFundsHold]
-          required :inbound_funds_hold, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::InboundFundsHold }
+          required :inbound_funds_hold,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::InboundFundsHold
+                   }
 
           # @!attribute [rw] real_time_payments_transfer_instruction
           #   A Real-Time Payments Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `real_time_payments_transfer_instruction`.
           #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::RealTimePaymentsTransferInstruction]
-          required :real_time_payments_transfer_instruction, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::RealTimePaymentsTransferInstruction }
+          required :real_time_payments_transfer_instruction,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::RealTimePaymentsTransferInstruction
+                   }
 
           # @!attribute [rw] wire_transfer_instruction
           #   A Wire Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_instruction`.
           #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::WireTransferInstruction]
-          required :wire_transfer_instruction, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::WireTransferInstruction }
+          required :wire_transfer_instruction,
+                   lambda {
+                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::WireTransferInstruction
+                   }
 
           class AccountTransferInstruction < BaseModel
             # @!attribute [rw] amount
@@ -978,12 +1050,18 @@ module Increase
             # @!attribute [rw] network_details
             #   Fields specific to the `network`.
             #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::NetworkDetails]
-            required :network_details, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::NetworkDetails }
+            required :network_details,
+                     lambda {
+                       Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::NetworkDetails
+                     }
 
             # @!attribute [rw] network_identifiers
             #   Network-specific identifiers for a specific request or transaction.
             #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers]
-            required :network_identifiers, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers }
+            required :network_identifiers,
+                     lambda {
+                       Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers
+                     }
 
             # @!attribute [rw] network_risk_score
             #   The risk score generated by the card network. For Visa this is the Visa Advanced Authorization risk score, from 0 to 99, where 99 is the riskiest.
@@ -1026,7 +1104,10 @@ module Increase
             # @!attribute [rw] verification
             #   Fields related to verification of cardholder-provided values.
             #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::Verification]
-            required :verification, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::Verification }
+            required :verification,
+                     lambda {
+                       Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::Verification
+                     }
 
             class NetworkDetails < BaseModel
               # @!attribute [rw] category
@@ -1037,7 +1118,10 @@ module Increase
               # @!attribute [rw] visa
               #   Fields specific to the `visa` network.
               #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa]
-              required :visa, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa }
+              required :visa,
+                       lambda {
+                         Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa
+                       }
 
               class Visa < BaseModel
                 # @!attribute [rw] electronic_commerce_indicator
@@ -1095,12 +1179,18 @@ module Increase
               # @!attribute [rw] card_verification_code
               #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
               #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode]
-              required :card_verification_code, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode }
+              required :card_verification_code,
+                       lambda {
+                         Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode
+                       }
 
               # @!attribute [rw] cardholder_address
               #   Cardholder address provided in the authorization request and the address on file we verified it against.
               #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress]
-              required :cardholder_address, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress }
+              required :cardholder_address,
+                       lambda {
+                         Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
+                       }
 
               class CardVerificationCode < BaseModel
                 # @!attribute [rw] result

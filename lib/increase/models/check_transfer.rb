@@ -197,7 +197,10 @@ module Increase
         # @!attribute [rw] mailing_address
         #   Details for where Increase will mail the check.
         #   @return [Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress]
-        required :mailing_address, -> { Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress }
+        required :mailing_address,
+                 lambda {
+                   Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress
+                 }
 
         # @!attribute [rw] memo
         #   The descriptor that will be printed on the memo field on the check.

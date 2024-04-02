@@ -11,7 +11,12 @@ module Increase
       # @!attribute [rw] ach_transfers
       #   The ACH Transfers associated with the request.
       #   @return [Array<Increase::Models::ProofOfAuthorizationRequest::ACHTransfer>]
-      required :ach_transfers, Increase::ArrayOf.new(-> { Increase::Models::ProofOfAuthorizationRequest::ACHTransfer })
+      required :ach_transfers,
+               Increase::ArrayOf.new(
+                 lambda {
+                   Increase::Models::ProofOfAuthorizationRequest::ACHTransfer
+                 }
+               )
 
       # @!attribute [rw] created_at
       #   The time the Proof of Authorization Request was created.

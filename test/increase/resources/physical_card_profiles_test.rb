@@ -13,21 +13,33 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Test::Unit::TestCase
         carrier_image_file_id: "file_h6v7mtipe119os47ehlu", contact_phone: "+16505046304", description: "My Card Profile", front_image_file_id: "file_o6aex13wm1jcc36sgcj1"
       }
     )
-    assert(Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response),
+      response.class.to_s
+    )
   end
 
   def test_retrieve
     response = @increase.physical_card_profiles.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response),
+      response.class.to_s
+    )
   end
 
   def test_archive
     response = @increase.physical_card_profiles.archive("string")
-    assert(Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response),
+      response.class.to_s
+    )
   end
 
   def test_clone
     response = @increase.physical_card_profiles.clone("string")
-    assert(Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response),
+      response.class.to_s
+    )
   end
 end

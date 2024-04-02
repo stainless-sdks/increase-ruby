@@ -19,11 +19,17 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Test::Unit::TestCase
         ]
       }
     )
-    assert(Increase::Converter.same_type?(Increase::Models::BookkeepingEntrySet, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::BookkeepingEntrySet, response),
+      response.class.to_s
+    )
   end
 
   def test_retrieve
     response = @increase.bookkeeping_entry_sets.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::BookkeepingEntrySet, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::BookkeepingEntrySet, response),
+      response.class.to_s
+    )
   end
 end

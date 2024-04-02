@@ -16,21 +16,33 @@ class Increase::Test::Resources::AccountTransfersTest < Test::Unit::TestCase
         destination_account_id: "account_uf16sut2ct5bevmq3eh"
       }
     )
-    assert(Increase::Converter.same_type?(Increase::Models::AccountTransfer, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::AccountTransfer, response),
+      response.class.to_s
+    )
   end
 
   def test_retrieve
     response = @increase.account_transfers.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::AccountTransfer, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::AccountTransfer, response),
+      response.class.to_s
+    )
   end
 
   def test_approve
     response = @increase.account_transfers.approve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::AccountTransfer, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::AccountTransfer, response),
+      response.class.to_s
+    )
   end
 
   def test_cancel
     response = @increase.account_transfers.cancel("string")
-    assert(Increase::Converter.same_type?(Increase::Models::AccountTransfer, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::AccountTransfer, response),
+      response.class.to_s
+    )
   end
 end

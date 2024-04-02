@@ -39,8 +39,9 @@ Style/ClassAndModuleChildren:
 Layout/LineLength:
   Max: 110
   AllowedPatterns:
-    - '^(\s*#)' # Allow long comments for YARD docs: @param and similar.
-    - 'Increase::(Models|Resources)::\S+' # Fully-qualified class names can be long.
+    - '^(\s*#)' # Comments for YARD docs: @param and similar.
+    - '= Increase::Resources::\S+\.new\(client: (self|client)\)$' # Instantiating resources.
+    - '^\s*(-> { )?Increase::Models::[a-zA-Z0-9:]+( })?$' # Line is entirely a reference to a fully-qualified Model.
 
 # Start the assignment on the same line variable is mentioned.
 Layout/MultilineAssignmentLayout:

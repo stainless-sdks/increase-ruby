@@ -9,16 +9,25 @@ class Increase::Test::Resources::BookkeepingAccountsTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @increase.bookkeeping_accounts.create({name: "New Account!"})
-    assert(Increase::Converter.same_type?(Increase::Models::BookkeepingAccount, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::BookkeepingAccount, response),
+      response.class.to_s
+    )
   end
 
   def test_update_required_params
     response = @increase.bookkeeping_accounts.update("string", {name: "Deprecated Account"})
-    assert(Increase::Converter.same_type?(Increase::Models::BookkeepingAccount, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::BookkeepingAccount, response),
+      response.class.to_s
+    )
   end
 
   def test_balance
     response = @increase.bookkeeping_accounts.balance("string")
-    assert(Increase::Converter.same_type?(Increase::Models::BookkeepingBalanceLookup, response), response.class.to_s)
+    assert(
+      Increase::Converter.same_type?(Increase::Models::BookkeepingBalanceLookup, response),
+      response.class.to_s
+    )
   end
 end

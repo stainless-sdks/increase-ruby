@@ -12,7 +12,11 @@ class Increase::Test::BaseClientTest < Test::Unit::TestCase
         query: {"d" => ["e"]},
         port: nil
       },
-      Increase::BaseClient.new(server_uri_string: "h://nope/ignored").resolve_uri_elements({url: "h://a.b/c?d=e"})
+      Increase::BaseClient.new(
+        server_uri_string: "h://nope/ignored"
+      ).resolve_uri_elements(
+        url: "h://a.b/c?d=e"
+      )
     )
   end
 
@@ -25,15 +29,15 @@ class Increase::Test::BaseClientTest < Test::Unit::TestCase
         query: {"d" => ["e"], "f" => ["g"]},
         port: nil
       },
-      Increase::BaseClient.new(server_uri_string: "h://nope").resolve_uri_elements(
-        {
-          host: "a.b",
-          scheme: "h",
-          path: "/c",
-          query: {"d" => ["e"]},
-          extra_query: {
-            "f" => ["g"]
-          }
+      Increase::BaseClient.new(
+        server_uri_string: "h://nope"
+      ).resolve_uri_elements(
+        host: "a.b",
+        scheme: "h",
+        path: "/c",
+        query: {"d" => ["e"]},
+        extra_query: {
+          "f" => ["g"]
         }
       )
     )
@@ -47,10 +51,10 @@ class Increase::Test::BaseClientTest < Test::Unit::TestCase
         path: "/c/c2",
         port: nil
       },
-      Increase::BaseClient.new(server_uri_string: "h://a.b/c").resolve_uri_elements(
-        {
-          path: "c2"
-        }
+      Increase::BaseClient.new(
+        server_uri_string: "h://a.b/c"
+      ).resolve_uri_elements(
+        path: "c2"
       )
     )
   end
