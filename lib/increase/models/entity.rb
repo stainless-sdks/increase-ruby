@@ -13,13 +13,18 @@ module Increase
       #   @return [Increase::Models::Entity::Corporation]
       required :corporation, -> { Increase::Models::Entity::Corporation }
 
+      # @!attribute [rw] created_at
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity was created.
+      #   @return [String]
+      required :created_at, String
+
       # @!attribute [rw] description
       #   The entity's description for display purposes.
       #   @return [String]
       required :description, String
 
       # @!attribute [rw] details_confirmed_at
-      #   The date and time at which the entity's details were most recently confirmed.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity's details were most recently confirmed.
       #   @return [String]
       required :details_confirmed_at, String
 
