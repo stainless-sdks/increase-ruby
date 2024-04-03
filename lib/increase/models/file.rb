@@ -51,7 +51,6 @@ module Increase
                  :check_image_front,
                  :check_image_back,
                  :mailed_check_image,
-                 :check_deposit_mail_item,
                  :inbound_mail_item,
                  :form_1099_int,
                  :form_ss_4,
