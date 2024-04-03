@@ -11,6 +11,8 @@ module Increase
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :url The URL you'd like us to send webhooks to.
+      # @option params [String] :oauth_connection_id If specified, this subscription will only receive webhooks for Events associated
+      #   with the specified OAuth Connection.
       # @option params [Symbol] :selected_event_category If specified, this subscription will only receive webhooks for Events with the
       #   specified `category`.
       # @option params [String] :shared_secret The key that will be used to sign webhooks. If no value is passed, a random

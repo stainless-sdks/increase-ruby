@@ -71,7 +71,12 @@ module Increase
         webhook_secret, ENV["INCREASE_WEBHOOK_SECRET"]
       ].find { |value| !value.nil? }
       server_uri_string = environments[environment&.to_sym] || base_url
-      super(server_uri_string: server_uri_string, headers: default_headers, max_retries: max_retries || DEFAULT_MAX_RETRIES, idempotency_header: "Idempotency-Key")
+      super(
+        server_uri_string: server_uri_string,
+        headers: default_headers,
+        max_retries: max_retries || DEFAULT_MAX_RETRIES,
+        idempotency_header: "Idempotency-Key"
+      )
 
       @accounts = Increase::Resources::Accounts.new(client: self)
       @account_numbers = Increase::Resources::AccountNumbers.new(client: self)
