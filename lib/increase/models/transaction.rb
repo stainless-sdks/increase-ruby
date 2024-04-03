@@ -129,7 +129,6 @@ module Increase
                    :fee_payment,
                    :inbound_ach_transfer,
                    :inbound_ach_transfer_return_intention,
-                   :inbound_check,
                    :inbound_international_ach_transfer,
                    :inbound_real_time_payments_transfer_confirmation,
                    :inbound_wire_drawdown_payment_reversal,
@@ -190,11 +189,6 @@ module Increase
                  lambda {
                    Increase::Models::Transaction::Source::InboundACHTransfer
                  }
-
-        # @!attribute [rw] inbound_check
-        #   An Inbound Check object. This field will be present in the JSON response if and only if `category` is equal to `inbound_check`.
-        #   @return [Increase::Models::Transaction::Source::InboundCheck]
-        required :inbound_check, -> { Increase::Models::Transaction::Source::InboundCheck }
 
         # @!attribute [rw] inbound_international_ach_transfer
         #   An Inbound International ACH Transfer object. This field will be present in the JSON response if and only if `category` is equal to `inbound_international_ach_transfer`.
@@ -1859,38 +1853,6 @@ module Increase
               end
             end
           end
-        end
-
-        class InboundCheck < BaseModel
-          # @!attribute [rw] amount
-          #   The amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
-          #   @return [Integer]
-          required :amount, Integer
-
-          # @!attribute [rw] bank_of_first_deposit_routing_number
-          #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the bank depositing this check. In some rare cases, this is not transmitted via Check21 and the value will be null.
-          #   @return [String]
-          required :bank_of_first_deposit_routing_number, String
-
-          # @!attribute [rw] check_front_image_file_id
-          #   The front image of the check. This is a black and white TIFF image file.
-          #   @return [String]
-          required :check_front_image_file_id, String
-
-          # @!attribute [rw] check_number
-          #   The number of the check. This field is set by the depositing bank and can be unreliable.
-          #   @return [String]
-          required :check_number, String
-
-          # @!attribute [rw] check_rear_image_file_id
-          #   The rear image of the check. This is a black and white TIFF image file.
-          #   @return [String]
-          required :check_rear_image_file_id, String
-
-          # @!attribute [rw] currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
-          #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
         end
 
         class InboundInternationalACHTransfer < BaseModel
