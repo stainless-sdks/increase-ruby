@@ -13,7 +13,7 @@ class Increase::Test::BaseClientTest < Test::Unit::TestCase
         port: nil
       },
       Increase::BaseClient.new(
-        server_uri_string: "h://nope/ignored"
+        base_url: "h://nope/ignored"
       ).resolve_uri_elements(
         url: "h://a.b/c?d=e"
       )
@@ -30,7 +30,7 @@ class Increase::Test::BaseClientTest < Test::Unit::TestCase
         port: nil
       },
       Increase::BaseClient.new(
-        server_uri_string: "h://nope"
+        base_url: "h://nope"
       ).resolve_uri_elements(
         host: "a.b",
         scheme: "h",
@@ -52,7 +52,7 @@ class Increase::Test::BaseClientTest < Test::Unit::TestCase
         port: nil
       },
       Increase::BaseClient.new(
-        server_uri_string: "h://a.b/c"
+        base_url: "h://a.b/c"
       ).resolve_uri_elements(
         path: "c2"
       )
