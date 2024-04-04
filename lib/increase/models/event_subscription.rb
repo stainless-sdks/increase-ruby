@@ -18,6 +18,11 @@ module Increase
       #   @return [String]
       required :idempotency_key, String
 
+      # @!attribute [rw] oauth_connection_id
+      #   If specified, this subscription will only receive webhooks for Events associated with this OAuth Connection.
+      #   @return [String]
+      required :oauth_connection_id, String
+
       # @!attribute [rw] selected_event_category
       #   If specified, this subscription will only receive webhooks for Events with the specified `category`.
       #   @return [Symbol]
@@ -70,6 +75,8 @@ module Increase
                  :"inbound_ach_transfer.updated",
                  :"inbound_ach_transfer_return.created",
                  :"inbound_ach_transfer_return.updated",
+                 :"inbound_mail_item.created",
+                 :"inbound_mail_item.updated",
                  :"inbound_wire_drawdown_request.created",
                  :"inbound_wire_transfer.created",
                  :"inbound_wire_transfer.updated",
