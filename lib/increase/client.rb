@@ -63,7 +63,6 @@ module Increase
 
     # Creates and returns a new client for interacting with the API.
     def initialize(environment: nil, base_url: nil, api_key: nil, max_retries: nil)
-      # Determine API URL to use.
       environments = {production: "https://api.increase.com", sandbox: "https://sandbox.increase.com"}
       if environment && base_url
         raise ArgumentError, "both environment and base_url given, expected only one"
@@ -76,20 +75,16 @@ module Increase
         base_url = "https://api.increase.com"
       end
 
-      # Determine HTTP options.
       max_retries ||= DEFAULT_MAX_RETRIES
       idempotency_header = "Idempotency-Key"
 
-      # Resolve other config options.
       @api_key = [api_key, ENV["INCREASE_API_KEY"]].find { |v| !v.nil? }
       if @api_key.nil?
         raise ArgumentError, "api_key is required"
       end
 
-      # Set up base client.
       super(base_url: base_url, max_retries: max_retries, idempotency_header: idempotency_header)
 
-      # Set up resources.
       @accounts = Increase::Resources::Accounts.new(client: self)
       @account_numbers = Increase::Resources::AccountNumbers.new(client: self)
       @bookkeeping_accounts = Increase::Resources::BookkeepingAccounts.new(client: self)
