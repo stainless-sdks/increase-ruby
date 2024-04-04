@@ -63,14 +63,14 @@ module Increase
 
     # Creates and returns a new client for interacting with the API.
     def initialize(environment: nil, base_url: nil, api_key: nil, max_retries: nil)
-      environments = {production: "https://api.increase.com", sandbox: "https://sandbox.increase.com"}
+      environments = {"production" => "https://api.increase.com", "sandbox" => "https://sandbox.increase.com"}
       if environment && base_url
         raise ArgumentError, "both environment and base_url given, expected only one"
       elsif environment
-        unless environments.key?(environment.to_sym)
+        unless environments.key?(environment.to_s)
           raise ArgumentError, "environment must be one of #{environments.keys}, got #{environment}"
         end
-        base_url = environments[environment.to_sym]
+        base_url = environments[environment.to_s]
       elsif !base_url
         base_url = "https://api.increase.com"
       end
