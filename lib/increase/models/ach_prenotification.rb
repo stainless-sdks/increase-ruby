@@ -81,8 +81,7 @@ module Increase
       # @!attribute [rw] status
       #   The lifecycle status of the ACH Prenotification.
       #   @return [Symbol]
-      required :status,
-               Increase::Enum.new(:pending_submitting, :requires_attention, :returned, :submitted)
+      required :status, Increase::Enum.new(:pending_submitting, :requires_attention, :returned, :submitted)
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `ach_prenotification`.

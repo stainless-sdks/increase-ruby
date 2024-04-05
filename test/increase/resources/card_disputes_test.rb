@@ -10,7 +10,8 @@ class Increase::Test::Resources::CardDisputesTest < Test::Unit::TestCase
   def test_create_required_params
     response = @increase.card_disputes.create(
       {
-        disputed_transaction_id: "transaction_uyrp7fld2ium70oa7oi", explanation: "Unauthorized recurring transaction."
+        disputed_transaction_id: "transaction_uyrp7fld2ium70oa7oi",
+        explanation: "Unauthorized recurring transaction."
       }
     )
     assert(Increase::Converter.same_type?(Increase::Models::CardDispute, response), response.class.to_s)

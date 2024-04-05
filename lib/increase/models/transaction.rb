@@ -65,18 +65,12 @@ module Increase
         # @!attribute [rw] ach_transfer_intention
         #   An ACH Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_intention`.
         #   @return [Increase::Models::Transaction::Source::ACHTransferIntention]
-        required :ach_transfer_intention,
-                 lambda {
-                   Increase::Models::Transaction::Source::ACHTransferIntention
-                 }
+        required :ach_transfer_intention, -> { Increase::Models::Transaction::Source::ACHTransferIntention }
 
         # @!attribute [rw] ach_transfer_rejection
         #   An ACH Transfer Rejection object. This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_rejection`.
         #   @return [Increase::Models::Transaction::Source::ACHTransferRejection]
-        required :ach_transfer_rejection,
-                 lambda {
-                   Increase::Models::Transaction::Source::ACHTransferRejection
-                 }
+        required :ach_transfer_rejection, -> { Increase::Models::Transaction::Source::ACHTransferRejection }
 
         # @!attribute [rw] ach_transfer_return
         #   An ACH Transfer Return object. This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_return`.
@@ -86,10 +80,7 @@ module Increase
         # @!attribute [rw] card_dispute_acceptance
         #   A Card Dispute Acceptance object. This field will be present in the JSON response if and only if `category` is equal to `card_dispute_acceptance`.
         #   @return [Increase::Models::Transaction::Source::CardDisputeAcceptance]
-        required :card_dispute_acceptance,
-                 lambda {
-                   Increase::Models::Transaction::Source::CardDisputeAcceptance
-                 }
+        required :card_dispute_acceptance, -> { Increase::Models::Transaction::Source::CardDisputeAcceptance }
 
         # @!attribute [rw] card_refund
         #   A Card Refund object. This field will be present in the JSON response if and only if `category` is equal to `card_refund`.
@@ -99,10 +90,7 @@ module Increase
         # @!attribute [rw] card_revenue_payment
         #   A Card Revenue Payment object. This field will be present in the JSON response if and only if `category` is equal to `card_revenue_payment`.
         #   @return [Increase::Models::Transaction::Source::CardRevenuePayment]
-        required :card_revenue_payment,
-                 lambda {
-                   Increase::Models::Transaction::Source::CardRevenuePayment
-                 }
+        required :card_revenue_payment, -> { Increase::Models::Transaction::Source::CardRevenuePayment }
 
         # @!attribute [rw] card_settlement
         #   A Card Settlement object. This field will be present in the JSON response if and only if `category` is equal to `card_settlement`.
@@ -156,18 +144,12 @@ module Increase
         # @!attribute [rw] check_deposit_return
         #   A Check Deposit Return object. This field will be present in the JSON response if and only if `category` is equal to `check_deposit_return`.
         #   @return [Increase::Models::Transaction::Source::CheckDepositReturn]
-        required :check_deposit_return,
-                 lambda {
-                   Increase::Models::Transaction::Source::CheckDepositReturn
-                 }
+        required :check_deposit_return, -> { Increase::Models::Transaction::Source::CheckDepositReturn }
 
         # @!attribute [rw] check_transfer_deposit
         #   A Check Transfer Deposit object. This field will be present in the JSON response if and only if `category` is equal to `check_transfer_deposit`.
         #   @return [Increase::Models::Transaction::Source::CheckTransferDeposit]
-        required :check_transfer_deposit,
-                 lambda {
-                   Increase::Models::Transaction::Source::CheckTransferDeposit
-                 }
+        required :check_transfer_deposit, -> { Increase::Models::Transaction::Source::CheckTransferDeposit }
 
         # @!attribute [rw] check_transfer_stop_payment_request
         #   A Check Transfer Stop Payment Request object. This field will be present in the JSON response if and only if `category` is equal to `check_transfer_stop_payment_request`.
@@ -185,10 +167,7 @@ module Increase
         # @!attribute [rw] inbound_ach_transfer
         #   An Inbound ACH Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `inbound_ach_transfer`.
         #   @return [Increase::Models::Transaction::Source::InboundACHTransfer]
-        required :inbound_ach_transfer,
-                 lambda {
-                   Increase::Models::Transaction::Source::InboundACHTransfer
-                 }
+        required :inbound_ach_transfer, -> { Increase::Models::Transaction::Source::InboundACHTransfer }
 
         # @!attribute [rw] inbound_international_ach_transfer
         #   An Inbound International ACH Transfer object. This field will be present in the JSON response if and only if `category` is equal to `inbound_international_ach_transfer`.
@@ -225,18 +204,12 @@ module Increase
         # @!attribute [rw] inbound_wire_reversal
         #   An Inbound Wire Reversal object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_reversal`.
         #   @return [Increase::Models::Transaction::Source::InboundWireReversal]
-        required :inbound_wire_reversal,
-                 lambda {
-                   Increase::Models::Transaction::Source::InboundWireReversal
-                 }
+        required :inbound_wire_reversal, -> { Increase::Models::Transaction::Source::InboundWireReversal }
 
         # @!attribute [rw] inbound_wire_transfer
         #   An Inbound Wire Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_transfer`.
         #   @return [Increase::Models::Transaction::Source::InboundWireTransfer]
-        required :inbound_wire_transfer,
-                 lambda {
-                   Increase::Models::Transaction::Source::InboundWireTransfer
-                 }
+        required :inbound_wire_transfer, -> { Increase::Models::Transaction::Source::InboundWireTransfer }
 
         # @!attribute [rw] interest_payment
         #   An Interest Payment object. This field will be present in the JSON response if and only if `category` is equal to `interest_payment`.
@@ -264,18 +237,12 @@ module Increase
         # @!attribute [rw] wire_transfer_intention
         #   A Wire Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_intention`.
         #   @return [Increase::Models::Transaction::Source::WireTransferIntention]
-        required :wire_transfer_intention,
-                 lambda {
-                   Increase::Models::Transaction::Source::WireTransferIntention
-                 }
+        required :wire_transfer_intention, -> { Increase::Models::Transaction::Source::WireTransferIntention }
 
         # @!attribute [rw] wire_transfer_rejection
         #   A Wire Transfer Rejection object. This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_rejection`.
         #   @return [Increase::Models::Transaction::Source::WireTransferRejection]
-        required :wire_transfer_rejection,
-                 lambda {
-                   Increase::Models::Transaction::Source::WireTransferRejection
-                 }
+        required :wire_transfer_rejection, -> { Increase::Models::Transaction::Source::WireTransferRejection }
 
         class AccountTransferIntention < BaseModel
           # @!attribute [rw] amount
@@ -987,11 +954,7 @@ module Increase
                 #   Indicates whether a stopover is allowed on this ticket.
                 #   @return [Symbol]
                 required :stop_over_code,
-                         Increase::Enum.new(
-                           :none,
-                           :stop_over_allowed,
-                           :stop_over_not_allowed
-                         )
+                         Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
               end
             end
           end
@@ -1572,11 +1535,7 @@ module Increase
                 #   Indicates whether a stopover is allowed on this ticket.
                 #   @return [Symbol]
                 required :stop_over_code,
-                         Increase::Enum.new(
-                           :none,
-                           :stop_over_allowed,
-                           :stop_over_not_allowed
-                         )
+                         Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
               end
             end
           end
@@ -1721,12 +1680,7 @@ module Increase
           #   The reason why this transfer was stopped.
           #   @return [Symbol]
           required :reason,
-                   Increase::Enum.new(
-                     :mail_delivery_failed,
-                     :rejected_by_increase,
-                     :not_authorized,
-                     :unknown
-                   )
+                   Increase::Enum.new(:mail_delivery_failed, :rejected_by_increase, :not_authorized, :unknown)
 
           # @!attribute [rw] requested_at
           #   The time the stop-payment was requested.
@@ -1765,10 +1719,7 @@ module Increase
           # @!attribute [rw] addenda
           #   Additional information sent from the originator.
           #   @return [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda]
-          required :addenda,
-                   lambda {
-                     Increase::Models::Transaction::Source::InboundACHTransfer::Addenda
-                   }
+          required :addenda, -> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda }
 
           # @!attribute [rw] amount
           #   The amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
@@ -1886,11 +1837,7 @@ module Increase
           #   An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
           #   @return [Symbol]
           required :foreign_exchange_reference_indicator,
-                   Increase::Enum.new(
-                     :foreign_exchange_rate,
-                     :foreign_exchange_reference_number,
-                     :blank
-                   )
+                   Increase::Enum.new(:foreign_exchange_rate, :foreign_exchange_reference_number, :blank)
 
           # @!attribute [rw] foreign_payment_amount
           #   The amount in the minor unit of the foreign payment currency. For dollars, for example, this is cents.

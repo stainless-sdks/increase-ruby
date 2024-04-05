@@ -11,8 +11,7 @@ module Increase
       # @!attribute [rw] category
       #   The type of document.
       #   @return [Symbol]
-      required :category,
-               Increase::Enum.new(:form_1099_int, :proof_of_authorization, :company_information)
+      required :category, Increase::Enum.new(:form_1099_int, :proof_of_authorization, :company_information)
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Document was created.

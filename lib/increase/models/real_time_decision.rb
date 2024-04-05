@@ -172,10 +172,7 @@ module Increase
         # @!attribute [rw] verification
         #   Fields related to verification of cardholder-provided values.
         #   @return [Increase::Models::RealTimeDecision::CardAuthorization::Verification]
-        required :verification,
-                 lambda {
-                   Increase::Models::RealTimeDecision::CardAuthorization::Verification
-                 }
+        required :verification, -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification }
 
         class NetworkDetails < BaseModel
           # @!attribute [rw] category
@@ -186,10 +183,7 @@ module Increase
           # @!attribute [rw] visa
           #   Fields specific to the `visa` network.
           #   @return [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa]
-          required :visa,
-                   lambda {
-                     Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa
-                   }
+          required :visa, -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa }
 
           class Visa < BaseModel
             # @!attribute [rw] electronic_commerce_indicator
@@ -247,8 +241,7 @@ module Increase
           # @!attribute [rw] category
           #   The type of this request (e.g., an initial authorization or an incremental authorization).
           #   @return [Symbol]
-          required :category,
-                   Increase::Enum.new(:initial_authorization, :incremental_authorization)
+          required :category, Increase::Enum.new(:initial_authorization, :incremental_authorization)
 
           # @!attribute [rw] incremental_authorization
           #   Fields specific to the category `incremental_authorization`.

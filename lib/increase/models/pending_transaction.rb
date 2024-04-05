@@ -83,10 +83,7 @@ module Increase
         # @!attribute [rw] card_authorization
         #   A Card Authorization object. This field will be present in the JSON response if and only if `category` is equal to `card_authorization`.
         #   @return [Increase::Models::PendingTransaction::Source::CardAuthorization]
-        required :card_authorization,
-                 lambda {
-                   Increase::Models::PendingTransaction::Source::CardAuthorization
-                 }
+        required :card_authorization, -> { Increase::Models::PendingTransaction::Source::CardAuthorization }
 
         # @!attribute [rw] category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
@@ -123,10 +120,7 @@ module Increase
         # @!attribute [rw] inbound_funds_hold
         #   An Inbound Funds Hold object. This field will be present in the JSON response if and only if `category` is equal to `inbound_funds_hold`.
         #   @return [Increase::Models::PendingTransaction::Source::InboundFundsHold]
-        required :inbound_funds_hold,
-                 lambda {
-                   Increase::Models::PendingTransaction::Source::InboundFundsHold
-                 }
+        required :inbound_funds_hold, -> { Increase::Models::PendingTransaction::Source::InboundFundsHold }
 
         # @!attribute [rw] real_time_payments_transfer_instruction
         #   A Real-Time Payments Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `real_time_payments_transfer_instruction`.

@@ -35,11 +35,13 @@ module Increase
     end
 
     def validate_request(req, opts)
-      # Body can be at least a Hash or Array, just check for Hash shape for now.
-      if (body = req[:body]) && body.is_a?(Hash)
-        body.each_key do |k|
-          unless k.is_a?(Symbol)
-            raise ArgumentError, "Request body keys must be Symbols, got #{k.inspect}"
+      if (body = req[:body])
+        # Body can be at least a Hash or Array, just check for Hash shape for now.
+        if body.is_a?(Hash)
+          body.each_key do |k|
+            unless k.is_a?(Symbol)
+              raise ArgumentError, "Request body keys must be Symbols, got #{k.inspect}"
+            end
           end
         end
       end
@@ -58,7 +60,7 @@ module Increase
     end
 
     def self.normalize_path(path)
-      path.gsub(%r{/+}, "/")
+      path.gsub(/\/+/, "/")
     end
 
     def resolve_uri_elements(req)
