@@ -16,8 +16,8 @@ module Increase
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :industry_code The North American Industry Classification System (NAICS) code for the
         #   corporation's primary line of business. This is a number, like `5132` for
-        #   `Software Publishers`. A full list of classification codes is available at
-        #   https://www.naics.com.
+        #   `Software Publishers`. A full list of classification codes is available
+        #   [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
         #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         #
