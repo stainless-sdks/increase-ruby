@@ -155,10 +155,7 @@ module Increase
           # @!attribute [rw] individual
           #   Personal details for the beneficial owner.
           #   @return [Increase::Models::Entity::Corporation::BeneficialOwner::Individual]
-          required :individual,
-                   lambda {
-                     Increase::Models::Entity::Corporation::BeneficialOwner::Individual
-                   }
+          required :individual, -> { Increase::Models::Entity::Corporation::BeneficialOwner::Individual }
 
           # @!attribute [rw] prong
           #   Why this person is considered a beneficial owner of the entity.
@@ -245,12 +242,7 @@ module Increase
         # @!attribute [rw] individuals
         #   The two individuals that share control of the entity.
         #   @return [Array<Increase::Models::Entity::Joint::Individual>]
-        required :individuals,
-                 Increase::ArrayOf.new(
-                   lambda {
-                     Increase::Models::Entity::Joint::Individual
-                   }
-                 )
+        required :individuals, Increase::ArrayOf.new(-> { Increase::Models::Entity::Joint::Individual })
 
         # @!attribute [rw] name_
         #   The entity's name.
@@ -271,10 +263,7 @@ module Increase
           # @!attribute [rw] identification
           #   A means of verifying the person's identity.
           #   @return [Increase::Models::Entity::Joint::Individual::Identification]
-          required :identification,
-                   lambda {
-                     Increase::Models::Entity::Joint::Individual::Identification
-                   }
+          required :identification, -> { Increase::Models::Entity::Joint::Individual::Identification }
 
           # @!attribute [rw] name_
           #   The person's legal name.
@@ -501,10 +490,7 @@ module Increase
           # @!attribute [rw] identification
           #   A means of verifying the person's identity.
           #   @return [Increase::Models::Entity::Trust::Grantor::Identification]
-          required :identification,
-                   lambda {
-                     Increase::Models::Entity::Trust::Grantor::Identification
-                   }
+          required :identification, -> { Increase::Models::Entity::Trust::Grantor::Identification }
 
           # @!attribute [rw] name_
           #   The person's legal name.
@@ -573,10 +559,7 @@ module Increase
             # @!attribute [rw] address
             #   The person's address.
             #   @return [Increase::Models::Entity::Trust::Trustee::Individual::Address]
-            required :address,
-                     lambda {
-                       Increase::Models::Entity::Trust::Trustee::Individual::Address
-                     }
+            required :address, -> { Increase::Models::Entity::Trust::Trustee::Individual::Address }
 
             # @!attribute [rw] date_of_birth
             #   The person's date of birth in YYYY-MM-DD format.

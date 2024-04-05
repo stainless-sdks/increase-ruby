@@ -604,11 +604,7 @@ module Increase
             #   An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
             #   @return [Symbol]
             required :foreign_exchange_reference_indicator,
-                     Increase::Enum.new(
-                       :foreign_exchange_rate,
-                       :foreign_exchange_reference_number,
-                       :blank
-                     )
+                     Increase::Enum.new(:foreign_exchange_rate, :foreign_exchange_reference_number, :blank)
 
             # @!attribute [rw] foreign_payment_amount
             #   The amount in the minor unit of the foreign payment currency. For dollars, for example, this is cents.
@@ -1512,10 +1508,7 @@ module Increase
                 #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
                 #   @return [Symbol]
                 required :no_show_indicator,
-                         Increase::Enum.new(
-                           :not_applicable,
-                           :no_show_for_specialized_vehicle
-                         )
+                         Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
 
                 # @!attribute [rw] one_way_drop_off_charges_amount
                 #   Charges for returning the vehicle at a different location than where it was picked up.
@@ -1596,8 +1589,7 @@ module Increase
                 # @!attribute [rw] no_show_indicator
                 #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
                 #   @return [Symbol]
-                required :no_show_indicator,
-                         Increase::Enum.new(:not_applicable, :no_show)
+                required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show)
 
                 # @!attribute [rw] prepaid_expenses_amount
                 #   Prepaid expenses being charged for the room.
@@ -1681,20 +1673,13 @@ module Increase
                 #   Indicates whether this ticket is non-refundable.
                 #   @return [Symbol]
                 required :restricted_ticket_indicator,
-                         Increase::Enum.new(
-                           :no_restrictions,
-                           :restricted_non_refundable_ticket
-                         )
+                         Increase::Enum.new(:no_restrictions, :restricted_non_refundable_ticket)
 
                 # @!attribute [rw] ticket_change_indicator
                 #   Indicates why a ticket was changed.
                 #   @return [Symbol]
                 required :ticket_change_indicator,
-                         Increase::Enum.new(
-                           :none,
-                           :change_to_existing_ticket,
-                           :new_ticket
-                         )
+                         Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
 
                 # @!attribute [rw] ticket_number
                 #   Ticket number.
@@ -1827,11 +1812,7 @@ module Increase
                   #   Indicates whether a stopover is allowed on this ticket.
                   #   @return [Symbol]
                   required :stop_over_code,
-                           Increase::Enum.new(
-                             :none,
-                             :stop_over_allowed,
-                             :stop_over_not_allowed
-                           )
+                           Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
                 end
               end
             end
@@ -2108,10 +2089,7 @@ module Increase
                 #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
                 #   @return [Symbol]
                 required :no_show_indicator,
-                         Increase::Enum.new(
-                           :not_applicable,
-                           :no_show_for_specialized_vehicle
-                         )
+                         Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
 
                 # @!attribute [rw] one_way_drop_off_charges_amount
                 #   Charges for returning the vehicle at a different location than where it was picked up.
@@ -2192,8 +2170,7 @@ module Increase
                 # @!attribute [rw] no_show_indicator
                 #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
                 #   @return [Symbol]
-                required :no_show_indicator,
-                         Increase::Enum.new(:not_applicable, :no_show)
+                required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show)
 
                 # @!attribute [rw] prepaid_expenses_amount
                 #   Prepaid expenses being charged for the room.
@@ -2277,20 +2254,13 @@ module Increase
                 #   Indicates whether this ticket is non-refundable.
                 #   @return [Symbol]
                 required :restricted_ticket_indicator,
-                         Increase::Enum.new(
-                           :no_restrictions,
-                           :restricted_non_refundable_ticket
-                         )
+                         Increase::Enum.new(:no_restrictions, :restricted_non_refundable_ticket)
 
                 # @!attribute [rw] ticket_change_indicator
                 #   Indicates why a ticket was changed.
                 #   @return [Symbol]
                 required :ticket_change_indicator,
-                         Increase::Enum.new(
-                           :none,
-                           :change_to_existing_ticket,
-                           :new_ticket
-                         )
+                         Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
 
                 # @!attribute [rw] ticket_number
                 #   Ticket number.
@@ -2423,11 +2393,7 @@ module Increase
                   #   Indicates whether a stopover is allowed on this ticket.
                   #   @return [Symbol]
                   required :stop_over_code,
-                           Increase::Enum.new(
-                             :none,
-                             :stop_over_allowed,
-                             :stop_over_not_allowed
-                           )
+                           Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
                 end
               end
             end
@@ -2737,11 +2703,7 @@ module Increase
             #   An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
             #   @return [Symbol]
             required :foreign_exchange_reference_indicator,
-                     Increase::Enum.new(
-                       :foreign_exchange_rate,
-                       :foreign_exchange_reference_number,
-                       :blank
-                     )
+                     Increase::Enum.new(:foreign_exchange_rate, :foreign_exchange_reference_number, :blank)
 
             # @!attribute [rw] foreign_payment_amount
             #   The amount in the minor unit of the foreign payment currency. For dollars, for example, this is cents.

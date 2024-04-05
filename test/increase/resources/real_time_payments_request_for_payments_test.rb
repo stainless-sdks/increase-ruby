@@ -23,10 +23,7 @@ class Increase::Test::Resources::RealTimePaymentsRequestForPaymentsTest < Test::
       }
     )
     assert(
-      Increase::Converter.same_type?(
-        Increase::Models::RealTimePaymentsRequestForPayment,
-        response
-      ),
+      Increase::Converter.same_type?(Increase::Models::RealTimePaymentsRequestForPayment, response),
       response.class.to_s
     )
   end
@@ -34,10 +31,7 @@ class Increase::Test::Resources::RealTimePaymentsRequestForPaymentsTest < Test::
   def test_retrieve
     response = @increase.real_time_payments_request_for_payments.retrieve("string")
     assert(
-      Increase::Converter.same_type?(
-        Increase::Models::RealTimePaymentsRequestForPayment,
-        response
-      ),
+      Increase::Converter.same_type?(Increase::Models::RealTimePaymentsRequestForPayment, response),
       response.class.to_s
     )
   end

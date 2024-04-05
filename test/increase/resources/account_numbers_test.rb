@@ -14,25 +14,16 @@ class Increase::Test::Resources::AccountNumbersTest < Test::Unit::TestCase
         name: "Rent payments"
       }
     )
-    assert(
-      Increase::Converter.same_type?(Increase::Models::AccountNumber, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::AccountNumber, response), response.class.to_s)
   end
 
   def test_retrieve
     response = @increase.account_numbers.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::AccountNumber, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::AccountNumber, response), response.class.to_s)
   end
 
   def test_update
     response = @increase.account_numbers.update("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::AccountNumber, response),
-      response.class.to_s
-    )
+    assert(Increase::Converter.same_type?(Increase::Models::AccountNumber, response), response.class.to_s)
   end
 end

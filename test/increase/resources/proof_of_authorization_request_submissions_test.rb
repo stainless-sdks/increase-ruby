@@ -14,10 +14,7 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < Te
       }
     )
     assert(
-      Increase::Converter.same_type?(
-        Increase::Models::ProofOfAuthorizationRequestSubmission,
-        response
-      ),
+      Increase::Converter.same_type?(Increase::Models::ProofOfAuthorizationRequestSubmission, response),
       response.class.to_s
     )
   end
@@ -25,10 +22,7 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < Te
   def test_retrieve
     response = @increase.proof_of_authorization_request_submissions.retrieve("string")
     assert(
-      Increase::Converter.same_type?(
-        Increase::Models::ProofOfAuthorizationRequestSubmission,
-        response
-      ),
+      Increase::Converter.same_type?(Increase::Models::ProofOfAuthorizationRequestSubmission, response),
       response.class.to_s
     )
   end

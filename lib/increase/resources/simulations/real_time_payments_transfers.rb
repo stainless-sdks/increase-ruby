@@ -23,8 +23,7 @@ module Increase
         def complete(real_time_payments_transfer_id, params = {}, opts = {})
           req = {}
           req[:method] = :post
-          req[:path] =
-            "/simulations/real_time_payments_transfers/#{real_time_payments_transfer_id}/complete"
+          req[:path] = "/simulations/real_time_payments_transfers/#{real_time_payments_transfer_id}/complete"
           req[:body] = params
           req[:model] = Increase::Models::RealTimePaymentsTransfer
           @client.request(req, opts)

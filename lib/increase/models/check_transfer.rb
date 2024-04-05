@@ -197,10 +197,7 @@ module Increase
         # @!attribute [rw] mailing_address
         #   Details for where Increase will mail the check.
         #   @return [Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress]
-        required :mailing_address,
-                 lambda {
-                   Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress
-                 }
+        required :mailing_address, -> { Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress }
 
         # @!attribute [rw] memo
         #   The descriptor that will be printed on the memo field on the check.
@@ -292,12 +289,7 @@ module Increase
         #   The reason why this transfer was stopped.
         #   @return [Symbol]
         required :reason,
-                 Increase::Enum.new(
-                   :mail_delivery_failed,
-                   :rejected_by_increase,
-                   :not_authorized,
-                   :unknown
-                 )
+                 Increase::Enum.new(:mail_delivery_failed, :rejected_by_increase, :not_authorized, :unknown)
 
         # @!attribute [rw] requested_at
         #   The time the stop-payment was requested.

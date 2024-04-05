@@ -14,10 +14,7 @@ module Increase
       # @!attribute [rw] pending_transaction
       #   If the authorization attempt succeeds, this will contain the resulting Pending Transaction object. The Pending Transaction's `source` will be of `category: card_authorization`.
       #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction]
-      required :pending_transaction,
-               lambda {
-                 Increase::Models::CardAuthorizationSimulation::PendingTransaction
-               }
+      required :pending_transaction, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_card_authorization_simulation_result`.
@@ -68,10 +65,7 @@ module Increase
         # @!attribute [rw] source
         #   This is an object giving more details on the network-level event that caused the Declined Transaction. For example, for a card transaction this lists the merchant's industry and location. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
         #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source]
-        required :source,
-                 lambda {
-                   Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source
-                 }
+        required :source, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source }
 
         # @!attribute [rw] type
         #   A constant representing the object's type. For this resource it will always be `declined_transaction`.
@@ -604,11 +598,7 @@ module Increase
             #   An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
             #   @return [Symbol]
             required :foreign_exchange_reference_indicator,
-                     Increase::Enum.new(
-                       :foreign_exchange_rate,
-                       :foreign_exchange_reference_number,
-                       :blank
-                     )
+                     Increase::Enum.new(:foreign_exchange_rate, :foreign_exchange_reference_number, :blank)
 
             # @!attribute [rw] foreign_payment_amount
             #   The amount in the minor unit of the foreign payment currency. For dollars, for example, this is cents.
@@ -856,10 +846,7 @@ module Increase
         # @!attribute [rw] source
         #   This is an object giving more details on the network-level event that caused the Pending Transaction. For example, for a card transaction this lists the merchant's industry and location.
         #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source]
-        required :source,
-                 lambda {
-                   Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source
-                 }
+        required :source, -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source }
 
         # @!attribute [rw] status
         #   Whether the Pending Transaction has been confirmed and has an associated Transaction.

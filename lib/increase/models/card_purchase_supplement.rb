@@ -21,12 +21,7 @@ module Increase
       # @!attribute [rw] line_items
       #   Line item information, such as individual products purchased.
       #   @return [Array<Increase::Models::CardPurchaseSupplement::LineItem>]
-      required :line_items,
-               Increase::ArrayOf.new(
-                 lambda {
-                   Increase::Models::CardPurchaseSupplement::LineItem
-                 }
-               )
+      required :line_items, Increase::ArrayOf.new(-> { Increase::Models::CardPurchaseSupplement::LineItem })
 
       # @!attribute [rw] transaction_id
       #   The ID of the transaction.

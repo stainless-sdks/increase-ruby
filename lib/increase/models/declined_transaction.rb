@@ -567,11 +567,7 @@ module Increase
           #   An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
           #   @return [Symbol]
           required :foreign_exchange_reference_indicator,
-                   Increase::Enum.new(
-                     :foreign_exchange_rate,
-                     :foreign_exchange_reference_number,
-                     :blank
-                   )
+                   Increase::Enum.new(:foreign_exchange_rate, :foreign_exchange_reference_number, :blank)
 
           # @!attribute [rw] foreign_payment_amount
           #   The amount in the minor unit of the foreign payment currency. For dollars, for example, this is cents.

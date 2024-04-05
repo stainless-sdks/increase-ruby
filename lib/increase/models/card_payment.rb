@@ -60,10 +60,7 @@ module Increase
         # @!attribute [rw] card_fuel_confirmation
         #   A Card Fuel Confirmation object. This field will be present in the JSON response if and only if `category` is equal to `card_fuel_confirmation`.
         #   @return [Increase::Models::CardPayment::Element::CardFuelConfirmation]
-        required :card_fuel_confirmation,
-                 lambda {
-                   Increase::Models::CardPayment::Element::CardFuelConfirmation
-                 }
+        required :card_fuel_confirmation, -> { Increase::Models::CardPayment::Element::CardFuelConfirmation }
 
         # @!attribute [rw] card_increment
         #   A Card Increment object. This field will be present in the JSON response if and only if `category` is equal to `card_increment`.
@@ -528,10 +525,7 @@ module Increase
           # @!attribute [rw] verification
           #   Fields related to verification of cardholder-provided values.
           #   @return [Increase::Models::CardPayment::Element::CardDecline::Verification]
-          required :verification,
-                   lambda {
-                     Increase::Models::CardPayment::Element::CardDecline::Verification
-                   }
+          required :verification, -> { Increase::Models::CardPayment::Element::CardDecline::Verification }
 
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
@@ -542,10 +536,7 @@ module Increase
             # @!attribute [rw] visa
             #   Fields specific to the `visa` network.
             #   @return [Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa]
-            required :visa,
-                     lambda {
-                       Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa
-                     }
+            required :visa, -> { Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa }
 
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
@@ -1332,11 +1323,7 @@ module Increase
                 #   Indicates whether a stopover is allowed on this ticket.
                 #   @return [Symbol]
                 required :stop_over_code,
-                         Increase::Enum.new(
-                           :none,
-                           :stop_over_allowed,
-                           :stop_over_not_allowed
-                         )
+                         Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
               end
             end
           end
@@ -1957,11 +1944,7 @@ module Increase
                 #   Indicates whether a stopover is allowed on this ticket.
                 #   @return [Symbol]
                 required :stop_over_code,
-                         Increase::Enum.new(
-                           :none,
-                           :stop_over_allowed,
-                           :stop_over_not_allowed
-                         )
+                         Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
               end
             end
           end
@@ -2057,10 +2040,7 @@ module Increase
           # @!attribute [rw] verification
           #   Fields related to verification of cardholder-provided values.
           #   @return [Increase::Models::CardPayment::Element::CardValidation::Verification]
-          required :verification,
-                   lambda {
-                     Increase::Models::CardPayment::Element::CardValidation::Verification
-                   }
+          required :verification, -> { Increase::Models::CardPayment::Element::CardValidation::Verification }
 
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
