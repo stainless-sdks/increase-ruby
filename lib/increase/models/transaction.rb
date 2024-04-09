@@ -182,9 +182,7 @@ module Increase
         #   An Inbound Real-Time Payments Transfer Confirmation object. This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_confirmation`.
         #   @return [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation]
         required :inbound_real_time_payments_transfer_confirmation,
-                 lambda {
-                   Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation
-                 }
+                 -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation }
 
         # @!attribute [rw] inbound_wire_drawdown_payment
         #   An Inbound Wire Drawdown Payment object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
@@ -226,9 +224,7 @@ module Increase
         #   A Real-Time Payments Transfer Acknowledgement object. This field will be present in the JSON response if and only if `category` is equal to `real_time_payments_transfer_acknowledgement`.
         #   @return [Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement]
         required :real_time_payments_transfer_acknowledgement,
-                 lambda {
-                   Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement
-                 }
+                 -> { Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement }
 
         # @!attribute [rw] sample_funds
         #   A Sample Funds object. This field will be present in the JSON response if and only if `category` is equal to `sample_funds`.

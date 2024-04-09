@@ -69,7 +69,7 @@ module Increase
       @_values
     end
 
-    alias to_hash to_h
+    alias_method :to_hash, :to_h
 
     # @return [String]
     def inspect

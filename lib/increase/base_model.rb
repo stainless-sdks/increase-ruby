@@ -194,7 +194,7 @@ module Increase
       @data
     end
 
-    alias to_hash to_h
+    alias_method :to_hash, :to_h
 
     # Lookup attribute value by key in the object.
     # If this key was not provided when the object was formed (e.g. because the API response
@@ -207,7 +207,7 @@ module Increase
     #
     # @return [Object] Parsed / typed value at the given key, or nil if no data is available.
     def [](key)
-      unless key.instance_of?(Symbol)
+      if !key.instance_of?(Symbol)
         raise ArgumentError, "Expected symbol key for lookup, got #{key.inspect}"
       end
       @data[key]

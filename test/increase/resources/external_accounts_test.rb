@@ -9,11 +9,7 @@ class Increase::Test::Resources::ExternalAccountsTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @increase.external_accounts.create(
-      {
-        account_number: "987654321",
-        description: "Landlord",
-        routing_number: "101050001"
-      }
+      {account_number: "987654321", description: "Landlord", routing_number: "101050001"}
     )
     assert(Increase::Converter.same_type?(Increase::Models::ExternalAccount, response), response.class.to_s)
   end
