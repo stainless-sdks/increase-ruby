@@ -85,7 +85,7 @@ docs for details:
 card = increase.cards.update(
   "card_ou2s0hwk5rn6kn2e7xg2",
   {description: "New description"},
-  {max_retires: 1}
+  {max_retries: 1}
 )
 ```
 
