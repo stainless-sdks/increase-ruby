@@ -115,9 +115,7 @@ module Increase
           #   An Inbound Real-Time Payments Transfer Decline object. This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_decline`.
           #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline]
           required :inbound_real_time_payments_transfer_decline,
-                   lambda {
-                     Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline
-                   }
+                   -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline }
 
           # @!attribute [rw] international_ach_decline
           #   An International ACH Decline object. This field will be present in the JSON response if and only if `category` is equal to `international_ach_decline`.
@@ -927,9 +925,7 @@ module Increase
           #   A Real-Time Payments Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `real_time_payments_transfer_instruction`.
           #   @return [Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::RealTimePaymentsTransferInstruction]
           required :real_time_payments_transfer_instruction,
-                   lambda {
-                     Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::RealTimePaymentsTransferInstruction
-                   }
+                   -> { Increase::Models::CardAuthorizationSimulation::PendingTransaction::Source::RealTimePaymentsTransferInstruction }
 
           # @!attribute [rw] wire_transfer_instruction
           #   A Wire Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_instruction`.

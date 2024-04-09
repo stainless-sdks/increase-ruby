@@ -9,11 +9,7 @@ class Increase::Test::Resources::ACHTransfersTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @increase.ach_transfers.create(
-      {
-        account_id: "account_in71c4amph0vgo2qllky",
-        amount: 100,
-        statement_descriptor: "New ACH transfer"
-      }
+      {account_id: "account_in71c4amph0vgo2qllky", amount: 100, statement_descriptor: "New ACH transfer"}
     )
     assert(Increase::Converter.same_type?(Increase::Models::ACHTransfer, response), response.class.to_s)
   end

@@ -11,10 +11,7 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Test::Unit::TestCase
     response = @increase.bookkeeping_entry_sets.create(
       {
         entries: [
-          {
-            "account_id" => "bookkeeping_account_9husfpw68pzmve9dvvc7",
-            "amount" => 100
-          },
+          {"account_id" => "bookkeeping_account_9husfpw68pzmve9dvvc7", "amount" => 100},
           {"account_id" => "bookkeeping_account_t2obldz1rcu15zr54umg", "amount" => -100}
         ]
       }

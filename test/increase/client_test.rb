@@ -53,7 +53,9 @@ class IncreaseTest < Test::Unit::TestCase
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
     requester = MockRequester.new(500)
     increase.requester = requester
-    assert_raise(Increase::HTTP::InternalServerError) { increase.accounts.create({name: "New Account!"}) }
+    assert_raise(Increase::HTTP::InternalServerError) do
+      increase.accounts.create({name: "New Account!"})
+    end
     assert_equal(3, requester.attempts.length)
   end
 
@@ -61,7 +63,9 @@ class IncreaseTest < Test::Unit::TestCase
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
     requester = MockRequester.new(500)
     increase.requester = requester
-    assert_raise(Increase::HTTP::InternalServerError) { increase.accounts.create({name: "New Account!"}) }
+    assert_raise(Increase::HTTP::InternalServerError) do
+      increase.accounts.create({name: "New Account!"})
+    end
     assert_equal(4, requester.attempts.length)
   end
 

@@ -126,9 +126,7 @@ module Increase
         #   A Real-Time Payments Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `real_time_payments_transfer_instruction`.
         #   @return [Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction]
         required :real_time_payments_transfer_instruction,
-                 lambda {
-                   Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction
-                 }
+                 -> { Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction }
 
         # @!attribute [rw] wire_transfer_instruction
         #   A Wire Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_instruction`.

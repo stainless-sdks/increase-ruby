@@ -67,7 +67,7 @@ module Increase
       if environment && base_url
         raise ArgumentError, "both environment and base_url given, expected only one"
       elsif environment
-        unless environments.key?(environment.to_s)
+        if !environments.key?(environment.to_s)
           raise ArgumentError, "environment must be one of #{environments.keys}, got #{environment}"
         end
         base_url = environments[environment.to_s]
@@ -140,9 +140,7 @@ module Increase
         Increase::HTTP::InternalServerError.new(
           message: message,
           response: response,
-          body: {
-            detail: nil, status: 500, title: "", type: "internal_server_error"
-          }
+          body: {detail: nil, status: 500, title: "", type: "internal_server_error"}
         )
       when 400
         Increase::HTTP::BadRequestError.new(message: message, response: response, body: body)

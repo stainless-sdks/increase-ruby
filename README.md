@@ -38,7 +38,7 @@ require "increase"
 
 increase = Increase::Client.new(
   api_key: "My API Key", # defaults to ENV["INCREASE_API_KEY"]
-  environment: "sandbox" # defaults to 'production'
+  environment: "sandbox" # defaults to "production"
 )
 
 account = increase.accounts.create(name: "My First Increase Account")

@@ -87,9 +87,7 @@ module Increase
         #   An Inbound Real-Time Payments Transfer Decline object. This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_decline`.
         #   @return [Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline]
         required :inbound_real_time_payments_transfer_decline,
-                 lambda {
-                   Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline
-                 }
+                 -> { Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline }
 
         # @!attribute [rw] international_ach_decline
         #   An International ACH Decline object. This field will be present in the JSON response if and only if `category` is equal to `international_ach_decline`.
