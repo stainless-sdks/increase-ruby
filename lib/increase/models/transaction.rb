@@ -97,6 +97,11 @@ module Increase
         #   @return [Increase::Models::Transaction::Source::CardSettlement]
         required :card_settlement, -> { Increase::Models::Transaction::Source::CardSettlement }
 
+        # @!attribute [rw] cashback_payment
+        #   A Cashback Payment object. This field will be present in the JSON response if and only if `category` is equal to `cashback_payment`.
+        #   @return [Increase::Models::Transaction::Source::CashbackPayment]
+        required :cashback_payment, -> { Increase::Models::Transaction::Source::CashbackPayment }
+
         # @!attribute [rw] category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         #   @return [Symbol]
@@ -106,6 +111,7 @@ module Increase
                    :ach_transfer_intention,
                    :ach_transfer_rejection,
                    :ach_transfer_return,
+                   :cashback_payment,
                    :card_dispute_acceptance,
                    :card_refund,
                    :card_settlement,
@@ -1536,6 +1542,33 @@ module Increase
               end
             end
           end
+        end
+
+        class CashbackPayment < BaseModel
+          # @!attribute [rw] accrued_on_card_id
+          #   The card on which the cashback was accrued.
+          #   @return [String]
+          required :accrued_on_card_id, String
+
+          # @!attribute [rw] amount
+          #   The amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
+          #   @return [Integer]
+          required :amount, Integer
+
+          # @!attribute [rw] currency
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
+          #   @return [Symbol]
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+
+          # @!attribute [rw] period_end
+          #   The end of the period for which this transaction paid cashback.
+          #   @return [String]
+          required :period_end, String
+
+          # @!attribute [rw] period_start
+          #   The start of the period for which this transaction paid cashback.
+          #   @return [String]
+          required :period_start, String
         end
 
         class CheckDepositAcceptance < BaseModel
