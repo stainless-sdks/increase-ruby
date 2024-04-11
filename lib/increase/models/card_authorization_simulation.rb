@@ -461,10 +461,20 @@ module Increase
             #   @return [String]
             required :back_image_file_id, String
 
+            # @!attribute [rw] check_transfer_id
+            #   The identifier of the Check Transfer object associated with this decline.
+            #   @return [String]
+            required :check_transfer_id, String
+
             # @!attribute [rw] front_image_file_id
             #   The identifier of the API File object containing an image of the front of the declined check.
             #   @return [String]
             required :front_image_file_id, String
+
+            # @!attribute [rw] inbound_check_deposit_id
+            #   The identifier of the Inbound Check Deposit object associated with this decline.
+            #   @return [String]
+            required :inbound_check_deposit_id, String
 
             # @!attribute [rw] reason
             #   Why the check was declined.
