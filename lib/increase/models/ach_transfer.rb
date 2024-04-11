@@ -117,11 +117,7 @@ module Increase
       #   If the receiving bank accepts the transfer but notifies that future transfers should use different details, this will contain those details.
       #   @return [Array<Increase::Models::ACHTransfer::NotificationsOfChange>]
       required :notifications_of_change,
-               Increase::ArrayOf.new(
-                 lambda {
-                   Increase::Models::ACHTransfer::NotificationsOfChange
-                 }
-               )
+               Increase::ArrayOf.new(-> { Increase::Models::ACHTransfer::NotificationsOfChange })
 
       # @!attribute [rw] pending_transaction_id
       #   The ID for the pending transaction representing the transfer. A pending transaction is created when the transfer [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals) by someone else in your organization.
@@ -206,9 +202,7 @@ module Increase
         #   Structured ASC X12 820 remittance advice records. Please reach out to [support@increase.com](mailto:support@increase.com) for more information.
         #   @return [Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice]
         required :payment_order_remittance_advice,
-                 lambda {
-                   Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice
-                 }
+                 -> { Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice }
 
         class Freeform < BaseModel
           # @!attribute [rw] entries
