@@ -54,7 +54,8 @@ module Increase
                 :oauth_tokens,
                 :inbound_wire_transfers,
                 :digital_card_profiles,
-                :physical_card_profiles
+                :physical_card_profiles,
+                :inbound_check_deposits
 
     # @!visibility private
     def auth_headers
@@ -131,6 +132,7 @@ module Increase
       @inbound_wire_transfers = Increase::Resources::InboundWireTransfers.new(client: self)
       @digital_card_profiles = Increase::Resources::DigitalCardProfiles.new(client: self)
       @physical_card_profiles = Increase::Resources::PhysicalCardProfiles.new(client: self)
+      @inbound_check_deposits = Increase::Resources::InboundCheckDeposits.new(client: self)
     end
 
     # @!visibility private
