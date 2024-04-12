@@ -57,11 +57,7 @@ module Increase
       #   Additional documentation associated with the entity. This is limited to the first 10 documents for an entity. If an entity has more than 10 documents, use the GET /entity_supplemental_documents list endpoint to retrieve them.
       #   @return [Array<Increase::Models::Entity::SupplementalDocument>]
       required :supplemental_documents,
-               Increase::ArrayOf.new(
-                 lambda {
-                   Increase::Models::Entity::SupplementalDocument
-                 }
-               )
+               Increase::ArrayOf.new(-> { Increase::Models::Entity::SupplementalDocument })
 
       # @!attribute [rw] trust_
       #   Details of the trust entity. Will be present if `structure` is equal to `trust`.
@@ -83,11 +79,7 @@ module Increase
         #   The identifying details of anyone controlling or owning 25% or more of the corporation.
         #   @return [Array<Increase::Models::Entity::Corporation::BeneficialOwner>]
         required :beneficial_owners,
-                 Increase::ArrayOf.new(
-                   lambda {
-                     Increase::Models::Entity::Corporation::BeneficialOwner
-                   }
-                 )
+                 Increase::ArrayOf.new(-> { Increase::Models::Entity::Corporation::BeneficialOwner })
 
         # @!attribute [rw] incorporation_state
         #   The two-letter United States Postal Service (USPS) abbreviation for the corporation's state of incorporation.
@@ -180,9 +172,7 @@ module Increase
             #   A means of verifying the person's identity.
             #   @return [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification]
             required :identification,
-                     lambda {
-                       Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification
-                     }
+                     -> { Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification }
 
             # @!attribute [rw] name_
             #   The person's legal name.
