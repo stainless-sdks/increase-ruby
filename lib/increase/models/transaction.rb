@@ -58,9 +58,7 @@ module Increase
         #   An Account Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `account_transfer_intention`.
         #   @return [Increase::Models::Transaction::Source::AccountTransferIntention]
         required :account_transfer_intention,
-                 lambda {
-                   Increase::Models::Transaction::Source::AccountTransferIntention
-                 }
+                 -> { Increase::Models::Transaction::Source::AccountTransferIntention }
 
         # @!attribute [rw] ach_transfer_intention
         #   An ACH Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_intention`.
@@ -162,9 +160,7 @@ module Increase
         #   A Check Transfer Stop Payment Request object. This field will be present in the JSON response if and only if `category` is equal to `check_transfer_stop_payment_request`.
         #   @return [Increase::Models::Transaction::Source::CheckTransferStopPaymentRequest]
         required :check_transfer_stop_payment_request,
-                 lambda {
-                   Increase::Models::Transaction::Source::CheckTransferStopPaymentRequest
-                 }
+                 -> { Increase::Models::Transaction::Source::CheckTransferStopPaymentRequest }
 
         # @!attribute [rw] fee_payment
         #   A Fee Payment object. This field will be present in the JSON response if and only if `category` is equal to `fee_payment`.
@@ -180,9 +176,7 @@ module Increase
         #   An Inbound International ACH Transfer object. This field will be present in the JSON response if and only if `category` is equal to `inbound_international_ach_transfer`.
         #   @return [Increase::Models::Transaction::Source::InboundInternationalACHTransfer]
         required :inbound_international_ach_transfer,
-                 lambda {
-                   Increase::Models::Transaction::Source::InboundInternationalACHTransfer
-                 }
+                 -> { Increase::Models::Transaction::Source::InboundInternationalACHTransfer }
 
         # @!attribute [rw] inbound_real_time_payments_transfer_confirmation
         #   An Inbound Real-Time Payments Transfer Confirmation object. This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_confirmation`.
@@ -194,17 +188,13 @@ module Increase
         #   An Inbound Wire Drawdown Payment object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
         #   @return [Increase::Models::Transaction::Source::InboundWireDrawdownPayment]
         required :inbound_wire_drawdown_payment,
-                 lambda {
-                   Increase::Models::Transaction::Source::InboundWireDrawdownPayment
-                 }
+                 -> { Increase::Models::Transaction::Source::InboundWireDrawdownPayment }
 
         # @!attribute [rw] inbound_wire_drawdown_payment_reversal
         #   An Inbound Wire Drawdown Payment Reversal object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_drawdown_payment_reversal`.
         #   @return [Increase::Models::Transaction::Source::InboundWireDrawdownPaymentReversal]
         required :inbound_wire_drawdown_payment_reversal,
-                 lambda {
-                   Increase::Models::Transaction::Source::InboundWireDrawdownPaymentReversal
-                 }
+                 -> { Increase::Models::Transaction::Source::InboundWireDrawdownPaymentReversal }
 
         # @!attribute [rw] inbound_wire_reversal
         #   An Inbound Wire Reversal object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_reversal`.
@@ -484,9 +474,7 @@ module Increase
           #   Network-specific identifiers for this refund.
           #   @return [Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers]
           required :network_identifiers,
-                   lambda {
-                     Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers
-                   }
+                   -> { Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers }
 
           # @!attribute [rw] purchase_details
           #   Additional details about the card purchase, such as tax and industry-specific fields.
@@ -777,9 +765,7 @@ module Increase
               #   Ancillary purchases in addition to the airfare.
               #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary]
               required :ancillary,
-                       lambda {
-                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary
-                       }
+                       -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary }
 
               # @!attribute [rw] computerized_reservation_system
               #   Indicates the computerized reservation system used to book the ticket.
@@ -1050,9 +1036,7 @@ module Increase
           #   Network-specific identifiers for this refund.
           #   @return [Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers]
           required :network_identifiers,
-                   lambda {
-                     Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers
-                   }
+                   -> { Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers }
 
           # @!attribute [rw] pending_transaction_id
           #   The identifier of the Pending Transaction associated with this Transaction.
@@ -1109,9 +1093,7 @@ module Increase
             #   Fields specific to car rentals.
             #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental]
             required :car_rental,
-                     lambda {
-                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental
-                     }
+                     -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental }
 
             # @!attribute [rw] customer_reference_identifier
             #   An identifier from the merchant for the customer or consumer.
@@ -1358,9 +1340,7 @@ module Increase
               #   Ancillary purchases in addition to the airfare.
               #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary]
               required :ancillary,
-                       lambda {
-                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary
-                       }
+                       -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary }
 
               # @!attribute [rw] computerized_reservation_system
               #   Indicates the computerized reservation system used to book the ticket.
