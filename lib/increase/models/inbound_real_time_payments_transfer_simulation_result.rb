@@ -134,6 +134,11 @@ module Increase
             #   @return [Integer]
             required :amount, Integer
 
+            # @!attribute [rw] inbound_ach_transfer_id
+            #   The identifier of the Inbound ACH Transfer object associated with this decline.
+            #   @return [String]
+            required :inbound_ach_transfer_id, String
+
             # @!attribute [rw] originator_company_descriptive_date
             #   The descriptive date of the transfer.
             #   @return [String]
@@ -2573,7 +2578,7 @@ module Increase
             required :trace_number, String
 
             # @!attribute [rw] transfer_id
-            #   The inbound ach transfer's identifier.
+            #   The Inbound ACH Transfer's identifier.
             #   @return [String]
             required :transfer_id, String
 

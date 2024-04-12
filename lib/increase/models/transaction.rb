@@ -1782,7 +1782,7 @@ module Increase
           required :trace_number, String
 
           # @!attribute [rw] transfer_id
-          #   The inbound ach transfer's identifier.
+          #   The Inbound ACH Transfer's identifier.
           #   @return [String]
           required :transfer_id, String
 
