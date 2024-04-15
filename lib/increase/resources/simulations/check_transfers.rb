@@ -8,21 +8,6 @@ module Increase
           @client = client
         end
 
-        # Simulates a [Check Transfer](#check-transfers) being deposited at a bank. This
-        #   transfer must first have a `status` of `mailed`.
-        #
-        # @param check_transfer_id [String] The identifier of the Check Transfer you wish to mark deposited.
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        #
-        # @return [Increase::Models::CheckTransfer]
-        def deposit(check_transfer_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/check_transfers/#{check_transfer_id}/deposit"
-          req[:model] = Increase::Models::CheckTransfer
-          @client.request(req, opts)
-        end
-
         # Simulates the mailing of a [Check Transfer](#check-transfers), which happens
         #   once per weekday in production but can be sped up in sandbox. This transfer must
         #   first have a `status` of `pending_approval` or `pending_submission`.
