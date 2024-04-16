@@ -10,7 +10,7 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Test::Unit::TestCase
   def test_retrieve
     response = @increase.inbound_check_deposits.retrieve("string")
     assert(
-      Increase::Converter.same_type?(Increase::Models::InboundCheckDepositRetrieveResponse, response),
+      Increase::Converter.same_type?(Increase::Models::InboundCheckDeposit, response),
       response.class.to_s
     )
   end

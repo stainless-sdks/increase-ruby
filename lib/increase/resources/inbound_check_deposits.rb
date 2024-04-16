@@ -12,12 +12,12 @@ module Increase
       # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to get details for.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Increase::Models::InboundCheckDepositRetrieveResponse]
+      # @return [Increase::Models::InboundCheckDeposit]
       def retrieve(inbound_check_deposit_id, opts = {})
         req = {}
         req[:method] = :get
         req[:path] = "/inbound_check_deposits/#{inbound_check_deposit_id}"
-        req[:model] = Increase::Models::InboundCheckDepositRetrieveResponse
+        req[:model] = Increase::Models::InboundCheckDeposit
         @client.request(req, opts)
       end
     end

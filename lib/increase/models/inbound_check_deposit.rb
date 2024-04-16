@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class InboundCheckDepositListResponse < BaseModel
+    class InboundCheckDeposit < BaseModel
       # @!attribute [rw] id
       #   The deposit's identifier.
       #   @return [String]
