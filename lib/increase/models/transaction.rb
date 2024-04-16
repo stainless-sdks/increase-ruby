@@ -1669,6 +1669,11 @@ module Increase
           #   @return [String]
           required :front_image_file_id, String
 
+          # @!attribute [rw] inbound_check_deposit_id
+          #   The identifier of the Inbound Check Deposit object associated with this transaction.
+          #   @return [String]
+          required :inbound_check_deposit_id, String
+
           # @!attribute [rw] transaction_id
           #   The identifier of the Transaction object created when the check was deposited.
           #   @return [String]
@@ -1777,7 +1782,7 @@ module Increase
           required :trace_number, String
 
           # @!attribute [rw] transfer_id
-          #   The inbound ach transfer's identifier.
+          #   The Inbound ACH Transfer's identifier.
           #   @return [String]
           required :transfer_id, String
 

@@ -19,7 +19,8 @@ module Increase
                   :wire_transfers,
                   :cards,
                   :real_time_payments_transfers,
-                  :physical_cards
+                  :physical_cards,
+                  :inbound_check_deposits
 
       def initialize(client:)
         @client = client
@@ -40,6 +41,7 @@ module Increase
         @cards = Increase::Resources::Simulations::Cards.new(client: client)
         @real_time_payments_transfers = Increase::Resources::Simulations::RealTimePaymentsTransfers.new(client: client)
         @physical_cards = Increase::Resources::Simulations::PhysicalCards.new(client: client)
+        @inbound_check_deposits = Increase::Resources::Simulations::InboundCheckDeposits.new(client: client)
       end
 
       # Simulates expiring a card authorization immediately.
