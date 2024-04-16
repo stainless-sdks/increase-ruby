@@ -2444,7 +2444,6 @@ module Increase
                    Increase::Enum.new(
                      :account_closure,
                      :bank_migration,
-                     :cashback,
                      :check_adjustment,
                      :collection_payment,
                      :collection_receivable,

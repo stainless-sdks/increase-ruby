@@ -28,6 +28,11 @@ module Increase
       #   @return [Increase::Models::CheckTransfer::Approval]
       required :approval, -> { Increase::Models::CheckTransfer::Approval }
 
+      # @!attribute [rw] approved_inbound_check_deposit_id
+      #   If the Check Transfer was successfully deposited, this will contain the identifier of the Inbound Check Deposit object with details of the deposit.
+      #   @return [String]
+      required :approved_inbound_check_deposit_id, String
+
       # @!attribute [rw] cancellation
       #   If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
       #   @return [Increase::Models::CheckTransfer::Cancellation]
@@ -47,11 +52,6 @@ module Increase
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
       #   @return [Symbol]
       required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
-
-      # @!attribute [rw] deposit
-      #   After a check transfer is deposited, this will contain supplemental details.
-      #   @return [Increase::Models::CheckTransfer::Deposit]
-      required :deposit, -> { Increase::Models::CheckTransfer::Deposit }
 
       # @!attribute [rw] fulfillment_method
       #   Whether Increase will print and mail the check or if you will do it yourself.
@@ -142,48 +142,6 @@ module Increase
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
         #   @return [String]
         required :canceled_by, String
-      end
-
-      class Deposit < BaseModel
-        # @!attribute [rw] back_image_file_id
-        #   The identifier of the API File object containing an image of the back of the deposited check.
-        #   @return [String]
-        required :back_image_file_id, String
-
-        # @!attribute [rw] bank_of_first_deposit_routing_number
-        #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the bank depositing this check. In some rare cases, this is not transmitted via Check21 and the value will be null.
-        #   @return [String]
-        required :bank_of_first_deposit_routing_number, String
-
-        # @!attribute [rw] deposited_at
-        #   When the check was deposited.
-        #   @return [String]
-        required :deposited_at, String
-
-        # @!attribute [rw] front_image_file_id
-        #   The identifier of the API File object containing an image of the front of the deposited check.
-        #   @return [String]
-        required :front_image_file_id, String
-
-        # @!attribute [rw] inbound_check_deposit_id
-        #   The identifier of the Inbound Check Deposit object associated with this transaction.
-        #   @return [String]
-        required :inbound_check_deposit_id, String
-
-        # @!attribute [rw] transaction_id
-        #   The identifier of the Transaction object created when the check was deposited.
-        #   @return [String]
-        required :transaction_id, String
-
-        # @!attribute [rw] transfer_id
-        #   The identifier of the Check Transfer object that was deposited.
-        #   @return [String]
-        required :transfer_id, String
-
-        # @!attribute [rw] type
-        #   A constant representing the object's type. For this resource it will always be `check_transfer_deposit`.
-        #   @return [Symbol]
-        required :type, Increase::Enum.new(:check_transfer_deposit)
       end
 
       class Mailing < BaseModel
