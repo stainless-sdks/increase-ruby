@@ -43,6 +43,11 @@ module Increase
       #   @return [String]
       required :beneficiary_routing_number, String
 
+      # @!attribute [rw] created_at
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the inbound wire drawdown requested was created.
+      #   @return [String]
+      required :created_at, String
+
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being requested. Will always be "USD".
       #   @return [String]
