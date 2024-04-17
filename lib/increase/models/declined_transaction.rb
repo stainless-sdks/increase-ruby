@@ -469,6 +469,7 @@ module Increase
                    Increase::Enum.new(
                      :ach_route_disabled,
                      :ach_route_canceled,
+                     :altered_or_fictitious,
                      :breaches_limit,
                      :entity_not_active,
                      :group_locked,
