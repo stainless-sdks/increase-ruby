@@ -13,6 +13,7 @@ module Increase
       # @option params [String] :account_number The account number for the destination account.
       # @option params [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
+      # @option params [String] :account_id The Increase identifier for the account that will send the transfer.
       # @option params [String] :addendum Additional information that will be sent to the recipient.
       # @option params [String] :company_descriptive_date The description of the date of the transfer.
       # @option params [String] :company_discretionary_data The data you choose to associate with the transfer.
