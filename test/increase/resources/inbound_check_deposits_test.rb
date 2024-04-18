@@ -14,4 +14,12 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Test::Unit::TestCase
       response.class.to_s
     )
   end
+
+  def test_decline
+    response = @increase.inbound_check_deposits.decline("string")
+    assert(
+      Increase::Converter.same_type?(Increase::Models::InboundCheckDeposit, response),
+      response.class.to_s
+    )
+  end
 end

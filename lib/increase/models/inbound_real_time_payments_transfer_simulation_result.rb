@@ -500,7 +500,8 @@ module Increase
                        :not_our_item,
                        :no_account_number_found,
                        :refer_to_image,
-                       :unable_to_process
+                       :unable_to_process,
+                       :user_initiated
                      )
           end
 
