@@ -17,6 +17,13 @@ class Increase::Test::Resources::AccountsTest < Test::Unit::TestCase
     assert(Increase::Converter.same_type?(Increase::Models::Account, response), response.class.to_s)
   end
 
+  def test_list
+    response = @increase.accounts.list
+    assert(response.is_a?(Increase::Page))
+    assert(response.data[0].is_a?(Increase::Models::Account))
+    assert(response.next_cursor.is_a?(String))
+  end
+
   def test_update
     response = @increase.accounts.update("string")
     assert(Increase::Converter.same_type?(Increase::Models::Account, response), response.class.to_s)
