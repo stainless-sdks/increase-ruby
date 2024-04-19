@@ -8,6 +8,11 @@ module Increase
       #   @return [String]
       required :id, String
 
+      # @!attribute [rw] accepted_at
+      #   If the Inbound Check Deposit was accepted, the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this took place.
+      #   @return [String]
+      required :accepted_at, String
+
       # @!attribute [rw] account_id
       #   The Account the check is being deposited against.
       #   @return [String]
@@ -53,6 +58,11 @@ module Increase
       #   @return [Symbol]
       required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
+      # @!attribute [rw] declined_at
+      #   If the Inbound Check Deposit was declined, the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this took place.
+      #   @return [String]
+      required :declined_at, String
+
       # @!attribute [rw] declined_transaction_id
       #   If the deposit attempt has been rejected, the identifier of the Declined Transaction object created as a result of the failed deposit.
       #   @return [String]
@@ -66,7 +76,7 @@ module Increase
       # @!attribute [rw] status
       #   The status of the Inbound Check Deposit.
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending, :accepted, :rejected)
+      required :status, Increase::Enum.new(:pending, :accepted, :declined)
 
       # @!attribute [rw] transaction_id
       #   If the deposit attempt has been accepted, the identifier of the Transaction object created as a result of the successful deposit.
