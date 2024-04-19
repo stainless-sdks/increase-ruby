@@ -250,7 +250,8 @@ module Increase
         case response.content_type
         when "application/json"
           begin
-            JSON.parse(response.body)
+            data = JSON.parse(response.body, symbolize_names: true)
+            req[:unwrap] ? data[req[:unwrap]] : data
           rescue JSON::ParserError
             response.body
           end
