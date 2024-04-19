@@ -25,7 +25,6 @@ module Increase
       #   to `natural_person`. Natural people entities should be submitted with
       #   `social_security_number` or `individual_taxpayer_identification_number`
       #   identification methods.
-      # @option params [Symbol] :relationship The relationship between your group and the entity.
       # @option params [Array<SupplementalDocument>] :supplemental_documents Additional documentation associated with the entity.
       # @option params [Trust] :trust Details of the trust entity to create. Required if `structure` is equal to
       #   `trust`.

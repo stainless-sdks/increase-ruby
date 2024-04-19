@@ -19,6 +19,9 @@ module Increase
       #   is required if `fulfillment_method` is equal to `physical_check`. It must not be
       #   included if any other `fulfillment_method` is provided.
       # @option params [Boolean] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
+      # @option params [ThirdParty] :third_party Details relating to the custom fulfillment you will perform. This is required if
+      #   `fulfillment_method` is equal to `third_party`. It must not be included if any
+      #   other `fulfillment_method` is provided.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #

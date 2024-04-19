@@ -115,6 +115,11 @@ module Increase
       #   @return [Increase::Models::CheckTransfer::Submission]
       required :submission, -> { Increase::Models::CheckTransfer::Submission }
 
+      # @!attribute [rw] third_party
+      #   Details relating to the custom fulfillment you will perform. Will be present if and only if `fulfillment_method` is equal to `third_party`.
+      #   @return [Increase::Models::CheckTransfer::ThirdParty]
+      required :third_party, -> { Increase::Models::CheckTransfer::ThirdParty }
+
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `check_transfer`.
       #   @return [Symbol]
@@ -275,6 +280,13 @@ module Increase
         #   When this check transfer was submitted to our check printer.
         #   @return [String]
         required :submitted_at, String
+      end
+
+      class ThirdParty < BaseModel
+        # @!attribute [rw] check_number
+        #   The check number that will be printed on the check.
+        #   @return [String]
+        required :check_number, String
       end
     end
   end
