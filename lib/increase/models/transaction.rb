@@ -124,7 +124,6 @@ module Increase
                    :inbound_check_deposit_return_intention,
                    :inbound_international_ach_transfer,
                    :inbound_real_time_payments_transfer_confirmation,
-                   :inbound_wire_drawdown_payment_reversal,
                    :inbound_wire_drawdown_payment,
                    :inbound_wire_reversal,
                    :inbound_wire_transfer,
@@ -189,12 +188,6 @@ module Increase
         #   @return [Increase::Models::Transaction::Source::InboundWireDrawdownPayment]
         required :inbound_wire_drawdown_payment,
                  -> { Increase::Models::Transaction::Source::InboundWireDrawdownPayment }
-
-        # @!attribute [rw] inbound_wire_drawdown_payment_reversal
-        #   An Inbound Wire Drawdown Payment Reversal object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_drawdown_payment_reversal`.
-        #   @return [Increase::Models::Transaction::Source::InboundWireDrawdownPaymentReversal]
-        required :inbound_wire_drawdown_payment_reversal,
-                 -> { Increase::Models::Transaction::Source::InboundWireDrawdownPaymentReversal }
 
         # @!attribute [rw] inbound_wire_reversal
         #   An Inbound Wire Reversal object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_reversal`.
@@ -2161,63 +2154,6 @@ module Increase
           #   A free-form message set by the wire originator.
           #   @return [String]
           required :originator_to_beneficiary_information_line4, String
-        end
-
-        class InboundWireDrawdownPaymentReversal < BaseModel
-          # @!attribute [rw] amount
-          #   The amount that was reversed.
-          #   @return [Integer]
-          required :amount, Integer
-
-          # @!attribute [rw] description
-          #   The description on the reversal message from Fedwire.
-          #   @return [String]
-          required :description, String
-
-          # @!attribute [rw] input_cycle_date
-          #   The Fedwire cycle date for the wire reversal.
-          #   @return [String]
-          required :input_cycle_date, String
-
-          # @!attribute [rw] input_message_accountability_data
-          #   The Fedwire transaction identifier.
-          #   @return [String]
-          required :input_message_accountability_data, String
-
-          # @!attribute [rw] input_sequence_number
-          #   The Fedwire sequence number.
-          #   @return [String]
-          required :input_sequence_number, String
-
-          # @!attribute [rw] input_source
-          #   The Fedwire input source identifier.
-          #   @return [String]
-          required :input_source, String
-
-          # @!attribute [rw] originator_routing_number
-          #   The American Banking Association (ABA) routing number of the bank originating the transfer.
-          #   @return [String]
-          required :originator_routing_number, String
-
-          # @!attribute [rw] previous_message_input_cycle_date
-          #   The Fedwire cycle date for the wire transfer that was reversed.
-          #   @return [String]
-          required :previous_message_input_cycle_date, String
-
-          # @!attribute [rw] previous_message_input_message_accountability_data
-          #   The Fedwire transaction identifier for the wire transfer that was reversed.
-          #   @return [String]
-          required :previous_message_input_message_accountability_data, String
-
-          # @!attribute [rw] previous_message_input_sequence_number
-          #   The Fedwire sequence number for the wire transfer that was reversed.
-          #   @return [String]
-          required :previous_message_input_sequence_number, String
-
-          # @!attribute [rw] previous_message_input_source
-          #   The Fedwire input source identifier for the wire transfer that was reversed.
-          #   @return [String]
-          required :previous_message_input_source, String
         end
 
         class InboundWireReversal < BaseModel
