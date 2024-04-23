@@ -73,6 +73,32 @@ module Increase
         @client.request(req, opts)
       end
 
+      # List Cards
+      #
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [String] :account_id Filter Cards to ones belonging to the specified Account.
+      # @option params [CreatedAt] :created_at
+      # @option params [String] :cursor Return the page of entries after this one.
+      # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #   that object. This value is unique across Increase and is used to ensure that a
+      #   request is only processed once. Learn more about
+      #   [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #   objects.
+      #
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @return [Increase::Page<Increase::Models::Card>]
+      def list(params = {}, opts = {})
+        req = {}
+        req[:method] = :get
+        req[:path] = "/cards"
+        req[:query] = params
+        req[:page] = Increase::Page
+        req[:model] = Increase::Models::Card
+        @client.request(req, opts)
+      end
+
       # Retrieve sensitive details for a Card
       #
       # @param card_id [String] The identifier of the Card to retrieve details for.

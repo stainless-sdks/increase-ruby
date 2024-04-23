@@ -24,6 +24,11 @@ class Increase::Test::Resources::WireTransfersTest < Test::Unit::TestCase
     assert(Increase::Converter.same_type?(Increase::Models::WireTransfer, response), response.class.to_s)
   end
 
+  def test_list
+    response = @increase.wire_transfers.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
+
   def test_approve
     response = @increase.wire_transfers.approve("string")
     assert(Increase::Converter.same_type?(Increase::Models::WireTransfer, response), response.class.to_s)

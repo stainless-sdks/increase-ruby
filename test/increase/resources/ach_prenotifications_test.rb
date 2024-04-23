@@ -27,4 +27,9 @@ class Increase::Test::Resources::ACHPrenotificationsTest < Test::Unit::TestCase
       response.class.to_s
     )
   end
+
+  def test_list
+    response = @increase.ach_prenotifications.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
 end

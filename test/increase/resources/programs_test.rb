@@ -11,4 +11,9 @@ class Increase::Test::Resources::ProgramsTest < Test::Unit::TestCase
     response = @increase.programs.retrieve("string")
     assert(Increase::Converter.same_type?(Increase::Models::Program, response), response.class.to_s)
   end
+
+  def test_list
+    response = @increase.programs.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
 end

@@ -14,4 +14,9 @@ class Increase::Test::Resources::WireDrawdownRequestsTest < Test::Unit::TestCase
       response.class.to_s
     )
   end
+
+  def test_list
+    response = @increase.wire_drawdown_requests.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
 end

@@ -48,6 +48,31 @@ module Increase
         req[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
         @client.request(req, opts)
       end
+
+      # List Proof of Authorization Request Submissions
+      #
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [String] :cursor Return the page of entries after this one.
+      # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #   that object. This value is unique across Increase and is used to ensure that a
+      #   request is only processed once. Learn more about
+      #   [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #   objects.
+      # @option params [String] :proof_of_authorization_request_id ID of the proof of authorization request.
+      #
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequestSubmission>]
+      def list(params = {}, opts = {})
+        req = {}
+        req[:method] = :get
+        req[:path] = "/proof_of_authorization_request_submissions"
+        req[:query] = params
+        req[:page] = Increase::Page
+        req[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
+        @client.request(req, opts)
+      end
     end
   end
 end

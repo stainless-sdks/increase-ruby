@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 module Increase
-  # Use this to indicate that a value should be explicitly removed from a data structure
-  # when using `Increase::Util.deep_merge`.
-  # E.g. merging `{a: 1}` and `{a: OMIT}` should produce `{}`, where merging `{a: 1}` and
-  # `{}` would produce `{a: 1}`.
-  OMIT = Object.new.freeze
-
+  # @!visibility private
   class Util
+    # Use this to indicate that a value should be explicitly removed from a data structure
+    # when using `Increase::Util.deep_merge`.
+    # E.g. merging `{a: 1}` and `{a: OMIT}` should produce `{}`, where merging `{a: 1}` and
+    # `{}` would produce `{a: 1}`.
+    OMIT = Object.new.freeze
+
     # Recursively merge one hash with another.
     # If the values at a given key are not both hashes, just take the new value.
     # @param concat [true, false] whether to merge sequences by concatenation
@@ -29,6 +30,18 @@ module Increase
       else
         right_cleaned
       end
+    end
+
+    def self.coerceInteger(str)
+      Integer(str)
+    rescue StandardError
+      str
+    end
+
+    def self.coerceFloat(str)
+      Float(str)
+    rescue StandardError
+      str
     end
   end
 end

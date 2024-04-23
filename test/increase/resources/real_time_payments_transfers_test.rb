@@ -29,4 +29,9 @@ class Increase::Test::Resources::RealTimePaymentsTransfersTest < Test::Unit::Tes
       response.class.to_s
     )
   end
+
+  def test_list
+    response = @increase.real_time_payments_transfers.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
 end

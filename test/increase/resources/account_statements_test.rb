@@ -11,4 +11,9 @@ class Increase::Test::Resources::AccountStatementsTest < Test::Unit::TestCase
     response = @increase.account_statements.retrieve("string")
     assert(Increase::Converter.same_type?(Increase::Models::AccountStatement, response), response.class.to_s)
   end
+
+  def test_list
+    response = @increase.account_statements.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
 end

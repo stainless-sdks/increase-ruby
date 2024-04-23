@@ -40,6 +40,31 @@ module Increase
           @client.request(req, opts)
         end
 
+        # List IntraFi Exclusions.
+        #
+        # @param params [Hash] Attributes to send in this request.
+        # @option params [String] :cursor Return the page of entries after this one.
+        # @option params [String] :entity_id Filter IntraFi Exclusions for those belonging to the specified Entity.
+        # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
+        # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+        #   objects.
+        #
+        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        #
+        # @return [Increase::Page<Increase::Models::IntrafiExclusion>]
+        def list(params = {}, opts = {})
+          req = {}
+          req[:method] = :get
+          req[:path] = "/intrafi_exclusions"
+          req[:query] = params
+          req[:page] = Increase::Page
+          req[:model] = Increase::Models::IntrafiExclusion
+          @client.request(req, opts)
+        end
+
         # Archive an IntraFi Exclusion
         #
         # @param intrafi_exclusion_id [String] The identifier of the IntraFi Exclusion request to archive. It may take 5

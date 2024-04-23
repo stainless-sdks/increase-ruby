@@ -11,4 +11,9 @@ class Increase::Test::Resources::CardPaymentsTest < Test::Unit::TestCase
     response = @increase.card_payments.retrieve("string")
     assert(Increase::Converter.same_type?(Increase::Models::CardPayment, response), response.class.to_s)
   end
+
+  def test_list
+    response = @increase.card_payments.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
 end

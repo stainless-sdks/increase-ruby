@@ -21,4 +21,9 @@ class Increase::Test::Resources::EventSubscriptionsTest < Test::Unit::TestCase
     response = @increase.event_subscriptions.update("string")
     assert(Increase::Converter.same_type?(Increase::Models::EventSubscription, response), response.class.to_s)
   end
+
+  def test_list
+    response = @increase.event_subscriptions.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
 end

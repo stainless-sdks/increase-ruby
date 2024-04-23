@@ -11,4 +11,9 @@ class Increase::Test::Resources::TransactionsTest < Test::Unit::TestCase
     response = @increase.transactions.retrieve("string")
     assert(Increase::Converter.same_type?(Increase::Models::Transaction, response), response.class.to_s)
   end
+
+  def test_list
+    response = @increase.transactions.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
 end
