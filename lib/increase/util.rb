@@ -32,16 +32,27 @@ module Increase
       end
     end
 
-    def self.coerceInteger(str)
+    def self.coerce_integer(str)
       Integer(str)
     rescue StandardError
       str
     end
 
-    def self.coerceFloat(str)
+    def self.coerce_float(str)
       Float(str)
     rescue StandardError
       str
+    end
+
+    def self.coerce_boolean(input)
+      case input
+      when "true"
+        true
+      when "false"
+        false
+      else
+        input
+      end
     end
   end
 end
