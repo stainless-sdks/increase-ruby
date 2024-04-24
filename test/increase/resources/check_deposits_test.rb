@@ -24,4 +24,9 @@ class Increase::Test::Resources::CheckDepositsTest < Test::Unit::TestCase
     response = @increase.check_deposits.retrieve("string")
     assert(Increase::Converter.same_type?(Increase::Models::CheckDeposit, response), response.class.to_s)
   end
+
+  def test_list
+    response = @increase.check_deposits.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
 end

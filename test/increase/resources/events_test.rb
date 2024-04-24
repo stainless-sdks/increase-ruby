@@ -11,4 +11,9 @@ class Increase::Test::Resources::EventsTest < Test::Unit::TestCase
     response = @increase.events.retrieve("string")
     assert(Increase::Converter.same_type?(Increase::Models::Event, response), response.class.to_s)
   end
+
+  def test_list
+    response = @increase.events.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
 end

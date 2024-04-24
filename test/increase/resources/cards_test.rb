@@ -22,6 +22,11 @@ class Increase::Test::Resources::CardsTest < Test::Unit::TestCase
     assert(Increase::Converter.same_type?(Increase::Models::Card, response), response.class.to_s)
   end
 
+  def test_list
+    response = @increase.cards.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
+
   def test_retrieve_sensitive_details
     response = @increase.cards.retrieve_sensitive_details("string")
     assert(Increase::Converter.same_type?(Increase::Models::CardDetails, response), response.class.to_s)

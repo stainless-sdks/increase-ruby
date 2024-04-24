@@ -23,6 +23,11 @@ class Increase::Test::Resources::BookkeepingAccountsTest < Test::Unit::TestCase
     )
   end
 
+  def test_list
+    response = @increase.bookkeeping_accounts.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
+
   def test_balance
     response = @increase.bookkeeping_accounts.balance("string")
     assert(

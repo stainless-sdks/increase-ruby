@@ -31,6 +31,11 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Test::Unit::TestCase
     )
   end
 
+  def test_list
+    response = @increase.digital_card_profiles.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
+
   def test_archive
     response = @increase.digital_card_profiles.archive("string")
     assert(

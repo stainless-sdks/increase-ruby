@@ -16,4 +16,9 @@ class Increase::Test::Resources::ExportsTest < Test::Unit::TestCase
     response = @increase.exports.retrieve("string")
     assert(Increase::Converter.same_type?(Increase::Models::Export, response), response.class.to_s)
   end
+
+  def test_list
+    response = @increase.exports.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
 end

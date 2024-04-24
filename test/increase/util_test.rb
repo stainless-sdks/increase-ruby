@@ -43,7 +43,7 @@ class Increase::Test::UtilTest < Test::Unit::TestCase
       {b: {b2: 1, b3: {d: 5}}},
       Increase::Util.deep_merge(
         {b: {b2: 1, b3: {c: 4, d: 5}}},
-        {b: {b2: 1, b3: {c: Increase::OMIT, d: 5}}}
+        {b: {b2: 1, b3: {c: Increase::Util::OMIT, d: 5}}}
       )
     )
   end

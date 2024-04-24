@@ -14,4 +14,9 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Test::Unit::TestCase
       response.class.to_s
     )
   end
+
+  def test_list
+    response = @increase.digital_wallet_tokens.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
 end

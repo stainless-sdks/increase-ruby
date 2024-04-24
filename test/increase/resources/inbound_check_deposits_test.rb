@@ -15,6 +15,11 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Test::Unit::TestCase
     )
   end
 
+  def test_list
+    response = @increase.inbound_check_deposits.list
+    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+  end
+
   def test_decline
     response = @increase.inbound_check_deposits.decline("string")
     assert(
