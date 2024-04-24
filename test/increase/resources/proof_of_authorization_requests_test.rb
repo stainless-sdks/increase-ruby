@@ -9,14 +9,11 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestsTest < Test::Unit::
 
   def test_retrieve
     response = @increase.proof_of_authorization_requests.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::ProofOfAuthorizationRequest, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::ProofOfAuthorizationRequest, response)
   end
 
   def test_list
     response = @increase.proof_of_authorization_requests.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 end

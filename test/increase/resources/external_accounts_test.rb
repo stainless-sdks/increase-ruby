@@ -11,21 +11,21 @@ class Increase::Test::Resources::ExternalAccountsTest < Test::Unit::TestCase
     response = @increase.external_accounts.create(
       {account_number: "987654321", description: "Landlord", routing_number: "101050001"}
     )
-    assert(Increase::Converter.same_type?(Increase::Models::ExternalAccount, response), response.class.to_s)
+    assert_kind_of(Increase::Models::ExternalAccount, response)
   end
 
   def test_retrieve
     response = @increase.external_accounts.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::ExternalAccount, response), response.class.to_s)
+    assert_kind_of(Increase::Models::ExternalAccount, response)
   end
 
   def test_update
     response = @increase.external_accounts.update("string")
-    assert(Increase::Converter.same_type?(Increase::Models::ExternalAccount, response), response.class.to_s)
+    assert_kind_of(Increase::Models::ExternalAccount, response)
   end
 
   def test_list
     response = @increase.external_accounts.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 end

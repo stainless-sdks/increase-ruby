@@ -16,38 +16,26 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Test::Unit::TestCase
         front_image_file_id: "file_o6aex13wm1jcc36sgcj1"
       }
     )
-    assert(
-      Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::PhysicalCardProfile, response)
   end
 
   def test_retrieve
     response = @increase.physical_card_profiles.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::PhysicalCardProfile, response)
   end
 
   def test_list
     response = @increase.physical_card_profiles.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 
   def test_archive
     response = @increase.physical_card_profiles.archive("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::PhysicalCardProfile, response)
   end
 
   def test_clone
     response = @increase.physical_card_profiles.clone("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::PhysicalCardProfile, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::PhysicalCardProfile, response)
   end
 end

@@ -17,38 +17,26 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Test::Unit::TestCase
         issuer_name: "MyBank"
       }
     )
-    assert(
-      Increase::Converter.same_type?(Increase::Models::DigitalCardProfile, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::DigitalCardProfile, response)
   end
 
   def test_retrieve
     response = @increase.digital_card_profiles.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::DigitalCardProfile, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::DigitalCardProfile, response)
   end
 
   def test_list
     response = @increase.digital_card_profiles.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 
   def test_archive
     response = @increase.digital_card_profiles.archive("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::DigitalCardProfile, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::DigitalCardProfile, response)
   end
 
   def test_clone
     response = @increase.digital_card_profiles.clone("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::DigitalCardProfile, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::DigitalCardProfile, response)
   end
 end

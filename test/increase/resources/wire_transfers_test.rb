@@ -16,26 +16,26 @@ class Increase::Test::Resources::WireTransfersTest < Test::Unit::TestCase
         message_to_recipient: "New account transfer"
       }
     )
-    assert(Increase::Converter.same_type?(Increase::Models::WireTransfer, response), response.class.to_s)
+    assert_kind_of(Increase::Models::WireTransfer, response)
   end
 
   def test_retrieve
     response = @increase.wire_transfers.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::WireTransfer, response), response.class.to_s)
+    assert_kind_of(Increase::Models::WireTransfer, response)
   end
 
   def test_list
     response = @increase.wire_transfers.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 
   def test_approve
     response = @increase.wire_transfers.approve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::WireTransfer, response), response.class.to_s)
+    assert_kind_of(Increase::Models::WireTransfer, response)
   end
 
   def test_cancel
     response = @increase.wire_transfers.cancel("string")
-    assert(Increase::Converter.same_type?(Increase::Models::WireTransfer, response), response.class.to_s)
+    assert_kind_of(Increase::Models::WireTransfer, response)
   end
 end

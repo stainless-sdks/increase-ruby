@@ -11,14 +11,14 @@ class Increase::Test::Resources::SimulationsTest < Test::Unit::TestCase
     response = @increase.simulations.card_authorization_expirations(
       {card_payment_id: "card_payment_nd3k2kacrqjli8482ave"}
     )
-    assert(Increase::Converter.same_type?(Increase::Models::CardPayment, response), response.class.to_s)
+    assert_kind_of(Increase::Models::CardPayment, response)
   end
 
   def test_card_fuel_confirmations_required_params
     response = @increase.simulations.card_fuel_confirmations(
       {amount: 5000, card_payment_id: "card_payment_nd3k2kacrqjli8482ave"}
     )
-    assert(Increase::Converter.same_type?(Increase::Models::CardPayment, response), response.class.to_s)
+    assert_kind_of(Increase::Models::CardPayment, response)
   end
 
   def test_card_increments_required_params
@@ -28,11 +28,11 @@ class Increase::Test::Resources::SimulationsTest < Test::Unit::TestCase
         card_payment_id: "card_payment_nd3k2kacrqjli8482ave"
       }
     )
-    assert(Increase::Converter.same_type?(Increase::Models::CardPayment, response), response.class.to_s)
+    assert_kind_of(Increase::Models::CardPayment, response)
   end
 
   def test_card_reversals_required_params
     response = @increase.simulations.card_reversals({card_payment_id: "card_payment_nd3k2kacrqjli8482ave"})
-    assert(Increase::Converter.same_type?(Increase::Models::CardPayment, response), response.class.to_s)
+    assert_kind_of(Increase::Models::CardPayment, response)
   end
 end

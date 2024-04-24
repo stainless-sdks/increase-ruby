@@ -9,14 +9,11 @@ class Increase::Test::Resources::PendingTransactionsTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @increase.pending_transactions.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::PendingTransaction, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::PendingTransaction, response)
   end
 
   def test_list
     response = @increase.pending_transactions.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 end

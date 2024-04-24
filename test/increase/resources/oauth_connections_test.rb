@@ -9,11 +9,11 @@ class Increase::Test::Resources::OAuthConnectionsTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @increase.oauth_connections.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::OAuthConnection, response), response.class.to_s)
+    assert_kind_of(Increase::Models::OAuthConnection, response)
   end
 
   def test_list
     response = @increase.oauth_connections.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 end
