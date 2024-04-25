@@ -9,6 +9,6 @@ class Increase::Test::Resources::OAuthTokensTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @increase.oauth_tokens.create({grant_type: "authorization_code"})
-    assert(Increase::Converter.same_type?(Increase::Models::OAuthToken, response), response.class.to_s)
+    assert_kind_of(Increase::Models::OAuthToken, response)
   end
 end

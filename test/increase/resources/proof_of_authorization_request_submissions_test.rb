@@ -21,22 +21,16 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < Te
         validated_account_ownership_with_microdeposit: true
       }
     )
-    assert(
-      Increase::Converter.same_type?(Increase::Models::ProofOfAuthorizationRequestSubmission, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::ProofOfAuthorizationRequestSubmission, response)
   end
 
   def test_retrieve
     response = @increase.proof_of_authorization_request_submissions.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::ProofOfAuthorizationRequestSubmission, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::ProofOfAuthorizationRequestSubmission, response)
   end
 
   def test_list
     response = @increase.proof_of_authorization_request_submissions.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 end

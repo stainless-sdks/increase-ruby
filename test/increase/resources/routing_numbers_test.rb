@@ -9,6 +9,6 @@ class Increase::Test::Resources::RoutingNumbersTest < Test::Unit::TestCase
 
   def test_list_required_params
     response = @increase.routing_numbers.list({routing_number: "xxxxxxxxx"})
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 end

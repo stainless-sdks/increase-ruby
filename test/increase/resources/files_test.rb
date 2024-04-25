@@ -9,11 +9,11 @@ class Increase::Test::Resources::FilesTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @increase.files.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::File, response), response.class.to_s)
+    assert_kind_of(Increase::Models::File, response)
   end
 
   def test_list
     response = @increase.files.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 end

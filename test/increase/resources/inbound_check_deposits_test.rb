@@ -9,22 +9,16 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @increase.inbound_check_deposits.retrieve("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::InboundCheckDeposit, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::InboundCheckDeposit, response)
   end
 
   def test_list
     response = @increase.inbound_check_deposits.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 
   def test_decline
     response = @increase.inbound_check_deposits.decline("string")
-    assert(
-      Increase::Converter.same_type?(Increase::Models::InboundCheckDeposit, response),
-      response.class.to_s
-    )
+    assert_kind_of(Increase::Models::InboundCheckDeposit, response)
   end
 end

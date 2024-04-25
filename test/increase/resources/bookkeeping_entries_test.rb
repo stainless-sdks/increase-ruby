@@ -9,11 +9,11 @@ class Increase::Test::Resources::BookkeepingEntriesTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @increase.bookkeeping_entries.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::BookkeepingEntry, response), response.class.to_s)
+    assert_kind_of(Increase::Models::BookkeepingEntry, response)
   end
 
   def test_list
     response = @increase.bookkeeping_entries.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 end

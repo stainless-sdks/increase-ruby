@@ -9,11 +9,11 @@ class Increase::Test::Resources::DocumentsTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @increase.documents.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::Document, response), response.class.to_s)
+    assert_kind_of(Increase::Models::Document, response)
   end
 
   def test_list
     response = @increase.documents.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 end

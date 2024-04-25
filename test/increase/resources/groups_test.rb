@@ -9,6 +9,6 @@ class Increase::Test::Resources::GroupsTest < Test::Unit::TestCase
 
   def test_retrieve_details
     response = @increase.groups.retrieve_details
-    assert(Increase::Converter.same_type?(Increase::Models::Group, response), response.class.to_s)
+    assert_kind_of(Increase::Models::Group, response)
   end
 end

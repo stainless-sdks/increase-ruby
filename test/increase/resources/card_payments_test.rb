@@ -9,11 +9,11 @@ class Increase::Test::Resources::CardPaymentsTest < Test::Unit::TestCase
 
   def test_retrieve
     response = @increase.card_payments.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::CardPayment, response), response.class.to_s)
+    assert_kind_of(Increase::Models::CardPayment, response)
   end
 
   def test_list
     response = @increase.card_payments.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 end

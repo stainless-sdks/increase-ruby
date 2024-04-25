@@ -17,16 +17,16 @@ class Increase::Test::Resources::CheckDepositsTest < Test::Unit::TestCase
         front_image_file_id: "file_hkv175ovmc2tb2v2zbrm"
       }
     )
-    assert(Increase::Converter.same_type?(Increase::Models::CheckDeposit, response), response.class.to_s)
+    assert_kind_of(Increase::Models::CheckDeposit, response)
   end
 
   def test_retrieve
     response = @increase.check_deposits.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::CheckDeposit, response), response.class.to_s)
+    assert_kind_of(Increase::Models::CheckDeposit, response)
   end
 
   def test_list
     response = @increase.check_deposits.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 end

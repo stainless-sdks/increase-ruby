@@ -14,16 +14,16 @@ class Increase::Test::Resources::CardDisputesTest < Test::Unit::TestCase
         explanation: "Unauthorized recurring transaction."
       }
     )
-    assert(Increase::Converter.same_type?(Increase::Models::CardDispute, response), response.class.to_s)
+    assert_kind_of(Increase::Models::CardDispute, response)
   end
 
   def test_retrieve
     response = @increase.card_disputes.retrieve("string")
-    assert(Increase::Converter.same_type?(Increase::Models::CardDispute, response), response.class.to_s)
+    assert_kind_of(Increase::Models::CardDispute, response)
   end
 
   def test_list
     response = @increase.card_disputes.list
-    assert(Increase::Converter.same_type?(Increase::Page, response), response.class.to_s)
+    assert_kind_of(Increase::Page, response)
   end
 end
