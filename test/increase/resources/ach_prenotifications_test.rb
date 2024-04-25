@@ -9,10 +9,7 @@ class Increase::Test::Resources::ACHPrenotificationsTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @increase.ach_prenotifications.create(
-      {
-        account_number: "987654321",
-        routing_number: "101050001"
-      }
+      {account_id: "account_in71c4amph0vgo2qllky", account_number: "987654321", routing_number: "101050001"}
     )
     assert_kind_of(Increase::Models::ACHPrenotification, response)
   end
