@@ -207,6 +207,7 @@ module Increase
         #   @return [Symbol]
         required :reason,
                  Increase::Enum.new(
+                   :insufficient_funds,
                    :returned_per_odfi_request,
                    :authorization_revoked_by_customer,
                    :payment_stopped,
