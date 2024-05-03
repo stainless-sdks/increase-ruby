@@ -248,6 +248,16 @@ module Increase
           #   @return [String]
           required :physical_card_id, String
 
+          # @!attribute [rw] presentment_amount
+          #   The pending amount in the minor unit of the transaction's presentment currency.
+          #   @return [Integer]
+          required :presentment_amount, Integer
+
+          # @!attribute [rw] presentment_currency
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's presentment currency.
+          #   @return [String]
+          required :presentment_currency, String
+
           # @!attribute [rw] processing_category
           #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           #   @return [Symbol]
