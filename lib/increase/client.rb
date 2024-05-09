@@ -57,6 +57,147 @@ module Increase
                 :physical_card_profiles,
                 :inbound_check_deposits
 
+    # @!attribute [r] accounts
+    #  @return [Increase::Resources::Accounts]
+
+    # @!attribute [r] account_numbers
+    #  @return [Increase::Resources::AccountNumbers]
+
+    # @!attribute [r] bookkeeping_accounts
+    #  @return [Increase::Resources::BookkeepingAccounts]
+
+    # @!attribute [r] bookkeeping_entry_sets
+    #  @return [Increase::Resources::BookkeepingEntrySets]
+
+    # @!attribute [r] bookkeeping_entries
+    #  @return [Increase::Resources::BookkeepingEntries]
+
+    # @!attribute [r] real_time_decisions
+    #  @return [Increase::Resources::RealTimeDecisions]
+
+    # @!attribute [r] real_time_payments_transfers
+    #  @return [Increase::Resources::RealTimePaymentsTransfers]
+
+    # @!attribute [r] cards
+    #  @return [Increase::Resources::Cards]
+
+    # @!attribute [r] card_disputes
+    #  @return [Increase::Resources::CardDisputes]
+
+    # @!attribute [r] card_purchase_supplements
+    #  @return [Increase::Resources::CardPurchaseSupplements]
+
+    # @!attribute [r] external_accounts
+    #  @return [Increase::Resources::ExternalAccounts]
+
+    # @!attribute [r] exports
+    #  @return [Increase::Resources::Exports]
+
+    # @!attribute [r] digital_wallet_tokens
+    #  @return [Increase::Resources::DigitalWalletTokens]
+
+    # @!attribute [r] transactions
+    #  @return [Increase::Resources::Transactions]
+
+    # @!attribute [r] pending_transactions
+    #  @return [Increase::Resources::PendingTransactions]
+
+    # @!attribute [r] programs
+    #  @return [Increase::Resources::Programs]
+
+    # @!attribute [r] declined_transactions
+    #  @return [Increase::Resources::DeclinedTransactions]
+
+    # @!attribute [r] account_transfers
+    #  @return [Increase::Resources::AccountTransfers]
+
+    # @!attribute [r] ach_transfers
+    #  @return [Increase::Resources::ACHTransfers]
+
+    # @!attribute [r] ach_prenotifications
+    #  @return [Increase::Resources::ACHPrenotifications]
+
+    # @!attribute [r] documents
+    #  @return [Increase::Resources::Documents]
+
+    # @!attribute [r] wire_transfers
+    #  @return [Increase::Resources::WireTransfers]
+
+    # @!attribute [r] check_transfers
+    #  @return [Increase::Resources::CheckTransfers]
+
+    # @!attribute [r] entities
+    #  @return [Increase::Resources::Entities]
+
+    # @!attribute [r] inbound_ach_transfers
+    #  @return [Increase::Resources::InboundACHTransfers]
+
+    # @!attribute [r] inbound_wire_drawdown_requests
+    #  @return [Increase::Resources::InboundWireDrawdownRequests]
+
+    # @!attribute [r] wire_drawdown_requests
+    #  @return [Increase::Resources::WireDrawdownRequests]
+
+    # @!attribute [r] events
+    #  @return [Increase::Resources::Events]
+
+    # @!attribute [r] event_subscriptions
+    #  @return [Increase::Resources::EventSubscriptions]
+
+    # @!attribute [r] files
+    #  @return [Increase::Resources::Files]
+
+    # @!attribute [r] groups
+    #  @return [Increase::Resources::Groups]
+
+    # @!attribute [r] oauth_connections
+    #  @return [Increase::Resources::OAuthConnections]
+
+    # @!attribute [r] check_deposits
+    #  @return [Increase::Resources::CheckDeposits]
+
+    # @!attribute [r] routing_numbers
+    #  @return [Increase::Resources::RoutingNumbers]
+
+    # @!attribute [r] account_statements
+    #  @return [Increase::Resources::AccountStatements]
+
+    # @!attribute [r] simulations
+    #  @return [Increase::Resources::Simulations]
+
+    # @!attribute [r] physical_cards
+    #  @return [Increase::Resources::PhysicalCards]
+
+    # @!attribute [r] card_payments
+    #  @return [Increase::Resources::CardPayments]
+
+    # @!attribute [r] proof_of_authorization_requests
+    #  @return [Increase::Resources::ProofOfAuthorizationRequests]
+
+    # @!attribute [r] proof_of_authorization_request_submissions
+    #  @return [Increase::Resources::ProofOfAuthorizationRequestSubmissions]
+
+    # @!attribute [r] intrafi
+    #  @return [Increase::Resources::Intrafi]
+
+    # @!attribute [r] real_time_payments_request_for_payments
+    #  @return [Increase::Resources::RealTimePaymentsRequestForPayments]
+
+    # @!attribute [r] oauth_tokens
+    #  @return [Increase::Resources::OAuthTokens]
+
+    # @!attribute [r] inbound_wire_transfers
+    #  @return [Increase::Resources::InboundWireTransfers]
+
+    # @!attribute [r] digital_card_profiles
+    #  @return [Increase::Resources::DigitalCardProfiles]
+
+    # @!attribute [r] physical_card_profiles
+    #  @return [Increase::Resources::PhysicalCardProfiles]
+
+    # @!attribute [r] inbound_check_deposits
+    #  @return [Increase::Resources::InboundCheckDeposits]
+
     # @!visibility private
     def auth_headers
       {"Authorization" => "Bearer #{@api_key}"}
