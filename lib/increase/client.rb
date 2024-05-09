@@ -8,195 +8,146 @@ module Increase
     # Client options.
     attr_reader :api_key
 
-    # Resources.
-    attr_reader :accounts,
-                :account_numbers,
-                :bookkeeping_accounts,
-                :bookkeeping_entry_sets,
-                :bookkeeping_entries,
-                :real_time_decisions,
-                :real_time_payments_transfers,
-                :cards,
-                :card_disputes,
-                :card_purchase_supplements,
-                :external_accounts,
-                :exports,
-                :digital_wallet_tokens,
-                :transactions,
-                :pending_transactions,
-                :programs,
-                :declined_transactions,
-                :account_transfers,
-                :ach_transfers,
-                :ach_prenotifications,
-                :documents,
-                :wire_transfers,
-                :check_transfers,
-                :entities,
-                :inbound_ach_transfers,
-                :inbound_wire_drawdown_requests,
-                :wire_drawdown_requests,
-                :events,
-                :event_subscriptions,
-                :files,
-                :groups,
-                :oauth_connections,
-                :check_deposits,
-                :routing_numbers,
-                :account_statements,
-                :simulations,
-                :physical_cards,
-                :card_payments,
-                :proof_of_authorization_requests,
-                :proof_of_authorization_request_submissions,
-                :intrafi,
-                :real_time_payments_request_for_payments,
-                :oauth_tokens,
-                :inbound_wire_transfers,
-                :digital_card_profiles,
-                :physical_card_profiles,
-                :inbound_check_deposits
+    # @return [Increase::Resources::Accounts]
+    attr_reader :accounts
 
-    # @!attribute [r] accounts
-    #  @return [Increase::Resources::Accounts]
+    # @return [Increase::Resources::AccountNumbers]
+    attr_reader :account_numbers
 
-    # @!attribute [r] account_numbers
-    #  @return [Increase::Resources::AccountNumbers]
+    # @return [Increase::Resources::BookkeepingAccounts]
+    attr_reader :bookkeeping_accounts
 
-    # @!attribute [r] bookkeeping_accounts
-    #  @return [Increase::Resources::BookkeepingAccounts]
+    # @return [Increase::Resources::BookkeepingEntrySets]
+    attr_reader :bookkeeping_entry_sets
 
-    # @!attribute [r] bookkeeping_entry_sets
-    #  @return [Increase::Resources::BookkeepingEntrySets]
+    # @return [Increase::Resources::BookkeepingEntries]
+    attr_reader :bookkeeping_entries
 
-    # @!attribute [r] bookkeeping_entries
-    #  @return [Increase::Resources::BookkeepingEntries]
+    # @return [Increase::Resources::RealTimeDecisions]
+    attr_reader :real_time_decisions
 
-    # @!attribute [r] real_time_decisions
-    #  @return [Increase::Resources::RealTimeDecisions]
+    # @return [Increase::Resources::RealTimePaymentsTransfers]
+    attr_reader :real_time_payments_transfers
 
-    # @!attribute [r] real_time_payments_transfers
-    #  @return [Increase::Resources::RealTimePaymentsTransfers]
+    # @return [Increase::Resources::Cards]
+    attr_reader :cards
 
-    # @!attribute [r] cards
-    #  @return [Increase::Resources::Cards]
+    # @return [Increase::Resources::CardDisputes]
+    attr_reader :card_disputes
 
-    # @!attribute [r] card_disputes
-    #  @return [Increase::Resources::CardDisputes]
+    # @return [Increase::Resources::CardPurchaseSupplements]
+    attr_reader :card_purchase_supplements
 
-    # @!attribute [r] card_purchase_supplements
-    #  @return [Increase::Resources::CardPurchaseSupplements]
+    # @return [Increase::Resources::ExternalAccounts]
+    attr_reader :external_accounts
 
-    # @!attribute [r] external_accounts
-    #  @return [Increase::Resources::ExternalAccounts]
+    # @return [Increase::Resources::Exports]
+    attr_reader :exports
 
-    # @!attribute [r] exports
-    #  @return [Increase::Resources::Exports]
+    # @return [Increase::Resources::DigitalWalletTokens]
+    attr_reader :digital_wallet_tokens
 
-    # @!attribute [r] digital_wallet_tokens
-    #  @return [Increase::Resources::DigitalWalletTokens]
+    # @return [Increase::Resources::Transactions]
+    attr_reader :transactions
 
-    # @!attribute [r] transactions
-    #  @return [Increase::Resources::Transactions]
+    # @return [Increase::Resources::PendingTransactions]
+    attr_reader :pending_transactions
 
-    # @!attribute [r] pending_transactions
-    #  @return [Increase::Resources::PendingTransactions]
+    # @return [Increase::Resources::Programs]
+    attr_reader :programs
 
-    # @!attribute [r] programs
-    #  @return [Increase::Resources::Programs]
+    # @return [Increase::Resources::DeclinedTransactions]
+    attr_reader :declined_transactions
 
-    # @!attribute [r] declined_transactions
-    #  @return [Increase::Resources::DeclinedTransactions]
+    # @return [Increase::Resources::AccountTransfers]
+    attr_reader :account_transfers
 
-    # @!attribute [r] account_transfers
-    #  @return [Increase::Resources::AccountTransfers]
+    # @return [Increase::Resources::ACHTransfers]
+    attr_reader :ach_transfers
 
-    # @!attribute [r] ach_transfers
-    #  @return [Increase::Resources::ACHTransfers]
+    # @return [Increase::Resources::ACHPrenotifications]
+    attr_reader :ach_prenotifications
 
-    # @!attribute [r] ach_prenotifications
-    #  @return [Increase::Resources::ACHPrenotifications]
+    # @return [Increase::Resources::Documents]
+    attr_reader :documents
 
-    # @!attribute [r] documents
-    #  @return [Increase::Resources::Documents]
+    # @return [Increase::Resources::WireTransfers]
+    attr_reader :wire_transfers
 
-    # @!attribute [r] wire_transfers
-    #  @return [Increase::Resources::WireTransfers]
+    # @return [Increase::Resources::CheckTransfers]
+    attr_reader :check_transfers
 
-    # @!attribute [r] check_transfers
-    #  @return [Increase::Resources::CheckTransfers]
+    # @return [Increase::Resources::Entities]
+    attr_reader :entities
 
-    # @!attribute [r] entities
-    #  @return [Increase::Resources::Entities]
+    # @return [Increase::Resources::InboundACHTransfers]
+    attr_reader :inbound_ach_transfers
 
-    # @!attribute [r] inbound_ach_transfers
-    #  @return [Increase::Resources::InboundACHTransfers]
+    # @return [Increase::Resources::InboundWireDrawdownRequests]
+    attr_reader :inbound_wire_drawdown_requests
 
-    # @!attribute [r] inbound_wire_drawdown_requests
-    #  @return [Increase::Resources::InboundWireDrawdownRequests]
+    # @return [Increase::Resources::WireDrawdownRequests]
+    attr_reader :wire_drawdown_requests
 
-    # @!attribute [r] wire_drawdown_requests
-    #  @return [Increase::Resources::WireDrawdownRequests]
+    # @return [Increase::Resources::Events]
+    attr_reader :events
 
-    # @!attribute [r] events
-    #  @return [Increase::Resources::Events]
+    # @return [Increase::Resources::EventSubscriptions]
+    attr_reader :event_subscriptions
 
-    # @!attribute [r] event_subscriptions
-    #  @return [Increase::Resources::EventSubscriptions]
+    # @return [Increase::Resources::Files]
+    attr_reader :files
 
-    # @!attribute [r] files
-    #  @return [Increase::Resources::Files]
+    # @return [Increase::Resources::Groups]
+    attr_reader :groups
 
-    # @!attribute [r] groups
-    #  @return [Increase::Resources::Groups]
+    # @return [Increase::Resources::OAuthConnections]
+    attr_reader :oauth_connections
 
-    # @!attribute [r] oauth_connections
-    #  @return [Increase::Resources::OAuthConnections]
+    # @return [Increase::Resources::CheckDeposits]
+    attr_reader :check_deposits
 
-    # @!attribute [r] check_deposits
-    #  @return [Increase::Resources::CheckDeposits]
+    # @return [Increase::Resources::RoutingNumbers]
+    attr_reader :routing_numbers
 
-    # @!attribute [r] routing_numbers
-    #  @return [Increase::Resources::RoutingNumbers]
+    # @return [Increase::Resources::AccountStatements]
+    attr_reader :account_statements
 
-    # @!attribute [r] account_statements
-    #  @return [Increase::Resources::AccountStatements]
+    # @return [Increase::Resources::Simulations]
+    attr_reader :simulations
 
-    # @!attribute [r] simulations
-    #  @return [Increase::Resources::Simulations]
+    # @return [Increase::Resources::PhysicalCards]
+    attr_reader :physical_cards
 
-    # @!attribute [r] physical_cards
-    #  @return [Increase::Resources::PhysicalCards]
+    # @return [Increase::Resources::CardPayments]
+    attr_reader :card_payments
 
-    # @!attribute [r] card_payments
-    #  @return [Increase::Resources::CardPayments]
+    # @return [Increase::Resources::ProofOfAuthorizationRequests]
+    attr_reader :proof_of_authorization_requests
 
-    # @!attribute [r] proof_of_authorization_requests
-    #  @return [Increase::Resources::ProofOfAuthorizationRequests]
+    # @return [Increase::Resources::ProofOfAuthorizationRequestSubmissions]
+    attr_reader :proof_of_authorization_request_submissions
 
-    # @!attribute [r] proof_of_authorization_request_submissions
-    #  @return [Increase::Resources::ProofOfAuthorizationRequestSubmissions]
+    # @return [Increase::Resources::Intrafi]
+    attr_reader :intrafi
 
-    # @!attribute [r] intrafi
-    #  @return [Increase::Resources::Intrafi]
+    # @return [Increase::Resources::RealTimePaymentsRequestForPayments]
+    attr_reader :real_time_payments_request_for_payments
 
-    # @!attribute [r] real_time_payments_request_for_payments
-    #  @return [Increase::Resources::RealTimePaymentsRequestForPayments]
+    # @return [Increase::Resources::OAuthTokens]
+    attr_reader :oauth_tokens
 
-    # @!attribute [r] oauth_tokens
-    #  @return [Increase::Resources::OAuthTokens]
+    # @return [Increase::Resources::InboundWireTransfers]
+    attr_reader :inbound_wire_transfers
 
-    # @!attribute [r] inbound_wire_transfers
-    #  @return [Increase::Resources::InboundWireTransfers]
+    # @return [Increase::Resources::DigitalCardProfiles]
+    attr_reader :digital_card_profiles
 
-    # @!attribute [r] digital_card_profiles
-    #  @return [Increase::Resources::DigitalCardProfiles]
+    # @return [Increase::Resources::PhysicalCardProfiles]
+    attr_reader :physical_card_profiles
 
-    # @!attribute [r] physical_card_profiles
-    #  @return [Increase::Resources::PhysicalCardProfiles]
-
-    # @!attribute [r] inbound_check_deposits
-    #  @return [Increase::Resources::InboundCheckDeposits]
+    # @return [Increase::Resources::InboundCheckDeposits]
+    attr_reader :inbound_check_deposits
 
     # @!visibility private
     def auth_headers
