@@ -8,54 +8,146 @@ module Increase
     # Client options.
     attr_reader :api_key
 
-    # Resources.
-    attr_reader :accounts,
-                :account_numbers,
-                :bookkeeping_accounts,
-                :bookkeeping_entry_sets,
-                :bookkeeping_entries,
-                :real_time_decisions,
-                :real_time_payments_transfers,
-                :cards,
-                :card_disputes,
-                :card_purchase_supplements,
-                :external_accounts,
-                :exports,
-                :digital_wallet_tokens,
-                :transactions,
-                :pending_transactions,
-                :programs,
-                :declined_transactions,
-                :account_transfers,
-                :ach_transfers,
-                :ach_prenotifications,
-                :documents,
-                :wire_transfers,
-                :check_transfers,
-                :entities,
-                :inbound_ach_transfers,
-                :inbound_wire_drawdown_requests,
-                :wire_drawdown_requests,
-                :events,
-                :event_subscriptions,
-                :files,
-                :groups,
-                :oauth_connections,
-                :check_deposits,
-                :routing_numbers,
-                :account_statements,
-                :simulations,
-                :physical_cards,
-                :card_payments,
-                :proof_of_authorization_requests,
-                :proof_of_authorization_request_submissions,
-                :intrafi,
-                :real_time_payments_request_for_payments,
-                :oauth_tokens,
-                :inbound_wire_transfers,
-                :digital_card_profiles,
-                :physical_card_profiles,
-                :inbound_check_deposits
+    # @return [Increase::Resources::Accounts]
+    attr_reader :accounts
+
+    # @return [Increase::Resources::AccountNumbers]
+    attr_reader :account_numbers
+
+    # @return [Increase::Resources::BookkeepingAccounts]
+    attr_reader :bookkeeping_accounts
+
+    # @return [Increase::Resources::BookkeepingEntrySets]
+    attr_reader :bookkeeping_entry_sets
+
+    # @return [Increase::Resources::BookkeepingEntries]
+    attr_reader :bookkeeping_entries
+
+    # @return [Increase::Resources::RealTimeDecisions]
+    attr_reader :real_time_decisions
+
+    # @return [Increase::Resources::RealTimePaymentsTransfers]
+    attr_reader :real_time_payments_transfers
+
+    # @return [Increase::Resources::Cards]
+    attr_reader :cards
+
+    # @return [Increase::Resources::CardDisputes]
+    attr_reader :card_disputes
+
+    # @return [Increase::Resources::CardPurchaseSupplements]
+    attr_reader :card_purchase_supplements
+
+    # @return [Increase::Resources::ExternalAccounts]
+    attr_reader :external_accounts
+
+    # @return [Increase::Resources::Exports]
+    attr_reader :exports
+
+    # @return [Increase::Resources::DigitalWalletTokens]
+    attr_reader :digital_wallet_tokens
+
+    # @return [Increase::Resources::Transactions]
+    attr_reader :transactions
+
+    # @return [Increase::Resources::PendingTransactions]
+    attr_reader :pending_transactions
+
+    # @return [Increase::Resources::Programs]
+    attr_reader :programs
+
+    # @return [Increase::Resources::DeclinedTransactions]
+    attr_reader :declined_transactions
+
+    # @return [Increase::Resources::AccountTransfers]
+    attr_reader :account_transfers
+
+    # @return [Increase::Resources::ACHTransfers]
+    attr_reader :ach_transfers
+
+    # @return [Increase::Resources::ACHPrenotifications]
+    attr_reader :ach_prenotifications
+
+    # @return [Increase::Resources::Documents]
+    attr_reader :documents
+
+    # @return [Increase::Resources::WireTransfers]
+    attr_reader :wire_transfers
+
+    # @return [Increase::Resources::CheckTransfers]
+    attr_reader :check_transfers
+
+    # @return [Increase::Resources::Entities]
+    attr_reader :entities
+
+    # @return [Increase::Resources::InboundACHTransfers]
+    attr_reader :inbound_ach_transfers
+
+    # @return [Increase::Resources::InboundWireDrawdownRequests]
+    attr_reader :inbound_wire_drawdown_requests
+
+    # @return [Increase::Resources::WireDrawdownRequests]
+    attr_reader :wire_drawdown_requests
+
+    # @return [Increase::Resources::Events]
+    attr_reader :events
+
+    # @return [Increase::Resources::EventSubscriptions]
+    attr_reader :event_subscriptions
+
+    # @return [Increase::Resources::Files]
+    attr_reader :files
+
+    # @return [Increase::Resources::Groups]
+    attr_reader :groups
+
+    # @return [Increase::Resources::OAuthConnections]
+    attr_reader :oauth_connections
+
+    # @return [Increase::Resources::CheckDeposits]
+    attr_reader :check_deposits
+
+    # @return [Increase::Resources::RoutingNumbers]
+    attr_reader :routing_numbers
+
+    # @return [Increase::Resources::AccountStatements]
+    attr_reader :account_statements
+
+    # @return [Increase::Resources::Simulations]
+    attr_reader :simulations
+
+    # @return [Increase::Resources::PhysicalCards]
+    attr_reader :physical_cards
+
+    # @return [Increase::Resources::CardPayments]
+    attr_reader :card_payments
+
+    # @return [Increase::Resources::ProofOfAuthorizationRequests]
+    attr_reader :proof_of_authorization_requests
+
+    # @return [Increase::Resources::ProofOfAuthorizationRequestSubmissions]
+    attr_reader :proof_of_authorization_request_submissions
+
+    # @return [Increase::Resources::Intrafi]
+    attr_reader :intrafi
+
+    # @return [Increase::Resources::RealTimePaymentsRequestForPayments]
+    attr_reader :real_time_payments_request_for_payments
+
+    # @return [Increase::Resources::OAuthTokens]
+    attr_reader :oauth_tokens
+
+    # @return [Increase::Resources::InboundWireTransfers]
+    attr_reader :inbound_wire_transfers
+
+    # @return [Increase::Resources::DigitalCardProfiles]
+    attr_reader :digital_card_profiles
+
+    # @return [Increase::Resources::PhysicalCardProfiles]
+    attr_reader :physical_card_profiles
+
+    # @return [Increase::Resources::InboundCheckDeposits]
+    attr_reader :inbound_check_deposits
 
     # @!visibility private
     def auth_headers
