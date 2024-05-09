@@ -19,6 +19,8 @@ module Increase
       # @option params [Corporation] :corporation Details of the corporation entity to create. Required if `structure` is equal to
       #   `corporation`.
       # @option params [String] :description The description you choose to give the entity.
+      # @option params [GovernmentAuthority] :government_authority Details of the Government Authority entity to create. Required if `structure` is
+      #   equal to `Government Authority`.
       # @option params [Joint] :joint Details of the joint entity to create. Required if `structure` is equal to
       #   `joint`.
       # @option params [NaturalPerson] :natural_person Details of the natural person entity to create. Required if `structure` is equal
