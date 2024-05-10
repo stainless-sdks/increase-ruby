@@ -3,7 +3,14 @@
 module Increase
   module Resources
     class Entities
-      attr_reader :beneficial_owners, :supplemental_documents, :industry_code
+      # @return [Increase::Resources::Entities::BeneficialOwners]
+      attr_reader :beneficial_owners
+
+      # @return [Increase::Resources::Entities::SupplementalDocuments]
+      attr_reader :supplemental_documents
+
+      # @return [Increase::Resources::Entities::IndustryCode]
+      attr_reader :industry_code
 
       def initialize(client:)
         @client = client

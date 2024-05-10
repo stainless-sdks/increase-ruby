@@ -3,24 +3,59 @@
 module Increase
   module Resources
     class Simulations
-      attr_reader :account_transfers,
-                  :account_statements,
-                  :ach_transfers,
-                  :card_disputes,
-                  :card_refunds,
-                  :check_transfers,
-                  :documents,
-                  :digital_wallet_token_requests,
-                  :check_deposits,
-                  :programs,
-                  :inbound_wire_drawdown_requests,
-                  :inbound_funds_holds,
-                  :interest_payments,
-                  :wire_transfers,
-                  :cards,
-                  :real_time_payments_transfers,
-                  :physical_cards,
-                  :inbound_check_deposits
+      # @return [Increase::Resources::Simulations::AccountTransfers]
+      attr_reader :account_transfers
+
+      # @return [Increase::Resources::Simulations::AccountStatements]
+      attr_reader :account_statements
+
+      # @return [Increase::Resources::Simulations::ACHTransfers]
+      attr_reader :ach_transfers
+
+      # @return [Increase::Resources::Simulations::CardDisputes]
+      attr_reader :card_disputes
+
+      # @return [Increase::Resources::Simulations::CardRefunds]
+      attr_reader :card_refunds
+
+      # @return [Increase::Resources::Simulations::CheckTransfers]
+      attr_reader :check_transfers
+
+      # @return [Increase::Resources::Simulations::Documents]
+      attr_reader :documents
+
+      # @return [Increase::Resources::Simulations::DigitalWalletTokenRequests]
+      attr_reader :digital_wallet_token_requests
+
+      # @return [Increase::Resources::Simulations::CheckDeposits]
+      attr_reader :check_deposits
+
+      # @return [Increase::Resources::Simulations::Programs]
+      attr_reader :programs
+
+      # @return [Increase::Resources::Simulations::InboundWireDrawdownRequests]
+      attr_reader :inbound_wire_drawdown_requests
+
+      # @return [Increase::Resources::Simulations::InboundFundsHolds]
+      attr_reader :inbound_funds_holds
+
+      # @return [Increase::Resources::Simulations::InterestPayments]
+      attr_reader :interest_payments
+
+      # @return [Increase::Resources::Simulations::WireTransfers]
+      attr_reader :wire_transfers
+
+      # @return [Increase::Resources::Simulations::Cards]
+      attr_reader :cards
+
+      # @return [Increase::Resources::Simulations::RealTimePaymentsTransfers]
+      attr_reader :real_time_payments_transfers
+
+      # @return [Increase::Resources::Simulations::PhysicalCards]
+      attr_reader :physical_cards
+
+      # @return [Increase::Resources::Simulations::InboundCheckDeposits]
+      attr_reader :inbound_check_deposits
 
       def initialize(client:)
         @client = client
