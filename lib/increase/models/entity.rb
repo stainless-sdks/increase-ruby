@@ -28,6 +28,11 @@ module Increase
       #   @return [String]
       required :details_confirmed_at, String
 
+      # @!attribute [rw] government_authority
+      #   Details of the government authority entity. Will be present if `structure` is equal to `government_authority`.
+      #   @return [Increase::Models::Entity::GovernmentAuthority]
+      required :government_authority, -> { Increase::Models::Entity::GovernmentAuthority }
+
       # @!attribute [rw] idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #   @return [String]
@@ -51,7 +56,8 @@ module Increase
       # @!attribute [rw] structure
       #   The entity's legal structure.
       #   @return [Symbol]
-      required :structure, Increase::Enum.new(:corporation, :natural_person, :joint, :trust)
+      required :structure,
+               Increase::Enum.new(:corporation, :natural_person, :joint, :trust, :government_authority)
 
       # @!attribute [rw] supplemental_documents
       #   Additional documentation associated with the entity. This is limited to the first 10 documents for an entity. If an entity has more than 10 documents, use the GET /entity_supplemental_documents list endpoint to retrieve them.
@@ -225,6 +231,78 @@ module Increase
               required :number_last4, String
             end
           end
+        end
+      end
+
+      class GovernmentAuthority < BaseModel
+        # @!attribute [rw] address
+        #   The government authority's address.
+        #   @return [Increase::Models::Entity::GovernmentAuthority::Address]
+        required :address, -> { Increase::Models::Entity::GovernmentAuthority::Address }
+
+        # @!attribute [rw] authorized_persons
+        #   The identifying details of authorized persons of the government authority.
+        #   @return [Array<Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson>]
+        required :authorized_persons,
+                 Increase::ArrayOf.new(-> { Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson })
+
+        # @!attribute [rw] category
+        #   The category of the government authority.
+        #   @return [Symbol]
+        required :category, Increase::Enum.new(:municipality)
+
+        # @!attribute [rw] name_
+        #   The government authority's name.
+        #   @return [String]
+        required :name_, String
+
+        # @!attribute [rw] tax_identifier
+        #   The Employer Identification Number (EIN) of the government authority.
+        #   @return [String]
+        required :tax_identifier, String
+
+        # @!attribute [rw] website
+        #   The government authority's website.
+        #   @return [String]
+        required :website, String
+
+        class Address < BaseModel
+          # @!attribute [rw] city
+          #   The city of the address.
+          #   @return [String]
+          required :city, String
+
+          # @!attribute [rw] line1
+          #   The first line of the address.
+          #   @return [String]
+          required :line1, String
+
+          # @!attribute [rw] line2
+          #   The second line of the address.
+          #   @return [String]
+          required :line2, String
+
+          # @!attribute [rw] state
+          #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
+          #   @return [String]
+          required :state, String
+
+          # @!attribute [rw] zip
+          #   The ZIP code of the address.
+          #   @return [String]
+          required :zip, String
+        end
+
+        class AuthorizedPerson < BaseModel
+          # @!attribute [rw] authorized_person_id
+          #   The identifier of this authorized person.
+          #   @return [String]
+          required :authorized_person_id, String
+
+          # @!attribute [rw] name_
+          #   The person's legal name.
+          #   @return [String]
+          required :name_, String
         end
       end
 

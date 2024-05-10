@@ -13,6 +13,11 @@ module Increase
       #   @return [Symbol]
       required :bank, Increase::Enum.new(:blue_ridge_bank, :first_internet_bank)
 
+      # @!attribute [rw] closed_at
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was closed.
+      #   @return [String]
+      required :closed_at, String
+
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was created.
       #   @return [String]

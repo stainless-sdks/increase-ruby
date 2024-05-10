@@ -65,6 +65,11 @@ module Increase
         #   @return [String]
         required :card_id, String
 
+        # @!attribute [rw] card_payment_id
+        #   The identifier of the Card Payment this authorization belongs to.
+        #   @return [String]
+        required :card_payment_id, String
+
         # @!attribute [rw] decision
         #   Whether or not the authorization was approved.
         #   @return [Symbol]
