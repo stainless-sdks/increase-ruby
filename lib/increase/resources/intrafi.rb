@@ -3,7 +3,14 @@
 module Increase
   module Resources
     class Intrafi
-      attr_reader :account_enrollments, :balances, :exclusions
+      # @return [Increase::Resources::Intrafi::AccountEnrollments]
+      attr_reader :account_enrollments
+
+      # @return [Increase::Resources::Intrafi::Balances]
+      attr_reader :balances
+
+      # @return [Increase::Resources::Intrafi::Exclusions]
+      attr_reader :exclusions
 
       def initialize(client:)
         @client = client
