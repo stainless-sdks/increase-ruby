@@ -11,7 +11,7 @@ class Increase::Test::Resources::RealTimePaymentsRequestForPaymentsTest < Test::
     response = @increase.real_time_payments_request_for_payments.create(
       {
         amount: 100,
-        debtor: {"name" => "Ian Crease", "address" => {"country" => "US"}},
+        debtor: {"address" => {"country" => "US"}, "name" => "Ian Crease"},
         destination_account_number_id: "account_number_v18nkfqm6afpsrvy82b2",
         expires_at: "2025-12-31",
         remittance_information: "Invoice 29582",

@@ -35,7 +35,7 @@ class Increase::Test::Resources::EntitiesTest < Test::Unit::TestCase
   def test_update_address_required_params
     response = @increase.entities.update_address(
       "string",
-      {address: {"line1" => "33 Liberty Street", "city" => "New York", "state" => "NY", "zip" => "10045"}}
+      {address: {"city" => "New York", "line1" => "33 Liberty Street", "state" => "NY", "zip" => "10045"}}
     )
     assert_kind_of(Increase::Models::Entity, response)
   end
