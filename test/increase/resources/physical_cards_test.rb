@@ -13,14 +13,14 @@ class Increase::Test::Resources::PhysicalCardsTest < Test::Unit::TestCase
         card_id: "card_oubs0hwk5rn6knuecxg2",
         cardholder: {"first_name" => "Ian", "last_name" => "Crease"},
         shipment: {
-          "method" => "usps",
           "address" => {
-            "name" => "Ian Crease",
-            "line1" => "33 Liberty Street",
             "city" => "New York",
-            "state" => "NY",
-            "postal_code" => "10045"
-          }
+            "line1" => "33 Liberty Street",
+            "name" => "Ian Crease",
+            "postal_code" => "10045",
+            "state" => "NY"
+          },
+          "method" => "usps"
         }
       }
     )
