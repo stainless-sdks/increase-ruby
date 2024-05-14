@@ -34,7 +34,7 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] creditor_name
-      #   The name of the transfer's recipient as provided by the sender.
+      #   The name of the transfer's recipient. This is set by the sender when creating the transfer.
       #   @return [String]
       required :creditor_name, String
 
@@ -44,7 +44,7 @@ module Increase
       required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
       # @!attribute [rw] debtor_name
-      #   The name of the transfer's sender. If not provided, the account's entity name will be used.
+      #   The name of the transfer's sender. If not provided, defaults to the name of the account's entity.
       #   @return [String]
       required :debtor_name, String
 
@@ -119,12 +119,12 @@ module Increase
       required :type, Increase::Enum.new(:real_time_payments_transfer)
 
       # @!attribute [rw] ultimate_creditor_name
-      #   The name of the party on whose behalf the creditor is receiving the payment.
+      #   The name of the ultimate recipient of the transfer. Set this if the creditor is an intermediary receiving the payment for someone else.
       #   @return [String]
       required :ultimate_creditor_name, String
 
       # @!attribute [rw] ultimate_debtor_name
-      #   The name of the the party on whose behalf the debtor is instructing the payment.
+      #   The name of the ultimate sender of the transfer. Set this if the funds are being sent on behalf of someone who is not the account holder at Increase.
       #   @return [String]
       required :ultimate_debtor_name, String
 

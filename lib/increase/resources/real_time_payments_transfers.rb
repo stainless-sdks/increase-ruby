@@ -15,8 +15,8 @@ module Increase
       # @option params [String] :creditor_name The name of the transfer's recipient.
       # @option params [String] :remittance_information Unstructured information that will show on the recipient's bank statement.
       # @option params [String] :source_account_number_id The identifier of the Account Number from which to send the transfer.
-      # @option params [String] :debtor_name The name of the transfer's sender. If not provided, the account's entity name
-      #   will be used.
+      # @option params [String] :debtor_name The name of the transfer's sender. If not provided, defaults to the name of the
+      #   account's entity.
       # @option params [String] :destination_account_number The destination account number.
       # @option params [String] :destination_routing_number The destination American Bankers' Association (ABA) Routing Transit Number
       #   (RTN).
@@ -24,8 +24,10 @@ module Increase
       #   provided, `destination_account_number` and `destination_routing_number` must be
       #   absent.
       # @option params [Boolean] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
-      # @option params [String] :ultimate_creditor_name The name of the party on whose behalf the creditor is receiving the payment.
-      # @option params [String] :ultimate_debtor_name The name of the the party on whose behalf the debtor is instructing the payment.
+      # @option params [String] :ultimate_creditor_name The name of the ultimate recipient of the transfer. Set this if the creditor is
+      #   an intermediary receiving the payment for someone else.
+      # @option params [String] :ultimate_debtor_name The name of the ultimate sender of the transfer. Set this if the funds are being
+      #   sent on behalf of someone who is not the account holder at Increase.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
