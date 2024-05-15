@@ -75,6 +75,7 @@ module Increase
                    :inbound_real_time_payments_transfer_decline,
                    :international_ach_decline,
                    :wire_decline,
+                   :check_deposit_rejection,
                    :other
                  )
 
@@ -82,6 +83,12 @@ module Increase
         #   A Check Decline object. This field will be present in the JSON response if and only if `category` is equal to `check_decline`.
         #   @return [Increase::Models::DeclinedTransaction::Source::CheckDecline]
         required :check_decline, -> { Increase::Models::DeclinedTransaction::Source::CheckDecline }
+
+        # @!attribute [rw] check_deposit_rejection
+        #   A Check Deposit Rejection object. This field will be present in the JSON response if and only if `category` is equal to `check_deposit_rejection`.
+        #   @return [Increase::Models::DeclinedTransaction::Source::CheckDepositRejection]
+        required :check_deposit_rejection,
+                 -> { Increase::Models::DeclinedTransaction::Source::CheckDepositRejection }
 
         # @!attribute [rw] inbound_real_time_payments_transfer_decline
         #   An Inbound Real-Time Payments Transfer Decline object. This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_decline`.
@@ -494,6 +501,45 @@ module Increase
                      :unable_to_process,
                      :user_initiated
                    )
+        end
+
+        class CheckDepositRejection < BaseModel
+          # @!attribute [rw] amount
+          #   The rejected amount in the minor unit of check's currency. For dollars, for example, this is cents.
+          #   @return [Integer]
+          required :amount, Integer
+
+          # @!attribute [rw] check_deposit_id
+          #   The identifier of the Check Deposit that was rejected.
+          #   @return [String]
+          required :check_deposit_id, String
+
+          # @!attribute [rw] currency
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
+          #   @return [Symbol]
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+
+          # @!attribute [rw] reason
+          #   Why the check deposit was rejected.
+          #   @return [Symbol]
+          required :reason,
+                   Increase::Enum.new(
+                     :incomplete_image,
+                     :duplicate,
+                     :poor_image_quality,
+                     :incorrect_amount,
+                     :incorrect_recipient,
+                     :not_eligible_for_mobile_deposit,
+                     :missing_required_data_elements,
+                     :suspected_fraud,
+                     :deposit_window_expired,
+                     :unknown
+                   )
+
+          # @!attribute [rw] rejected_at
+          #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was rejected.
+          #   @return [String]
+          required :rejected_at, String
         end
 
         class InboundRealTimePaymentsTransferDecline < BaseModel

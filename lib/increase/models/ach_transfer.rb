@@ -68,6 +68,11 @@ module Increase
       #   @return [String]
       required :created_at, String
 
+      # @!attribute [rw] created_by
+      #   What object created the transfer, either via the API or the dashboard.
+      #   @return [Increase::Models::ACHTransfer::CreatedBy]
+      required :created_by, -> { Increase::Models::ACHTransfer::CreatedBy }
+
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
       #   @return [Symbol]
@@ -270,6 +275,49 @@ module Increase
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
         #   @return [String]
         required :canceled_by, String
+      end
+
+      class CreatedBy < BaseModel
+        # @!attribute [rw] api_key
+        #   If present, details about the API key that created the transfer.
+        #   @return [Increase::Models::ACHTransfer::CreatedBy::APIKey]
+        required :api_key, -> { Increase::Models::ACHTransfer::CreatedBy::APIKey }
+
+        # @!attribute [rw] category
+        #   The type of object that created this transfer.
+        #   @return [Symbol]
+        required :category, Increase::Enum.new(:api_key, :oauth_application, :user)
+
+        # @!attribute [rw] oauth_application
+        #   If present, details about the OAuth Application that created the transfer.
+        #   @return [Increase::Models::ACHTransfer::CreatedBy::OAuthApplication]
+        required :oauth_application, -> { Increase::Models::ACHTransfer::CreatedBy::OAuthApplication }
+
+        # @!attribute [rw] user
+        #   If present, details about the User that created the transfer.
+        #   @return [Increase::Models::ACHTransfer::CreatedBy::User]
+        required :user, -> { Increase::Models::ACHTransfer::CreatedBy::User }
+
+        class APIKey < BaseModel
+          # @!attribute [rw] description
+          #   The description set for the API key when it was created.
+          #   @return [String]
+          required :description, String
+        end
+
+        class OAuthApplication < BaseModel
+          # @!attribute [rw] name_
+          #   The name of the OAuth Application.
+          #   @return [String]
+          required :name_, String
+        end
+
+        class User < BaseModel
+          # @!attribute [rw] email
+          #   The email address of the User.
+          #   @return [String]
+          required :email, String
+        end
       end
 
       class NotificationsOfChange < BaseModel

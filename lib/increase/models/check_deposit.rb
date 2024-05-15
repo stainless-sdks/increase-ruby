@@ -121,6 +121,11 @@ module Increase
         #   @return [Integer]
         required :amount, Integer
 
+        # @!attribute [rw] check_deposit_id
+        #   The identifier of the Check Deposit that was rejected.
+        #   @return [String]
+        required :check_deposit_id, String
+
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
         #   @return [Symbol]
