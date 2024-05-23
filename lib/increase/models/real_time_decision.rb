@@ -65,11 +65,6 @@ module Increase
         #   @return [String]
         required :card_id, String
 
-        # @!attribute [rw] card_payment_id
-        #   The identifier of the Card Payment this authorization belongs to.
-        #   @return [String]
-        required :card_payment_id, String
-
         # @!attribute [rw] decision
         #   Whether or not the authorization was approved.
         #   @return [Symbol]
@@ -169,6 +164,11 @@ module Increase
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the transaction will be settled in.
         #   @return [String]
         required :settlement_currency, String
+
+        # @!attribute [rw] upcoming_card_payment_id
+        #   The identifier of the Card Payment this authorization will belong to. Available in the API once the card authorization has completed.
+        #   @return [String]
+        required :upcoming_card_payment_id, String
 
         # @!attribute [rw] verification
         #   Fields related to verification of cardholder-provided values.
