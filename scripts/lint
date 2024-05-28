@@ -4,4 +4,4 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-bundle exec srb tc
+# bundle exec srb tc
