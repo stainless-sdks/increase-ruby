@@ -18,6 +18,11 @@ module Increase
       #   @return [String]
       required :created_at, String
 
+      # @!attribute [rw] default_digital_card_profile_id
+      #   The default configuration for digital cards attached to this Program.
+      #   @return [String]
+      required :default_digital_card_profile_id, String
+
       # @!attribute [rw] name_
       #   The name of the Program.
       #   @return [String]

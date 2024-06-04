@@ -53,11 +53,6 @@ module Increase
       #   @return [String]
       required :idempotency_key, String
 
-      # @!attribute [rw] is_default
-      #   Whether this Digital Card Profile is the default for all cards in its Increase group.
-      #   @return [Boolean]
-      required :is_default, Increase::BooleanModel
-
       # @!attribute [rw] issuer_name
       #   A user-facing description for whoever is issuing the card.
       #   @return [String]
