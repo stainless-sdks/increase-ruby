@@ -139,20 +139,13 @@ module Increase
         class Freeform < BaseModel
           # @!attribute [rw] entries
           #   Each entry represents an addendum received from the originator.
-          #   @return [Array<Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry>]
+          #   @return [Array<Increase::Models::UnnamedSchemaRef14b420c48ea6aff1ebb11188af13903f>]
           required :entries,
                    Increase::ArrayOf.new(
                      lambda {
-                       Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry
+                       Increase::Models::UnnamedSchemaRef14b420c48ea6aff1ebb11188af13903f
                      }
                    )
-
-          class Entry < BaseModel
-            # @!attribute [rw] payment_related_information
-            #   The payment related information passed in the addendum.
-            #   @return [String]
-            required :payment_related_information, String
-          end
         end
       end
 

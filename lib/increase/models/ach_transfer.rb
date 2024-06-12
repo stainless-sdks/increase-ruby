@@ -35,13 +35,13 @@ module Increase
 
       # @!attribute [rw] approval
       #   If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
-      #   @return [Increase::Models::ACHTransfer::Approval]
-      required :approval, -> { Increase::Models::ACHTransfer::Approval }
+      #   @return [Increase::Models::UnnamedSchemaRefD68ed2b3782b1efe94323ee7bcde82cc]
+      required :approval, -> { Increase::Models::UnnamedSchemaRefD68ed2b3782b1efe94323ee7bcde82cc }
 
       # @!attribute [rw] cancellation
       #   If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
-      #   @return [Increase::Models::ACHTransfer::Cancellation]
-      required :cancellation, -> { Increase::Models::ACHTransfer::Cancellation }
+      #   @return [Increase::Models::UnnamedSchemaRef2eb27343161bcb1aa714bd76fe027d77]
+      required :cancellation, -> { Increase::Models::UnnamedSchemaRef2eb27343161bcb1aa714bd76fe027d77 }
 
       # @!attribute [rw] company_descriptive_date
       #   The description of the date of the transfer.
@@ -212,20 +212,13 @@ module Increase
         class Freeform < BaseModel
           # @!attribute [rw] entries
           #   Each entry represents an addendum sent with the transfer.
-          #   @return [Array<Increase::Models::ACHTransfer::Addenda::Freeform::Entry>]
+          #   @return [Array<Increase::Models::UnnamedSchemaRef14b420c48ea6aff1ebb11188af13903f>]
           required :entries,
                    Increase::ArrayOf.new(
                      lambda {
-                       Increase::Models::ACHTransfer::Addenda::Freeform::Entry
+                       Increase::Models::UnnamedSchemaRef14b420c48ea6aff1ebb11188af13903f
                      }
                    )
-
-          class Entry < BaseModel
-            # @!attribute [rw] payment_related_information
-            #   The payment related information passed in the addendum.
-            #   @return [String]
-            required :payment_related_information, String
-          end
         end
 
         class PaymentOrderRemittanceAdvice < BaseModel
@@ -253,35 +246,11 @@ module Increase
         end
       end
 
-      class Approval < BaseModel
-        # @!attribute [rw] approved_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
-        #   @return [String]
-        required :approved_at, String
-
-        # @!attribute [rw] approved_by
-        #   If the Transfer was approved by a user in the dashboard, the email address of that user.
-        #   @return [String]
-        required :approved_by, String
-      end
-
-      class Cancellation < BaseModel
-        # @!attribute [rw] canceled_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
-        #   @return [String]
-        required :canceled_at, String
-
-        # @!attribute [rw] canceled_by
-        #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
-        #   @return [String]
-        required :canceled_by, String
-      end
-
       class CreatedBy < BaseModel
         # @!attribute [rw] api_key
         #   If present, details about the API key that created the transfer.
-        #   @return [Increase::Models::ACHTransfer::CreatedBy::APIKey]
-        required :api_key, -> { Increase::Models::ACHTransfer::CreatedBy::APIKey }
+        #   @return [Increase::Models::UnnamedSchemaRef6ff8f32a8ee62a70f72bb8160f984371]
+        required :api_key, -> { Increase::Models::UnnamedSchemaRef6ff8f32a8ee62a70f72bb8160f984371 }
 
         # @!attribute [rw] category
         #   The type of object that created this transfer.
@@ -290,34 +259,13 @@ module Increase
 
         # @!attribute [rw] oauth_application
         #   If present, details about the OAuth Application that created the transfer.
-        #   @return [Increase::Models::ACHTransfer::CreatedBy::OAuthApplication]
-        required :oauth_application, -> { Increase::Models::ACHTransfer::CreatedBy::OAuthApplication }
+        #   @return [Increase::Models::UnnamedSchemaRef2aa12ad8358299c478e4658f636c9732]
+        required :oauth_application, -> { Increase::Models::UnnamedSchemaRef2aa12ad8358299c478e4658f636c9732 }
 
         # @!attribute [rw] user
         #   If present, details about the User that created the transfer.
-        #   @return [Increase::Models::ACHTransfer::CreatedBy::User]
-        required :user, -> { Increase::Models::ACHTransfer::CreatedBy::User }
-
-        class APIKey < BaseModel
-          # @!attribute [rw] description
-          #   The description set for the API key when it was created.
-          #   @return [String]
-          required :description, String
-        end
-
-        class OAuthApplication < BaseModel
-          # @!attribute [rw] name_
-          #   The name of the OAuth Application.
-          #   @return [String]
-          required :name_, String
-        end
-
-        class User < BaseModel
-          # @!attribute [rw] email
-          #   The email address of the User.
-          #   @return [String]
-          required :email, String
-        end
+        #   @return [Increase::Models::UnnamedSchemaRef5af1efe3d974b3c8bf884988b11ffc95]
+        required :user, -> { Increase::Models::UnnamedSchemaRef5af1efe3d974b3c8bf884988b11ffc95 }
       end
 
       class NotificationsOfChange < BaseModel

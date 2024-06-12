@@ -470,9 +470,11 @@ module Increase
 
           # @!attribute [rw] network_identifiers
           #   Network-specific identifiers for this refund.
-          #   @return [Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers]
+          #   @return [Increase::Models::UnnamedSchemaRefBd145cfbb61bff565c9c591f45b4b8fa]
           required :network_identifiers,
-                   -> { Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers }
+                   lambda {
+                     Increase::Models::UnnamedSchemaRefBd145cfbb61bff565c9c591f45b4b8fa
+                   }
 
           # @!attribute [rw] purchase_details
           #   Additional details about the card purchase, such as tax and industry-specific fields.
@@ -491,23 +493,6 @@ module Increase
           #   A constant representing the object's type. For this resource it will always be `card_refund`.
           #   @return [Symbol]
           required :type, Increase::Enum.new(:card_refund)
-
-          class NetworkIdentifiers < BaseModel
-            # @!attribute [rw] acquirer_business_id
-            #   A network assigned business ID that identifies the acquirer that processed this transaction.
-            #   @return [String]
-            required :acquirer_business_id, String
-
-            # @!attribute [rw] acquirer_reference_number
-            #   A globally unique identifier for this settlement.
-            #   @return [String]
-            required :acquirer_reference_number, String
-
-            # @!attribute [rw] transaction_id
-            #   A globally unique transaction identifier provided by the card network, used across multiple life-cycle requests.
-            #   @return [String]
-            required :transaction_id, String
-          end
 
           class PurchaseDetails < BaseModel
             # @!attribute [rw] car_rental
@@ -1032,9 +1017,11 @@ module Increase
 
           # @!attribute [rw] network_identifiers
           #   Network-specific identifiers for this refund.
-          #   @return [Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers]
+          #   @return [Increase::Models::UnnamedSchemaRefBd145cfbb61bff565c9c591f45b4b8fa]
           required :network_identifiers,
-                   -> { Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers }
+                   lambda {
+                     Increase::Models::UnnamedSchemaRefBd145cfbb61bff565c9c591f45b4b8fa
+                   }
 
           # @!attribute [rw] pending_transaction_id
           #   The identifier of the Pending Transaction associated with this Transaction.
@@ -1068,23 +1055,6 @@ module Increase
           #   A constant representing the object's type. For this resource it will always be `card_settlement`.
           #   @return [Symbol]
           required :type, Increase::Enum.new(:card_settlement)
-
-          class NetworkIdentifiers < BaseModel
-            # @!attribute [rw] acquirer_business_id
-            #   A network assigned business ID that identifies the acquirer that processed this transaction.
-            #   @return [String]
-            required :acquirer_business_id, String
-
-            # @!attribute [rw] acquirer_reference_number
-            #   A globally unique identifier for this settlement.
-            #   @return [String]
-            required :acquirer_reference_number, String
-
-            # @!attribute [rw] transaction_id
-            #   A globally unique transaction identifier provided by the card network, used across multiple life-cycle requests.
-            #   @return [String]
-            required :transaction_id, String
-          end
 
           class PurchaseDetails < BaseModel
             # @!attribute [rw] car_rental
@@ -1801,20 +1771,13 @@ module Increase
             class Freeform < BaseModel
               # @!attribute [rw] entries
               #   Each entry represents an addendum received from the originator.
-              #   @return [Array<Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry>]
+              #   @return [Array<Increase::Models::UnnamedSchemaRef14b420c48ea6aff1ebb11188af13903f>]
               required :entries,
                        Increase::ArrayOf.new(
                          lambda {
-                           Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry
+                           Increase::Models::UnnamedSchemaRef14b420c48ea6aff1ebb11188af13903f
                          }
                        )
-
-              class Entry < BaseModel
-                # @!attribute [rw] payment_related_information
-                #   The payment related information passed in the addendum.
-                #   @return [String]
-                required :payment_related_information, String
-              end
             end
           end
         end

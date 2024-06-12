@@ -163,11 +163,8 @@ module Increase
           class Individual < BaseModel
             # @!attribute [rw] address
             #   The person's address.
-            #   @return [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address]
-            required :address,
-                     lambda {
-                       Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address
-                     }
+            #   @return [Increase::Models::UnnamedSchemaRefB203e0722790b1a1f72d433b7497494b]
+            required :address, -> { Increase::Models::UnnamedSchemaRefB203e0722790b1a1f72d433b7497494b }
 
             # @!attribute [rw] date_of_birth
             #   The person's date of birth in YYYY-MM-DD format.
@@ -184,33 +181,6 @@ module Increase
             #   The person's legal name.
             #   @return [String]
             required :name_, String
-
-            class Address < BaseModel
-              # @!attribute [rw] city
-              #   The city of the address.
-              #   @return [String]
-              required :city, String
-
-              # @!attribute [rw] line1
-              #   The first line of the address.
-              #   @return [String]
-              required :line1, String
-
-              # @!attribute [rw] line2
-              #   The second line of the address.
-              #   @return [String]
-              required :line2, String
-
-              # @!attribute [rw] state
-              #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
-              #   @return [String]
-              required :state, String
-
-              # @!attribute [rw] zip
-              #   The ZIP code of the address.
-              #   @return [String]
-              required :zip, String
-            end
 
             class Identification < BaseModel
               # @!attribute [rw] method_
@@ -320,8 +290,8 @@ module Increase
         class Individual < BaseModel
           # @!attribute [rw] address
           #   The person's address.
-          #   @return [Increase::Models::Entity::Joint::Individual::Address]
-          required :address, -> { Increase::Models::Entity::Joint::Individual::Address }
+          #   @return [Increase::Models::UnnamedSchemaRefB203e0722790b1a1f72d433b7497494b]
+          required :address, -> { Increase::Models::UnnamedSchemaRefB203e0722790b1a1f72d433b7497494b }
 
           # @!attribute [rw] date_of_birth
           #   The person's date of birth in YYYY-MM-DD format.
@@ -337,33 +307,6 @@ module Increase
           #   The person's legal name.
           #   @return [String]
           required :name_, String
-
-          class Address < BaseModel
-            # @!attribute [rw] city
-            #   The city of the address.
-            #   @return [String]
-            required :city, String
-
-            # @!attribute [rw] line1
-            #   The first line of the address.
-            #   @return [String]
-            required :line1, String
-
-            # @!attribute [rw] line2
-            #   The second line of the address.
-            #   @return [String]
-            required :line2, String
-
-            # @!attribute [rw] state
-            #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
-            #   @return [String]
-            required :state, String
-
-            # @!attribute [rw] zip
-            #   The ZIP code of the address.
-            #   @return [String]
-            required :zip, String
-          end
 
           class Identification < BaseModel
             # @!attribute [rw] method_
@@ -389,8 +332,8 @@ module Increase
       class NaturalPerson < BaseModel
         # @!attribute [rw] address
         #   The person's address.
-        #   @return [Increase::Models::Entity::NaturalPerson::Address]
-        required :address, -> { Increase::Models::Entity::NaturalPerson::Address }
+        #   @return [Increase::Models::UnnamedSchemaRefB203e0722790b1a1f72d433b7497494b]
+        required :address, -> { Increase::Models::UnnamedSchemaRefB203e0722790b1a1f72d433b7497494b }
 
         # @!attribute [rw] date_of_birth
         #   The person's date of birth in YYYY-MM-DD format.
@@ -406,33 +349,6 @@ module Increase
         #   The person's legal name.
         #   @return [String]
         required :name_, String
-
-        class Address < BaseModel
-          # @!attribute [rw] city
-          #   The city of the address.
-          #   @return [String]
-          required :city, String
-
-          # @!attribute [rw] line1
-          #   The first line of the address.
-          #   @return [String]
-          required :line1, String
-
-          # @!attribute [rw] line2
-          #   The second line of the address.
-          #   @return [String]
-          required :line2, String
-
-          # @!attribute [rw] state
-          #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
-          #   @return [String]
-          required :state, String
-
-          # @!attribute [rw] zip
-          #   The ZIP code of the address.
-          #   @return [String]
-          required :zip, String
-        end
 
         class Identification < BaseModel
           # @!attribute [rw] method_
@@ -547,8 +463,8 @@ module Increase
         class Grantor < BaseModel
           # @!attribute [rw] address
           #   The person's address.
-          #   @return [Increase::Models::Entity::Trust::Grantor::Address]
-          required :address, -> { Increase::Models::Entity::Trust::Grantor::Address }
+          #   @return [Increase::Models::UnnamedSchemaRefB203e0722790b1a1f72d433b7497494b]
+          required :address, -> { Increase::Models::UnnamedSchemaRefB203e0722790b1a1f72d433b7497494b }
 
           # @!attribute [rw] date_of_birth
           #   The person's date of birth in YYYY-MM-DD format.
@@ -564,33 +480,6 @@ module Increase
           #   The person's legal name.
           #   @return [String]
           required :name_, String
-
-          class Address < BaseModel
-            # @!attribute [rw] city
-            #   The city of the address.
-            #   @return [String]
-            required :city, String
-
-            # @!attribute [rw] line1
-            #   The first line of the address.
-            #   @return [String]
-            required :line1, String
-
-            # @!attribute [rw] line2
-            #   The second line of the address.
-            #   @return [String]
-            required :line2, String
-
-            # @!attribute [rw] state
-            #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
-            #   @return [String]
-            required :state, String
-
-            # @!attribute [rw] zip
-            #   The ZIP code of the address.
-            #   @return [String]
-            required :zip, String
-          end
 
           class Identification < BaseModel
             # @!attribute [rw] method_
@@ -626,8 +515,8 @@ module Increase
           class Individual < BaseModel
             # @!attribute [rw] address
             #   The person's address.
-            #   @return [Increase::Models::Entity::Trust::Trustee::Individual::Address]
-            required :address, -> { Increase::Models::Entity::Trust::Trustee::Individual::Address }
+            #   @return [Increase::Models::UnnamedSchemaRefB203e0722790b1a1f72d433b7497494b]
+            required :address, -> { Increase::Models::UnnamedSchemaRefB203e0722790b1a1f72d433b7497494b }
 
             # @!attribute [rw] date_of_birth
             #   The person's date of birth in YYYY-MM-DD format.
@@ -646,33 +535,6 @@ module Increase
             #   The person's legal name.
             #   @return [String]
             required :name_, String
-
-            class Address < BaseModel
-              # @!attribute [rw] city
-              #   The city of the address.
-              #   @return [String]
-              required :city, String
-
-              # @!attribute [rw] line1
-              #   The first line of the address.
-              #   @return [String]
-              required :line1, String
-
-              # @!attribute [rw] line2
-              #   The second line of the address.
-              #   @return [String]
-              required :line2, String
-
-              # @!attribute [rw] state
-              #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
-              #   @return [String]
-              required :state, String
-
-              # @!attribute [rw] zip
-              #   The ZIP code of the address.
-              #   @return [String]
-              required :zip, String
-            end
 
             class Identification < BaseModel
               # @!attribute [rw] method_

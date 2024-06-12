@@ -49,7 +49,7 @@ module Increase
         # Update the address for a beneficial owner belonging to a corporate Entity
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Address] :address The individual's physical address. Mail receiving locations like PO Boxes and
+        # @option params [Increase::Models::UnnamedSchemaRefD69f2dff7f6a581746aa74328e25d45d] :address The individual's physical address. Mail receiving locations like PO Boxes and
         #   PMB's are disallowed.
         # @option params [String] :beneficial_owner_id The identifying details of anyone controlling or owning 25% or more of the
         #   corporation.
