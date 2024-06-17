@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create a Check Deposit
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id The identifier for the Account to deposit the check in.
       # @option params [Integer] :amount The deposit amount in the minor unit of the account currency. For dollars, for
@@ -16,9 +16,9 @@ module Increase
       # @option params [String] :back_image_file_id The File containing the check's back image.
       # @option params [String] :currency The currency to use for the deposit.
       # @option params [String] :front_image_file_id The File containing the check's front image.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::CheckDeposit]
       def create(params = {}, opts = {})
         req = {}
@@ -30,10 +30,10 @@ module Increase
       end
 
       # Retrieve a Check Deposit
-      # 
+      #
       # @param check_deposit_id [String] The identifier of the Check Deposit to retrieve.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::CheckDeposit]
       def retrieve(check_deposit_id, opts = {})
         req = {}
@@ -44,7 +44,7 @@ module Increase
       end
 
       # List Check Deposits
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id Filter Check Deposits to those belonging to the specified Account.
       # @option params [CreatedAt] :created_at
@@ -55,9 +55,9 @@ module Increase
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::CheckDeposit>]
       def list(params = {}, opts = {})
         req = {}

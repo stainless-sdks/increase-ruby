@@ -164,7 +164,10 @@ module Increase
             # @!attribute [rw] address
             #   The person's address.
             #   @return [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address]
-            required :address, -> { Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address }
+            required :address,
+                     lambda {
+                       Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address
+                     }
 
             # @!attribute [rw] date_of_birth
             #   The person's date of birth in YYYY-MM-DD format.
@@ -634,7 +637,10 @@ module Increase
             # @!attribute [rw] identification
             #   A means of verifying the person's identity.
             #   @return [Increase::Models::Entity::Trust::Trustee::Individual::Identification]
-            required :identification, -> { Increase::Models::Entity::Trust::Trustee::Individual::Identification }
+            required :identification,
+                     lambda {
+                       Increase::Models::Entity::Trust::Trustee::Individual::Identification
+                     }
 
             # @!attribute [rw] name_
             #   The person's legal name.

@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create a Wire Drawdown Request
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_number_id The Account Number to which the recipient should send funds.
       # @option params [Integer] :amount The amount requested from the recipient, in cents.
@@ -31,9 +31,9 @@ module Increase
       # @option params [String] :recipient_address_line1 Line 1 of the drawdown request's recipient's address.
       # @option params [String] :recipient_address_line2 Line 2 of the drawdown request's recipient's address.
       # @option params [String] :recipient_address_line3 Line 3 of the drawdown request's recipient's address.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::WireDrawdownRequest]
       def create(params = {}, opts = {})
         req = {}
@@ -45,10 +45,10 @@ module Increase
       end
 
       # Retrieve a Wire Drawdown Request
-      # 
+      #
       # @param wire_drawdown_request_id [String] The identifier of the Wire Drawdown Request to retrieve.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::WireDrawdownRequest]
       def retrieve(wire_drawdown_request_id, opts = {})
         req = {}
@@ -59,7 +59,7 @@ module Increase
       end
 
       # List Wire Drawdown Requests
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :cursor Return the page of entries after this one.
       # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
@@ -69,9 +69,9 @@ module Increase
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       # @option params [Symbol] :status Filter Wire Drawdown Requests for those with the specified status.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::WireDrawdownRequest>]
       def list(params = {}, opts = {})
         req = {}

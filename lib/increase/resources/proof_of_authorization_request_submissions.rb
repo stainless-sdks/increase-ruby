@@ -8,7 +8,7 @@ module Increase
       end
 
       # Submit Proof of Authorization
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :authorization_terms Terms of authorization.
       # @option params [String] :authorized_at Time of authorization.
@@ -21,9 +21,9 @@ module Increase
       # @option params [Boolean] :validated_account_ownership_with_microdeposit Whether the account ownership was validated with a microdeposit.
       # @option params [String] :authorizer_company Company of the authorizer.
       # @option params [String] :authorizer_ip_address IP address of the authorizer.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def create(params = {}, opts = {})
         req = {}
@@ -35,21 +35,22 @@ module Increase
       end
 
       # Retrieve a Proof of Authorization Request Submission
-      # 
+      #
       # @param proof_of_authorization_request_submission_id [String] The identifier of the Proof of Authorization Request Submission.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def retrieve(proof_of_authorization_request_submission_id, opts = {})
         req = {}
         req[:method] = :get
-        req[:path] = "/proof_of_authorization_request_submissions/#{proof_of_authorization_request_submission_id}"
+        req[:path] =
+          "/proof_of_authorization_request_submissions/#{proof_of_authorization_request_submission_id}"
         req[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
         @client.request(req, opts)
       end
 
       # List Proof of Authorization Request Submissions
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :cursor Return the page of entries after this one.
       # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
@@ -59,9 +60,9 @@ module Increase
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       # @option params [String] :proof_of_authorization_request_id ID of the proof of authorization request.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequestSubmission>]
       def list(params = {}, opts = {})
         req = {}
