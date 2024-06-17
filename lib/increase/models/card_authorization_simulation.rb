@@ -6,10 +6,7 @@ module Increase
       # @!attribute [rw] declined_transaction
       #   If the authorization attempt fails, this will contain the resulting [Declined Transaction](#declined-transactions) object. The Declined Transaction's `source` will be of `category: card_decline`.
       #   @return [Increase::Models::CardAuthorizationSimulation::DeclinedTransaction]
-      required :declined_transaction,
-               lambda {
-                 Increase::Models::CardAuthorizationSimulation::DeclinedTransaction
-               }
+      required :declined_transaction, -> { Increase::Models::CardAuthorizationSimulation::DeclinedTransaction }
 
       # @!attribute [rw] pending_transaction
       #   If the authorization attempt succeeds, this will contain the resulting Pending Transaction object. The Pending Transaction's `source` will be of `category: card_authorization`.

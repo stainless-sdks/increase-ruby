@@ -18,7 +18,7 @@ module Increase
         #   contain either a [Transaction](#transactions) or a
         #   [Declined Transaction](#declined-transactions) depending on whether or not the
         #   transfer is allowed.
-        #
+        # 
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :account_number_id The identifier of the Account Number the inbound ACH Transfer is for.
         # @option params [Integer] :amount The transfer amount in cents. A positive amount originates a credit transfer
@@ -33,9 +33,9 @@ module Increase
         # @option params [String] :receiver_name The name of the receiver of the transfer.
         # @option params [String] :resolve_at The time at which the transfer should be resolved. If not provided will resolve
         #   immediately.
-        #
+        # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        #
+        # 
         # @return [Increase::Models::InboundACHTransfer]
         def create_inbound(params = {}, opts = {})
           req = {}
@@ -48,16 +48,16 @@ module Increase
 
         # Simulates receiving a Notification of Change for an
         #   [ACH Transfer](#ach-transfers).
-        #
+        # 
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to create a notification of change
         #   for.
-        #
+        # 
         # @param params [Hash] Attributes to send in this request.
         # @option params [Symbol] :change_code The reason for the notification of change.
         # @option params [String] :corrected_data The corrected data for the notification of change (e.g., a new routing number).
-        #
+        # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        #
+        # 
         # @return [Increase::Models::ACHTransfer]
         def notification_of_change(ach_transfer_id, params = {}, opts = {})
           req = {}
@@ -71,15 +71,15 @@ module Increase
         # Simulates the return of an [ACH Transfer](#ach-transfers) by the Federal Reserve
         #   due to an error condition. This will also create a Transaction to account for
         #   the returned funds. This transfer must first have a `status` of `submitted`.
-        #
+        # 
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to return.
-        #
+        # 
         # @param params [Hash] Attributes to send in this request.
         # @option params [Symbol] :reason The reason why the Federal Reserve or destination bank returned this transfer.
         #   Defaults to `no_account`.
-        #
+        # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        #
+        # 
         # @return [Increase::Models::ACHTransfer]
         def return_(ach_transfer_id, params = {}, opts = {})
           req = {}
@@ -96,10 +96,10 @@ module Increase
         #   Federal Reserve three times per day on weekdays. Since sandbox ACH Transfers are
         #   not submitted to the Federal Reserve, this endpoint allows you to skip that
         #   delay and transition the ACH Transfer to a status of `submitted`.
-        #
+        # 
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to submit.
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        #
+        # 
         # @return [Increase::Models::ACHTransfer]
         def submit(ach_transfer_id, opts = {})
           req = {}

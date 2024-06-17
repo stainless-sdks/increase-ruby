@@ -12,7 +12,7 @@ module Increase
     attr_accessor :client, :req, :opts
 
     # @!visibility private
-    def initialize(model, raw_data, _response, client, req, opts)
+    def initialize(model, raw_data, response, client, req, opts)
       self.data = (raw_data[:data] || []).map { |e| model.convert(e) }
       self.next_cursor = raw_data[:next_cursor]
       self.client = client

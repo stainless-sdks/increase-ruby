@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create a Check Transfer
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id The identifier for the account that will send the transfer.
       # @option params [Integer] :amount The transfer amount in cents.
@@ -22,9 +22,9 @@ module Increase
       # @option params [ThirdParty] :third_party Details relating to the custom fulfillment you will perform. This is required if
       #   `fulfillment_method` is equal to `third_party`. It must not be included if any
       #   other `fulfillment_method` is provided.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::CheckTransfer]
       def create(params = {}, opts = {})
         req = {}
@@ -36,10 +36,10 @@ module Increase
       end
 
       # Retrieve a Check Transfer
-      #
+      # 
       # @param check_transfer_id [String] The identifier of the Check Transfer.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::CheckTransfer]
       def retrieve(check_transfer_id, opts = {})
         req = {}
@@ -50,7 +50,7 @@ module Increase
       end
 
       # List Check Transfers
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id Filter Check Transfers to those that originated from the specified Account.
       # @option params [CreatedAt] :created_at
@@ -61,9 +61,9 @@ module Increase
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Page<Increase::Models::CheckTransfer>]
       def list(params = {}, opts = {})
         req = {}
@@ -76,10 +76,10 @@ module Increase
       end
 
       # Approve a Check Transfer
-      #
+      # 
       # @param check_transfer_id [String] The identifier of the Check Transfer to approve.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::CheckTransfer]
       def approve(check_transfer_id, opts = {})
         req = {}
@@ -90,10 +90,10 @@ module Increase
       end
 
       # Cancel a pending Check Transfer
-      #
+      # 
       # @param check_transfer_id [String] The identifier of the pending Check Transfer to cancel.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::CheckTransfer]
       def cancel(check_transfer_id, opts = {})
         req = {}
@@ -104,14 +104,14 @@ module Increase
       end
 
       # Request a stop payment on a Check Transfer
-      #
+      # 
       # @param check_transfer_id [String] The identifier of the Check Transfer.
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol] :reason The reason why this transfer should be stopped.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::CheckTransfer]
       def stop_payment(check_transfer_id, params = {}, opts = {})
         req = {}

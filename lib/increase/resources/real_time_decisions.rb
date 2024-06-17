@@ -8,10 +8,10 @@ module Increase
       end
 
       # Retrieve a Real-Time Decision
-      #
+      # 
       # @param real_time_decision_id [String] The identifier of the Real-Time Decision.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::RealTimeDecision]
       def retrieve(real_time_decision_id, opts = {})
         req = {}
@@ -22,9 +22,9 @@ module Increase
       end
 
       # Action a Real-Time Decision
-      #
+      # 
       # @param real_time_decision_id [String] The identifier of the Real-Time Decision.
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [CardAuthorization] :card_authorization If the Real-Time Decision relates to a card authorization attempt, this object
       #   contains your response to the authorization.
@@ -32,9 +32,9 @@ module Increase
       #   this object contains your response to the authentication.
       # @option params [DigitalWalletToken] :digital_wallet_token If the Real-Time Decision relates to a digital wallet token provisioning
       #   attempt, this object contains your response to the attempt.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::RealTimeDecision]
       def action(real_time_decision_id, params = {}, opts = {})
         req = {}

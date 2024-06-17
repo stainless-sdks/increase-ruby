@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create an Event Subscription
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :url The URL you'd like us to send webhooks to.
       # @option params [String] :oauth_connection_id If specified, this subscription will only receive webhooks for Events associated
@@ -17,9 +17,9 @@ module Increase
       #   specified `category`.
       # @option params [String] :shared_secret The key that will be used to sign webhooks. If no value is passed, a random
       #   string will be used as default.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::EventSubscription]
       def create(params = {}, opts = {})
         req = {}
@@ -31,10 +31,10 @@ module Increase
       end
 
       # Retrieve an Event Subscription
-      #
+      # 
       # @param event_subscription_id [String] The identifier of the Event Subscription.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::EventSubscription]
       def retrieve(event_subscription_id, opts = {})
         req = {}
@@ -45,14 +45,14 @@ module Increase
       end
 
       # Update an Event Subscription
-      #
+      # 
       # @param event_subscription_id [String] The identifier of the Event Subscription.
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol] :status The status to update the Event Subscription with.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::EventSubscription]
       def update(event_subscription_id, params = {}, opts = {})
         req = {}
@@ -64,7 +64,7 @@ module Increase
       end
 
       # List Event Subscriptions
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :cursor Return the page of entries after this one.
       # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
@@ -73,9 +73,9 @@ module Increase
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Page<Increase::Models::EventSubscription>]
       def list(params = {}, opts = {})
         req = {}

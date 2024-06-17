@@ -8,10 +8,10 @@ module Increase
       end
 
       # Retrieve an Inbound Wire Transfer
-      #
+      # 
       # @param inbound_wire_transfer_id [String] The identifier of the Inbound Wire Transfer to get details for.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::InboundWireTransfer]
       def retrieve(inbound_wire_transfer_id, opts = {})
         req = {}
@@ -22,7 +22,7 @@ module Increase
       end
 
       # List Inbound Wire Transfers
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id Filter Inbound Wire Tranfers to ones belonging to the specified Account.
       # @option params [String] :account_number_id Filter Inbound Wire Tranfers to ones belonging to the specified Account Number.
@@ -31,9 +31,9 @@ module Increase
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       # @option params [Symbol] :status Filter Inbound Wire Transfers to those with the specified status.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Page<Increase::Models::InboundWireTransfer>]
       def list(params = {}, opts = {})
         req = {}

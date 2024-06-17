@@ -13,7 +13,7 @@ class Increase::Test::Resources::DeclinedTransactionsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.declined_transactions.list
+    response = @increase.declined_transactions.list 
     assert_kind_of(Increase::Page, response)
   end
 end

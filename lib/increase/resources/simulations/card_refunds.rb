@@ -10,13 +10,13 @@ module Increase
 
         # Simulates refunding a card transaction. The full value of the original sandbox
         #   transaction is refunded.
-        #
+        # 
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :transaction_id The identifier for the Transaction to refund. The Transaction's source must have
         #   a category of card_settlement.
-        #
+        # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        #
+        # 
         # @return [Increase::Models::Transaction]
         def create(params = {}, opts = {})
           req = {}

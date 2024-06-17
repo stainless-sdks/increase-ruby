@@ -8,10 +8,10 @@ module Increase
       end
 
       # Retrieve a Declined Transaction
-      #
+      # 
       # @param declined_transaction_id [String] The identifier of the Declined Transaction.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::DeclinedTransaction]
       def retrieve(declined_transaction_id, opts = {})
         req = {}
@@ -22,7 +22,7 @@ module Increase
       end
 
       # List Declined Transactions
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id Filter Declined Transactions to ones belonging to the specified Account.
       # @option params [Category] :category
@@ -31,9 +31,9 @@ module Increase
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       # @option params [String] :route_id Filter Declined Transactions to those belonging to the specified route.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Page<Increase::Models::DeclinedTransaction>]
       def list(params = {}, opts = {})
         req = {}

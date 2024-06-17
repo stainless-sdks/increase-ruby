@@ -13,7 +13,7 @@ class Increase::Test::Resources::WireDrawdownRequestsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.wire_drawdown_requests.list
+    response = @increase.wire_drawdown_requests.list 
     assert_kind_of(Increase::Page, response)
   end
 end

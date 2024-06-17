@@ -8,12 +8,7 @@ class Increase::Test::Resources::AccountNumbersTest < Test::Unit::TestCase
   end
 
   def test_create_required_params
-    response = @increase.account_numbers.create(
-      {
-        account_id: "account_in71c4amph0vgo2qllky",
-        name: "Rent payments"
-      }
-    )
+    response = @increase.account_numbers.create({account_id: "account_in71c4amph0vgo2qllky", name: "Rent payments"})
     assert_kind_of(Increase::Models::AccountNumber, response)
   end
 
@@ -28,7 +23,7 @@ class Increase::Test::Resources::AccountNumbersTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.account_numbers.list
+    response = @increase.account_numbers.list 
     assert_kind_of(Increase::Page, response)
   end
 end

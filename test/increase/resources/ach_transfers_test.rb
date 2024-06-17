@@ -20,7 +20,7 @@ class Increase::Test::Resources::ACHTransfersTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.ach_transfers.list
+    response = @increase.ach_transfers.list 
     assert_kind_of(Increase::Page, response)
   end
 

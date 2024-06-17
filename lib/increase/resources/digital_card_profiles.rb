@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create a Digital Card Profile
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :app_icon_file_id The identifier of the File containing the card's icon image.
       # @option params [String] :background_image_file_id The identifier of the File containing the card's front image.
@@ -19,9 +19,9 @@ module Increase
       # @option params [String] :contact_phone A phone number the user can contact to receive support for their card.
       # @option params [String] :contact_website A website the user can visit to view and receive support for their card.
       # @option params [TextColor] :text_color The Card's text color, specified as an RGB triple. The default is white.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::DigitalCardProfile]
       def create(params = {}, opts = {})
         req = {}
@@ -33,10 +33,10 @@ module Increase
       end
 
       # Retrieve a Digital Card Profile
-      #
+      # 
       # @param digital_card_profile_id [String] The identifier of the Digital Card Profile.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::DigitalCardProfile]
       def retrieve(digital_card_profile_id, opts = {})
         req = {}
@@ -47,7 +47,7 @@ module Increase
       end
 
       # List Card Profiles
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :cursor Return the page of entries after this one.
       # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
@@ -57,9 +57,9 @@ module Increase
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       # @option params [Status] :status
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Page<Increase::Models::DigitalCardProfile>]
       def list(params = {}, opts = {})
         req = {}
@@ -72,10 +72,10 @@ module Increase
       end
 
       # Archive a Digital Card Profile
-      #
+      # 
       # @param digital_card_profile_id [String] The identifier of the Digital Card Profile to archive.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::DigitalCardProfile]
       def archive(digital_card_profile_id, opts = {})
         req = {}
@@ -86,9 +86,9 @@ module Increase
       end
 
       # Clones a Digital Card Profile
-      #
+      # 
       # @param digital_card_profile_id [String] The identifier of the Digital Card Profile to clone.
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :app_icon_file_id The identifier of the File containing the card's icon image.
       # @option params [String] :background_image_file_id The identifier of the File containing the card's front image.
@@ -99,9 +99,9 @@ module Increase
       # @option params [String] :description A description you can use to identify the Card Profile.
       # @option params [String] :issuer_name A user-facing description for whoever is issuing the card.
       # @option params [TextColor] :text_color The Card's text color, specified as an RGB triple. The default is white.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::DigitalCardProfile]
       def clone(digital_card_profile_id, params = {}, opts = {})
         req = {}

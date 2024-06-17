@@ -9,20 +9,7 @@ class Increase::Test::Resources::PhysicalCardsTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @increase.physical_cards.create(
-      {
-        card_id: "card_oubs0hwk5rn6knuecxg2",
-        cardholder: {"first_name" => "Ian", "last_name" => "Crease"},
-        shipment: {
-          "address" => {
-            "city" => "New York",
-            "line1" => "33 Liberty Street",
-            "name" => "Ian Crease",
-            "postal_code" => "10045",
-            "state" => "NY"
-          },
-          "method" => "usps"
-        }
-      }
+      {card_id: "card_oubs0hwk5rn6knuecxg2", cardholder: {"first_name" => "Ian", "last_name" => "Crease"}, shipment: {"address" => {"city" => "New York", "line1" => "33 Liberty Street", "name" => "Ian Crease", "postal_code" => "10045", "state" => "NY"}, "method" => "usps"}}
     )
     assert_kind_of(Increase::Models::PhysicalCard, response)
   end
@@ -38,7 +25,7 @@ class Increase::Test::Resources::PhysicalCardsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.physical_cards.list
+    response = @increase.physical_cards.list 
     assert_kind_of(Increase::Page, response)
   end
 end

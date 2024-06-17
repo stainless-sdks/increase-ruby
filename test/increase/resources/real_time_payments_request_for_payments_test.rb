@@ -9,15 +9,7 @@ class Increase::Test::Resources::RealTimePaymentsRequestForPaymentsTest < Test::
 
   def test_create_required_params
     response = @increase.real_time_payments_request_for_payments.create(
-      {
-        amount: 100,
-        debtor: {"address" => {"country" => "US"}, "name" => "Ian Crease"},
-        destination_account_number_id: "account_number_v18nkfqm6afpsrvy82b2",
-        expires_at: "2025-12-31",
-        remittance_information: "Invoice 29582",
-        source_account_number: "987654321",
-        source_routing_number: "101050001"
-      }
+      {amount: 100, debtor: {"address" => {"country" => "US"}, "name" => "Ian Crease"}, destination_account_number_id: "account_number_v18nkfqm6afpsrvy82b2", expires_at: "2025-12-31", remittance_information: "Invoice 29582", source_account_number: "987654321", source_routing_number: "101050001"}
     )
     assert_kind_of(Increase::Models::RealTimePaymentsRequestForPayment, response)
   end
@@ -28,7 +20,7 @@ class Increase::Test::Resources::RealTimePaymentsRequestForPaymentsTest < Test::
   end
 
   def test_list
-    response = @increase.real_time_payments_request_for_payments.list
+    response = @increase.real_time_payments_request_for_payments.list 
     assert_kind_of(Increase::Page, response)
   end
 end

@@ -77,14 +77,7 @@ module Increase
       #   The lifecycle status of the request for payment.
       #   @return [Symbol]
       required :status,
-               Increase::Enum.new(
-                 :pending_submission,
-                 :pending_response,
-                 :rejected,
-                 :accepted,
-                 :refused,
-                 :fulfilled
-               )
+               Increase::Enum.new(:pending_submission, :pending_response, :rejected, :accepted, :refused, :fulfilled)
 
       # @!attribute [rw] submission
       #   After the request for payment is submitted to Real-Time Payments, this will contain supplemental details.

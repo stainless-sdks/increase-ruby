@@ -9,12 +9,7 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @increase.bookkeeping_entry_sets.create(
-      {
-        entries: [
-          {"account_id" => "bookkeeping_account_9husfpw68pzmve9dvvc7", "amount" => 100},
-          {"account_id" => "bookkeeping_account_t2obldz1rcu15zr54umg", "amount" => -100}
-        ]
-      }
+      {entries: [{"account_id" => "bookkeeping_account_9husfpw68pzmve9dvvc7", "amount" => 100}, {"account_id" => "bookkeeping_account_t2obldz1rcu15zr54umg", "amount" => -100}]}
     )
     assert_kind_of(Increase::Models::BookkeepingEntrySet, response)
   end
@@ -25,7 +20,7 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.bookkeeping_entry_sets.list
+    response = @increase.bookkeeping_entry_sets.list 
     assert_kind_of(Increase::Page, response)
   end
 end

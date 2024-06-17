@@ -103,10 +103,7 @@ module Increase
         # @!attribute [rw] network_details
         #   Fields specific to the `network`.
         #   @return [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails]
-        required :network_details,
-                 lambda {
-                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails
-                 }
+        required :network_details, -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails }
 
         # @!attribute [rw] network_identifiers
         #   Network-specific identifiers for a specific request or transaction.
@@ -150,10 +147,7 @@ module Increase
         # @!attribute [rw] request_details
         #   Fields specific to the type of request, such as an incremental authorization.
         #   @return [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails]
-        required :request_details,
-                 lambda {
-                   Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails
-                 }
+        required :request_details, -> { Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails }
 
         # @!attribute [rw] settlement_amount
         #   The amount of the attempted authorization in the currency it will be settled in. This currency is the same as that of the Account the card belongs to.

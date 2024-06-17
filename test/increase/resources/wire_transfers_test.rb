@@ -9,12 +9,7 @@ class Increase::Test::Resources::WireTransfersTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @increase.wire_transfers.create(
-      {
-        account_id: "account_in71c4amph0vgo2qllky",
-        amount: 100,
-        beneficiary_name: "Ian Crease",
-        message_to_recipient: "New account transfer"
-      }
+      {account_id: "account_in71c4amph0vgo2qllky", amount: 100, beneficiary_name: "Ian Crease", message_to_recipient: "New account transfer"}
     )
     assert_kind_of(Increase::Models::WireTransfer, response)
   end
@@ -25,7 +20,7 @@ class Increase::Test::Resources::WireTransfersTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.wire_transfers.list
+    response = @increase.wire_transfers.list 
     assert_kind_of(Increase::Page, response)
   end
 

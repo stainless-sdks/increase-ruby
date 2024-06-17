@@ -20,7 +20,7 @@ class Increase::Test::Resources::ACHPrenotificationsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.ach_prenotifications.list
+    response = @increase.ach_prenotifications.list 
     assert_kind_of(Increase::Page, response)
   end
 end
