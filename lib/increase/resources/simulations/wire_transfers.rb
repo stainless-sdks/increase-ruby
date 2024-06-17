@@ -9,7 +9,7 @@ module Increase
         end
 
         # Simulates an inbound Wire Transfer to your account.
-        #
+        # 
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :account_number_id The identifier of the Account Number the inbound Wire Transfer is for.
         # @option params [Integer] :amount The transfer amount in cents. Must be positive.
@@ -41,9 +41,9 @@ module Increase
         #   production. You can simulate any value here.
         # @option params [String] :originator_to_beneficiary_information_line4 The sending bank will set originator_to_beneficiary_information_line4 in
         #   production. You can simulate any value here.
-        #
+        # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        #
+        # 
         # @return [Increase::Models::InboundWireTransfer]
         def create_inbound(params = {}, opts = {})
           req = {}

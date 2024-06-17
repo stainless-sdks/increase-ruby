@@ -20,7 +20,7 @@ module Increase
       end
 
       # Create an Entity
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol] :structure The type of Entity to create.
       # @option params [Corporation] :corporation Details of the corporation entity to create. Required if `structure` is equal to
@@ -37,9 +37,9 @@ module Increase
       # @option params [Array<SupplementalDocument>] :supplemental_documents Additional documentation associated with the entity.
       # @option params [Trust] :trust Details of the trust entity to create. Required if `structure` is equal to
       #   `trust`.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::Entity]
       def create(params = {}, opts = {})
         req = {}
@@ -51,10 +51,10 @@ module Increase
       end
 
       # Retrieve an Entity
-      #
+      # 
       # @param entity_id [String] The identifier of the Entity to retrieve.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::Entity]
       def retrieve(entity_id, opts = {})
         req = {}
@@ -65,7 +65,7 @@ module Increase
       end
 
       # List Entities
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [CreatedAt] :created_at
       # @option params [String] :cursor Return the page of entries after this one.
@@ -76,9 +76,9 @@ module Increase
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       # @option params [Status] :status
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Page<Increase::Models::Entity>]
       def list(params = {}, opts = {})
         req = {}
@@ -91,11 +91,11 @@ module Increase
       end
 
       # Archive an Entity
-      #
+      # 
       # @param entity_id [String] The identifier of the Entity to archive. Any accounts associated with an entity
       #   must be closed before the entity can be archived.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::Entity]
       def archive(entity_id, opts = {})
         req = {}
@@ -108,15 +108,15 @@ module Increase
       # Depending on your program, you may be required to re-confirm an Entity's details
       #   on a recurring basis. After making any required updates, call this endpoint to
       #   record that your user confirmed their details.
-      #
+      # 
       # @param entity_id [String] The identifier of the Entity to confirm the details of.
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :confirmed_at When your user confirmed the Entity's details. If not provided, the current time
       #   will be used.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::Entity]
       def confirm(entity_id, params = {}, opts = {})
         req = {}
@@ -128,15 +128,15 @@ module Increase
       end
 
       # Update a Natural Person or Corporation's address
-      #
+      # 
       # @param entity_id [String] The identifier of the Entity to archive.
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [Address] :address The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       #   are disallowed.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::Entity]
       def update_address(entity_id, params = {}, opts = {})
         req = {}
