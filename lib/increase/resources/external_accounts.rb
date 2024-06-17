@@ -14,7 +14,8 @@ module Increase
       # @option params [String] :description The name you choose for the Account.
       # @option params [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
-      # @option params [Symbol] :account_holder The type of entity that owns the External Account.
+      # @option params [Symbol] :account_holder The type of entity that owns the account to which the ACH Transfer is being
+      #   sent.
       # @option params [Symbol] :funding The type of the destination account. Defaults to `checking`.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
@@ -50,7 +51,7 @@ module Increase
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol] :account_holder The type of entity that owns the External Account.
       # @option params [String] :description The description you choose to give the external account.
-      # @option params [Symbol] :funding The funding type of the External Account.
+      # @option params [Symbol] :funding The type of the destination account. Defaults to `checking`.
       # @option params [Symbol] :status The status of the External Account.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.

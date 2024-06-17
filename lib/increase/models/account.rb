@@ -24,7 +24,7 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
       #   @return [Symbol]
       required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
@@ -74,7 +74,7 @@ module Increase
       required :status, Increase::Enum.new(:open, :closed)
 
       # @!attribute [rw] type
-      #   A constant representing the object's type. For this resource it will always be `account`.
+      #   The transfer's network.
       #   @return [Symbol]
       required :type, Increase::Enum.new(:account)
     end

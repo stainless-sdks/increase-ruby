@@ -70,11 +70,11 @@ module Increase
 
       # @!attribute [rw] created_by
       #   What object created the transfer, either via the API or the dashboard.
-      #   @return [Increase::Models::ACHTransfer::CreatedBy]
-      required :created_by, -> { Increase::Models::ACHTransfer::CreatedBy }
+      #   @return [Increase::Models::UnnamedSchemaRefF6173181c6264e25e2594d45133af8ed]
+      required :created_by, -> { Increase::Models::UnnamedSchemaRefF6173181c6264e25e2594d45133af8ed }
 
       # @!attribute [rw] currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
       #   @return [Symbol]
       required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
@@ -120,9 +120,13 @@ module Increase
 
       # @!attribute [rw] notifications_of_change
       #   If the receiving bank accepts the transfer but notifies that future transfers should use different details, this will contain those details.
-      #   @return [Array<Increase::Models::ACHTransfer::NotificationsOfChange>]
+      #   @return [Array<Increase::Models::UnnamedSchemaRef769be81797d2294154bd7914f39e1686>]
       required :notifications_of_change,
-               Increase::ArrayOf.new(-> { Increase::Models::ACHTransfer::NotificationsOfChange })
+               Increase::ArrayOf.new(
+                 lambda {
+                   Increase::Models::UnnamedSchemaRef769be81797d2294154bd7914f39e1686
+                 }
+               )
 
       # @!attribute [rw] pending_transaction_id
       #   The ID for the pending transaction representing the transfer. A pending transaction is created when the transfer [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals) by someone else in your organization.
@@ -140,7 +144,7 @@ module Increase
       required :routing_number, String
 
       # @!attribute [rw] standard_entry_class_code
-      #   The Standard Entry Class (SEC) code to use for the transfer.
+      #   The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       #   @return [Symbol]
       required :standard_entry_class_code,
                Increase::Enum.new(
@@ -246,66 +250,6 @@ module Increase
         end
       end
 
-      class CreatedBy < BaseModel
-        # @!attribute [rw] api_key
-        #   If present, details about the API key that created the transfer.
-        #   @return [Increase::Models::UnnamedSchemaRef6ff8f32a8ee62a70f72bb8160f984371]
-        required :api_key, -> { Increase::Models::UnnamedSchemaRef6ff8f32a8ee62a70f72bb8160f984371 }
-
-        # @!attribute [rw] category
-        #   The type of object that created this transfer.
-        #   @return [Symbol]
-        required :category, Increase::Enum.new(:api_key, :oauth_application, :user)
-
-        # @!attribute [rw] oauth_application
-        #   If present, details about the OAuth Application that created the transfer.
-        #   @return [Increase::Models::UnnamedSchemaRef2aa12ad8358299c478e4658f636c9732]
-        required :oauth_application, -> { Increase::Models::UnnamedSchemaRef2aa12ad8358299c478e4658f636c9732 }
-
-        # @!attribute [rw] user
-        #   If present, details about the User that created the transfer.
-        #   @return [Increase::Models::UnnamedSchemaRef5af1efe3d974b3c8bf884988b11ffc95]
-        required :user, -> { Increase::Models::UnnamedSchemaRef5af1efe3d974b3c8bf884988b11ffc95 }
-      end
-
-      class NotificationsOfChange < BaseModel
-        # @!attribute [rw] change_code
-        #   The required type of change that is being signaled by the receiving financial institution.
-        #   @return [Symbol]
-        required :change_code,
-                 Increase::Enum.new(
-                   :incorrect_account_number,
-                   :incorrect_routing_number,
-                   :incorrect_routing_number_and_account_number,
-                   :incorrect_transaction_code,
-                   :incorrect_account_number_and_transaction_code,
-                   :incorrect_routing_number_account_number_and_transaction_code,
-                   :incorrect_receiving_depository_financial_institution_identification,
-                   :incorrect_individual_identification_number,
-                   :addenda_format_error,
-                   :incorrect_standard_entry_class_code_for_outbound_international_payment,
-                   :misrouted_notification_of_change,
-                   :incorrect_trace_number,
-                   :incorrect_company_identification_number,
-                   :incorrect_identification_number,
-                   :incorrectly_formatted_corrected_data,
-                   :incorrect_discretionary_data,
-                   :routing_number_not_from_original_entry_detail_record,
-                   :depository_financial_institution_account_number_not_from_original_entry_detail_record,
-                   :incorrect_transaction_code_by_originating_depository_financial_institution
-                 )
-
-        # @!attribute [rw] corrected_data
-        #   The corrected data that should be used in future ACHs to this account. This may contain the suggested new  account number or routing number. When the `change_code` is `incorrect_transaction_code`, this field contains an integer. Numbers starting with a 2 encourage changing the `funding` parameter to checking; numbers starting with a 3 encourage changing to savings.
-        #   @return [String]
-        required :corrected_data, String
-
-        # @!attribute [rw] created_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the notification occurred.
-        #   @return [String]
-        required :created_at, String
-      end
-
       class Return < BaseModel
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
@@ -318,7 +262,7 @@ module Increase
         required :raw_return_reason_code, String
 
         # @!attribute [rw] return_reason_code
-        #   Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
+        #   Why the Prenotification was returned.
         #   @return [Symbol]
         required :return_reason_code,
                  Increase::Enum.new(

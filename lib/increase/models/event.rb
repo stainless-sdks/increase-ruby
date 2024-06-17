@@ -19,7 +19,7 @@ module Increase
       required :associated_object_type, String
 
       # @!attribute [rw] category
-      #   The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+      #   If specified, this subscription will only receive webhooks for Events with the specified `category`.
       #   @return [Symbol]
       required :category,
                Increase::Enum.new(

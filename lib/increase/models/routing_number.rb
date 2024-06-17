@@ -4,7 +4,7 @@ module Increase
   module Models
     class RoutingNumber < BaseModel
       # @!attribute [rw] ach_transfers
-      #   This routing number's support for ACH Transfers.
+      #   This routing number's support for Real-Time Payments Transfers.
       #   @return [Symbol]
       required :ach_transfers, Increase::Enum.new(:supported, :not_supported)
 
@@ -29,7 +29,7 @@ module Increase
       required :type, Increase::Enum.new(:routing_number)
 
       # @!attribute [rw] wire_transfers
-      #   This routing number's support for Wire Transfers.
+      #   This routing number's support for Real-Time Payments Transfers.
       #   @return [Symbol]
       required :wire_transfers, Increase::Enum.new(:supported, :not_supported)
     end

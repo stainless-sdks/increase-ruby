@@ -9,7 +9,7 @@ module Increase
       required :id, String
 
       # @!attribute [rw] category
-      #   The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
+      #   The type of Export to create.
       #   @return [Symbol]
       required :category,
                Increase::Enum.new(

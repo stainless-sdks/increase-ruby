@@ -59,7 +59,7 @@ module Increase
       required :last4, String
 
       # @!attribute [rw] status
-      #   This indicates if payments can be made with the card.
+      #   This indicates if transfers can be made to the Account Number.
       #   @return [Symbol]
       required :status, Increase::Enum.new(:active, :disabled, :canceled)
 

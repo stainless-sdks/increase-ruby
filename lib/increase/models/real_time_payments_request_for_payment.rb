@@ -19,7 +19,7 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
       #   @return [Symbol]
       required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
@@ -120,7 +120,7 @@ module Increase
 
       class Rejection < BaseModel
         # @!attribute [rw] reject_reason_code
-        #   The reason the request for payment was rejected as provided by the recipient bank or the Real-Time Payments network.
+        #   The reason code that the simulated rejection will have.
         #   @return [Symbol]
         required :reject_reason_code,
                  Increase::Enum.new(

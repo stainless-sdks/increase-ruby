@@ -66,7 +66,7 @@ module Increase
         required :card_id, String
 
         # @!attribute [rw] decision
-        #   Whether or not the authorization was approved.
+        #   Whether the card authorization should be approved or declined.
         #   @return [Symbol]
         required :decision, Increase::Enum.new(:approve, :decline)
 
@@ -102,11 +102,8 @@ module Increase
 
         # @!attribute [rw] network_details
         #   Fields specific to the `network`.
-        #   @return [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails]
-        required :network_details,
-                 lambda {
-                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails
-                 }
+        #   @return [Increase::Models::UnnamedSchemaRefD0a57d7eb12023d4b4462ea03d5e65dc]
+        required :network_details, -> { Increase::Models::UnnamedSchemaRefD0a57d7eb12023d4b4462ea03d5e65dc }
 
         # @!attribute [rw] network_identifiers
         #   Network-specific identifiers for a specific request or transaction.
@@ -174,54 +171,8 @@ module Increase
 
         # @!attribute [rw] verification
         #   Fields related to verification of cardholder-provided values.
-        #   @return [Increase::Models::RealTimeDecision::CardAuthorization::Verification]
-        required :verification, -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification }
-
-        class NetworkDetails < BaseModel
-          # @!attribute [rw] category
-          #   The payment network used to process this card authorization.
-          #   @return [Symbol]
-          required :category, Increase::Enum.new(:visa)
-
-          # @!attribute [rw] visa
-          #   Fields specific to the `visa` network.
-          #   @return [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa]
-          required :visa, -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa }
-
-          class Visa < BaseModel
-            # @!attribute [rw] electronic_commerce_indicator
-            #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
-            #   @return [Symbol]
-            required :electronic_commerce_indicator,
-                     Increase::Enum.new(
-                       :mail_phone_order,
-                       :recurring,
-                       :installment,
-                       :unknown_mail_phone_order,
-                       :secure_electronic_commerce,
-                       :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                       :non_authenticated_security_transaction,
-                       :non_secure_transaction
-                     )
-
-            # @!attribute [rw] point_of_service_entry_mode
-            #   The method used to enter the cardholder's primary account number and card expiration date.
-            #   @return [Symbol]
-            required :point_of_service_entry_mode,
-                     Increase::Enum.new(
-                       :unknown,
-                       :manual,
-                       :magnetic_stripe_no_cvv,
-                       :optical_code,
-                       :integrated_circuit_card,
-                       :contactless,
-                       :credential_on_file,
-                       :magnetic_stripe,
-                       :contactless_magnetic_stripe,
-                       :integrated_circuit_card_no_cvv
-                     )
-          end
-        end
+        #   @return [Increase::Models::UnnamedSchemaRef895b1a0d84a5e8bb20deea91ed5ba88e]
+        required :verification, -> { Increase::Models::UnnamedSchemaRef895b1a0d84a5e8bb20deea91ed5ba88e }
 
         class RequestDetails < BaseModel
           # @!attribute [rw] category
@@ -250,62 +201,6 @@ module Increase
             #   The identifier of the card authorization this request is attempting to increment.
             #   @return [String]
             required :original_card_authorization_id, String
-          end
-        end
-
-        class Verification < BaseModel
-          # @!attribute [rw] card_verification_code
-          #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
-          #   @return [Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode]
-          required :card_verification_code,
-                   -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode }
-
-          # @!attribute [rw] cardholder_address
-          #   Cardholder address provided in the authorization request and the address on file we verified it against.
-          #   @return [Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress]
-          required :cardholder_address,
-                   -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress }
-
-          class CardVerificationCode < BaseModel
-            # @!attribute [rw] result
-            #   The result of verifying the Card Verification Code.
-            #   @return [Symbol]
-            required :result, Increase::Enum.new(:not_checked, :match, :no_match)
-          end
-
-          class CardholderAddress < BaseModel
-            # @!attribute [rw] actual_line1
-            #   Line 1 of the address on file for the cardholder.
-            #   @return [String]
-            required :actual_line1, String
-
-            # @!attribute [rw] actual_postal_code
-            #   The postal code of the address on file for the cardholder.
-            #   @return [String]
-            required :actual_postal_code, String
-
-            # @!attribute [rw] provided_line1
-            #   The cardholder address line 1 provided for verification in the authorization request.
-            #   @return [String]
-            required :provided_line1, String
-
-            # @!attribute [rw] provided_postal_code
-            #   The postal code provided for verification in the authorization request.
-            #   @return [String]
-            required :provided_postal_code, String
-
-            # @!attribute [rw] result
-            #   The address verification result returned to the card network.
-            #   @return [Symbol]
-            required :result,
-                     Increase::Enum.new(
-                       :not_checked,
-                       :postal_code_match_address_not_checked,
-                       :postal_code_match_address_no_match,
-                       :postal_code_no_match_address_match,
-                       :match,
-                       :no_match
-                     )
           end
         end
       end
@@ -342,7 +237,7 @@ module Increase
         required :phone, String
 
         # @!attribute [rw] result
-        #   Whether your application successfully delivered the one-time passcode.
+        #   Whether your application was able to deliver the one-time passcode.
         #   @return [Symbol]
         required :result, Increase::Enum.new(:success, :failure)
       end
@@ -359,7 +254,7 @@ module Increase
         required :card_profile_id, String
 
         # @!attribute [rw] decision
-        #   Whether or not the provisioning request was approved. This will be null until the real time decision is responded to.
+        #   Whether the card authorization should be approved or declined.
         #   @return [Symbol]
         required :decision, Increase::Enum.new(:approve, :decline)
 

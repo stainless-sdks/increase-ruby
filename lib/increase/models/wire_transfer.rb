@@ -60,11 +60,11 @@ module Increase
 
       # @!attribute [rw] created_by
       #   What object created the transfer, either via the API or the dashboard.
-      #   @return [Increase::Models::WireTransfer::CreatedBy]
-      required :created_by, -> { Increase::Models::WireTransfer::CreatedBy }
+      #   @return [Increase::Models::UnnamedSchemaRefF6173181c6264e25e2594d45133af8ed]
+      required :created_by, -> { Increase::Models::UnnamedSchemaRefF6173181c6264e25e2594d45133af8ed }
 
       # @!attribute [rw] currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For wire transfers this is always equal to `usd`.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
       #   @return [Symbol]
       required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
@@ -152,28 +152,6 @@ module Increase
       #   A constant representing the object's type. For this resource it will always be `wire_transfer`.
       #   @return [Symbol]
       required :type, Increase::Enum.new(:wire_transfer)
-
-      class CreatedBy < BaseModel
-        # @!attribute [rw] api_key
-        #   If present, details about the API key that created the transfer.
-        #   @return [Increase::Models::UnnamedSchemaRef6ff8f32a8ee62a70f72bb8160f984371]
-        required :api_key, -> { Increase::Models::UnnamedSchemaRef6ff8f32a8ee62a70f72bb8160f984371 }
-
-        # @!attribute [rw] category
-        #   The type of object that created this transfer.
-        #   @return [Symbol]
-        required :category, Increase::Enum.new(:api_key, :oauth_application, :user)
-
-        # @!attribute [rw] oauth_application
-        #   If present, details about the OAuth Application that created the transfer.
-        #   @return [Increase::Models::UnnamedSchemaRef2aa12ad8358299c478e4658f636c9732]
-        required :oauth_application, -> { Increase::Models::UnnamedSchemaRef2aa12ad8358299c478e4658f636c9732 }
-
-        # @!attribute [rw] user
-        #   If present, details about the User that created the transfer.
-        #   @return [Increase::Models::UnnamedSchemaRef5af1efe3d974b3c8bf884988b11ffc95]
-        required :user, -> { Increase::Models::UnnamedSchemaRef5af1efe3d974b3c8bf884988b11ffc95 }
-      end
 
       class Reversal < BaseModel
         # @!attribute [rw] amount

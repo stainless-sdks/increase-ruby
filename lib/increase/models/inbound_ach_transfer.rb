@@ -25,8 +25,8 @@ module Increase
 
       # @!attribute [rw] addenda
       #   Additional information sent from the originator.
-      #   @return [Increase::Models::InboundACHTransfer::Addenda]
-      required :addenda, -> { Increase::Models::InboundACHTransfer::Addenda }
+      #   @return [Increase::Models::UnnamedSchemaRef4b32c45b49c8c82f889a68247d209b16]
+      required :addenda, -> { Increase::Models::UnnamedSchemaRef4b32c45b49c8c82f889a68247d209b16 }
 
       # @!attribute [rw] amount
       #   The transfer amount in USD cents.
@@ -44,7 +44,7 @@ module Increase
       required :decline, -> { Increase::Models::InboundACHTransfer::Decline }
 
       # @!attribute [rw] direction
-      #   The direction of the transfer.
+      #   Whether the Prenotification is for a future debit or credit.
       #   @return [Symbol]
       required :direction, Increase::Enum.new(:credit, :debit)
 
@@ -125,30 +125,6 @@ module Increase
         required :transaction_id, String
       end
 
-      class Addenda < BaseModel
-        # @!attribute [rw] category
-        #   The type of addendum.
-        #   @return [Symbol]
-        required :category, Increase::Enum.new(:freeform)
-
-        # @!attribute [rw] freeform
-        #   Unstructured `payment_related_information` passed through by the originator.
-        #   @return [Increase::Models::InboundACHTransfer::Addenda::Freeform]
-        required :freeform, -> { Increase::Models::InboundACHTransfer::Addenda::Freeform }
-
-        class Freeform < BaseModel
-          # @!attribute [rw] entries
-          #   Each entry represents an addendum received from the originator.
-          #   @return [Array<Increase::Models::UnnamedSchemaRef14b420c48ea6aff1ebb11188af13903f>]
-          required :entries,
-                   Increase::ArrayOf.new(
-                     lambda {
-                       Increase::Models::UnnamedSchemaRef14b420c48ea6aff1ebb11188af13903f
-                     }
-                   )
-        end
-      end
-
       class Decline < BaseModel
         # @!attribute [rw] declined_at
         #   The time at which the transfer was declined.
@@ -161,7 +137,7 @@ module Increase
         required :declined_transaction_id, String
 
         # @!attribute [rw] reason
-        #   The reason for the transfer decline.
+        #   Why the ACH transfer was declined.
         #   @return [Symbol]
         required :reason,
                  Increase::Enum.new(

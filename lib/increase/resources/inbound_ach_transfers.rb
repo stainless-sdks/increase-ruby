@@ -86,8 +86,7 @@ module Increase
       #   financial institution.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Symbol] :reason The reason why this transfer will be returned. The most usual return codes are
-      #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+      # @option params [Symbol] :reason The reason for the transfer return.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #

@@ -49,12 +49,11 @@ module Increase
       required :natural_person, -> { Increase::Models::Entity::NaturalPerson }
 
       # @!attribute [rw] status
-      #   The status of the entity.
       #   @return [Symbol]
       required :status, Increase::Enum.new(:active, :archived, :disabled)
 
       # @!attribute [rw] structure
-      #   The entity's legal structure.
+      #   The type of Entity to create.
       #   @return [Symbol]
       required :structure,
                Increase::Enum.new(:corporation, :natural_person, :joint, :trust, :government_authority)
@@ -156,7 +155,6 @@ module Increase
           required :individual, -> { Increase::Models::Entity::Corporation::BeneficialOwner::Individual }
 
           # @!attribute [rw] prong
-          #   Why this person is considered a beneficial owner of the entity.
           #   @return [Symbol]
           required :prong, Increase::Enum.new(:ownership, :control)
 
@@ -173,33 +171,16 @@ module Increase
 
             # @!attribute [rw] identification
             #   A means of verifying the person's identity.
-            #   @return [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification]
+            #   @return [Increase::Models::UnnamedSchemaRefDfd0858d3a8bdb6c8dc0a18c2803cf44]
             required :identification,
-                     -> { Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification }
+                     lambda {
+                       Increase::Models::UnnamedSchemaRefDfd0858d3a8bdb6c8dc0a18c2803cf44
+                     }
 
             # @!attribute [rw] name_
             #   The person's legal name.
             #   @return [String]
             required :name_, String
-
-            class Identification < BaseModel
-              # @!attribute [rw] method_
-              #   A method that can be used to verify the individual's identity.
-              #   @return [Symbol]
-              required :method_,
-                       Increase::Enum.new(
-                         :social_security_number,
-                         :individual_taxpayer_identification_number,
-                         :passport,
-                         :drivers_license,
-                         :other
-                       )
-
-              # @!attribute [rw] number_last4
-              #   The last 4 digits of the identification number that can be used to verify the individual's identity.
-              #   @return [String]
-              required :number_last4, String
-            end
           end
         end
       end
@@ -300,32 +281,13 @@ module Increase
 
           # @!attribute [rw] identification
           #   A means of verifying the person's identity.
-          #   @return [Increase::Models::Entity::Joint::Individual::Identification]
-          required :identification, -> { Increase::Models::Entity::Joint::Individual::Identification }
+          #   @return [Increase::Models::UnnamedSchemaRefDfd0858d3a8bdb6c8dc0a18c2803cf44]
+          required :identification, -> { Increase::Models::UnnamedSchemaRefDfd0858d3a8bdb6c8dc0a18c2803cf44 }
 
           # @!attribute [rw] name_
           #   The person's legal name.
           #   @return [String]
           required :name_, String
-
-          class Identification < BaseModel
-            # @!attribute [rw] method_
-            #   A method that can be used to verify the individual's identity.
-            #   @return [Symbol]
-            required :method_,
-                     Increase::Enum.new(
-                       :social_security_number,
-                       :individual_taxpayer_identification_number,
-                       :passport,
-                       :drivers_license,
-                       :other
-                     )
-
-            # @!attribute [rw] number_last4
-            #   The last 4 digits of the identification number that can be used to verify the individual's identity.
-            #   @return [String]
-            required :number_last4, String
-          end
         end
       end
 
@@ -342,32 +304,13 @@ module Increase
 
         # @!attribute [rw] identification
         #   A means of verifying the person's identity.
-        #   @return [Increase::Models::Entity::NaturalPerson::Identification]
-        required :identification, -> { Increase::Models::Entity::NaturalPerson::Identification }
+        #   @return [Increase::Models::UnnamedSchemaRefDfd0858d3a8bdb6c8dc0a18c2803cf44]
+        required :identification, -> { Increase::Models::UnnamedSchemaRefDfd0858d3a8bdb6c8dc0a18c2803cf44 }
 
         # @!attribute [rw] name_
         #   The person's legal name.
         #   @return [String]
         required :name_, String
-
-        class Identification < BaseModel
-          # @!attribute [rw] method_
-          #   A method that can be used to verify the individual's identity.
-          #   @return [Symbol]
-          required :method_,
-                   Increase::Enum.new(
-                     :social_security_number,
-                     :individual_taxpayer_identification_number,
-                     :passport,
-                     :drivers_license,
-                     :other
-                   )
-
-          # @!attribute [rw] number_last4
-          #   The last 4 digits of the identification number that can be used to verify the individual's identity.
-          #   @return [String]
-          required :number_last4, String
-        end
       end
 
       class SupplementalDocument < BaseModel
@@ -399,7 +342,7 @@ module Increase
         required :address, -> { Increase::Models::Entity::Trust::Address }
 
         # @!attribute [rw] category
-        #   Whether the trust is `revocable` or `irrevocable`.
+        #   Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require their own Employer Identification Number. Revocable trusts require information about the individual `grantor` who created the trust.
         #   @return [Symbol]
         required :category, Increase::Enum.new(:revocable, :irrevocable)
 
@@ -473,32 +416,13 @@ module Increase
 
           # @!attribute [rw] identification
           #   A means of verifying the person's identity.
-          #   @return [Increase::Models::Entity::Trust::Grantor::Identification]
-          required :identification, -> { Increase::Models::Entity::Trust::Grantor::Identification }
+          #   @return [Increase::Models::UnnamedSchemaRefDfd0858d3a8bdb6c8dc0a18c2803cf44]
+          required :identification, -> { Increase::Models::UnnamedSchemaRefDfd0858d3a8bdb6c8dc0a18c2803cf44 }
 
           # @!attribute [rw] name_
           #   The person's legal name.
           #   @return [String]
           required :name_, String
-
-          class Identification < BaseModel
-            # @!attribute [rw] method_
-            #   A method that can be used to verify the individual's identity.
-            #   @return [Symbol]
-            required :method_,
-                     Increase::Enum.new(
-                       :social_security_number,
-                       :individual_taxpayer_identification_number,
-                       :passport,
-                       :drivers_license,
-                       :other
-                     )
-
-            # @!attribute [rw] number_last4
-            #   The last 4 digits of the identification number that can be used to verify the individual's identity.
-            #   @return [String]
-            required :number_last4, String
-          end
         end
 
         class Trustee < BaseModel
@@ -508,7 +432,7 @@ module Increase
           required :individual, -> { Increase::Models::Entity::Trust::Trustee::Individual }
 
           # @!attribute [rw] structure
-          #   The structure of the trustee. Will always be equal to `individual`.
+          #   The structure of the trustee.
           #   @return [Symbol]
           required :structure, Increase::Enum.new(:individual)
 
@@ -525,35 +449,16 @@ module Increase
 
             # @!attribute [rw] identification
             #   A means of verifying the person's identity.
-            #   @return [Increase::Models::Entity::Trust::Trustee::Individual::Identification]
+            #   @return [Increase::Models::UnnamedSchemaRefDfd0858d3a8bdb6c8dc0a18c2803cf44]
             required :identification,
                      lambda {
-                       Increase::Models::Entity::Trust::Trustee::Individual::Identification
+                       Increase::Models::UnnamedSchemaRefDfd0858d3a8bdb6c8dc0a18c2803cf44
                      }
 
             # @!attribute [rw] name_
             #   The person's legal name.
             #   @return [String]
             required :name_, String
-
-            class Identification < BaseModel
-              # @!attribute [rw] method_
-              #   A method that can be used to verify the individual's identity.
-              #   @return [Symbol]
-              required :method_,
-                       Increase::Enum.new(
-                         :social_security_number,
-                         :individual_taxpayer_identification_number,
-                         :passport,
-                         :drivers_license,
-                         :other
-                       )
-
-              # @!attribute [rw] number_last4
-              #   The last 4 digits of the identification number that can be used to verify the individual's identity.
-              #   @return [String]
-              required :number_last4, String
-            end
           end
         end
       end
