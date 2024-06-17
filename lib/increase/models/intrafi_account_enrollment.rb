@@ -27,7 +27,13 @@ module Increase
       #   The status of the account in the network. An account takes about one business day to go from `pending_enrolling` to `enrolled`.
       #   @return [Symbol]
       required :status,
-               Increase::Enum.new(:pending_enrolling, :enrolled, :pending_unenrolling, :unenrolled, :requires_attention)
+               Increase::Enum.new(
+                 :pending_enrolling,
+                 :enrolled,
+                 :pending_unenrolling,
+                 :unenrolled,
+                 :requires_attention
+               )
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `intrafi_account_enrollment`.

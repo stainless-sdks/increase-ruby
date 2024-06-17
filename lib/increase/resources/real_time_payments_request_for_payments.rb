@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create a Real-Time Payments Request for Payment
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Integer] :amount The requested amount in USD cents. Must be positive.
       # @option params [Debtor] :debtor Details of the person being requested to pay.
@@ -19,9 +19,9 @@ module Increase
       # @option params [String] :source_account_number The account number the funds will be requested from.
       # @option params [String] :source_routing_number The requestee's American Bankers' Association (ABA) Routing Transit Number
       #   (RTN).
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::RealTimePaymentsRequestForPayment]
       def create(params = {}, opts = {})
         req = {}
@@ -33,10 +33,10 @@ module Increase
       end
 
       # Retrieve a Real-Time Payments Request for Payment
-      # 
+      #
       # @param request_for_payment_id [String] The identifier of the Real-Time Payments Request for Payment.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::RealTimePaymentsRequestForPayment]
       def retrieve(request_for_payment_id, opts = {})
         req = {}
@@ -47,7 +47,7 @@ module Increase
       end
 
       # List Real-Time Payments Request for Payments
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id Filter Real-Time Payments Request for Payments to those destined to the
       #   specified Account.
@@ -59,9 +59,9 @@ module Increase
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::RealTimePaymentsRequestForPayment>]
       def list(params = {}, opts = {})
         req = {}

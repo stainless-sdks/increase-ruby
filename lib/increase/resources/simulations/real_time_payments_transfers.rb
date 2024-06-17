@@ -11,14 +11,14 @@ module Increase
         # Simulates submission of a Real-Time Payments transfer and handling the response
         #   from the destination financial institution. This transfer must first have a
         #   `status` of `pending_submission`.
-        # 
+        #
         # @param real_time_payments_transfer_id [String] The identifier of the Real-Time Payments Transfer you wish to complete.
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [Rejection] :rejection If set, the simulation will reject the transfer.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Increase::Models::RealTimePaymentsTransfer]
         def complete(real_time_payments_transfer_id, params = {}, opts = {})
           req = {}
@@ -31,7 +31,7 @@ module Increase
 
         # Simulates an inbound Real-Time Payments transfer to your account. Real-Time
         #   Payments are a beta feature.
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :account_number_id The identifier of the Account Number the inbound Real-Time Payments Transfer is
         #   for.
@@ -41,9 +41,9 @@ module Increase
         # @option params [String] :debtor_routing_number The routing number of the account that sent the transfer.
         # @option params [String] :remittance_information Additional information included with the transfer.
         # @option params [String] :request_for_payment_id The identifier of a pending Request for Payment that this transfer will fulfill.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult]
         def create_inbound(params = {}, opts = {})
           req = {}
