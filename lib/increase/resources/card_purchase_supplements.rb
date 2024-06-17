@@ -8,10 +8,10 @@ module Increase
       end
 
       # Retrieve a Card Purchase Supplement
-      # 
+      #
       # @param card_purchase_supplement_id [String] The identifier of the Card Purchase Supplement.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::CardPurchaseSupplement]
       def retrieve(card_purchase_supplement_id, opts = {})
         req = {}
@@ -22,7 +22,7 @@ module Increase
       end
 
       # List Card Purchase Supplements
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :card_payment_id Filter Card Purchase Supplements to ones belonging to the specified Card
       #   Payment.
@@ -30,9 +30,9 @@ module Increase
       # @option params [String] :cursor Return the page of entries after this one.
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::CardPurchaseSupplement>]
       def list(params = {}, opts = {})
         req = {}

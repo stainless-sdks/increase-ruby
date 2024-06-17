@@ -12,10 +12,10 @@ module Increase
         #   endpoint simulates the approval of an [Account Transfer](#account-transfers).
         #   You can also approve sandbox Account Transfers in the dashboard. This transfer
         #   must first have a `status` of `pending_approval`.
-        # 
+        #
         # @param account_transfer_id [String] The identifier of the Account Transfer you wish to complete.
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Increase::Models::AccountTransfer]
         def complete(account_transfer_id, opts = {})
           req = {}

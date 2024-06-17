@@ -13,7 +13,7 @@ class Increase::Test::Resources::CardPaymentsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.card_payments.list 
+    response = @increase.card_payments.list
     assert_kind_of(Increase::Page, response)
   end
 end

@@ -9,13 +9,13 @@ module Increase
         end
 
         # Create an IntraFi Exclusion
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :bank_name The name of the financial institution to be excluded.
         # @option params [String] :entity_id The identifier of the Entity whose deposits will be excluded.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Increase::Models::IntrafiExclusion]
         def create(params = {}, opts = {})
           req = {}
@@ -27,10 +27,10 @@ module Increase
         end
 
         # Get an IntraFi Exclusion
-        # 
+        #
         # @param intrafi_exclusion_id [String] The identifier of the IntraFi Exclusion to retrieve.
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Increase::Models::IntrafiExclusion]
         def retrieve(intrafi_exclusion_id, opts = {})
           req = {}
@@ -41,7 +41,7 @@ module Increase
         end
 
         # List IntraFi Exclusions.
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :cursor Return the page of entries after this one.
         # @option params [String] :entity_id Filter IntraFi Exclusions for those belonging to the specified Entity.
@@ -51,9 +51,9 @@ module Increase
         #   [idempotency](https://increase.com/documentation/idempotency-keys).
         # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
         #   objects.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Increase::Page<Increase::Models::IntrafiExclusion>]
         def list(params = {}, opts = {})
           req = {}
@@ -66,12 +66,12 @@ module Increase
         end
 
         # Archive an IntraFi Exclusion
-        # 
+        #
         # @param intrafi_exclusion_id [String] The identifier of the IntraFi Exclusion request to archive. It may take 5
         #   business days for an exclusion removal to be processed. Removing an exclusion
         #   does not guarantee that funds will be swept to the previously-excluded bank.
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Increase::Models::IntrafiExclusion]
         def archive(intrafi_exclusion_id, opts = {})
           req = {}

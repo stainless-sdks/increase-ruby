@@ -140,7 +140,10 @@ module Increase
         # @!attribute [rw] check_deposit_acceptance
         #   A Check Deposit Acceptance object. This field will be present in the JSON response if and only if `category` is equal to `check_deposit_acceptance`.
         #   @return [Increase::Models::Transaction::Source::CheckDepositAcceptance]
-        required :check_deposit_acceptance, -> { Increase::Models::Transaction::Source::CheckDepositAcceptance }
+        required :check_deposit_acceptance,
+                 lambda {
+                   Increase::Models::Transaction::Source::CheckDepositAcceptance
+                 }
 
         # @!attribute [rw] check_deposit_return
         #   A Check Deposit Return object. This field will be present in the JSON response if and only if `category` is equal to `check_deposit_return`.
@@ -474,7 +477,10 @@ module Increase
           # @!attribute [rw] purchase_details
           #   Additional details about the card purchase, such as tax and industry-specific fields.
           #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails]
-          required :purchase_details, -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails }
+          required :purchase_details,
+                   lambda {
+                     Increase::Models::Transaction::Source::CardRefund::PurchaseDetails
+                   }
 
           # @!attribute [rw] transaction_id
           #   The identifier of the Transaction associated with this Transaction.
@@ -507,7 +513,10 @@ module Increase
             # @!attribute [rw] car_rental
             #   Fields specific to car rentals.
             #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental]
-            required :car_rental, -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental }
+            required :car_rental,
+                     lambda {
+                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental
+                     }
 
             # @!attribute [rw] customer_reference_identifier
             #   An identifier from the merchant for the customer or consumer.
@@ -527,7 +536,10 @@ module Increase
             # @!attribute [rw] lodging
             #   Fields specific to lodging.
             #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging]
-            required :lodging, -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging }
+            required :lodging,
+                     lambda {
+                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging
+                     }
 
             # @!attribute [rw] national_tax_amount
             #   The national tax amount in minor units.
@@ -559,7 +571,10 @@ module Increase
             # @!attribute [rw] travel
             #   Fields specific to travel.
             #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel]
-            required :travel, -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel }
+            required :travel,
+                     lambda {
+                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel
+                     }
 
             class CarRental < BaseModel
               # @!attribute [rw] car_class_code
@@ -623,7 +638,8 @@ module Increase
               # @!attribute [rw] no_show_indicator
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #   @return [Symbol]
-              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
+              required :no_show_indicator,
+                       Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               #   Charges for returning the vehicle at a different location than where it was picked up.
@@ -671,7 +687,15 @@ module Increase
               #   Additional charges (phone, late check-out, etc.) being billed.
               #   @return [Symbol]
               required :extra_charges,
-                       Increase::Enum.new(:no_extra_charge, :restaurant, :gift_shop, :mini_bar, :telephone, :other, :laundry)
+                       Increase::Enum.new(
+                         :no_extra_charge,
+                         :restaurant,
+                         :gift_shop,
+                         :mini_bar,
+                         :telephone,
+                         :other,
+                         :laundry
+                       )
 
               # @!attribute [rw] folio_cash_advances_amount
               #   Folio cash advances for the room.
@@ -783,7 +807,8 @@ module Increase
               # @!attribute [rw] ticket_change_indicator
               #   Indicates why a ticket was changed.
               #   @return [Symbol]
-              required :ticket_change_indicator, Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
+              required :ticket_change_indicator,
+                       Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
 
               # @!attribute [rw] ticket_number
               #   Ticket number.
@@ -804,7 +829,11 @@ module Increase
               #   Fields specific to each leg of the journey.
               #   @return [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>]
               required :trip_legs,
-                       Increase::ArrayOf.new(-> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg })
+                       Increase::ArrayOf.new(
+                         lambda {
+                           Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg
+                         }
+                       )
 
               class Ancillary < BaseModel
                 # @!attribute [rw] connected_ticket_document_number
@@ -832,7 +861,11 @@ module Increase
                 #   Additional travel charges, such as baggage fees.
                 #   @return [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service>]
                 required :services,
-                         Increase::ArrayOf.new(-> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service })
+                         Increase::ArrayOf.new(
+                           lambda {
+                             Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service
+                           }
+                         )
 
                 # @!attribute [rw] ticket_document_number
                 #   Ticket document number.
@@ -907,7 +940,8 @@ module Increase
                 # @!attribute [rw] stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
                 #   @return [Symbol]
-                required :stop_over_code, Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
+                required :stop_over_code,
+                         Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
               end
             end
           end
@@ -1020,7 +1054,10 @@ module Increase
           # @!attribute [rw] purchase_details
           #   Additional details about the card purchase, such as tax and industry-specific fields.
           #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails]
-          required :purchase_details, -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails }
+          required :purchase_details,
+                   lambda {
+                     Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails
+                   }
 
           # @!attribute [rw] transaction_id
           #   The identifier of the Transaction associated with this Transaction.
@@ -1074,7 +1111,10 @@ module Increase
             # @!attribute [rw] lodging
             #   Fields specific to lodging.
             #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging]
-            required :lodging, -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging }
+            required :lodging,
+                     lambda {
+                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging
+                     }
 
             # @!attribute [rw] national_tax_amount
             #   The national tax amount in minor units.
@@ -1106,7 +1146,10 @@ module Increase
             # @!attribute [rw] travel
             #   Fields specific to travel.
             #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel]
-            required :travel, -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel }
+            required :travel,
+                     lambda {
+                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel
+                     }
 
             class CarRental < BaseModel
               # @!attribute [rw] car_class_code
@@ -1170,7 +1213,8 @@ module Increase
               # @!attribute [rw] no_show_indicator
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #   @return [Symbol]
-              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
+              required :no_show_indicator,
+                       Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               #   Charges for returning the vehicle at a different location than where it was picked up.
@@ -1218,7 +1262,15 @@ module Increase
               #   Additional charges (phone, late check-out, etc.) being billed.
               #   @return [Symbol]
               required :extra_charges,
-                       Increase::Enum.new(:no_extra_charge, :restaurant, :gift_shop, :mini_bar, :telephone, :other, :laundry)
+                       Increase::Enum.new(
+                         :no_extra_charge,
+                         :restaurant,
+                         :gift_shop,
+                         :mini_bar,
+                         :telephone,
+                         :other,
+                         :laundry
+                       )
 
               # @!attribute [rw] folio_cash_advances_amount
               #   Folio cash advances for the room.
@@ -1330,7 +1382,8 @@ module Increase
               # @!attribute [rw] ticket_change_indicator
               #   Indicates why a ticket was changed.
               #   @return [Symbol]
-              required :ticket_change_indicator, Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
+              required :ticket_change_indicator,
+                       Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
 
               # @!attribute [rw] ticket_number
               #   Ticket number.
@@ -1351,7 +1404,11 @@ module Increase
               #   Fields specific to each leg of the journey.
               #   @return [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>]
               required :trip_legs,
-                       Increase::ArrayOf.new(-> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg })
+                       Increase::ArrayOf.new(
+                         lambda {
+                           Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg
+                         }
+                       )
 
               class Ancillary < BaseModel
                 # @!attribute [rw] connected_ticket_document_number
@@ -1379,7 +1436,11 @@ module Increase
                 #   Additional travel charges, such as baggage fees.
                 #   @return [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service>]
                 required :services,
-                         Increase::ArrayOf.new(-> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service })
+                         Increase::ArrayOf.new(
+                           lambda {
+                             Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service
+                           }
+                         )
 
                 # @!attribute [rw] ticket_document_number
                 #   Ticket document number.
@@ -1454,7 +1515,8 @@ module Increase
                 # @!attribute [rw] stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
                 #   @return [Symbol]
-                required :stop_over_code, Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
+                required :stop_over_code,
+                         Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
               end
             end
           end
@@ -1731,14 +1793,21 @@ module Increase
             # @!attribute [rw] freeform
             #   Unstructured `payment_related_information` passed through by the originator.
             #   @return [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform]
-            required :freeform, -> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform }
+            required :freeform,
+                     lambda {
+                       Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform
+                     }
 
             class Freeform < BaseModel
               # @!attribute [rw] entries
               #   Each entry represents an addendum received from the originator.
               #   @return [Array<Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry>]
               required :entries,
-                       Increase::ArrayOf.new(-> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry })
+                       Increase::ArrayOf.new(
+                         lambda {
+                           Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry
+                         }
+                       )
 
               class Entry < BaseModel
                 # @!attribute [rw] payment_related_information

@@ -8,10 +8,10 @@ module Increase
       end
 
       # Retrieve an Event
-      # 
+      #
       # @param event_id [String] The identifier of the Event.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::Event]
       def retrieve(event_id, opts = {})
         req = {}
@@ -22,7 +22,7 @@ module Increase
       end
 
       # List Events
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :associated_object_id Filter Events to those belonging to the object with the provided identifier.
       # @option params [Category] :category
@@ -30,9 +30,9 @@ module Increase
       # @option params [String] :cursor Return the page of entries after this one.
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::Event>]
       def list(params = {}, opts = {})
         req = {}

@@ -18,7 +18,7 @@ class Increase::Test::Resources::EntitiesTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.entities.list 
+    response = @increase.entities.list
     assert_kind_of(Increase::Page, response)
   end
 
