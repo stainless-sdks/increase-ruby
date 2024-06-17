@@ -9,7 +9,7 @@ module Increase
       required :balances, Increase::ArrayOf.new(-> { Increase::Models::IntrafiBalance::Balance })
 
       # @!attribute [rw] currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account currency.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
       #   @return [Symbol]
       required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 

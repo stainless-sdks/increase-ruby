@@ -59,7 +59,7 @@ module Increase
       #   steps.
       # @option params [String] :entity_id The Entity the card belongs to. You only need to supply this in rare situations
       #   when the card is not for the Account holder.
-      # @option params [Symbol] :status The status to update the Card with.
+      # @option params [Symbol] :status This indicates if transfers can be made to the Account Number.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #

@@ -25,8 +25,8 @@ module Increase
 
       # @!attribute [rw] approval
       #   If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
-      #   @return [Increase::Models::WireTransfer::Approval]
-      required :approval, -> { Increase::Models::WireTransfer::Approval }
+      #   @return [Increase::Models::UnnamedSchemaRefD68ed2b3782b1efe94323ee7bcde82cc]
+      required :approval, -> { Increase::Models::UnnamedSchemaRefD68ed2b3782b1efe94323ee7bcde82cc }
 
       # @!attribute [rw] beneficiary_address_line1
       #   The beneficiary's address line 1.
@@ -50,8 +50,8 @@ module Increase
 
       # @!attribute [rw] cancellation
       #   If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
-      #   @return [Increase::Models::WireTransfer::Cancellation]
-      required :cancellation, -> { Increase::Models::WireTransfer::Cancellation }
+      #   @return [Increase::Models::UnnamedSchemaRef2eb27343161bcb1aa714bd76fe027d77]
+      required :cancellation, -> { Increase::Models::UnnamedSchemaRef2eb27343161bcb1aa714bd76fe027d77 }
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
@@ -60,11 +60,11 @@ module Increase
 
       # @!attribute [rw] created_by
       #   What object created the transfer, either via the API or the dashboard.
-      #   @return [Increase::Models::WireTransfer::CreatedBy]
-      required :created_by, -> { Increase::Models::WireTransfer::CreatedBy }
+      #   @return [Increase::Models::UnnamedSchemaRefF6173181c6264e25e2594d45133af8ed]
+      required :created_by, -> { Increase::Models::UnnamedSchemaRefF6173181c6264e25e2594d45133af8ed }
 
       # @!attribute [rw] currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For wire transfers this is always equal to `usd`.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
       #   @return [Symbol]
       required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
@@ -152,73 +152,6 @@ module Increase
       #   A constant representing the object's type. For this resource it will always be `wire_transfer`.
       #   @return [Symbol]
       required :type, Increase::Enum.new(:wire_transfer)
-
-      class Approval < BaseModel
-        # @!attribute [rw] approved_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
-        #   @return [String]
-        required :approved_at, String
-
-        # @!attribute [rw] approved_by
-        #   If the Transfer was approved by a user in the dashboard, the email address of that user.
-        #   @return [String]
-        required :approved_by, String
-      end
-
-      class Cancellation < BaseModel
-        # @!attribute [rw] canceled_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
-        #   @return [String]
-        required :canceled_at, String
-
-        # @!attribute [rw] canceled_by
-        #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
-        #   @return [String]
-        required :canceled_by, String
-      end
-
-      class CreatedBy < BaseModel
-        # @!attribute [rw] api_key
-        #   If present, details about the API key that created the transfer.
-        #   @return [Increase::Models::WireTransfer::CreatedBy::APIKey]
-        required :api_key, -> { Increase::Models::WireTransfer::CreatedBy::APIKey }
-
-        # @!attribute [rw] category
-        #   The type of object that created this transfer.
-        #   @return [Symbol]
-        required :category, Increase::Enum.new(:api_key, :oauth_application, :user)
-
-        # @!attribute [rw] oauth_application
-        #   If present, details about the OAuth Application that created the transfer.
-        #   @return [Increase::Models::WireTransfer::CreatedBy::OAuthApplication]
-        required :oauth_application, -> { Increase::Models::WireTransfer::CreatedBy::OAuthApplication }
-
-        # @!attribute [rw] user
-        #   If present, details about the User that created the transfer.
-        #   @return [Increase::Models::WireTransfer::CreatedBy::User]
-        required :user, -> { Increase::Models::WireTransfer::CreatedBy::User }
-
-        class APIKey < BaseModel
-          # @!attribute [rw] description
-          #   The description set for the API key when it was created.
-          #   @return [String]
-          required :description, String
-        end
-
-        class OAuthApplication < BaseModel
-          # @!attribute [rw] name_
-          #   The name of the OAuth Application.
-          #   @return [String]
-          required :name_, String
-        end
-
-        class User < BaseModel
-          # @!attribute [rw] email
-          #   The email address of the User.
-          #   @return [String]
-          required :email, String
-        end
-      end
 
       class Reversal < BaseModel
         # @!attribute [rw] amount

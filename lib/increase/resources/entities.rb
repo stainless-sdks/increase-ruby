@@ -132,7 +132,7 @@ module Increase
       # @param entity_id [String] The identifier of the Entity to archive.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Address] :address The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+      # @option params [Increase::Models::UnnamedSchemaRef8277a5466fdc72e318924f0d9e546c99] :address The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       #   are disallowed.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.

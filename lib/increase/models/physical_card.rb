@@ -39,7 +39,7 @@ module Increase
       required :shipment, -> { Increase::Models::PhysicalCard::Shipment }
 
       # @!attribute [rw] status
-      #   The status of the Physical Card.
+      #   This indicates if transfers can be made to the Account Number.
       #   @return [Symbol]
       required :status, Increase::Enum.new(:active, :disabled, :canceled)
 
@@ -67,12 +67,12 @@ module Increase
         required :address, -> { Increase::Models::PhysicalCard::Shipment::Address }
 
         # @!attribute [rw] method_
-        #   The shipping method.
+        #   The shipping method to use.
         #   @return [Symbol]
         required :method_, Increase::Enum.new(:usps, :fedex_priority_overnight, :fedex_2_day)
 
         # @!attribute [rw] status
-        #   The status of this shipment.
+        #   The shipment status to move the Physical Card to.
         #   @return [Symbol]
         required :status,
                  Increase::Enum.new(

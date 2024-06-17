@@ -49,7 +49,7 @@ module Increase
       required :routing_number, String
 
       # @!attribute [rw] status
-      #   This indicates if payments can be made to the Account Number.
+      #   This indicates if transfers can be made to the Account Number.
       #   @return [Symbol]
       required :status, Increase::Enum.new(:active, :disabled, :canceled)
 
@@ -60,7 +60,7 @@ module Increase
 
       class InboundACH < BaseModel
         # @!attribute [rw] debit_status
-        #   Whether ACH debits are allowed against this Account Number. Note that they will still be declined if this is `allowed` if the Account Number is not active.
+        #   Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active.
         #   @return [Symbol]
         required :debit_status, Increase::Enum.new(:allowed, :blocked)
       end

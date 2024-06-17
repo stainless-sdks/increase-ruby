@@ -54,7 +54,7 @@ module Increase
       required :created_at, String
 
       # @!attribute [rw] currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
       #   @return [Symbol]
       required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 

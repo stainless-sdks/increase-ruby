@@ -47,7 +47,7 @@ module Increase
       # @param physical_card_id [String] The Physical Card identifier.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Symbol] :status The status to update the Physical Card to.
+      # @option params [Symbol] :status This indicates if transfers can be made to the Account Number.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #

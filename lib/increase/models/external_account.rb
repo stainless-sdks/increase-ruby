@@ -9,7 +9,7 @@ module Increase
       required :id, String
 
       # @!attribute [rw] account_holder
-      #   The type of entity that owns the External Account.
+      #   The type of entity that owns the account to which the ACH Transfer is being sent.
       #   @return [Symbol]
       required :account_holder, Increase::Enum.new(:business, :individual, :unknown)
 
@@ -29,7 +29,7 @@ module Increase
       required :description, String
 
       # @!attribute [rw] funding
-      #   The type of the account to which the transfer will be sent.
+      #   The type of the destination account. Defaults to `checking`.
       #   @return [Symbol]
       required :funding, Increase::Enum.new(:checking, :savings, :other)
 
@@ -44,7 +44,7 @@ module Increase
       required :routing_number, String
 
       # @!attribute [rw] status
-      #   The External Account's status.
+      #   The status of the External Account.
       #   @return [Symbol]
       required :status, Increase::Enum.new(:active, :archived)
 

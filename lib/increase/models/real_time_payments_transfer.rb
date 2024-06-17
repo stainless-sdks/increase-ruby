@@ -20,13 +20,13 @@ module Increase
 
       # @!attribute [rw] approval
       #   If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
-      #   @return [Increase::Models::RealTimePaymentsTransfer::Approval]
-      required :approval, -> { Increase::Models::RealTimePaymentsTransfer::Approval }
+      #   @return [Increase::Models::UnnamedSchemaRefD68ed2b3782b1efe94323ee7bcde82cc]
+      required :approval, -> { Increase::Models::UnnamedSchemaRefD68ed2b3782b1efe94323ee7bcde82cc }
 
       # @!attribute [rw] cancellation
       #   If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
-      #   @return [Increase::Models::RealTimePaymentsTransfer::Cancellation]
-      required :cancellation, -> { Increase::Models::RealTimePaymentsTransfer::Cancellation }
+      #   @return [Increase::Models::UnnamedSchemaRef2eb27343161bcb1aa714bd76fe027d77]
+      required :cancellation, -> { Increase::Models::UnnamedSchemaRef2eb27343161bcb1aa714bd76fe027d77 }
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
@@ -35,8 +35,8 @@ module Increase
 
       # @!attribute [rw] created_by
       #   What object created the transfer, either via the API or the dashboard.
-      #   @return [Increase::Models::RealTimePaymentsTransfer::CreatedBy]
-      required :created_by, -> { Increase::Models::RealTimePaymentsTransfer::CreatedBy }
+      #   @return [Increase::Models::UnnamedSchemaRefF6173181c6264e25e2594d45133af8ed]
+      required :created_by, -> { Increase::Models::UnnamedSchemaRefF6173181c6264e25e2594d45133af8ed }
 
       # @!attribute [rw] creditor_name
       #   The name of the transfer's recipient. This is set by the sender when creating the transfer.
@@ -44,7 +44,7 @@ module Increase
       required :creditor_name, String
 
       # @!attribute [rw] currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
       #   @return [Symbol]
       required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
@@ -133,74 +133,6 @@ module Increase
       #   @return [String]
       required :ultimate_debtor_name, String
 
-      class Approval < BaseModel
-        # @!attribute [rw] approved_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
-        #   @return [String]
-        required :approved_at, String
-
-        # @!attribute [rw] approved_by
-        #   If the Transfer was approved by a user in the dashboard, the email address of that user.
-        #   @return [String]
-        required :approved_by, String
-      end
-
-      class Cancellation < BaseModel
-        # @!attribute [rw] canceled_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
-        #   @return [String]
-        required :canceled_at, String
-
-        # @!attribute [rw] canceled_by
-        #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
-        #   @return [String]
-        required :canceled_by, String
-      end
-
-      class CreatedBy < BaseModel
-        # @!attribute [rw] api_key
-        #   If present, details about the API key that created the transfer.
-        #   @return [Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey]
-        required :api_key, -> { Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey }
-
-        # @!attribute [rw] category
-        #   The type of object that created this transfer.
-        #   @return [Symbol]
-        required :category, Increase::Enum.new(:api_key, :oauth_application, :user)
-
-        # @!attribute [rw] oauth_application
-        #   If present, details about the OAuth Application that created the transfer.
-        #   @return [Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication]
-        required :oauth_application,
-                 -> { Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication }
-
-        # @!attribute [rw] user
-        #   If present, details about the User that created the transfer.
-        #   @return [Increase::Models::RealTimePaymentsTransfer::CreatedBy::User]
-        required :user, -> { Increase::Models::RealTimePaymentsTransfer::CreatedBy::User }
-
-        class APIKey < BaseModel
-          # @!attribute [rw] description
-          #   The description set for the API key when it was created.
-          #   @return [String]
-          required :description, String
-        end
-
-        class OAuthApplication < BaseModel
-          # @!attribute [rw] name_
-          #   The name of the OAuth Application.
-          #   @return [String]
-          required :name_, String
-        end
-
-        class User < BaseModel
-          # @!attribute [rw] email
-          #   The email address of the User.
-          #   @return [String]
-          required :email, String
-        end
-      end
-
       class Rejection < BaseModel
         # @!attribute [rw] reject_reason_additional_information
         #   Additional information about the rejection provided by the recipient bank when the `reject_reason_code` is `NARRATIVE`.
@@ -208,7 +140,7 @@ module Increase
         required :reject_reason_additional_information, String
 
         # @!attribute [rw] reject_reason_code
-        #   The reason the transfer was rejected as provided by the recipient bank or the Real-Time Payments network.
+        #   The reason code that the simulated rejection will have.
         #   @return [Symbol]
         required :reject_reason_code,
                  Increase::Enum.new(

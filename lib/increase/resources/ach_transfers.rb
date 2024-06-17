@@ -44,7 +44,7 @@ module Increase
       # @option params [Boolean] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
       # @option params [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
-      # @option params [Symbol] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the transfer.
+      # @option params [Symbol] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #

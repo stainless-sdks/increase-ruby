@@ -14,7 +14,7 @@ module Increase
       required :account_id, String
 
       # @!attribute [rw] compliance_category
-      #   The compliance category of the account.
+      #   The account compliance category.
       #   @return [Symbol]
       required :compliance_category, Increase::Enum.new(:commingled_cash, :customer_balance)
 
