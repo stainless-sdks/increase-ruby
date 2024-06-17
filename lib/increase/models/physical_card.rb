@@ -75,15 +75,7 @@ module Increase
         #   The status of this shipment.
         #   @return [Symbol]
         required :status,
-                 Increase::Enum.new(
-                   :pending,
-                   :canceled,
-                   :submitted,
-                   :acknowledged,
-                   :rejected,
-                   :shipped,
-                   :returned
-                 )
+                 Increase::Enum.new(:pending, :canceled, :submitted, :acknowledged, :rejected, :shipped, :returned)
 
         # @!attribute [rw] tracking
         #   Tracking details for the shipment.
