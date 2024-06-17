@@ -5,7 +5,7 @@ application.
 
 ## Documentation
 
-Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/increase/increase-ruby).
+Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/Increase/increase-ruby).
 
 The underlying REST API documentation can be found [on increase.com](https://increase.com/documentation).
 
@@ -15,7 +15,7 @@ To use this gem during the beta, install directly from GitHub with Bundler by
 adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "increase", git: "https://github.com/increase/increase-ruby", branch: "main"
+gem "increase", git: "https://github.com/Increase/increase-ruby", branch: "main"
 ```
 
 To fetch an initial copy of the gem:
