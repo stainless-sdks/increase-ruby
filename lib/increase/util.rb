@@ -33,19 +33,15 @@ module Increase
     end
 
     def self.coerce_integer(str)
-      begin
-        Integer(str)
-      rescue
-        str
-      end
+      Integer(str)
+    rescue StandardError
+      str
     end
 
     def self.coerce_float(str)
-      begin
-        Float(str)
-      rescue
-        str
-      end
+      Float(str)
+    rescue StandardError
+      str
     end
 
     def self.coerce_boolean(input)

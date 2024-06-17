@@ -80,12 +80,12 @@ module Increase
       end
 
       # Simulates expiring a card authorization immediately.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :card_payment_id The identifier of the Card Payment to expire.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::CardPayment]
       def card_authorization_expirations(params = {}, opts = {})
         req = {}
@@ -99,14 +99,14 @@ module Increase
       # Simulates the fuel confirmation of an authorization by a card acquirer. This
       #   happens asynchronously right after a fuel pump transaction is completed. A fuel
       #   confirmation can only happen once per authorization.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Integer] :amount The amount of the fuel_confirmation in minor units in the card authorization's
       #   currency.
       # @option params [String] :card_payment_id The identifier of the Card Payment to create a fuel_confirmation on.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::CardPayment]
       def card_fuel_confirmations(params = {}, opts = {})
         req = {}
@@ -119,7 +119,7 @@ module Increase
 
       # Simulates the increment of an authorization by a card acquirer. An authorization
       #   can be incremented multiple times.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Integer] :amount The amount of the increment in minor units in the card authorization's currency.
       # @option params [String] :card_payment_id The identifier of the Card Payment to create a increment on.
@@ -127,9 +127,9 @@ module Increase
       #   default real time event subscription. Because you can only create one real time
       #   decision event subscription, you can use this field to route events to any
       #   specified event subscription for testing purposes.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::CardPayment]
       def card_increments(params = {}, opts = {})
         req = {}
@@ -144,14 +144,14 @@ module Increase
       #   can be partially reversed multiple times, up until the total authorized amount.
       #   Marks the pending transaction as complete if the authorization is fully
       #   reversed.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :card_payment_id The identifier of the Card Payment to create a reversal on.
       # @option params [Integer] :amount The amount of the reversal in minor units in the card authorization's currency.
       #   This defaults to the authorization amount.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::CardPayment]
       def card_reversals(params = {}, opts = {})
         req = {}

@@ -22,7 +22,12 @@ class Increase::Test::Resources::SimulationsTest < Test::Unit::TestCase
   end
 
   def test_card_increments_required_params
-    response = @increase.simulations.card_increments({amount: 500, card_payment_id: "card_payment_nd3k2kacrqjli8482ave"})
+    response = @increase.simulations.card_increments(
+      {
+        amount: 500,
+        card_payment_id: "card_payment_nd3k2kacrqjli8482ave"
+      }
+    )
     assert_kind_of(Increase::Models::CardPayment, response)
   end
 

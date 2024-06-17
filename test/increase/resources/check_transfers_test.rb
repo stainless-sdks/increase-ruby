@@ -9,7 +9,11 @@ class Increase::Test::Resources::CheckTransfersTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @increase.check_transfers.create(
-      {account_id: "account_in71c4amph0vgo2qllky", amount: 1000, source_account_number_id: "account_number_v18nkfqm6afpsrvy82b2"}
+      {
+        account_id: "account_in71c4amph0vgo2qllky",
+        amount: 1000,
+        source_account_number_id: "account_number_v18nkfqm6afpsrvy82b2"
+      }
     )
     assert_kind_of(Increase::Models::CheckTransfer, response)
   end
@@ -20,7 +24,7 @@ class Increase::Test::Resources::CheckTransfersTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.check_transfers.list 
+    response = @increase.check_transfers.list
     assert_kind_of(Increase::Page, response)
   end
 

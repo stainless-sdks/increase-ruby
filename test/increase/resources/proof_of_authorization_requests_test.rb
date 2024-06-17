@@ -13,7 +13,7 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestsTest < Test::Unit::
   end
 
   def test_list
-    response = @increase.proof_of_authorization_requests.list 
+    response = @increase.proof_of_authorization_requests.list
     assert_kind_of(Increase::Page, response)
   end
 end

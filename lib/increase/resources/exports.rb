@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create an Export
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol] :category The type of Export to create.
       # @option params [AccountStatementOfx] :account_statement_ofx Options for the created export. Required if `category` is equal to
@@ -20,9 +20,9 @@ module Increase
       # @option params [EntityCsv] :entity_csv Options for the created export. Required if `category` is equal to `entity_csv`.
       # @option params [TransactionCsv] :transaction_csv Options for the created export. Required if `category` is equal to
       #   `transaction_csv`.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::Export]
       def create(params = {}, opts = {})
         req = {}
@@ -34,10 +34,10 @@ module Increase
       end
 
       # Retrieve an Export
-      # 
+      #
       # @param export_id [String] The identifier of the Export to retrieve.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::Export]
       def retrieve(export_id, opts = {})
         req = {}
@@ -48,7 +48,7 @@ module Increase
       end
 
       # List Exports
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Category] :category
       # @option params [CreatedAt] :created_at
@@ -60,9 +60,9 @@ module Increase
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       # @option params [Status] :status
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::Export>]
       def list(params = {}, opts = {})
         req = {}

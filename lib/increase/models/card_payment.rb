@@ -236,7 +236,10 @@ module Increase
           # @!attribute [rw] verification
           #   Fields related to verification of cardholder-provided values.
           #   @return [Increase::Models::CardPayment::Element::CardAuthorization::Verification]
-          required :verification, -> { Increase::Models::CardPayment::Element::CardAuthorization::Verification }
+          required :verification,
+                   lambda {
+                     Increase::Models::CardPayment::Element::CardAuthorization::Verification
+                   }
 
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
@@ -247,7 +250,10 @@ module Increase
             # @!attribute [rw] visa
             #   Fields specific to the `visa` network.
             #   @return [Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa]
-            required :visa, -> { Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa }
+            required :visa,
+                     lambda {
+                       Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa
+                     }
 
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
@@ -454,7 +460,10 @@ module Increase
           # @!attribute [rw] network_details
           #   Fields specific to the `network`.
           #   @return [Increase::Models::CardPayment::Element::CardDecline::NetworkDetails]
-          required :network_details, -> { Increase::Models::CardPayment::Element::CardDecline::NetworkDetails }
+          required :network_details,
+                   lambda {
+                     Increase::Models::CardPayment::Element::CardDecline::NetworkDetails
+                   }
 
           # @!attribute [rw] network_identifiers
           #   Network-specific identifiers for a specific request or transaction.
@@ -846,7 +855,10 @@ module Increase
           # @!attribute [rw] purchase_details
           #   Additional details about the card purchase, such as tax and industry-specific fields.
           #   @return [Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails]
-          required :purchase_details, -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails }
+          required :purchase_details,
+                   lambda {
+                     Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails
+                   }
 
           # @!attribute [rw] transaction_id
           #   The identifier of the Transaction associated with this Transaction.
@@ -900,7 +912,10 @@ module Increase
             # @!attribute [rw] lodging
             #   Fields specific to lodging.
             #   @return [Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging]
-            required :lodging, -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging }
+            required :lodging,
+                     lambda {
+                       Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging
+                     }
 
             # @!attribute [rw] national_tax_amount
             #   The national tax amount in minor units.
@@ -932,7 +947,10 @@ module Increase
             # @!attribute [rw] travel
             #   Fields specific to travel.
             #   @return [Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel]
-            required :travel, -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel }
+            required :travel,
+                     lambda {
+                       Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel
+                     }
 
             class CarRental < BaseModel
               # @!attribute [rw] car_class_code
@@ -996,7 +1014,8 @@ module Increase
               # @!attribute [rw] no_show_indicator
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #   @return [Symbol]
-              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
+              required :no_show_indicator,
+                       Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               #   Charges for returning the vehicle at a different location than where it was picked up.
@@ -1044,7 +1063,15 @@ module Increase
               #   Additional charges (phone, late check-out, etc.) being billed.
               #   @return [Symbol]
               required :extra_charges,
-                       Increase::Enum.new(:no_extra_charge, :restaurant, :gift_shop, :mini_bar, :telephone, :other, :laundry)
+                       Increase::Enum.new(
+                         :no_extra_charge,
+                         :restaurant,
+                         :gift_shop,
+                         :mini_bar,
+                         :telephone,
+                         :other,
+                         :laundry
+                       )
 
               # @!attribute [rw] folio_cash_advances_amount
               #   Folio cash advances for the room.
@@ -1156,7 +1183,8 @@ module Increase
               # @!attribute [rw] ticket_change_indicator
               #   Indicates why a ticket was changed.
               #   @return [Symbol]
-              required :ticket_change_indicator, Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
+              required :ticket_change_indicator,
+                       Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
 
               # @!attribute [rw] ticket_number
               #   Ticket number.
@@ -1177,7 +1205,11 @@ module Increase
               #   Fields specific to each leg of the journey.
               #   @return [Array<Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg>]
               required :trip_legs,
-                       Increase::ArrayOf.new(-> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg })
+                       Increase::ArrayOf.new(
+                         lambda {
+                           Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg
+                         }
+                       )
 
               class Ancillary < BaseModel
                 # @!attribute [rw] connected_ticket_document_number
@@ -1205,7 +1237,11 @@ module Increase
                 #   Additional travel charges, such as baggage fees.
                 #   @return [Array<Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service>]
                 required :services,
-                         Increase::ArrayOf.new(-> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service })
+                         Increase::ArrayOf.new(
+                           lambda {
+                             Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service
+                           }
+                         )
 
                 # @!attribute [rw] ticket_document_number
                 #   Ticket document number.
@@ -1280,7 +1316,8 @@ module Increase
                 # @!attribute [rw] stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
                 #   @return [Symbol]
-                required :stop_over_code, Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
+                required :stop_over_code,
+                         Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
               end
             end
           end
@@ -1431,7 +1468,10 @@ module Increase
           # @!attribute [rw] purchase_details
           #   Additional details about the card purchase, such as tax and industry-specific fields.
           #   @return [Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails]
-          required :purchase_details, -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails }
+          required :purchase_details,
+                   lambda {
+                     Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails
+                   }
 
           # @!attribute [rw] transaction_id
           #   The identifier of the Transaction associated with this Transaction.
@@ -1485,7 +1525,10 @@ module Increase
             # @!attribute [rw] lodging
             #   Fields specific to lodging.
             #   @return [Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging]
-            required :lodging, -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging }
+            required :lodging,
+                     lambda {
+                       Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging
+                     }
 
             # @!attribute [rw] national_tax_amount
             #   The national tax amount in minor units.
@@ -1517,7 +1560,10 @@ module Increase
             # @!attribute [rw] travel
             #   Fields specific to travel.
             #   @return [Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel]
-            required :travel, -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel }
+            required :travel,
+                     lambda {
+                       Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel
+                     }
 
             class CarRental < BaseModel
               # @!attribute [rw] car_class_code
@@ -1581,7 +1627,8 @@ module Increase
               # @!attribute [rw] no_show_indicator
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #   @return [Symbol]
-              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
+              required :no_show_indicator,
+                       Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               #   Charges for returning the vehicle at a different location than where it was picked up.
@@ -1629,7 +1676,15 @@ module Increase
               #   Additional charges (phone, late check-out, etc.) being billed.
               #   @return [Symbol]
               required :extra_charges,
-                       Increase::Enum.new(:no_extra_charge, :restaurant, :gift_shop, :mini_bar, :telephone, :other, :laundry)
+                       Increase::Enum.new(
+                         :no_extra_charge,
+                         :restaurant,
+                         :gift_shop,
+                         :mini_bar,
+                         :telephone,
+                         :other,
+                         :laundry
+                       )
 
               # @!attribute [rw] folio_cash_advances_amount
               #   Folio cash advances for the room.
@@ -1741,7 +1796,8 @@ module Increase
               # @!attribute [rw] ticket_change_indicator
               #   Indicates why a ticket was changed.
               #   @return [Symbol]
-              required :ticket_change_indicator, Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
+              required :ticket_change_indicator,
+                       Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
 
               # @!attribute [rw] ticket_number
               #   Ticket number.
@@ -1762,7 +1818,11 @@ module Increase
               #   Fields specific to each leg of the journey.
               #   @return [Array<Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg>]
               required :trip_legs,
-                       Increase::ArrayOf.new(-> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg })
+                       Increase::ArrayOf.new(
+                         lambda {
+                           Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg
+                         }
+                       )
 
               class Ancillary < BaseModel
                 # @!attribute [rw] connected_ticket_document_number
@@ -1790,7 +1850,11 @@ module Increase
                 #   Additional travel charges, such as baggage fees.
                 #   @return [Array<Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service>]
                 required :services,
-                         Increase::ArrayOf.new(-> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service })
+                         Increase::ArrayOf.new(
+                           lambda {
+                             Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service
+                           }
+                         )
 
                 # @!attribute [rw] ticket_document_number
                 #   Ticket document number.
@@ -1865,7 +1929,8 @@ module Increase
                 # @!attribute [rw] stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
                 #   @return [Symbol]
-                required :stop_over_code, Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
+                required :stop_over_code,
+                         Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
               end
             end
           end
@@ -1925,7 +1990,10 @@ module Increase
           # @!attribute [rw] network_details
           #   Fields specific to the `network`.
           #   @return [Increase::Models::CardPayment::Element::CardValidation::NetworkDetails]
-          required :network_details, -> { Increase::Models::CardPayment::Element::CardValidation::NetworkDetails }
+          required :network_details,
+                   lambda {
+                     Increase::Models::CardPayment::Element::CardValidation::NetworkDetails
+                   }
 
           # @!attribute [rw] network_identifiers
           #   Network-specific identifiers for a specific request or transaction.
@@ -1967,7 +2035,10 @@ module Increase
             # @!attribute [rw] visa
             #   Fields specific to the `visa` network.
             #   @return [Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa]
-            required :visa, -> { Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa }
+            required :visa,
+                     lambda {
+                       Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa
+                     }
 
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
