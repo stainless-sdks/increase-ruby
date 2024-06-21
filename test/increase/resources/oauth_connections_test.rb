@@ -13,7 +13,7 @@ class Increase::Test::Resources::OAuthConnectionsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.oauth_connections.list 
+    response = @increase.oauth_connections.list
     assert_kind_of(Increase::Page, response)
   end
 end

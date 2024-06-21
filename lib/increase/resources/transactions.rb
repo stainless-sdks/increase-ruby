@@ -8,10 +8,10 @@ module Increase
       end
 
       # Retrieve a Transaction
-      # 
+      #
       # @param transaction_id [String] The identifier of the Transaction to retrieve.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::Transaction]
       def retrieve(transaction_id, opts = {})
         req = {}
@@ -22,7 +22,7 @@ module Increase
       end
 
       # List Transactions
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id Filter Transactions for those belonging to the specified Account.
       # @option params [Category] :category
@@ -32,9 +32,9 @@ module Increase
       #   objects.
       # @option params [String] :route_id Filter Transactions for those belonging to the specified route. This could be a
       #   Card ID or an Account Number ID.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::Transaction>]
       def list(params = {}, opts = {})
         req = {}

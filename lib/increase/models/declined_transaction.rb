@@ -320,7 +320,10 @@ module Increase
           # @!attribute [rw] verification
           #   Fields related to verification of cardholder-provided values.
           #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification]
-          required :verification, -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification }
+          required :verification,
+                   lambda {
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
+                   }
 
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
@@ -331,7 +334,10 @@ module Increase
             # @!attribute [rw] visa
             #   Fields specific to the `visa` network.
             #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa]
-            required :visa, -> { Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa }
+            required :visa,
+                     lambda {
+                       Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa
+                     }
 
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator

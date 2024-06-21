@@ -7,7 +7,12 @@ module Increase
       #   If the simulated tokenization attempt was declined, this field contains details as to why.
       #   @return [Symbol]
       required :decline_reason,
-               Increase::Enum.new(:card_not_active, :no_verification_method, :webhook_timed_out, :webhook_declined)
+               Increase::Enum.new(
+                 :card_not_active,
+                 :no_verification_method,
+                 :webhook_timed_out,
+                 :webhook_declined
+               )
 
       # @!attribute [rw] digital_wallet_token_id
       #   If the simulated tokenization attempt was accepted, this field contains the id of the Digital Wallet Token that was created.
