@@ -11,10 +11,10 @@ module Increase
         # Simulates the mailing of a [Check Transfer](#check-transfers), which happens
         #   once per weekday in production but can be sped up in sandbox. This transfer must
         #   first have a `status` of `pending_approval` or `pending_submission`.
-        #
+        # 
         # @param check_transfer_id [String] The identifier of the Check Transfer you wish to mail.
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        #
+        # 
         # @return [Increase::Models::CheckTransfer]
         def mail(check_transfer_id, opts = {})
           req = {}

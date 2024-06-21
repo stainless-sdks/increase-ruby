@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create an ACH Prenotification
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id The Increase identifier for the account that will send the transfer.
       # @option params [String] :account_number The account number for the destination account.
@@ -26,9 +26,9 @@ module Increase
       # @option params [String] :individual_name The name of the transfer recipient. This value is information and not verified
       #   by the recipient's bank.
       # @option params [Symbol] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the ACH Prenotification.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::ACHPrenotification]
       def create(params = {}, opts = {})
         req = {}
@@ -40,10 +40,10 @@ module Increase
       end
 
       # Retrieve an ACH Prenotification
-      #
+      # 
       # @param ach_prenotification_id [String] The identifier of the ACH Prenotification to retrieve.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::ACHPrenotification]
       def retrieve(ach_prenotification_id, opts = {})
         req = {}
@@ -54,7 +54,7 @@ module Increase
       end
 
       # List ACH Prenotifications
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [CreatedAt] :created_at
       # @option params [String] :cursor Return the page of entries after this one.
@@ -64,9 +64,9 @@ module Increase
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Page<Increase::Models::ACHPrenotification>]
       def list(params = {}, opts = {})
         req = {}

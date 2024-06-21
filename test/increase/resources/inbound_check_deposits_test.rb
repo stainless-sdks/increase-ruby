@@ -13,7 +13,7 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.inbound_check_deposits.list
+    response = @increase.inbound_check_deposits.list 
     assert_kind_of(Increase::Page, response)
   end
 
