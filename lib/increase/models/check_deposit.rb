@@ -28,11 +28,6 @@ module Increase
       #   @return [String]
       required :created_at, String
 
-      # @!attribute [rw] currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
-      #   @return [Symbol]
-      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
-
       # @!attribute [rw] deposit_acceptance
       #   If your deposit is successfully parsed and accepted by Increase, this will contain details of the parsed check.
       #   @return [Increase::Models::CheckDeposit::DepositAcceptance]
@@ -53,6 +48,11 @@ module Increase
       #   @return [Increase::Models::CheckDeposit::DepositSubmission]
       required :deposit_submission, -> { Increase::Models::CheckDeposit::DepositSubmission }
 
+      # @!attribute [rw] description
+      #   The description of the Check Deposit, for display purposes only.
+      #   @return [String]
+      required :description, String
+
       # @!attribute [rw] front_image_file_id
       #   The ID for the File containing the image of the front of the check.
       #   @return [String]
@@ -62,6 +62,16 @@ module Increase
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #   @return [String]
       required :idempotency_key, String
+
+      # @!attribute [rw] inbound_mail_item_id
+      #   If the Check Deposit was the result of an Inbound Mail Item, this will contain the identifier of the Inbound Mail Item.
+      #   @return [String]
+      required :inbound_mail_item_id, String
+
+      # @!attribute [rw] lockbox_id
+      #   If the Check Deposit was the result of an Inbound Mail Item, this will contain the identifier of the Lockbox that received it.
+      #   @return [String]
+      required :lockbox_id, String
 
       # @!attribute [rw] status
       #   The status of the Check Deposit.
@@ -145,7 +155,8 @@ module Increase
                    :missing_required_data_elements,
                    :suspected_fraud,
                    :deposit_window_expired,
-                   :unknown
+                   :unknown,
+                   :operator
                  )
 
         # @!attribute [rw] rejected_at
@@ -215,6 +226,16 @@ module Increase
       end
 
       class DepositSubmission < BaseModel
+        # @!attribute [rw] back_file_id
+        #   The ID for the File containing the check back image that was submitted to the Check21 network.
+        #   @return [String]
+        required :back_file_id, String
+
+        # @!attribute [rw] front_file_id
+        #   The ID for the File containing the check front image that was submitted to the Check21 network.
+        #   @return [String]
+        required :front_file_id, String
+
         # @!attribute [rw] submitted_at
         #   When the check deposit was submitted to the Check21 network for processing. During business days, this happens within a few hours of the check being accepted by Increase.
         #   @return [String]

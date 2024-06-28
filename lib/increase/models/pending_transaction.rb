@@ -46,7 +46,7 @@ module Increase
       # @!attribute [rw] route_type
       #   The type of the route this Pending Transaction came through.
       #   @return [Symbol]
-      required :route_type, Increase::Enum.new(:account_number, :card)
+      required :route_type, Increase::Enum.new(:account_number, :card, :lockbox)
 
       # @!attribute [rw] source
       #   This is an object giving more details on the network-level event that caused the Pending Transaction. For example, for a card transaction this lists the merchant's industry and location.
