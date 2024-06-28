@@ -14,8 +14,8 @@ module Increase
       # @option params [Integer] :amount The deposit amount in the minor unit of the account currency. For dollars, for
       #   example, this is cents.
       # @option params [String] :back_image_file_id The File containing the check's back image.
-      # @option params [String] :currency The currency to use for the deposit.
       # @option params [String] :front_image_file_id The File containing the check's front image.
+      # @option params [String] :description The description you choose to give the Check Deposit, for display purposes only.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #

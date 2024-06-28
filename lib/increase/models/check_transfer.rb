@@ -235,6 +235,11 @@ module Increase
         #   @return [Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress]
         required :return_address, -> { Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress }
 
+        # @!attribute [rw] signature_text
+        #   The text that will appear as the signature on the check in cursive font. If blank, the check will be printed with 'No signature required'.
+        #   @return [String]
+        required :signature_text, String
+
         class MailingAddress < BaseModel
           # @!attribute [rw] city
           #   The city of the check's destination.

@@ -81,6 +81,8 @@ module Increase
                  :"intrafi_account_enrollment.updated",
                  :"intrafi_exclusion.created",
                  :"intrafi_exclusion.updated",
+                 :"lockbox.created",
+                 :"lockbox.updated",
                  :"oauth_connection.created",
                  :"oauth_connection.deactivated",
                  :"pending_transaction.created",

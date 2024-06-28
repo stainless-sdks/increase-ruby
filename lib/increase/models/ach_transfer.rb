@@ -83,11 +83,6 @@ module Increase
       #   @return [Symbol]
       required :destination_account_holder, Increase::Enum.new(:business, :individual, :unknown)
 
-      # @!attribute [rw] effective_date
-      #   The transfer effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-      #   @return [String]
-      required :effective_date, String
-
       # @!attribute [rw] external_account_id
       #   The identifier of the External Account the transfer was made to, if any.
       #   @return [String]
@@ -128,6 +123,11 @@ module Increase
       #   The ID for the pending transaction representing the transfer. A pending transaction is created when the transfer [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals) by someone else in your organization.
       #   @return [String]
       required :pending_transaction_id, String
+
+      # @!attribute [rw] preferred_effective_date
+      #   Configuration for how the effective date of the transfer will be set. This determines same-day vs future-dated settlement timing. If not set, defaults to a `settlement_schedule` of `same_day`. If set, exactly one of the child atributes must be set.
+      #   @return [Increase::Models::ACHTransfer::PreferredEffectiveDate]
+      required :preferred_effective_date, -> { Increase::Models::ACHTransfer::PreferredEffectiveDate }
 
       # @!attribute [rw] return_
       #   If your transfer is returned, this will contain details of the return.
@@ -358,6 +358,18 @@ module Increase
         required :created_at, String
       end
 
+      class PreferredEffectiveDate < BaseModel
+        # @!attribute [rw] date
+        #   A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to use as the effective date when submitting this transfer.
+        #   @return [String]
+        required :date, String
+
+        # @!attribute [rw] settlement_schedule
+        #   A schedule by which Increase whill choose an effective date for the transfer.
+        #   @return [Symbol]
+        required :settlement_schedule, Increase::Enum.new(:same_day, :future_dated)
+      end
+
       class Return < BaseModel
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
@@ -464,14 +476,19 @@ module Increase
 
       class Submission < BaseModel
         # @!attribute [rw] effective_date
-        #   The ACH's effective date sent to the receiving bank. If `effective_date` is configured in the ACH transfer, this will match the value there. Otherwise, it will the date that the ACH transfer was processed, which is usually the current or subsequent business day.
+        #   The ACH transfer's effective date as sent to the Federal Reserve. If a specific date was configured using `preferred_effective_date`, this will match that value. Otherwise, it will be the date selected (following the specified settlement schedule) at the time the transfer was submitted.
         #   @return [String]
         required :effective_date, String
 
         # @!attribute [rw] expected_funds_settlement_at
-        #   When the funds transfer is expected to settle in the recipient's account. Credits may be available sooner, at the receiving banks discretion. The FedACH schedule is published [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
+        #   When the transfer is expected to settle in the recipient's account. Credits may be available sooner, at the receiving banks discretion. The FedACH schedule is published [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
         #   @return [String]
         required :expected_funds_settlement_at, String
+
+        # @!attribute [rw] expected_settlement_schedule
+        #   The settlement schedule the transfer is expected to follow. This expectation takes into account the `effective_date`, `submitted_at`, and the amount of the transfer.
+        #   @return [Symbol]
+        required :expected_settlement_schedule, Increase::Enum.new(:same_day, :future_dated)
 
         # @!attribute [rw] submitted_at
         #   When the ACH transfer was sent to FedACH.

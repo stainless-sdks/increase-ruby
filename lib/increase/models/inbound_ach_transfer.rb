@@ -93,6 +93,28 @@ module Increase
       #   @return [String]
       required :receiver_name, String
 
+      # @!attribute [rw] standard_entry_class_code
+      #   The Standard Entry Class (SEC) code of the transfer.
+      #   @return [Symbol]
+      required :standard_entry_class_code,
+               Increase::Enum.new(
+                 :corporate_credit_or_debit,
+                 :corporate_trade_exchange,
+                 :prearranged_payments_and_deposit,
+                 :internet_initiated,
+                 :point_of_sale,
+                 :telephone_initiated,
+                 :customer_initiated,
+                 :accounts_receivable,
+                 :machine_transfer,
+                 :shared_network_transaction,
+                 :represented_check,
+                 :back_office_conversion,
+                 :point_of_purchase,
+                 :check_truncation,
+                 :destroyed_check
+               )
+
       # @!attribute [rw] status
       #   The status of the transfer.
       #   @return [Symbol]
@@ -178,6 +200,7 @@ module Increase
                    :credit_entry_refused_by_receiver,
                    :duplicate_return,
                    :entity_not_active,
+                   :field_error,
                    :group_locked,
                    :insufficient_funds,
                    :misrouted_return,

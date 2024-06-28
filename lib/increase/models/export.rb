@@ -17,7 +17,8 @@ module Increase
                  :transaction_csv,
                  :balance_csv,
                  :bookkeeping_account_balance_csv,
-                 :entity_csv
+                 :entity_csv,
+                 :vendor_csv
                )
 
       # @!attribute [rw] created_at

@@ -3,6 +3,11 @@
 module Increase
   module Models
     class IntrafiBalance < BaseModel
+      # @!attribute [rw] id
+      #   The identifier of this balance.
+      #   @return [String]
+      required :id, String
+
       # @!attribute [rw] balances
       #   Each entry represents a balance held at a different bank. IntraFi separates the total balance across many participating banks in the network.
       #   @return [Array<Increase::Models::IntrafiBalance::Balance>]
@@ -29,6 +34,11 @@ module Increase
       required :type, Increase::Enum.new(:intrafi_balance)
 
       class Balance < BaseModel
+        # @!attribute [rw] id
+        #   The identifier of this balance.
+        #   @return [String]
+        required :id, String
+
         # @!attribute [rw] balance
         #   The balance, in minor units of `currency`, held with this bank.
         #   @return [Integer]

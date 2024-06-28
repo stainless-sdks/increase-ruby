@@ -149,6 +149,12 @@ module Increase
     # @return [Increase::Resources::InboundCheckDeposits]
     attr_reader :inbound_check_deposits
 
+    # @return [Increase::Resources::InboundMailItems]
+    attr_reader :inbound_mail_items
+
+    # @return [Increase::Resources::Lockboxes]
+    attr_reader :lockboxes
+
     # @!visibility private
     def auth_headers
       {"Authorization" => "Bearer #{@api_key}"}
@@ -225,6 +231,8 @@ module Increase
       @digital_card_profiles = Increase::Resources::DigitalCardProfiles.new(client: self)
       @physical_card_profiles = Increase::Resources::PhysicalCardProfiles.new(client: self)
       @inbound_check_deposits = Increase::Resources::InboundCheckDeposits.new(client: self)
+      @inbound_mail_items = Increase::Resources::InboundMailItems.new(client: self)
+      @lockboxes = Increase::Resources::Lockboxes.new(client: self)
     end
 
     # @!visibility private
