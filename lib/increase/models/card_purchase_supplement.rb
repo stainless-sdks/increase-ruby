@@ -128,6 +128,11 @@ module Increase
       end
 
       class LineItem < BaseModel
+        # @!attribute [rw] id
+        #   The Card Purchase Supplement Line Item identifier.
+        #   @return [String]
+        required :id, String
+
         # @!attribute [rw] detail_indicator
         #   Indicates the type of line item.
         #   @return [Symbol]

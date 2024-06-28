@@ -59,7 +59,7 @@ module Increase
         # @!attribute [rw] route_type
         #   The type of the route this Declined Transaction came through.
         #   @return [Symbol]
-        required :route_type, Increase::Enum.new(:account_number, :card)
+        required :route_type, Increase::Enum.new(:account_number, :card, :lockbox)
 
         # @!attribute [rw] source
         #   This is an object giving more details on the network-level event that caused the Declined Transaction. For example, for a card transaction this lists the merchant's industry and location. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
@@ -177,6 +177,7 @@ module Increase
                        :credit_entry_refused_by_receiver,
                        :duplicate_return,
                        :entity_not_active,
+                       :field_error,
                        :group_locked,
                        :insufficient_funds,
                        :misrouted_return,
@@ -233,6 +234,11 @@ module Increase
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
             #   @return [Symbol]
             required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+
+            # @!attribute [rw] declined_transaction_id
+            #   The identifier of the declined transaction created for this Card Decline.
+            #   @return [String]
+            required :declined_transaction_id, String
 
             # @!attribute [rw] digital_wallet_token_id
             #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay purchase), the identifier of the token that was used.
@@ -330,6 +336,7 @@ module Increase
                        :group_locked,
                        :insufficient_funds,
                        :cvv2_mismatch,
+                       :card_expiration_mismatch,
                        :transaction_not_allowed,
                        :breaches_limit,
                        :webhook_declined,
@@ -552,7 +559,8 @@ module Increase
                        :missing_required_data_elements,
                        :suspected_fraud,
                        :deposit_window_expired,
-                       :unknown
+                       :unknown,
+                       :operator
                      )
 
             # @!attribute [rw] rejected_at
@@ -885,7 +893,7 @@ module Increase
         # @!attribute [rw] route_type
         #   The type of the route this Transaction came through.
         #   @return [Symbol]
-        required :route_type, Increase::Enum.new(:account_number, :card)
+        required :route_type, Increase::Enum.new(:account_number, :card, :lockbox)
 
         # @!attribute [rw] source
         #   This is an object giving more details on the network-level event that caused the Transaction. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
@@ -929,6 +937,12 @@ module Increase
           required :card_dispute_acceptance,
                    -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardDisputeAcceptance }
 
+          # @!attribute [rw] card_dispute_loss
+          #   A Card Dispute Loss object. This field will be present in the JSON response if and only if `category` is equal to `card_dispute_loss`.
+          #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardDisputeLoss]
+          required :card_dispute_loss,
+                   -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardDisputeLoss }
+
           # @!attribute [rw] card_refund
           #   A Card Refund object. This field will be present in the JSON response if and only if `category` is equal to `card_refund`.
           #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund]
@@ -964,6 +978,7 @@ module Increase
                      :ach_transfer_return,
                      :cashback_payment,
                      :card_dispute_acceptance,
+                     :card_dispute_loss,
                      :card_refund,
                      :card_settlement,
                      :card_revenue_payment,
@@ -1279,6 +1294,28 @@ module Increase
             required :transaction_id, String
           end
 
+          class CardDisputeLoss < BaseModel
+            # @!attribute [rw] card_dispute_id
+            #   The identifier of the Card Dispute that was lost.
+            #   @return [String]
+            required :card_dispute_id, String
+
+            # @!attribute [rw] explanation
+            #   Why the Card Dispute was lost.
+            #   @return [String]
+            required :explanation, String
+
+            # @!attribute [rw] lost_at
+            #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was lost.
+            #   @return [String]
+            required :lost_at, String
+
+            # @!attribute [rw] transaction_id
+            #   The identifier of the Transaction that was created to debit the disputed funds from your account.
+            #   @return [String]
+            required :transaction_id, String
+          end
+
           class CardRefund < BaseModel
             # @!attribute [rw] id
             #   The Card Refund identifier.
@@ -1286,7 +1323,7 @@ module Increase
             required :id, String
 
             # @!attribute [rw] amount
-            #   The pending amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
+            #   The amount in the minor unit of the transaction's settlement currency. For dollars, for example, this is cents.
             #   @return [Integer]
             required :amount, Integer
 
@@ -1296,7 +1333,7 @@ module Increase
             required :card_payment_id, String
 
             # @!attribute [rw] currency
-            #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+            #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
             #   @return [Symbol]
             required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
@@ -1335,6 +1372,16 @@ module Increase
             #   @return [Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::NetworkIdentifiers]
             required :network_identifiers,
                      -> { Increase::Models::InboundRealTimePaymentsTransferSimulationResult::Transaction::Source::CardRefund::NetworkIdentifiers }
+
+            # @!attribute [rw] presentment_amount
+            #   The amount in the minor unit of the transaction's presentment currency.
+            #   @return [Integer]
+            required :presentment_amount, Integer
+
+            # @!attribute [rw] presentment_currency
+            #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's presentment currency.
+            #   @return [String]
+            required :presentment_currency, String
 
             # @!attribute [rw] purchase_details
             #   Additional details about the card purchase, such as tax and industry-specific fields.

@@ -41,7 +41,7 @@ module Increase
       # @!attribute [rw] route_type
       #   The type of the route this Declined Transaction came through.
       #   @return [Symbol]
-      required :route_type, Increase::Enum.new(:account_number, :card)
+      required :route_type, Increase::Enum.new(:account_number, :card, :lockbox)
 
       # @!attribute [rw] source
       #   This is an object giving more details on the network-level event that caused the Declined Transaction. For example, for a card transaction this lists the merchant's industry and location. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
@@ -154,6 +154,7 @@ module Increase
                      :credit_entry_refused_by_receiver,
                      :duplicate_return,
                      :entity_not_active,
+                     :field_error,
                      :group_locked,
                      :insufficient_funds,
                      :misrouted_return,
@@ -210,6 +211,11 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           #   @return [Symbol]
           required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+
+          # @!attribute [rw] declined_transaction_id
+          #   The identifier of the declined transaction created for this Card Decline.
+          #   @return [String]
+          required :declined_transaction_id, String
 
           # @!attribute [rw] digital_wallet_token_id
           #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay purchase), the identifier of the token that was used.
@@ -307,6 +313,7 @@ module Increase
                      :group_locked,
                      :insufficient_funds,
                      :cvv2_mismatch,
+                     :card_expiration_mismatch,
                      :transaction_not_allowed,
                      :breaches_limit,
                      :webhook_declined,
@@ -533,7 +540,8 @@ module Increase
                      :missing_required_data_elements,
                      :suspected_fraud,
                      :deposit_window_expired,
-                     :unknown
+                     :unknown,
+                     :operator
                    )
 
           # @!attribute [rw] rejected_at

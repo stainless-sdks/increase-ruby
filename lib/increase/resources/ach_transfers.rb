@@ -41,6 +41,10 @@ module Increase
       # @option params [String] :individual_id Your identifier for the transfer recipient.
       # @option params [String] :individual_name The name of the transfer recipient. This value is informational and not verified
       #   by the recipient's bank.
+      # @option params [PreferredEffectiveDate] :preferred_effective_date Configuration for how the effective date of the transfer will be set. This
+      #   determines same-day vs future-dated settlement timing. If not set, defaults to a
+      #   `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+      #   must be set.
       # @option params [Boolean] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
       # @option params [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.

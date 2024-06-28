@@ -23,6 +23,11 @@ module Increase
       #   @return [String]
       required :default_digital_card_profile_id, String
 
+      # @!attribute [rw] interest_rate
+      #   The Interest Rate currently being earned on the accounts in this program, as a string containing a decimal number. For example, a 1% interest rate would be represented as "0.01".
+      #   @return [String]
+      required :interest_rate, String
+
       # @!attribute [rw] name_
       #   The name of the Program.
       #   @return [String]
