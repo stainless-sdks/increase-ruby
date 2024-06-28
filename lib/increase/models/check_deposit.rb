@@ -155,8 +155,7 @@ module Increase
                    :missing_required_data_elements,
                    :suspected_fraud,
                    :deposit_window_expired,
-                   :unknown,
-                   :operator
+                   :unknown
                  )
 
         # @!attribute [rw] rejected_at
