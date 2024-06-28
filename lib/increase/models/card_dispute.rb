@@ -33,6 +33,11 @@ module Increase
       #   @return [String]
       required :idempotency_key, String
 
+      # @!attribute [rw] loss
+      #   If the Card Dispute's status is `lost`, this will contain details of the lost dispute.
+      #   @return [Increase::Models::CardDispute::Loss]
+      required :loss, -> { Increase::Models::CardDispute::Loss }
+
       # @!attribute [rw] rejection
       #   If the Card Dispute's status is `rejected`, this will contain details of the unsuccessful dispute.
       #   @return [Increase::Models::CardDispute::Rejection]
@@ -41,12 +46,17 @@ module Increase
       # @!attribute [rw] status
       #   The results of the Dispute investigation.
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending_reviewing, :accepted, :rejected)
+      required :status, Increase::Enum.new(:pending_reviewing, :accepted, :rejected, :lost, :won)
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `card_dispute`.
       #   @return [Symbol]
       required :type, Increase::Enum.new(:card_dispute)
+
+      # @!attribute [rw] win
+      #   If the Card Dispute's status is `won`, this will contain details of the won dispute.
+      #   @return [Increase::Models::CardDispute::Win]
+      required :win, -> { Increase::Models::CardDispute::Win }
 
       class Acceptance < BaseModel
         # @!attribute [rw] accepted_at
@@ -61,6 +71,28 @@ module Increase
 
         # @!attribute [rw] transaction_id
         #   The identifier of the Transaction that was created to return the disputed funds to your account.
+        #   @return [String]
+        required :transaction_id, String
+      end
+
+      class Loss < BaseModel
+        # @!attribute [rw] card_dispute_id
+        #   The identifier of the Card Dispute that was lost.
+        #   @return [String]
+        required :card_dispute_id, String
+
+        # @!attribute [rw] explanation
+        #   Why the Card Dispute was lost.
+        #   @return [String]
+        required :explanation, String
+
+        # @!attribute [rw] lost_at
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was lost.
+        #   @return [String]
+        required :lost_at, String
+
+        # @!attribute [rw] transaction_id
+        #   The identifier of the Transaction that was created to debit the disputed funds from your account.
         #   @return [String]
         required :transaction_id, String
       end
@@ -80,6 +112,18 @@ module Increase
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was rejected.
         #   @return [String]
         required :rejected_at, String
+      end
+
+      class Win < BaseModel
+        # @!attribute [rw] card_dispute_id
+        #   The identifier of the Card Dispute that was won.
+        #   @return [String]
+        required :card_dispute_id, String
+
+        # @!attribute [rw] won_at
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was won.
+        #   @return [String]
+        required :won_at, String
       end
     end
   end

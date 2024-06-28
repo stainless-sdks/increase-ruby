@@ -23,10 +23,20 @@ module Increase
       #   @return [String]
       required :created_at, String
 
+      # @!attribute [rw] digital_wallet_token_id
+      #   The Digital Wallet Token identifier for this payment.
+      #   @return [String]
+      required :digital_wallet_token_id, String
+
       # @!attribute [rw] elements
       #   The interactions related to this card payment.
       #   @return [Array<Increase::Models::CardPayment::Element>]
       required :elements, Increase::ArrayOf.new(-> { Increase::Models::CardPayment::Element })
+
+      # @!attribute [rw] physical_card_id
+      #   The Physical Card identifier for this payment.
+      #   @return [String]
+      required :physical_card_id, String
 
       # @!attribute [rw] state
       #   The summarized state of this card payment.
@@ -422,6 +432,11 @@ module Increase
           #   @return [Symbol]
           required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
+          # @!attribute [rw] declined_transaction_id
+          #   The identifier of the declined transaction created for this Card Decline.
+          #   @return [String]
+          required :declined_transaction_id, String
+
           # @!attribute [rw] digital_wallet_token_id
           #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay purchase), the identifier of the token that was used.
           #   @return [String]
@@ -520,6 +535,7 @@ module Increase
                      :group_locked,
                      :insufficient_funds,
                      :cvv2_mismatch,
+                     :card_expiration_mismatch,
                      :transaction_not_allowed,
                      :breaches_limit,
                      :webhook_declined,
@@ -802,7 +818,7 @@ module Increase
           required :id, String
 
           # @!attribute [rw] amount
-          #   The pending amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
+          #   The amount in the minor unit of the transaction's settlement currency. For dollars, for example, this is cents.
           #   @return [Integer]
           required :amount, Integer
 
@@ -812,7 +828,7 @@ module Increase
           required :card_payment_id, String
 
           # @!attribute [rw] currency
-          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           #   @return [Symbol]
           required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
@@ -851,6 +867,16 @@ module Increase
           #   @return [Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers]
           required :network_identifiers,
                    -> { Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers }
+
+          # @!attribute [rw] presentment_amount
+          #   The amount in the minor unit of the transaction's presentment currency.
+          #   @return [Integer]
+          required :presentment_amount, Integer
+
+          # @!attribute [rw] presentment_currency
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's presentment currency.
+          #   @return [String]
+          required :presentment_currency, String
 
           # @!attribute [rw] purchase_details
           #   Additional details about the card purchase, such as tax and industry-specific fields.

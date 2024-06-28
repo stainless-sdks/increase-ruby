@@ -20,6 +20,7 @@ module Increase
       # @option params [EntityCsv] :entity_csv Options for the created export. Required if `category` is equal to `entity_csv`.
       # @option params [TransactionCsv] :transaction_csv Options for the created export. Required if `category` is equal to
       #   `transaction_csv`.
+      # @option params [Object] :vendor_csv Options for the created export. Required if `category` is equal to `vendor_csv`.
       #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
