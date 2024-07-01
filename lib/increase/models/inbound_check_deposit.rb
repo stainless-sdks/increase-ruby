@@ -68,6 +68,11 @@ module Increase
       #   @return [String]
       required :declined_transaction_id, String
 
+      # @!attribute [rw] deposit_return
+      #   If you requested a return of this deposit, this will contain details of the return.
+      #   @return [Increase::Models::InboundCheckDeposit::DepositReturn]
+      required :deposit_return, -> { Increase::Models::InboundCheckDeposit::DepositReturn }
+
       # @!attribute [rw] front_image_file_id
       #   The ID for the File containing the image of the front of the check.
       #   @return [String]
@@ -87,6 +92,18 @@ module Increase
       #   A constant representing the object's type. For this resource it will always be `inbound_check_deposit`.
       #   @return [Symbol]
       required :type, Increase::Enum.new(:inbound_check_deposit)
+
+      class DepositReturn < BaseModel
+        # @!attribute [rw] returned_at
+        #   The time at which the deposit was returned.
+        #   @return [String]
+        required :returned_at, String
+
+        # @!attribute [rw] transaction_id
+        #   The id of the transaction for the returned deposit.
+        #   @return [String]
+        required :transaction_id, String
+      end
     end
   end
 end
