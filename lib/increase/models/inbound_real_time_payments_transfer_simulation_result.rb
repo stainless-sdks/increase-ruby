@@ -559,8 +559,7 @@ module Increase
                        :missing_required_data_elements,
                        :suspected_fraud,
                        :deposit_window_expired,
-                       :unknown,
-                       :operator
+                       :unknown
                      )
 
             # @!attribute [rw] rejected_at
@@ -2924,6 +2923,11 @@ module Increase
             #   A 15 digit number recorded in the Nacha file and available to both the originating and receiving bank. Along with the amount, date, and originating routing number, this can be used to identify the ACH transfer at either bank. ACH trace numbers are not unique, but are [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
             #   @return [String]
             required :trace_number, String
+
+            # @!attribute [rw] type
+            #   A constant representing the object's type. For this resource it will always be `inbound_international_ach_transfer`.
+            #   @return [Symbol]
+            required :type, Increase::Enum.new(:inbound_international_ach_transfer)
           end
 
           class InboundRealTimePaymentsTransferConfirmation < BaseModel

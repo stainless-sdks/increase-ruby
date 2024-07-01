@@ -57,6 +57,9 @@ module Increase
       # @return [Increase::Resources::Simulations::InboundCheckDeposits]
       attr_reader :inbound_check_deposits
 
+      # @return [Increase::Resources::Simulations::InboundInternationalACHTransfers]
+      attr_reader :inbound_international_ach_transfers
+
       def initialize(client:)
         @client = client
         @account_transfers = Increase::Resources::Simulations::AccountTransfers.new(client: client)
@@ -77,6 +80,7 @@ module Increase
         @real_time_payments_transfers = Increase::Resources::Simulations::RealTimePaymentsTransfers.new(client: client)
         @physical_cards = Increase::Resources::Simulations::PhysicalCards.new(client: client)
         @inbound_check_deposits = Increase::Resources::Simulations::InboundCheckDeposits.new(client: client)
+        @inbound_international_ach_transfers = Increase::Resources::Simulations::InboundInternationalACHTransfers.new(client: client)
       end
 
       # Simulates expiring a card authorization immediately.
