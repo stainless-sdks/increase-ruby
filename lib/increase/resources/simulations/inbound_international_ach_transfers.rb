@@ -26,6 +26,7 @@ module Increase
         #   originating bank account.
         # @option params [String] :originator_company_entry_description A description field set by the originator.
         # @option params [String] :originator_name Either the name of the originator or an intermediary money transmitter.
+        # @option params [String] :receiver_identification_number An identification number the originator uses for the receiver.
         # @option params [String] :receiving_company_or_individual_name The name of the receiver of the transfer.
         #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
