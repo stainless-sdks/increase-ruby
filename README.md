@@ -7,7 +7,7 @@ application.
 
 Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/increase/increase-ruby).
 
-The underlying REST API documentation can be found [on increase.com](https://increase.com/documentation).
+The underlying REST API documentation can be found on [increase.com](https://increase.com/documentation).
 
 ## Installation
 
