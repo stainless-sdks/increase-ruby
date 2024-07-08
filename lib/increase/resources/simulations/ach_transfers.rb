@@ -8,6 +8,25 @@ module Increase
           @client = client
         end
 
+        # Simulates the acknowledgement of an [ACH Transfer](#ach-transfers) by the
+        #   Federal Reserve. This transfer must first have a `status` of `submitted` . In
+        #   production, the Federal Reserve generally acknowledges submitted ACH files
+        #   within 30 minutes. Since sandbox ACH Transfers are not submitted to the Federal
+        #   Reserve, this endpoint allows you to skip that delay and add the acknowledgment
+        #   subresource to the ACH Transfer.
+        #
+        # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to become acknowledged.
+        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        #
+        # @return [Increase::Models::ACHTransfer]
+        def acknowledge(ach_transfer_id, opts = {})
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/acknowledge"
+          req[:model] = Increase::Models::ACHTransfer
+          @client.request(req, opts)
+        end
+
         # Simulates an inbound ACH transfer to your account. This imitates initiating a
         #   transfer to an Increase account from a different financial institution. The
         #   transfer may be either a credit or a debit depending on if the `amount` is
