@@ -460,6 +460,11 @@ module Increase
         #   @return [String]
         required :created_at, String
 
+        # @!attribute [rw] entity_id
+        #   The Entity the supplemental document is attached to.
+        #   @return [String]
+        required :entity_id, String
+
         # @!attribute [rw] file_id
         #   The File containing the document.
         #   @return [String]
