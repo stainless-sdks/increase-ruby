@@ -15,12 +15,12 @@ class Increase::Test::Resources::ExternalAccountsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.external_accounts.retrieve("string")
+    response = @increase.external_accounts.retrieve("external_account_id")
     assert_kind_of(Increase::Models::ExternalAccount, response)
   end
 
   def test_update
-    response = @increase.external_accounts.update("string")
+    response = @increase.external_accounts.update("external_account_id")
     assert_kind_of(Increase::Models::ExternalAccount, response)
   end
 

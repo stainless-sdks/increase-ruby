@@ -8,7 +8,7 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestsTest < Test::Unit::
   end
 
   def test_retrieve
-    response = @increase.proof_of_authorization_requests.retrieve("string")
+    response = @increase.proof_of_authorization_requests.retrieve("proof_of_authorization_request_id")
     assert_kind_of(Increase::Models::ProofOfAuthorizationRequest, response)
   end
 

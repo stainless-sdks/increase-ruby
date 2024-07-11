@@ -8,7 +8,7 @@ class Increase::Test::Resources::AccountStatementsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.account_statements.retrieve("string")
+    response = @increase.account_statements.retrieve("account_statement_id")
     assert_kind_of(Increase::Models::AccountStatement, response)
   end
 

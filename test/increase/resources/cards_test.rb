@@ -13,12 +13,12 @@ class Increase::Test::Resources::CardsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.cards.retrieve("string")
+    response = @increase.cards.retrieve("card_id")
     assert_kind_of(Increase::Models::Card, response)
   end
 
   def test_update
-    response = @increase.cards.update("string")
+    response = @increase.cards.update("card_id")
     assert_kind_of(Increase::Models::Card, response)
   end
 
@@ -28,7 +28,7 @@ class Increase::Test::Resources::CardsTest < Test::Unit::TestCase
   end
 
   def test_retrieve_sensitive_details
-    response = @increase.cards.retrieve_sensitive_details("string")
+    response = @increase.cards.retrieve_sensitive_details("card_id")
     assert_kind_of(Increase::Models::CardDetails, response)
   end
 end

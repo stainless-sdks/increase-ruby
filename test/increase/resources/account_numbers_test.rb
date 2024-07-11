@@ -18,12 +18,12 @@ class Increase::Test::Resources::AccountNumbersTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.account_numbers.retrieve("string")
+    response = @increase.account_numbers.retrieve("account_number_id")
     assert_kind_of(Increase::Models::AccountNumber, response)
   end
 
   def test_update
-    response = @increase.account_numbers.update("string")
+    response = @increase.account_numbers.update("account_number_id")
     assert_kind_of(Increase::Models::AccountNumber, response)
   end
 

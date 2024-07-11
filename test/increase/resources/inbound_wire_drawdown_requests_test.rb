@@ -8,7 +8,7 @@ class Increase::Test::Resources::InboundWireDrawdownRequestsTest < Test::Unit::T
   end
 
   def test_retrieve
-    response = @increase.inbound_wire_drawdown_requests.retrieve("string")
+    response = @increase.inbound_wire_drawdown_requests.retrieve("inbound_wire_drawdown_request_id")
     assert_kind_of(Increase::Models::InboundWireDrawdownRequest, response)
   end
 

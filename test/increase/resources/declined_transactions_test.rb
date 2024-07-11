@@ -8,7 +8,7 @@ class Increase::Test::Resources::DeclinedTransactionsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.declined_transactions.retrieve("string")
+    response = @increase.declined_transactions.retrieve("declined_transaction_id")
     assert_kind_of(Increase::Models::DeclinedTransaction, response)
   end
 

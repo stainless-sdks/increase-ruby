@@ -8,7 +8,7 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.digital_wallet_tokens.retrieve("string")
+    response = @increase.digital_wallet_tokens.retrieve("digital_wallet_token_id")
     assert_kind_of(Increase::Models::DigitalWalletToken, response)
   end
 

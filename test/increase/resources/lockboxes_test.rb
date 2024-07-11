@@ -13,12 +13,12 @@ class Increase::Test::Resources::LockboxesTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.lockboxes.retrieve("string")
+    response = @increase.lockboxes.retrieve("lockbox_id")
     assert_kind_of(Increase::Models::Lockbox, response)
   end
 
   def test_update
-    response = @increase.lockboxes.update("string")
+    response = @increase.lockboxes.update("lockbox_id")
     assert_kind_of(Increase::Models::Lockbox, response)
   end
 
