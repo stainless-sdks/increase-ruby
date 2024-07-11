@@ -59,27 +59,6 @@ module Increase
         @client.request(req, opts)
       end
 
-      # Create a notification of change for an Inbound ACH Transfer
-      #
-      # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer for which to create a notification of
-      #   change.
-      #
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :updated_account_number The updated account number to send in the notification of change.
-      # @option params [String] :updated_routing_number The updated routing number to send in the notification of change.
-      #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
-      # @return [Increase::Models::InboundACHTransfer]
-      def notification_of_change(inbound_ach_transfer_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/notification_of_change"
-        req[:body] = params
-        req[:model] = Increase::Models::InboundACHTransfer
-        @client.request(req, opts)
-      end
-
       # Return an Inbound ACH Transfer
       #
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to return to the originating

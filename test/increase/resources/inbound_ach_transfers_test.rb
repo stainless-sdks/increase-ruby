@@ -22,11 +22,6 @@ class Increase::Test::Resources::InboundACHTransfersTest < Test::Unit::TestCase
     assert_kind_of(Increase::Models::InboundACHTransfer, response)
   end
 
-  def test_notification_of_change
-    response = @increase.inbound_ach_transfers.notification_of_change("string")
-    assert_kind_of(Increase::Models::InboundACHTransfer, response)
-  end
-
   def test_transfer_return_required_params
     response = @increase.inbound_ach_transfers.transfer_return("string", {reason: "payment_stopped"})
     assert_kind_of(Increase::Models::InboundACHTransfer, response)

@@ -31,4 +31,12 @@ class Increase::Test::Resources::EntitiesTest < Test::Unit::TestCase
     response = @increase.entities.confirm("string")
     assert_kind_of(Increase::Models::Entity, response)
   end
+
+  def test_update_address_required_params
+    response = @increase.entities.update_address(
+      "string",
+      {address: {"city" => "New York", "line1" => "33 Liberty Street", "state" => "NY", "zip" => "10045"}}
+    )
+    assert_kind_of(Increase::Models::Entity, response)
+  end
 end

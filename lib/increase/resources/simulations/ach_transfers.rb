@@ -65,28 +65,6 @@ module Increase
           @client.request(req, opts)
         end
 
-        # Simulates receiving a Notification of Change for an
-        #   [ACH Transfer](#ach-transfers).
-        #
-        # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to create a notification of change
-        #   for.
-        #
-        # @param params [Hash] Attributes to send in this request.
-        # @option params [Symbol] :change_code The reason for the notification of change.
-        # @option params [String] :corrected_data The corrected data for the notification of change (e.g., a new routing number).
-        #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        #
-        # @return [Increase::Models::ACHTransfer]
-        def notification_of_change(ach_transfer_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/notification_of_change"
-          req[:body] = params
-          req[:model] = Increase::Models::ACHTransfer
-          @client.request(req, opts)
-        end
-
         # Simulates the return of an [ACH Transfer](#ach-transfers) by the Federal Reserve
         #   due to an error condition. This will also create a Transaction to account for
         #   the returned funds. This transfer must first have a `status` of `submitted`.

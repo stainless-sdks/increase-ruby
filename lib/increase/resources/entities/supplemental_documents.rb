@@ -8,6 +8,24 @@ module Increase
           @client = client
         end
 
+        # Create a supplemental document for an Entity
+        #
+        # @param params [Hash] Attributes to send in this request.
+        # @option params [String] :entity_id The identifier of the Entity to associate with the supplemental document.
+        # @option params [String] :file_id The identifier of the File containing the document.
+        #
+        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        #
+        # @return [Increase::Models::EntitySupplementalDocument]
+        def create(params = {}, opts = {})
+          req = {}
+          req[:method] = :post
+          req[:path] = "/entity_supplemental_documents"
+          req[:body] = params
+          req[:model] = Increase::Models::EntitySupplementalDocument
+          @client.request(req, opts)
+        end
+
         # List Entity Supplemental Document Submissions
         #
         # @param params [Hash] Attributes to send in this request.
@@ -22,14 +40,14 @@ module Increase
         #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Increase::Page<Increase::Models::SupplementalDocumentListResponse>]
+        # @return [Increase::Page<Increase::Models::EntitySupplementalDocument>]
         def list(params = {}, opts = {})
           req = {}
           req[:method] = :get
           req[:path] = "/entity_supplemental_documents"
           req[:query] = params
           req[:page] = Increase::Page
-          req[:model] = Increase::Models::SupplementalDocumentListResponse
+          req[:model] = Increase::Models::EntitySupplementalDocument
           @client.request(req, opts)
         end
       end

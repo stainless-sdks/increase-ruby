@@ -126,6 +126,26 @@ module Increase
         req[:model] = Increase::Models::Entity
         @client.request(req, opts)
       end
+
+      # Update a Natural Person or Corporation's address
+      #
+      # @param entity_id [String] The identifier of the Entity whose address is being updated.
+      #
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [Address] :address The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+      #   are disallowed.
+      #
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      #
+      # @return [Increase::Models::Entity]
+      def update_address(entity_id, params = {}, opts = {})
+        req = {}
+        req[:method] = :post
+        req[:path] = "/entities/#{entity_id}/update_address"
+        req[:body] = params
+        req[:model] = Increase::Models::Entity
+        @client.request(req, opts)
+      end
     end
   end
 end
