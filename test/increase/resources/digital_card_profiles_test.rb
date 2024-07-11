@@ -21,7 +21,7 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.digital_card_profiles.retrieve("string")
+    response = @increase.digital_card_profiles.retrieve("digital_card_profile_id")
     assert_kind_of(Increase::Models::DigitalCardProfile, response)
   end
 
@@ -31,12 +31,12 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Test::Unit::TestCase
   end
 
   def test_archive
-    response = @increase.digital_card_profiles.archive("string")
+    response = @increase.digital_card_profiles.archive("digital_card_profile_id")
     assert_kind_of(Increase::Models::DigitalCardProfile, response)
   end
 
   def test_clone
-    response = @increase.digital_card_profiles.clone("string")
+    response = @increase.digital_card_profiles.clone("digital_card_profile_id")
     assert_kind_of(Increase::Models::DigitalCardProfile, response)
   end
 end

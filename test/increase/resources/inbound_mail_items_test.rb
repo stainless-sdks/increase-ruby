@@ -8,7 +8,7 @@ class Increase::Test::Resources::InboundMailItemsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.inbound_mail_items.retrieve("string")
+    response = @increase.inbound_mail_items.retrieve("inbound_mail_item_id")
     assert_kind_of(Increase::Models::InboundMailItem, response)
   end
 

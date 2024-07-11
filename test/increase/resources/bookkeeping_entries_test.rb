@@ -8,7 +8,7 @@ class Increase::Test::Resources::BookkeepingEntriesTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.bookkeeping_entries.retrieve("string")
+    response = @increase.bookkeeping_entries.retrieve("bookkeeping_entry_id")
     assert_kind_of(Increase::Models::BookkeepingEntry, response)
   end
 

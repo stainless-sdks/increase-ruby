@@ -8,7 +8,7 @@ class Increase::Test::Resources::CardPaymentsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.card_payments.retrieve("string")
+    response = @increase.card_payments.retrieve("card_payment_id")
     assert_kind_of(Increase::Models::CardPayment, response)
   end
 
