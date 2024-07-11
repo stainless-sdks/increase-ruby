@@ -8,7 +8,7 @@ class Increase::Test::Resources::InboundWireTransfersTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.inbound_wire_transfers.retrieve("string")
+    response = @increase.inbound_wire_transfers.retrieve("inbound_wire_transfer_id")
     assert_kind_of(Increase::Models::InboundWireTransfer, response)
   end
 

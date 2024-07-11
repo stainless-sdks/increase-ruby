@@ -8,7 +8,7 @@ class Increase::Test::Resources::OAuthConnectionsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.oauth_connections.retrieve("string")
+    response = @increase.oauth_connections.retrieve("oauth_connection_id")
     assert_kind_of(Increase::Models::OAuthConnection, response)
   end
 

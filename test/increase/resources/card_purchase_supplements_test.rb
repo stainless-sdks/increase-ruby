@@ -8,7 +8,7 @@ class Increase::Test::Resources::CardPurchaseSupplementsTest < Test::Unit::TestC
   end
 
   def test_retrieve
-    response = @increase.card_purchase_supplements.retrieve("string")
+    response = @increase.card_purchase_supplements.retrieve("card_purchase_supplement_id")
     assert_kind_of(Increase::Models::CardPurchaseSupplement, response)
   end
 

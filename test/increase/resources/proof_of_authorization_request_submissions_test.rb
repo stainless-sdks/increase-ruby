@@ -25,7 +25,9 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < Te
   end
 
   def test_retrieve
-    response = @increase.proof_of_authorization_request_submissions.retrieve("string")
+    response = @increase.proof_of_authorization_request_submissions.retrieve(
+      "proof_of_authorization_request_submission_id"
+    )
     assert_kind_of(Increase::Models::ProofOfAuthorizationRequestSubmission, response)
   end
 

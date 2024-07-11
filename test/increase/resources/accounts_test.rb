@@ -13,12 +13,12 @@ class Increase::Test::Resources::AccountsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.accounts.retrieve("string")
+    response = @increase.accounts.retrieve("account_id")
     assert_kind_of(Increase::Models::Account, response)
   end
 
   def test_update
-    response = @increase.accounts.update("string")
+    response = @increase.accounts.update("account_id")
     assert_kind_of(Increase::Models::Account, response)
   end
 
@@ -28,7 +28,7 @@ class Increase::Test::Resources::AccountsTest < Test::Unit::TestCase
   end
 
   def test_balance
-    response = @increase.accounts.balance("string")
+    response = @increase.accounts.balance("account_id")
     assert_kind_of(Increase::Models::BalanceLookup, response)
   end
 end

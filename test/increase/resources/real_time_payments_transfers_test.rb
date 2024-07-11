@@ -20,7 +20,7 @@ class Increase::Test::Resources::RealTimePaymentsTransfersTest < Test::Unit::Tes
   end
 
   def test_retrieve
-    response = @increase.real_time_payments_transfers.retrieve("string")
+    response = @increase.real_time_payments_transfers.retrieve("real_time_payments_transfer_id")
     assert_kind_of(Increase::Models::RealTimePaymentsTransfer, response)
   end
 

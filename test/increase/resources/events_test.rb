@@ -8,7 +8,7 @@ class Increase::Test::Resources::EventsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.events.retrieve("string")
+    response = @increase.events.retrieve("event_id")
     assert_kind_of(Increase::Models::Event, response)
   end
 

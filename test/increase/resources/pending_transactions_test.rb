@@ -8,7 +8,7 @@ class Increase::Test::Resources::PendingTransactionsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.pending_transactions.retrieve("string")
+    response = @increase.pending_transactions.retrieve("pending_transaction_id")
     assert_kind_of(Increase::Models::PendingTransaction, response)
   end
 

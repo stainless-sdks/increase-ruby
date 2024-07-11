@@ -18,7 +18,7 @@ class Increase::Test::Resources::CardDisputesTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.card_disputes.retrieve("string")
+    response = @increase.card_disputes.retrieve("card_dispute_id")
     assert_kind_of(Increase::Models::CardDispute, response)
   end
 

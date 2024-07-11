@@ -8,12 +8,12 @@ class Increase::Test::Resources::RealTimeDecisionsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.real_time_decisions.retrieve("string")
+    response = @increase.real_time_decisions.retrieve("real_time_decision_id")
     assert_kind_of(Increase::Models::RealTimeDecision, response)
   end
 
   def test_action
-    response = @increase.real_time_decisions.action("string")
+    response = @increase.real_time_decisions.action("real_time_decision_id")
     assert_kind_of(Increase::Models::RealTimeDecision, response)
   end
 end

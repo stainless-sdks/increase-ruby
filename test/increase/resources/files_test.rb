@@ -8,7 +8,7 @@ class Increase::Test::Resources::FilesTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.files.retrieve("string")
+    response = @increase.files.retrieve("file_id")
     assert_kind_of(Increase::Models::File, response)
   end
 

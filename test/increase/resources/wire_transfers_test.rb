@@ -20,7 +20,7 @@ class Increase::Test::Resources::WireTransfersTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.wire_transfers.retrieve("string")
+    response = @increase.wire_transfers.retrieve("wire_transfer_id")
     assert_kind_of(Increase::Models::WireTransfer, response)
   end
 
@@ -30,12 +30,12 @@ class Increase::Test::Resources::WireTransfersTest < Test::Unit::TestCase
   end
 
   def test_approve
-    response = @increase.wire_transfers.approve("string")
+    response = @increase.wire_transfers.approve("wire_transfer_id")
     assert_kind_of(Increase::Models::WireTransfer, response)
   end
 
   def test_cancel
-    response = @increase.wire_transfers.cancel("string")
+    response = @increase.wire_transfers.cancel("wire_transfer_id")
     assert_kind_of(Increase::Models::WireTransfer, response)
   end
 end

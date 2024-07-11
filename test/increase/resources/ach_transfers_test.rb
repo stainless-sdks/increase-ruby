@@ -15,7 +15,7 @@ class Increase::Test::Resources::ACHTransfersTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.ach_transfers.retrieve("string")
+    response = @increase.ach_transfers.retrieve("ach_transfer_id")
     assert_kind_of(Increase::Models::ACHTransfer, response)
   end
 
@@ -25,12 +25,12 @@ class Increase::Test::Resources::ACHTransfersTest < Test::Unit::TestCase
   end
 
   def test_approve
-    response = @increase.ach_transfers.approve("string")
+    response = @increase.ach_transfers.approve("ach_transfer_id")
     assert_kind_of(Increase::Models::ACHTransfer, response)
   end
 
   def test_cancel
-    response = @increase.ach_transfers.cancel("string")
+    response = @increase.ach_transfers.cancel("ach_transfer_id")
     assert_kind_of(Increase::Models::ACHTransfer, response)
   end
 end
