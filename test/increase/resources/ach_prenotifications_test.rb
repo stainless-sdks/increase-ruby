@@ -15,7 +15,7 @@ class Increase::Test::Resources::ACHPrenotificationsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.ach_prenotifications.retrieve("string")
+    response = @increase.ach_prenotifications.retrieve("ach_prenotification_id")
     assert_kind_of(Increase::Models::ACHPrenotification, response)
   end
 

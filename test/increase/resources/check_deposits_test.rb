@@ -20,7 +20,7 @@ class Increase::Test::Resources::CheckDepositsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.check_deposits.retrieve("string")
+    response = @increase.check_deposits.retrieve("check_deposit_id")
     assert_kind_of(Increase::Models::CheckDeposit, response)
   end
 

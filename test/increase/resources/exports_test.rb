@@ -13,7 +13,7 @@ class Increase::Test::Resources::ExportsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.exports.retrieve("string")
+    response = @increase.exports.retrieve("export_id")
     assert_kind_of(Increase::Models::Export, response)
   end
 

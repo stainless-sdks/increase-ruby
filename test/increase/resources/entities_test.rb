@@ -13,7 +13,7 @@ class Increase::Test::Resources::EntitiesTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.entities.retrieve("string")
+    response = @increase.entities.retrieve("entity_id")
     assert_kind_of(Increase::Models::Entity, response)
   end
 
@@ -23,18 +23,18 @@ class Increase::Test::Resources::EntitiesTest < Test::Unit::TestCase
   end
 
   def test_archive
-    response = @increase.entities.archive("string")
+    response = @increase.entities.archive("entity_id")
     assert_kind_of(Increase::Models::Entity, response)
   end
 
   def test_confirm
-    response = @increase.entities.confirm("string")
+    response = @increase.entities.confirm("entity_id")
     assert_kind_of(Increase::Models::Entity, response)
   end
 
   def test_update_address_required_params
     response = @increase.entities.update_address(
-      "string",
+      "entity_id",
       {address: {"city" => "New York", "line1" => "33 Liberty Street", "state" => "NY", "zip" => "10045"}}
     )
     assert_kind_of(Increase::Models::Entity, response)
