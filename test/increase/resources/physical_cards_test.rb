@@ -28,12 +28,12 @@ class Increase::Test::Resources::PhysicalCardsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.physical_cards.retrieve("string")
+    response = @increase.physical_cards.retrieve("physical_card_id")
     assert_kind_of(Increase::Models::PhysicalCard, response)
   end
 
   def test_update_required_params
-    response = @increase.physical_cards.update("string", {status: "disabled"})
+    response = @increase.physical_cards.update("physical_card_id", {status: "disabled"})
     assert_kind_of(Increase::Models::PhysicalCard, response)
   end
 

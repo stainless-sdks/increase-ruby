@@ -8,7 +8,7 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.inbound_check_deposits.retrieve("string")
+    response = @increase.inbound_check_deposits.retrieve("inbound_check_deposit_id")
     assert_kind_of(Increase::Models::InboundCheckDeposit, response)
   end
 
@@ -18,7 +18,7 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Test::Unit::TestCase
   end
 
   def test_decline
-    response = @increase.inbound_check_deposits.decline("string")
+    response = @increase.inbound_check_deposits.decline("inbound_check_deposit_id")
     assert_kind_of(Increase::Models::InboundCheckDeposit, response)
   end
 end

@@ -8,7 +8,7 @@ class Increase::Test::Resources::ProgramsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.programs.retrieve("string")
+    response = @increase.programs.retrieve("program_id")
     assert_kind_of(Increase::Models::Program, response)
   end
 

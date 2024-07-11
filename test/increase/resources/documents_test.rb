@@ -8,7 +8,7 @@ class Increase::Test::Resources::DocumentsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.documents.retrieve("string")
+    response = @increase.documents.retrieve("document_id")
     assert_kind_of(Increase::Models::Document, response)
   end
 

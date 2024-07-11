@@ -13,12 +13,12 @@ class Increase::Test::Resources::EventSubscriptionsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.event_subscriptions.retrieve("string")
+    response = @increase.event_subscriptions.retrieve("event_subscription_id")
     assert_kind_of(Increase::Models::EventSubscription, response)
   end
 
   def test_update
-    response = @increase.event_subscriptions.update("string")
+    response = @increase.event_subscriptions.update("event_subscription_id")
     assert_kind_of(Increase::Models::EventSubscription, response)
   end
 
