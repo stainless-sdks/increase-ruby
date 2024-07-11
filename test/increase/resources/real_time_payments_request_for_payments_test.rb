@@ -23,7 +23,7 @@ class Increase::Test::Resources::RealTimePaymentsRequestForPaymentsTest < Test::
   end
 
   def test_retrieve
-    response = @increase.real_time_payments_request_for_payments.retrieve("string")
+    response = @increase.real_time_payments_request_for_payments.retrieve("request_for_payment_id")
     assert_kind_of(Increase::Models::RealTimePaymentsRequestForPayment, response)
   end
 

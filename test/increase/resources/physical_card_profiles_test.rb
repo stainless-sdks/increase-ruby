@@ -20,7 +20,7 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.physical_card_profiles.retrieve("string")
+    response = @increase.physical_card_profiles.retrieve("physical_card_profile_id")
     assert_kind_of(Increase::Models::PhysicalCardProfile, response)
   end
 
@@ -30,12 +30,12 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Test::Unit::TestCase
   end
 
   def test_archive
-    response = @increase.physical_card_profiles.archive("string")
+    response = @increase.physical_card_profiles.archive("physical_card_profile_id")
     assert_kind_of(Increase::Models::PhysicalCardProfile, response)
   end
 
   def test_clone
-    response = @increase.physical_card_profiles.clone("string")
+    response = @increase.physical_card_profiles.clone("physical_card_profile_id")
     assert_kind_of(Increase::Models::PhysicalCardProfile, response)
   end
 end
