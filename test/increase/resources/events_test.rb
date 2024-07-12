@@ -13,7 +13,7 @@ class Increase::Test::Resources::EventsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.events.list
+    response = @increase.events.list 
     assert_kind_of(Increase::Page, response)
   end
 end

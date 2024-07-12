@@ -61,9 +61,9 @@ module Increase
 
       # @!attribute [rw] supplemental_documents
       #   Additional documentation associated with the entity. This is limited to the first 10 documents for an entity. If an entity has more than 10 documents, use the GET /entity_supplemental_documents list endpoint to retrieve them.
-      #   @return [Array<Increase::Models::Entity::SupplementalDocument>]
+      #   @return [Array<Increase::Models::EntitySupplementalDocument>]
       required :supplemental_documents,
-               Increase::ArrayOf.new(-> { Increase::Models::Entity::SupplementalDocument })
+               Increase::ArrayOf.new(-> { Increase::Models::EntitySupplementalDocument })
 
       # @!attribute [rw] trust_
       #   Details of the trust entity. Will be present if `structure` is equal to `trust`.
@@ -164,10 +164,7 @@ module Increase
             # @!attribute [rw] address
             #   The person's address.
             #   @return [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address]
-            required :address,
-                     lambda {
-                       Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address
-                     }
+            required :address, -> { Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address }
 
             # @!attribute [rw] date_of_birth
             #   The person's date of birth in YYYY-MM-DD format.
@@ -454,28 +451,6 @@ module Increase
         end
       end
 
-      class SupplementalDocument < BaseModel
-        # @!attribute [rw] created_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Supplemental Document was created.
-        #   @return [String]
-        required :created_at, String
-
-        # @!attribute [rw] file_id
-        #   The File containing the document.
-        #   @return [String]
-        required :file_id, String
-
-        # @!attribute [rw] idempotency_key
-        #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
-        #   @return [String]
-        required :idempotency_key, String
-
-        # @!attribute [rw] type
-        #   A constant representing the object's type. For this resource it will always be `entity_supplemental_document`.
-        #   @return [Symbol]
-        required :type, Increase::Enum.new(:entity_supplemental_document)
-      end
-
       class Trust < BaseModel
         # @!attribute [rw] address
         #   The trust's address.
@@ -637,10 +612,7 @@ module Increase
             # @!attribute [rw] identification
             #   A means of verifying the person's identity.
             #   @return [Increase::Models::Entity::Trust::Trustee::Individual::Identification]
-            required :identification,
-                     lambda {
-                       Increase::Models::Entity::Trust::Trustee::Individual::Identification
-                     }
+            required :identification, -> { Increase::Models::Entity::Trust::Trustee::Individual::Identification }
 
             # @!attribute [rw] name_
             #   The person's legal name.

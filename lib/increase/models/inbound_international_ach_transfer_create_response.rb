@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class InboundInternationalACHTransfer < BaseModel
+    class InboundInternationalACHTransferCreateResponse < BaseModel
       # @!attribute [rw] amount
       #   The amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
       #   @return [Integer]

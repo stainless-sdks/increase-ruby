@@ -13,7 +13,7 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.digital_wallet_tokens.list
+    response = @increase.digital_wallet_tokens.list 
     assert_kind_of(Increase::Page, response)
   end
 end

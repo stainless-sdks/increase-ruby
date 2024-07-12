@@ -23,12 +23,17 @@ class Increase::Test::Resources::AccountsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.accounts.list
+    response = @increase.accounts.list 
     assert_kind_of(Increase::Page, response)
   end
 
   def test_balance
     response = @increase.accounts.balance("account_id")
     assert_kind_of(Increase::Models::BalanceLookup, response)
+  end
+
+  def test_close
+    response = @increase.accounts.close("account_id")
+    assert_kind_of(Increase::Models::Account, response)
   end
 end

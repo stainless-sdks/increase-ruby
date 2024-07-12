@@ -13,8 +13,13 @@ class Increase::Test::Resources::InboundACHTransfersTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.inbound_ach_transfers.list
+    response = @increase.inbound_ach_transfers.list 
     assert_kind_of(Increase::Page, response)
+  end
+
+  def test_create_notification_of_change
+    response = @increase.inbound_ach_transfers.create_notification_of_change("inbound_ach_transfer_id")
+    assert_kind_of(Increase::Models::InboundACHTransfer, response)
   end
 
   def test_decline
@@ -22,16 +27,8 @@ class Increase::Test::Resources::InboundACHTransfersTest < Test::Unit::TestCase
     assert_kind_of(Increase::Models::InboundACHTransfer, response)
   end
 
-  def test_notification_of_change
-    response = @increase.inbound_ach_transfers.notification_of_change("inbound_ach_transfer_id")
-    assert_kind_of(Increase::Models::InboundACHTransfer, response)
-  end
-
   def test_transfer_return_required_params
-    response = @increase.inbound_ach_transfers.transfer_return(
-      "inbound_ach_transfer_id",
-      {reason: "payment_stopped"}
-    )
+    response = @increase.inbound_ach_transfers.transfer_return("inbound_ach_transfer_id", {reason: "payment_stopped"})
     assert_kind_of(Increase::Models::InboundACHTransfer, response)
   end
 end

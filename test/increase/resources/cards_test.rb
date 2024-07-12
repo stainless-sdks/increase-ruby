@@ -23,12 +23,12 @@ class Increase::Test::Resources::CardsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.cards.list
+    response = @increase.cards.list 
     assert_kind_of(Increase::Page, response)
   end
 
-  def test_retrieve_sensitive_details
-    response = @increase.cards.retrieve_sensitive_details("card_id")
+  def test_details
+    response = @increase.cards.details("card_id")
     assert_kind_of(Increase::Models::CardDetails, response)
   end
 end
