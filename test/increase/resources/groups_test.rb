@@ -7,8 +7,8 @@ class Increase::Test::Resources::GroupsTest < Test::Unit::TestCase
     @increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
   end
 
-  def test_retrieve_details
-    response = @increase.groups.retrieve_details
+  def test_retrieve
+    response = @increase.groups.retrieve 
     assert_kind_of(Increase::Models::Group, response)
   end
 end

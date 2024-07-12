@@ -23,7 +23,7 @@ class Increase::Test::Resources::LockboxesTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.lockboxes.list
+    response = @increase.lockboxes.list 
     assert_kind_of(Increase::Page, response)
   end
 end

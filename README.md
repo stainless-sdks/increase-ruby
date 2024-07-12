@@ -41,7 +41,11 @@ increase = Increase::Client.new(
   environment: "sandbox" # defaults to "production"
 )
 
-account = increase.accounts.create(name: "My First Increase Account")
+account = increase.accounts.create(
+  name: "New Account!",
+  entity_id: "entity_n8y8tnk2p9339ti393yi",
+  program_id: "program_i2v2os4mwza1oetokh9i"
+)
 
 puts account.id
 ```
@@ -91,7 +95,12 @@ increase = Increase::Client.new(
 )
 
 # Or, configure per-request:
-increase.accounts.create(name: "Jack", max_retries: 5)
+increase.accounts.create(
+  name: "New Account!",
+  entity_id: "entity_n8y8tnk2p9339ti393yi",
+  program_id: "program_i2v2os4mwza1oetokh9i",
+  max_retries: 5
+)
 ```
 
 ## Versioning

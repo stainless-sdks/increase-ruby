@@ -8,49 +8,36 @@ module Increase
           @client = client
         end
 
-        # Simulates an inbound Wire Transfer to your account.
-        #
-        # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :account_number_id The identifier of the Account Number the inbound Wire Transfer is for.
-        # @option params [Integer] :amount The transfer amount in cents. Must be positive.
-        # @option params [String] :beneficiary_address_line1 The sending bank will set beneficiary_address_line1 in production. You can
-        #   simulate any value here.
-        # @option params [String] :beneficiary_address_line2 The sending bank will set beneficiary_address_line2 in production. You can
-        #   simulate any value here.
-        # @option params [String] :beneficiary_address_line3 The sending bank will set beneficiary_address_line3 in production. You can
-        #   simulate any value here.
-        # @option params [String] :beneficiary_name The sending bank will set beneficiary_name in production. You can simulate any
-        #   value here.
-        # @option params [String] :beneficiary_reference The sending bank will set beneficiary_reference in production. You can simulate
-        #   any value here.
-        # @option params [String] :originator_address_line1 The sending bank will set originator_address_line1 in production. You can
-        #   simulate any value here.
-        # @option params [String] :originator_address_line2 The sending bank will set originator_address_line2 in production. You can
-        #   simulate any value here.
-        # @option params [String] :originator_address_line3 The sending bank will set originator_address_line3 in production. You can
-        #   simulate any value here.
-        # @option params [String] :originator_name The sending bank will set originator_name in production. You can simulate any
-        #   value here.
-        # @option params [String] :originator_routing_number The sending bank will set originator_routing_number in production. You can
-        #   simulate any value here.
-        # @option params [String] :originator_to_beneficiary_information_line1 The sending bank will set originator_to_beneficiary_information_line1 in
-        #   production. You can simulate any value here.
-        # @option params [String] :originator_to_beneficiary_information_line2 The sending bank will set originator_to_beneficiary_information_line2 in
-        #   production. You can simulate any value here.
-        # @option params [String] :originator_to_beneficiary_information_line3 The sending bank will set originator_to_beneficiary_information_line3 in
-        #   production. You can simulate any value here.
-        # @option params [String] :originator_to_beneficiary_information_line4 The sending bank will set originator_to_beneficiary_information_line4 in
-        #   production. You can simulate any value here.
-        #
+        # Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
+        #   Reserve due to error conditions. This will also create a
+        #   [Transaction](#transaction) to account for the returned funds. This Wire
+        #   Transfer must first have a `status` of `complete`.
+        # 
+        # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to reverse.
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        #
-        # @return [Increase::Models::InboundWireTransfer]
-        def create_inbound(params = {}, opts = {})
+        # 
+        # @return [Increase::Models::WireTransfer]
+        def reverse(wire_transfer_id, opts = {})
           req = {}
           req[:method] = :post
-          req[:path] = "/simulations/inbound_wire_transfers"
-          req[:body] = params
-          req[:model] = Increase::Models::InboundWireTransfer
+          req[:path] = "/simulations/wire_transfers/#{wire_transfer_id}/reverse"
+          req[:model] = Increase::Models::WireTransfer
+          @client.request(req, opts)
+        end
+
+        # Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
+        #   Reserve. This transfer must first have a `status` of `pending_approval` or
+        #   `pending_creating`.
+        # 
+        # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to submit.
+        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # 
+        # @return [Increase::Models::WireTransfer]
+        def submit(wire_transfer_id, opts = {})
+          req = {}
+          req[:method] = :post
+          req[:path] = "/simulations/wire_transfers/#{wire_transfer_id}/submit"
+          req[:model] = Increase::Models::WireTransfer
           @client.request(req, opts)
         end
       end

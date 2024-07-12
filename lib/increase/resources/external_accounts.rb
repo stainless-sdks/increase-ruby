@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create an External Account
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_number The account number for the destination account.
       # @option params [String] :description The name you choose for the Account.
@@ -16,9 +16,9 @@ module Increase
       #   destination account.
       # @option params [Symbol] :account_holder The type of entity that owns the External Account.
       # @option params [Symbol] :funding The type of the destination account. Defaults to `checking`.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::ExternalAccount]
       def create(params = {}, opts = {})
         req = {}
@@ -30,10 +30,10 @@ module Increase
       end
 
       # Retrieve an External Account
-      #
+      # 
       # @param external_account_id [String] The identifier of the External Account.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::ExternalAccount]
       def retrieve(external_account_id, opts = {})
         req = {}
@@ -44,17 +44,17 @@ module Increase
       end
 
       # Update an External Account
-      #
+      # 
       # @param external_account_id [String] The external account identifier.
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol] :account_holder The type of entity that owns the External Account.
       # @option params [String] :description The description you choose to give the external account.
       # @option params [Symbol] :funding The funding type of the External Account.
       # @option params [Symbol] :status The status of the External Account.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::ExternalAccount]
       def update(external_account_id, params = {}, opts = {})
         req = {}
@@ -66,7 +66,7 @@ module Increase
       end
 
       # List External Accounts
-      #
+      # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :cursor Return the page of entries after this one.
       # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
@@ -77,9 +77,9 @@ module Increase
       #   objects.
       # @option params [String] :routing_number Filter External Accounts to those with the specified Routing Number.
       # @option params [Status] :status
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Page<Increase::Models::ExternalAccount>]
       def list(params = {}, opts = {})
         req = {}

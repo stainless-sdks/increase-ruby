@@ -2,11 +2,16 @@
 
 module Increase
   module Models
-    class SupplementalDocument < BaseModel
+    class EntitySupplementalDocument < BaseModel
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Supplemental Document was created.
       #   @return [String]
       required :created_at, String
+
+      # @!attribute [rw] entity_id
+      #   The Entity the supplemental document is attached to.
+      #   @return [String]
+      required :entity_id, String
 
       # @!attribute [rw] file_id
       #   The File containing the document.

@@ -13,7 +13,7 @@ module Increase
         #   institution. The transfer may be either a credit or a debit depending on if the
         #   `amount` is positive or negative. The result of calling this API will contain
         #   the created transfer. .
-        #
+        # 
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :account_number_id The identifier of the Account Number the inbound international ACH Transfer is
         #   for.
@@ -28,16 +28,16 @@ module Increase
         # @option params [String] :originator_name Either the name of the originator or an intermediary money transmitter.
         # @option params [String] :receiver_identification_number An identification number the originator uses for the receiver.
         # @option params [String] :receiving_company_or_individual_name The name of the receiver of the transfer.
-        #
+        # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        #
-        # @return [Increase::Models::InboundInternationalACHTransfer]
+        # 
+        # @return [Increase::Models::InboundInternationalACHTransferCreateResponse]
         def create(params = {}, opts = {})
           req = {}
           req[:method] = :post
           req[:path] = "/simulations/inbound_international_ach_transfers"
           req[:body] = params
-          req[:model] = Increase::Models::InboundInternationalACHTransfer
+          req[:model] = Increase::Models::InboundInternationalACHTransferCreateResponse
           @client.request(req, opts)
         end
       end

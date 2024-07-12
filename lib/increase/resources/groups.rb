@@ -8,11 +8,11 @@ module Increase
       end
 
       # Returns details for the currently authenticated Group.
-      #
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      #
+      # 
       # @return [Increase::Models::Group]
-      def retrieve_details(opts = {})
+      def retrieve(opts = {})
         req = {}
         req[:method] = :get
         req[:path] = "/groups/current"
