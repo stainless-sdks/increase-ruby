@@ -2206,6 +2206,11 @@ module Increase
           #   @return [String]
           required :receiver_financial_institution_information, String
 
+          # @!attribute [rw] sender_reference
+          #   The sending bank's reference number for the wire reversal.
+          #   @return [String]
+          required :sender_reference, String
+
           # @!attribute [rw] transaction_id
           #   The ID for the Transaction associated with the transfer reversal.
           #   @return [String]
