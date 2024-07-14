@@ -123,7 +123,6 @@ module Increase
                    :check_deposit_acceptance,
                    :check_deposit_return,
                    :check_transfer_deposit,
-                   :check_transfer_stop_payment_request,
                    :fee_payment,
                    :inbound_ach_transfer,
                    :inbound_ach_transfer_return_intention,
@@ -156,12 +155,6 @@ module Increase
         #   A Check Transfer Deposit object. This field will be present in the JSON response if and only if `category` is equal to `check_transfer_deposit`.
         #   @return [Increase::Models::Transaction::Source::CheckTransferDeposit]
         required :check_transfer_deposit, -> { Increase::Models::Transaction::Source::CheckTransferDeposit }
-
-        # @!attribute [rw] check_transfer_stop_payment_request
-        #   A Check Transfer Stop Payment Request object. This field will be present in the JSON response if and only if `category` is equal to `check_transfer_stop_payment_request`.
-        #   @return [Increase::Models::Transaction::Source::CheckTransferStopPaymentRequest]
-        required :check_transfer_stop_payment_request,
-                 -> { Increase::Models::Transaction::Source::CheckTransferStopPaymentRequest }
 
         # @!attribute [rw] fee_payment
         #   A Fee Payment object. This field will be present in the JSON response if and only if `category` is equal to `fee_payment`.
@@ -1655,29 +1648,6 @@ module Increase
           #   A constant representing the object's type. For this resource it will always be `check_transfer_deposit`.
           #   @return [Symbol]
           required :type, Increase::Enum.new(:check_transfer_deposit)
-        end
-
-        class CheckTransferStopPaymentRequest < BaseModel
-          # @!attribute [rw] reason
-          #   The reason why this transfer was stopped.
-          #   @return [Symbol]
-          required :reason,
-                   Increase::Enum.new(:mail_delivery_failed, :rejected_by_increase, :not_authorized, :unknown)
-
-          # @!attribute [rw] requested_at
-          #   The time the stop-payment was requested.
-          #   @return [String]
-          required :requested_at, String
-
-          # @!attribute [rw] transfer_id
-          #   The ID of the check transfer that was stopped.
-          #   @return [String]
-          required :transfer_id, String
-
-          # @!attribute [rw] type
-          #   A constant representing the object's type. For this resource it will always be `check_transfer_stop_payment_request`.
-          #   @return [Symbol]
-          required :type, Increase::Enum.new(:check_transfer_stop_payment_request)
         end
 
         class FeePayment < BaseModel
