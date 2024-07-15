@@ -108,6 +108,11 @@ module Increase
       #   @return [String]
       required :originator_to_beneficiary_information_line4, String
 
+      # @!attribute [rw] sender_reference
+      #   The sending bank's reference number for the wire transfer.
+      #   @return [String]
+      required :sender_reference, String
+
       # @!attribute [rw] status
       #   The status of the transfer.
       #   @return [Symbol]
