@@ -39,6 +39,9 @@ module Increase
       # @return [Increase::Resources::Simulations::RealTimePaymentsTransfers]
       attr_reader :real_time_payments_transfers
 
+      # @return [Increase::Resources::Simulations::InboundInternationalACHTransfers]
+      attr_reader :inbound_international_ach_transfers
+
       # @return [Increase::Resources::Simulations::CardAuthorizations]
       attr_reader :card_authorizations
 
@@ -95,6 +98,7 @@ module Increase
         @inbound_real_time_payments_transfers = Increase::Resources::Simulations::InboundRealTimePaymentsTransfers.new(client: client)
         @inbound_funds_holds = Increase::Resources::Simulations::InboundFundsHolds.new(client: client)
         @real_time_payments_transfers = Increase::Resources::Simulations::RealTimePaymentsTransfers.new(client: client)
+        @inbound_international_ach_transfers = Increase::Resources::Simulations::InboundInternationalACHTransfers.new(client: client)
         @card_authorizations = Increase::Resources::Simulations::CardAuthorizations.new(client: client)
         @card_settlements = Increase::Resources::Simulations::CardSettlements.new(client: client)
         @card_reversals = Increase::Resources::Simulations::CardReversals.new(client: client)

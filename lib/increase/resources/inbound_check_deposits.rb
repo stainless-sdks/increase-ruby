@@ -58,25 +58,6 @@ module Increase
         req[:model] = Increase::Models::InboundCheckDeposit
         @client.request(req, opts)
       end
-
-      # Return an Inbound Check Deposit
-      # 
-      # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to return.
-      # 
-      # @param params [Hash] Attributes to send in this request.
-      # @option params [Symbol] :reason The reason to return the Inbound Check Deposit.
-      # 
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
-      # @return [Increase::Models::InboundCheckDeposit]
-      def return_(inbound_check_deposit_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/inbound_check_deposits/#{inbound_check_deposit_id}/return"
-        req[:body] = params
-        req[:model] = Increase::Models::InboundCheckDeposit
-        @client.request(req, opts)
-      end
     end
   end
 end
