@@ -81,7 +81,7 @@ module Increase
       # @!attribute [rw] status
       #   The status of the Inbound Check Deposit.
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending, :accepted, :declined, :returned)
+      required :status, Increase::Enum.new(:pending, :accepted, :declined)
 
       # @!attribute [rw] transaction_id
       #   If the deposit attempt has been accepted, the identifier of the Transaction object created as a result of the successful deposit.
@@ -94,11 +94,6 @@ module Increase
       required :type, Increase::Enum.new(:inbound_check_deposit)
 
       class DepositReturn < BaseModel
-        # @!attribute [rw] reason
-        #   The reason the deposit was returned.
-        #   @return [Symbol]
-        required :reason, Increase::Enum.new(:altered_or_fictitious, :not_authorized, :duplicate_presentment)
-
         # @!attribute [rw] returned_at
         #   The time at which the deposit was returned.
         #   @return [String]

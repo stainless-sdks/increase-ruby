@@ -21,9 +21,4 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Test::Unit::TestCase
     response = @increase.inbound_check_deposits.decline("inbound_check_deposit_id")
     assert_kind_of(Increase::Models::InboundCheckDeposit, response)
   end
-
-  def test_return__required_params
-    response = @increase.inbound_check_deposits.return_("inbound_check_deposit_id", {reason: "altered_or_fictitious"})
-    assert_kind_of(Increase::Models::InboundCheckDeposit, response)
-  end
 end
