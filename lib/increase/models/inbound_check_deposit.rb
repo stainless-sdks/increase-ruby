@@ -97,7 +97,8 @@ module Increase
         # @!attribute [rw] reason
         #   The reason the deposit was returned.
         #   @return [Symbol]
-        required :reason, Increase::Enum.new(:altered_or_fictitious, :not_authorized, :duplicate_presentment)
+        required :reason,
+                 Increase::Enum.new(:altered_or_fictitious, :not_authorized, :duplicate_presentment, :endorsement_missing)
 
         # @!attribute [rw] returned_at
         #   The time at which the deposit was returned.
