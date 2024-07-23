@@ -48,6 +48,11 @@ module Increase
       #   @return [Symbol]
       required :direction, Increase::Enum.new(:credit, :debit)
 
+      # @!attribute [rw] expected_settlement_schedule
+      #   The settlement schedule the transfer is expected to follow.
+      #   @return [Symbol]
+      required :expected_settlement_schedule, Increase::Enum.new(:same_day, :future_dated)
+
       # @!attribute [rw] international_addenda
       #   If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will contain fields pertaining to the International ACH Transaction.
       #   @return [Increase::Models::InboundACHTransfer::InternationalAddenda]
