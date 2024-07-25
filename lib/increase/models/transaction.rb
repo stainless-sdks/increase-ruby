@@ -2113,6 +2113,8 @@ module Increase
           required :reason,
                    Increase::Enum.new(
                      :account_closure,
+                     :bank_drawn_check,
+                     :bank_drawn_check_credit,
                      :bank_migration,
                      :check_adjustment,
                      :collection_payment,
