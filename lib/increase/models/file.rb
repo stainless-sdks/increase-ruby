@@ -69,7 +69,7 @@ module Increase
                  :entity_supplemental_document,
                  :export,
                  :unusual_activity_report_attachment,
-                 :deposit_access_control_agreement
+                 :deposit_account_control_agreement
                )
 
       # @!attribute [rw] type
