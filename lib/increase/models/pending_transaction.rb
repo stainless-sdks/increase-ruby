@@ -221,6 +221,11 @@ module Increase
           #   @return [String]
           required :merchant_descriptor, String
 
+          # @!attribute [rw] merchant_state
+          #   The state the merchant resides in.
+          #   @return [String]
+          required :merchant_state, String
+
           # @!attribute [rw] network_details
           #   Fields specific to the `network`.
           #   @return [Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails]
