@@ -33,6 +33,11 @@ module Increase
       #   @return [String]
       required :idempotency_key, String
 
+      # @!attribute [rw] recipient_name
+      #   The recipient name you choose for the Lockbox.
+      #   @return [String]
+      required :recipient_name, String
+
       # @!attribute [rw] status
       #   This indicates if mail can be sent to this address.
       #   @return [Symbol]
@@ -63,6 +68,11 @@ module Increase
         #   The postal code of the address.
         #   @return [String]
         required :postal_code, String
+
+        # @!attribute [rw] recipient
+        #   The recipient line of the address. This will include the recipient name you provide when creating the address, as well as an ATTN suffix to help route the mail to your lockbox. Mail senders must include this ATTN line to receive mail at this Lockbox.
+        #   @return [String]
+        required :recipient, String
 
         # @!attribute [rw] state
         #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
