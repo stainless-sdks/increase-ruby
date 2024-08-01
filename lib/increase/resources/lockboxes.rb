@@ -12,6 +12,7 @@ module Increase
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id The Account checks sent to this Lockbox should be deposited into.
       # @option params [String] :description The description you choose for the Lockbox, for display purposes.
+      # @option params [String] :recipient_name The name of the recipient that will receive mail at this location.
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
@@ -45,6 +46,7 @@ module Increase
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :description The description you choose for the Lockbox.
+      # @option params [String] :recipient_name The recipient name you choose for the Lockbox.
       # @option params [Symbol] :status This indicates if checks can be sent to the Lockbox.
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
