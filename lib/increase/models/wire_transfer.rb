@@ -134,6 +134,7 @@ module Increase
                  :pending_approval,
                  :rejected,
                  :reversed,
+                 :submitted,
                  :complete,
                  :pending_creating
                )

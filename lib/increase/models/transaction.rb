@@ -128,7 +128,6 @@ module Increase
                    :inbound_ach_transfer_return_intention,
                    :inbound_check_deposit_return_intention,
                    :inbound_real_time_payments_transfer_confirmation,
-                   :inbound_wire_drawdown_payment,
                    :inbound_wire_reversal,
                    :inbound_wire_transfer,
                    :inbound_wire_transfer_reversal,
@@ -171,12 +170,6 @@ module Increase
         #   @return [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation]
         required :inbound_real_time_payments_transfer_confirmation,
                  -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation }
-
-        # @!attribute [rw] inbound_wire_drawdown_payment
-        #   An Inbound Wire Drawdown Payment object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_drawdown_payment`.
-        #   @return [Increase::Models::Transaction::Source::InboundWireDrawdownPayment]
-        required :inbound_wire_drawdown_payment,
-                 -> { Increase::Models::Transaction::Source::InboundWireDrawdownPayment }
 
         # @!attribute [rw] inbound_wire_reversal
         #   An Inbound Wire Reversal object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_reversal`.
@@ -1791,98 +1784,6 @@ module Increase
           #   The Real-Time Payments network identification of the transfer.
           #   @return [String]
           required :transaction_identification, String
-        end
-
-        class InboundWireDrawdownPayment < BaseModel
-          # @!attribute [rw] amount
-          #   The amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
-          #   @return [Integer]
-          required :amount, Integer
-
-          # @!attribute [rw] beneficiary_address_line1
-          #   A free-form address field set by the sender.
-          #   @return [String]
-          required :beneficiary_address_line1, String
-
-          # @!attribute [rw] beneficiary_address_line2
-          #   A free-form address field set by the sender.
-          #   @return [String]
-          required :beneficiary_address_line2, String
-
-          # @!attribute [rw] beneficiary_address_line3
-          #   A free-form address field set by the sender.
-          #   @return [String]
-          required :beneficiary_address_line3, String
-
-          # @!attribute [rw] beneficiary_name
-          #   A name set by the sender.
-          #   @return [String]
-          required :beneficiary_name, String
-
-          # @!attribute [rw] beneficiary_reference
-          #   A free-form reference string set by the sender, to help identify the transfer.
-          #   @return [String]
-          required :beneficiary_reference, String
-
-          # @!attribute [rw] description
-          #   An Increase-constructed description of the transfer.
-          #   @return [String]
-          required :description, String
-
-          # @!attribute [rw] input_message_accountability_data
-          #   A unique identifier available to the originating and receiving banks, commonly abbreviated as IMAD. It is created when the wire is submitted to the Fedwire service and is helpful when debugging wires with the receiving bank.
-          #   @return [String]
-          required :input_message_accountability_data, String
-
-          # @!attribute [rw] originator_address_line1
-          #   The address of the wire originator, set by the sending bank.
-          #   @return [String]
-          required :originator_address_line1, String
-
-          # @!attribute [rw] originator_address_line2
-          #   The address of the wire originator, set by the sending bank.
-          #   @return [String]
-          required :originator_address_line2, String
-
-          # @!attribute [rw] originator_address_line3
-          #   The address of the wire originator, set by the sending bank.
-          #   @return [String]
-          required :originator_address_line3, String
-
-          # @!attribute [rw] originator_name
-          #   The originator of the wire, set by the sending bank.
-          #   @return [String]
-          required :originator_name, String
-
-          # @!attribute [rw] originator_routing_number
-          #   The American Banking Association (ABA) routing number of the bank originating the transfer.
-          #   @return [String]
-          required :originator_routing_number, String
-
-          # @!attribute [rw] originator_to_beneficiary_information
-          #   An Increase-created concatenation of the Originator-to-Beneficiary lines.
-          #   @return [String]
-          required :originator_to_beneficiary_information, String
-
-          # @!attribute [rw] originator_to_beneficiary_information_line1
-          #   A free-form message set by the wire originator.
-          #   @return [String]
-          required :originator_to_beneficiary_information_line1, String
-
-          # @!attribute [rw] originator_to_beneficiary_information_line2
-          #   A free-form message set by the wire originator.
-          #   @return [String]
-          required :originator_to_beneficiary_information_line2, String
-
-          # @!attribute [rw] originator_to_beneficiary_information_line3
-          #   A free-form message set by the wire originator.
-          #   @return [String]
-          required :originator_to_beneficiary_information_line3, String
-
-          # @!attribute [rw] originator_to_beneficiary_information_line4
-          #   A free-form message set by the wire originator.
-          #   @return [String]
-          required :originator_to_beneficiary_information_line4, String
         end
 
         class InboundWireReversal < BaseModel
