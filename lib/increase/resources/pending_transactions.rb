@@ -31,7 +31,6 @@ module Increase
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       # @option params [String] :route_id Filter pending transactions to those belonging to the specified Route.
-      # @option params [String] :source_id Filter pending transactions to those caused by the specified source.
       # @option params [Status] :status
       # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
