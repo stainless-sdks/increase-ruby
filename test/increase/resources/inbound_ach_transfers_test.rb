@@ -28,7 +28,7 @@ class Increase::Test::Resources::InboundACHTransfersTest < Test::Unit::TestCase
   end
 
   def test_transfer_return_required_params
-    response = @increase.inbound_ach_transfers.transfer_return("inbound_ach_transfer_id", {reason: "payment_stopped"})
+    response = @increase.inbound_ach_transfers.transfer_return("inbound_ach_transfer_id", {reason: "insufficient_funds"})
     assert_kind_of(Increase::Models::InboundACHTransfer, response)
   end
 end

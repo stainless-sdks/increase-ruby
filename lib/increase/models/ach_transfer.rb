@@ -98,6 +98,11 @@ module Increase
       #   @return [String]
       required :idempotency_key, String
 
+      # @!attribute [rw] inbound_funds_hold
+      #   Increase will sometimes hold the funds for ACH debit transfers. If funds are held, this sub-object will contain details of the hold.
+      #   @return [Increase::Models::ACHTransfer::InboundFundsHold]
+      required :inbound_funds_hold, -> { Increase::Models::ACHTransfer::InboundFundsHold }
+
       # @!attribute [rw] individual_id
       #   Your identifier for the transfer recipient.
       #   @return [String]
@@ -309,6 +314,58 @@ module Increase
           #   @return [String]
           required :email, String
         end
+      end
+
+      class InboundFundsHold < BaseModel
+        # @!attribute [rw] id
+        #   The Inbound Funds Hold identifier.
+        #   @return [String]
+        required :id, String
+
+        # @!attribute [rw] amount
+        #   The held amount in the minor unit of the account's currency. For dollars, for example, this is cents.
+        #   @return [Integer]
+        required :amount, Integer
+
+        # @!attribute [rw] automatically_releases_at
+        #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
+        #   @return [String]
+        required :automatically_releases_at, String
+
+        # @!attribute [rw] created_at
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
+        #   @return [String]
+        required :created_at, String
+
+        # @!attribute [rw] currency
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+        #   @return [Symbol]
+        required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+
+        # @!attribute [rw] held_transaction_id
+        #   The ID of the Transaction for which funds were held.
+        #   @return [String]
+        required :held_transaction_id, String
+
+        # @!attribute [rw] pending_transaction_id
+        #   The ID of the Pending Transaction representing the held funds.
+        #   @return [String]
+        required :pending_transaction_id, String
+
+        # @!attribute [rw] released_at
+        #   When the hold was released (if it has been released).
+        #   @return [String]
+        required :released_at, String
+
+        # @!attribute [rw] status
+        #   The status of the hold.
+        #   @return [Symbol]
+        required :status, Increase::Enum.new(:held, :complete)
+
+        # @!attribute [rw] type
+        #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+        #   @return [Symbol]
+        required :type, Increase::Enum.new(:inbound_funds_hold)
       end
 
       class NotificationsOfChange < BaseModel

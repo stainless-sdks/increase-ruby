@@ -20,7 +20,7 @@ class Increase::Test::Resources::PhysicalCardsTest < Test::Unit::TestCase
   end
 
   def test_update_required_params
-    response = @increase.physical_cards.update("physical_card_id", {status: "disabled"})
+    response = @increase.physical_cards.update("physical_card_id", {status: "active"})
     assert_kind_of(Increase::Models::PhysicalCard, response)
   end
 

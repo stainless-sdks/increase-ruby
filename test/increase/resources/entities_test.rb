@@ -43,7 +43,7 @@ class Increase::Test::Resources::EntitiesTest < Test::Unit::TestCase
   def test_create_beneficial_owner_required_params
     response = @increase.entities.create_beneficial_owner(
       "entity_id",
-      {beneficial_owner: {"individual" => {"address" => {"city" => "New York", "line1" => "33 Liberty Street", "state" => "NY", "zip" => "10045"}, "date_of_birth" => "1970-01-31", "identification" => {"method" => "social_security_number", "number" => "078051120"}, "name" => "Ian Crease"}, "prongs" => ["control"]}}
+      {beneficial_owner: {"individual" => {"address" => {"city" => "New York", "line1" => "33 Liberty Street", "state" => "NY", "zip" => "10045"}, "date_of_birth" => "1970-01-31", "identification" => {"method" => "social_security_number", "number" => "078051120"}, "name" => "Ian Crease"}, "prongs" => ["ownership"]}}
     )
     assert_kind_of(Increase::Models::Entity, response)
   end
