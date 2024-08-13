@@ -63,6 +63,11 @@ module Increase
       #   @return [String]
       required :idempotency_key, String
 
+      # @!attribute [rw] inbound_funds_hold
+      #   Increase will sometimes hold the funds for Check Deposits. If funds are held, this sub-object will contain details of the hold.
+      #   @return [Increase::Models::CheckDeposit::InboundFundsHold]
+      required :inbound_funds_hold, -> { Increase::Models::CheckDeposit::InboundFundsHold }
+
       # @!attribute [rw] inbound_mail_item_id
       #   If the Check Deposit was the result of an Inbound Mail Item, this will contain the identifier of the Inbound Mail Item.
       #   @return [String]
@@ -239,6 +244,58 @@ module Increase
         #   When the check deposit was submitted to the Check21 network for processing. During business days, this happens within a few hours of the check being accepted by Increase.
         #   @return [String]
         required :submitted_at, String
+      end
+
+      class InboundFundsHold < BaseModel
+        # @!attribute [rw] id
+        #   The Inbound Funds Hold identifier.
+        #   @return [String]
+        required :id, String
+
+        # @!attribute [rw] amount
+        #   The held amount in the minor unit of the account's currency. For dollars, for example, this is cents.
+        #   @return [Integer]
+        required :amount, Integer
+
+        # @!attribute [rw] automatically_releases_at
+        #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
+        #   @return [String]
+        required :automatically_releases_at, String
+
+        # @!attribute [rw] created_at
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
+        #   @return [String]
+        required :created_at, String
+
+        # @!attribute [rw] currency
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+        #   @return [Symbol]
+        required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+
+        # @!attribute [rw] held_transaction_id
+        #   The ID of the Transaction for which funds were held.
+        #   @return [String]
+        required :held_transaction_id, String
+
+        # @!attribute [rw] pending_transaction_id
+        #   The ID of the Pending Transaction representing the held funds.
+        #   @return [String]
+        required :pending_transaction_id, String
+
+        # @!attribute [rw] released_at
+        #   When the hold was released (if it has been released).
+        #   @return [String]
+        required :released_at, String
+
+        # @!attribute [rw] status
+        #   The status of the hold.
+        #   @return [Symbol]
+        required :status, Increase::Enum.new(:held, :complete)
+
+        # @!attribute [rw] type
+        #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+        #   @return [Symbol]
+        required :type, Increase::Enum.new(:inbound_funds_hold)
       end
     end
   end
