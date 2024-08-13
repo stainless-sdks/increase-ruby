@@ -8,7 +8,7 @@ class Increase::Test::Resources::ExportsTest < Test::Unit::TestCase
   end
 
   def test_create_required_params
-    response = @increase.exports.create({category: "transaction_csv"})
+    response = @increase.exports.create({category: "account_statement_ofx"})
     assert_kind_of(Increase::Models::Export, response)
   end
 
