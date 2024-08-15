@@ -26,7 +26,7 @@ module Increase
       # @!attribute [rw] token_requestor
       #   The digital wallet app being used.
       #   @return [Symbol]
-      required :token_requestor, Increase::Enum.new(:apple_pay, :google_pay, :unknown)
+      required :token_requestor, Increase::Enum.new(:apple_pay, :google_pay, :samsung_pay, :unknown)
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `digital_wallet_token`.

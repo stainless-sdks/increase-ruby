@@ -343,7 +343,7 @@ module Increase
         # @!attribute [rw] digital_wallet
         #   The digital wallet app being used.
         #   @return [Symbol]
-        required :digital_wallet, Increase::Enum.new(:apple_pay, :google_pay, :unknown)
+        required :digital_wallet, Increase::Enum.new(:apple_pay, :google_pay, :samsung_pay, :unknown)
 
         # @!attribute [rw] email
         #   The email to send the one-time passcode to if `channel` is equal to `email`.
@@ -385,7 +385,7 @@ module Increase
         # @!attribute [rw] digital_wallet
         #   The digital wallet app being used.
         #   @return [Symbol]
-        required :digital_wallet, Increase::Enum.new(:apple_pay, :google_pay, :unknown)
+        required :digital_wallet, Increase::Enum.new(:apple_pay, :google_pay, :samsung_pay, :unknown)
       end
     end
   end
