@@ -487,6 +487,7 @@ module Increase
                      :ach_route_canceled,
                      :altered_or_fictitious,
                      :breaches_limit,
+                     :endorsement_irregular,
                      :entity_not_active,
                      :group_locked,
                      :insufficient_funds,
