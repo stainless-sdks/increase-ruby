@@ -33,8 +33,6 @@ module Increase
       #   sent to the receiving bank.
       # @option params [Symbol] :destination_account_holder The type of entity that owns the account to which the ACH Transfer is being
       #   sent.
-      # @option params [String] :effective_date The transfer effective date in
-      #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       # @option params [String] :external_account_id The ID of an External Account to initiate a transfer to. If this parameter is
       #   provided, `account_number`, `routing_number`, and `funding` must be absent.
       # @option params [Symbol] :funding The type of the account to which the transfer will be sent.
