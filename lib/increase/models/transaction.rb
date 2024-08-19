@@ -442,6 +442,11 @@ module Increase
           #   @return [Symbol]
           required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
+          # @!attribute [rw] interchange
+          #   Interchange assessed as a part of this transaciton.
+          #   @return [Increase::Models::Transaction::Source::CardRefund::Interchange]
+          required :interchange, -> { Increase::Models::Transaction::Source::CardRefund::Interchange }
+
           # @!attribute [rw] merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
           #   @return [String]
@@ -502,6 +507,23 @@ module Increase
           #   A constant representing the object's type. For this resource it will always be `card_refund`.
           #   @return [Symbol]
           required :type, Increase::Enum.new(:card_refund)
+
+          class Interchange < BaseModel
+            # @!attribute [rw] amount
+            #   The interchange amount given as a string containing a decimal number. The amount is a positive number if it is credited to Increase (e.g., settlements) and a negative number if it is debited (e.g., refunds).
+            #   @return [String]
+            required :amount, String
+
+            # @!attribute [rw] code
+            #   The card network specific interchange code.
+            #   @return [String]
+            required :code, String
+
+            # @!attribute [rw] currency
+            #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
+            #   @return [Symbol]
+            required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          end
 
           class NetworkIdentifiers < BaseModel
             # @!attribute [rw] acquirer_business_id
@@ -983,6 +1005,11 @@ module Increase
           #   @return [Symbol]
           required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
+          # @!attribute [rw] interchange
+          #   Interchange assessed as a part of this transaciton.
+          #   @return [Increase::Models::Transaction::Source::CardSettlement::Interchange]
+          required :interchange, -> { Increase::Models::Transaction::Source::CardSettlement::Interchange }
+
           # @!attribute [rw] merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
           #   @return [String]
@@ -1048,6 +1075,23 @@ module Increase
           #   A constant representing the object's type. For this resource it will always be `card_settlement`.
           #   @return [Symbol]
           required :type, Increase::Enum.new(:card_settlement)
+
+          class Interchange < BaseModel
+            # @!attribute [rw] amount
+            #   The interchange amount given as a string containing a decimal number. The amount is a positive number if it is credited to Increase (e.g., settlements) and a negative number if it is debited (e.g., refunds).
+            #   @return [String]
+            required :amount, String
+
+            # @!attribute [rw] code
+            #   The card network specific interchange code.
+            #   @return [String]
+            required :code, String
+
+            # @!attribute [rw] currency
+            #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
+            #   @return [Symbol]
+            required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          end
 
           class NetworkIdentifiers < BaseModel
             # @!attribute [rw] acquirer_business_id
