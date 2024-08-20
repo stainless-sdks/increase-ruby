@@ -23,10 +23,10 @@ module Increase
       #   @return [String]
       required :currency, String
 
-      # @!attribute [rw] fulfillment_transaction_id
+      # @!attribute [rw] fulfillment_inbound_wire_transfer_id
       #   If the recipient fulfills the drawdown request by sending funds, then this will be the identifier of the corresponding Transaction.
       #   @return [String]
-      required :fulfillment_transaction_id, String
+      required :fulfillment_inbound_wire_transfer_id, String
 
       # @!attribute [rw] idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
