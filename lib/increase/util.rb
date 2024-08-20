@@ -33,19 +33,15 @@ module Increase
     end
 
     def self.coerce_integer(str)
-      begin
-        Integer(str)
-      rescue
-        str
-      end
+      Integer(str)
+    rescue StandardError
+      str
     end
 
     def self.coerce_float(str)
-      begin
-        Float(str)
-      rescue
-        str
-      end
+      Float(str)
+    rescue StandardError
+      str
     end
 
     def self.coerce_boolean(input)
@@ -57,6 +53,18 @@ module Increase
       else
         input
       end
+    end
+
+    def self.uri_from_req(req, absolute:)
+      query_string = ("?#{URI.encode_www_form(req[:query])}" if req[:query])
+      uri = String.new
+      if absolute
+        uri << "#{req[:scheme]}://#{req[:host]}"
+        if req[:port]
+          uri << ":#{req[:port]}"
+        end
+      end
+      uri << ((req[:path] || "/") + (query_string || ""))
     end
   end
 end
