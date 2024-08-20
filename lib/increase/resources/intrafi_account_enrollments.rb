@@ -7,7 +7,7 @@ module Increase
         @client = client
       end
 
-      # Enroll an account in the IntraFi deposit sweep network.
+      # Enroll an account in the IntraFi deposit sweep network
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id The identifier for the account to be added to IntraFi.
@@ -65,7 +65,7 @@ module Increase
         @client.request(req, opts)
       end
 
-      # Unenroll an account from IntraFi.
+      # Unenroll an account from IntraFi
       # 
       # @param intrafi_account_enrollment_id [String] The Identifier of the IntraFi Account Enrollment to remove from IntraFi.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
