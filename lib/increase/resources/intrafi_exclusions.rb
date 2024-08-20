@@ -39,7 +39,7 @@ module Increase
         @client.request(req, opts)
       end
 
-      # List IntraFi Exclusions.
+      # List IntraFi Exclusions
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :cursor Return the page of entries after this one.

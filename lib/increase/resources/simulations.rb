@@ -18,9 +18,6 @@ module Increase
       # @return [Increase::Resources::Simulations::InboundCheckDeposits]
       attr_reader :inbound_check_deposits
 
-      # @return [Increase::Resources::Simulations::InboundMailItems]
-      attr_reader :inbound_mail_items
-
       # @return [Increase::Resources::Simulations::CheckDeposits]
       attr_reader :check_deposits
 
@@ -81,6 +78,9 @@ module Increase
       # @return [Increase::Resources::Simulations::Documents]
       attr_reader :documents
 
+      # @return [Increase::Resources::Simulations::InboundMailItems]
+      attr_reader :inbound_mail_items
+
       # @return [Increase::Resources::Simulations::Programs]
       attr_reader :programs
 
@@ -91,7 +91,6 @@ module Increase
         @ach_transfers = Increase::Resources::Simulations::ACHTransfers.new(client: client)
         @check_transfers = Increase::Resources::Simulations::CheckTransfers.new(client: client)
         @inbound_check_deposits = Increase::Resources::Simulations::InboundCheckDeposits.new(client: client)
-        @inbound_mail_items = Increase::Resources::Simulations::InboundMailItems.new(client: client)
         @check_deposits = Increase::Resources::Simulations::CheckDeposits.new(client: client)
         @inbound_wire_transfers = Increase::Resources::Simulations::InboundWireTransfers.new(client: client)
         @wire_transfers = Increase::Resources::Simulations::WireTransfers.new(client: client)
@@ -112,6 +111,7 @@ module Increase
         @interest_payments = Increase::Resources::Simulations::InterestPayments.new(client: client)
         @account_statements = Increase::Resources::Simulations::AccountStatements.new(client: client)
         @documents = Increase::Resources::Simulations::Documents.new(client: client)
+        @inbound_mail_items = Increase::Resources::Simulations::InboundMailItems.new(client: client)
         @programs = Increase::Resources::Simulations::Programs.new(client: client)
       end
     end
