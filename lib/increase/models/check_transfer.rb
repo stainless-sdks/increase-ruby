@@ -240,6 +240,12 @@ module Increase
         #   @return [String]
         required :signature_text, String
 
+        # @!attribute [rw] tracking_updates
+        #   Tracking updates relating to the physical check's delivery.
+        #   @return [Array<Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate>]
+        required :tracking_updates,
+                 Increase::ArrayOf.new(-> { Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate })
+
         class MailingAddress < BaseModel
           # @!attribute [rw] city
           #   The city of the check's destination.
@@ -302,6 +308,18 @@ module Increase
           #   The state of the check's destination.
           #   @return [String]
           required :state, String
+        end
+
+        class TrackingUpdate < BaseModel
+          # @!attribute [rw] category
+          #   The type of tracking event.
+          #   @return [Symbol]
+          required :category, Increase::Enum.new(:returned_to_sender)
+
+          # @!attribute [rw] created_at
+          #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the tracking event took place.
+          #   @return [String]
+          required :created_at, String
         end
       end
 
