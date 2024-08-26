@@ -8,6 +8,11 @@ module Increase
       #   @return [String]
       required :id, String
 
+      # @!attribute [rw] bank
+      #   The Bank the Program is with.
+      #   @return [Symbol]
+      required :bank, Increase::Enum.new(:blue_ridge_bank, :first_internet_bank, :grasshopper_bank)
+
       # @!attribute [rw] billing_account_id
       #   The Program billing account.
       #   @return [String]
