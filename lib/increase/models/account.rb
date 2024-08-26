@@ -11,7 +11,7 @@ module Increase
       # @!attribute [rw] bank
       #   The bank the Account is with.
       #   @return [Symbol]
-      required :bank, Increase::Enum.new(:blue_ridge_bank, :first_internet_bank)
+      required :bank, Increase::Enum.new(:blue_ridge_bank, :first_internet_bank, :grasshopper_bank)
 
       # @!attribute [rw] closed_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was closed.
