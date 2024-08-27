@@ -187,7 +187,7 @@ module Increase
           required :digital_wallet_token_id, String
 
           # @!attribute [rw] direction
-          #   The direction descibes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+          #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           #   @return [Symbol]
           required :direction, Increase::Enum.new(:settlement, :refund)
 
