@@ -112,7 +112,7 @@ module Increase
                  )
 
         # @!attribute [rw] corrected_data
-        #   The corrected data that should be used in future ACHs to this account. This may contain the suggested new  account number or routing number. When the `change_code` is `incorrect_transaction_code`, this field contains an integer. Numbers starting with a 2 encourage changing the `funding` parameter to checking; numbers starting with a 3 encourage changing to savings.
+        #   The corrected data that should be used in future ACHs to this account. This may contain the suggested new account number or routing number. When the `change_code` is `incorrect_transaction_code`, this field contains an integer. Numbers starting with a 2 encourage changing the `funding` parameter to checking; numbers starting with a 3 encourage changing to savings.
         #   @return [String]
         required :corrected_data, String
 

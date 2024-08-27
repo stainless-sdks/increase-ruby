@@ -130,7 +130,7 @@ module Increase
       required :pending_transaction_id, String
 
       # @!attribute [rw] preferred_effective_date
-      #   Configuration for how the effective date of the transfer will be set. This determines same-day vs future-dated settlement timing. If not set, defaults to a `settlement_schedule` of `same_day`. If set, exactly one of the child atributes must be set.
+      #   Configuration for how the effective date of the transfer will be set. This determines same-day vs future-dated settlement timing. If not set, defaults to a `settlement_schedule` of `same_day`. If set, exactly one of the child attributes must be set.
       #   @return [Increase::Models::ACHTransfer::PreferredEffectiveDate]
       required :preferred_effective_date, -> { Increase::Models::ACHTransfer::PreferredEffectiveDate }
 
@@ -396,7 +396,7 @@ module Increase
                  )
 
         # @!attribute [rw] corrected_data
-        #   The corrected data that should be used in future ACHs to this account. This may contain the suggested new  account number or routing number. When the `change_code` is `incorrect_transaction_code`, this field contains an integer. Numbers starting with a 2 encourage changing the `funding` parameter to checking; numbers starting with a 3 encourage changing to savings.
+        #   The corrected data that should be used in future ACHs to this account. This may contain the suggested new account number or routing number. When the `change_code` is `incorrect_transaction_code`, this field contains an integer. Numbers starting with a 2 encourage changing the `funding` parameter to checking; numbers starting with a 3 encourage changing to savings.
         #   @return [String]
         required :corrected_data, String
 
@@ -413,7 +413,7 @@ module Increase
         required :date, String
 
         # @!attribute [rw] settlement_schedule
-        #   A schedule by which Increase whill choose an effective date for the transfer.
+        #   A schedule by which Increase will choose an effective date for the transfer.
         #   @return [Symbol]
         required :settlement_schedule, Increase::Enum.new(:same_day, :future_dated)
       end

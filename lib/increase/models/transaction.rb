@@ -1741,7 +1741,7 @@ module Increase
           required :originator_company_name, String
 
           # @!attribute [rw] receiver_id_number
-          #   The originator's identifier for the transfer receipient.
+          #   The originator's identifier for the transfer recipient.
           #   @return [String]
           required :receiver_id_number, String
 
