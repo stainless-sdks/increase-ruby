@@ -1365,6 +1365,41 @@ module Increase
           #   @return [Symbol]
           required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
+          # @!attribute [rw] merchant_acceptor_id
+          #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
+          #   @return [String]
+          required :merchant_acceptor_id, String
+
+          # @!attribute [rw] merchant_category_code
+          #   The Merchant Category Code (commonly abbreviated as MCC) of the merchant the card is transacting with.
+          #   @return [String]
+          required :merchant_category_code, String
+
+          # @!attribute [rw] merchant_city
+          #   The city the merchant resides in.
+          #   @return [String]
+          required :merchant_city, String
+
+          # @!attribute [rw] merchant_country
+          #   The country the merchant resides in.
+          #   @return [String]
+          required :merchant_country, String
+
+          # @!attribute [rw] merchant_descriptor
+          #   The merchant descriptor of the merchant the card is transacting with.
+          #   @return [String]
+          required :merchant_descriptor, String
+
+          # @!attribute [rw] merchant_postal_code
+          #   The merchant's postal code. For US merchants this is either a 5-digit or 9-digit ZIP code, where the first 5 and last 4 are separated by a dash.
+          #   @return [String]
+          required :merchant_postal_code, String
+
+          # @!attribute [rw] merchant_state
+          #   The state the merchant resides in.
+          #   @return [String]
+          required :merchant_state, String
+
           # @!attribute [rw] network
           #   The card network used to process this card authorization.
           #   @return [Symbol]
@@ -1385,6 +1420,17 @@ module Increase
           #   The amount of this reversal in the minor unit of the transaction's currency. For dollars, for example, this is cents.
           #   @return [Integer]
           required :reversal_amount, Integer
+
+          # @!attribute [rw] reversal_reason
+          #   Why this reversal was initiated.
+          #   @return [Symbol]
+          required :reversal_reason,
+                   Increase::Enum.new(
+                     :reversed_by_customer,
+                     :reversed_by_network_or_acquirer,
+                     :reversed_by_point_of_sale,
+                     :partial_reversal
+                   )
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_reversal`.
