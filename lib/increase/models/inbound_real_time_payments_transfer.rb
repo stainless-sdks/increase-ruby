@@ -61,7 +61,7 @@ module Increase
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending_confirmation, :timed_out, :confirmed)
+      required :status, Increase::Enum.new(:pending_confirmation, :timed_out, :confirmed, :declined)
 
       # @!attribute [rw] transaction_identification
       #   The Real-Time Payments network identification of the transfer.
