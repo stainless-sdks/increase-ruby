@@ -23,13 +23,13 @@ module Increase
         # 
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         # 
-        # @return [Increase::Models::InboundRealTimePaymentsTransferCreateResponse]
+        # @return [Increase::Models::InboundRealTimePaymentsTransfer]
         def create(params = {}, opts = {})
           req = {}
           req[:method] = :post
           req[:path] = "/simulations/inbound_real_time_payments_transfers"
           req[:body] = params
-          req[:model] = Increase::Models::InboundRealTimePaymentsTransferCreateResponse
+          req[:model] = Increase::Models::InboundRealTimePaymentsTransfer
           @client.request(req, opts)
         end
       end
