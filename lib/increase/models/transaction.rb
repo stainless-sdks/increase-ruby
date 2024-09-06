@@ -128,6 +128,7 @@ module Increase
                    :inbound_ach_transfer_return_intention,
                    :inbound_check_deposit_return_intention,
                    :inbound_real_time_payments_transfer_confirmation,
+                   :inbound_real_time_payments_transfer_decline,
                    :inbound_wire_reversal,
                    :inbound_wire_transfer,
                    :inbound_wire_transfer_reversal,
@@ -170,6 +171,12 @@ module Increase
         #   @return [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation]
         required :inbound_real_time_payments_transfer_confirmation,
                  -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation }
+
+        # @!attribute [rw] inbound_real_time_payments_transfer_decline
+        #   An Inbound Real-Time Payments Transfer Decline object. This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_decline`.
+        #   @return [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline]
+        required :inbound_real_time_payments_transfer_decline,
+                 -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline }
 
         # @!attribute [rw] inbound_wire_reversal
         #   An Inbound Wire Reversal object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_reversal`.
@@ -1828,6 +1835,71 @@ module Increase
           #   The Real-Time Payments network identification of the transfer.
           #   @return [String]
           required :transaction_identification, String
+
+          # @!attribute [rw] transfer_id
+          #   The identifier of the Real-Time Payments Transfer that led to this Transaction.
+          #   @return [String]
+          required :transfer_id, String
+        end
+
+        class InboundRealTimePaymentsTransferDecline < BaseModel
+          # @!attribute [rw] amount
+          #   The declined amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
+          #   @return [Integer]
+          required :amount, Integer
+
+          # @!attribute [rw] creditor_name
+          #   The name the sender of the transfer specified as the recipient of the transfer.
+          #   @return [String]
+          required :creditor_name, String
+
+          # @!attribute [rw] currency
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
+          #   @return [Symbol]
+          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+
+          # @!attribute [rw] debtor_account_number
+          #   The account number of the account that sent the transfer.
+          #   @return [String]
+          required :debtor_account_number, String
+
+          # @!attribute [rw] debtor_name
+          #   The name provided by the sender of the transfer.
+          #   @return [String]
+          required :debtor_name, String
+
+          # @!attribute [rw] debtor_routing_number
+          #   The routing number of the account that sent the transfer.
+          #   @return [String]
+          required :debtor_routing_number, String
+
+          # @!attribute [rw] reason
+          #   Why the transfer was declined.
+          #   @return [Symbol]
+          required :reason,
+                   Increase::Enum.new(
+                     :account_number_canceled,
+                     :account_number_disabled,
+                     :account_restricted,
+                     :group_locked,
+                     :entity_not_active,
+                     :real_time_payments_not_enabled
+                   )
+
+          # @!attribute [rw] remittance_information
+          #   Additional information included with the transfer.
+          #   @return [String]
+          required :remittance_information, String
+
+          # @!attribute [rw] transaction_identification
+          #   The Real-Time Payments network identification of the declined transfer.
+          #   @return [String]
+          required :transaction_identification, String
+
+          # @!attribute [rw] transfer_id
+          #   The identifier of the Real-Time Payments Transfer that led to this Transaction.
+          #   @return [String]
+          required :transfer_id, String
         end
 
         class InboundWireReversal < BaseModel
