@@ -519,6 +519,11 @@ module Increase
           #   @return [Symbol]
           required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
 
+          # @!attribute [rw] declined_transaction_id
+          #   The identifier of the associated declined transaction.
+          #   @return [String]
+          required :declined_transaction_id, String
+
           # @!attribute [rw] reason
           #   Why the check deposit was rejected.
           #   @return [Symbol]
