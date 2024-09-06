@@ -600,6 +600,11 @@ module Increase
           #   The Real-Time Payments network identification of the declined transfer.
           #   @return [String]
           required :transaction_identification, String
+
+          # @!attribute [rw] transfer_id
+          #   The identifier of the Real-Time Payments Transfer that led to this Transaction.
+          #   @return [String]
+          required :transfer_id, String
         end
 
         class WireDecline < BaseModel
