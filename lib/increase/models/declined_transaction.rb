@@ -95,6 +95,11 @@ module Increase
         required :inbound_real_time_payments_transfer_decline,
                  -> { Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline }
 
+        # @!attribute [rw] other
+        #   If the category of this Transaction source is equal to `other`, this field will contain an empty object, otherwise it will contain null.
+        #   @return [Object]
+        required :other, Increase::Unknown
+
         # @!attribute [rw] wire_decline
         #   A Wire Decline object. This field will be present in the JSON response if and only if `category` is equal to `wire_decline`.
         #   @return [Increase::Models::DeclinedTransaction::Source::WireDecline]
