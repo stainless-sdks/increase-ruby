@@ -137,7 +137,6 @@ module Increase
                    :real_time_payments_transfer_acknowledgement,
                    :sample_funds,
                    :wire_transfer_intention,
-                   :wire_transfer_rejection,
                    :other
                  )
 
@@ -218,11 +217,6 @@ module Increase
         #   A Wire Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_intention`.
         #   @return [Increase::Models::Transaction::Source::WireTransferIntention]
         required :wire_transfer_intention, -> { Increase::Models::Transaction::Source::WireTransferIntention }
-
-        # @!attribute [rw] wire_transfer_rejection
-        #   A Wire Transfer Rejection object. This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_rejection`.
-        #   @return [Increase::Models::Transaction::Source::WireTransferRejection]
-        required :wire_transfer_rejection, -> { Increase::Models::Transaction::Source::WireTransferRejection }
 
         class AccountTransferIntention < BaseModel
           # @!attribute [rw] amount
@@ -2207,13 +2201,6 @@ module Increase
           #   @return [String]
           required :routing_number, String
 
-          # @!attribute [rw] transfer_id
-          #   The identifier of the Wire Transfer that led to this Transaction.
-          #   @return [String]
-          required :transfer_id, String
-        end
-
-        class WireTransferRejection < BaseModel
           # @!attribute [rw] transfer_id
           #   The identifier of the Wire Transfer that led to this Transaction.
           #   @return [String]
