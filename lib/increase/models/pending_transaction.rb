@@ -114,6 +114,11 @@ module Increase
         #   @return [Increase::Models::PendingTransaction::Source::InboundFundsHold]
         required :inbound_funds_hold, -> { Increase::Models::PendingTransaction::Source::InboundFundsHold }
 
+        # @!attribute [rw] other
+        #   If the category of this Transaction source is equal to `other`, this field will contain an empty object, otherwise it will contain null.
+        #   @return [Object]
+        required :other, Increase::Unknown
+
         # @!attribute [rw] real_time_payments_transfer_instruction
         #   A Real-Time Payments Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `real_time_payments_transfer_instruction`.
         #   @return [Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction]
