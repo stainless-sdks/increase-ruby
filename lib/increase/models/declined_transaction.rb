@@ -149,16 +149,9 @@ module Increase
                      :ach_route_canceled,
                      :ach_route_disabled,
                      :breaches_limit,
-                     :credit_entry_refused_by_receiver,
-                     :duplicate_return,
                      :entity_not_active,
-                     :field_error,
                      :group_locked,
                      :insufficient_funds,
-                     :misrouted_return,
-                     :return_of_erroneous_or_reversing_debit,
-                     :no_ach_route,
-                     :originator_request,
                      :transaction_not_allowed,
                      :user_initiated
                    )
