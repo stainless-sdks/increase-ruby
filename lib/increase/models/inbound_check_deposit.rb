@@ -81,7 +81,7 @@ module Increase
       # @!attribute [rw] status
       #   The status of the Inbound Check Deposit.
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending, :accepted, :declined, :returned)
+      required :status, Increase::Enum.new(:pending, :accepted, :declined, :returned, :requires_attention)
 
       # @!attribute [rw] transaction_id
       #   If the deposit attempt has been accepted, the identifier of the Transaction object created as a result of the successful deposit.
