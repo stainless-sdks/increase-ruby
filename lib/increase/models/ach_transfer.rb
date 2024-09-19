@@ -166,6 +166,7 @@ module Increase
       required :status,
                Increase::Enum.new(
                  :pending_approval,
+                 :pending_transfer_session_confirmation,
                  :canceled,
                  :pending_reviewing,
                  :pending_submission,
