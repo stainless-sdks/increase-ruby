@@ -40,13 +40,15 @@ module Increase
 
       # @!attribute [rw] status
       #   This indicates if mail can be sent to this address.
+      #   One of the constants defined in {Increase::Models::Lockbox::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:active, :inactive)
+      required :status, enum: -> { Increase::Models::Lockbox::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `lockbox`.
+      #   One of the constants defined in {Increase::Models::Lockbox::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:lockbox)
+      required :type, enum: -> { Increase::Models::Lockbox::Type }
 
       class Address < BaseModel
         # @!attribute [rw] city
@@ -78,6 +80,20 @@ module Increase
         #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
         #   @return [String]
         required :state, String
+      end
+
+      # This indicates if mail can be sent to this address.
+      class Status < Increase::Enum
+        # This Lockbox is active. Checks mailed to it will be deposited automatically.
+        ACTIVE = :active
+
+        # This Lockbox is inactive. Checks mailed to it will not be deposited.
+        INACTIVE = :inactive
+      end
+
+      # A constant representing the object's type. For this resource it will always be `lockbox`.
+      class Type < Increase::Enum
+        LOCKBOX = :lockbox
       end
     end
   end

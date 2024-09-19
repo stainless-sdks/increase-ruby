@@ -15,13 +15,9 @@ module Increase
 
       # @!attribute [rw] category
       #   The category of the Real-Time Decision.
+      #   One of the constants defined in {Increase::Models::RealTimeDecision::Category}
       #   @return [Symbol]
-      required :category,
-               Increase::Enum.new(
-                 :card_authorization_requested,
-                 :digital_wallet_token_requested,
-                 :digital_wallet_authentication_requested
-               )
+      required :category, enum: -> { Increase::Models::RealTimeDecision::Category }
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Real-Time Decision was created.
@@ -41,8 +37,9 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Real-Time Decision.
+      #   One of the constants defined in {Increase::Models::RealTimeDecision::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending, :responded, :timed_out)
+      required :status, enum: -> { Increase::Models::RealTimeDecision::Status }
 
       # @!attribute [rw] timeout_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which your application can no longer respond to the Real-Time Decision.
@@ -51,8 +48,9 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `real_time_decision`.
+      #   One of the constants defined in {Increase::Models::RealTimeDecision::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:real_time_decision)
+      required :type, enum: -> { Increase::Models::RealTimeDecision::Type }
 
       class CardAuthorization < BaseModel
         # @!attribute [rw] account_id
@@ -67,8 +65,9 @@ module Increase
 
         # @!attribute [rw] decision
         #   Whether or not the authorization was approved.
+        #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::Decision}
         #   @return [Symbol]
-        required :decision, Increase::Enum.new(:approve, :decline)
+        required :decision, enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Decision }
 
         # @!attribute [rw] digital_wallet_token_id
         #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay purchase), the identifier of the token that was used.
@@ -143,16 +142,10 @@ module Increase
 
         # @!attribute [rw] processing_category
         #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
+        #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory}
         #   @return [Symbol]
         required :processing_category,
-                 Increase::Enum.new(
-                   :account_funding,
-                   :automatic_fuel_dispenser,
-                   :bill_payment,
-                   :purchase,
-                   :quasi_cash,
-                   :refund
-                 )
+                 enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory }
 
         # @!attribute [rw] request_details
         #   Fields specific to the type of request, such as an incremental authorization.
@@ -179,49 +172,108 @@ module Increase
         #   @return [Increase::Models::RealTimeDecision::CardAuthorization::Verification]
         required :verification, -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification }
 
+        # Whether or not the authorization was approved.
+        class Decision < Increase::Enum
+          # Approve the authorization.
+          APPROVE = :approve
+
+          # Decline the authorization.
+          DECLINE = :decline
+        end
+
         class NetworkDetails < BaseModel
           # @!attribute [rw] category
           #   The payment network used to process this card authorization.
+          #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category}
           #   @return [Symbol]
-          required :category, Increase::Enum.new(:visa)
+          required :category,
+                   enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category }
 
           # @!attribute [rw] visa
           #   Fields specific to the `visa` network.
           #   @return [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa]
           required :visa, -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa }
 
+          # The payment network used to process this card authorization.
+          class Category < Increase::Enum
+            # Visa
+            VISA = :visa
+          end
+
           class Visa < BaseModel
             # @!attribute [rw] electronic_commerce_indicator
             #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
+            #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator}
             #   @return [Symbol]
             required :electronic_commerce_indicator,
-                     Increase::Enum.new(
-                       :mail_phone_order,
-                       :recurring,
-                       :installment,
-                       :unknown_mail_phone_order,
-                       :secure_electronic_commerce,
-                       :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                       :non_authenticated_security_transaction,
-                       :non_secure_transaction
-                     )
+                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator }
 
             # @!attribute [rw] point_of_service_entry_mode
             #   The method used to enter the cardholder's primary account number and card expiration date.
+            #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode}
             #   @return [Symbol]
             required :point_of_service_entry_mode,
-                     Increase::Enum.new(
-                       :unknown,
-                       :manual,
-                       :magnetic_stripe_no_cvv,
-                       :optical_code,
-                       :integrated_circuit_card,
-                       :contactless,
-                       :credential_on_file,
-                       :magnetic_stripe,
-                       :contactless_magnetic_stripe,
-                       :integrated_circuit_card_no_cvv
-                     )
+                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode }
+
+            # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
+            class ElectronicCommerceIndicator < Increase::Enum
+              # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
+              MAIL_PHONE_ORDER = :mail_phone_order
+
+              # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
+              RECURRING = :recurring
+
+              # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
+              INSTALLMENT = :installment
+
+              # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
+              UNKNOWN_MAIL_PHONE_ORDER = :unknown_mail_phone_order
+
+              # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
+              SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
+
+              # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
+              NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
+
+              # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
+              NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
+
+              # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
+              NON_SECURE_TRANSACTION = :non_secure_transaction
+            end
+
+            # The method used to enter the cardholder's primary account number and card expiration date.
+            class PointOfServiceEntryMode < Increase::Enum
+              # Unknown
+              UNKNOWN = :unknown
+
+              # Manual key entry
+              MANUAL = :manual
+
+              # Magnetic stripe read, without card verification value
+              MAGNETIC_STRIPE_NO_CVV = :magnetic_stripe_no_cvv
+
+              # Optical code
+              OPTICAL_CODE = :optical_code
+
+              # Contact chip card
+              INTEGRATED_CIRCUIT_CARD = :integrated_circuit_card
+
+              # Contactless read of chip card
+              CONTACTLESS = :contactless
+
+              # Transaction initiated using a credential that has previously been stored on file
+              CREDENTIAL_ON_FILE = :credential_on_file
+
+              # Magnetic stripe read
+              MAGNETIC_STRIPE = :magnetic_stripe
+
+              # Contactless read of magnetic stripe data
+              CONTACTLESS_MAGNETIC_STRIPE = :contactless_magnetic_stripe
+
+              # Contact chip card, without card verification value
+              INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
+            end
           end
         end
 
@@ -242,11 +294,34 @@ module Increase
           required :transaction_id, String
         end
 
+        # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
+        class ProcessingCategory < Increase::Enum
+          # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
+          ACCOUNT_FUNDING = :account_funding
+
+          # Automatic fuel dispenser authorizations occur when a card is used at a gas pump, prior to the actual transaction amount being known. They are followed by an advice message that updates the amount of the pending transaction.
+          AUTOMATIC_FUEL_DISPENSER = :automatic_fuel_dispenser
+
+          # A transaction used to pay a bill.
+          BILL_PAYMENT = :bill_payment
+
+          # A regular purchase.
+          PURCHASE = :purchase
+
+          # Quasi-cash transactions represent purchases of items which may be convertible to cash.
+          QUASI_CASH = :quasi_cash
+
+          # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+          REFUND = :refund
+        end
+
         class RequestDetails < BaseModel
           # @!attribute [rw] category
           #   The type of this request (e.g., an initial authorization or an incremental authorization).
+          #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category}
           #   @return [Symbol]
-          required :category, Increase::Enum.new(:initial_authorization, :incremental_authorization)
+          required :category,
+                   enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category }
 
           # @!attribute [rw] incremental_authorization
           #   Fields specific to the category `incremental_authorization`.
@@ -258,6 +333,15 @@ module Increase
           #   Fields specific to the category `initial_authorization`.
           #   @return [Object]
           required :initial_authorization, Increase::Unknown
+
+          # The type of this request (e.g., an initial authorization or an incremental authorization).
+          class Category < Increase::Enum
+            # A regular, standalone authorization.
+            INITIAL_AUTHORIZATION = :initial_authorization
+
+            # An incremental request to increase the amount of an existing authorization.
+            INCREMENTAL_AUTHORIZATION = :incremental_authorization
+          end
 
           class IncrementalAuthorization < BaseModel
             # @!attribute [rw] card_payment_id
@@ -288,8 +372,22 @@ module Increase
           class CardVerificationCode < BaseModel
             # @!attribute [rw] result
             #   The result of verifying the Card Verification Code.
+            #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result}
             #   @return [Symbol]
-            required :result, Increase::Enum.new(:not_checked, :match, :no_match)
+            required :result,
+                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result }
+
+            # The result of verifying the Card Verification Code.
+            class Result < Increase::Enum
+              # No card verification code was provided in the authorization request.
+              NOT_CHECKED = :not_checked
+
+              # The card verification code matched the one on file.
+              MATCH = :match
+
+              # The card verification code did not match the one on file.
+              NO_MATCH = :no_match
+            end
           end
 
           class CardholderAddress < BaseModel
@@ -315,18 +413,45 @@ module Increase
 
             # @!attribute [rw] result
             #   The address verification result returned to the card network.
+            #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result}
             #   @return [Symbol]
             required :result,
-                     Increase::Enum.new(
-                       :not_checked,
-                       :postal_code_match_address_not_checked,
-                       :postal_code_match_address_no_match,
-                       :postal_code_no_match_address_match,
-                       :match,
-                       :no_match
-                     )
+                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result }
+
+            # The address verification result returned to the card network.
+            class Result < Increase::Enum
+              # No adress was provided in the authorization request.
+              NOT_CHECKED = :not_checked
+
+              # Postal code matches, but the street address was not verified.
+              POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED = :postal_code_match_address_not_checked
+
+              # Postal code matches, but the street address does not match.
+              POSTAL_CODE_MATCH_ADDRESS_NO_MATCH = :postal_code_match_address_no_match
+
+              # Postal code does not match, but the street address matches.
+              POSTAL_CODE_NO_MATCH_ADDRESS_MATCH = :postal_code_no_match_address_match
+
+              # Postal code and street address match.
+              MATCH = :match
+
+              # Postal code and street address do not match.
+              NO_MATCH = :no_match
+            end
           end
         end
+      end
+
+      # The category of the Real-Time Decision.
+      class Category < Increase::Enum
+        # A card is being authorized.
+        CARD_AUTHORIZATION_REQUESTED = :card_authorization_requested
+
+        # A card is being loaded into a digital wallet.
+        DIGITAL_WALLET_TOKEN_REQUESTED = :digital_wallet_token_requested
+
+        # A card is being loaded into a digital wallet and requires cardholder authentication.
+        DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :digital_wallet_authentication_requested
       end
 
       class DigitalWalletAuthentication < BaseModel
@@ -337,13 +462,16 @@ module Increase
 
         # @!attribute [rw] channel
         #   The channel to send the card user their one-time passcode.
+        #   One of the constants defined in {Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel}
         #   @return [Symbol]
-        required :channel, Increase::Enum.new(:sms, :email)
+        required :channel, enum: -> { Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel }
 
         # @!attribute [rw] digital_wallet
         #   The digital wallet app being used.
+        #   One of the constants defined in {Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet}
         #   @return [Symbol]
-        required :digital_wallet, Increase::Enum.new(:apple_pay, :google_pay, :samsung_pay, :unknown)
+        required :digital_wallet,
+                 enum: -> { Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet }
 
         # @!attribute [rw] email
         #   The email to send the one-time passcode to if `channel` is equal to `email`.
@@ -362,8 +490,42 @@ module Increase
 
         # @!attribute [rw] result
         #   Whether your application successfully delivered the one-time passcode.
+        #   One of the constants defined in {Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result}
         #   @return [Symbol]
-        required :result, Increase::Enum.new(:success, :failure)
+        required :result, enum: -> { Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result }
+
+        # The channel to send the card user their one-time passcode.
+        class Channel < Increase::Enum
+          # Send one-time passcodes over SMS.
+          SMS = :sms
+
+          # Send one-time passcodes over email.
+          EMAIL = :email
+        end
+
+        # The digital wallet app being used.
+        class DigitalWallet < Increase::Enum
+          # Apple Pay
+          APPLE_PAY = :apple_pay
+
+          # Google Pay
+          GOOGLE_PAY = :google_pay
+
+          # Samsung Pay
+          SAMSUNG_PAY = :samsung_pay
+
+          # Unknown
+          UNKNOWN = :unknown
+        end
+
+        # Whether your application successfully delivered the one-time passcode.
+        class Result < Increase::Enum
+          # Your application successfully delivered the one-time passcode to the cardholder.
+          SUCCESS = :success
+
+          # Your application failed to deliver the one-time passcode to the cardholder.
+          FAILURE = :failure
+        end
       end
 
       class DigitalWalletToken < BaseModel
@@ -379,13 +541,57 @@ module Increase
 
         # @!attribute [rw] decision
         #   Whether or not the provisioning request was approved. This will be null until the real time decision is responded to.
+        #   One of the constants defined in {Increase::Models::RealTimeDecision::DigitalWalletToken::Decision}
         #   @return [Symbol]
-        required :decision, Increase::Enum.new(:approve, :decline)
+        required :decision, enum: -> { Increase::Models::RealTimeDecision::DigitalWalletToken::Decision }
 
         # @!attribute [rw] digital_wallet
         #   The digital wallet app being used.
+        #   One of the constants defined in {Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet}
         #   @return [Symbol]
-        required :digital_wallet, Increase::Enum.new(:apple_pay, :google_pay, :samsung_pay, :unknown)
+        required :digital_wallet,
+                 enum: -> { Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet }
+
+        # Whether or not the provisioning request was approved. This will be null until the real time decision is responded to.
+        class Decision < Increase::Enum
+          # Approve the provisioning request.
+          APPROVE = :approve
+
+          # Decline the provisioning request.
+          DECLINE = :decline
+        end
+
+        # The digital wallet app being used.
+        class DigitalWallet < Increase::Enum
+          # Apple Pay
+          APPLE_PAY = :apple_pay
+
+          # Google Pay
+          GOOGLE_PAY = :google_pay
+
+          # Samsung Pay
+          SAMSUNG_PAY = :samsung_pay
+
+          # Unknown
+          UNKNOWN = :unknown
+        end
+      end
+
+      # The status of the Real-Time Decision.
+      class Status < Increase::Enum
+        # The decision is pending action via real-time webhook.
+        PENDING = :pending
+
+        # Your webhook actioned the real-time decision.
+        RESPONDED = :responded
+
+        # Your webhook failed to respond to the authorization in time.
+        TIMED_OUT = :timed_out
+      end
+
+      # A constant representing the object's type. For this resource it will always be `real_time_decision`.
+      class Type < Increase::Enum
+        REAL_TIME_DECISION = :real_time_decision
       end
     end
   end

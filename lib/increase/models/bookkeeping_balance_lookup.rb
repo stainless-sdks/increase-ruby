@@ -15,8 +15,14 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `bookkeeping_balance_lookup`.
+      #   One of the constants defined in {Increase::Models::BookkeepingBalanceLookup::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:bookkeeping_balance_lookup)
+      required :type, enum: -> { Increase::Models::BookkeepingBalanceLookup::Type }
+
+      # A constant representing the object's type. For this resource it will always be `bookkeeping_balance_lookup`.
+      class Type < Increase::Enum
+        BOOKKEEPING_BALANCE_LOOKUP = :bookkeeping_balance_lookup
+      end
     end
   end
 end

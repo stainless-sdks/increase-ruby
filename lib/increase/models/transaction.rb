@@ -25,8 +25,9 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction's currency. This will match the currency on the Transaction's Account.
+      #   One of the constants defined in {Increase::Models::Transaction::Currency}
       #   @return [Symbol]
-      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+      required :currency, enum: -> { Increase::Models::Transaction::Currency }
 
       # @!attribute [rw] description
       #   An informational message describing this transaction. Use the fields in `source` to get more detailed information. This field appears as the line-item on the statement.
@@ -40,8 +41,9 @@ module Increase
 
       # @!attribute [rw] route_type
       #   The type of the route this Transaction came through.
+      #   One of the constants defined in {Increase::Models::Transaction::RouteType}
       #   @return [Symbol]
-      required :route_type, Increase::Enum.new(:account_number, :card, :lockbox)
+      required :route_type, enum: -> { Increase::Models::Transaction::RouteType }
 
       # @!attribute [rw] source
       #   This is an object giving more details on the network-level event that caused the Transaction. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
@@ -50,8 +52,42 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `transaction`.
+      #   One of the constants defined in {Increase::Models::Transaction::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:transaction)
+      required :type, enum: -> { Increase::Models::Transaction::Type }
+
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction's currency. This will match the currency on the Transaction's Account.
+      class Currency < Increase::Enum
+        # Canadian Dollar (CAD)
+        CAD = :CAD
+
+        # Swiss Franc (CHF)
+        CHF = :CHF
+
+        # Euro (EUR)
+        EUR = :EUR
+
+        # British Pound (GBP)
+        GBP = :GBP
+
+        # Japanese Yen (JPY)
+        JPY = :JPY
+
+        # US Dollar (USD)
+        USD = :USD
+      end
+
+      # The type of the route this Transaction came through.
+      class RouteType < Increase::Enum
+        # An Account Number.
+        ACCOUNT_NUMBER = :account_number
+
+        # A Card.
+        CARD = :card
+
+        # A Lockbox.
+        LOCKBOX = :lockbox
+      end
 
       class Source < BaseModel
         # @!attribute [rw] account_transfer_intention
@@ -107,38 +143,9 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+        #   One of the constants defined in {Increase::Models::Transaction::Source::Category}
         #   @return [Symbol]
-        required :category,
-                 Increase::Enum.new(
-                   :account_transfer_intention,
-                   :ach_transfer_intention,
-                   :ach_transfer_rejection,
-                   :ach_transfer_return,
-                   :cashback_payment,
-                   :card_dispute_acceptance,
-                   :card_dispute_loss,
-                   :card_refund,
-                   :card_settlement,
-                   :card_revenue_payment,
-                   :check_deposit_acceptance,
-                   :check_deposit_return,
-                   :check_transfer_deposit,
-                   :fee_payment,
-                   :inbound_ach_transfer,
-                   :inbound_ach_transfer_return_intention,
-                   :inbound_check_deposit_return_intention,
-                   :inbound_real_time_payments_transfer_confirmation,
-                   :inbound_real_time_payments_transfer_decline,
-                   :inbound_wire_reversal,
-                   :inbound_wire_transfer,
-                   :inbound_wire_transfer_reversal,
-                   :interest_payment,
-                   :internal_source,
-                   :real_time_payments_transfer_acknowledgement,
-                   :sample_funds,
-                   :wire_transfer_intention,
-                   :other
-                 )
+        required :category, enum: -> { Increase::Models::Transaction::Source::Category }
 
         # @!attribute [rw] check_deposit_acceptance
         #   A Check Deposit Acceptance object. This field will be present in the JSON response if and only if `category` is equal to `check_deposit_acceptance`.
@@ -226,8 +233,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::AccountTransferIntention::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::Transaction::Source::AccountTransferIntention::Currency }
 
           # @!attribute [rw] description
           #   The description you chose to give the transfer.
@@ -248,6 +256,27 @@ module Increase
           #   The identifier of the Account Transfer that led to this Pending Transaction.
           #   @return [String]
           required :transfer_id, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
         end
 
         class ACHTransferIntention < BaseModel
@@ -297,80 +326,10 @@ module Increase
 
           # @!attribute [rw] return_reason_code
           #   Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode}
           #   @return [Symbol]
           required :return_reason_code,
-                   Increase::Enum.new(
-                     :insufficient_fund,
-                     :no_account,
-                     :account_closed,
-                     :invalid_account_number_structure,
-                     :account_frozen_entry_returned_per_ofac_instruction,
-                     :credit_entry_refused_by_receiver,
-                     :unauthorized_debit_to_consumer_account_using_corporate_sec_code,
-                     :corporate_customer_advised_not_authorized,
-                     :payment_stopped,
-                     :non_transaction_account,
-                     :uncollected_funds,
-                     :routing_number_check_digit_error,
-                     :customer_advised_unauthorized_improper_ineligible_or_incomplete,
-                     :amount_field_error,
-                     :authorization_revoked_by_customer,
-                     :invalid_ach_routing_number,
-                     :file_record_edit_criteria,
-                     :enr_invalid_individual_name,
-                     :returned_per_odfi_request,
-                     :limited_participation_dfi,
-                     :incorrectly_coded_outbound_international_payment,
-                     :account_sold_to_another_dfi,
-                     :addenda_error,
-                     :beneficiary_or_account_holder_deceased,
-                     :customer_advised_not_within_authorization_terms,
-                     :corrected_return,
-                     :duplicate_entry,
-                     :duplicate_return,
-                     :enr_duplicate_enrollment,
-                     :enr_invalid_dfi_account_number,
-                     :enr_invalid_individual_id_number,
-                     :enr_invalid_representative_payee_indicator,
-                     :enr_invalid_transaction_code,
-                     :enr_return_of_enr_entry,
-                     :enr_routing_number_check_digit_error,
-                     :entry_not_processed_by_gateway,
-                     :field_error,
-                     :foreign_receiving_dfi_unable_to_settle,
-                     :iat_entry_coding_error,
-                     :improper_effective_entry_date,
-                     :improper_source_document_source_document_presented,
-                     :invalid_company_id,
-                     :invalid_foreign_receiving_dfi_identification,
-                     :invalid_individual_id_number,
-                     :item_and_rck_entry_presented_for_payment,
-                     :item_related_to_rck_entry_is_ineligible,
-                     :mandatory_field_error,
-                     :misrouted_dishonored_return,
-                     :misrouted_return,
-                     :no_errors_found,
-                     :non_acceptance_of_r62_dishonored_return,
-                     :non_participant_in_iat_program,
-                     :permissible_return_entry,
-                     :permissible_return_entry_not_accepted,
-                     :rdfi_non_settlement,
-                     :rdfi_participant_in_check_truncation_program,
-                     :representative_payee_deceased_or_unable_to_continue_in_that_capacity,
-                     :return_not_a_duplicate,
-                     :return_of_erroneous_or_reversing_debit,
-                     :return_of_improper_credit_entry,
-                     :return_of_improper_debit_entry,
-                     :return_of_xck_entry,
-                     :source_document_presented_for_payment,
-                     :state_law_affecting_rck_acceptance,
-                     :stop_payment_on_item_related_to_rck_entry,
-                     :stop_payment_on_source_document,
-                     :timely_original_return,
-                     :trace_number_error,
-                     :untimely_dishonored_return,
-                     :untimely_return
-                   )
+                   enum: -> { Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode }
 
           # @!attribute [rw] trace_number
           #   A 15 digit number that was generated by the bank that initiated the return. The trace number of the return is different than that of the original transfer. ACH trace numbers are not unique, but along with the amount and date this number can be used to identify the ACH return at the bank that initiated it.
@@ -386,6 +345,219 @@ module Increase
           #   The identifier of the ACH Transfer associated with this return.
           #   @return [String]
           required :transfer_id, String
+
+          # Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
+          class ReturnReasonCode < Increase::Enum
+            # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
+            INSUFFICIENT_FUND = :insufficient_fund
+
+            # Code R03. The account does not exist or the receiving bank was unable to locate it.
+            NO_ACCOUNT = :no_account
+
+            # Code R02. The account is closed at the receiving bank.
+            ACCOUNT_CLOSED = :account_closed
+
+            # Code R04. The account number is invalid at the receiving bank.
+            INVALID_ACCOUNT_NUMBER_STRUCTURE = :invalid_account_number_structure
+
+            # Code R16. The account at the receiving bank was frozen per the Office of Foreign Assets Control.
+            ACCOUNT_FROZEN_ENTRY_RETURNED_PER_OFAC_INSTRUCTION = :account_frozen_entry_returned_per_ofac_instruction
+
+            # Code R23. The receiving bank account refused a credit transfer.
+            CREDIT_ENTRY_REFUSED_BY_RECEIVER = :credit_entry_refused_by_receiver
+
+            # Code R05. The receiving bank rejected because of an incorrect Standard Entry Class code.
+            UNAUTHORIZED_DEBIT_TO_CONSUMER_ACCOUNT_USING_CORPORATE_SEC_CODE = :unauthorized_debit_to_consumer_account_using_corporate_sec_code
+
+            # Code R29. The corporate customer at the receiving bank reversed the transfer.
+            CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
+
+            # Code R08. The receiving bank stopped payment on this transfer.
+            PAYMENT_STOPPED = :payment_stopped
+
+            # Code R20. The receiving bank account does not perform transfers.
+            NON_TRANSACTION_ACCOUNT = :non_transaction_account
+
+            # Code R09. The receiving bank account does not have enough available balance for the transfer.
+            UNCOLLECTED_FUNDS = :uncollected_funds
+
+            # Code R28. The routing number is incorrect.
+            ROUTING_NUMBER_CHECK_DIGIT_ERROR = :routing_number_check_digit_error
+
+            # Code R10. The customer at the receiving bank reversed the transfer.
+            CUSTOMER_ADVISED_UNAUTHORIZED_IMPROPER_INELIGIBLE_OR_INCOMPLETE = :customer_advised_unauthorized_improper_ineligible_or_incomplete
+
+            # Code R19. The amount field is incorrect or too large.
+            AMOUNT_FIELD_ERROR = :amount_field_error
+
+            # Code R07. The customer at the receiving institution informed their bank that they have revoked authorization for a previously authorized transfer.
+            AUTHORIZATION_REVOKED_BY_CUSTOMER = :authorization_revoked_by_customer
+
+            # Code R13. The routing number is invalid.
+            INVALID_ACH_ROUTING_NUMBER = :invalid_ach_routing_number
+
+            # Code R17. The receiving bank is unable to process a field in the transfer.
+            FILE_RECORD_EDIT_CRITERIA = :file_record_edit_criteria
+
+            # Code R45. The individual name field was invalid.
+            ENR_INVALID_INDIVIDUAL_NAME = :enr_invalid_individual_name
+
+            # Code R06. The originating financial institution asked for this transfer to be returned. The receiving bank is complying with the request.
+            RETURNED_PER_ODFI_REQUEST = :returned_per_odfi_request
+
+            # Code R34. The receiving bank's regulatory supervisor has limited their participation in the ACH network.
+            LIMITED_PARTICIPATION_DFI = :limited_participation_dfi
+
+            # Code R85. The outbound international ACH transfer was incorrect.
+            INCORRECTLY_CODED_OUTBOUND_INTERNATIONAL_PAYMENT = :incorrectly_coded_outbound_international_payment
+
+            # Code R12. A rare return reason. The account was sold to another bank.
+            ACCOUNT_SOLD_TO_ANOTHER_DFI = :account_sold_to_another_dfi
+
+            # Code R25. The addenda record is incorrect or missing.
+            ADDENDA_ERROR = :addenda_error
+
+            # Code R15. A rare return reason. The account holder is deceased.
+            BENEFICIARY_OR_ACCOUNT_HOLDER_DECEASED = :beneficiary_or_account_holder_deceased
+
+            # Code R11. A rare return reason. The customer authorized some payment to the sender, but this payment was not in error.
+            CUSTOMER_ADVISED_NOT_WITHIN_AUTHORIZATION_TERMS = :customer_advised_not_within_authorization_terms
+
+            # Code R74. A rare return reason. Sent in response to a return that was returned with code `field_error`. The latest return should include the corrected field(s).
+            CORRECTED_RETURN = :corrected_return
+
+            # Code R24. A rare return reason. The receiving bank received an exact duplicate entry with the same trace number and amount.
+            DUPLICATE_ENTRY = :duplicate_entry
+
+            # Code R67. A rare return reason. The return this message refers to was a duplicate.
+            DUPLICATE_RETURN = :duplicate_return
+
+            # Code R47. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
+            ENR_DUPLICATE_ENROLLMENT = :enr_duplicate_enrollment
+
+            # Code R43. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
+            ENR_INVALID_DFI_ACCOUNT_NUMBER = :enr_invalid_dfi_account_number
+
+            # Code R44. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
+            ENR_INVALID_INDIVIDUAL_ID_NUMBER = :enr_invalid_individual_id_number
+
+            # Code R46. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
+            ENR_INVALID_REPRESENTATIVE_PAYEE_INDICATOR = :enr_invalid_representative_payee_indicator
+
+            # Code R41. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
+            ENR_INVALID_TRANSACTION_CODE = :enr_invalid_transaction_code
+
+            # Code R40. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
+            ENR_RETURN_OF_ENR_ENTRY = :enr_return_of_enr_entry
+
+            # Code R42. A rare return reason. Only used for US Government agency non-monetary automatic enrollment messages.
+            ENR_ROUTING_NUMBER_CHECK_DIGIT_ERROR = :enr_routing_number_check_digit_error
+
+            # Code R84. A rare return reason. The International ACH Transfer cannot be processed by the gateway.
+            ENTRY_NOT_PROCESSED_BY_GATEWAY = :entry_not_processed_by_gateway
+
+            # Code R69. A rare return reason. One or more of the fields in the ACH were malformed.
+            FIELD_ERROR = :field_error
+
+            # Code R83. A rare return reason. The Foreign receiving bank was unable to settle this ACH transfer.
+            FOREIGN_RECEIVING_DFI_UNABLE_TO_SETTLE = :foreign_receiving_dfi_unable_to_settle
+
+            # Code R80. A rare return reason. The International ACH Transfer is malformed.
+            IAT_ENTRY_CODING_ERROR = :iat_entry_coding_error
+
+            # Code R18. A rare return reason. The ACH has an improper effective entry date field.
+            IMPROPER_EFFECTIVE_ENTRY_DATE = :improper_effective_entry_date
+
+            # Code R39. A rare return reason. The source document related to this ACH, usually an ACH check conversion, was presented to the bank.
+            IMPROPER_SOURCE_DOCUMENT_SOURCE_DOCUMENT_PRESENTED = :improper_source_document_source_document_presented
+
+            # Code R21. A rare return reason. The Company ID field of the ACH was invalid.
+            INVALID_COMPANY_ID = :invalid_company_id
+
+            # Code R82. A rare return reason. The foreign receiving bank identifier for an International ACH Transfer was invalid.
+            INVALID_FOREIGN_RECEIVING_DFI_IDENTIFICATION = :invalid_foreign_receiving_dfi_identification
+
+            # Code R22. A rare return reason. The Individual ID number field of the ACH was invalid.
+            INVALID_INDIVIDUAL_ID_NUMBER = :invalid_individual_id_number
+
+            # Code R53. A rare return reason. Both the Represented Check ("RCK") entry and the original check were presented to the bank.
+            ITEM_AND_RCK_ENTRY_PRESENTED_FOR_PAYMENT = :item_and_rck_entry_presented_for_payment
+
+            # Code R51. A rare return reason. The Represented Check ("RCK") entry is ineligible.
+            ITEM_RELATED_TO_RCK_ENTRY_IS_INELIGIBLE = :item_related_to_rck_entry_is_ineligible
+
+            # Code R26. A rare return reason. The ACH is missing a required field.
+            MANDATORY_FIELD_ERROR = :mandatory_field_error
+
+            # Code R71. A rare return reason. The receiving bank does not recognize the routing number in a dishonored return entry.
+            MISROUTED_DISHONORED_RETURN = :misrouted_dishonored_return
+
+            # Code R61. A rare return reason. The receiving bank does not recognize the routing number in a return entry.
+            MISROUTED_RETURN = :misrouted_return
+
+            # Code R76. A rare return reason. Sent in response to a return, the bank does not find the errors alleged by the returning bank.
+            NO_ERRORS_FOUND = :no_errors_found
+
+            # Code R77. A rare return reason. The receiving bank does not accept the return of the erroneous debit. The funds are not available at the receiving bank.
+            NON_ACCEPTANCE_OF_R62_DISHONORED_RETURN = :non_acceptance_of_r62_dishonored_return
+
+            # Code R81. A rare return reason. The receiving bank does not accept International ACH Transfers.
+            NON_PARTICIPANT_IN_IAT_PROGRAM = :non_participant_in_iat_program
+
+            # Code R31. A rare return reason. A return that has been agreed to be accepted by the receiving bank, despite falling outside of the usual return timeframe.
+            PERMISSIBLE_RETURN_ENTRY = :permissible_return_entry
+
+            # Code R70. A rare return reason. The receiving bank had not approved this return.
+            PERMISSIBLE_RETURN_ENTRY_NOT_ACCEPTED = :permissible_return_entry_not_accepted
+
+            # Code R32. A rare return reason. The receiving bank could not settle this transaction.
+            RDFI_NON_SETTLEMENT = :rdfi_non_settlement
+
+            # Code R30. A rare return reason. The receiving bank does not accept Check Truncation ACH transfers.
+            RDFI_PARTICIPANT_IN_CHECK_TRUNCATION_PROGRAM = :rdfi_participant_in_check_truncation_program
+
+            # Code R14. A rare return reason. The payee is deceased.
+            REPRESENTATIVE_PAYEE_DECEASED_OR_UNABLE_TO_CONTINUE_IN_THAT_CAPACITY = :representative_payee_deceased_or_unable_to_continue_in_that_capacity
+
+            # Code R75. A rare return reason. The originating bank disputes that an earlier `duplicate_entry` return was actually a duplicate.
+            RETURN_NOT_A_DUPLICATE = :return_not_a_duplicate
+
+            # Code R62. A rare return reason. The originating financial institution made a mistake and this return corrects it.
+            RETURN_OF_ERRONEOUS_OR_REVERSING_DEBIT = :return_of_erroneous_or_reversing_debit
+
+            # Code R36. A rare return reason. Return of a malformed credit entry.
+            RETURN_OF_IMPROPER_CREDIT_ENTRY = :return_of_improper_credit_entry
+
+            # Code R35. A rare return reason. Return of a malformed debit entry.
+            RETURN_OF_IMPROPER_DEBIT_ENTRY = :return_of_improper_debit_entry
+
+            # Code R33. A rare return reason. Return of a Destroyed Check ("XKC") entry.
+            RETURN_OF_XCK_ENTRY = :return_of_xck_entry
+
+            # Code R37. A rare return reason. The source document related to this ACH, usually an ACH check conversion, was presented to the bank.
+            SOURCE_DOCUMENT_PRESENTED_FOR_PAYMENT = :source_document_presented_for_payment
+
+            # Code R50. A rare return reason. State law prevents the bank from accepting the Represented Check ("RCK") entry.
+            STATE_LAW_AFFECTING_RCK_ACCEPTANCE = :state_law_affecting_rck_acceptance
+
+            # Code R52. A rare return reason. A stop payment was issued on a Represented Check ("RCK") entry.
+            STOP_PAYMENT_ON_ITEM_RELATED_TO_RCK_ENTRY = :stop_payment_on_item_related_to_rck_entry
+
+            # Code R38. A rare return reason. The source attached to the ACH, usually an ACH check conversion, includes a stop payment.
+            STOP_PAYMENT_ON_SOURCE_DOCUMENT = :stop_payment_on_source_document
+
+            # Code R73. A rare return reason. The bank receiving an `untimely_return` believes it was on time.
+            TIMELY_ORIGINAL_RETURN = :timely_original_return
+
+            # Code R27. A rare return reason. An ACH return's trace number does not match an originated ACH.
+            TRACE_NUMBER_ERROR = :trace_number_error
+
+            # Code R72. A rare return reason. The dishonored return was sent too late.
+            UNTIMELY_DISHONORED_RETURN = :untimely_dishonored_return
+
+            # Code R68. A rare return reason. The return was sent too late.
+            UNTIMELY_RETURN = :untimely_return
+          end
         end
 
         class CardDisputeAcceptance < BaseModel
@@ -445,8 +617,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::Transaction::Source::CardRefund::Currency }
 
           # @!attribute [rw] interchange
           #   Interchange assessed as a part of this transaciton.
@@ -511,8 +684,30 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_refund`.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:card_refund)
+          required :type, enum: -> { Increase::Models::Transaction::Source::CardRefund::Type }
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
 
           class Interchange < BaseModel
             # @!attribute [rw] amount
@@ -527,8 +722,30 @@ module Increase
 
             # @!attribute [rw] currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
+            #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::Interchange::Currency}
             #   @return [Symbol]
-            required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+            required :currency, enum: -> { Increase::Models::Transaction::Source::CardRefund::Interchange::Currency }
+
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
+            class Currency < Increase::Enum
+              # Canadian Dollar (CAD)
+              CAD = :CAD
+
+              # Swiss Franc (CHF)
+              CHF = :CHF
+
+              # Euro (EUR)
+              EUR = :EUR
+
+              # British Pound (GBP)
+              GBP = :GBP
+
+              # Japanese Yen (JPY)
+              JPY = :JPY
+
+              # US Dollar (USD)
+              USD = :USD
+            end
           end
 
           class NetworkIdentifiers < BaseModel
@@ -591,15 +808,10 @@ module Increase
 
             # @!attribute [rw] purchase_identifier_format
             #   The format of the purchase identifier.
+            #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat}
             #   @return [Symbol]
             required :purchase_identifier_format,
-                     Increase::Enum.new(
-                       :free_text,
-                       :order_number,
-                       :rental_agreement_number,
-                       :hotel_folio_number,
-                       :invoice_number
-                     )
+                     enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat }
 
             # @!attribute [rw] travel
             #   Fields specific to travel.
@@ -634,16 +846,10 @@ module Increase
 
               # @!attribute [rw] extra_charges
               #   Additional charges (gas, late fee, etc.) being billed.
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges}
               #   @return [Symbol]
               required :extra_charges,
-                       Increase::Enum.new(
-                         :no_extra_charge,
-                         :gas,
-                         :extra_mileage,
-                         :late_return,
-                         :one_way_service_fee,
-                         :parking_violation
-                       )
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges }
 
               # @!attribute [rw] fuel_charges_amount
               #   Fuel charges for the vehicle.
@@ -667,8 +873,10 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator}
               #   @return [Symbol]
-              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
+              required :no_show_indicator,
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator }
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               #   Charges for returning the vehicle at a different location than where it was picked up.
@@ -694,6 +902,36 @@ module Increase
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly rental rate.
               #   @return [String]
               required :weekly_rental_rate_currency, String
+
+              # Additional charges (gas, late fee, etc.) being billed.
+              class ExtraCharges < Increase::Enum
+                # No extra charge
+                NO_EXTRA_CHARGE = :no_extra_charge
+
+                # Gas
+                GAS = :gas
+
+                # Extra mileage
+                EXTRA_MILEAGE = :extra_mileage
+
+                # Late return
+                LATE_RETURN = :late_return
+
+                # One way service fee
+                ONE_WAY_SERVICE_FEE = :one_way_service_fee
+
+                # Parking violation
+                PARKING_VIOLATION = :parking_violation
+              end
+
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
+              class NoShowIndicator < Increase::Enum
+                # Not applicable
+                NOT_APPLICABLE = :not_applicable
+
+                # No show for specialized vehicle
+                NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
+              end
             end
 
             class Lodging < BaseModel
@@ -714,9 +952,10 @@ module Increase
 
               # @!attribute [rw] extra_charges
               #   Additional charges (phone, late check-out, etc.) being billed.
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges}
               #   @return [Symbol]
               required :extra_charges,
-                       Increase::Enum.new(:no_extra_charge, :restaurant, :gift_shop, :mini_bar, :telephone, :other, :laundry)
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges }
 
               # @!attribute [rw] folio_cash_advances_amount
               #   Folio cash advances for the room.
@@ -740,8 +979,10 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator}
               #   @return [Symbol]
-              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show)
+              required :no_show_indicator,
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator }
 
               # @!attribute [rw] prepaid_expenses_amount
               #   Prepaid expenses being charged for the room.
@@ -777,6 +1018,57 @@ module Increase
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax assessed.
               #   @return [String]
               required :total_tax_currency, String
+
+              # Additional charges (phone, late check-out, etc.) being billed.
+              class ExtraCharges < Increase::Enum
+                # No extra charge
+                NO_EXTRA_CHARGE = :no_extra_charge
+
+                # Restaurant
+                RESTAURANT = :restaurant
+
+                # Gift shop
+                GIFT_SHOP = :gift_shop
+
+                # Mini bar
+                MINI_BAR = :mini_bar
+
+                # Telephone
+                TELEPHONE = :telephone
+
+                # Other
+                OTHER = :other
+
+                # Laundry
+                LAUNDRY = :laundry
+              end
+
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
+              class NoShowIndicator < Increase::Enum
+                # Not applicable
+                NOT_APPLICABLE = :not_applicable
+
+                # No show
+                NO_SHOW = :no_show
+              end
+            end
+
+            # The format of the purchase identifier.
+            class PurchaseIdentifierFormat < Increase::Enum
+              # Free text
+              FREE_TEXT = :free_text
+
+              # Order number
+              ORDER_NUMBER = :order_number
+
+              # Rental agreement number
+              RENTAL_AGREEMENT_NUMBER = :rental_agreement_number
+
+              # Hotel folio number
+              HOTEL_FOLIO_NUMBER = :hotel_folio_number
+
+              # Invoice number
+              INVOICE_NUMBER = :invoice_number
             end
 
             class Travel < BaseModel
@@ -793,16 +1085,10 @@ module Increase
 
               # @!attribute [rw] credit_reason_indicator
               #   Indicates the reason for a credit to the cardholder.
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator}
               #   @return [Symbol]
               required :credit_reason_indicator,
-                       Increase::Enum.new(
-                         :no_credit,
-                         :passenger_transport_ancillary_purchase_cancellation,
-                         :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                         :airline_ticket_cancellation,
-                         :other,
-                         :partial_refund_of_airline_ticket
-                       )
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator }
 
               # @!attribute [rw] departure_date
               #   Date of departure.
@@ -821,14 +1107,17 @@ module Increase
 
               # @!attribute [rw] restricted_ticket_indicator
               #   Indicates whether this ticket is non-refundable.
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator}
               #   @return [Symbol]
               required :restricted_ticket_indicator,
-                       Increase::Enum.new(:no_restrictions, :restricted_non_refundable_ticket)
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator }
 
               # @!attribute [rw] ticket_change_indicator
               #   Indicates why a ticket was changed.
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator}
               #   @return [Symbol]
-              required :ticket_change_indicator, Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
+              required :ticket_change_indicator,
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator }
 
               # @!attribute [rw] ticket_number
               #   Ticket number.
@@ -859,14 +1148,10 @@ module Increase
 
                 # @!attribute [rw] credit_reason_indicator
                 #   Indicates the reason for a credit to the cardholder.
+                #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator}
                 #   @return [Symbol]
                 required :credit_reason_indicator,
-                         Increase::Enum.new(
-                           :no_credit,
-                           :passenger_transport_ancillary_purchase_cancellation,
-                           :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                           :other
-                         )
+                         enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator }
 
                 # @!attribute [rw] passenger_name_or_description
                 #   Name of the passenger or description of the ancillary purchase.
@@ -884,43 +1169,151 @@ module Increase
                 #   @return [String]
                 required :ticket_document_number, String
 
+                # Indicates the reason for a credit to the cardholder.
+                class CreditReasonIndicator < Increase::Enum
+                  # No credit
+                  NO_CREDIT = :no_credit
+
+                  # Passenger transport ancillary purchase cancellation
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+
+                  # Airline ticket and passenger transport ancillary purchase cancellation
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+
+                  # Other
+                  OTHER = :other
+                end
+
                 class Service < BaseModel
                   # @!attribute [rw] category
                   #   Category of the ancillary service.
+                  #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category}
                   #   @return [Symbol]
                   required :category,
-                           Increase::Enum.new(
-                             :none,
-                             :bundled_service,
-                             :baggage_fee,
-                             :change_fee,
-                             :cargo,
-                             :carbon_offset,
-                             :frequent_flyer,
-                             :gift_card,
-                             :ground_transport,
-                             :in_flight_entertainment,
-                             :lounge,
-                             :medical,
-                             :meal_beverage,
-                             :other,
-                             :passenger_assist_fee,
-                             :pets,
-                             :seat_fees,
-                             :standby,
-                             :service_fee,
-                             :store,
-                             :travel_service,
-                             :unaccompanied_travel,
-                             :upgrades,
-                             :wifi
-                           )
+                           enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category }
 
                   # @!attribute [rw] sub_category
                   #   Sub-category of the ancillary service, free-form.
                   #   @return [String]
                   required :sub_category, String
+
+                  # Category of the ancillary service.
+                  class Category < Increase::Enum
+                    # None
+                    NONE = :none
+
+                    # Bundled service
+                    BUNDLED_SERVICE = :bundled_service
+
+                    # Baggage fee
+                    BAGGAGE_FEE = :baggage_fee
+
+                    # Change fee
+                    CHANGE_FEE = :change_fee
+
+                    # Cargo
+                    CARGO = :cargo
+
+                    # Carbon offset
+                    CARBON_OFFSET = :carbon_offset
+
+                    # Frequent flyer
+                    FREQUENT_FLYER = :frequent_flyer
+
+                    # Gift card
+                    GIFT_CARD = :gift_card
+
+                    # Ground transport
+                    GROUND_TRANSPORT = :ground_transport
+
+                    # In-flight entertainment
+                    IN_FLIGHT_ENTERTAINMENT = :in_flight_entertainment
+
+                    # Lounge
+                    LOUNGE = :lounge
+
+                    # Medical
+                    MEDICAL = :medical
+
+                    # Meal beverage
+                    MEAL_BEVERAGE = :meal_beverage
+
+                    # Other
+                    OTHER = :other
+
+                    # Passenger assist fee
+                    PASSENGER_ASSIST_FEE = :passenger_assist_fee
+
+                    # Pets
+                    PETS = :pets
+
+                    # Seat fees
+                    SEAT_FEES = :seat_fees
+
+                    # Standby
+                    STANDBY = :standby
+
+                    # Service fee
+                    SERVICE_FEE = :service_fee
+
+                    # Store
+                    STORE = :store
+
+                    # Travel service
+                    TRAVEL_SERVICE = :travel_service
+
+                    # Unaccompanied travel
+                    UNACCOMPANIED_TRAVEL = :unaccompanied_travel
+
+                    # Upgrades
+                    UPGRADES = :upgrades
+
+                    # Wi-fi
+                    WIFI = :wifi
+                  end
                 end
+              end
+
+              # Indicates the reason for a credit to the cardholder.
+              class CreditReasonIndicator < Increase::Enum
+                # No credit
+                NO_CREDIT = :no_credit
+
+                # Passenger transport ancillary purchase cancellation
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+
+                # Airline ticket and passenger transport ancillary purchase cancellation
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+
+                # Airline ticket cancellation
+                AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
+
+                # Other
+                OTHER = :other
+
+                # Partial refund of airline ticket
+                PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
+              end
+
+              # Indicates whether this ticket is non-refundable.
+              class RestrictedTicketIndicator < Increase::Enum
+                # No restrictions
+                NO_RESTRICTIONS = :no_restrictions
+
+                # Restricted non-refundable ticket
+                RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
+              end
+
+              # Indicates why a ticket was changed.
+              class TicketChangeIndicator < Increase::Enum
+                # None
+                NONE = :none
+
+                # Change to existing ticket
+                CHANGE_TO_EXISTING_TICKET = :change_to_existing_ticket
+
+                # New ticket
+                NEW_TICKET = :new_ticket
               end
 
               class TripLeg < BaseModel
@@ -951,10 +1344,29 @@ module Increase
 
                 # @!attribute [rw] stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
+                #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode}
                 #   @return [Symbol]
-                required :stop_over_code, Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
+                required :stop_over_code,
+                         enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode }
+
+                # Indicates whether a stopover is allowed on this ticket.
+                class StopOverCode < Increase::Enum
+                  # None
+                  NONE = :none
+
+                  # Stop over allowed
+                  STOP_OVER_ALLOWED = :stop_over_allowed
+
+                  # Stop over not allowed
+                  STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
+                end
               end
             end
+          end
+
+          # A constant representing the object's type. For this resource it will always be `card_refund`.
+          class Type < Increase::Enum
+            CARD_REFUND = :card_refund
           end
         end
 
@@ -966,8 +1378,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::CardRevenuePayment::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::Transaction::Source::CardRevenuePayment::Currency }
 
           # @!attribute [rw] period_end
           #   The end of the period for which this transaction paid interest.
@@ -983,6 +1396,27 @@ module Increase
           #   The account the card belonged to.
           #   @return [String]
           required :transacted_on_account_id, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
         end
 
         class CardSettlement < BaseModel
@@ -1008,8 +1442,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::Transaction::Source::CardSettlement::Currency }
 
           # @!attribute [rw] interchange
           #   Interchange assessed as a part of this transaciton.
@@ -1079,8 +1514,30 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_settlement`.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:card_settlement)
+          required :type, enum: -> { Increase::Models::Transaction::Source::CardSettlement::Type }
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
 
           class Interchange < BaseModel
             # @!attribute [rw] amount
@@ -1095,8 +1552,31 @@ module Increase
 
             # @!attribute [rw] currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
+            #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency}
             #   @return [Symbol]
-            required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+            required :currency,
+                     enum: -> { Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency }
+
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
+            class Currency < Increase::Enum
+              # Canadian Dollar (CAD)
+              CAD = :CAD
+
+              # Swiss Franc (CHF)
+              CHF = :CHF
+
+              # Euro (EUR)
+              EUR = :EUR
+
+              # British Pound (GBP)
+              GBP = :GBP
+
+              # Japanese Yen (JPY)
+              JPY = :JPY
+
+              # US Dollar (USD)
+              USD = :USD
+            end
           end
 
           class NetworkIdentifiers < BaseModel
@@ -1160,15 +1640,10 @@ module Increase
 
             # @!attribute [rw] purchase_identifier_format
             #   The format of the purchase identifier.
+            #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat}
             #   @return [Symbol]
             required :purchase_identifier_format,
-                     Increase::Enum.new(
-                       :free_text,
-                       :order_number,
-                       :rental_agreement_number,
-                       :hotel_folio_number,
-                       :invoice_number
-                     )
+                     enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat }
 
             # @!attribute [rw] travel
             #   Fields specific to travel.
@@ -1203,16 +1678,10 @@ module Increase
 
               # @!attribute [rw] extra_charges
               #   Additional charges (gas, late fee, etc.) being billed.
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges}
               #   @return [Symbol]
               required :extra_charges,
-                       Increase::Enum.new(
-                         :no_extra_charge,
-                         :gas,
-                         :extra_mileage,
-                         :late_return,
-                         :one_way_service_fee,
-                         :parking_violation
-                       )
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges }
 
               # @!attribute [rw] fuel_charges_amount
               #   Fuel charges for the vehicle.
@@ -1236,8 +1705,10 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator}
               #   @return [Symbol]
-              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
+              required :no_show_indicator,
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator }
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               #   Charges for returning the vehicle at a different location than where it was picked up.
@@ -1263,6 +1734,36 @@ module Increase
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly rental rate.
               #   @return [String]
               required :weekly_rental_rate_currency, String
+
+              # Additional charges (gas, late fee, etc.) being billed.
+              class ExtraCharges < Increase::Enum
+                # No extra charge
+                NO_EXTRA_CHARGE = :no_extra_charge
+
+                # Gas
+                GAS = :gas
+
+                # Extra mileage
+                EXTRA_MILEAGE = :extra_mileage
+
+                # Late return
+                LATE_RETURN = :late_return
+
+                # One way service fee
+                ONE_WAY_SERVICE_FEE = :one_way_service_fee
+
+                # Parking violation
+                PARKING_VIOLATION = :parking_violation
+              end
+
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
+              class NoShowIndicator < Increase::Enum
+                # Not applicable
+                NOT_APPLICABLE = :not_applicable
+
+                # No show for specialized vehicle
+                NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
+              end
             end
 
             class Lodging < BaseModel
@@ -1283,9 +1784,10 @@ module Increase
 
               # @!attribute [rw] extra_charges
               #   Additional charges (phone, late check-out, etc.) being billed.
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges}
               #   @return [Symbol]
               required :extra_charges,
-                       Increase::Enum.new(:no_extra_charge, :restaurant, :gift_shop, :mini_bar, :telephone, :other, :laundry)
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges }
 
               # @!attribute [rw] folio_cash_advances_amount
               #   Folio cash advances for the room.
@@ -1309,8 +1811,10 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator}
               #   @return [Symbol]
-              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show)
+              required :no_show_indicator,
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator }
 
               # @!attribute [rw] prepaid_expenses_amount
               #   Prepaid expenses being charged for the room.
@@ -1346,6 +1850,57 @@ module Increase
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax assessed.
               #   @return [String]
               required :total_tax_currency, String
+
+              # Additional charges (phone, late check-out, etc.) being billed.
+              class ExtraCharges < Increase::Enum
+                # No extra charge
+                NO_EXTRA_CHARGE = :no_extra_charge
+
+                # Restaurant
+                RESTAURANT = :restaurant
+
+                # Gift shop
+                GIFT_SHOP = :gift_shop
+
+                # Mini bar
+                MINI_BAR = :mini_bar
+
+                # Telephone
+                TELEPHONE = :telephone
+
+                # Other
+                OTHER = :other
+
+                # Laundry
+                LAUNDRY = :laundry
+              end
+
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
+              class NoShowIndicator < Increase::Enum
+                # Not applicable
+                NOT_APPLICABLE = :not_applicable
+
+                # No show
+                NO_SHOW = :no_show
+              end
+            end
+
+            # The format of the purchase identifier.
+            class PurchaseIdentifierFormat < Increase::Enum
+              # Free text
+              FREE_TEXT = :free_text
+
+              # Order number
+              ORDER_NUMBER = :order_number
+
+              # Rental agreement number
+              RENTAL_AGREEMENT_NUMBER = :rental_agreement_number
+
+              # Hotel folio number
+              HOTEL_FOLIO_NUMBER = :hotel_folio_number
+
+              # Invoice number
+              INVOICE_NUMBER = :invoice_number
             end
 
             class Travel < BaseModel
@@ -1362,16 +1917,10 @@ module Increase
 
               # @!attribute [rw] credit_reason_indicator
               #   Indicates the reason for a credit to the cardholder.
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator}
               #   @return [Symbol]
               required :credit_reason_indicator,
-                       Increase::Enum.new(
-                         :no_credit,
-                         :passenger_transport_ancillary_purchase_cancellation,
-                         :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                         :airline_ticket_cancellation,
-                         :other,
-                         :partial_refund_of_airline_ticket
-                       )
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator }
 
               # @!attribute [rw] departure_date
               #   Date of departure.
@@ -1390,14 +1939,17 @@ module Increase
 
               # @!attribute [rw] restricted_ticket_indicator
               #   Indicates whether this ticket is non-refundable.
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator}
               #   @return [Symbol]
               required :restricted_ticket_indicator,
-                       Increase::Enum.new(:no_restrictions, :restricted_non_refundable_ticket)
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator }
 
               # @!attribute [rw] ticket_change_indicator
               #   Indicates why a ticket was changed.
+              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator}
               #   @return [Symbol]
-              required :ticket_change_indicator, Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
+              required :ticket_change_indicator,
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator }
 
               # @!attribute [rw] ticket_number
               #   Ticket number.
@@ -1428,14 +1980,10 @@ module Increase
 
                 # @!attribute [rw] credit_reason_indicator
                 #   Indicates the reason for a credit to the cardholder.
+                #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator}
                 #   @return [Symbol]
                 required :credit_reason_indicator,
-                         Increase::Enum.new(
-                           :no_credit,
-                           :passenger_transport_ancillary_purchase_cancellation,
-                           :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                           :other
-                         )
+                         enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator }
 
                 # @!attribute [rw] passenger_name_or_description
                 #   Name of the passenger or description of the ancillary purchase.
@@ -1453,43 +2001,151 @@ module Increase
                 #   @return [String]
                 required :ticket_document_number, String
 
+                # Indicates the reason for a credit to the cardholder.
+                class CreditReasonIndicator < Increase::Enum
+                  # No credit
+                  NO_CREDIT = :no_credit
+
+                  # Passenger transport ancillary purchase cancellation
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+
+                  # Airline ticket and passenger transport ancillary purchase cancellation
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+
+                  # Other
+                  OTHER = :other
+                end
+
                 class Service < BaseModel
                   # @!attribute [rw] category
                   #   Category of the ancillary service.
+                  #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category}
                   #   @return [Symbol]
                   required :category,
-                           Increase::Enum.new(
-                             :none,
-                             :bundled_service,
-                             :baggage_fee,
-                             :change_fee,
-                             :cargo,
-                             :carbon_offset,
-                             :frequent_flyer,
-                             :gift_card,
-                             :ground_transport,
-                             :in_flight_entertainment,
-                             :lounge,
-                             :medical,
-                             :meal_beverage,
-                             :other,
-                             :passenger_assist_fee,
-                             :pets,
-                             :seat_fees,
-                             :standby,
-                             :service_fee,
-                             :store,
-                             :travel_service,
-                             :unaccompanied_travel,
-                             :upgrades,
-                             :wifi
-                           )
+                           enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category }
 
                   # @!attribute [rw] sub_category
                   #   Sub-category of the ancillary service, free-form.
                   #   @return [String]
                   required :sub_category, String
+
+                  # Category of the ancillary service.
+                  class Category < Increase::Enum
+                    # None
+                    NONE = :none
+
+                    # Bundled service
+                    BUNDLED_SERVICE = :bundled_service
+
+                    # Baggage fee
+                    BAGGAGE_FEE = :baggage_fee
+
+                    # Change fee
+                    CHANGE_FEE = :change_fee
+
+                    # Cargo
+                    CARGO = :cargo
+
+                    # Carbon offset
+                    CARBON_OFFSET = :carbon_offset
+
+                    # Frequent flyer
+                    FREQUENT_FLYER = :frequent_flyer
+
+                    # Gift card
+                    GIFT_CARD = :gift_card
+
+                    # Ground transport
+                    GROUND_TRANSPORT = :ground_transport
+
+                    # In-flight entertainment
+                    IN_FLIGHT_ENTERTAINMENT = :in_flight_entertainment
+
+                    # Lounge
+                    LOUNGE = :lounge
+
+                    # Medical
+                    MEDICAL = :medical
+
+                    # Meal beverage
+                    MEAL_BEVERAGE = :meal_beverage
+
+                    # Other
+                    OTHER = :other
+
+                    # Passenger assist fee
+                    PASSENGER_ASSIST_FEE = :passenger_assist_fee
+
+                    # Pets
+                    PETS = :pets
+
+                    # Seat fees
+                    SEAT_FEES = :seat_fees
+
+                    # Standby
+                    STANDBY = :standby
+
+                    # Service fee
+                    SERVICE_FEE = :service_fee
+
+                    # Store
+                    STORE = :store
+
+                    # Travel service
+                    TRAVEL_SERVICE = :travel_service
+
+                    # Unaccompanied travel
+                    UNACCOMPANIED_TRAVEL = :unaccompanied_travel
+
+                    # Upgrades
+                    UPGRADES = :upgrades
+
+                    # Wi-fi
+                    WIFI = :wifi
+                  end
                 end
+              end
+
+              # Indicates the reason for a credit to the cardholder.
+              class CreditReasonIndicator < Increase::Enum
+                # No credit
+                NO_CREDIT = :no_credit
+
+                # Passenger transport ancillary purchase cancellation
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+
+                # Airline ticket and passenger transport ancillary purchase cancellation
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+
+                # Airline ticket cancellation
+                AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
+
+                # Other
+                OTHER = :other
+
+                # Partial refund of airline ticket
+                PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
+              end
+
+              # Indicates whether this ticket is non-refundable.
+              class RestrictedTicketIndicator < Increase::Enum
+                # No restrictions
+                NO_RESTRICTIONS = :no_restrictions
+
+                # Restricted non-refundable ticket
+                RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
+              end
+
+              # Indicates why a ticket was changed.
+              class TicketChangeIndicator < Increase::Enum
+                # None
+                NONE = :none
+
+                # Change to existing ticket
+                CHANGE_TO_EXISTING_TICKET = :change_to_existing_ticket
+
+                # New ticket
+                NEW_TICKET = :new_ticket
               end
 
               class TripLeg < BaseModel
@@ -1520,10 +2176,29 @@ module Increase
 
                 # @!attribute [rw] stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
+                #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode}
                 #   @return [Symbol]
-                required :stop_over_code, Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
+                required :stop_over_code,
+                         enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode }
+
+                # Indicates whether a stopover is allowed on this ticket.
+                class StopOverCode < Increase::Enum
+                  # None
+                  NONE = :none
+
+                  # Stop over allowed
+                  STOP_OVER_ALLOWED = :stop_over_allowed
+
+                  # Stop over not allowed
+                  STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
+                end
               end
             end
+          end
+
+          # A constant representing the object's type. For this resource it will always be `card_settlement`.
+          class Type < Increase::Enum
+            CARD_SETTLEMENT = :card_settlement
           end
         end
 
@@ -1540,8 +2215,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::CashbackPayment::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::Transaction::Source::CashbackPayment::Currency }
 
           # @!attribute [rw] period_end
           #   The end of the period for which this transaction paid cashback.
@@ -1552,6 +2228,114 @@ module Increase
           #   The start of the period for which this transaction paid cashback.
           #   @return [String]
           required :period_start, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+        end
+
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+        class Category < Increase::Enum
+          # Account Transfer Intention: details will be under the `account_transfer_intention` object.
+          ACCOUNT_TRANSFER_INTENTION = :account_transfer_intention
+
+          # ACH Transfer Intention: details will be under the `ach_transfer_intention` object.
+          ACH_TRANSFER_INTENTION = :ach_transfer_intention
+
+          # ACH Transfer Rejection: details will be under the `ach_transfer_rejection` object.
+          ACH_TRANSFER_REJECTION = :ach_transfer_rejection
+
+          # ACH Transfer Return: details will be under the `ach_transfer_return` object.
+          ACH_TRANSFER_RETURN = :ach_transfer_return
+
+          # Cashback Payment: details will be under the `cashback_payment` object.
+          CASHBACK_PAYMENT = :cashback_payment
+
+          # Card Dispute Acceptance: details will be under the `card_dispute_acceptance` object.
+          CARD_DISPUTE_ACCEPTANCE = :card_dispute_acceptance
+
+          # Card Dispute Loss: details will be under the `card_dispute_loss` object.
+          CARD_DISPUTE_LOSS = :card_dispute_loss
+
+          # Card Refund: details will be under the `card_refund` object.
+          CARD_REFUND = :card_refund
+
+          # Card Settlement: details will be under the `card_settlement` object.
+          CARD_SETTLEMENT = :card_settlement
+
+          # Card Revenue Payment: details will be under the `card_revenue_payment` object.
+          CARD_REVENUE_PAYMENT = :card_revenue_payment
+
+          # Check Deposit Acceptance: details will be under the `check_deposit_acceptance` object.
+          CHECK_DEPOSIT_ACCEPTANCE = :check_deposit_acceptance
+
+          # Check Deposit Return: details will be under the `check_deposit_return` object.
+          CHECK_DEPOSIT_RETURN = :check_deposit_return
+
+          # Check Transfer Deposit: details will be under the `check_transfer_deposit` object.
+          CHECK_TRANSFER_DEPOSIT = :check_transfer_deposit
+
+          # Fee Payment: details will be under the `fee_payment` object.
+          FEE_PAYMENT = :fee_payment
+
+          # Inbound ACH Transfer Intention: details will be under the `inbound_ach_transfer` object.
+          INBOUND_ACH_TRANSFER = :inbound_ach_transfer
+
+          # Inbound ACH Transfer Return Intention: details will be under the `inbound_ach_transfer_return_intention` object.
+          INBOUND_ACH_TRANSFER_RETURN_INTENTION = :inbound_ach_transfer_return_intention
+
+          # Inbound Check Deposit Return Intention: details will be under the `inbound_check_deposit_return_intention` object.
+          INBOUND_CHECK_DEPOSIT_RETURN_INTENTION = :inbound_check_deposit_return_intention
+
+          # Inbound Real-Time Payments Transfer Confirmation: details will be under the `inbound_real_time_payments_transfer_confirmation` object.
+          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_CONFIRMATION = :inbound_real_time_payments_transfer_confirmation
+
+          # Inbound Real-Time Payments Transfer Decline: details will be under the `inbound_real_time_payments_transfer_decline` object.
+          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE = :inbound_real_time_payments_transfer_decline
+
+          # Inbound Wire Reversal: details will be under the `inbound_wire_reversal` object.
+          INBOUND_WIRE_REVERSAL = :inbound_wire_reversal
+
+          # Inbound Wire Transfer Intention: details will be under the `inbound_wire_transfer` object.
+          INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
+
+          # Inbound Wire Transfer Reversal Intention: details will be under the `inbound_wire_transfer_reversal` object.
+          INBOUND_WIRE_TRANSFER_REVERSAL = :inbound_wire_transfer_reversal
+
+          # Interest Payment: details will be under the `interest_payment` object.
+          INTEREST_PAYMENT = :interest_payment
+
+          # Internal Source: details will be under the `internal_source` object.
+          INTERNAL_SOURCE = :internal_source
+
+          # Real-Time Payments Transfer Acknowledgement: details will be under the `real_time_payments_transfer_acknowledgement` object.
+          REAL_TIME_PAYMENTS_TRANSFER_ACKNOWLEDGEMENT = :real_time_payments_transfer_acknowledgement
+
+          # Sample Funds: details will be under the `sample_funds` object.
+          SAMPLE_FUNDS = :sample_funds
+
+          # Wire Transfer Intention: details will be under the `wire_transfer_intention` object.
+          WIRE_TRANSFER_INTENTION = :wire_transfer_intention
+
+          # The Transaction was made for an undocumented or deprecated reason.
+          OTHER = :other
         end
 
         class CheckDepositAcceptance < BaseModel
@@ -1577,8 +2361,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency }
 
           # @!attribute [rw] routing_number
           #   The routing number printed on the check.
@@ -1589,6 +2374,27 @@ module Increase
           #   The check serial number, if present, for consumer checks. For business checks, the serial number is usually in the `auxiliary_on_us` field.
           #   @return [String]
           required :serial_number, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
         end
 
         class CheckDepositReturn < BaseModel
@@ -1604,41 +2410,16 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::CheckDepositReturn::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::Transaction::Source::CheckDepositReturn::Currency }
 
           # @!attribute [rw] return_reason
           #   Why this check was returned by the bank holding the account it was drawn against.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason}
           #   @return [Symbol]
           required :return_reason,
-                   Increase::Enum.new(
-                     :ach_conversion_not_supported,
-                     :closed_account,
-                     :duplicate_submission,
-                     :insufficient_funds,
-                     :no_account,
-                     :not_authorized,
-                     :stale_dated,
-                     :stop_payment,
-                     :unknown_reason,
-                     :unmatched_details,
-                     :unreadable_image,
-                     :endorsement_irregular,
-                     :altered_or_fictitious_item,
-                     :frozen_or_blocked_account,
-                     :post_dated,
-                     :endorsement_missing,
-                     :signature_missing,
-                     :stop_payment_suspect,
-                     :unusable_image,
-                     :image_fails_security_check,
-                     :cannot_determine_amount,
-                     :signature_irregular,
-                     :non_cash_item,
-                     :unable_to_process,
-                     :item_exceeds_dollar_limit,
-                     :branch_or_account_sold
-                   )
+                   enum: -> { Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason }
 
           # @!attribute [rw] returned_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was returned.
@@ -1649,6 +2430,108 @@ module Increase
           #   The identifier of the transaction that reversed the original check deposit transaction.
           #   @return [String]
           required :transaction_id, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
+          # Why this check was returned by the bank holding the account it was drawn against.
+          class ReturnReason < Increase::Enum
+            # The check doesn't allow ACH conversion.
+            ACH_CONVERSION_NOT_SUPPORTED = :ach_conversion_not_supported
+
+            # The account is closed.
+            CLOSED_ACCOUNT = :closed_account
+
+            # The check has already been deposited.
+            DUPLICATE_SUBMISSION = :duplicate_submission
+
+            # Insufficient funds
+            INSUFFICIENT_FUNDS = :insufficient_funds
+
+            # No account was found matching the check details.
+            NO_ACCOUNT = :no_account
+
+            # The check was not authorized.
+            NOT_AUTHORIZED = :not_authorized
+
+            # The check is too old.
+            STALE_DATED = :stale_dated
+
+            # The payment has been stopped by the account holder.
+            STOP_PAYMENT = :stop_payment
+
+            # The reason for the return is unknown.
+            UNKNOWN_REASON = :unknown_reason
+
+            # The image doesn't match the details submitted.
+            UNMATCHED_DETAILS = :unmatched_details
+
+            # The image could not be read.
+            UNREADABLE_IMAGE = :unreadable_image
+
+            # The check endorsement was irregular.
+            ENDORSEMENT_IRREGULAR = :endorsement_irregular
+
+            # The check present was either altered or fake.
+            ALTERED_OR_FICTITIOUS_ITEM = :altered_or_fictitious_item
+
+            # The account this check is drawn on is frozen.
+            FROZEN_OR_BLOCKED_ACCOUNT = :frozen_or_blocked_account
+
+            # The check is post dated.
+            POST_DATED = :post_dated
+
+            # The endorsement was missing.
+            ENDORSEMENT_MISSING = :endorsement_missing
+
+            # The check signature was missing.
+            SIGNATURE_MISSING = :signature_missing
+
+            # The bank suspects a stop payment will be placed.
+            STOP_PAYMENT_SUSPECT = :stop_payment_suspect
+
+            # The bank cannot read the image.
+            UNUSABLE_IMAGE = :unusable_image
+
+            # The check image fails the bank's security check.
+            IMAGE_FAILS_SECURITY_CHECK = :image_fails_security_check
+
+            # The bank cannot determine the amount.
+            CANNOT_DETERMINE_AMOUNT = :cannot_determine_amount
+
+            # The signature is inconsistent with prior signatures.
+            SIGNATURE_IRREGULAR = :signature_irregular
+
+            # The check is a non-cash item and cannot be drawn against the account.
+            NON_CASH_ITEM = :non_cash_item
+
+            # The bank is unable to process this check.
+            UNABLE_TO_PROCESS = :unable_to_process
+
+            # The check exceeds the bank or customer's limit.
+            ITEM_EXCEEDS_DOLLAR_LIMIT = :item_exceeds_dollar_limit
+
+            # The bank sold this account and no longer services this customer.
+            BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
+          end
         end
 
         class CheckTransferDeposit < BaseModel
@@ -1689,8 +2572,14 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `check_transfer_deposit`.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::CheckTransferDeposit::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:check_transfer_deposit)
+          required :type, enum: -> { Increase::Models::Transaction::Source::CheckTransferDeposit::Type }
+
+          # A constant representing the object's type. For this resource it will always be `check_transfer_deposit`.
+          class Type < Increase::Enum
+            CHECK_TRANSFER_DEPOSIT = :check_transfer_deposit
+          end
         end
 
         class FeePayment < BaseModel
@@ -1701,13 +2590,35 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::FeePayment::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::Transaction::Source::FeePayment::Currency }
 
           # @!attribute [rw] fee_period_start
           #   The start of this payment's fee period, usually the first day of a month.
           #   @return [String]
           required :fee_period_start, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
         end
 
         class InboundACHTransfer < BaseModel
@@ -1769,13 +2680,21 @@ module Increase
           class Addenda < BaseModel
             # @!attribute [rw] category
             #   The type of addendum.
+            #   One of the constants defined in {Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category}
             #   @return [Symbol]
-            required :category, Increase::Enum.new(:freeform)
+            required :category,
+                     enum: -> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category }
 
             # @!attribute [rw] freeform
             #   Unstructured `payment_related_information` passed through by the originator.
             #   @return [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform]
             required :freeform, -> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform }
+
+            # The type of addendum.
+            class Category < Increase::Enum
+              # Unstructured addendum.
+              FREEFORM = :freeform
+            end
 
             class Freeform < BaseModel
               # @!attribute [rw] entries
@@ -1807,8 +2726,10 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency,
+                   enum: -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency }
 
           # @!attribute [rw] debtor_account_number
           #   The account number of the account that sent the transfer.
@@ -1839,6 +2760,27 @@ module Increase
           #   The identifier of the Real-Time Payments Transfer that led to this Transaction.
           #   @return [String]
           required :transfer_id, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
         end
 
         class InboundRealTimePaymentsTransferDecline < BaseModel
@@ -1854,8 +2796,10 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency,
+                   enum: -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency }
 
           # @!attribute [rw] debtor_account_number
           #   The account number of the account that sent the transfer.
@@ -1874,16 +2818,10 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the transfer was declined.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason}
           #   @return [Symbol]
           required :reason,
-                   Increase::Enum.new(
-                     :account_number_canceled,
-                     :account_number_disabled,
-                     :account_restricted,
-                     :group_locked,
-                     :entity_not_active,
-                     :real_time_payments_not_enabled
-                   )
+                   enum: -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason }
 
           # @!attribute [rw] remittance_information
           #   Additional information included with the transfer.
@@ -1899,6 +2837,48 @@ module Increase
           #   The identifier of the Real-Time Payments Transfer that led to this Transaction.
           #   @return [String]
           required :transfer_id, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
+          # Why the transfer was declined.
+          class Reason < Increase::Enum
+            # The account number is canceled.
+            ACCOUNT_NUMBER_CANCELED = :account_number_canceled
+
+            # The account number is disabled.
+            ACCOUNT_NUMBER_DISABLED = :account_number_disabled
+
+            # Your account is restricted.
+            ACCOUNT_RESTRICTED = :account_restricted
+
+            # Your account is inactive.
+            GROUP_LOCKED = :group_locked
+
+            # The account's entity is not active.
+            ENTITY_NOT_ACTIVE = :entity_not_active
+
+            # Your account is not enabled to receive Real-Time Payments transfers.
+            REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
+          end
         end
 
         class InboundWireReversal < BaseModel
@@ -2098,8 +3078,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::InterestPayment::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::Transaction::Source::InterestPayment::Currency }
 
           # @!attribute [rw] period_end
           #   The end of the period for which this transaction paid interest.
@@ -2110,6 +3091,27 @@ module Increase
           #   The start of the period for which this transaction paid interest.
           #   @return [String]
           required :period_start, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
         end
 
         class InternalSource < BaseModel
@@ -2120,30 +3122,84 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::InternalSource::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::Transaction::Source::InternalSource::Currency }
 
           # @!attribute [rw] reason
           #   An Internal Source is a transaction between you and Increase. This describes the reason for the transaction.
+          #   One of the constants defined in {Increase::Models::Transaction::Source::InternalSource::Reason}
           #   @return [Symbol]
-          required :reason,
-                   Increase::Enum.new(
-                     :account_closure,
-                     :bank_drawn_check,
-                     :bank_drawn_check_credit,
-                     :bank_migration,
-                     :check_adjustment,
-                     :collection_payment,
-                     :collection_receivable,
-                     :empyreal_adjustment,
-                     :error,
-                     :error_correction,
-                     :fees,
-                     :interest,
-                     :negative_balance_forgiveness,
-                     :sample_funds,
-                     :sample_funds_return
-                   )
+          required :reason, enum: -> { Increase::Models::Transaction::Source::InternalSource::Reason }
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
+          # An Internal Source is a transaction between you and Increase. This describes the reason for the transaction.
+          class Reason < Increase::Enum
+            # Account closure
+            ACCOUNT_CLOSURE = :account_closure
+
+            # Bank-drawn check
+            BANK_DRAWN_CHECK = :bank_drawn_check
+
+            # Bank-drawn check credit
+            BANK_DRAWN_CHECK_CREDIT = :bank_drawn_check_credit
+
+            # Bank migration
+            BANK_MIGRATION = :bank_migration
+
+            # Check adjustment
+            CHECK_ADJUSTMENT = :check_adjustment
+
+            # Collection payment
+            COLLECTION_PAYMENT = :collection_payment
+
+            # Collection receivable
+            COLLECTION_RECEIVABLE = :collection_receivable
+
+            # Empyreal adjustment
+            EMPYREAL_ADJUSTMENT = :empyreal_adjustment
+
+            # Error
+            ERROR = :error
+
+            # Error correction
+            ERROR_CORRECTION = :error_correction
+
+            # Fees
+            FEES = :fees
+
+            # Interest
+            INTEREST = :interest
+
+            # Negative balance forgiveness
+            NEGATIVE_BALANCE_FORGIVENESS = :negative_balance_forgiveness
+
+            # Sample funds
+            SAMPLE_FUNDS = :sample_funds
+
+            # Sample funds return
+            SAMPLE_FUNDS_RETURN = :sample_funds_return
+          end
         end
 
         class RealTimePaymentsTransferAcknowledgement < BaseModel
@@ -2206,6 +3262,11 @@ module Increase
           #   @return [String]
           required :transfer_id, String
         end
+      end
+
+      # A constant representing the object's type. For this resource it will always be `transaction`.
+      class Type < Increase::Enum
+        TRANSACTION = :transaction
       end
     end
   end

@@ -60,8 +60,9 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Card Profile.
+      #   One of the constants defined in {Increase::Models::DigitalCardProfile::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending, :rejected, :active, :archived)
+      required :status, enum: -> { Increase::Models::DigitalCardProfile::Status }
 
       # @!attribute [rw] text_color
       #   The Card's text color, specified as an RGB triple.
@@ -70,8 +71,24 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `digital_card_profile`.
+      #   One of the constants defined in {Increase::Models::DigitalCardProfile::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:digital_card_profile)
+      required :type, enum: -> { Increase::Models::DigitalCardProfile::Type }
+
+      # The status of the Card Profile.
+      class Status < Increase::Enum
+        # The Card Profile is awaiting review from Increase and/or processing by card networks.
+        PENDING = :pending
+
+        # There is an issue with the Card Profile preventing it from use.
+        REJECTED = :rejected
+
+        # The Card Profile can be assigned to Cards.
+        ACTIVE = :active
+
+        # The Card Profile is no longer in use.
+        ARCHIVED = :archived
+      end
 
       class TextColor < BaseModel
         # @!attribute [rw] blue
@@ -88,6 +105,11 @@ module Increase
         #   The value of the red channel in the RGB color.
         #   @return [Integer]
         required :red, Integer
+      end
+
+      # A constant representing the object's type. For this resource it will always be `digital_card_profile`.
+      class Type < Increase::Enum
+        DIGITAL_CARD_PROFILE = :digital_card_profile
       end
     end
   end

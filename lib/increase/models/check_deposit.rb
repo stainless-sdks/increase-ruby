@@ -80,8 +80,9 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Check Deposit.
+      #   One of the constants defined in {Increase::Models::CheckDeposit::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending, :submitted, :rejected, :returned)
+      required :status, enum: -> { Increase::Models::CheckDeposit::Status }
 
       # @!attribute [rw] transaction_id
       #   The ID for the Transaction created by the deposit.
@@ -90,8 +91,9 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `check_deposit`.
+      #   One of the constants defined in {Increase::Models::CheckDeposit::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:check_deposit)
+      required :type, enum: -> { Increase::Models::CheckDeposit::Type }
 
       class DepositAcceptance < BaseModel
         # @!attribute [rw] account_number
@@ -116,8 +118,9 @@ module Increase
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositAcceptance::Currency}
         #   @return [Symbol]
-        required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+        required :currency, enum: -> { Increase::Models::CheckDeposit::DepositAcceptance::Currency }
 
         # @!attribute [rw] routing_number
         #   The routing number printed on the check.
@@ -128,6 +131,27 @@ module Increase
         #   The check serial number, if present, for consumer checks. For business checks, the serial number is usually in the `auxiliary_on_us` field.
         #   @return [String]
         required :serial_number, String
+
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+        class Currency < Increase::Enum
+          # Canadian Dollar (CAD)
+          CAD = :CAD
+
+          # Swiss Franc (CHF)
+          CHF = :CHF
+
+          # Euro (EUR)
+          EUR = :EUR
+
+          # British Pound (GBP)
+          GBP = :GBP
+
+          # Japanese Yen (JPY)
+          JPY = :JPY
+
+          # US Dollar (USD)
+          USD = :USD
+        end
       end
 
       class DepositRejection < BaseModel
@@ -143,8 +167,9 @@ module Increase
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
+        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositRejection::Currency}
         #   @return [Symbol]
-        required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+        required :currency, enum: -> { Increase::Models::CheckDeposit::DepositRejection::Currency }
 
         # @!attribute [rw] declined_transaction_id
         #   The identifier of the associated declined transaction.
@@ -153,25 +178,68 @@ module Increase
 
         # @!attribute [rw] reason
         #   Why the check deposit was rejected.
+        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositRejection::Reason}
         #   @return [Symbol]
-        required :reason,
-                 Increase::Enum.new(
-                   :incomplete_image,
-                   :duplicate,
-                   :poor_image_quality,
-                   :incorrect_amount,
-                   :incorrect_recipient,
-                   :not_eligible_for_mobile_deposit,
-                   :missing_required_data_elements,
-                   :suspected_fraud,
-                   :deposit_window_expired,
-                   :unknown
-                 )
+        required :reason, enum: -> { Increase::Models::CheckDeposit::DepositRejection::Reason }
 
         # @!attribute [rw] rejected_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was rejected.
         #   @return [String]
         required :rejected_at, String
+
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
+        class Currency < Increase::Enum
+          # Canadian Dollar (CAD)
+          CAD = :CAD
+
+          # Swiss Franc (CHF)
+          CHF = :CHF
+
+          # Euro (EUR)
+          EUR = :EUR
+
+          # British Pound (GBP)
+          GBP = :GBP
+
+          # Japanese Yen (JPY)
+          JPY = :JPY
+
+          # US Dollar (USD)
+          USD = :USD
+        end
+
+        # Why the check deposit was rejected.
+        class Reason < Increase::Enum
+          # The check's image is incomplete.
+          INCOMPLETE_IMAGE = :incomplete_image
+
+          # This is a duplicate check submission.
+          DUPLICATE = :duplicate
+
+          # This check has poor image quality.
+          POOR_IMAGE_QUALITY = :poor_image_quality
+
+          # The check was deposited with the incorrect amount.
+          INCORRECT_AMOUNT = :incorrect_amount
+
+          # The check is made out to someone other than the account holder.
+          INCORRECT_RECIPIENT = :incorrect_recipient
+
+          # This check was not eligible for mobile deposit.
+          NOT_ELIGIBLE_FOR_MOBILE_DEPOSIT = :not_eligible_for_mobile_deposit
+
+          # This check is missing at least one required field.
+          MISSING_REQUIRED_DATA_ELEMENTS = :missing_required_data_elements
+
+          # This check is suspected to be fraudulent.
+          SUSPECTED_FRAUD = :suspected_fraud
+
+          # This check's deposit window has expired.
+          DEPOSIT_WINDOW_EXPIRED = :deposit_window_expired
+
+          # The check was rejected for an unknown reason.
+          UNKNOWN = :unknown
+        end
       end
 
       class DepositReturn < BaseModel
@@ -187,41 +255,15 @@ module Increase
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositReturn::Currency}
         #   @return [Symbol]
-        required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+        required :currency, enum: -> { Increase::Models::CheckDeposit::DepositReturn::Currency }
 
         # @!attribute [rw] return_reason
         #   Why this check was returned by the bank holding the account it was drawn against.
+        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositReturn::ReturnReason}
         #   @return [Symbol]
-        required :return_reason,
-                 Increase::Enum.new(
-                   :ach_conversion_not_supported,
-                   :closed_account,
-                   :duplicate_submission,
-                   :insufficient_funds,
-                   :no_account,
-                   :not_authorized,
-                   :stale_dated,
-                   :stop_payment,
-                   :unknown_reason,
-                   :unmatched_details,
-                   :unreadable_image,
-                   :endorsement_irregular,
-                   :altered_or_fictitious_item,
-                   :frozen_or_blocked_account,
-                   :post_dated,
-                   :endorsement_missing,
-                   :signature_missing,
-                   :stop_payment_suspect,
-                   :unusable_image,
-                   :image_fails_security_check,
-                   :cannot_determine_amount,
-                   :signature_irregular,
-                   :non_cash_item,
-                   :unable_to_process,
-                   :item_exceeds_dollar_limit,
-                   :branch_or_account_sold
-                 )
+        required :return_reason, enum: -> { Increase::Models::CheckDeposit::DepositReturn::ReturnReason }
 
         # @!attribute [rw] returned_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was returned.
@@ -232,6 +274,108 @@ module Increase
         #   The identifier of the transaction that reversed the original check deposit transaction.
         #   @return [String]
         required :transaction_id, String
+
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+        class Currency < Increase::Enum
+          # Canadian Dollar (CAD)
+          CAD = :CAD
+
+          # Swiss Franc (CHF)
+          CHF = :CHF
+
+          # Euro (EUR)
+          EUR = :EUR
+
+          # British Pound (GBP)
+          GBP = :GBP
+
+          # Japanese Yen (JPY)
+          JPY = :JPY
+
+          # US Dollar (USD)
+          USD = :USD
+        end
+
+        # Why this check was returned by the bank holding the account it was drawn against.
+        class ReturnReason < Increase::Enum
+          # The check doesn't allow ACH conversion.
+          ACH_CONVERSION_NOT_SUPPORTED = :ach_conversion_not_supported
+
+          # The account is closed.
+          CLOSED_ACCOUNT = :closed_account
+
+          # The check has already been deposited.
+          DUPLICATE_SUBMISSION = :duplicate_submission
+
+          # Insufficient funds
+          INSUFFICIENT_FUNDS = :insufficient_funds
+
+          # No account was found matching the check details.
+          NO_ACCOUNT = :no_account
+
+          # The check was not authorized.
+          NOT_AUTHORIZED = :not_authorized
+
+          # The check is too old.
+          STALE_DATED = :stale_dated
+
+          # The payment has been stopped by the account holder.
+          STOP_PAYMENT = :stop_payment
+
+          # The reason for the return is unknown.
+          UNKNOWN_REASON = :unknown_reason
+
+          # The image doesn't match the details submitted.
+          UNMATCHED_DETAILS = :unmatched_details
+
+          # The image could not be read.
+          UNREADABLE_IMAGE = :unreadable_image
+
+          # The check endorsement was irregular.
+          ENDORSEMENT_IRREGULAR = :endorsement_irregular
+
+          # The check present was either altered or fake.
+          ALTERED_OR_FICTITIOUS_ITEM = :altered_or_fictitious_item
+
+          # The account this check is drawn on is frozen.
+          FROZEN_OR_BLOCKED_ACCOUNT = :frozen_or_blocked_account
+
+          # The check is post dated.
+          POST_DATED = :post_dated
+
+          # The endorsement was missing.
+          ENDORSEMENT_MISSING = :endorsement_missing
+
+          # The check signature was missing.
+          SIGNATURE_MISSING = :signature_missing
+
+          # The bank suspects a stop payment will be placed.
+          STOP_PAYMENT_SUSPECT = :stop_payment_suspect
+
+          # The bank cannot read the image.
+          UNUSABLE_IMAGE = :unusable_image
+
+          # The check image fails the bank's security check.
+          IMAGE_FAILS_SECURITY_CHECK = :image_fails_security_check
+
+          # The bank cannot determine the amount.
+          CANNOT_DETERMINE_AMOUNT = :cannot_determine_amount
+
+          # The signature is inconsistent with prior signatures.
+          SIGNATURE_IRREGULAR = :signature_irregular
+
+          # The check is a non-cash item and cannot be drawn against the account.
+          NON_CASH_ITEM = :non_cash_item
+
+          # The bank is unable to process this check.
+          UNABLE_TO_PROCESS = :unable_to_process
+
+          # The check exceeds the bank or customer's limit.
+          ITEM_EXCEEDS_DOLLAR_LIMIT = :item_exceeds_dollar_limit
+
+          # The bank sold this account and no longer services this customer.
+          BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
+        end
       end
 
       class DepositSubmission < BaseModel
@@ -274,8 +418,9 @@ module Increase
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+        #   One of the constants defined in {Increase::Models::CheckDeposit::InboundFundsHold::Currency}
         #   @return [Symbol]
-        required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+        required :currency, enum: -> { Increase::Models::CheckDeposit::InboundFundsHold::Currency }
 
         # @!attribute [rw] held_transaction_id
         #   The ID of the Transaction for which funds were held.
@@ -294,13 +439,70 @@ module Increase
 
         # @!attribute [rw] status
         #   The status of the hold.
+        #   One of the constants defined in {Increase::Models::CheckDeposit::InboundFundsHold::Status}
         #   @return [Symbol]
-        required :status, Increase::Enum.new(:held, :complete)
+        required :status, enum: -> { Increase::Models::CheckDeposit::InboundFundsHold::Status }
 
         # @!attribute [rw] type
         #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+        #   One of the constants defined in {Increase::Models::CheckDeposit::InboundFundsHold::Type}
         #   @return [Symbol]
-        required :type, Increase::Enum.new(:inbound_funds_hold)
+        required :type, enum: -> { Increase::Models::CheckDeposit::InboundFundsHold::Type }
+
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+        class Currency < Increase::Enum
+          # Canadian Dollar (CAD)
+          CAD = :CAD
+
+          # Swiss Franc (CHF)
+          CHF = :CHF
+
+          # Euro (EUR)
+          EUR = :EUR
+
+          # British Pound (GBP)
+          GBP = :GBP
+
+          # Japanese Yen (JPY)
+          JPY = :JPY
+
+          # US Dollar (USD)
+          USD = :USD
+        end
+
+        # The status of the hold.
+        class Status < Increase::Enum
+          # Funds are still being held.
+          HELD = :held
+
+          # Funds have been released.
+          COMPLETE = :complete
+        end
+
+        # A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+        class Type < Increase::Enum
+          INBOUND_FUNDS_HOLD = :inbound_funds_hold
+        end
+      end
+
+      # The status of the Check Deposit.
+      class Status < Increase::Enum
+        # The Check Deposit is pending review.
+        PENDING = :pending
+
+        # The Check Deposit has been deposited.
+        SUBMITTED = :submitted
+
+        # The Check Deposit has been rejected.
+        REJECTED = :rejected
+
+        # The Check Deposit has been returned.
+        RETURNED = :returned
+      end
+
+      # A constant representing the object's type. For this resource it will always be `check_deposit`.
+      class Type < Increase::Enum
+        CHECK_DEPOSIT = :check_deposit
       end
     end
   end

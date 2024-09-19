@@ -30,8 +30,9 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending Transaction's currency. This will match the currency on the Pending Transaction's Account.
+      #   One of the constants defined in {Increase::Models::PendingTransaction::Currency}
       #   @return [Symbol]
-      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+      required :currency, enum: -> { Increase::Models::PendingTransaction::Currency }
 
       # @!attribute [rw] description
       #   For a Pending Transaction related to a transfer, this is the description you provide. For a Pending Transaction related to a payment, this is the description the vendor provides.
@@ -45,8 +46,9 @@ module Increase
 
       # @!attribute [rw] route_type
       #   The type of the route this Pending Transaction came through.
+      #   One of the constants defined in {Increase::Models::PendingTransaction::RouteType}
       #   @return [Symbol]
-      required :route_type, Increase::Enum.new(:account_number, :card, :lockbox)
+      required :route_type, enum: -> { Increase::Models::PendingTransaction::RouteType }
 
       # @!attribute [rw] source
       #   This is an object giving more details on the network-level event that caused the Pending Transaction. For example, for a card transaction this lists the merchant's industry and location.
@@ -55,13 +57,48 @@ module Increase
 
       # @!attribute [rw] status
       #   Whether the Pending Transaction has been confirmed and has an associated Transaction.
+      #   One of the constants defined in {Increase::Models::PendingTransaction::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending, :complete)
+      required :status, enum: -> { Increase::Models::PendingTransaction::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `pending_transaction`.
+      #   One of the constants defined in {Increase::Models::PendingTransaction::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:pending_transaction)
+      required :type, enum: -> { Increase::Models::PendingTransaction::Type }
+
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending Transaction's currency. This will match the currency on the Pending Transaction's Account.
+      class Currency < Increase::Enum
+        # Canadian Dollar (CAD)
+        CAD = :CAD
+
+        # Swiss Franc (CHF)
+        CHF = :CHF
+
+        # Euro (EUR)
+        EUR = :EUR
+
+        # British Pound (GBP)
+        GBP = :GBP
+
+        # Japanese Yen (JPY)
+        JPY = :JPY
+
+        # US Dollar (USD)
+        USD = :USD
+      end
+
+      # The type of the route this Pending Transaction came through.
+      class RouteType < Increase::Enum
+        # An Account Number.
+        ACCOUNT_NUMBER = :account_number
+
+        # A Card.
+        CARD = :card
+
+        # A Lockbox.
+        LOCKBOX = :lockbox
+      end
 
       class Source < BaseModel
         # @!attribute [rw] account_transfer_instruction
@@ -83,19 +120,9 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+        #   One of the constants defined in {Increase::Models::PendingTransaction::Source::Category}
         #   @return [Symbol]
-        required :category,
-                 Increase::Enum.new(
-                   :account_transfer_instruction,
-                   :ach_transfer_instruction,
-                   :card_authorization,
-                   :check_deposit_instruction,
-                   :check_transfer_instruction,
-                   :inbound_funds_hold,
-                   :real_time_payments_transfer_instruction,
-                   :wire_transfer_instruction,
-                   :other
-                 )
+        required :category, enum: -> { Increase::Models::PendingTransaction::Source::Category }
 
         # @!attribute [rw] check_deposit_instruction
         #   A Check Deposit Instruction object. This field will be present in the JSON response if and only if `category` is equal to `check_deposit_instruction`.
@@ -139,13 +166,36 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
+          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency,
+                   enum: -> { Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency }
 
           # @!attribute [rw] transfer_id
           #   The identifier of the Account Transfer that led to this Pending Transaction.
           #   @return [String]
           required :transfer_id, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
         end
 
         class ACHTransferInstruction < BaseModel
@@ -168,8 +218,9 @@ module Increase
 
           # @!attribute [rw] actioner
           #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
+          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner}
           #   @return [Symbol]
-          required :actioner, Increase::Enum.new(:user, :increase, :network)
+          required :actioner, enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner }
 
           # @!attribute [rw] amount
           #   The pending amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
@@ -183,8 +234,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Currency }
 
           # @!attribute [rw] digital_wallet_token_id
           #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay purchase), the identifier of the token that was used.
@@ -193,8 +245,10 @@ module Increase
 
           # @!attribute [rw] direction
           #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Direction}
           #   @return [Symbol]
-          required :direction, Increase::Enum.new(:settlement, :refund)
+          required :direction,
+                   enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Direction }
 
           # @!attribute [rw] expires_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization will expire and the pending transaction will be released.
@@ -275,16 +329,10 @@ module Increase
 
           # @!attribute [rw] processing_category
           #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
+          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory}
           #   @return [Symbol]
           required :processing_category,
-                   Increase::Enum.new(
-                     :account_funding,
-                     :automatic_fuel_dispenser,
-                     :bill_payment,
-                     :purchase,
-                     :quasi_cash,
-                     :refund
-                   )
+                   enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory }
 
           # @!attribute [rw] real_time_decision_id
           #   The identifier of the Real-Time Decision sent to approve or decline this transaction.
@@ -293,8 +341,9 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_authorization`.
+          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:card_authorization)
+          required :type, enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Type }
 
           # @!attribute [rw] verification
           #   Fields related to verification of cardholder-provided values.
@@ -302,11 +351,55 @@ module Increase
           required :verification,
                    -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Verification }
 
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
+          class Actioner < Increase::Enum
+            # This object was actioned by the user through a real-time decision.
+            USER = :user
+
+            # This object was actioned by Increase without user intervention.
+            INCREASE = :increase
+
+            # This object was actioned by the network, through stand-in processing.
+            NETWORK = :network
+          end
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+          class Direction < Increase::Enum
+            # A regular card authorization where funds are debited from the cardholder.
+            SETTLEMENT = :settlement
+
+            # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+            REFUND = :refund
+          end
+
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
             #   The payment network used to process this card authorization.
+            #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category}
             #   @return [Symbol]
-            required :category, Increase::Enum.new(:visa)
+            required :category,
+                     enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category }
 
             # @!attribute [rw] visa
             #   Fields specific to the `visa` network.
@@ -314,38 +407,86 @@ module Increase
             required :visa,
                      -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa }
 
+            # The payment network used to process this card authorization.
+            class Category < Increase::Enum
+              # Visa
+              VISA = :visa
+            end
+
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
+              #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator}
               #   @return [Symbol]
               required :electronic_commerce_indicator,
-                       Increase::Enum.new(
-                         :mail_phone_order,
-                         :recurring,
-                         :installment,
-                         :unknown_mail_phone_order,
-                         :secure_electronic_commerce,
-                         :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                         :non_authenticated_security_transaction,
-                         :non_secure_transaction
-                       )
+                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator }
 
               # @!attribute [rw] point_of_service_entry_mode
               #   The method used to enter the cardholder's primary account number and card expiration date.
+              #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode}
               #   @return [Symbol]
               required :point_of_service_entry_mode,
-                       Increase::Enum.new(
-                         :unknown,
-                         :manual,
-                         :magnetic_stripe_no_cvv,
-                         :optical_code,
-                         :integrated_circuit_card,
-                         :contactless,
-                         :credential_on_file,
-                         :magnetic_stripe,
-                         :contactless_magnetic_stripe,
-                         :integrated_circuit_card_no_cvv
-                       )
+                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode }
+
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
+              class ElectronicCommerceIndicator < Increase::Enum
+                # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
+                MAIL_PHONE_ORDER = :mail_phone_order
+
+                # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
+                RECURRING = :recurring
+
+                # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
+                INSTALLMENT = :installment
+
+                # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
+                UNKNOWN_MAIL_PHONE_ORDER = :unknown_mail_phone_order
+
+                # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
+                SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
+
+                # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
+
+                # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
+
+                # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
+                NON_SECURE_TRANSACTION = :non_secure_transaction
+              end
+
+              # The method used to enter the cardholder's primary account number and card expiration date.
+              class PointOfServiceEntryMode < Increase::Enum
+                # Unknown
+                UNKNOWN = :unknown
+
+                # Manual key entry
+                MANUAL = :manual
+
+                # Magnetic stripe read, without card verification value
+                MAGNETIC_STRIPE_NO_CVV = :magnetic_stripe_no_cvv
+
+                # Optical code
+                OPTICAL_CODE = :optical_code
+
+                # Contact chip card
+                INTEGRATED_CIRCUIT_CARD = :integrated_circuit_card
+
+                # Contactless read of chip card
+                CONTACTLESS = :contactless
+
+                # Transaction initiated using a credential that has previously been stored on file
+                CREDENTIAL_ON_FILE = :credential_on_file
+
+                # Magnetic stripe read
+                MAGNETIC_STRIPE = :magnetic_stripe
+
+                # Contactless read of magnetic stripe data
+                CONTACTLESS_MAGNETIC_STRIPE = :contactless_magnetic_stripe
+
+                # Contact chip card, without card verification value
+                INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
+              end
             end
           end
 
@@ -366,6 +507,32 @@ module Increase
             required :transaction_id, String
           end
 
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
+          class ProcessingCategory < Increase::Enum
+            # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
+            ACCOUNT_FUNDING = :account_funding
+
+            # Automatic fuel dispenser authorizations occur when a card is used at a gas pump, prior to the actual transaction amount being known. They are followed by an advice message that updates the amount of the pending transaction.
+            AUTOMATIC_FUEL_DISPENSER = :automatic_fuel_dispenser
+
+            # A transaction used to pay a bill.
+            BILL_PAYMENT = :bill_payment
+
+            # A regular purchase.
+            PURCHASE = :purchase
+
+            # Quasi-cash transactions represent purchases of items which may be convertible to cash.
+            QUASI_CASH = :quasi_cash
+
+            # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+            REFUND = :refund
+          end
+
+          # A constant representing the object's type. For this resource it will always be `card_authorization`.
+          class Type < Increase::Enum
+            CARD_AUTHORIZATION = :card_authorization
+          end
+
           class Verification < BaseModel
             # @!attribute [rw] card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
@@ -382,8 +549,22 @@ module Increase
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
               #   The result of verifying the Card Verification Code.
+              #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result}
               #   @return [Symbol]
-              required :result, Increase::Enum.new(:not_checked, :match, :no_match)
+              required :result,
+                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result }
+
+              # The result of verifying the Card Verification Code.
+              class Result < Increase::Enum
+                # No card verification code was provided in the authorization request.
+                NOT_CHECKED = :not_checked
+
+                # The card verification code matched the one on file.
+                MATCH = :match
+
+                # The card verification code did not match the one on file.
+                NO_MATCH = :no_match
+              end
             end
 
             class CardholderAddress < BaseModel
@@ -409,18 +590,63 @@ module Increase
 
               # @!attribute [rw] result
               #   The address verification result returned to the card network.
+              #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result}
               #   @return [Symbol]
               required :result,
-                       Increase::Enum.new(
-                         :not_checked,
-                         :postal_code_match_address_not_checked,
-                         :postal_code_match_address_no_match,
-                         :postal_code_no_match_address_match,
-                         :match,
-                         :no_match
-                       )
+                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result }
+
+              # The address verification result returned to the card network.
+              class Result < Increase::Enum
+                # No adress was provided in the authorization request.
+                NOT_CHECKED = :not_checked
+
+                # Postal code matches, but the street address was not verified.
+                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED = :postal_code_match_address_not_checked
+
+                # Postal code matches, but the street address does not match.
+                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH = :postal_code_match_address_no_match
+
+                # Postal code does not match, but the street address matches.
+                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH = :postal_code_no_match_address_match
+
+                # Postal code and street address match.
+                MATCH = :match
+
+                # Postal code and street address do not match.
+                NO_MATCH = :no_match
+              end
             end
           end
+        end
+
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+        class Category < Increase::Enum
+          # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
+          ACCOUNT_TRANSFER_INSTRUCTION = :account_transfer_instruction
+
+          # ACH Transfer Instruction: details will be under the `ach_transfer_instruction` object.
+          ACH_TRANSFER_INSTRUCTION = :ach_transfer_instruction
+
+          # Card Authorization: details will be under the `card_authorization` object.
+          CARD_AUTHORIZATION = :card_authorization
+
+          # Check Deposit Instruction: details will be under the `check_deposit_instruction` object.
+          CHECK_DEPOSIT_INSTRUCTION = :check_deposit_instruction
+
+          # Check Transfer Instruction: details will be under the `check_transfer_instruction` object.
+          CHECK_TRANSFER_INSTRUCTION = :check_transfer_instruction
+
+          # Inbound Funds Hold: details will be under the `inbound_funds_hold` object.
+          INBOUND_FUNDS_HOLD = :inbound_funds_hold
+
+          # Real-Time Payments Transfer Instruction: details will be under the `real_time_payments_transfer_instruction` object.
+          REAL_TIME_PAYMENTS_TRANSFER_INSTRUCTION = :real_time_payments_transfer_instruction
+
+          # Wire Transfer Instruction: details will be under the `wire_transfer_instruction` object.
+          WIRE_TRANSFER_INSTRUCTION = :wire_transfer_instruction
+
+          # The Pending Transaction was made for an undocumented or deprecated reason.
+          OTHER = :other
         end
 
         class CheckDepositInstruction < BaseModel
@@ -441,13 +667,36 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency,
+                   enum: -> { Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency }
 
           # @!attribute [rw] front_image_file_id
           #   The identifier of the File containing the image of the front of the check that was deposited.
           #   @return [String]
           required :front_image_file_id, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
         end
 
         class CheckTransferInstruction < BaseModel
@@ -458,13 +707,36 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
+          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency,
+                   enum: -> { Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency }
 
           # @!attribute [rw] transfer_id
           #   The identifier of the Check Transfer that led to this Pending Transaction.
           #   @return [String]
           required :transfer_id, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
         end
 
         class InboundFundsHold < BaseModel
@@ -490,8 +762,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency }
 
           # @!attribute [rw] held_transaction_id
           #   The ID of the Transaction for which funds were held.
@@ -510,13 +783,50 @@ module Increase
 
           # @!attribute [rw] status
           #   The status of the hold.
+          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::InboundFundsHold::Status}
           #   @return [Symbol]
-          required :status, Increase::Enum.new(:held, :complete)
+          required :status, enum: -> { Increase::Models::PendingTransaction::Source::InboundFundsHold::Status }
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::InboundFundsHold::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:inbound_funds_hold)
+          required :type, enum: -> { Increase::Models::PendingTransaction::Source::InboundFundsHold::Type }
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
+          # The status of the hold.
+          class Status < Increase::Enum
+            # Funds are still being held.
+            HELD = :held
+
+            # Funds have been released.
+            COMPLETE = :complete
+          end
+
+          # A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+          class Type < Increase::Enum
+            INBOUND_FUNDS_HOLD = :inbound_funds_hold
+          end
         end
 
         class RealTimePaymentsTransferInstruction < BaseModel
@@ -557,6 +867,20 @@ module Increase
           #   @return [String]
           required :transfer_id, String
         end
+      end
+
+      # Whether the Pending Transaction has been confirmed and has an associated Transaction.
+      class Status < Increase::Enum
+        # The Pending Transaction is still awaiting confirmation.
+        PENDING = :pending
+
+        # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
+        COMPLETE = :complete
+      end
+
+      # A constant representing the object's type. For this resource it will always be `pending_transaction`.
+      class Type < Increase::Enum
+        PENDING_TRANSACTION = :pending_transaction
       end
     end
   end

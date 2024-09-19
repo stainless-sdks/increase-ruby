@@ -50,14 +50,15 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the entity.
+      #   One of the constants defined in {Increase::Models::Entity::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:active, :archived, :disabled)
+      required :status, enum: -> { Increase::Models::Entity::Status }
 
       # @!attribute [rw] structure
       #   The entity's legal structure.
+      #   One of the constants defined in {Increase::Models::Entity::Structure}
       #   @return [Symbol]
-      required :structure,
-               Increase::Enum.new(:corporation, :natural_person, :joint, :trust, :government_authority)
+      required :structure, enum: -> { Increase::Models::Entity::Structure }
 
       # @!attribute [rw] supplemental_documents
       #   Additional documentation associated with the entity. This is limited to the first 10 documents for an entity. If an entity has more than 10 documents, use the GET /entity_supplemental_documents list endpoint to retrieve them.
@@ -72,8 +73,9 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `entity`.
+      #   One of the constants defined in {Increase::Models::Entity::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:entity)
+      required :type, enum: -> { Increase::Models::Entity::Type }
 
       class Corporation < BaseModel
         # @!attribute [rw] address
@@ -157,8 +159,9 @@ module Increase
 
           # @!attribute [rw] prong
           #   Why this person is considered a beneficial owner of the entity.
+          #   One of the constants defined in {Increase::Models::Entity::Corporation::BeneficialOwner::Prong}
           #   @return [Symbol]
-          required :prong, Increase::Enum.new(:ownership, :control)
+          required :prong, enum: -> { Increase::Models::Entity::Corporation::BeneficialOwner::Prong }
 
           class Individual < BaseModel
             # @!attribute [rw] address
@@ -212,21 +215,43 @@ module Increase
             class Identification < BaseModel
               # @!attribute [rw] method_
               #   A method that can be used to verify the individual's identity.
+              #   One of the constants defined in {Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method}
               #   @return [Symbol]
               required :method_,
-                       Increase::Enum.new(
-                         :social_security_number,
-                         :individual_taxpayer_identification_number,
-                         :passport,
-                         :drivers_license,
-                         :other
-                       )
+                       enum: -> { Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method }
 
               # @!attribute [rw] number_last4
               #   The last 4 digits of the identification number that can be used to verify the individual's identity.
               #   @return [String]
               required :number_last4, String
+
+              # A method that can be used to verify the individual's identity.
+              class Method < Increase::Enum
+                # A social security number.
+                SOCIAL_SECURITY_NUMBER = :social_security_number
+
+                # An individual taxpayer identification number (ITIN).
+                INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
+
+                # A passport number.
+                PASSPORT = :passport
+
+                # A driver's license number.
+                DRIVERS_LICENSE = :drivers_license
+
+                # Another identifying document.
+                OTHER = :other
+              end
             end
+          end
+
+          # Why this person is considered a beneficial owner of the entity.
+          class Prong < Increase::Enum
+            # A person with 25% or greater direct or indirect ownership of the entity.
+            OWNERSHIP = :ownership
+
+            # A person who manages, directs, or has significant control of the entity.
+            CONTROL = :control
           end
         end
       end
@@ -245,8 +270,9 @@ module Increase
 
         # @!attribute [rw] category
         #   The category of the government authority.
+        #   One of the constants defined in {Increase::Models::Entity::GovernmentAuthority::Category}
         #   @return [Symbol]
-        required :category, Increase::Enum.new(:municipality)
+        required :category, enum: -> { Increase::Models::Entity::GovernmentAuthority::Category }
 
         # @!attribute [rw] name_
         #   The government authority's name.
@@ -300,6 +326,12 @@ module Increase
           #   The person's legal name.
           #   @return [String]
           required :name_, String
+        end
+
+        # The category of the government authority.
+        class Category < Increase::Enum
+          # The Public Entity is a Municipality.
+          MUNICIPALITY = :municipality
         end
       end
 
@@ -365,20 +397,32 @@ module Increase
           class Identification < BaseModel
             # @!attribute [rw] method_
             #   A method that can be used to verify the individual's identity.
+            #   One of the constants defined in {Increase::Models::Entity::Joint::Individual::Identification::Method}
             #   @return [Symbol]
-            required :method_,
-                     Increase::Enum.new(
-                       :social_security_number,
-                       :individual_taxpayer_identification_number,
-                       :passport,
-                       :drivers_license,
-                       :other
-                     )
+            required :method_, enum: -> { Increase::Models::Entity::Joint::Individual::Identification::Method }
 
             # @!attribute [rw] number_last4
             #   The last 4 digits of the identification number that can be used to verify the individual's identity.
             #   @return [String]
             required :number_last4, String
+
+            # A method that can be used to verify the individual's identity.
+            class Method < Increase::Enum
+              # A social security number.
+              SOCIAL_SECURITY_NUMBER = :social_security_number
+
+              # An individual taxpayer identification number (ITIN).
+              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
+
+              # A passport number.
+              PASSPORT = :passport
+
+              # A driver's license number.
+              DRIVERS_LICENSE = :drivers_license
+
+              # Another identifying document.
+              OTHER = :other
+            end
           end
         end
       end
@@ -434,21 +478,63 @@ module Increase
         class Identification < BaseModel
           # @!attribute [rw] method_
           #   A method that can be used to verify the individual's identity.
+          #   One of the constants defined in {Increase::Models::Entity::NaturalPerson::Identification::Method}
           #   @return [Symbol]
-          required :method_,
-                   Increase::Enum.new(
-                     :social_security_number,
-                     :individual_taxpayer_identification_number,
-                     :passport,
-                     :drivers_license,
-                     :other
-                   )
+          required :method_, enum: -> { Increase::Models::Entity::NaturalPerson::Identification::Method }
 
           # @!attribute [rw] number_last4
           #   The last 4 digits of the identification number that can be used to verify the individual's identity.
           #   @return [String]
           required :number_last4, String
+
+          # A method that can be used to verify the individual's identity.
+          class Method < Increase::Enum
+            # A social security number.
+            SOCIAL_SECURITY_NUMBER = :social_security_number
+
+            # An individual taxpayer identification number (ITIN).
+            INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
+
+            # A passport number.
+            PASSPORT = :passport
+
+            # A driver's license number.
+            DRIVERS_LICENSE = :drivers_license
+
+            # Another identifying document.
+            OTHER = :other
+          end
         end
+      end
+
+      # The status of the entity.
+      class Status < Increase::Enum
+        # The entity is active.
+        ACTIVE = :active
+
+        # The entity is archived, and can no longer be used to create accounts.
+        ARCHIVED = :archived
+
+        # The entity is temporarily disabled and cannot be used for financial activity.
+        DISABLED = :disabled
+      end
+
+      # The entity's legal structure.
+      class Structure < Increase::Enum
+        # A corporation.
+        CORPORATION = :corporation
+
+        # An individual person.
+        NATURAL_PERSON = :natural_person
+
+        # Multiple individual people.
+        JOINT = :joint
+
+        # A trust.
+        TRUST = :trust
+
+        # A government authority.
+        GOVERNMENT_AUTHORITY = :government_authority
       end
 
       class Trust < BaseModel
@@ -459,8 +545,9 @@ module Increase
 
         # @!attribute [rw] category
         #   Whether the trust is `revocable` or `irrevocable`.
+        #   One of the constants defined in {Increase::Models::Entity::Trust::Category}
         #   @return [Symbol]
-        required :category, Increase::Enum.new(:revocable, :irrevocable)
+        required :category, enum: -> { Increase::Models::Entity::Trust::Category }
 
         # @!attribute [rw] formation_document_file_id
         #   The ID for the File containing the formation document of the trust.
@@ -519,6 +606,15 @@ module Increase
           required :zip, String
         end
 
+        # Whether the trust is `revocable` or `irrevocable`.
+        class Category < Increase::Enum
+          # The trust is revocable by the grantor.
+          REVOCABLE = :revocable
+
+          # The trust cannot be revoked.
+          IRREVOCABLE = :irrevocable
+        end
+
         class Grantor < BaseModel
           # @!attribute [rw] address
           #   The person's address.
@@ -570,20 +666,32 @@ module Increase
           class Identification < BaseModel
             # @!attribute [rw] method_
             #   A method that can be used to verify the individual's identity.
+            #   One of the constants defined in {Increase::Models::Entity::Trust::Grantor::Identification::Method}
             #   @return [Symbol]
-            required :method_,
-                     Increase::Enum.new(
-                       :social_security_number,
-                       :individual_taxpayer_identification_number,
-                       :passport,
-                       :drivers_license,
-                       :other
-                     )
+            required :method_, enum: -> { Increase::Models::Entity::Trust::Grantor::Identification::Method }
 
             # @!attribute [rw] number_last4
             #   The last 4 digits of the identification number that can be used to verify the individual's identity.
             #   @return [String]
             required :number_last4, String
+
+            # A method that can be used to verify the individual's identity.
+            class Method < Increase::Enum
+              # A social security number.
+              SOCIAL_SECURITY_NUMBER = :social_security_number
+
+              # An individual taxpayer identification number (ITIN).
+              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
+
+              # A passport number.
+              PASSPORT = :passport
+
+              # A driver's license number.
+              DRIVERS_LICENSE = :drivers_license
+
+              # Another identifying document.
+              OTHER = :other
+            end
           end
         end
 
@@ -595,8 +703,9 @@ module Increase
 
           # @!attribute [rw] structure
           #   The structure of the trustee. Will always be equal to `individual`.
+          #   One of the constants defined in {Increase::Models::Entity::Trust::Trustee::Structure}
           #   @return [Symbol]
-          required :structure, Increase::Enum.new(:individual)
+          required :structure, enum: -> { Increase::Models::Entity::Trust::Trustee::Structure }
 
           class Individual < BaseModel
             # @!attribute [rw] address
@@ -649,23 +758,47 @@ module Increase
             class Identification < BaseModel
               # @!attribute [rw] method_
               #   A method that can be used to verify the individual's identity.
+              #   One of the constants defined in {Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method}
               #   @return [Symbol]
               required :method_,
-                       Increase::Enum.new(
-                         :social_security_number,
-                         :individual_taxpayer_identification_number,
-                         :passport,
-                         :drivers_license,
-                         :other
-                       )
+                       enum: -> { Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method }
 
               # @!attribute [rw] number_last4
               #   The last 4 digits of the identification number that can be used to verify the individual's identity.
               #   @return [String]
               required :number_last4, String
+
+              # A method that can be used to verify the individual's identity.
+              class Method < Increase::Enum
+                # A social security number.
+                SOCIAL_SECURITY_NUMBER = :social_security_number
+
+                # An individual taxpayer identification number (ITIN).
+                INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER = :individual_taxpayer_identification_number
+
+                # A passport number.
+                PASSPORT = :passport
+
+                # A driver's license number.
+                DRIVERS_LICENSE = :drivers_license
+
+                # Another identifying document.
+                OTHER = :other
+              end
             end
           end
+
+          # The structure of the trustee. Will always be equal to `individual`.
+          class Structure < Increase::Enum
+            # The trustee is an individual.
+            INDIVIDUAL = :individual
+          end
         end
+      end
+
+      # A constant representing the object's type. For this resource it will always be `entity`.
+      class Type < Increase::Enum
+        ENTITY = :entity
       end
     end
   end

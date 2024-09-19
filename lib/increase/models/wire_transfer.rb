@@ -65,8 +65,9 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For wire transfers this is always equal to `usd`.
+      #   One of the constants defined in {Increase::Models::WireTransfer::Currency}
       #   @return [Symbol]
-      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+      required :currency, enum: -> { Increase::Models::WireTransfer::Currency }
 
       # @!attribute [rw] external_account_id
       #   The identifier of the External Account the transfer was made to, if any.
@@ -85,8 +86,9 @@ module Increase
 
       # @!attribute [rw] network
       #   The transfer's network.
+      #   One of the constants defined in {Increase::Models::WireTransfer::Network}
       #   @return [Symbol]
-      required :network, Increase::Enum.new(:wire)
+      required :network, enum: -> { Increase::Models::WireTransfer::Network }
 
       # @!attribute [rw] originator_address_line1
       #   The originator's address line 1.
@@ -125,19 +127,9 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
+      #   One of the constants defined in {Increase::Models::WireTransfer::Status}
       #   @return [Symbol]
-      required :status,
-               Increase::Enum.new(
-                 :canceled,
-                 :requires_attention,
-                 :pending_reviewing,
-                 :pending_approval,
-                 :rejected,
-                 :reversed,
-                 :submitted,
-                 :complete,
-                 :pending_creating
-               )
+      required :status, enum: -> { Increase::Models::WireTransfer::Status }
 
       # @!attribute [rw] submission
       #   After the transfer is submitted to Fedwire, this will contain supplemental details.
@@ -151,8 +143,9 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `wire_transfer`.
+      #   One of the constants defined in {Increase::Models::WireTransfer::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:wire_transfer)
+      required :type, enum: -> { Increase::Models::WireTransfer::Type }
 
       class Approval < BaseModel
         # @!attribute [rw] approved_at
@@ -186,8 +179,9 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of object that created this transfer.
+        #   One of the constants defined in {Increase::Models::WireTransfer::CreatedBy::Category}
         #   @return [Symbol]
-        required :category, Increase::Enum.new(:api_key, :oauth_application, :user)
+        required :category, enum: -> { Increase::Models::WireTransfer::CreatedBy::Category }
 
         # @!attribute [rw] oauth_application
         #   If present, details about the OAuth Application that created the transfer.
@@ -206,6 +200,18 @@ module Increase
           required :description, String
         end
 
+        # The type of object that created this transfer.
+        class Category < Increase::Enum
+          # An API key. Details will be under the `api_key` object.
+          API_KEY = :api_key
+
+          # An OAuth application you connected to Increase. Details will be under the `oauth_application` object.
+          OAUTH_APPLICATION = :oauth_application
+
+          # A User in the Increase dashboard. Details will be under the `user` object.
+          USER = :user
+        end
+
         class OAuthApplication < BaseModel
           # @!attribute [rw] name_
           #   The name of the OAuth Application.
@@ -219,6 +225,32 @@ module Increase
           #   @return [String]
           required :email, String
         end
+      end
+
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For wire transfers this is always equal to `usd`.
+      class Currency < Increase::Enum
+        # Canadian Dollar (CAD)
+        CAD = :CAD
+
+        # Swiss Franc (CHF)
+        CHF = :CHF
+
+        # Euro (EUR)
+        EUR = :EUR
+
+        # British Pound (GBP)
+        GBP = :GBP
+
+        # Japanese Yen (JPY)
+        JPY = :JPY
+
+        # US Dollar (USD)
+        USD = :USD
+      end
+
+      # The transfer's network.
+      class Network < Increase::Enum
+        WIRE = :wire
       end
 
       class Reversal < BaseModel
@@ -308,6 +340,36 @@ module Increase
         required :wire_transfer_id, String
       end
 
+      # The lifecycle status of the transfer.
+      class Status < Increase::Enum
+        # The transfer has been canceled.
+        CANCELED = :canceled
+
+        # The transfer requires attention from an Increase operator.
+        REQUIRES_ATTENTION = :requires_attention
+
+        # The transfer is pending review by Increase.
+        PENDING_REVIEWING = :pending_reviewing
+
+        # The transfer is pending approval.
+        PENDING_APPROVAL = :pending_approval
+
+        # The transfer has been rejected by Increase.
+        REJECTED = :rejected
+
+        # The transfer has been reversed.
+        REVERSED = :reversed
+
+        # The transfer has been submitted to Fedwire.
+        SUBMITTED = :submitted
+
+        # The transfer has been acknowledged by Fedwire and can be considered complete.
+        COMPLETE = :complete
+
+        # The transfer is pending creation.
+        PENDING_CREATING = :pending_creating
+      end
+
       class Submission < BaseModel
         # @!attribute [rw] input_message_accountability_data
         #   The accountability data for the submission.
@@ -318,6 +380,11 @@ module Increase
         #   When this wire transfer was submitted to Fedwire.
         #   @return [String]
         required :submitted_at, String
+      end
+
+      # A constant representing the object's type. For this resource it will always be `wire_transfer`.
+      class Type < Increase::Enum
+        WIRE_TRANSFER = :wire_transfer
       end
     end
   end

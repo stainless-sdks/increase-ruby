@@ -45,8 +45,9 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `card_payment`.
+      #   One of the constants defined in {Increase::Models::CardPayment::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:card_payment)
+      required :type, enum: -> { Increase::Models::CardPayment::Type }
 
       class Element < BaseModel
         # @!attribute [rw] card_authorization
@@ -97,20 +98,9 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+        #   One of the constants defined in {Increase::Models::CardPayment::Element::Category}
         #   @return [Symbol]
-        required :category,
-                 Increase::Enum.new(
-                   :card_authorization,
-                   :card_validation,
-                   :card_decline,
-                   :card_reversal,
-                   :card_authorization_expiration,
-                   :card_increment,
-                   :card_settlement,
-                   :card_refund,
-                   :card_fuel_confirmation,
-                   :other
-                 )
+        required :category, enum: -> { Increase::Models::CardPayment::Element::Category }
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the card payment element was created.
@@ -130,8 +120,9 @@ module Increase
 
           # @!attribute [rw] actioner
           #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorization::Actioner}
           #   @return [Symbol]
-          required :actioner, Increase::Enum.new(:user, :increase, :network)
+          required :actioner, enum: -> { Increase::Models::CardPayment::Element::CardAuthorization::Actioner }
 
           # @!attribute [rw] amount
           #   The pending amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
@@ -145,8 +136,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorization::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::CardPayment::Element::CardAuthorization::Currency }
 
           # @!attribute [rw] digital_wallet_token_id
           #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay purchase), the identifier of the token that was used.
@@ -155,8 +147,9 @@ module Increase
 
           # @!attribute [rw] direction
           #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorization::Direction}
           #   @return [Symbol]
-          required :direction, Increase::Enum.new(:settlement, :refund)
+          required :direction, enum: -> { Increase::Models::CardPayment::Element::CardAuthorization::Direction }
 
           # @!attribute [rw] expires_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization will expire and the pending transaction will be released.
@@ -237,16 +230,10 @@ module Increase
 
           # @!attribute [rw] processing_category
           #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory}
           #   @return [Symbol]
           required :processing_category,
-                   Increase::Enum.new(
-                     :account_funding,
-                     :automatic_fuel_dispenser,
-                     :bill_payment,
-                     :purchase,
-                     :quasi_cash,
-                     :refund
-                   )
+                   enum: -> { Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory }
 
           # @!attribute [rw] real_time_decision_id
           #   The identifier of the Real-Time Decision sent to approve or decline this transaction.
@@ -255,57 +242,150 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_authorization`.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorization::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:card_authorization)
+          required :type, enum: -> { Increase::Models::CardPayment::Element::CardAuthorization::Type }
 
           # @!attribute [rw] verification
           #   Fields related to verification of cardholder-provided values.
           #   @return [Increase::Models::CardPayment::Element::CardAuthorization::Verification]
           required :verification, -> { Increase::Models::CardPayment::Element::CardAuthorization::Verification }
 
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
+          class Actioner < Increase::Enum
+            # This object was actioned by the user through a real-time decision.
+            USER = :user
+
+            # This object was actioned by Increase without user intervention.
+            INCREASE = :increase
+
+            # This object was actioned by the network, through stand-in processing.
+            NETWORK = :network
+          end
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+          class Direction < Increase::Enum
+            # A regular card authorization where funds are debited from the cardholder.
+            SETTLEMENT = :settlement
+
+            # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+            REFUND = :refund
+          end
+
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
             #   The payment network used to process this card authorization.
+            #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category}
             #   @return [Symbol]
-            required :category, Increase::Enum.new(:visa)
+            required :category,
+                     enum: -> { Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category }
 
             # @!attribute [rw] visa
             #   Fields specific to the `visa` network.
             #   @return [Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa]
             required :visa, -> { Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa }
 
+            # The payment network used to process this card authorization.
+            class Category < Increase::Enum
+              # Visa
+              VISA = :visa
+            end
+
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator}
               #   @return [Symbol]
               required :electronic_commerce_indicator,
-                       Increase::Enum.new(
-                         :mail_phone_order,
-                         :recurring,
-                         :installment,
-                         :unknown_mail_phone_order,
-                         :secure_electronic_commerce,
-                         :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                         :non_authenticated_security_transaction,
-                         :non_secure_transaction
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator }
 
               # @!attribute [rw] point_of_service_entry_mode
               #   The method used to enter the cardholder's primary account number and card expiration date.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode}
               #   @return [Symbol]
               required :point_of_service_entry_mode,
-                       Increase::Enum.new(
-                         :unknown,
-                         :manual,
-                         :magnetic_stripe_no_cvv,
-                         :optical_code,
-                         :integrated_circuit_card,
-                         :contactless,
-                         :credential_on_file,
-                         :magnetic_stripe,
-                         :contactless_magnetic_stripe,
-                         :integrated_circuit_card_no_cvv
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode }
+
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
+              class ElectronicCommerceIndicator < Increase::Enum
+                # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
+                MAIL_PHONE_ORDER = :mail_phone_order
+
+                # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
+                RECURRING = :recurring
+
+                # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
+                INSTALLMENT = :installment
+
+                # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
+                UNKNOWN_MAIL_PHONE_ORDER = :unknown_mail_phone_order
+
+                # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
+                SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
+
+                # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
+
+                # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
+
+                # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
+                NON_SECURE_TRANSACTION = :non_secure_transaction
+              end
+
+              # The method used to enter the cardholder's primary account number and card expiration date.
+              class PointOfServiceEntryMode < Increase::Enum
+                # Unknown
+                UNKNOWN = :unknown
+
+                # Manual key entry
+                MANUAL = :manual
+
+                # Magnetic stripe read, without card verification value
+                MAGNETIC_STRIPE_NO_CVV = :magnetic_stripe_no_cvv
+
+                # Optical code
+                OPTICAL_CODE = :optical_code
+
+                # Contact chip card
+                INTEGRATED_CIRCUIT_CARD = :integrated_circuit_card
+
+                # Contactless read of chip card
+                CONTACTLESS = :contactless
+
+                # Transaction initiated using a credential that has previously been stored on file
+                CREDENTIAL_ON_FILE = :credential_on_file
+
+                # Magnetic stripe read
+                MAGNETIC_STRIPE = :magnetic_stripe
+
+                # Contactless read of magnetic stripe data
+                CONTACTLESS_MAGNETIC_STRIPE = :contactless_magnetic_stripe
+
+                # Contact chip card, without card verification value
+                INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
+              end
             end
           end
 
@@ -326,6 +406,32 @@ module Increase
             required :transaction_id, String
           end
 
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
+          class ProcessingCategory < Increase::Enum
+            # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
+            ACCOUNT_FUNDING = :account_funding
+
+            # Automatic fuel dispenser authorizations occur when a card is used at a gas pump, prior to the actual transaction amount being known. They are followed by an advice message that updates the amount of the pending transaction.
+            AUTOMATIC_FUEL_DISPENSER = :automatic_fuel_dispenser
+
+            # A transaction used to pay a bill.
+            BILL_PAYMENT = :bill_payment
+
+            # A regular purchase.
+            PURCHASE = :purchase
+
+            # Quasi-cash transactions represent purchases of items which may be convertible to cash.
+            QUASI_CASH = :quasi_cash
+
+            # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+            REFUND = :refund
+          end
+
+          # A constant representing the object's type. For this resource it will always be `card_authorization`.
+          class Type < Increase::Enum
+            CARD_AUTHORIZATION = :card_authorization
+          end
+
           class Verification < BaseModel
             # @!attribute [rw] card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
@@ -342,8 +448,22 @@ module Increase
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
               #   The result of verifying the Card Verification Code.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result}
               #   @return [Symbol]
-              required :result, Increase::Enum.new(:not_checked, :match, :no_match)
+              required :result,
+                       enum: -> { Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result }
+
+              # The result of verifying the Card Verification Code.
+              class Result < Increase::Enum
+                # No card verification code was provided in the authorization request.
+                NOT_CHECKED = :not_checked
+
+                # The card verification code matched the one on file.
+                MATCH = :match
+
+                # The card verification code did not match the one on file.
+                NO_MATCH = :no_match
+              end
             end
 
             class CardholderAddress < BaseModel
@@ -369,16 +489,31 @@ module Increase
 
               # @!attribute [rw] result
               #   The address verification result returned to the card network.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result}
               #   @return [Symbol]
               required :result,
-                       Increase::Enum.new(
-                         :not_checked,
-                         :postal_code_match_address_not_checked,
-                         :postal_code_match_address_no_match,
-                         :postal_code_no_match_address_match,
-                         :match,
-                         :no_match
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result }
+
+              # The address verification result returned to the card network.
+              class Result < Increase::Enum
+                # No adress was provided in the authorization request.
+                NOT_CHECKED = :not_checked
+
+                # Postal code matches, but the street address was not verified.
+                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED = :postal_code_match_address_not_checked
+
+                # Postal code matches, but the street address does not match.
+                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH = :postal_code_match_address_no_match
+
+                # Postal code does not match, but the street address matches.
+                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH = :postal_code_no_match_address_match
+
+                # Postal code and street address match.
+                MATCH = :match
+
+                # Postal code and street address do not match.
+                NO_MATCH = :no_match
+              end
             end
           end
         end
@@ -396,8 +531,10 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency,
+                   enum: -> { Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency }
 
           # @!attribute [rw] expired_amount
           #   The amount of this authorization expiration in the minor unit of the transaction's currency. For dollars, for example, this is cents.
@@ -406,13 +543,48 @@ module Increase
 
           # @!attribute [rw] network
           #   The card network used to process this card authorization.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network}
           #   @return [Symbol]
-          required :network, Increase::Enum.new(:visa)
+          required :network,
+                   enum: -> { Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network }
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_authorization_expiration`.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:card_authorization_expiration)
+          required :type, enum: -> { Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type }
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
+          # The card network used to process this card authorization.
+          class Network < Increase::Enum
+            # Visa
+            VISA = :visa
+          end
+
+          # A constant representing the object's type. For this resource it will always be `card_authorization_expiration`.
+          class Type < Increase::Enum
+            CARD_AUTHORIZATION_EXPIRATION = :card_authorization_expiration
+          end
         end
 
         class CardDecline < BaseModel
@@ -423,8 +595,9 @@ module Increase
 
           # @!attribute [rw] actioner
           #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardDecline::Actioner}
           #   @return [Symbol]
-          required :actioner, Increase::Enum.new(:user, :increase, :network)
+          required :actioner, enum: -> { Increase::Models::CardPayment::Element::CardDecline::Actioner }
 
           # @!attribute [rw] amount
           #   The declined amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
@@ -438,8 +611,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardDecline::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::CardPayment::Element::CardDecline::Currency }
 
           # @!attribute [rw] declined_transaction_id
           #   The identifier of the declined transaction created for this Card Decline.
@@ -519,16 +693,10 @@ module Increase
 
           # @!attribute [rw] processing_category
           #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory}
           #   @return [Symbol]
           required :processing_category,
-                   Increase::Enum.new(
-                     :account_funding,
-                     :automatic_fuel_dispenser,
-                     :bill_payment,
-                     :purchase,
-                     :quasi_cash,
-                     :refund
-                   )
+                   enum: -> { Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory }
 
           # @!attribute [rw] real_time_decision_id
           #   The identifier of the Real-Time Decision sent to approve or decline this transaction.
@@ -537,74 +705,141 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the transaction was declined.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardDecline::Reason}
           #   @return [Symbol]
-          required :reason,
-                   Increase::Enum.new(
-                     :card_not_active,
-                     :physical_card_not_active,
-                     :entity_not_active,
-                     :group_locked,
-                     :insufficient_funds,
-                     :cvv2_mismatch,
-                     :card_expiration_mismatch,
-                     :transaction_not_allowed,
-                     :breaches_limit,
-                     :webhook_declined,
-                     :webhook_timed_out,
-                     :declined_by_stand_in_processing,
-                     :invalid_physical_card,
-                     :missing_original_authorization,
-                     :suspected_fraud
-                   )
+          required :reason, enum: -> { Increase::Models::CardPayment::Element::CardDecline::Reason }
 
           # @!attribute [rw] verification
           #   Fields related to verification of cardholder-provided values.
           #   @return [Increase::Models::CardPayment::Element::CardDecline::Verification]
           required :verification, -> { Increase::Models::CardPayment::Element::CardDecline::Verification }
 
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
+          class Actioner < Increase::Enum
+            # This object was actioned by the user through a real-time decision.
+            USER = :user
+
+            # This object was actioned by Increase without user intervention.
+            INCREASE = :increase
+
+            # This object was actioned by the network, through stand-in processing.
+            NETWORK = :network
+          end
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
             #   The payment network used to process this card authorization.
+            #   One of the constants defined in {Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category}
             #   @return [Symbol]
-            required :category, Increase::Enum.new(:visa)
+            required :category,
+                     enum: -> { Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category }
 
             # @!attribute [rw] visa
             #   Fields specific to the `visa` network.
             #   @return [Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa]
             required :visa, -> { Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa }
 
+            # The payment network used to process this card authorization.
+            class Category < Increase::Enum
+              # Visa
+              VISA = :visa
+            end
+
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator}
               #   @return [Symbol]
               required :electronic_commerce_indicator,
-                       Increase::Enum.new(
-                         :mail_phone_order,
-                         :recurring,
-                         :installment,
-                         :unknown_mail_phone_order,
-                         :secure_electronic_commerce,
-                         :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                         :non_authenticated_security_transaction,
-                         :non_secure_transaction
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator }
 
               # @!attribute [rw] point_of_service_entry_mode
               #   The method used to enter the cardholder's primary account number and card expiration date.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode}
               #   @return [Symbol]
               required :point_of_service_entry_mode,
-                       Increase::Enum.new(
-                         :unknown,
-                         :manual,
-                         :magnetic_stripe_no_cvv,
-                         :optical_code,
-                         :integrated_circuit_card,
-                         :contactless,
-                         :credential_on_file,
-                         :magnetic_stripe,
-                         :contactless_magnetic_stripe,
-                         :integrated_circuit_card_no_cvv
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode }
+
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
+              class ElectronicCommerceIndicator < Increase::Enum
+                # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
+                MAIL_PHONE_ORDER = :mail_phone_order
+
+                # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
+                RECURRING = :recurring
+
+                # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
+                INSTALLMENT = :installment
+
+                # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
+                UNKNOWN_MAIL_PHONE_ORDER = :unknown_mail_phone_order
+
+                # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
+                SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
+
+                # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
+
+                # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
+
+                # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
+                NON_SECURE_TRANSACTION = :non_secure_transaction
+              end
+
+              # The method used to enter the cardholder's primary account number and card expiration date.
+              class PointOfServiceEntryMode < Increase::Enum
+                # Unknown
+                UNKNOWN = :unknown
+
+                # Manual key entry
+                MANUAL = :manual
+
+                # Magnetic stripe read, without card verification value
+                MAGNETIC_STRIPE_NO_CVV = :magnetic_stripe_no_cvv
+
+                # Optical code
+                OPTICAL_CODE = :optical_code
+
+                # Contact chip card
+                INTEGRATED_CIRCUIT_CARD = :integrated_circuit_card
+
+                # Contactless read of chip card
+                CONTACTLESS = :contactless
+
+                # Transaction initiated using a credential that has previously been stored on file
+                CREDENTIAL_ON_FILE = :credential_on_file
+
+                # Magnetic stripe read
+                MAGNETIC_STRIPE = :magnetic_stripe
+
+                # Contactless read of magnetic stripe data
+                CONTACTLESS_MAGNETIC_STRIPE = :contactless_magnetic_stripe
+
+                # Contact chip card, without card verification value
+                INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
+              end
             end
           end
 
@@ -625,6 +860,75 @@ module Increase
             required :transaction_id, String
           end
 
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
+          class ProcessingCategory < Increase::Enum
+            # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
+            ACCOUNT_FUNDING = :account_funding
+
+            # Automatic fuel dispenser authorizations occur when a card is used at a gas pump, prior to the actual transaction amount being known. They are followed by an advice message that updates the amount of the pending transaction.
+            AUTOMATIC_FUEL_DISPENSER = :automatic_fuel_dispenser
+
+            # A transaction used to pay a bill.
+            BILL_PAYMENT = :bill_payment
+
+            # A regular purchase.
+            PURCHASE = :purchase
+
+            # Quasi-cash transactions represent purchases of items which may be convertible to cash.
+            QUASI_CASH = :quasi_cash
+
+            # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+            REFUND = :refund
+          end
+
+          # Why the transaction was declined.
+          class Reason < Increase::Enum
+            # The Card was not active.
+            CARD_NOT_ACTIVE = :card_not_active
+
+            # The Physical Card was not active.
+            PHYSICAL_CARD_NOT_ACTIVE = :physical_card_not_active
+
+            # The account's entity was not active.
+            ENTITY_NOT_ACTIVE = :entity_not_active
+
+            # The account was inactive.
+            GROUP_LOCKED = :group_locked
+
+            # The Card's Account did not have a sufficient available balance.
+            INSUFFICIENT_FUNDS = :insufficient_funds
+
+            # The given CVV2 did not match the card's value.
+            CVV2_MISMATCH = :cvv2_mismatch
+
+            # The given expiration date did not match the card's value. Only applies when a CVV2 is present.
+            CARD_EXPIRATION_MISMATCH = :card_expiration_mismatch
+
+            # The attempted card transaction is not allowed per Increase's terms.
+            TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
+
+            # The transaction was blocked by a Limit.
+            BREACHES_LIMIT = :breaches_limit
+
+            # Your application declined the transaction via webhook.
+            WEBHOOK_DECLINED = :webhook_declined
+
+            # Your application webhook did not respond without the required timeout.
+            WEBHOOK_TIMED_OUT = :webhook_timed_out
+
+            # Declined by stand-in processing.
+            DECLINED_BY_STAND_IN_PROCESSING = :declined_by_stand_in_processing
+
+            # The card read had an invalid CVV, dCVV, or authorization request cryptogram.
+            INVALID_PHYSICAL_CARD = :invalid_physical_card
+
+            # The original card authorization for this incremental authorization does not exist.
+            MISSING_ORIGINAL_AUTHORIZATION = :missing_original_authorization
+
+            # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
+            SUSPECTED_FRAUD = :suspected_fraud
+          end
+
           class Verification < BaseModel
             # @!attribute [rw] card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
@@ -641,8 +945,22 @@ module Increase
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
               #   The result of verifying the Card Verification Code.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result}
               #   @return [Symbol]
-              required :result, Increase::Enum.new(:not_checked, :match, :no_match)
+              required :result,
+                       enum: -> { Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result }
+
+              # The result of verifying the Card Verification Code.
+              class Result < Increase::Enum
+                # No card verification code was provided in the authorization request.
+                NOT_CHECKED = :not_checked
+
+                # The card verification code matched the one on file.
+                MATCH = :match
+
+                # The card verification code did not match the one on file.
+                NO_MATCH = :no_match
+              end
             end
 
             class CardholderAddress < BaseModel
@@ -668,16 +986,31 @@ module Increase
 
               # @!attribute [rw] result
               #   The address verification result returned to the card network.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result}
               #   @return [Symbol]
               required :result,
-                       Increase::Enum.new(
-                         :not_checked,
-                         :postal_code_match_address_not_checked,
-                         :postal_code_match_address_no_match,
-                         :postal_code_no_match_address_match,
-                         :match,
-                         :no_match
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result }
+
+              # The address verification result returned to the card network.
+              class Result < Increase::Enum
+                # No adress was provided in the authorization request.
+                NOT_CHECKED = :not_checked
+
+                # Postal code matches, but the street address was not verified.
+                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED = :postal_code_match_address_not_checked
+
+                # Postal code matches, but the street address does not match.
+                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH = :postal_code_match_address_no_match
+
+                # Postal code does not match, but the street address matches.
+                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH = :postal_code_no_match_address_match
+
+                # Postal code and street address match.
+                MATCH = :match
+
+                # Postal code and street address do not match.
+                NO_MATCH = :no_match
+              end
             end
           end
         end
@@ -695,13 +1028,15 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency }
 
           # @!attribute [rw] network
           #   The card network used to process this card authorization.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardFuelConfirmation::Network}
           #   @return [Symbol]
-          required :network, Increase::Enum.new(:visa)
+          required :network, enum: -> { Increase::Models::CardPayment::Element::CardFuelConfirmation::Network }
 
           # @!attribute [rw] network_identifiers
           #   Network-specific identifiers for a specific request or transaction.
@@ -716,13 +1051,41 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_fuel_confirmation`.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardFuelConfirmation::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:card_fuel_confirmation)
+          required :type, enum: -> { Increase::Models::CardPayment::Element::CardFuelConfirmation::Type }
 
           # @!attribute [rw] updated_authorization_amount
           #   The updated authorization amount after this fuel confirmation, in the minor unit of the transaction's currency. For dollars, for example, this is cents.
           #   @return [Integer]
           required :updated_authorization_amount, Integer
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
+          # The card network used to process this card authorization.
+          class Network < Increase::Enum
+            # Visa
+            VISA = :visa
+          end
 
           class NetworkIdentifiers < BaseModel
             # @!attribute [rw] retrieval_reference_number
@@ -740,6 +1103,11 @@ module Increase
             #   @return [String]
             required :transaction_id, String
           end
+
+          # A constant representing the object's type. For this resource it will always be `card_fuel_confirmation`.
+          class Type < Increase::Enum
+            CARD_FUEL_CONFIRMATION = :card_fuel_confirmation
+          end
         end
 
         class CardIncrement < BaseModel
@@ -750,8 +1118,9 @@ module Increase
 
           # @!attribute [rw] actioner
           #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardIncrement::Actioner}
           #   @return [Symbol]
-          required :actioner, Increase::Enum.new(:user, :increase, :network)
+          required :actioner, enum: -> { Increase::Models::CardPayment::Element::CardIncrement::Actioner }
 
           # @!attribute [rw] amount
           #   The amount of this increment in the minor unit of the transaction's currency. For dollars, for example, this is cents.
@@ -765,13 +1134,15 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardIncrement::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::CardPayment::Element::CardIncrement::Currency }
 
           # @!attribute [rw] network
           #   The card network used to process this card authorization.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardIncrement::Network}
           #   @return [Symbol]
-          required :network, Increase::Enum.new(:visa)
+          required :network, enum: -> { Increase::Models::CardPayment::Element::CardIncrement::Network }
 
           # @!attribute [rw] network_identifiers
           #   Network-specific identifiers for a specific request or transaction.
@@ -796,13 +1167,53 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_increment`.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardIncrement::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:card_increment)
+          required :type, enum: -> { Increase::Models::CardPayment::Element::CardIncrement::Type }
 
           # @!attribute [rw] updated_authorization_amount
           #   The updated authorization amount after this increment, in the minor unit of the transaction's currency. For dollars, for example, this is cents.
           #   @return [Integer]
           required :updated_authorization_amount, Integer
+
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
+          class Actioner < Increase::Enum
+            # This object was actioned by the user through a real-time decision.
+            USER = :user
+
+            # This object was actioned by Increase without user intervention.
+            INCREASE = :increase
+
+            # This object was actioned by the network, through stand-in processing.
+            NETWORK = :network
+          end
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
+          # The card network used to process this card authorization.
+          class Network < Increase::Enum
+            # Visa
+            VISA = :visa
+          end
 
           class NetworkIdentifiers < BaseModel
             # @!attribute [rw] retrieval_reference_number
@@ -819,6 +1230,11 @@ module Increase
             #   A globally unique transaction identifier provided by the card network, used across multiple life-cycle requests.
             #   @return [String]
             required :transaction_id, String
+          end
+
+          # A constant representing the object's type. For this resource it will always be `card_increment`.
+          class Type < Increase::Enum
+            CARD_INCREMENT = :card_increment
           end
         end
 
@@ -840,8 +1256,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::CardPayment::Element::CardRefund::Currency }
 
           # @!attribute [rw] interchange
           #   Interchange assessed as a part of this transaciton.
@@ -906,8 +1323,30 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_refund`.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:card_refund)
+          required :type, enum: -> { Increase::Models::CardPayment::Element::CardRefund::Type }
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
 
           class Interchange < BaseModel
             # @!attribute [rw] amount
@@ -922,8 +1361,30 @@ module Increase
 
             # @!attribute [rw] currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
+            #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency}
             #   @return [Symbol]
-            required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+            required :currency, enum: -> { Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency }
+
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
+            class Currency < Increase::Enum
+              # Canadian Dollar (CAD)
+              CAD = :CAD
+
+              # Swiss Franc (CHF)
+              CHF = :CHF
+
+              # Euro (EUR)
+              EUR = :EUR
+
+              # British Pound (GBP)
+              GBP = :GBP
+
+              # Japanese Yen (JPY)
+              JPY = :JPY
+
+              # US Dollar (USD)
+              USD = :USD
+            end
           end
 
           class NetworkIdentifiers < BaseModel
@@ -987,15 +1448,10 @@ module Increase
 
             # @!attribute [rw] purchase_identifier_format
             #   The format of the purchase identifier.
+            #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat}
             #   @return [Symbol]
             required :purchase_identifier_format,
-                     Increase::Enum.new(
-                       :free_text,
-                       :order_number,
-                       :rental_agreement_number,
-                       :hotel_folio_number,
-                       :invoice_number
-                     )
+                     enum: -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat }
 
             # @!attribute [rw] travel
             #   Fields specific to travel.
@@ -1030,16 +1486,10 @@ module Increase
 
               # @!attribute [rw] extra_charges
               #   Additional charges (gas, late fee, etc.) being billed.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges}
               #   @return [Symbol]
               required :extra_charges,
-                       Increase::Enum.new(
-                         :no_extra_charge,
-                         :gas,
-                         :extra_mileage,
-                         :late_return,
-                         :one_way_service_fee,
-                         :parking_violation
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges }
 
               # @!attribute [rw] fuel_charges_amount
               #   Fuel charges for the vehicle.
@@ -1063,8 +1513,10 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator}
               #   @return [Symbol]
-              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
+              required :no_show_indicator,
+                       enum: -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator }
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               #   Charges for returning the vehicle at a different location than where it was picked up.
@@ -1090,6 +1542,36 @@ module Increase
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly rental rate.
               #   @return [String]
               required :weekly_rental_rate_currency, String
+
+              # Additional charges (gas, late fee, etc.) being billed.
+              class ExtraCharges < Increase::Enum
+                # No extra charge
+                NO_EXTRA_CHARGE = :no_extra_charge
+
+                # Gas
+                GAS = :gas
+
+                # Extra mileage
+                EXTRA_MILEAGE = :extra_mileage
+
+                # Late return
+                LATE_RETURN = :late_return
+
+                # One way service fee
+                ONE_WAY_SERVICE_FEE = :one_way_service_fee
+
+                # Parking violation
+                PARKING_VIOLATION = :parking_violation
+              end
+
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
+              class NoShowIndicator < Increase::Enum
+                # Not applicable
+                NOT_APPLICABLE = :not_applicable
+
+                # No show for specialized vehicle
+                NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
+              end
             end
 
             class Lodging < BaseModel
@@ -1110,9 +1592,10 @@ module Increase
 
               # @!attribute [rw] extra_charges
               #   Additional charges (phone, late check-out, etc.) being billed.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges}
               #   @return [Symbol]
               required :extra_charges,
-                       Increase::Enum.new(:no_extra_charge, :restaurant, :gift_shop, :mini_bar, :telephone, :other, :laundry)
+                       enum: -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges }
 
               # @!attribute [rw] folio_cash_advances_amount
               #   Folio cash advances for the room.
@@ -1136,8 +1619,10 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator}
               #   @return [Symbol]
-              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show)
+              required :no_show_indicator,
+                       enum: -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator }
 
               # @!attribute [rw] prepaid_expenses_amount
               #   Prepaid expenses being charged for the room.
@@ -1173,6 +1658,57 @@ module Increase
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax assessed.
               #   @return [String]
               required :total_tax_currency, String
+
+              # Additional charges (phone, late check-out, etc.) being billed.
+              class ExtraCharges < Increase::Enum
+                # No extra charge
+                NO_EXTRA_CHARGE = :no_extra_charge
+
+                # Restaurant
+                RESTAURANT = :restaurant
+
+                # Gift shop
+                GIFT_SHOP = :gift_shop
+
+                # Mini bar
+                MINI_BAR = :mini_bar
+
+                # Telephone
+                TELEPHONE = :telephone
+
+                # Other
+                OTHER = :other
+
+                # Laundry
+                LAUNDRY = :laundry
+              end
+
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
+              class NoShowIndicator < Increase::Enum
+                # Not applicable
+                NOT_APPLICABLE = :not_applicable
+
+                # No show
+                NO_SHOW = :no_show
+              end
+            end
+
+            # The format of the purchase identifier.
+            class PurchaseIdentifierFormat < Increase::Enum
+              # Free text
+              FREE_TEXT = :free_text
+
+              # Order number
+              ORDER_NUMBER = :order_number
+
+              # Rental agreement number
+              RENTAL_AGREEMENT_NUMBER = :rental_agreement_number
+
+              # Hotel folio number
+              HOTEL_FOLIO_NUMBER = :hotel_folio_number
+
+              # Invoice number
+              INVOICE_NUMBER = :invoice_number
             end
 
             class Travel < BaseModel
@@ -1189,16 +1725,10 @@ module Increase
 
               # @!attribute [rw] credit_reason_indicator
               #   Indicates the reason for a credit to the cardholder.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator}
               #   @return [Symbol]
               required :credit_reason_indicator,
-                       Increase::Enum.new(
-                         :no_credit,
-                         :passenger_transport_ancillary_purchase_cancellation,
-                         :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                         :airline_ticket_cancellation,
-                         :other,
-                         :partial_refund_of_airline_ticket
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator }
 
               # @!attribute [rw] departure_date
               #   Date of departure.
@@ -1217,14 +1747,17 @@ module Increase
 
               # @!attribute [rw] restricted_ticket_indicator
               #   Indicates whether this ticket is non-refundable.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator}
               #   @return [Symbol]
               required :restricted_ticket_indicator,
-                       Increase::Enum.new(:no_restrictions, :restricted_non_refundable_ticket)
+                       enum: -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator }
 
               # @!attribute [rw] ticket_change_indicator
               #   Indicates why a ticket was changed.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator}
               #   @return [Symbol]
-              required :ticket_change_indicator, Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
+              required :ticket_change_indicator,
+                       enum: -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator }
 
               # @!attribute [rw] ticket_number
               #   Ticket number.
@@ -1255,14 +1788,10 @@ module Increase
 
                 # @!attribute [rw] credit_reason_indicator
                 #   Indicates the reason for a credit to the cardholder.
+                #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator}
                 #   @return [Symbol]
                 required :credit_reason_indicator,
-                         Increase::Enum.new(
-                           :no_credit,
-                           :passenger_transport_ancillary_purchase_cancellation,
-                           :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                           :other
-                         )
+                         enum: -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator }
 
                 # @!attribute [rw] passenger_name_or_description
                 #   Name of the passenger or description of the ancillary purchase.
@@ -1280,43 +1809,151 @@ module Increase
                 #   @return [String]
                 required :ticket_document_number, String
 
+                # Indicates the reason for a credit to the cardholder.
+                class CreditReasonIndicator < Increase::Enum
+                  # No credit
+                  NO_CREDIT = :no_credit
+
+                  # Passenger transport ancillary purchase cancellation
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+
+                  # Airline ticket and passenger transport ancillary purchase cancellation
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+
+                  # Other
+                  OTHER = :other
+                end
+
                 class Service < BaseModel
                   # @!attribute [rw] category
                   #   Category of the ancillary service.
+                  #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category}
                   #   @return [Symbol]
                   required :category,
-                           Increase::Enum.new(
-                             :none,
-                             :bundled_service,
-                             :baggage_fee,
-                             :change_fee,
-                             :cargo,
-                             :carbon_offset,
-                             :frequent_flyer,
-                             :gift_card,
-                             :ground_transport,
-                             :in_flight_entertainment,
-                             :lounge,
-                             :medical,
-                             :meal_beverage,
-                             :other,
-                             :passenger_assist_fee,
-                             :pets,
-                             :seat_fees,
-                             :standby,
-                             :service_fee,
-                             :store,
-                             :travel_service,
-                             :unaccompanied_travel,
-                             :upgrades,
-                             :wifi
-                           )
+                           enum: -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category }
 
                   # @!attribute [rw] sub_category
                   #   Sub-category of the ancillary service, free-form.
                   #   @return [String]
                   required :sub_category, String
+
+                  # Category of the ancillary service.
+                  class Category < Increase::Enum
+                    # None
+                    NONE = :none
+
+                    # Bundled service
+                    BUNDLED_SERVICE = :bundled_service
+
+                    # Baggage fee
+                    BAGGAGE_FEE = :baggage_fee
+
+                    # Change fee
+                    CHANGE_FEE = :change_fee
+
+                    # Cargo
+                    CARGO = :cargo
+
+                    # Carbon offset
+                    CARBON_OFFSET = :carbon_offset
+
+                    # Frequent flyer
+                    FREQUENT_FLYER = :frequent_flyer
+
+                    # Gift card
+                    GIFT_CARD = :gift_card
+
+                    # Ground transport
+                    GROUND_TRANSPORT = :ground_transport
+
+                    # In-flight entertainment
+                    IN_FLIGHT_ENTERTAINMENT = :in_flight_entertainment
+
+                    # Lounge
+                    LOUNGE = :lounge
+
+                    # Medical
+                    MEDICAL = :medical
+
+                    # Meal beverage
+                    MEAL_BEVERAGE = :meal_beverage
+
+                    # Other
+                    OTHER = :other
+
+                    # Passenger assist fee
+                    PASSENGER_ASSIST_FEE = :passenger_assist_fee
+
+                    # Pets
+                    PETS = :pets
+
+                    # Seat fees
+                    SEAT_FEES = :seat_fees
+
+                    # Standby
+                    STANDBY = :standby
+
+                    # Service fee
+                    SERVICE_FEE = :service_fee
+
+                    # Store
+                    STORE = :store
+
+                    # Travel service
+                    TRAVEL_SERVICE = :travel_service
+
+                    # Unaccompanied travel
+                    UNACCOMPANIED_TRAVEL = :unaccompanied_travel
+
+                    # Upgrades
+                    UPGRADES = :upgrades
+
+                    # Wi-fi
+                    WIFI = :wifi
+                  end
                 end
+              end
+
+              # Indicates the reason for a credit to the cardholder.
+              class CreditReasonIndicator < Increase::Enum
+                # No credit
+                NO_CREDIT = :no_credit
+
+                # Passenger transport ancillary purchase cancellation
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+
+                # Airline ticket and passenger transport ancillary purchase cancellation
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+
+                # Airline ticket cancellation
+                AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
+
+                # Other
+                OTHER = :other
+
+                # Partial refund of airline ticket
+                PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
+              end
+
+              # Indicates whether this ticket is non-refundable.
+              class RestrictedTicketIndicator < Increase::Enum
+                # No restrictions
+                NO_RESTRICTIONS = :no_restrictions
+
+                # Restricted non-refundable ticket
+                RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
+              end
+
+              # Indicates why a ticket was changed.
+              class TicketChangeIndicator < Increase::Enum
+                # None
+                NONE = :none
+
+                # Change to existing ticket
+                CHANGE_TO_EXISTING_TICKET = :change_to_existing_ticket
+
+                # New ticket
+                NEW_TICKET = :new_ticket
               end
 
               class TripLeg < BaseModel
@@ -1347,10 +1984,29 @@ module Increase
 
                 # @!attribute [rw] stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
+                #   One of the constants defined in {Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode}
                 #   @return [Symbol]
-                required :stop_over_code, Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
+                required :stop_over_code,
+                         enum: -> { Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode }
+
+                # Indicates whether a stopover is allowed on this ticket.
+                class StopOverCode < Increase::Enum
+                  # None
+                  NONE = :none
+
+                  # Stop over allowed
+                  STOP_OVER_ALLOWED = :stop_over_allowed
+
+                  # Stop over not allowed
+                  STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
+                end
               end
             end
+          end
+
+          # A constant representing the object's type. For this resource it will always be `card_refund`.
+          class Type < Increase::Enum
+            CARD_REFUND = :card_refund
           end
         end
 
@@ -1367,8 +2023,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardReversal::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::CardPayment::Element::CardReversal::Currency }
 
           # @!attribute [rw] merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
@@ -1407,8 +2064,9 @@ module Increase
 
           # @!attribute [rw] network
           #   The card network used to process this card authorization.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardReversal::Network}
           #   @return [Symbol]
-          required :network, Increase::Enum.new(:visa)
+          required :network, enum: -> { Increase::Models::CardPayment::Element::CardReversal::Network }
 
           # @!attribute [rw] network_identifiers
           #   Network-specific identifiers for a specific request or transaction.
@@ -1428,24 +2086,48 @@ module Increase
 
           # @!attribute [rw] reversal_reason
           #   Why this reversal was initiated.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardReversal::ReversalReason}
           #   @return [Symbol]
           required :reversal_reason,
-                   Increase::Enum.new(
-                     :reversed_by_customer,
-                     :reversed_by_network_or_acquirer,
-                     :reversed_by_point_of_sale,
-                     :partial_reversal
-                   )
+                   enum: -> { Increase::Models::CardPayment::Element::CardReversal::ReversalReason }
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_reversal`.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardReversal::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:card_reversal)
+          required :type, enum: -> { Increase::Models::CardPayment::Element::CardReversal::Type }
 
           # @!attribute [rw] updated_authorization_amount
           #   The amount left pending on the Card Authorization in the minor unit of the transaction's currency. For dollars, for example, this is cents.
           #   @return [Integer]
           required :updated_authorization_amount, Integer
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
+          # The card network used to process this card authorization.
+          class Network < Increase::Enum
+            # Visa
+            VISA = :visa
+          end
 
           class NetworkIdentifiers < BaseModel
             # @!attribute [rw] retrieval_reference_number
@@ -1462,6 +2144,26 @@ module Increase
             #   A globally unique transaction identifier provided by the card network, used across multiple life-cycle requests.
             #   @return [String]
             required :transaction_id, String
+          end
+
+          # Why this reversal was initiated.
+          class ReversalReason < Increase::Enum
+            # The Card Reversal was initiated at the customer's request.
+            REVERSED_BY_CUSTOMER = :reversed_by_customer
+
+            # The Card Reversal was initiated by the network or acquirer.
+            REVERSED_BY_NETWORK_OR_ACQUIRER = :reversed_by_network_or_acquirer
+
+            # The Card Reversal was initiated by the point of sale device.
+            REVERSED_BY_POINT_OF_SALE = :reversed_by_point_of_sale
+
+            # The Card Reversal was a partial reversal, for any reason.
+            PARTIAL_REVERSAL = :partial_reversal
+          end
+
+          # A constant representing the object's type. For this resource it will always be `card_reversal`.
+          class Type < Increase::Enum
+            CARD_REVERSAL = :card_reversal
           end
         end
 
@@ -1488,8 +2190,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::CardPayment::Element::CardSettlement::Currency }
 
           # @!attribute [rw] interchange
           #   Interchange assessed as a part of this transaciton.
@@ -1559,8 +2262,30 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_settlement`.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:card_settlement)
+          required :type, enum: -> { Increase::Models::CardPayment::Element::CardSettlement::Type }
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
 
           class Interchange < BaseModel
             # @!attribute [rw] amount
@@ -1575,8 +2300,31 @@ module Increase
 
             # @!attribute [rw] currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
+            #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency}
             #   @return [Symbol]
-            required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+            required :currency,
+                     enum: -> { Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency }
+
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
+            class Currency < Increase::Enum
+              # Canadian Dollar (CAD)
+              CAD = :CAD
+
+              # Swiss Franc (CHF)
+              CHF = :CHF
+
+              # Euro (EUR)
+              EUR = :EUR
+
+              # British Pound (GBP)
+              GBP = :GBP
+
+              # Japanese Yen (JPY)
+              JPY = :JPY
+
+              # US Dollar (USD)
+              USD = :USD
+            end
           end
 
           class NetworkIdentifiers < BaseModel
@@ -1640,15 +2388,10 @@ module Increase
 
             # @!attribute [rw] purchase_identifier_format
             #   The format of the purchase identifier.
+            #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat}
             #   @return [Symbol]
             required :purchase_identifier_format,
-                     Increase::Enum.new(
-                       :free_text,
-                       :order_number,
-                       :rental_agreement_number,
-                       :hotel_folio_number,
-                       :invoice_number
-                     )
+                     enum: -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat }
 
             # @!attribute [rw] travel
             #   Fields specific to travel.
@@ -1683,16 +2426,10 @@ module Increase
 
               # @!attribute [rw] extra_charges
               #   Additional charges (gas, late fee, etc.) being billed.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges}
               #   @return [Symbol]
               required :extra_charges,
-                       Increase::Enum.new(
-                         :no_extra_charge,
-                         :gas,
-                         :extra_mileage,
-                         :late_return,
-                         :one_way_service_fee,
-                         :parking_violation
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges }
 
               # @!attribute [rw] fuel_charges_amount
               #   Fuel charges for the vehicle.
@@ -1716,8 +2453,10 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator}
               #   @return [Symbol]
-              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show_for_specialized_vehicle)
+              required :no_show_indicator,
+                       enum: -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator }
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               #   Charges for returning the vehicle at a different location than where it was picked up.
@@ -1743,6 +2482,36 @@ module Increase
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly rental rate.
               #   @return [String]
               required :weekly_rental_rate_currency, String
+
+              # Additional charges (gas, late fee, etc.) being billed.
+              class ExtraCharges < Increase::Enum
+                # No extra charge
+                NO_EXTRA_CHARGE = :no_extra_charge
+
+                # Gas
+                GAS = :gas
+
+                # Extra mileage
+                EXTRA_MILEAGE = :extra_mileage
+
+                # Late return
+                LATE_RETURN = :late_return
+
+                # One way service fee
+                ONE_WAY_SERVICE_FEE = :one_way_service_fee
+
+                # Parking violation
+                PARKING_VIOLATION = :parking_violation
+              end
+
+              # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
+              class NoShowIndicator < Increase::Enum
+                # Not applicable
+                NOT_APPLICABLE = :not_applicable
+
+                # No show for specialized vehicle
+                NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
+              end
             end
 
             class Lodging < BaseModel
@@ -1763,9 +2532,10 @@ module Increase
 
               # @!attribute [rw] extra_charges
               #   Additional charges (phone, late check-out, etc.) being billed.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges}
               #   @return [Symbol]
               required :extra_charges,
-                       Increase::Enum.new(:no_extra_charge, :restaurant, :gift_shop, :mini_bar, :telephone, :other, :laundry)
+                       enum: -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges }
 
               # @!attribute [rw] folio_cash_advances_amount
               #   Folio cash advances for the room.
@@ -1789,8 +2559,10 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator}
               #   @return [Symbol]
-              required :no_show_indicator, Increase::Enum.new(:not_applicable, :no_show)
+              required :no_show_indicator,
+                       enum: -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator }
 
               # @!attribute [rw] prepaid_expenses_amount
               #   Prepaid expenses being charged for the room.
@@ -1826,6 +2598,57 @@ module Increase
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax assessed.
               #   @return [String]
               required :total_tax_currency, String
+
+              # Additional charges (phone, late check-out, etc.) being billed.
+              class ExtraCharges < Increase::Enum
+                # No extra charge
+                NO_EXTRA_CHARGE = :no_extra_charge
+
+                # Restaurant
+                RESTAURANT = :restaurant
+
+                # Gift shop
+                GIFT_SHOP = :gift_shop
+
+                # Mini bar
+                MINI_BAR = :mini_bar
+
+                # Telephone
+                TELEPHONE = :telephone
+
+                # Other
+                OTHER = :other
+
+                # Laundry
+                LAUNDRY = :laundry
+              end
+
+              # Indicator that the cardholder is being billed for a reserved room that was not actually used.
+              class NoShowIndicator < Increase::Enum
+                # Not applicable
+                NOT_APPLICABLE = :not_applicable
+
+                # No show
+                NO_SHOW = :no_show
+              end
+            end
+
+            # The format of the purchase identifier.
+            class PurchaseIdentifierFormat < Increase::Enum
+              # Free text
+              FREE_TEXT = :free_text
+
+              # Order number
+              ORDER_NUMBER = :order_number
+
+              # Rental agreement number
+              RENTAL_AGREEMENT_NUMBER = :rental_agreement_number
+
+              # Hotel folio number
+              HOTEL_FOLIO_NUMBER = :hotel_folio_number
+
+              # Invoice number
+              INVOICE_NUMBER = :invoice_number
             end
 
             class Travel < BaseModel
@@ -1842,16 +2665,10 @@ module Increase
 
               # @!attribute [rw] credit_reason_indicator
               #   Indicates the reason for a credit to the cardholder.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator}
               #   @return [Symbol]
               required :credit_reason_indicator,
-                       Increase::Enum.new(
-                         :no_credit,
-                         :passenger_transport_ancillary_purchase_cancellation,
-                         :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                         :airline_ticket_cancellation,
-                         :other,
-                         :partial_refund_of_airline_ticket
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator }
 
               # @!attribute [rw] departure_date
               #   Date of departure.
@@ -1870,14 +2687,17 @@ module Increase
 
               # @!attribute [rw] restricted_ticket_indicator
               #   Indicates whether this ticket is non-refundable.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator}
               #   @return [Symbol]
               required :restricted_ticket_indicator,
-                       Increase::Enum.new(:no_restrictions, :restricted_non_refundable_ticket)
+                       enum: -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator }
 
               # @!attribute [rw] ticket_change_indicator
               #   Indicates why a ticket was changed.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator}
               #   @return [Symbol]
-              required :ticket_change_indicator, Increase::Enum.new(:none, :change_to_existing_ticket, :new_ticket)
+              required :ticket_change_indicator,
+                       enum: -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator }
 
               # @!attribute [rw] ticket_number
               #   Ticket number.
@@ -1908,14 +2728,10 @@ module Increase
 
                 # @!attribute [rw] credit_reason_indicator
                 #   Indicates the reason for a credit to the cardholder.
+                #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator}
                 #   @return [Symbol]
                 required :credit_reason_indicator,
-                         Increase::Enum.new(
-                           :no_credit,
-                           :passenger_transport_ancillary_purchase_cancellation,
-                           :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation,
-                           :other
-                         )
+                         enum: -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator }
 
                 # @!attribute [rw] passenger_name_or_description
                 #   Name of the passenger or description of the ancillary purchase.
@@ -1933,43 +2749,151 @@ module Increase
                 #   @return [String]
                 required :ticket_document_number, String
 
+                # Indicates the reason for a credit to the cardholder.
+                class CreditReasonIndicator < Increase::Enum
+                  # No credit
+                  NO_CREDIT = :no_credit
+
+                  # Passenger transport ancillary purchase cancellation
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+
+                  # Airline ticket and passenger transport ancillary purchase cancellation
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+
+                  # Other
+                  OTHER = :other
+                end
+
                 class Service < BaseModel
                   # @!attribute [rw] category
                   #   Category of the ancillary service.
+                  #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category}
                   #   @return [Symbol]
                   required :category,
-                           Increase::Enum.new(
-                             :none,
-                             :bundled_service,
-                             :baggage_fee,
-                             :change_fee,
-                             :cargo,
-                             :carbon_offset,
-                             :frequent_flyer,
-                             :gift_card,
-                             :ground_transport,
-                             :in_flight_entertainment,
-                             :lounge,
-                             :medical,
-                             :meal_beverage,
-                             :other,
-                             :passenger_assist_fee,
-                             :pets,
-                             :seat_fees,
-                             :standby,
-                             :service_fee,
-                             :store,
-                             :travel_service,
-                             :unaccompanied_travel,
-                             :upgrades,
-                             :wifi
-                           )
+                           enum: -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category }
 
                   # @!attribute [rw] sub_category
                   #   Sub-category of the ancillary service, free-form.
                   #   @return [String]
                   required :sub_category, String
+
+                  # Category of the ancillary service.
+                  class Category < Increase::Enum
+                    # None
+                    NONE = :none
+
+                    # Bundled service
+                    BUNDLED_SERVICE = :bundled_service
+
+                    # Baggage fee
+                    BAGGAGE_FEE = :baggage_fee
+
+                    # Change fee
+                    CHANGE_FEE = :change_fee
+
+                    # Cargo
+                    CARGO = :cargo
+
+                    # Carbon offset
+                    CARBON_OFFSET = :carbon_offset
+
+                    # Frequent flyer
+                    FREQUENT_FLYER = :frequent_flyer
+
+                    # Gift card
+                    GIFT_CARD = :gift_card
+
+                    # Ground transport
+                    GROUND_TRANSPORT = :ground_transport
+
+                    # In-flight entertainment
+                    IN_FLIGHT_ENTERTAINMENT = :in_flight_entertainment
+
+                    # Lounge
+                    LOUNGE = :lounge
+
+                    # Medical
+                    MEDICAL = :medical
+
+                    # Meal beverage
+                    MEAL_BEVERAGE = :meal_beverage
+
+                    # Other
+                    OTHER = :other
+
+                    # Passenger assist fee
+                    PASSENGER_ASSIST_FEE = :passenger_assist_fee
+
+                    # Pets
+                    PETS = :pets
+
+                    # Seat fees
+                    SEAT_FEES = :seat_fees
+
+                    # Standby
+                    STANDBY = :standby
+
+                    # Service fee
+                    SERVICE_FEE = :service_fee
+
+                    # Store
+                    STORE = :store
+
+                    # Travel service
+                    TRAVEL_SERVICE = :travel_service
+
+                    # Unaccompanied travel
+                    UNACCOMPANIED_TRAVEL = :unaccompanied_travel
+
+                    # Upgrades
+                    UPGRADES = :upgrades
+
+                    # Wi-fi
+                    WIFI = :wifi
+                  end
                 end
+              end
+
+              # Indicates the reason for a credit to the cardholder.
+              class CreditReasonIndicator < Increase::Enum
+                # No credit
+                NO_CREDIT = :no_credit
+
+                # Passenger transport ancillary purchase cancellation
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :passenger_transport_ancillary_purchase_cancellation
+
+                # Airline ticket and passenger transport ancillary purchase cancellation
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+
+                # Airline ticket cancellation
+                AIRLINE_TICKET_CANCELLATION = :airline_ticket_cancellation
+
+                # Other
+                OTHER = :other
+
+                # Partial refund of airline ticket
+                PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
+              end
+
+              # Indicates whether this ticket is non-refundable.
+              class RestrictedTicketIndicator < Increase::Enum
+                # No restrictions
+                NO_RESTRICTIONS = :no_restrictions
+
+                # Restricted non-refundable ticket
+                RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
+              end
+
+              # Indicates why a ticket was changed.
+              class TicketChangeIndicator < Increase::Enum
+                # None
+                NONE = :none
+
+                # Change to existing ticket
+                CHANGE_TO_EXISTING_TICKET = :change_to_existing_ticket
+
+                # New ticket
+                NEW_TICKET = :new_ticket
               end
 
               class TripLeg < BaseModel
@@ -2000,10 +2924,29 @@ module Increase
 
                 # @!attribute [rw] stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
+                #   One of the constants defined in {Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode}
                 #   @return [Symbol]
-                required :stop_over_code, Increase::Enum.new(:none, :stop_over_allowed, :stop_over_not_allowed)
+                required :stop_over_code,
+                         enum: -> { Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode }
+
+                # Indicates whether a stopover is allowed on this ticket.
+                class StopOverCode < Increase::Enum
+                  # None
+                  NONE = :none
+
+                  # Stop over allowed
+                  STOP_OVER_ALLOWED = :stop_over_allowed
+
+                  # Stop over not allowed
+                  STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
+                end
               end
             end
+          end
+
+          # A constant representing the object's type. For this resource it will always be `card_settlement`.
+          class Type < Increase::Enum
+            CARD_SETTLEMENT = :card_settlement
           end
         end
 
@@ -2015,8 +2958,9 @@ module Increase
 
           # @!attribute [rw] actioner
           #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardValidation::Actioner}
           #   @return [Symbol]
-          required :actioner, Increase::Enum.new(:user, :increase, :network)
+          required :actioner, enum: -> { Increase::Models::CardPayment::Element::CardValidation::Actioner }
 
           # @!attribute [rw] card_payment_id
           #   The ID of the Card Payment this transaction belongs to.
@@ -2025,8 +2969,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardValidation::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::CardPayment::Element::CardValidation::Currency }
 
           # @!attribute [rw] digital_wallet_token_id
           #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay purchase), the identifier of the token that was used.
@@ -2096,57 +3041,141 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_validation`.
+          #   One of the constants defined in {Increase::Models::CardPayment::Element::CardValidation::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:card_validation)
+          required :type, enum: -> { Increase::Models::CardPayment::Element::CardValidation::Type }
 
           # @!attribute [rw] verification
           #   Fields related to verification of cardholder-provided values.
           #   @return [Increase::Models::CardPayment::Element::CardValidation::Verification]
           required :verification, -> { Increase::Models::CardPayment::Element::CardValidation::Verification }
 
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
+          class Actioner < Increase::Enum
+            # This object was actioned by the user through a real-time decision.
+            USER = :user
+
+            # This object was actioned by Increase without user intervention.
+            INCREASE = :increase
+
+            # This object was actioned by the network, through stand-in processing.
+            NETWORK = :network
+          end
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
             #   The payment network used to process this card authorization.
+            #   One of the constants defined in {Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category}
             #   @return [Symbol]
-            required :category, Increase::Enum.new(:visa)
+            required :category,
+                     enum: -> { Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category }
 
             # @!attribute [rw] visa
             #   Fields specific to the `visa` network.
             #   @return [Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa]
             required :visa, -> { Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa }
 
+            # The payment network used to process this card authorization.
+            class Category < Increase::Enum
+              # Visa
+              VISA = :visa
+            end
+
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator}
               #   @return [Symbol]
               required :electronic_commerce_indicator,
-                       Increase::Enum.new(
-                         :mail_phone_order,
-                         :recurring,
-                         :installment,
-                         :unknown_mail_phone_order,
-                         :secure_electronic_commerce,
-                         :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                         :non_authenticated_security_transaction,
-                         :non_secure_transaction
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator }
 
               # @!attribute [rw] point_of_service_entry_mode
               #   The method used to enter the cardholder's primary account number and card expiration date.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode}
               #   @return [Symbol]
               required :point_of_service_entry_mode,
-                       Increase::Enum.new(
-                         :unknown,
-                         :manual,
-                         :magnetic_stripe_no_cvv,
-                         :optical_code,
-                         :integrated_circuit_card,
-                         :contactless,
-                         :credential_on_file,
-                         :magnetic_stripe,
-                         :contactless_magnetic_stripe,
-                         :integrated_circuit_card_no_cvv
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode }
+
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
+              class ElectronicCommerceIndicator < Increase::Enum
+                # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
+                MAIL_PHONE_ORDER = :mail_phone_order
+
+                # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
+                RECURRING = :recurring
+
+                # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
+                INSTALLMENT = :installment
+
+                # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
+                UNKNOWN_MAIL_PHONE_ORDER = :unknown_mail_phone_order
+
+                # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
+                SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
+
+                # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
+
+                # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
+
+                # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
+                NON_SECURE_TRANSACTION = :non_secure_transaction
+              end
+
+              # The method used to enter the cardholder's primary account number and card expiration date.
+              class PointOfServiceEntryMode < Increase::Enum
+                # Unknown
+                UNKNOWN = :unknown
+
+                # Manual key entry
+                MANUAL = :manual
+
+                # Magnetic stripe read, without card verification value
+                MAGNETIC_STRIPE_NO_CVV = :magnetic_stripe_no_cvv
+
+                # Optical code
+                OPTICAL_CODE = :optical_code
+
+                # Contact chip card
+                INTEGRATED_CIRCUIT_CARD = :integrated_circuit_card
+
+                # Contactless read of chip card
+                CONTACTLESS = :contactless
+
+                # Transaction initiated using a credential that has previously been stored on file
+                CREDENTIAL_ON_FILE = :credential_on_file
+
+                # Magnetic stripe read
+                MAGNETIC_STRIPE = :magnetic_stripe
+
+                # Contactless read of magnetic stripe data
+                CONTACTLESS_MAGNETIC_STRIPE = :contactless_magnetic_stripe
+
+                # Contact chip card, without card verification value
+                INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
+              end
             end
           end
 
@@ -2167,6 +3196,11 @@ module Increase
             required :transaction_id, String
           end
 
+          # A constant representing the object's type. For this resource it will always be `card_validation`.
+          class Type < Increase::Enum
+            CARD_VALIDATION = :card_validation
+          end
+
           class Verification < BaseModel
             # @!attribute [rw] card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
@@ -2183,8 +3217,22 @@ module Increase
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
               #   The result of verifying the Card Verification Code.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result}
               #   @return [Symbol]
-              required :result, Increase::Enum.new(:not_checked, :match, :no_match)
+              required :result,
+                       enum: -> { Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result }
+
+              # The result of verifying the Card Verification Code.
+              class Result < Increase::Enum
+                # No card verification code was provided in the authorization request.
+                NOT_CHECKED = :not_checked
+
+                # The card verification code matched the one on file.
+                MATCH = :match
+
+                # The card verification code did not match the one on file.
+                NO_MATCH = :no_match
+              end
             end
 
             class CardholderAddress < BaseModel
@@ -2210,18 +3258,66 @@ module Increase
 
               # @!attribute [rw] result
               #   The address verification result returned to the card network.
+              #   One of the constants defined in {Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result}
               #   @return [Symbol]
               required :result,
-                       Increase::Enum.new(
-                         :not_checked,
-                         :postal_code_match_address_not_checked,
-                         :postal_code_match_address_no_match,
-                         :postal_code_no_match_address_match,
-                         :match,
-                         :no_match
-                       )
+                       enum: -> { Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result }
+
+              # The address verification result returned to the card network.
+              class Result < Increase::Enum
+                # No adress was provided in the authorization request.
+                NOT_CHECKED = :not_checked
+
+                # Postal code matches, but the street address was not verified.
+                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED = :postal_code_match_address_not_checked
+
+                # Postal code matches, but the street address does not match.
+                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH = :postal_code_match_address_no_match
+
+                # Postal code does not match, but the street address matches.
+                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH = :postal_code_no_match_address_match
+
+                # Postal code and street address match.
+                MATCH = :match
+
+                # Postal code and street address do not match.
+                NO_MATCH = :no_match
+              end
             end
           end
+        end
+
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+        class Category < Increase::Enum
+          # Card Authorization: details will be under the `card_authorization` object.
+          CARD_AUTHORIZATION = :card_authorization
+
+          # Card Validation: details will be under the `card_validation` object.
+          CARD_VALIDATION = :card_validation
+
+          # Card Decline: details will be under the `card_decline` object.
+          CARD_DECLINE = :card_decline
+
+          # Card Reversal: details will be under the `card_reversal` object.
+          CARD_REVERSAL = :card_reversal
+
+          # Card Authorization Expiration: details will be under the `card_authorization_expiration` object.
+          CARD_AUTHORIZATION_EXPIRATION = :card_authorization_expiration
+
+          # Card Increment: details will be under the `card_increment` object.
+          CARD_INCREMENT = :card_increment
+
+          # Card Settlement: details will be under the `card_settlement` object.
+          CARD_SETTLEMENT = :card_settlement
+
+          # Card Refund: details will be under the `card_refund` object.
+          CARD_REFUND = :card_refund
+
+          # Card Fuel Confirmation: details will be under the `card_fuel_confirmation` object.
+          CARD_FUEL_CONFIRMATION = :card_fuel_confirmation
+
+          # Unknown card payment element.
+          OTHER = :other
         end
       end
 
@@ -2250,6 +3346,11 @@ module Increase
         #   The total settled or refunded amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
         #   @return [Integer]
         required :settled_amount, Integer
+      end
+
+      # A constant representing the object's type. For this resource it will always be `card_payment`.
+      class Type < Increase::Enum
+        CARD_PAYMENT = :card_payment
       end
     end
   end

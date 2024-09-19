@@ -10,8 +10,9 @@ module Increase
 
       # @!attribute [rw] account_holder
       #   The type of entity that owns the External Account.
+      #   One of the constants defined in {Increase::Models::ExternalAccount::AccountHolder}
       #   @return [Symbol]
-      required :account_holder, Increase::Enum.new(:business, :individual, :unknown)
+      required :account_holder, enum: -> { Increase::Models::ExternalAccount::AccountHolder }
 
       # @!attribute [rw] account_number
       #   The destination account number.
@@ -30,8 +31,9 @@ module Increase
 
       # @!attribute [rw] funding
       #   The type of the account to which the transfer will be sent.
+      #   One of the constants defined in {Increase::Models::ExternalAccount::Funding}
       #   @return [Symbol]
-      required :funding, Increase::Enum.new(:checking, :savings, :other)
+      required :funding, enum: -> { Increase::Models::ExternalAccount::Funding }
 
       # @!attribute [rw] idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
@@ -45,18 +47,71 @@ module Increase
 
       # @!attribute [rw] status
       #   The External Account's status.
+      #   One of the constants defined in {Increase::Models::ExternalAccount::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:active, :archived)
+      required :status, enum: -> { Increase::Models::ExternalAccount::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `external_account`.
+      #   One of the constants defined in {Increase::Models::ExternalAccount::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:external_account)
+      required :type, enum: -> { Increase::Models::ExternalAccount::Type }
 
       # @!attribute [rw] verification_status
       #   If you have verified ownership of the External Account.
+      #   One of the constants defined in {Increase::Models::ExternalAccount::VerificationStatus}
       #   @return [Symbol]
-      required :verification_status, Increase::Enum.new(:unverified, :pending, :verified)
+      required :verification_status, enum: -> { Increase::Models::ExternalAccount::VerificationStatus }
+
+      # The type of entity that owns the External Account.
+      class AccountHolder < Increase::Enum
+        # The External Account is owned by a business.
+        BUSINESS = :business
+
+        # The External Account is owned by an individual.
+        INDIVIDUAL = :individual
+
+        # It's unknown what kind of entity owns the External Account.
+        UNKNOWN = :unknown
+      end
+
+      # The type of the account to which the transfer will be sent.
+      class Funding < Increase::Enum
+        # A checking account.
+        CHECKING = :checking
+
+        # A savings account.
+        SAVINGS = :savings
+
+        # A different type of account.
+        OTHER = :other
+      end
+
+      # The External Account's status.
+      class Status < Increase::Enum
+        # The External Account is active.
+        ACTIVE = :active
+
+        # The External Account is archived and won't appear in the dashboard.
+        ARCHIVED = :archived
+      end
+
+      # A constant representing the object's type. For this resource it will always be `external_account`.
+      class Type < Increase::Enum
+        EXTERNAL_ACCOUNT = :external_account
+      end
+
+      # If you have verified ownership of the External Account.
+      class VerificationStatus < Increase::Enum
+        # The External Account has not been verified.
+        UNVERIFIED = :unverified
+
+        # The External Account is in the process of being verified.
+        PENDING = :pending
+
+        # The External Account is verified.
+        VERIFIED = :verified
+      end
     end
   end
 end

@@ -30,8 +30,9 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `card_purchase_supplement`.
+      #   One of the constants defined in {Increase::Models::CardPurchaseSupplement::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:card_purchase_supplement)
+      required :type, enum: -> { Increase::Models::CardPurchaseSupplement::Type }
 
       class Invoice < BaseModel
         # @!attribute [rw] discount_amount
@@ -46,13 +47,10 @@ module Increase
 
         # @!attribute [rw] discount_treatment_code
         #   Indicates how the merchant applied the discount.
+        #   One of the constants defined in {Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode}
         #   @return [Symbol]
         required :discount_treatment_code,
-                 Increase::Enum.new(
-                   :no_invoice_level_discount_provided,
-                   :tax_calculated_on_post_discount_invoice_total,
-                   :tax_calculated_on_pre_discount_invoice_total
-                 )
+                 enum: -> { Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode }
 
         # @!attribute [rw] duty_tax_amount
         #   Amount of duty taxes.
@@ -111,20 +109,44 @@ module Increase
 
         # @!attribute [rw] tax_treatments
         #   Indicates how the merchant applied taxes.
+        #   One of the constants defined in {Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments}
         #   @return [Symbol]
-        required :tax_treatments,
-                 Increase::Enum.new(
-                   :no_tax_applies,
-                   :net_price_line_item_level,
-                   :net_price_invoice_level,
-                   :gross_price_line_item_level,
-                   :gross_price_invoice_level
-                 )
+        required :tax_treatments, enum: -> { Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments }
 
         # @!attribute [rw] unique_value_added_tax_invoice_reference
         #   Value added tax invoice reference number.
         #   @return [String]
         required :unique_value_added_tax_invoice_reference, String
+
+        # Indicates how the merchant applied the discount.
+        class DiscountTreatmentCode < Increase::Enum
+          # No invoice level discount provided
+          NO_INVOICE_LEVEL_DISCOUNT_PROVIDED = :no_invoice_level_discount_provided
+
+          # Tax calculated on post discount invoice total
+          TAX_CALCULATED_ON_POST_DISCOUNT_INVOICE_TOTAL = :tax_calculated_on_post_discount_invoice_total
+
+          # Tax calculated on pre discount invoice total
+          TAX_CALCULATED_ON_PRE_DISCOUNT_INVOICE_TOTAL = :tax_calculated_on_pre_discount_invoice_total
+        end
+
+        # Indicates how the merchant applied taxes.
+        class TaxTreatments < Increase::Enum
+          # No tax applies
+          NO_TAX_APPLIES = :no_tax_applies
+
+          # Net price line item level
+          NET_PRICE_LINE_ITEM_LEVEL = :net_price_line_item_level
+
+          # Net price invoice level
+          NET_PRICE_INVOICE_LEVEL = :net_price_invoice_level
+
+          # Gross price line item level
+          GROSS_PRICE_LINE_ITEM_LEVEL = :gross_price_line_item_level
+
+          # Gross price invoice level
+          GROSS_PRICE_INVOICE_LEVEL = :gross_price_invoice_level
+        end
       end
 
       class LineItem < BaseModel
@@ -135,8 +157,10 @@ module Increase
 
         # @!attribute [rw] detail_indicator
         #   Indicates the type of line item.
+        #   One of the constants defined in {Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator}
         #   @return [Symbol]
-        required :detail_indicator, Increase::Enum.new(:normal, :credit, :payment)
+        required :detail_indicator,
+                 enum: -> { Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator }
 
         # @!attribute [rw] discount_amount
         #   Discount amount for this specific line item.
@@ -150,13 +174,10 @@ module Increase
 
         # @!attribute [rw] discount_treatment_code
         #   Indicates how the merchant applied the discount for this specific line item.
+        #   One of the constants defined in {Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode}
         #   @return [Symbol]
         required :discount_treatment_code,
-                 Increase::Enum.new(
-                   :no_line_item_level_discount_provided,
-                   :tax_calculated_on_post_discount_line_item_total,
-                   :tax_calculated_on_pre_discount_line_item_total
-                 )
+                 enum: -> { Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode }
 
         # @!attribute [rw] item_commodity_code
         #   Code used to categorize the purchase item.
@@ -217,6 +238,35 @@ module Increase
         #   Code indicating unit of measure (gallons, etc.).
         #   @return [String]
         required :unit_of_measure_code, String
+
+        # Indicates the type of line item.
+        class DetailIndicator < Increase::Enum
+          # Normal
+          NORMAL = :normal
+
+          # Credit
+          CREDIT = :credit
+
+          # Purchase
+          PAYMENT = :payment
+        end
+
+        # Indicates how the merchant applied the discount for this specific line item.
+        class DiscountTreatmentCode < Increase::Enum
+          # No line item level discount provided
+          NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED = :no_line_item_level_discount_provided
+
+          # Tax calculated on post discount line item total
+          TAX_CALCULATED_ON_POST_DISCOUNT_LINE_ITEM_TOTAL = :tax_calculated_on_post_discount_line_item_total
+
+          # Tax calculated on pre discount line item total
+          TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL = :tax_calculated_on_pre_discount_line_item_total
+        end
+      end
+
+      # A constant representing the object's type. For this resource it will always be `card_purchase_supplement`.
+      class Type < Increase::Enum
+        CARD_PURCHASE_SUPPLEMENT = :card_purchase_supplement
       end
     end
   end

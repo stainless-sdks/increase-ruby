@@ -25,8 +25,14 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `entity_supplemental_document`.
+      #   One of the constants defined in {Increase::Models::EntitySupplementalDocument::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:entity_supplemental_document)
+      required :type, enum: -> { Increase::Models::EntitySupplementalDocument::Type }
+
+      # A constant representing the object's type. For this resource it will always be `entity_supplemental_document`.
+      class Type < Increase::Enum
+        ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
+      end
     end
   end
 end

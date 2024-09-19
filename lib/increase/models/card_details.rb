@@ -25,13 +25,19 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `card_details`.
+      #   One of the constants defined in {Increase::Models::CardDetails::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:card_details)
+      required :type, enum: -> { Increase::Models::CardDetails::Type }
 
       # @!attribute [rw] verification_code
       #   The three-digit verification code for the card. It's also known as the Card Verification Code (CVC), the Card Verification Value (CVV), or the Card Identification (CID).
       #   @return [String]
       required :verification_code, String
+
+      # A constant representing the object's type. For this resource it will always be `card_details`.
+      class Type < Increase::Enum
+        CARD_DETAILS = :card_details
+      end
     end
   end
 end

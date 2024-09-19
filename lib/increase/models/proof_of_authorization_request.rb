@@ -26,8 +26,9 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `proof_of_authorization_request`.
+      #   One of the constants defined in {Increase::Models::ProofOfAuthorizationRequest::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:proof_of_authorization_request)
+      required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequest::Type }
 
       # @!attribute [rw] updated_at
       #   The time the Proof of Authorization Request was last updated.
@@ -39,6 +40,11 @@ module Increase
         #   The ACH Transfer identifier.
         #   @return [String]
         required :id, String
+      end
+
+      # A constant representing the object's type. For this resource it will always be `proof_of_authorization_request`.
+      class Type < Increase::Enum
+        PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
       end
     end
   end

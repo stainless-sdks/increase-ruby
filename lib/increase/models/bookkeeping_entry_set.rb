@@ -35,8 +35,9 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `bookkeeping_entry_set`.
+      #   One of the constants defined in {Increase::Models::BookkeepingEntrySet::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:bookkeeping_entry_set)
+      required :type, enum: -> { Increase::Models::BookkeepingEntrySet::Type }
 
       class Entry < BaseModel
         # @!attribute [rw] id
@@ -53,6 +54,11 @@ module Increase
         #   The amount of the entry in minor units.
         #   @return [Integer]
         required :amount, Integer
+      end
+
+      # A constant representing the object's type. For this resource it will always be `bookkeeping_entry_set`.
+      class Type < Increase::Enum
+        BOOKKEEPING_ENTRY_SET = :bookkeeping_entry_set
       end
     end
   end

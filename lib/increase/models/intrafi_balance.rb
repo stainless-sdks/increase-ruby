@@ -15,8 +15,9 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account currency.
+      #   One of the constants defined in {Increase::Models::IntrafiBalance::Currency}
       #   @return [Symbol]
-      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+      required :currency, enum: -> { Increase::Models::IntrafiBalance::Currency }
 
       # @!attribute [rw] effective_date
       #   The date this balance reflects.
@@ -30,8 +31,9 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `intrafi_balance`.
+      #   One of the constants defined in {Increase::Models::IntrafiBalance::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:intrafi_balance)
+      required :type, enum: -> { Increase::Models::IntrafiBalance::Type }
 
       class Balance < BaseModel
         # @!attribute [rw] id
@@ -70,6 +72,32 @@ module Increase
           #   @return [String]
           required :state, String
         end
+      end
+
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account currency.
+      class Currency < Increase::Enum
+        # Canadian Dollar (CAD)
+        CAD = :CAD
+
+        # Swiss Franc (CHF)
+        CHF = :CHF
+
+        # Euro (EUR)
+        EUR = :EUR
+
+        # British Pound (GBP)
+        GBP = :GBP
+
+        # Japanese Yen (JPY)
+        JPY = :JPY
+
+        # US Dollar (USD)
+        USD = :USD
+      end
+
+      # A constant representing the object's type. For this resource it will always be `intrafi_balance`.
+      class Type < Increase::Enum
+        INTRAFI_BALANCE = :intrafi_balance
       end
     end
   end

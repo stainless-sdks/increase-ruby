@@ -15,8 +15,9 @@ module Increase
 
       # @!attribute [rw] compliance_category
       #   The compliance category of the account.
+      #   One of the constants defined in {Increase::Models::BookkeepingAccount::ComplianceCategory}
       #   @return [Symbol]
-      required :compliance_category, Increase::Enum.new(:commingled_cash, :customer_balance)
+      required :compliance_category, enum: -> { Increase::Models::BookkeepingAccount::ComplianceCategory }
 
       # @!attribute [rw] entity_id
       #   The Entity associated with this bookkeeping account.
@@ -35,8 +36,23 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `bookkeeping_account`.
+      #   One of the constants defined in {Increase::Models::BookkeepingAccount::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:bookkeeping_account)
+      required :type, enum: -> { Increase::Models::BookkeepingAccount::Type }
+
+      # The compliance category of the account.
+      class ComplianceCategory < Increase::Enum
+        # A cash in an commingled Increase Account.
+        COMMINGLED_CASH = :commingled_cash
+
+        # A customer balance.
+        CUSTOMER_BALANCE = :customer_balance
+      end
+
+      # A constant representing the object's type. For this resource it will always be `bookkeeping_account`.
+      class Type < Increase::Enum
+        BOOKKEEPING_ACCOUNT = :bookkeeping_account
+      end
     end
   end
 end

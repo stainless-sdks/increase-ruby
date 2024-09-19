@@ -115,13 +115,35 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the transfer.
+      #   One of the constants defined in {Increase::Models::InboundWireTransfer::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending, :accepted, :declined, :reversed)
+      required :status, enum: -> { Increase::Models::InboundWireTransfer::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_wire_transfer`.
+      #   One of the constants defined in {Increase::Models::InboundWireTransfer::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:inbound_wire_transfer)
+      required :type, enum: -> { Increase::Models::InboundWireTransfer::Type }
+
+      # The status of the transfer.
+      class Status < Increase::Enum
+        # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
+        PENDING = :pending
+
+        # The Inbound Wire Transfer is accepted.
+        ACCEPTED = :accepted
+
+        # The Inbound Wire Transfer was declined.
+        DECLINED = :declined
+
+        # The Inbound Wire Transfer was reversed.
+        REVERSED = :reversed
+      end
+
+      # A constant representing the object's type. For this resource it will always be `inbound_wire_transfer`.
+      class Type < Increase::Enum
+        INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
+      end
     end
   end
 end

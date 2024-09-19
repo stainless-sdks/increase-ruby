@@ -30,8 +30,14 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `bookkeeping_entry`.
+      #   One of the constants defined in {Increase::Models::BookkeepingEntry::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:bookkeeping_entry)
+      required :type, enum: -> { Increase::Models::BookkeepingEntry::Type }
+
+      # A constant representing the object's type. For this resource it will always be `bookkeeping_entry`.
+      class Type < Increase::Enum
+        BOOKKEEPING_ENTRY = :bookkeeping_entry
+      end
     end
   end
 end

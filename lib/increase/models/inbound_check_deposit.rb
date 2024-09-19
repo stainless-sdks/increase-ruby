@@ -55,8 +55,9 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
+      #   One of the constants defined in {Increase::Models::InboundCheckDeposit::Currency}
       #   @return [Symbol]
-      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+      required :currency, enum: -> { Increase::Models::InboundCheckDeposit::Currency }
 
       # @!attribute [rw] declined_at
       #   If the Inbound Check Deposit was declined, the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this took place.
@@ -80,8 +81,9 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Inbound Check Deposit.
+      #   One of the constants defined in {Increase::Models::InboundCheckDeposit::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending, :accepted, :declined, :returned, :requires_attention)
+      required :status, enum: -> { Increase::Models::InboundCheckDeposit::Status }
 
       # @!attribute [rw] transaction_id
       #   If the deposit attempt has been accepted, the identifier of the Transaction object created as a result of the successful deposit.
@@ -90,21 +92,37 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_check_deposit`.
+      #   One of the constants defined in {Increase::Models::InboundCheckDeposit::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:inbound_check_deposit)
+      required :type, enum: -> { Increase::Models::InboundCheckDeposit::Type }
+
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
+      class Currency < Increase::Enum
+        # Canadian Dollar (CAD)
+        CAD = :CAD
+
+        # Swiss Franc (CHF)
+        CHF = :CHF
+
+        # Euro (EUR)
+        EUR = :EUR
+
+        # British Pound (GBP)
+        GBP = :GBP
+
+        # Japanese Yen (JPY)
+        JPY = :JPY
+
+        # US Dollar (USD)
+        USD = :USD
+      end
 
       class DepositReturn < BaseModel
         # @!attribute [rw] reason
         #   The reason the deposit was returned.
+        #   One of the constants defined in {Increase::Models::InboundCheckDeposit::DepositReturn::Reason}
         #   @return [Symbol]
-        required :reason,
-                 Increase::Enum.new(
-                   :altered_or_fictitious,
-                   :not_authorized,
-                   :duplicate_presentment,
-                   :endorsement_missing,
-                   :endorsement_irregular
-                 )
+        required :reason, enum: -> { Increase::Models::InboundCheckDeposit::DepositReturn::Reason }
 
         # @!attribute [rw] returned_at
         #   The time at which the deposit was returned.
@@ -115,6 +133,47 @@ module Increase
         #   The id of the transaction for the returned deposit.
         #   @return [String]
         required :transaction_id, String
+
+        # The reason the deposit was returned.
+        class Reason < Increase::Enum
+          # The check was altered or fictitious.
+          ALTERED_OR_FICTITIOUS = :altered_or_fictitious
+
+          # The check was not authorized.
+          NOT_AUTHORIZED = :not_authorized
+
+          # The check was a duplicate presentment.
+          DUPLICATE_PRESENTMENT = :duplicate_presentment
+
+          # The check was not endorsed.
+          ENDORSEMENT_MISSING = :endorsement_missing
+
+          # The check was not endorsed by the payee.
+          ENDORSEMENT_IRREGULAR = :endorsement_irregular
+        end
+      end
+
+      # The status of the Inbound Check Deposit.
+      class Status < Increase::Enum
+        # The Inbound Check Deposit is pending.
+        PENDING = :pending
+
+        # The Inbound Check Deposit was accepted.
+        ACCEPTED = :accepted
+
+        # The Inbound Check Deposit was rejected.
+        DECLINED = :declined
+
+        # The Inbound Check Deposit was returned.
+        RETURNED = :returned
+
+        # The Inbound Check Deposit requires attention from an Increase operator.
+        REQUIRES_ATTENTION = :requires_attention
+      end
+
+      # A constant representing the object's type. For this resource it will always be `inbound_check_deposit`.
+      class Type < Increase::Enum
+        INBOUND_CHECK_DEPOSIT = :inbound_check_deposit
       end
     end
   end
