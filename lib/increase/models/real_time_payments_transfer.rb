@@ -45,8 +45,9 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
+      #   One of the constants defined in {Increase::Models::RealTimePaymentsTransfer::Currency}
       #   @return [Symbol]
-      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+      required :currency, enum: -> { Increase::Models::RealTimePaymentsTransfer::Currency }
 
       # @!attribute [rw] debtor_name
       #   The name of the transfer's sender. If not provided, defaults to the name of the account's entity.
@@ -95,18 +96,9 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
+      #   One of the constants defined in {Increase::Models::RealTimePaymentsTransfer::Status}
       #   @return [Symbol]
-      required :status,
-               Increase::Enum.new(
-                 :pending_approval,
-                 :canceled,
-                 :pending_reviewing,
-                 :pending_submission,
-                 :submitted,
-                 :complete,
-                 :rejected,
-                 :requires_attention
-               )
+      required :status, enum: -> { Increase::Models::RealTimePaymentsTransfer::Status }
 
       # @!attribute [rw] submission
       #   After the transfer is submitted to Real-Time Payments, this will contain supplemental details.
@@ -120,8 +112,9 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `real_time_payments_transfer`.
+      #   One of the constants defined in {Increase::Models::RealTimePaymentsTransfer::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:real_time_payments_transfer)
+      required :type, enum: -> { Increase::Models::RealTimePaymentsTransfer::Type }
 
       # @!attribute [rw] ultimate_creditor_name
       #   The name of the ultimate recipient of the transfer. Set this if the creditor is an intermediary receiving the payment for someone else.
@@ -165,8 +158,9 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of object that created this transfer.
+        #   One of the constants defined in {Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category}
         #   @return [Symbol]
-        required :category, Increase::Enum.new(:api_key, :oauth_application, :user)
+        required :category, enum: -> { Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category }
 
         # @!attribute [rw] oauth_application
         #   If present, details about the OAuth Application that created the transfer.
@@ -186,6 +180,18 @@ module Increase
           required :description, String
         end
 
+        # The type of object that created this transfer.
+        class Category < Increase::Enum
+          # An API key. Details will be under the `api_key` object.
+          API_KEY = :api_key
+
+          # An OAuth application you connected to Increase. Details will be under the `oauth_application` object.
+          OAUTH_APPLICATION = :oauth_application
+
+          # A User in the Increase dashboard. Details will be under the `user` object.
+          USER = :user
+        end
+
         class OAuthApplication < BaseModel
           # @!attribute [rw] name_
           #   The name of the OAuth Application.
@@ -201,6 +207,27 @@ module Increase
         end
       end
 
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
+      class Currency < Increase::Enum
+        # Canadian Dollar (CAD)
+        CAD = :CAD
+
+        # Swiss Franc (CHF)
+        CHF = :CHF
+
+        # Euro (EUR)
+        EUR = :EUR
+
+        # British Pound (GBP)
+        GBP = :GBP
+
+        # Japanese Yen (JPY)
+        JPY = :JPY
+
+        # US Dollar (USD)
+        USD = :USD
+      end
+
       class Rejection < BaseModel
         # @!attribute [rw] reject_reason_additional_information
         #   Additional information about the rejection provided by the recipient bank when the `reject_reason_code` is `NARRATIVE`.
@@ -209,36 +236,108 @@ module Increase
 
         # @!attribute [rw] reject_reason_code
         #   The reason the transfer was rejected as provided by the recipient bank or the Real-Time Payments network.
+        #   One of the constants defined in {Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode}
         #   @return [Symbol]
         required :reject_reason_code,
-                 Increase::Enum.new(
-                   :account_closed,
-                   :account_blocked,
-                   :invalid_creditor_account_type,
-                   :invalid_creditor_account_number,
-                   :invalid_creditor_financial_institution_identifier,
-                   :end_customer_deceased,
-                   :narrative,
-                   :transaction_forbidden,
-                   :transaction_type_not_supported,
-                   :unexpected_amount,
-                   :amount_exceeds_bank_limits,
-                   :invalid_creditor_address,
-                   :unknown_end_customer,
-                   :invalid_debtor_address,
-                   :timeout,
-                   :unsupported_message_for_recipient,
-                   :recipient_connection_not_available,
-                   :real_time_payments_suspended,
-                   :instructed_agent_signed_off,
-                   :processing_error,
-                   :other
-                 )
+                 enum: -> { Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode }
 
         # @!attribute [rw] rejected_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was rejected.
         #   @return [String]
         required :rejected_at, String
+
+        # The reason the transfer was rejected as provided by the recipient bank or the Real-Time Payments network.
+        class RejectReasonCode < Increase::Enum
+          # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
+          ACCOUNT_CLOSED = :account_closed
+
+          # The destination account is currently blocked from receiving transactions. Corresponds to the Real-Time Payments reason code `AC06`.
+          ACCOUNT_BLOCKED = :account_blocked
+
+          # The destination account is ineligible to receive Real-Time Payments transfers. Corresponds to the Real-Time Payments reason code `AC14`.
+          INVALID_CREDITOR_ACCOUNT_TYPE = :invalid_creditor_account_type
+
+          # The destination account does not exist. Corresponds to the Real-Time Payments reason code `AC03`.
+          INVALID_CREDITOR_ACCOUNT_NUMBER = :invalid_creditor_account_number
+
+          # The destination routing number is invalid. Corresponds to the Real-Time Payments reason code `RC04`.
+          INVALID_CREDITOR_FINANCIAL_INSTITUTION_IDENTIFIER = :invalid_creditor_financial_institution_identifier
+
+          # The destination account holder is deceased. Corresponds to the Real-Time Payments reason code `MD07`.
+          END_CUSTOMER_DECEASED = :end_customer_deceased
+
+          # The reason is provided as narrative information in the additional information field.
+          NARRATIVE = :narrative
+
+          # Real-Time Payments transfers are not allowed to the destination account. Corresponds to the Real-Time Payments reason code `AG01`.
+          TRANSACTION_FORBIDDEN = :transaction_forbidden
+
+          # Real-Time Payments transfers are not enabled for the destination account. Corresponds to the Real-Time Payments reason code `AG03`.
+          TRANSACTION_TYPE_NOT_SUPPORTED = :transaction_type_not_supported
+
+          # The amount of the transfer is different than expected by the recipient. Corresponds to the Real-Time Payments reason code `AM09`.
+          UNEXPECTED_AMOUNT = :unexpected_amount
+
+          # The amount is higher than the recipient is authorized to send or receive. Corresponds to the Real-Time Payments reason code `AM14`.
+          AMOUNT_EXCEEDS_BANK_LIMITS = :amount_exceeds_bank_limits
+
+          # The creditor's address is required, but missing or invalid. Corresponds to the Real-Time Payments reason code `BE04`.
+          INVALID_CREDITOR_ADDRESS = :invalid_creditor_address
+
+          # The specified creditor is unknown. Corresponds to the Real-Time Payments reason code `BE06`.
+          UNKNOWN_END_CUSTOMER = :unknown_end_customer
+
+          # The debtor's address is required, but missing or invalid. Corresponds to the Real-Time Payments reason code `BE07`.
+          INVALID_DEBTOR_ADDRESS = :invalid_debtor_address
+
+          # There was a timeout processing the transfer. Corresponds to the Real-Time Payments reason code `DS24`.
+          TIMEOUT = :timeout
+
+          # Real-Time Payments transfers are not enabled for the destination account. Corresponds to the Real-Time Payments reason code `NOAT`.
+          UNSUPPORTED_MESSAGE_FOR_RECIPIENT = :unsupported_message_for_recipient
+
+          # The destination financial institution is currently not connected to Real-Time Payments. Corresponds to the Real-Time Payments reason code `9912`.
+          RECIPIENT_CONNECTION_NOT_AVAILABLE = :recipient_connection_not_available
+
+          # Real-Time Payments is currently unavailable. Corresponds to the Real-Time Payments reason code `9948`.
+          REAL_TIME_PAYMENTS_SUSPENDED = :real_time_payments_suspended
+
+          # The destination financial institution is currently signed off of Real-Time Payments. Corresponds to the Real-Time Payments reason code `9910`.
+          INSTRUCTED_AGENT_SIGNED_OFF = :instructed_agent_signed_off
+
+          # The transfer was rejected due to an internal Increase issue. We have been notified.
+          PROCESSING_ERROR = :processing_error
+
+          # Some other error or issue has occurred.
+          OTHER = :other
+        end
+      end
+
+      # The lifecycle status of the transfer.
+      class Status < Increase::Enum
+        # The transfer is pending approval.
+        PENDING_APPROVAL = :pending_approval
+
+        # The transfer has been canceled.
+        CANCELED = :canceled
+
+        # The transfer is pending review by Increase.
+        PENDING_REVIEWING = :pending_reviewing
+
+        # The transfer is queued to be submitted to Real-Time Payments.
+        PENDING_SUBMISSION = :pending_submission
+
+        # The transfer has been submitted and is pending a response from Real-Time Payments.
+        SUBMITTED = :submitted
+
+        # The transfer has been sent successfully and is complete.
+        COMPLETE = :complete
+
+        # The transfer was rejected by the network or the recipient's bank.
+        REJECTED = :rejected
+
+        # The transfer requires attention from an Increase operator.
+        REQUIRES_ATTENTION = :requires_attention
       end
 
       class Submission < BaseModel
@@ -251,6 +350,11 @@ module Increase
         #   The Real-Time Payments network identification of the transfer.
         #   @return [String]
         required :transaction_identification, String
+      end
+
+      # A constant representing the object's type. For this resource it will always be `real_time_payments_transfer`.
+      class Type < Increase::Enum
+        REAL_TIME_PAYMENTS_TRANSFER = :real_time_payments_transfer
       end
     end
   end

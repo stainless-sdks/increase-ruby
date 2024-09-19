@@ -25,8 +25,9 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined Transaction's currency. This will match the currency on the Declined Transaction's Account.
+      #   One of the constants defined in {Increase::Models::DeclinedTransaction::Currency}
       #   @return [Symbol]
-      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+      required :currency, enum: -> { Increase::Models::DeclinedTransaction::Currency }
 
       # @!attribute [rw] description
       #   This is the description the vendor provides.
@@ -40,8 +41,9 @@ module Increase
 
       # @!attribute [rw] route_type
       #   The type of the route this Declined Transaction came through.
+      #   One of the constants defined in {Increase::Models::DeclinedTransaction::RouteType}
       #   @return [Symbol]
-      required :route_type, Increase::Enum.new(:account_number, :card, :lockbox)
+      required :route_type, enum: -> { Increase::Models::DeclinedTransaction::RouteType }
 
       # @!attribute [rw] source
       #   This is an object giving more details on the network-level event that caused the Declined Transaction. For example, for a card transaction this lists the merchant's industry and location. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
@@ -50,8 +52,42 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `declined_transaction`.
+      #   One of the constants defined in {Increase::Models::DeclinedTransaction::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:declined_transaction)
+      required :type, enum: -> { Increase::Models::DeclinedTransaction::Type }
+
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined Transaction's currency. This will match the currency on the Declined Transaction's Account.
+      class Currency < Increase::Enum
+        # Canadian Dollar (CAD)
+        CAD = :CAD
+
+        # Swiss Franc (CHF)
+        CHF = :CHF
+
+        # Euro (EUR)
+        EUR = :EUR
+
+        # British Pound (GBP)
+        GBP = :GBP
+
+        # Japanese Yen (JPY)
+        JPY = :JPY
+
+        # US Dollar (USD)
+        USD = :USD
+      end
+
+      # The type of the route this Declined Transaction came through.
+      class RouteType < Increase::Enum
+        # An Account Number.
+        ACCOUNT_NUMBER = :account_number
+
+        # A Card.
+        CARD = :card
+
+        # A Lockbox.
+        LOCKBOX = :lockbox
+      end
 
       class Source < BaseModel
         # @!attribute [rw] ach_decline
@@ -66,17 +102,9 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+        #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::Category}
         #   @return [Symbol]
-        required :category,
-                 Increase::Enum.new(
-                   :ach_decline,
-                   :card_decline,
-                   :check_decline,
-                   :inbound_real_time_payments_transfer_decline,
-                   :wire_decline,
-                   :check_deposit_rejection,
-                   :other
-                 )
+        required :category, enum: -> { Increase::Models::DeclinedTransaction::Source::Category }
 
         # @!attribute [rw] check_decline
         #   A Check Decline object. This field will be present in the JSON response if and only if `category` is equal to `check_decline`.
@@ -143,18 +171,9 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the ACH transfer was declined.
+          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason}
           #   @return [Symbol]
-          required :reason,
-                   Increase::Enum.new(
-                     :ach_route_canceled,
-                     :ach_route_disabled,
-                     :breaches_limit,
-                     :entity_not_active,
-                     :group_locked,
-                     :insufficient_funds,
-                     :transaction_not_allowed,
-                     :user_initiated
-                   )
+          required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason }
 
           # @!attribute [rw] receiver_id_number
           #   The id of the receiver of the transfer.
@@ -173,8 +192,41 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `ach_decline`.
+          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::ACHDecline::Type}
           #   @return [Symbol]
-          required :type, Increase::Enum.new(:ach_decline)
+          required :type, enum: -> { Increase::Models::DeclinedTransaction::Source::ACHDecline::Type }
+
+          # Why the ACH transfer was declined.
+          class Reason < Increase::Enum
+            # The account number is canceled.
+            ACH_ROUTE_CANCELED = :ach_route_canceled
+
+            # The account number is disabled.
+            ACH_ROUTE_DISABLED = :ach_route_disabled
+
+            # The transaction would cause an Increase limit to be exceeded.
+            BREACHES_LIMIT = :breaches_limit
+
+            # The account's entity is not active.
+            ENTITY_NOT_ACTIVE = :entity_not_active
+
+            # Your account is inactive.
+            GROUP_LOCKED = :group_locked
+
+            # Your account contains insufficient funds.
+            INSUFFICIENT_FUNDS = :insufficient_funds
+
+            # The transaction is not allowed per Increase's terms.
+            TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
+
+            # Your integration declined this transfer via the API.
+            USER_INITIATED = :user_initiated
+          end
+
+          # A constant representing the object's type. For this resource it will always be `ach_decline`.
+          class Type < Increase::Enum
+            ACH_DECLINE = :ach_decline
+          end
         end
 
         class CardDecline < BaseModel
@@ -185,8 +237,9 @@ module Increase
 
           # @!attribute [rw] actioner
           #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
+          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner}
           #   @return [Symbol]
-          required :actioner, Increase::Enum.new(:user, :increase, :network)
+          required :actioner, enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner }
 
           # @!attribute [rw] amount
           #   The declined amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
@@ -200,8 +253,9 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
+          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency, enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Currency }
 
           # @!attribute [rw] declined_transaction_id
           #   The identifier of the declined transaction created for this Card Decline.
@@ -282,16 +336,10 @@ module Increase
 
           # @!attribute [rw] processing_category
           #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
+          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory}
           #   @return [Symbol]
           required :processing_category,
-                   Increase::Enum.new(
-                     :account_funding,
-                     :automatic_fuel_dispenser,
-                     :bill_payment,
-                     :purchase,
-                     :quasi_cash,
-                     :refund
-                   )
+                   enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory }
 
           # @!attribute [rw] real_time_decision_id
           #   The identifier of the Real-Time Decision sent to approve or decline this transaction.
@@ -300,74 +348,141 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the transaction was declined.
+          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Reason}
           #   @return [Symbol]
-          required :reason,
-                   Increase::Enum.new(
-                     :card_not_active,
-                     :physical_card_not_active,
-                     :entity_not_active,
-                     :group_locked,
-                     :insufficient_funds,
-                     :cvv2_mismatch,
-                     :card_expiration_mismatch,
-                     :transaction_not_allowed,
-                     :breaches_limit,
-                     :webhook_declined,
-                     :webhook_timed_out,
-                     :declined_by_stand_in_processing,
-                     :invalid_physical_card,
-                     :missing_original_authorization,
-                     :suspected_fraud
-                   )
+          required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Reason }
 
           # @!attribute [rw] verification
           #   Fields related to verification of cardholder-provided values.
           #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification]
           required :verification, -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification }
 
+          # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
+          class Actioner < Increase::Enum
+            # This object was actioned by the user through a real-time decision.
+            USER = :user
+
+            # This object was actioned by Increase without user intervention.
+            INCREASE = :increase
+
+            # This object was actioned by the network, through stand-in processing.
+            NETWORK = :network
+          end
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
             #   The payment network used to process this card authorization.
+            #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category}
             #   @return [Symbol]
-            required :category, Increase::Enum.new(:visa)
+            required :category,
+                     enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category }
 
             # @!attribute [rw] visa
             #   Fields specific to the `visa` network.
             #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa]
             required :visa, -> { Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa }
 
+            # The payment network used to process this card authorization.
+            class Category < Increase::Enum
+              # Visa
+              VISA = :visa
+            end
+
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
+              #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator}
               #   @return [Symbol]
               required :electronic_commerce_indicator,
-                       Increase::Enum.new(
-                         :mail_phone_order,
-                         :recurring,
-                         :installment,
-                         :unknown_mail_phone_order,
-                         :secure_electronic_commerce,
-                         :non_authenticated_security_transaction_at_3ds_capable_merchant,
-                         :non_authenticated_security_transaction,
-                         :non_secure_transaction
-                       )
+                       enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator }
 
               # @!attribute [rw] point_of_service_entry_mode
               #   The method used to enter the cardholder's primary account number and card expiration date.
+              #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode}
               #   @return [Symbol]
               required :point_of_service_entry_mode,
-                       Increase::Enum.new(
-                         :unknown,
-                         :manual,
-                         :magnetic_stripe_no_cvv,
-                         :optical_code,
-                         :integrated_circuit_card,
-                         :contactless,
-                         :credential_on_file,
-                         :magnetic_stripe,
-                         :contactless_magnetic_stripe,
-                         :integrated_circuit_card_no_cvv
-                       )
+                       enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode }
+
+              # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
+              class ElectronicCommerceIndicator < Increase::Enum
+                # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
+                MAIL_PHONE_ORDER = :mail_phone_order
+
+                # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
+                RECURRING = :recurring
+
+                # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
+                INSTALLMENT = :installment
+
+                # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
+                UNKNOWN_MAIL_PHONE_ORDER = :unknown_mail_phone_order
+
+                # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
+                SECURE_ELECTRONIC_COMMERCE = :secure_electronic_commerce
+
+                # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = :non_authenticated_security_transaction_at_3ds_capable_merchant
+
+                # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = :non_authenticated_security_transaction
+
+                # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
+                NON_SECURE_TRANSACTION = :non_secure_transaction
+              end
+
+              # The method used to enter the cardholder's primary account number and card expiration date.
+              class PointOfServiceEntryMode < Increase::Enum
+                # Unknown
+                UNKNOWN = :unknown
+
+                # Manual key entry
+                MANUAL = :manual
+
+                # Magnetic stripe read, without card verification value
+                MAGNETIC_STRIPE_NO_CVV = :magnetic_stripe_no_cvv
+
+                # Optical code
+                OPTICAL_CODE = :optical_code
+
+                # Contact chip card
+                INTEGRATED_CIRCUIT_CARD = :integrated_circuit_card
+
+                # Contactless read of chip card
+                CONTACTLESS = :contactless
+
+                # Transaction initiated using a credential that has previously been stored on file
+                CREDENTIAL_ON_FILE = :credential_on_file
+
+                # Magnetic stripe read
+                MAGNETIC_STRIPE = :magnetic_stripe
+
+                # Contactless read of magnetic stripe data
+                CONTACTLESS_MAGNETIC_STRIPE = :contactless_magnetic_stripe
+
+                # Contact chip card, without card verification value
+                INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
+              end
             end
           end
 
@@ -388,6 +503,75 @@ module Increase
             required :transaction_id, String
           end
 
+          # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
+          class ProcessingCategory < Increase::Enum
+            # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
+            ACCOUNT_FUNDING = :account_funding
+
+            # Automatic fuel dispenser authorizations occur when a card is used at a gas pump, prior to the actual transaction amount being known. They are followed by an advice message that updates the amount of the pending transaction.
+            AUTOMATIC_FUEL_DISPENSER = :automatic_fuel_dispenser
+
+            # A transaction used to pay a bill.
+            BILL_PAYMENT = :bill_payment
+
+            # A regular purchase.
+            PURCHASE = :purchase
+
+            # Quasi-cash transactions represent purchases of items which may be convertible to cash.
+            QUASI_CASH = :quasi_cash
+
+            # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+            REFUND = :refund
+          end
+
+          # Why the transaction was declined.
+          class Reason < Increase::Enum
+            # The Card was not active.
+            CARD_NOT_ACTIVE = :card_not_active
+
+            # The Physical Card was not active.
+            PHYSICAL_CARD_NOT_ACTIVE = :physical_card_not_active
+
+            # The account's entity was not active.
+            ENTITY_NOT_ACTIVE = :entity_not_active
+
+            # The account was inactive.
+            GROUP_LOCKED = :group_locked
+
+            # The Card's Account did not have a sufficient available balance.
+            INSUFFICIENT_FUNDS = :insufficient_funds
+
+            # The given CVV2 did not match the card's value.
+            CVV2_MISMATCH = :cvv2_mismatch
+
+            # The given expiration date did not match the card's value. Only applies when a CVV2 is present.
+            CARD_EXPIRATION_MISMATCH = :card_expiration_mismatch
+
+            # The attempted card transaction is not allowed per Increase's terms.
+            TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
+
+            # The transaction was blocked by a Limit.
+            BREACHES_LIMIT = :breaches_limit
+
+            # Your application declined the transaction via webhook.
+            WEBHOOK_DECLINED = :webhook_declined
+
+            # Your application webhook did not respond without the required timeout.
+            WEBHOOK_TIMED_OUT = :webhook_timed_out
+
+            # Declined by stand-in processing.
+            DECLINED_BY_STAND_IN_PROCESSING = :declined_by_stand_in_processing
+
+            # The card read had an invalid CVV, dCVV, or authorization request cryptogram.
+            INVALID_PHYSICAL_CARD = :invalid_physical_card
+
+            # The original card authorization for this incremental authorization does not exist.
+            MISSING_ORIGINAL_AUTHORIZATION = :missing_original_authorization
+
+            # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
+            SUSPECTED_FRAUD = :suspected_fraud
+          end
+
           class Verification < BaseModel
             # @!attribute [rw] card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
@@ -404,8 +588,22 @@ module Increase
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
               #   The result of verifying the Card Verification Code.
+              #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result}
               #   @return [Symbol]
-              required :result, Increase::Enum.new(:not_checked, :match, :no_match)
+              required :result,
+                       enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result }
+
+              # The result of verifying the Card Verification Code.
+              class Result < Increase::Enum
+                # No card verification code was provided in the authorization request.
+                NOT_CHECKED = :not_checked
+
+                # The card verification code matched the one on file.
+                MATCH = :match
+
+                # The card verification code did not match the one on file.
+                NO_MATCH = :no_match
+              end
             end
 
             class CardholderAddress < BaseModel
@@ -431,18 +629,57 @@ module Increase
 
               # @!attribute [rw] result
               #   The address verification result returned to the card network.
+              #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result}
               #   @return [Symbol]
               required :result,
-                       Increase::Enum.new(
-                         :not_checked,
-                         :postal_code_match_address_not_checked,
-                         :postal_code_match_address_no_match,
-                         :postal_code_no_match_address_match,
-                         :match,
-                         :no_match
-                       )
+                       enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result }
+
+              # The address verification result returned to the card network.
+              class Result < Increase::Enum
+                # No adress was provided in the authorization request.
+                NOT_CHECKED = :not_checked
+
+                # Postal code matches, but the street address was not verified.
+                POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED = :postal_code_match_address_not_checked
+
+                # Postal code matches, but the street address does not match.
+                POSTAL_CODE_MATCH_ADDRESS_NO_MATCH = :postal_code_match_address_no_match
+
+                # Postal code does not match, but the street address matches.
+                POSTAL_CODE_NO_MATCH_ADDRESS_MATCH = :postal_code_no_match_address_match
+
+                # Postal code and street address match.
+                MATCH = :match
+
+                # Postal code and street address do not match.
+                NO_MATCH = :no_match
+              end
             end
           end
+        end
+
+        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+        class Category < Increase::Enum
+          # ACH Decline: details will be under the `ach_decline` object.
+          ACH_DECLINE = :ach_decline
+
+          # Card Decline: details will be under the `card_decline` object.
+          CARD_DECLINE = :card_decline
+
+          # Check Decline: details will be under the `check_decline` object.
+          CHECK_DECLINE = :check_decline
+
+          # Inbound Real-Time Payments Transfer Decline: details will be under the `inbound_real_time_payments_transfer_decline` object.
+          INBOUND_REAL_TIME_PAYMENTS_TRANSFER_DECLINE = :inbound_real_time_payments_transfer_decline
+
+          # Wire Decline: details will be under the `wire_decline` object.
+          WIRE_DECLINE = :wire_decline
+
+          # Check Deposit Rejection: details will be under the `check_deposit_rejection` object.
+          CHECK_DEPOSIT_REJECTION = :check_deposit_rejection
+
+          # The Declined Transaction was made for an undocumented or deprecated reason.
+          OTHER = :other
         end
 
         class CheckDecline < BaseModel
@@ -478,27 +715,63 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the check was declined.
+          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason}
           #   @return [Symbol]
-          required :reason,
-                   Increase::Enum.new(
-                     :ach_route_disabled,
-                     :ach_route_canceled,
-                     :altered_or_fictitious,
-                     :breaches_limit,
-                     :endorsement_irregular,
-                     :entity_not_active,
-                     :group_locked,
-                     :insufficient_funds,
-                     :stop_payment_requested,
-                     :duplicate_presentment,
-                     :not_authorized,
-                     :amount_mismatch,
-                     :not_our_item,
-                     :no_account_number_found,
-                     :refer_to_image,
-                     :unable_to_process,
-                     :user_initiated
-                   )
+          required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason }
+
+          # Why the check was declined.
+          class Reason < Increase::Enum
+            # The account number is disabled.
+            ACH_ROUTE_DISABLED = :ach_route_disabled
+
+            # The account number is canceled.
+            ACH_ROUTE_CANCELED = :ach_route_canceled
+
+            # The deposited check was altered or fictitious.
+            ALTERED_OR_FICTITIOUS = :altered_or_fictitious
+
+            # The transaction would cause a limit to be exceeded.
+            BREACHES_LIMIT = :breaches_limit
+
+            # The check was not endorsed by the payee.
+            ENDORSEMENT_IRREGULAR = :endorsement_irregular
+
+            # The account's entity is not active.
+            ENTITY_NOT_ACTIVE = :entity_not_active
+
+            # Your account is inactive.
+            GROUP_LOCKED = :group_locked
+
+            # Your account contains insufficient funds.
+            INSUFFICIENT_FUNDS = :insufficient_funds
+
+            # Stop payment requested for this check.
+            STOP_PAYMENT_REQUESTED = :stop_payment_requested
+
+            # The check was a duplicate deposit.
+            DUPLICATE_PRESENTMENT = :duplicate_presentment
+
+            # The check was not authorized.
+            NOT_AUTHORIZED = :not_authorized
+
+            # The amount the receiving bank is attempting to deposit does not match the amount on the check.
+            AMOUNT_MISMATCH = :amount_mismatch
+
+            # The check attempting to be deposited does not belong to Increase.
+            NOT_OUR_ITEM = :not_our_item
+
+            # The account number on the check does not exist at Increase.
+            NO_ACCOUNT_NUMBER_FOUND = :no_account_number_found
+
+            # The check is not readable. Please refer to the image.
+            REFER_TO_IMAGE = :refer_to_image
+
+            # The check cannot be processed. This is rare: please contact support.
+            UNABLE_TO_PROCESS = :unable_to_process
+
+            # Your integration declined this check via the API.
+            USER_INITIATED = :user_initiated
+          end
         end
 
         class CheckDepositRejection < BaseModel
@@ -514,8 +787,10 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
+          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency,
+                   enum: -> { Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency }
 
           # @!attribute [rw] declined_transaction_id
           #   The identifier of the associated declined transaction.
@@ -524,25 +799,69 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the check deposit was rejected.
+          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason}
           #   @return [Symbol]
           required :reason,
-                   Increase::Enum.new(
-                     :incomplete_image,
-                     :duplicate,
-                     :poor_image_quality,
-                     :incorrect_amount,
-                     :incorrect_recipient,
-                     :not_eligible_for_mobile_deposit,
-                     :missing_required_data_elements,
-                     :suspected_fraud,
-                     :deposit_window_expired,
-                     :unknown
-                   )
+                   enum: -> { Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason }
 
           # @!attribute [rw] rejected_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was rejected.
           #   @return [String]
           required :rejected_at, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
+          # Why the check deposit was rejected.
+          class Reason < Increase::Enum
+            # The check's image is incomplete.
+            INCOMPLETE_IMAGE = :incomplete_image
+
+            # This is a duplicate check submission.
+            DUPLICATE = :duplicate
+
+            # This check has poor image quality.
+            POOR_IMAGE_QUALITY = :poor_image_quality
+
+            # The check was deposited with the incorrect amount.
+            INCORRECT_AMOUNT = :incorrect_amount
+
+            # The check is made out to someone other than the account holder.
+            INCORRECT_RECIPIENT = :incorrect_recipient
+
+            # This check was not eligible for mobile deposit.
+            NOT_ELIGIBLE_FOR_MOBILE_DEPOSIT = :not_eligible_for_mobile_deposit
+
+            # This check is missing at least one required field.
+            MISSING_REQUIRED_DATA_ELEMENTS = :missing_required_data_elements
+
+            # This check is suspected to be fraudulent.
+            SUSPECTED_FRAUD = :suspected_fraud
+
+            # This check's deposit window has expired.
+            DEPOSIT_WINDOW_EXPIRED = :deposit_window_expired
+
+            # The check was rejected for an unknown reason.
+            UNKNOWN = :unknown
+          end
         end
 
         class InboundRealTimePaymentsTransferDecline < BaseModel
@@ -558,8 +877,10 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
+          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency}
           #   @return [Symbol]
-          required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+          required :currency,
+                   enum: -> { Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency }
 
           # @!attribute [rw] debtor_account_number
           #   The account number of the account that sent the transfer.
@@ -578,16 +899,10 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the transfer was declined.
+          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason}
           #   @return [Symbol]
           required :reason,
-                   Increase::Enum.new(
-                     :account_number_canceled,
-                     :account_number_disabled,
-                     :account_restricted,
-                     :group_locked,
-                     :entity_not_active,
-                     :real_time_payments_not_enabled
-                   )
+                   enum: -> { Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason }
 
           # @!attribute [rw] remittance_information
           #   Additional information included with the transfer.
@@ -603,6 +918,48 @@ module Increase
           #   The identifier of the Real-Time Payments Transfer that led to this Transaction.
           #   @return [String]
           required :transfer_id, String
+
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
+          class Currency < Increase::Enum
+            # Canadian Dollar (CAD)
+            CAD = :CAD
+
+            # Swiss Franc (CHF)
+            CHF = :CHF
+
+            # Euro (EUR)
+            EUR = :EUR
+
+            # British Pound (GBP)
+            GBP = :GBP
+
+            # Japanese Yen (JPY)
+            JPY = :JPY
+
+            # US Dollar (USD)
+            USD = :USD
+          end
+
+          # Why the transfer was declined.
+          class Reason < Increase::Enum
+            # The account number is canceled.
+            ACCOUNT_NUMBER_CANCELED = :account_number_canceled
+
+            # The account number is disabled.
+            ACCOUNT_NUMBER_DISABLED = :account_number_disabled
+
+            # Your account is restricted.
+            ACCOUNT_RESTRICTED = :account_restricted
+
+            # Your account is inactive.
+            GROUP_LOCKED = :group_locked
+
+            # The account's entity is not active.
+            ENTITY_NOT_ACTIVE = :entity_not_active
+
+            # Your account is not enabled to receive Real-Time Payments transfers.
+            REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
+          end
         end
 
         class WireDecline < BaseModel
@@ -613,17 +970,36 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the wire transfer was declined.
+          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::WireDecline::Reason}
           #   @return [Symbol]
-          required :reason,
-                   Increase::Enum.new(
-                     :account_number_canceled,
-                     :account_number_disabled,
-                     :entity_not_active,
-                     :group_locked,
-                     :no_account_number,
-                     :transaction_not_allowed
-                   )
+          required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::WireDecline::Reason }
+
+          # Why the wire transfer was declined.
+          class Reason < Increase::Enum
+            # The account number is canceled.
+            ACCOUNT_NUMBER_CANCELED = :account_number_canceled
+
+            # The account number is disabled.
+            ACCOUNT_NUMBER_DISABLED = :account_number_disabled
+
+            # The account's entity is not active.
+            ENTITY_NOT_ACTIVE = :entity_not_active
+
+            # Your account is inactive.
+            GROUP_LOCKED = :group_locked
+
+            # The beneficiary account number does not exist.
+            NO_ACCOUNT_NUMBER = :no_account_number
+
+            # The transaction is not allowed per Increase's terms.
+            TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
+          end
         end
+      end
+
+      # A constant representing the object's type. For this resource it will always be `declined_transaction`.
+      class Type < Increase::Enum
+        DECLINED_TRANSACTION = :declined_transaction
       end
     end
   end

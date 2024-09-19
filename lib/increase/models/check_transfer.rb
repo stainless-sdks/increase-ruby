@@ -55,13 +55,15 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
+      #   One of the constants defined in {Increase::Models::CheckTransfer::Currency}
       #   @return [Symbol]
-      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+      required :currency, enum: -> { Increase::Models::CheckTransfer::Currency }
 
       # @!attribute [rw] fulfillment_method
       #   Whether Increase will print and mail the check or if you will do it yourself.
+      #   One of the constants defined in {Increase::Models::CheckTransfer::FulfillmentMethod}
       #   @return [Symbol]
-      required :fulfillment_method, Increase::Enum.new(:physical_check, :third_party)
+      required :fulfillment_method, enum: -> { Increase::Models::CheckTransfer::FulfillmentMethod }
 
       # @!attribute [rw] idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
@@ -95,20 +97,9 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
+      #   One of the constants defined in {Increase::Models::CheckTransfer::Status}
       #   @return [Symbol]
-      required :status,
-               Increase::Enum.new(
-                 :pending_approval,
-                 :pending_submission,
-                 :pending_mailing,
-                 :mailed,
-                 :canceled,
-                 :deposited,
-                 :stopped,
-                 :rejected,
-                 :requires_attention,
-                 :returned
-               )
+      required :status, enum: -> { Increase::Models::CheckTransfer::Status }
 
       # @!attribute [rw] stop_payment_request
       #   After a stop-payment is requested on the check, this will contain supplemental details.
@@ -127,8 +118,9 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `check_transfer`.
+      #   One of the constants defined in {Increase::Models::CheckTransfer::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:check_transfer)
+      required :type, enum: -> { Increase::Models::CheckTransfer::Type }
 
       class Approval < BaseModel
         # @!attribute [rw] approved_at
@@ -162,8 +154,9 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of object that created this transfer.
+        #   One of the constants defined in {Increase::Models::CheckTransfer::CreatedBy::Category}
         #   @return [Symbol]
-        required :category, Increase::Enum.new(:api_key, :oauth_application, :user)
+        required :category, enum: -> { Increase::Models::CheckTransfer::CreatedBy::Category }
 
         # @!attribute [rw] oauth_application
         #   If present, details about the OAuth Application that created the transfer.
@@ -182,6 +175,18 @@ module Increase
           required :description, String
         end
 
+        # The type of object that created this transfer.
+        class Category < Increase::Enum
+          # An API key. Details will be under the `api_key` object.
+          API_KEY = :api_key
+
+          # An OAuth application you connected to Increase. Details will be under the `oauth_application` object.
+          OAUTH_APPLICATION = :oauth_application
+
+          # A User in the Increase dashboard. Details will be under the `user` object.
+          USER = :user
+        end
+
         class OAuthApplication < BaseModel
           # @!attribute [rw] name_
           #   The name of the OAuth Application.
@@ -195,6 +200,36 @@ module Increase
           #   @return [String]
           required :email, String
         end
+      end
+
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
+      class Currency < Increase::Enum
+        # Canadian Dollar (CAD)
+        CAD = :CAD
+
+        # Swiss Franc (CHF)
+        CHF = :CHF
+
+        # Euro (EUR)
+        EUR = :EUR
+
+        # British Pound (GBP)
+        GBP = :GBP
+
+        # Japanese Yen (JPY)
+        JPY = :JPY
+
+        # US Dollar (USD)
+        USD = :USD
+      end
+
+      # Whether Increase will print and mail the check or if you will do it yourself.
+      class FulfillmentMethod < Increase::Enum
+        # Increase will print and mail a physical check.
+        PHYSICAL_CHECK = :physical_check
+
+        # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
+        THIRD_PARTY = :third_party
       end
 
       class Mailing < BaseModel
@@ -313,22 +348,62 @@ module Increase
         class TrackingUpdate < BaseModel
           # @!attribute [rw] category
           #   The type of tracking event.
+          #   One of the constants defined in {Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category}
           #   @return [Symbol]
-          required :category, Increase::Enum.new(:returned_to_sender)
+          required :category, enum: -> { Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category }
 
           # @!attribute [rw] created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the tracking event took place.
           #   @return [String]
           required :created_at, String
+
+          # The type of tracking event.
+          class Category < Increase::Enum
+            # Delivery failed and the check was returned to sender.
+            RETURNED_TO_SENDER = :returned_to_sender
+          end
         end
+      end
+
+      # The lifecycle status of the transfer.
+      class Status < Increase::Enum
+        # The transfer is awaiting approval.
+        PENDING_APPROVAL = :pending_approval
+
+        # The transfer is pending submission.
+        PENDING_SUBMISSION = :pending_submission
+
+        # The check is queued for mailing.
+        PENDING_MAILING = :pending_mailing
+
+        # The check has been mailed.
+        MAILED = :mailed
+
+        # The transfer has been canceled.
+        CANCELED = :canceled
+
+        # The check has been deposited.
+        DEPOSITED = :deposited
+
+        # A stop-payment was requested for this check.
+        STOPPED = :stopped
+
+        # The transfer has been rejected.
+        REJECTED = :rejected
+
+        # The transfer requires attention from an Increase operator.
+        REQUIRES_ATTENTION = :requires_attention
+
+        # The transfer has been returned.
+        RETURNED = :returned
       end
 
       class StopPaymentRequest < BaseModel
         # @!attribute [rw] reason
         #   The reason why this transfer was stopped.
+        #   One of the constants defined in {Increase::Models::CheckTransfer::StopPaymentRequest::Reason}
         #   @return [Symbol]
-        required :reason,
-                 Increase::Enum.new(:mail_delivery_failed, :rejected_by_increase, :not_authorized, :unknown)
+        required :reason, enum: -> { Increase::Models::CheckTransfer::StopPaymentRequest::Reason }
 
         # @!attribute [rw] requested_at
         #   The time the stop-payment was requested.
@@ -342,8 +417,29 @@ module Increase
 
         # @!attribute [rw] type
         #   A constant representing the object's type. For this resource it will always be `check_transfer_stop_payment_request`.
+        #   One of the constants defined in {Increase::Models::CheckTransfer::StopPaymentRequest::Type}
         #   @return [Symbol]
-        required :type, Increase::Enum.new(:check_transfer_stop_payment_request)
+        required :type, enum: -> { Increase::Models::CheckTransfer::StopPaymentRequest::Type }
+
+        # The reason why this transfer was stopped.
+        class Reason < Increase::Enum
+          # The check could not be delivered.
+          MAIL_DELIVERY_FAILED = :mail_delivery_failed
+
+          # The check was canceled by an Increase operator who will provide details out-of-band.
+          REJECTED_BY_INCREASE = :rejected_by_increase
+
+          # The check was not authorized.
+          NOT_AUTHORIZED = :not_authorized
+
+          # The check was stopped for another reason.
+          UNKNOWN = :unknown
+        end
+
+        # A constant representing the object's type. For this resource it will always be `check_transfer_stop_payment_request`.
+        class Type < Increase::Enum
+          CHECK_TRANSFER_STOP_PAYMENT_REQUEST = :check_transfer_stop_payment_request
+        end
       end
 
       class Submission < BaseModel
@@ -358,6 +454,11 @@ module Increase
         #   The check number that will be printed on the check.
         #   @return [String]
         required :check_number, String
+      end
+
+      # A constant representing the object's type. For this resource it will always be `check_transfer`.
+      class Type < Increase::Enum
+        CHECK_TRANSFER = :check_transfer
       end
     end
   end

@@ -40,8 +40,9 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
+      #   One of the constants defined in {Increase::Models::InboundRealTimePaymentsTransfer::Currency}
       #   @return [Symbol]
-      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+      required :currency, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Currency }
 
       # @!attribute [rw] debtor_account_number
       #   The account number of the account that sent the transfer.
@@ -70,8 +71,9 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
+      #   One of the constants defined in {Increase::Models::InboundRealTimePaymentsTransfer::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending_confirming, :timed_out, :confirmed, :declined)
+      required :status, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Status }
 
       # @!attribute [rw] transaction_identification
       #   The Real-Time Payments network identification of the transfer.
@@ -80,8 +82,9 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_real_time_payments_transfer`.
+      #   One of the constants defined in {Increase::Models::InboundRealTimePaymentsTransfer::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:inbound_real_time_payments_transfer)
+      required :type, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Type }
 
       class Confirmation < BaseModel
         # @!attribute [rw] confirmed_at
@@ -93,6 +96,27 @@ module Increase
         #   The id of the transaction for the confirmed transfer.
         #   @return [String]
         required :transaction_id, String
+      end
+
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
+      class Currency < Increase::Enum
+        # Canadian Dollar (CAD)
+        CAD = :CAD
+
+        # Swiss Franc (CHF)
+        CHF = :CHF
+
+        # Euro (EUR)
+        EUR = :EUR
+
+        # British Pound (GBP)
+        GBP = :GBP
+
+        # Japanese Yen (JPY)
+        JPY = :JPY
+
+        # US Dollar (USD)
+        USD = :USD
       end
 
       class Decline < BaseModel
@@ -108,16 +132,50 @@ module Increase
 
         # @!attribute [rw] reason
         #   The reason for the transfer decline.
+        #   One of the constants defined in {Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason}
         #   @return [Symbol]
-        required :reason,
-                 Increase::Enum.new(
-                   :account_number_canceled,
-                   :account_number_disabled,
-                   :account_restricted,
-                   :group_locked,
-                   :entity_not_active,
-                   :real_time_payments_not_enabled
-                 )
+        required :reason, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason }
+
+        # The reason for the transfer decline.
+        class Reason < Increase::Enum
+          # The account number is canceled.
+          ACCOUNT_NUMBER_CANCELED = :account_number_canceled
+
+          # The account number is disabled.
+          ACCOUNT_NUMBER_DISABLED = :account_number_disabled
+
+          # Your account is restricted.
+          ACCOUNT_RESTRICTED = :account_restricted
+
+          # Your account is inactive.
+          GROUP_LOCKED = :group_locked
+
+          # The account's entity is not active.
+          ENTITY_NOT_ACTIVE = :entity_not_active
+
+          # Your account is not enabled to receive Real-Time Payments transfers.
+          REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
+        end
+      end
+
+      # The lifecycle status of the transfer.
+      class Status < Increase::Enum
+        # The transfer is pending confirmation.
+        PENDING_CONFIRMING = :pending_confirming
+
+        # The transfer was not responded to in time.
+        TIMED_OUT = :timed_out
+
+        # The transfer has been received successfully and is confirmed.
+        CONFIRMED = :confirmed
+
+        # The transfer has been declined.
+        DECLINED = :declined
+      end
+
+      # A constant representing the object's type. For this resource it will always be `inbound_real_time_payments_transfer`.
+      class Type < Increase::Enum
+        INBOUND_REAL_TIME_PAYMENTS_TRANSFER = :inbound_real_time_payments_transfer
       end
     end
   end

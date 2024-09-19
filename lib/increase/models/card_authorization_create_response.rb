@@ -15,8 +15,14 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_card_authorization_simulation_result`.
+      #   One of the constants defined in {Increase::Models::CardAuthorizationCreateResponse::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:inbound_card_authorization_simulation_result)
+      required :type, enum: -> { Increase::Models::CardAuthorizationCreateResponse::Type }
+
+      # A constant representing the object's type. For this resource it will always be `inbound_card_authorization_simulation_result`.
+      class Type < Increase::Enum
+        INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT = :inbound_card_authorization_simulation_result
+      end
     end
   end
 end

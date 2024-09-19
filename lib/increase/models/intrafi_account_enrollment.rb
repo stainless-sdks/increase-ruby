@@ -25,14 +25,38 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the account in the network. An account takes about one business day to go from `pending_enrolling` to `enrolled`.
+      #   One of the constants defined in {Increase::Models::IntrafiAccountEnrollment::Status}
       #   @return [Symbol]
-      required :status,
-               Increase::Enum.new(:pending_enrolling, :enrolled, :pending_unenrolling, :unenrolled, :requires_attention)
+      required :status, enum: -> { Increase::Models::IntrafiAccountEnrollment::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `intrafi_account_enrollment`.
+      #   One of the constants defined in {Increase::Models::IntrafiAccountEnrollment::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:intrafi_account_enrollment)
+      required :type, enum: -> { Increase::Models::IntrafiAccountEnrollment::Type }
+
+      # The status of the account in the network. An account takes about one business day to go from `pending_enrolling` to `enrolled`.
+      class Status < Increase::Enum
+        # The account is being added to the IntraFi network.
+        PENDING_ENROLLING = :pending_enrolling
+
+        # The account has been enrolled with IntraFi.
+        ENROLLED = :enrolled
+
+        # The account is being unenrolled from IntraFi's deposit sweep.
+        PENDING_UNENROLLING = :pending_unenrolling
+
+        # The account was once enrolled, but is no longer enrolled at IntraFi.
+        UNENROLLED = :unenrolled
+
+        # Something unexpected happened with this account. Contact Increase support.
+        REQUIRES_ATTENTION = :requires_attention
+      end
+
+      # A constant representing the object's type. For this resource it will always be `intrafi_account_enrollment`.
+      class Type < Increase::Enum
+        INTRAFI_ACCOUNT_ENROLLMENT = :intrafi_account_enrollment
+      end
     end
   end
 end

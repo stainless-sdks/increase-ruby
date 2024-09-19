@@ -50,26 +50,65 @@ module Increase
 
       # @!attribute [rw] status
       #   This indicates if payments can be made to the Account Number.
+      #   One of the constants defined in {Increase::Models::AccountNumber::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:active, :disabled, :canceled)
+      required :status, enum: -> { Increase::Models::AccountNumber::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `account_number`.
+      #   One of the constants defined in {Increase::Models::AccountNumber::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:account_number)
+      required :type, enum: -> { Increase::Models::AccountNumber::Type }
 
       class InboundACH < BaseModel
         # @!attribute [rw] debit_status
         #   Whether ACH debits are allowed against this Account Number. Note that they will still be declined if this is `allowed` if the Account Number is not active.
+        #   One of the constants defined in {Increase::Models::AccountNumber::InboundACH::DebitStatus}
         #   @return [Symbol]
-        required :debit_status, Increase::Enum.new(:allowed, :blocked)
+        required :debit_status, enum: -> { Increase::Models::AccountNumber::InboundACH::DebitStatus }
+
+        # Whether ACH debits are allowed against this Account Number. Note that they will still be declined if this is `allowed` if the Account Number is not active.
+        class DebitStatus < Increase::Enum
+          # ACH Debits are allowed.
+          ALLOWED = :allowed
+
+          # ACH Debits are blocked.
+          BLOCKED = :blocked
+        end
       end
 
       class InboundChecks < BaseModel
         # @!attribute [rw] status
         #   How Increase should process checks with this account number printed on them.
+        #   One of the constants defined in {Increase::Models::AccountNumber::InboundChecks::Status}
         #   @return [Symbol]
-        required :status, Increase::Enum.new(:allowed, :check_transfers_only)
+        required :status, enum: -> { Increase::Models::AccountNumber::InboundChecks::Status }
+
+        # How Increase should process checks with this account number printed on them.
+        class Status < Increase::Enum
+          # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
+          ALLOWED = :allowed
+
+          # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
+          CHECK_TRANSFERS_ONLY = :check_transfers_only
+        end
+      end
+
+      # This indicates if payments can be made to the Account Number.
+      class Status < Increase::Enum
+        # The account number is active.
+        ACTIVE = :active
+
+        # The account number is temporarily disabled.
+        DISABLED = :disabled
+
+        # The account number is permanently disabled.
+        CANCELED = :canceled
+      end
+
+      # A constant representing the object's type. For this resource it will always be `account_number`.
+      class Type < Increase::Enum
+        ACCOUNT_NUMBER = :account_number
       end
     end
   end

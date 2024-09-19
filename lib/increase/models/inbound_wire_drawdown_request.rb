@@ -115,8 +115,14 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_wire_drawdown_request`.
+      #   One of the constants defined in {Increase::Models::InboundWireDrawdownRequest::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:inbound_wire_drawdown_request)
+      required :type, enum: -> { Increase::Models::InboundWireDrawdownRequest::Type }
+
+      # A constant representing the object's type. For this resource it will always be `inbound_wire_drawdown_request`.
+      class Type < Increase::Enum
+        INBOUND_WIRE_DRAWDOWN_REQUEST = :inbound_wire_drawdown_request
+      end
     end
   end
 end

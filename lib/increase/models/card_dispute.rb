@@ -45,13 +45,15 @@ module Increase
 
       # @!attribute [rw] status
       #   The results of the Dispute investigation.
+      #   One of the constants defined in {Increase::Models::CardDispute::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending_reviewing, :accepted, :rejected, :lost, :won)
+      required :status, enum: -> { Increase::Models::CardDispute::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `card_dispute`.
+      #   One of the constants defined in {Increase::Models::CardDispute::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:card_dispute)
+      required :type, enum: -> { Increase::Models::CardDispute::Type }
 
       # @!attribute [rw] win
       #   If the Card Dispute's status is `won`, this will contain details of the won dispute.
@@ -112,6 +114,29 @@ module Increase
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was rejected.
         #   @return [String]
         required :rejected_at, String
+      end
+
+      # The results of the Dispute investigation.
+      class Status < Increase::Enum
+        # The Card Dispute is pending review.
+        PENDING_REVIEWING = :pending_reviewing
+
+        # The Card Dispute has been accepted and your funds have been returned. The card dispute will eventually transition into `won` or `lost` depending on the outcome.
+        ACCEPTED = :accepted
+
+        # The Card Dispute has been rejected.
+        REJECTED = :rejected
+
+        # The Card Dispute has been lost and funds previously credited from the acceptance have been debited.
+        LOST = :lost
+
+        # The Card Dispute has been won and no further action can be taken.
+        WON = :won
+      end
+
+      # A constant representing the object's type. For this resource it will always be `card_dispute`.
+      class Type < Increase::Enum
+        CARD_DISPUTE = :card_dispute
       end
 
       class Win < BaseModel

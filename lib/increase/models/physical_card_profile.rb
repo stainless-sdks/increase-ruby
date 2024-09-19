@@ -30,8 +30,9 @@ module Increase
 
       # @!attribute [rw] creator
       #   The creator of this Physical Card Profile.
+      #   One of the constants defined in {Increase::Models::PhysicalCardProfile::Creator}
       #   @return [Symbol]
-      required :creator, Increase::Enum.new(:increase, :user)
+      required :creator, enum: -> { Increase::Models::PhysicalCardProfile::Creator }
 
       # @!attribute [rw] description
       #   A description you can use to identify the Physical Card Profile.
@@ -55,21 +56,50 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Physical Card Profile.
+      #   One of the constants defined in {Increase::Models::PhysicalCardProfile::Status}
       #   @return [Symbol]
-      required :status,
-               Increase::Enum.new(
-                 :pending_creating,
-                 :pending_reviewing,
-                 :rejected,
-                 :pending_submitting,
-                 :active,
-                 :archived
-               )
+      required :status, enum: -> { Increase::Models::PhysicalCardProfile::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `physical_card_profile`.
+      #   One of the constants defined in {Increase::Models::PhysicalCardProfile::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:physical_card_profile)
+      required :type, enum: -> { Increase::Models::PhysicalCardProfile::Type }
+
+      # The creator of this Physical Card Profile.
+      class Creator < Increase::Enum
+        # This Physical Card Profile was created by Increase.
+        INCREASE = :increase
+
+        # This Physical Card Profile was created by you.
+        USER = :user
+      end
+
+      # The status of the Physical Card Profile.
+      class Status < Increase::Enum
+        # The Card Profile has not yet been processed by Increase.
+        PENDING_CREATING = :pending_creating
+
+        # The card profile is awaiting review by Increase.
+        PENDING_REVIEWING = :pending_reviewing
+
+        # There is an issue with the Physical Card Profile preventing it from use.
+        REJECTED = :rejected
+
+        # The card profile is awaiting submission to the fulfillment provider.
+        PENDING_SUBMITTING = :pending_submitting
+
+        # The Physical Card Profile has been submitted to the fulfillment provider and is ready to use.
+        ACTIVE = :active
+
+        # The Physical Card Profile has been archived.
+        ARCHIVED = :archived
+      end
+
+      # A constant representing the object's type. For this resource it will always be `physical_card_profile`.
+      class Type < Increase::Enum
+        PHYSICAL_CARD_PROFILE = :physical_card_profile
+      end
     end
   end
 end

@@ -40,13 +40,15 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Physical Card.
+      #   One of the constants defined in {Increase::Models::PhysicalCard::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:active, :disabled, :canceled)
+      required :status, enum: -> { Increase::Models::PhysicalCard::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `physical_card`.
+      #   One of the constants defined in {Increase::Models::PhysicalCard::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:physical_card)
+      required :type, enum: -> { Increase::Models::PhysicalCard::Type }
 
       class Cardholder < BaseModel
         # @!attribute [rw] first_name
@@ -68,14 +70,15 @@ module Increase
 
         # @!attribute [rw] method_
         #   The shipping method.
+        #   One of the constants defined in {Increase::Models::PhysicalCard::Shipment::Method}
         #   @return [Symbol]
-        required :method_, Increase::Enum.new(:usps, :fedex_priority_overnight, :fedex_2_day)
+        required :method_, enum: -> { Increase::Models::PhysicalCard::Shipment::Method }
 
         # @!attribute [rw] status
         #   The status of this shipment.
+        #   One of the constants defined in {Increase::Models::PhysicalCard::Shipment::Status}
         #   @return [Symbol]
-        required :status,
-                 Increase::Enum.new(:pending, :canceled, :submitted, :acknowledged, :rejected, :shipped, :returned)
+        required :status, enum: -> { Increase::Models::PhysicalCard::Shipment::Status }
 
         # @!attribute [rw] tracking
         #   Tracking details for the shipment.
@@ -119,6 +122,42 @@ module Increase
           required :state, String
         end
 
+        # The shipping method.
+        class Method < Increase::Enum
+          # USPS Post with tracking.
+          USPS = :usps
+
+          # FedEx Priority Overnight, no signature.
+          FEDEX_PRIORITY_OVERNIGHT = :fedex_priority_overnight
+
+          # FedEx 2-day.
+          FEDEX_2_DAY = :fedex_2_day
+        end
+
+        # The status of this shipment.
+        class Status < Increase::Enum
+          # The physical card has not yet been shipped.
+          PENDING = :pending
+
+          # The physical card shipment was canceled prior to submission.
+          CANCELED = :canceled
+
+          # The physical card shipment has been submitted to the card fulfillment provider.
+          SUBMITTED = :submitted
+
+          # The physical card shipment has been acknowledged by the card fulfillment provider and will be processed in their next batch.
+          ACKNOWLEDGED = :acknowledged
+
+          # The physical card shipment was rejected by the card printer due to an error.
+          REJECTED = :rejected
+
+          # The physical card has been shipped.
+          SHIPPED = :shipped
+
+          # The physical card shipment was returned to the sender and destroyed by the production facility.
+          RETURNED = :returned
+        end
+
         class Tracking < BaseModel
           # @!attribute [rw] number
           #   The tracking number.
@@ -140,6 +179,23 @@ module Increase
           #   @return [String]
           required :shipped_at, String
         end
+      end
+
+      # The status of the Physical Card.
+      class Status < Increase::Enum
+        # The physical card is active.
+        ACTIVE = :active
+
+        # The physical card is temporarily disabled.
+        DISABLED = :disabled
+
+        # The physical card is permanently canceled.
+        CANCELED = :canceled
+      end
+
+      # A constant representing the object's type. For this resource it will always be `physical_card`.
+      class Type < Increase::Enum
+        PHYSICAL_CARD = :physical_card
       end
     end
   end

@@ -10,16 +10,9 @@ module Increase
 
       # @!attribute [rw] category
       #   The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
+      #   One of the constants defined in {Increase::Models::Export::Category}
       #   @return [Symbol]
-      required :category,
-               Increase::Enum.new(
-                 :account_statement_ofx,
-                 :transaction_csv,
-                 :balance_csv,
-                 :bookkeeping_account_balance_csv,
-                 :entity_csv,
-                 :vendor_csv
-               )
+      required :category, enum: -> { Increase::Models::Export::Category }
 
       # @!attribute [rw] created_at
       #   The time the Export was created.
@@ -43,13 +36,53 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Export.
+      #   One of the constants defined in {Increase::Models::Export::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending, :complete, :failed)
+      required :status, enum: -> { Increase::Models::Export::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `export`.
+      #   One of the constants defined in {Increase::Models::Export::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:export)
+      required :type, enum: -> { Increase::Models::Export::Type }
+
+      # The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
+      class Category < Increase::Enum
+        # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
+        ACCOUNT_STATEMENT_OFX = :account_statement_ofx
+
+        # Export a CSV of all transactions for a given time range.
+        TRANSACTION_CSV = :transaction_csv
+
+        # Export a CSV of account balances for the dates in a given range.
+        BALANCE_CSV = :balance_csv
+
+        # Export a CSV of bookkeeping account balances for the dates in a given range.
+        BOOKKEEPING_ACCOUNT_BALANCE_CSV = :bookkeeping_account_balance_csv
+
+        # Export a CSV of entities with a given status.
+        ENTITY_CSV = :entity_csv
+
+        # Export a CSV of vendors added to the third-party risk management dashboard.
+        VENDOR_CSV = :vendor_csv
+      end
+
+      # The status of the Export.
+      class Status < Increase::Enum
+        # Increase is generating the export.
+        PENDING = :pending
+
+        # The export has been successfully generated.
+        COMPLETE = :complete
+
+        # The export failed to generate. Increase will reach out to you to resolve the issue.
+        FAILED = :failed
+      end
+
+      # A constant representing the object's type. For this resource it will always be `export`.
+      class Type < Increase::Enum
+        EXPORT = :export
+      end
     end
   end
 end

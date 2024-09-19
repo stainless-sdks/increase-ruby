@@ -25,8 +25,9 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+      #   One of the constants defined in {Increase::Models::InboundFundsHoldReleaseResponse::Currency}
       #   @return [Symbol]
-      required :currency, Increase::Enum.new(:CAD, :CHF, :EUR, :GBP, :JPY, :USD)
+      required :currency, enum: -> { Increase::Models::InboundFundsHoldReleaseResponse::Currency }
 
       # @!attribute [rw] held_transaction_id
       #   The ID of the Transaction for which funds were held.
@@ -45,13 +46,50 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the hold.
+      #   One of the constants defined in {Increase::Models::InboundFundsHoldReleaseResponse::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:held, :complete)
+      required :status, enum: -> { Increase::Models::InboundFundsHoldReleaseResponse::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+      #   One of the constants defined in {Increase::Models::InboundFundsHoldReleaseResponse::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:inbound_funds_hold)
+      required :type, enum: -> { Increase::Models::InboundFundsHoldReleaseResponse::Type }
+
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+      class Currency < Increase::Enum
+        # Canadian Dollar (CAD)
+        CAD = :CAD
+
+        # Swiss Franc (CHF)
+        CHF = :CHF
+
+        # Euro (EUR)
+        EUR = :EUR
+
+        # British Pound (GBP)
+        GBP = :GBP
+
+        # Japanese Yen (JPY)
+        JPY = :JPY
+
+        # US Dollar (USD)
+        USD = :USD
+      end
+
+      # The status of the hold.
+      class Status < Increase::Enum
+        # Funds are still being held.
+        HELD = :held
+
+        # Funds have been released.
+        COMPLETE = :complete
+      end
+
+      # A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+      class Type < Increase::Enum
+        INBOUND_FUNDS_HOLD = :inbound_funds_hold
+      end
     end
   end
 end

@@ -60,13 +60,15 @@ module Increase
 
       # @!attribute [rw] status
       #   This indicates if payments can be made with the card.
+      #   One of the constants defined in {Increase::Models::Card::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:active, :disabled, :canceled)
+      required :status, enum: -> { Increase::Models::Card::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `card`.
+      #   One of the constants defined in {Increase::Models::Card::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:card)
+      required :type, enum: -> { Increase::Models::Card::Type }
 
       class BillingAddress < BaseModel
         # @!attribute [rw] city
@@ -110,6 +112,23 @@ module Increase
         #   A phone number that can be used to verify the cardholder via one-time passcode over SMS.
         #   @return [String]
         required :phone, String
+      end
+
+      # This indicates if payments can be made with the card.
+      class Status < Increase::Enum
+        # The card is active.
+        ACTIVE = :active
+
+        # The card is temporarily disabled.
+        DISABLED = :disabled
+
+        # The card is permanently canceled.
+        CANCELED = :canceled
+      end
+
+      # A constant representing the object's type. For this resource it will always be `card`.
+      class Type < Increase::Enum
+        CARD = :card
       end
     end
   end

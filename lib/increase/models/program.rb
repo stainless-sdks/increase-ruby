@@ -10,8 +10,9 @@ module Increase
 
       # @!attribute [rw] bank
       #   The Bank the Program is with.
+      #   One of the constants defined in {Increase::Models::Program::Bank}
       #   @return [Symbol]
-      required :bank, Increase::Enum.new(:blue_ridge_bank, :first_internet_bank, :grasshopper_bank)
+      required :bank, enum: -> { Increase::Models::Program::Bank }
 
       # @!attribute [rw] billing_account_id
       #   The Program billing account.
@@ -40,13 +41,31 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `program`.
+      #   One of the constants defined in {Increase::Models::Program::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:program)
+      required :type, enum: -> { Increase::Models::Program::Type }
 
       # @!attribute [rw] updated_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program was last updated.
       #   @return [String]
       required :updated_at, String
+
+      # The Bank the Program is with.
+      class Bank < Increase::Enum
+        # Blue Ridge Bank, N.A.
+        BLUE_RIDGE_BANK = :blue_ridge_bank
+
+        # First Internet Bank of Indiana
+        FIRST_INTERNET_BANK = :first_internet_bank
+
+        # Grasshopper Bank
+        GRASSHOPPER_BANK = :grasshopper_bank
+      end
+
+      # A constant representing the object's type. For this resource it will always be `program`.
+      class Type < Increase::Enum
+        PROGRAM = :program
+      end
     end
   end
 end

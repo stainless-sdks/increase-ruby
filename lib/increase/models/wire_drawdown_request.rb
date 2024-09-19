@@ -90,8 +90,9 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the drawdown request.
+      #   One of the constants defined in {Increase::Models::WireDrawdownRequest::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending_submission, :pending_response, :fulfilled, :refused)
+      required :status, enum: -> { Increase::Models::WireDrawdownRequest::Status }
 
       # @!attribute [rw] submission
       #   After the drawdown request is submitted to Fedwire, this will contain supplemental details.
@@ -100,14 +101,35 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `wire_drawdown_request`.
+      #   One of the constants defined in {Increase::Models::WireDrawdownRequest::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:wire_drawdown_request)
+      required :type, enum: -> { Increase::Models::WireDrawdownRequest::Type }
+
+      # The lifecycle status of the drawdown request.
+      class Status < Increase::Enum
+        # The drawdown request is queued to be submitted to Fedwire.
+        PENDING_SUBMISSION = :pending_submission
+
+        # The drawdown request has been sent and the recipient should respond in some way.
+        PENDING_RESPONSE = :pending_response
+
+        # The drawdown request has been fulfilled by the recipient.
+        FULFILLED = :fulfilled
+
+        # The drawdown request has been refused by the recipient.
+        REFUSED = :refused
+      end
 
       class Submission < BaseModel
         # @!attribute [rw] input_message_accountability_data
         #   The input message accountability data (IMAD) uniquely identifying the submission with Fedwire.
         #   @return [String]
         required :input_message_accountability_data, String
+      end
+
+      # A constant representing the object's type. For this resource it will always be `wire_drawdown_request`.
+      class Type < Increase::Enum
+        WIRE_DRAWDOWN_REQUEST = :wire_drawdown_request
       end
     end
   end

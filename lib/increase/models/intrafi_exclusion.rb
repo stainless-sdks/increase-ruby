@@ -35,8 +35,9 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the exclusion request.
+      #   One of the constants defined in {Increase::Models::IntrafiExclusion::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending, :completed, :archived)
+      required :status, enum: -> { Increase::Models::IntrafiExclusion::Status }
 
       # @!attribute [rw] submitted_at
       #   When this was exclusion was submitted to IntraFi by Increase.
@@ -45,8 +46,26 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `intrafi_exclusion`.
+      #   One of the constants defined in {Increase::Models::IntrafiExclusion::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:intrafi_exclusion)
+      required :type, enum: -> { Increase::Models::IntrafiExclusion::Type }
+
+      # The status of the exclusion request.
+      class Status < Increase::Enum
+        # The exclusion is being added to the IntraFi network.
+        PENDING = :pending
+
+        # The exclusion has been added to the IntraFi network.
+        COMPLETED = :completed
+
+        # The exclusion has been removed from the IntraFi network.
+        ARCHIVED = :archived
+      end
+
+      # A constant representing the object's type. For this resource it will always be `intrafi_exclusion`.
+      class Type < Increase::Enum
+        INTRAFI_EXCLUSION = :intrafi_exclusion
+      end
     end
   end
 end

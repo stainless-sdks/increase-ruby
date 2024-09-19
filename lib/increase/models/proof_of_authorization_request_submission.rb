@@ -60,13 +60,15 @@ module Increase
 
       # @!attribute [rw] status
       #   Status of the proof of authorization request submission.
+      #   One of the constants defined in {Increase::Models::ProofOfAuthorizationRequestSubmission::Status}
       #   @return [Symbol]
-      required :status, Increase::Enum.new(:pending_review, :rejected, :pending_sending, :sent)
+      required :status, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `proof_of_authorization_request_submission`.
+      #   One of the constants defined in {Increase::Models::ProofOfAuthorizationRequestSubmission::Type}
       #   @return [Symbol]
-      required :type, Increase::Enum.new(:proof_of_authorization_request_submission)
+      required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Type }
 
       # @!attribute [rw] updated_at
       #   The time the Proof of Authorization Request Submission was last updated.
@@ -87,6 +89,26 @@ module Increase
       #   Whether account ownership was validated with microdeposit.
       #   @return [Boolean]
       required :validated_account_ownership_with_microdeposit, Increase::BooleanModel
+
+      # Status of the proof of authorization request submission.
+      class Status < Increase::Enum
+        # The proof of authorization request submission is pending review.
+        PENDING_REVIEW = :pending_review
+
+        # The proof of authorization request submission was rejected.
+        REJECTED = :rejected
+
+        # The proof of authorization request submission is pending sending.
+        PENDING_SENDING = :pending_sending
+
+        # The proof of authorization request submission was sent.
+        SENT = :sent
+      end
+
+      # A constant representing the object's type. For this resource it will always be `proof_of_authorization_request_submission`.
+      class Type < Increase::Enum
+        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
+      end
     end
   end
 end
