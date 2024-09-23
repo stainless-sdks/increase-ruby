@@ -69,13 +69,20 @@ module Increase
       # Decline an Inbound ACH Transfer
       # 
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to decline.
+      # 
+      # @param params [Hash] Attributes to send in this request.
+      # @option params [Symbol] :reason The reason why this transfer will be returned. If this parameter is unset, the
+      #   return codes will be `payment_stopped` for debits and
+      #   `credit_entry_refused_by_receiver` for credits.
+      # 
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       # 
       # @return [Increase::Models::InboundACHTransfer]
-      def decline(inbound_ach_transfer_id, opts = {})
+      def decline(inbound_ach_transfer_id, params = {}, opts = {})
         req = {}
         req[:method] = :post
         req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/decline"
+        req[:body] = params
         req[:model] = Increase::Models::InboundACHTransfer
         @client.request(req, opts)
       end
