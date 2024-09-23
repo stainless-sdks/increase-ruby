@@ -16,8 +16,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The time the Export was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] file_download_url
       #   A URL at which the Export's file can be downloaded. This will be present when the Export's status transitions to `complete`.

@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Transaction occurred.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined Transaction's currency. This will match the currency on the Declined Transaction's Account.
@@ -806,8 +806,8 @@ module Increase
 
           # @!attribute [rw] rejected_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was rejected.
-          #   @return [String]
-          required :rejected_at, String
+          #   @return [DateTime]
+          required :rejected_at, DateTime
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
           class Currency < Increase::Enum

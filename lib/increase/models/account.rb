@@ -16,13 +16,13 @@ module Increase
 
       # @!attribute [rw] closed_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was closed.
-      #   @return [String]
-      required :closed_at, String
+      #   @return [DateTime]
+      required :closed_at, DateTime
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.
@@ -52,8 +52,8 @@ module Increase
 
       # @!attribute [rw] interest_accrued_at
       #   The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which interest was accrued.
-      #   @return [String]
-      required :interest_accrued_at, String
+      #   @return [Date]
+      required :interest_accrued_at, Date
 
       # @!attribute [rw] interest_rate
       #   The Interest Rate currently being earned on the account, as a string containing a decimal number. For example, a 1% interest rate would be represented as "0.01".

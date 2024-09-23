@@ -15,8 +15,8 @@ module Increase
 
       # @!attribute [rw] authorized_at
       #   Time of authorization.
-      #   @return [String]
-      required :authorized_at, String
+      #   @return [DateTime]
+      required :authorized_at, DateTime
 
       # @!attribute [rw] authorizer_company
       #   Company of the authorizer.
@@ -40,8 +40,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The time the Proof of Authorization Request Submission was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] customer_has_been_offboarded
       #   Whether the customer has been offboarded.
@@ -72,8 +72,8 @@ module Increase
 
       # @!attribute [rw] updated_at
       #   The time the Proof of Authorization Request Submission was last updated.
-      #   @return [String]
-      required :updated_at, String
+      #   @return [DateTime]
+      required :updated_at, DateTime
 
       # @!attribute [rw] validated_account_ownership_via_credential
       #   Whether account ownership was validated via credential (for instance, Plaid).

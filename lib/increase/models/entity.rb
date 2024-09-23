@@ -15,8 +15,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] description
       #   The entity's description for display purposes.
@@ -25,8 +25,8 @@ module Increase
 
       # @!attribute [rw] details_confirmed_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity's details were most recently confirmed.
-      #   @return [String]
-      required :details_confirmed_at, String
+      #   @return [DateTime]
+      required :details_confirmed_at, DateTime
 
       # @!attribute [rw] government_authority
       #   Details of the government authority entity. Will be present if `structure` is equal to `government_authority`.
@@ -171,8 +171,8 @@ module Increase
 
             # @!attribute [rw] date_of_birth
             #   The person's date of birth in YYYY-MM-DD format.
-            #   @return [String]
-            required :date_of_birth, String
+            #   @return [Date]
+            required :date_of_birth, Date
 
             # @!attribute [rw] identification
             #   A means of verifying the person's identity.
@@ -354,8 +354,8 @@ module Increase
 
           # @!attribute [rw] date_of_birth
           #   The person's date of birth in YYYY-MM-DD format.
-          #   @return [String]
-          required :date_of_birth, String
+          #   @return [Date]
+          required :date_of_birth, Date
 
           # @!attribute [rw] identification
           #   A means of verifying the person's identity.
@@ -435,8 +435,8 @@ module Increase
 
         # @!attribute [rw] date_of_birth
         #   The person's date of birth in YYYY-MM-DD format.
-        #   @return [String]
-        required :date_of_birth, String
+        #   @return [Date]
+        required :date_of_birth, Date
 
         # @!attribute [rw] identification
         #   A means of verifying the person's identity.
@@ -623,8 +623,8 @@ module Increase
 
           # @!attribute [rw] date_of_birth
           #   The person's date of birth in YYYY-MM-DD format.
-          #   @return [String]
-          required :date_of_birth, String
+          #   @return [Date]
+          required :date_of_birth, Date
 
           # @!attribute [rw] identification
           #   A means of verifying the person's identity.
@@ -715,8 +715,8 @@ module Increase
 
             # @!attribute [rw] date_of_birth
             #   The person's date of birth in YYYY-MM-DD format.
-            #   @return [String]
-            required :date_of_birth, String
+            #   @return [Date]
+            required :date_of_birth, Date
 
             # @!attribute [rw] identification
             #   A means of verifying the person's identity.

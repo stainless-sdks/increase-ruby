@@ -55,8 +55,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] created_by
       #   What object created the transfer, either via the API or the dashboard.
@@ -150,8 +150,8 @@ module Increase
       class Approval < BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
-        #   @return [String]
-        required :approved_at, String
+        #   @return [DateTime]
+        required :approved_at, DateTime
 
         # @!attribute [rw] approved_by
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
@@ -162,8 +162,8 @@ module Increase
       class Cancellation < BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
-        #   @return [String]
-        required :canceled_at, String
+        #   @return [DateTime]
+        required :canceled_at, DateTime
 
         # @!attribute [rw] canceled_by
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
@@ -261,8 +261,8 @@ module Increase
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the reversal was created.
-        #   @return [String]
-        required :created_at, String
+        #   @return [DateTime]
+        required :created_at, DateTime
 
         # @!attribute [rw] description
         #   The description on the reversal message from Fedwire, set by the reversing bank.
@@ -276,8 +276,8 @@ module Increase
 
         # @!attribute [rw] input_cycle_date
         #   The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00 PM Eastern Time on the evening before the `cycle date`.
-        #   @return [String]
-        required :input_cycle_date, String
+        #   @return [Date]
+        required :input_cycle_date, Date
 
         # @!attribute [rw] input_message_accountability_data
         #   The Fedwire transaction identifier.
@@ -301,8 +301,8 @@ module Increase
 
         # @!attribute [rw] previous_message_input_cycle_date
         #   The Fedwire cycle date for the wire transfer that is being reversed by this message.
-        #   @return [String]
-        required :previous_message_input_cycle_date, String
+        #   @return [Date]
+        required :previous_message_input_cycle_date, Date
 
         # @!attribute [rw] previous_message_input_message_accountability_data
         #   The Fedwire transaction identifier for the wire transfer that was reversed.
@@ -378,8 +378,8 @@ module Increase
 
         # @!attribute [rw] submitted_at
         #   When this wire transfer was submitted to Fedwire.
-        #   @return [String]
-        required :submitted_at, String
+        #   @return [DateTime]
+        required :submitted_at, DateTime
       end
 
       # A constant representing the object's type. For this resource it will always be `wire_transfer`.

@@ -21,8 +21,8 @@ module Increase
 
       # @!attribute [rw] effective_date
       #   The date this balance reflects.
-      #   @return [String]
-      required :effective_date, String
+      #   @return [Date]
+      required :effective_date, Date
 
       # @!attribute [rw] total_balance
       #   The total balance, in minor units of `currency`. Increase reports this balance to IntraFi daily.

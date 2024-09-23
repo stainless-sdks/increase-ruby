@@ -30,8 +30,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] created_by
       #   What object created the transfer, either via the API or the dashboard.
@@ -129,8 +129,8 @@ module Increase
       class Approval < BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
-        #   @return [String]
-        required :approved_at, String
+        #   @return [DateTime]
+        required :approved_at, DateTime
 
         # @!attribute [rw] approved_by
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
@@ -141,8 +141,8 @@ module Increase
       class Cancellation < BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
-        #   @return [String]
-        required :canceled_at, String
+        #   @return [DateTime]
+        required :canceled_at, DateTime
 
         # @!attribute [rw] canceled_by
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
@@ -243,8 +243,8 @@ module Increase
 
         # @!attribute [rw] rejected_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was rejected.
-        #   @return [String]
-        required :rejected_at, String
+        #   @return [DateTime]
+        required :rejected_at, DateTime
 
         # The reason the transfer was rejected as provided by the recipient bank or the Real-Time Payments network.
         class RejectReasonCode < Increase::Enum
@@ -343,8 +343,8 @@ module Increase
       class Submission < BaseModel
         # @!attribute [rw] submitted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was submitted to The Clearing House.
-        #   @return [String]
-        required :submitted_at, String
+        #   @return [DateTime]
+        required :submitted_at, DateTime
 
         # @!attribute [rw] transaction_identification
         #   The Real-Time Payments network identification of the transfer.

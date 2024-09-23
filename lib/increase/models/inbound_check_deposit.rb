@@ -10,8 +10,8 @@ module Increase
 
       # @!attribute [rw] accepted_at
       #   If the Inbound Check Deposit was accepted, the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this took place.
-      #   @return [String]
-      required :accepted_at, String
+      #   @return [DateTime]
+      required :accepted_at, DateTime
 
       # @!attribute [rw] account_id
       #   The Account the check is being deposited against.
@@ -50,8 +50,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the deposit was attempted.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
@@ -61,8 +61,8 @@ module Increase
 
       # @!attribute [rw] declined_at
       #   If the Inbound Check Deposit was declined, the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this took place.
-      #   @return [String]
-      required :declined_at, String
+      #   @return [DateTime]
+      required :declined_at, DateTime
 
       # @!attribute [rw] declined_transaction_id
       #   If the deposit attempt has been rejected, the identifier of the Declined Transaction object created as a result of the failed deposit.
@@ -126,8 +126,8 @@ module Increase
 
         # @!attribute [rw] returned_at
         #   The time at which the deposit was returned.
-        #   @return [String]
-        required :returned_at, String
+        #   @return [DateTime]
+        required :returned_at, DateTime
 
         # @!attribute [rw] transaction_id
         #   The id of the transaction for the returned deposit.

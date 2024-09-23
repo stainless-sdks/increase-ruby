@@ -65,8 +65,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] created_by
       #   What object created the transfer, either via the API or the dashboard.
@@ -256,8 +256,8 @@ module Increase
       class Approval < BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
-        #   @return [String]
-        required :approved_at, String
+        #   @return [DateTime]
+        required :approved_at, DateTime
 
         # @!attribute [rw] approved_by
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
@@ -268,8 +268,8 @@ module Increase
       class Cancellation < BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
-        #   @return [String]
-        required :canceled_at, String
+        #   @return [DateTime]
+        required :canceled_at, DateTime
 
         # @!attribute [rw] canceled_by
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
@@ -388,13 +388,13 @@ module Increase
 
         # @!attribute [rw] automatically_releases_at
         #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
-        #   @return [String]
-        required :automatically_releases_at, String
+        #   @return [DateTime]
+        required :automatically_releases_at, DateTime
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
-        #   @return [String]
-        required :created_at, String
+        #   @return [DateTime]
+        required :created_at, DateTime
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
@@ -414,8 +414,8 @@ module Increase
 
         # @!attribute [rw] released_at
         #   When the hold was released (if it has been released).
-        #   @return [String]
-        required :released_at, String
+        #   @return [DateTime]
+        required :released_at, DateTime
 
         # @!attribute [rw] status
         #   The status of the hold.
@@ -484,8 +484,8 @@ module Increase
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the notification occurred.
-        #   @return [String]
-        required :created_at, String
+        #   @return [DateTime]
+        required :created_at, DateTime
 
         # The required type of change that is being signaled by the receiving financial institution.
         class ChangeCode < Increase::Enum
@@ -551,8 +551,8 @@ module Increase
       class PreferredEffectiveDate < BaseModel
         # @!attribute [rw] date
         #   A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to use as the effective date when submitting this transfer.
-        #   @return [String]
-        required :date, String
+        #   @return [Date]
+        required :date, Date
 
         # @!attribute [rw] settlement_schedule
         #   A schedule by which Increase will choose an effective date for the transfer.
@@ -578,8 +578,8 @@ module Increase
       class Return < BaseModel
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-        #   @return [String]
-        required :created_at, String
+        #   @return [DateTime]
+        required :created_at, DateTime
 
         # @!attribute [rw] raw_return_reason_code
         #   The three character ACH return code, in the range R01 to R85.
@@ -869,13 +869,13 @@ module Increase
       class Submission < BaseModel
         # @!attribute [rw] effective_date
         #   The ACH transfer's effective date as sent to the Federal Reserve. If a specific date was configured using `preferred_effective_date`, this will match that value. Otherwise, it will be the date selected (following the specified settlement schedule) at the time the transfer was submitted.
-        #   @return [String]
-        required :effective_date, String
+        #   @return [Date]
+        required :effective_date, Date
 
         # @!attribute [rw] expected_funds_settlement_at
         #   When the transfer is expected to settle in the recipient's account. Credits may be available sooner, at the receiving banks discretion. The FedACH schedule is published [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
-        #   @return [String]
-        required :expected_funds_settlement_at, String
+        #   @return [DateTime]
+        required :expected_funds_settlement_at, DateTime
 
         # @!attribute [rw] expected_settlement_schedule
         #   The settlement schedule the transfer is expected to follow. This expectation takes into account the `effective_date`, `submitted_at`, and the amount of the transfer.
@@ -886,8 +886,8 @@ module Increase
 
         # @!attribute [rw] submitted_at
         #   When the ACH transfer was sent to FedACH.
-        #   @return [String]
-        required :submitted_at, String
+        #   @return [DateTime]
+        required :submitted_at, DateTime
 
         # @!attribute [rw] trace_number
         #   A 15 digit number recorded in the Nacha file and transmitted to the receiving bank. Along with the amount, date, and originating routing number, this can be used to identify the ACH transfer at the receiving bank. ACH trace numbers are not unique, but are [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).

@@ -20,7 +20,7 @@ module Increase
       # @option params [String] :company_entry_description The description of the transfer you wish to be shown to the recipient.
       # @option params [String] :company_name The name by which the recipient knows you.
       # @option params [Symbol] :credit_debit_indicator Whether the Prenotification is for a future debit or credit.
-      # @option params [String] :effective_date The transfer effective date in
+      # @option params [Date] :effective_date The transfer effective date in
       #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       # @option params [String] :individual_id Your identifier for the transfer recipient.
       # @option params [String] :individual_name The name of the transfer recipient. This value is information and not verified

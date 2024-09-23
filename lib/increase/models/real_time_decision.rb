@@ -21,8 +21,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Real-Time Decision was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] digital_wallet_authentication
       #   Fields related to a digital wallet authentication attempt.
@@ -43,8 +43,8 @@ module Increase
 
       # @!attribute [rw] timeout_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which your application can no longer respond to the Real-Time Decision.
-      #   @return [String]
-      required :timeout_at, String
+      #   @return [DateTime]
+      required :timeout_at, DateTime
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `real_time_decision`.

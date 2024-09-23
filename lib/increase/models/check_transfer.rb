@@ -45,8 +45,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] created_by
       #   What object created the transfer, either via the API or the dashboard.
@@ -125,8 +125,8 @@ module Increase
       class Approval < BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
-        #   @return [String]
-        required :approved_at, String
+        #   @return [DateTime]
+        required :approved_at, DateTime
 
         # @!attribute [rw] approved_by
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
@@ -137,8 +137,8 @@ module Increase
       class Cancellation < BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
-        #   @return [String]
-        required :canceled_at, String
+        #   @return [DateTime]
+        required :canceled_at, DateTime
 
         # @!attribute [rw] canceled_by
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
@@ -240,8 +240,8 @@ module Increase
 
         # @!attribute [rw] mailed_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check was mailed.
-        #   @return [String]
-        required :mailed_at, String
+        #   @return [DateTime]
+        required :mailed_at, DateTime
       end
 
       class PhysicalCheck < BaseModel
@@ -354,8 +354,8 @@ module Increase
 
           # @!attribute [rw] created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the tracking event took place.
-          #   @return [String]
-          required :created_at, String
+          #   @return [DateTime]
+          required :created_at, DateTime
 
           # The type of tracking event.
           class Category < Increase::Enum
@@ -407,8 +407,8 @@ module Increase
 
         # @!attribute [rw] requested_at
         #   The time the stop-payment was requested.
-        #   @return [String]
-        required :requested_at, String
+        #   @return [DateTime]
+        required :requested_at, DateTime
 
         # @!attribute [rw] transfer_id
         #   The ID of the check transfer that was stopped.
@@ -445,8 +445,8 @@ module Increase
       class Submission < BaseModel
         # @!attribute [rw] submitted_at
         #   When this check transfer was submitted to our check printer.
-        #   @return [String]
-        required :submitted_at, String
+        #   @return [DateTime]
+        required :submitted_at, DateTime
       end
 
       class ThirdParty < BaseModel

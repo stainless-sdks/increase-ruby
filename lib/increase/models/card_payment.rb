@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card Payment was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] digital_wallet_token_id
       #   The Digital Wallet Token identifier for this payment.
@@ -104,8 +104,8 @@ module Increase
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the card payment element was created.
-        #   @return [String]
-        required :created_at, String
+        #   @return [DateTime]
+        required :created_at, DateTime
 
         # @!attribute [rw] other
         #   If the category of this Transaction source is equal to `other`, this field will contain an empty object, otherwise it will contain null.
@@ -153,8 +153,8 @@ module Increase
 
           # @!attribute [rw] expires_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization will expire and the pending transaction will be released.
-          #   @return [String]
-          required :expires_at, String
+          #   @return [DateTime]
+          required :expires_at, DateTime
 
           # @!attribute [rw] merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
@@ -1466,8 +1466,8 @@ module Increase
 
               # @!attribute [rw] checkout_date
               #   Date the customer picked up the car or, in the case of a no-show or pre-pay transaction, the scheduled pick up date.
-              #   @return [String]
-              required :checkout_date, String
+              #   @return [Date]
+              required :checkout_date, Date
 
               # @!attribute [rw] daily_rental_rate_amount
               #   Daily rate being charged for the vehicle.
@@ -1577,8 +1577,8 @@ module Increase
             class Lodging < BaseModel
               # @!attribute [rw] check_in_date
               #   Date the customer checked in.
-              #   @return [String]
-              required :check_in_date, String
+              #   @return [Date]
+              required :check_in_date, Date
 
               # @!attribute [rw] daily_room_rate_amount
               #   Daily rate being charged for the room.
@@ -1732,8 +1732,8 @@ module Increase
 
               # @!attribute [rw] departure_date
               #   Date of departure.
-              #   @return [String]
-              required :departure_date, String
+              #   @return [Date]
+              required :departure_date, Date
 
               # @!attribute [rw] origination_city_airport_code
               #   Code for the originating city or airport.
@@ -2406,8 +2406,8 @@ module Increase
 
               # @!attribute [rw] checkout_date
               #   Date the customer picked up the car or, in the case of a no-show or pre-pay transaction, the scheduled pick up date.
-              #   @return [String]
-              required :checkout_date, String
+              #   @return [Date]
+              required :checkout_date, Date
 
               # @!attribute [rw] daily_rental_rate_amount
               #   Daily rate being charged for the vehicle.
@@ -2517,8 +2517,8 @@ module Increase
             class Lodging < BaseModel
               # @!attribute [rw] check_in_date
               #   Date the customer checked in.
-              #   @return [String]
-              required :check_in_date, String
+              #   @return [Date]
+              required :check_in_date, Date
 
               # @!attribute [rw] daily_room_rate_amount
               #   Daily rate being charged for the room.
@@ -2672,8 +2672,8 @@ module Increase
 
               # @!attribute [rw] departure_date
               #   Date of departure.
-              #   @return [String]
-              required :departure_date, String
+              #   @return [Date]
+              required :departure_date, Date
 
               # @!attribute [rw] origination_city_airport_code
               #   Code for the originating city or airport.
