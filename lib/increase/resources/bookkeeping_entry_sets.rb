@@ -11,7 +11,7 @@ module Increase
       # 
       # @param params [Hash] Attributes to send in this request.
       # @option params [Array<Entry>] :entries The bookkeeping entries.
-      # @option params [String] :date The date of the transaction. Optional if `transaction_id` is provided, in which
+      # @option params [DateTime] :date The date of the transaction. Optional if `transaction_id` is provided, in which
       #   case we use the `date` of that transaction. Required otherwise.
       # @option params [String] :transaction_id The identifier of the Transaction related to this entry set, if any.
       # 

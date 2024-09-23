@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   When the entry set was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] entry_set_id
       #   The identifier for the Account the Entry belongs to.

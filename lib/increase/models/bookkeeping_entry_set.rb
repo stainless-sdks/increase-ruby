@@ -10,13 +10,13 @@ module Increase
 
       # @!attribute [rw] created_at
       #   When the entry set was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] date
       #   The timestamp of the entry set.
-      #   @return [String]
-      required :date, String
+      #   @return [DateTime]
+      required :date, DateTime
 
       # @!attribute [rw] entries
       #   The entries.

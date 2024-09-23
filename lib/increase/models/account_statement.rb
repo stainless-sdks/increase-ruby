@@ -15,8 +15,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account Statement was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] ending_balance
       #   The Account's balance at the start of its statement period.
@@ -35,13 +35,13 @@ module Increase
 
       # @!attribute [rw] statement_period_end
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end of the period the Account Statement covers.
-      #   @return [String]
-      required :statement_period_end, String
+      #   @return [DateTime]
+      required :statement_period_end, DateTime
 
       # @!attribute [rw] statement_period_start
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the start of the period the Account Statement covers.
-      #   @return [String]
-      required :statement_period_start, String
+      #   @return [DateTime]
+      required :statement_period_start, DateTime
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `account_statement`.

@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Transaction occurred.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction's currency. This will match the currency on the Transaction's Account.
@@ -316,8 +316,8 @@ module Increase
         class ACHTransferReturn < BaseModel
           # @!attribute [rw] created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-          #   @return [String]
-          required :created_at, String
+          #   @return [DateTime]
+          required :created_at, DateTime
 
           # @!attribute [rw] raw_return_reason_code
           #   The three character ACH return code, in the range R01 to R85.
@@ -563,8 +563,8 @@ module Increase
         class CardDisputeAcceptance < BaseModel
           # @!attribute [rw] accepted_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was accepted.
-          #   @return [String]
-          required :accepted_at, String
+          #   @return [DateTime]
+          required :accepted_at, DateTime
 
           # @!attribute [rw] card_dispute_id
           #   The identifier of the Card Dispute that was accepted.
@@ -590,8 +590,8 @@ module Increase
 
           # @!attribute [rw] lost_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was lost.
-          #   @return [String]
-          required :lost_at, String
+          #   @return [DateTime]
+          required :lost_at, DateTime
 
           # @!attribute [rw] transaction_id
           #   The identifier of the Transaction that was created to debit the disputed funds from your account.
@@ -826,8 +826,8 @@ module Increase
 
               # @!attribute [rw] checkout_date
               #   Date the customer picked up the car or, in the case of a no-show or pre-pay transaction, the scheduled pick up date.
-              #   @return [String]
-              required :checkout_date, String
+              #   @return [Date]
+              required :checkout_date, Date
 
               # @!attribute [rw] daily_rental_rate_amount
               #   Daily rate being charged for the vehicle.
@@ -937,8 +937,8 @@ module Increase
             class Lodging < BaseModel
               # @!attribute [rw] check_in_date
               #   Date the customer checked in.
-              #   @return [String]
-              required :check_in_date, String
+              #   @return [Date]
+              required :check_in_date, Date
 
               # @!attribute [rw] daily_room_rate_amount
               #   Daily rate being charged for the room.
@@ -1092,8 +1092,8 @@ module Increase
 
               # @!attribute [rw] departure_date
               #   Date of departure.
-              #   @return [String]
-              required :departure_date, String
+              #   @return [Date]
+              required :departure_date, Date
 
               # @!attribute [rw] origination_city_airport_code
               #   Code for the originating city or airport.
@@ -1384,13 +1384,13 @@ module Increase
 
           # @!attribute [rw] period_end
           #   The end of the period for which this transaction paid interest.
-          #   @return [String]
-          required :period_end, String
+          #   @return [DateTime]
+          required :period_end, DateTime
 
           # @!attribute [rw] period_start
           #   The start of the period for which this transaction paid interest.
-          #   @return [String]
-          required :period_start, String
+          #   @return [DateTime]
+          required :period_start, DateTime
 
           # @!attribute [rw] transacted_on_account_id
           #   The account the card belonged to.
@@ -1658,8 +1658,8 @@ module Increase
 
               # @!attribute [rw] checkout_date
               #   Date the customer picked up the car or, in the case of a no-show or pre-pay transaction, the scheduled pick up date.
-              #   @return [String]
-              required :checkout_date, String
+              #   @return [Date]
+              required :checkout_date, Date
 
               # @!attribute [rw] daily_rental_rate_amount
               #   Daily rate being charged for the vehicle.
@@ -1769,8 +1769,8 @@ module Increase
             class Lodging < BaseModel
               # @!attribute [rw] check_in_date
               #   Date the customer checked in.
-              #   @return [String]
-              required :check_in_date, String
+              #   @return [Date]
+              required :check_in_date, Date
 
               # @!attribute [rw] daily_room_rate_amount
               #   Daily rate being charged for the room.
@@ -1924,8 +1924,8 @@ module Increase
 
               # @!attribute [rw] departure_date
               #   Date of departure.
-              #   @return [String]
-              required :departure_date, String
+              #   @return [Date]
+              required :departure_date, Date
 
               # @!attribute [rw] origination_city_airport_code
               #   Code for the originating city or airport.
@@ -2221,13 +2221,13 @@ module Increase
 
           # @!attribute [rw] period_end
           #   The end of the period for which this transaction paid cashback.
-          #   @return [String]
-          required :period_end, String
+          #   @return [DateTime]
+          required :period_end, DateTime
 
           # @!attribute [rw] period_start
           #   The start of the period for which this transaction paid cashback.
-          #   @return [String]
-          required :period_start, String
+          #   @return [DateTime]
+          required :period_start, DateTime
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           class Currency < Increase::Enum
@@ -2423,8 +2423,8 @@ module Increase
 
           # @!attribute [rw] returned_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was returned.
-          #   @return [String]
-          required :returned_at, String
+          #   @return [DateTime]
+          required :returned_at, DateTime
 
           # @!attribute [rw] transaction_id
           #   The identifier of the transaction that reversed the original check deposit transaction.
@@ -2547,8 +2547,8 @@ module Increase
 
           # @!attribute [rw] deposited_at
           #   When the check was deposited.
-          #   @return [String]
-          required :deposited_at, String
+          #   @return [DateTime]
+          required :deposited_at, DateTime
 
           # @!attribute [rw] front_image_file_id
           #   The identifier of the API File object containing an image of the front of the deposited check.
@@ -2596,8 +2596,8 @@ module Increase
 
           # @!attribute [rw] fee_period_start
           #   The start of this payment's fee period, usually the first day of a month.
-          #   @return [String]
-          required :fee_period_start, String
+          #   @return [Date]
+          required :fee_period_start, Date
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           class Currency < Increase::Enum
@@ -2889,8 +2889,8 @@ module Increase
 
           # @!attribute [rw] created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the reversal was created.
-          #   @return [String]
-          required :created_at, String
+          #   @return [DateTime]
+          required :created_at, DateTime
 
           # @!attribute [rw] description
           #   The description on the reversal message from Fedwire, set by the reversing bank.
@@ -2904,8 +2904,8 @@ module Increase
 
           # @!attribute [rw] input_cycle_date
           #   The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00 PM Eastern Time on the evening before the `cycle date`.
-          #   @return [String]
-          required :input_cycle_date, String
+          #   @return [Date]
+          required :input_cycle_date, Date
 
           # @!attribute [rw] input_message_accountability_data
           #   The Fedwire transaction identifier.
@@ -2929,8 +2929,8 @@ module Increase
 
           # @!attribute [rw] previous_message_input_cycle_date
           #   The Fedwire cycle date for the wire transfer that is being reversed by this message.
-          #   @return [String]
-          required :previous_message_input_cycle_date, String
+          #   @return [Date]
+          required :previous_message_input_cycle_date, Date
 
           # @!attribute [rw] previous_message_input_message_accountability_data
           #   The Fedwire transaction identifier for the wire transfer that was reversed.
@@ -3084,13 +3084,13 @@ module Increase
 
           # @!attribute [rw] period_end
           #   The end of the period for which this transaction paid interest.
-          #   @return [String]
-          required :period_end, String
+          #   @return [DateTime]
+          required :period_end, DateTime
 
           # @!attribute [rw] period_start
           #   The start of the period for which this transaction paid interest.
-          #   @return [String]
-          required :period_start, String
+          #   @return [DateTime]
+          required :period_start, DateTime
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           class Currency < Increase::Enum

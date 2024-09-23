@@ -15,8 +15,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] disputed_transaction_id
       #   The identifier of the Transaction that was disputed.
@@ -63,8 +63,8 @@ module Increase
       class Acceptance < BaseModel
         # @!attribute [rw] accepted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was accepted.
-        #   @return [String]
-        required :accepted_at, String
+        #   @return [DateTime]
+        required :accepted_at, DateTime
 
         # @!attribute [rw] card_dispute_id
         #   The identifier of the Card Dispute that was accepted.
@@ -90,8 +90,8 @@ module Increase
 
         # @!attribute [rw] lost_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was lost.
-        #   @return [String]
-        required :lost_at, String
+        #   @return [DateTime]
+        required :lost_at, DateTime
 
         # @!attribute [rw] transaction_id
         #   The identifier of the Transaction that was created to debit the disputed funds from your account.
@@ -112,8 +112,8 @@ module Increase
 
         # @!attribute [rw] rejected_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was rejected.
-        #   @return [String]
-        required :rejected_at, String
+        #   @return [DateTime]
+        required :rejected_at, DateTime
       end
 
       # The results of the Dispute investigation.
@@ -147,8 +147,8 @@ module Increase
 
         # @!attribute [rw] won_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was won.
-        #   @return [String]
-        required :won_at, String
+        #   @return [DateTime]
+        required :won_at, DateTime
       end
     end
   end

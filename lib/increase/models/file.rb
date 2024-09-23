@@ -10,8 +10,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The time the File was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] description
       #   A description of the File.

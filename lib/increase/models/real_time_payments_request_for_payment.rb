@@ -15,8 +15,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the request for payment was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
@@ -36,8 +36,8 @@ module Increase
 
       # @!attribute [rw] expires_at
       #   The expiration time for this request, in UTC. The requestee will not be able to pay after this date.
-      #   @return [String]
-      required :expires_at, String
+      #   @return [Date]
+      required :expires_at, Date
 
       # @!attribute [rw] fulfillment_transaction_id
       #   The transaction that fulfilled this request.

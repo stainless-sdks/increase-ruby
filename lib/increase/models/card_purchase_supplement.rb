@@ -64,8 +64,8 @@ module Increase
 
         # @!attribute [rw] order_date
         #   Date the order was taken.
-        #   @return [String]
-        required :order_date, String
+        #   @return [Date]
+        required :order_date, Date
 
         # @!attribute [rw] shipping_amount
         #   The shipping cost.

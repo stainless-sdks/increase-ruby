@@ -16,13 +16,13 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The time the Proof of Authorization Request was created.
-      #   @return [String]
-      required :created_at, String
+      #   @return [DateTime]
+      required :created_at, DateTime
 
       # @!attribute [rw] due_on
       #   The time the Proof of Authorization Request is due.
-      #   @return [String]
-      required :due_on, String
+      #   @return [DateTime]
+      required :due_on, DateTime
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `proof_of_authorization_request`.
@@ -32,8 +32,8 @@ module Increase
 
       # @!attribute [rw] updated_at
       #   The time the Proof of Authorization Request was last updated.
-      #   @return [String]
-      required :updated_at, String
+      #   @return [DateTime]
+      required :updated_at, DateTime
 
       class ACHTransfer < BaseModel
         # @!attribute [rw] id

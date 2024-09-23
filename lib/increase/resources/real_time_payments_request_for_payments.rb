@@ -13,7 +13,7 @@ module Increase
       # @option params [Integer] :amount The requested amount in USD cents. Must be positive.
       # @option params [Debtor] :debtor Details of the person being requested to pay.
       # @option params [String] :destination_account_number_id The identifier of the Account Number where the funds will land.
-      # @option params [String] :expires_at The expiration time for this request, in UTC. The requestee will not be able to
+      # @option params [Date] :expires_at The expiration time for this request, in UTC. The requestee will not be able to
       #   pay after this date.
       # @option params [String] :remittance_information Unstructured information that will show on the requestee's bank statement.
       # @option params [String] :source_account_number The account number the funds will be requested from.
