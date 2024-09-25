@@ -13,6 +13,11 @@ module Increase
       #   @return [Increase::Models::CardDispute::Acceptance]
       required :acceptance, -> { Increase::Models::CardDispute::Acceptance }
 
+      # @!attribute [rw] amount
+      #   The amount of the dispute, if provided, or the transaction amount otherwise.
+      #   @return [Integer]
+      required :amount, Integer
+
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was created.
       #   @return [DateTime]
