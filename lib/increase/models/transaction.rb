@@ -150,7 +150,10 @@ module Increase
         # @!attribute [rw] check_deposit_acceptance
         #   A Check Deposit Acceptance object. This field will be present in the JSON response if and only if `category` is equal to `check_deposit_acceptance`.
         #   @return [Increase::Models::Transaction::Source::CheckDepositAcceptance]
-        required :check_deposit_acceptance, -> { Increase::Models::Transaction::Source::CheckDepositAcceptance }
+        required :check_deposit_acceptance,
+                 lambda {
+                   Increase::Models::Transaction::Source::CheckDepositAcceptance
+                 }
 
         # @!attribute [rw] check_deposit_return
         #   A Check Deposit Return object. This field will be present in the JSON response if and only if `category` is equal to `check_deposit_return`.
@@ -235,7 +238,10 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           #   One of the constants defined in {Increase::Models::Transaction::Source::AccountTransferIntention::Currency}
           #   @return [Symbol]
-          required :currency, enum: -> { Increase::Models::Transaction::Source::AccountTransferIntention::Currency }
+          required :currency,
+                   enum: lambda {
+                     Increase::Models::Transaction::Source::AccountTransferIntention::Currency
+                   }
 
           # @!attribute [rw] description
           #   The description you chose to give the transfer.
@@ -675,7 +681,10 @@ module Increase
           # @!attribute [rw] purchase_details
           #   Additional details about the card purchase, such as tax and industry-specific fields.
           #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails]
-          required :purchase_details, -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails }
+          required :purchase_details,
+                   lambda {
+                     Increase::Models::Transaction::Source::CardRefund::PurchaseDetails
+                   }
 
           # @!attribute [rw] transaction_id
           #   The identifier of the Transaction associated with this Transaction.
@@ -724,7 +733,10 @@ module Increase
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::Interchange::Currency}
             #   @return [Symbol]
-            required :currency, enum: -> { Increase::Models::Transaction::Source::CardRefund::Interchange::Currency }
+            required :currency,
+                     enum: lambda {
+                       Increase::Models::Transaction::Source::CardRefund::Interchange::Currency
+                     }
 
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             class Currency < Increase::Enum
@@ -769,7 +781,10 @@ module Increase
             # @!attribute [rw] car_rental
             #   Fields specific to car rentals.
             #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental]
-            required :car_rental, -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental }
+            required :car_rental,
+                     lambda {
+                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental
+                     }
 
             # @!attribute [rw] customer_reference_identifier
             #   An identifier from the merchant for the customer or consumer.
@@ -789,7 +804,10 @@ module Increase
             # @!attribute [rw] lodging
             #   Fields specific to lodging.
             #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging]
-            required :lodging, -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging }
+            required :lodging,
+                     lambda {
+                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging
+                     }
 
             # @!attribute [rw] national_tax_amount
             #   The national tax amount in minor units.
@@ -811,12 +829,17 @@ module Increase
             #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat}
             #   @return [Symbol]
             required :purchase_identifier_format,
-                     enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat }
+                     enum: lambda {
+                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat
+                     }
 
             # @!attribute [rw] travel
             #   Fields specific to travel.
             #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel]
-            required :travel, -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel }
+            required :travel,
+                     lambda {
+                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel
+                     }
 
             class CarRental < BaseModel
               # @!attribute [rw] car_class_code
@@ -849,7 +872,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges}
               #   @return [Symbol]
               required :extra_charges,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges
+                       }
 
               # @!attribute [rw] fuel_charges_amount
               #   Fuel charges for the vehicle.
@@ -876,7 +901,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator}
               #   @return [Symbol]
               required :no_show_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator
+                       }
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               #   Charges for returning the vehicle at a different location than where it was picked up.
@@ -955,7 +982,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges}
               #   @return [Symbol]
               required :extra_charges,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges
+                       }
 
               # @!attribute [rw] folio_cash_advances_amount
               #   Folio cash advances for the room.
@@ -982,7 +1011,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator}
               #   @return [Symbol]
               required :no_show_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator
+                       }
 
               # @!attribute [rw] prepaid_expenses_amount
               #   Prepaid expenses being charged for the room.
@@ -1088,7 +1119,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator}
               #   @return [Symbol]
               required :credit_reason_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator
+                       }
 
               # @!attribute [rw] departure_date
               #   Date of departure.
@@ -1110,14 +1143,18 @@ module Increase
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator}
               #   @return [Symbol]
               required :restricted_ticket_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator
+                       }
 
               # @!attribute [rw] ticket_change_indicator
               #   Indicates why a ticket was changed.
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator}
               #   @return [Symbol]
               required :ticket_change_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator
+                       }
 
               # @!attribute [rw] ticket_number
               #   Ticket number.
@@ -1138,7 +1175,11 @@ module Increase
               #   Fields specific to each leg of the journey.
               #   @return [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>]
               required :trip_legs,
-                       Increase::ArrayOf.new(-> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg })
+                       Increase::ArrayOf.new(
+                         lambda {
+                           Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg
+                         }
+                       )
 
               class Ancillary < BaseModel
                 # @!attribute [rw] connected_ticket_document_number
@@ -1151,7 +1192,9 @@ module Increase
                 #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator}
                 #   @return [Symbol]
                 required :credit_reason_indicator,
-                         enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator }
+                         enum: lambda {
+                           Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
+                         }
 
                 # @!attribute [rw] passenger_name_or_description
                 #   Name of the passenger or description of the ancillary purchase.
@@ -1162,7 +1205,11 @@ module Increase
                 #   Additional travel charges, such as baggage fees.
                 #   @return [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service>]
                 required :services,
-                         Increase::ArrayOf.new(-> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service })
+                         Increase::ArrayOf.new(
+                           lambda {
+                             Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service
+                           }
+                         )
 
                 # @!attribute [rw] ticket_document_number
                 #   Ticket document number.
@@ -1190,7 +1237,9 @@ module Increase
                   #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category}
                   #   @return [Symbol]
                   required :category,
-                           enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category }
+                           enum: lambda {
+                             Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category
+                           }
 
                   # @!attribute [rw] sub_category
                   #   Sub-category of the ancillary service, free-form.
@@ -1347,7 +1396,9 @@ module Increase
                 #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode}
                 #   @return [Symbol]
                 required :stop_over_code,
-                         enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode }
+                         enum: lambda {
+                           Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode
+                         }
 
                 # Indicates whether a stopover is allowed on this ticket.
                 class StopOverCode < Increase::Enum
@@ -1505,7 +1556,10 @@ module Increase
           # @!attribute [rw] purchase_details
           #   Additional details about the card purchase, such as tax and industry-specific fields.
           #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails]
-          required :purchase_details, -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails }
+          required :purchase_details,
+                   lambda {
+                     Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails
+                   }
 
           # @!attribute [rw] transaction_id
           #   The identifier of the Transaction associated with this Transaction.
@@ -1621,7 +1675,10 @@ module Increase
             # @!attribute [rw] lodging
             #   Fields specific to lodging.
             #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging]
-            required :lodging, -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging }
+            required :lodging,
+                     lambda {
+                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging
+                     }
 
             # @!attribute [rw] national_tax_amount
             #   The national tax amount in minor units.
@@ -1643,12 +1700,17 @@ module Increase
             #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat}
             #   @return [Symbol]
             required :purchase_identifier_format,
-                     enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat }
+                     enum: lambda {
+                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat
+                     }
 
             # @!attribute [rw] travel
             #   Fields specific to travel.
             #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel]
-            required :travel, -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel }
+            required :travel,
+                     lambda {
+                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel
+                     }
 
             class CarRental < BaseModel
               # @!attribute [rw] car_class_code
@@ -1681,7 +1743,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges}
               #   @return [Symbol]
               required :extra_charges,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges
+                       }
 
               # @!attribute [rw] fuel_charges_amount
               #   Fuel charges for the vehicle.
@@ -1708,7 +1772,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator}
               #   @return [Symbol]
               required :no_show_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator
+                       }
 
               # @!attribute [rw] one_way_drop_off_charges_amount
               #   Charges for returning the vehicle at a different location than where it was picked up.
@@ -1787,7 +1853,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges}
               #   @return [Symbol]
               required :extra_charges,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges
+                       }
 
               # @!attribute [rw] folio_cash_advances_amount
               #   Folio cash advances for the room.
@@ -1814,7 +1882,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator}
               #   @return [Symbol]
               required :no_show_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator
+                       }
 
               # @!attribute [rw] prepaid_expenses_amount
               #   Prepaid expenses being charged for the room.
@@ -1920,7 +1990,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator}
               #   @return [Symbol]
               required :credit_reason_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator
+                       }
 
               # @!attribute [rw] departure_date
               #   Date of departure.
@@ -1942,14 +2014,18 @@ module Increase
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator}
               #   @return [Symbol]
               required :restricted_ticket_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator
+                       }
 
               # @!attribute [rw] ticket_change_indicator
               #   Indicates why a ticket was changed.
               #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator}
               #   @return [Symbol]
               required :ticket_change_indicator,
-                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator }
+                       enum: lambda {
+                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator
+                       }
 
               # @!attribute [rw] ticket_number
               #   Ticket number.
@@ -1970,7 +2046,11 @@ module Increase
               #   Fields specific to each leg of the journey.
               #   @return [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>]
               required :trip_legs,
-                       Increase::ArrayOf.new(-> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg })
+                       Increase::ArrayOf.new(
+                         lambda {
+                           Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg
+                         }
+                       )
 
               class Ancillary < BaseModel
                 # @!attribute [rw] connected_ticket_document_number
@@ -1983,7 +2063,9 @@ module Increase
                 #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator}
                 #   @return [Symbol]
                 required :credit_reason_indicator,
-                         enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator }
+                         enum: lambda {
+                           Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
+                         }
 
                 # @!attribute [rw] passenger_name_or_description
                 #   Name of the passenger or description of the ancillary purchase.
@@ -1994,7 +2076,11 @@ module Increase
                 #   Additional travel charges, such as baggage fees.
                 #   @return [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service>]
                 required :services,
-                         Increase::ArrayOf.new(-> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service })
+                         Increase::ArrayOf.new(
+                           lambda {
+                             Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service
+                           }
+                         )
 
                 # @!attribute [rw] ticket_document_number
                 #   Ticket document number.
@@ -2022,7 +2108,9 @@ module Increase
                   #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category}
                   #   @return [Symbol]
                   required :category,
-                           enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category }
+                           enum: lambda {
+                             Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category
+                           }
 
                   # @!attribute [rw] sub_category
                   #   Sub-category of the ancillary service, free-form.
@@ -2179,7 +2267,9 @@ module Increase
                 #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode}
                 #   @return [Symbol]
                 required :stop_over_code,
-                         enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode }
+                         enum: lambda {
+                           Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode
+                         }
 
                 # Indicates whether a stopover is allowed on this ticket.
                 class StopOverCode < Increase::Enum
@@ -2363,7 +2453,10 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #   One of the constants defined in {Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency}
           #   @return [Symbol]
-          required :currency, enum: -> { Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency }
+          required :currency,
+                   enum: lambda {
+                     Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency
+                   }
 
           # @!attribute [rw] routing_number
           #   The routing number printed on the check.
@@ -2688,7 +2781,10 @@ module Increase
             # @!attribute [rw] freeform
             #   Unstructured `payment_related_information` passed through by the originator.
             #   @return [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform]
-            required :freeform, -> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform }
+            required :freeform,
+                     lambda {
+                       Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform
+                     }
 
             # The type of addendum.
             class Category < Increase::Enum
@@ -2701,7 +2797,11 @@ module Increase
               #   Each entry represents an addendum received from the originator.
               #   @return [Array<Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry>]
               required :entries,
-                       Increase::ArrayOf.new(-> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry })
+                       Increase::ArrayOf.new(
+                         lambda {
+                           Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry
+                         }
+                       )
 
               class Entry < BaseModel
                 # @!attribute [rw] payment_related_information
@@ -2729,7 +2829,9 @@ module Increase
           #   One of the constants defined in {Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency}
           #   @return [Symbol]
           required :currency,
-                   enum: -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency }
+                   enum: lambda {
+                     Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency
+                   }
 
           # @!attribute [rw] debtor_account_number
           #   The account number of the account that sent the transfer.
@@ -2799,7 +2901,9 @@ module Increase
           #   One of the constants defined in {Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency}
           #   @return [Symbol]
           required :currency,
-                   enum: -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency }
+                   enum: lambda {
+                     Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency
+                   }
 
           # @!attribute [rw] debtor_account_number
           #   The account number of the account that sent the transfer.
@@ -2821,7 +2925,9 @@ module Increase
           #   One of the constants defined in {Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason}
           #   @return [Symbol]
           required :reason,
-                   enum: -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason }
+                   enum: lambda {
+                     Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason
+                   }
 
           # @!attribute [rw] remittance_information
           #   Additional information included with the transfer.

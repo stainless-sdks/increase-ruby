@@ -15,7 +15,7 @@ module Increase
         #   `card_decline`. You can pass either a Card id or a
         #   [Digital Wallet Token](#digital-wallet-tokens) id to simulate the two different
         #   ways purchases can be made.
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [Integer] :amount The authorization amount in cents.
         # @option params [String] :card_id The identifier of the Card to be authorized.
@@ -32,9 +32,9 @@ module Increase
         # @option params [String] :merchant_country The country the merchant resides in.
         # @option params [String] :merchant_descriptor The merchant descriptor of the merchant the card is transacting with.
         # @option params [String] :physical_card_id The identifier of the Physical Card to be authorized.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Increase::Models::CardAuthorizationCreateResponse]
         def create(params = {}, opts = {})
           req = {}

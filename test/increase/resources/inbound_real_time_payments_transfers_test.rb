@@ -13,7 +13,7 @@ class Increase::Test::Resources::InboundRealTimePaymentsTransfersTest < Test::Un
   end
 
   def test_list
-    response = @increase.inbound_real_time_payments_transfers.list 
+    response = @increase.inbound_real_time_payments_transfers.list
     assert_kind_of(Increase::Page, response)
   end
 end

@@ -8,7 +8,7 @@ class Increase::Test::Resources::GroupsTest < Test::Unit::TestCase
   end
 
   def test_retrieve
-    response = @increase.groups.retrieve 
+    response = @increase.groups.retrieve
     assert_kind_of(Increase::Models::Group, response)
   end
 end

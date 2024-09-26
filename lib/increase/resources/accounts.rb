@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create an Account
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name The name you choose for the Account.
       # @option params [String] :entity_id The identifier for the Entity that will own the Account.
@@ -16,9 +16,9 @@ module Increase
       #   with its activity. Its relationship to your group must be `informational`.
       # @option params [String] :program_id The identifier for the Program that this Account falls under. Required if you
       #   operate more than one Program.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::Account]
       def create(params = {}, opts = {})
         req = {}
@@ -30,10 +30,10 @@ module Increase
       end
 
       # Retrieve an Account
-      # 
+      #
       # @param account_id [String] The identifier of the Account to retrieve.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::Account]
       def retrieve(account_id, opts = {})
         req = {}
@@ -44,14 +44,14 @@ module Increase
       end
 
       # Update an Account
-      # 
+      #
       # @param account_id [String] The identifier of the Account to update.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :name The new name of the Account.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::Account]
       def update(account_id, params = {}, opts = {})
         req = {}
@@ -63,7 +63,7 @@ module Increase
       end
 
       # List Accounts
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [CreatedAt] :created_at
       # @option params [String] :cursor Return the page of entries after this one.
@@ -76,9 +76,9 @@ module Increase
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       # @option params [Symbol] :status Filter Accounts for those with the specified status.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::Account>]
       def list(params = {}, opts = {})
         req = {}
@@ -91,14 +91,14 @@ module Increase
       end
 
       # Retrieve an Account Balance
-      # 
+      #
       # @param account_id [String] The identifier of the Account to retrieve.
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [DateTime] :at_time The moment to query the balance at. If not set, returns the current balances.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::BalanceLookup]
       def balance(account_id, params = {}, opts = {})
         req = {}
@@ -110,10 +110,10 @@ module Increase
       end
 
       # Close an Account
-      # 
+      #
       # @param account_id [String] The identifier of the Account to close. The account must have a zero balance.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::Account]
       def close(account_id, opts = {})
         req = {}

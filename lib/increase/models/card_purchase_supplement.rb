@@ -111,7 +111,10 @@ module Increase
         #   Indicates how the merchant applied taxes.
         #   One of the constants defined in {Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments}
         #   @return [Symbol]
-        required :tax_treatments, enum: -> { Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments }
+        required :tax_treatments,
+                 enum: lambda {
+                   Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments
+                 }
 
         # @!attribute [rw] unique_value_added_tax_invoice_reference
         #   Value added tax invoice reference number.

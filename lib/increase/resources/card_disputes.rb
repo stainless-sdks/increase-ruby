@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create a Card Dispute
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :disputed_transaction_id The Transaction you wish to dispute. This Transaction must have a `source_type`
       #   of `card_settlement`.
@@ -17,9 +17,9 @@ module Increase
       #   is optional and will default to the full amount of the transaction if not
       #   provided. If provided, the amount must be less than or equal to the amount of
       #   the transaction.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::CardDispute]
       def create(params = {}, opts = {})
         req = {}
@@ -31,10 +31,10 @@ module Increase
       end
 
       # Retrieve a Card Dispute
-      # 
+      #
       # @param card_dispute_id [String] The identifier of the Card Dispute.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::CardDispute]
       def retrieve(card_dispute_id, opts = {})
         req = {}
@@ -45,7 +45,7 @@ module Increase
       end
 
       # List Card Disputes
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [CreatedAt] :created_at
       # @option params [String] :cursor Return the page of entries after this one.
@@ -56,9 +56,9 @@ module Increase
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       # @option params [Status] :status
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::CardDispute>]
       def list(params = {}, opts = {})
         req = {}

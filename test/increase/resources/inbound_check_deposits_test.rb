@@ -13,7 +13,7 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.inbound_check_deposits.list 
+    response = @increase.inbound_check_deposits.list
     assert_kind_of(Increase::Page, response)
   end
 
@@ -23,7 +23,10 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Test::Unit::TestCase
   end
 
   def test_return__required_params
-    response = @increase.inbound_check_deposits.return_("inbound_check_deposit_id", {reason: "altered_or_fictitious"})
+    response = @increase.inbound_check_deposits.return_(
+      "inbound_check_deposit_id",
+      {reason: "altered_or_fictitious"}
+    )
     assert_kind_of(Increase::Models::InboundCheckDeposit, response)
   end
 end

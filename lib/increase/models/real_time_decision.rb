@@ -112,7 +112,10 @@ module Increase
         # @!attribute [rw] network_details
         #   Fields specific to the `network`.
         #   @return [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails]
-        required :network_details, -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails }
+        required :network_details,
+                 lambda {
+                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails
+                 }
 
         # @!attribute [rw] network_identifiers
         #   Network-specific identifiers for a specific request or transaction.
@@ -150,7 +153,10 @@ module Increase
         # @!attribute [rw] request_details
         #   Fields specific to the type of request, such as an incremental authorization.
         #   @return [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails]
-        required :request_details, -> { Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails }
+        required :request_details,
+                 lambda {
+                   Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails
+                 }
 
         # @!attribute [rw] settlement_amount
         #   The amount of the attempted authorization in the currency it will be settled in. This currency is the same as that of the Account the card belongs to.
@@ -187,7 +193,9 @@ module Increase
           #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category}
           #   @return [Symbol]
           required :category,
-                   enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category }
+                   enum: lambda {
+                     Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category
+                   }
 
           # @!attribute [rw] visa
           #   Fields specific to the `visa` network.
@@ -206,14 +214,18 @@ module Increase
             #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator}
             #   @return [Symbol]
             required :electronic_commerce_indicator,
-                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator }
+                     enum: lambda {
+                       Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
+                     }
 
             # @!attribute [rw] point_of_service_entry_mode
             #   The method used to enter the cardholder's primary account number and card expiration date.
             #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode}
             #   @return [Symbol]
             required :point_of_service_entry_mode,
-                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode }
+                     enum: lambda {
+                       Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
+                     }
 
             # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
             class ElectronicCommerceIndicator < Increase::Enum
@@ -321,7 +333,9 @@ module Increase
           #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category}
           #   @return [Symbol]
           required :category,
-                   enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category }
+                   enum: lambda {
+                     Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category
+                   }
 
           # @!attribute [rw] incremental_authorization
           #   Fields specific to the category `incremental_authorization`.
@@ -375,7 +389,9 @@ module Increase
             #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result}
             #   @return [Symbol]
             required :result,
-                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result }
+                     enum: lambda {
+                       Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result
+                     }
 
             # The result of verifying the Card Verification Code.
             class Result < Increase::Enum
@@ -416,7 +432,9 @@ module Increase
             #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result}
             #   @return [Symbol]
             required :result,
-                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result }
+                     enum: lambda {
+                       Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result
+                     }
 
             # The address verification result returned to the card network.
             class Result < Increase::Enum
@@ -464,7 +482,10 @@ module Increase
         #   The channel to send the card user their one-time passcode.
         #   One of the constants defined in {Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel}
         #   @return [Symbol]
-        required :channel, enum: -> { Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel }
+        required :channel,
+                 enum: lambda {
+                   Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel
+                 }
 
         # @!attribute [rw] digital_wallet
         #   The digital wallet app being used.

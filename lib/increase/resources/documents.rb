@@ -8,10 +8,10 @@ module Increase
       end
 
       # Retrieve a Document
-      # 
+      #
       # @param document_id [String] The identifier of the Document to retrieve.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::Document]
       def retrieve(document_id, opts = {})
         req = {}
@@ -22,7 +22,7 @@ module Increase
       end
 
       # List Documents
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [Category] :category
       # @option params [CreatedAt] :created_at
@@ -30,9 +30,9 @@ module Increase
       # @option params [String] :entity_id Filter Documents to ones belonging to the specified Entity.
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::Document>]
       def list(params = {}, opts = {})
         req = {}

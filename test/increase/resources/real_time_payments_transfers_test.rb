@@ -9,7 +9,12 @@ class Increase::Test::Resources::RealTimePaymentsTransfersTest < Test::Unit::Tes
 
   def test_create_required_params
     response = @increase.real_time_payments_transfers.create(
-      {amount: 100, creditor_name: "Ian Crease", remittance_information: "Invoice 29582", source_account_number_id: "account_number_v18nkfqm6afpsrvy82b2"}
+      {
+        amount: 100,
+        creditor_name: "Ian Crease",
+        remittance_information: "Invoice 29582",
+        source_account_number_id: "account_number_v18nkfqm6afpsrvy82b2"
+      }
     )
     assert_kind_of(Increase::Models::RealTimePaymentsTransfer, response)
   end
@@ -20,7 +25,7 @@ class Increase::Test::Resources::RealTimePaymentsTransfersTest < Test::Unit::Tes
   end
 
   def test_list
-    response = @increase.real_time_payments_transfers.list 
+    response = @increase.real_time_payments_transfers.list
     assert_kind_of(Increase::Page, response)
   end
 end

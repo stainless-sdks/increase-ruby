@@ -13,7 +13,7 @@ class Increase::Test::Resources::BookkeepingEntriesTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.bookkeeping_entries.list 
+    response = @increase.bookkeeping_entries.list
     assert_kind_of(Increase::Page, response)
   end
 end

@@ -8,7 +8,10 @@ class Increase::Test::Resources::PhysicalCardsTest < Test::Unit::TestCase
   end
 
   def test_advance_shipment_required_params
-    response = @increase.simulations.physical_cards.advance_shipment("physical_card_id", {shipment_status: "pending"})
+    response = @increase.simulations.physical_cards.advance_shipment(
+      "physical_card_id",
+      {shipment_status: "pending"}
+    )
     assert_kind_of(Increase::Models::PhysicalCard, response)
   end
 end

@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create a Wire Transfer
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id The identifier for the account that will send the transfer.
       # @option params [Integer] :amount The transfer amount in cents.
@@ -31,9 +31,9 @@ module Increase
       # @option params [Boolean] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
       # @option params [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::WireTransfer]
       def create(params = {}, opts = {})
         req = {}
@@ -45,10 +45,10 @@ module Increase
       end
 
       # Retrieve a Wire Transfer
-      # 
+      #
       # @param wire_transfer_id [String] The identifier of the Wire Transfer.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::WireTransfer]
       def retrieve(wire_transfer_id, opts = {})
         req = {}
@@ -59,7 +59,7 @@ module Increase
       end
 
       # List Wire Transfers
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id Filter Wire Transfers to those belonging to the specified Account.
       # @option params [CreatedAt] :created_at
@@ -71,9 +71,9 @@ module Increase
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::WireTransfer>]
       def list(params = {}, opts = {})
         req = {}
@@ -86,10 +86,10 @@ module Increase
       end
 
       # Approve a Wire Transfer
-      # 
+      #
       # @param wire_transfer_id [String] The identifier of the Wire Transfer to approve.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::WireTransfer]
       def approve(wire_transfer_id, opts = {})
         req = {}
@@ -100,10 +100,10 @@ module Increase
       end
 
       # Cancel a pending Wire Transfer
-      # 
+      #
       # @param wire_transfer_id [String] The identifier of the pending Wire Transfer to cancel.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::WireTransfer]
       def cancel(wire_transfer_id, opts = {})
         req = {}

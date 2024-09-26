@@ -48,7 +48,8 @@ class IncreaseTest < Test::Unit::TestCase
     end
 
     def execute(req)
-      attempts.push(req)
+      # Deep copy the request because it is mutated on each retry.
+      attempts.push(Marshal.load(Marshal.dump(req)))
       MockResponse.new(response_code, response_data, response_headers)
     end
   end
@@ -106,7 +107,15 @@ class IncreaseTest < Test::Unit::TestCase
 
   def test_client_retry_after_date
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
-    requester = MockRequester.new(500, {}, {"retry-after" => (Time.now + 2).httpdate, "x-stainless-mock-sleep" => "true", "x-stainless-mock-sleep-base" => (Time.now).httpdate})
+    requester = MockRequester.new(
+      500,
+      {},
+      {
+        "retry-after" => (Time.now + 2).httpdate,
+        "x-stainless-mock-sleep" => "true",
+        "x-stainless-mock-sleep-base" => Time.now.httpdate
+      }
+    )
     increase.requester = requester
     assert_raise(Increase::HTTP::InternalServerError) do
       increase.accounts.create({name: "New Account!"})
@@ -126,6 +135,45 @@ class IncreaseTest < Test::Unit::TestCase
     assert_equal(requester.attempts.last[:headers]["X-Stainless-Mock-Slept"], 1.3)
   end
 
+  def test_retry_count_header
+    increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
+    increase.requester = requester
+
+    assert_raise(Increase::HTTP::InternalServerError) do
+      increase.accounts.create({name: "New Account!"})
+    end
+
+    retry_count_headers = requester.attempts.map { |a| a[:headers]["X-Stainless-Retry-Count"] }
+    assert_equal(%w[0 1 2], retry_count_headers)
+  end
+
+  def test_omit_retry_count_header
+    increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
+    increase.requester = requester
+
+    assert_raise(Increase::HTTP::InternalServerError) do
+      increase.accounts.create({name: "New Account!"}, extra_headers: {"X-Stainless-Retry-Count" => nil})
+    end
+
+    retry_count_headers = requester.attempts.map { |a| a[:headers]["X-Stainless-Retry-Count"] }
+    assert_equal([nil, nil, nil], retry_count_headers)
+  end
+
+  def test_overwrite_retry_count_header
+    increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
+    increase.requester = requester
+
+    assert_raise(Increase::HTTP::InternalServerError) do
+      increase.accounts.create({name: "New Account!"}, extra_headers: {"X-Stainless-Retry-Count" => "42"})
+    end
+
+    retry_count_headers = requester.attempts.map { |a| a[:headers]["X-Stainless-Retry-Count"] }
+    assert_equal(%w[42 42 42], retry_count_headers)
+  end
+
   def test_client_redirect_307
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
     requester = MockRequester.new(307, {}, {"location" => "/redirected"})
@@ -136,7 +184,10 @@ class IncreaseTest < Test::Unit::TestCase
     assert_equal(requester.attempts[1][:path], "/redirected")
     assert_equal(requester.attempts[1][:method], requester.attempts[0][:method])
     assert_equal(requester.attempts[1][:body], requester.attempts[0][:body])
-    assert_equal(requester.attempts[1][:headers]["Content-Type"], requester.attempts[0][:headers]["Content-Type"])
+    assert_equal(
+      requester.attempts[1][:headers]["Content-Type"],
+      requester.attempts[0][:headers]["Content-Type"]
+    )
   end
 
   def test_client_redirect_303
@@ -159,7 +210,10 @@ class IncreaseTest < Test::Unit::TestCase
     assert_raise(Increase::HTTP::APIConnectionError) do
       increase.accounts.create({name: "New Account!"}, extra_headers: {"Authorization" => "Bearer xyz"})
     end
-    assert_equal(requester.attempts[1][:headers]["Authorization"], requester.attempts[0][:headers]["Authorization"])
+    assert_equal(
+      requester.attempts[1][:headers]["Authorization"],
+      requester.attempts[0][:headers]["Authorization"]
+    )
   end
 
   def test_client_redirect_auth_strip_cross_origin

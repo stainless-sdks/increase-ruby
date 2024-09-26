@@ -34,11 +34,6 @@ module Increase
       #   @return [Symbol]
       required :rejection_reason, enum: -> { Increase::Models::InboundMailItem::RejectionReason }
 
-      # @!attribute [rw] return_address
-      #   The return address as written on the mail item.
-      #   @return [Increase::Models::InboundMailItem::ReturnAddress]
-      required :return_address, -> { Increase::Models::InboundMailItem::ReturnAddress }
-
       # @!attribute [rw] status
       #   If the mail item has been processed.
       #   One of the constants defined in {Increase::Models::InboundMailItem::Status}
@@ -61,38 +56,6 @@ module Increase
 
         # The Lockbox or its associataed Account is not active.
         LOCKBOX_NOT_ACTIVE = :lockbox_not_active
-      end
-
-      class ReturnAddress < BaseModel
-        # @!attribute [rw] city
-        #   The return address city.
-        #   @return [String]
-        required :city, String
-
-        # @!attribute [rw] line1
-        #   The return address line1.
-        #   @return [String]
-        required :line1, String
-
-        # @!attribute [rw] line2
-        #   The return address line2.
-        #   @return [String]
-        required :line2, String
-
-        # @!attribute [rw] name_
-        #   The return address name.
-        #   @return [String]
-        required :name_, String
-
-        # @!attribute [rw] postal_code
-        #   The return address postal code.
-        #   @return [String]
-        required :postal_code, String
-
-        # @!attribute [rw] state
-        #   The return address state.
-        #   @return [String]
-        required :state, String
       end
 
       # If the mail item has been processed.

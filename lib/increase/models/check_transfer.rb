@@ -350,7 +350,10 @@ module Increase
           #   The type of tracking event.
           #   One of the constants defined in {Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category}
           #   @return [Symbol]
-          required :category, enum: -> { Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category }
+          required :category,
+                   enum: lambda {
+                     Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category
+                   }
 
           # @!attribute [rw] created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the tracking event took place.

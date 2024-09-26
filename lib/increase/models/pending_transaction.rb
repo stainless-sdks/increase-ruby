@@ -169,7 +169,9 @@ module Increase
           #   One of the constants defined in {Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency}
           #   @return [Symbol]
           required :currency,
-                   enum: -> { Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency }
+                   enum: lambda {
+                     Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency
+                   }
 
           # @!attribute [rw] transfer_id
           #   The identifier of the Account Transfer that led to this Pending Transaction.
@@ -220,7 +222,10 @@ module Increase
           #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner}
           #   @return [Symbol]
-          required :actioner, enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner }
+          required :actioner,
+                   enum: lambda {
+                     Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner
+                   }
 
           # @!attribute [rw] amount
           #   The pending amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
@@ -236,7 +241,10 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Currency}
           #   @return [Symbol]
-          required :currency, enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Currency }
+          required :currency,
+                   enum: lambda {
+                     Increase::Models::PendingTransaction::Source::CardAuthorization::Currency
+                   }
 
           # @!attribute [rw] digital_wallet_token_id
           #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay purchase), the identifier of the token that was used.
@@ -332,7 +340,9 @@ module Increase
           #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory}
           #   @return [Symbol]
           required :processing_category,
-                   enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory }
+                   enum: lambda {
+                     Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory
+                   }
 
           # @!attribute [rw] real_time_decision_id
           #   The identifier of the Real-Time Decision sent to approve or decline this transaction.
@@ -399,7 +409,9 @@ module Increase
             #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category}
             #   @return [Symbol]
             required :category,
-                     enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category }
+                     enum: lambda {
+                       Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category
+                     }
 
             # @!attribute [rw] visa
             #   Fields specific to the `visa` network.
@@ -419,14 +431,18 @@ module Increase
               #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator}
               #   @return [Symbol]
               required :electronic_commerce_indicator,
-                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator }
+                       enum: lambda {
+                         Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
+                       }
 
               # @!attribute [rw] point_of_service_entry_mode
               #   The method used to enter the cardholder's primary account number and card expiration date.
               #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode}
               #   @return [Symbol]
               required :point_of_service_entry_mode,
-                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode }
+                       enum: lambda {
+                         Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
+                       }
 
               # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               class ElectronicCommerceIndicator < Increase::Enum
@@ -552,7 +568,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result}
               #   @return [Symbol]
               required :result,
-                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result }
+                       enum: lambda {
+                         Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result
+                       }
 
               # The result of verifying the Card Verification Code.
               class Result < Increase::Enum
@@ -593,7 +611,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result}
               #   @return [Symbol]
               required :result,
-                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result }
+                       enum: lambda {
+                         Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result
+                       }
 
               # The address verification result returned to the card network.
               class Result < Increase::Enum
@@ -670,7 +690,9 @@ module Increase
           #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency}
           #   @return [Symbol]
           required :currency,
-                   enum: -> { Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency }
+                   enum: lambda {
+                     Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency
+                   }
 
           # @!attribute [rw] front_image_file_id
           #   The identifier of the File containing the image of the front of the check that was deposited.
@@ -710,7 +732,9 @@ module Increase
           #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency}
           #   @return [Symbol]
           required :currency,
-                   enum: -> { Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency }
+                   enum: lambda {
+                     Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency
+                   }
 
           # @!attribute [rw] transfer_id
           #   The identifier of the Check Transfer that led to this Pending Transaction.
@@ -764,7 +788,10 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
           #   One of the constants defined in {Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency}
           #   @return [Symbol]
-          required :currency, enum: -> { Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency }
+          required :currency,
+                   enum: lambda {
+                     Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency
+                   }
 
           # @!attribute [rw] held_transaction_id
           #   The ID of the Transaction for which funds were held.
@@ -785,7 +812,10 @@ module Increase
           #   The status of the hold.
           #   One of the constants defined in {Increase::Models::PendingTransaction::Source::InboundFundsHold::Status}
           #   @return [Symbol]
-          required :status, enum: -> { Increase::Models::PendingTransaction::Source::InboundFundsHold::Status }
+          required :status,
+                   enum: lambda {
+                     Increase::Models::PendingTransaction::Source::InboundFundsHold::Status
+                   }
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.

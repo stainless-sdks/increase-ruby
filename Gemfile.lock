@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    increase (0.0.1.pre.alpha.0)
+      connection_pool
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -30,18 +36,19 @@ GEM
     test-unit (3.6.2)
       power_assert
     unicode-display_width (2.5.0)
-    webrick (1.8.1)
+    webrick (1.8.2)
     yard (0.9.37)
 
 PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  connection_pool
+  increase!
   rake
   rubocop
-  syntax_tree
   test-unit
+  webrick
+  yard
 
 BUNDLED WITH
    2.4.10

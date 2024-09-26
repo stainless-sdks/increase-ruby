@@ -83,7 +83,10 @@ module Increase
       #   The type of entity that owns the account to which the ACH Transfer is being sent.
       #   One of the constants defined in {Increase::Models::ACHTransfer::DestinationAccountHolder}
       #   @return [Symbol]
-      required :destination_account_holder, enum: -> { Increase::Models::ACHTransfer::DestinationAccountHolder }
+      required :destination_account_holder,
+               enum: lambda {
+                 Increase::Models::ACHTransfer::DestinationAccountHolder
+               }
 
       # @!attribute [rw] external_account_id
       #   The identifier of the External Account the transfer was made to, if any.
@@ -222,7 +225,12 @@ module Increase
           # @!attribute [rw] entries
           #   Each entry represents an addendum sent with the transfer.
           #   @return [Array<Increase::Models::ACHTransfer::Addenda::Freeform::Entry>]
-          required :entries, Increase::ArrayOf.new(-> { Increase::Models::ACHTransfer::Addenda::Freeform::Entry })
+          required :entries,
+                   Increase::ArrayOf.new(
+                     lambda {
+                       Increase::Models::ACHTransfer::Addenda::Freeform::Entry
+                     }
+                   )
 
           class Entry < BaseModel
             # @!attribute [rw] payment_related_information
@@ -237,7 +245,11 @@ module Increase
           #   ASC X12 RMR records for this specific transfer.
           #   @return [Array<Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice>]
           required :invoices,
-                   Increase::ArrayOf.new(-> { Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice })
+                   Increase::ArrayOf.new(
+                     lambda {
+                       Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice
+                     }
+                   )
 
           class Invoice < BaseModel
             # @!attribute [rw] invoice_number

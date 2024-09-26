@@ -266,7 +266,10 @@ module Increase
           #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner}
           #   @return [Symbol]
-          required :actioner, enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner }
+          required :actioner,
+                   enum: lambda {
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner
+                   }
 
           # @!attribute [rw] amount
           #   The declined amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
@@ -282,7 +285,10 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Currency}
           #   @return [Symbol]
-          required :currency, enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Currency }
+          required :currency,
+                   enum: lambda {
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::Currency
+                   }
 
           # @!attribute [rw] declined_transaction_id
           #   The identifier of the declined transaction created for this Card Decline.
@@ -382,7 +388,10 @@ module Increase
           # @!attribute [rw] verification
           #   Fields related to verification of cardholder-provided values.
           #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification]
-          required :verification, -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification }
+          required :verification,
+                   lambda {
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
+                   }
 
           # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           class Actioner < Increase::Enum
@@ -423,12 +432,17 @@ module Increase
             #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category}
             #   @return [Symbol]
             required :category,
-                     enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category }
+                     enum: lambda {
+                       Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category
+                     }
 
             # @!attribute [rw] visa
             #   Fields specific to the `visa` network.
             #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa]
-            required :visa, -> { Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa }
+            required :visa,
+                     lambda {
+                       Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa
+                     }
 
             # The payment network used to process this card authorization.
             class Category < Increase::Enum
@@ -442,14 +456,18 @@ module Increase
               #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator}
               #   @return [Symbol]
               required :electronic_commerce_indicator,
-                       enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator }
+                       enum: lambda {
+                         Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator
+                       }
 
               # @!attribute [rw] point_of_service_entry_mode
               #   The method used to enter the cardholder's primary account number and card expiration date.
               #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode}
               #   @return [Symbol]
               required :point_of_service_entry_mode,
-                       enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode }
+                       enum: lambda {
+                         Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode
+                       }
 
               # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               class ElectronicCommerceIndicator < Increase::Enum
@@ -618,7 +636,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result}
               #   @return [Symbol]
               required :result,
-                       enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result }
+                       enum: lambda {
+                         Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result
+                       }
 
               # The result of verifying the Card Verification Code.
               class Result < Increase::Enum
@@ -659,7 +679,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result}
               #   @return [Symbol]
               required :result,
-                       enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result }
+                       enum: lambda {
+                         Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result
+                       }
 
               # The address verification result returned to the card network.
               class Result < Increase::Enum
@@ -907,7 +929,9 @@ module Increase
           #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency}
           #   @return [Symbol]
           required :currency,
-                   enum: -> { Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency }
+                   enum: lambda {
+                     Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency
+                   }
 
           # @!attribute [rw] debtor_account_number
           #   The account number of the account that sent the transfer.
@@ -929,7 +953,9 @@ module Increase
           #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason}
           #   @return [Symbol]
           required :reason,
-                   enum: -> { Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason }
+                   enum: lambda {
+                     Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason
+                   }
 
           # @!attribute [rw] remittance_information
           #   Additional information included with the transfer.
