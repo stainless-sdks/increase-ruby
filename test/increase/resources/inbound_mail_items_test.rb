@@ -13,7 +13,7 @@ class Increase::Test::Resources::InboundMailItemsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.inbound_mail_items.list 
+    response = @increase.inbound_mail_items.list
     assert_kind_of(Increase::Page, response)
   end
 end

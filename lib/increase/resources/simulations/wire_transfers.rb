@@ -12,10 +12,10 @@ module Increase
         #   Reserve due to error conditions. This will also create a
         #   [Transaction](#transaction) to account for the returned funds. This Wire
         #   Transfer must first have a `status` of `complete`.
-        # 
+        #
         # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to reverse.
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Increase::Models::WireTransfer]
         def reverse(wire_transfer_id, opts = {})
           req = {}
@@ -28,10 +28,10 @@ module Increase
         # Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
         #   Reserve. This transfer must first have a `status` of `pending_approval` or
         #   `pending_creating`.
-        # 
+        #
         # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to submit.
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Increase::Models::WireTransfer]
         def submit(wire_transfer_id, opts = {})
           req = {}

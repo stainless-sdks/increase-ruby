@@ -170,7 +170,11 @@ module Increase
           #   Each entry represents an addendum received from the originator.
           #   @return [Array<Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry>]
           required :entries,
-                   Increase::ArrayOf.new(-> { Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry })
+                   Increase::ArrayOf.new(
+                     lambda {
+                       Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry
+                     }
+                   )
 
           class Entry < BaseModel
             # @!attribute [rw] payment_related_information
@@ -287,7 +291,9 @@ module Increase
         #   One of the constants defined in {Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator}
         #   @return [Symbol]
         required :foreign_exchange_indicator,
-                 enum: -> { Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator }
+                 enum: lambda {
+                   Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator
+                 }
 
         # @!attribute [rw] foreign_exchange_reference
         #   Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a reference to a well-known rate.
@@ -299,7 +305,9 @@ module Increase
         #   One of the constants defined in {Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator}
         #   @return [Symbol]
         required :foreign_exchange_reference_indicator,
-                 enum: -> { Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator }
+                 enum: lambda {
+                   Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator
+                 }
 
         # @!attribute [rw] foreign_payment_amount
         #   The amount in the minor unit of the foreign payment currency. For dollars, for example, this is cents.
@@ -316,7 +324,9 @@ module Increase
         #   One of the constants defined in {Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode}
         #   @return [Symbol]
         required :international_transaction_type_code,
-                 enum: -> { Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode }
+                 enum: lambda {
+                   Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode
+                 }
 
         # @!attribute [rw] originating_currency_code
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the originating bank account.
@@ -338,7 +348,9 @@ module Increase
         #   One of the constants defined in {Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier}
         #   @return [Symbol]
         required :originating_depository_financial_institution_id_qualifier,
-                 enum: -> { Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier }
+                 enum: lambda {
+                   Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier
+                 }
 
         # @!attribute [rw] originating_depository_financial_institution_name
         #   The name of the originating bank. Sometimes this will refer to an American bank and obscure the correspondent foreign bank.
@@ -440,7 +452,9 @@ module Increase
         #   One of the constants defined in {Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier}
         #   @return [Symbol]
         required :receiving_depository_financial_institution_id_qualifier,
-                 enum: -> { Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier }
+                 enum: lambda {
+                   Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier
+                 }
 
         # @!attribute [rw] receiving_depository_financial_institution_name
         #   The name of the receiving bank, as set by the sending financial institution.

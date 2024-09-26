@@ -8,7 +8,12 @@ class Increase::Test::Resources::IntrafiExclusionsTest < Test::Unit::TestCase
   end
 
   def test_create_required_params
-    response = @increase.intrafi_exclusions.create({bank_name: "Example Bank", entity_id: "entity_n8y8tnk2p9339ti393yi"})
+    response = @increase.intrafi_exclusions.create(
+      {
+        bank_name: "Example Bank",
+        entity_id: "entity_n8y8tnk2p9339ti393yi"
+      }
+    )
     assert_kind_of(Increase::Models::IntrafiExclusion, response)
   end
 
@@ -18,7 +23,7 @@ class Increase::Test::Resources::IntrafiExclusionsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.intrafi_exclusions.list 
+    response = @increase.intrafi_exclusions.list
     assert_kind_of(Increase::Page, response)
   end
 

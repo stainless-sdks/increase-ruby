@@ -25,7 +25,7 @@ class Increase::Test::Resources::ExternalAccountsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.external_accounts.list 
+    response = @increase.external_accounts.list
     assert_kind_of(Increase::Page, response)
   end
 end

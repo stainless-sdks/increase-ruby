@@ -167,7 +167,10 @@ module Increase
             # @!attribute [rw] address
             #   The person's address.
             #   @return [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address]
-            required :address, -> { Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address }
+            required :address,
+                     lambda {
+                       Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address
+                     }
 
             # @!attribute [rw] date_of_birth
             #   The person's date of birth in YYYY-MM-DD format.
@@ -218,7 +221,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method}
               #   @return [Symbol]
               required :method_,
-                       enum: -> { Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method }
+                       enum: lambda {
+                         Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method
+                       }
 
               # @!attribute [rw] number_last4
               #   The last 4 digits of the identification number that can be used to verify the individual's identity.
@@ -399,7 +404,10 @@ module Increase
             #   A method that can be used to verify the individual's identity.
             #   One of the constants defined in {Increase::Models::Entity::Joint::Individual::Identification::Method}
             #   @return [Symbol]
-            required :method_, enum: -> { Increase::Models::Entity::Joint::Individual::Identification::Method }
+            required :method_,
+                     enum: lambda {
+                       Increase::Models::Entity::Joint::Individual::Identification::Method
+                     }
 
             # @!attribute [rw] number_last4
             #   The last 4 digits of the identification number that can be used to verify the individual's identity.
@@ -721,7 +729,10 @@ module Increase
             # @!attribute [rw] identification
             #   A means of verifying the person's identity.
             #   @return [Increase::Models::Entity::Trust::Trustee::Individual::Identification]
-            required :identification, -> { Increase::Models::Entity::Trust::Trustee::Individual::Identification }
+            required :identification,
+                     lambda {
+                       Increase::Models::Entity::Trust::Trustee::Individual::Identification
+                     }
 
             # @!attribute [rw] name_
             #   The person's legal name.
@@ -761,7 +772,9 @@ module Increase
               #   One of the constants defined in {Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method}
               #   @return [Symbol]
               required :method_,
-                       enum: -> { Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method }
+                       enum: lambda {
+                         Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method
+                       }
 
               # @!attribute [rw] number_last4
               #   The last 4 digits of the identification number that can be used to verify the individual's identity.

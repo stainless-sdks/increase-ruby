@@ -47,7 +47,10 @@ module Increase
       #   If the notification is for a future credit or debit.
       #   One of the constants defined in {Increase::Models::ACHPrenotification::CreditDebitIndicator}
       #   @return [Symbol]
-      required :credit_debit_indicator, enum: -> { Increase::Models::ACHPrenotification::CreditDebitIndicator }
+      required :credit_debit_indicator,
+               enum: lambda {
+                 Increase::Models::ACHPrenotification::CreditDebitIndicator
+               }
 
       # @!attribute [rw] effective_date
       #   The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.

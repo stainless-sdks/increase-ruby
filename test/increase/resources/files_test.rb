@@ -18,7 +18,7 @@ class Increase::Test::Resources::FilesTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.files.list 
+    response = @increase.files.list
     assert_kind_of(Increase::Page, response)
   end
 end

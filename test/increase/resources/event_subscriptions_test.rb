@@ -23,7 +23,7 @@ class Increase::Test::Resources::EventSubscriptionsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.event_subscriptions.list 
+    response = @increase.event_subscriptions.list
     assert_kind_of(Increase::Page, response)
   end
 end

@@ -8,7 +8,12 @@ class Increase::Test::Resources::InterestPaymentsTest < Test::Unit::TestCase
   end
 
   def test_create_required_params
-    response = @increase.simulations.interest_payments.create({account_id: "account_in71c4amph0vgo2qllky", amount: 1000})
+    response = @increase.simulations.interest_payments.create(
+      {
+        account_id: "account_in71c4amph0vgo2qllky",
+        amount: 1000
+      }
+    )
     assert_kind_of(Increase::Models::Transaction, response)
   end
 end

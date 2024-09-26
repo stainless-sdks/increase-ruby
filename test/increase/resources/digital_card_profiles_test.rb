@@ -9,7 +9,13 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @increase.digital_card_profiles.create(
-      {app_icon_file_id: "file_8zxqkwlh43wo144u8yec", background_image_file_id: "file_1ai913suu1zfn1pdetru", card_description: "MyBank Signature Card", description: "My Card Profile", issuer_name: "MyBank"}
+      {
+        app_icon_file_id: "file_8zxqkwlh43wo144u8yec",
+        background_image_file_id: "file_1ai913suu1zfn1pdetru",
+        card_description: "MyBank Signature Card",
+        description: "My Card Profile",
+        issuer_name: "MyBank"
+      }
     )
     assert_kind_of(Increase::Models::DigitalCardProfile, response)
   end
@@ -20,7 +26,7 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.digital_card_profiles.list 
+    response = @increase.digital_card_profiles.list
     assert_kind_of(Increase::Page, response)
   end
 

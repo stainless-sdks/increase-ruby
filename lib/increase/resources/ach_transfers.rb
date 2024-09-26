@@ -8,7 +8,7 @@ module Increase
       end
 
       # Create an ACH Transfer
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id The Increase identifier for the account that will send the transfer.
       # @option params [Integer] :amount The transfer amount in cents. A positive amount originates a credit transfer
@@ -47,9 +47,9 @@ module Increase
       # @option params [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
       # @option params [Symbol] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the transfer.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::ACHTransfer]
       def create(params = {}, opts = {})
         req = {}
@@ -61,10 +61,10 @@ module Increase
       end
 
       # Retrieve an ACH Transfer
-      # 
+      #
       # @param ach_transfer_id [String] The identifier of the ACH Transfer.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::ACHTransfer]
       def retrieve(ach_transfer_id, opts = {})
         req = {}
@@ -75,7 +75,7 @@ module Increase
       end
 
       # List ACH Transfers
-      # 
+      #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id Filter ACH Transfers to those that originated from the specified Account.
       # @option params [CreatedAt] :created_at
@@ -87,9 +87,9 @@ module Increase
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
       # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
-      # 
+      #
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Page<Increase::Models::ACHTransfer>]
       def list(params = {}, opts = {})
         req = {}
@@ -102,10 +102,10 @@ module Increase
       end
 
       # Approves an ACH Transfer in a pending_approval state.
-      # 
+      #
       # @param ach_transfer_id [String] The identifier of the ACH Transfer to approve.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::ACHTransfer]
       def approve(ach_transfer_id, opts = {})
         req = {}
@@ -116,10 +116,10 @@ module Increase
       end
 
       # Cancels an ACH Transfer in a pending_approval state.
-      # 
+      #
       # @param ach_transfer_id [String] The identifier of the pending ACH Transfer to cancel.
       # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-      # 
+      #
       # @return [Increase::Models::ACHTransfer]
       def cancel(ach_transfer_id, opts = {})
         req = {}

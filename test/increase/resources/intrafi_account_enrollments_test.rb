@@ -20,7 +20,7 @@ class Increase::Test::Resources::IntrafiAccountEnrollmentsTest < Test::Unit::Tes
   end
 
   def test_list
-    response = @increase.intrafi_account_enrollments.list 
+    response = @increase.intrafi_account_enrollments.list
     assert_kind_of(Increase::Page, response)
   end
 

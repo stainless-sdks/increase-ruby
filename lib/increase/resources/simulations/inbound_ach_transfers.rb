@@ -18,7 +18,7 @@ module Increase
         #   contain either a [Transaction](#transactions) or a
         #   [Declined Transaction](#declined-transactions) depending on whether or not the
         #   transfer is allowed.
-        # 
+        #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :account_number_id The identifier of the Account Number the inbound ACH Transfer is for.
         # @option params [Integer] :amount The transfer amount in cents. A positive amount originates a credit transfer
@@ -34,9 +34,9 @@ module Increase
         # @option params [DateTime] :resolve_at The time at which the transfer should be resolved. If not provided will resolve
         #   immediately.
         # @option params [Symbol] :standard_entry_class_code The standard entry class code for the transfer.
-        # 
+        #
         # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
-        # 
+        #
         # @return [Increase::Models::InboundACHTransfer]
         def create(params = {}, opts = {})
           req = {}

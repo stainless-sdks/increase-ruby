@@ -9,7 +9,10 @@ class Increase::Test::Resources::CardDisputesTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @increase.card_disputes.create(
-      {disputed_transaction_id: "transaction_uyrp7fld2ium70oa7oi", explanation: "Unauthorized recurring transaction."}
+      {
+        disputed_transaction_id: "transaction_uyrp7fld2ium70oa7oi",
+        explanation: "Unauthorized recurring transaction."
+      }
     )
     assert_kind_of(Increase::Models::CardDispute, response)
   end
@@ -20,7 +23,7 @@ class Increase::Test::Resources::CardDisputesTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.card_disputes.list 
+    response = @increase.card_disputes.list
     assert_kind_of(Increase::Page, response)
   end
 end

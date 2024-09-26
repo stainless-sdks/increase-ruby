@@ -9,7 +9,12 @@ class Increase::Test::Resources::CheckDepositsTest < Test::Unit::TestCase
 
   def test_create_required_params
     response = @increase.check_deposits.create(
-      {account_id: "account_in71c4amph0vgo2qllky", amount: 1000, back_image_file_id: "file_26khfk98mzfz90a11oqx", front_image_file_id: "file_hkv175ovmc2tb2v2zbrm"}
+      {
+        account_id: "account_in71c4amph0vgo2qllky",
+        amount: 1000,
+        back_image_file_id: "file_26khfk98mzfz90a11oqx",
+        front_image_file_id: "file_hkv175ovmc2tb2v2zbrm"
+      }
     )
     assert_kind_of(Increase::Models::CheckDeposit, response)
   end
@@ -20,7 +25,7 @@ class Increase::Test::Resources::CheckDepositsTest < Test::Unit::TestCase
   end
 
   def test_list
-    response = @increase.check_deposits.list 
+    response = @increase.check_deposits.list
     assert_kind_of(Increase::Page, response)
   end
 end
