@@ -18,7 +18,7 @@ module Increase
       # @option params [Symbol, Purpose] :purpose What the File will be used for in Increase's systems.
       # @option params [String, nil] :description The description you choose to give the File.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::File]
       def create(params = {}, opts = {})
@@ -33,7 +33,7 @@ module Increase
       # Retrieve a File
       #
       # @param file_id [String] The identifier of the File.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::File]
       def retrieve(file_id, opts = {})
@@ -57,7 +57,7 @@ module Increase
       #   objects.
       # @option params [Purpose, nil] :purpose
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::File>]
       def list(params = {}, opts = {})

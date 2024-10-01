@@ -17,7 +17,7 @@ module Increase
       # @option params [String] :destination_account_id The identifier for the account that will receive the transfer.
       # @option params [Boolean, nil] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountTransfer]
       def create(params = {}, opts = {})
@@ -32,7 +32,7 @@ module Increase
       # Retrieve an Account Transfer
       #
       # @param account_transfer_id [String] The identifier of the Account Transfer.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountTransfer]
       def retrieve(account_transfer_id, opts = {})
@@ -56,7 +56,7 @@ module Increase
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::AccountTransfer>]
       def list(params = {}, opts = {})
@@ -72,7 +72,7 @@ module Increase
       # Approve an Account Transfer
       #
       # @param account_transfer_id [String] The identifier of the Account Transfer to approve.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountTransfer]
       def approve(account_transfer_id, opts = {})
@@ -86,7 +86,7 @@ module Increase
       # Cancel an Account Transfer
       #
       # @param account_transfer_id [String] The identifier of the pending Account Transfer to cancel.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountTransfer]
       def cancel(account_transfer_id, opts = {})

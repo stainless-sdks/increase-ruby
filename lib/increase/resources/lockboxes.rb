@@ -14,7 +14,7 @@ module Increase
       # @option params [String, nil] :description The description you choose for the Lockbox, for display purposes.
       # @option params [String, nil] :recipient_name The name of the recipient that will receive mail at this location.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Lockbox]
       def create(params = {}, opts = {})
@@ -29,7 +29,7 @@ module Increase
       # Retrieve a Lockbox
       #
       # @param lockbox_id [String] The identifier of the Lockbox to retrieve.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Lockbox]
       def retrieve(lockbox_id, opts = {})
@@ -49,7 +49,7 @@ module Increase
       # @option params [String, nil] :recipient_name The recipient name you choose for the Lockbox.
       # @option params [Symbol, Status, nil] :status This indicates if checks can be sent to the Lockbox.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Lockbox]
       def update(lockbox_id, params = {}, opts = {})
@@ -74,7 +74,7 @@ module Increase
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Lockbox>]
       def list(params = {}, opts = {})

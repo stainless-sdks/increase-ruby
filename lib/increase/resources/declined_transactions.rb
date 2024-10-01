@@ -10,7 +10,7 @@ module Increase
       # Retrieve a Declined Transaction
       #
       # @param declined_transaction_id [String] The identifier of the Declined Transaction.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::DeclinedTransaction]
       def retrieve(declined_transaction_id, opts = {})
@@ -32,7 +32,7 @@ module Increase
       #   objects.
       # @option params [String, nil] :route_id Filter Declined Transactions to those belonging to the specified route.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::DeclinedTransaction>]
       def list(params = {}, opts = {})

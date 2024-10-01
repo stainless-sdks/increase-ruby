@@ -18,7 +18,7 @@ module Increase
       # @option params [String, nil] :shared_secret The key that will be used to sign webhooks. If no value is passed, a random
       #   string will be used as default.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::EventSubscription]
       def create(params = {}, opts = {})
@@ -33,7 +33,7 @@ module Increase
       # Retrieve an Event Subscription
       #
       # @param event_subscription_id [String] The identifier of the Event Subscription.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::EventSubscription]
       def retrieve(event_subscription_id, opts = {})
@@ -51,7 +51,7 @@ module Increase
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol, Status, nil] :status The status to update the Event Subscription with.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::EventSubscription]
       def update(event_subscription_id, params = {}, opts = {})
@@ -74,7 +74,7 @@ module Increase
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::EventSubscription>]
       def list(params = {}, opts = {})

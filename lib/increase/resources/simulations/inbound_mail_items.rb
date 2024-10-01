@@ -17,7 +17,7 @@ module Increase
         # @option params [String, nil] :contents_file_id The file containing the PDF contents. If not present, a default check image file
         #   will be used.
         #
-        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundMailItem]
         def create(params = {}, opts = {})

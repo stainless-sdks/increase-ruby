@@ -17,7 +17,7 @@ module Increase
       # @option params [String, nil] :program_id The identifier for the Program that this Account falls under. Required if you
       #   operate more than one Program.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Account]
       def create(params = {}, opts = {})
@@ -32,7 +32,7 @@ module Increase
       # Retrieve an Account
       #
       # @param account_id [String] The identifier of the Account to retrieve.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Account]
       def retrieve(account_id, opts = {})
@@ -50,7 +50,7 @@ module Increase
       # @param params [Hash] Attributes to send in this request.
       # @option params [String, nil] :name The new name of the Account.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Account]
       def update(account_id, params = {}, opts = {})
@@ -77,7 +77,7 @@ module Increase
       #   objects.
       # @option params [Symbol, Status, nil] :status Filter Accounts for those with the specified status.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Account>]
       def list(params = {}, opts = {})
@@ -97,7 +97,7 @@ module Increase
       # @param params [Hash] Attributes to send in this request.
       # @option params [DateTime, nil] :at_time The moment to query the balance at. If not set, returns the current balances.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::BalanceLookup]
       def balance(account_id, params = {}, opts = {})
@@ -112,7 +112,7 @@ module Increase
       # Close an Account
       #
       # @param account_id [String] The identifier of the Account to close. The account must have a zero balance.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Account]
       def close(account_id, opts = {})

@@ -18,7 +18,7 @@ module Increase
       #   provided. If provided, the amount must be less than or equal to the amount of
       #   the transaction.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CardDispute]
       def create(params = {}, opts = {})
@@ -33,7 +33,7 @@ module Increase
       # Retrieve a Card Dispute
       #
       # @param card_dispute_id [String] The identifier of the Card Dispute.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CardDispute]
       def retrieve(card_dispute_id, opts = {})
@@ -57,7 +57,7 @@ module Increase
       #   objects.
       # @option params [Status, nil] :status
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::CardDispute>]
       def list(params = {}, opts = {})

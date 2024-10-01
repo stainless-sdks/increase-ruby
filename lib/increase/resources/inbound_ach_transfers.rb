@@ -10,7 +10,7 @@ module Increase
       # Retrieve an Inbound ACH Transfer
       #
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to get details for.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundACHTransfer]
       def retrieve(inbound_ach_transfer_id, opts = {})
@@ -32,7 +32,7 @@ module Increase
       #   objects.
       # @option params [Symbol, Status, nil] :status Filter Inbound ACH Transfers to those with the specified status.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::InboundACHTransfer>]
       def list(params = {}, opts = {})
@@ -54,7 +54,7 @@ module Increase
       # @option params [String, nil] :updated_account_number The updated account number to send in the notification of change.
       # @option params [String, nil] :updated_routing_number The updated routing number to send in the notification of change.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundACHTransfer]
       def create_notification_of_change(inbound_ach_transfer_id, params = {}, opts = {})
@@ -75,7 +75,7 @@ module Increase
       #   return codes will be `payment_stopped` for debits and
       #   `credit_entry_refused_by_receiver` for credits.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundACHTransfer]
       def decline(inbound_ach_transfer_id, params = {}, opts = {})
@@ -96,7 +96,7 @@ module Increase
       # @option params [Symbol, Reason] :reason The reason why this transfer will be returned. The most usual return codes are
       #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundACHTransfer]
       def transfer_return(inbound_ach_transfer_id, params = {}, opts = {})

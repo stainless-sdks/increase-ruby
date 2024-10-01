@@ -19,7 +19,7 @@ module Increase
         # @option params [Symbol, Status] :status The status to move the dispute to.
         # @option params [String, nil] :explanation Why the dispute was rejected. Not required for accepting disputes.
         #
-        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CardDispute]
         def action(card_dispute_id, params = {}, opts = {})

@@ -15,7 +15,7 @@ module Increase
       # @option params [String] :description A description you can use to identify the Card Profile.
       # @option params [String] :front_image_file_id The identifier of the File containing the physical card's front image.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PhysicalCardProfile]
       def create(params = {}, opts = {})
@@ -30,7 +30,7 @@ module Increase
       # Retrieve a Card Profile
       #
       # @param physical_card_profile_id [String] The identifier of the Card Profile.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PhysicalCardProfile]
       def retrieve(physical_card_profile_id, opts = {})
@@ -53,7 +53,7 @@ module Increase
       #   objects.
       # @option params [Status, nil] :status
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::PhysicalCardProfile>]
       def list(params = {}, opts = {})
@@ -69,7 +69,7 @@ module Increase
       # Archive a Physical Card Profile
       #
       # @param physical_card_profile_id [String] The identifier of the Physical Card Profile to archive.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PhysicalCardProfile]
       def archive(physical_card_profile_id, opts = {})
@@ -92,7 +92,7 @@ module Increase
       # @option params [FrontText, nil] :front_text Text printed on the front of the card. Reach out to
       #   [support@increase.com](mailto:support@increase.com) for more information.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PhysicalCardProfile]
       def clone(physical_card_profile_id, params = {}, opts = {})

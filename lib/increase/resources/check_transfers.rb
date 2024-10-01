@@ -23,7 +23,7 @@ module Increase
       #   `fulfillment_method` is equal to `third_party`. It must not be included if any
       #   other `fulfillment_method` is provided.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       def create(params = {}, opts = {})
@@ -38,7 +38,7 @@ module Increase
       # Retrieve a Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       def retrieve(check_transfer_id, opts = {})
@@ -62,7 +62,7 @@ module Increase
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::CheckTransfer>]
       def list(params = {}, opts = {})
@@ -78,7 +78,7 @@ module Increase
       # Approve a Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer to approve.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       def approve(check_transfer_id, opts = {})
@@ -92,7 +92,7 @@ module Increase
       # Cancel a pending Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the pending Check Transfer to cancel.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       def cancel(check_transfer_id, opts = {})
@@ -110,7 +110,7 @@ module Increase
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol, Reason, nil] :reason The reason why this transfer should be stopped.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       def stop_payment(check_transfer_id, params = {}, opts = {})

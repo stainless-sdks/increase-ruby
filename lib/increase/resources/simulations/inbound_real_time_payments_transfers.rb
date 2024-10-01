@@ -21,7 +21,7 @@ module Increase
         # @option params [String, nil] :remittance_information Additional information included with the transfer.
         # @option params [String, nil] :request_for_payment_id The identifier of a pending Request for Payment that this transfer will fulfill.
         #
-        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundRealTimePaymentsTransfer]
         def create(params = {}, opts = {})

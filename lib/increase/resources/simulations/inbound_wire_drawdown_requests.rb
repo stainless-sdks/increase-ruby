@@ -39,7 +39,7 @@ module Increase
         # @option params [String, nil] :originator_to_beneficiary_information_line4 Line 4 of the information conveyed from the originator of the message to the
         #   beneficiary.
         #
-        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundWireDrawdownRequest]
         def create(params = {}, opts = {})

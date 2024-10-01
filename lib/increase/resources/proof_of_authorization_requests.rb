@@ -10,7 +10,7 @@ module Increase
       # Retrieve a Proof of Authorization Request
       #
       # @param proof_of_authorization_request_id [String] The identifier of the Proof of Authorization Request.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ProofOfAuthorizationRequest]
       def retrieve(proof_of_authorization_request_id, opts = {})
@@ -29,7 +29,7 @@ module Increase
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequest>]
       def list(params = {}, opts = {})

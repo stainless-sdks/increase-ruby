@@ -48,7 +48,7 @@ module Increase
       #   destination account.
       # @option params [Symbol, StandardEntryClassCode, nil] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the transfer.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHTransfer]
       def create(params = {}, opts = {})
@@ -63,7 +63,7 @@ module Increase
       # Retrieve an ACH Transfer
       #
       # @param ach_transfer_id [String] The identifier of the ACH Transfer.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHTransfer]
       def retrieve(ach_transfer_id, opts = {})
@@ -88,7 +88,7 @@ module Increase
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ACHTransfer>]
       def list(params = {}, opts = {})
@@ -104,7 +104,7 @@ module Increase
       # Approves an ACH Transfer in a pending_approval state.
       #
       # @param ach_transfer_id [String] The identifier of the ACH Transfer to approve.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHTransfer]
       def approve(ach_transfer_id, opts = {})
@@ -118,7 +118,7 @@ module Increase
       # Cancels an ACH Transfer in a pending_approval state.
       #
       # @param ach_transfer_id [String] The identifier of the pending ACH Transfer to cancel.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHTransfer]
       def cancel(ach_transfer_id, opts = {})

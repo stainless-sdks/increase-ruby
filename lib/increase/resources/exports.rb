@@ -22,7 +22,7 @@ module Increase
       #   `transaction_csv`.
       # @option params [Object, nil] :vendor_csv Options for the created export. Required if `category` is equal to `vendor_csv`.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Export]
       def create(params = {}, opts = {})
@@ -37,7 +37,7 @@ module Increase
       # Retrieve an Export
       #
       # @param export_id [String] The identifier of the Export to retrieve.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Export]
       def retrieve(export_id, opts = {})
@@ -62,7 +62,7 @@ module Increase
       #   objects.
       # @option params [Status, nil] :status
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Export>]
       def list(params = {}, opts = {})

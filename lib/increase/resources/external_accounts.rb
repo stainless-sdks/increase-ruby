@@ -17,7 +17,7 @@ module Increase
       # @option params [Symbol, AccountHolder, nil] :account_holder The type of entity that owns the External Account.
       # @option params [Symbol, Funding, nil] :funding The type of the destination account. Defaults to `checking`.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ExternalAccount]
       def create(params = {}, opts = {})
@@ -32,7 +32,7 @@ module Increase
       # Retrieve an External Account
       #
       # @param external_account_id [String] The identifier of the External Account.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ExternalAccount]
       def retrieve(external_account_id, opts = {})
@@ -53,7 +53,7 @@ module Increase
       # @option params [Symbol, Funding, nil] :funding The funding type of the External Account.
       # @option params [Symbol, Status, nil] :status The status of the External Account.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ExternalAccount]
       def update(external_account_id, params = {}, opts = {})
@@ -78,7 +78,7 @@ module Increase
       # @option params [String, nil] :routing_number Filter External Accounts to those with the specified Routing Number.
       # @option params [Status, nil] :status
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ExternalAccount>]
       def list(params = {}, opts = {})

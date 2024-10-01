@@ -44,7 +44,7 @@ module Increase
         # @option params [String, nil] :sender_reference The sending bank will set sender_reference in production. You can simulate any
         #   value here.
         #
-        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundWireTransfer]
         def create(params = {}, opts = {})

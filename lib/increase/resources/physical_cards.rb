@@ -16,7 +16,7 @@ module Increase
       # @option params [String, nil] :physical_card_profile_id The physical card profile to use for this physical card. The latest default
       #   physical card profile will be used if not provided.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PhysicalCard]
       def create(params = {}, opts = {})
@@ -31,7 +31,7 @@ module Increase
       # Retrieve a Physical Card
       #
       # @param physical_card_id [String] The identifier of the Physical Card.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PhysicalCard]
       def retrieve(physical_card_id, opts = {})
@@ -49,7 +49,7 @@ module Increase
       # @param params [Hash] Attributes to send in this request.
       # @option params [Symbol, Status] :status The status to update the Physical Card to.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PhysicalCard]
       def update(physical_card_id, params = {}, opts = {})
@@ -74,7 +74,7 @@ module Increase
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::PhysicalCard>]
       def list(params = {}, opts = {})

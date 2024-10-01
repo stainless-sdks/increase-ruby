@@ -13,7 +13,7 @@ module Increase
       # @option params [String] :entity_id The identifier of the Entity to associate with the supplemental document.
       # @option params [String] :file_id The identifier of the File containing the document.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::EntitySupplementalDocument]
       def create(params = {}, opts = {})
@@ -37,7 +37,7 @@ module Increase
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::EntitySupplementalDocument>]
       def list(params = {}, opts = {})

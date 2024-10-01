@@ -32,7 +32,7 @@ module Increase
       # @option params [String, nil] :recipient_address_line2 Line 2 of the drawdown request's recipient's address.
       # @option params [String, nil] :recipient_address_line3 Line 3 of the drawdown request's recipient's address.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireDrawdownRequest]
       def create(params = {}, opts = {})
@@ -47,7 +47,7 @@ module Increase
       # Retrieve a Wire Drawdown Request
       #
       # @param wire_drawdown_request_id [String] The identifier of the Wire Drawdown Request to retrieve.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireDrawdownRequest]
       def retrieve(wire_drawdown_request_id, opts = {})
@@ -70,7 +70,7 @@ module Increase
       #   objects.
       # @option params [Symbol, Status, nil] :status Filter Wire Drawdown Requests for those with the specified status.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::WireDrawdownRequest>]
       def list(params = {}, opts = {})

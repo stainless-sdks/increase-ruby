@@ -22,7 +22,7 @@ module Increase
       #   available in Sandbox. Set `grant_type` to `production_token` to use this
       #   parameter.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::OAuthToken]
       def create(params = {}, opts = {})

@@ -14,7 +14,7 @@ module Increase
         #   must first have a `status` of `pending_approval`.
         #
         # @param account_transfer_id [String] The identifier of the Account Transfer you wish to complete.
-        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::AccountTransfer]
         def complete(account_transfer_id, opts = {})

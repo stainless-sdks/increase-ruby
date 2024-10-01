@@ -21,7 +21,7 @@ module Increase
         # @option params [Integer, nil] :amount The amount to be settled. This defaults to the amount of the Pending Transaction
         #   being settled.
         #
-        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Transaction]
         def create(params = {}, opts = {})

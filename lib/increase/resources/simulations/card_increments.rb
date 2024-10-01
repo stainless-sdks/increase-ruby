@@ -19,7 +19,7 @@ module Increase
         #   decision event subscription, you can use this field to route events to any
         #   specified event subscription for testing purposes.
         #
-        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CardPayment]
         def create(params = {}, opts = {})

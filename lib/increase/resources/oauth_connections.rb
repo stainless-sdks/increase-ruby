@@ -10,7 +10,7 @@ module Increase
       # Retrieve an OAuth Connection
       #
       # @param oauth_connection_id [String] The identifier of the OAuth Connection.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::OAuthConnection]
       def retrieve(oauth_connection_id, opts = {})
@@ -29,7 +29,7 @@ module Increase
       #   objects.
       # @option params [Status, nil] :status
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::OAuthConnection>]
       def list(params = {}, opts = {})

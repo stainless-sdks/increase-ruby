@@ -32,7 +32,7 @@ module Increase
       # @option params [String, nil] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireTransfer]
       def create(params = {}, opts = {})
@@ -47,7 +47,7 @@ module Increase
       # Retrieve a Wire Transfer
       #
       # @param wire_transfer_id [String] The identifier of the Wire Transfer.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireTransfer]
       def retrieve(wire_transfer_id, opts = {})
@@ -72,7 +72,7 @@ module Increase
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::WireTransfer>]
       def list(params = {}, opts = {})
@@ -88,7 +88,7 @@ module Increase
       # Approve a Wire Transfer
       #
       # @param wire_transfer_id [String] The identifier of the Wire Transfer to approve.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireTransfer]
       def approve(wire_transfer_id, opts = {})
@@ -102,7 +102,7 @@ module Increase
       # Cancel a pending Wire Transfer
       #
       # @param wire_transfer_id [String] The identifier of the pending Wire Transfer to cancel.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireTransfer]
       def cancel(wire_transfer_id, opts = {})

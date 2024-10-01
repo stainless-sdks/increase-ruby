@@ -10,7 +10,7 @@ module Increase
       # Get IntraFi balances by bank
       #
       # @param account_id [String] The identifier of the Account to get balances for.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::IntrafiBalance]
       def retrieve(account_id, opts = {})

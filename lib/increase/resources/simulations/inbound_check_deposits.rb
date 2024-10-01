@@ -20,7 +20,7 @@ module Increase
         # @option params [Integer] :amount The check amount in cents.
         # @option params [String] :check_number The check number on the check to be deposited.
         #
-        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundCheckDeposit]
         def create(params = {}, opts = {})

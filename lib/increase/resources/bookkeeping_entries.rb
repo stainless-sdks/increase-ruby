@@ -10,7 +10,7 @@ module Increase
       # Retrieve a Bookkeeping Entry
       #
       # @param bookkeeping_entry_id [String] The identifier of the Bookkeeping Entry.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::BookkeepingEntry]
       def retrieve(bookkeeping_entry_id, opts = {})
@@ -28,7 +28,7 @@ module Increase
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::BookkeepingEntry>]
       def list(params = {}, opts = {})

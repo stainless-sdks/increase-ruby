@@ -17,7 +17,7 @@ module Increase
         # @option params [DateTime, nil] :period_end The end of the interest period. If not provided, defaults to the current time.
         # @option params [DateTime, nil] :period_start The start of the interest period. If not provided, defaults to the current time.
         #
-        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Transaction]
         def create(params = {}, opts = {})

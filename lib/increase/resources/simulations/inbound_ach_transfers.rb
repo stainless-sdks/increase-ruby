@@ -35,7 +35,7 @@ module Increase
         #   immediately.
         # @option params [Symbol, StandardEntryClassCode, nil] :standard_entry_class_code The standard entry class code for the transfer.
         #
-        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundACHTransfer]
         def create(params = {}, opts = {})

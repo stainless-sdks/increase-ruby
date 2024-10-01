@@ -13,7 +13,7 @@ module Increase
       # @option params [String] :account_id The identifier for the account to be added to IntraFi.
       # @option params [String] :email_address The contact email for the account owner, to be shared with IntraFi.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
       def create(params = {}, opts = {})
@@ -28,7 +28,7 @@ module Increase
       # Get an IntraFi Account Enrollment
       #
       # @param intrafi_account_enrollment_id [String] The identifier of the IntraFi Account Enrollment to retrieve.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
       def retrieve(intrafi_account_enrollment_id, opts = {})
@@ -52,7 +52,7 @@ module Increase
       #   objects.
       # @option params [Status, nil] :status
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::IntrafiAccountEnrollment>]
       def list(params = {}, opts = {})
@@ -68,7 +68,7 @@ module Increase
       # Unenroll an account from IntraFi
       #
       # @param intrafi_account_enrollment_id [String] The Identifier of the IntraFi Account Enrollment to remove from IntraFi.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
       def unenroll(intrafi_account_enrollment_id, opts = {})

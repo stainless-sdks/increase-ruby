@@ -26,7 +26,7 @@ module Increase
       # @option params [Trust, nil] :trust Details of the trust entity to create. Required if `structure` is equal to
       #   `trust`.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       def create(params = {}, opts = {})
@@ -41,7 +41,7 @@ module Increase
       # Retrieve an Entity
       #
       # @param entity_id [String] The identifier of the Entity to retrieve.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       def retrieve(entity_id, opts = {})
@@ -65,7 +65,7 @@ module Increase
       #   objects.
       # @option params [Status, nil] :status
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Entity>]
       def list(params = {}, opts = {})
@@ -82,7 +82,7 @@ module Increase
       #
       # @param entity_id [String] The identifier of the Entity to archive. Any accounts associated with an entity
       #   must be closed before the entity can be archived.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       def archive(entity_id, opts = {})
@@ -102,7 +102,7 @@ module Increase
       # @option params [String] :beneficial_owner_id The identifying details of anyone controlling or owning 25% or more of the
       #   corporation.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       def archive_beneficial_owner(entity_id, params = {}, opts = {})
@@ -124,7 +124,7 @@ module Increase
       # @option params [DateTime, nil] :confirmed_at When your user confirmed the Entity's details. If not provided, the current time
       #   will be used.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       def confirm(entity_id, params = {}, opts = {})
@@ -144,7 +144,7 @@ module Increase
       # @option params [BeneficialOwner] :beneficial_owner The identifying details of anyone controlling or owning 25% or more of the
       #   corporation.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       def create_beneficial_owner(entity_id, params = {}, opts = {})
@@ -164,7 +164,7 @@ module Increase
       # @option params [Address] :address The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       #   are disallowed.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       def update_address(entity_id, params = {}, opts = {})
@@ -187,7 +187,7 @@ module Increase
       # @option params [String] :beneficial_owner_id The identifying details of anyone controlling or owning 25% or more of the
       #   corporation.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       def update_beneficial_owner_address(entity_id, params = {}, opts = {})
@@ -210,7 +210,7 @@ module Increase
       #   `Software Publishers`. A full list of classification codes is available
       #   [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       def update_industry_code(entity_id, params = {}, opts = {})

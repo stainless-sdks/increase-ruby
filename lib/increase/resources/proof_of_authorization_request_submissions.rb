@@ -22,7 +22,7 @@ module Increase
       # @option params [String, nil] :authorizer_company Company of the authorizer.
       # @option params [String, nil] :authorizer_ip_address IP address of the authorizer.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def create(params = {}, opts = {})
@@ -37,7 +37,7 @@ module Increase
       # Retrieve a Proof of Authorization Request Submission
       #
       # @param proof_of_authorization_request_submission_id [String] The identifier of the Proof of Authorization Request Submission.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def retrieve(proof_of_authorization_request_submission_id, opts = {})
@@ -61,7 +61,7 @@ module Increase
       #   objects.
       # @option params [String, nil] :proof_of_authorization_request_id ID of the proof of authorization request.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequestSubmission>]
       def list(params = {}, opts = {})

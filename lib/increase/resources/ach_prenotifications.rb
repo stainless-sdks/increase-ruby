@@ -27,7 +27,7 @@ module Increase
       #   by the recipient's bank.
       # @option params [Symbol, StandardEntryClassCode, nil] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHPrenotification]
       def create(params = {}, opts = {})
@@ -42,7 +42,7 @@ module Increase
       # Retrieve an ACH Prenotification
       #
       # @param ach_prenotification_id [String] The identifier of the ACH Prenotification to retrieve.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHPrenotification]
       def retrieve(ach_prenotification_id, opts = {})
@@ -65,7 +65,7 @@ module Increase
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ACHPrenotification>]
       def list(params = {}, opts = {})

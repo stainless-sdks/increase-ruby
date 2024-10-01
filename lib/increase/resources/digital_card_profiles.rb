@@ -20,7 +20,7 @@ module Increase
       # @option params [String, nil] :contact_website A website the user can visit to view and receive support for their card.
       # @option params [TextColor, nil] :text_color The Card's text color, specified as an RGB triple. The default is white.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::DigitalCardProfile]
       def create(params = {}, opts = {})
@@ -35,7 +35,7 @@ module Increase
       # Retrieve a Digital Card Profile
       #
       # @param digital_card_profile_id [String] The identifier of the Digital Card Profile.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::DigitalCardProfile]
       def retrieve(digital_card_profile_id, opts = {})
@@ -58,7 +58,7 @@ module Increase
       #   objects.
       # @option params [Status, nil] :status
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::DigitalCardProfile>]
       def list(params = {}, opts = {})
@@ -74,7 +74,7 @@ module Increase
       # Archive a Digital Card Profile
       #
       # @param digital_card_profile_id [String] The identifier of the Digital Card Profile to archive.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::DigitalCardProfile]
       def archive(digital_card_profile_id, opts = {})
@@ -100,7 +100,7 @@ module Increase
       # @option params [String, nil] :issuer_name A user-facing description for whoever is issuing the card.
       # @option params [TextColor, nil] :text_color The Card's text color, specified as an RGB triple. The default is white.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::DigitalCardProfile]
       def clone(digital_card_profile_id, params = {}, opts = {})

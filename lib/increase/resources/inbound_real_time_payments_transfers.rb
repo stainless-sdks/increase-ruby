@@ -10,7 +10,7 @@ module Increase
       # Retrieve an Inbound Real-Time Payments Transfer
       #
       # @param inbound_real_time_payments_transfer_id [String] The identifier of the Inbound Real-Time Payments Transfer to get details for.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundRealTimePaymentsTransfer]
       def retrieve(inbound_real_time_payments_transfer_id, opts = {})
@@ -33,7 +33,7 @@ module Increase
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::InboundRealTimePaymentsTransfer>]
       def list(params = {}, opts = {})

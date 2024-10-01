@@ -10,7 +10,7 @@ module Increase
       # Retrieve an Inbound Mail Item
       #
       # @param inbound_mail_item_id [String] The identifier of the Inbound Mail Item to retrieve.
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundMailItem]
       def retrieve(inbound_mail_item_id, opts = {})
@@ -30,7 +30,7 @@ module Increase
       #   objects.
       # @option params [String, nil] :lockbox_id Filter Inbound Mail Items to ones sent to the provided Lockbox.
       #
-      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::InboundMailItem>]
       def list(params = {}, opts = {})

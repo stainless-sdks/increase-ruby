@@ -18,7 +18,7 @@ module Increase
         # @option params [Integer, nil] :amount The amount of the reversal in minor units in the card authorization's currency.
         #   This defaults to the authorization amount.
         #
-        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CardPayment]
         def create(params = {}, opts = {})
