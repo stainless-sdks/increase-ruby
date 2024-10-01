@@ -122,37 +122,6 @@ module Increase
         req[:model] = Increase::Models::Account
         @client.request(req, opts)
       end
-
-      class CreatedAt < BaseModel
-        # @!attribute [rw] after
-        #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :after, DateTime
-
-        # @!attribute [rw] before
-        #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :before, DateTime
-
-        # @!attribute [rw] on_or_after
-        #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :on_or_after, DateTime
-
-        # @!attribute [rw] on_or_before
-        #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :on_or_before, DateTime
-      end
-
-      # Filter Accounts for those with the specified status.
-      class Status < Increase::Enum
-        # Open Accounts that are ready to use.
-        OPEN = :open
-
-        # Closed Accounts on which no new activity can occur.
-        CLOSED = :closed
-      end
     end
   end
 end

@@ -103,45 +103,6 @@ module Increase
         req[:model] = Increase::Models::PhysicalCardProfile
         @client.request(req, opts)
       end
-
-      class Status < BaseModel
-        # @!attribute [rw] in_
-        #   Filter Physical Card Profiles for those with the specified statuses. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        #   @return [Array<Symbol, Status::In>]
-        optional :in_, Increase::ArrayOf.new(enum: -> { Status::In })
-
-        class In < Increase::Enum
-          # The Card Profile has not yet been processed by Increase.
-          PENDING_CREATING = :pending_creating
-
-          # The card profile is awaiting review by Increase.
-          PENDING_REVIEWING = :pending_reviewing
-
-          # There is an issue with the Physical Card Profile preventing it from use.
-          REJECTED = :rejected
-
-          # The card profile is awaiting submission to the fulfillment provider.
-          PENDING_SUBMITTING = :pending_submitting
-
-          # The Physical Card Profile has been submitted to the fulfillment provider and is ready to use.
-          ACTIVE = :active
-
-          # The Physical Card Profile has been archived.
-          ARCHIVED = :archived
-        end
-      end
-
-      class FrontText < BaseModel
-        # @!attribute [rw] line1
-        #   The first line of text on the front of the card.
-        #   @return [String]
-        required :line1, String
-
-        # @!attribute [rw] line2
-        #   The second line of text on the front of the card. Providing a second line moves the first line slightly higher and prints the second line in the spot where the first line would have otherwise been printed.
-        #   @return [String]
-        optional :line2, String
-      end
     end
   end
 end

@@ -77,46 +77,6 @@ module Increase
         req[:model] = Increase::Models::InboundCheckDeposit
         @client.request(req, opts)
       end
-
-      class CreatedAt < BaseModel
-        # @!attribute [rw] after
-        #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :after, DateTime
-
-        # @!attribute [rw] before
-        #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :before, DateTime
-
-        # @!attribute [rw] on_or_after
-        #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :on_or_after, DateTime
-
-        # @!attribute [rw] on_or_before
-        #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :on_or_before, DateTime
-      end
-
-      # The reason to return the Inbound Check Deposit.
-      class Reason < Increase::Enum
-        # The check was altered or fictitious.
-        ALTERED_OR_FICTITIOUS = :altered_or_fictitious
-
-        # The check was not authorized.
-        NOT_AUTHORIZED = :not_authorized
-
-        # The check was a duplicate presentment.
-        DUPLICATE_PRESENTMENT = :duplicate_presentment
-
-        # The check was not endorsed.
-        ENDORSEMENT_MISSING = :endorsement_missing
-
-        # The check was not endorsed by the payee.
-        ENDORSEMENT_IRREGULAR = :endorsement_irregular
-      end
     end
   end
 end

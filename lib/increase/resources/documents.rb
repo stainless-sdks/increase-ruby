@@ -43,46 +43,6 @@ module Increase
         req[:model] = Increase::Models::Document
         @client.request(req, opts)
       end
-
-      class Category < BaseModel
-        # @!attribute [rw] in_
-        #   Filter Documents for those with the specified category or categories. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        #   @return [Array<Symbol, Category::In>]
-        optional :in_, Increase::ArrayOf.new(enum: -> { Category::In })
-
-        class In < Increase::Enum
-          # Internal Revenue Service Form 1099-INT.
-          FORM_1099_INT = :form_1099_int
-
-          # A document submitted in response to a proof of authorization request for an ACH transfer.
-          PROOF_OF_AUTHORIZATION = :proof_of_authorization
-
-          # Company information, such a policies or procedures, typically submitted during our due diligence process.
-          COMPANY_INFORMATION = :company_information
-        end
-      end
-
-      class CreatedAt < BaseModel
-        # @!attribute [rw] after
-        #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :after, DateTime
-
-        # @!attribute [rw] before
-        #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :before, DateTime
-
-        # @!attribute [rw] on_or_after
-        #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :on_or_after, DateTime
-
-        # @!attribute [rw] on_or_before
-        #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :on_or_before, DateTime
-      end
     end
   end
 end

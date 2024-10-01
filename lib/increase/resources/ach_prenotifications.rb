@@ -77,52 +77,6 @@ module Increase
         req[:model] = Increase::Models::ACHPrenotification
         @client.request(req, opts)
       end
-
-      # Whether the Prenotification is for a future debit or credit.
-      class CreditDebitIndicator < Increase::Enum
-        # The Prenotification is for an anticipated credit.
-        CREDIT = :credit
-
-        # The Prenotification is for an anticipated debit.
-        DEBIT = :debit
-      end
-
-      # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
-      class StandardEntryClassCode < Increase::Enum
-        # Corporate Credit and Debit (CCD).
-        CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
-
-        # Corporate Trade Exchange (CTX).
-        CORPORATE_TRADE_EXCHANGE = :corporate_trade_exchange
-
-        # Prearranged Payments and Deposits (PPD).
-        PREARRANGED_PAYMENTS_AND_DEPOSIT = :prearranged_payments_and_deposit
-
-        # Internet Initiated (WEB).
-        INTERNET_INITIATED = :internet_initiated
-      end
-
-      class CreatedAt < BaseModel
-        # @!attribute [rw] after
-        #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :after, DateTime
-
-        # @!attribute [rw] before
-        #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :before, DateTime
-
-        # @!attribute [rw] on_or_after
-        #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :on_or_after, DateTime
-
-        # @!attribute [rw] on_or_before
-        #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   @return [DateTime]
-        optional :on_or_before, DateTime
-      end
     end
   end
 end

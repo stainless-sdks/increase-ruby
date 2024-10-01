@@ -65,18 +65,6 @@ module Increase
         req[:model] = Increase::Models::BookkeepingEntrySet
         @client.request(req, opts)
       end
-
-      class Entry < BaseModel
-        # @!attribute [rw] account_id
-        #   The identifier for the Bookkeeping Account impacted by this entry.
-        #   @return [String]
-        required :account_id, String
-
-        # @!attribute [rw] amount
-        #   The entry amount in the minor unit of the account currency. For dollars, for example, this is cents. Debit entries have positive amounts; credit entries have negative amounts.
-        #   @return [Integer]
-        required :amount, Integer
-      end
     end
   end
 end

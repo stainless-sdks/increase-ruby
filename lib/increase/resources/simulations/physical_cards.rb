@@ -28,30 +28,6 @@ module Increase
           req[:model] = Increase::Models::PhysicalCard
           @client.request(req, opts)
         end
-
-        # The shipment status to move the Physical Card to.
-        class ShipmentStatus < Increase::Enum
-          # The physical card has not yet been shipped.
-          PENDING = :pending
-
-          # The physical card shipment was canceled prior to submission.
-          CANCELED = :canceled
-
-          # The physical card shipment has been submitted to the card fulfillment provider.
-          SUBMITTED = :submitted
-
-          # The physical card shipment has been acknowledged by the card fulfillment provider and will be processed in their next batch.
-          ACKNOWLEDGED = :acknowledged
-
-          # The physical card shipment was rejected by the card printer due to an error.
-          REJECTED = :rejected
-
-          # The physical card has been shipped.
-          SHIPPED = :shipped
-
-          # The physical card shipment was returned to the sender and destroyed by the production facility.
-          RETURNED = :returned
-        end
       end
     end
   end

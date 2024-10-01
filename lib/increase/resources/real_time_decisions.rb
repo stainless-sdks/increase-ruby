@@ -44,69 +44,6 @@ module Increase
         req[:model] = Increase::Models::RealTimeDecision
         @client.request(req, opts)
       end
-
-      class CardAuthorization < BaseModel
-        # @!attribute [rw] decision
-        #   Whether the card authorization should be approved or declined.
-        #   @return [Symbol, CardAuthorization::Decision]
-        required :decision, enum: -> { CardAuthorization::Decision }
-
-        # Whether the card authorization should be approved or declined.
-        class Decision < Increase::Enum
-          # Approve the authorization.
-          APPROVE = :approve
-
-          # Decline the authorization.
-          DECLINE = :decline
-        end
-      end
-
-      class DigitalWalletAuthentication < BaseModel
-        # @!attribute [rw] result
-        #   Whether your application was able to deliver the one-time passcode.
-        #   @return [Symbol, DigitalWalletAuthentication::Result]
-        required :result, enum: -> { DigitalWalletAuthentication::Result }
-
-        # Whether your application was able to deliver the one-time passcode.
-        class Result < Increase::Enum
-          # Your application successfully delivered the one-time passcode to the cardholder.
-          SUCCESS = :success
-
-          # Your application failed to deliver the one-time passcode to the cardholder.
-          FAILURE = :failure
-        end
-      end
-
-      class DigitalWalletToken < BaseModel
-        # @!attribute [rw] approval
-        #   If your application approves the provisioning attempt, this contains metadata about the digital wallet token that will be generated.
-        #   @return [DigitalWalletToken::Approval]
-        optional :approval, -> { DigitalWalletToken::Approval }
-
-        # @!attribute [rw] decline
-        #   If your application declines the provisioning attempt, this contains details about the decline.
-        #   @return [DigitalWalletToken::Decline]
-        optional :decline, -> { DigitalWalletToken::Decline }
-
-        class Approval < BaseModel
-          # @!attribute [rw] email
-          #   An email address that can be used to verify the cardholder via one-time passcode.
-          #   @return [String]
-          optional :email, String
-
-          # @!attribute [rw] phone
-          #   A phone number that can be used to verify the cardholder via one-time passcode over SMS.
-          #   @return [String]
-          optional :phone, String
-        end
-
-        class Decline < BaseModel
-          # @!attribute [rw] reason
-          #   Why the tokenization attempt was declined. This is for logging purposes only and is not displayed to the end-user.
-          #   @return [String]
-          optional :reason, String
-        end
-      end
     end
   end
 end

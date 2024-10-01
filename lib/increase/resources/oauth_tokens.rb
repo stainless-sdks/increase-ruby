@@ -33,15 +33,6 @@ module Increase
         req[:model] = Increase::Models::OAuthToken
         @client.request(req, opts)
       end
-
-      # The credential you request in exchange for the code. In Production, this is always `authorization_code`. In Sandbox, you can pass either enum value.
-      class GrantType < Increase::Enum
-        # An OAuth authorization code.
-        AUTHORIZATION_CODE = :authorization_code
-
-        # An OAuth production token.
-        PRODUCTION_TOKEN = :production_token
-      end
     end
   end
 end

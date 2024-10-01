@@ -111,61 +111,6 @@ module Increase
         req[:model] = Increase::Models::DigitalCardProfile
         @client.request(req, opts)
       end
-
-      class TextColor < BaseModel
-        # @!attribute [rw] blue
-        #   The value of the blue channel in the RGB color.
-        #   @return [Integer]
-        required :blue, Integer
-
-        # @!attribute [rw] green
-        #   The value of the green channel in the RGB color.
-        #   @return [Integer]
-        required :green, Integer
-
-        # @!attribute [rw] red
-        #   The value of the red channel in the RGB color.
-        #   @return [Integer]
-        required :red, Integer
-      end
-
-      class Status < BaseModel
-        # @!attribute [rw] in_
-        #   Filter Digital Card Profiles for those with the specified digital wallet status or statuses. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        #   @return [Array<Symbol, Status::In>]
-        optional :in_, Increase::ArrayOf.new(enum: -> { Status::In })
-
-        class In < Increase::Enum
-          # The Card Profile is awaiting review from Increase and/or processing by card networks.
-          PENDING = :pending
-
-          # There is an issue with the Card Profile preventing it from use.
-          REJECTED = :rejected
-
-          # The Card Profile can be assigned to Cards.
-          ACTIVE = :active
-
-          # The Card Profile is no longer in use.
-          ARCHIVED = :archived
-        end
-      end
-
-      class TextColor < BaseModel
-        # @!attribute [rw] blue
-        #   The value of the blue channel in the RGB color.
-        #   @return [Integer]
-        required :blue, Integer
-
-        # @!attribute [rw] green
-        #   The value of the green channel in the RGB color.
-        #   @return [Integer]
-        required :green, Integer
-
-        # @!attribute [rw] red
-        #   The value of the red channel in the RGB color.
-        #   @return [Integer]
-        required :red, Integer
-      end
     end
   end
 end

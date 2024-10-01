@@ -46,57 +46,6 @@ module Increase
           req[:model] = Increase::Models::InboundACHTransfer
           @client.request(req, opts)
         end
-
-        # The standard entry class code for the transfer.
-        class StandardEntryClassCode < Increase::Enum
-          # Corporate Credit and Debit (CCD).
-          CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
-
-          # Corporate Trade Exchange (CTX).
-          CORPORATE_TRADE_EXCHANGE = :corporate_trade_exchange
-
-          # Prearranged Payments and Deposits (PPD).
-          PREARRANGED_PAYMENTS_AND_DEPOSIT = :prearranged_payments_and_deposit
-
-          # Internet Initiated (WEB).
-          INTERNET_INITIATED = :internet_initiated
-
-          # Point of Sale (POS).
-          POINT_OF_SALE = :point_of_sale
-
-          # Telephone Initiated (TEL).
-          TELEPHONE_INITIATED = :telephone_initiated
-
-          # Customer Initiated (CIE).
-          CUSTOMER_INITIATED = :customer_initiated
-
-          # Accounts Receivable (ARC).
-          ACCOUNTS_RECEIVABLE = :accounts_receivable
-
-          # Machine Transfer (MTE).
-          MACHINE_TRANSFER = :machine_transfer
-
-          # Shared Network Transaction (SHR).
-          SHARED_NETWORK_TRANSACTION = :shared_network_transaction
-
-          # Represented Check (RCK).
-          REPRESENTED_CHECK = :represented_check
-
-          # Back Office Conversion (BOC).
-          BACK_OFFICE_CONVERSION = :back_office_conversion
-
-          # Point of Purchase (POP).
-          POINT_OF_PURCHASE = :point_of_purchase
-
-          # Check Truncation (TRC).
-          CHECK_TRUNCATION = :check_truncation
-
-          # Destroyed Check (XCK).
-          DESTROYED_CHECK = :destroyed_check
-
-          # International ACH Transaction (IAT).
-          INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
-        end
       end
     end
   end

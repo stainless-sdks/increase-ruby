@@ -88,15 +88,6 @@ module Increase
         req[:model] = Increase::Models::BookkeepingBalanceLookup
         @client.request(req, opts)
       end
-
-      # The account compliance category.
-      class ComplianceCategory < Increase::Enum
-        # A cash in an commingled Increase Account.
-        COMMINGLED_CASH = :commingled_cash
-
-        # A customer balance.
-        CUSTOMER_BALANCE = :customer_balance
-      end
     end
   end
 end

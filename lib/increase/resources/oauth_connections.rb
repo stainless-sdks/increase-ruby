@@ -41,21 +41,6 @@ module Increase
         req[:model] = Increase::Models::OAuthConnection
         @client.request(req, opts)
       end
-
-      class Status < BaseModel
-        # @!attribute [rw] in_
-        #   Filter to OAuth Connections by their status. By default, return only the `active` ones. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        #   @return [Array<Symbol, Status::In>]
-        optional :in_, Increase::ArrayOf.new(enum: -> { Status::In })
-
-        class In < Increase::Enum
-          # The OAuth connection is active.
-          ACTIVE = :active
-
-          # The OAuth connection is permanently deactivated.
-          INACTIVE = :inactive
-        end
-      end
     end
   end
 end

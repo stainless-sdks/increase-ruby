@@ -78,30 +78,6 @@ module Increase
         req[:model] = Increase::Models::IntrafiAccountEnrollment
         @client.request(req, opts)
       end
-
-      class Status < BaseModel
-        # @!attribute [rw] in_
-        #   Filter IntraFi Account Enrollments for those with the specified status or statuses. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
-        #   @return [Array<Symbol, Status::In>]
-        optional :in_, Increase::ArrayOf.new(enum: -> { Status::In })
-
-        class In < Increase::Enum
-          # The account is being added to the IntraFi network.
-          PENDING_ENROLLING = :pending_enrolling
-
-          # The account has been enrolled with IntraFi.
-          ENROLLED = :enrolled
-
-          # The account is being unenrolled from IntraFi's deposit sweep.
-          PENDING_UNENROLLING = :pending_unenrolling
-
-          # The account was once enrolled, but is no longer enrolled at IntraFi.
-          UNENROLLED = :unenrolled
-
-          # Something unexpected happened with this account. Contact Increase support.
-          REQUIRES_ATTENTION = :requires_attention
-        end
-      end
     end
   end
 end
