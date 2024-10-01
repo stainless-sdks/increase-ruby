@@ -5,7 +5,8 @@ module Increase
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 
-    # Client options.
+    # Client option
+    # @return [String]
     attr_reader :api_key
 
     # @return [Increase::Resources::Accounts]
