@@ -30,8 +30,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `card_purchase_supplement`.
-      #   One of the constants defined in {Increase::Models::CardPurchaseSupplement::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Type]
       required :type, enum: -> { Increase::Models::CardPurchaseSupplement::Type }
 
       class Invoice < BaseModel
@@ -47,8 +46,7 @@ module Increase
 
         # @!attribute [rw] discount_treatment_code
         #   Indicates how the merchant applied the discount.
-        #   One of the constants defined in {Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode]
         required :discount_treatment_code,
                  enum: -> { Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode }
 
@@ -109,8 +107,7 @@ module Increase
 
         # @!attribute [rw] tax_treatments
         #   Indicates how the merchant applied taxes.
-        #   One of the constants defined in {Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments]
         required :tax_treatments,
                  enum: lambda {
                    Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments
@@ -160,8 +157,7 @@ module Increase
 
         # @!attribute [rw] detail_indicator
         #   Indicates the type of line item.
-        #   One of the constants defined in {Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator]
         required :detail_indicator,
                  enum: -> { Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator }
 
@@ -177,8 +173,7 @@ module Increase
 
         # @!attribute [rw] discount_treatment_code
         #   Indicates how the merchant applied the discount for this specific line item.
-        #   One of the constants defined in {Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode]
         required :discount_treatment_code,
                  enum: -> { Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode }
 

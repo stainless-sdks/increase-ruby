@@ -25,8 +25,7 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction's currency. This will match the currency on the Transaction's Account.
-      #   One of the constants defined in {Increase::Models::Transaction::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Transaction::Currency]
       required :currency, enum: -> { Increase::Models::Transaction::Currency }
 
       # @!attribute [rw] description
@@ -41,8 +40,7 @@ module Increase
 
       # @!attribute [rw] route_type
       #   The type of the route this Transaction came through.
-      #   One of the constants defined in {Increase::Models::Transaction::RouteType}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Transaction::RouteType]
       required :route_type, enum: -> { Increase::Models::Transaction::RouteType }
 
       # @!attribute [rw] source
@@ -52,8 +50,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `transaction`.
-      #   One of the constants defined in {Increase::Models::Transaction::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Transaction::Type]
       required :type, enum: -> { Increase::Models::Transaction::Type }
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction's currency. This will match the currency on the Transaction's Account.
@@ -143,8 +140,7 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
-        #   One of the constants defined in {Increase::Models::Transaction::Source::Category}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::Transaction::Source::Category]
         required :category, enum: -> { Increase::Models::Transaction::Source::Category }
 
         # @!attribute [rw] check_deposit_acceptance
@@ -236,8 +232,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::AccountTransferIntention::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::AccountTransferIntention::Currency]
           required :currency,
                    enum: lambda {
                      Increase::Models::Transaction::Source::AccountTransferIntention::Currency
@@ -332,8 +327,7 @@ module Increase
 
           # @!attribute [rw] return_reason_code
           #   Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode]
           required :return_reason_code,
                    enum: -> { Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode }
 
@@ -623,8 +617,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::Currency]
           required :currency, enum: -> { Increase::Models::Transaction::Source::CardRefund::Currency }
 
           # @!attribute [rw] interchange
@@ -693,8 +686,7 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_refund`.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::Type}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::Type]
           required :type, enum: -> { Increase::Models::Transaction::Source::CardRefund::Type }
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
@@ -731,8 +723,7 @@ module Increase
 
             # @!attribute [rw] currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
-            #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::Interchange::Currency}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency]
             required :currency,
                      enum: lambda {
                        Increase::Models::Transaction::Source::CardRefund::Interchange::Currency
@@ -826,8 +817,7 @@ module Increase
 
             # @!attribute [rw] purchase_identifier_format
             #   The format of the purchase identifier.
-            #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat]
             required :purchase_identifier_format,
                      enum: lambda {
                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat
@@ -869,8 +859,7 @@ module Increase
 
               # @!attribute [rw] extra_charges
               #   Additional charges (gas, late fee, etc.) being billed.
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges]
               required :extra_charges,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges
@@ -898,8 +887,7 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator]
               required :no_show_indicator,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator
@@ -979,8 +967,7 @@ module Increase
 
               # @!attribute [rw] extra_charges
               #   Additional charges (phone, late check-out, etc.) being billed.
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges]
               required :extra_charges,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges
@@ -1008,8 +995,7 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator]
               required :no_show_indicator,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator
@@ -1116,8 +1102,7 @@ module Increase
 
               # @!attribute [rw] credit_reason_indicator
               #   Indicates the reason for a credit to the cardholder.
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator]
               required :credit_reason_indicator,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator
@@ -1140,8 +1125,7 @@ module Increase
 
               # @!attribute [rw] restricted_ticket_indicator
               #   Indicates whether this ticket is non-refundable.
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator]
               required :restricted_ticket_indicator,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator
@@ -1149,8 +1133,7 @@ module Increase
 
               # @!attribute [rw] ticket_change_indicator
               #   Indicates why a ticket was changed.
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator]
               required :ticket_change_indicator,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator
@@ -1189,8 +1172,7 @@ module Increase
 
                 # @!attribute [rw] credit_reason_indicator
                 #   Indicates the reason for a credit to the cardholder.
-                #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator}
-                #   @return [Symbol]
+                #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator]
                 required :credit_reason_indicator,
                          enum: lambda {
                            Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
@@ -1234,8 +1216,7 @@ module Increase
                 class Service < BaseModel
                   # @!attribute [rw] category
                   #   Category of the ancillary service.
-                  #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category}
-                  #   @return [Symbol]
+                  #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category]
                   required :category,
                            enum: lambda {
                              Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category
@@ -1393,8 +1374,7 @@ module Increase
 
                 # @!attribute [rw] stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
-                #   One of the constants defined in {Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode}
-                #   @return [Symbol]
+                #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode]
                 required :stop_over_code,
                          enum: lambda {
                            Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode
@@ -1429,8 +1409,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::CardRevenuePayment::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::CardRevenuePayment::Currency]
           required :currency, enum: -> { Increase::Models::Transaction::Source::CardRevenuePayment::Currency }
 
           # @!attribute [rw] period_end
@@ -1493,8 +1472,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::Currency]
           required :currency, enum: -> { Increase::Models::Transaction::Source::CardSettlement::Currency }
 
           # @!attribute [rw] interchange
@@ -1568,8 +1546,7 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_settlement`.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::Type}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::Type]
           required :type, enum: -> { Increase::Models::Transaction::Source::CardSettlement::Type }
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
@@ -1606,8 +1583,7 @@ module Increase
 
             # @!attribute [rw] currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
-            #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency]
             required :currency,
                      enum: -> { Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency }
 
@@ -1697,8 +1673,7 @@ module Increase
 
             # @!attribute [rw] purchase_identifier_format
             #   The format of the purchase identifier.
-            #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat]
             required :purchase_identifier_format,
                      enum: lambda {
                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat
@@ -1740,8 +1715,7 @@ module Increase
 
               # @!attribute [rw] extra_charges
               #   Additional charges (gas, late fee, etc.) being billed.
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges]
               required :extra_charges,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges
@@ -1769,8 +1743,7 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator]
               required :no_show_indicator,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator
@@ -1850,8 +1823,7 @@ module Increase
 
               # @!attribute [rw] extra_charges
               #   Additional charges (phone, late check-out, etc.) being billed.
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges]
               required :extra_charges,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges
@@ -1879,8 +1851,7 @@ module Increase
 
               # @!attribute [rw] no_show_indicator
               #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator]
               required :no_show_indicator,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator
@@ -1987,8 +1958,7 @@ module Increase
 
               # @!attribute [rw] credit_reason_indicator
               #   Indicates the reason for a credit to the cardholder.
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator]
               required :credit_reason_indicator,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator
@@ -2011,8 +1981,7 @@ module Increase
 
               # @!attribute [rw] restricted_ticket_indicator
               #   Indicates whether this ticket is non-refundable.
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator]
               required :restricted_ticket_indicator,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator
@@ -2020,8 +1989,7 @@ module Increase
 
               # @!attribute [rw] ticket_change_indicator
               #   Indicates why a ticket was changed.
-              #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator]
               required :ticket_change_indicator,
                        enum: lambda {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator
@@ -2060,8 +2028,7 @@ module Increase
 
                 # @!attribute [rw] credit_reason_indicator
                 #   Indicates the reason for a credit to the cardholder.
-                #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator}
-                #   @return [Symbol]
+                #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator]
                 required :credit_reason_indicator,
                          enum: lambda {
                            Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
@@ -2105,8 +2072,7 @@ module Increase
                 class Service < BaseModel
                   # @!attribute [rw] category
                   #   Category of the ancillary service.
-                  #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category}
-                  #   @return [Symbol]
+                  #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category]
                   required :category,
                            enum: lambda {
                              Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category
@@ -2264,8 +2230,7 @@ module Increase
 
                 # @!attribute [rw] stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
-                #   One of the constants defined in {Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode}
-                #   @return [Symbol]
+                #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode]
                 required :stop_over_code,
                          enum: lambda {
                            Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode
@@ -2305,8 +2270,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::CashbackPayment::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::CashbackPayment::Currency]
           required :currency, enum: -> { Increase::Models::Transaction::Source::CashbackPayment::Currency }
 
           # @!attribute [rw] period_end
@@ -2451,8 +2415,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency]
           required :currency,
                    enum: lambda {
                      Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency
@@ -2503,14 +2466,12 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::CheckDepositReturn::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::Currency]
           required :currency, enum: -> { Increase::Models::Transaction::Source::CheckDepositReturn::Currency }
 
           # @!attribute [rw] return_reason
           #   Why this check was returned by the bank holding the account it was drawn against.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason]
           required :return_reason,
                    enum: -> { Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason }
 
@@ -2665,8 +2626,7 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `check_transfer_deposit`.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::CheckTransferDeposit::Type}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::CheckTransferDeposit::Type]
           required :type, enum: -> { Increase::Models::Transaction::Source::CheckTransferDeposit::Type }
 
           # A constant representing the object's type. For this resource it will always be `check_transfer_deposit`.
@@ -2683,8 +2643,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::FeePayment::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::FeePayment::Currency]
           required :currency, enum: -> { Increase::Models::Transaction::Source::FeePayment::Currency }
 
           # @!attribute [rw] fee_period_start
@@ -2773,8 +2732,7 @@ module Increase
           class Addenda < BaseModel
             # @!attribute [rw] category
             #   The type of addendum.
-            #   One of the constants defined in {Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category]
             required :category,
                      enum: -> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category }
 
@@ -2826,8 +2784,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency]
           required :currency,
                    enum: lambda {
                      Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency
@@ -2898,8 +2855,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency]
           required :currency,
                    enum: lambda {
                      Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency
@@ -2922,8 +2878,7 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the transfer was declined.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason]
           required :reason,
                    enum: lambda {
                      Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason
@@ -3184,8 +3139,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::InterestPayment::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::InterestPayment::Currency]
           required :currency, enum: -> { Increase::Models::Transaction::Source::InterestPayment::Currency }
 
           # @!attribute [rw] period_end
@@ -3228,14 +3182,12 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::InternalSource::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::InternalSource::Currency]
           required :currency, enum: -> { Increase::Models::Transaction::Source::InternalSource::Currency }
 
           # @!attribute [rw] reason
           #   An Internal Source is a transaction between you and Increase. This describes the reason for the transaction.
-          #   One of the constants defined in {Increase::Models::Transaction::Source::InternalSource::Reason}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Transaction::Source::InternalSource::Reason]
           required :reason, enum: -> { Increase::Models::Transaction::Source::InternalSource::Reason }
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.

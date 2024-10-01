@@ -14,7 +14,7 @@ module Increase
         #   `pending_submission`.
         #
         # @param check_transfer_id [String] The identifier of the Check Transfer you wish to mail.
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CheckTransfer]
         def mail(check_transfer_id, opts = {})

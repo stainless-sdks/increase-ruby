@@ -14,10 +14,10 @@ module Increase
       # @option params [String] :description The name you choose for the Account.
       # @option params [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
-      # @option params [Symbol] :account_holder The type of entity that owns the External Account.
-      # @option params [Symbol] :funding The type of the destination account. Defaults to `checking`.
+      # @option params [Symbol, AccountHolder, nil] :account_holder The type of entity that owns the External Account.
+      # @option params [Symbol, Funding, nil] :funding The type of the destination account. Defaults to `checking`.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ExternalAccount]
       def create(params = {}, opts = {})
@@ -32,7 +32,7 @@ module Increase
       # Retrieve an External Account
       #
       # @param external_account_id [String] The identifier of the External Account.
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ExternalAccount]
       def retrieve(external_account_id, opts = {})
@@ -48,12 +48,12 @@ module Increase
       # @param external_account_id [String] The external account identifier.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Symbol] :account_holder The type of entity that owns the External Account.
-      # @option params [String] :description The description you choose to give the external account.
-      # @option params [Symbol] :funding The funding type of the External Account.
-      # @option params [Symbol] :status The status of the External Account.
+      # @option params [Symbol, AccountHolder, nil] :account_holder The type of entity that owns the External Account.
+      # @option params [String, nil] :description The description you choose to give the external account.
+      # @option params [Symbol, Funding, nil] :funding The funding type of the External Account.
+      # @option params [Symbol, Status, nil] :status The status of the External Account.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ExternalAccount]
       def update(external_account_id, params = {}, opts = {})
@@ -68,17 +68,17 @@ module Increase
       # List External Accounts
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :cursor Return the page of entries after this one.
-      # @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      # @option params [String, nil] :cursor Return the page of entries after this one.
+      # @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
       #   that object. This value is unique across Increase and is used to ensure that a
       #   request is only processed once. Learn more about
       #   [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
-      # @option params [String] :routing_number Filter External Accounts to those with the specified Routing Number.
-      # @option params [Status] :status
+      # @option params [String, nil] :routing_number Filter External Accounts to those with the specified Routing Number.
+      # @option params [Status, nil] :status
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ExternalAccount>]
       def list(params = {}, opts = {})
@@ -89,6 +89,75 @@ module Increase
         req[:page] = Increase::Page
         req[:model] = Increase::Models::ExternalAccount
         @client.request(req, opts)
+      end
+
+      # The type of entity that owns the External Account.
+      class AccountHolder < Increase::Enum
+        # The External Account is owned by a business.
+        BUSINESS = :business
+
+        # The External Account is owned by an individual.
+        INDIVIDUAL = :individual
+
+        # It's unknown what kind of entity owns the External Account.
+        UNKNOWN = :unknown
+      end
+
+      # The type of the destination account. Defaults to `checking`.
+      class Funding < Increase::Enum
+        # A checking account.
+        CHECKING = :checking
+
+        # A savings account.
+        SAVINGS = :savings
+
+        # A different type of account.
+        OTHER = :other
+      end
+
+      # The type of entity that owns the External Account.
+      class AccountHolder < Increase::Enum
+        # The External Account is owned by a business.
+        BUSINESS = :business
+
+        # The External Account is owned by an individual.
+        INDIVIDUAL = :individual
+      end
+
+      # The funding type of the External Account.
+      class Funding < Increase::Enum
+        # A checking account.
+        CHECKING = :checking
+
+        # A savings account.
+        SAVINGS = :savings
+
+        # A different type of account.
+        OTHER = :other
+      end
+
+      # The status of the External Account.
+      class Status < Increase::Enum
+        # The External Account is active.
+        ACTIVE = :active
+
+        # The External Account is archived and won't appear in the dashboard.
+        ARCHIVED = :archived
+      end
+
+      class Status < BaseModel
+        # @!attribute [rw] in_
+        #   Filter External Accounts for those with the specified status or statuses. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        #   @return [Array<Symbol, Status::In>]
+        optional :in_, Increase::ArrayOf.new(enum: -> { Status::In })
+
+        class In < Increase::Enum
+          # The External Account is active.
+          ACTIVE = :active
+
+          # The External Account is archived and won't appear in the dashboard.
+          ARCHIVED = :archived
+        end
       end
     end
   end

@@ -15,8 +15,7 @@ module Increase
 
       # @!attribute [rw] compliance_category
       #   The compliance category of the account.
-      #   One of the constants defined in {Increase::Models::BookkeepingAccount::ComplianceCategory}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory]
       required :compliance_category, enum: -> { Increase::Models::BookkeepingAccount::ComplianceCategory }
 
       # @!attribute [rw] entity_id
@@ -36,8 +35,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `bookkeeping_account`.
-      #   One of the constants defined in {Increase::Models::BookkeepingAccount::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::BookkeepingAccount::Type]
       required :type, enum: -> { Increase::Models::BookkeepingAccount::Type }
 
       # The compliance category of the account.

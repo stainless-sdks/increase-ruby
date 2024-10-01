@@ -35,8 +35,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `bookkeeping_entry_set`.
-      #   One of the constants defined in {Increase::Models::BookkeepingEntrySet::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::BookkeepingEntrySet::Type]
       required :type, enum: -> { Increase::Models::BookkeepingEntrySet::Type }
 
       class Entry < BaseModel

@@ -10,8 +10,7 @@ module Increase
 
       # @!attribute [rw] account_holder
       #   The type of entity that owns the External Account.
-      #   One of the constants defined in {Increase::Models::ExternalAccount::AccountHolder}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ExternalAccount::AccountHolder]
       required :account_holder, enum: -> { Increase::Models::ExternalAccount::AccountHolder }
 
       # @!attribute [rw] account_number
@@ -31,8 +30,7 @@ module Increase
 
       # @!attribute [rw] funding
       #   The type of the account to which the transfer will be sent.
-      #   One of the constants defined in {Increase::Models::ExternalAccount::Funding}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ExternalAccount::Funding]
       required :funding, enum: -> { Increase::Models::ExternalAccount::Funding }
 
       # @!attribute [rw] idempotency_key
@@ -47,20 +45,17 @@ module Increase
 
       # @!attribute [rw] status
       #   The External Account's status.
-      #   One of the constants defined in {Increase::Models::ExternalAccount::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ExternalAccount::Status]
       required :status, enum: -> { Increase::Models::ExternalAccount::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `external_account`.
-      #   One of the constants defined in {Increase::Models::ExternalAccount::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ExternalAccount::Type]
       required :type, enum: -> { Increase::Models::ExternalAccount::Type }
 
       # @!attribute [rw] verification_status
       #   If you have verified ownership of the External Account.
-      #   One of the constants defined in {Increase::Models::ExternalAccount::VerificationStatus}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ExternalAccount::VerificationStatus]
       required :verification_status, enum: -> { Increase::Models::ExternalAccount::VerificationStatus }
 
       # The type of entity that owns the External Account.

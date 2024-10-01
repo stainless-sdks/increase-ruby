@@ -55,14 +55,12 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
-      #   One of the constants defined in {Increase::Models::CheckTransfer::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CheckTransfer::Currency]
       required :currency, enum: -> { Increase::Models::CheckTransfer::Currency }
 
       # @!attribute [rw] fulfillment_method
       #   Whether Increase will print and mail the check or if you will do it yourself.
-      #   One of the constants defined in {Increase::Models::CheckTransfer::FulfillmentMethod}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CheckTransfer::FulfillmentMethod]
       required :fulfillment_method, enum: -> { Increase::Models::CheckTransfer::FulfillmentMethod }
 
       # @!attribute [rw] idempotency_key
@@ -97,8 +95,7 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
-      #   One of the constants defined in {Increase::Models::CheckTransfer::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CheckTransfer::Status]
       required :status, enum: -> { Increase::Models::CheckTransfer::Status }
 
       # @!attribute [rw] stop_payment_request
@@ -118,8 +115,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `check_transfer`.
-      #   One of the constants defined in {Increase::Models::CheckTransfer::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CheckTransfer::Type]
       required :type, enum: -> { Increase::Models::CheckTransfer::Type }
 
       class Approval < BaseModel
@@ -154,8 +150,7 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of object that created this transfer.
-        #   One of the constants defined in {Increase::Models::CheckTransfer::CreatedBy::Category}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckTransfer::CreatedBy::Category]
         required :category, enum: -> { Increase::Models::CheckTransfer::CreatedBy::Category }
 
         # @!attribute [rw] oauth_application
@@ -348,8 +343,7 @@ module Increase
         class TrackingUpdate < BaseModel
           # @!attribute [rw] category
           #   The type of tracking event.
-          #   One of the constants defined in {Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category]
           required :category,
                    enum: lambda {
                      Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category
@@ -404,8 +398,7 @@ module Increase
       class StopPaymentRequest < BaseModel
         # @!attribute [rw] reason
         #   The reason why this transfer was stopped.
-        #   One of the constants defined in {Increase::Models::CheckTransfer::StopPaymentRequest::Reason}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Reason]
         required :reason, enum: -> { Increase::Models::CheckTransfer::StopPaymentRequest::Reason }
 
         # @!attribute [rw] requested_at
@@ -420,8 +413,7 @@ module Increase
 
         # @!attribute [rw] type
         #   A constant representing the object's type. For this resource it will always be `check_transfer_stop_payment_request`.
-        #   One of the constants defined in {Increase::Models::CheckTransfer::StopPaymentRequest::Type}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Type]
         required :type, enum: -> { Increase::Models::CheckTransfer::StopPaymentRequest::Type }
 
         # The reason why this transfer was stopped.

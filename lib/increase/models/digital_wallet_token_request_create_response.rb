@@ -5,8 +5,7 @@ module Increase
     class DigitalWalletTokenRequestCreateResponse < BaseModel
       # @!attribute [rw] decline_reason
       #   If the simulated tokenization attempt was declined, this field contains details as to why.
-      #   One of the constants defined in {Increase::Models::DigitalWalletTokenRequestCreateResponse::DeclineReason}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::DigitalWalletTokenRequestCreateResponse::DeclineReason]
       required :decline_reason,
                enum: -> { Increase::Models::DigitalWalletTokenRequestCreateResponse::DeclineReason }
 
@@ -17,8 +16,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_digital_wallet_token_request_simulation_result`.
-      #   One of the constants defined in {Increase::Models::DigitalWalletTokenRequestCreateResponse::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::DigitalWalletTokenRequestCreateResponse::Type]
       required :type, enum: -> { Increase::Models::DigitalWalletTokenRequestCreateResponse::Type }
 
       # If the simulated tokenization attempt was declined, this field contains details as to why.

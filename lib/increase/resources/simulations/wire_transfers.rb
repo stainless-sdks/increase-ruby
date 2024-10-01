@@ -14,7 +14,7 @@ module Increase
         #   Transfer must first have a `status` of `complete`.
         #
         # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to reverse.
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::WireTransfer]
         def reverse(wire_transfer_id, opts = {})
@@ -30,7 +30,7 @@ module Increase
         #   `pending_creating`.
         #
         # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to submit.
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::WireTransfer]
         def submit(wire_transfer_id, opts = {})

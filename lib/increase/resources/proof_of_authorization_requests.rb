@@ -10,7 +10,7 @@ module Increase
       # Retrieve a Proof of Authorization Request
       #
       # @param proof_of_authorization_request_id [String] The identifier of the Proof of Authorization Request.
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ProofOfAuthorizationRequest]
       def retrieve(proof_of_authorization_request_id, opts = {})
@@ -24,12 +24,12 @@ module Increase
       # List Proof of Authorization Requests
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [CreatedAt] :created_at
-      # @option params [String] :cursor Return the page of entries after this one.
-      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      # @option params [CreatedAt, nil] :created_at
+      # @option params [String, nil] :cursor Return the page of entries after this one.
+      # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequest>]
       def list(params = {}, opts = {})
@@ -40,6 +40,28 @@ module Increase
         req[:page] = Increase::Page
         req[:model] = Increase::Models::ProofOfAuthorizationRequest
         @client.request(req, opts)
+      end
+
+      class CreatedAt < BaseModel
+        # @!attribute [rw] after
+        #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   @return [DateTime]
+        optional :after, DateTime
+
+        # @!attribute [rw] before
+        #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   @return [DateTime]
+        optional :before, DateTime
+
+        # @!attribute [rw] on_or_after
+        #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   @return [DateTime]
+        optional :on_or_after, DateTime
+
+        # @!attribute [rw] on_or_before
+        #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   @return [DateTime]
+        optional :on_or_before, DateTime
       end
     end
   end

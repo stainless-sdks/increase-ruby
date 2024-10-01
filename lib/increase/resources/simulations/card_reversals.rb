@@ -15,10 +15,10 @@ module Increase
         #
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :card_payment_id The identifier of the Card Payment to create a reversal on.
-        # @option params [Integer] :amount The amount of the reversal in minor units in the card authorization's currency.
+        # @option params [Integer, nil] :amount The amount of the reversal in minor units in the card authorization's currency.
         #   This defaults to the authorization amount.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CardPayment]
         def create(params = {}, opts = {})

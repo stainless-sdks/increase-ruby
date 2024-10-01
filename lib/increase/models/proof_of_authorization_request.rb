@@ -26,8 +26,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `proof_of_authorization_request`.
-      #   One of the constants defined in {Increase::Models::ProofOfAuthorizationRequest::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequest::Type]
       required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequest::Type }
 
       # @!attribute [rw] updated_at

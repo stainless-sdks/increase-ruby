@@ -40,8 +40,7 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
-      #   One of the constants defined in {Increase::Models::InboundRealTimePaymentsTransfer::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency]
       required :currency, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Currency }
 
       # @!attribute [rw] debtor_account_number
@@ -71,8 +70,7 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
-      #   One of the constants defined in {Increase::Models::InboundRealTimePaymentsTransfer::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Status]
       required :status, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Status }
 
       # @!attribute [rw] transaction_identification
@@ -82,8 +80,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_real_time_payments_transfer`.
-      #   One of the constants defined in {Increase::Models::InboundRealTimePaymentsTransfer::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type]
       required :type, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Type }
 
       class Confirmation < BaseModel
@@ -132,8 +129,7 @@ module Increase
 
         # @!attribute [rw] reason
         #   The reason for the transfer decline.
-        #   One of the constants defined in {Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason]
         required :reason, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason }
 
         # The reason for the transfer decline.
