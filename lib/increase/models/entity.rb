@@ -50,14 +50,12 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the entity.
-      #   One of the constants defined in {Increase::Models::Entity::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Entity::Status]
       required :status, enum: -> { Increase::Models::Entity::Status }
 
       # @!attribute [rw] structure
       #   The entity's legal structure.
-      #   One of the constants defined in {Increase::Models::Entity::Structure}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Entity::Structure]
       required :structure, enum: -> { Increase::Models::Entity::Structure }
 
       # @!attribute [rw] supplemental_documents
@@ -73,8 +71,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `entity`.
-      #   One of the constants defined in {Increase::Models::Entity::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Entity::Type]
       required :type, enum: -> { Increase::Models::Entity::Type }
 
       class Corporation < BaseModel
@@ -159,8 +156,7 @@ module Increase
 
           # @!attribute [rw] prong
           #   Why this person is considered a beneficial owner of the entity.
-          #   One of the constants defined in {Increase::Models::Entity::Corporation::BeneficialOwner::Prong}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Prong]
           required :prong, enum: -> { Increase::Models::Entity::Corporation::BeneficialOwner::Prong }
 
           class Individual < BaseModel
@@ -218,8 +214,7 @@ module Increase
             class Identification < BaseModel
               # @!attribute [rw] method_
               #   A method that can be used to verify the individual's identity.
-              #   One of the constants defined in {Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method]
               required :method_,
                        enum: lambda {
                          Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method
@@ -275,8 +270,7 @@ module Increase
 
         # @!attribute [rw] category
         #   The category of the government authority.
-        #   One of the constants defined in {Increase::Models::Entity::GovernmentAuthority::Category}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::Entity::GovernmentAuthority::Category]
         required :category, enum: -> { Increase::Models::Entity::GovernmentAuthority::Category }
 
         # @!attribute [rw] name_
@@ -402,8 +396,7 @@ module Increase
           class Identification < BaseModel
             # @!attribute [rw] method_
             #   A method that can be used to verify the individual's identity.
-            #   One of the constants defined in {Increase::Models::Entity::Joint::Individual::Identification::Method}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::Entity::Joint::Individual::Identification::Method]
             required :method_,
                      enum: lambda {
                        Increase::Models::Entity::Joint::Individual::Identification::Method
@@ -486,8 +479,7 @@ module Increase
         class Identification < BaseModel
           # @!attribute [rw] method_
           #   A method that can be used to verify the individual's identity.
-          #   One of the constants defined in {Increase::Models::Entity::NaturalPerson::Identification::Method}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Entity::NaturalPerson::Identification::Method]
           required :method_, enum: -> { Increase::Models::Entity::NaturalPerson::Identification::Method }
 
           # @!attribute [rw] number_last4
@@ -553,8 +545,7 @@ module Increase
 
         # @!attribute [rw] category
         #   Whether the trust is `revocable` or `irrevocable`.
-        #   One of the constants defined in {Increase::Models::Entity::Trust::Category}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::Entity::Trust::Category]
         required :category, enum: -> { Increase::Models::Entity::Trust::Category }
 
         # @!attribute [rw] formation_document_file_id
@@ -674,8 +665,7 @@ module Increase
           class Identification < BaseModel
             # @!attribute [rw] method_
             #   A method that can be used to verify the individual's identity.
-            #   One of the constants defined in {Increase::Models::Entity::Trust::Grantor::Identification::Method}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::Entity::Trust::Grantor::Identification::Method]
             required :method_, enum: -> { Increase::Models::Entity::Trust::Grantor::Identification::Method }
 
             # @!attribute [rw] number_last4
@@ -711,8 +701,7 @@ module Increase
 
           # @!attribute [rw] structure
           #   The structure of the trustee. Will always be equal to `individual`.
-          #   One of the constants defined in {Increase::Models::Entity::Trust::Trustee::Structure}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::Entity::Trust::Trustee::Structure]
           required :structure, enum: -> { Increase::Models::Entity::Trust::Trustee::Structure }
 
           class Individual < BaseModel
@@ -769,8 +758,7 @@ module Increase
             class Identification < BaseModel
               # @!attribute [rw] method_
               #   A method that can be used to verify the individual's identity.
-              #   One of the constants defined in {Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method]
               required :method_,
                        enum: lambda {
                          Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method

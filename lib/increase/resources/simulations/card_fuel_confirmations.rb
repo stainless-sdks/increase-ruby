@@ -17,7 +17,7 @@ module Increase
         #   currency.
         # @option params [String] :card_payment_id The identifier of the Card Payment to create a fuel_confirmation on.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CardPayment]
         def create(params = {}, opts = {})

@@ -12,7 +12,7 @@ module Increase
         #   be created as a result of e.g., an ACH debit.
         #
         # @param inbound_funds_hold_id [String] The inbound funds hold to release.
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundFundsHoldReleaseResponse]
         def release(inbound_funds_hold_id, opts = {})

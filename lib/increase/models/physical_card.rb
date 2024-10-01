@@ -40,14 +40,12 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Physical Card.
-      #   One of the constants defined in {Increase::Models::PhysicalCard::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::PhysicalCard::Status]
       required :status, enum: -> { Increase::Models::PhysicalCard::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `physical_card`.
-      #   One of the constants defined in {Increase::Models::PhysicalCard::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::PhysicalCard::Type]
       required :type, enum: -> { Increase::Models::PhysicalCard::Type }
 
       class Cardholder < BaseModel
@@ -70,14 +68,12 @@ module Increase
 
         # @!attribute [rw] method_
         #   The shipping method.
-        #   One of the constants defined in {Increase::Models::PhysicalCard::Shipment::Method}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::PhysicalCard::Shipment::Method]
         required :method_, enum: -> { Increase::Models::PhysicalCard::Shipment::Method }
 
         # @!attribute [rw] status
         #   The status of this shipment.
-        #   One of the constants defined in {Increase::Models::PhysicalCard::Shipment::Status}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::PhysicalCard::Shipment::Status]
         required :status, enum: -> { Increase::Models::PhysicalCard::Shipment::Status }
 
         # @!attribute [rw] tracking

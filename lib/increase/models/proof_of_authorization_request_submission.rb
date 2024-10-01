@@ -60,14 +60,12 @@ module Increase
 
       # @!attribute [rw] status
       #   Status of the proof of authorization request submission.
-      #   One of the constants defined in {Increase::Models::ProofOfAuthorizationRequestSubmission::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status]
       required :status, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `proof_of_authorization_request_submission`.
-      #   One of the constants defined in {Increase::Models::ProofOfAuthorizationRequestSubmission::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type]
       required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Type }
 
       # @!attribute [rw] updated_at

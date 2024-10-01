@@ -15,7 +15,7 @@ module Increase
         # @option params [String] :transaction_id The identifier for the Transaction to refund. The Transaction's source must have
         #   a category of card_settlement.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Transaction]
         def create(params = {}, opts = {})

@@ -45,14 +45,12 @@ module Increase
 
       # @!attribute [rw] direction
       #   The direction of the transfer.
-      #   One of the constants defined in {Increase::Models::InboundACHTransfer::Direction}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundACHTransfer::Direction]
       required :direction, enum: -> { Increase::Models::InboundACHTransfer::Direction }
 
       # @!attribute [rw] expected_settlement_schedule
       #   The settlement schedule the transfer is expected to follow.
-      #   One of the constants defined in {Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule]
       required :expected_settlement_schedule,
                enum: -> { Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule }
 
@@ -108,15 +106,13 @@ module Increase
 
       # @!attribute [rw] standard_entry_class_code
       #   The Standard Entry Class (SEC) code of the transfer.
-      #   One of the constants defined in {Increase::Models::InboundACHTransfer::StandardEntryClassCode}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundACHTransfer::StandardEntryClassCode]
       required :standard_entry_class_code,
                enum: -> { Increase::Models::InboundACHTransfer::StandardEntryClassCode }
 
       # @!attribute [rw] status
       #   The status of the transfer.
-      #   One of the constants defined in {Increase::Models::InboundACHTransfer::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundACHTransfer::Status]
       required :status, enum: -> { Increase::Models::InboundACHTransfer::Status }
 
       # @!attribute [rw] trace_number
@@ -131,8 +127,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_ach_transfer`.
-      #   One of the constants defined in {Increase::Models::InboundACHTransfer::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundACHTransfer::Type]
       required :type, enum: -> { Increase::Models::InboundACHTransfer::Type }
 
       class Acceptance < BaseModel
@@ -150,8 +145,7 @@ module Increase
       class Addenda < BaseModel
         # @!attribute [rw] category
         #   The type of addendum.
-        #   One of the constants defined in {Increase::Models::InboundACHTransfer::Addenda::Category}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::InboundACHTransfer::Addenda::Category]
         required :category, enum: -> { Increase::Models::InboundACHTransfer::Addenda::Category }
 
         # @!attribute [rw] freeform
@@ -198,8 +192,7 @@ module Increase
 
         # @!attribute [rw] reason
         #   The reason for the transfer decline.
-        #   One of the constants defined in {Increase::Models::InboundACHTransfer::Decline::Reason}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::InboundACHTransfer::Decline::Reason]
         required :reason, enum: -> { Increase::Models::InboundACHTransfer::Decline::Reason }
 
         # The reason for the transfer decline.
@@ -288,8 +281,7 @@ module Increase
 
         # @!attribute [rw] foreign_exchange_indicator
         #   A description of how the foreign exchange rate was calculated.
-        #   One of the constants defined in {Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator]
         required :foreign_exchange_indicator,
                  enum: lambda {
                    Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator
@@ -302,8 +294,7 @@ module Increase
 
         # @!attribute [rw] foreign_exchange_reference_indicator
         #   An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
-        #   One of the constants defined in {Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator]
         required :foreign_exchange_reference_indicator,
                  enum: lambda {
                    Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator
@@ -321,8 +312,7 @@ module Increase
 
         # @!attribute [rw] international_transaction_type_code
         #   The type of transfer. Set by the originator.
-        #   One of the constants defined in {Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode]
         required :international_transaction_type_code,
                  enum: lambda {
                    Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode
@@ -345,8 +335,7 @@ module Increase
 
         # @!attribute [rw] originating_depository_financial_institution_id_qualifier
         #   An instruction of how to interpret the `originating_depository_financial_institution_id` field for this Transaction.
-        #   One of the constants defined in {Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier]
         required :originating_depository_financial_institution_id_qualifier,
                  enum: lambda {
                    Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier
@@ -449,8 +438,7 @@ module Increase
 
         # @!attribute [rw] receiving_depository_financial_institution_id_qualifier
         #   An instruction of how to interpret the `receiving_depository_financial_institution_id` field for this Transaction.
-        #   One of the constants defined in {Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier]
         required :receiving_depository_financial_institution_id_qualifier,
                  enum: lambda {
                    Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier
@@ -654,8 +642,7 @@ module Increase
       class TransferReturn < BaseModel
         # @!attribute [rw] reason
         #   The reason for the transfer return.
-        #   One of the constants defined in {Increase::Models::InboundACHTransfer::TransferReturn::Reason}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::InboundACHTransfer::TransferReturn::Reason]
         required :reason, enum: -> { Increase::Models::InboundACHTransfer::TransferReturn::Reason }
 
         # @!attribute [rw] returned_at

@@ -9,7 +9,7 @@ module Increase
 
       # Returns details for the currently authenticated Group.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Group]
       def retrieve(opts = {})

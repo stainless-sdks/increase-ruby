@@ -10,8 +10,7 @@ module Increase
 
       # @!attribute [rw] category
       #   The type of document.
-      #   One of the constants defined in {Increase::Models::Document::Category}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Document::Category]
       required :category, enum: -> { Increase::Models::Document::Category }
 
       # @!attribute [rw] created_at
@@ -31,8 +30,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `document`.
-      #   One of the constants defined in {Increase::Models::Document::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Document::Type]
       required :type, enum: -> { Increase::Models::Document::Type }
 
       # The type of document.

@@ -60,8 +60,7 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Card Profile.
-      #   One of the constants defined in {Increase::Models::DigitalCardProfile::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::DigitalCardProfile::Status]
       required :status, enum: -> { Increase::Models::DigitalCardProfile::Status }
 
       # @!attribute [rw] text_color
@@ -71,8 +70,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `digital_card_profile`.
-      #   One of the constants defined in {Increase::Models::DigitalCardProfile::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::DigitalCardProfile::Type]
       required :type, enum: -> { Increase::Models::DigitalCardProfile::Type }
 
       # The status of the Card Profile.

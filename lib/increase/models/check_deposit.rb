@@ -80,8 +80,7 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Check Deposit.
-      #   One of the constants defined in {Increase::Models::CheckDeposit::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CheckDeposit::Status]
       required :status, enum: -> { Increase::Models::CheckDeposit::Status }
 
       # @!attribute [rw] transaction_id
@@ -91,8 +90,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `check_deposit`.
-      #   One of the constants defined in {Increase::Models::CheckDeposit::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CheckDeposit::Type]
       required :type, enum: -> { Increase::Models::CheckDeposit::Type }
 
       class DepositAcceptance < BaseModel
@@ -118,8 +116,7 @@ module Increase
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositAcceptance::Currency}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency]
         required :currency, enum: -> { Increase::Models::CheckDeposit::DepositAcceptance::Currency }
 
         # @!attribute [rw] routing_number
@@ -167,8 +164,7 @@ module Increase
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositRejection::Currency}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency]
         required :currency, enum: -> { Increase::Models::CheckDeposit::DepositRejection::Currency }
 
         # @!attribute [rw] declined_transaction_id
@@ -178,8 +174,7 @@ module Increase
 
         # @!attribute [rw] reason
         #   Why the check deposit was rejected.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositRejection::Reason}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::DepositRejection::Reason]
         required :reason, enum: -> { Increase::Models::CheckDeposit::DepositRejection::Reason }
 
         # @!attribute [rw] rejected_at
@@ -255,14 +250,12 @@ module Increase
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositReturn::Currency}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency]
         required :currency, enum: -> { Increase::Models::CheckDeposit::DepositReturn::Currency }
 
         # @!attribute [rw] return_reason
         #   Why this check was returned by the bank holding the account it was drawn against.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositReturn::ReturnReason}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason]
         required :return_reason, enum: -> { Increase::Models::CheckDeposit::DepositReturn::ReturnReason }
 
         # @!attribute [rw] returned_at
@@ -418,8 +411,7 @@ module Increase
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::InboundFundsHold::Currency}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency]
         required :currency, enum: -> { Increase::Models::CheckDeposit::InboundFundsHold::Currency }
 
         # @!attribute [rw] held_transaction_id
@@ -439,14 +431,12 @@ module Increase
 
         # @!attribute [rw] status
         #   The status of the hold.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::InboundFundsHold::Status}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Status]
         required :status, enum: -> { Increase::Models::CheckDeposit::InboundFundsHold::Status }
 
         # @!attribute [rw] type
         #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::InboundFundsHold::Type}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Type]
         required :type, enum: -> { Increase::Models::CheckDeposit::InboundFundsHold::Type }
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.

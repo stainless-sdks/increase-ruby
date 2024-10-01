@@ -20,8 +20,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `balance_lookup`.
-      #   One of the constants defined in {Increase::Models::BalanceLookup::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::BalanceLookup::Type]
       required :type, enum: -> { Increase::Models::BalanceLookup::Type }
 
       # A constant representing the object's type. For this resource it will always be `balance_lookup`.
