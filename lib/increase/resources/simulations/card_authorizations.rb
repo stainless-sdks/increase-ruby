@@ -20,6 +20,8 @@ module Increase
         # @option params [Integer] :amount The authorization amount in cents.
         # @option params [String, nil] :card_id The identifier of the Card to be authorized.
         # @option params [String, nil] :digital_wallet_token_id The identifier of the Digital Wallet Token to be authorized.
+        # @option params [Symbol, Direction, nil] :direction The direction describes the direction the funds will move, either from the
+        #   cardholder to the merchant or from the merchant to the cardholder.
         # @option params [String, nil] :event_subscription_id The identifier of the Event Subscription to use. If provided, will override the
         #   default real time event subscription. Because you can only create one real time
         #   decision event subscription, you can use this field to route events to any
