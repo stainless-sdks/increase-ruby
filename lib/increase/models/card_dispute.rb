@@ -50,12 +50,14 @@ module Increase
 
       # @!attribute [rw] status
       #   The results of the Dispute investigation.
-      #   @return [Symbol, Increase::Models::CardDispute::Status]
+      #   One of the constants defined in {Increase::Models::CardDispute::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::CardDispute::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `card_dispute`.
-      #   @return [Symbol, Increase::Models::CardDispute::Type]
+      #   One of the constants defined in {Increase::Models::CardDispute::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::CardDispute::Type }
 
       # @!attribute [rw] win

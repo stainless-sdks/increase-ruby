@@ -65,7 +65,8 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For wire transfers this is always equal to `usd`.
-      #   @return [Symbol, Increase::Models::WireTransfer::Currency]
+      #   One of the constants defined in {Increase::Models::WireTransfer::Currency}
+      #   @return [Symbol]
       required :currency, enum: -> { Increase::Models::WireTransfer::Currency }
 
       # @!attribute [rw] external_account_id
@@ -85,7 +86,8 @@ module Increase
 
       # @!attribute [rw] network
       #   The transfer's network.
-      #   @return [Symbol, Increase::Models::WireTransfer::Network]
+      #   One of the constants defined in {Increase::Models::WireTransfer::Network}
+      #   @return [Symbol]
       required :network, enum: -> { Increase::Models::WireTransfer::Network }
 
       # @!attribute [rw] originator_address_line1
@@ -125,7 +127,8 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
-      #   @return [Symbol, Increase::Models::WireTransfer::Status]
+      #   One of the constants defined in {Increase::Models::WireTransfer::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::WireTransfer::Status }
 
       # @!attribute [rw] submission
@@ -140,7 +143,8 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `wire_transfer`.
-      #   @return [Symbol, Increase::Models::WireTransfer::Type]
+      #   One of the constants defined in {Increase::Models::WireTransfer::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::WireTransfer::Type }
 
       class Approval < BaseModel
@@ -175,7 +179,8 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of object that created this transfer.
-        #   @return [Symbol, Increase::Models::WireTransfer::CreatedBy::Category]
+        #   One of the constants defined in {Increase::Models::WireTransfer::CreatedBy::Category}
+        #   @return [Symbol]
         required :category, enum: -> { Increase::Models::WireTransfer::CreatedBy::Category }
 
         # @!attribute [rw] oauth_application

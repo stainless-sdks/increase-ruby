@@ -45,7 +45,8 @@ module Increase
 
       # @!attribute [rw] credit_debit_indicator
       #   If the notification is for a future credit or debit.
-      #   @return [Symbol, Increase::Models::ACHPrenotification::CreditDebitIndicator]
+      #   One of the constants defined in {Increase::Models::ACHPrenotification::CreditDebitIndicator}
+      #   @return [Symbol]
       required :credit_debit_indicator,
                enum: lambda {
                  Increase::Models::ACHPrenotification::CreditDebitIndicator
@@ -79,12 +80,14 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the ACH Prenotification.
-      #   @return [Symbol, Increase::Models::ACHPrenotification::Status]
+      #   One of the constants defined in {Increase::Models::ACHPrenotification::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::ACHPrenotification::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `ach_prenotification`.
-      #   @return [Symbol, Increase::Models::ACHPrenotification::Type]
+      #   One of the constants defined in {Increase::Models::ACHPrenotification::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::ACHPrenotification::Type }
 
       # If the notification is for a future credit or debit.
@@ -99,7 +102,8 @@ module Increase
       class NotificationsOfChange < BaseModel
         # @!attribute [rw] change_code
         #   The required type of change that is being signaled by the receiving financial institution.
-        #   @return [Symbol, Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode]
+        #   One of the constants defined in {Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode}
+        #   @return [Symbol]
         required :change_code,
                  enum: -> { Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode }
 
@@ -182,7 +186,8 @@ module Increase
 
         # @!attribute [rw] return_reason_code
         #   Why the Prenotification was returned.
-        #   @return [Symbol, Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode]
+        #   One of the constants defined in {Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode}
+        #   @return [Symbol]
         required :return_reason_code,
                  enum: -> { Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode }
 

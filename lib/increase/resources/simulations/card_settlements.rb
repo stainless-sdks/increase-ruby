@@ -18,10 +18,10 @@ module Increase
         # @option params [String] :card_id The identifier of the Card to create a settlement on.
         # @option params [String] :pending_transaction_id The identifier of the Pending Transaction for the Card Authorization you wish to
         #   settle.
-        # @option params [Integer, nil] :amount The amount to be settled. This defaults to the amount of the Pending Transaction
+        # @option params [Integer] :amount The amount to be settled. This defaults to the amount of the Pending Transaction
         #   being settled.
         #
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Transaction]
         def create(params = {}, opts = {})

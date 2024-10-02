@@ -25,7 +25,8 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `card_details`.
-      #   @return [Symbol, Increase::Models::CardDetails::Type]
+      #   One of the constants defined in {Increase::Models::CardDetails::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::CardDetails::Type }
 
       # @!attribute [rw] verification_code

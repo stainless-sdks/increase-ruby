@@ -20,7 +20,8 @@ module Increase
 
       # @!attribute [rw] category
       #   The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
-      #   @return [Symbol, Increase::Models::Event::Category]
+      #   One of the constants defined in {Increase::Models::Event::Category}
+      #   @return [Symbol]
       required :category, enum: -> { Increase::Models::Event::Category }
 
       # @!attribute [rw] created_at
@@ -30,7 +31,8 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `event`.
-      #   @return [Symbol, Increase::Models::Event::Type]
+      #   One of the constants defined in {Increase::Models::Event::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::Event::Type }
 
       # The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.

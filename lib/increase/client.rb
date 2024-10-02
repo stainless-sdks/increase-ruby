@@ -5,8 +5,7 @@ module Increase
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 
-    # Client option
-    # @return [String]
+    # Client options.
     attr_reader :api_key
 
     # @return [Increase::Resources::Accounts]
@@ -174,19 +173,7 @@ module Increase
     end
 
     # Creates and returns a new client for interacting with the API.
-    #
-    # @param environment ["production", "sandbox", nil] Specifies the environment to use for the API.
-    #
-    #   Each environment maps to a different base URL:
-    #
-    #   - `production` corresponds to `https://api.increase.com`
-    #   - `sandbox` corresponds to `https://sandbox.increase.com`
-    # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
-    # @param api_key [String, nil] Defaults to `ENV["INCREASE_API_KEY"]`
-    # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
-    #
-    # @return [Increase::Client]
-    def initialize(environment: nil, base_url: nil, api_key: nil, max_retries: DEFAULT_MAX_RETRIES)
+    def initialize(environment: nil, base_url: nil, api_key: nil, max_retries: nil)
       environments = {"production" => "https://api.increase.com", "sandbox" => "https://sandbox.increase.com"}
       if environment && base_url
         raise ArgumentError, "both environment and base_url given, expected only one"
@@ -199,6 +186,7 @@ module Increase
         base_url = "https://api.increase.com"
       end
 
+      max_retries ||= DEFAULT_MAX_RETRIES
       idempotency_header = "Idempotency-Key"
 
       @api_key = [api_key, ENV["INCREASE_API_KEY"]].find { |v| !v.nil? }

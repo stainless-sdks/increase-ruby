@@ -20,17 +20,20 @@ module Increase
 
       # @!attribute [rw] status
       #   This indicates if payments can be made with the Digital Wallet Token.
-      #   @return [Symbol, Increase::Models::DigitalWalletToken::Status]
+      #   One of the constants defined in {Increase::Models::DigitalWalletToken::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::DigitalWalletToken::Status }
 
       # @!attribute [rw] token_requestor
       #   The digital wallet app being used.
-      #   @return [Symbol, Increase::Models::DigitalWalletToken::TokenRequestor]
+      #   One of the constants defined in {Increase::Models::DigitalWalletToken::TokenRequestor}
+      #   @return [Symbol]
       required :token_requestor, enum: -> { Increase::Models::DigitalWalletToken::TokenRequestor }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `digital_wallet_token`.
-      #   @return [Symbol, Increase::Models::DigitalWalletToken::Type]
+      #   One of the constants defined in {Increase::Models::DigitalWalletToken::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::DigitalWalletToken::Type }
 
       # This indicates if payments can be made with the Digital Wallet Token.

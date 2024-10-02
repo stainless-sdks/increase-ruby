@@ -35,7 +35,8 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the exclusion request.
-      #   @return [Symbol, Increase::Models::IntrafiExclusion::Status]
+      #   One of the constants defined in {Increase::Models::IntrafiExclusion::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::IntrafiExclusion::Status }
 
       # @!attribute [rw] submitted_at
@@ -45,7 +46,8 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `intrafi_exclusion`.
-      #   @return [Symbol, Increase::Models::IntrafiExclusion::Type]
+      #   One of the constants defined in {Increase::Models::IntrafiExclusion::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::IntrafiExclusion::Type }
 
       # The status of the exclusion request.

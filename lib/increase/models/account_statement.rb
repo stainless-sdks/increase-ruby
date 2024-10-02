@@ -45,7 +45,8 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `account_statement`.
-      #   @return [Symbol, Increase::Models::AccountStatement::Type]
+      #   One of the constants defined in {Increase::Models::AccountStatement::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::AccountStatement::Type }
 
       # A constant representing the object's type. For this resource it will always be `account_statement`.

@@ -40,12 +40,14 @@ module Increase
 
       # @!attribute [rw] status
       #   This indicates if mail can be sent to this address.
-      #   @return [Symbol, Increase::Models::Lockbox::Status]
+      #   One of the constants defined in {Increase::Models::Lockbox::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::Lockbox::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `lockbox`.
-      #   @return [Symbol, Increase::Models::Lockbox::Type]
+      #   One of the constants defined in {Increase::Models::Lockbox::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::Lockbox::Type }
 
       class Address < BaseModel

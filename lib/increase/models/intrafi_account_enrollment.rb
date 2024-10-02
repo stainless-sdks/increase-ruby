@@ -25,12 +25,14 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the account in the network. An account takes about one business day to go from `pending_enrolling` to `enrolled`.
-      #   @return [Symbol, Increase::Models::IntrafiAccountEnrollment::Status]
+      #   One of the constants defined in {Increase::Models::IntrafiAccountEnrollment::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::IntrafiAccountEnrollment::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `intrafi_account_enrollment`.
-      #   @return [Symbol, Increase::Models::IntrafiAccountEnrollment::Type]
+      #   One of the constants defined in {Increase::Models::IntrafiAccountEnrollment::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::IntrafiAccountEnrollment::Type }
 
       # The status of the account in the network. An account takes about one business day to go from `pending_enrolling` to `enrolled`.

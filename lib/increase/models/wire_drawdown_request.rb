@@ -90,7 +90,8 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the drawdown request.
-      #   @return [Symbol, Increase::Models::WireDrawdownRequest::Status]
+      #   One of the constants defined in {Increase::Models::WireDrawdownRequest::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::WireDrawdownRequest::Status }
 
       # @!attribute [rw] submission
@@ -100,7 +101,8 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `wire_drawdown_request`.
-      #   @return [Symbol, Increase::Models::WireDrawdownRequest::Type]
+      #   One of the constants defined in {Increase::Models::WireDrawdownRequest::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::WireDrawdownRequest::Type }
 
       # The lifecycle status of the drawdown request.

@@ -30,17 +30,20 @@ module Increase
 
       # @!attribute [rw] rejection_reason
       #   If the mail item has been rejected, why it was rejected.
-      #   @return [Symbol, Increase::Models::InboundMailItem::RejectionReason]
+      #   One of the constants defined in {Increase::Models::InboundMailItem::RejectionReason}
+      #   @return [Symbol]
       required :rejection_reason, enum: -> { Increase::Models::InboundMailItem::RejectionReason }
 
       # @!attribute [rw] status
       #   If the mail item has been processed.
-      #   @return [Symbol, Increase::Models::InboundMailItem::Status]
+      #   One of the constants defined in {Increase::Models::InboundMailItem::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::InboundMailItem::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_mail_item`.
-      #   @return [Symbol, Increase::Models::InboundMailItem::Type]
+      #   One of the constants defined in {Increase::Models::InboundMailItem::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::InboundMailItem::Type }
 
       # If the mail item has been rejected, why it was rejected.
