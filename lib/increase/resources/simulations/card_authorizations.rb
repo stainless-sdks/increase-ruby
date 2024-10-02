@@ -19,6 +19,8 @@ module Increase
         # @param params [Hash] Attributes to send in this request.
         # @option params [Integer] :amount The authorization amount in cents.
         # @option params [String, nil] :card_id The identifier of the Card to be authorized.
+        # @option params [Symbol, DeclineReason, nil] :decline_reason Forces a card decline with a specific reason. No real time decision will be
+        #   sent.
         # @option params [String, nil] :digital_wallet_token_id The identifier of the Digital Wallet Token to be authorized.
         # @option params [Symbol, Direction, nil] :direction The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
