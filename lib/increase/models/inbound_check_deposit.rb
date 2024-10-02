@@ -23,6 +23,11 @@ module Increase
       #   @return [String]
       required :account_number_id, String
 
+      # @!attribute [rw] adjustments
+      #   If the deposit or the return was adjusted by the sending institution, this will contain details of the adjustments.
+      #   @return [Array<Increase::Models::InboundCheckDeposit::Adjustment>]
+      required :adjustments, Increase::ArrayOf.new(-> { Increase::Models::InboundCheckDeposit::Adjustment })
+
       # @!attribute [rw] amount
       #   The deposited amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
       #   @return [Integer]
@@ -95,6 +100,34 @@ module Increase
       #   One of the constants defined in {Increase::Models::InboundCheckDeposit::Type}
       #   @return [Symbol]
       required :type, enum: -> { Increase::Models::InboundCheckDeposit::Type }
+
+      class Adjustment < BaseModel
+        # @!attribute [rw] adjusted_at
+        #   The time at which the return adjustment was received.
+        #   @return [DateTime]
+        required :adjusted_at, DateTime
+
+        # @!attribute [rw] amount
+        #   The amount of the adjustment.
+        #   @return [Integer]
+        required :amount, Integer
+
+        # @!attribute [rw] reason
+        #   The reason for the adjustment.
+        #   @return [Symbol, Increase::Models::InboundCheckDeposit::Adjustment::Reason]
+        required :reason, enum: -> { Increase::Models::InboundCheckDeposit::Adjustment::Reason }
+
+        # @!attribute [rw] transaction_id
+        #   The id of the transaction for the adjustment.
+        #   @return [String]
+        required :transaction_id, String
+
+        # The reason for the adjustment.
+        class Reason < Increase::Enum
+          # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
+          LATE_RETURN = :late_return
+        end
+      end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
       class Currency < Increase::Enum
