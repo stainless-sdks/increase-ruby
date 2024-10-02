@@ -2358,6 +2358,9 @@ module Increase
           # Inbound Check Deposit Return Intention: details will be under the `inbound_check_deposit_return_intention` object.
           INBOUND_CHECK_DEPOSIT_RETURN_INTENTION = :inbound_check_deposit_return_intention
 
+          # Inbound Check Adjustment: details will be under the `inbound_check_adjustment` object.
+          INBOUND_CHECK_ADJUSTMENT = :inbound_check_adjustment
+
           # Inbound Real-Time Payments Transfer Confirmation: details will be under the `inbound_real_time_payments_transfer_confirmation` object.
           INBOUND_REAL_TIME_PAYMENTS_TRANSFER_CONFIRMATION = :inbound_real_time_payments_transfer_confirmation
 

@@ -58,7 +58,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 
 ```ruby
 begin
-  increase.accounts.create
+  account = increase.accounts.create
 rescue Increase::HTTP::Error => e
   puts e.code # 400
 end
