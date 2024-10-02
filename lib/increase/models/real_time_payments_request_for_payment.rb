@@ -20,7 +20,8 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
-      #   @return [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Currency]
+      #   One of the constants defined in {Increase::Models::RealTimePaymentsRequestForPayment::Currency}
+      #   @return [Symbol]
       required :currency, enum: -> { Increase::Models::RealTimePaymentsRequestForPayment::Currency }
 
       # @!attribute [rw] debtor_name
@@ -75,7 +76,8 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the request for payment.
-      #   @return [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Status]
+      #   One of the constants defined in {Increase::Models::RealTimePaymentsRequestForPayment::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::RealTimePaymentsRequestForPayment::Status }
 
       # @!attribute [rw] submission
@@ -85,7 +87,8 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `real_time_payments_request_for_payment`.
-      #   @return [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Type]
+      #   One of the constants defined in {Increase::Models::RealTimePaymentsRequestForPayment::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::RealTimePaymentsRequestForPayment::Type }
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
@@ -112,7 +115,8 @@ module Increase
       class Refusal < BaseModel
         # @!attribute [rw] refusal_reason_code
         #   The reason the request for payment was refused as provided by the recipient bank or the customer.
-        #   @return [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Refusal::RefusalReasonCode]
+        #   One of the constants defined in {Increase::Models::RealTimePaymentsRequestForPayment::Refusal::RefusalReasonCode}
+        #   @return [Symbol]
         required :refusal_reason_code,
                  enum: -> { Increase::Models::RealTimePaymentsRequestForPayment::Refusal::RefusalReasonCode }
 
@@ -162,7 +166,8 @@ module Increase
       class Rejection < BaseModel
         # @!attribute [rw] reject_reason_code
         #   The reason the request for payment was rejected as provided by the recipient bank or the Real-Time Payments network.
-        #   @return [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Rejection::RejectReasonCode]
+        #   One of the constants defined in {Increase::Models::RealTimePaymentsRequestForPayment::Rejection::RejectReasonCode}
+        #   @return [Symbol]
         required :reject_reason_code,
                  enum: -> { Increase::Models::RealTimePaymentsRequestForPayment::Rejection::RejectReasonCode }
 

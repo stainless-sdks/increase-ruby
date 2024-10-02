@@ -10,7 +10,8 @@ module Increase
 
       # @!attribute [rw] category
       #   The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
-      #   @return [Symbol, Increase::Models::Export::Category]
+      #   One of the constants defined in {Increase::Models::Export::Category}
+      #   @return [Symbol]
       required :category, enum: -> { Increase::Models::Export::Category }
 
       # @!attribute [rw] created_at
@@ -35,12 +36,14 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Export.
-      #   @return [Symbol, Increase::Models::Export::Status]
+      #   One of the constants defined in {Increase::Models::Export::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::Export::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `export`.
-      #   @return [Symbol, Increase::Models::Export::Type]
+      #   One of the constants defined in {Increase::Models::Export::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::Export::Type }
 
       # The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.

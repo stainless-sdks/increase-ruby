@@ -15,9 +15,9 @@ module Increase
         # @param physical_card_id [String] The Physical Card you would like to action.
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Symbol, ShipmentStatus] :shipment_status The shipment status to move the Physical Card to.
+        # @option params [Symbol] :shipment_status The shipment status to move the Physical Card to.
         #
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::PhysicalCard]
         def advance_shipment(physical_card_id, params = {}, opts = {})

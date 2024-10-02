@@ -10,12 +10,14 @@ module Increase
 
       # @!attribute [rw] token_type
       #   The type of OAuth token.
-      #   @return [Symbol, Increase::Models::OAuthToken::TokenType]
+      #   One of the constants defined in {Increase::Models::OAuthToken::TokenType}
+      #   @return [Symbol]
       required :token_type, enum: -> { Increase::Models::OAuthToken::TokenType }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `oauth_token`.
-      #   @return [Symbol, Increase::Models::OAuthToken::Type]
+      #   One of the constants defined in {Increase::Models::OAuthToken::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::OAuthToken::Type }
 
       # The type of OAuth token.

@@ -25,7 +25,8 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
-      #   @return [Symbol, Increase::Models::InboundFundsHoldReleaseResponse::Currency]
+      #   One of the constants defined in {Increase::Models::InboundFundsHoldReleaseResponse::Currency}
+      #   @return [Symbol]
       required :currency, enum: -> { Increase::Models::InboundFundsHoldReleaseResponse::Currency }
 
       # @!attribute [rw] held_transaction_id
@@ -45,12 +46,14 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the hold.
-      #   @return [Symbol, Increase::Models::InboundFundsHoldReleaseResponse::Status]
+      #   One of the constants defined in {Increase::Models::InboundFundsHoldReleaseResponse::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::InboundFundsHoldReleaseResponse::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
-      #   @return [Symbol, Increase::Models::InboundFundsHoldReleaseResponse::Type]
+      #   One of the constants defined in {Increase::Models::InboundFundsHoldReleaseResponse::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::InboundFundsHoldReleaseResponse::Type }
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.

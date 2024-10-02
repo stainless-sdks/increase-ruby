@@ -60,12 +60,14 @@ module Increase
 
       # @!attribute [rw] status
       #   This indicates if payments can be made with the card.
-      #   @return [Symbol, Increase::Models::Card::Status]
+      #   One of the constants defined in {Increase::Models::Card::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::Card::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `card`.
-      #   @return [Symbol, Increase::Models::Card::Type]
+      #   One of the constants defined in {Increase::Models::Card::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::Card::Type }
 
       class BillingAddress < BaseModel

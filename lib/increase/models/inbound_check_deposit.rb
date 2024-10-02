@@ -60,7 +60,8 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
-      #   @return [Symbol, Increase::Models::InboundCheckDeposit::Currency]
+      #   One of the constants defined in {Increase::Models::InboundCheckDeposit::Currency}
+      #   @return [Symbol]
       required :currency, enum: -> { Increase::Models::InboundCheckDeposit::Currency }
 
       # @!attribute [rw] declined_at
@@ -85,7 +86,8 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Inbound Check Deposit.
-      #   @return [Symbol, Increase::Models::InboundCheckDeposit::Status]
+      #   One of the constants defined in {Increase::Models::InboundCheckDeposit::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::InboundCheckDeposit::Status }
 
       # @!attribute [rw] transaction_id
@@ -95,7 +97,8 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_check_deposit`.
-      #   @return [Symbol, Increase::Models::InboundCheckDeposit::Type]
+      #   One of the constants defined in {Increase::Models::InboundCheckDeposit::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::InboundCheckDeposit::Type }
 
       class Adjustment < BaseModel
@@ -150,7 +153,8 @@ module Increase
       class DepositReturn < BaseModel
         # @!attribute [rw] reason
         #   The reason the deposit was returned.
-        #   @return [Symbol, Increase::Models::InboundCheckDeposit::DepositReturn::Reason]
+        #   One of the constants defined in {Increase::Models::InboundCheckDeposit::DepositReturn::Reason}
+        #   @return [Symbol]
         required :reason, enum: -> { Increase::Models::InboundCheckDeposit::DepositReturn::Reason }
 
         # @!attribute [rw] returned_at

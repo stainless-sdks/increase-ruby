@@ -45,7 +45,8 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
-      #   @return [Symbol, Increase::Models::RealTimePaymentsTransfer::Currency]
+      #   One of the constants defined in {Increase::Models::RealTimePaymentsTransfer::Currency}
+      #   @return [Symbol]
       required :currency, enum: -> { Increase::Models::RealTimePaymentsTransfer::Currency }
 
       # @!attribute [rw] debtor_name
@@ -95,7 +96,8 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
-      #   @return [Symbol, Increase::Models::RealTimePaymentsTransfer::Status]
+      #   One of the constants defined in {Increase::Models::RealTimePaymentsTransfer::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::RealTimePaymentsTransfer::Status }
 
       # @!attribute [rw] submission
@@ -110,7 +112,8 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `real_time_payments_transfer`.
-      #   @return [Symbol, Increase::Models::RealTimePaymentsTransfer::Type]
+      #   One of the constants defined in {Increase::Models::RealTimePaymentsTransfer::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::RealTimePaymentsTransfer::Type }
 
       # @!attribute [rw] ultimate_creditor_name
@@ -155,7 +158,8 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of object that created this transfer.
-        #   @return [Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category]
+        #   One of the constants defined in {Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category}
+        #   @return [Symbol]
         required :category, enum: -> { Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category }
 
         # @!attribute [rw] oauth_application
@@ -232,7 +236,8 @@ module Increase
 
         # @!attribute [rw] reject_reason_code
         #   The reason the transfer was rejected as provided by the recipient bank or the Real-Time Payments network.
-        #   @return [Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode]
+        #   One of the constants defined in {Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode}
+        #   @return [Symbol]
         required :reject_reason_code,
                  enum: -> { Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode }
 

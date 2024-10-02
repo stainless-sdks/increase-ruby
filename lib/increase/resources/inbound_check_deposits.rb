@@ -10,7 +10,7 @@ module Increase
       # Retrieve an Inbound Check Deposit
       #
       # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to get details for.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundCheckDeposit]
       def retrieve(inbound_check_deposit_id, opts = {})
@@ -24,15 +24,15 @@ module Increase
       # List Inbound Check Deposits
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String, nil] :account_id Filter Inbound Check Deposits to those belonging to the specified Account.
-      # @option params [String, nil] :check_transfer_id Filter Inbound Check Deposits to those belonging to the specified Check
+      # @option params [String] :account_id Filter Inbound Check Deposits to those belonging to the specified Account.
+      # @option params [String] :check_transfer_id Filter Inbound Check Deposits to those belonging to the specified Check
       #   Transfer.
-      # @option params [CreatedAt, nil] :created_at
-      # @option params [String, nil] :cursor Return the page of entries after this one.
-      # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      # @option params [CreatedAt] :created_at
+      # @option params [String] :cursor Return the page of entries after this one.
+      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::InboundCheckDeposit>]
       def list(params = {}, opts = {})
@@ -48,7 +48,7 @@ module Increase
       # Decline an Inbound Check Deposit
       #
       # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to decline.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundCheckDeposit]
       def decline(inbound_check_deposit_id, opts = {})
@@ -64,9 +64,9 @@ module Increase
       # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to return.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Symbol, Reason] :reason The reason to return the Inbound Check Deposit.
+      # @option params [Symbol] :reason The reason to return the Inbound Check Deposit.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundCheckDeposit]
       def return_(inbound_check_deposit_id, params = {}, opts = {})

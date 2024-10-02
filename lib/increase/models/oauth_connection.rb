@@ -25,12 +25,14 @@ module Increase
 
       # @!attribute [rw] status
       #   Whether the connection is active.
-      #   @return [Symbol, Increase::Models::OAuthConnection::Status]
+      #   One of the constants defined in {Increase::Models::OAuthConnection::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::OAuthConnection::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `oauth_connection`.
-      #   @return [Symbol, Increase::Models::OAuthConnection::Type]
+      #   One of the constants defined in {Increase::Models::OAuthConnection::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::OAuthConnection::Type }
 
       # Whether the connection is active.

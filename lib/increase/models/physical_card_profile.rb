@@ -30,7 +30,8 @@ module Increase
 
       # @!attribute [rw] creator
       #   The creator of this Physical Card Profile.
-      #   @return [Symbol, Increase::Models::PhysicalCardProfile::Creator]
+      #   One of the constants defined in {Increase::Models::PhysicalCardProfile::Creator}
+      #   @return [Symbol]
       required :creator, enum: -> { Increase::Models::PhysicalCardProfile::Creator }
 
       # @!attribute [rw] description
@@ -55,12 +56,14 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Physical Card Profile.
-      #   @return [Symbol, Increase::Models::PhysicalCardProfile::Status]
+      #   One of the constants defined in {Increase::Models::PhysicalCardProfile::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::PhysicalCardProfile::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `physical_card_profile`.
-      #   @return [Symbol, Increase::Models::PhysicalCardProfile::Type]
+      #   One of the constants defined in {Increase::Models::PhysicalCardProfile::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::PhysicalCardProfile::Type }
 
       # The creator of this Physical Card Profile.

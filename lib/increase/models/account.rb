@@ -10,7 +10,8 @@ module Increase
 
       # @!attribute [rw] bank
       #   The bank the Account is with.
-      #   @return [Symbol, Increase::Models::Account::Bank]
+      #   One of the constants defined in {Increase::Models::Account::Bank}
+      #   @return [Symbol]
       required :bank, enum: -> { Increase::Models::Account::Bank }
 
       # @!attribute [rw] closed_at
@@ -25,7 +26,8 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.
-      #   @return [Symbol, Increase::Models::Account::Currency]
+      #   One of the constants defined in {Increase::Models::Account::Currency}
+      #   @return [Symbol]
       required :currency, enum: -> { Increase::Models::Account::Currency }
 
       # @!attribute [rw] entity_id
@@ -70,12 +72,14 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Account.
-      #   @return [Symbol, Increase::Models::Account::Status]
+      #   One of the constants defined in {Increase::Models::Account::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::Account::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `account`.
-      #   @return [Symbol, Increase::Models::Account::Type]
+      #   One of the constants defined in {Increase::Models::Account::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::Account::Type }
 
       # The bank the Account is with.

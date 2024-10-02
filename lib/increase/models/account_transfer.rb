@@ -40,7 +40,8 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
-      #   @return [Symbol, Increase::Models::AccountTransfer::Currency]
+      #   One of the constants defined in {Increase::Models::AccountTransfer::Currency}
+      #   @return [Symbol]
       required :currency, enum: -> { Increase::Models::AccountTransfer::Currency }
 
       # @!attribute [rw] description
@@ -65,7 +66,8 @@ module Increase
 
       # @!attribute [rw] network
       #   The transfer's network.
-      #   @return [Symbol, Increase::Models::AccountTransfer::Network]
+      #   One of the constants defined in {Increase::Models::AccountTransfer::Network}
+      #   @return [Symbol]
       required :network, enum: -> { Increase::Models::AccountTransfer::Network }
 
       # @!attribute [rw] pending_transaction_id
@@ -75,7 +77,8 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
-      #   @return [Symbol, Increase::Models::AccountTransfer::Status]
+      #   One of the constants defined in {Increase::Models::AccountTransfer::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::AccountTransfer::Status }
 
       # @!attribute [rw] transaction_id
@@ -85,7 +88,8 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `account_transfer`.
-      #   @return [Symbol, Increase::Models::AccountTransfer::Type]
+      #   One of the constants defined in {Increase::Models::AccountTransfer::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::AccountTransfer::Type }
 
       class Approval < BaseModel
@@ -120,7 +124,8 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of object that created this transfer.
-        #   @return [Symbol, Increase::Models::AccountTransfer::CreatedBy::Category]
+        #   One of the constants defined in {Increase::Models::AccountTransfer::CreatedBy::Category}
+        #   @return [Symbol]
         required :category, enum: -> { Increase::Models::AccountTransfer::CreatedBy::Category }
 
         # @!attribute [rw] oauth_application

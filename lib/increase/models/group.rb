@@ -10,12 +10,14 @@ module Increase
 
       # @!attribute [rw] ach_debit_status
       #   If the Group is allowed to create ACH debits.
-      #   @return [Symbol, Increase::Models::Group::ACHDebitStatus]
+      #   One of the constants defined in {Increase::Models::Group::ACHDebitStatus}
+      #   @return [Symbol]
       required :ach_debit_status, enum: -> { Increase::Models::Group::ACHDebitStatus }
 
       # @!attribute [rw] activation_status
       #   If the Group is activated or not.
-      #   @return [Symbol, Increase::Models::Group::ActivationStatus]
+      #   One of the constants defined in {Increase::Models::Group::ActivationStatus}
+      #   @return [Symbol]
       required :activation_status, enum: -> { Increase::Models::Group::ActivationStatus }
 
       # @!attribute [rw] created_at
@@ -25,7 +27,8 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `group`.
-      #   @return [Symbol, Increase::Models::Group::Type]
+      #   One of the constants defined in {Increase::Models::Group::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::Group::Type }
 
       # If the Group is allowed to create ACH debits.

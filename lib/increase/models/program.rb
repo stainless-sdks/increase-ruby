@@ -10,7 +10,8 @@ module Increase
 
       # @!attribute [rw] bank
       #   The Bank the Program is with.
-      #   @return [Symbol, Increase::Models::Program::Bank]
+      #   One of the constants defined in {Increase::Models::Program::Bank}
+      #   @return [Symbol]
       required :bank, enum: -> { Increase::Models::Program::Bank }
 
       # @!attribute [rw] billing_account_id
@@ -40,7 +41,8 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `program`.
-      #   @return [Symbol, Increase::Models::Program::Type]
+      #   One of the constants defined in {Increase::Models::Program::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::Program::Type }
 
       # @!attribute [rw] updated_at

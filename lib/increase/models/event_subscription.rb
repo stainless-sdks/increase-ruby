@@ -25,7 +25,8 @@ module Increase
 
       # @!attribute [rw] selected_event_category
       #   If specified, this subscription will only receive webhooks for Events with the specified `category`.
-      #   @return [Symbol, Increase::Models::EventSubscription::SelectedEventCategory]
+      #   One of the constants defined in {Increase::Models::EventSubscription::SelectedEventCategory}
+      #   @return [Symbol]
       required :selected_event_category,
                enum: lambda {
                  Increase::Models::EventSubscription::SelectedEventCategory
@@ -33,12 +34,14 @@ module Increase
 
       # @!attribute [rw] status
       #   This indicates if we'll send notifications to this subscription.
-      #   @return [Symbol, Increase::Models::EventSubscription::Status]
+      #   One of the constants defined in {Increase::Models::EventSubscription::Status}
+      #   @return [Symbol]
       required :status, enum: -> { Increase::Models::EventSubscription::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `event_subscription`.
-      #   @return [Symbol, Increase::Models::EventSubscription::Type]
+      #   One of the constants defined in {Increase::Models::EventSubscription::Type}
+      #   @return [Symbol]
       required :type, enum: -> { Increase::Models::EventSubscription::Type }
 
       # @!attribute [rw] url
