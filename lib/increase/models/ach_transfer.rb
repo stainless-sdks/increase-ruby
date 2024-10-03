@@ -65,8 +65,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] created_by
       #   What object created the transfer, either via the API or the dashboard.
@@ -260,8 +260,8 @@ module Increase
       class Approval < BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
-        #   @return [DateTime]
-        required :approved_at, DateTime
+        #   @return [Time]
+        required :approved_at, Time
 
         # @!attribute [rw] approved_by
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
@@ -272,8 +272,8 @@ module Increase
       class Cancellation < BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
-        #   @return [DateTime]
-        required :canceled_at, DateTime
+        #   @return [Time]
+        required :canceled_at, Time
 
         # @!attribute [rw] canceled_by
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
@@ -391,13 +391,13 @@ module Increase
 
         # @!attribute [rw] automatically_releases_at
         #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
-        #   @return [DateTime]
-        required :automatically_releases_at, DateTime
+        #   @return [Time]
+        required :automatically_releases_at, Time
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
-        #   @return [DateTime]
-        required :created_at, DateTime
+        #   @return [Time]
+        required :created_at, Time
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
@@ -416,8 +416,8 @@ module Increase
 
         # @!attribute [rw] released_at
         #   When the hold was released (if it has been released).
-        #   @return [DateTime]
-        required :released_at, DateTime
+        #   @return [Time]
+        required :released_at, Time
 
         # @!attribute [rw] status
         #   The status of the hold.
@@ -483,8 +483,8 @@ module Increase
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the notification occurred.
-        #   @return [DateTime]
-        required :created_at, DateTime
+        #   @return [Time]
+        required :created_at, Time
 
         # The required type of change that is being signaled by the receiving financial institution.
         class ChangeCode < Increase::Enum
@@ -576,8 +576,8 @@ module Increase
       class Return < BaseModel
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-        #   @return [DateTime]
-        required :created_at, DateTime
+        #   @return [Time]
+        required :created_at, Time
 
         # @!attribute [rw] raw_return_reason_code
         #   The three character ACH return code, in the range R01 to R85.
@@ -871,8 +871,8 @@ module Increase
 
         # @!attribute [rw] expected_funds_settlement_at
         #   When the transfer is expected to settle in the recipient's account. Credits may be available sooner, at the receiving banks discretion. The FedACH schedule is published [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
-        #   @return [DateTime]
-        required :expected_funds_settlement_at, DateTime
+        #   @return [Time]
+        required :expected_funds_settlement_at, Time
 
         # @!attribute [rw] expected_settlement_schedule
         #   The settlement schedule the transfer is expected to follow. This expectation takes into account the `effective_date`, `submitted_at`, and the amount of the transfer.
@@ -882,8 +882,8 @@ module Increase
 
         # @!attribute [rw] submitted_at
         #   When the ACH transfer was sent to FedACH.
-        #   @return [DateTime]
-        required :submitted_at, DateTime
+        #   @return [Time]
+        required :submitted_at, Time
 
         # @!attribute [rw] trace_number
         #   A 15 digit number recorded in the Nacha file and transmitted to the receiving bank. Along with the amount, date, and originating routing number, this can be used to identify the ACH transfer at the receiving bank. ACH trace numbers are not unique, but are [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).

@@ -20,13 +20,13 @@ module Increase
 
       # @!attribute [rw] completed_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending Transaction was completed.
-      #   @return [DateTime]
-      required :completed_at, DateTime
+      #   @return [Time]
+      required :completed_at, Time
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending Transaction occurred.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending Transaction's currency. This will match the currency on the Pending Transaction's Account.
@@ -251,8 +251,8 @@ module Increase
 
           # @!attribute [rw] expires_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization will expire and the pending transaction will be released.
-          #   @return [DateTime]
-          required :expires_at, DateTime
+          #   @return [Time]
+          required :expires_at, Time
 
           # @!attribute [rw] merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
@@ -758,13 +758,13 @@ module Increase
 
           # @!attribute [rw] automatically_releases_at
           #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
-          #   @return [DateTime]
-          required :automatically_releases_at, DateTime
+          #   @return [Time]
+          required :automatically_releases_at, Time
 
           # @!attribute [rw] created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
-          #   @return [DateTime]
-          required :created_at, DateTime
+          #   @return [Time]
+          required :created_at, Time
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
@@ -786,8 +786,8 @@ module Increase
 
           # @!attribute [rw] released_at
           #   When the hold was released (if it has been released).
-          #   @return [DateTime]
-          required :released_at, DateTime
+          #   @return [Time]
+          required :released_at, Time
 
           # @!attribute [rw] status
           #   The status of the hold.

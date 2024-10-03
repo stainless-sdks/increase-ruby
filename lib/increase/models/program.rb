@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] default_digital_card_profile_id
       #   The default configuration for digital cards attached to this Program.
@@ -45,8 +45,8 @@ module Increase
 
       # @!attribute [rw] updated_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program was last updated.
-      #   @return [DateTime]
-      required :updated_at, DateTime
+      #   @return [Time]
+      required :updated_at, Time
 
       # The Bank the Program is with.
       class Bank < Increase::Enum

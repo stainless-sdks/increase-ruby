@@ -40,8 +40,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the prenotification was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] credit_debit_indicator
       #   If the notification is for a future credit or debit.
@@ -53,8 +53,8 @@ module Increase
 
       # @!attribute [rw] effective_date
       #   The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-      #   @return [DateTime]
-      required :effective_date, DateTime
+      #   @return [Time]
+      required :effective_date, Time
 
       # @!attribute [rw] idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
@@ -110,8 +110,8 @@ module Increase
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the notification occurred.
-        #   @return [DateTime]
-        required :created_at, DateTime
+        #   @return [Time]
+        required :created_at, Time
 
         # The required type of change that is being signaled by the receiving financial institution.
         class ChangeCode < Increase::Enum
@@ -177,8 +177,8 @@ module Increase
       class PrenotificationReturn < BaseModel
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Prenotification was returned.
-        #   @return [DateTime]
-        required :created_at, DateTime
+        #   @return [Time]
+        required :created_at, Time
 
         # @!attribute [rw] return_reason_code
         #   Why the Prenotification was returned.

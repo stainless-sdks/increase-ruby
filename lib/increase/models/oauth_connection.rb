@@ -10,13 +10,13 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth Connection was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] deleted_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth Connection was deleted.
-      #   @return [DateTime]
-      required :deleted_at, DateTime
+      #   @return [Time]
+      required :deleted_at, Time
 
       # @!attribute [rw] group_id
       #   The identifier of the Group that has authorized your OAuth application.

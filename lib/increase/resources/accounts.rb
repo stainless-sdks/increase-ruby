@@ -101,7 +101,7 @@ module Increase
       # @param account_id [String] The identifier of the Account to retrieve.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [DateTime, nil] :at_time The moment to query the balance at. If not set, returns the current balances.
+      # @option params [Time, nil] :at_time The moment to query the balance at. If not set, returns the current balances.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

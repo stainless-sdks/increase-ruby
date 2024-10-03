@@ -31,7 +31,7 @@ module Increase
         # @option params [String, nil] :company_name The name of the sender.
         # @option params [String, nil] :receiver_id_number The ID of the receiver of the transfer.
         # @option params [String, nil] :receiver_name The name of the receiver of the transfer.
-        # @option params [DateTime, nil] :resolve_at The time at which the transfer should be resolved. If not provided will resolve
+        # @option params [Time, nil] :resolve_at The time at which the transfer should be resolved. If not provided will resolve
         #   immediately.
         # @option params [Symbol, StandardEntryClassCode, nil] :standard_entry_class_code The standard entry class code for the transfer.
         #

@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card Payment was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] digital_wallet_token_id
       #   The Digital Wallet Token identifier for this payment.
@@ -102,8 +102,8 @@ module Increase
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the card payment element was created.
-        #   @return [DateTime]
-        required :created_at, DateTime
+        #   @return [Time]
+        required :created_at, Time
 
         # @!attribute [rw] other
         #   If the category of this Transaction source is equal to `other`, this field will contain an empty object, otherwise it will contain null.
@@ -151,8 +151,8 @@ module Increase
 
           # @!attribute [rw] expires_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization will expire and the pending transaction will be released.
-          #   @return [DateTime]
-          required :expires_at, DateTime
+          #   @return [Time]
+          required :expires_at, Time
 
           # @!attribute [rw] merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
@@ -630,6 +630,11 @@ module Increase
           #   @return [String]
           required :digital_wallet_token_id, String
 
+          # @!attribute [rw] direction
+          #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+          #   @return [Symbol, Increase::Models::CardPayment::Element::CardDecline::Direction]
+          required :direction, enum: -> { Increase::Models::CardPayment::Element::CardDecline::Direction }
+
           # @!attribute [rw] merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
           #   @return [String]
@@ -751,6 +756,15 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+          end
+
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+          class Direction < Increase::Enum
+            # A regular card authorization where funds are debited from the cardholder.
+            SETTLEMENT = :settlement
+
+            # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+            REFUND = :refund
           end
 
           class NetworkDetails < BaseModel

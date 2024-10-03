@@ -128,7 +128,7 @@ module Increase
       # @param entity_id [String] The identifier of the Entity to confirm the details of.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [DateTime, nil] :confirmed_at When your user confirmed the Entity's details. If not provided, the current time
+      # @option params [Time, nil] :confirmed_at When your user confirmed the Entity's details. If not provided, the current time
       #   will be used.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.

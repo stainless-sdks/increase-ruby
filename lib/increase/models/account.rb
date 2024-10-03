@@ -15,13 +15,13 @@ module Increase
 
       # @!attribute [rw] closed_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was closed.
-      #   @return [DateTime]
-      required :closed_at, DateTime
+      #   @return [Time]
+      required :closed_at, Time
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.

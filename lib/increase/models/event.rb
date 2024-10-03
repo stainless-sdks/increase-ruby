@@ -25,8 +25,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The time the Event was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `event`.

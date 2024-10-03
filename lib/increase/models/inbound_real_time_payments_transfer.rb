@@ -30,8 +30,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] creditor_name
       #   The name the sender of the transfer specified as the recipient of the transfer.
@@ -86,8 +86,8 @@ module Increase
       class Confirmation < BaseModel
         # @!attribute [rw] confirmed_at
         #   The time at which the transfer was confirmed.
-        #   @return [DateTime]
-        required :confirmed_at, DateTime
+        #   @return [Time]
+        required :confirmed_at, Time
 
         # @!attribute [rw] transaction_id
         #   The id of the transaction for the confirmed transfer.
@@ -119,8 +119,8 @@ module Increase
       class Decline < BaseModel
         # @!attribute [rw] declined_at
         #   The time at which the transfer was declined.
-        #   @return [DateTime]
-        required :declined_at, DateTime
+        #   @return [Time]
+        required :declined_at, Time
 
         # @!attribute [rw] declined_transaction_id
         #   The id of the transaction for the declined transfer.

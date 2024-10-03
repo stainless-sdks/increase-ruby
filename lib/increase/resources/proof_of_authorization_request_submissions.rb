@@ -11,7 +11,7 @@ module Increase
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :authorization_terms Terms of authorization.
-      # @option params [DateTime] :authorized_at Time of authorization.
+      # @option params [Time] :authorized_at Time of authorization.
       # @option params [String] :authorizer_email Email of the authorizer.
       # @option params [String] :authorizer_name Name of the authorizer.
       # @option params [Boolean] :customer_has_been_offboarded Whether the customer has been offboarded or suspended.

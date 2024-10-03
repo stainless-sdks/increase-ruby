@@ -15,8 +15,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] description
       #   The entity's description for display purposes.
@@ -25,8 +25,8 @@ module Increase
 
       # @!attribute [rw] details_confirmed_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity's details were most recently confirmed.
-      #   @return [DateTime]
-      required :details_confirmed_at, DateTime
+      #   @return [Time]
+      required :details_confirmed_at, Time
 
       # @!attribute [rw] government_authority
       #   Details of the government authority entity. Will be present if `structure` is equal to `government_authority`.

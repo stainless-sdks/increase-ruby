@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] excluded_at
       #   When this was exclusion was confirmed by IntraFi.
-      #   @return [DateTime]
-      required :excluded_at, DateTime
+      #   @return [Time]
+      required :excluded_at, Time
 
       # @!attribute [rw] fdic_certificate_number
       #   The Federal Deposit Insurance Corporation's certificate number for the institution.
@@ -40,8 +40,8 @@ module Increase
 
       # @!attribute [rw] submitted_at
       #   When this was exclusion was submitted to IntraFi by Increase.
-      #   @return [DateTime]
-      required :submitted_at, DateTime
+      #   @return [Time]
+      required :submitted_at, Time
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `intrafi_exclusion`.

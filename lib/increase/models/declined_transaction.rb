@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Transaction occurred.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined Transaction's currency. This will match the currency on the Declined Transaction's Account.
@@ -292,6 +292,14 @@ module Increase
           #   @return [String]
           required :digital_wallet_token_id, String
 
+          # @!attribute [rw] direction
+          #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Direction]
+          required :direction,
+                   enum: lambda {
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::Direction
+                   }
+
           # @!attribute [rw] merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
           #   @return [String]
@@ -414,6 +422,15 @@ module Increase
 
             # US Dollar (USD)
             USD = :USD
+          end
+
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+          class Direction < Increase::Enum
+            # A regular card authorization where funds are debited from the cardholder.
+            SETTLEMENT = :settlement
+
+            # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+            REFUND = :refund
           end
 
           class NetworkDetails < BaseModel
@@ -837,8 +854,8 @@ module Increase
 
           # @!attribute [rw] rejected_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was rejected.
-          #   @return [DateTime]
-          required :rejected_at, DateTime
+          #   @return [Time]
+          required :rejected_at, Time
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
           class Currency < Increase::Enum

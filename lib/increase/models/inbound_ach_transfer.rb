@@ -35,8 +35,8 @@ module Increase
 
       # @!attribute [rw] automatically_resolves_at
       #   The time at which the transfer will be automatically resolved.
-      #   @return [DateTime]
-      required :automatically_resolves_at, DateTime
+      #   @return [Time]
+      required :automatically_resolves_at, Time
 
       # @!attribute [rw] decline
       #   If your transfer is declined, this will contain details of the decline.
@@ -133,8 +133,8 @@ module Increase
       class Acceptance < BaseModel
         # @!attribute [rw] accepted_at
         #   The time at which the transfer was accepted.
-        #   @return [DateTime]
-        required :accepted_at, DateTime
+        #   @return [Time]
+        required :accepted_at, Time
 
         # @!attribute [rw] transaction_id
         #   The id of the transaction for the accepted transfer.
@@ -182,8 +182,8 @@ module Increase
       class Decline < BaseModel
         # @!attribute [rw] declined_at
         #   The time at which the transfer was declined.
-        #   @return [DateTime]
-        required :declined_at, DateTime
+        #   @return [Time]
+        required :declined_at, Time
 
         # @!attribute [rw] declined_transaction_id
         #   The id of the transaction for the declined transfer.
@@ -647,8 +647,8 @@ module Increase
 
         # @!attribute [rw] returned_at
         #   The time at which the transfer was returned.
-        #   @return [DateTime]
-        required :returned_at, DateTime
+        #   @return [Time]
+        required :returned_at, Time
 
         # @!attribute [rw] transaction_id
         #   The id of the transaction for the returned transfer.

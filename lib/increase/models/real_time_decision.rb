@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Real-Time Decision was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] digital_wallet_authentication
       #   Fields related to a digital wallet authentication attempt.
@@ -41,8 +41,8 @@ module Increase
 
       # @!attribute [rw] timeout_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which your application can no longer respond to the Real-Time Decision.
-      #   @return [DateTime]
-      required :timeout_at, DateTime
+      #   @return [Time]
+      required :timeout_at, Time
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `real_time_decision`.
@@ -69,6 +69,11 @@ module Increase
         #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay purchase), the identifier of the token that was used.
         #   @return [String]
         required :digital_wallet_token_id, String
+
+        # @!attribute [rw] direction
+        #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+        #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Direction]
+        required :direction, enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Direction }
 
         # @!attribute [rw] merchant_acceptor_id
         #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
@@ -180,6 +185,15 @@ module Increase
 
           # Decline the authorization.
           DECLINE = :decline
+        end
+
+        # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+        class Direction < Increase::Enum
+          # A regular card authorization where funds are debited from the cardholder.
+          SETTLEMENT = :settlement
+
+          # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+          REFUND = :refund
         end
 
         class NetworkDetails < BaseModel

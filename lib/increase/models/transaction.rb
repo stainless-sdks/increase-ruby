@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Transaction occurred.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction's currency. This will match the currency on the Transaction's Account.
@@ -317,8 +317,8 @@ module Increase
         class ACHTransferReturn < BaseModel
           # @!attribute [rw] created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-          #   @return [DateTime]
-          required :created_at, DateTime
+          #   @return [Time]
+          required :created_at, Time
 
           # @!attribute [rw] raw_return_reason_code
           #   The three character ACH return code, in the range R01 to R85.
@@ -563,8 +563,8 @@ module Increase
         class CardDisputeAcceptance < BaseModel
           # @!attribute [rw] accepted_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was accepted.
-          #   @return [DateTime]
-          required :accepted_at, DateTime
+          #   @return [Time]
+          required :accepted_at, Time
 
           # @!attribute [rw] card_dispute_id
           #   The identifier of the Card Dispute that was accepted.
@@ -590,8 +590,8 @@ module Increase
 
           # @!attribute [rw] lost_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was lost.
-          #   @return [DateTime]
-          required :lost_at, DateTime
+          #   @return [Time]
+          required :lost_at, Time
 
           # @!attribute [rw] transaction_id
           #   The identifier of the Transaction that was created to debit the disputed funds from your account.
@@ -1414,13 +1414,13 @@ module Increase
 
           # @!attribute [rw] period_end
           #   The end of the period for which this transaction paid interest.
-          #   @return [DateTime]
-          required :period_end, DateTime
+          #   @return [Time]
+          required :period_end, Time
 
           # @!attribute [rw] period_start
           #   The start of the period for which this transaction paid interest.
-          #   @return [DateTime]
-          required :period_start, DateTime
+          #   @return [Time]
+          required :period_start, Time
 
           # @!attribute [rw] transacted_on_account_id
           #   The account the card belonged to.
@@ -2275,13 +2275,13 @@ module Increase
 
           # @!attribute [rw] period_end
           #   The end of the period for which this transaction paid cashback.
-          #   @return [DateTime]
-          required :period_end, DateTime
+          #   @return [Time]
+          required :period_end, Time
 
           # @!attribute [rw] period_start
           #   The start of the period for which this transaction paid cashback.
-          #   @return [DateTime]
-          required :period_start, DateTime
+          #   @return [Time]
+          required :period_start, Time
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           class Currency < Increase::Enum
@@ -2480,8 +2480,8 @@ module Increase
 
           # @!attribute [rw] returned_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was returned.
-          #   @return [DateTime]
-          required :returned_at, DateTime
+          #   @return [Time]
+          required :returned_at, Time
 
           # @!attribute [rw] transaction_id
           #   The identifier of the transaction that reversed the original check deposit transaction.
@@ -2604,8 +2604,8 @@ module Increase
 
           # @!attribute [rw] deposited_at
           #   When the check was deposited.
-          #   @return [DateTime]
-          required :deposited_at, DateTime
+          #   @return [Time]
+          required :deposited_at, Time
 
           # @!attribute [rw] front_image_file_id
           #   The identifier of the API File object containing an image of the front of the deposited check.
@@ -2953,8 +2953,8 @@ module Increase
 
           # @!attribute [rw] created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the reversal was created.
-          #   @return [DateTime]
-          required :created_at, DateTime
+          #   @return [Time]
+          required :created_at, Time
 
           # @!attribute [rw] description
           #   The description on the reversal message from Fedwire, set by the reversing bank.
@@ -3147,13 +3147,13 @@ module Increase
 
           # @!attribute [rw] period_end
           #   The end of the period for which this transaction paid interest.
-          #   @return [DateTime]
-          required :period_end, DateTime
+          #   @return [Time]
+          required :period_end, Time
 
           # @!attribute [rw] period_start
           #   The start of the period for which this transaction paid interest.
-          #   @return [DateTime]
-          required :period_start, DateTime
+          #   @return [Time]
+          required :period_start, Time
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           class Currency < Increase::Enum

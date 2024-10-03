@@ -25,8 +25,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] deposit_acceptance
       #   If your deposit is successfully parsed and accepted by Increase, this will contain details of the parsed check.
@@ -179,8 +179,8 @@ module Increase
 
         # @!attribute [rw] rejected_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was rejected.
-        #   @return [DateTime]
-        required :rejected_at, DateTime
+        #   @return [Time]
+        required :rejected_at, Time
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
         class Currency < Increase::Enum
@@ -260,8 +260,8 @@ module Increase
 
         # @!attribute [rw] returned_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was returned.
-        #   @return [DateTime]
-        required :returned_at, DateTime
+        #   @return [Time]
+        required :returned_at, Time
 
         # @!attribute [rw] transaction_id
         #   The identifier of the transaction that reversed the original check deposit transaction.
@@ -384,8 +384,8 @@ module Increase
 
         # @!attribute [rw] submitted_at
         #   When the check deposit was submitted to the Check21 network for processing. During business days, this happens within a few hours of the check being accepted by Increase.
-        #   @return [DateTime]
-        required :submitted_at, DateTime
+        #   @return [Time]
+        required :submitted_at, Time
       end
 
       class InboundFundsHold < BaseModel
@@ -401,13 +401,13 @@ module Increase
 
         # @!attribute [rw] automatically_releases_at
         #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
-        #   @return [DateTime]
-        required :automatically_releases_at, DateTime
+        #   @return [Time]
+        required :automatically_releases_at, Time
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
-        #   @return [DateTime]
-        required :created_at, DateTime
+        #   @return [Time]
+        required :created_at, Time
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
@@ -426,8 +426,8 @@ module Increase
 
         # @!attribute [rw] released_at
         #   When the hold was released (if it has been released).
-        #   @return [DateTime]
-        required :released_at, DateTime
+        #   @return [Time]
+        required :released_at, Time
 
         # @!attribute [rw] status
         #   The status of the hold.
