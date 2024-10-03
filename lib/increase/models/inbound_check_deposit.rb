@@ -123,6 +123,9 @@ module Increase
         class Reason < Increase::Enum
           # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
           LATE_RETURN = :late_return
+
+          # The check was deposited to the wrong payee and the depositing institution has reimbursed the funds with a Wrong Payee Credit.
+          WRONG_PAYEE_CREDIT = :wrong_payee_credit
         end
       end
 
