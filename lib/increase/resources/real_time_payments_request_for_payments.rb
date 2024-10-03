@@ -24,11 +24,13 @@ module Increase
       #
       # @return [Increase::Models::RealTimePaymentsRequestForPayment]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/real_time_payments_request_for_payments"
-        req[:body] = params
-        req[:model] = Increase::Models::RealTimePaymentsRequestForPayment
+        req = {
+          method: :post,
+          path: "/real_time_payments_request_for_payments",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::RealTimePaymentsRequestForPayment
+        }
         @client.request(req, opts)
       end
 
@@ -39,10 +41,11 @@ module Increase
       #
       # @return [Increase::Models::RealTimePaymentsRequestForPayment]
       def retrieve(request_for_payment_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/real_time_payments_request_for_payments/#{request_for_payment_id}"
-        req[:model] = Increase::Models::RealTimePaymentsRequestForPayment
+        req = {
+          method: :get,
+          path: "/real_time_payments_request_for_payments/#{request_for_payment_id}",
+          model: Increase::Models::RealTimePaymentsRequestForPayment
+        }
         @client.request(req, opts)
       end
 
@@ -64,12 +67,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::RealTimePaymentsRequestForPayment>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/real_time_payments_request_for_payments"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::RealTimePaymentsRequestForPayment
+        req = {
+          method: :get,
+          path: "/real_time_payments_request_for_payments",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::RealTimePaymentsRequestForPayment
+        }
         @client.request(req, opts)
       end
     end

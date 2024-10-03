@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::AccountStatement]
       def retrieve(account_statement_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/account_statements/#{account_statement_id}"
-        req[:model] = Increase::Models::AccountStatement
+        req = {
+          method: :get,
+          path: "/account_statements/#{account_statement_id}",
+          model: Increase::Models::AccountStatement
+        }
         @client.request(req, opts)
       end
 
@@ -34,12 +35,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::AccountStatement>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/account_statements"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::AccountStatement
+        req = {
+          method: :get,
+          path: "/account_statements",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::AccountStatement
+        }
         @client.request(req, opts)
       end
     end

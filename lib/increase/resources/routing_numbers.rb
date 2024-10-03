@@ -22,12 +22,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::RoutingNumberListResponse>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/routing_numbers"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::RoutingNumberListResponse
+        req = {
+          method: :get,
+          path: "/routing_numbers",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::RoutingNumberListResponse
+        }
         @client.request(req, opts)
       end
     end

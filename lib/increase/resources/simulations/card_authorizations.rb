@@ -41,11 +41,13 @@ module Increase
         #
         # @return [Increase::Models::CardAuthorizationCreateResponse]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/card_authorizations"
-          req[:body] = params
-          req[:model] = Increase::Models::CardAuthorizationCreateResponse
+          req = {
+            method: :post,
+            path: "/simulations/card_authorizations",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::CardAuthorizationCreateResponse
+          }
           @client.request(req, opts)
         end
       end

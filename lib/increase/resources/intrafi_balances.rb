@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::IntrafiBalance]
       def retrieve(account_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/intrafi_balances/#{account_id}"
-        req[:model] = Increase::Models::IntrafiBalance
+        req = {
+          method: :get,
+          path: "/intrafi_balances/#{account_id}",
+          model: Increase::Models::IntrafiBalance
+        }
         @client.request(req, opts)
       end
     end

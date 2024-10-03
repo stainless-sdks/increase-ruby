@@ -19,11 +19,13 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingAccount]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/bookkeeping_accounts"
-        req[:body] = params
-        req[:model] = Increase::Models::BookkeepingAccount
+        req = {
+          method: :post,
+          path: "/bookkeeping_accounts",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::BookkeepingAccount
+        }
         @client.request(req, opts)
       end
 
@@ -38,11 +40,13 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingAccount]
       def update(bookkeeping_account_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/bookkeeping_accounts/#{bookkeeping_account_id}"
-        req[:body] = params
-        req[:model] = Increase::Models::BookkeepingAccount
+        req = {
+          method: :patch,
+          path: "/bookkeeping_accounts/#{bookkeeping_account_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::BookkeepingAccount
+        }
         @client.request(req, opts)
       end
 
@@ -61,12 +65,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::BookkeepingAccount>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/bookkeeping_accounts"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::BookkeepingAccount
+        req = {
+          method: :get,
+          path: "/bookkeeping_accounts",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::BookkeepingAccount
+        }
         @client.request(req, opts)
       end
 
@@ -81,11 +86,12 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingBalanceLookup]
       def balance(bookkeeping_account_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/bookkeeping_accounts/#{bookkeeping_account_id}/balance"
-        req[:query] = params
-        req[:model] = Increase::Models::BookkeepingBalanceLookup
+        req = {
+          method: :get,
+          path: "/bookkeeping_accounts/#{bookkeeping_account_id}/balance",
+          query: params,
+          model: Increase::Models::BookkeepingBalanceLookup
+        }
         @client.request(req, opts)
       end
     end

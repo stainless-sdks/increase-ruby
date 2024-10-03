@@ -18,11 +18,13 @@ module Increase
         #
         # @return [Increase::Models::AccountStatement]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/account_statements"
-          req[:body] = params
-          req[:model] = Increase::Models::AccountStatement
+          req = {
+            method: :post,
+            path: "/simulations/account_statements",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::AccountStatement
+          }
           @client.request(req, opts)
         end
       end

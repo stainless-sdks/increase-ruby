@@ -21,11 +21,13 @@ module Increase
       #
       # @return [Increase::Models::AccountTransfer]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/account_transfers"
-        req[:body] = params
-        req[:model] = Increase::Models::AccountTransfer
+        req = {
+          method: :post,
+          path: "/account_transfers",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::AccountTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -36,10 +38,11 @@ module Increase
       #
       # @return [Increase::Models::AccountTransfer]
       def retrieve(account_transfer_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/account_transfers/#{account_transfer_id}"
-        req[:model] = Increase::Models::AccountTransfer
+        req = {
+          method: :get,
+          path: "/account_transfers/#{account_transfer_id}",
+          model: Increase::Models::AccountTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -60,12 +63,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::AccountTransfer>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/account_transfers"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::AccountTransfer
+        req = {
+          method: :get,
+          path: "/account_transfers",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::AccountTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -76,10 +80,11 @@ module Increase
       #
       # @return [Increase::Models::AccountTransfer]
       def approve(account_transfer_id, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/account_transfers/#{account_transfer_id}/approve"
-        req[:model] = Increase::Models::AccountTransfer
+        req = {
+          method: :post,
+          path: "/account_transfers/#{account_transfer_id}/approve",
+          model: Increase::Models::AccountTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -90,10 +95,11 @@ module Increase
       #
       # @return [Increase::Models::AccountTransfer]
       def cancel(account_transfer_id, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/account_transfers/#{account_transfer_id}/cancel"
-        req[:model] = Increase::Models::AccountTransfer
+        req = {
+          method: :post,
+          path: "/account_transfers/#{account_transfer_id}/cancel",
+          model: Increase::Models::AccountTransfer
+        }
         @client.request(req, opts)
       end
     end

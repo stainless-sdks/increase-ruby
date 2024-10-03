@@ -27,11 +27,13 @@ module Increase
       #
       # @return [Increase::Models::CheckTransfer]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/check_transfers"
-        req[:body] = params
-        req[:model] = Increase::Models::CheckTransfer
+        req = {
+          method: :post,
+          path: "/check_transfers",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::CheckTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -42,10 +44,11 @@ module Increase
       #
       # @return [Increase::Models::CheckTransfer]
       def retrieve(check_transfer_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/check_transfers/#{check_transfer_id}"
-        req[:model] = Increase::Models::CheckTransfer
+        req = {
+          method: :get,
+          path: "/check_transfers/#{check_transfer_id}",
+          model: Increase::Models::CheckTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -66,12 +69,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::CheckTransfer>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/check_transfers"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::CheckTransfer
+        req = {
+          method: :get,
+          path: "/check_transfers",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::CheckTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -82,10 +86,11 @@ module Increase
       #
       # @return [Increase::Models::CheckTransfer]
       def approve(check_transfer_id, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/check_transfers/#{check_transfer_id}/approve"
-        req[:model] = Increase::Models::CheckTransfer
+        req = {
+          method: :post,
+          path: "/check_transfers/#{check_transfer_id}/approve",
+          model: Increase::Models::CheckTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -96,10 +101,11 @@ module Increase
       #
       # @return [Increase::Models::CheckTransfer]
       def cancel(check_transfer_id, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/check_transfers/#{check_transfer_id}/cancel"
-        req[:model] = Increase::Models::CheckTransfer
+        req = {
+          method: :post,
+          path: "/check_transfers/#{check_transfer_id}/cancel",
+          model: Increase::Models::CheckTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -114,11 +120,13 @@ module Increase
       #
       # @return [Increase::Models::CheckTransfer]
       def stop_payment(check_transfer_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/check_transfers/#{check_transfer_id}/stop_payment"
-        req[:body] = params
-        req[:model] = Increase::Models::CheckTransfer
+        req = {
+          method: :post,
+          path: "/check_transfers/#{check_transfer_id}/stop_payment",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::CheckTransfer
+        }
         @client.request(req, opts)
       end
     end

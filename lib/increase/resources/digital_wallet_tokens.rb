@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::DigitalWalletToken]
       def retrieve(digital_wallet_token_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/digital_wallet_tokens/#{digital_wallet_token_id}"
-        req[:model] = Increase::Models::DigitalWalletToken
+        req = {
+          method: :get,
+          path: "/digital_wallet_tokens/#{digital_wallet_token_id}",
+          model: Increase::Models::DigitalWalletToken
+        }
         @client.request(req, opts)
       end
 
@@ -34,12 +35,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::DigitalWalletToken>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/digital_wallet_tokens"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::DigitalWalletToken
+        req = {
+          method: :get,
+          path: "/digital_wallet_tokens",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::DigitalWalletToken
+        }
         @client.request(req, opts)
       end
     end

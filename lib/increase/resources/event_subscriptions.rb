@@ -22,11 +22,13 @@ module Increase
       #
       # @return [Increase::Models::EventSubscription]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/event_subscriptions"
-        req[:body] = params
-        req[:model] = Increase::Models::EventSubscription
+        req = {
+          method: :post,
+          path: "/event_subscriptions",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::EventSubscription
+        }
         @client.request(req, opts)
       end
 
@@ -37,10 +39,11 @@ module Increase
       #
       # @return [Increase::Models::EventSubscription]
       def retrieve(event_subscription_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/event_subscriptions/#{event_subscription_id}"
-        req[:model] = Increase::Models::EventSubscription
+        req = {
+          method: :get,
+          path: "/event_subscriptions/#{event_subscription_id}",
+          model: Increase::Models::EventSubscription
+        }
         @client.request(req, opts)
       end
 
@@ -55,11 +58,13 @@ module Increase
       #
       # @return [Increase::Models::EventSubscription]
       def update(event_subscription_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/event_subscriptions/#{event_subscription_id}"
-        req[:body] = params
-        req[:model] = Increase::Models::EventSubscription
+        req = {
+          method: :patch,
+          path: "/event_subscriptions/#{event_subscription_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::EventSubscription
+        }
         @client.request(req, opts)
       end
 
@@ -78,12 +83,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::EventSubscription>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/event_subscriptions"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::EventSubscription
+        req = {
+          method: :get,
+          path: "/event_subscriptions",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::EventSubscription
+        }
         @client.request(req, opts)
       end
     end

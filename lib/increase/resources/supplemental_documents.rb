@@ -17,11 +17,13 @@ module Increase
       #
       # @return [Increase::Models::EntitySupplementalDocument]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/entity_supplemental_documents"
-        req[:body] = params
-        req[:model] = Increase::Models::EntitySupplementalDocument
+        req = {
+          method: :post,
+          path: "/entity_supplemental_documents",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::EntitySupplementalDocument
+        }
         @client.request(req, opts)
       end
 
@@ -41,12 +43,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::EntitySupplementalDocument>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/entity_supplemental_documents"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::EntitySupplementalDocument
+        req = {
+          method: :get,
+          path: "/entity_supplemental_documents",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::EntitySupplementalDocument
+        }
         @client.request(req, opts)
       end
     end

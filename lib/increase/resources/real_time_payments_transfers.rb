@@ -33,11 +33,13 @@ module Increase
       #
       # @return [Increase::Models::RealTimePaymentsTransfer]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/real_time_payments_transfers"
-        req[:body] = params
-        req[:model] = Increase::Models::RealTimePaymentsTransfer
+        req = {
+          method: :post,
+          path: "/real_time_payments_transfers",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::RealTimePaymentsTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -48,10 +50,11 @@ module Increase
       #
       # @return [Increase::Models::RealTimePaymentsTransfer]
       def retrieve(real_time_payments_transfer_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/real_time_payments_transfers/#{real_time_payments_transfer_id}"
-        req[:model] = Increase::Models::RealTimePaymentsTransfer
+        req = {
+          method: :get,
+          path: "/real_time_payments_transfers/#{real_time_payments_transfer_id}",
+          model: Increase::Models::RealTimePaymentsTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -74,12 +77,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::RealTimePaymentsTransfer>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/real_time_payments_transfers"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::RealTimePaymentsTransfer
+        req = {
+          method: :get,
+          path: "/real_time_payments_transfers",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::RealTimePaymentsTransfer
+        }
         @client.request(req, opts)
       end
     end

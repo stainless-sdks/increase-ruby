@@ -25,11 +25,13 @@ module Increase
       #
       # @return [Increase::Models::Card]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/cards"
-        req[:body] = params
-        req[:model] = Increase::Models::Card
+        req = {
+          method: :post,
+          path: "/cards",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Card
+        }
         @client.request(req, opts)
       end
 
@@ -40,10 +42,11 @@ module Increase
       #
       # @return [Increase::Models::Card]
       def retrieve(card_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/cards/#{card_id}"
-        req[:model] = Increase::Models::Card
+        req = {
+          method: :get,
+          path: "/cards/#{card_id}",
+          model: Increase::Models::Card
+        }
         @client.request(req, opts)
       end
 
@@ -65,11 +68,13 @@ module Increase
       #
       # @return [Increase::Models::Card]
       def update(card_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/cards/#{card_id}"
-        req[:body] = params
-        req[:model] = Increase::Models::Card
+        req = {
+          method: :patch,
+          path: "/cards/#{card_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Card
+        }
         @client.request(req, opts)
       end
 
@@ -90,12 +95,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::Card>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/cards"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::Card
+        req = {
+          method: :get,
+          path: "/cards",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::Card
+        }
         @client.request(req, opts)
       end
 
@@ -106,10 +112,11 @@ module Increase
       #
       # @return [Increase::Models::CardDetails]
       def details(card_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/cards/#{card_id}/details"
-        req[:model] = Increase::Models::CardDetails
+        req = {
+          method: :get,
+          path: "/cards/#{card_id}/details",
+          model: Increase::Models::CardDetails
+        }
         @client.request(req, opts)
       end
     end

@@ -21,11 +21,13 @@ module Increase
       #
       # @return [Increase::Models::CheckDeposit]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/check_deposits"
-        req[:body] = params
-        req[:model] = Increase::Models::CheckDeposit
+        req = {
+          method: :post,
+          path: "/check_deposits",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::CheckDeposit
+        }
         @client.request(req, opts)
       end
 
@@ -36,10 +38,11 @@ module Increase
       #
       # @return [Increase::Models::CheckDeposit]
       def retrieve(check_deposit_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/check_deposits/#{check_deposit_id}"
-        req[:model] = Increase::Models::CheckDeposit
+        req = {
+          method: :get,
+          path: "/check_deposits/#{check_deposit_id}",
+          model: Increase::Models::CheckDeposit
+        }
         @client.request(req, opts)
       end
 
@@ -60,12 +63,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::CheckDeposit>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/check_deposits"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::CheckDeposit
+        req = {
+          method: :get,
+          path: "/check_deposits",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::CheckDeposit
+        }
         @client.request(req, opts)
       end
     end

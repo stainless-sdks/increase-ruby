@@ -19,11 +19,13 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingEntrySet]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/bookkeeping_entry_sets"
-        req[:body] = params
-        req[:model] = Increase::Models::BookkeepingEntrySet
+        req = {
+          method: :post,
+          path: "/bookkeeping_entry_sets",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::BookkeepingEntrySet
+        }
         @client.request(req, opts)
       end
 
@@ -34,10 +36,11 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingEntrySet]
       def retrieve(bookkeeping_entry_set_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/bookkeeping_entry_sets/#{bookkeeping_entry_set_id}"
-        req[:model] = Increase::Models::BookkeepingEntrySet
+        req = {
+          method: :get,
+          path: "/bookkeeping_entry_sets/#{bookkeeping_entry_set_id}",
+          model: Increase::Models::BookkeepingEntrySet
+        }
         @client.request(req, opts)
       end
 
@@ -57,12 +60,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::BookkeepingEntrySet>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/bookkeeping_entry_sets"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::BookkeepingEntrySet
+        req = {
+          method: :get,
+          path: "/bookkeeping_entry_sets",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::BookkeepingEntrySet
+        }
         @client.request(req, opts)
       end
     end

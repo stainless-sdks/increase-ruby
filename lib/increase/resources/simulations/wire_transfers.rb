@@ -18,10 +18,11 @@ module Increase
         #
         # @return [Increase::Models::WireTransfer]
         def reverse(wire_transfer_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/wire_transfers/#{wire_transfer_id}/reverse"
-          req[:model] = Increase::Models::WireTransfer
+          req = {
+            method: :post,
+            path: "/simulations/wire_transfers/#{wire_transfer_id}/reverse",
+            model: Increase::Models::WireTransfer
+          }
           @client.request(req, opts)
         end
 
@@ -34,10 +35,11 @@ module Increase
         #
         # @return [Increase::Models::WireTransfer]
         def submit(wire_transfer_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/wire_transfers/#{wire_transfer_id}/submit"
-          req[:model] = Increase::Models::WireTransfer
+          req = {
+            method: :post,
+            path: "/simulations/wire_transfers/#{wire_transfer_id}/submit",
+            model: Increase::Models::WireTransfer
+          }
           @client.request(req, opts)
         end
       end

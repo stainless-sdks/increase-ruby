@@ -19,11 +19,13 @@ module Increase
         #
         # @return [Increase::Models::Program]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/programs"
-          req[:body] = params
-          req[:model] = Increase::Models::Program
+          req = {
+            method: :post,
+            path: "/simulations/programs",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::Program
+          }
           @client.request(req, opts)
         end
       end

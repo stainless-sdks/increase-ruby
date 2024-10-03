@@ -21,11 +21,13 @@ module Increase
       #
       # @return [Increase::Models::Account]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/accounts"
-        req[:body] = params
-        req[:model] = Increase::Models::Account
+        req = {
+          method: :post,
+          path: "/accounts",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Account
+        }
         @client.request(req, opts)
       end
 
@@ -36,10 +38,11 @@ module Increase
       #
       # @return [Increase::Models::Account]
       def retrieve(account_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/accounts/#{account_id}"
-        req[:model] = Increase::Models::Account
+        req = {
+          method: :get,
+          path: "/accounts/#{account_id}",
+          model: Increase::Models::Account
+        }
         @client.request(req, opts)
       end
 
@@ -54,11 +57,13 @@ module Increase
       #
       # @return [Increase::Models::Account]
       def update(account_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/accounts/#{account_id}"
-        req[:body] = params
-        req[:model] = Increase::Models::Account
+        req = {
+          method: :patch,
+          path: "/accounts/#{account_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Account
+        }
         @client.request(req, opts)
       end
 
@@ -81,12 +86,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::Account>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/accounts"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::Account
+        req = {
+          method: :get,
+          path: "/accounts",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::Account
+        }
         @client.request(req, opts)
       end
 
@@ -101,11 +107,12 @@ module Increase
       #
       # @return [Increase::Models::BalanceLookup]
       def balance(account_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/accounts/#{account_id}/balance"
-        req[:query] = params
-        req[:model] = Increase::Models::BalanceLookup
+        req = {
+          method: :get,
+          path: "/accounts/#{account_id}/balance",
+          query: params,
+          model: Increase::Models::BalanceLookup
+        }
         @client.request(req, opts)
       end
 
@@ -116,10 +123,11 @@ module Increase
       #
       # @return [Increase::Models::Account]
       def close(account_id, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/accounts/#{account_id}/close"
-        req[:model] = Increase::Models::Account
+        req = {
+          method: :post,
+          path: "/accounts/#{account_id}/close",
+          model: Increase::Models::Account
+        }
         @client.request(req, opts)
       end
     end

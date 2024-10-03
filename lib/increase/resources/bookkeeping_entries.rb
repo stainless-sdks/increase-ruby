@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::BookkeepingEntry]
       def retrieve(bookkeeping_entry_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/bookkeeping_entries/#{bookkeeping_entry_id}"
-        req[:model] = Increase::Models::BookkeepingEntry
+        req = {
+          method: :get,
+          path: "/bookkeeping_entries/#{bookkeeping_entry_id}",
+          model: Increase::Models::BookkeepingEntry
+        }
         @client.request(req, opts)
       end
 
@@ -32,12 +33,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::BookkeepingEntry>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/bookkeeping_entries"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::BookkeepingEntry
+        req = {
+          method: :get,
+          path: "/bookkeeping_entries",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::BookkeepingEntry
+        }
         @client.request(req, opts)
       end
     end

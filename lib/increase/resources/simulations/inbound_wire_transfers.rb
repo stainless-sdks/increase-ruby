@@ -48,11 +48,13 @@ module Increase
         #
         # @return [Increase::Models::InboundWireTransfer]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/inbound_wire_transfers"
-          req[:body] = params
-          req[:model] = Increase::Models::InboundWireTransfer
+          req = {
+            method: :post,
+            path: "/simulations/inbound_wire_transfers",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::InboundWireTransfer
+          }
           @client.request(req, opts)
         end
       end

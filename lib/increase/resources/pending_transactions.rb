@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::PendingTransaction]
       def retrieve(pending_transaction_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/pending_transactions/#{pending_transaction_id}"
-        req[:model] = Increase::Models::PendingTransaction
+        req = {
+          method: :get,
+          path: "/pending_transactions/#{pending_transaction_id}",
+          model: Increase::Models::PendingTransaction
+        }
         @client.request(req, opts)
       end
 
@@ -37,12 +38,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::PendingTransaction>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/pending_transactions"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::PendingTransaction
+        req = {
+          method: :get,
+          path: "/pending_transactions",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::PendingTransaction
+        }
         @client.request(req, opts)
       end
     end

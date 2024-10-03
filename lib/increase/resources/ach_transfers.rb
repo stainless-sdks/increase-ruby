@@ -52,11 +52,13 @@ module Increase
       #
       # @return [Increase::Models::ACHTransfer]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/ach_transfers"
-        req[:body] = params
-        req[:model] = Increase::Models::ACHTransfer
+        req = {
+          method: :post,
+          path: "/ach_transfers",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::ACHTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -67,10 +69,11 @@ module Increase
       #
       # @return [Increase::Models::ACHTransfer]
       def retrieve(ach_transfer_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/ach_transfers/#{ach_transfer_id}"
-        req[:model] = Increase::Models::ACHTransfer
+        req = {
+          method: :get,
+          path: "/ach_transfers/#{ach_transfer_id}",
+          model: Increase::Models::ACHTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -92,12 +95,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::ACHTransfer>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/ach_transfers"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::ACHTransfer
+        req = {
+          method: :get,
+          path: "/ach_transfers",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::ACHTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -108,10 +112,11 @@ module Increase
       #
       # @return [Increase::Models::ACHTransfer]
       def approve(ach_transfer_id, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/ach_transfers/#{ach_transfer_id}/approve"
-        req[:model] = Increase::Models::ACHTransfer
+        req = {
+          method: :post,
+          path: "/ach_transfers/#{ach_transfer_id}/approve",
+          model: Increase::Models::ACHTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -122,10 +127,11 @@ module Increase
       #
       # @return [Increase::Models::ACHTransfer]
       def cancel(ach_transfer_id, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/ach_transfers/#{ach_transfer_id}/cancel"
-        req[:model] = Increase::Models::ACHTransfer
+        req = {
+          method: :post,
+          path: "/ach_transfers/#{ach_transfer_id}/cancel",
+          model: Increase::Models::ACHTransfer
+        }
         @client.request(req, opts)
       end
     end

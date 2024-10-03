@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::OAuthConnection]
       def retrieve(oauth_connection_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/oauth_connections/#{oauth_connection_id}"
-        req[:model] = Increase::Models::OAuthConnection
+        req = {
+          method: :get,
+          path: "/oauth_connections/#{oauth_connection_id}",
+          model: Increase::Models::OAuthConnection
+        }
         @client.request(req, opts)
       end
 
@@ -33,12 +34,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::OAuthConnection>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/oauth_connections"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::OAuthConnection
+        req = {
+          method: :get,
+          path: "/oauth_connections",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::OAuthConnection
+        }
         @client.request(req, opts)
       end
     end

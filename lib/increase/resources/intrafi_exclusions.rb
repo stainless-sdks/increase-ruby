@@ -17,11 +17,13 @@ module Increase
       #
       # @return [Increase::Models::IntrafiExclusion]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/intrafi_exclusions"
-        req[:body] = params
-        req[:model] = Increase::Models::IntrafiExclusion
+        req = {
+          method: :post,
+          path: "/intrafi_exclusions",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::IntrafiExclusion
+        }
         @client.request(req, opts)
       end
 
@@ -32,10 +34,11 @@ module Increase
       #
       # @return [Increase::Models::IntrafiExclusion]
       def retrieve(intrafi_exclusion_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/intrafi_exclusions/#{intrafi_exclusion_id}"
-        req[:model] = Increase::Models::IntrafiExclusion
+        req = {
+          method: :get,
+          path: "/intrafi_exclusions/#{intrafi_exclusion_id}",
+          model: Increase::Models::IntrafiExclusion
+        }
         @client.request(req, opts)
       end
 
@@ -55,12 +58,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::IntrafiExclusion>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/intrafi_exclusions"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::IntrafiExclusion
+        req = {
+          method: :get,
+          path: "/intrafi_exclusions",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::IntrafiExclusion
+        }
         @client.request(req, opts)
       end
 
@@ -73,10 +77,11 @@ module Increase
       #
       # @return [Increase::Models::IntrafiExclusion]
       def archive(intrafi_exclusion_id, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/intrafi_exclusions/#{intrafi_exclusion_id}/archive"
-        req[:model] = Increase::Models::IntrafiExclusion
+        req = {
+          method: :post,
+          path: "/intrafi_exclusions/#{intrafi_exclusion_id}/archive",
+          model: Increase::Models::IntrafiExclusion
+        }
         @client.request(req, opts)
       end
     end

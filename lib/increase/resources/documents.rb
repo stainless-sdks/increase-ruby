@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::Document]
       def retrieve(document_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/documents/#{document_id}"
-        req[:model] = Increase::Models::Document
+        req = {
+          method: :get,
+          path: "/documents/#{document_id}",
+          model: Increase::Models::Document
+        }
         @client.request(req, opts)
       end
 
@@ -35,12 +36,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::Document>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/documents"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::Document
+        req = {
+          method: :get,
+          path: "/documents",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::Document
+        }
         @client.request(req, opts)
       end
     end

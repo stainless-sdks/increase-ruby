@@ -20,10 +20,11 @@ module Increase
         #
         # @return [Increase::Models::ACHTransfer]
         def acknowledge(ach_transfer_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/acknowledge"
-          req[:model] = Increase::Models::ACHTransfer
+          req = {
+            method: :post,
+            path: "/simulations/ach_transfers/#{ach_transfer_id}/acknowledge",
+            model: Increase::Models::ACHTransfer
+          }
           @client.request(req, opts)
         end
 
@@ -41,11 +42,13 @@ module Increase
         #
         # @return [Increase::Models::ACHTransfer]
         def create_notification_of_change(ach_transfer_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/create_notification_of_change"
-          req[:body] = params
-          req[:model] = Increase::Models::ACHTransfer
+          req = {
+            method: :post,
+            path: "/simulations/ach_transfers/#{ach_transfer_id}/create_notification_of_change",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::ACHTransfer
+          }
           @client.request(req, opts)
         end
 
@@ -63,11 +66,13 @@ module Increase
         #
         # @return [Increase::Models::ACHTransfer]
         def return_(ach_transfer_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/return"
-          req[:body] = params
-          req[:model] = Increase::Models::ACHTransfer
+          req = {
+            method: :post,
+            path: "/simulations/ach_transfers/#{ach_transfer_id}/return",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::ACHTransfer
+          }
           @client.request(req, opts)
         end
 
@@ -83,10 +88,11 @@ module Increase
         #
         # @return [Increase::Models::ACHTransfer]
         def submit(ach_transfer_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/ach_transfers/#{ach_transfer_id}/submit"
-          req[:model] = Increase::Models::ACHTransfer
+          req = {
+            method: :post,
+            path: "/simulations/ach_transfers/#{ach_transfer_id}/submit",
+            model: Increase::Models::ACHTransfer
+          }
           @client.request(req, opts)
         end
       end

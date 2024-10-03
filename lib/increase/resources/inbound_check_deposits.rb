@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::InboundCheckDeposit]
       def retrieve(inbound_check_deposit_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/inbound_check_deposits/#{inbound_check_deposit_id}"
-        req[:model] = Increase::Models::InboundCheckDeposit
+        req = {
+          method: :get,
+          path: "/inbound_check_deposits/#{inbound_check_deposit_id}",
+          model: Increase::Models::InboundCheckDeposit
+        }
         @client.request(req, opts)
       end
 
@@ -36,12 +37,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::InboundCheckDeposit>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/inbound_check_deposits"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::InboundCheckDeposit
+        req = {
+          method: :get,
+          path: "/inbound_check_deposits",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::InboundCheckDeposit
+        }
         @client.request(req, opts)
       end
 
@@ -52,10 +54,11 @@ module Increase
       #
       # @return [Increase::Models::InboundCheckDeposit]
       def decline(inbound_check_deposit_id, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/inbound_check_deposits/#{inbound_check_deposit_id}/decline"
-        req[:model] = Increase::Models::InboundCheckDeposit
+        req = {
+          method: :post,
+          path: "/inbound_check_deposits/#{inbound_check_deposit_id}/decline",
+          model: Increase::Models::InboundCheckDeposit
+        }
         @client.request(req, opts)
       end
 
@@ -70,11 +73,13 @@ module Increase
       #
       # @return [Increase::Models::InboundCheckDeposit]
       def return_(inbound_check_deposit_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/inbound_check_deposits/#{inbound_check_deposit_id}/return"
-        req[:body] = params
-        req[:model] = Increase::Models::InboundCheckDeposit
+        req = {
+          method: :post,
+          path: "/inbound_check_deposits/#{inbound_check_deposit_id}/return",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::InboundCheckDeposit
+        }
         @client.request(req, opts)
       end
     end

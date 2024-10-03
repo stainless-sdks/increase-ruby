@@ -24,11 +24,13 @@ module Increase
         #
         # @return [Increase::Models::InboundCheckDeposit]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/inbound_check_deposits"
-          req[:body] = params
-          req[:model] = Increase::Models::InboundCheckDeposit
+          req = {
+            method: :post,
+            path: "/simulations/inbound_check_deposits",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::InboundCheckDeposit
+          }
           @client.request(req, opts)
         end
       end

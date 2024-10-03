@@ -18,10 +18,11 @@ module Increase
         #
         # @return [Increase::Models::CheckTransfer]
         def mail(check_transfer_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/check_transfers/#{check_transfer_id}/mail"
-          req[:model] = Increase::Models::CheckTransfer
+          req = {
+            method: :post,
+            path: "/simulations/check_transfers/#{check_transfer_id}/mail",
+            model: Increase::Models::CheckTransfer
+          }
           @client.request(req, opts)
         end
       end

@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::InboundWireTransfer]
       def retrieve(inbound_wire_transfer_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/inbound_wire_transfers/#{inbound_wire_transfer_id}"
-        req[:model] = Increase::Models::InboundWireTransfer
+        req = {
+          method: :get,
+          path: "/inbound_wire_transfers/#{inbound_wire_transfer_id}",
+          model: Increase::Models::InboundWireTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -36,12 +37,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::InboundWireTransfer>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/inbound_wire_transfers"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::InboundWireTransfer
+        req = {
+          method: :get,
+          path: "/inbound_wire_transfers",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::InboundWireTransfer
+        }
         @client.request(req, opts)
       end
     end

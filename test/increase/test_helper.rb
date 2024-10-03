@@ -9,6 +9,7 @@
 require "increase"
 
 require "test/unit"
+require "stringio"
 
 module Increase
   module Test

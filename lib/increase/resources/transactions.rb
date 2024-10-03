@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::Transaction]
       def retrieve(transaction_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/transactions/#{transaction_id}"
-        req[:model] = Increase::Models::Transaction
+        req = {
+          method: :get,
+          path: "/transactions/#{transaction_id}",
+          model: Increase::Models::Transaction
+        }
         @client.request(req, opts)
       end
 
@@ -37,12 +38,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::Transaction>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/transactions"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::Transaction
+        req = {
+          method: :get,
+          path: "/transactions",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::Transaction
+        }
         @client.request(req, opts)
       end
     end

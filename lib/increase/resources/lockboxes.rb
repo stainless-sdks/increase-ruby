@@ -18,11 +18,13 @@ module Increase
       #
       # @return [Increase::Models::Lockbox]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/lockboxes"
-        req[:body] = params
-        req[:model] = Increase::Models::Lockbox
+        req = {
+          method: :post,
+          path: "/lockboxes",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Lockbox
+        }
         @client.request(req, opts)
       end
 
@@ -33,10 +35,11 @@ module Increase
       #
       # @return [Increase::Models::Lockbox]
       def retrieve(lockbox_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/lockboxes/#{lockbox_id}"
-        req[:model] = Increase::Models::Lockbox
+        req = {
+          method: :get,
+          path: "/lockboxes/#{lockbox_id}",
+          model: Increase::Models::Lockbox
+        }
         @client.request(req, opts)
       end
 
@@ -53,11 +56,13 @@ module Increase
       #
       # @return [Increase::Models::Lockbox]
       def update(lockbox_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/lockboxes/#{lockbox_id}"
-        req[:body] = params
-        req[:model] = Increase::Models::Lockbox
+        req = {
+          method: :patch,
+          path: "/lockboxes/#{lockbox_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Lockbox
+        }
         @client.request(req, opts)
       end
 
@@ -78,12 +83,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::Lockbox>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/lockboxes"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::Lockbox
+        req = {
+          method: :get,
+          path: "/lockboxes",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::Lockbox
+        }
         @client.request(req, opts)
       end
     end
