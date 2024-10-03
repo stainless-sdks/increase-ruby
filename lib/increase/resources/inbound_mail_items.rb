@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::InboundMailItem]
       def retrieve(inbound_mail_item_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/inbound_mail_items/#{inbound_mail_item_id}"
-        req[:model] = Increase::Models::InboundMailItem
+        req = {
+          method: :get,
+          path: "/inbound_mail_items/#{inbound_mail_item_id}",
+          model: Increase::Models::InboundMailItem
+        }
         @client.request(req, opts)
       end
 
@@ -34,12 +35,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::InboundMailItem>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/inbound_mail_items"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::InboundMailItem
+        req = {
+          method: :get,
+          path: "/inbound_mail_items",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::InboundMailItem
+        }
         @client.request(req, opts)
       end
     end

@@ -20,11 +20,13 @@ module Increase
       #
       # @return [Increase::Models::AccountNumber]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/account_numbers"
-        req[:body] = params
-        req[:model] = Increase::Models::AccountNumber
+        req = {
+          method: :post,
+          path: "/account_numbers",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::AccountNumber
+        }
         @client.request(req, opts)
       end
 
@@ -35,10 +37,11 @@ module Increase
       #
       # @return [Increase::Models::AccountNumber]
       def retrieve(account_number_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/account_numbers/#{account_number_id}"
-        req[:model] = Increase::Models::AccountNumber
+        req = {
+          method: :get,
+          path: "/account_numbers/#{account_number_id}",
+          model: Increase::Models::AccountNumber
+        }
         @client.request(req, opts)
       end
 
@@ -57,11 +60,13 @@ module Increase
       #
       # @return [Increase::Models::AccountNumber]
       def update(account_number_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/account_numbers/#{account_number_id}"
-        req[:body] = params
-        req[:model] = Increase::Models::AccountNumber
+        req = {
+          method: :patch,
+          path: "/account_numbers/#{account_number_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::AccountNumber
+        }
         @client.request(req, opts)
       end
 
@@ -84,12 +89,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::AccountNumber>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/account_numbers"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::AccountNumber
+        req = {
+          method: :get,
+          path: "/account_numbers",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::AccountNumber
+        }
         @client.request(req, opts)
       end
     end

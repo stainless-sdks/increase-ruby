@@ -17,11 +17,13 @@ module Increase
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/intrafi_account_enrollments"
-        req[:body] = params
-        req[:model] = Increase::Models::IntrafiAccountEnrollment
+        req = {
+          method: :post,
+          path: "/intrafi_account_enrollments",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::IntrafiAccountEnrollment
+        }
         @client.request(req, opts)
       end
 
@@ -32,10 +34,11 @@ module Increase
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
       def retrieve(intrafi_account_enrollment_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/intrafi_account_enrollments/#{intrafi_account_enrollment_id}"
-        req[:model] = Increase::Models::IntrafiAccountEnrollment
+        req = {
+          method: :get,
+          path: "/intrafi_account_enrollments/#{intrafi_account_enrollment_id}",
+          model: Increase::Models::IntrafiAccountEnrollment
+        }
         @client.request(req, opts)
       end
 
@@ -56,12 +59,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::IntrafiAccountEnrollment>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/intrafi_account_enrollments"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::IntrafiAccountEnrollment
+        req = {
+          method: :get,
+          path: "/intrafi_account_enrollments",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::IntrafiAccountEnrollment
+        }
         @client.request(req, opts)
       end
 
@@ -72,10 +76,11 @@ module Increase
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
       def unenroll(intrafi_account_enrollment_id, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/intrafi_account_enrollments/#{intrafi_account_enrollment_id}/unenroll"
-        req[:model] = Increase::Models::IntrafiAccountEnrollment
+        req = {
+          method: :post,
+          path: "/intrafi_account_enrollments/#{intrafi_account_enrollment_id}/unenroll",
+          model: Increase::Models::IntrafiAccountEnrollment
+        }
         @client.request(req, opts)
       end
     end

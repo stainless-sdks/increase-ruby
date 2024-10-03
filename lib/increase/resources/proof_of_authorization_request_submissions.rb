@@ -26,11 +26,13 @@ module Increase
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/proof_of_authorization_request_submissions"
-        req[:body] = params
-        req[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
+        req = {
+          method: :post,
+          path: "/proof_of_authorization_request_submissions",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::ProofOfAuthorizationRequestSubmission
+        }
         @client.request(req, opts)
       end
 
@@ -41,11 +43,11 @@ module Increase
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def retrieve(proof_of_authorization_request_submission_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] =
-          "/proof_of_authorization_request_submissions/#{proof_of_authorization_request_submission_id}"
-        req[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
+        req = {
+          method: :get,
+          path: "/proof_of_authorization_request_submissions/#{proof_of_authorization_request_submission_id}",
+          model: Increase::Models::ProofOfAuthorizationRequestSubmission
+        }
         @client.request(req, opts)
       end
 
@@ -65,12 +67,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequestSubmission>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/proof_of_authorization_request_submissions"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::ProofOfAuthorizationRequestSubmission
+        req = {
+          method: :get,
+          path: "/proof_of_authorization_request_submissions",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::ProofOfAuthorizationRequestSubmission
+        }
         @client.request(req, opts)
       end
     end

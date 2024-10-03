@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::Program]
       def retrieve(program_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/programs/#{program_id}"
-        req[:model] = Increase::Models::Program
+        req = {
+          method: :get,
+          path: "/programs/#{program_id}",
+          model: Increase::Models::Program
+        }
         @client.request(req, opts)
       end
 
@@ -32,12 +33,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::Program>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/programs"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::Program
+        req = {
+          method: :get,
+          path: "/programs",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::Program
+        }
         @client.request(req, opts)
       end
     end

@@ -20,11 +20,13 @@ module Increase
       #
       # @return [Increase::Models::PhysicalCard]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/physical_cards"
-        req[:body] = params
-        req[:model] = Increase::Models::PhysicalCard
+        req = {
+          method: :post,
+          path: "/physical_cards",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::PhysicalCard
+        }
         @client.request(req, opts)
       end
 
@@ -35,10 +37,11 @@ module Increase
       #
       # @return [Increase::Models::PhysicalCard]
       def retrieve(physical_card_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/physical_cards/#{physical_card_id}"
-        req[:model] = Increase::Models::PhysicalCard
+        req = {
+          method: :get,
+          path: "/physical_cards/#{physical_card_id}",
+          model: Increase::Models::PhysicalCard
+        }
         @client.request(req, opts)
       end
 
@@ -53,11 +56,13 @@ module Increase
       #
       # @return [Increase::Models::PhysicalCard]
       def update(physical_card_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/physical_cards/#{physical_card_id}"
-        req[:body] = params
-        req[:model] = Increase::Models::PhysicalCard
+        req = {
+          method: :patch,
+          path: "/physical_cards/#{physical_card_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::PhysicalCard
+        }
         @client.request(req, opts)
       end
 
@@ -78,12 +83,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::PhysicalCard>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/physical_cards"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::PhysicalCard
+        req = {
+          method: :get,
+          path: "/physical_cards",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::PhysicalCard
+        }
         @client.request(req, opts)
       end
     end

@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::ProofOfAuthorizationRequest]
       def retrieve(proof_of_authorization_request_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/proof_of_authorization_requests/#{proof_of_authorization_request_id}"
-        req[:model] = Increase::Models::ProofOfAuthorizationRequest
+        req = {
+          method: :get,
+          path: "/proof_of_authorization_requests/#{proof_of_authorization_request_id}",
+          model: Increase::Models::ProofOfAuthorizationRequest
+        }
         @client.request(req, opts)
       end
 
@@ -33,12 +34,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequest>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/proof_of_authorization_requests"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::ProofOfAuthorizationRequest
+        req = {
+          method: :get,
+          path: "/proof_of_authorization_requests",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::ProofOfAuthorizationRequest
+        }
         @client.request(req, opts)
       end
     end

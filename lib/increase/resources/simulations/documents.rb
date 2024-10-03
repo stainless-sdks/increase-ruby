@@ -17,11 +17,13 @@ module Increase
         #
         # @return [Increase::Models::Document]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/documents"
-          req[:body] = params
-          req[:model] = Increase::Models::Document
+          req = {
+            method: :post,
+            path: "/simulations/documents",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::Document
+          }
           @client.request(req, opts)
         end
       end

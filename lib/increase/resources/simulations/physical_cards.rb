@@ -21,11 +21,13 @@ module Increase
         #
         # @return [Increase::Models::PhysicalCard]
         def advance_shipment(physical_card_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/physical_cards/#{physical_card_id}/advance_shipment"
-          req[:body] = params
-          req[:model] = Increase::Models::PhysicalCard
+          req = {
+            method: :post,
+            path: "/simulations/physical_cards/#{physical_card_id}/advance_shipment",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::PhysicalCard
+          }
           @client.request(req, opts)
         end
       end

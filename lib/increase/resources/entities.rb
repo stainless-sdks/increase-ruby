@@ -30,11 +30,13 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/entities"
-        req[:body] = params
-        req[:model] = Increase::Models::Entity
+        req = {
+          method: :post,
+          path: "/entities",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Entity
+        }
         @client.request(req, opts)
       end
 
@@ -45,10 +47,11 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def retrieve(entity_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/entities/#{entity_id}"
-        req[:model] = Increase::Models::Entity
+        req = {
+          method: :get,
+          path: "/entities/#{entity_id}",
+          model: Increase::Models::Entity
+        }
         @client.request(req, opts)
       end
 
@@ -69,12 +72,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::Entity>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/entities"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::Entity
+        req = {
+          method: :get,
+          path: "/entities",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::Entity
+        }
         @client.request(req, opts)
       end
 
@@ -86,10 +90,11 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def archive(entity_id, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/entities/#{entity_id}/archive"
-        req[:model] = Increase::Models::Entity
+        req = {
+          method: :post,
+          path: "/entities/#{entity_id}/archive",
+          model: Increase::Models::Entity
+        }
         @client.request(req, opts)
       end
 
@@ -106,11 +111,13 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def archive_beneficial_owner(entity_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/entities/#{entity_id}/archive_beneficial_owner"
-        req[:body] = params
-        req[:model] = Increase::Models::Entity
+        req = {
+          method: :post,
+          path: "/entities/#{entity_id}/archive_beneficial_owner",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Entity
+        }
         @client.request(req, opts)
       end
 
@@ -128,11 +135,13 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def confirm(entity_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/entities/#{entity_id}/confirm"
-        req[:body] = params
-        req[:model] = Increase::Models::Entity
+        req = {
+          method: :post,
+          path: "/entities/#{entity_id}/confirm",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Entity
+        }
         @client.request(req, opts)
       end
 
@@ -148,11 +157,13 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def create_beneficial_owner(entity_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/entities/#{entity_id}/create_beneficial_owner"
-        req[:body] = params
-        req[:model] = Increase::Models::Entity
+        req = {
+          method: :post,
+          path: "/entities/#{entity_id}/create_beneficial_owner",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Entity
+        }
         @client.request(req, opts)
       end
 
@@ -168,11 +179,13 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def update_address(entity_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/entities/#{entity_id}/update_address"
-        req[:body] = params
-        req[:model] = Increase::Models::Entity
+        req = {
+          method: :post,
+          path: "/entities/#{entity_id}/update_address",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Entity
+        }
         @client.request(req, opts)
       end
 
@@ -191,11 +204,13 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def update_beneficial_owner_address(entity_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/entities/#{entity_id}/update_beneficial_owner_address"
-        req[:body] = params
-        req[:model] = Increase::Models::Entity
+        req = {
+          method: :post,
+          path: "/entities/#{entity_id}/update_beneficial_owner_address",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Entity
+        }
         @client.request(req, opts)
       end
 
@@ -214,11 +229,13 @@ module Increase
       #
       # @return [Increase::Models::Entity]
       def update_industry_code(entity_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/entities/#{entity_id}/update_industry_code"
-        req[:body] = params
-        req[:model] = Increase::Models::Entity
+        req = {
+          method: :post,
+          path: "/entities/#{entity_id}/update_industry_code",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Entity
+        }
         @client.request(req, opts)
       end
     end

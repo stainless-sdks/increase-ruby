@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::InboundACHTransfer]
       def retrieve(inbound_ach_transfer_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}"
-        req[:model] = Increase::Models::InboundACHTransfer
+        req = {
+          method: :get,
+          path: "/inbound_ach_transfers/#{inbound_ach_transfer_id}",
+          model: Increase::Models::InboundACHTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -36,12 +37,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::InboundACHTransfer>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/inbound_ach_transfers"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::InboundACHTransfer
+        req = {
+          method: :get,
+          path: "/inbound_ach_transfers",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::InboundACHTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -58,11 +60,13 @@ module Increase
       #
       # @return [Increase::Models::InboundACHTransfer]
       def create_notification_of_change(inbound_ach_transfer_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/create_notification_of_change"
-        req[:body] = params
-        req[:model] = Increase::Models::InboundACHTransfer
+        req = {
+          method: :post,
+          path: "/inbound_ach_transfers/#{inbound_ach_transfer_id}/create_notification_of_change",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::InboundACHTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -79,11 +83,13 @@ module Increase
       #
       # @return [Increase::Models::InboundACHTransfer]
       def decline(inbound_ach_transfer_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/decline"
-        req[:body] = params
-        req[:model] = Increase::Models::InboundACHTransfer
+        req = {
+          method: :post,
+          path: "/inbound_ach_transfers/#{inbound_ach_transfer_id}/decline",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::InboundACHTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -100,11 +106,13 @@ module Increase
       #
       # @return [Increase::Models::InboundACHTransfer]
       def transfer_return(inbound_ach_transfer_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/inbound_ach_transfers/#{inbound_ach_transfer_id}/transfer_return"
-        req[:body] = params
-        req[:model] = Increase::Models::InboundACHTransfer
+        req = {
+          method: :post,
+          path: "/inbound_ach_transfers/#{inbound_ach_transfer_id}/transfer_return",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::InboundACHTransfer
+        }
         @client.request(req, opts)
       end
     end

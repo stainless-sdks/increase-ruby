@@ -18,11 +18,13 @@ module Increase
         #
         # @return [Increase::Models::DigitalWalletTokenRequestCreateResponse]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/digital_wallet_token_requests"
-          req[:body] = params
-          req[:model] = Increase::Models::DigitalWalletTokenRequestCreateResponse
+          req = {
+            method: :post,
+            path: "/simulations/digital_wallet_token_requests",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::DigitalWalletTokenRequestCreateResponse
+          }
           @client.request(req, opts)
         end
       end

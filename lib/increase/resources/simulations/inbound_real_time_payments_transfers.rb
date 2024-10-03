@@ -25,11 +25,13 @@ module Increase
         #
         # @return [Increase::Models::InboundRealTimePaymentsTransfer]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/inbound_real_time_payments_transfers"
-          req[:body] = params
-          req[:model] = Increase::Models::InboundRealTimePaymentsTransfer
+          req = {
+            method: :post,
+            path: "/simulations/inbound_real_time_payments_transfers",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::InboundRealTimePaymentsTransfer
+          }
           @client.request(req, opts)
         end
       end

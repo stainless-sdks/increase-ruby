@@ -23,11 +23,13 @@ module Increase
         #
         # @return [Increase::Models::CardDispute]
         def action(card_dispute_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/card_disputes/#{card_dispute_id}/action"
-          req[:body] = params
-          req[:model] = Increase::Models::CardDispute
+          req = {
+            method: :post,
+            path: "/simulations/card_disputes/#{card_dispute_id}/action",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::CardDispute
+          }
           @client.request(req, opts)
         end
       end

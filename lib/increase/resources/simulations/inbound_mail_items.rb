@@ -21,11 +21,13 @@ module Increase
         #
         # @return [Increase::Models::InboundMailItem]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/inbound_mail_items"
-          req[:body] = params
-          req[:model] = Increase::Models::InboundMailItem
+          req = {
+            method: :post,
+            path: "/simulations/inbound_mail_items",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::InboundMailItem
+          }
           @client.request(req, opts)
         end
       end

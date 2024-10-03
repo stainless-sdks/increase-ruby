@@ -26,11 +26,13 @@ module Increase
       #
       # @return [Increase::Models::Export]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/exports"
-        req[:body] = params
-        req[:model] = Increase::Models::Export
+        req = {
+          method: :post,
+          path: "/exports",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::Export
+        }
         @client.request(req, opts)
       end
 
@@ -41,10 +43,11 @@ module Increase
       #
       # @return [Increase::Models::Export]
       def retrieve(export_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/exports/#{export_id}"
-        req[:model] = Increase::Models::Export
+        req = {
+          method: :get,
+          path: "/exports/#{export_id}",
+          model: Increase::Models::Export
+        }
         @client.request(req, opts)
       end
 
@@ -66,12 +69,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::Export>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/exports"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::Export
+        req = {
+          method: :get,
+          path: "/exports",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::Export
+        }
         @client.request(req, opts)
       end
     end

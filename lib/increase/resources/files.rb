@@ -22,11 +22,13 @@ module Increase
       #
       # @return [Increase::Models::File]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/files"
-        req[:body] = params
-        req[:model] = Increase::Models::File
+        req = {
+          method: :post,
+          path: "/files",
+          body: params,
+          headers: {"Content-Type" => "multipart/form-data"},
+          model: Increase::Models::File
+        }
         @client.request(req, opts)
       end
 
@@ -37,10 +39,11 @@ module Increase
       #
       # @return [Increase::Models::File]
       def retrieve(file_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/files/#{file_id}"
-        req[:model] = Increase::Models::File
+        req = {
+          method: :get,
+          path: "/files/#{file_id}",
+          model: Increase::Models::File
+        }
         @client.request(req, opts)
       end
 
@@ -61,12 +64,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::File>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/files"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::File
+        req = {
+          method: :get,
+          path: "/files",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::File
+        }
         @client.request(req, opts)
       end
     end

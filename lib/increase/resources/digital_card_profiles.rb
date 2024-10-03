@@ -24,11 +24,13 @@ module Increase
       #
       # @return [Increase::Models::DigitalCardProfile]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/digital_card_profiles"
-        req[:body] = params
-        req[:model] = Increase::Models::DigitalCardProfile
+        req = {
+          method: :post,
+          path: "/digital_card_profiles",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::DigitalCardProfile
+        }
         @client.request(req, opts)
       end
 
@@ -39,10 +41,11 @@ module Increase
       #
       # @return [Increase::Models::DigitalCardProfile]
       def retrieve(digital_card_profile_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/digital_card_profiles/#{digital_card_profile_id}"
-        req[:model] = Increase::Models::DigitalCardProfile
+        req = {
+          method: :get,
+          path: "/digital_card_profiles/#{digital_card_profile_id}",
+          model: Increase::Models::DigitalCardProfile
+        }
         @client.request(req, opts)
       end
 
@@ -62,12 +65,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::DigitalCardProfile>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/digital_card_profiles"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::DigitalCardProfile
+        req = {
+          method: :get,
+          path: "/digital_card_profiles",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::DigitalCardProfile
+        }
         @client.request(req, opts)
       end
 
@@ -78,10 +82,11 @@ module Increase
       #
       # @return [Increase::Models::DigitalCardProfile]
       def archive(digital_card_profile_id, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/digital_card_profiles/#{digital_card_profile_id}/archive"
-        req[:model] = Increase::Models::DigitalCardProfile
+        req = {
+          method: :post,
+          path: "/digital_card_profiles/#{digital_card_profile_id}/archive",
+          model: Increase::Models::DigitalCardProfile
+        }
         @client.request(req, opts)
       end
 
@@ -104,11 +109,13 @@ module Increase
       #
       # @return [Increase::Models::DigitalCardProfile]
       def clone(digital_card_profile_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/digital_card_profiles/#{digital_card_profile_id}/clone"
-        req[:body] = params
-        req[:model] = Increase::Models::DigitalCardProfile
+        req = {
+          method: :post,
+          path: "/digital_card_profiles/#{digital_card_profile_id}/clone",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::DigitalCardProfile
+        }
         @client.request(req, opts)
       end
     end

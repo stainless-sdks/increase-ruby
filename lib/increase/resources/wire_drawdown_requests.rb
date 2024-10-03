@@ -36,11 +36,13 @@ module Increase
       #
       # @return [Increase::Models::WireDrawdownRequest]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/wire_drawdown_requests"
-        req[:body] = params
-        req[:model] = Increase::Models::WireDrawdownRequest
+        req = {
+          method: :post,
+          path: "/wire_drawdown_requests",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::WireDrawdownRequest
+        }
         @client.request(req, opts)
       end
 
@@ -51,10 +53,11 @@ module Increase
       #
       # @return [Increase::Models::WireDrawdownRequest]
       def retrieve(wire_drawdown_request_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/wire_drawdown_requests/#{wire_drawdown_request_id}"
-        req[:model] = Increase::Models::WireDrawdownRequest
+        req = {
+          method: :get,
+          path: "/wire_drawdown_requests/#{wire_drawdown_request_id}",
+          model: Increase::Models::WireDrawdownRequest
+        }
         @client.request(req, opts)
       end
 
@@ -74,12 +77,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::WireDrawdownRequest>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/wire_drawdown_requests"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::WireDrawdownRequest
+        req = {
+          method: :get,
+          path: "/wire_drawdown_requests",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::WireDrawdownRequest
+        }
         @client.request(req, opts)
       end
     end

@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::CardPurchaseSupplement]
       def retrieve(card_purchase_supplement_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/card_purchase_supplements/#{card_purchase_supplement_id}"
-        req[:model] = Increase::Models::CardPurchaseSupplement
+        req = {
+          method: :get,
+          path: "/card_purchase_supplements/#{card_purchase_supplement_id}",
+          model: Increase::Models::CardPurchaseSupplement
+        }
         @client.request(req, opts)
       end
 
@@ -35,12 +36,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::CardPurchaseSupplement>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/card_purchase_supplements"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::CardPurchaseSupplement
+        req = {
+          method: :get,
+          path: "/card_purchase_supplements",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::CardPurchaseSupplement
+        }
         @client.request(req, opts)
       end
     end

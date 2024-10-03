@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::Event]
       def retrieve(event_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/events/#{event_id}"
-        req[:model] = Increase::Models::Event
+        req = {
+          method: :get,
+          path: "/events/#{event_id}",
+          model: Increase::Models::Event
+        }
         @client.request(req, opts)
       end
 
@@ -35,12 +36,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::Event>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/events"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::Event
+        req = {
+          method: :get,
+          path: "/events",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::Event
+        }
         @client.request(req, opts)
       end
     end

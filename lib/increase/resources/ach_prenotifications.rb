@@ -31,11 +31,13 @@ module Increase
       #
       # @return [Increase::Models::ACHPrenotification]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/ach_prenotifications"
-        req[:body] = params
-        req[:model] = Increase::Models::ACHPrenotification
+        req = {
+          method: :post,
+          path: "/ach_prenotifications",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::ACHPrenotification
+        }
         @client.request(req, opts)
       end
 
@@ -46,10 +48,11 @@ module Increase
       #
       # @return [Increase::Models::ACHPrenotification]
       def retrieve(ach_prenotification_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/ach_prenotifications/#{ach_prenotification_id}"
-        req[:model] = Increase::Models::ACHPrenotification
+        req = {
+          method: :get,
+          path: "/ach_prenotifications/#{ach_prenotification_id}",
+          model: Increase::Models::ACHPrenotification
+        }
         @client.request(req, opts)
       end
 
@@ -69,12 +72,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::ACHPrenotification>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/ach_prenotifications"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::ACHPrenotification
+        req = {
+          method: :get,
+          path: "/ach_prenotifications",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::ACHPrenotification
+        }
         @client.request(req, opts)
       end
     end

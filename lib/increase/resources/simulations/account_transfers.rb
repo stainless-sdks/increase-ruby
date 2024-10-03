@@ -18,10 +18,11 @@ module Increase
         #
         # @return [Increase::Models::AccountTransfer]
         def complete(account_transfer_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/account_transfers/#{account_transfer_id}/complete"
-          req[:model] = Increase::Models::AccountTransfer
+          req = {
+            method: :post,
+            path: "/simulations/account_transfers/#{account_transfer_id}/complete",
+            model: Increase::Models::AccountTransfer
+          }
           @client.request(req, opts)
         end
       end

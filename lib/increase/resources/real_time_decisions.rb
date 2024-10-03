@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::RealTimeDecision]
       def retrieve(real_time_decision_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/real_time_decisions/#{real_time_decision_id}"
-        req[:model] = Increase::Models::RealTimeDecision
+        req = {
+          method: :get,
+          path: "/real_time_decisions/#{real_time_decision_id}",
+          model: Increase::Models::RealTimeDecision
+        }
         @client.request(req, opts)
       end
 
@@ -37,11 +38,13 @@ module Increase
       #
       # @return [Increase::Models::RealTimeDecision]
       def action(real_time_decision_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/real_time_decisions/#{real_time_decision_id}/action"
-        req[:body] = params
-        req[:model] = Increase::Models::RealTimeDecision
+        req = {
+          method: :post,
+          path: "/real_time_decisions/#{real_time_decision_id}/action",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::RealTimeDecision
+        }
         @client.request(req, opts)
       end
     end

@@ -22,11 +22,13 @@ module Increase
       #
       # @return [Increase::Models::CardDispute]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/card_disputes"
-        req[:body] = params
-        req[:model] = Increase::Models::CardDispute
+        req = {
+          method: :post,
+          path: "/card_disputes",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::CardDispute
+        }
         @client.request(req, opts)
       end
 
@@ -37,10 +39,11 @@ module Increase
       #
       # @return [Increase::Models::CardDispute]
       def retrieve(card_dispute_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/card_disputes/#{card_dispute_id}"
-        req[:model] = Increase::Models::CardDispute
+        req = {
+          method: :get,
+          path: "/card_disputes/#{card_dispute_id}",
+          model: Increase::Models::CardDispute
+        }
         @client.request(req, opts)
       end
 
@@ -61,12 +64,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::CardDispute>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/card_disputes"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::CardDispute
+        req = {
+          method: :get,
+          path: "/card_disputes",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::CardDispute
+        }
         @client.request(req, opts)
       end
     end

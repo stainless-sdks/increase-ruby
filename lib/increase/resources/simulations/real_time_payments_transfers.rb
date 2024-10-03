@@ -21,11 +21,13 @@ module Increase
         #
         # @return [Increase::Models::RealTimePaymentsTransfer]
         def complete(real_time_payments_transfer_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/real_time_payments_transfers/#{real_time_payments_transfer_id}/complete"
-          req[:body] = params
-          req[:model] = Increase::Models::RealTimePaymentsTransfer
+          req = {
+            method: :post,
+            path: "/simulations/real_time_payments_transfers/#{real_time_payments_transfer_id}/complete",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::RealTimePaymentsTransfer
+          }
           @client.request(req, opts)
         end
       end

@@ -14,10 +14,11 @@ module Increase
       #
       # @return [Increase::Models::InboundRealTimePaymentsTransfer]
       def retrieve(inbound_real_time_payments_transfer_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/inbound_real_time_payments_transfers/#{inbound_real_time_payments_transfer_id}"
-        req[:model] = Increase::Models::InboundRealTimePaymentsTransfer
+        req = {
+          method: :get,
+          path: "/inbound_real_time_payments_transfers/#{inbound_real_time_payments_transfer_id}",
+          model: Increase::Models::InboundRealTimePaymentsTransfer
+        }
         @client.request(req, opts)
       end
 
@@ -37,12 +38,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::InboundRealTimePaymentsTransfer>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/inbound_real_time_payments_transfers"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::InboundRealTimePaymentsTransfer
+        req = {
+          method: :get,
+          path: "/inbound_real_time_payments_transfers",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::InboundRealTimePaymentsTransfer
+        }
         @client.request(req, opts)
       end
     end

@@ -17,10 +17,11 @@ module Increase
         #
         # @return [Increase::Models::CheckDeposit]
         def reject(check_deposit_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/check_deposits/#{check_deposit_id}/reject"
-          req[:model] = Increase::Models::CheckDeposit
+          req = {
+            method: :post,
+            path: "/simulations/check_deposits/#{check_deposit_id}/reject",
+            model: Increase::Models::CheckDeposit
+          }
           @client.request(req, opts)
         end
 
@@ -32,10 +33,11 @@ module Increase
         #
         # @return [Increase::Models::CheckDeposit]
         def return_(check_deposit_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/check_deposits/#{check_deposit_id}/return"
-          req[:model] = Increase::Models::CheckDeposit
+          req = {
+            method: :post,
+            path: "/simulations/check_deposits/#{check_deposit_id}/return",
+            model: Increase::Models::CheckDeposit
+          }
           @client.request(req, opts)
         end
 
@@ -47,10 +49,11 @@ module Increase
         #
         # @return [Increase::Models::CheckDeposit]
         def submit(check_deposit_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/check_deposits/#{check_deposit_id}/submit"
-          req[:model] = Increase::Models::CheckDeposit
+          req = {
+            method: :post,
+            path: "/simulations/check_deposits/#{check_deposit_id}/submit",
+            model: Increase::Models::CheckDeposit
+          }
           @client.request(req, opts)
         end
       end

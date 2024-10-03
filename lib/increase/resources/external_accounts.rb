@@ -21,11 +21,13 @@ module Increase
       #
       # @return [Increase::Models::ExternalAccount]
       def create(params = {}, opts = {})
-        req = {}
-        req[:method] = :post
-        req[:path] = "/external_accounts"
-        req[:body] = params
-        req[:model] = Increase::Models::ExternalAccount
+        req = {
+          method: :post,
+          path: "/external_accounts",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::ExternalAccount
+        }
         @client.request(req, opts)
       end
 
@@ -36,10 +38,11 @@ module Increase
       #
       # @return [Increase::Models::ExternalAccount]
       def retrieve(external_account_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/external_accounts/#{external_account_id}"
-        req[:model] = Increase::Models::ExternalAccount
+        req = {
+          method: :get,
+          path: "/external_accounts/#{external_account_id}",
+          model: Increase::Models::ExternalAccount
+        }
         @client.request(req, opts)
       end
 
@@ -57,11 +60,13 @@ module Increase
       #
       # @return [Increase::Models::ExternalAccount]
       def update(external_account_id, params = {}, opts = {})
-        req = {}
-        req[:method] = :patch
-        req[:path] = "/external_accounts/#{external_account_id}"
-        req[:body] = params
-        req[:model] = Increase::Models::ExternalAccount
+        req = {
+          method: :patch,
+          path: "/external_accounts/#{external_account_id}",
+          body: params,
+          headers: {"Content-Type" => "application/json"},
+          model: Increase::Models::ExternalAccount
+        }
         @client.request(req, opts)
       end
 
@@ -82,12 +87,13 @@ module Increase
       #
       # @return [Increase::Page<Increase::Models::ExternalAccount>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/external_accounts"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::ExternalAccount
+        req = {
+          method: :get,
+          path: "/external_accounts",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::ExternalAccount
+        }
         @client.request(req, opts)
       end
     end
