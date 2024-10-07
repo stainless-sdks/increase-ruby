@@ -13,6 +13,12 @@ module Increase
       #   @return [Increase::Models::RealTimeDecision::CardAuthentication]
       required :card_authentication, -> { Increase::Models::RealTimeDecision::CardAuthentication }
 
+      # @!attribute [rw] card_authentication_challenge
+      #   Fields related to a 3DS authentication attempt.
+      #   @return [Increase::Models::RealTimeDecision::CardAuthenticationChallenge]
+      required :card_authentication_challenge,
+               -> { Increase::Models::RealTimeDecision::CardAuthenticationChallenge }
+
       # @!attribute [rw] card_authorization
       #   Fields related to a card authorization.
       #   @return [Increase::Models::RealTimeDecision::CardAuthorization]
@@ -85,6 +91,42 @@ module Increase
 
           # Deny the authentication attempt.
           DENY = :deny
+        end
+      end
+
+      class CardAuthenticationChallenge < BaseModel
+        # @!attribute [rw] account_id
+        #   The identifier of the Account the card belongs to.
+        #   @return [String]
+        required :account_id, String
+
+        # @!attribute [rw] card_id
+        #   The identifier of the Card that is being tokenized.
+        #   @return [String]
+        required :card_id, String
+
+        # @!attribute [rw] card_payment_id
+        #   The identifier of the Card Payment this authentication challenge attempt belongs to.
+        #   @return [String]
+        required :card_payment_id, String
+
+        # @!attribute [rw] one_time_code
+        #   The one-time code delivered to the cardholder.
+        #   @return [String]
+        required :one_time_code, String
+
+        # @!attribute [rw] result
+        #   Whether or not the challenge was delivered to the cardholder.
+        #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result]
+        required :result, enum: -> { Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result }
+
+        # Whether or not the challenge was delivered to the cardholder.
+        class Result < Increase::Enum
+          # Your application successfully delivered the one-time code to the cardholder.
+          SUCCESS = :success
+
+          # Your application was unable to deliver the one-time code to the cardholder.
+          FAILURE = :failure
         end
       end
 
@@ -509,6 +551,9 @@ module Increase
 
         # 3DS authentication is requested.
         CARD_AUTHENTICATION_REQUESTED = :card_authentication_requested
+
+        # 3DS authentication challenge requires cardholder involvement.
+        CARD_AUTHENTICATION_CHALLENGE_REQUESTED = :card_authentication_challenge_requested
 
         # A card is being loaded into a digital wallet.
         DIGITAL_WALLET_TOKEN_REQUESTED = :digital_wallet_token_requested
