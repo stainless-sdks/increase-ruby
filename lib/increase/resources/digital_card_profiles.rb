@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class DigitalCardProfiles
+      # @param client [Increase::Client]
       def initialize(client:)
         @client = client
       end

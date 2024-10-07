@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Exports
+      # @param client [Increase::Client]
       def initialize(client:)
         @client = client
       end

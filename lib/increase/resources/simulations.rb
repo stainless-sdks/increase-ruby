@@ -84,6 +84,7 @@ module Increase
       # @return [Increase::Resources::Simulations::Programs]
       attr_reader :programs
 
+      # @param client [Increase::Client]
       def initialize(client:)
         @client = client
         @account_transfers = Increase::Resources::Simulations::AccountTransfers.new(client: client)

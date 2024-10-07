@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class InboundACHTransfers
+      # @param client [Increase::Client]
       def initialize(client:)
         @client = client
       end

@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Cards
+      # @param client [Increase::Client]
       def initialize(client:)
         @client = client
       end

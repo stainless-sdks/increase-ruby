@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class AccountTransfers
+        # @param client [Increase::Client]
         def initialize(client:)
           @client = client
         end

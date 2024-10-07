@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class InboundMailItems
+        # @param client [Increase::Client]
         def initialize(client:)
           @client = client
         end

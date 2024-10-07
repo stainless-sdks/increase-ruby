@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Lockboxes
+      # @param client [Increase::Client]
       def initialize(client:)
         @client = client
       end
