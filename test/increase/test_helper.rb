@@ -7,13 +7,7 @@
 # - Define shared testing namespace so that we don't need to indent test files as much
 
 require "increase"
+require_relative "test_namespaces"
 
 require "test/unit"
 require "stringio"
-
-module Increase
-  module Test
-    module Resources
-    end
-  end
-end

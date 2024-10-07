@@ -2,7 +2,7 @@
 
 require_relative "../../test_helper"
 
-class Increase::Test::Resources::InboundWireTransfersTest < Test::Unit::TestCase
+class Increase::Test::Resources::Simulations::InboundWireTransfersTest < Test::Unit::TestCase
   def setup
     @increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
   end
