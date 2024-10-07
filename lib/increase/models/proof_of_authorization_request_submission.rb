@@ -96,6 +96,9 @@ module Increase
         # The proof of authorization request submission was rejected.
         REJECTED = :rejected
 
+        # The proof of authorization request submission was canceled and replaced with another.
+        CANCELED = :canceled
+
         # The proof of authorization request submission is pending sending.
         PENDING_SENDING = :pending_sending
 
