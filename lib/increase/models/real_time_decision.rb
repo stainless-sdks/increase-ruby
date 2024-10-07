@@ -8,6 +8,11 @@ module Increase
       #   @return [String]
       required :id, String
 
+      # @!attribute [rw] card_authentication
+      #   Fields related to a 3DS authentication attempt.
+      #   @return [Increase::Models::RealTimeDecision::CardAuthentication]
+      required :card_authentication, -> { Increase::Models::RealTimeDecision::CardAuthentication }
+
       # @!attribute [rw] card_authorization
       #   Fields related to a card authorization.
       #   @return [Increase::Models::RealTimeDecision::CardAuthorization]
@@ -48,6 +53,40 @@ module Increase
       #   A constant representing the object's type. For this resource it will always be `real_time_decision`.
       #   @return [Symbol, Increase::Models::RealTimeDecision::Type]
       required :type, enum: -> { Increase::Models::RealTimeDecision::Type }
+
+      class CardAuthentication < BaseModel
+        # @!attribute [rw] account_id
+        #   The identifier of the Account the card belongs to.
+        #   @return [String]
+        required :account_id, String
+
+        # @!attribute [rw] card_id
+        #   The identifier of the Card that is being tokenized.
+        #   @return [String]
+        required :card_id, String
+
+        # @!attribute [rw] decision
+        #   Whether or not the authentication attempt was approved.
+        #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthentication::Decision]
+        required :decision, enum: -> { Increase::Models::RealTimeDecision::CardAuthentication::Decision }
+
+        # @!attribute [rw] upcoming_card_payment_id
+        #   The identifier of the Card Payment this authentication attempt will belong to. Available in the API once the card authentication has completed.
+        #   @return [String]
+        required :upcoming_card_payment_id, String
+
+        # Whether or not the authentication attempt was approved.
+        class Decision < Increase::Enum
+          # Approve the authentication attempt without triggering a challenge.
+          APPROVE = :approve
+
+          # Request further validation before approving the authentication attempt.
+          CHALLENGE = :challenge
+
+          # Deny the authentication attempt.
+          DENY = :deny
+        end
+      end
 
       class CardAuthorization < BaseModel
         # @!attribute [rw] account_id
@@ -467,6 +506,9 @@ module Increase
       class Category < Increase::Enum
         # A card is being authorized.
         CARD_AUTHORIZATION_REQUESTED = :card_authorization_requested
+
+        # 3DS authentication is requested.
+        CARD_AUTHENTICATION_REQUESTED = :card_authentication_requested
 
         # A card is being loaded into a digital wallet.
         DIGITAL_WALLET_TOKEN_REQUESTED = :digital_wallet_token_requested

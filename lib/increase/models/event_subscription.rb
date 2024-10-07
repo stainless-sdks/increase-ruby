@@ -279,6 +279,9 @@ module Increase
         # Occurs whenever a Real-Time Decision is created in response to a digital wallet requiring two-factor authentication.
         REAL_TIME_DECISION_DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :"real_time_decision.digital_wallet_authentication_requested"
 
+        # Occurs whenever a Real-Time Decision is created in response to 3DS authentication.
+        REAL_TIME_DECISION_CARD_AUTHENTICATION_REQUESTED = :"real_time_decision.card_authentication_requested"
+
         # Occurs whenever a Real-Time Payments Transfer is created.
         REAL_TIME_PAYMENTS_TRANSFER_CREATED = :"real_time_payments_transfer.created"
 
