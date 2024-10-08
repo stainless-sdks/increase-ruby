@@ -9,6 +9,7 @@ module Increase
       base_url:,
       headers: {},
       max_retries: 0,
+      timeout: 60,
       idempotency_header: nil
     )
       self.requester = PooledNetRequester.new
@@ -28,6 +29,7 @@ module Increase
       @port = base_url_parsed.port
       @base_path = self.class.normalize_path(base_url_parsed.path)
       @max_retries = max_retries
+      @timeout = timeout
       @idempotency_header = idempotency_header
     end
 
@@ -191,20 +193,21 @@ module Increase
     rescue StandardError # rubocop:disable Lint/SuppressedException
     end
 
-    def send_request(request, max_retries:, redirect_count:)
+    def send_request(request, max_retries:, timeout:, redirect_count:)
       delay = 0.5
       max_delay = 8.0
       # Don't send the current retry count in the headers if the caller modified the header defaults.
       should_send_retry_count = request[:headers]["x-stainless-retry-count"] == "0"
       retries = 0
       request_max_retries = max_retries || @max_retries
+      request_timeout = timeout || @timeout
       loop do # rubocop:disable Metrics/BlockLength
         if should_send_retry_count
           request[:headers]["x-stainless-retry-count"] = retries.to_s
         end
 
         begin
-          response = @requester.execute(request)
+          response = @requester.execute(request, timeout: request_timeout)
           status = response.code.to_i
 
           if status < 300
@@ -244,6 +247,7 @@ module Increase
             return send_request(
               request,
               max_retries: max_retries,
+              timeout: timeout,
               redirect_count: redirect_count + 1
             )
           end
@@ -259,7 +263,7 @@ module Increase
           end
         end
 
-        if !should_retry?(response) || retries >= request_max_retries
+        if (response && !should_retry?(response)) || retries >= request_max_retries
           raise make_status_error_from_response(response)
         end
 
@@ -273,7 +277,7 @@ module Increase
           delay = (base_delay * jitter_factor).clamp(0, max_delay)
         end
 
-        if response["x-stainless-mock-sleep"]
+        if response && response["x-stainless-mock-sleep"]
           request[:headers]["x-stainless-mock-slept"] = delay
         else
           sleep delay
@@ -289,7 +293,12 @@ module Increase
       validate_request(req, opts)
       options = Util.deep_merge(req, opts)
       request_args = prep_request(options)
-      response = send_request(request_args, max_retries: opts[:max_retries], redirect_count: 0)
+      response = send_request(
+        request_args,
+        max_retries: opts[:max_retries],
+        timeout: opts[:timeout],
+        redirect_count: 0
+      )
       raw_data =
         case response.content_type
         when "application/json"
