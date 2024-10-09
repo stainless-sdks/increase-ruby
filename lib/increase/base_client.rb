@@ -7,9 +7,9 @@ module Increase
 
     def initialize(
       base_url:,
+      timeout: nil,
       headers: {},
       max_retries: 0,
-      timeout: 60,
       idempotency_header: nil
     )
       self.requester = PooledNetRequester.new
@@ -193,14 +193,14 @@ module Increase
     rescue StandardError # rubocop:disable Lint/SuppressedException
     end
 
-    def send_request(request, max_retries:, timeout:, redirect_count:)
+    def send_request(request, opts)
       delay = 0.5
       max_delay = 8.0
       # Don't send the current retry count in the headers if the caller modified the header defaults.
       should_send_retry_count = request[:headers]["x-stainless-retry-count"] == "0"
       retries = 0
-      request_max_retries = max_retries || @max_retries
-      request_timeout = timeout || @timeout
+      request_max_retries = opts[:max_retries] || @max_retries
+      request_timeout = opts.fetch(:timeout, @timeout)
       loop do # rubocop:disable Metrics/BlockLength
         if should_send_retry_count
           request[:headers]["x-stainless-retry-count"] = retries.to_s
@@ -221,7 +221,7 @@ module Increase
               raise HTTP::APIConnectionError.new(message: message, request: request)
             end
             # from whatwg fetch spec
-            if redirect_count == 20
+            if opts[:redirect_count] == 20
               message = "failed to complete the request within 20 redirects"
               raise HTTP::APIConnectionError.new(message: message, request: request)
             end
@@ -246,9 +246,7 @@ module Increase
             end
             return send_request(
               request,
-              max_retries: max_retries,
-              timeout: timeout,
-              redirect_count: redirect_count + 1
+              opts.merge(redirect_count: opts[:redirect_count] + 1)
             )
           end
         rescue Net::HTTPBadResponse
@@ -293,11 +291,10 @@ module Increase
       validate_request(req, opts)
       options = Util.deep_merge(req, opts)
       request_args = prep_request(options)
+      request_opts = opts.select { |k| [:max_retries, :timeout].include?(k) }.merge(redirect_count: 0)
       response = send_request(
         request_args,
-        max_retries: opts[:max_retries],
-        timeout: opts[:timeout],
-        redirect_count: 0
+        request_opts
       )
       raw_data =
         case response.content_type
