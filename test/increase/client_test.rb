@@ -44,6 +44,10 @@ class IncreaseTest < Minitest::Test
     def [](header)
       @headers[header]
     end
+
+    def key?(header)
+      @headers.key?(header)
+    end
   end
 
   class MockRequester

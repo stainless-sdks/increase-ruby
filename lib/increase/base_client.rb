@@ -193,21 +193,19 @@ module Increase
     rescue StandardError # rubocop:disable Lint/SuppressedException
     end
 
-    def send_request(request, opts)
+    def send_request(request, max_retries:, timeout:, redirect_count:)
       delay = 0.5
       max_delay = 8.0
       # Don't send the current retry count in the headers if the caller modified the header defaults.
       should_send_retry_count = request[:headers]["x-stainless-retry-count"] == "0"
       retries = 0
-      request_max_retries = opts[:max_retries] || @max_retries
-      request_timeout = opts.fetch(:timeout, @timeout)
       loop do # rubocop:disable Metrics/BlockLength
         if should_send_retry_count
           request[:headers]["x-stainless-retry-count"] = retries.to_s
         end
 
         begin
-          response = @requester.execute(request, timeout: request_timeout)
+          response = @requester.execute(request, timeout: timeout)
           status = response.code.to_i
 
           if status < 300
@@ -221,7 +219,7 @@ module Increase
               raise HTTP::APIConnectionError.new(message: message, request: request)
             end
             # from whatwg fetch spec
-            if opts[:redirect_count] == 20
+            if redirect_count == 20
               message = "failed to complete the request within 20 redirects"
               raise HTTP::APIConnectionError.new(message: message, request: request)
             end
@@ -246,22 +244,24 @@ module Increase
             end
             return send_request(
               request,
-              opts.merge(redirect_count: opts[:redirect_count] + 1)
+              max_retries: max_retries,
+              timeout: timeout,
+              redirect_count: redirect_count + 1
             )
           end
         rescue Net::HTTPBadResponse
-          if retries >= request_max_retries
-            message = "failed to complete the request within #{request_max_retries} retries"
+          if retries >= max_retries
+            message = "failed to complete the request within #{max_retries} retries"
             raise HTTP::APIConnectionError.new(message: message, request: request)
           end
         rescue Timeout::Error
-          if retries >= request_max_retries
-            message = "failed to complete the request within #{request_max_retries} retries"
+          if retries >= max_retries
+            message = "failed to complete the request within #{max_retries} retries"
             raise HTTP::APITimeoutError.new(message: message, request: request)
           end
         end
 
-        if (response && !should_retry?(response)) || retries >= request_max_retries
+        if (response && !should_retry?(response)) || retries >= max_retries
           raise make_status_error_from_response(response)
         end
 
@@ -275,7 +275,7 @@ module Increase
           delay = (base_delay * jitter_factor).clamp(0, max_delay)
         end
 
-        if response && response["x-stainless-mock-sleep"]
+        if response&.key?("x-stainless-mock-sleep")
           request[:headers]["x-stainless-mock-slept"] = delay
         else
           sleep delay
@@ -291,10 +291,11 @@ module Increase
       validate_request(req, opts)
       options = Util.deep_merge(req, opts)
       request_args = prep_request(options)
-      request_opts = opts.select { |k| [:max_retries, :timeout].include?(k) }.merge(redirect_count: 0)
       response = send_request(
         request_args,
-        request_opts
+        max_retries: opts.fetch(:max_retries, @max_retries),
+        timeout: opts.fetch(:timeout, @timeout),
+        redirect_count: 0
       )
       raw_data =
         case response.content_type
