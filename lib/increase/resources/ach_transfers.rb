@@ -48,6 +48,7 @@ module Increase
       # @option params [String, nil] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #   destination account.
       # @option params [Symbol, StandardEntryClassCode, nil] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the transfer.
+      # @option params [Symbol, TransactionTiming, nil] :transaction_timing The timing of the transaction.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
