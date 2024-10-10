@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class InboundCheckDeposits
+        # @param client [Increase::Client]
         def initialize(client:)
           @client = client
         end
@@ -20,15 +21,17 @@ module Increase
         # @option params [Integer] :amount The check amount in cents.
         # @option params [String] :check_number The check number on the check to be deposited.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundCheckDeposit]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/inbound_check_deposits"
-          req[:body] = params
-          req[:model] = Increase::Models::InboundCheckDeposit
+          req = {
+            method: :post,
+            path: "/simulations/inbound_check_deposits",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::InboundCheckDeposit
+          }
           @client.request(req, opts)
         end
       end

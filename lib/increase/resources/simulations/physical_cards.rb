@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class PhysicalCards
+        # @param client [Increase::Client]
         def initialize(client:)
           @client = client
         end
@@ -15,17 +16,19 @@ module Increase
         # @param physical_card_id [String] The Physical Card you would like to action.
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Symbol] :shipment_status The shipment status to move the Physical Card to.
+        # @option params [Symbol, ShipmentStatus] :shipment_status The shipment status to move the Physical Card to.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::PhysicalCard]
         def advance_shipment(physical_card_id, params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/physical_cards/#{physical_card_id}/advance_shipment"
-          req[:body] = params
-          req[:model] = Increase::Models::PhysicalCard
+          req = {
+            method: :post,
+            path: "/simulations/physical_cards/#{physical_card_id}/advance_shipment",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::PhysicalCard
+          }
           @client.request(req, opts)
         end
       end

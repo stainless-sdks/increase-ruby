@@ -40,8 +40,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] description
       #   A description you can use to identify the Card Profile.
@@ -60,8 +60,7 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Card Profile.
-      #   One of the constants defined in {Increase::Models::DigitalCardProfile::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::DigitalCardProfile::Status]
       required :status, enum: -> { Increase::Models::DigitalCardProfile::Status }
 
       # @!attribute [rw] text_color
@@ -71,8 +70,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `digital_card_profile`.
-      #   One of the constants defined in {Increase::Models::DigitalCardProfile::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::DigitalCardProfile::Type]
       required :type, enum: -> { Increase::Models::DigitalCardProfile::Type }
 
       # The status of the Card Profile.

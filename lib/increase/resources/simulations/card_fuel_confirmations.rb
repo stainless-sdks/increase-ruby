@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class CardFuelConfirmations
+        # @param client [Increase::Client]
         def initialize(client:)
           @client = client
         end
@@ -17,15 +18,17 @@ module Increase
         #   currency.
         # @option params [String] :card_payment_id The identifier of the Card Payment to create a fuel_confirmation on.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CardPayment]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/card_fuel_confirmations"
-          req[:body] = params
-          req[:model] = Increase::Models::CardPayment
+          req = {
+            method: :post,
+            path: "/simulations/card_fuel_confirmations",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::CardPayment
+          }
           @client.request(req, opts)
         end
       end

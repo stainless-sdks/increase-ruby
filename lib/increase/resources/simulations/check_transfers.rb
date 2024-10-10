@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class CheckTransfers
+        # @param client [Increase::Client]
         def initialize(client:)
           @client = client
         end
@@ -14,14 +15,15 @@ module Increase
         #   `pending_submission`.
         #
         # @param check_transfer_id [String] The identifier of the Check Transfer you wish to mail.
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CheckTransfer]
         def mail(check_transfer_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/check_transfers/#{check_transfer_id}/mail"
-          req[:model] = Increase::Models::CheckTransfer
+          req = {
+            method: :post,
+            path: "/simulations/check_transfers/#{check_transfer_id}/mail",
+            model: Increase::Models::CheckTransfer
+          }
           @client.request(req, opts)
         end
       end

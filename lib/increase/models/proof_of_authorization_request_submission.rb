@@ -15,8 +15,8 @@ module Increase
 
       # @!attribute [rw] authorized_at
       #   Time of authorization.
-      #   @return [DateTime]
-      required :authorized_at, DateTime
+      #   @return [Time]
+      required :authorized_at, Time
 
       # @!attribute [rw] authorizer_company
       #   Company of the authorizer.
@@ -40,8 +40,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The time the Proof of Authorization Request Submission was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] customer_has_been_offboarded
       #   Whether the customer has been offboarded.
@@ -60,20 +60,18 @@ module Increase
 
       # @!attribute [rw] status
       #   Status of the proof of authorization request submission.
-      #   One of the constants defined in {Increase::Models::ProofOfAuthorizationRequestSubmission::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status]
       required :status, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `proof_of_authorization_request_submission`.
-      #   One of the constants defined in {Increase::Models::ProofOfAuthorizationRequestSubmission::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type]
       required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Type }
 
       # @!attribute [rw] updated_at
       #   The time the Proof of Authorization Request Submission was last updated.
-      #   @return [DateTime]
-      required :updated_at, DateTime
+      #   @return [Time]
+      required :updated_at, Time
 
       # @!attribute [rw] validated_account_ownership_via_credential
       #   Whether account ownership was validated via credential (for instance, Plaid).
@@ -97,6 +95,9 @@ module Increase
 
         # The proof of authorization request submission was rejected.
         REJECTED = :rejected
+
+        # The proof of authorization request submission was canceled and replaced with another.
+        CANCELED = :canceled
 
         # The proof of authorization request submission is pending sending.
         PENDING_SENDING = :pending_sending

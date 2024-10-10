@@ -8,6 +8,17 @@ module Increase
       #   @return [String]
       required :id, String
 
+      # @!attribute [rw] card_authentication
+      #   Fields related to a 3DS authentication attempt.
+      #   @return [Increase::Models::RealTimeDecision::CardAuthentication]
+      required :card_authentication, -> { Increase::Models::RealTimeDecision::CardAuthentication }
+
+      # @!attribute [rw] card_authentication_challenge
+      #   Fields related to a 3DS authentication attempt.
+      #   @return [Increase::Models::RealTimeDecision::CardAuthenticationChallenge]
+      required :card_authentication_challenge,
+               -> { Increase::Models::RealTimeDecision::CardAuthenticationChallenge }
+
       # @!attribute [rw] card_authorization
       #   Fields related to a card authorization.
       #   @return [Increase::Models::RealTimeDecision::CardAuthorization]
@@ -15,14 +26,13 @@ module Increase
 
       # @!attribute [rw] category
       #   The category of the Real-Time Decision.
-      #   One of the constants defined in {Increase::Models::RealTimeDecision::Category}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::RealTimeDecision::Category]
       required :category, enum: -> { Increase::Models::RealTimeDecision::Category }
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Real-Time Decision was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] digital_wallet_authentication
       #   Fields related to a digital wallet authentication attempt.
@@ -37,20 +47,88 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Real-Time Decision.
-      #   One of the constants defined in {Increase::Models::RealTimeDecision::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::RealTimeDecision::Status]
       required :status, enum: -> { Increase::Models::RealTimeDecision::Status }
 
       # @!attribute [rw] timeout_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which your application can no longer respond to the Real-Time Decision.
-      #   @return [DateTime]
-      required :timeout_at, DateTime
+      #   @return [Time]
+      required :timeout_at, Time
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `real_time_decision`.
-      #   One of the constants defined in {Increase::Models::RealTimeDecision::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::RealTimeDecision::Type]
       required :type, enum: -> { Increase::Models::RealTimeDecision::Type }
+
+      class CardAuthentication < BaseModel
+        # @!attribute [rw] account_id
+        #   The identifier of the Account the card belongs to.
+        #   @return [String]
+        required :account_id, String
+
+        # @!attribute [rw] card_id
+        #   The identifier of the Card that is being tokenized.
+        #   @return [String]
+        required :card_id, String
+
+        # @!attribute [rw] decision
+        #   Whether or not the authentication attempt was approved.
+        #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthentication::Decision]
+        required :decision, enum: -> { Increase::Models::RealTimeDecision::CardAuthentication::Decision }
+
+        # @!attribute [rw] upcoming_card_payment_id
+        #   The identifier of the Card Payment this authentication attempt will belong to. Available in the API once the card authentication has completed.
+        #   @return [String]
+        required :upcoming_card_payment_id, String
+
+        # Whether or not the authentication attempt was approved.
+        class Decision < Increase::Enum
+          # Approve the authentication attempt without triggering a challenge.
+          APPROVE = :approve
+
+          # Request further validation before approving the authentication attempt.
+          CHALLENGE = :challenge
+
+          # Deny the authentication attempt.
+          DENY = :deny
+        end
+      end
+
+      class CardAuthenticationChallenge < BaseModel
+        # @!attribute [rw] account_id
+        #   The identifier of the Account the card belongs to.
+        #   @return [String]
+        required :account_id, String
+
+        # @!attribute [rw] card_id
+        #   The identifier of the Card that is being tokenized.
+        #   @return [String]
+        required :card_id, String
+
+        # @!attribute [rw] card_payment_id
+        #   The identifier of the Card Payment this authentication challenge attempt belongs to.
+        #   @return [String]
+        required :card_payment_id, String
+
+        # @!attribute [rw] one_time_code
+        #   The one-time code delivered to the cardholder.
+        #   @return [String]
+        required :one_time_code, String
+
+        # @!attribute [rw] result
+        #   Whether or not the challenge was delivered to the cardholder.
+        #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result]
+        required :result, enum: -> { Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result }
+
+        # Whether or not the challenge was delivered to the cardholder.
+        class Result < Increase::Enum
+          # Your application successfully delivered the one-time code to the cardholder.
+          SUCCESS = :success
+
+          # Your application was unable to deliver the one-time code to the cardholder.
+          FAILURE = :failure
+        end
+      end
 
       class CardAuthorization < BaseModel
         # @!attribute [rw] account_id
@@ -65,14 +143,18 @@ module Increase
 
         # @!attribute [rw] decision
         #   Whether or not the authorization was approved.
-        #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::Decision}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Decision]
         required :decision, enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Decision }
 
         # @!attribute [rw] digital_wallet_token_id
         #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay purchase), the identifier of the token that was used.
         #   @return [String]
         required :digital_wallet_token_id, String
+
+        # @!attribute [rw] direction
+        #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+        #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Direction]
+        required :direction, enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Direction }
 
         # @!attribute [rw] merchant_acceptor_id
         #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
@@ -145,8 +227,7 @@ module Increase
 
         # @!attribute [rw] processing_category
         #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
-        #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory]
         required :processing_category,
                  enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory }
 
@@ -187,11 +268,19 @@ module Increase
           DECLINE = :decline
         end
 
+        # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+        class Direction < Increase::Enum
+          # A regular card authorization where funds are debited from the cardholder.
+          SETTLEMENT = :settlement
+
+          # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+          REFUND = :refund
+        end
+
         class NetworkDetails < BaseModel
           # @!attribute [rw] category
           #   The payment network used to process this card authorization.
-          #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category]
           required :category,
                    enum: lambda {
                      Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category
@@ -211,8 +300,7 @@ module Increase
           class Visa < BaseModel
             # @!attribute [rw] electronic_commerce_indicator
             #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
-            #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator]
             required :electronic_commerce_indicator,
                      enum: lambda {
                        Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
@@ -220,8 +308,7 @@ module Increase
 
             # @!attribute [rw] point_of_service_entry_mode
             #   The method used to enter the cardholder's primary account number and card expiration date.
-            #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode]
             required :point_of_service_entry_mode,
                      enum: lambda {
                        Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
@@ -330,8 +417,7 @@ module Increase
         class RequestDetails < BaseModel
           # @!attribute [rw] category
           #   The type of this request (e.g., an initial authorization or an incremental authorization).
-          #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category]
           required :category,
                    enum: lambda {
                      Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category
@@ -386,8 +472,7 @@ module Increase
           class CardVerificationCode < BaseModel
             # @!attribute [rw] result
             #   The result of verifying the Card Verification Code.
-            #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result]
             required :result,
                      enum: lambda {
                        Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result
@@ -429,8 +514,7 @@ module Increase
 
             # @!attribute [rw] result
             #   The address verification result returned to the card network.
-            #   One of the constants defined in {Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result]
             required :result,
                      enum: lambda {
                        Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result
@@ -465,6 +549,12 @@ module Increase
         # A card is being authorized.
         CARD_AUTHORIZATION_REQUESTED = :card_authorization_requested
 
+        # 3DS authentication is requested.
+        CARD_AUTHENTICATION_REQUESTED = :card_authentication_requested
+
+        # 3DS authentication challenge requires cardholder involvement.
+        CARD_AUTHENTICATION_CHALLENGE_REQUESTED = :card_authentication_challenge_requested
+
         # A card is being loaded into a digital wallet.
         DIGITAL_WALLET_TOKEN_REQUESTED = :digital_wallet_token_requested
 
@@ -480,8 +570,7 @@ module Increase
 
         # @!attribute [rw] channel
         #   The channel to send the card user their one-time passcode.
-        #   One of the constants defined in {Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel]
         required :channel,
                  enum: lambda {
                    Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel
@@ -489,8 +578,7 @@ module Increase
 
         # @!attribute [rw] digital_wallet
         #   The digital wallet app being used.
-        #   One of the constants defined in {Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet]
         required :digital_wallet,
                  enum: -> { Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet }
 
@@ -511,8 +599,7 @@ module Increase
 
         # @!attribute [rw] result
         #   Whether your application successfully delivered the one-time passcode.
-        #   One of the constants defined in {Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result]
         required :result, enum: -> { Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result }
 
         # The channel to send the card user their one-time passcode.
@@ -562,14 +649,12 @@ module Increase
 
         # @!attribute [rw] decision
         #   Whether or not the provisioning request was approved. This will be null until the real time decision is responded to.
-        #   One of the constants defined in {Increase::Models::RealTimeDecision::DigitalWalletToken::Decision}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision]
         required :decision, enum: -> { Increase::Models::RealTimeDecision::DigitalWalletToken::Decision }
 
         # @!attribute [rw] digital_wallet
         #   The digital wallet app being used.
-        #   One of the constants defined in {Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet]
         required :digital_wallet,
                  enum: -> { Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet }
 

@@ -25,8 +25,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] deposit_acceptance
       #   If your deposit is successfully parsed and accepted by Increase, this will contain details of the parsed check.
@@ -80,8 +80,7 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Check Deposit.
-      #   One of the constants defined in {Increase::Models::CheckDeposit::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CheckDeposit::Status]
       required :status, enum: -> { Increase::Models::CheckDeposit::Status }
 
       # @!attribute [rw] transaction_id
@@ -91,8 +90,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `check_deposit`.
-      #   One of the constants defined in {Increase::Models::CheckDeposit::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CheckDeposit::Type]
       required :type, enum: -> { Increase::Models::CheckDeposit::Type }
 
       class DepositAcceptance < BaseModel
@@ -118,8 +116,7 @@ module Increase
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositAcceptance::Currency}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency]
         required :currency, enum: -> { Increase::Models::CheckDeposit::DepositAcceptance::Currency }
 
         # @!attribute [rw] routing_number
@@ -167,8 +164,7 @@ module Increase
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositRejection::Currency}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency]
         required :currency, enum: -> { Increase::Models::CheckDeposit::DepositRejection::Currency }
 
         # @!attribute [rw] declined_transaction_id
@@ -178,14 +174,13 @@ module Increase
 
         # @!attribute [rw] reason
         #   Why the check deposit was rejected.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositRejection::Reason}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::DepositRejection::Reason]
         required :reason, enum: -> { Increase::Models::CheckDeposit::DepositRejection::Reason }
 
         # @!attribute [rw] rejected_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was rejected.
-        #   @return [DateTime]
-        required :rejected_at, DateTime
+        #   @return [Time]
+        required :rejected_at, Time
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
         class Currency < Increase::Enum
@@ -255,20 +250,18 @@ module Increase
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositReturn::Currency}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency]
         required :currency, enum: -> { Increase::Models::CheckDeposit::DepositReturn::Currency }
 
         # @!attribute [rw] return_reason
         #   Why this check was returned by the bank holding the account it was drawn against.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::DepositReturn::ReturnReason}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason]
         required :return_reason, enum: -> { Increase::Models::CheckDeposit::DepositReturn::ReturnReason }
 
         # @!attribute [rw] returned_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was returned.
-        #   @return [DateTime]
-        required :returned_at, DateTime
+        #   @return [Time]
+        required :returned_at, Time
 
         # @!attribute [rw] transaction_id
         #   The identifier of the transaction that reversed the original check deposit transaction.
@@ -391,8 +384,8 @@ module Increase
 
         # @!attribute [rw] submitted_at
         #   When the check deposit was submitted to the Check21 network for processing. During business days, this happens within a few hours of the check being accepted by Increase.
-        #   @return [DateTime]
-        required :submitted_at, DateTime
+        #   @return [Time]
+        required :submitted_at, Time
       end
 
       class InboundFundsHold < BaseModel
@@ -408,18 +401,17 @@ module Increase
 
         # @!attribute [rw] automatically_releases_at
         #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
-        #   @return [DateTime]
-        required :automatically_releases_at, DateTime
+        #   @return [Time]
+        required :automatically_releases_at, Time
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
-        #   @return [DateTime]
-        required :created_at, DateTime
+        #   @return [Time]
+        required :created_at, Time
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::InboundFundsHold::Currency}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency]
         required :currency, enum: -> { Increase::Models::CheckDeposit::InboundFundsHold::Currency }
 
         # @!attribute [rw] held_transaction_id
@@ -434,19 +426,17 @@ module Increase
 
         # @!attribute [rw] released_at
         #   When the hold was released (if it has been released).
-        #   @return [DateTime]
-        required :released_at, DateTime
+        #   @return [Time]
+        required :released_at, Time
 
         # @!attribute [rw] status
         #   The status of the hold.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::InboundFundsHold::Status}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Status]
         required :status, enum: -> { Increase::Models::CheckDeposit::InboundFundsHold::Status }
 
         # @!attribute [rw] type
         #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
-        #   One of the constants defined in {Increase::Models::CheckDeposit::InboundFundsHold::Type}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Type]
         required :type, enum: -> { Increase::Models::CheckDeposit::InboundFundsHold::Type }
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.

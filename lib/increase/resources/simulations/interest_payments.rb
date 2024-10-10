@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class InterestPayments
+        # @param client [Increase::Client]
         def initialize(client:)
           @client = client
         end
@@ -14,18 +15,20 @@ module Increase
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :account_id The identifier of the Account Number the Interest Payment is for.
         # @option params [Integer] :amount The interest amount in cents. Must be positive.
-        # @option params [DateTime] :period_end The end of the interest period. If not provided, defaults to the current time.
-        # @option params [DateTime] :period_start The start of the interest period. If not provided, defaults to the current time.
+        # @option params [Time, nil] :period_end The end of the interest period. If not provided, defaults to the current time.
+        # @option params [Time, nil] :period_start The start of the interest period. If not provided, defaults to the current time.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Transaction]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/interest_payments"
-          req[:body] = params
-          req[:model] = Increase::Models::Transaction
+          req = {
+            method: :post,
+            path: "/simulations/interest_payments",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::Transaction
+          }
           @client.request(req, opts)
         end
       end

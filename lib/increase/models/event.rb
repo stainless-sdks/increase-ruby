@@ -20,19 +20,17 @@ module Increase
 
       # @!attribute [rw] category
       #   The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
-      #   One of the constants defined in {Increase::Models::Event::Category}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Event::Category]
       required :category, enum: -> { Increase::Models::Event::Category }
 
       # @!attribute [rw] created_at
       #   The time the Event was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `event`.
-      #   One of the constants defined in {Increase::Models::Event::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Event::Type]
       required :type, enum: -> { Increase::Models::Event::Type }
 
       # The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
@@ -267,6 +265,12 @@ module Increase
 
         # Occurs whenever a Real-Time Decision is created in response to a digital wallet requiring two-factor authentication.
         REAL_TIME_DECISION_DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :"real_time_decision.digital_wallet_authentication_requested"
+
+        # Occurs whenever a Real-Time Decision is created in response to 3DS authentication.
+        REAL_TIME_DECISION_CARD_AUTHENTICATION_REQUESTED = :"real_time_decision.card_authentication_requested"
+
+        # Occurs whenever a Real-Time Decision is created in response to 3DS authentication challenges.
+        REAL_TIME_DECISION_CARD_AUTHENTICATION_CHALLENGE_REQUESTED = :"real_time_decision.card_authentication_challenge_requested"
 
         # Occurs whenever a Real-Time Payments Transfer is created.
         REAL_TIME_PAYMENTS_TRANSFER_CREATED = :"real_time_payments_transfer.created"

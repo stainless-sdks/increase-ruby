@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] description
       #   The description you choose for the Lockbox.
@@ -40,14 +40,12 @@ module Increase
 
       # @!attribute [rw] status
       #   This indicates if mail can be sent to this address.
-      #   One of the constants defined in {Increase::Models::Lockbox::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Lockbox::Status]
       required :status, enum: -> { Increase::Models::Lockbox::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `lockbox`.
-      #   One of the constants defined in {Increase::Models::Lockbox::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Lockbox::Type]
       required :type, enum: -> { Increase::Models::Lockbox::Type }
 
       class Address < BaseModel

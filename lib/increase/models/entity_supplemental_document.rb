@@ -5,8 +5,8 @@ module Increase
     class EntitySupplementalDocument < BaseModel
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Supplemental Document was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] entity_id
       #   The Entity the supplemental document is attached to.
@@ -25,8 +25,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `entity_supplemental_document`.
-      #   One of the constants defined in {Increase::Models::EntitySupplementalDocument::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::EntitySupplementalDocument::Type]
       required :type, enum: -> { Increase::Models::EntitySupplementalDocument::Type }
 
       # A constant representing the object's type. For this resource it will always be `entity_supplemental_document`.

@@ -10,8 +10,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The time the event subscription was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
@@ -25,8 +25,7 @@ module Increase
 
       # @!attribute [rw] selected_event_category
       #   If specified, this subscription will only receive webhooks for Events with the specified `category`.
-      #   One of the constants defined in {Increase::Models::EventSubscription::SelectedEventCategory}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::EventSubscription::SelectedEventCategory]
       required :selected_event_category,
                enum: lambda {
                  Increase::Models::EventSubscription::SelectedEventCategory
@@ -34,14 +33,12 @@ module Increase
 
       # @!attribute [rw] status
       #   This indicates if we'll send notifications to this subscription.
-      #   One of the constants defined in {Increase::Models::EventSubscription::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::EventSubscription::Status]
       required :status, enum: -> { Increase::Models::EventSubscription::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `event_subscription`.
-      #   One of the constants defined in {Increase::Models::EventSubscription::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::EventSubscription::Type]
       required :type, enum: -> { Increase::Models::EventSubscription::Type }
 
       # @!attribute [rw] url
@@ -281,6 +278,12 @@ module Increase
 
         # Occurs whenever a Real-Time Decision is created in response to a digital wallet requiring two-factor authentication.
         REAL_TIME_DECISION_DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :"real_time_decision.digital_wallet_authentication_requested"
+
+        # Occurs whenever a Real-Time Decision is created in response to 3DS authentication.
+        REAL_TIME_DECISION_CARD_AUTHENTICATION_REQUESTED = :"real_time_decision.card_authentication_requested"
+
+        # Occurs whenever a Real-Time Decision is created in response to 3DS authentication challenges.
+        REAL_TIME_DECISION_CARD_AUTHENTICATION_CHALLENGE_REQUESTED = :"real_time_decision.card_authentication_challenge_requested"
 
         # Occurs whenever a Real-Time Payments Transfer is created.
         REAL_TIME_PAYMENTS_TRANSFER_CREATED = :"real_time_payments_transfer.created"

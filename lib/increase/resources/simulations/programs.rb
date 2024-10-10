@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class Programs
+        # @param client [Increase::Client]
         def initialize(client:)
           @client = client
         end
@@ -15,15 +16,17 @@ module Increase
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :name The name of the program being added.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Program]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/programs"
-          req[:body] = params
-          req[:model] = Increase::Models::Program
+          req = {
+            method: :post,
+            path: "/simulations/programs",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::Program
+          }
           @client.request(req, opts)
         end
       end

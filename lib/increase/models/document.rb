@@ -10,14 +10,13 @@ module Increase
 
       # @!attribute [rw] category
       #   The type of document.
-      #   One of the constants defined in {Increase::Models::Document::Category}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Document::Category]
       required :category, enum: -> { Increase::Models::Document::Category }
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Document was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] entity_id
       #   The identifier of the Entity the document was generated for.
@@ -31,8 +30,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `document`.
-      #   One of the constants defined in {Increase::Models::Document::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Document::Type]
       required :type, enum: -> { Increase::Models::Document::Type }
 
       # The type of document.

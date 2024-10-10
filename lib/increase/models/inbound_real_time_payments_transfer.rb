@@ -30,8 +30,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] creditor_name
       #   The name the sender of the transfer specified as the recipient of the transfer.
@@ -40,8 +40,7 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
-      #   One of the constants defined in {Increase::Models::InboundRealTimePaymentsTransfer::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency]
       required :currency, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Currency }
 
       # @!attribute [rw] debtor_account_number
@@ -71,8 +70,7 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
-      #   One of the constants defined in {Increase::Models::InboundRealTimePaymentsTransfer::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Status]
       required :status, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Status }
 
       # @!attribute [rw] transaction_identification
@@ -82,15 +80,14 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_real_time_payments_transfer`.
-      #   One of the constants defined in {Increase::Models::InboundRealTimePaymentsTransfer::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type]
       required :type, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Type }
 
       class Confirmation < BaseModel
         # @!attribute [rw] confirmed_at
         #   The time at which the transfer was confirmed.
-        #   @return [DateTime]
-        required :confirmed_at, DateTime
+        #   @return [Time]
+        required :confirmed_at, Time
 
         # @!attribute [rw] transaction_id
         #   The id of the transaction for the confirmed transfer.
@@ -122,8 +119,8 @@ module Increase
       class Decline < BaseModel
         # @!attribute [rw] declined_at
         #   The time at which the transfer was declined.
-        #   @return [DateTime]
-        required :declined_at, DateTime
+        #   @return [Time]
+        required :declined_at, Time
 
         # @!attribute [rw] declined_transaction_id
         #   The id of the transaction for the declined transfer.
@@ -132,8 +129,7 @@ module Increase
 
         # @!attribute [rw] reason
         #   The reason for the transfer decline.
-        #   One of the constants defined in {Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason]
         required :reason, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason }
 
         # The reason for the transfer decline.

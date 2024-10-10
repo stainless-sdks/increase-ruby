@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account Number was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
@@ -50,21 +50,18 @@ module Increase
 
       # @!attribute [rw] status
       #   This indicates if payments can be made to the Account Number.
-      #   One of the constants defined in {Increase::Models::AccountNumber::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::AccountNumber::Status]
       required :status, enum: -> { Increase::Models::AccountNumber::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `account_number`.
-      #   One of the constants defined in {Increase::Models::AccountNumber::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::AccountNumber::Type]
       required :type, enum: -> { Increase::Models::AccountNumber::Type }
 
       class InboundACH < BaseModel
         # @!attribute [rw] debit_status
         #   Whether ACH debits are allowed against this Account Number. Note that they will still be declined if this is `allowed` if the Account Number is not active.
-        #   One of the constants defined in {Increase::Models::AccountNumber::InboundACH::DebitStatus}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus]
         required :debit_status, enum: -> { Increase::Models::AccountNumber::InboundACH::DebitStatus }
 
         # Whether ACH debits are allowed against this Account Number. Note that they will still be declined if this is `allowed` if the Account Number is not active.
@@ -80,8 +77,7 @@ module Increase
       class InboundChecks < BaseModel
         # @!attribute [rw] status
         #   How Increase should process checks with this account number printed on them.
-        #   One of the constants defined in {Increase::Models::AccountNumber::InboundChecks::Status}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::AccountNumber::InboundChecks::Status]
         required :status, enum: -> { Increase::Models::AccountNumber::InboundChecks::Status }
 
         # How Increase should process checks with this account number printed on them.

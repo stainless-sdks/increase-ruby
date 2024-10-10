@@ -20,18 +20,17 @@ module Increase
 
       # @!attribute [rw] completed_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending Transaction was completed.
-      #   @return [DateTime]
-      required :completed_at, DateTime
+      #   @return [Time]
+      required :completed_at, Time
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending Transaction occurred.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending Transaction's currency. This will match the currency on the Pending Transaction's Account.
-      #   One of the constants defined in {Increase::Models::PendingTransaction::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::PendingTransaction::Currency]
       required :currency, enum: -> { Increase::Models::PendingTransaction::Currency }
 
       # @!attribute [rw] description
@@ -46,8 +45,7 @@ module Increase
 
       # @!attribute [rw] route_type
       #   The type of the route this Pending Transaction came through.
-      #   One of the constants defined in {Increase::Models::PendingTransaction::RouteType}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::PendingTransaction::RouteType]
       required :route_type, enum: -> { Increase::Models::PendingTransaction::RouteType }
 
       # @!attribute [rw] source
@@ -57,14 +55,12 @@ module Increase
 
       # @!attribute [rw] status
       #   Whether the Pending Transaction has been confirmed and has an associated Transaction.
-      #   One of the constants defined in {Increase::Models::PendingTransaction::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::PendingTransaction::Status]
       required :status, enum: -> { Increase::Models::PendingTransaction::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `pending_transaction`.
-      #   One of the constants defined in {Increase::Models::PendingTransaction::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::PendingTransaction::Type]
       required :type, enum: -> { Increase::Models::PendingTransaction::Type }
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending Transaction's currency. This will match the currency on the Pending Transaction's Account.
@@ -120,8 +116,7 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
-        #   One of the constants defined in {Increase::Models::PendingTransaction::Source::Category}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::PendingTransaction::Source::Category]
         required :category, enum: -> { Increase::Models::PendingTransaction::Source::Category }
 
         # @!attribute [rw] check_deposit_instruction
@@ -166,8 +161,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
-          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency]
           required :currency,
                    enum: lambda {
                      Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency
@@ -220,8 +214,7 @@ module Increase
 
           # @!attribute [rw] actioner
           #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
-          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner]
           required :actioner,
                    enum: lambda {
                      Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner
@@ -239,8 +232,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
-          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency]
           required :currency,
                    enum: lambda {
                      Increase::Models::PendingTransaction::Source::CardAuthorization::Currency
@@ -253,15 +245,14 @@ module Increase
 
           # @!attribute [rw] direction
           #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
-          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Direction}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Direction]
           required :direction,
                    enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Direction }
 
           # @!attribute [rw] expires_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization will expire and the pending transaction will be released.
-          #   @return [DateTime]
-          required :expires_at, DateTime
+          #   @return [Time]
+          required :expires_at, Time
 
           # @!attribute [rw] merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
@@ -337,8 +328,7 @@ module Increase
 
           # @!attribute [rw] processing_category
           #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
-          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory]
           required :processing_category,
                    enum: lambda {
                      Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory
@@ -351,8 +341,7 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_authorization`.
-          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Type}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Type]
           required :type, enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Type }
 
           # @!attribute [rw] verification
@@ -406,8 +395,7 @@ module Increase
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
             #   The payment network used to process this card authorization.
-            #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category]
             required :category,
                      enum: lambda {
                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category
@@ -428,8 +416,7 @@ module Increase
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
-              #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator]
               required :electronic_commerce_indicator,
                        enum: lambda {
                          Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
@@ -437,8 +424,7 @@ module Increase
 
               # @!attribute [rw] point_of_service_entry_mode
               #   The method used to enter the cardholder's primary account number and card expiration date.
-              #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode]
               required :point_of_service_entry_mode,
                        enum: lambda {
                          Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
@@ -565,8 +551,7 @@ module Increase
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
               #   The result of verifying the Card Verification Code.
-              #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result]
               required :result,
                        enum: lambda {
                          Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result
@@ -608,8 +593,7 @@ module Increase
 
               # @!attribute [rw] result
               #   The address verification result returned to the card network.
-              #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result]
               required :result,
                        enum: lambda {
                          Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result
@@ -687,8 +671,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
-          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency]
           required :currency,
                    enum: lambda {
                      Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency
@@ -729,8 +712,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
-          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency]
           required :currency,
                    enum: lambda {
                      Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency
@@ -776,18 +758,17 @@ module Increase
 
           # @!attribute [rw] automatically_releases_at
           #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
-          #   @return [DateTime]
-          required :automatically_releases_at, DateTime
+          #   @return [Time]
+          required :automatically_releases_at, Time
 
           # @!attribute [rw] created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
-          #   @return [DateTime]
-          required :created_at, DateTime
+          #   @return [Time]
+          required :created_at, Time
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
-          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency]
           required :currency,
                    enum: lambda {
                      Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency
@@ -805,13 +786,12 @@ module Increase
 
           # @!attribute [rw] released_at
           #   When the hold was released (if it has been released).
-          #   @return [DateTime]
-          required :released_at, DateTime
+          #   @return [Time]
+          required :released_at, Time
 
           # @!attribute [rw] status
           #   The status of the hold.
-          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::InboundFundsHold::Status}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Status]
           required :status,
                    enum: lambda {
                      Increase::Models::PendingTransaction::Source::InboundFundsHold::Status
@@ -819,8 +799,7 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
-          #   One of the constants defined in {Increase::Models::PendingTransaction::Source::InboundFundsHold::Type}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Type]
           required :type, enum: -> { Increase::Models::PendingTransaction::Source::InboundFundsHold::Type }
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.

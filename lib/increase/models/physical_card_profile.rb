@@ -25,13 +25,12 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] creator
       #   The creator of this Physical Card Profile.
-      #   One of the constants defined in {Increase::Models::PhysicalCardProfile::Creator}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::PhysicalCardProfile::Creator]
       required :creator, enum: -> { Increase::Models::PhysicalCardProfile::Creator }
 
       # @!attribute [rw] description
@@ -56,14 +55,12 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Physical Card Profile.
-      #   One of the constants defined in {Increase::Models::PhysicalCardProfile::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::PhysicalCardProfile::Status]
       required :status, enum: -> { Increase::Models::PhysicalCardProfile::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `physical_card_profile`.
-      #   One of the constants defined in {Increase::Models::PhysicalCardProfile::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::PhysicalCardProfile::Type]
       required :type, enum: -> { Increase::Models::PhysicalCardProfile::Type }
 
       # The creator of this Physical Card Profile.

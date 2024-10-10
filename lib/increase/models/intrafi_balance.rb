@@ -15,8 +15,7 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account currency.
-      #   One of the constants defined in {Increase::Models::IntrafiBalance::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::IntrafiBalance::Currency]
       required :currency, enum: -> { Increase::Models::IntrafiBalance::Currency }
 
       # @!attribute [rw] effective_date
@@ -31,8 +30,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `intrafi_balance`.
-      #   One of the constants defined in {Increase::Models::IntrafiBalance::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::IntrafiBalance::Type]
       required :type, enum: -> { Increase::Models::IntrafiBalance::Type }
 
       class Balance < BaseModel

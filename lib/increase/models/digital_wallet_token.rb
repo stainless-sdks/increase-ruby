@@ -15,25 +15,22 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] status
       #   This indicates if payments can be made with the Digital Wallet Token.
-      #   One of the constants defined in {Increase::Models::DigitalWalletToken::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::DigitalWalletToken::Status]
       required :status, enum: -> { Increase::Models::DigitalWalletToken::Status }
 
       # @!attribute [rw] token_requestor
       #   The digital wallet app being used.
-      #   One of the constants defined in {Increase::Models::DigitalWalletToken::TokenRequestor}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::DigitalWalletToken::TokenRequestor]
       required :token_requestor, enum: -> { Increase::Models::DigitalWalletToken::TokenRequestor }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `digital_wallet_token`.
-      #   One of the constants defined in {Increase::Models::DigitalWalletToken::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::DigitalWalletToken::Type]
       required :type, enum: -> { Increase::Models::DigitalWalletToken::Type }
 
       # This indicates if payments can be made with the Digital Wallet Token.

@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class CardRefunds
+        # @param client [Increase::Client]
         def initialize(client:)
           @client = client
         end
@@ -15,15 +16,17 @@ module Increase
         # @option params [String] :transaction_id The identifier for the Transaction to refund. The Transaction's source must have
         #   a category of card_settlement.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Transaction]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/card_refunds"
-          req[:body] = params
-          req[:model] = Increase::Models::Transaction
+          req = {
+            method: :post,
+            path: "/simulations/card_refunds",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::Transaction
+          }
           @client.request(req, opts)
         end
       end

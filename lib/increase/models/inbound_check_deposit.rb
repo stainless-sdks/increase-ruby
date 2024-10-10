@@ -10,8 +10,8 @@ module Increase
 
       # @!attribute [rw] accepted_at
       #   If the Inbound Check Deposit was accepted, the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this took place.
-      #   @return [DateTime]
-      required :accepted_at, DateTime
+      #   @return [Time]
+      required :accepted_at, Time
 
       # @!attribute [rw] account_id
       #   The Account the check is being deposited against.
@@ -55,19 +55,18 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the deposit was attempted.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
-      #   One of the constants defined in {Increase::Models::InboundCheckDeposit::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundCheckDeposit::Currency]
       required :currency, enum: -> { Increase::Models::InboundCheckDeposit::Currency }
 
       # @!attribute [rw] declined_at
       #   If the Inbound Check Deposit was declined, the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this took place.
-      #   @return [DateTime]
-      required :declined_at, DateTime
+      #   @return [Time]
+      required :declined_at, Time
 
       # @!attribute [rw] declined_transaction_id
       #   If the deposit attempt has been rejected, the identifier of the Declined Transaction object created as a result of the failed deposit.
@@ -86,8 +85,7 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Inbound Check Deposit.
-      #   One of the constants defined in {Increase::Models::InboundCheckDeposit::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundCheckDeposit::Status]
       required :status, enum: -> { Increase::Models::InboundCheckDeposit::Status }
 
       # @!attribute [rw] transaction_id
@@ -97,15 +95,14 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_check_deposit`.
-      #   One of the constants defined in {Increase::Models::InboundCheckDeposit::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundCheckDeposit::Type]
       required :type, enum: -> { Increase::Models::InboundCheckDeposit::Type }
 
       class Adjustment < BaseModel
         # @!attribute [rw] adjusted_at
         #   The time at which the return adjustment was received.
-        #   @return [DateTime]
-        required :adjusted_at, DateTime
+        #   @return [Time]
+        required :adjusted_at, Time
 
         # @!attribute [rw] amount
         #   The amount of the adjustment.
@@ -126,6 +123,9 @@ module Increase
         class Reason < Increase::Enum
           # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
           LATE_RETURN = :late_return
+
+          # The check was deposited to the wrong payee and the depositing institution has reimbursed the funds with a Wrong Payee Credit.
+          WRONG_PAYEE_CREDIT = :wrong_payee_credit
         end
       end
 
@@ -153,14 +153,13 @@ module Increase
       class DepositReturn < BaseModel
         # @!attribute [rw] reason
         #   The reason the deposit was returned.
-        #   One of the constants defined in {Increase::Models::InboundCheckDeposit::DepositReturn::Reason}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::InboundCheckDeposit::DepositReturn::Reason]
         required :reason, enum: -> { Increase::Models::InboundCheckDeposit::DepositReturn::Reason }
 
         # @!attribute [rw] returned_at
         #   The time at which the deposit was returned.
-        #   @return [DateTime]
-        required :returned_at, DateTime
+        #   @return [Time]
+        required :returned_at, Time
 
         # @!attribute [rw] transaction_id
         #   The id of the transaction for the returned deposit.

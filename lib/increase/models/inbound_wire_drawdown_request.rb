@@ -45,8 +45,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the inbound wire drawdown requested was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being requested. Will always be "USD".
@@ -115,8 +115,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_wire_drawdown_request`.
-      #   One of the constants defined in {Increase::Models::InboundWireDrawdownRequest::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundWireDrawdownRequest::Type]
       required :type, enum: -> { Increase::Models::InboundWireDrawdownRequest::Type }
 
       # A constant representing the object's type. For this resource it will always be `inbound_wire_drawdown_request`.

@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class CardSettlements
+        # @param client [Increase::Client]
         def initialize(client:)
           @client = client
         end
@@ -18,18 +19,20 @@ module Increase
         # @option params [String] :card_id The identifier of the Card to create a settlement on.
         # @option params [String] :pending_transaction_id The identifier of the Pending Transaction for the Card Authorization you wish to
         #   settle.
-        # @option params [Integer] :amount The amount to be settled. This defaults to the amount of the Pending Transaction
+        # @option params [Integer, nil] :amount The amount to be settled. This defaults to the amount of the Pending Transaction
         #   being settled.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Transaction]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/card_settlements"
-          req[:body] = params
-          req[:model] = Increase::Models::Transaction
+          req = {
+            method: :post,
+            path: "/simulations/card_settlements",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::Transaction
+          }
           @client.request(req, opts)
         end
       end

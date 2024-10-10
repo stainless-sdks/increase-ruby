@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class AccountStatements
+        # @param client [Increase::Client]
         def initialize(client:)
           @client = client
         end
@@ -14,15 +15,17 @@ module Increase
         # @param params [Hash] Attributes to send in this request.
         # @option params [String] :account_id The identifier of the Account the statement is for.
         #
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::AccountStatement]
         def create(params = {}, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/account_statements"
-          req[:body] = params
-          req[:model] = Increase::Models::AccountStatement
+          req = {
+            method: :post,
+            path: "/simulations/account_statements",
+            body: params,
+            headers: {"Content-Type" => "application/json"},
+            model: Increase::Models::AccountStatement
+          }
           @client.request(req, opts)
         end
       end

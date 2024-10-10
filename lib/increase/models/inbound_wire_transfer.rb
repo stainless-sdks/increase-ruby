@@ -115,14 +115,12 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the transfer.
-      #   One of the constants defined in {Increase::Models::InboundWireTransfer::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundWireTransfer::Status]
       required :status, enum: -> { Increase::Models::InboundWireTransfer::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_wire_transfer`.
-      #   One of the constants defined in {Increase::Models::InboundWireTransfer::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundWireTransfer::Type]
       required :type, enum: -> { Increase::Models::InboundWireTransfer::Type }
 
       # The status of the transfer.

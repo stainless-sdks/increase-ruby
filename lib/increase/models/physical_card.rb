@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Physical Card was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
@@ -40,14 +40,12 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Physical Card.
-      #   One of the constants defined in {Increase::Models::PhysicalCard::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::PhysicalCard::Status]
       required :status, enum: -> { Increase::Models::PhysicalCard::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `physical_card`.
-      #   One of the constants defined in {Increase::Models::PhysicalCard::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::PhysicalCard::Type]
       required :type, enum: -> { Increase::Models::PhysicalCard::Type }
 
       class Cardholder < BaseModel
@@ -70,14 +68,12 @@ module Increase
 
         # @!attribute [rw] method_
         #   The shipping method.
-        #   One of the constants defined in {Increase::Models::PhysicalCard::Shipment::Method}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::PhysicalCard::Shipment::Method]
         required :method_, enum: -> { Increase::Models::PhysicalCard::Shipment::Method }
 
         # @!attribute [rw] status
         #   The status of this shipment.
-        #   One of the constants defined in {Increase::Models::PhysicalCard::Shipment::Status}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::PhysicalCard::Shipment::Status]
         required :status, enum: -> { Increase::Models::PhysicalCard::Shipment::Status }
 
         # @!attribute [rw] tracking
@@ -176,8 +172,8 @@ module Increase
 
           # @!attribute [rw] shipped_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the fulfillment provider marked the card as ready for pick-up by the shipment carrier.
-          #   @return [DateTime]
-          required :shipped_at, DateTime
+          #   @return [Time]
+          required :shipped_at, Time
         end
       end
 

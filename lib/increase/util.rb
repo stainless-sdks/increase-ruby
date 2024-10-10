@@ -33,22 +33,18 @@ module Increase
     end
 
     def self.coerce_integer(str)
-      Integer(str)
-    rescue StandardError
-      str
+      Integer(str, exception: false) || str
     end
 
     def self.coerce_float(str)
-      Float(str)
-    rescue StandardError
-      str
+      Float(str, exception: false) || str
     end
 
     def self.coerce_boolean(input)
       case input
-      when "true"
+      in "true"
         true
-      when "false"
+      in "false"
         false
       else
         input
@@ -73,6 +69,10 @@ module Increase
       else
         "#{uri.scheme}://#{uri.host}#{uri.port == uri.default_port ? '' : ":#{uri.port}"}"
       end
+    end
+
+    def self.normalized_headers(*headers)
+      {}.merge(*headers.compact).transform_keys(&:downcase)
     end
   end
 end

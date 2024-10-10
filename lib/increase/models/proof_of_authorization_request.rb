@@ -16,24 +16,23 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The time the Proof of Authorization Request was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] due_on
       #   The time the Proof of Authorization Request is due.
-      #   @return [DateTime]
-      required :due_on, DateTime
+      #   @return [Time]
+      required :due_on, Time
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `proof_of_authorization_request`.
-      #   One of the constants defined in {Increase::Models::ProofOfAuthorizationRequest::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequest::Type]
       required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequest::Type }
 
       # @!attribute [rw] updated_at
       #   The time the Proof of Authorization Request was last updated.
-      #   @return [DateTime]
-      required :updated_at, DateTime
+      #   @return [Time]
+      required :updated_at, Time
 
       class ACHTransfer < BaseModel
         # @!attribute [rw] id

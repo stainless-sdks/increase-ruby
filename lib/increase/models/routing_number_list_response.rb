@@ -5,8 +5,7 @@ module Increase
     class RoutingNumberListResponse < BaseModel
       # @!attribute [rw] ach_transfers
       #   This routing number's support for ACH Transfers.
-      #   One of the constants defined in {Increase::Models::RoutingNumberListResponse::ACHTransfers}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers]
       required :ach_transfers, enum: -> { Increase::Models::RoutingNumberListResponse::ACHTransfers }
 
       # @!attribute [rw] name_
@@ -16,8 +15,7 @@ module Increase
 
       # @!attribute [rw] real_time_payments_transfers
       #   This routing number's support for Real-Time Payments Transfers.
-      #   One of the constants defined in {Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers]
       required :real_time_payments_transfers,
                enum: -> { Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers }
 
@@ -28,14 +26,12 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `routing_number`.
-      #   One of the constants defined in {Increase::Models::RoutingNumberListResponse::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::RoutingNumberListResponse::Type]
       required :type, enum: -> { Increase::Models::RoutingNumberListResponse::Type }
 
       # @!attribute [rw] wire_transfers
       #   This routing number's support for Wire Transfers.
-      #   One of the constants defined in {Increase::Models::RoutingNumberListResponse::WireTransfers}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::RoutingNumberListResponse::WireTransfers]
       required :wire_transfers, enum: -> { Increase::Models::RoutingNumberListResponse::WireTransfers }
 
       # This routing number's support for ACH Transfers.

@@ -30,8 +30,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] created_by
       #   What object created the transfer, either via the API or the dashboard.
@@ -40,8 +40,7 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
-      #   One of the constants defined in {Increase::Models::AccountTransfer::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::AccountTransfer::Currency]
       required :currency, enum: -> { Increase::Models::AccountTransfer::Currency }
 
       # @!attribute [rw] description
@@ -66,8 +65,7 @@ module Increase
 
       # @!attribute [rw] network
       #   The transfer's network.
-      #   One of the constants defined in {Increase::Models::AccountTransfer::Network}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::AccountTransfer::Network]
       required :network, enum: -> { Increase::Models::AccountTransfer::Network }
 
       # @!attribute [rw] pending_transaction_id
@@ -77,8 +75,7 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
-      #   One of the constants defined in {Increase::Models::AccountTransfer::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::AccountTransfer::Status]
       required :status, enum: -> { Increase::Models::AccountTransfer::Status }
 
       # @!attribute [rw] transaction_id
@@ -88,15 +85,14 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `account_transfer`.
-      #   One of the constants defined in {Increase::Models::AccountTransfer::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::AccountTransfer::Type]
       required :type, enum: -> { Increase::Models::AccountTransfer::Type }
 
       class Approval < BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
-        #   @return [DateTime]
-        required :approved_at, DateTime
+        #   @return [Time]
+        required :approved_at, Time
 
         # @!attribute [rw] approved_by
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
@@ -107,8 +103,8 @@ module Increase
       class Cancellation < BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
-        #   @return [DateTime]
-        required :canceled_at, DateTime
+        #   @return [Time]
+        required :canceled_at, Time
 
         # @!attribute [rw] canceled_by
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
@@ -124,8 +120,7 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of object that created this transfer.
-        #   One of the constants defined in {Increase::Models::AccountTransfer::CreatedBy::Category}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::AccountTransfer::CreatedBy::Category]
         required :category, enum: -> { Increase::Models::AccountTransfer::CreatedBy::Category }
 
         # @!attribute [rw] oauth_application

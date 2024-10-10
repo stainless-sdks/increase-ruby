@@ -65,8 +65,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] created_by
       #   What object created the transfer, either via the API or the dashboard.
@@ -75,14 +75,12 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
-      #   One of the constants defined in {Increase::Models::ACHTransfer::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ACHTransfer::Currency]
       required :currency, enum: -> { Increase::Models::ACHTransfer::Currency }
 
       # @!attribute [rw] destination_account_holder
       #   The type of entity that owns the account to which the ACH Transfer is being sent.
-      #   One of the constants defined in {Increase::Models::ACHTransfer::DestinationAccountHolder}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ACHTransfer::DestinationAccountHolder]
       required :destination_account_holder,
                enum: lambda {
                  Increase::Models::ACHTransfer::DestinationAccountHolder
@@ -95,8 +93,7 @@ module Increase
 
       # @!attribute [rw] funding
       #   The type of the account to which the transfer will be sent.
-      #   One of the constants defined in {Increase::Models::ACHTransfer::Funding}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ACHTransfer::Funding]
       required :funding, enum: -> { Increase::Models::ACHTransfer::Funding }
 
       # @!attribute [rw] idempotency_key
@@ -121,8 +118,7 @@ module Increase
 
       # @!attribute [rw] network
       #   The transfer's network.
-      #   One of the constants defined in {Increase::Models::ACHTransfer::Network}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ACHTransfer::Network]
       required :network, enum: -> { Increase::Models::ACHTransfer::Network }
 
       # @!attribute [rw] notifications_of_change
@@ -153,8 +149,7 @@ module Increase
 
       # @!attribute [rw] standard_entry_class_code
       #   The Standard Entry Class (SEC) code to use for the transfer.
-      #   One of the constants defined in {Increase::Models::ACHTransfer::StandardEntryClassCode}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ACHTransfer::StandardEntryClassCode]
       required :standard_entry_class_code, enum: -> { Increase::Models::ACHTransfer::StandardEntryClassCode }
 
       # @!attribute [rw] statement_descriptor
@@ -164,8 +159,7 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
-      #   One of the constants defined in {Increase::Models::ACHTransfer::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ACHTransfer::Status]
       required :status, enum: -> { Increase::Models::ACHTransfer::Status }
 
       # @!attribute [rw] submission
@@ -180,8 +174,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `ach_transfer`.
-      #   One of the constants defined in {Increase::Models::ACHTransfer::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::ACHTransfer::Type]
       required :type, enum: -> { Increase::Models::ACHTransfer::Type }
 
       class Acknowledgement < BaseModel
@@ -194,8 +187,7 @@ module Increase
       class Addenda < BaseModel
         # @!attribute [rw] category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
-        #   One of the constants defined in {Increase::Models::ACHTransfer::Addenda::Category}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::ACHTransfer::Addenda::Category]
         required :category, enum: -> { Increase::Models::ACHTransfer::Addenda::Category }
 
         # @!attribute [rw] freeform
@@ -268,8 +260,8 @@ module Increase
       class Approval < BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
-        #   @return [DateTime]
-        required :approved_at, DateTime
+        #   @return [Time]
+        required :approved_at, Time
 
         # @!attribute [rw] approved_by
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
@@ -280,8 +272,8 @@ module Increase
       class Cancellation < BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
-        #   @return [DateTime]
-        required :canceled_at, DateTime
+        #   @return [Time]
+        required :canceled_at, Time
 
         # @!attribute [rw] canceled_by
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
@@ -297,8 +289,7 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of object that created this transfer.
-        #   One of the constants defined in {Increase::Models::ACHTransfer::CreatedBy::Category}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::ACHTransfer::CreatedBy::Category]
         required :category, enum: -> { Increase::Models::ACHTransfer::CreatedBy::Category }
 
         # @!attribute [rw] oauth_application
@@ -400,18 +391,17 @@ module Increase
 
         # @!attribute [rw] automatically_releases_at
         #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
-        #   @return [DateTime]
-        required :automatically_releases_at, DateTime
+        #   @return [Time]
+        required :automatically_releases_at, Time
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
-        #   @return [DateTime]
-        required :created_at, DateTime
+        #   @return [Time]
+        required :created_at, Time
 
         # @!attribute [rw] currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
-        #   One of the constants defined in {Increase::Models::ACHTransfer::InboundFundsHold::Currency}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Currency]
         required :currency, enum: -> { Increase::Models::ACHTransfer::InboundFundsHold::Currency }
 
         # @!attribute [rw] held_transaction_id
@@ -426,19 +416,17 @@ module Increase
 
         # @!attribute [rw] released_at
         #   When the hold was released (if it has been released).
-        #   @return [DateTime]
-        required :released_at, DateTime
+        #   @return [Time]
+        required :released_at, Time
 
         # @!attribute [rw] status
         #   The status of the hold.
-        #   One of the constants defined in {Increase::Models::ACHTransfer::InboundFundsHold::Status}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Status]
         required :status, enum: -> { Increase::Models::ACHTransfer::InboundFundsHold::Status }
 
         # @!attribute [rw] type
         #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
-        #   One of the constants defined in {Increase::Models::ACHTransfer::InboundFundsHold::Type}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Type]
         required :type, enum: -> { Increase::Models::ACHTransfer::InboundFundsHold::Type }
 
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
@@ -485,8 +473,7 @@ module Increase
       class NotificationsOfChange < BaseModel
         # @!attribute [rw] change_code
         #   The required type of change that is being signaled by the receiving financial institution.
-        #   One of the constants defined in {Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode]
         required :change_code, enum: -> { Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode }
 
         # @!attribute [rw] corrected_data
@@ -496,8 +483,8 @@ module Increase
 
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the notification occurred.
-        #   @return [DateTime]
-        required :created_at, DateTime
+        #   @return [Time]
+        required :created_at, Time
 
         # The required type of change that is being signaled by the receiving financial institution.
         class ChangeCode < Increase::Enum
@@ -568,8 +555,7 @@ module Increase
 
         # @!attribute [rw] settlement_schedule
         #   A schedule by which Increase will choose an effective date for the transfer.
-        #   One of the constants defined in {Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule]
         required :settlement_schedule,
                  enum: -> { Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule }
 
@@ -590,8 +576,8 @@ module Increase
       class Return < BaseModel
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-        #   @return [DateTime]
-        required :created_at, DateTime
+        #   @return [Time]
+        required :created_at, Time
 
         # @!attribute [rw] raw_return_reason_code
         #   The three character ACH return code, in the range R01 to R85.
@@ -600,8 +586,7 @@ module Increase
 
         # @!attribute [rw] return_reason_code
         #   Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
-        #   One of the constants defined in {Increase::Models::ACHTransfer::Return::ReturnReasonCode}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::ACHTransfer::Return::ReturnReasonCode]
         required :return_reason_code, enum: -> { Increase::Models::ACHTransfer::Return::ReturnReasonCode }
 
         # @!attribute [rw] trace_number
@@ -886,20 +871,19 @@ module Increase
 
         # @!attribute [rw] expected_funds_settlement_at
         #   When the transfer is expected to settle in the recipient's account. Credits may be available sooner, at the receiving banks discretion. The FedACH schedule is published [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
-        #   @return [DateTime]
-        required :expected_funds_settlement_at, DateTime
+        #   @return [Time]
+        required :expected_funds_settlement_at, Time
 
         # @!attribute [rw] expected_settlement_schedule
         #   The settlement schedule the transfer is expected to follow. This expectation takes into account the `effective_date`, `submitted_at`, and the amount of the transfer.
-        #   One of the constants defined in {Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule]
         required :expected_settlement_schedule,
                  enum: -> { Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule }
 
         # @!attribute [rw] submitted_at
         #   When the ACH transfer was sent to FedACH.
-        #   @return [DateTime]
-        required :submitted_at, DateTime
+        #   @return [Time]
+        required :submitted_at, Time
 
         # @!attribute [rw] trace_number
         #   A 15 digit number recorded in the Nacha file and transmitted to the receiving bank. Along with the amount, date, and originating routing number, this can be used to identify the ACH transfer at the receiving bank. ACH trace numbers are not unique, but are [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).

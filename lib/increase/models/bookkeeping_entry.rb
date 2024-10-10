@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   When the entry set was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] entry_set_id
       #   The identifier for the Account the Entry belongs to.
@@ -30,8 +30,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `bookkeeping_entry`.
-      #   One of the constants defined in {Increase::Models::BookkeepingEntry::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::BookkeepingEntry::Type]
       required :type, enum: -> { Increase::Models::BookkeepingEntry::Type }
 
       # A constant representing the object's type. For this resource it will always be `bookkeeping_entry`.

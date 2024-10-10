@@ -20,8 +20,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] disputed_transaction_id
       #   The identifier of the Transaction that was disputed.
@@ -50,14 +50,12 @@ module Increase
 
       # @!attribute [rw] status
       #   The results of the Dispute investigation.
-      #   One of the constants defined in {Increase::Models::CardDispute::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CardDispute::Status]
       required :status, enum: -> { Increase::Models::CardDispute::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `card_dispute`.
-      #   One of the constants defined in {Increase::Models::CardDispute::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CardDispute::Type]
       required :type, enum: -> { Increase::Models::CardDispute::Type }
 
       # @!attribute [rw] win
@@ -68,8 +66,8 @@ module Increase
       class Acceptance < BaseModel
         # @!attribute [rw] accepted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was accepted.
-        #   @return [DateTime]
-        required :accepted_at, DateTime
+        #   @return [Time]
+        required :accepted_at, Time
 
         # @!attribute [rw] card_dispute_id
         #   The identifier of the Card Dispute that was accepted.
@@ -95,8 +93,8 @@ module Increase
 
         # @!attribute [rw] lost_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was lost.
-        #   @return [DateTime]
-        required :lost_at, DateTime
+        #   @return [Time]
+        required :lost_at, Time
 
         # @!attribute [rw] transaction_id
         #   The identifier of the Transaction that was created to debit the disputed funds from your account.
@@ -117,8 +115,8 @@ module Increase
 
         # @!attribute [rw] rejected_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was rejected.
-        #   @return [DateTime]
-        required :rejected_at, DateTime
+        #   @return [Time]
+        required :rejected_at, Time
       end
 
       # The results of the Dispute investigation.
@@ -152,8 +150,8 @@ module Increase
 
         # @!attribute [rw] won_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was won.
-        #   @return [DateTime]
-        required :won_at, DateTime
+        #   @return [Time]
+        required :won_at, Time
       end
     end
   end

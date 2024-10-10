@@ -10,13 +10,13 @@ module Increase
 
       # @!attribute [rw] created_at
       #   When the entry set was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] date
       #   The timestamp of the entry set.
-      #   @return [DateTime]
-      required :date, DateTime
+      #   @return [Time]
+      required :date, Time
 
       # @!attribute [rw] entries
       #   The entries.
@@ -35,8 +35,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `bookkeeping_entry_set`.
-      #   One of the constants defined in {Increase::Models::BookkeepingEntrySet::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::BookkeepingEntrySet::Type]
       required :type, enum: -> { Increase::Models::BookkeepingEntrySet::Type }
 
       class Entry < BaseModel

@@ -45,8 +45,8 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] created_by
       #   What object created the transfer, either via the API or the dashboard.
@@ -55,14 +55,12 @@ module Increase
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
-      #   One of the constants defined in {Increase::Models::CheckTransfer::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CheckTransfer::Currency]
       required :currency, enum: -> { Increase::Models::CheckTransfer::Currency }
 
       # @!attribute [rw] fulfillment_method
       #   Whether Increase will print and mail the check or if you will do it yourself.
-      #   One of the constants defined in {Increase::Models::CheckTransfer::FulfillmentMethod}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CheckTransfer::FulfillmentMethod]
       required :fulfillment_method, enum: -> { Increase::Models::CheckTransfer::FulfillmentMethod }
 
       # @!attribute [rw] idempotency_key
@@ -97,8 +95,7 @@ module Increase
 
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
-      #   One of the constants defined in {Increase::Models::CheckTransfer::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CheckTransfer::Status]
       required :status, enum: -> { Increase::Models::CheckTransfer::Status }
 
       # @!attribute [rw] stop_payment_request
@@ -118,15 +115,14 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `check_transfer`.
-      #   One of the constants defined in {Increase::Models::CheckTransfer::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::CheckTransfer::Type]
       required :type, enum: -> { Increase::Models::CheckTransfer::Type }
 
       class Approval < BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
-        #   @return [DateTime]
-        required :approved_at, DateTime
+        #   @return [Time]
+        required :approved_at, Time
 
         # @!attribute [rw] approved_by
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
@@ -137,8 +133,8 @@ module Increase
       class Cancellation < BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
-        #   @return [DateTime]
-        required :canceled_at, DateTime
+        #   @return [Time]
+        required :canceled_at, Time
 
         # @!attribute [rw] canceled_by
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
@@ -154,8 +150,7 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of object that created this transfer.
-        #   One of the constants defined in {Increase::Models::CheckTransfer::CreatedBy::Category}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckTransfer::CreatedBy::Category]
         required :category, enum: -> { Increase::Models::CheckTransfer::CreatedBy::Category }
 
         # @!attribute [rw] oauth_application
@@ -240,8 +235,8 @@ module Increase
 
         # @!attribute [rw] mailed_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check was mailed.
-        #   @return [DateTime]
-        required :mailed_at, DateTime
+        #   @return [Time]
+        required :mailed_at, Time
       end
 
       class PhysicalCheck < BaseModel
@@ -348,8 +343,7 @@ module Increase
         class TrackingUpdate < BaseModel
           # @!attribute [rw] category
           #   The type of tracking event.
-          #   One of the constants defined in {Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category]
           required :category,
                    enum: lambda {
                      Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category
@@ -357,8 +351,8 @@ module Increase
 
           # @!attribute [rw] created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the tracking event took place.
-          #   @return [DateTime]
-          required :created_at, DateTime
+          #   @return [Time]
+          required :created_at, Time
 
           # The type of tracking event.
           class Category < Increase::Enum
@@ -404,14 +398,13 @@ module Increase
       class StopPaymentRequest < BaseModel
         # @!attribute [rw] reason
         #   The reason why this transfer was stopped.
-        #   One of the constants defined in {Increase::Models::CheckTransfer::StopPaymentRequest::Reason}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Reason]
         required :reason, enum: -> { Increase::Models::CheckTransfer::StopPaymentRequest::Reason }
 
         # @!attribute [rw] requested_at
         #   The time the stop-payment was requested.
-        #   @return [DateTime]
-        required :requested_at, DateTime
+        #   @return [Time]
+        required :requested_at, Time
 
         # @!attribute [rw] transfer_id
         #   The ID of the check transfer that was stopped.
@@ -420,8 +413,7 @@ module Increase
 
         # @!attribute [rw] type
         #   A constant representing the object's type. For this resource it will always be `check_transfer_stop_payment_request`.
-        #   One of the constants defined in {Increase::Models::CheckTransfer::StopPaymentRequest::Type}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Type]
         required :type, enum: -> { Increase::Models::CheckTransfer::StopPaymentRequest::Type }
 
         # The reason why this transfer was stopped.
@@ -448,8 +440,8 @@ module Increase
       class Submission < BaseModel
         # @!attribute [rw] submitted_at
         #   When this check transfer was submitted to our check printer.
-        #   @return [DateTime]
-        required :submitted_at, DateTime
+        #   @return [Time]
+        required :submitted_at, Time
       end
 
       class ThirdParty < BaseModel

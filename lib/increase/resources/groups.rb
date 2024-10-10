@@ -3,20 +3,22 @@
 module Increase
   module Resources
     class Groups
+      # @param client [Increase::Client]
       def initialize(client:)
         @client = client
       end
 
       # Returns details for the currently authenticated Group.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Group]
       def retrieve(opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/groups/current"
-        req[:model] = Increase::Models::Group
+        req = {
+          method: :get,
+          path: "/groups/current",
+          model: Increase::Models::Group
+        }
         @client.request(req, opts)
       end
     end

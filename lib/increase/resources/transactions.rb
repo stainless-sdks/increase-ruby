@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Transactions
+      # @param client [Increase::Client]
       def initialize(client:)
         @client = client
       end
@@ -10,39 +11,41 @@ module Increase
       # Retrieve a Transaction
       #
       # @param transaction_id [String] The identifier of the Transaction to retrieve.
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Transaction]
       def retrieve(transaction_id, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/transactions/#{transaction_id}"
-        req[:model] = Increase::Models::Transaction
+        req = {
+          method: :get,
+          path: "/transactions/#{transaction_id}",
+          model: Increase::Models::Transaction
+        }
         @client.request(req, opts)
       end
 
       # List Transactions
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :account_id Filter Transactions for those belonging to the specified Account.
-      # @option params [Category] :category
-      # @option params [CreatedAt] :created_at
-      # @option params [String] :cursor Return the page of entries after this one.
-      # @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      # @option params [String, nil] :account_id Filter Transactions for those belonging to the specified Account.
+      # @option params [Category, nil] :category
+      # @option params [CreatedAt, nil] :created_at
+      # @option params [String, nil] :cursor Return the page of entries after this one.
+      # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
-      # @option params [String] :route_id Filter Transactions for those belonging to the specified route. This could be a
+      # @option params [String, nil] :route_id Filter Transactions for those belonging to the specified route. This could be a
       #   Card ID or an Account Number ID.
       #
-      # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Transaction>]
       def list(params = {}, opts = {})
-        req = {}
-        req[:method] = :get
-        req[:path] = "/transactions"
-        req[:query] = params
-        req[:page] = Increase::Page
-        req[:model] = Increase::Models::Transaction
+        req = {
+          method: :get,
+          path: "/transactions",
+          query: params,
+          page: Increase::Page,
+          model: Increase::Models::Transaction
+        }
         @client.request(req, opts)
       end
     end

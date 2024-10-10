@@ -15,18 +15,17 @@ module Increase
 
       # @!attribute [rw] automatically_releases_at
       #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
-      #   @return [DateTime]
-      required :automatically_releases_at, DateTime
+      #   @return [Time]
+      required :automatically_releases_at, Time
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
-      #   One of the constants defined in {Increase::Models::InboundFundsHoldReleaseResponse::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundFundsHoldReleaseResponse::Currency]
       required :currency, enum: -> { Increase::Models::InboundFundsHoldReleaseResponse::Currency }
 
       # @!attribute [rw] held_transaction_id
@@ -41,19 +40,17 @@ module Increase
 
       # @!attribute [rw] released_at
       #   When the hold was released (if it has been released).
-      #   @return [DateTime]
-      required :released_at, DateTime
+      #   @return [Time]
+      required :released_at, Time
 
       # @!attribute [rw] status
       #   The status of the hold.
-      #   One of the constants defined in {Increase::Models::InboundFundsHoldReleaseResponse::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundFundsHoldReleaseResponse::Status]
       required :status, enum: -> { Increase::Models::InboundFundsHoldReleaseResponse::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
-      #   One of the constants defined in {Increase::Models::InboundFundsHoldReleaseResponse::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::InboundFundsHoldReleaseResponse::Type]
       required :type, enum: -> { Increase::Models::InboundFundsHoldReleaseResponse::Type }
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.

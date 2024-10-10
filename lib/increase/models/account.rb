@@ -10,24 +10,22 @@ module Increase
 
       # @!attribute [rw] bank
       #   The bank the Account is with.
-      #   One of the constants defined in {Increase::Models::Account::Bank}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Account::Bank]
       required :bank, enum: -> { Increase::Models::Account::Bank }
 
       # @!attribute [rw] closed_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was closed.
-      #   @return [DateTime]
-      required :closed_at, DateTime
+      #   @return [Time]
+      required :closed_at, Time
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.
-      #   One of the constants defined in {Increase::Models::Account::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Account::Currency]
       required :currency, enum: -> { Increase::Models::Account::Currency }
 
       # @!attribute [rw] entity_id
@@ -72,14 +70,12 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Account.
-      #   One of the constants defined in {Increase::Models::Account::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Account::Status]
       required :status, enum: -> { Increase::Models::Account::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `account`.
-      #   One of the constants defined in {Increase::Models::Account::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Account::Type]
       required :type, enum: -> { Increase::Models::Account::Type }
 
       # The bank the Account is with.

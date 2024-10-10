@@ -20,13 +20,12 @@ module Increase
 
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Transaction occurred.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined Transaction's currency. This will match the currency on the Declined Transaction's Account.
-      #   One of the constants defined in {Increase::Models::DeclinedTransaction::Currency}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::DeclinedTransaction::Currency]
       required :currency, enum: -> { Increase::Models::DeclinedTransaction::Currency }
 
       # @!attribute [rw] description
@@ -41,8 +40,7 @@ module Increase
 
       # @!attribute [rw] route_type
       #   The type of the route this Declined Transaction came through.
-      #   One of the constants defined in {Increase::Models::DeclinedTransaction::RouteType}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::DeclinedTransaction::RouteType]
       required :route_type, enum: -> { Increase::Models::DeclinedTransaction::RouteType }
 
       # @!attribute [rw] source
@@ -52,8 +50,7 @@ module Increase
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `declined_transaction`.
-      #   One of the constants defined in {Increase::Models::DeclinedTransaction::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::DeclinedTransaction::Type]
       required :type, enum: -> { Increase::Models::DeclinedTransaction::Type }
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined Transaction's currency. This will match the currency on the Declined Transaction's Account.
@@ -102,8 +99,7 @@ module Increase
 
         # @!attribute [rw] category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
-        #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::Category}
-        #   @return [Symbol]
+        #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::Category]
         required :category, enum: -> { Increase::Models::DeclinedTransaction::Source::Category }
 
         # @!attribute [rw] check_decline
@@ -171,8 +167,7 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the ACH transfer was declined.
-          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason]
           required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason }
 
           # @!attribute [rw] receiver_id_number
@@ -192,8 +187,7 @@ module Increase
 
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `ach_decline`.
-          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::ACHDecline::Type}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::ACHDecline::Type]
           required :type, enum: -> { Increase::Models::DeclinedTransaction::Source::ACHDecline::Type }
 
           # Why the ACH transfer was declined.
@@ -264,8 +258,7 @@ module Increase
 
           # @!attribute [rw] actioner
           #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
-          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner]
           required :actioner,
                    enum: lambda {
                      Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner
@@ -283,8 +276,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
-          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Currency]
           required :currency,
                    enum: lambda {
                      Increase::Models::DeclinedTransaction::Source::CardDecline::Currency
@@ -299,6 +291,14 @@ module Increase
           #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay purchase), the identifier of the token that was used.
           #   @return [String]
           required :digital_wallet_token_id, String
+
+          # @!attribute [rw] direction
+          #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Direction]
+          required :direction,
+                   enum: lambda {
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::Direction
+                   }
 
           # @!attribute [rw] merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
@@ -369,8 +369,7 @@ module Increase
 
           # @!attribute [rw] processing_category
           #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
-          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory]
           required :processing_category,
                    enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory }
 
@@ -381,8 +380,7 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the transaction was declined.
-          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Reason}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Reason]
           required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Reason }
 
           # @!attribute [rw] verification
@@ -426,11 +424,19 @@ module Increase
             USD = :USD
           end
 
+          # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+          class Direction < Increase::Enum
+            # A regular card authorization where funds are debited from the cardholder.
+            SETTLEMENT = :settlement
+
+            # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+            REFUND = :refund
+          end
+
           class NetworkDetails < BaseModel
             # @!attribute [rw] category
             #   The payment network used to process this card authorization.
-            #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category}
-            #   @return [Symbol]
+            #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category]
             required :category,
                      enum: lambda {
                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category
@@ -453,8 +459,7 @@ module Increase
             class Visa < BaseModel
               # @!attribute [rw] electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
-              #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator]
               required :electronic_commerce_indicator,
                        enum: lambda {
                          Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator
@@ -462,8 +467,7 @@ module Increase
 
               # @!attribute [rw] point_of_service_entry_mode
               #   The method used to enter the cardholder's primary account number and card expiration date.
-              #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode]
               required :point_of_service_entry_mode,
                        enum: lambda {
                          Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode
@@ -633,8 +637,7 @@ module Increase
             class CardVerificationCode < BaseModel
               # @!attribute [rw] result
               #   The result of verifying the Card Verification Code.
-              #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result]
               required :result,
                        enum: lambda {
                          Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result
@@ -676,8 +679,7 @@ module Increase
 
               # @!attribute [rw] result
               #   The address verification result returned to the card network.
-              #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result}
-              #   @return [Symbol]
+              #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result]
               required :result,
                        enum: lambda {
                          Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result
@@ -764,8 +766,7 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the check was declined.
-          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason]
           required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason }
 
           # Why the check was declined.
@@ -836,8 +837,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
-          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency]
           required :currency,
                    enum: -> { Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency }
 
@@ -848,15 +848,14 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the check deposit was rejected.
-          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason]
           required :reason,
                    enum: -> { Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason }
 
           # @!attribute [rw] rejected_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was rejected.
-          #   @return [DateTime]
-          required :rejected_at, DateTime
+          #   @return [Time]
+          required :rejected_at, Time
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
           class Currency < Increase::Enum
@@ -926,8 +925,7 @@ module Increase
 
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
-          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency]
           required :currency,
                    enum: lambda {
                      Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency
@@ -950,8 +948,7 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the transfer was declined.
-          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason]
           required :reason,
                    enum: lambda {
                      Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason
@@ -1023,8 +1020,7 @@ module Increase
 
           # @!attribute [rw] reason
           #   Why the wire transfer was declined.
-          #   One of the constants defined in {Increase::Models::DeclinedTransaction::Source::WireDecline::Reason}
-          #   @return [Symbol]
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::WireDecline::Reason]
           required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::WireDecline::Reason }
 
           # Why the wire transfer was declined.

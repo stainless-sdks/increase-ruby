@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class CheckDeposits
+        # @param client [Increase::Client]
         def initialize(client:)
           @client = client
         end
@@ -13,14 +14,15 @@ module Increase
         #   of `pending`.
         #
         # @param check_deposit_id [String] The identifier of the Check Deposit you wish to reject.
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CheckDeposit]
         def reject(check_deposit_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/check_deposits/#{check_deposit_id}/reject"
-          req[:model] = Increase::Models::CheckDeposit
+          req = {
+            method: :post,
+            path: "/simulations/check_deposits/#{check_deposit_id}/reject",
+            model: Increase::Models::CheckDeposit
+          }
           @client.request(req, opts)
         end
 
@@ -28,14 +30,15 @@ module Increase
         #   must first have a `status` of `submitted`.
         #
         # @param check_deposit_id [String] The identifier of the Check Deposit you wish to return.
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CheckDeposit]
         def return_(check_deposit_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/check_deposits/#{check_deposit_id}/return"
-          req[:model] = Increase::Models::CheckDeposit
+          req = {
+            method: :post,
+            path: "/simulations/check_deposits/#{check_deposit_id}/return",
+            model: Increase::Models::CheckDeposit
+          }
           @client.request(req, opts)
         end
 
@@ -43,14 +46,15 @@ module Increase
         #   Reserve. This Check Deposit must first have a `status` of `pending`.
         #
         # @param check_deposit_id [String] The identifier of the Check Deposit you wish to submit.
-        # @param opts [Hash|RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CheckDeposit]
         def submit(check_deposit_id, opts = {})
-          req = {}
-          req[:method] = :post
-          req[:path] = "/simulations/check_deposits/#{check_deposit_id}/submit"
-          req[:model] = Increase::Models::CheckDeposit
+          req = {
+            method: :post,
+            path: "/simulations/check_deposits/#{check_deposit_id}/submit",
+            model: Increase::Models::CheckDeposit
+          }
           @client.request(req, opts)
         end
       end

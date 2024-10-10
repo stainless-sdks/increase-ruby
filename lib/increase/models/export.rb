@@ -10,14 +10,13 @@ module Increase
 
       # @!attribute [rw] category
       #   The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
-      #   One of the constants defined in {Increase::Models::Export::Category}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Export::Category]
       required :category, enum: -> { Increase::Models::Export::Category }
 
       # @!attribute [rw] created_at
       #   The time the Export was created.
-      #   @return [DateTime]
-      required :created_at, DateTime
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute [rw] file_download_url
       #   A URL at which the Export's file can be downloaded. This will be present when the Export's status transitions to `complete`.
@@ -36,14 +35,12 @@ module Increase
 
       # @!attribute [rw] status
       #   The status of the Export.
-      #   One of the constants defined in {Increase::Models::Export::Status}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Export::Status]
       required :status, enum: -> { Increase::Models::Export::Status }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `export`.
-      #   One of the constants defined in {Increase::Models::Export::Type}
-      #   @return [Symbol]
+      #   @return [Symbol, Increase::Models::Export::Type]
       required :type, enum: -> { Increase::Models::Export::Type }
 
       # The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
