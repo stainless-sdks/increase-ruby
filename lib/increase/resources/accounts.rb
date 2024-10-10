@@ -81,6 +81,7 @@ module Increase
       # @option params [String, nil] :informational_entity_id Filter Accounts for those belonging to the specified Entity as informational.
       # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #   objects.
+      # @option params [String, nil] :program_id Filter Accounts for those in a specific Program.
       # @option params [Symbol, Status, nil] :status Filter Accounts for those with the specified status.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
