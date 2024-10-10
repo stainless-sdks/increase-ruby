@@ -55,11 +55,6 @@ module Increase
     # @return [Integer]
     option :max_retries
 
-    # @!attribute timeout
-    # Request timeout in seconds.
-    # @return [Integer]
-    option :timeout
-
     # Lookup an option previously set on this instance.
     #
     # @return [Object]
