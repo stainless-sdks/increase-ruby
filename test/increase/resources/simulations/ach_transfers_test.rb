@@ -27,6 +27,11 @@ class Increase::Test::Resources::Simulations::ACHTransfersTest < Minitest::Test
     assert_kind_of(Increase::Models::ACHTransfer, response)
   end
 
+  def test_settle
+    response = @increase.simulations.ach_transfers.settle("ach_transfer_id")
+    assert_kind_of(Increase::Models::ACHTransfer, response)
+  end
+
   def test_submit
     response = @increase.simulations.ach_transfers.submit("ach_transfer_id")
     assert_kind_of(Increase::Models::ACHTransfer, response)
