@@ -356,6 +356,15 @@ module Increase
 
           # The type of tracking event.
           class Category < Increase::Enum
+            # The check is in transit.
+            IN_TRANSIT = :in_transit
+
+            # The check has been processed for delivery.
+            PROCESSED_FOR_DELIVERY = :processed_for_delivery
+
+            # The check has been delivered.
+            DELIVERED = :delivered
+
             # Delivery failed and the check was returned to sender.
             RETURNED_TO_SENDER = :returned_to_sender
           end
