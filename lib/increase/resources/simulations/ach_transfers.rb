@@ -77,6 +77,24 @@ module Increase
           @client.request(req, opts)
         end
 
+        # Simulates the settlement of an [ACH Transfer](#ach-transfers) by the Federal
+        #   Reserve. This transfer must first have a `status` of `submitted`. Without this
+        #   simulation the transfer will eventually settle on its own following the same
+        #   Federal Reserve timeline as in production.
+        #
+        # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to become settled.
+        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        #
+        # @return [Increase::Models::ACHTransfer]
+        def settle(ach_transfer_id, opts = {})
+          req = {
+            method: :post,
+            path: "/simulations/ach_transfers/#{ach_transfer_id}/settle",
+            model: Increase::Models::ACHTransfer
+          }
+          @client.request(req, opts)
+        end
+
         # Simulates the submission of an [ACH Transfer](#ach-transfers) to the Federal
         #   Reserve. This transfer must first have a `status` of `pending_approval` or
         #   `pending_submission`. In production, Increase submits ACH Transfers to the
