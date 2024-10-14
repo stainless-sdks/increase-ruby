@@ -3375,6 +3375,9 @@ module Increase
           # Card Authorization: details will be under the `card_authorization` object.
           CARD_AUTHORIZATION = :card_authorization
 
+          # Card Authentication: details will be under the `card_authentication` object.
+          CARD_AUTHENTICATION = :card_authentication
+
           # Card Validation: details will be under the `card_validation` object.
           CARD_VALIDATION = :card_validation
 
