@@ -147,6 +147,11 @@ module Increase
       #   @return [String]
       required :routing_number, String
 
+      # @!attribute [rw] settlement
+      #   A subhash containing information about when and how the transfer settled at the Federal Reserve.
+      #   @return [Increase::Models::ACHTransfer::Settlement]
+      required :settlement, -> { Increase::Models::ACHTransfer::Settlement }
+
       # @!attribute [rw] standard_entry_class_code
       #   The Standard Entry Class (SEC) code to use for the transfer.
       #   @return [Symbol, Increase::Models::ACHTransfer::StandardEntryClassCode]
@@ -816,6 +821,13 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN = :untimely_return
         end
+      end
+
+      class Settlement < BaseModel
+        # @!attribute [rw] settled_at
+        #   When the funds for this transfer have settled at the destination bank at the Federal Reserve.
+        #   @return [Time]
+        required :settled_at, Time
       end
 
       # The Standard Entry Class (SEC) code to use for the transfer.
