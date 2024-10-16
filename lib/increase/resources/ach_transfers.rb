@@ -12,7 +12,7 @@ module Increase
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id The Increase identifier for the account that will send the transfer.
-      # @option params [Integer] :amount The transfer amount in cents. A positive amount originates a credit transfer
+      # @option params [Integer] :amount The transfer amount in USD cents. A positive amount originates a credit transfer
       #   pushing funds to the receiving account. A negative amount originates a debit
       #   transfer pulling funds from the receiving account.
       # @option params [String] :statement_descriptor A description you choose to give the transfer. This will be saved with the

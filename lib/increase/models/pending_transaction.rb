@@ -196,7 +196,7 @@ module Increase
 
         class ACHTransferInstruction < BaseModel
           # @!attribute [rw] amount
-          #   The pending amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
+          #   The pending amount in USD cents.
           #   @return [Integer]
           required :amount, Integer
 
@@ -655,7 +655,7 @@ module Increase
 
         class CheckDepositInstruction < BaseModel
           # @!attribute [rw] amount
-          #   The pending amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
+          #   The pending amount in USD cents.
           #   @return [Integer]
           required :amount, Integer
 
@@ -706,7 +706,7 @@ module Increase
 
         class CheckTransferInstruction < BaseModel
           # @!attribute [rw] amount
-          #   The pending amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
+          #   The transfer amount in USD cents.
           #   @return [Integer]
           required :amount, Integer
 
@@ -840,7 +840,7 @@ module Increase
 
         class RealTimePaymentsTransferInstruction < BaseModel
           # @!attribute [rw] amount
-          #   The pending amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
+          #   The transfer amount in USD cents.
           #   @return [Integer]
           required :amount, Integer
 
@@ -857,7 +857,7 @@ module Increase
           required :account_number, String
 
           # @!attribute [rw] amount
-          #   The pending amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
+          #   The transfer amount in USD cents.
           #   @return [Integer]
           required :amount, Integer
 

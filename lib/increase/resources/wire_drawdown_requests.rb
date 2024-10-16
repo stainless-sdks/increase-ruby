@@ -12,7 +12,7 @@ module Increase
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_number_id The Account Number to which the recipient should send funds.
-      # @option params [Integer] :amount The amount requested from the recipient, in cents.
+      # @option params [Integer] :amount The amount requested from the recipient, in USD cents.
       # @option params [String] :message_to_recipient A message the recipient will see as part of the request.
       # @option params [String] :recipient_account_number The drawdown request's recipient's account number.
       # @option params [String] :recipient_name The drawdown request's recipient's name.
