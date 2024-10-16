@@ -12,7 +12,7 @@ module Increase
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id The identifier for the account that will send the transfer.
-      # @option params [Integer] :amount The transfer amount in cents.
+      # @option params [Integer] :amount The transfer amount in USD cents.
       # @option params [String] :beneficiary_name The beneficiary's name.
       # @option params [String] :message_to_recipient The message that will show on the recipient's bank statement.
       # @option params [String, nil] :account_number The account number for the destination account.

@@ -12,7 +12,7 @@ module Increase
       #
       # @param params [Hash] Attributes to send in this request.
       # @option params [String] :account_id The identifier for the account that will send the transfer.
-      # @option params [Integer] :amount The transfer amount in cents.
+      # @option params [Integer] :amount The transfer amount in USD cents.
       # @option params [String] :source_account_number_id The identifier of the Account Number from which to send the transfer and print
       #   on the check.
       # @option params [Symbol, FulfillmentMethod, nil] :fulfillment_method Whether Increase will print and mail the check or if you will do it yourself.

@@ -136,7 +136,7 @@ module Increase
           required :id, String
 
           # @!attribute [rw] amount
-          #   The declined amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
+          #   The declined amount in USD cents.
           #   @return [Integer]
           required :amount, Integer
 
@@ -735,7 +735,7 @@ module Increase
 
         class CheckDecline < BaseModel
           # @!attribute [rw] amount
-          #   The declined amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
+          #   The declined amount in USD cents.
           #   @return [Integer]
           required :amount, Integer
 

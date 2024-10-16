@@ -14,7 +14,7 @@ module Increase
       required :account_id, String
 
       # @!attribute [rw] amount
-      #   The deposited amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
+      #   The deposited amount in USD cents.
       #   @return [Integer]
       required :amount, Integer
 
@@ -239,7 +239,7 @@ module Increase
 
       class DepositReturn < BaseModel
         # @!attribute [rw] amount
-        #   The amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
+        #   The returned amount in USD cents.
         #   @return [Integer]
         required :amount, Integer
 

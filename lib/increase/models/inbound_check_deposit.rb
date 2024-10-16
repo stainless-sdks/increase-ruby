@@ -29,7 +29,7 @@ module Increase
       required :adjustments, Increase::ArrayOf.new(-> { Increase::Models::InboundCheckDeposit::Adjustment })
 
       # @!attribute [rw] amount
-      #   The deposited amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
+      #   The deposited amount in USD cents.
       #   @return [Integer]
       required :amount, Integer
 
