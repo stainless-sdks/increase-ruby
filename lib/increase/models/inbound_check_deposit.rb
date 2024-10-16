@@ -127,6 +127,17 @@ module Increase
           # The check was deposited to the wrong payee and the depositing institution has reimbursed the funds with a Wrong Payee Credit.
           WRONG_PAYEE_CREDIT = :wrong_payee_credit
         end
+
+        # Create a new instance of Adjustment from a Hash of raw data.
+        #
+        # @overload initialize(adjusted_at: nil, amount: nil, reason: nil, transaction_id: nil)
+        # @param adjusted_at [String] The time at which the return adjustment was received.
+        # @param amount [Integer] The amount of the adjustment.
+        # @param reason [String] The reason for the adjustment.
+        # @param transaction_id [String] The id of the transaction for the adjustment.
+        def initialize(data = {})
+          super
+        end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
@@ -183,6 +194,16 @@ module Increase
           # The check was not endorsed by the payee.
           ENDORSEMENT_IRREGULAR = :endorsement_irregular
         end
+
+        # Create a new instance of DepositReturn from a Hash of raw data.
+        #
+        # @overload initialize(reason: nil, returned_at: nil, transaction_id: nil)
+        # @param reason [String] The reason the deposit was returned.
+        # @param returned_at [String] The time at which the deposit was returned.
+        # @param transaction_id [String] The id of the transaction for the returned deposit.
+        def initialize(data = {})
+          super
+        end
       end
 
       # The status of the Inbound Check Deposit.
@@ -206,6 +227,45 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `inbound_check_deposit`.
       class Type < Increase::Enum
         INBOUND_CHECK_DEPOSIT = :inbound_check_deposit
+      end
+
+      # Create a new instance of InboundCheckDeposit from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, accepted_at: nil, account_id: nil, account_number_id: nil, adjustments: nil, amount: nil, back_image_file_id: nil, bank_of_first_deposit_routing_number: nil, check_number: nil, check_transfer_id: nil, created_at: nil, currency: nil, declined_at: nil, declined_transaction_id: nil, deposit_return: nil, front_image_file_id: nil, status: nil, transaction_id: nil, type: nil)
+      # @param id [String] The deposit's identifier.
+      # @param accepted_at [String] If the Inbound Check Deposit was accepted, the
+      #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
+      #   took place.
+      # @param account_id [String] The Account the check is being deposited against.
+      # @param account_number_id [String] The Account Number the check is being deposited against.
+      # @param adjustments [Array<Object>] If the deposit or the return was adjusted by the sending institution, this will
+      #   contain details of the adjustments.
+      # @param amount [Integer] The deposited amount in USD cents.
+      # @param back_image_file_id [String] The ID for the File containing the image of the back of the check.
+      # @param bank_of_first_deposit_routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+      #   bank depositing this check. In some rare cases, this is not transmitted via
+      #   Check21 and the value will be null.
+      # @param check_number [String] The check number printed on the check being deposited.
+      # @param check_transfer_id [String] If this deposit is for an existing Check Transfer, the identifier of that Check
+      #   Transfer.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the deposit was attempted.
+      # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
+      # @param declined_at [String] If the Inbound Check Deposit was declined, the
+      #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
+      #   took place.
+      # @param declined_transaction_id [String] If the deposit attempt has been rejected, the identifier of the Declined
+      #   Transaction object created as a result of the failed deposit.
+      # @param deposit_return [Object] If you requested a return of this deposit, this will contain details of the
+      #   return.
+      # @param front_image_file_id [String] The ID for the File containing the image of the front of the check.
+      # @param status [String] The status of the Inbound Check Deposit.
+      # @param transaction_id [String] If the deposit attempt has been accepted, the identifier of the Transaction
+      #   object created as a result of the successful deposit.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `inbound_check_deposit`.
+      def initialize(data = {})
+        super
       end
     end
   end

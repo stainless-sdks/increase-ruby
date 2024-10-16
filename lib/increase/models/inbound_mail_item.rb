@@ -71,6 +71,24 @@ module Increase
       class Type < Increase::Enum
         INBOUND_MAIL_ITEM = :inbound_mail_item
       end
+
+      # Create a new instance of InboundMailItem from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, created_at: nil, file_id: nil, lockbox_id: nil, recipient_name: nil, rejection_reason: nil, status: nil, type: nil)
+      # @param id [String] The Inbound Mail Item identifier.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
+      #   Mail Item was created.
+      # @param file_id [String] The identifier for the File containing the scanned contents of the mail item.
+      # @param lockbox_id [String] The identifier for the Lockbox that received this mail item. For mail items that
+      #   could not be processed due to an invalid address, this will be null.
+      # @param recipient_name [String] The recipient name as written on the mail item.
+      # @param rejection_reason [String] If the mail item has been rejected, why it was rejected.
+      # @param status [String] If the mail item has been processed.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `inbound_mail_item`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

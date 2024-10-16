@@ -147,6 +147,31 @@ module Increase
           # Gross price invoice level
           GROSS_PRICE_INVOICE_LEVEL = :gross_price_invoice_level
         end
+
+        # Create a new instance of Invoice from a Hash of raw data.
+        #
+        # @overload initialize(discount_amount: nil, discount_currency: nil, discount_treatment_code: nil, duty_tax_amount: nil, duty_tax_currency: nil, order_date: nil, shipping_amount: nil, shipping_currency: nil, shipping_destination_country_code: nil, shipping_destination_postal_code: nil, shipping_source_postal_code: nil, shipping_tax_amount: nil, shipping_tax_currency: nil, shipping_tax_rate: nil, tax_treatments: nil, unique_value_added_tax_invoice_reference: nil)
+        # @param discount_amount [Integer] Discount given to cardholder.
+        # @param discount_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
+        # @param discount_treatment_code [String] Indicates how the merchant applied the discount.
+        # @param duty_tax_amount [Integer] Amount of duty taxes.
+        # @param duty_tax_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the duty tax.
+        # @param order_date [String] Date the order was taken.
+        # @param shipping_amount [Integer] The shipping cost.
+        # @param shipping_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
+        #   cost.
+        # @param shipping_destination_country_code [String] Country code of the shipping destination.
+        # @param shipping_destination_postal_code [String] Postal code of the shipping destination.
+        # @param shipping_source_postal_code [String] Postal code of the location being shipped from.
+        # @param shipping_tax_amount [Integer] Taxes paid for freight and shipping.
+        # @param shipping_tax_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
+        #   tax.
+        # @param shipping_tax_rate [String] Tax rate for freight and shipping.
+        # @param tax_treatments [String] Indicates how the merchant applied taxes.
+        # @param unique_value_added_tax_invoice_reference [String] Value added tax invoice reference number.
+        def initialize(data = {})
+          super
+        end
       end
 
       class LineItem < BaseModel
@@ -260,11 +285,51 @@ module Increase
           # Tax calculated on pre discount line item total
           TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL = :tax_calculated_on_pre_discount_line_item_total
         end
+
+        # Create a new instance of LineItem from a Hash of raw data.
+        #
+        # @overload initialize(id: nil, detail_indicator: nil, discount_amount: nil, discount_currency: nil, discount_treatment_code: nil, item_commodity_code: nil, item_descriptor: nil, item_quantity: nil, product_code: nil, sales_tax_amount: nil, sales_tax_currency: nil, sales_tax_rate: nil, total_amount: nil, total_amount_currency: nil, unit_cost: nil, unit_cost_currency: nil, unit_of_measure_code: nil)
+        # @param id [String] The Card Purchase Supplement Line Item identifier.
+        # @param detail_indicator [String] Indicates the type of line item.
+        # @param discount_amount [Integer] Discount amount for this specific line item.
+        # @param discount_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
+        # @param discount_treatment_code [String] Indicates how the merchant applied the discount for this specific line item.
+        # @param item_commodity_code [String] Code used to categorize the purchase item.
+        # @param item_descriptor [String] Description of the purchase item.
+        # @param item_quantity [String] The number of units of the product being purchased.
+        # @param product_code [String] Code used to categorize the product being purchased.
+        # @param sales_tax_amount [Integer] Sales tax amount for this line item.
+        # @param sales_tax_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax
+        #   assessed.
+        # @param sales_tax_rate [String] Sales tax rate for this line item.
+        # @param total_amount [Integer] Total amount of all line items.
+        # @param total_amount_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
+        #   amount.
+        # @param unit_cost [String] Cost of line item per unit of measure, in major units.
+        # @param unit_cost_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the unit cost.
+        # @param unit_of_measure_code [String] Code indicating unit of measure (gallons, etc.).
+        def initialize(data = {})
+          super
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be `card_purchase_supplement`.
       class Type < Increase::Enum
         CARD_PURCHASE_SUPPLEMENT = :card_purchase_supplement
+      end
+
+      # Create a new instance of CardPurchaseSupplement from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, card_payment_id: nil, invoice: nil, line_items: nil, transaction_id: nil, type: nil)
+      # @param id [String] The Card Purchase Supplement identifier.
+      # @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
+      # @param invoice [Object] Invoice-level information about the payment.
+      # @param line_items [Array<Object>] Line item information, such as individual products purchased.
+      # @param transaction_id [String] The ID of the transaction.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `card_purchase_supplement`.
+      def initialize(data = {})
+        super
       end
     end
   end

@@ -37,6 +37,21 @@ module Increase
       class Type < Increase::Enum
         BOOKKEEPING_ENTRY = :bookkeeping_entry
       end
+
+      # Create a new instance of BookkeepingEntry from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, account_id: nil, amount: nil, created_at: nil, entry_set_id: nil, type: nil)
+      # @param id [String] The entry identifier.
+      # @param account_id [String] The identifier for the Account the Entry belongs to.
+      # @param amount [Integer] The Entry amount in the minor unit of its currency. For dollars, for example,
+      #   this is cents.
+      # @param created_at [String] When the entry set was created.
+      # @param entry_set_id [String] The identifier for the Account the Entry belongs to.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `bookkeeping_entry`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

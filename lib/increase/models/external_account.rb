@@ -107,6 +107,28 @@ module Increase
         # The External Account is verified.
         VERIFIED = :verified
       end
+
+      # Create a new instance of ExternalAccount from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, account_holder: nil, account_number: nil, created_at: nil, description: nil, funding: nil, idempotency_key: nil, routing_number: nil, status: nil, type: nil, verification_status: nil)
+      # @param id [String] The External Account's identifier.
+      # @param account_holder [String] The type of entity that owns the External Account.
+      # @param account_number [String] The destination account number.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the External Account was created.
+      # @param description [String] The External Account's description for display purposes.
+      # @param funding [String] The type of the account to which the transfer will be sent.
+      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN).
+      # @param status [String] The External Account's status.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `external_account`.
+      # @param verification_status [String] If you have verified ownership of the External Account.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

@@ -80,6 +80,27 @@ module Increase
       class Type < Increase::Enum
         EXPORT = :export
       end
+
+      # Create a new instance of Export from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, category: nil, created_at: nil, file_download_url: nil, file_id: nil, idempotency_key: nil, status: nil, type: nil)
+      # @param id [String] The Export identifier.
+      # @param category [String] The category of the Export. We may add additional possible values for this enum
+      #   over time; your application should be able to handle that gracefully.
+      # @param created_at [String] The time the Export was created.
+      # @param file_download_url [String] A URL at which the Export's file can be downloaded. This will be present when
+      #   the Export's status transitions to `complete`.
+      # @param file_id [String] The File containing the contents of the Export. This will be present when the
+      #   Export's status transitions to `complete`.
+      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @param status [String] The status of the Export.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `export`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

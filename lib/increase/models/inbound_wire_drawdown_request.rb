@@ -122,6 +122,44 @@ module Increase
       class Type < Increase::Enum
         INBOUND_WIRE_DRAWDOWN_REQUEST = :inbound_wire_drawdown_request
       end
+
+      # Create a new instance of InboundWireDrawdownRequest from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, amount: nil, beneficiary_account_number: nil, beneficiary_address_line1: nil, beneficiary_address_line2: nil, beneficiary_address_line3: nil, beneficiary_name: nil, beneficiary_routing_number: nil, created_at: nil, currency: nil, message_to_recipient: nil, originator_account_number: nil, originator_address_line1: nil, originator_address_line2: nil, originator_address_line3: nil, originator_name: nil, originator_routing_number: nil, originator_to_beneficiary_information_line1: nil, originator_to_beneficiary_information_line2: nil, originator_to_beneficiary_information_line3: nil, originator_to_beneficiary_information_line4: nil, recipient_account_number_id: nil, type: nil)
+      # @param id [String] The Wire drawdown request identifier.
+      # @param amount [Integer] The amount being requested in cents.
+      # @param beneficiary_account_number [String] The drawdown request's beneficiary's account number.
+      # @param beneficiary_address_line1 [String] Line 1 of the drawdown request's beneficiary's address.
+      # @param beneficiary_address_line2 [String] Line 2 of the drawdown request's beneficiary's address.
+      # @param beneficiary_address_line3 [String] Line 3 of the drawdown request's beneficiary's address.
+      # @param beneficiary_name [String] The drawdown request's beneficiary's name.
+      # @param beneficiary_routing_number [String] The drawdown request's beneficiary's routing number.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the inbound wire drawdown requested was created.
+      # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
+      #   requested. Will always be "USD".
+      # @param message_to_recipient [String] A message from the drawdown request's originator.
+      # @param originator_account_number [String] The drawdown request's originator's account number.
+      # @param originator_address_line1 [String] Line 1 of the drawdown request's originator's address.
+      # @param originator_address_line2 [String] Line 2 of the drawdown request's originator's address.
+      # @param originator_address_line3 [String] Line 3 of the drawdown request's originator's address.
+      # @param originator_name [String] The drawdown request's originator's name.
+      # @param originator_routing_number [String] The drawdown request's originator's routing number.
+      # @param originator_to_beneficiary_information_line1 [String] Line 1 of the information conveyed from the originator of the message to the
+      #   beneficiary.
+      # @param originator_to_beneficiary_information_line2 [String] Line 2 of the information conveyed from the originator of the message to the
+      #   beneficiary.
+      # @param originator_to_beneficiary_information_line3 [String] Line 3 of the information conveyed from the originator of the message to the
+      #   beneficiary.
+      # @param originator_to_beneficiary_information_line4 [String] Line 4 of the information conveyed from the originator of the message to the
+      #   beneficiary.
+      # @param recipient_account_number_id [String] The Account Number from which the recipient of this request is being requested
+      #   to send funds.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `inbound_wire_drawdown_request`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

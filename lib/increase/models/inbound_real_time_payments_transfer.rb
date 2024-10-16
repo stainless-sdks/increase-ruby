@@ -93,6 +93,15 @@ module Increase
         #   The id of the transaction for the confirmed transfer.
         #   @return [String]
         required :transaction_id, String
+
+        # Create a new instance of Confirmation from a Hash of raw data.
+        #
+        # @overload initialize(confirmed_at: nil, transaction_id: nil)
+        # @param confirmed_at [String] The time at which the transfer was confirmed.
+        # @param transaction_id [String] The id of the transaction for the confirmed transfer.
+        def initialize(data = {})
+          super
+        end
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
@@ -152,6 +161,16 @@ module Increase
           # Your account is not enabled to receive Real-Time Payments transfers.
           REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
         end
+
+        # Create a new instance of Decline from a Hash of raw data.
+        #
+        # @overload initialize(declined_at: nil, declined_transaction_id: nil, reason: nil)
+        # @param declined_at [String] The time at which the transfer was declined.
+        # @param declined_transaction_id [String] The id of the transaction for the declined transfer.
+        # @param reason [String] The reason for the transfer decline.
+        def initialize(data = {})
+          super
+        end
       end
 
       # The lifecycle status of the transfer.
@@ -172,6 +191,33 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `inbound_real_time_payments_transfer`.
       class Type < Increase::Enum
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER = :inbound_real_time_payments_transfer
+      end
+
+      # Create a new instance of InboundRealTimePaymentsTransfer from a Hash of raw
+      #   data.
+      #
+      # @overload initialize(id: nil, account_id: nil, account_number_id: nil, amount: nil, confirmation: nil, created_at: nil, creditor_name: nil, currency: nil, debtor_account_number: nil, debtor_name: nil, debtor_routing_number: nil, decline: nil, remittance_information: nil, status: nil, transaction_identification: nil, type: nil)
+      # @param id [String] The inbound Real-Time Payments transfer's identifier.
+      # @param account_id [String] The Account to which the transfer was sent.
+      # @param account_number_id [String] The identifier of the Account Number to which this transfer was sent.
+      # @param amount [Integer] The amount in USD cents.
+      # @param confirmation [Object] If your transfer is confirmed, this will contain details of the confirmation.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the transfer was created.
+      # @param creditor_name [String] The name the sender of the transfer specified as the recipient of the transfer.
+      # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
+      #   currency. This will always be "USD" for a Real-Time Payments transfer.
+      # @param debtor_account_number [String] The account number of the account that sent the transfer.
+      # @param debtor_name [String] The name provided by the sender of the transfer.
+      # @param debtor_routing_number [String] The routing number of the account that sent the transfer.
+      # @param decline [Object] If your transfer is declined, this will contain details of the decline.
+      # @param remittance_information [String] Additional information included with the transfer.
+      # @param status [String] The lifecycle status of the transfer.
+      # @param transaction_identification [String] The Real-Time Payments network identification of the transfer.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `inbound_real_time_payments_transfer`.
+      def initialize(data = {})
+        super
       end
     end
   end

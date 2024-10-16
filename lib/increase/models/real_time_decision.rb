@@ -92,6 +92,18 @@ module Increase
           # Deny the authentication attempt.
           DENY = :deny
         end
+
+        # Create a new instance of CardAuthentication from a Hash of raw data.
+        #
+        # @overload initialize(account_id: nil, card_id: nil, decision: nil, upcoming_card_payment_id: nil)
+        # @param account_id [String] The identifier of the Account the card belongs to.
+        # @param card_id [String] The identifier of the Card that is being tokenized.
+        # @param decision [String] Whether or not the authentication attempt was approved.
+        # @param upcoming_card_payment_id [String] The identifier of the Card Payment this authentication attempt will belong to.
+        #   Available in the API once the card authentication has completed.
+        def initialize(data = {})
+          super
+        end
       end
 
       class CardAuthenticationChallenge < BaseModel
@@ -127,6 +139,19 @@ module Increase
 
           # Your application was unable to deliver the one-time code to the cardholder.
           FAILURE = :failure
+        end
+
+        # Create a new instance of CardAuthenticationChallenge from a Hash of raw data.
+        #
+        # @overload initialize(account_id: nil, card_id: nil, card_payment_id: nil, one_time_code: nil, result: nil)
+        # @param account_id [String] The identifier of the Account the card belongs to.
+        # @param card_id [String] The identifier of the Card that is being tokenized.
+        # @param card_payment_id [String] The identifier of the Card Payment this authentication challenge attempt belongs
+        #   to.
+        # @param one_time_code [String] The one-time code delivered to the cardholder.
+        # @param result [String] Whether or not the challenge was delivered to the cardholder.
+        def initialize(data = {})
+          super
         end
       end
 
@@ -373,6 +398,27 @@ module Increase
               # Contact chip card, without card verification value
               INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
             end
+
+            # Create a new instance of Visa from a Hash of raw data.
+            #
+            # @overload initialize(electronic_commerce_indicator: nil, point_of_service_entry_mode: nil)
+            # @param electronic_commerce_indicator [String] For electronic commerce transactions, this identifies the level of security used
+            #   in obtaining the customer's payment credential. For mail or telephone order
+            #   transactions, identifies the type of mail or telephone order.
+            # @param point_of_service_entry_mode [String] The method used to enter the cardholder's primary account number and card
+            #   expiration date.
+            def initialize(data = {})
+              super
+            end
+          end
+
+          # Create a new instance of NetworkDetails from a Hash of raw data.
+          #
+          # @overload initialize(category: nil, visa: nil)
+          # @param category [String] The payment network used to process this card authorization.
+          # @param visa [Object] Fields specific to the `visa` network.
+          def initialize(data = {})
+            super
           end
         end
 
@@ -391,6 +437,20 @@ module Increase
           #   A globally unique transaction identifier provided by the card network, used across multiple life-cycle requests.
           #   @return [String]
           required :transaction_id, String
+
+          # Create a new instance of NetworkIdentifiers from a Hash of raw data.
+          #
+          # @overload initialize(retrieval_reference_number: nil, trace_number: nil, transaction_id: nil)
+          # @param retrieval_reference_number [String] A life-cycle identifier used across e.g., an authorization and a reversal.
+          #   Expected to be unique per acquirer within a window of time. For some card
+          #   networks the retrieval reference number includes the trace counter.
+          # @param trace_number [String] A counter used to verify an individual authorization. Expected to be unique per
+          #   acquirer within a window of time.
+          # @param transaction_id [String] A globally unique transaction identifier provided by the card network, used
+          #   across multiple life-cycle requests.
+          def initialize(data = {})
+            super
+          end
         end
 
         # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
@@ -453,6 +513,27 @@ module Increase
             #   The identifier of the card authorization this request is attempting to increment.
             #   @return [String]
             required :original_card_authorization_id, String
+
+            # Create a new instance of IncrementalAuthorization from a Hash of raw data.
+            #
+            # @overload initialize(card_payment_id: nil, original_card_authorization_id: nil)
+            # @param card_payment_id [String] The card payment for this authorization and increment.
+            # @param original_card_authorization_id [String] The identifier of the card authorization this request is attempting to
+            #   increment.
+            def initialize(data = {})
+              super
+            end
+          end
+
+          # Create a new instance of RequestDetails from a Hash of raw data.
+          #
+          # @overload initialize(category: nil, incremental_authorization: nil, initial_authorization: nil)
+          # @param category [String] The type of this request (e.g., an initial authorization or an incremental
+          #   authorization).
+          # @param incremental_authorization [Object] Fields specific to the category `incremental_authorization`.
+          # @param initial_authorization [Object] Fields specific to the category `initial_authorization`.
+          def initialize(data = {})
+            super
           end
         end
 
@@ -488,6 +569,14 @@ module Increase
 
               # The card verification code did not match the one on file.
               NO_MATCH = :no_match
+            end
+
+            # Create a new instance of CardVerificationCode from a Hash of raw data.
+            #
+            # @overload initialize(result: nil)
+            # @param result [String] The result of verifying the Card Verification Code.
+            def initialize(data = {})
+              super
             end
           end
 
@@ -540,7 +629,76 @@ module Increase
               # Postal code and street address do not match.
               NO_MATCH = :no_match
             end
+
+            # Create a new instance of CardholderAddress from a Hash of raw data.
+            #
+            # @overload initialize(actual_line1: nil, actual_postal_code: nil, provided_line1: nil, provided_postal_code: nil, result: nil)
+            # @param actual_line1 [String] Line 1 of the address on file for the cardholder.
+            # @param actual_postal_code [String] The postal code of the address on file for the cardholder.
+            # @param provided_line1 [String] The cardholder address line 1 provided for verification in the authorization
+            #   request.
+            # @param provided_postal_code [String] The postal code provided for verification in the authorization request.
+            # @param result [String] The address verification result returned to the card network.
+            def initialize(data = {})
+              super
+            end
           end
+
+          # Create a new instance of Verification from a Hash of raw data.
+          #
+          # @overload initialize(card_verification_code: nil, cardholder_address: nil)
+          # @param card_verification_code [Object] Fields related to verification of the Card Verification Code, a 3-digit code on
+          #   the back of the card.
+          # @param cardholder_address [Object] Cardholder address provided in the authorization request and the address on file
+          #   we verified it against.
+          def initialize(data = {})
+            super
+          end
+        end
+
+        # Create a new instance of CardAuthorization from a Hash of raw data.
+        #
+        # @overload initialize(account_id: nil, card_id: nil, decision: nil, digital_wallet_token_id: nil, direction: nil, merchant_acceptor_id: nil, merchant_category_code: nil, merchant_city: nil, merchant_country: nil, merchant_descriptor: nil, merchant_postal_code: nil, merchant_state: nil, network_details: nil, network_identifiers: nil, network_risk_score: nil, physical_card_id: nil, presentment_amount: nil, presentment_currency: nil, processing_category: nil, request_details: nil, settlement_amount: nil, settlement_currency: nil, upcoming_card_payment_id: nil, verification: nil)
+        # @param account_id [String] The identifier of the Account the authorization will debit.
+        # @param card_id [String] The identifier of the Card that is being authorized.
+        # @param decision [String] Whether or not the authorization was approved.
+        # @param digital_wallet_token_id [String] If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+        #   purchase), the identifier of the token that was used.
+        # @param direction [String] The direction describes the direction the funds will move, either from the
+        #   cardholder to the merchant or from the merchant to the cardholder.
+        # @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card
+        #   is transacting with.
+        # @param merchant_category_code [String] The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+        #   card is transacting with.
+        # @param merchant_city [String] The city the merchant resides in.
+        # @param merchant_country [String] The country the merchant resides in.
+        # @param merchant_descriptor [String] The merchant descriptor of the merchant the card is transacting with.
+        # @param merchant_postal_code [String] The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+        #   ZIP code, where the first 5 and last 4 are separated by a dash.
+        # @param merchant_state [String] The state the merchant resides in.
+        # @param network_details [Object] Fields specific to the `network`.
+        # @param network_identifiers [Object] Network-specific identifiers for a specific request or transaction.
+        # @param network_risk_score [Integer] The risk score generated by the card network. For Visa this is the Visa Advanced
+        #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
+        # @param physical_card_id [String] If the authorization was made in-person with a physical card, the Physical Card
+        #   that was used.
+        # @param presentment_amount [Integer] The amount of the attempted authorization in the currency the card user sees at
+        #   the time of purchase, in the minor unit of that currency. For dollars, for
+        #   example, this is cents.
+        # @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the
+        #   user sees at the time of purchase.
+        # @param processing_category [String] The processing category describes the intent behind the authorization, such as
+        #   whether it was used for bill payments or an automatic fuel dispenser.
+        # @param request_details [Object] Fields specific to the type of request, such as an incremental authorization.
+        # @param settlement_amount [Integer] The amount of the attempted authorization in the currency it will be settled in.
+        #   This currency is the same as that of the Account the card belongs to.
+        # @param settlement_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the
+        #   transaction will be settled in.
+        # @param upcoming_card_payment_id [String] The identifier of the Card Payment this authorization will belong to. Available
+        #   in the API once the card authorization has completed.
+        # @param verification [Object] Fields related to verification of cardholder-provided values.
+        def initialize(data = {})
+          super
         end
       end
 
@@ -634,6 +792,21 @@ module Increase
           # Your application failed to deliver the one-time passcode to the cardholder.
           FAILURE = :failure
         end
+
+        # Create a new instance of DigitalWalletAuthentication from a Hash of raw data.
+        #
+        # @overload initialize(card_id: nil, channel: nil, digital_wallet: nil, email: nil, one_time_passcode: nil, phone: nil, result: nil)
+        # @param card_id [String] The identifier of the Card that is being tokenized.
+        # @param channel [String] The channel to send the card user their one-time passcode.
+        # @param digital_wallet [String] The digital wallet app being used.
+        # @param email [String] The email to send the one-time passcode to if `channel` is equal to `email`.
+        # @param one_time_passcode [String] The one-time passcode to send the card user.
+        # @param phone [String] The phone number to send the one-time passcode to if `channel` is equal to
+        #   `sms`.
+        # @param result [String] Whether your application successfully delivered the one-time passcode.
+        def initialize(data = {})
+          super
+        end
       end
 
       class DigitalWalletToken < BaseModel
@@ -681,6 +854,20 @@ module Increase
           # Unknown
           UNKNOWN = :unknown
         end
+
+        # Create a new instance of DigitalWalletToken from a Hash of raw data.
+        #
+        # @overload initialize(card_id: nil, card_profile_id: nil, decision: nil, digital_wallet: nil)
+        # @param card_id [String] The identifier of the Card that is being tokenized.
+        # @param card_profile_id [String] The identifier of the Card Profile that was set via the real time decision. This
+        #   will be null until the real time decision is responded to or if the real time
+        #   decision did not set a card profile.
+        # @param decision [String] Whether or not the provisioning request was approved. This will be null until
+        #   the real time decision is responded to.
+        # @param digital_wallet [String] The digital wallet app being used.
+        def initialize(data = {})
+          super
+        end
       end
 
       # The status of the Real-Time Decision.
@@ -698,6 +885,27 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `real_time_decision`.
       class Type < Increase::Enum
         REAL_TIME_DECISION = :real_time_decision
+      end
+
+      # Create a new instance of RealTimeDecision from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, card_authentication: nil, card_authentication_challenge: nil, card_authorization: nil, category: nil, created_at: nil, digital_wallet_authentication: nil, digital_wallet_token: nil, status: nil, timeout_at: nil, type: nil)
+      # @param id [String] The Real-Time Decision identifier.
+      # @param card_authentication [Object] Fields related to a 3DS authentication attempt.
+      # @param card_authentication_challenge [Object] Fields related to a 3DS authentication attempt.
+      # @param card_authorization [Object] Fields related to a card authorization.
+      # @param category [String] The category of the Real-Time Decision.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the Real-Time Decision was created.
+      # @param digital_wallet_authentication [Object] Fields related to a digital wallet authentication attempt.
+      # @param digital_wallet_token [Object] Fields related to a digital wallet token provisioning attempt.
+      # @param status [String] The status of the Real-Time Decision.
+      # @param timeout_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   your application can no longer respond to the Real-Time Decision.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `real_time_decision`.
+      def initialize(data = {})
+        super
       end
     end
   end

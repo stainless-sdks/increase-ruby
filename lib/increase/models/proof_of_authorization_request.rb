@@ -39,11 +39,33 @@ module Increase
         #   The ACH Transfer identifier.
         #   @return [String]
         required :id, String
+
+        # Create a new instance of ACHTransfer from a Hash of raw data.
+        #
+        # @overload initialize(id: nil)
+        # @param id [String] The ACH Transfer identifier.
+        def initialize(data = {})
+          super
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be `proof_of_authorization_request`.
       class Type < Increase::Enum
         PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
+      end
+
+      # Create a new instance of ProofOfAuthorizationRequest from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, ach_transfers: nil, created_at: nil, due_on: nil, type: nil, updated_at: nil)
+      # @param id [String] The Proof of Authorization Request identifier.
+      # @param ach_transfers [Array<Object>] The ACH Transfers associated with the request.
+      # @param created_at [String] The time the Proof of Authorization Request was created.
+      # @param due_on [String] The time the Proof of Authorization Request is due.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `proof_of_authorization_request`.
+      # @param updated_at [String] The time the Proof of Authorization Request was last updated.
+      def initialize(data = {})
+        super
       end
     end
   end

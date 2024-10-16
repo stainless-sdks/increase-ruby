@@ -87,6 +87,29 @@ module Increase
       class Type < Increase::Enum
         INBOUND_FUNDS_HOLD = :inbound_funds_hold
       end
+
+      # Create a new instance of InboundFundsHoldReleaseResponse from a Hash of raw
+      #   data.
+      #
+      # @overload initialize(id: nil, amount: nil, automatically_releases_at: nil, created_at: nil, currency: nil, held_transaction_id: nil, pending_transaction_id: nil, released_at: nil, status: nil, type: nil)
+      # @param id [String] The Inbound Funds Hold identifier.
+      # @param amount [Integer] The held amount in the minor unit of the account's currency. For dollars, for
+      #   example, this is cents.
+      # @param automatically_releases_at [String] When the hold will be released automatically. Certain conditions may cause it to
+      #   be released before this time.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+      #   was created.
+      # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+      #   currency.
+      # @param held_transaction_id [String] The ID of the Transaction for which funds were held.
+      # @param pending_transaction_id [String] The ID of the Pending Transaction representing the held funds.
+      # @param released_at [String] When the hold was released (if it has been released).
+      # @param status [String] The status of the hold.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `inbound_funds_hold`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

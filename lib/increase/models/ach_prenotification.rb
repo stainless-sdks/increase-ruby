@@ -172,6 +172,22 @@ module Increase
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
         end
+
+        # Create a new instance of NotificationsOfChange from a Hash of raw data.
+        #
+        # @overload initialize(change_code: nil, corrected_data: nil, created_at: nil)
+        # @param change_code [String] The required type of change that is being signaled by the receiving financial
+        #   institution.
+        # @param corrected_data [String] The corrected data that should be used in future ACHs to this account. This may
+        #   contain the suggested new account number or routing number. When the
+        #   `change_code` is `incorrect_transaction_code`, this field contains an integer.
+        #   Numbers starting with a 2 encourage changing the `funding` parameter to
+        #   checking; numbers starting with a 3 encourage changing to savings.
+        # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   the notification occurred.
+        def initialize(data = {})
+          super
+        end
       end
 
       class PrenotificationReturn < BaseModel
@@ -398,6 +414,16 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN = :untimely_return
         end
+
+        # Create a new instance of PrenotificationReturn from a Hash of raw data.
+        #
+        # @overload initialize(created_at: nil, return_reason_code: nil)
+        # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   the Prenotification was returned.
+        # @param return_reason_code [String] Why the Prenotification was returned.
+        def initialize(data = {})
+          super
+        end
       end
 
       # The lifecycle status of the ACH Prenotification.
@@ -418,6 +444,34 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `ach_prenotification`.
       class Type < Increase::Enum
         ACH_PRENOTIFICATION = :ach_prenotification
+      end
+
+      # Create a new instance of ACHPrenotification from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, account_number: nil, addendum: nil, company_descriptive_date: nil, company_discretionary_data: nil, company_entry_description: nil, company_name: nil, created_at: nil, credit_debit_indicator: nil, effective_date: nil, idempotency_key: nil, notifications_of_change: nil, prenotification_return: nil, routing_number: nil, status: nil, type: nil)
+      # @param id [String] The ACH Prenotification's identifier.
+      # @param account_number [String] The destination account number.
+      # @param addendum [String] Additional information for the recipient.
+      # @param company_descriptive_date [String] The description of the date of the notification.
+      # @param company_discretionary_data [String] Optional data associated with the notification.
+      # @param company_entry_description [String] The description of the notification.
+      # @param company_name [String] The name by which you know the company.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the prenotification was created.
+      # @param credit_debit_indicator [String] If the notification is for a future credit or debit.
+      # @param effective_date [String] The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @param notifications_of_change [Array<Object>] If the receiving bank notifies that future transfers should use different
+      #   details, this will contain those details.
+      # @param prenotification_return [Object] If your prenotification is returned, this will contain details of the return.
+      # @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN).
+      # @param status [String] The lifecycle status of the ACH Prenotification.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `ach_prenotification`.
+      def initialize(data = {})
+        super
       end
     end
   end

@@ -98,6 +98,17 @@ module Increase
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
         #   @return [String]
         required :approved_by, String
+
+        # Create a new instance of Approval from a Hash of raw data.
+        #
+        # @overload initialize(approved_at: nil, approved_by: nil)
+        # @param approved_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   the transfer was approved.
+        # @param approved_by [String] If the Transfer was approved by a user in the dashboard, the email address of
+        #   that user.
+        def initialize(data = {})
+          super
+        end
       end
 
       class Cancellation < BaseModel
@@ -110,6 +121,17 @@ module Increase
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
         #   @return [String]
         required :canceled_by, String
+
+        # Create a new instance of Cancellation from a Hash of raw data.
+        #
+        # @overload initialize(canceled_at: nil, canceled_by: nil)
+        # @param canceled_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   the Transfer was canceled.
+        # @param canceled_by [String] If the Transfer was canceled by a user in the dashboard, the email address of
+        #   that user.
+        def initialize(data = {})
+          super
+        end
       end
 
       class CreatedBy < BaseModel
@@ -138,6 +160,14 @@ module Increase
           #   The description set for the API key when it was created.
           #   @return [String]
           required :description, String
+
+          # Create a new instance of APIKey from a Hash of raw data.
+          #
+          # @overload initialize(description: nil)
+          # @param description [String] The description set for the API key when it was created.
+          def initialize(data = {})
+            super
+          end
         end
 
         # The type of object that created this transfer.
@@ -157,6 +187,14 @@ module Increase
           #   The name of the OAuth Application.
           #   @return [String]
           required :name_, String
+
+          # Create a new instance of OAuthApplication from a Hash of raw data.
+          #
+          # @overload initialize(name: nil)
+          # @param name [String] The name of the OAuth Application.
+          def initialize(data = {})
+            super
+          end
         end
 
         class User < BaseModel
@@ -164,6 +202,25 @@ module Increase
           #   The email address of the User.
           #   @return [String]
           required :email, String
+
+          # Create a new instance of User from a Hash of raw data.
+          #
+          # @overload initialize(email: nil)
+          # @param email [String] The email address of the User.
+          def initialize(data = {})
+            super
+          end
+        end
+
+        # Create a new instance of CreatedBy from a Hash of raw data.
+        #
+        # @overload initialize(api_key: nil, category: nil, oauth_application: nil, user: nil)
+        # @param api_key [Object] If present, details about the API key that created the transfer.
+        # @param category [String] The type of object that created this transfer.
+        # @param oauth_application [Object] If present, details about the OAuth Application that created the transfer.
+        # @param user [Object] If present, details about the User that created the transfer.
+        def initialize(data = {})
+          super
         end
       end
 
@@ -208,6 +265,41 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `account_transfer`.
       class Type < Increase::Enum
         ACCOUNT_TRANSFER = :account_transfer
+      end
+
+      # Create a new instance of AccountTransfer from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, account_id: nil, amount: nil, approval: nil, cancellation: nil, created_at: nil, created_by: nil, currency: nil, description: nil, destination_account_id: nil, destination_transaction_id: nil, idempotency_key: nil, network: nil, pending_transaction_id: nil, status: nil, transaction_id: nil, type: nil)
+      # @param id [String] The account transfer's identifier.
+      # @param account_id [String] The Account to which the transfer belongs.
+      # @param amount [Integer] The transfer amount in the minor unit of the destination account currency. For
+      #   dollars, for example, this is cents.
+      # @param approval [Object] If your account requires approvals for transfers and the transfer was approved,
+      #   this will contain details of the approval.
+      # @param cancellation [Object] If your account requires approvals for transfers and the transfer was not
+      #   approved, this will contain details of the cancellation.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the transfer was created.
+      # @param created_by [Object] What object created the transfer, either via the API or the dashboard.
+      # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
+      #   account currency.
+      # @param description [String] The description that will show on the transactions.
+      # @param destination_account_id [String] The destination account's identifier.
+      # @param destination_transaction_id [String] The ID for the transaction receiving the transfer.
+      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @param network [String] The transfer's network.
+      # @param pending_transaction_id [String] The ID for the pending transaction representing the transfer. A pending
+      #   transaction is created when the transfer
+      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      #   by someone else in your organization.
+      # @param status [String] The lifecycle status of the transfer.
+      # @param transaction_id [String] The ID for the transaction funding the transfer.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `account_transfer`.
+      def initialize(data = {})
+        super
       end
     end
   end
