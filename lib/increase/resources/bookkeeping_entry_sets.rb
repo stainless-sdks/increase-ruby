@@ -11,10 +11,10 @@ module Increase
       # Create a Bookkeeping Entry Set
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Array<Entry>] :entries The bookkeeping entries.
-      # @option params [Time, nil] :date The date of the transaction. Optional if `transaction_id` is provided, in which
-      #   case we use the `date` of that transaction. Required otherwise.
-      # @option params [String, nil] :transaction_id The identifier of the Transaction related to this entry set, if any.
+      #   @option params [Array<Entry>] :entries The bookkeeping entries.
+      #   @option params [Time, nil] :date The date of the transaction. Optional if `transaction_id` is provided, in which
+      #     case we use the `date` of that transaction. Required otherwise.
+      #   @option params [String, nil] :transaction_id The identifier of the Transaction related to this entry set, if any.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -48,14 +48,14 @@ module Increase
       # List Bookkeeping Entry Sets
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String, nil] :cursor Return the page of entries after this one.
-      # @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      # @option params [String, nil] :transaction_id Filter to the Bookkeeping Entry Set that maps to this Transaction.
+      #   @option params [String, nil] :cursor Return the page of entries after this one.
+      #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #   @option params [String, nil] :transaction_id Filter to the Bookkeeping Entry Set that maps to this Transaction.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

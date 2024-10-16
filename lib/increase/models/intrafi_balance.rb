@@ -70,29 +70,27 @@ module Increase
           #   @return [String]
           required :state, String
 
-          # Create a new instance of BankLocation from a Hash of raw data.
-          #
-          # @overload initialize(city: nil, state: nil)
-          # @param city [String] The bank's city.
-          # @param state [String] The bank's state.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of BankLocation from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :city The bank's city.
+          #   #   @option data [String] :state The bank's state.
+          #   def initialize(data = {}) = super
         end
 
-        # Create a new instance of Balance from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, balance: nil, bank: nil, bank_location: nil, fdic_certificate_number: nil)
-        # @param id [String] The identifier of this balance.
-        # @param balance [Integer] The balance, in minor units of `currency`, held with this bank.
-        # @param bank [String] The name of the bank holding these funds.
-        # @param bank_location [Object] The primary location of the bank.
-        # @param fdic_certificate_number [String] The Federal Deposit Insurance Corporation (FDIC) certificate number of the bank.
-        #   Because many banks have the same or similar names, this can be used to uniquely
-        #   identify the institution.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Balance from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id The identifier of this balance.
+        #   #   @option data [Integer] :balance The balance, in minor units of `currency`, held with this bank.
+        #   #   @option data [String] :bank The name of the bank holding these funds.
+        #   #   @option data [Object] :bank_location The primary location of the bank.
+        #   #   @option data [String] :fdic_certificate_number The Federal Deposit Insurance Corporation (FDIC) certificate number of the bank.
+        #   #     Because many banks have the same or similar names, this can be used to uniquely
+        #   #     identify the institution.
+        #   def initialize(data = {}) = super
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account currency.
@@ -121,22 +119,21 @@ module Increase
         INTRAFI_BALANCE = :intrafi_balance
       end
 
-      # Create a new instance of IntrafiBalance from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, balances: nil, currency: nil, effective_date: nil, total_balance: nil, type: nil)
-      # @param id [String] The identifier of this balance.
-      # @param balances [Array<Object>] Each entry represents a balance held at a different bank. IntraFi separates the
-      #   total balance across many participating banks in the network.
-      # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      #   currency.
-      # @param effective_date [String] The date this balance reflects.
-      # @param total_balance [Integer] The total balance, in minor units of `currency`. Increase reports this balance
-      #   to IntraFi daily.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `intrafi_balance`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of IntrafiBalance from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The identifier of this balance.
+      #   #   @option data [Array<Object>] :balances Each entry represents a balance held at a different bank. IntraFi separates the
+      #   #     total balance across many participating banks in the network.
+      #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
+      #   #     currency.
+      #   #   @option data [String] :effective_date The date this balance reflects.
+      #   #   @option data [Integer] :total_balance The total balance, in minor units of `currency`. Increase reports this balance
+      #   #     to IntraFi daily.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `intrafi_balance`.
+      #   def initialize(data = {}) = super
     end
   end
 end

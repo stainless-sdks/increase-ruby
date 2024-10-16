@@ -14,7 +14,7 @@ module Increase
         #   one program, `program_id` is a required field when creating accounts.
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :name The name of the program being added.
+        #   @option params [String] :name The name of the program being added.
         #
         # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #

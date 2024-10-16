@@ -125,39 +125,38 @@ module Increase
         ACCOUNT = :account
       end
 
-      # Create a new instance of Account from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, bank: nil, closed_at: nil, created_at: nil, currency: nil, entity_id: nil, idempotency_key: nil, informational_entity_id: nil, interest_accrued: nil, interest_accrued_at: nil, interest_rate: nil, name: nil, program_id: nil, status: nil, type: nil)
-      # @param id [String] The Account identifier.
-      # @param bank [String] The bank the Account is with.
-      # @param closed_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   was closed.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   was created.
-      # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      #   currency.
-      # @param entity_id [String] The identifier for the Entity the Account belongs to.
-      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @param informational_entity_id [String] The identifier of an Entity that, while not owning the Account, is associated
-      #   with its activity.
-      # @param interest_accrued [String] The interest accrued but not yet paid, expressed as a string containing a
-      #   floating-point value.
-      # @param interest_accrued_at [String] The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
-      #   interest was accrued.
-      # @param interest_rate [String] The Interest Rate currently being earned on the account, as a string containing
-      #   a decimal number. For example, a 1% interest rate would be represented as
-      #   "0.01".
-      # @param name [String] The name you choose for the Account.
-      # @param program_id [String] The identifier of the Program determining the compliance and commercial terms of
-      #   this Account.
-      # @param status [String] The status of the Account.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `account`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of Account from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The Account identifier.
+      #   #   @option data [String] :bank The bank the Account is with.
+      #   #   @option data [String] :closed_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+      #   #     was closed.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+      #   #     was created.
+      #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
+      #   #     currency.
+      #   #   @option data [String] :entity_id The identifier for the Entity the Account belongs to.
+      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
+      #   #     Increase and is used to ensure that a request is only processed once. Learn more
+      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #   @option data [String] :informational_entity_id The identifier of an Entity that, while not owning the Account, is associated
+      #   #     with its activity.
+      #   #   @option data [String] :interest_accrued The interest accrued but not yet paid, expressed as a string containing a
+      #   #     floating-point value.
+      #   #   @option data [String] :interest_accrued_at The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
+      #   #     interest was accrued.
+      #   #   @option data [String] :interest_rate The Interest Rate currently being earned on the account, as a string containing
+      #   #     a decimal number. For example, a 1% interest rate would be represented as
+      #   #     "0.01".
+      #   #   @option data [String] :name The name you choose for the Account.
+      #   #   @option data [String] :program_id The identifier of the Program determining the compliance and commercial terms of
+      #   #     this Account.
+      #   #   @option data [String] :status The status of the Account.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `account`.
+      #   def initialize(data = {}) = super
     end
   end
 end

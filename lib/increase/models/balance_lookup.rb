@@ -28,19 +28,18 @@ module Increase
         BALANCE_LOOKUP = :balance_lookup
       end
 
-      # Create a new instance of BalanceLookup from a Hash of raw data.
-      #
-      # @overload initialize(account_id: nil, available_balance: nil, current_balance: nil, type: nil)
-      # @param account_id [String] The identifier for the account for which the balance was queried.
-      # @param available_balance [Integer] The Account's available balance, representing the current balance less any open
-      #   Pending Transactions on the Account.
-      # @param current_balance [Integer] The Account's current balance, representing the sum of all posted Transactions
-      #   on the Account.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `balance_lookup`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of BalanceLookup from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :account_id The identifier for the account for which the balance was queried.
+      #   #   @option data [Integer] :available_balance The Account's available balance, representing the current balance less any open
+      #   #     Pending Transactions on the Account.
+      #   #   @option data [Integer] :current_balance The Account's current balance, representing the sum of all posted Transactions
+      #   #     on the Account.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `balance_lookup`.
+      #   def initialize(data = {}) = super
     end
   end
 end

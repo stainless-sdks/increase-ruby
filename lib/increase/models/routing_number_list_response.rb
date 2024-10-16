@@ -66,19 +66,18 @@ module Increase
         NOT_SUPPORTED = :not_supported
       end
 
-      # Create a new instance of RoutingNumberListResponse from a Hash of raw data.
-      #
-      # @overload initialize(ach_transfers: nil, name: nil, real_time_payments_transfers: nil, routing_number: nil, type: nil, wire_transfers: nil)
-      # @param ach_transfers [String] This routing number's support for ACH Transfers.
-      # @param name [String] The name of the financial institution belonging to a routing number.
-      # @param real_time_payments_transfers [String] This routing number's support for Real-Time Payments Transfers.
-      # @param routing_number [String] The nine digit routing number identifier.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `routing_number`.
-      # @param wire_transfers [String] This routing number's support for Wire Transfers.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of RoutingNumberListResponse from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :ach_transfers This routing number's support for ACH Transfers.
+      #   #   @option data [String] :name The name of the financial institution belonging to a routing number.
+      #   #   @option data [String] :real_time_payments_transfers This routing number's support for Real-Time Payments Transfers.
+      #   #   @option data [String] :routing_number The nine digit routing number identifier.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `routing_number`.
+      #   #   @option data [String] :wire_transfers This routing number's support for Wire Transfers.
+      #   def initialize(data = {}) = super
     end
   end
 end

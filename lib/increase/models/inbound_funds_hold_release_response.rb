@@ -88,28 +88,27 @@ module Increase
         INBOUND_FUNDS_HOLD = :inbound_funds_hold
       end
 
-      # Create a new instance of InboundFundsHoldReleaseResponse from a Hash of raw
-      #   data.
-      #
-      # @overload initialize(id: nil, amount: nil, automatically_releases_at: nil, created_at: nil, currency: nil, held_transaction_id: nil, pending_transaction_id: nil, released_at: nil, status: nil, type: nil)
-      # @param id [String] The Inbound Funds Hold identifier.
-      # @param amount [Integer] The held amount in the minor unit of the account's currency. For dollars, for
-      #   example, this is cents.
-      # @param automatically_releases_at [String] When the hold will be released automatically. Certain conditions may cause it to
-      #   be released before this time.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
-      #   was created.
-      # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-      #   currency.
-      # @param held_transaction_id [String] The ID of the Transaction for which funds were held.
-      # @param pending_transaction_id [String] The ID of the Pending Transaction representing the held funds.
-      # @param released_at [String] When the hold was released (if it has been released).
-      # @param status [String] The status of the hold.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `inbound_funds_hold`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of InboundFundsHoldReleaseResponse from a Hash of raw
+      #   #   data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The Inbound Funds Hold identifier.
+      #   #   @option data [Integer] :amount The held amount in the minor unit of the account's currency. For dollars, for
+      #   #     example, this is cents.
+      #   #   @option data [String] :automatically_releases_at When the hold will be released automatically. Certain conditions may cause it to
+      #   #     be released before this time.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+      #   #     was created.
+      #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+      #   #     currency.
+      #   #   @option data [String] :held_transaction_id The ID of the Transaction for which funds were held.
+      #   #   @option data [String] :pending_transaction_id The ID of the Pending Transaction representing the held funds.
+      #   #   @option data [String] :released_at When the hold was released (if it has been released).
+      #   #   @option data [String] :status The status of the hold.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `inbound_funds_hold`.
+      #   def initialize(data = {}) = super
     end
   end
 end

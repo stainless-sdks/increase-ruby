@@ -104,15 +104,14 @@ module Increase
         #   @return [Integer]
         required :red, Integer
 
-        # Create a new instance of TextColor from a Hash of raw data.
-        #
-        # @overload initialize(blue: nil, green: nil, red: nil)
-        # @param blue [Integer] The value of the blue channel in the RGB color.
-        # @param green [Integer] The value of the green channel in the RGB color.
-        # @param red [Integer] The value of the red channel in the RGB color.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of TextColor from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Integer] :blue The value of the blue channel in the RGB color.
+        #   #   @option data [Integer] :green The value of the green channel in the RGB color.
+        #   #   @option data [Integer] :red The value of the red channel in the RGB color.
+        #   def initialize(data = {}) = super
       end
 
       # A constant representing the object's type. For this resource it will always be `digital_card_profile`.
@@ -120,30 +119,29 @@ module Increase
         DIGITAL_CARD_PROFILE = :digital_card_profile
       end
 
-      # Create a new instance of DigitalCardProfile from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, app_icon_file_id: nil, background_image_file_id: nil, card_description: nil, contact_email: nil, contact_phone: nil, contact_website: nil, created_at: nil, description: nil, idempotency_key: nil, issuer_name: nil, status: nil, text_color: nil, type: nil)
-      # @param id [String] The Card Profile identifier.
-      # @param app_icon_file_id [String] The identifier of the File containing the card's icon image.
-      # @param background_image_file_id [String] The identifier of the File containing the card's front image.
-      # @param card_description [String] A user-facing description for the card itself.
-      # @param contact_email [String] An email address the user can contact to receive support for their card.
-      # @param contact_phone [String] A phone number the user can contact to receive support for their card.
-      # @param contact_website [String] A website the user can visit to view and receive support for their card.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card Dispute was created.
-      # @param description [String] A description you can use to identify the Card Profile.
-      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @param issuer_name [String] A user-facing description for whoever is issuing the card.
-      # @param status [String] The status of the Card Profile.
-      # @param text_color [Object] The Card's text color, specified as an RGB triple.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `digital_card_profile`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of DigitalCardProfile from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The Card Profile identifier.
+      #   #   @option data [String] :app_icon_file_id The identifier of the File containing the card's icon image.
+      #   #   @option data [String] :background_image_file_id The identifier of the File containing the card's front image.
+      #   #   @option data [String] :card_description A user-facing description for the card itself.
+      #   #   @option data [String] :contact_email An email address the user can contact to receive support for their card.
+      #   #   @option data [String] :contact_phone A phone number the user can contact to receive support for their card.
+      #   #   @option data [String] :contact_website A website the user can visit to view and receive support for their card.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   #     the Card Dispute was created.
+      #   #   @option data [String] :description A description you can use to identify the Card Profile.
+      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
+      #   #     Increase and is used to ensure that a request is only processed once. Learn more
+      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #   @option data [String] :issuer_name A user-facing description for whoever is issuing the card.
+      #   #   @option data [String] :status The status of the Card Profile.
+      #   #   @option data [Object] :text_color The Card's text color, specified as an RGB triple.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `digital_card_profile`.
+      #   def initialize(data = {}) = super
     end
   end
 end

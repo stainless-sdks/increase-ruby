@@ -98,29 +98,28 @@ module Increase
         PHYSICAL_CARD_PROFILE = :physical_card_profile
       end
 
-      # Create a new instance of PhysicalCardProfile from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, back_image_file_id: nil, carrier_image_file_id: nil, contact_phone: nil, created_at: nil, creator: nil, description: nil, front_image_file_id: nil, idempotency_key: nil, is_default: nil, status: nil, type: nil)
-      # @param id [String] The Card Profile identifier.
-      # @param back_image_file_id [String] The identifier of the File containing the physical card's back image.
-      # @param carrier_image_file_id [String] The identifier of the File containing the physical card's carrier image.
-      # @param contact_phone [String] A phone number the user can contact to receive support for their card.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card Dispute was created.
-      # @param creator [String] The creator of this Physical Card Profile.
-      # @param description [String] A description you can use to identify the Physical Card Profile.
-      # @param front_image_file_id [String] The identifier of the File containing the physical card's front image.
-      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @param is_default [Hash] Whether this Physical Card Profile is the default for all cards in its Increase
-      #   group.
-      # @param status [String] The status of the Physical Card Profile.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `physical_card_profile`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of PhysicalCardProfile from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The Card Profile identifier.
+      #   #   @option data [String] :back_image_file_id The identifier of the File containing the physical card's back image.
+      #   #   @option data [String] :carrier_image_file_id The identifier of the File containing the physical card's carrier image.
+      #   #   @option data [String] :contact_phone A phone number the user can contact to receive support for their card.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   #     the Card Dispute was created.
+      #   #   @option data [String] :creator The creator of this Physical Card Profile.
+      #   #   @option data [String] :description A description you can use to identify the Physical Card Profile.
+      #   #   @option data [String] :front_image_file_id The identifier of the File containing the physical card's front image.
+      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
+      #   #     Increase and is used to ensure that a request is only processed once. Learn more
+      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #   @option data [Hash] :is_default Whether this Physical Card Profile is the default for all cards in its Increase
+      #   #     group.
+      #   #   @option data [String] :status The status of the Physical Card Profile.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `physical_card_profile`.
+      #   def initialize(data = {}) = super
     end
   end
 end

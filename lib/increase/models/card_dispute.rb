@@ -79,17 +79,16 @@ module Increase
         #   @return [String]
         required :transaction_id, String
 
-        # Create a new instance of Acceptance from a Hash of raw data.
-        #
-        # @overload initialize(accepted_at: nil, card_dispute_id: nil, transaction_id: nil)
-        # @param accepted_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Card Dispute was accepted.
-        # @param card_dispute_id [String] The identifier of the Card Dispute that was accepted.
-        # @param transaction_id [String] The identifier of the Transaction that was created to return the disputed funds
-        #   to your account.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Acceptance from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :accepted_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #     the Card Dispute was accepted.
+        #   #   @option data [String] :card_dispute_id The identifier of the Card Dispute that was accepted.
+        #   #   @option data [String] :transaction_id The identifier of the Transaction that was created to return the disputed funds
+        #   #     to your account.
+        #   def initialize(data = {}) = super
       end
 
       class Loss < BaseModel
@@ -113,18 +112,17 @@ module Increase
         #   @return [String]
         required :transaction_id, String
 
-        # Create a new instance of Loss from a Hash of raw data.
-        #
-        # @overload initialize(card_dispute_id: nil, explanation: nil, lost_at: nil, transaction_id: nil)
-        # @param card_dispute_id [String] The identifier of the Card Dispute that was lost.
-        # @param explanation [String] Why the Card Dispute was lost.
-        # @param lost_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Card Dispute was lost.
-        # @param transaction_id [String] The identifier of the Transaction that was created to debit the disputed funds
-        #   from your account.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Loss from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :card_dispute_id The identifier of the Card Dispute that was lost.
+        #   #   @option data [String] :explanation Why the Card Dispute was lost.
+        #   #   @option data [String] :lost_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #     the Card Dispute was lost.
+        #   #   @option data [String] :transaction_id The identifier of the Transaction that was created to debit the disputed funds
+        #   #     from your account.
+        #   def initialize(data = {}) = super
       end
 
       class Rejection < BaseModel
@@ -143,16 +141,15 @@ module Increase
         #   @return [Time]
         required :rejected_at, Time
 
-        # Create a new instance of Rejection from a Hash of raw data.
-        #
-        # @overload initialize(card_dispute_id: nil, explanation: nil, rejected_at: nil)
-        # @param card_dispute_id [String] The identifier of the Card Dispute that was rejected.
-        # @param explanation [String] Why the Card Dispute was rejected.
-        # @param rejected_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Card Dispute was rejected.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Rejection from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :card_dispute_id The identifier of the Card Dispute that was rejected.
+        #   #   @option data [String] :explanation Why the Card Dispute was rejected.
+        #   #   @option data [String] :rejected_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #     the Card Dispute was rejected.
+        #   def initialize(data = {}) = super
       end
 
       # The results of the Dispute investigation.
@@ -189,43 +186,41 @@ module Increase
         #   @return [Time]
         required :won_at, Time
 
-        # Create a new instance of Win from a Hash of raw data.
-        #
-        # @overload initialize(card_dispute_id: nil, won_at: nil)
-        # @param card_dispute_id [String] The identifier of the Card Dispute that was won.
-        # @param won_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Card Dispute was won.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Win from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :card_dispute_id The identifier of the Card Dispute that was won.
+        #   #   @option data [String] :won_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #     the Card Dispute was won.
+        #   def initialize(data = {}) = super
       end
 
-      # Create a new instance of CardDispute from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, acceptance: nil, amount: nil, created_at: nil, disputed_transaction_id: nil, explanation: nil, idempotency_key: nil, loss: nil, rejection: nil, status: nil, type: nil, win: nil)
-      # @param id [String] The Card Dispute identifier.
-      # @param acceptance [Object] If the Card Dispute's status is `accepted`, this will contain details of the
-      #   successful dispute.
-      # @param amount [Integer] The amount of the dispute, if provided, or the transaction amount otherwise.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card Dispute was created.
-      # @param disputed_transaction_id [String] The identifier of the Transaction that was disputed.
-      # @param explanation [String] Why you disputed the Transaction in question.
-      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @param loss [Object] If the Card Dispute's status is `lost`, this will contain details of the lost
-      #   dispute.
-      # @param rejection [Object] If the Card Dispute's status is `rejected`, this will contain details of the
-      #   unsuccessful dispute.
-      # @param status [String] The results of the Dispute investigation.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `card_dispute`.
-      # @param win [Object] If the Card Dispute's status is `won`, this will contain details of the won
-      #   dispute.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of CardDispute from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The Card Dispute identifier.
+      #   #   @option data [Object] :acceptance If the Card Dispute's status is `accepted`, this will contain details of the
+      #   #     successful dispute.
+      #   #   @option data [Integer] :amount The amount of the dispute, if provided, or the transaction amount otherwise.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   #     the Card Dispute was created.
+      #   #   @option data [String] :disputed_transaction_id The identifier of the Transaction that was disputed.
+      #   #   @option data [String] :explanation Why you disputed the Transaction in question.
+      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
+      #   #     Increase and is used to ensure that a request is only processed once. Learn more
+      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #   @option data [Object] :loss If the Card Dispute's status is `lost`, this will contain details of the lost
+      #   #     dispute.
+      #   #   @option data [Object] :rejection If the Card Dispute's status is `rejected`, this will contain details of the
+      #   #     unsuccessful dispute.
+      #   #   @option data [String] :status The results of the Dispute investigation.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `card_dispute`.
+      #   #   @option data [Object] :win If the Card Dispute's status is `won`, this will contain details of the won
+      #   #     dispute.
+      #   def initialize(data = {}) = super
     end
   end
 end

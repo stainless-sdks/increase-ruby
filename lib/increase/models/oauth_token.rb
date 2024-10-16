@@ -28,17 +28,16 @@ module Increase
         OAUTH_TOKEN = :oauth_token
       end
 
-      # Create a new instance of OAuthToken from a Hash of raw data.
-      #
-      # @overload initialize(access_token: nil, token_type: nil, type: nil)
-      # @param access_token [String] You may use this token in place of an API key to make OAuth requests on a user's
-      #   behalf.
-      # @param token_type [String] The type of OAuth token.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `oauth_token`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of OAuthToken from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :access_token You may use this token in place of an API key to make OAuth requests on a user's
+      #   #     behalf.
+      #   #   @option data [String] :token_type The type of OAuth token.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `oauth_token`.
+      #   def initialize(data = {}) = super
     end
   end
 end

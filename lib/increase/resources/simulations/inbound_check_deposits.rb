@@ -17,9 +17,9 @@ module Increase
         #   object to see the result.
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :account_number_id The identifier of the Account Number the Inbound Check Deposit will be against.
-        # @option params [Integer] :amount The check amount in cents.
-        # @option params [String] :check_number The check number on the check to be deposited.
+        #   @option params [String] :account_number_id The identifier of the Account Number the Inbound Check Deposit will be against.
+        #   @option params [Integer] :amount The check amount in cents.
+        #   @option params [String] :check_number The check number on the check to be deposited.
         #
         # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #

@@ -392,27 +392,25 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
               end
 
-              # Create a new instance of Visa from a Hash of raw data.
-              #
-              # @overload initialize(electronic_commerce_indicator: nil, point_of_service_entry_mode: nil)
-              # @param electronic_commerce_indicator [String] For electronic commerce transactions, this identifies the level of security used
-              #   in obtaining the customer's payment credential. For mail or telephone order
-              #   transactions, identifies the type of mail or telephone order.
-              # @param point_of_service_entry_mode [String] The method used to enter the cardholder's primary account number and card
-              #   expiration date.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of Visa from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :electronic_commerce_indicator For electronic commerce transactions, this identifies the level of security used
+              #   #     in obtaining the customer's payment credential. For mail or telephone order
+              #   #     transactions, identifies the type of mail or telephone order.
+              #   #   @option data [String] :point_of_service_entry_mode The method used to enter the cardholder's primary account number and card
+              #   #     expiration date.
+              #   def initialize(data = {}) = super
             end
 
-            # Create a new instance of NetworkDetails from a Hash of raw data.
-            #
-            # @overload initialize(category: nil, visa: nil)
-            # @param category [String] The payment network used to process this card authorization.
-            # @param visa [Object] Fields specific to the `visa` network.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of NetworkDetails from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :category The payment network used to process this card authorization.
+            #   #   @option data [Object] :visa Fields specific to the `visa` network.
+            #   def initialize(data = {}) = super
           end
 
           class NetworkIdentifiers < BaseModel
@@ -431,19 +429,18 @@ module Increase
             #   @return [String]
             required :transaction_id, String
 
-            # Create a new instance of NetworkIdentifiers from a Hash of raw data.
-            #
-            # @overload initialize(retrieval_reference_number: nil, trace_number: nil, transaction_id: nil)
-            # @param retrieval_reference_number [String] A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
-            # @param trace_number [String] A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
-            # @param transaction_id [String] A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of NetworkIdentifiers from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :retrieval_reference_number A life-cycle identifier used across e.g., an authorization and a reversal.
+            #   #     Expected to be unique per acquirer within a window of time. For some card
+            #   #     networks the retrieval reference number includes the trace counter.
+            #   #   @option data [String] :trace_number A counter used to verify an individual authorization. Expected to be unique per
+            #   #     acquirer within a window of time.
+            #   #   @option data [String] :transaction_id A globally unique transaction identifier provided by the card network, used
+            #   #     across multiple life-cycle requests.
+            #   def initialize(data = {}) = super
           end
 
           # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
@@ -506,13 +503,12 @@ module Increase
                 NO_MATCH = :no_match
               end
 
-              # Create a new instance of CardVerificationCode from a Hash of raw data.
-              #
-              # @overload initialize(result: nil)
-              # @param result [String] The result of verifying the Card Verification Code.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of CardVerificationCode from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :result The result of verifying the Card Verification Code.
+              #   def initialize(data = {}) = super
             end
 
             class CardholderAddress < BaseModel
@@ -565,79 +561,76 @@ module Increase
                 NO_MATCH = :no_match
               end
 
-              # Create a new instance of CardholderAddress from a Hash of raw data.
-              #
-              # @overload initialize(actual_line1: nil, actual_postal_code: nil, provided_line1: nil, provided_postal_code: nil, result: nil)
-              # @param actual_line1 [String] Line 1 of the address on file for the cardholder.
-              # @param actual_postal_code [String] The postal code of the address on file for the cardholder.
-              # @param provided_line1 [String] The cardholder address line 1 provided for verification in the authorization
-              #   request.
-              # @param provided_postal_code [String] The postal code provided for verification in the authorization request.
-              # @param result [String] The address verification result returned to the card network.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of CardholderAddress from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :actual_line1 Line 1 of the address on file for the cardholder.
+              #   #   @option data [String] :actual_postal_code The postal code of the address on file for the cardholder.
+              #   #   @option data [String] :provided_line1 The cardholder address line 1 provided for verification in the authorization
+              #   #     request.
+              #   #   @option data [String] :provided_postal_code The postal code provided for verification in the authorization request.
+              #   #   @option data [String] :result The address verification result returned to the card network.
+              #   def initialize(data = {}) = super
             end
 
-            # Create a new instance of Verification from a Hash of raw data.
-            #
-            # @overload initialize(card_verification_code: nil, cardholder_address: nil)
-            # @param card_verification_code [Object] Fields related to verification of the Card Verification Code, a 3-digit code on
-            #   the back of the card.
-            # @param cardholder_address [Object] Cardholder address provided in the authorization request and the address on file
-            #   we verified it against.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of Verification from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [Object] :card_verification_code Fields related to verification of the Card Verification Code, a 3-digit code on
+            #   #     the back of the card.
+            #   #   @option data [Object] :cardholder_address Cardholder address provided in the authorization request and the address on file
+            #   #     we verified it against.
+            #   def initialize(data = {}) = super
           end
 
-          # Create a new instance of CardAuthorization from a Hash of raw data.
-          #
-          # @overload initialize(id: nil, actioner: nil, amount: nil, card_payment_id: nil, currency: nil, digital_wallet_token_id: nil, direction: nil, expires_at: nil, merchant_acceptor_id: nil, merchant_category_code: nil, merchant_city: nil, merchant_country: nil, merchant_descriptor: nil, merchant_postal_code: nil, merchant_state: nil, network_details: nil, network_identifiers: nil, network_risk_score: nil, pending_transaction_id: nil, physical_card_id: nil, presentment_amount: nil, presentment_currency: nil, processing_category: nil, real_time_decision_id: nil, type: nil, verification: nil)
-          # @param id [String] The Card Authorization identifier.
-          # @param actioner [String] Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
-          # @param amount [Integer] The pending amount in the minor unit of the transaction's currency. For dollars,
-          #   for example, this is cents.
-          # @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
-          # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
-          # @param digital_wallet_token_id [String] If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-          #   purchase), the identifier of the token that was used.
-          # @param direction [String] The direction describes the direction the funds will move, either from the
-          #   cardholder to the merchant or from the merchant to the cardholder.
-          # @param expires_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
-          #   will expire and the pending transaction will be released.
-          # @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
-          # @param merchant_category_code [String] The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          #   card is transacting with.
-          # @param merchant_city [String] The city the merchant resides in.
-          # @param merchant_country [String] The country the merchant resides in.
-          # @param merchant_descriptor [String] The merchant descriptor of the merchant the card is transacting with.
-          # @param merchant_postal_code [String] The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          #   ZIP code, where the first 5 and last 4 are separated by a dash.
-          # @param merchant_state [String] The state the merchant resides in.
-          # @param network_details [Object] Fields specific to the `network`.
-          # @param network_identifiers [Object] Network-specific identifiers for a specific request or transaction.
-          # @param network_risk_score [Integer] The risk score generated by the card network. For Visa this is the Visa Advanced
-          #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
-          # @param pending_transaction_id [String] The identifier of the Pending Transaction associated with this Transaction.
-          # @param physical_card_id [String] If the authorization was made in-person with a physical card, the Physical Card
-          #   that was used.
-          # @param presentment_amount [Integer] The pending amount in the minor unit of the transaction's presentment currency.
-          # @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's presentment currency.
-          # @param processing_category [String] The processing category describes the intent behind the authorization, such as
-          #   whether it was used for bill payments or an automatic fuel dispenser.
-          # @param real_time_decision_id [String] The identifier of the Real-Time Decision sent to approve or decline this
-          #   transaction.
-          # @param type [String] A constant representing the object's type. For this resource it will always be
-          #   `card_authorization`.
-          # @param verification [Object] Fields related to verification of cardholder-provided values.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of CardAuthorization from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :id The Card Authorization identifier.
+          #   #   @option data [String] :actioner Whether this authorization was approved by Increase, the card network through
+          #   #     stand-in processing, or the user through a real-time decision.
+          #   #   @option data [Integer] :amount The pending amount in the minor unit of the transaction's currency. For dollars,
+          #   #     for example, this is cents.
+          #   #   @option data [String] :card_payment_id The ID of the Card Payment this transaction belongs to.
+          #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          #   #     transaction's currency.
+          #   #   @option data [String] :digital_wallet_token_id If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+          #   #     purchase), the identifier of the token that was used.
+          #   #   @option data [String] :direction The direction describes the direction the funds will move, either from the
+          #   #     cardholder to the merchant or from the merchant to the cardholder.
+          #   #   @option data [String] :expires_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
+          #   #     will expire and the pending transaction will be released.
+          #   #   @option data [String] :merchant_acceptor_id The merchant identifier (commonly abbreviated as MID) of the merchant the card
+          #   #     is transacting with.
+          #   #   @option data [String] :merchant_category_code The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+          #   #     card is transacting with.
+          #   #   @option data [String] :merchant_city The city the merchant resides in.
+          #   #   @option data [String] :merchant_country The country the merchant resides in.
+          #   #   @option data [String] :merchant_descriptor The merchant descriptor of the merchant the card is transacting with.
+          #   #   @option data [String] :merchant_postal_code The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+          #   #     ZIP code, where the first 5 and last 4 are separated by a dash.
+          #   #   @option data [String] :merchant_state The state the merchant resides in.
+          #   #   @option data [Object] :network_details Fields specific to the `network`.
+          #   #   @option data [Object] :network_identifiers Network-specific identifiers for a specific request or transaction.
+          #   #   @option data [Integer] :network_risk_score The risk score generated by the card network. For Visa this is the Visa Advanced
+          #   #     Authorization risk score, from 0 to 99, where 99 is the riskiest.
+          #   #   @option data [String] :pending_transaction_id The identifier of the Pending Transaction associated with this Transaction.
+          #   #   @option data [String] :physical_card_id If the authorization was made in-person with a physical card, the Physical Card
+          #   #     that was used.
+          #   #   @option data [Integer] :presentment_amount The pending amount in the minor unit of the transaction's presentment currency.
+          #   #   @option data [String] :presentment_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          #   #     transaction's presentment currency.
+          #   #   @option data [String] :processing_category The processing category describes the intent behind the authorization, such as
+          #   #     whether it was used for bill payments or an automatic fuel dispenser.
+          #   #   @option data [String] :real_time_decision_id The identifier of the Real-Time Decision sent to approve or decline this
+          #   #     transaction.
+          #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+          #   #     `card_authorization`.
+          #   #   @option data [Object] :verification Fields related to verification of cardholder-provided values.
+          #   def initialize(data = {}) = super
         end
 
         class CardAuthorizationExpiration < BaseModel
@@ -708,21 +701,20 @@ module Increase
             CARD_AUTHORIZATION_EXPIRATION = :card_authorization_expiration
           end
 
-          # Create a new instance of CardAuthorizationExpiration from a Hash of raw data.
-          #
-          # @overload initialize(id: nil, card_authorization_id: nil, currency: nil, expired_amount: nil, network: nil, type: nil)
-          # @param id [String] The Card Authorization Expiration identifier.
-          # @param card_authorization_id [String] The identifier for the Card Authorization this reverses.
-          # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          #   currency.
-          # @param expired_amount [Integer] The amount of this authorization expiration in the minor unit of the
-          #   transaction's currency. For dollars, for example, this is cents.
-          # @param network [String] The card network used to process this card authorization.
-          # @param type [String] A constant representing the object's type. For this resource it will always be
-          #   `card_authorization_expiration`.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of CardAuthorizationExpiration from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :id The Card Authorization Expiration identifier.
+          #   #   @option data [String] :card_authorization_id The identifier for the Card Authorization this reverses.
+          #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
+          #   #     currency.
+          #   #   @option data [Integer] :expired_amount The amount of this authorization expiration in the minor unit of the
+          #   #     transaction's currency. For dollars, for example, this is cents.
+          #   #   @option data [String] :network The card network used to process this card authorization.
+          #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+          #   #     `card_authorization_expiration`.
+          #   def initialize(data = {}) = super
         end
 
         class CardDecline < BaseModel
@@ -995,27 +987,25 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
               end
 
-              # Create a new instance of Visa from a Hash of raw data.
-              #
-              # @overload initialize(electronic_commerce_indicator: nil, point_of_service_entry_mode: nil)
-              # @param electronic_commerce_indicator [String] For electronic commerce transactions, this identifies the level of security used
-              #   in obtaining the customer's payment credential. For mail or telephone order
-              #   transactions, identifies the type of mail or telephone order.
-              # @param point_of_service_entry_mode [String] The method used to enter the cardholder's primary account number and card
-              #   expiration date.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of Visa from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :electronic_commerce_indicator For electronic commerce transactions, this identifies the level of security used
+              #   #     in obtaining the customer's payment credential. For mail or telephone order
+              #   #     transactions, identifies the type of mail or telephone order.
+              #   #   @option data [String] :point_of_service_entry_mode The method used to enter the cardholder's primary account number and card
+              #   #     expiration date.
+              #   def initialize(data = {}) = super
             end
 
-            # Create a new instance of NetworkDetails from a Hash of raw data.
-            #
-            # @overload initialize(category: nil, visa: nil)
-            # @param category [String] The payment network used to process this card authorization.
-            # @param visa [Object] Fields specific to the `visa` network.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of NetworkDetails from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :category The payment network used to process this card authorization.
+            #   #   @option data [Object] :visa Fields specific to the `visa` network.
+            #   def initialize(data = {}) = super
           end
 
           class NetworkIdentifiers < BaseModel
@@ -1034,19 +1024,18 @@ module Increase
             #   @return [String]
             required :transaction_id, String
 
-            # Create a new instance of NetworkIdentifiers from a Hash of raw data.
-            #
-            # @overload initialize(retrieval_reference_number: nil, trace_number: nil, transaction_id: nil)
-            # @param retrieval_reference_number [String] A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
-            # @param trace_number [String] A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
-            # @param transaction_id [String] A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of NetworkIdentifiers from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :retrieval_reference_number A life-cycle identifier used across e.g., an authorization and a reversal.
+            #   #     Expected to be unique per acquirer within a window of time. For some card
+            #   #     networks the retrieval reference number includes the trace counter.
+            #   #   @option data [String] :trace_number A counter used to verify an individual authorization. Expected to be unique per
+            #   #     acquirer within a window of time.
+            #   #   @option data [String] :transaction_id A globally unique transaction identifier provided by the card network, used
+            #   #     across multiple life-cycle requests.
+            #   def initialize(data = {}) = super
           end
 
           # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
@@ -1152,13 +1141,12 @@ module Increase
                 NO_MATCH = :no_match
               end
 
-              # Create a new instance of CardVerificationCode from a Hash of raw data.
-              #
-              # @overload initialize(result: nil)
-              # @param result [String] The result of verifying the Card Verification Code.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of CardVerificationCode from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :result The result of verifying the Card Verification Code.
+              #   def initialize(data = {}) = super
             end
 
             class CardholderAddress < BaseModel
@@ -1211,76 +1199,73 @@ module Increase
                 NO_MATCH = :no_match
               end
 
-              # Create a new instance of CardholderAddress from a Hash of raw data.
-              #
-              # @overload initialize(actual_line1: nil, actual_postal_code: nil, provided_line1: nil, provided_postal_code: nil, result: nil)
-              # @param actual_line1 [String] Line 1 of the address on file for the cardholder.
-              # @param actual_postal_code [String] The postal code of the address on file for the cardholder.
-              # @param provided_line1 [String] The cardholder address line 1 provided for verification in the authorization
-              #   request.
-              # @param provided_postal_code [String] The postal code provided for verification in the authorization request.
-              # @param result [String] The address verification result returned to the card network.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of CardholderAddress from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :actual_line1 Line 1 of the address on file for the cardholder.
+              #   #   @option data [String] :actual_postal_code The postal code of the address on file for the cardholder.
+              #   #   @option data [String] :provided_line1 The cardholder address line 1 provided for verification in the authorization
+              #   #     request.
+              #   #   @option data [String] :provided_postal_code The postal code provided for verification in the authorization request.
+              #   #   @option data [String] :result The address verification result returned to the card network.
+              #   def initialize(data = {}) = super
             end
 
-            # Create a new instance of Verification from a Hash of raw data.
-            #
-            # @overload initialize(card_verification_code: nil, cardholder_address: nil)
-            # @param card_verification_code [Object] Fields related to verification of the Card Verification Code, a 3-digit code on
-            #   the back of the card.
-            # @param cardholder_address [Object] Cardholder address provided in the authorization request and the address on file
-            #   we verified it against.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of Verification from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [Object] :card_verification_code Fields related to verification of the Card Verification Code, a 3-digit code on
+            #   #     the back of the card.
+            #   #   @option data [Object] :cardholder_address Cardholder address provided in the authorization request and the address on file
+            #   #     we verified it against.
+            #   def initialize(data = {}) = super
           end
 
-          # Create a new instance of CardDecline from a Hash of raw data.
-          #
-          # @overload initialize(id: nil, actioner: nil, amount: nil, card_payment_id: nil, currency: nil, declined_transaction_id: nil, digital_wallet_token_id: nil, direction: nil, merchant_acceptor_id: nil, merchant_category_code: nil, merchant_city: nil, merchant_country: nil, merchant_descriptor: nil, merchant_postal_code: nil, merchant_state: nil, network_details: nil, network_identifiers: nil, network_risk_score: nil, physical_card_id: nil, presentment_amount: nil, presentment_currency: nil, processing_category: nil, real_time_decision_id: nil, reason: nil, verification: nil)
-          # @param id [String] The Card Decline identifier.
-          # @param actioner [String] Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
-          # @param amount [Integer] The declined amount in the minor unit of the destination account currency. For
-          #   dollars, for example, this is cents.
-          # @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
-          # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          #   account currency.
-          # @param declined_transaction_id [String] The identifier of the declined transaction created for this Card Decline.
-          # @param digital_wallet_token_id [String] If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-          #   purchase), the identifier of the token that was used.
-          # @param direction [String] The direction describes the direction the funds will move, either from the
-          #   cardholder to the merchant or from the merchant to the cardholder.
-          # @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
-          # @param merchant_category_code [String] The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          #   card is transacting with.
-          # @param merchant_city [String] The city the merchant resides in.
-          # @param merchant_country [String] The country the merchant resides in.
-          # @param merchant_descriptor [String] The merchant descriptor of the merchant the card is transacting with.
-          # @param merchant_postal_code [String] The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          #   ZIP code, where the first 5 and last 4 are separated by a dash.
-          # @param merchant_state [String] The state the merchant resides in.
-          # @param network_details [Object] Fields specific to the `network`.
-          # @param network_identifiers [Object] Network-specific identifiers for a specific request or transaction.
-          # @param network_risk_score [Integer] The risk score generated by the card network. For Visa this is the Visa Advanced
-          #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
-          # @param physical_card_id [String] If the authorization was made in-person with a physical card, the Physical Card
-          #   that was used.
-          # @param presentment_amount [Integer] The declined amount in the minor unit of the transaction's presentment currency.
-          # @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's presentment currency.
-          # @param processing_category [String] The processing category describes the intent behind the authorization, such as
-          #   whether it was used for bill payments or an automatic fuel dispenser.
-          # @param real_time_decision_id [String] The identifier of the Real-Time Decision sent to approve or decline this
-          #   transaction.
-          # @param reason [String] Why the transaction was declined.
-          # @param verification [Object] Fields related to verification of cardholder-provided values.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of CardDecline from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :id The Card Decline identifier.
+          #   #   @option data [String] :actioner Whether this authorization was approved by Increase, the card network through
+          #   #     stand-in processing, or the user through a real-time decision.
+          #   #   @option data [Integer] :amount The declined amount in the minor unit of the destination account currency. For
+          #   #     dollars, for example, this is cents.
+          #   #   @option data [String] :card_payment_id The ID of the Card Payment this transaction belongs to.
+          #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
+          #   #     account currency.
+          #   #   @option data [String] :declined_transaction_id The identifier of the declined transaction created for this Card Decline.
+          #   #   @option data [String] :digital_wallet_token_id If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+          #   #     purchase), the identifier of the token that was used.
+          #   #   @option data [String] :direction The direction describes the direction the funds will move, either from the
+          #   #     cardholder to the merchant or from the merchant to the cardholder.
+          #   #   @option data [String] :merchant_acceptor_id The merchant identifier (commonly abbreviated as MID) of the merchant the card
+          #   #     is transacting with.
+          #   #   @option data [String] :merchant_category_code The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+          #   #     card is transacting with.
+          #   #   @option data [String] :merchant_city The city the merchant resides in.
+          #   #   @option data [String] :merchant_country The country the merchant resides in.
+          #   #   @option data [String] :merchant_descriptor The merchant descriptor of the merchant the card is transacting with.
+          #   #   @option data [String] :merchant_postal_code The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+          #   #     ZIP code, where the first 5 and last 4 are separated by a dash.
+          #   #   @option data [String] :merchant_state The state the merchant resides in.
+          #   #   @option data [Object] :network_details Fields specific to the `network`.
+          #   #   @option data [Object] :network_identifiers Network-specific identifiers for a specific request or transaction.
+          #   #   @option data [Integer] :network_risk_score The risk score generated by the card network. For Visa this is the Visa Advanced
+          #   #     Authorization risk score, from 0 to 99, where 99 is the riskiest.
+          #   #   @option data [String] :physical_card_id If the authorization was made in-person with a physical card, the Physical Card
+          #   #     that was used.
+          #   #   @option data [Integer] :presentment_amount The declined amount in the minor unit of the transaction's presentment currency.
+          #   #   @option data [String] :presentment_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          #   #     transaction's presentment currency.
+          #   #   @option data [String] :processing_category The processing category describes the intent behind the authorization, such as
+          #   #     whether it was used for bill payments or an automatic fuel dispenser.
+          #   #   @option data [String] :real_time_decision_id The identifier of the Real-Time Decision sent to approve or decline this
+          #   #     transaction.
+          #   #   @option data [String] :reason Why the transaction was declined.
+          #   #   @option data [Object] :verification Fields related to verification of cardholder-provided values.
+          #   def initialize(data = {}) = super
         end
 
         class CardFuelConfirmation < BaseModel
@@ -1374,19 +1359,18 @@ module Increase
             #   @return [String]
             required :transaction_id, String
 
-            # Create a new instance of NetworkIdentifiers from a Hash of raw data.
-            #
-            # @overload initialize(retrieval_reference_number: nil, trace_number: nil, transaction_id: nil)
-            # @param retrieval_reference_number [String] A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
-            # @param trace_number [String] A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
-            # @param transaction_id [String] A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of NetworkIdentifiers from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :retrieval_reference_number A life-cycle identifier used across e.g., an authorization and a reversal.
+            #   #     Expected to be unique per acquirer within a window of time. For some card
+            #   #     networks the retrieval reference number includes the trace counter.
+            #   #   @option data [String] :trace_number A counter used to verify an individual authorization. Expected to be unique per
+            #   #     acquirer within a window of time.
+            #   #   @option data [String] :transaction_id A globally unique transaction identifier provided by the card network, used
+            #   #     across multiple life-cycle requests.
+            #   def initialize(data = {}) = super
           end
 
           # A constant representing the object's type. For this resource it will always be `card_fuel_confirmation`.
@@ -1394,24 +1378,23 @@ module Increase
             CARD_FUEL_CONFIRMATION = :card_fuel_confirmation
           end
 
-          # Create a new instance of CardFuelConfirmation from a Hash of raw data.
-          #
-          # @overload initialize(id: nil, card_authorization_id: nil, currency: nil, network: nil, network_identifiers: nil, pending_transaction_id: nil, type: nil, updated_authorization_amount: nil)
-          # @param id [String] The Card Fuel Confirmation identifier.
-          # @param card_authorization_id [String] The identifier for the Card Authorization this updates.
-          # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          #   currency.
-          # @param network [String] The card network used to process this card authorization.
-          # @param network_identifiers [Object] Network-specific identifiers for a specific request or transaction.
-          # @param pending_transaction_id [String] The identifier of the Pending Transaction associated with this Card Fuel
-          #   Confirmation.
-          # @param type [String] A constant representing the object's type. For this resource it will always be
-          #   `card_fuel_confirmation`.
-          # @param updated_authorization_amount [Integer] The updated authorization amount after this fuel confirmation, in the minor unit
-          #   of the transaction's currency. For dollars, for example, this is cents.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of CardFuelConfirmation from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :id The Card Fuel Confirmation identifier.
+          #   #   @option data [String] :card_authorization_id The identifier for the Card Authorization this updates.
+          #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
+          #   #     currency.
+          #   #   @option data [String] :network The card network used to process this card authorization.
+          #   #   @option data [Object] :network_identifiers Network-specific identifiers for a specific request or transaction.
+          #   #   @option data [String] :pending_transaction_id The identifier of the Pending Transaction associated with this Card Fuel
+          #   #     Confirmation.
+          #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+          #   #     `card_fuel_confirmation`.
+          #   #   @option data [Integer] :updated_authorization_amount The updated authorization amount after this fuel confirmation, in the minor unit
+          #   #     of the transaction's currency. For dollars, for example, this is cents.
+          #   def initialize(data = {}) = super
         end
 
         class CardIncrement < BaseModel
@@ -1531,19 +1514,18 @@ module Increase
             #   @return [String]
             required :transaction_id, String
 
-            # Create a new instance of NetworkIdentifiers from a Hash of raw data.
-            #
-            # @overload initialize(retrieval_reference_number: nil, trace_number: nil, transaction_id: nil)
-            # @param retrieval_reference_number [String] A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
-            # @param trace_number [String] A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
-            # @param transaction_id [String] A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of NetworkIdentifiers from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :retrieval_reference_number A life-cycle identifier used across e.g., an authorization and a reversal.
+            #   #     Expected to be unique per acquirer within a window of time. For some card
+            #   #     networks the retrieval reference number includes the trace counter.
+            #   #   @option data [String] :trace_number A counter used to verify an individual authorization. Expected to be unique per
+            #   #     acquirer within a window of time.
+            #   #   @option data [String] :transaction_id A globally unique transaction identifier provided by the card network, used
+            #   #     across multiple life-cycle requests.
+            #   def initialize(data = {}) = super
           end
 
           # A constant representing the object's type. For this resource it will always be `card_increment`.
@@ -1551,31 +1533,30 @@ module Increase
             CARD_INCREMENT = :card_increment
           end
 
-          # Create a new instance of CardIncrement from a Hash of raw data.
-          #
-          # @overload initialize(id: nil, actioner: nil, amount: nil, card_authorization_id: nil, currency: nil, network: nil, network_identifiers: nil, network_risk_score: nil, pending_transaction_id: nil, real_time_decision_id: nil, type: nil, updated_authorization_amount: nil)
-          # @param id [String] The Card Increment identifier.
-          # @param actioner [String] Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
-          # @param amount [Integer] The amount of this increment in the minor unit of the transaction's currency.
-          #   For dollars, for example, this is cents.
-          # @param card_authorization_id [String] The identifier for the Card Authorization this increments.
-          # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          #   currency.
-          # @param network [String] The card network used to process this card authorization.
-          # @param network_identifiers [Object] Network-specific identifiers for a specific request or transaction.
-          # @param network_risk_score [Integer] The risk score generated by the card network. For Visa this is the Visa Advanced
-          #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
-          # @param pending_transaction_id [String] The identifier of the Pending Transaction associated with this Card Increment.
-          # @param real_time_decision_id [String] The identifier of the Real-Time Decision sent to approve or decline this
-          #   incremental authorization.
-          # @param type [String] A constant representing the object's type. For this resource it will always be
-          #   `card_increment`.
-          # @param updated_authorization_amount [Integer] The updated authorization amount after this increment, in the minor unit of the
-          #   transaction's currency. For dollars, for example, this is cents.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of CardIncrement from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :id The Card Increment identifier.
+          #   #   @option data [String] :actioner Whether this authorization was approved by Increase, the card network through
+          #   #     stand-in processing, or the user through a real-time decision.
+          #   #   @option data [Integer] :amount The amount of this increment in the minor unit of the transaction's currency.
+          #   #     For dollars, for example, this is cents.
+          #   #   @option data [String] :card_authorization_id The identifier for the Card Authorization this increments.
+          #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
+          #   #     currency.
+          #   #   @option data [String] :network The card network used to process this card authorization.
+          #   #   @option data [Object] :network_identifiers Network-specific identifiers for a specific request or transaction.
+          #   #   @option data [Integer] :network_risk_score The risk score generated by the card network. For Visa this is the Visa Advanced
+          #   #     Authorization risk score, from 0 to 99, where 99 is the riskiest.
+          #   #   @option data [String] :pending_transaction_id The identifier of the Pending Transaction associated with this Card Increment.
+          #   #   @option data [String] :real_time_decision_id The identifier of the Real-Time Decision sent to approve or decline this
+          #   #     incremental authorization.
+          #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+          #   #     `card_increment`.
+          #   #   @option data [Integer] :updated_authorization_amount The updated authorization amount after this increment, in the minor unit of the
+          #   #     transaction's currency. For dollars, for example, this is cents.
+          #   def initialize(data = {}) = super
         end
 
         class CardRefund < BaseModel
@@ -1729,18 +1710,17 @@ module Increase
               USD = :USD
             end
 
-            # Create a new instance of Interchange from a Hash of raw data.
-            #
-            # @overload initialize(amount: nil, code: nil, currency: nil)
-            # @param amount [String] The interchange amount given as a string containing a decimal number. The amount
-            #   is a positive number if it is credited to Increase (e.g., settlements) and a
-            #   negative number if it is debited (e.g., refunds).
-            # @param code [String] The card network specific interchange code.
-            # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   reimbursement.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of Interchange from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :amount The interchange amount given as a string containing a decimal number. The amount
+            #   #     is a positive number if it is credited to Increase (e.g., settlements) and a
+            #   #     negative number if it is debited (e.g., refunds).
+            #   #   @option data [String] :code The card network specific interchange code.
+            #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
+            #   #     reimbursement.
+            #   def initialize(data = {}) = super
           end
 
           class NetworkIdentifiers < BaseModel
@@ -1759,17 +1739,16 @@ module Increase
             #   @return [String]
             required :transaction_id, String
 
-            # Create a new instance of NetworkIdentifiers from a Hash of raw data.
-            #
-            # @overload initialize(acquirer_business_id: nil, acquirer_reference_number: nil, transaction_id: nil)
-            # @param acquirer_business_id [String] A network assigned business ID that identifies the acquirer that processed this
-            #   transaction.
-            # @param acquirer_reference_number [String] A globally unique identifier for this settlement.
-            # @param transaction_id [String] A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of NetworkIdentifiers from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :acquirer_business_id A network assigned business ID that identifies the acquirer that processed this
+            #   #     transaction.
+            #   #   @option data [String] :acquirer_reference_number A globally unique identifier for this settlement.
+            #   #   @option data [String] :transaction_id A globally unique transaction identifier provided by the card network, used
+            #   #     across multiple life-cycle requests.
+            #   def initialize(data = {}) = super
           end
 
           class PurchaseDetails < BaseModel
@@ -1950,36 +1929,35 @@ module Increase
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
               end
 
-              # Create a new instance of CarRental from a Hash of raw data.
-              #
-              # @overload initialize(car_class_code: nil, checkout_date: nil, daily_rental_rate_amount: nil, daily_rental_rate_currency: nil, days_rented: nil, extra_charges: nil, fuel_charges_amount: nil, fuel_charges_currency: nil, insurance_charges_amount: nil, insurance_charges_currency: nil, no_show_indicator: nil, one_way_drop_off_charges_amount: nil, one_way_drop_off_charges_currency: nil, renter_name: nil, weekly_rental_rate_amount: nil, weekly_rental_rate_currency: nil)
-              # @param car_class_code [String] Code indicating the vehicle's class.
-              # @param checkout_date [String] Date the customer picked up the car or, in the case of a no-show or pre-pay
-              #   transaction, the scheduled pick up date.
-              # @param daily_rental_rate_amount [Integer] Daily rate being charged for the vehicle.
-              # @param daily_rental_rate_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
-              #   rate.
-              # @param days_rented [Integer] Number of days the vehicle was rented.
-              # @param extra_charges [String] Additional charges (gas, late fee, etc.) being billed.
-              # @param fuel_charges_amount [Integer] Fuel charges for the vehicle.
-              # @param fuel_charges_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
-              #   assessed.
-              # @param insurance_charges_amount [Integer] Any insurance being charged for the vehicle.
-              # @param insurance_charges_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
-              #   charges assessed.
-              # @param no_show_indicator [String] An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   not actually rented (that is, a "no-show" charge).
-              # @param one_way_drop_off_charges_amount [Integer] Charges for returning the vehicle at a different location than where it was
-              #   picked up.
-              # @param one_way_drop_off_charges_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
-              #   drop-off charges assessed.
-              # @param renter_name [String] Name of the person renting the vehicle.
-              # @param weekly_rental_rate_amount [Integer] Weekly rate being charged for the vehicle.
-              # @param weekly_rental_rate_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
-              #   rental rate.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of CarRental from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :car_class_code Code indicating the vehicle's class.
+              #   #   @option data [String] :checkout_date Date the customer picked up the car or, in the case of a no-show or pre-pay
+              #   #     transaction, the scheduled pick up date.
+              #   #   @option data [Integer] :daily_rental_rate_amount Daily rate being charged for the vehicle.
+              #   #   @option data [String] :daily_rental_rate_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
+              #   #     rate.
+              #   #   @option data [Integer] :days_rented Number of days the vehicle was rented.
+              #   #   @option data [String] :extra_charges Additional charges (gas, late fee, etc.) being billed.
+              #   #   @option data [Integer] :fuel_charges_amount Fuel charges for the vehicle.
+              #   #   @option data [String] :fuel_charges_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
+              #   #     assessed.
+              #   #   @option data [Integer] :insurance_charges_amount Any insurance being charged for the vehicle.
+              #   #   @option data [String] :insurance_charges_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
+              #   #     charges assessed.
+              #   #   @option data [String] :no_show_indicator An indicator that the cardholder is being billed for a reserved vehicle that was
+              #   #     not actually rented (that is, a "no-show" charge).
+              #   #   @option data [Integer] :one_way_drop_off_charges_amount Charges for returning the vehicle at a different location than where it was
+              #   #     picked up.
+              #   #   @option data [String] :one_way_drop_off_charges_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
+              #   #     drop-off charges assessed.
+              #   #   @option data [String] :renter_name Name of the person renting the vehicle.
+              #   #   @option data [Integer] :weekly_rental_rate_amount Weekly rate being charged for the vehicle.
+              #   #   @option data [String] :weekly_rental_rate_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
+              #   #     rental rate.
+              #   def initialize(data = {}) = super
             end
 
             class Lodging < BaseModel
@@ -2102,35 +2080,34 @@ module Increase
                 NO_SHOW = :no_show
               end
 
-              # Create a new instance of Lodging from a Hash of raw data.
-              #
-              # @overload initialize(check_in_date: nil, daily_room_rate_amount: nil, daily_room_rate_currency: nil, extra_charges: nil, folio_cash_advances_amount: nil, folio_cash_advances_currency: nil, food_beverage_charges_amount: nil, food_beverage_charges_currency: nil, no_show_indicator: nil, prepaid_expenses_amount: nil, prepaid_expenses_currency: nil, room_nights: nil, total_room_tax_amount: nil, total_room_tax_currency: nil, total_tax_amount: nil, total_tax_currency: nil)
-              # @param check_in_date [String] Date the customer checked in.
-              # @param daily_room_rate_amount [Integer] Daily rate being charged for the room.
-              # @param daily_room_rate_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
-              #   rate.
-              # @param extra_charges [String] Additional charges (phone, late check-out, etc.) being billed.
-              # @param folio_cash_advances_amount [Integer] Folio cash advances for the room.
-              # @param folio_cash_advances_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
-              #   advances.
-              # @param food_beverage_charges_amount [Integer] Food and beverage charges for the room.
-              # @param food_beverage_charges_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
-              #   beverage charges.
-              # @param no_show_indicator [String] Indicator that the cardholder is being billed for a reserved room that was not
-              #   actually used.
-              # @param prepaid_expenses_amount [Integer] Prepaid expenses being charged for the room.
-              # @param prepaid_expenses_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
-              #   expenses.
-              # @param room_nights [Integer] Number of nights the room was rented.
-              # @param total_room_tax_amount [Integer] Total room tax being charged.
-              # @param total_room_tax_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
-              #   tax.
-              # @param total_tax_amount [Integer] Total tax being charged for the room.
-              # @param total_tax_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
-              #   assessed.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of Lodging from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :check_in_date Date the customer checked in.
+              #   #   @option data [Integer] :daily_room_rate_amount Daily rate being charged for the room.
+              #   #   @option data [String] :daily_room_rate_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
+              #   #     rate.
+              #   #   @option data [String] :extra_charges Additional charges (phone, late check-out, etc.) being billed.
+              #   #   @option data [Integer] :folio_cash_advances_amount Folio cash advances for the room.
+              #   #   @option data [String] :folio_cash_advances_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
+              #   #     advances.
+              #   #   @option data [Integer] :food_beverage_charges_amount Food and beverage charges for the room.
+              #   #   @option data [String] :food_beverage_charges_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
+              #   #     beverage charges.
+              #   #   @option data [String] :no_show_indicator Indicator that the cardholder is being billed for a reserved room that was not
+              #   #     actually used.
+              #   #   @option data [Integer] :prepaid_expenses_amount Prepaid expenses being charged for the room.
+              #   #   @option data [String] :prepaid_expenses_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
+              #   #     expenses.
+              #   #   @option data [Integer] :room_nights Number of nights the room was rented.
+              #   #   @option data [Integer] :total_room_tax_amount Total room tax being charged.
+              #   #   @option data [String] :total_room_tax_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
+              #   #     tax.
+              #   #   @option data [Integer] :total_tax_amount Total tax being charged for the room.
+              #   #   @option data [String] :total_tax_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
+              #   #     assessed.
+              #   def initialize(data = {}) = super
             end
 
             # The format of the purchase identifier.
@@ -2365,29 +2342,27 @@ module Increase
                     WIFI = :wifi
                   end
 
-                  # Create a new instance of Service from a Hash of raw data.
-                  #
-                  # @overload initialize(category: nil, sub_category: nil)
-                  # @param category [String] Category of the ancillary service.
-                  # @param sub_category [String] Sub-category of the ancillary service, free-form.
-                  def initialize(data = {})
-                    super
-                  end
+                  # @!parse
+                  #   # Create a new instance of Service from a Hash of raw data.
+                  #   #
+                  #   # @param data [Hash{Symbol => Object}] .
+                  #   #   @option data [String] :category Category of the ancillary service.
+                  #   #   @option data [String] :sub_category Sub-category of the ancillary service, free-form.
+                  #   def initialize(data = {}) = super
                 end
 
-                # Create a new instance of Ancillary from a Hash of raw data.
-                #
-                # @overload initialize(connected_ticket_document_number: nil, credit_reason_indicator: nil, passenger_name_or_description: nil, services: nil, ticket_document_number: nil)
-                # @param connected_ticket_document_number [String] If this purchase has a connection or relationship to another purchase, such as a
-                #   baggage fee for a passenger transport ticket, this field should contain the
-                #   ticket document number for the other purchase.
-                # @param credit_reason_indicator [String] Indicates the reason for a credit to the cardholder.
-                # @param passenger_name_or_description [String] Name of the passenger or description of the ancillary purchase.
-                # @param services [Array<Object>] Additional travel charges, such as baggage fees.
-                # @param ticket_document_number [String] Ticket document number.
-                def initialize(data = {})
-                  super
-                end
+                # @!parse
+                #   # Create a new instance of Ancillary from a Hash of raw data.
+                #   #
+                #   # @param data [Hash{Symbol => Object}] .
+                #   #   @option data [String] :connected_ticket_document_number If this purchase has a connection or relationship to another purchase, such as a
+                #   #     baggage fee for a passenger transport ticket, this field should contain the
+                #   #     ticket document number for the other purchase.
+                #   #   @option data [String] :credit_reason_indicator Indicates the reason for a credit to the cardholder.
+                #   #   @option data [String] :passenger_name_or_description Name of the passenger or description of the ancillary purchase.
+                #   #   @option data [Array<Object>] :services Additional travel charges, such as baggage fees.
+                #   #   @option data [String] :ticket_document_number Ticket document number.
+                #   def initialize(data = {}) = super
               end
 
               # Indicates the reason for a credit to the cardholder.
@@ -2478,58 +2453,55 @@ module Increase
                   STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
                 end
 
-                # Create a new instance of TripLeg from a Hash of raw data.
-                #
-                # @overload initialize(carrier_code: nil, destination_city_airport_code: nil, fare_basis_code: nil, flight_number: nil, service_class: nil, stop_over_code: nil)
-                # @param carrier_code [String] Carrier code (e.g., United Airlines, Jet Blue, etc.).
-                # @param destination_city_airport_code [String] Code for the destination city or airport.
-                # @param fare_basis_code [String] Fare basis code.
-                # @param flight_number [String] Flight number.
-                # @param service_class [String] Service class (e.g., first class, business class, etc.).
-                # @param stop_over_code [String] Indicates whether a stopover is allowed on this ticket.
-                def initialize(data = {})
-                  super
-                end
+                # @!parse
+                #   # Create a new instance of TripLeg from a Hash of raw data.
+                #   #
+                #   # @param data [Hash{Symbol => Object}] .
+                #   #   @option data [String] :carrier_code Carrier code (e.g., United Airlines, Jet Blue, etc.).
+                #   #   @option data [String] :destination_city_airport_code Code for the destination city or airport.
+                #   #   @option data [String] :fare_basis_code Fare basis code.
+                #   #   @option data [String] :flight_number Flight number.
+                #   #   @option data [String] :service_class Service class (e.g., first class, business class, etc.).
+                #   #   @option data [String] :stop_over_code Indicates whether a stopover is allowed on this ticket.
+                #   def initialize(data = {}) = super
               end
 
-              # Create a new instance of Travel from a Hash of raw data.
-              #
-              # @overload initialize(ancillary: nil, computerized_reservation_system: nil, credit_reason_indicator: nil, departure_date: nil, origination_city_airport_code: nil, passenger_name: nil, restricted_ticket_indicator: nil, ticket_change_indicator: nil, ticket_number: nil, travel_agency_code: nil, travel_agency_name: nil, trip_legs: nil)
-              # @param ancillary [Object] Ancillary purchases in addition to the airfare.
-              # @param computerized_reservation_system [String] Indicates the computerized reservation system used to book the ticket.
-              # @param credit_reason_indicator [String] Indicates the reason for a credit to the cardholder.
-              # @param departure_date [String] Date of departure.
-              # @param origination_city_airport_code [String] Code for the originating city or airport.
-              # @param passenger_name [String] Name of the passenger.
-              # @param restricted_ticket_indicator [String] Indicates whether this ticket is non-refundable.
-              # @param ticket_change_indicator [String] Indicates why a ticket was changed.
-              # @param ticket_number [String] Ticket number.
-              # @param travel_agency_code [String] Code for the travel agency if the ticket was issued by a travel agency.
-              # @param travel_agency_name [String] Name of the travel agency if the ticket was issued by a travel agency.
-              # @param trip_legs [Array<Object>] Fields specific to each leg of the journey.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of Travel from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [Object] :ancillary Ancillary purchases in addition to the airfare.
+              #   #   @option data [String] :computerized_reservation_system Indicates the computerized reservation system used to book the ticket.
+              #   #   @option data [String] :credit_reason_indicator Indicates the reason for a credit to the cardholder.
+              #   #   @option data [String] :departure_date Date of departure.
+              #   #   @option data [String] :origination_city_airport_code Code for the originating city or airport.
+              #   #   @option data [String] :passenger_name Name of the passenger.
+              #   #   @option data [String] :restricted_ticket_indicator Indicates whether this ticket is non-refundable.
+              #   #   @option data [String] :ticket_change_indicator Indicates why a ticket was changed.
+              #   #   @option data [String] :ticket_number Ticket number.
+              #   #   @option data [String] :travel_agency_code Code for the travel agency if the ticket was issued by a travel agency.
+              #   #   @option data [String] :travel_agency_name Name of the travel agency if the ticket was issued by a travel agency.
+              #   #   @option data [Array<Object>] :trip_legs Fields specific to each leg of the journey.
+              #   def initialize(data = {}) = super
             end
 
-            # Create a new instance of PurchaseDetails from a Hash of raw data.
-            #
-            # @overload initialize(car_rental: nil, customer_reference_identifier: nil, local_tax_amount: nil, local_tax_currency: nil, lodging: nil, national_tax_amount: nil, national_tax_currency: nil, purchase_identifier: nil, purchase_identifier_format: nil, travel: nil)
-            # @param car_rental [Object] Fields specific to car rentals.
-            # @param customer_reference_identifier [String] An identifier from the merchant for the customer or consumer.
-            # @param local_tax_amount [Integer] The state or provincial tax amount in minor units.
-            # @param local_tax_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            #   assessed.
-            # @param lodging [Object] Fields specific to lodging.
-            # @param national_tax_amount [Integer] The national tax amount in minor units.
-            # @param national_tax_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            #   assessed.
-            # @param purchase_identifier [String] An identifier from the merchant for the purchase to the issuer and cardholder.
-            # @param purchase_identifier_format [String] The format of the purchase identifier.
-            # @param travel [Object] Fields specific to travel.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of PurchaseDetails from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [Object] :car_rental Fields specific to car rentals.
+            #   #   @option data [String] :customer_reference_identifier An identifier from the merchant for the customer or consumer.
+            #   #   @option data [Integer] :local_tax_amount The state or provincial tax amount in minor units.
+            #   #   @option data [String] :local_tax_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+            #   #     assessed.
+            #   #   @option data [Object] :lodging Fields specific to lodging.
+            #   #   @option data [Integer] :national_tax_amount The national tax amount in minor units.
+            #   #   @option data [String] :national_tax_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+            #   #     assessed.
+            #   #   @option data [String] :purchase_identifier An identifier from the merchant for the purchase to the issuer and cardholder.
+            #   #   @option data [String] :purchase_identifier_format The format of the purchase identifier.
+            #   #   @option data [Object] :travel Fields specific to travel.
+            #   def initialize(data = {}) = super
           end
 
           # A constant representing the object's type. For this resource it will always be `card_refund`.
@@ -2537,35 +2509,34 @@ module Increase
             CARD_REFUND = :card_refund
           end
 
-          # Create a new instance of CardRefund from a Hash of raw data.
-          #
-          # @overload initialize(id: nil, amount: nil, card_payment_id: nil, currency: nil, interchange: nil, merchant_acceptor_id: nil, merchant_category_code: nil, merchant_city: nil, merchant_country: nil, merchant_name: nil, merchant_state: nil, network_identifiers: nil, presentment_amount: nil, presentment_currency: nil, purchase_details: nil, transaction_id: nil, type: nil)
-          # @param id [String] The Card Refund identifier.
-          # @param amount [Integer] The amount in the minor unit of the transaction's settlement currency. For
-          #   dollars, for example, this is cents.
-          # @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
-          # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's settlement currency.
-          # @param interchange [Object] Interchange assessed as a part of this transaciton.
-          # @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
-          # @param merchant_category_code [String] The 4-digit MCC describing the merchant's business.
-          # @param merchant_city [String] The city the merchant resides in.
-          # @param merchant_country [String] The country the merchant resides in.
-          # @param merchant_name [String] The name of the merchant.
-          # @param merchant_state [String] The state the merchant resides in.
-          # @param network_identifiers [Object] Network-specific identifiers for this refund.
-          # @param presentment_amount [Integer] The amount in the minor unit of the transaction's presentment currency.
-          # @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's presentment currency.
-          # @param purchase_details [Object] Additional details about the card purchase, such as tax and industry-specific
-          #   fields.
-          # @param transaction_id [String] The identifier of the Transaction associated with this Transaction.
-          # @param type [String] A constant representing the object's type. For this resource it will always be
-          #   `card_refund`.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of CardRefund from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :id The Card Refund identifier.
+          #   #   @option data [Integer] :amount The amount in the minor unit of the transaction's settlement currency. For
+          #   #     dollars, for example, this is cents.
+          #   #   @option data [String] :card_payment_id The ID of the Card Payment this transaction belongs to.
+          #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          #   #     transaction's settlement currency.
+          #   #   @option data [Object] :interchange Interchange assessed as a part of this transaciton.
+          #   #   @option data [String] :merchant_acceptor_id The merchant identifier (commonly abbreviated as MID) of the merchant the card
+          #   #     is transacting with.
+          #   #   @option data [String] :merchant_category_code The 4-digit MCC describing the merchant's business.
+          #   #   @option data [String] :merchant_city The city the merchant resides in.
+          #   #   @option data [String] :merchant_country The country the merchant resides in.
+          #   #   @option data [String] :merchant_name The name of the merchant.
+          #   #   @option data [String] :merchant_state The state the merchant resides in.
+          #   #   @option data [Object] :network_identifiers Network-specific identifiers for this refund.
+          #   #   @option data [Integer] :presentment_amount The amount in the minor unit of the transaction's presentment currency.
+          #   #   @option data [String] :presentment_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          #   #     transaction's presentment currency.
+          #   #   @option data [Object] :purchase_details Additional details about the card purchase, such as tax and industry-specific
+          #   #     fields.
+          #   #   @option data [String] :transaction_id The identifier of the Transaction associated with this Transaction.
+          #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+          #   #     `card_refund`.
+          #   def initialize(data = {}) = super
         end
 
         class CardReversal < BaseModel
@@ -2699,19 +2670,18 @@ module Increase
             #   @return [String]
             required :transaction_id, String
 
-            # Create a new instance of NetworkIdentifiers from a Hash of raw data.
-            #
-            # @overload initialize(retrieval_reference_number: nil, trace_number: nil, transaction_id: nil)
-            # @param retrieval_reference_number [String] A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
-            # @param trace_number [String] A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
-            # @param transaction_id [String] A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of NetworkIdentifiers from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :retrieval_reference_number A life-cycle identifier used across e.g., an authorization and a reversal.
+            #   #     Expected to be unique per acquirer within a window of time. For some card
+            #   #     networks the retrieval reference number includes the trace counter.
+            #   #   @option data [String] :trace_number A counter used to verify an individual authorization. Expected to be unique per
+            #   #     acquirer within a window of time.
+            #   #   @option data [String] :transaction_id A globally unique transaction identifier provided by the card network, used
+            #   #     across multiple life-cycle requests.
+            #   def initialize(data = {}) = super
           end
 
           # Why this reversal was initiated.
@@ -2734,36 +2704,35 @@ module Increase
             CARD_REVERSAL = :card_reversal
           end
 
-          # Create a new instance of CardReversal from a Hash of raw data.
-          #
-          # @overload initialize(id: nil, card_authorization_id: nil, currency: nil, merchant_acceptor_id: nil, merchant_category_code: nil, merchant_city: nil, merchant_country: nil, merchant_descriptor: nil, merchant_postal_code: nil, merchant_state: nil, network: nil, network_identifiers: nil, pending_transaction_id: nil, reversal_amount: nil, reversal_reason: nil, type: nil, updated_authorization_amount: nil)
-          # @param id [String] The Card Reversal identifier.
-          # @param card_authorization_id [String] The identifier for the Card Authorization this reverses.
-          # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          #   currency.
-          # @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
-          # @param merchant_category_code [String] The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          #   card is transacting with.
-          # @param merchant_city [String] The city the merchant resides in.
-          # @param merchant_country [String] The country the merchant resides in.
-          # @param merchant_descriptor [String] The merchant descriptor of the merchant the card is transacting with.
-          # @param merchant_postal_code [String] The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          #   ZIP code, where the first 5 and last 4 are separated by a dash.
-          # @param merchant_state [String] The state the merchant resides in.
-          # @param network [String] The card network used to process this card authorization.
-          # @param network_identifiers [Object] Network-specific identifiers for a specific request or transaction.
-          # @param pending_transaction_id [String] The identifier of the Pending Transaction associated with this Card Reversal.
-          # @param reversal_amount [Integer] The amount of this reversal in the minor unit of the transaction's currency. For
-          #   dollars, for example, this is cents.
-          # @param reversal_reason [String] Why this reversal was initiated.
-          # @param type [String] A constant representing the object's type. For this resource it will always be
-          #   `card_reversal`.
-          # @param updated_authorization_amount [Integer] The amount left pending on the Card Authorization in the minor unit of the
-          #   transaction's currency. For dollars, for example, this is cents.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of CardReversal from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :id The Card Reversal identifier.
+          #   #   @option data [String] :card_authorization_id The identifier for the Card Authorization this reverses.
+          #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
+          #   #     currency.
+          #   #   @option data [String] :merchant_acceptor_id The merchant identifier (commonly abbreviated as MID) of the merchant the card
+          #   #     is transacting with.
+          #   #   @option data [String] :merchant_category_code The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+          #   #     card is transacting with.
+          #   #   @option data [String] :merchant_city The city the merchant resides in.
+          #   #   @option data [String] :merchant_country The country the merchant resides in.
+          #   #   @option data [String] :merchant_descriptor The merchant descriptor of the merchant the card is transacting with.
+          #   #   @option data [String] :merchant_postal_code The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+          #   #     ZIP code, where the first 5 and last 4 are separated by a dash.
+          #   #   @option data [String] :merchant_state The state the merchant resides in.
+          #   #   @option data [String] :network The card network used to process this card authorization.
+          #   #   @option data [Object] :network_identifiers Network-specific identifiers for a specific request or transaction.
+          #   #   @option data [String] :pending_transaction_id The identifier of the Pending Transaction associated with this Card Reversal.
+          #   #   @option data [Integer] :reversal_amount The amount of this reversal in the minor unit of the transaction's currency. For
+          #   #     dollars, for example, this is cents.
+          #   #   @option data [String] :reversal_reason Why this reversal was initiated.
+          #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+          #   #     `card_reversal`.
+          #   #   @option data [Integer] :updated_authorization_amount The amount left pending on the Card Authorization in the minor unit of the
+          #   #     transaction's currency. For dollars, for example, this is cents.
+          #   def initialize(data = {}) = super
         end
 
         class CardSettlement < BaseModel
@@ -2927,18 +2896,17 @@ module Increase
               USD = :USD
             end
 
-            # Create a new instance of Interchange from a Hash of raw data.
-            #
-            # @overload initialize(amount: nil, code: nil, currency: nil)
-            # @param amount [String] The interchange amount given as a string containing a decimal number. The amount
-            #   is a positive number if it is credited to Increase (e.g., settlements) and a
-            #   negative number if it is debited (e.g., refunds).
-            # @param code [String] The card network specific interchange code.
-            # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   reimbursement.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of Interchange from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :amount The interchange amount given as a string containing a decimal number. The amount
+            #   #     is a positive number if it is credited to Increase (e.g., settlements) and a
+            #   #     negative number if it is debited (e.g., refunds).
+            #   #   @option data [String] :code The card network specific interchange code.
+            #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
+            #   #     reimbursement.
+            #   def initialize(data = {}) = super
           end
 
           class NetworkIdentifiers < BaseModel
@@ -2957,17 +2925,16 @@ module Increase
             #   @return [String]
             required :transaction_id, String
 
-            # Create a new instance of NetworkIdentifiers from a Hash of raw data.
-            #
-            # @overload initialize(acquirer_business_id: nil, acquirer_reference_number: nil, transaction_id: nil)
-            # @param acquirer_business_id [String] A network assigned business ID that identifies the acquirer that processed this
-            #   transaction.
-            # @param acquirer_reference_number [String] A globally unique identifier for this settlement.
-            # @param transaction_id [String] A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of NetworkIdentifiers from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :acquirer_business_id A network assigned business ID that identifies the acquirer that processed this
+            #   #     transaction.
+            #   #   @option data [String] :acquirer_reference_number A globally unique identifier for this settlement.
+            #   #   @option data [String] :transaction_id A globally unique transaction identifier provided by the card network, used
+            #   #     across multiple life-cycle requests.
+            #   def initialize(data = {}) = super
           end
 
           class PurchaseDetails < BaseModel
@@ -3148,36 +3115,35 @@ module Increase
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
               end
 
-              # Create a new instance of CarRental from a Hash of raw data.
-              #
-              # @overload initialize(car_class_code: nil, checkout_date: nil, daily_rental_rate_amount: nil, daily_rental_rate_currency: nil, days_rented: nil, extra_charges: nil, fuel_charges_amount: nil, fuel_charges_currency: nil, insurance_charges_amount: nil, insurance_charges_currency: nil, no_show_indicator: nil, one_way_drop_off_charges_amount: nil, one_way_drop_off_charges_currency: nil, renter_name: nil, weekly_rental_rate_amount: nil, weekly_rental_rate_currency: nil)
-              # @param car_class_code [String] Code indicating the vehicle's class.
-              # @param checkout_date [String] Date the customer picked up the car or, in the case of a no-show or pre-pay
-              #   transaction, the scheduled pick up date.
-              # @param daily_rental_rate_amount [Integer] Daily rate being charged for the vehicle.
-              # @param daily_rental_rate_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
-              #   rate.
-              # @param days_rented [Integer] Number of days the vehicle was rented.
-              # @param extra_charges [String] Additional charges (gas, late fee, etc.) being billed.
-              # @param fuel_charges_amount [Integer] Fuel charges for the vehicle.
-              # @param fuel_charges_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
-              #   assessed.
-              # @param insurance_charges_amount [Integer] Any insurance being charged for the vehicle.
-              # @param insurance_charges_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
-              #   charges assessed.
-              # @param no_show_indicator [String] An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   not actually rented (that is, a "no-show" charge).
-              # @param one_way_drop_off_charges_amount [Integer] Charges for returning the vehicle at a different location than where it was
-              #   picked up.
-              # @param one_way_drop_off_charges_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
-              #   drop-off charges assessed.
-              # @param renter_name [String] Name of the person renting the vehicle.
-              # @param weekly_rental_rate_amount [Integer] Weekly rate being charged for the vehicle.
-              # @param weekly_rental_rate_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
-              #   rental rate.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of CarRental from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :car_class_code Code indicating the vehicle's class.
+              #   #   @option data [String] :checkout_date Date the customer picked up the car or, in the case of a no-show or pre-pay
+              #   #     transaction, the scheduled pick up date.
+              #   #   @option data [Integer] :daily_rental_rate_amount Daily rate being charged for the vehicle.
+              #   #   @option data [String] :daily_rental_rate_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
+              #   #     rate.
+              #   #   @option data [Integer] :days_rented Number of days the vehicle was rented.
+              #   #   @option data [String] :extra_charges Additional charges (gas, late fee, etc.) being billed.
+              #   #   @option data [Integer] :fuel_charges_amount Fuel charges for the vehicle.
+              #   #   @option data [String] :fuel_charges_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
+              #   #     assessed.
+              #   #   @option data [Integer] :insurance_charges_amount Any insurance being charged for the vehicle.
+              #   #   @option data [String] :insurance_charges_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
+              #   #     charges assessed.
+              #   #   @option data [String] :no_show_indicator An indicator that the cardholder is being billed for a reserved vehicle that was
+              #   #     not actually rented (that is, a "no-show" charge).
+              #   #   @option data [Integer] :one_way_drop_off_charges_amount Charges for returning the vehicle at a different location than where it was
+              #   #     picked up.
+              #   #   @option data [String] :one_way_drop_off_charges_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
+              #   #     drop-off charges assessed.
+              #   #   @option data [String] :renter_name Name of the person renting the vehicle.
+              #   #   @option data [Integer] :weekly_rental_rate_amount Weekly rate being charged for the vehicle.
+              #   #   @option data [String] :weekly_rental_rate_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
+              #   #     rental rate.
+              #   def initialize(data = {}) = super
             end
 
             class Lodging < BaseModel
@@ -3300,35 +3266,34 @@ module Increase
                 NO_SHOW = :no_show
               end
 
-              # Create a new instance of Lodging from a Hash of raw data.
-              #
-              # @overload initialize(check_in_date: nil, daily_room_rate_amount: nil, daily_room_rate_currency: nil, extra_charges: nil, folio_cash_advances_amount: nil, folio_cash_advances_currency: nil, food_beverage_charges_amount: nil, food_beverage_charges_currency: nil, no_show_indicator: nil, prepaid_expenses_amount: nil, prepaid_expenses_currency: nil, room_nights: nil, total_room_tax_amount: nil, total_room_tax_currency: nil, total_tax_amount: nil, total_tax_currency: nil)
-              # @param check_in_date [String] Date the customer checked in.
-              # @param daily_room_rate_amount [Integer] Daily rate being charged for the room.
-              # @param daily_room_rate_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
-              #   rate.
-              # @param extra_charges [String] Additional charges (phone, late check-out, etc.) being billed.
-              # @param folio_cash_advances_amount [Integer] Folio cash advances for the room.
-              # @param folio_cash_advances_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
-              #   advances.
-              # @param food_beverage_charges_amount [Integer] Food and beverage charges for the room.
-              # @param food_beverage_charges_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
-              #   beverage charges.
-              # @param no_show_indicator [String] Indicator that the cardholder is being billed for a reserved room that was not
-              #   actually used.
-              # @param prepaid_expenses_amount [Integer] Prepaid expenses being charged for the room.
-              # @param prepaid_expenses_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
-              #   expenses.
-              # @param room_nights [Integer] Number of nights the room was rented.
-              # @param total_room_tax_amount [Integer] Total room tax being charged.
-              # @param total_room_tax_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
-              #   tax.
-              # @param total_tax_amount [Integer] Total tax being charged for the room.
-              # @param total_tax_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
-              #   assessed.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of Lodging from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :check_in_date Date the customer checked in.
+              #   #   @option data [Integer] :daily_room_rate_amount Daily rate being charged for the room.
+              #   #   @option data [String] :daily_room_rate_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
+              #   #     rate.
+              #   #   @option data [String] :extra_charges Additional charges (phone, late check-out, etc.) being billed.
+              #   #   @option data [Integer] :folio_cash_advances_amount Folio cash advances for the room.
+              #   #   @option data [String] :folio_cash_advances_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
+              #   #     advances.
+              #   #   @option data [Integer] :food_beverage_charges_amount Food and beverage charges for the room.
+              #   #   @option data [String] :food_beverage_charges_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
+              #   #     beverage charges.
+              #   #   @option data [String] :no_show_indicator Indicator that the cardholder is being billed for a reserved room that was not
+              #   #     actually used.
+              #   #   @option data [Integer] :prepaid_expenses_amount Prepaid expenses being charged for the room.
+              #   #   @option data [String] :prepaid_expenses_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
+              #   #     expenses.
+              #   #   @option data [Integer] :room_nights Number of nights the room was rented.
+              #   #   @option data [Integer] :total_room_tax_amount Total room tax being charged.
+              #   #   @option data [String] :total_room_tax_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
+              #   #     tax.
+              #   #   @option data [Integer] :total_tax_amount Total tax being charged for the room.
+              #   #   @option data [String] :total_tax_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
+              #   #     assessed.
+              #   def initialize(data = {}) = super
             end
 
             # The format of the purchase identifier.
@@ -3563,29 +3528,27 @@ module Increase
                     WIFI = :wifi
                   end
 
-                  # Create a new instance of Service from a Hash of raw data.
-                  #
-                  # @overload initialize(category: nil, sub_category: nil)
-                  # @param category [String] Category of the ancillary service.
-                  # @param sub_category [String] Sub-category of the ancillary service, free-form.
-                  def initialize(data = {})
-                    super
-                  end
+                  # @!parse
+                  #   # Create a new instance of Service from a Hash of raw data.
+                  #   #
+                  #   # @param data [Hash{Symbol => Object}] .
+                  #   #   @option data [String] :category Category of the ancillary service.
+                  #   #   @option data [String] :sub_category Sub-category of the ancillary service, free-form.
+                  #   def initialize(data = {}) = super
                 end
 
-                # Create a new instance of Ancillary from a Hash of raw data.
-                #
-                # @overload initialize(connected_ticket_document_number: nil, credit_reason_indicator: nil, passenger_name_or_description: nil, services: nil, ticket_document_number: nil)
-                # @param connected_ticket_document_number [String] If this purchase has a connection or relationship to another purchase, such as a
-                #   baggage fee for a passenger transport ticket, this field should contain the
-                #   ticket document number for the other purchase.
-                # @param credit_reason_indicator [String] Indicates the reason for a credit to the cardholder.
-                # @param passenger_name_or_description [String] Name of the passenger or description of the ancillary purchase.
-                # @param services [Array<Object>] Additional travel charges, such as baggage fees.
-                # @param ticket_document_number [String] Ticket document number.
-                def initialize(data = {})
-                  super
-                end
+                # @!parse
+                #   # Create a new instance of Ancillary from a Hash of raw data.
+                #   #
+                #   # @param data [Hash{Symbol => Object}] .
+                #   #   @option data [String] :connected_ticket_document_number If this purchase has a connection or relationship to another purchase, such as a
+                #   #     baggage fee for a passenger transport ticket, this field should contain the
+                #   #     ticket document number for the other purchase.
+                #   #   @option data [String] :credit_reason_indicator Indicates the reason for a credit to the cardholder.
+                #   #   @option data [String] :passenger_name_or_description Name of the passenger or description of the ancillary purchase.
+                #   #   @option data [Array<Object>] :services Additional travel charges, such as baggage fees.
+                #   #   @option data [String] :ticket_document_number Ticket document number.
+                #   def initialize(data = {}) = super
               end
 
               # Indicates the reason for a credit to the cardholder.
@@ -3676,58 +3639,55 @@ module Increase
                   STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
                 end
 
-                # Create a new instance of TripLeg from a Hash of raw data.
-                #
-                # @overload initialize(carrier_code: nil, destination_city_airport_code: nil, fare_basis_code: nil, flight_number: nil, service_class: nil, stop_over_code: nil)
-                # @param carrier_code [String] Carrier code (e.g., United Airlines, Jet Blue, etc.).
-                # @param destination_city_airport_code [String] Code for the destination city or airport.
-                # @param fare_basis_code [String] Fare basis code.
-                # @param flight_number [String] Flight number.
-                # @param service_class [String] Service class (e.g., first class, business class, etc.).
-                # @param stop_over_code [String] Indicates whether a stopover is allowed on this ticket.
-                def initialize(data = {})
-                  super
-                end
+                # @!parse
+                #   # Create a new instance of TripLeg from a Hash of raw data.
+                #   #
+                #   # @param data [Hash{Symbol => Object}] .
+                #   #   @option data [String] :carrier_code Carrier code (e.g., United Airlines, Jet Blue, etc.).
+                #   #   @option data [String] :destination_city_airport_code Code for the destination city or airport.
+                #   #   @option data [String] :fare_basis_code Fare basis code.
+                #   #   @option data [String] :flight_number Flight number.
+                #   #   @option data [String] :service_class Service class (e.g., first class, business class, etc.).
+                #   #   @option data [String] :stop_over_code Indicates whether a stopover is allowed on this ticket.
+                #   def initialize(data = {}) = super
               end
 
-              # Create a new instance of Travel from a Hash of raw data.
-              #
-              # @overload initialize(ancillary: nil, computerized_reservation_system: nil, credit_reason_indicator: nil, departure_date: nil, origination_city_airport_code: nil, passenger_name: nil, restricted_ticket_indicator: nil, ticket_change_indicator: nil, ticket_number: nil, travel_agency_code: nil, travel_agency_name: nil, trip_legs: nil)
-              # @param ancillary [Object] Ancillary purchases in addition to the airfare.
-              # @param computerized_reservation_system [String] Indicates the computerized reservation system used to book the ticket.
-              # @param credit_reason_indicator [String] Indicates the reason for a credit to the cardholder.
-              # @param departure_date [String] Date of departure.
-              # @param origination_city_airport_code [String] Code for the originating city or airport.
-              # @param passenger_name [String] Name of the passenger.
-              # @param restricted_ticket_indicator [String] Indicates whether this ticket is non-refundable.
-              # @param ticket_change_indicator [String] Indicates why a ticket was changed.
-              # @param ticket_number [String] Ticket number.
-              # @param travel_agency_code [String] Code for the travel agency if the ticket was issued by a travel agency.
-              # @param travel_agency_name [String] Name of the travel agency if the ticket was issued by a travel agency.
-              # @param trip_legs [Array<Object>] Fields specific to each leg of the journey.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of Travel from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [Object] :ancillary Ancillary purchases in addition to the airfare.
+              #   #   @option data [String] :computerized_reservation_system Indicates the computerized reservation system used to book the ticket.
+              #   #   @option data [String] :credit_reason_indicator Indicates the reason for a credit to the cardholder.
+              #   #   @option data [String] :departure_date Date of departure.
+              #   #   @option data [String] :origination_city_airport_code Code for the originating city or airport.
+              #   #   @option data [String] :passenger_name Name of the passenger.
+              #   #   @option data [String] :restricted_ticket_indicator Indicates whether this ticket is non-refundable.
+              #   #   @option data [String] :ticket_change_indicator Indicates why a ticket was changed.
+              #   #   @option data [String] :ticket_number Ticket number.
+              #   #   @option data [String] :travel_agency_code Code for the travel agency if the ticket was issued by a travel agency.
+              #   #   @option data [String] :travel_agency_name Name of the travel agency if the ticket was issued by a travel agency.
+              #   #   @option data [Array<Object>] :trip_legs Fields specific to each leg of the journey.
+              #   def initialize(data = {}) = super
             end
 
-            # Create a new instance of PurchaseDetails from a Hash of raw data.
-            #
-            # @overload initialize(car_rental: nil, customer_reference_identifier: nil, local_tax_amount: nil, local_tax_currency: nil, lodging: nil, national_tax_amount: nil, national_tax_currency: nil, purchase_identifier: nil, purchase_identifier_format: nil, travel: nil)
-            # @param car_rental [Object] Fields specific to car rentals.
-            # @param customer_reference_identifier [String] An identifier from the merchant for the customer or consumer.
-            # @param local_tax_amount [Integer] The state or provincial tax amount in minor units.
-            # @param local_tax_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            #   assessed.
-            # @param lodging [Object] Fields specific to lodging.
-            # @param national_tax_amount [Integer] The national tax amount in minor units.
-            # @param national_tax_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            #   assessed.
-            # @param purchase_identifier [String] An identifier from the merchant for the purchase to the issuer and cardholder.
-            # @param purchase_identifier_format [String] The format of the purchase identifier.
-            # @param travel [Object] Fields specific to travel.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of PurchaseDetails from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [Object] :car_rental Fields specific to car rentals.
+            #   #   @option data [String] :customer_reference_identifier An identifier from the merchant for the customer or consumer.
+            #   #   @option data [Integer] :local_tax_amount The state or provincial tax amount in minor units.
+            #   #   @option data [String] :local_tax_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+            #   #     assessed.
+            #   #   @option data [Object] :lodging Fields specific to lodging.
+            #   #   @option data [Integer] :national_tax_amount The national tax amount in minor units.
+            #   #   @option data [String] :national_tax_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+            #   #     assessed.
+            #   #   @option data [String] :purchase_identifier An identifier from the merchant for the purchase to the issuer and cardholder.
+            #   #   @option data [String] :purchase_identifier_format The format of the purchase identifier.
+            #   #   @option data [Object] :travel Fields specific to travel.
+            #   def initialize(data = {}) = super
           end
 
           # A constant representing the object's type. For this resource it will always be `card_settlement`.
@@ -3735,38 +3695,37 @@ module Increase
             CARD_SETTLEMENT = :card_settlement
           end
 
-          # Create a new instance of CardSettlement from a Hash of raw data.
-          #
-          # @overload initialize(id: nil, amount: nil, card_authorization: nil, card_payment_id: nil, currency: nil, interchange: nil, merchant_acceptor_id: nil, merchant_category_code: nil, merchant_city: nil, merchant_country: nil, merchant_name: nil, merchant_state: nil, network_identifiers: nil, pending_transaction_id: nil, presentment_amount: nil, presentment_currency: nil, purchase_details: nil, transaction_id: nil, type: nil)
-          # @param id [String] The Card Settlement identifier.
-          # @param amount [Integer] The amount in the minor unit of the transaction's settlement currency. For
-          #   dollars, for example, this is cents.
-          # @param card_authorization [String] The Card Authorization that was created prior to this Card Settlement, if one
-          #   exists.
-          # @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
-          # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's settlement currency.
-          # @param interchange [Object] Interchange assessed as a part of this transaciton.
-          # @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
-          # @param merchant_category_code [String] The 4-digit MCC describing the merchant's business.
-          # @param merchant_city [String] The city the merchant resides in.
-          # @param merchant_country [String] The country the merchant resides in.
-          # @param merchant_name [String] The name of the merchant.
-          # @param merchant_state [String] The state the merchant resides in.
-          # @param network_identifiers [Object] Network-specific identifiers for this refund.
-          # @param pending_transaction_id [String] The identifier of the Pending Transaction associated with this Transaction.
-          # @param presentment_amount [Integer] The amount in the minor unit of the transaction's presentment currency.
-          # @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's presentment currency.
-          # @param purchase_details [Object] Additional details about the card purchase, such as tax and industry-specific
-          #   fields.
-          # @param transaction_id [String] The identifier of the Transaction associated with this Transaction.
-          # @param type [String] A constant representing the object's type. For this resource it will always be
-          #   `card_settlement`.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of CardSettlement from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :id The Card Settlement identifier.
+          #   #   @option data [Integer] :amount The amount in the minor unit of the transaction's settlement currency. For
+          #   #     dollars, for example, this is cents.
+          #   #   @option data [String] :card_authorization The Card Authorization that was created prior to this Card Settlement, if one
+          #   #     exists.
+          #   #   @option data [String] :card_payment_id The ID of the Card Payment this transaction belongs to.
+          #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          #   #     transaction's settlement currency.
+          #   #   @option data [Object] :interchange Interchange assessed as a part of this transaciton.
+          #   #   @option data [String] :merchant_acceptor_id The merchant identifier (commonly abbreviated as MID) of the merchant the card
+          #   #     is transacting with.
+          #   #   @option data [String] :merchant_category_code The 4-digit MCC describing the merchant's business.
+          #   #   @option data [String] :merchant_city The city the merchant resides in.
+          #   #   @option data [String] :merchant_country The country the merchant resides in.
+          #   #   @option data [String] :merchant_name The name of the merchant.
+          #   #   @option data [String] :merchant_state The state the merchant resides in.
+          #   #   @option data [Object] :network_identifiers Network-specific identifiers for this refund.
+          #   #   @option data [String] :pending_transaction_id The identifier of the Pending Transaction associated with this Transaction.
+          #   #   @option data [Integer] :presentment_amount The amount in the minor unit of the transaction's presentment currency.
+          #   #   @option data [String] :presentment_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          #   #     transaction's presentment currency.
+          #   #   @option data [Object] :purchase_details Additional details about the card purchase, such as tax and industry-specific
+          #   #     fields.
+          #   #   @option data [String] :transaction_id The identifier of the Transaction associated with this Transaction.
+          #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+          #   #     `card_settlement`.
+          #   def initialize(data = {}) = super
         end
 
         class CardValidation < BaseModel
@@ -4002,27 +3961,25 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
               end
 
-              # Create a new instance of Visa from a Hash of raw data.
-              #
-              # @overload initialize(electronic_commerce_indicator: nil, point_of_service_entry_mode: nil)
-              # @param electronic_commerce_indicator [String] For electronic commerce transactions, this identifies the level of security used
-              #   in obtaining the customer's payment credential. For mail or telephone order
-              #   transactions, identifies the type of mail or telephone order.
-              # @param point_of_service_entry_mode [String] The method used to enter the cardholder's primary account number and card
-              #   expiration date.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of Visa from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :electronic_commerce_indicator For electronic commerce transactions, this identifies the level of security used
+              #   #     in obtaining the customer's payment credential. For mail or telephone order
+              #   #     transactions, identifies the type of mail or telephone order.
+              #   #   @option data [String] :point_of_service_entry_mode The method used to enter the cardholder's primary account number and card
+              #   #     expiration date.
+              #   def initialize(data = {}) = super
             end
 
-            # Create a new instance of NetworkDetails from a Hash of raw data.
-            #
-            # @overload initialize(category: nil, visa: nil)
-            # @param category [String] The payment network used to process this card authorization.
-            # @param visa [Object] Fields specific to the `visa` network.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of NetworkDetails from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :category The payment network used to process this card authorization.
+            #   #   @option data [Object] :visa Fields specific to the `visa` network.
+            #   def initialize(data = {}) = super
           end
 
           class NetworkIdentifiers < BaseModel
@@ -4041,19 +3998,18 @@ module Increase
             #   @return [String]
             required :transaction_id, String
 
-            # Create a new instance of NetworkIdentifiers from a Hash of raw data.
-            #
-            # @overload initialize(retrieval_reference_number: nil, trace_number: nil, transaction_id: nil)
-            # @param retrieval_reference_number [String] A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
-            # @param trace_number [String] A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
-            # @param transaction_id [String] A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of NetworkIdentifiers from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :retrieval_reference_number A life-cycle identifier used across e.g., an authorization and a reversal.
+            #   #     Expected to be unique per acquirer within a window of time. For some card
+            #   #     networks the retrieval reference number includes the trace counter.
+            #   #   @option data [String] :trace_number A counter used to verify an individual authorization. Expected to be unique per
+            #   #     acquirer within a window of time.
+            #   #   @option data [String] :transaction_id A globally unique transaction identifier provided by the card network, used
+            #   #     across multiple life-cycle requests.
+            #   def initialize(data = {}) = super
           end
 
           # A constant representing the object's type. For this resource it will always be `card_validation`.
@@ -4095,13 +4051,12 @@ module Increase
                 NO_MATCH = :no_match
               end
 
-              # Create a new instance of CardVerificationCode from a Hash of raw data.
-              #
-              # @overload initialize(result: nil)
-              # @param result [String] The result of verifying the Card Verification Code.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of CardVerificationCode from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :result The result of verifying the Card Verification Code.
+              #   def initialize(data = {}) = super
             end
 
             class CardholderAddress < BaseModel
@@ -4154,67 +4109,64 @@ module Increase
                 NO_MATCH = :no_match
               end
 
-              # Create a new instance of CardholderAddress from a Hash of raw data.
-              #
-              # @overload initialize(actual_line1: nil, actual_postal_code: nil, provided_line1: nil, provided_postal_code: nil, result: nil)
-              # @param actual_line1 [String] Line 1 of the address on file for the cardholder.
-              # @param actual_postal_code [String] The postal code of the address on file for the cardholder.
-              # @param provided_line1 [String] The cardholder address line 1 provided for verification in the authorization
-              #   request.
-              # @param provided_postal_code [String] The postal code provided for verification in the authorization request.
-              # @param result [String] The address verification result returned to the card network.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of CardholderAddress from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :actual_line1 Line 1 of the address on file for the cardholder.
+              #   #   @option data [String] :actual_postal_code The postal code of the address on file for the cardholder.
+              #   #   @option data [String] :provided_line1 The cardholder address line 1 provided for verification in the authorization
+              #   #     request.
+              #   #   @option data [String] :provided_postal_code The postal code provided for verification in the authorization request.
+              #   #   @option data [String] :result The address verification result returned to the card network.
+              #   def initialize(data = {}) = super
             end
 
-            # Create a new instance of Verification from a Hash of raw data.
-            #
-            # @overload initialize(card_verification_code: nil, cardholder_address: nil)
-            # @param card_verification_code [Object] Fields related to verification of the Card Verification Code, a 3-digit code on
-            #   the back of the card.
-            # @param cardholder_address [Object] Cardholder address provided in the authorization request and the address on file
-            #   we verified it against.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of Verification from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [Object] :card_verification_code Fields related to verification of the Card Verification Code, a 3-digit code on
+            #   #     the back of the card.
+            #   #   @option data [Object] :cardholder_address Cardholder address provided in the authorization request and the address on file
+            #   #     we verified it against.
+            #   def initialize(data = {}) = super
           end
 
-          # Create a new instance of CardValidation from a Hash of raw data.
-          #
-          # @overload initialize(id: nil, actioner: nil, card_payment_id: nil, currency: nil, digital_wallet_token_id: nil, merchant_acceptor_id: nil, merchant_category_code: nil, merchant_city: nil, merchant_country: nil, merchant_descriptor: nil, merchant_postal_code: nil, merchant_state: nil, network_details: nil, network_identifiers: nil, network_risk_score: nil, physical_card_id: nil, real_time_decision_id: nil, type: nil, verification: nil)
-          # @param id [String] The Card Validation identifier.
-          # @param actioner [String] Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
-          # @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
-          # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
-          # @param digital_wallet_token_id [String] If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-          #   purchase), the identifier of the token that was used.
-          # @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
-          # @param merchant_category_code [String] The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          #   card is transacting with.
-          # @param merchant_city [String] The city the merchant resides in.
-          # @param merchant_country [String] The country the merchant resides in.
-          # @param merchant_descriptor [String] The merchant descriptor of the merchant the card is transacting with.
-          # @param merchant_postal_code [String] The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          #   ZIP code, where the first 5 and last 4 are separated by a dash.
-          # @param merchant_state [String] The state the merchant resides in.
-          # @param network_details [Object] Fields specific to the `network`.
-          # @param network_identifiers [Object] Network-specific identifiers for a specific request or transaction.
-          # @param network_risk_score [Integer] The risk score generated by the card network. For Visa this is the Visa Advanced
-          #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
-          # @param physical_card_id [String] If the authorization was made in-person with a physical card, the Physical Card
-          #   that was used.
-          # @param real_time_decision_id [String] The identifier of the Real-Time Decision sent to approve or decline this
-          #   transaction.
-          # @param type [String] A constant representing the object's type. For this resource it will always be
-          #   `card_validation`.
-          # @param verification [Object] Fields related to verification of cardholder-provided values.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of CardValidation from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :id The Card Validation identifier.
+          #   #   @option data [String] :actioner Whether this authorization was approved by Increase, the card network through
+          #   #     stand-in processing, or the user through a real-time decision.
+          #   #   @option data [String] :card_payment_id The ID of the Card Payment this transaction belongs to.
+          #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          #   #     transaction's currency.
+          #   #   @option data [String] :digital_wallet_token_id If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+          #   #     purchase), the identifier of the token that was used.
+          #   #   @option data [String] :merchant_acceptor_id The merchant identifier (commonly abbreviated as MID) of the merchant the card
+          #   #     is transacting with.
+          #   #   @option data [String] :merchant_category_code The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+          #   #     card is transacting with.
+          #   #   @option data [String] :merchant_city The city the merchant resides in.
+          #   #   @option data [String] :merchant_country The country the merchant resides in.
+          #   #   @option data [String] :merchant_descriptor The merchant descriptor of the merchant the card is transacting with.
+          #   #   @option data [String] :merchant_postal_code The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+          #   #     ZIP code, where the first 5 and last 4 are separated by a dash.
+          #   #   @option data [String] :merchant_state The state the merchant resides in.
+          #   #   @option data [Object] :network_details Fields specific to the `network`.
+          #   #   @option data [Object] :network_identifiers Network-specific identifiers for a specific request or transaction.
+          #   #   @option data [Integer] :network_risk_score The risk score generated by the card network. For Visa this is the Visa Advanced
+          #   #     Authorization risk score, from 0 to 99, where 99 is the riskiest.
+          #   #   @option data [String] :physical_card_id If the authorization was made in-person with a physical card, the Physical Card
+          #   #     that was used.
+          #   #   @option data [String] :real_time_decision_id The identifier of the Real-Time Decision sent to approve or decline this
+          #   #     transaction.
+          #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+          #   #     `card_validation`.
+          #   #   @option data [Object] :verification Fields related to verification of cardholder-provided values.
+          #   def initialize(data = {}) = super
         end
 
         # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
@@ -4253,36 +4205,35 @@ module Increase
           OTHER = :other
         end
 
-        # Create a new instance of Element from a Hash of raw data.
-        #
-        # @overload initialize(card_authorization: nil, card_authorization_expiration: nil, card_decline: nil, card_fuel_confirmation: nil, card_increment: nil, card_refund: nil, card_reversal: nil, card_settlement: nil, card_validation: nil, category: nil, created_at: nil, other: nil)
-        # @param card_authorization [Object] A Card Authorization object. This field will be present in the JSON response if
-        #   and only if `category` is equal to `card_authorization`.
-        # @param card_authorization_expiration [Object] A Card Authorization Expiration object. This field will be present in the JSON
-        #   response if and only if `category` is equal to `card_authorization_expiration`.
-        # @param card_decline [Object] A Card Decline object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_decline`.
-        # @param card_fuel_confirmation [Object] A Card Fuel Confirmation object. This field will be present in the JSON response
-        #   if and only if `category` is equal to `card_fuel_confirmation`.
-        # @param card_increment [Object] A Card Increment object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_increment`.
-        # @param card_refund [Object] A Card Refund object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_refund`.
-        # @param card_reversal [Object] A Card Reversal object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_reversal`.
-        # @param card_settlement [Object] A Card Settlement object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_settlement`.
-        # @param card_validation [Object] A Card Validation object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_validation`.
-        # @param category [String] The type of the resource. We may add additional possible values for this enum
-        #   over time; your application should be able to handle such additions gracefully.
-        # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the card payment element was created.
-        # @param other [Object] If the category of this Transaction source is equal to `other`, this field will
-        #   contain an empty object, otherwise it will contain null.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Element from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Object] :card_authorization A Card Authorization object. This field will be present in the JSON response if
+        #   #     and only if `category` is equal to `card_authorization`.
+        #   #   @option data [Object] :card_authorization_expiration A Card Authorization Expiration object. This field will be present in the JSON
+        #   #     response if and only if `category` is equal to `card_authorization_expiration`.
+        #   #   @option data [Object] :card_decline A Card Decline object. This field will be present in the JSON response if and
+        #   #     only if `category` is equal to `card_decline`.
+        #   #   @option data [Object] :card_fuel_confirmation A Card Fuel Confirmation object. This field will be present in the JSON response
+        #   #     if and only if `category` is equal to `card_fuel_confirmation`.
+        #   #   @option data [Object] :card_increment A Card Increment object. This field will be present in the JSON response if and
+        #   #     only if `category` is equal to `card_increment`.
+        #   #   @option data [Object] :card_refund A Card Refund object. This field will be present in the JSON response if and
+        #   #     only if `category` is equal to `card_refund`.
+        #   #   @option data [Object] :card_reversal A Card Reversal object. This field will be present in the JSON response if and
+        #   #     only if `category` is equal to `card_reversal`.
+        #   #   @option data [Object] :card_settlement A Card Settlement object. This field will be present in the JSON response if and
+        #   #     only if `category` is equal to `card_settlement`.
+        #   #   @option data [Object] :card_validation A Card Validation object. This field will be present in the JSON response if and
+        #   #     only if `category` is equal to `card_validation`.
+        #   #   @option data [String] :category The type of the resource. We may add additional possible values for this enum
+        #   #     over time; your application should be able to handle such additions gracefully.
+        #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #     the card payment element was created.
+        #   #   @option data [Object] :other If the category of this Transaction source is equal to `other`, this field will
+        #   #     contain an empty object, otherwise it will contain null.
+        #   def initialize(data = {}) = super
       end
 
       class State < BaseModel
@@ -4311,22 +4262,21 @@ module Increase
         #   @return [Integer]
         required :settled_amount, Integer
 
-        # Create a new instance of State from a Hash of raw data.
-        #
-        # @overload initialize(authorized_amount: nil, fuel_confirmed_amount: nil, incremented_amount: nil, reversed_amount: nil, settled_amount: nil)
-        # @param authorized_amount [Integer] The total authorized amount in the minor unit of the transaction's currency. For
-        #   dollars, for example, this is cents.
-        # @param fuel_confirmed_amount [Integer] The total amount from fuel confirmations in the minor unit of the transaction's
-        #   currency. For dollars, for example, this is cents.
-        # @param incremented_amount [Integer] The total incrementally updated authorized amount in the minor unit of the
-        #   transaction's currency. For dollars, for example, this is cents.
-        # @param reversed_amount [Integer] The total reversed amount in the minor unit of the transaction's currency. For
-        #   dollars, for example, this is cents.
-        # @param settled_amount [Integer] The total settled or refunded amount in the minor unit of the transaction's
-        #   currency. For dollars, for example, this is cents.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of State from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Integer] :authorized_amount The total authorized amount in the minor unit of the transaction's currency. For
+        #   #     dollars, for example, this is cents.
+        #   #   @option data [Integer] :fuel_confirmed_amount The total amount from fuel confirmations in the minor unit of the transaction's
+        #   #     currency. For dollars, for example, this is cents.
+        #   #   @option data [Integer] :incremented_amount The total incrementally updated authorized amount in the minor unit of the
+        #   #     transaction's currency. For dollars, for example, this is cents.
+        #   #   @option data [Integer] :reversed_amount The total reversed amount in the minor unit of the transaction's currency. For
+        #   #     dollars, for example, this is cents.
+        #   #   @option data [Integer] :settled_amount The total settled or refunded amount in the minor unit of the transaction's
+        #   #     currency. For dollars, for example, this is cents.
+        #   def initialize(data = {}) = super
       end
 
       # A constant representing the object's type. For this resource it will always be `card_payment`.
@@ -4334,23 +4284,22 @@ module Increase
         CARD_PAYMENT = :card_payment
       end
 
-      # Create a new instance of CardPayment from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, account_id: nil, card_id: nil, created_at: nil, digital_wallet_token_id: nil, elements: nil, physical_card_id: nil, state: nil, type: nil)
-      # @param id [String] The Card Payment identifier.
-      # @param account_id [String] The identifier for the Account the Transaction belongs to.
-      # @param card_id [String] The Card identifier for this payment.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
-      #   Payment was created.
-      # @param digital_wallet_token_id [String] The Digital Wallet Token identifier for this payment.
-      # @param elements [Array<Object>] The interactions related to this card payment.
-      # @param physical_card_id [String] The Physical Card identifier for this payment.
-      # @param state [Object] The summarized state of this card payment.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `card_payment`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of CardPayment from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The Card Payment identifier.
+      #   #   @option data [String] :account_id The identifier for the Account the Transaction belongs to.
+      #   #   @option data [String] :card_id The Card identifier for this payment.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
+      #   #     Payment was created.
+      #   #   @option data [String] :digital_wallet_token_id The Digital Wallet Token identifier for this payment.
+      #   #   @option data [Array<Object>] :elements The interactions related to this card payment.
+      #   #   @option data [String] :physical_card_id The Physical Card identifier for this payment.
+      #   #   @option data [Object] :state The summarized state of this card payment.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `card_payment`.
+      #   def initialize(data = {}) = super
     end
   end
 end

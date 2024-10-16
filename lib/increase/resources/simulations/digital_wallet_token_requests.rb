@@ -13,7 +13,7 @@ module Increase
         #   Apple Pay.
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :card_id The identifier of the Card to be authorized.
+        #   @option params [String] :card_id The identifier of the Card to be authorized.
         #
         # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #

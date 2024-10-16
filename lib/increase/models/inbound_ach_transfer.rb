@@ -141,14 +141,13 @@ module Increase
         #   @return [String]
         required :transaction_id, String
 
-        # Create a new instance of Acceptance from a Hash of raw data.
-        #
-        # @overload initialize(accepted_at: nil, transaction_id: nil)
-        # @param accepted_at [String] The time at which the transfer was accepted.
-        # @param transaction_id [String] The id of the transaction for the accepted transfer.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Acceptance from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :accepted_at The time at which the transfer was accepted.
+        #   #   @option data [String] :transaction_id The id of the transaction for the accepted transfer.
+        #   def initialize(data = {}) = super
       end
 
       class Addenda < BaseModel
@@ -185,32 +184,29 @@ module Increase
             #   @return [String]
             required :payment_related_information, String
 
-            # Create a new instance of Entry from a Hash of raw data.
-            #
-            # @overload initialize(payment_related_information: nil)
-            # @param payment_related_information [String] The payment related information passed in the addendum.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of Entry from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :payment_related_information The payment related information passed in the addendum.
+            #   def initialize(data = {}) = super
           end
 
-          # Create a new instance of Freeform from a Hash of raw data.
-          #
-          # @overload initialize(entries: nil)
-          # @param entries [Array<Object>] Each entry represents an addendum received from the originator.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Freeform from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [Array<Object>] :entries Each entry represents an addendum received from the originator.
+          #   def initialize(data = {}) = super
         end
 
-        # Create a new instance of Addenda from a Hash of raw data.
-        #
-        # @overload initialize(category: nil, freeform: nil)
-        # @param category [String] The type of addendum.
-        # @param freeform [Object] Unstructured `payment_related_information` passed through by the originator.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Addenda from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :category The type of addendum.
+        #   #   @option data [Object] :freeform Unstructured `payment_related_information` passed through by the originator.
+        #   def initialize(data = {}) = super
       end
 
       class Decline < BaseModel
@@ -283,15 +279,14 @@ module Increase
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
         end
 
-        # Create a new instance of Decline from a Hash of raw data.
-        #
-        # @overload initialize(declined_at: nil, declined_transaction_id: nil, reason: nil)
-        # @param declined_at [String] The time at which the transfer was declined.
-        # @param declined_transaction_id [String] The id of the transaction for the declined transfer.
-        # @param reason [String] The reason for the transfer decline.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Decline from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :declined_at The time at which the transfer was declined.
+        #   #   @option data [String] :declined_transaction_id The id of the transaction for the declined transfer.
+        #   #   @option data [String] :reason The reason for the transfer decline.
+        #   def initialize(data = {}) = super
       end
 
       # The direction of the transfer.
@@ -604,65 +599,64 @@ module Increase
           IBAN = :iban
         end
 
-        # Create a new instance of InternationalAddenda from a Hash of raw data.
-        #
-        # @overload initialize(destination_country_code: nil, destination_currency_code: nil, foreign_exchange_indicator: nil, foreign_exchange_reference: nil, foreign_exchange_reference_indicator: nil, foreign_payment_amount: nil, foreign_trace_number: nil, international_transaction_type_code: nil, originating_currency_code: nil, originating_depository_financial_institution_branch_country: nil, originating_depository_financial_institution_id: nil, originating_depository_financial_institution_id_qualifier: nil, originating_depository_financial_institution_name: nil, originator_city: nil, originator_country: nil, originator_identification: nil, originator_name: nil, originator_postal_code: nil, originator_state_or_province: nil, originator_street_address: nil, payment_related_information: nil, payment_related_information2: nil, receiver_city: nil, receiver_country: nil, receiver_identification_number: nil, receiver_postal_code: nil, receiver_state_or_province: nil, receiver_street_address: nil, receiving_company_or_individual_name: nil, receiving_depository_financial_institution_country: nil, receiving_depository_financial_institution_id: nil, receiving_depository_financial_institution_id_qualifier: nil, receiving_depository_financial_institution_name: nil)
-        # @param destination_country_code [String] The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
-        #   country code of the destination country.
-        # @param destination_currency_code [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
-        #   destination bank account.
-        # @param foreign_exchange_indicator [String] A description of how the foreign exchange rate was calculated.
-        # @param foreign_exchange_reference [String] Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a
-        #   reference to a well-known rate.
-        # @param foreign_exchange_reference_indicator [String] An instruction of how to interpret the `foreign_exchange_reference` field for
-        #   this Transaction.
-        # @param foreign_payment_amount [Integer] The amount in the minor unit of the foreign payment currency. For dollars, for
-        #   example, this is cents.
-        # @param foreign_trace_number [String] A reference number in the foreign banking infrastructure.
-        # @param international_transaction_type_code [String] The type of transfer. Set by the originator.
-        # @param originating_currency_code [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
-        #   originating bank account.
-        # @param originating_depository_financial_institution_branch_country [String] The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
-        #   country code of the originating branch country.
-        # @param originating_depository_financial_institution_id [String] An identifier for the originating bank. One of an International Bank Account
-        #   Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
-        #   domestic identifier like a US Routing Number.
-        # @param originating_depository_financial_institution_id_qualifier [String] An instruction of how to interpret the
-        #   `originating_depository_financial_institution_id` field for this Transaction.
-        # @param originating_depository_financial_institution_name [String] The name of the originating bank. Sometimes this will refer to an American bank
-        #   and obscure the correspondent foreign bank.
-        # @param originator_city [String] A portion of the originator address. This may be incomplete.
-        # @param originator_country [String] A portion of the originator address. The
-        #   [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
-        #   code of the originator country.
-        # @param originator_identification [String] An identifier for the originating company. This is generally stable across
-        #   multiple ACH transfers.
-        # @param originator_name [String] Either the name of the originator or an intermediary money transmitter.
-        # @param originator_postal_code [String] A portion of the originator address. This may be incomplete.
-        # @param originator_state_or_province [String] A portion of the originator address. This may be incomplete.
-        # @param originator_street_address [String] A portion of the originator address. This may be incomplete.
-        # @param payment_related_information [String] A description field set by the originator.
-        # @param payment_related_information2 [String] A description field set by the originator.
-        # @param receiver_city [String] A portion of the receiver address. This may be incomplete.
-        # @param receiver_country [String] A portion of the receiver address. The
-        #   [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
-        #   code of the receiver country.
-        # @param receiver_identification_number [String] An identification number the originator uses for the receiver.
-        # @param receiver_postal_code [String] A portion of the receiver address. This may be incomplete.
-        # @param receiver_state_or_province [String] A portion of the receiver address. This may be incomplete.
-        # @param receiver_street_address [String] A portion of the receiver address. This may be incomplete.
-        # @param receiving_company_or_individual_name [String] The name of the receiver of the transfer. This is not verified by Increase.
-        # @param receiving_depository_financial_institution_country [String] The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
-        #   country code of the receiving bank country.
-        # @param receiving_depository_financial_institution_id [String] An identifier for the receiving bank. One of an International Bank Account
-        #   Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
-        #   domestic identifier like a US Routing Number.
-        # @param receiving_depository_financial_institution_id_qualifier [String] An instruction of how to interpret the
-        #   `receiving_depository_financial_institution_id` field for this Transaction.
-        # @param receiving_depository_financial_institution_name [String] The name of the receiving bank, as set by the sending financial institution.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of InternationalAddenda from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :destination_country_code The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
+        #   #     country code of the destination country.
+        #   #   @option data [String] :destination_currency_code The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
+        #   #     destination bank account.
+        #   #   @option data [String] :foreign_exchange_indicator A description of how the foreign exchange rate was calculated.
+        #   #   @option data [String] :foreign_exchange_reference Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a
+        #   #     reference to a well-known rate.
+        #   #   @option data [String] :foreign_exchange_reference_indicator An instruction of how to interpret the `foreign_exchange_reference` field for
+        #   #     this Transaction.
+        #   #   @option data [Integer] :foreign_payment_amount The amount in the minor unit of the foreign payment currency. For dollars, for
+        #   #     example, this is cents.
+        #   #   @option data [String] :foreign_trace_number A reference number in the foreign banking infrastructure.
+        #   #   @option data [String] :international_transaction_type_code The type of transfer. Set by the originator.
+        #   #   @option data [String] :originating_currency_code The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
+        #   #     originating bank account.
+        #   #   @option data [String] :originating_depository_financial_institution_branch_country The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
+        #   #     country code of the originating branch country.
+        #   #   @option data [String] :originating_depository_financial_institution_id An identifier for the originating bank. One of an International Bank Account
+        #   #     Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
+        #   #     domestic identifier like a US Routing Number.
+        #   #   @option data [String] :originating_depository_financial_institution_id_qualifier An instruction of how to interpret the
+        #   #     `originating_depository_financial_institution_id` field for this Transaction.
+        #   #   @option data [String] :originating_depository_financial_institution_name The name of the originating bank. Sometimes this will refer to an American bank
+        #   #     and obscure the correspondent foreign bank.
+        #   #   @option data [String] :originator_city A portion of the originator address. This may be incomplete.
+        #   #   @option data [String] :originator_country A portion of the originator address. The
+        #   #     [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
+        #   #     code of the originator country.
+        #   #   @option data [String] :originator_identification An identifier for the originating company. This is generally stable across
+        #   #     multiple ACH transfers.
+        #   #   @option data [String] :originator_name Either the name of the originator or an intermediary money transmitter.
+        #   #   @option data [String] :originator_postal_code A portion of the originator address. This may be incomplete.
+        #   #   @option data [String] :originator_state_or_province A portion of the originator address. This may be incomplete.
+        #   #   @option data [String] :originator_street_address A portion of the originator address. This may be incomplete.
+        #   #   @option data [String] :payment_related_information A description field set by the originator.
+        #   #   @option data [String] :payment_related_information2 A description field set by the originator.
+        #   #   @option data [String] :receiver_city A portion of the receiver address. This may be incomplete.
+        #   #   @option data [String] :receiver_country A portion of the receiver address. The
+        #   #     [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
+        #   #     code of the receiver country.
+        #   #   @option data [String] :receiver_identification_number An identification number the originator uses for the receiver.
+        #   #   @option data [String] :receiver_postal_code A portion of the receiver address. This may be incomplete.
+        #   #   @option data [String] :receiver_state_or_province A portion of the receiver address. This may be incomplete.
+        #   #   @option data [String] :receiver_street_address A portion of the receiver address. This may be incomplete.
+        #   #   @option data [String] :receiving_company_or_individual_name The name of the receiver of the transfer. This is not verified by Increase.
+        #   #   @option data [String] :receiving_depository_financial_institution_country The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
+        #   #     country code of the receiving bank country.
+        #   #   @option data [String] :receiving_depository_financial_institution_id An identifier for the receiving bank. One of an International Bank Account
+        #   #     Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
+        #   #     domestic identifier like a US Routing Number.
+        #   #   @option data [String] :receiving_depository_financial_institution_id_qualifier An instruction of how to interpret the
+        #   #     `receiving_depository_financial_institution_id` field for this Transaction.
+        #   #   @option data [String] :receiving_depository_financial_institution_name The name of the receiving bank, as set by the sending financial institution.
+        #   def initialize(data = {}) = super
       end
 
       class NotificationOfChange < BaseModel
@@ -676,14 +670,13 @@ module Increase
         #   @return [String]
         required :updated_routing_number, String
 
-        # Create a new instance of NotificationOfChange from a Hash of raw data.
-        #
-        # @overload initialize(updated_account_number: nil, updated_routing_number: nil)
-        # @param updated_account_number [String] The new account number provided in the notification of change.
-        # @param updated_routing_number [String] The new account number provided in the notification of change.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of NotificationOfChange from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :updated_account_number The new account number provided in the notification of change.
+        #   #   @option data [String] :updated_routing_number The new account number provided in the notification of change.
+        #   def initialize(data = {}) = super
       end
 
       # The Standard Entry Class (SEC) code of the transfer.
@@ -801,15 +794,14 @@ module Increase
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
         end
 
-        # Create a new instance of TransferReturn from a Hash of raw data.
-        #
-        # @overload initialize(reason: nil, returned_at: nil, transaction_id: nil)
-        # @param reason [String] The reason for the transfer return.
-        # @param returned_at [String] The time at which the transfer was returned.
-        # @param transaction_id [String] The id of the transaction for the returned transfer.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of TransferReturn from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :reason The reason for the transfer return.
+        #   #   @option data [String] :returned_at The time at which the transfer was returned.
+        #   #   @option data [String] :transaction_id The id of the transaction for the returned transfer.
+        #   def initialize(data = {}) = super
       end
 
       # A constant representing the object's type. For this resource it will always be `inbound_ach_transfer`.
@@ -817,41 +809,40 @@ module Increase
         INBOUND_ACH_TRANSFER = :inbound_ach_transfer
       end
 
-      # Create a new instance of InboundACHTransfer from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, acceptance: nil, account_id: nil, account_number_id: nil, addenda: nil, amount: nil, automatically_resolves_at: nil, decline: nil, direction: nil, expected_settlement_schedule: nil, international_addenda: nil, notification_of_change: nil, originator_company_descriptive_date: nil, originator_company_discretionary_data: nil, originator_company_entry_description: nil, originator_company_id: nil, originator_company_name: nil, originator_routing_number: nil, receiver_id_number: nil, receiver_name: nil, standard_entry_class_code: nil, status: nil, trace_number: nil, transfer_return: nil, type: nil)
-      # @param id [String] The inbound ACH transfer's identifier.
-      # @param acceptance [Object] If your transfer is accepted, this will contain details of the acceptance.
-      # @param account_id [String] The Account to which the transfer belongs.
-      # @param account_number_id [String] The identifier of the Account Number to which this transfer was sent.
-      # @param addenda [Object] Additional information sent from the originator.
-      # @param amount [Integer] The transfer amount in USD cents.
-      # @param automatically_resolves_at [String] The time at which the transfer will be automatically resolved.
-      # @param decline [Object] If your transfer is declined, this will contain details of the decline.
-      # @param direction [String] The direction of the transfer.
-      # @param expected_settlement_schedule [String] The settlement schedule the transfer is expected to follow.
-      # @param international_addenda [Object] If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
-      #   contain fields pertaining to the International ACH Transaction.
-      # @param notification_of_change [Object] If you initiate a notification of change in response to the transfer, this will
-      #   contain its details.
-      # @param originator_company_descriptive_date [String] The descriptive date of the transfer.
-      # @param originator_company_discretionary_data [String] The additional information included with the transfer.
-      # @param originator_company_entry_description [String] The description of the transfer.
-      # @param originator_company_id [String] The id of the company that initiated the transfer.
-      # @param originator_company_name [String] The name of the company that initiated the transfer.
-      # @param originator_routing_number [String] The American Banking Association (ABA) routing number of the bank originating
-      #   the transfer.
-      # @param receiver_id_number [String] The id of the receiver of the transfer.
-      # @param receiver_name [String] The name of the receiver of the transfer.
-      # @param standard_entry_class_code [String] The Standard Entry Class (SEC) code of the transfer.
-      # @param status [String] The status of the transfer.
-      # @param trace_number [String] The trace number of the transfer.
-      # @param transfer_return [Object] If your transfer is returned, this will contain details of the return.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `inbound_ach_transfer`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of InboundACHTransfer from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The inbound ACH transfer's identifier.
+      #   #   @option data [Object] :acceptance If your transfer is accepted, this will contain details of the acceptance.
+      #   #   @option data [String] :account_id The Account to which the transfer belongs.
+      #   #   @option data [String] :account_number_id The identifier of the Account Number to which this transfer was sent.
+      #   #   @option data [Object] :addenda Additional information sent from the originator.
+      #   #   @option data [Integer] :amount The transfer amount in USD cents.
+      #   #   @option data [String] :automatically_resolves_at The time at which the transfer will be automatically resolved.
+      #   #   @option data [Object] :decline If your transfer is declined, this will contain details of the decline.
+      #   #   @option data [String] :direction The direction of the transfer.
+      #   #   @option data [String] :expected_settlement_schedule The settlement schedule the transfer is expected to follow.
+      #   #   @option data [Object] :international_addenda If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
+      #   #     contain fields pertaining to the International ACH Transaction.
+      #   #   @option data [Object] :notification_of_change If you initiate a notification of change in response to the transfer, this will
+      #   #     contain its details.
+      #   #   @option data [String] :originator_company_descriptive_date The descriptive date of the transfer.
+      #   #   @option data [String] :originator_company_discretionary_data The additional information included with the transfer.
+      #   #   @option data [String] :originator_company_entry_description The description of the transfer.
+      #   #   @option data [String] :originator_company_id The id of the company that initiated the transfer.
+      #   #   @option data [String] :originator_company_name The name of the company that initiated the transfer.
+      #   #   @option data [String] :originator_routing_number The American Banking Association (ABA) routing number of the bank originating
+      #   #     the transfer.
+      #   #   @option data [String] :receiver_id_number The id of the receiver of the transfer.
+      #   #   @option data [String] :receiver_name The name of the receiver of the transfer.
+      #   #   @option data [String] :standard_entry_class_code The Standard Entry Class (SEC) code of the transfer.
+      #   #   @option data [String] :status The status of the transfer.
+      #   #   @option data [String] :trace_number The trace number of the transfer.
+      #   #   @option data [Object] :transfer_return If your transfer is returned, this will contain details of the return.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `inbound_ach_transfer`.
+      #   def initialize(data = {}) = super
     end
   end
 end

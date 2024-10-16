@@ -65,26 +65,25 @@ module Increase
         PROGRAM = :program
       end
 
-      # Create a new instance of Program from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, bank: nil, billing_account_id: nil, created_at: nil, default_digital_card_profile_id: nil, interest_rate: nil, name: nil, type: nil, updated_at: nil)
-      # @param id [String] The Program identifier.
-      # @param bank [String] The Bank the Program is with.
-      # @param billing_account_id [String] The Program billing account.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #   was created.
-      # @param default_digital_card_profile_id [String] The default configuration for digital cards attached to this Program.
-      # @param interest_rate [String] The Interest Rate currently being earned on the accounts in this program, as a
-      #   string containing a decimal number. For example, a 1% interest rate would be
-      #   represented as "0.01".
-      # @param name [String] The name of the Program.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `program`.
-      # @param updated_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #   was last updated.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of Program from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The Program identifier.
+      #   #   @option data [String] :bank The Bank the Program is with.
+      #   #   @option data [String] :billing_account_id The Program billing account.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
+      #   #     was created.
+      #   #   @option data [String] :default_digital_card_profile_id The default configuration for digital cards attached to this Program.
+      #   #   @option data [String] :interest_rate The Interest Rate currently being earned on the accounts in this program, as a
+      #   #     string containing a decimal number. For example, a 1% interest rate would be
+      #   #     represented as "0.01".
+      #   #   @option data [String] :name The name of the Program.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `program`.
+      #   #   @option data [String] :updated_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
+      #   #     was last updated.
+      #   def initialize(data = {}) = super
     end
   end
 end

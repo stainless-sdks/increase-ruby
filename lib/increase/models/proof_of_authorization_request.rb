@@ -40,13 +40,12 @@ module Increase
         #   @return [String]
         required :id, String
 
-        # Create a new instance of ACHTransfer from a Hash of raw data.
-        #
-        # @overload initialize(id: nil)
-        # @param id [String] The ACH Transfer identifier.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of ACHTransfer from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id The ACH Transfer identifier.
+        #   def initialize(data = {}) = super
       end
 
       # A constant representing the object's type. For this resource it will always be `proof_of_authorization_request`.
@@ -54,19 +53,18 @@ module Increase
         PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
       end
 
-      # Create a new instance of ProofOfAuthorizationRequest from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, ach_transfers: nil, created_at: nil, due_on: nil, type: nil, updated_at: nil)
-      # @param id [String] The Proof of Authorization Request identifier.
-      # @param ach_transfers [Array<Object>] The ACH Transfers associated with the request.
-      # @param created_at [String] The time the Proof of Authorization Request was created.
-      # @param due_on [String] The time the Proof of Authorization Request is due.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `proof_of_authorization_request`.
-      # @param updated_at [String] The time the Proof of Authorization Request was last updated.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of ProofOfAuthorizationRequest from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The Proof of Authorization Request identifier.
+      #   #   @option data [Array<Object>] :ach_transfers The ACH Transfers associated with the request.
+      #   #   @option data [String] :created_at The time the Proof of Authorization Request was created.
+      #   #   @option data [String] :due_on The time the Proof of Authorization Request is due.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `proof_of_authorization_request`.
+      #   #   @option data [String] :updated_at The time the Proof of Authorization Request was last updated.
+      #   def initialize(data = {}) = super
     end
   end
 end

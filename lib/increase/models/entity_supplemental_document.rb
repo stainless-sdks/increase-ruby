@@ -33,21 +33,20 @@ module Increase
         ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
       end
 
-      # Create a new instance of EntitySupplementalDocument from a Hash of raw data.
-      #
-      # @overload initialize(created_at: nil, entity_id: nil, file_id: nil, idempotency_key: nil, type: nil)
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      #   Supplemental Document was created.
-      # @param entity_id [String] The Entity the supplemental document is attached to.
-      # @param file_id [String] The File containing the document.
-      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `entity_supplemental_document`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of EntitySupplementalDocument from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+      #   #     Supplemental Document was created.
+      #   #   @option data [String] :entity_id The Entity the supplemental document is attached to.
+      #   #   @option data [String] :file_id The File containing the document.
+      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
+      #   #     Increase and is used to ensure that a request is only processed once. Learn more
+      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `entity_supplemental_document`.
+      #   def initialize(data = {}) = super
     end
   end
 end

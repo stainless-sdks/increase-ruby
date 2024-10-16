@@ -129,16 +129,15 @@ module Increase
         #   @return [String]
         required :approved_by, String
 
-        # Create a new instance of Approval from a Hash of raw data.
-        #
-        # @overload initialize(approved_at: nil, approved_by: nil)
-        # @param approved_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the transfer was approved.
-        # @param approved_by [String] If the Transfer was approved by a user in the dashboard, the email address of
-        #   that user.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Approval from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :approved_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #     the transfer was approved.
+        #   #   @option data [String] :approved_by If the Transfer was approved by a user in the dashboard, the email address of
+        #   #     that user.
+        #   def initialize(data = {}) = super
       end
 
       class Cancellation < BaseModel
@@ -152,16 +151,15 @@ module Increase
         #   @return [String]
         required :canceled_by, String
 
-        # Create a new instance of Cancellation from a Hash of raw data.
-        #
-        # @overload initialize(canceled_at: nil, canceled_by: nil)
-        # @param canceled_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the Transfer was canceled.
-        # @param canceled_by [String] If the Transfer was canceled by a user in the dashboard, the email address of
-        #   that user.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Cancellation from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :canceled_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #     the Transfer was canceled.
+        #   #   @option data [String] :canceled_by If the Transfer was canceled by a user in the dashboard, the email address of
+        #   #     that user.
+        #   def initialize(data = {}) = super
       end
 
       class CreatedBy < BaseModel
@@ -191,13 +189,12 @@ module Increase
           #   @return [String]
           required :description, String
 
-          # Create a new instance of APIKey from a Hash of raw data.
-          #
-          # @overload initialize(description: nil)
-          # @param description [String] The description set for the API key when it was created.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of APIKey from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :description The description set for the API key when it was created.
+          #   def initialize(data = {}) = super
         end
 
         # The type of object that created this transfer.
@@ -218,13 +215,12 @@ module Increase
           #   @return [String]
           required :name_, String
 
-          # Create a new instance of OAuthApplication from a Hash of raw data.
-          #
-          # @overload initialize(name: nil)
-          # @param name [String] The name of the OAuth Application.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of OAuthApplication from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :name The name of the OAuth Application.
+          #   def initialize(data = {}) = super
         end
 
         class User < BaseModel
@@ -233,25 +229,23 @@ module Increase
           #   @return [String]
           required :email, String
 
-          # Create a new instance of User from a Hash of raw data.
-          #
-          # @overload initialize(email: nil)
-          # @param email [String] The email address of the User.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of User from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :email The email address of the User.
+          #   def initialize(data = {}) = super
         end
 
-        # Create a new instance of CreatedBy from a Hash of raw data.
-        #
-        # @overload initialize(api_key: nil, category: nil, oauth_application: nil, user: nil)
-        # @param api_key [Object] If present, details about the API key that created the transfer.
-        # @param category [String] The type of object that created this transfer.
-        # @param oauth_application [Object] If present, details about the OAuth Application that created the transfer.
-        # @param user [Object] If present, details about the User that created the transfer.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of CreatedBy from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Object] :api_key If present, details about the API key that created the transfer.
+        #   #   @option data [String] :category The type of object that created this transfer.
+        #   #   @option data [Object] :oauth_application If present, details about the OAuth Application that created the transfer.
+        #   #   @option data [Object] :user If present, details about the User that created the transfer.
+        #   def initialize(data = {}) = super
       end
 
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
@@ -295,16 +289,15 @@ module Increase
         #   @return [Time]
         required :mailed_at, Time
 
-        # Create a new instance of Mailing from a Hash of raw data.
-        #
-        # @overload initialize(image_id: nil, mailed_at: nil)
-        # @param image_id [String] The ID of the file corresponding to an image of the check that was mailed, if
-        #   available.
-        # @param mailed_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the check was mailed.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Mailing from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :image_id The ID of the file corresponding to an image of the check that was mailed, if
+        #   #     available.
+        #   #   @option data [String] :mailed_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #     the check was mailed.
+        #   def initialize(data = {}) = super
       end
 
       class PhysicalCheck < BaseModel
@@ -375,18 +368,17 @@ module Increase
           #   @return [String]
           required :state, String
 
-          # Create a new instance of MailingAddress from a Hash of raw data.
-          #
-          # @overload initialize(city: nil, line1: nil, line2: nil, name: nil, postal_code: nil, state: nil)
-          # @param city [String] The city of the check's destination.
-          # @param line1 [String] The street address of the check's destination.
-          # @param line2 [String] The second line of the address of the check's destination.
-          # @param name [String] The name component of the check's mailing address.
-          # @param postal_code [String] The postal code of the check's destination.
-          # @param state [String] The state of the check's destination.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of MailingAddress from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :city The city of the check's destination.
+          #   #   @option data [String] :line1 The street address of the check's destination.
+          #   #   @option data [String] :line2 The second line of the address of the check's destination.
+          #   #   @option data [String] :name The name component of the check's mailing address.
+          #   #   @option data [String] :postal_code The postal code of the check's destination.
+          #   #   @option data [String] :state The state of the check's destination.
+          #   def initialize(data = {}) = super
         end
 
         class ReturnAddress < BaseModel
@@ -420,18 +412,17 @@ module Increase
           #   @return [String]
           required :state, String
 
-          # Create a new instance of ReturnAddress from a Hash of raw data.
-          #
-          # @overload initialize(city: nil, line1: nil, line2: nil, name: nil, postal_code: nil, state: nil)
-          # @param city [String] The city of the check's destination.
-          # @param line1 [String] The street address of the check's destination.
-          # @param line2 [String] The second line of the address of the check's destination.
-          # @param name [String] The name component of the check's return address.
-          # @param postal_code [String] The postal code of the check's destination.
-          # @param state [String] The state of the check's destination.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of ReturnAddress from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :city The city of the check's destination.
+          #   #   @option data [String] :line1 The street address of the check's destination.
+          #   #   @option data [String] :line2 The second line of the address of the check's destination.
+          #   #   @option data [String] :name The name component of the check's return address.
+          #   #   @option data [String] :postal_code The postal code of the check's destination.
+          #   #   @option data [String] :state The state of the check's destination.
+          #   def initialize(data = {}) = super
         end
 
         class TrackingUpdate < BaseModel
@@ -463,31 +454,29 @@ module Increase
             RETURNED_TO_SENDER = :returned_to_sender
           end
 
-          # Create a new instance of TrackingUpdate from a Hash of raw data.
-          #
-          # @overload initialize(category: nil, created_at: nil)
-          # @param category [String] The type of tracking event.
-          # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the tracking event took place.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of TrackingUpdate from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :category The type of tracking event.
+          #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          #   #     the tracking event took place.
+          #   def initialize(data = {}) = super
         end
 
-        # Create a new instance of PhysicalCheck from a Hash of raw data.
-        #
-        # @overload initialize(mailing_address: nil, memo: nil, note: nil, recipient_name: nil, return_address: nil, signature_text: nil, tracking_updates: nil)
-        # @param mailing_address [Object] Details for where Increase will mail the check.
-        # @param memo [String] The descriptor that will be printed on the memo field on the check.
-        # @param note [String] The descriptor that will be printed on the letter included with the check.
-        # @param recipient_name [String] The name that will be printed on the check.
-        # @param return_address [Object] The return address to be printed on the check.
-        # @param signature_text [String] The text that will appear as the signature on the check in cursive font. If
-        #   blank, the check will be printed with 'No signature required'.
-        # @param tracking_updates [Array<Object>] Tracking updates relating to the physical check's delivery.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of PhysicalCheck from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Object] :mailing_address Details for where Increase will mail the check.
+        #   #   @option data [String] :memo The descriptor that will be printed on the memo field on the check.
+        #   #   @option data [String] :note The descriptor that will be printed on the letter included with the check.
+        #   #   @option data [String] :recipient_name The name that will be printed on the check.
+        #   #   @option data [Object] :return_address The return address to be printed on the check.
+        #   #   @option data [String] :signature_text The text that will appear as the signature on the check in cursive font. If
+        #   #     blank, the check will be printed with 'No signature required'.
+        #   #   @option data [Array<Object>] :tracking_updates Tracking updates relating to the physical check's delivery.
+        #   def initialize(data = {}) = super
       end
 
       # The lifecycle status of the transfer.
@@ -564,17 +553,16 @@ module Increase
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST = :check_transfer_stop_payment_request
         end
 
-        # Create a new instance of StopPaymentRequest from a Hash of raw data.
-        #
-        # @overload initialize(reason: nil, requested_at: nil, transfer_id: nil, type: nil)
-        # @param reason [String] The reason why this transfer was stopped.
-        # @param requested_at [String] The time the stop-payment was requested.
-        # @param transfer_id [String] The ID of the check transfer that was stopped.
-        # @param type [String] A constant representing the object's type. For this resource it will always be
-        #   `check_transfer_stop_payment_request`.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of StopPaymentRequest from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :reason The reason why this transfer was stopped.
+        #   #   @option data [String] :requested_at The time the stop-payment was requested.
+        #   #   @option data [String] :transfer_id The ID of the check transfer that was stopped.
+        #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+        #   #     `check_transfer_stop_payment_request`.
+        #   def initialize(data = {}) = super
       end
 
       class Submission < BaseModel
@@ -583,13 +571,12 @@ module Increase
         #   @return [Time]
         required :submitted_at, Time
 
-        # Create a new instance of Submission from a Hash of raw data.
-        #
-        # @overload initialize(submitted_at: nil)
-        # @param submitted_at [String] When this check transfer was submitted to our check printer.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Submission from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :submitted_at When this check transfer was submitted to our check printer.
+        #   def initialize(data = {}) = super
       end
 
       class ThirdParty < BaseModel
@@ -598,13 +585,12 @@ module Increase
         #   @return [String]
         required :check_number, String
 
-        # Create a new instance of ThirdParty from a Hash of raw data.
-        #
-        # @overload initialize(check_number: nil)
-        # @param check_number [String] The check number that will be printed on the check.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of ThirdParty from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :check_number The check number that will be printed on the check.
+        #   def initialize(data = {}) = super
       end
 
       # A constant representing the object's type. For this resource it will always be `check_transfer`.
@@ -612,51 +598,50 @@ module Increase
         CHECK_TRANSFER = :check_transfer
       end
 
-      # Create a new instance of CheckTransfer from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, account_id: nil, account_number: nil, amount: nil, approval: nil, approved_inbound_check_deposit_id: nil, cancellation: nil, check_number: nil, created_at: nil, created_by: nil, currency: nil, fulfillment_method: nil, idempotency_key: nil, mailing: nil, pending_transaction_id: nil, physical_check: nil, routing_number: nil, source_account_number_id: nil, status: nil, stop_payment_request: nil, submission: nil, third_party: nil, type: nil)
-      # @param id [String] The Check transfer's identifier.
-      # @param account_id [String] The identifier of the Account from which funds will be transferred.
-      # @param account_number [String] The account number printed on the check.
-      # @param amount [Integer] The transfer amount in USD cents.
-      # @param approval [Object] If your account requires approvals for transfers and the transfer was approved,
-      #   this will contain details of the approval.
-      # @param approved_inbound_check_deposit_id [String] If the Check Transfer was successfully deposited, this will contain the
-      #   identifier of the Inbound Check Deposit object with details of the deposit.
-      # @param cancellation [Object] If your account requires approvals for transfers and the transfer was not
-      #   approved, this will contain details of the cancellation.
-      # @param check_number [String] The check number printed on the check.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the transfer was created.
-      # @param created_by [Object] What object created the transfer, either via the API or the dashboard.
-      # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-      #   currency.
-      # @param fulfillment_method [String] Whether Increase will print and mail the check or if you will do it yourself.
-      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @param mailing [Object] If the check has been mailed by Increase, this will contain details of the
-      #   shipment.
-      # @param pending_transaction_id [String] The ID for the pending transaction representing the transfer. A pending
-      #   transaction is created when the transfer
-      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      #   by someone else in your organization.
-      # @param physical_check [Object] Details relating to the physical check that Increase will print and mail. Will
-      #   be present if and only if `fulfillment_method` is equal to `physical_check`.
-      # @param routing_number [String] The routing number printed on the check.
-      # @param source_account_number_id [String] The identifier of the Account Number from which to send the transfer and print
-      #   on the check.
-      # @param status [String] The lifecycle status of the transfer.
-      # @param stop_payment_request [Object] After a stop-payment is requested on the check, this will contain supplemental
-      #   details.
-      # @param submission [Object] After the transfer is submitted, this will contain supplemental details.
-      # @param third_party [Object] Details relating to the custom fulfillment you will perform. Will be present if
-      #   and only if `fulfillment_method` is equal to `third_party`.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `check_transfer`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of CheckTransfer from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The Check transfer's identifier.
+      #   #   @option data [String] :account_id The identifier of the Account from which funds will be transferred.
+      #   #   @option data [String] :account_number The account number printed on the check.
+      #   #   @option data [Integer] :amount The transfer amount in USD cents.
+      #   #   @option data [Object] :approval If your account requires approvals for transfers and the transfer was approved,
+      #   #     this will contain details of the approval.
+      #   #   @option data [String] :approved_inbound_check_deposit_id If the Check Transfer was successfully deposited, this will contain the
+      #   #     identifier of the Inbound Check Deposit object with details of the deposit.
+      #   #   @option data [Object] :cancellation If your account requires approvals for transfers and the transfer was not
+      #   #     approved, this will contain details of the cancellation.
+      #   #   @option data [String] :check_number The check number printed on the check.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   #     the transfer was created.
+      #   #   @option data [Object] :created_by What object created the transfer, either via the API or the dashboard.
+      #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
+      #   #     currency.
+      #   #   @option data [String] :fulfillment_method Whether Increase will print and mail the check or if you will do it yourself.
+      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
+      #   #     Increase and is used to ensure that a request is only processed once. Learn more
+      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #   @option data [Object] :mailing If the check has been mailed by Increase, this will contain details of the
+      #   #     shipment.
+      #   #   @option data [String] :pending_transaction_id The ID for the pending transaction representing the transfer. A pending
+      #   #     transaction is created when the transfer
+      #   #     [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      #   #     by someone else in your organization.
+      #   #   @option data [Object] :physical_check Details relating to the physical check that Increase will print and mail. Will
+      #   #     be present if and only if `fulfillment_method` is equal to `physical_check`.
+      #   #   @option data [String] :routing_number The routing number printed on the check.
+      #   #   @option data [String] :source_account_number_id The identifier of the Account Number from which to send the transfer and print
+      #   #     on the check.
+      #   #   @option data [String] :status The lifecycle status of the transfer.
+      #   #   @option data [Object] :stop_payment_request After a stop-payment is requested on the check, this will contain supplemental
+      #   #     details.
+      #   #   @option data [Object] :submission After the transfer is submitted, this will contain supplemental details.
+      #   #   @option data [Object] :third_party Details relating to the custom fulfillment you will perform. Will be present if
+      #   #     and only if `fulfillment_method` is equal to `third_party`.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `check_transfer`.
+      #   def initialize(data = {}) = super
     end
   end
 end
