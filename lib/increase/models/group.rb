@@ -50,6 +50,20 @@ module Increase
       class Type < Increase::Enum
         GROUP = :group
       end
+
+      # Create a new instance of Group from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, ach_debit_status: nil, activation_status: nil, created_at: nil, type: nil)
+      # @param id [String] The Group identifier.
+      # @param ach_debit_status [String] If the Group is allowed to create ACH debits.
+      # @param activation_status [String] If the Group is activated or not.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group
+      #   was created.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `group`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

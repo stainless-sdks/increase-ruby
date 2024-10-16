@@ -133,6 +133,17 @@ module Increase
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
         #   @return [String]
         required :approved_by, String
+
+        # Create a new instance of Approval from a Hash of raw data.
+        #
+        # @overload initialize(approved_at: nil, approved_by: nil)
+        # @param approved_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   the transfer was approved.
+        # @param approved_by [String] If the Transfer was approved by a user in the dashboard, the email address of
+        #   that user.
+        def initialize(data = {})
+          super
+        end
       end
 
       class Cancellation < BaseModel
@@ -145,6 +156,17 @@ module Increase
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
         #   @return [String]
         required :canceled_by, String
+
+        # Create a new instance of Cancellation from a Hash of raw data.
+        #
+        # @overload initialize(canceled_at: nil, canceled_by: nil)
+        # @param canceled_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   the Transfer was canceled.
+        # @param canceled_by [String] If the Transfer was canceled by a user in the dashboard, the email address of
+        #   that user.
+        def initialize(data = {})
+          super
+        end
       end
 
       class CreatedBy < BaseModel
@@ -174,6 +196,14 @@ module Increase
           #   The description set for the API key when it was created.
           #   @return [String]
           required :description, String
+
+          # Create a new instance of APIKey from a Hash of raw data.
+          #
+          # @overload initialize(description: nil)
+          # @param description [String] The description set for the API key when it was created.
+          def initialize(data = {})
+            super
+          end
         end
 
         # The type of object that created this transfer.
@@ -193,6 +223,14 @@ module Increase
           #   The name of the OAuth Application.
           #   @return [String]
           required :name_, String
+
+          # Create a new instance of OAuthApplication from a Hash of raw data.
+          #
+          # @overload initialize(name: nil)
+          # @param name [String] The name of the OAuth Application.
+          def initialize(data = {})
+            super
+          end
         end
 
         class User < BaseModel
@@ -200,6 +238,25 @@ module Increase
           #   The email address of the User.
           #   @return [String]
           required :email, String
+
+          # Create a new instance of User from a Hash of raw data.
+          #
+          # @overload initialize(email: nil)
+          # @param email [String] The email address of the User.
+          def initialize(data = {})
+            super
+          end
+        end
+
+        # Create a new instance of CreatedBy from a Hash of raw data.
+        #
+        # @overload initialize(api_key: nil, category: nil, oauth_application: nil, user: nil)
+        # @param api_key [Object] If present, details about the API key that created the transfer.
+        # @param category [String] The type of object that created this transfer.
+        # @param oauth_application [Object] If present, details about the OAuth Application that created the transfer.
+        # @param user [Object] If present, details about the User that created the transfer.
+        def initialize(data = {})
+          super
         end
       end
 
@@ -306,6 +363,19 @@ module Increase
           # Some other error or issue has occurred.
           OTHER = :other
         end
+
+        # Create a new instance of Rejection from a Hash of raw data.
+        #
+        # @overload initialize(reject_reason_additional_information: nil, reject_reason_code: nil, rejected_at: nil)
+        # @param reject_reason_additional_information [String] Additional information about the rejection provided by the recipient bank when
+        #   the `reject_reason_code` is `NARRATIVE`.
+        # @param reject_reason_code [String] The reason the transfer was rejected as provided by the recipient bank or the
+        #   Real-Time Payments network.
+        # @param rejected_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   the transfer was rejected.
+        def initialize(data = {})
+          super
+        end
       end
 
       # The lifecycle status of the transfer.
@@ -345,11 +415,69 @@ module Increase
         #   The Real-Time Payments network identification of the transfer.
         #   @return [String]
         required :transaction_identification, String
+
+        # Create a new instance of Submission from a Hash of raw data.
+        #
+        # @overload initialize(submitted_at: nil, transaction_identification: nil)
+        # @param submitted_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   the transfer was submitted to The Clearing House.
+        # @param transaction_identification [String] The Real-Time Payments network identification of the transfer.
+        def initialize(data = {})
+          super
+        end
       end
 
       # A constant representing the object's type. For this resource it will always be `real_time_payments_transfer`.
       class Type < Increase::Enum
         REAL_TIME_PAYMENTS_TRANSFER = :real_time_payments_transfer
+      end
+
+      # Create a new instance of RealTimePaymentsTransfer from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, account_id: nil, amount: nil, approval: nil, cancellation: nil, created_at: nil, created_by: nil, creditor_name: nil, currency: nil, debtor_name: nil, destination_account_number: nil, destination_routing_number: nil, external_account_id: nil, idempotency_key: nil, pending_transaction_id: nil, rejection: nil, remittance_information: nil, source_account_number_id: nil, status: nil, submission: nil, transaction_id: nil, type: nil, ultimate_creditor_name: nil, ultimate_debtor_name: nil)
+      # @param id [String] The Real-Time Payments Transfer's identifier.
+      # @param account_id [String] The Account from which the transfer was sent.
+      # @param amount [Integer] The transfer amount in USD cents.
+      # @param approval [Object] If your account requires approvals for transfers and the transfer was approved,
+      #   this will contain details of the approval.
+      # @param cancellation [Object] If your account requires approvals for transfers and the transfer was not
+      #   approved, this will contain details of the cancellation.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the transfer was created.
+      # @param created_by [Object] What object created the transfer, either via the API or the dashboard.
+      # @param creditor_name [String] The name of the transfer's recipient. This is set by the sender when creating
+      #   the transfer.
+      # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
+      #   currency. For real-time payments transfers this is always equal to `USD`.
+      # @param debtor_name [String] The name of the transfer's sender. If not provided, defaults to the name of the
+      #   account's entity.
+      # @param destination_account_number [String] The destination account number.
+      # @param destination_routing_number [String] The destination American Bankers' Association (ABA) Routing Transit Number
+      #   (RTN).
+      # @param external_account_id [String] The identifier of the External Account the transfer was made to, if any.
+      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @param pending_transaction_id [String] The ID for the pending transaction representing the transfer. A pending
+      #   transaction is created when the transfer
+      #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      #   by someone else in your organization.
+      # @param rejection [Object] If the transfer is rejected by Real-Time Payments or the destination financial
+      #   institution, this will contain supplemental details.
+      # @param remittance_information [String] Unstructured information that will show on the recipient's bank statement.
+      # @param source_account_number_id [String] The Account Number the recipient will see as having sent the transfer.
+      # @param status [String] The lifecycle status of the transfer.
+      # @param submission [Object] After the transfer is submitted to Real-Time Payments, this will contain
+      #   supplemental details.
+      # @param transaction_id [String] The Transaction funding the transfer once it is complete.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `real_time_payments_transfer`.
+      # @param ultimate_creditor_name [String] The name of the ultimate recipient of the transfer. Set this if the creditor is
+      #   an intermediary receiving the payment for someone else.
+      # @param ultimate_debtor_name [String] The name of the ultimate sender of the transfer. Set this if the funds are being
+      #   sent on behalf of someone who is not the account holder at Increase.
+      def initialize(data = {})
+        super
       end
     end
   end

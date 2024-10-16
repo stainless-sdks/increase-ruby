@@ -49,6 +49,21 @@ module Increase
       class Type < Increase::Enum
         DOCUMENT = :document
       end
+
+      # Create a new instance of Document from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, category: nil, created_at: nil, entity_id: nil, file_id: nil, type: nil)
+      # @param id [String] The Document identifier.
+      # @param category [String] The type of document.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+      #   Document was created.
+      # @param entity_id [String] The identifier of the Entity the document was generated for.
+      # @param file_id [String] The identifier of the File containing the Document's contents.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `document`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

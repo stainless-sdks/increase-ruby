@@ -78,6 +78,23 @@ module Increase
         #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
         #   @return [String]
         required :state, String
+
+        # Create a new instance of Address from a Hash of raw data.
+        #
+        # @overload initialize(city: nil, line1: nil, line2: nil, postal_code: nil, recipient: nil, state: nil)
+        # @param city [String] The city of the address.
+        # @param line1 [String] The first line of the address.
+        # @param line2 [String] The second line of the address.
+        # @param postal_code [String] The postal code of the address.
+        # @param recipient [String] The recipient line of the address. This will include the recipient name you
+        #   provide when creating the address, as well as an ATTN suffix to help route the
+        #   mail to your lockbox. Mail senders must include this ATTN line to receive mail
+        #   at this Lockbox.
+        # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
+        #   the address.
+        def initialize(data = {})
+          super
+        end
       end
 
       # This indicates if mail can be sent to this address.
@@ -92,6 +109,27 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `lockbox`.
       class Type < Increase::Enum
         LOCKBOX = :lockbox
+      end
+
+      # Create a new instance of Lockbox from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, account_id: nil, address: nil, created_at: nil, description: nil, idempotency_key: nil, recipient_name: nil, status: nil, type: nil)
+      # @param id [String] The Lockbox identifier.
+      # @param account_id [String] The identifier for the Account checks sent to this lockbox will be deposited
+      #   into.
+      # @param address [Object] The mailing address for the Lockbox.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
+      #   was created.
+      # @param description [String] The description you choose for the Lockbox.
+      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @param recipient_name [String] The recipient name you choose for the Lockbox.
+      # @param status [String] This indicates if mail can be sent to this address.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `lockbox`.
+      def initialize(data = {})
+        super
       end
     end
   end

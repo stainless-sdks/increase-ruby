@@ -52,6 +52,26 @@ module Increase
       class Type < Increase::Enum
         ACCOUNT_STATEMENT = :account_statement
       end
+
+      # Create a new instance of AccountStatement from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, account_id: nil, created_at: nil, ending_balance: nil, file_id: nil, starting_balance: nil, statement_period_end: nil, statement_period_start: nil, type: nil)
+      # @param id [String] The Account Statement identifier.
+      # @param account_id [String] The identifier for the Account this Account Statement belongs to.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+      #   Statement was created.
+      # @param ending_balance [Integer] The Account's balance at the start of its statement period.
+      # @param file_id [String] The identifier of the File containing a PDF of the statement.
+      # @param starting_balance [Integer] The Account's balance at the start of its statement period.
+      # @param statement_period_end [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
+      #   of the period the Account Statement covers.
+      # @param statement_period_start [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the
+      #   start of the period the Account Statement covers.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `account_statement`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

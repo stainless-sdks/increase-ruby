@@ -332,6 +332,26 @@ module Increase
       class Type < Increase::Enum
         EVENT_SUBSCRIPTION = :event_subscription
       end
+
+      # Create a new instance of EventSubscription from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, created_at: nil, idempotency_key: nil, oauth_connection_id: nil, selected_event_category: nil, status: nil, type: nil, url: nil)
+      # @param id [String] The event subscription identifier.
+      # @param created_at [String] The time the event subscription was created.
+      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @param oauth_connection_id [String] If specified, this subscription will only receive webhooks for Events associated
+      #   with this OAuth Connection.
+      # @param selected_event_category [String] If specified, this subscription will only receive webhooks for Events with the
+      #   specified `category`.
+      # @param status [String] This indicates if we'll send notifications to this subscription.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `event_subscription`.
+      # @param url [String] The webhook url where we'll send notifications.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

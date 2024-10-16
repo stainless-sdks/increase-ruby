@@ -64,6 +64,26 @@ module Increase
       class Type < Increase::Enum
         INTRAFI_EXCLUSION = :intrafi_exclusion
       end
+
+      # Create a new instance of IntrafiExclusion from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, bank_name: nil, entity_id: nil, excluded_at: nil, fdic_certificate_number: nil, idempotency_key: nil, status: nil, submitted_at: nil, type: nil)
+      # @param id [String] The identifier of this exclusion request.
+      # @param bank_name [String] The name of the excluded institution.
+      # @param entity_id [String] The entity for which this institution is excluded.
+      # @param excluded_at [String] When this was exclusion was confirmed by IntraFi.
+      # @param fdic_certificate_number [String] The Federal Deposit Insurance Corporation's certificate number for the
+      #   institution.
+      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @param status [String] The status of the exclusion request.
+      # @param submitted_at [String] When this was exclusion was submitted to IntraFi by Increase.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `intrafi_exclusion`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

@@ -22,6 +22,22 @@ module Increase
       class Type < Increase::Enum
         INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT = :inbound_card_authorization_simulation_result
       end
+
+      # Create a new instance of CardAuthorizationCreateResponse from a Hash of raw
+      #   data.
+      #
+      # @overload initialize(declined_transaction: nil, pending_transaction: nil, type: nil)
+      # @param declined_transaction [Object] If the authorization attempt fails, this will contain the resulting
+      #   [Declined Transaction](#declined-transactions) object. The Declined
+      #   Transaction's `source` will be of `category: card_decline`.
+      # @param pending_transaction [Object] If the authorization attempt succeeds, this will contain the resulting Pending
+      #   Transaction object. The Pending Transaction's `source` will be of
+      #   `category: card_authorization`.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `inbound_card_authorization_simulation_result`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

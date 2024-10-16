@@ -93,6 +93,18 @@ module Increase
         #   The US state of the billing address.
         #   @return [String]
         required :state, String
+
+        # Create a new instance of BillingAddress from a Hash of raw data.
+        #
+        # @overload initialize(city: nil, line1: nil, line2: nil, postal_code: nil, state: nil)
+        # @param city [String] The city of the billing address.
+        # @param line1 [String] The first line of the billing address.
+        # @param line2 [String] The second line of the billing address.
+        # @param postal_code [String] The postal code of the billing address.
+        # @param state [String] The US state of the billing address.
+        def initialize(data = {})
+          super
+        end
       end
 
       class DigitalWallet < BaseModel
@@ -110,6 +122,19 @@ module Increase
         #   A phone number that can be used to verify the cardholder via one-time passcode over SMS.
         #   @return [String]
         required :phone, String
+
+        # Create a new instance of DigitalWallet from a Hash of raw data.
+        #
+        # @overload initialize(digital_card_profile_id: nil, email: nil, phone: nil)
+        # @param digital_card_profile_id [String] The digital card profile assigned to this digital card. Card profiles may also
+        #   be assigned at the program level.
+        # @param email [String] An email address that can be used to verify the cardholder via one-time passcode
+        #   over email.
+        # @param phone [String] A phone number that can be used to verify the cardholder via one-time passcode
+        #   over SMS.
+        def initialize(data = {})
+          super
+        end
       end
 
       # This indicates if payments can be made with the card.
@@ -127,6 +152,32 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `card`.
       class Type < Increase::Enum
         CARD = :card
+      end
+
+      # Create a new instance of Card from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, account_id: nil, billing_address: nil, created_at: nil, description: nil, digital_wallet: nil, entity_id: nil, expiration_month: nil, expiration_year: nil, idempotency_key: nil, last4: nil, status: nil, type: nil)
+      # @param id [String] The card identifier.
+      # @param account_id [String] The identifier for the account this card belongs to.
+      # @param billing_address [Object] The Card's billing address.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the Card was created.
+      # @param description [String] The card's description for display purposes.
+      # @param digital_wallet [Object] The contact information used in the two-factor steps for digital wallet card
+      #   creation. At least one field must be present to complete the digital wallet
+      #   steps.
+      # @param entity_id [String] The identifier for the entity associated with this card.
+      # @param expiration_month [Integer] The month the card expires in M format (e.g., August is 8).
+      # @param expiration_year [Integer] The year the card expires in YYYY format (e.g., 2025).
+      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @param last4 [String] The last 4 digits of the Card's Primary Account Number.
+      # @param status [String] This indicates if payments can be made with the card.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `card`.
+      def initialize(data = {})
+        super
       end
     end
   end

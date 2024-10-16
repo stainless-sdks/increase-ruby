@@ -304,6 +304,21 @@ module Increase
       class Type < Increase::Enum
         EVENT = :event
       end
+
+      # Create a new instance of Event from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, associated_object_id: nil, associated_object_type: nil, category: nil, created_at: nil, type: nil)
+      # @param id [String] The Event identifier.
+      # @param associated_object_id [String] The identifier of the object that generated this Event.
+      # @param associated_object_type [String] The type of the object that generated this Event.
+      # @param category [String] The category of the Event. We may add additional possible values for this enum
+      #   over time; your application should be able to handle such additions gracefully.
+      # @param created_at [String] The time the Event was created.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `event`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

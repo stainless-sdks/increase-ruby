@@ -55,6 +55,24 @@ module Increase
       class Type < Increase::Enum
         INTRAFI_ACCOUNT_ENROLLMENT = :intrafi_account_enrollment
       end
+
+      # Create a new instance of IntrafiAccountEnrollment from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, account_id: nil, idempotency_key: nil, intrafi_id: nil, status: nil, type: nil)
+      # @param id [String] The identifier of this enrollment at IntraFi.
+      # @param account_id [String] The identifier of the Increase Account being swept into the network.
+      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @param intrafi_id [String] The identifier of the account in IntraFi's system. This identifier will be
+      #   printed on any IntraFi statements or documents.
+      # @param status [String] The status of the account in the network. An account takes about one business
+      #   day to go from `pending_enrolling` to `enrolled`.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `intrafi_account_enrollment`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

@@ -124,6 +124,40 @@ module Increase
       class Type < Increase::Enum
         ACCOUNT = :account
       end
+
+      # Create a new instance of Account from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, bank: nil, closed_at: nil, created_at: nil, currency: nil, entity_id: nil, idempotency_key: nil, informational_entity_id: nil, interest_accrued: nil, interest_accrued_at: nil, interest_rate: nil, name: nil, program_id: nil, status: nil, type: nil)
+      # @param id [String] The Account identifier.
+      # @param bank [String] The bank the Account is with.
+      # @param closed_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+      #   was closed.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+      #   was created.
+      # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
+      #   currency.
+      # @param entity_id [String] The identifier for the Entity the Account belongs to.
+      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      # @param informational_entity_id [String] The identifier of an Entity that, while not owning the Account, is associated
+      #   with its activity.
+      # @param interest_accrued [String] The interest accrued but not yet paid, expressed as a string containing a
+      #   floating-point value.
+      # @param interest_accrued_at [String] The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
+      #   interest was accrued.
+      # @param interest_rate [String] The Interest Rate currently being earned on the account, as a string containing
+      #   a decimal number. For example, a 1% interest rate would be represented as
+      #   "0.01".
+      # @param name [String] The name you choose for the Account.
+      # @param program_id [String] The identifier of the Program determining the compliance and commercial terms of
+      #   this Account.
+      # @param status [String] The status of the Account.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `account`.
+      def initialize(data = {})
+        super
+      end
     end
   end
 end

@@ -186,7 +186,13 @@ module Increase
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
     #
     # @return [Increase::Client]
-    def initialize(environment: nil, base_url: nil, api_key: nil, max_retries: DEFAULT_MAX_RETRIES)
+    def initialize(
+      environment: nil,
+      base_url: nil,
+      api_key: nil,
+      max_retries: DEFAULT_MAX_RETRIES,
+      timeout: 60
+    )
       environments = {"production" => "https://api.increase.com", "sandbox" => "https://sandbox.increase.com"}
       if environment && base_url
         raise ArgumentError, "both environment and base_url given, expected only one"
@@ -206,7 +212,12 @@ module Increase
         raise ArgumentError, "api_key is required"
       end
 
-      super(base_url: base_url, max_retries: max_retries, idempotency_header: idempotency_header)
+      super(
+        base_url: base_url,
+        max_retries: max_retries,
+        timeout: timeout,
+        idempotency_header: idempotency_header
+      )
 
       @accounts = Increase::Resources::Accounts.new(client: self)
       @account_numbers = Increase::Resources::AccountNumbers.new(client: self)

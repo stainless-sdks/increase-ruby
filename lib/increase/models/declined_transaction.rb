@@ -248,6 +248,26 @@ module Increase
           class Type < Increase::Enum
             ACH_DECLINE = :ach_decline
           end
+
+          # Create a new instance of ACHDecline from a Hash of raw data.
+          #
+          # @overload initialize(id: nil, amount: nil, inbound_ach_transfer_id: nil, originator_company_descriptive_date: nil, originator_company_discretionary_data: nil, originator_company_id: nil, originator_company_name: nil, reason: nil, receiver_id_number: nil, receiver_name: nil, trace_number: nil, type: nil)
+          # @param id [String] The ACH Decline's identifier.
+          # @param amount [Integer] The declined amount in USD cents.
+          # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer object associated with this decline.
+          # @param originator_company_descriptive_date [String] The descriptive date of the transfer.
+          # @param originator_company_discretionary_data [String] The additional information included with the transfer.
+          # @param originator_company_id [String] The identifier of the company that initiated the transfer.
+          # @param originator_company_name [String] The name of the company that initiated the transfer.
+          # @param reason [String] Why the ACH transfer was declined.
+          # @param receiver_id_number [String] The id of the receiver of the transfer.
+          # @param receiver_name [String] The name of the receiver of the transfer.
+          # @param trace_number [String] The trace number of the transfer.
+          # @param type [String] A constant representing the object's type. For this resource it will always be
+          #   `ach_decline`.
+          def initialize(data = {})
+            super
+          end
         end
 
         class CardDecline < BaseModel
@@ -532,6 +552,27 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
               end
+
+              # Create a new instance of Visa from a Hash of raw data.
+              #
+              # @overload initialize(electronic_commerce_indicator: nil, point_of_service_entry_mode: nil)
+              # @param electronic_commerce_indicator [String] For electronic commerce transactions, this identifies the level of security used
+              #   in obtaining the customer's payment credential. For mail or telephone order
+              #   transactions, identifies the type of mail or telephone order.
+              # @param point_of_service_entry_mode [String] The method used to enter the cardholder's primary account number and card
+              #   expiration date.
+              def initialize(data = {})
+                super
+              end
+            end
+
+            # Create a new instance of NetworkDetails from a Hash of raw data.
+            #
+            # @overload initialize(category: nil, visa: nil)
+            # @param category [String] The payment network used to process this card authorization.
+            # @param visa [Object] Fields specific to the `visa` network.
+            def initialize(data = {})
+              super
             end
           end
 
@@ -550,6 +591,20 @@ module Increase
             #   A globally unique transaction identifier provided by the card network, used across multiple life-cycle requests.
             #   @return [String]
             required :transaction_id, String
+
+            # Create a new instance of NetworkIdentifiers from a Hash of raw data.
+            #
+            # @overload initialize(retrieval_reference_number: nil, trace_number: nil, transaction_id: nil)
+            # @param retrieval_reference_number [String] A life-cycle identifier used across e.g., an authorization and a reversal.
+            #   Expected to be unique per acquirer within a window of time. For some card
+            #   networks the retrieval reference number includes the trace counter.
+            # @param trace_number [String] A counter used to verify an individual authorization. Expected to be unique per
+            #   acquirer within a window of time.
+            # @param transaction_id [String] A globally unique transaction identifier provided by the card network, used
+            #   across multiple life-cycle requests.
+            def initialize(data = {})
+              super
+            end
           end
 
           # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
@@ -654,6 +709,14 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH = :no_match
               end
+
+              # Create a new instance of CardVerificationCode from a Hash of raw data.
+              #
+              # @overload initialize(result: nil)
+              # @param result [String] The result of verifying the Card Verification Code.
+              def initialize(data = {})
+                super
+              end
             end
 
             class CardholderAddress < BaseModel
@@ -705,7 +768,76 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH = :no_match
               end
+
+              # Create a new instance of CardholderAddress from a Hash of raw data.
+              #
+              # @overload initialize(actual_line1: nil, actual_postal_code: nil, provided_line1: nil, provided_postal_code: nil, result: nil)
+              # @param actual_line1 [String] Line 1 of the address on file for the cardholder.
+              # @param actual_postal_code [String] The postal code of the address on file for the cardholder.
+              # @param provided_line1 [String] The cardholder address line 1 provided for verification in the authorization
+              #   request.
+              # @param provided_postal_code [String] The postal code provided for verification in the authorization request.
+              # @param result [String] The address verification result returned to the card network.
+              def initialize(data = {})
+                super
+              end
             end
+
+            # Create a new instance of Verification from a Hash of raw data.
+            #
+            # @overload initialize(card_verification_code: nil, cardholder_address: nil)
+            # @param card_verification_code [Object] Fields related to verification of the Card Verification Code, a 3-digit code on
+            #   the back of the card.
+            # @param cardholder_address [Object] Cardholder address provided in the authorization request and the address on file
+            #   we verified it against.
+            def initialize(data = {})
+              super
+            end
+          end
+
+          # Create a new instance of CardDecline from a Hash of raw data.
+          #
+          # @overload initialize(id: nil, actioner: nil, amount: nil, card_payment_id: nil, currency: nil, declined_transaction_id: nil, digital_wallet_token_id: nil, direction: nil, merchant_acceptor_id: nil, merchant_category_code: nil, merchant_city: nil, merchant_country: nil, merchant_descriptor: nil, merchant_postal_code: nil, merchant_state: nil, network_details: nil, network_identifiers: nil, network_risk_score: nil, physical_card_id: nil, presentment_amount: nil, presentment_currency: nil, processing_category: nil, real_time_decision_id: nil, reason: nil, verification: nil)
+          # @param id [String] The Card Decline identifier.
+          # @param actioner [String] Whether this authorization was approved by Increase, the card network through
+          #   stand-in processing, or the user through a real-time decision.
+          # @param amount [Integer] The declined amount in the minor unit of the destination account currency. For
+          #   dollars, for example, this is cents.
+          # @param card_payment_id [String] The ID of the Card Payment this transaction belongs to.
+          # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
+          #   account currency.
+          # @param declined_transaction_id [String] The identifier of the declined transaction created for this Card Decline.
+          # @param digital_wallet_token_id [String] If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+          #   purchase), the identifier of the token that was used.
+          # @param direction [String] The direction describes the direction the funds will move, either from the
+          #   cardholder to the merchant or from the merchant to the cardholder.
+          # @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card
+          #   is transacting with.
+          # @param merchant_category_code [String] The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+          #   card is transacting with.
+          # @param merchant_city [String] The city the merchant resides in.
+          # @param merchant_country [String] The country the merchant resides in.
+          # @param merchant_descriptor [String] The merchant descriptor of the merchant the card is transacting with.
+          # @param merchant_postal_code [String] The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+          #   ZIP code, where the first 5 and last 4 are separated by a dash.
+          # @param merchant_state [String] The state the merchant resides in.
+          # @param network_details [Object] Fields specific to the `network`.
+          # @param network_identifiers [Object] Network-specific identifiers for a specific request or transaction.
+          # @param network_risk_score [Integer] The risk score generated by the card network. For Visa this is the Visa Advanced
+          #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
+          # @param physical_card_id [String] If the authorization was made in-person with a physical card, the Physical Card
+          #   that was used.
+          # @param presentment_amount [Integer] The declined amount in the minor unit of the transaction's presentment currency.
+          # @param presentment_currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          #   transaction's presentment currency.
+          # @param processing_category [String] The processing category describes the intent behind the authorization, such as
+          #   whether it was used for bill payments or an automatic fuel dispenser.
+          # @param real_time_decision_id [String] The identifier of the Real-Time Decision sent to approve or decline this
+          #   transaction.
+          # @param reason [String] Why the transaction was declined.
+          # @param verification [Object] Fields related to verification of cardholder-provided values.
+          def initialize(data = {})
+            super
           end
         end
 
@@ -822,6 +954,24 @@ module Increase
             # Your integration declined this check via the API.
             USER_INITIATED = :user_initiated
           end
+
+          # Create a new instance of CheckDecline from a Hash of raw data.
+          #
+          # @overload initialize(amount: nil, auxiliary_on_us: nil, back_image_file_id: nil, check_transfer_id: nil, front_image_file_id: nil, inbound_check_deposit_id: nil, reason: nil)
+          # @param amount [Integer] The declined amount in USD cents.
+          # @param auxiliary_on_us [String] A computer-readable number printed on the MICR line of business checks, usually
+          #   the check number. This is useful for positive pay checks, but can be unreliably
+          #   transmitted by the bank of first deposit.
+          # @param back_image_file_id [String] The identifier of the API File object containing an image of the back of the
+          #   declined check.
+          # @param check_transfer_id [String] The identifier of the Check Transfer object associated with this decline.
+          # @param front_image_file_id [String] The identifier of the API File object containing an image of the front of the
+          #   declined check.
+          # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit object associated with this decline.
+          # @param reason [String] Why the check was declined.
+          def initialize(data = {})
+            super
+          end
         end
 
         class CheckDepositRejection < BaseModel
@@ -907,8 +1057,27 @@ module Increase
             # This check's deposit window has expired.
             DEPOSIT_WINDOW_EXPIRED = :deposit_window_expired
 
+            # The check was rejected at the user's request.
+            REQUESTED_BY_USER = :requested_by_user
+
             # The check was rejected for an unknown reason.
             UNKNOWN = :unknown
+          end
+
+          # Create a new instance of CheckDepositRejection from a Hash of raw data.
+          #
+          # @overload initialize(amount: nil, check_deposit_id: nil, currency: nil, declined_transaction_id: nil, reason: nil, rejected_at: nil)
+          # @param amount [Integer] The rejected amount in the minor unit of check's currency. For dollars, for
+          #   example, this is cents.
+          # @param check_deposit_id [String] The identifier of the Check Deposit that was rejected.
+          # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
+          #   currency.
+          # @param declined_transaction_id [String] The identifier of the associated declined transaction.
+          # @param reason [String] Why the check deposit was rejected.
+          # @param rejected_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          #   the check deposit was rejected.
+          def initialize(data = {})
+            super
           end
         end
 
@@ -1010,6 +1179,27 @@ module Increase
             # Your account is not enabled to receive Real-Time Payments transfers.
             REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
           end
+
+          # Create a new instance of InboundRealTimePaymentsTransferDecline from a Hash of
+          #   raw data.
+          #
+          # @overload initialize(amount: nil, creditor_name: nil, currency: nil, debtor_account_number: nil, debtor_name: nil, debtor_routing_number: nil, reason: nil, remittance_information: nil, transaction_identification: nil, transfer_id: nil)
+          # @param amount [Integer] The declined amount in the minor unit of the destination account currency. For
+          #   dollars, for example, this is cents.
+          # @param creditor_name [String] The name the sender of the transfer specified as the recipient of the transfer.
+          # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
+          #   transfer's currency. This will always be "USD" for a Real-Time Payments
+          #   transfer.
+          # @param debtor_account_number [String] The account number of the account that sent the transfer.
+          # @param debtor_name [String] The name provided by the sender of the transfer.
+          # @param debtor_routing_number [String] The routing number of the account that sent the transfer.
+          # @param reason [String] Why the transfer was declined.
+          # @param remittance_information [String] Additional information included with the transfer.
+          # @param transaction_identification [String] The Real-Time Payments network identification of the declined transfer.
+          # @param transfer_id [String] The identifier of the Real-Time Payments Transfer that led to this Transaction.
+          def initialize(data = {})
+            super
+          end
         end
 
         class WireDecline < BaseModel
@@ -1043,12 +1233,72 @@ module Increase
             # The transaction is not allowed per Increase's terms.
             TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
           end
+
+          # Create a new instance of WireDecline from a Hash of raw data.
+          #
+          # @overload initialize(inbound_wire_transfer_id: nil, reason: nil)
+          # @param inbound_wire_transfer_id [String] The identifier of the Inbound Wire Transfer that was declined.
+          # @param reason [String] Why the wire transfer was declined.
+          def initialize(data = {})
+            super
+          end
+        end
+
+        # Create a new instance of Source from a Hash of raw data.
+        #
+        # @overload initialize(ach_decline: nil, card_decline: nil, category: nil, check_decline: nil, check_deposit_rejection: nil, inbound_real_time_payments_transfer_decline: nil, other: nil, wire_decline: nil)
+        # @param ach_decline [Object] An ACH Decline object. This field will be present in the JSON response if and
+        #   only if `category` is equal to `ach_decline`.
+        # @param card_decline [Object] A Card Decline object. This field will be present in the JSON response if and
+        #   only if `category` is equal to `card_decline`.
+        # @param category [String] The type of the resource. We may add additional possible values for this enum
+        #   over time; your application should be able to handle such additions gracefully.
+        # @param check_decline [Object] A Check Decline object. This field will be present in the JSON response if and
+        #   only if `category` is equal to `check_decline`.
+        # @param check_deposit_rejection [Object] A Check Deposit Rejection object. This field will be present in the JSON
+        #   response if and only if `category` is equal to `check_deposit_rejection`.
+        # @param inbound_real_time_payments_transfer_decline [Object] An Inbound Real-Time Payments Transfer Decline object. This field will be
+        #   present in the JSON response if and only if `category` is equal to
+        #   `inbound_real_time_payments_transfer_decline`.
+        # @param other [Object] If the category of this Transaction source is equal to `other`, this field will
+        #   contain an empty object, otherwise it will contain null.
+        # @param wire_decline [Object] A Wire Decline object. This field will be present in the JSON response if and
+        #   only if `category` is equal to `wire_decline`.
+        def initialize(data = {})
+          super
         end
       end
 
       # A constant representing the object's type. For this resource it will always be `declined_transaction`.
       class Type < Increase::Enum
         DECLINED_TRANSACTION = :declined_transaction
+      end
+
+      # Create a new instance of DeclinedTransaction from a Hash of raw data.
+      #
+      # @overload initialize(id: nil, account_id: nil, amount: nil, created_at: nil, currency: nil, description: nil, route_id: nil, route_type: nil, source: nil, type: nil)
+      # @param id [String] The Declined Transaction identifier.
+      # @param account_id [String] The identifier for the Account the Declined Transaction belongs to.
+      # @param amount [Integer] The Declined Transaction amount in the minor unit of its currency. For dollars,
+      #   for example, this is cents.
+      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
+      #   Transaction occurred.
+      # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
+      #   Transaction's currency. This will match the currency on the Declined
+      #   Transaction's Account.
+      # @param description [String] This is the description the vendor provides.
+      # @param route_id [String] The identifier for the route this Declined Transaction came through. Routes are
+      #   things like cards and ACH details.
+      # @param route_type [String] The type of the route this Declined Transaction came through.
+      # @param source [Object] This is an object giving more details on the network-level event that caused the
+      #   Declined Transaction. For example, for a card transaction this lists the
+      #   merchant's industry and location. Note that for backwards compatibility reasons,
+      #   additional undocumented keys may appear in this object. These should be treated
+      #   as deprecated and will be removed in the future.
+      # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   `declined_transaction`.
+      def initialize(data = {})
+        super
       end
     end
   end
