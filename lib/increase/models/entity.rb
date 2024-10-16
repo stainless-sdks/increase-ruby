@@ -64,6 +64,11 @@ module Increase
       required :supplemental_documents,
                Increase::ArrayOf.new(-> { Increase::Models::EntitySupplementalDocument })
 
+      # @!attribute [rw] third_party_verification
+      #   A reference to data stored in a third-party verification service. Your integration may or may not use this field.
+      #   @return [Increase::Models::Entity::ThirdPartyVerification]
+      required :third_party_verification, -> { Increase::Models::Entity::ThirdPartyVerification }
+
       # @!attribute [rw] trust_
       #   Details of the trust entity. Will be present if `structure` is equal to `trust`.
       #   @return [Increase::Models::Entity::Trust]
@@ -708,6 +713,32 @@ module Increase
         GOVERNMENT_AUTHORITY = :government_authority
       end
 
+      class ThirdPartyVerification < BaseModel
+        # @!attribute [rw] reference
+        #   The reference identifier for the third party verification.
+        #   @return [String]
+        required :reference, String
+
+        # @!attribute [rw] vendor
+        #   The vendor that was used to perform the verification.
+        #   @return [Symbol, Increase::Models::Entity::ThirdPartyVerification::Vendor]
+        required :vendor, enum: -> { Increase::Models::Entity::ThirdPartyVerification::Vendor }
+
+        # The vendor that was used to perform the verification.
+        class Vendor < Increase::Enum
+          # Alloy
+          ALLOY = :alloy
+        end
+
+        # @!parse
+        #   # Create a new instance of ThirdPartyVerification from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :reference The reference identifier for the third party verification.
+        #   #   @option data [String] :vendor The vendor that was used to perform the verification.
+        #   def initialize(data = {}) = super
+      end
+
       class Trust < BaseModel
         # @!attribute [rw] address
         #   The trust's address.
@@ -1096,6 +1127,8 @@ module Increase
       #   #   @option data [Array<Object>] :supplemental_documents Additional documentation associated with the entity. This is limited to the
       #   #     first 10 documents for an entity. If an entity has more than 10 documents, use
       #   #     the GET /entity_supplemental_documents list endpoint to retrieve them.
+      #   #   @option data [Object] :third_party_verification A reference to data stored in a third-party verification service. Your
+      #   #     integration may or may not use this field.
       #   #   @option data [Object] :trust Details of the trust entity. Will be present if `structure` is equal to `trust`.
       #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
       #   #     `entity`.

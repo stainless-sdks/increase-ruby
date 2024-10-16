@@ -24,6 +24,8 @@ module Increase
       #     `social_security_number` or `individual_taxpayer_identification_number`
       #     identification methods.
       #   @option params [Array<SupplementalDocument>, nil] :supplemental_documents Additional documentation associated with the entity.
+      #   @option params [ThirdPartyVerification, nil] :third_party_verification A reference to data stored in a third-party verification service. Your
+      #     integration may or may not use this field.
       #   @option params [Trust, nil] :trust Details of the trust entity to create. Required if `structure` is equal to
       #     `trust`.
       #
