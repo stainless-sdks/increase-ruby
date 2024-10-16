@@ -11,17 +11,17 @@ module Increase
       # Submit Proof of Authorization
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :authorization_terms Terms of authorization.
-      # @option params [Time] :authorized_at Time of authorization.
-      # @option params [String] :authorizer_email Email of the authorizer.
-      # @option params [String] :authorizer_name Name of the authorizer.
-      # @option params [Boolean] :customer_has_been_offboarded Whether the customer has been offboarded or suspended.
-      # @option params [String] :proof_of_authorization_request_id ID of the proof of authorization request.
-      # @option params [Boolean] :validated_account_ownership_via_credential Whether the account ownership was validated via credential (e.g. Plaid).
-      # @option params [Boolean] :validated_account_ownership_with_account_statement Whether the account ownership was validated with an account statement.
-      # @option params [Boolean] :validated_account_ownership_with_microdeposit Whether the account ownership was validated with a microdeposit.
-      # @option params [String, nil] :authorizer_company Company of the authorizer.
-      # @option params [String, nil] :authorizer_ip_address IP address of the authorizer.
+      #   @option params [String] :authorization_terms Terms of authorization.
+      #   @option params [Time] :authorized_at Time of authorization.
+      #   @option params [String] :authorizer_email Email of the authorizer.
+      #   @option params [String] :authorizer_name Name of the authorizer.
+      #   @option params [Boolean] :customer_has_been_offboarded Whether the customer has been offboarded or suspended.
+      #   @option params [String] :proof_of_authorization_request_id ID of the proof of authorization request.
+      #   @option params [Boolean] :validated_account_ownership_via_credential Whether the account ownership was validated via credential (e.g. Plaid).
+      #   @option params [Boolean] :validated_account_ownership_with_account_statement Whether the account ownership was validated with an account statement.
+      #   @option params [Boolean] :validated_account_ownership_with_microdeposit Whether the account ownership was validated with a microdeposit.
+      #   @option params [String, nil] :authorizer_company Company of the authorizer.
+      #   @option params [String, nil] :authorizer_ip_address IP address of the authorizer.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -55,14 +55,14 @@ module Increase
       # List Proof of Authorization Request Submissions
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String, nil] :cursor Return the page of entries after this one.
-      # @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      # @option params [String, nil] :proof_of_authorization_request_id ID of the proof of authorization request.
+      #   @option params [String, nil] :cursor Return the page of entries after this one.
+      #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #   @option params [String, nil] :proof_of_authorization_request_id ID of the proof of authorization request.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

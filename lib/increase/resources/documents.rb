@@ -26,12 +26,12 @@ module Increase
       # List Documents
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Category, nil] :category
-      # @option params [CreatedAt, nil] :created_at
-      # @option params [String, nil] :cursor Return the page of entries after this one.
-      # @option params [String, nil] :entity_id Filter Documents to ones belonging to the specified Entity.
-      # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #   @option params [Category, nil] :category
+      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [String, nil] :cursor Return the page of entries after this one.
+      #   @option params [String, nil] :entity_id Filter Documents to ones belonging to the specified Entity.
+      #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

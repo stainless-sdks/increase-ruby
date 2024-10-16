@@ -11,11 +11,11 @@ module Increase
       # Create a Check Deposit
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :account_id The identifier for the Account to deposit the check in.
-      # @option params [Integer] :amount The deposit amount in USD cents.
-      # @option params [String] :back_image_file_id The File containing the check's back image.
-      # @option params [String] :front_image_file_id The File containing the check's front image.
-      # @option params [String, nil] :description The description you choose to give the Check Deposit, for display purposes only.
+      #   @option params [String] :account_id The identifier for the Account to deposit the check in.
+      #   @option params [Integer] :amount The deposit amount in USD cents.
+      #   @option params [String] :back_image_file_id The File containing the check's back image.
+      #   @option params [String] :front_image_file_id The File containing the check's front image.
+      #   @option params [String, nil] :description The description you choose to give the Check Deposit, for display purposes only.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -49,15 +49,15 @@ module Increase
       # List Check Deposits
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String, nil] :account_id Filter Check Deposits to those belonging to the specified Account.
-      # @option params [CreatedAt, nil] :created_at
-      # @option params [String, nil] :cursor Return the page of entries after this one.
-      # @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #   @option params [String, nil] :account_id Filter Check Deposits to those belonging to the specified Account.
+      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [String, nil] :cursor Return the page of entries after this one.
+      #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

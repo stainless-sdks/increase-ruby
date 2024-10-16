@@ -13,8 +13,8 @@ module Increase
         #   transaction is refunded.
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :transaction_id The identifier for the Transaction to refund. The Transaction's source must have
-        #   a category of card_settlement.
+        #   @option params [String] :transaction_id The identifier for the Transaction to refund. The Transaction's source must have
+        #     a category of card_settlement.
         #
         # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #

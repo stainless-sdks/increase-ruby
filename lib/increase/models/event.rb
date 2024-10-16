@@ -305,20 +305,19 @@ module Increase
         EVENT = :event
       end
 
-      # Create a new instance of Event from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, associated_object_id: nil, associated_object_type: nil, category: nil, created_at: nil, type: nil)
-      # @param id [String] The Event identifier.
-      # @param associated_object_id [String] The identifier of the object that generated this Event.
-      # @param associated_object_type [String] The type of the object that generated this Event.
-      # @param category [String] The category of the Event. We may add additional possible values for this enum
-      #   over time; your application should be able to handle such additions gracefully.
-      # @param created_at [String] The time the Event was created.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `event`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of Event from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The Event identifier.
+      #   #   @option data [String] :associated_object_id The identifier of the object that generated this Event.
+      #   #   @option data [String] :associated_object_type The type of the object that generated this Event.
+      #   #   @option data [String] :category The category of the Event. We may add additional possible values for this enum
+      #   #     over time; your application should be able to handle such additions gracefully.
+      #   #   @option data [String] :created_at The time the Event was created.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `event`.
+      #   def initialize(data = {}) = super
     end
   end
 end

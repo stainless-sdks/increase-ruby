@@ -38,20 +38,19 @@ module Increase
         BOOKKEEPING_ENTRY = :bookkeeping_entry
       end
 
-      # Create a new instance of BookkeepingEntry from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, account_id: nil, amount: nil, created_at: nil, entry_set_id: nil, type: nil)
-      # @param id [String] The entry identifier.
-      # @param account_id [String] The identifier for the Account the Entry belongs to.
-      # @param amount [Integer] The Entry amount in the minor unit of its currency. For dollars, for example,
-      #   this is cents.
-      # @param created_at [String] When the entry set was created.
-      # @param entry_set_id [String] The identifier for the Account the Entry belongs to.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_entry`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of BookkeepingEntry from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The entry identifier.
+      #   #   @option data [String] :account_id The identifier for the Account the Entry belongs to.
+      #   #   @option data [Integer] :amount The Entry amount in the minor unit of its currency. For dollars, for example,
+      #   #     this is cents.
+      #   #   @option data [String] :created_at When the entry set was created.
+      #   #   @option data [String] :entry_set_id The identifier for the Account the Entry belongs to.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `bookkeeping_entry`.
+      #   def initialize(data = {}) = super
     end
   end
 end

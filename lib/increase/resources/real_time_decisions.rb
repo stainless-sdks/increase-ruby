@@ -28,16 +28,16 @@ module Increase
       # @param real_time_decision_id [String] The identifier of the Real-Time Decision.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [CardAuthentication, nil] :card_authentication If the Real-Time Decision relates to a 3DS card authentication attempt, this
-      #   object contains your response to the authentication.
-      # @option params [CardAuthenticationChallenge, nil] :card_authentication_challenge If the Real-Time Decision relates to 3DS card authentication challenge delivery,
-      #   this object contains your response.
-      # @option params [CardAuthorization, nil] :card_authorization If the Real-Time Decision relates to a card authorization attempt, this object
-      #   contains your response to the authorization.
-      # @option params [DigitalWalletAuthentication, nil] :digital_wallet_authentication If the Real-Time Decision relates to a digital wallet authentication attempt,
-      #   this object contains your response to the authentication.
-      # @option params [DigitalWalletToken, nil] :digital_wallet_token If the Real-Time Decision relates to a digital wallet token provisioning
-      #   attempt, this object contains your response to the attempt.
+      #   @option params [CardAuthentication, nil] :card_authentication If the Real-Time Decision relates to a 3DS card authentication attempt, this
+      #     object contains your response to the authentication.
+      #   @option params [CardAuthenticationChallenge, nil] :card_authentication_challenge If the Real-Time Decision relates to 3DS card authentication challenge delivery,
+      #     this object contains your response.
+      #   @option params [CardAuthorization, nil] :card_authorization If the Real-Time Decision relates to a card authorization attempt, this object
+      #     contains your response to the authorization.
+      #   @option params [DigitalWalletAuthentication, nil] :digital_wallet_authentication If the Real-Time Decision relates to a digital wallet authentication attempt,
+      #     this object contains your response to the authentication.
+      #   @option params [DigitalWalletToken, nil] :digital_wallet_token If the Real-Time Decision relates to a digital wallet token provisioning
+      #     attempt, this object contains your response to the attempt.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

@@ -11,12 +11,12 @@ module Increase
       # Create an Account Transfer
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :account_id The identifier for the account that will send the transfer.
-      # @option params [Integer] :amount The transfer amount in the minor unit of the account currency. For dollars, for
-      #   example, this is cents.
-      # @option params [String] :description The description you choose to give the transfer.
-      # @option params [String] :destination_account_id The identifier for the account that will receive the transfer.
-      # @option params [Boolean, nil] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
+      #   @option params [String] :account_id The identifier for the account that will send the transfer.
+      #   @option params [Integer] :amount The transfer amount in the minor unit of the account currency. For dollars, for
+      #     example, this is cents.
+      #   @option params [String] :description The description you choose to give the transfer.
+      #   @option params [String] :destination_account_id The identifier for the account that will receive the transfer.
+      #   @option params [Boolean, nil] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -50,15 +50,15 @@ module Increase
       # List Account Transfers
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String, nil] :account_id Filter Account Transfers to those that originated from the specified Account.
-      # @option params [CreatedAt, nil] :created_at
-      # @option params [String, nil] :cursor Return the page of entries after this one.
-      # @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #   @option params [String, nil] :account_id Filter Account Transfers to those that originated from the specified Account.
+      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [String, nil] :cursor Return the page of entries after this one.
+      #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

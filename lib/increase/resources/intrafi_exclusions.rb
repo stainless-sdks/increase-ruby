@@ -11,8 +11,8 @@ module Increase
       # Create an IntraFi Exclusion
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String] :bank_name The name of the financial institution to be excluded.
-      # @option params [String] :entity_id The identifier of the Entity whose deposits will be excluded.
+      #   @option params [String] :bank_name The name of the financial institution to be excluded.
+      #   @option params [String] :entity_id The identifier of the Entity whose deposits will be excluded.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -46,14 +46,14 @@ module Increase
       # List IntraFi Exclusions
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String, nil] :cursor Return the page of entries after this one.
-      # @option params [String, nil] :entity_id Filter IntraFi Exclusions for those belonging to the specified Entity.
-      # @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
-      #   that object. This value is unique across Increase and is used to ensure that a
-      #   request is only processed once. Learn more about
-      #   [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
+      #   @option params [String, nil] :cursor Return the page of entries after this one.
+      #   @option params [String, nil] :entity_id Filter IntraFi Exclusions for those belonging to the specified Entity.
+      #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

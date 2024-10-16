@@ -59,14 +59,13 @@ module Increase
         #   @return [String]
         required :last_name, String
 
-        # Create a new instance of Cardholder from a Hash of raw data.
-        #
-        # @overload initialize(first_name: nil, last_name: nil)
-        # @param first_name [String] The cardholder's first name.
-        # @param last_name [String] The cardholder's last name.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Cardholder from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :first_name The cardholder's first name.
+        #   #   @option data [String] :last_name The cardholder's last name.
+        #   def initialize(data = {}) = super
       end
 
       class Shipment < BaseModel
@@ -126,19 +125,18 @@ module Increase
           #   @return [String]
           required :state, String
 
-          # Create a new instance of Address from a Hash of raw data.
-          #
-          # @overload initialize(city: nil, line1: nil, line2: nil, line3: nil, name: nil, postal_code: nil, state: nil)
-          # @param city [String] The city of the shipping address.
-          # @param line1 [String] The first line of the shipping address.
-          # @param line2 [String] The second line of the shipping address.
-          # @param line3 [String] The third line of the shipping address.
-          # @param name [String] The name of the recipient.
-          # @param postal_code [String] The postal code of the shipping address.
-          # @param state [String] The US state of the shipping address.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Address from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :city The city of the shipping address.
+          #   #   @option data [String] :line1 The first line of the shipping address.
+          #   #   @option data [String] :line2 The second line of the shipping address.
+          #   #   @option data [String] :line3 The third line of the shipping address.
+          #   #   @option data [String] :name The name of the recipient.
+          #   #   @option data [String] :postal_code The postal code of the shipping address.
+          #   #   @option data [String] :state The US state of the shipping address.
+          #   def initialize(data = {}) = super
         end
 
         # The shipping method.
@@ -198,30 +196,28 @@ module Increase
           #   @return [Time]
           required :shipped_at, Time
 
-          # Create a new instance of Tracking from a Hash of raw data.
-          #
-          # @overload initialize(number: nil, return_number: nil, return_reason: nil, shipped_at: nil)
-          # @param number [String] The tracking number.
-          # @param return_number [String] For returned shipments, the tracking number of the return shipment.
-          # @param return_reason [String] For returned shipments, this describes why the package was returned.
-          # @param shipped_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   the fulfillment provider marked the card as ready for pick-up by the shipment
-          #   carrier.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Tracking from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :number The tracking number.
+          #   #   @option data [String] :return_number For returned shipments, the tracking number of the return shipment.
+          #   #   @option data [String] :return_reason For returned shipments, this describes why the package was returned.
+          #   #   @option data [String] :shipped_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          #   #     the fulfillment provider marked the card as ready for pick-up by the shipment
+          #   #     carrier.
+          #   def initialize(data = {}) = super
         end
 
-        # Create a new instance of Shipment from a Hash of raw data.
-        #
-        # @overload initialize(address: nil, method: nil, status: nil, tracking: nil)
-        # @param address [Object] The location to where the card's packing label is addressed.
-        # @param method [String] The shipping method.
-        # @param status [String] The status of this shipment.
-        # @param tracking [Object] Tracking details for the shipment.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Shipment from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Object] :address The location to where the card's packing label is addressed.
+        #   #   @option data [String] :method The shipping method.
+        #   #   @option data [String] :status The status of this shipment.
+        #   #   @option data [Object] :tracking Tracking details for the shipment.
+        #   def initialize(data = {}) = super
       end
 
       # The status of the Physical Card.
@@ -241,25 +237,24 @@ module Increase
         PHYSICAL_CARD = :physical_card
       end
 
-      # Create a new instance of PhysicalCard from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, card_id: nil, cardholder: nil, created_at: nil, idempotency_key: nil, physical_card_profile_id: nil, shipment: nil, status: nil, type: nil)
-      # @param id [String] The physical card identifier.
-      # @param card_id [String] The identifier for the Card this Physical Card represents.
-      # @param cardholder [Object] Details about the cardholder, as it appears on the printed card.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Physical Card was created.
-      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @param physical_card_profile_id [String] The Physical Card Profile used for this Physical Card.
-      # @param shipment [Object] The details used to ship this physical card.
-      # @param status [String] The status of the Physical Card.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `physical_card`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of PhysicalCard from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The physical card identifier.
+      #   #   @option data [String] :card_id The identifier for the Card this Physical Card represents.
+      #   #   @option data [Object] :cardholder Details about the cardholder, as it appears on the printed card.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   #     the Physical Card was created.
+      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
+      #   #     Increase and is used to ensure that a request is only processed once. Learn more
+      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #   @option data [String] :physical_card_profile_id The Physical Card Profile used for this Physical Card.
+      #   #   @option data [Object] :shipment The details used to ship this physical card.
+      #   #   @option data [String] :status The status of the Physical Card.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `physical_card`.
+      #   def initialize(data = {}) = super
     end
   end
 end

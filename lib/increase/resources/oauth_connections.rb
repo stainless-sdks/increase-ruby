@@ -26,10 +26,10 @@ module Increase
       # List OAuth Connections
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String, nil] :cursor Return the page of entries after this one.
-      # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      # @option params [Status, nil] :status
+      #   @option params [String, nil] :cursor Return the page of entries after this one.
+      #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #   @option params [Status, nil] :status
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

@@ -47,21 +47,20 @@ module Increase
         OAUTH_CONNECTION = :oauth_connection
       end
 
-      # Create a new instance of OAuthConnection from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, created_at: nil, deleted_at: nil, group_id: nil, status: nil, type: nil)
-      # @param id [String] The OAuth Connection's identifier.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   Connection was created.
-      # @param deleted_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   Connection was deleted.
-      # @param group_id [String] The identifier of the Group that has authorized your OAuth application.
-      # @param status [String] Whether the connection is active.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `oauth_connection`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of OAuthConnection from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The OAuth Connection's identifier.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+      #   #     Connection was created.
+      #   #   @option data [String] :deleted_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+      #   #     Connection was deleted.
+      #   #   @option data [String] :group_id The identifier of the Group that has authorized your OAuth application.
+      #   #   @option data [String] :status Whether the connection is active.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `oauth_connection`.
+      #   def initialize(data = {}) = super
     end
   end
 end

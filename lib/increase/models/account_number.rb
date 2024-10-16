@@ -73,14 +73,13 @@ module Increase
           BLOCKED = :blocked
         end
 
-        # Create a new instance of InboundACH from a Hash of raw data.
-        #
-        # @overload initialize(debit_status: nil)
-        # @param debit_status [String] Whether ACH debits are allowed against this Account Number. Note that they will
-        #   still be declined if this is `allowed` if the Account Number is not active.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of InboundACH from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :debit_status Whether ACH debits are allowed against this Account Number. Note that they will
+        #   #     still be declined if this is `allowed` if the Account Number is not active.
+        #   def initialize(data = {}) = super
       end
 
       class InboundChecks < BaseModel
@@ -98,13 +97,12 @@ module Increase
           CHECK_TRANSFERS_ONLY = :check_transfers_only
         end
 
-        # Create a new instance of InboundChecks from a Hash of raw data.
-        #
-        # @overload initialize(status: nil)
-        # @param status [String] How Increase should process checks with this account number printed on them.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of InboundChecks from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :status How Increase should process checks with this account number printed on them.
+        #   def initialize(data = {}) = super
       end
 
       # This indicates if payments can be made to the Account Number.
@@ -124,28 +122,27 @@ module Increase
         ACCOUNT_NUMBER = :account_number
       end
 
-      # Create a new instance of AccountNumber from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, account_id: nil, account_number: nil, created_at: nil, idempotency_key: nil, inbound_ach: nil, inbound_checks: nil, name: nil, routing_number: nil, status: nil, type: nil)
-      # @param id [String] The Account Number identifier.
-      # @param account_id [String] The identifier for the account this Account Number belongs to.
-      # @param account_number [String] The account number.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   Number was created.
-      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @param inbound_ach [Object] Properties related to how this Account Number handles inbound ACH transfers.
-      # @param inbound_checks [Object] Properties related to how this Account Number should handle inbound check
-      #   withdrawals.
-      # @param name [String] The name you choose for the Account Number.
-      # @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN).
-      # @param status [String] This indicates if payments can be made to the Account Number.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `account_number`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of AccountNumber from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The Account Number identifier.
+      #   #   @option data [String] :account_id The identifier for the account this Account Number belongs to.
+      #   #   @option data [String] :account_number The account number.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+      #   #     Number was created.
+      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
+      #   #     Increase and is used to ensure that a request is only processed once. Learn more
+      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #   @option data [Object] :inbound_ach Properties related to how this Account Number handles inbound ACH transfers.
+      #   #   @option data [Object] :inbound_checks Properties related to how this Account Number should handle inbound check
+      #   #     withdrawals.
+      #   #   @option data [String] :name The name you choose for the Account Number.
+      #   #   @option data [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN).
+      #   #   @option data [String] :status This indicates if payments can be made to the Account Number.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `account_number`.
+      #   def initialize(data = {}) = super
     end
   end
 end

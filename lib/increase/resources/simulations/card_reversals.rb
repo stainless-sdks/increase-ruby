@@ -15,9 +15,9 @@ module Increase
         #   reversed.
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :card_payment_id The identifier of the Card Payment to create a reversal on.
-        # @option params [Integer, nil] :amount The amount of the reversal in minor units in the card authorization's currency.
-        #   This defaults to the authorization amount.
+        #   @option params [String] :card_payment_id The identifier of the Card Payment to create a reversal on.
+        #   @option params [Integer, nil] :amount The amount of the reversal in minor units in the card authorization's currency.
+        #     This defaults to the authorization amount.
         #
         # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #

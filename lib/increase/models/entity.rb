@@ -137,18 +137,17 @@ module Increase
           #   @return [String]
           required :zip, String
 
-          # Create a new instance of Address from a Hash of raw data.
-          #
-          # @overload initialize(city: nil, line1: nil, line2: nil, state: nil, zip: nil)
-          # @param city [String] The city of the address.
-          # @param line1 [String] The first line of the address.
-          # @param line2 [String] The second line of the address.
-          # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
-          # @param zip [String] The ZIP code of the address.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Address from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :city The city of the address.
+          #   #   @option data [String] :line1 The first line of the address.
+          #   #   @option data [String] :line2 The second line of the address.
+          #   #   @option data [String] :state The two-letter United States Postal Service (USPS) abbreviation for the state of
+          #   #     the address.
+          #   #   @option data [String] :zip The ZIP code of the address.
+          #   def initialize(data = {}) = super
         end
 
         class BeneficialOwner < BaseModel
@@ -223,18 +222,17 @@ module Increase
               #   @return [String]
               required :zip, String
 
-              # Create a new instance of Address from a Hash of raw data.
-              #
-              # @overload initialize(city: nil, line1: nil, line2: nil, state: nil, zip: nil)
-              # @param city [String] The city of the address.
-              # @param line1 [String] The first line of the address.
-              # @param line2 [String] The second line of the address.
-              # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #   the address.
-              # @param zip [String] The ZIP code of the address.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of Address from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :city The city of the address.
+              #   #   @option data [String] :line1 The first line of the address.
+              #   #   @option data [String] :line2 The second line of the address.
+              #   #   @option data [String] :state The two-letter United States Postal Service (USPS) abbreviation for the state of
+              #   #     the address.
+              #   #   @option data [String] :zip The ZIP code of the address.
+              #   def initialize(data = {}) = super
             end
 
             class Identification < BaseModel
@@ -269,27 +267,25 @@ module Increase
                 OTHER = :other
               end
 
-              # Create a new instance of Identification from a Hash of raw data.
-              #
-              # @overload initialize(method: nil, number_last4: nil)
-              # @param method [String] A method that can be used to verify the individual's identity.
-              # @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the
-              #   individual's identity.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of Identification from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :method A method that can be used to verify the individual's identity.
+              #   #   @option data [String] :number_last4 The last 4 digits of the identification number that can be used to verify the
+              #   #     individual's identity.
+              #   def initialize(data = {}) = super
             end
 
-            # Create a new instance of Individual from a Hash of raw data.
-            #
-            # @overload initialize(address: nil, date_of_birth: nil, identification: nil, name: nil)
-            # @param address [Object] The person's address.
-            # @param date_of_birth [String] The person's date of birth in YYYY-MM-DD format.
-            # @param identification [Object] A means of verifying the person's identity.
-            # @param name [String] The person's legal name.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of Individual from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [Object] :address The person's address.
+            #   #   @option data [String] :date_of_birth The person's date of birth in YYYY-MM-DD format.
+            #   #   @option data [Object] :identification A means of verifying the person's identity.
+            #   #   @option data [String] :name The person's legal name.
+            #   def initialize(data = {}) = super
           end
 
           # Why this person is considered a beneficial owner of the entity.
@@ -301,34 +297,32 @@ module Increase
             CONTROL = :control
           end
 
-          # Create a new instance of BeneficialOwner from a Hash of raw data.
-          #
-          # @overload initialize(beneficial_owner_id: nil, company_title: nil, individual: nil, prong: nil)
-          # @param beneficial_owner_id [String] The identifier of this beneficial owner.
-          # @param company_title [String] This person's role or title within the entity.
-          # @param individual [Object] Personal details for the beneficial owner.
-          # @param prong [String] Why this person is considered a beneficial owner of the entity.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of BeneficialOwner from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :beneficial_owner_id The identifier of this beneficial owner.
+          #   #   @option data [String] :company_title This person's role or title within the entity.
+          #   #   @option data [Object] :individual Personal details for the beneficial owner.
+          #   #   @option data [String] :prong Why this person is considered a beneficial owner of the entity.
+          #   def initialize(data = {}) = super
         end
 
-        # Create a new instance of Corporation from a Hash of raw data.
-        #
-        # @overload initialize(address: nil, beneficial_owners: nil, incorporation_state: nil, industry_code: nil, name: nil, tax_identifier: nil, website: nil)
-        # @param address [Object] The corporation's address.
-        # @param beneficial_owners [Array<Object>] The identifying details of anyone controlling or owning 25% or more of the
-        #   corporation.
-        # @param incorporation_state [String] The two-letter United States Postal Service (USPS) abbreviation for the
-        #   corporation's state of incorporation.
-        # @param industry_code [String] The numeric North American Industry Classification System (NAICS) code submitted
-        #   for the corporation.
-        # @param name [String] The legal name of the corporation.
-        # @param tax_identifier [String] The Employer Identification Number (EIN) for the corporation.
-        # @param website [String] The website of the corporation.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Corporation from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Object] :address The corporation's address.
+        #   #   @option data [Array<Object>] :beneficial_owners The identifying details of anyone controlling or owning 25% or more of the
+        #   #     corporation.
+        #   #   @option data [String] :incorporation_state The two-letter United States Postal Service (USPS) abbreviation for the
+        #   #     corporation's state of incorporation.
+        #   #   @option data [String] :industry_code The numeric North American Industry Classification System (NAICS) code submitted
+        #   #     for the corporation.
+        #   #   @option data [String] :name The legal name of the corporation.
+        #   #   @option data [String] :tax_identifier The Employer Identification Number (EIN) for the corporation.
+        #   #   @option data [String] :website The website of the corporation.
+        #   def initialize(data = {}) = super
       end
 
       class GovernmentAuthority < BaseModel
@@ -389,18 +383,17 @@ module Increase
           #   @return [String]
           required :zip, String
 
-          # Create a new instance of Address from a Hash of raw data.
-          #
-          # @overload initialize(city: nil, line1: nil, line2: nil, state: nil, zip: nil)
-          # @param city [String] The city of the address.
-          # @param line1 [String] The first line of the address.
-          # @param line2 [String] The second line of the address.
-          # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
-          # @param zip [String] The ZIP code of the address.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Address from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :city The city of the address.
+          #   #   @option data [String] :line1 The first line of the address.
+          #   #   @option data [String] :line2 The second line of the address.
+          #   #   @option data [String] :state The two-letter United States Postal Service (USPS) abbreviation for the state of
+          #   #     the address.
+          #   #   @option data [String] :zip The ZIP code of the address.
+          #   def initialize(data = {}) = super
         end
 
         class AuthorizedPerson < BaseModel
@@ -414,14 +407,13 @@ module Increase
           #   @return [String]
           required :name_, String
 
-          # Create a new instance of AuthorizedPerson from a Hash of raw data.
-          #
-          # @overload initialize(authorized_person_id: nil, name: nil)
-          # @param authorized_person_id [String] The identifier of this authorized person.
-          # @param name [String] The person's legal name.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of AuthorizedPerson from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :authorized_person_id The identifier of this authorized person.
+          #   #   @option data [String] :name The person's legal name.
+          #   def initialize(data = {}) = super
         end
 
         # The category of the government authority.
@@ -430,18 +422,17 @@ module Increase
           MUNICIPALITY = :municipality
         end
 
-        # Create a new instance of GovernmentAuthority from a Hash of raw data.
-        #
-        # @overload initialize(address: nil, authorized_persons: nil, category: nil, name: nil, tax_identifier: nil, website: nil)
-        # @param address [Object] The government authority's address.
-        # @param authorized_persons [Array<Object>] The identifying details of authorized persons of the government authority.
-        # @param category [String] The category of the government authority.
-        # @param name [String] The government authority's name.
-        # @param tax_identifier [String] The Employer Identification Number (EIN) of the government authority.
-        # @param website [String] The government authority's website.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of GovernmentAuthority from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Object] :address The government authority's address.
+        #   #   @option data [Array<Object>] :authorized_persons The identifying details of authorized persons of the government authority.
+        #   #   @option data [String] :category The category of the government authority.
+        #   #   @option data [String] :name The government authority's name.
+        #   #   @option data [String] :tax_identifier The Employer Identification Number (EIN) of the government authority.
+        #   #   @option data [String] :website The government authority's website.
+        #   def initialize(data = {}) = super
       end
 
       class Joint < BaseModel
@@ -502,18 +493,17 @@ module Increase
             #   @return [String]
             required :zip, String
 
-            # Create a new instance of Address from a Hash of raw data.
-            #
-            # @overload initialize(city: nil, line1: nil, line2: nil, state: nil, zip: nil)
-            # @param city [String] The city of the address.
-            # @param line1 [String] The first line of the address.
-            # @param line2 [String] The second line of the address.
-            # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   the address.
-            # @param zip [String] The ZIP code of the address.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of Address from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :city The city of the address.
+            #   #   @option data [String] :line1 The first line of the address.
+            #   #   @option data [String] :line2 The second line of the address.
+            #   #   @option data [String] :state The two-letter United States Postal Service (USPS) abbreviation for the state of
+            #   #     the address.
+            #   #   @option data [String] :zip The ZIP code of the address.
+            #   def initialize(data = {}) = super
           end
 
           class Identification < BaseModel
@@ -548,37 +538,34 @@ module Increase
               OTHER = :other
             end
 
-            # Create a new instance of Identification from a Hash of raw data.
-            #
-            # @overload initialize(method: nil, number_last4: nil)
-            # @param method [String] A method that can be used to verify the individual's identity.
-            # @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the
-            #   individual's identity.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of Identification from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :method A method that can be used to verify the individual's identity.
+            #   #   @option data [String] :number_last4 The last 4 digits of the identification number that can be used to verify the
+            #   #     individual's identity.
+            #   def initialize(data = {}) = super
           end
 
-          # Create a new instance of Individual from a Hash of raw data.
-          #
-          # @overload initialize(address: nil, date_of_birth: nil, identification: nil, name: nil)
-          # @param address [Object] The person's address.
-          # @param date_of_birth [String] The person's date of birth in YYYY-MM-DD format.
-          # @param identification [Object] A means of verifying the person's identity.
-          # @param name [String] The person's legal name.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Individual from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [Object] :address The person's address.
+          #   #   @option data [String] :date_of_birth The person's date of birth in YYYY-MM-DD format.
+          #   #   @option data [Object] :identification A means of verifying the person's identity.
+          #   #   @option data [String] :name The person's legal name.
+          #   def initialize(data = {}) = super
         end
 
-        # Create a new instance of Joint from a Hash of raw data.
-        #
-        # @overload initialize(individuals: nil, name: nil)
-        # @param individuals [Array<Object>] The two individuals that share control of the entity.
-        # @param name [String] The entity's name.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Joint from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Array<Object>] :individuals The two individuals that share control of the entity.
+        #   #   @option data [String] :name The entity's name.
+        #   def initialize(data = {}) = super
       end
 
       class NaturalPerson < BaseModel
@@ -628,18 +615,17 @@ module Increase
           #   @return [String]
           required :zip, String
 
-          # Create a new instance of Address from a Hash of raw data.
-          #
-          # @overload initialize(city: nil, line1: nil, line2: nil, state: nil, zip: nil)
-          # @param city [String] The city of the address.
-          # @param line1 [String] The first line of the address.
-          # @param line2 [String] The second line of the address.
-          # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
-          # @param zip [String] The ZIP code of the address.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Address from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :city The city of the address.
+          #   #   @option data [String] :line1 The first line of the address.
+          #   #   @option data [String] :line2 The second line of the address.
+          #   #   @option data [String] :state The two-letter United States Postal Service (USPS) abbreviation for the state of
+          #   #     the address.
+          #   #   @option data [String] :zip The ZIP code of the address.
+          #   def initialize(data = {}) = super
         end
 
         class Identification < BaseModel
@@ -671,27 +657,25 @@ module Increase
             OTHER = :other
           end
 
-          # Create a new instance of Identification from a Hash of raw data.
-          #
-          # @overload initialize(method: nil, number_last4: nil)
-          # @param method [String] A method that can be used to verify the individual's identity.
-          # @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the
-          #   individual's identity.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Identification from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :method A method that can be used to verify the individual's identity.
+          #   #   @option data [String] :number_last4 The last 4 digits of the identification number that can be used to verify the
+          #   #     individual's identity.
+          #   def initialize(data = {}) = super
         end
 
-        # Create a new instance of NaturalPerson from a Hash of raw data.
-        #
-        # @overload initialize(address: nil, date_of_birth: nil, identification: nil, name: nil)
-        # @param address [Object] The person's address.
-        # @param date_of_birth [String] The person's date of birth in YYYY-MM-DD format.
-        # @param identification [Object] A means of verifying the person's identity.
-        # @param name [String] The person's legal name.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of NaturalPerson from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Object] :address The person's address.
+        #   #   @option data [String] :date_of_birth The person's date of birth in YYYY-MM-DD format.
+        #   #   @option data [Object] :identification A means of verifying the person's identity.
+        #   #   @option data [String] :name The person's legal name.
+        #   def initialize(data = {}) = super
       end
 
       # The status of the entity.
@@ -791,18 +775,17 @@ module Increase
           #   @return [String]
           required :zip, String
 
-          # Create a new instance of Address from a Hash of raw data.
-          #
-          # @overload initialize(city: nil, line1: nil, line2: nil, state: nil, zip: nil)
-          # @param city [String] The city of the address.
-          # @param line1 [String] The first line of the address.
-          # @param line2 [String] The second line of the address.
-          # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   the address.
-          # @param zip [String] The ZIP code of the address.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Address from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [String] :city The city of the address.
+          #   #   @option data [String] :line1 The first line of the address.
+          #   #   @option data [String] :line2 The second line of the address.
+          #   #   @option data [String] :state The two-letter United States Postal Service (USPS) abbreviation for the state of
+          #   #     the address.
+          #   #   @option data [String] :zip The ZIP code of the address.
+          #   def initialize(data = {}) = super
         end
 
         # Whether the trust is `revocable` or `irrevocable`.
@@ -861,18 +844,17 @@ module Increase
             #   @return [String]
             required :zip, String
 
-            # Create a new instance of Address from a Hash of raw data.
-            #
-            # @overload initialize(city: nil, line1: nil, line2: nil, state: nil, zip: nil)
-            # @param city [String] The city of the address.
-            # @param line1 [String] The first line of the address.
-            # @param line2 [String] The second line of the address.
-            # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   the address.
-            # @param zip [String] The ZIP code of the address.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of Address from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :city The city of the address.
+            #   #   @option data [String] :line1 The first line of the address.
+            #   #   @option data [String] :line2 The second line of the address.
+            #   #   @option data [String] :state The two-letter United States Postal Service (USPS) abbreviation for the state of
+            #   #     the address.
+            #   #   @option data [String] :zip The ZIP code of the address.
+            #   def initialize(data = {}) = super
           end
 
           class Identification < BaseModel
@@ -904,27 +886,25 @@ module Increase
               OTHER = :other
             end
 
-            # Create a new instance of Identification from a Hash of raw data.
-            #
-            # @overload initialize(method: nil, number_last4: nil)
-            # @param method [String] A method that can be used to verify the individual's identity.
-            # @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the
-            #   individual's identity.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of Identification from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :method A method that can be used to verify the individual's identity.
+            #   #   @option data [String] :number_last4 The last 4 digits of the identification number that can be used to verify the
+            #   #     individual's identity.
+            #   def initialize(data = {}) = super
           end
 
-          # Create a new instance of Grantor from a Hash of raw data.
-          #
-          # @overload initialize(address: nil, date_of_birth: nil, identification: nil, name: nil)
-          # @param address [Object] The person's address.
-          # @param date_of_birth [String] The person's date of birth in YYYY-MM-DD format.
-          # @param identification [Object] A means of verifying the person's identity.
-          # @param name [String] The person's legal name.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Grantor from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [Object] :address The person's address.
+          #   #   @option data [String] :date_of_birth The person's date of birth in YYYY-MM-DD format.
+          #   #   @option data [Object] :identification A means of verifying the person's identity.
+          #   #   @option data [String] :name The person's legal name.
+          #   def initialize(data = {}) = super
         end
 
         class Trustee < BaseModel
@@ -988,18 +968,17 @@ module Increase
               #   @return [String]
               required :zip, String
 
-              # Create a new instance of Address from a Hash of raw data.
-              #
-              # @overload initialize(city: nil, line1: nil, line2: nil, state: nil, zip: nil)
-              # @param city [String] The city of the address.
-              # @param line1 [String] The first line of the address.
-              # @param line2 [String] The second line of the address.
-              # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #   the address.
-              # @param zip [String] The ZIP code of the address.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of Address from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :city The city of the address.
+              #   #   @option data [String] :line1 The first line of the address.
+              #   #   @option data [String] :line2 The second line of the address.
+              #   #   @option data [String] :state The two-letter United States Postal Service (USPS) abbreviation for the state of
+              #   #     the address.
+              #   #   @option data [String] :zip The ZIP code of the address.
+              #   def initialize(data = {}) = super
             end
 
             class Identification < BaseModel
@@ -1034,27 +1013,25 @@ module Increase
                 OTHER = :other
               end
 
-              # Create a new instance of Identification from a Hash of raw data.
-              #
-              # @overload initialize(method: nil, number_last4: nil)
-              # @param method [String] A method that can be used to verify the individual's identity.
-              # @param number_last4 [String] The last 4 digits of the identification number that can be used to verify the
-              #   individual's identity.
-              def initialize(data = {})
-                super
-              end
+              # @!parse
+              #   # Create a new instance of Identification from a Hash of raw data.
+              #   #
+              #   # @param data [Hash{Symbol => Object}] .
+              #   #   @option data [String] :method A method that can be used to verify the individual's identity.
+              #   #   @option data [String] :number_last4 The last 4 digits of the identification number that can be used to verify the
+              #   #     individual's identity.
+              #   def initialize(data = {}) = super
             end
 
-            # Create a new instance of Individual from a Hash of raw data.
-            #
-            # @overload initialize(address: nil, date_of_birth: nil, identification: nil, name: nil)
-            # @param address [Object] The person's address.
-            # @param date_of_birth [String] The person's date of birth in YYYY-MM-DD format.
-            # @param identification [Object] A means of verifying the person's identity.
-            # @param name [String] The person's legal name.
-            def initialize(data = {})
-              super
-            end
+            # @!parse
+            #   # Create a new instance of Individual from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [Object] :address The person's address.
+            #   #   @option data [String] :date_of_birth The person's date of birth in YYYY-MM-DD format.
+            #   #   @option data [Object] :identification A means of verifying the person's identity.
+            #   #   @option data [String] :name The person's legal name.
+            #   def initialize(data = {}) = super
           end
 
           # The structure of the trustee. Will always be equal to `individual`.
@@ -1063,32 +1040,30 @@ module Increase
             INDIVIDUAL = :individual
           end
 
-          # Create a new instance of Trustee from a Hash of raw data.
-          #
-          # @overload initialize(individual: nil, structure: nil)
-          # @param individual [Object] The individual trustee of the trust. Will be present if the trustee's
-          #   `structure` is equal to `individual`.
-          # @param structure [String] The structure of the trustee. Will always be equal to `individual`.
-          def initialize(data = {})
-            super
-          end
+          # @!parse
+          #   # Create a new instance of Trustee from a Hash of raw data.
+          #   #
+          #   # @param data [Hash{Symbol => Object}] .
+          #   #   @option data [Object] :individual The individual trustee of the trust. Will be present if the trustee's
+          #   #     `structure` is equal to `individual`.
+          #   #   @option data [String] :structure The structure of the trustee. Will always be equal to `individual`.
+          #   def initialize(data = {}) = super
         end
 
-        # Create a new instance of Trust from a Hash of raw data.
-        #
-        # @overload initialize(address: nil, category: nil, formation_document_file_id: nil, formation_state: nil, grantor: nil, name: nil, tax_identifier: nil, trustees: nil)
-        # @param address [Object] The trust's address.
-        # @param category [String] Whether the trust is `revocable` or `irrevocable`.
-        # @param formation_document_file_id [String] The ID for the File containing the formation document of the trust.
-        # @param formation_state [String] The two-letter United States Postal Service (USPS) abbreviation for the state in
-        #   which the trust was formed.
-        # @param grantor [Object] The grantor of the trust. Will be present if the `category` is `revocable`.
-        # @param name [String] The trust's name.
-        # @param tax_identifier [String] The Employer Identification Number (EIN) of the trust itself.
-        # @param trustees [Array<Object>] The trustees of the trust.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Trust from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [Object] :address The trust's address.
+        #   #   @option data [String] :category Whether the trust is `revocable` or `irrevocable`.
+        #   #   @option data [String] :formation_document_file_id The ID for the File containing the formation document of the trust.
+        #   #   @option data [String] :formation_state The two-letter United States Postal Service (USPS) abbreviation for the state in
+        #   #     which the trust was formed.
+        #   #   @option data [Object] :grantor The grantor of the trust. Will be present if the `category` is `revocable`.
+        #   #   @option data [String] :name The trust's name.
+        #   #   @option data [String] :tax_identifier The Employer Identification Number (EIN) of the trust itself.
+        #   #   @option data [Array<Object>] :trustees The trustees of the trust.
+        #   def initialize(data = {}) = super
       end
 
       # A constant representing the object's type. For this resource it will always be `entity`.
@@ -1096,36 +1071,35 @@ module Increase
         ENTITY = :entity
       end
 
-      # Create a new instance of Entity from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, corporation: nil, created_at: nil, description: nil, details_confirmed_at: nil, government_authority: nil, idempotency_key: nil, joint: nil, natural_person: nil, status: nil, structure: nil, supplemental_documents: nil, trust: nil, type: nil)
-      # @param id [String] The entity's identifier.
-      # @param corporation [Object] Details of the corporation entity. Will be present if `structure` is equal to
-      #   `corporation`.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
-      #   was created.
-      # @param description [String] The entity's description for display purposes.
-      # @param details_confirmed_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      #   Entity's details were most recently confirmed.
-      # @param government_authority [Object] Details of the government authority entity. Will be present if `structure` is
-      #   equal to `government_authority`.
-      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @param joint [Object] Details of the joint entity. Will be present if `structure` is equal to `joint`.
-      # @param natural_person [Object] Details of the natural person entity. Will be present if `structure` is equal to
-      #   `natural_person`.
-      # @param status [String] The status of the entity.
-      # @param structure [String] The entity's legal structure.
-      # @param supplemental_documents [Array<Object>] Additional documentation associated with the entity. This is limited to the
-      #   first 10 documents for an entity. If an entity has more than 10 documents, use
-      #   the GET /entity_supplemental_documents list endpoint to retrieve them.
-      # @param trust [Object] Details of the trust entity. Will be present if `structure` is equal to `trust`.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `entity`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of Entity from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The entity's identifier.
+      #   #   @option data [Object] :corporation Details of the corporation entity. Will be present if `structure` is equal to
+      #   #     `corporation`.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
+      #   #     was created.
+      #   #   @option data [String] :description The entity's description for display purposes.
+      #   #   @option data [String] :details_confirmed_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+      #   #     Entity's details were most recently confirmed.
+      #   #   @option data [Object] :government_authority Details of the government authority entity. Will be present if `structure` is
+      #   #     equal to `government_authority`.
+      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
+      #   #     Increase and is used to ensure that a request is only processed once. Learn more
+      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #   @option data [Object] :joint Details of the joint entity. Will be present if `structure` is equal to `joint`.
+      #   #   @option data [Object] :natural_person Details of the natural person entity. Will be present if `structure` is equal to
+      #   #     `natural_person`.
+      #   #   @option data [String] :status The status of the entity.
+      #   #   @option data [String] :structure The entity's legal structure.
+      #   #   @option data [Array<Object>] :supplemental_documents Additional documentation associated with the entity. This is limited to the
+      #   #     first 10 documents for an entity. If an entity has more than 10 documents, use
+      #   #     the GET /entity_supplemental_documents list endpoint to retrieve them.
+      #   #   @option data [Object] :trust Details of the trust entity. Will be present if `structure` is equal to `trust`.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `entity`.
+      #   def initialize(data = {}) = super
     end
   end
 end

@@ -26,13 +26,13 @@ module Increase
       # List Inbound ACH Transfers
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String, nil] :account_id Filter Inbound ACH Tranfers to ones belonging to the specified Account.
-      # @option params [String, nil] :account_number_id Filter Inbound ACH Tranfers to ones belonging to the specified Account Number.
-      # @option params [CreatedAt, nil] :created_at
-      # @option params [String, nil] :cursor Return the page of entries after this one.
-      # @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
-      # @option params [Symbol, Status, nil] :status Filter Inbound ACH Transfers to those with the specified status.
+      #   @option params [String, nil] :account_id Filter Inbound ACH Tranfers to ones belonging to the specified Account.
+      #   @option params [String, nil] :account_number_id Filter Inbound ACH Tranfers to ones belonging to the specified Account Number.
+      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [String, nil] :cursor Return the page of entries after this one.
+      #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
+      #   @option params [Symbol, Status, nil] :status Filter Inbound ACH Transfers to those with the specified status.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -54,8 +54,8 @@ module Increase
       #   change.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [String, nil] :updated_account_number The updated account number to send in the notification of change.
-      # @option params [String, nil] :updated_routing_number The updated routing number to send in the notification of change.
+      #   @option params [String, nil] :updated_account_number The updated account number to send in the notification of change.
+      #   @option params [String, nil] :updated_routing_number The updated routing number to send in the notification of change.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -76,9 +76,9 @@ module Increase
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to decline.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Symbol, Reason, nil] :reason The reason why this transfer will be returned. If this parameter is unset, the
-      #   return codes will be `payment_stopped` for debits and
-      #   `credit_entry_refused_by_receiver` for credits.
+      #   @option params [Symbol, Reason, nil] :reason The reason why this transfer will be returned. If this parameter is unset, the
+      #     return codes will be `payment_stopped` for debits and
+      #     `credit_entry_refused_by_receiver` for credits.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -100,8 +100,8 @@ module Increase
       #   financial institution.
       #
       # @param params [Hash] Attributes to send in this request.
-      # @option params [Symbol, Reason] :reason The reason why this transfer will be returned. The most usual return codes are
-      #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+      #   @option params [Symbol, Reason] :reason The reason why this transfer will be returned. The most usual return codes are
+      #     `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

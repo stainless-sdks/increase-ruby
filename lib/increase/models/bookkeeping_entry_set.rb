@@ -54,15 +54,14 @@ module Increase
         #   @return [Integer]
         required :amount, Integer
 
-        # Create a new instance of Entry from a Hash of raw data.
-        #
-        # @overload initialize(id: nil, account_id: nil, amount: nil)
-        # @param id [String] The entry identifier.
-        # @param account_id [String] The bookkeeping account impacted by the entry.
-        # @param amount [Integer] The amount of the entry in minor units.
-        def initialize(data = {})
-          super
-        end
+        # @!parse
+        #   # Create a new instance of Entry from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :id The entry identifier.
+        #   #   @option data [String] :account_id The bookkeeping account impacted by the entry.
+        #   #   @option data [Integer] :amount The amount of the entry in minor units.
+        #   def initialize(data = {}) = super
       end
 
       # A constant representing the object's type. For this resource it will always be `bookkeeping_entry_set`.
@@ -70,22 +69,21 @@ module Increase
         BOOKKEEPING_ENTRY_SET = :bookkeeping_entry_set
       end
 
-      # Create a new instance of BookkeepingEntrySet from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, created_at: nil, date: nil, entries: nil, idempotency_key: nil, transaction_id: nil, type: nil)
-      # @param id [String] The entry set identifier.
-      # @param created_at [String] When the entry set was created.
-      # @param date [String] The timestamp of the entry set.
-      # @param entries [Array<Object>] The entries.
-      # @param idempotency_key [String] The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      # @param transaction_id [String] The transaction identifier, if any.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `bookkeeping_entry_set`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of BookkeepingEntrySet from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The entry set identifier.
+      #   #   @option data [String] :created_at When the entry set was created.
+      #   #   @option data [String] :date The timestamp of the entry set.
+      #   #   @option data [Array<Object>] :entries The entries.
+      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
+      #   #     Increase and is used to ensure that a request is only processed once. Learn more
+      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #   @option data [String] :transaction_id The transaction identifier, if any.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `bookkeeping_entry_set`.
+      #   def initialize(data = {}) = super
     end
   end
 end

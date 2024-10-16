@@ -36,8 +36,8 @@ module Increase
         #   for.
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Symbol, ChangeCode] :change_code The reason for the notification of change.
-        # @option params [String] :corrected_data The corrected data for the notification of change (e.g., a new routing number).
+        #   @option params [Symbol, ChangeCode] :change_code The reason for the notification of change.
+        #   @option params [String] :corrected_data The corrected data for the notification of change (e.g., a new routing number).
         #
         # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
@@ -60,8 +60,8 @@ module Increase
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to return.
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Symbol, Reason, nil] :reason The reason why the Federal Reserve or destination bank returned this transfer.
-        #   Defaults to `no_account`.
+        #   @option params [Symbol, Reason, nil] :reason The reason why the Federal Reserve or destination bank returned this transfer.
+        #     Defaults to `no_account`.
         #
         # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #

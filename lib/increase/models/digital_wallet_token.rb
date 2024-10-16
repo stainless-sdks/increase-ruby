@@ -68,20 +68,19 @@ module Increase
         DIGITAL_WALLET_TOKEN = :digital_wallet_token
       end
 
-      # Create a new instance of DigitalWalletToken from a Hash of raw data.
-      #
-      # @overload initialize(id: nil, card_id: nil, created_at: nil, status: nil, token_requestor: nil, type: nil)
-      # @param id [String] The Digital Wallet Token identifier.
-      # @param card_id [String] The identifier for the Card this Digital Wallet Token belongs to.
-      # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card was created.
-      # @param status [String] This indicates if payments can be made with the Digital Wallet Token.
-      # @param token_requestor [String] The digital wallet app being used.
-      # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   `digital_wallet_token`.
-      def initialize(data = {})
-        super
-      end
+      # @!parse
+      #   # Create a new instance of DigitalWalletToken from a Hash of raw data.
+      #   #
+      #   # @param data [Hash{Symbol => Object}] .
+      #   #   @option data [String] :id The Digital Wallet Token identifier.
+      #   #   @option data [String] :card_id The identifier for the Card this Digital Wallet Token belongs to.
+      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   #     the Card was created.
+      #   #   @option data [String] :status This indicates if payments can be made with the Digital Wallet Token.
+      #   #   @option data [String] :token_requestor The digital wallet app being used.
+      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
+      #   #     `digital_wallet_token`.
+      #   def initialize(data = {}) = super
     end
   end
 end

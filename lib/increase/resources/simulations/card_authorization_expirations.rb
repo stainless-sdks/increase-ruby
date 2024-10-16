@@ -12,7 +12,7 @@ module Increase
         # Simulates expiring a card authorization immediately.
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [String] :card_payment_id The identifier of the Card Payment to expire.
+        #   @option params [String] :card_payment_id The identifier of the Card Payment to expire.
         #
         # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #

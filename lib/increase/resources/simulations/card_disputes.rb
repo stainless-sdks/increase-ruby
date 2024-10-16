@@ -17,8 +17,8 @@ module Increase
         # @param card_dispute_id [String] The dispute you would like to action.
         #
         # @param params [Hash] Attributes to send in this request.
-        # @option params [Symbol, Status] :status The status to move the dispute to.
-        # @option params [String, nil] :explanation Why the dispute was rejected. Not required for accepting disputes.
+        #   @option params [Symbol, Status] :status The status to move the dispute to.
+        #   @option params [String, nil] :explanation Why the dispute was rejected. Not required for accepting disputes.
         #
         # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
