@@ -61,7 +61,7 @@ module Increase
       # @!attribute [rw] name_
       #   The name you choose for the Account.
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] program_id
       #   The identifier of the Program determining the compliance and commercial terms of this Account.

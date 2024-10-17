@@ -109,7 +109,7 @@ module Increase
         #   Indicates how the merchant applied taxes.
         #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments]
         required :tax_treatments,
-                 enum: lambda {
+                 enum: -> {
                    Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments
                  }
 

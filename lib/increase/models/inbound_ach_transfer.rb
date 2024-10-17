@@ -173,7 +173,7 @@ module Increase
           #   @return [Array<Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry>]
           required :entries,
                    Increase::ArrayOf.new(
-                     lambda {
+                     -> {
                        Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry
                      }
                    )
@@ -322,7 +322,7 @@ module Increase
         #   A description of how the foreign exchange rate was calculated.
         #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator]
         required :foreign_exchange_indicator,
-                 enum: lambda {
+                 enum: -> {
                    Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator
                  }
 
@@ -335,7 +335,7 @@ module Increase
         #   An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
         #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator]
         required :foreign_exchange_reference_indicator,
-                 enum: lambda {
+                 enum: -> {
                    Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator
                  }
 
@@ -353,7 +353,7 @@ module Increase
         #   The type of transfer. Set by the originator.
         #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode]
         required :international_transaction_type_code,
-                 enum: lambda {
+                 enum: -> {
                    Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode
                  }
 
@@ -376,7 +376,7 @@ module Increase
         #   An instruction of how to interpret the `originating_depository_financial_institution_id` field for this Transaction.
         #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier]
         required :originating_depository_financial_institution_id_qualifier,
-                 enum: lambda {
+                 enum: -> {
                    Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier
                  }
 
@@ -479,7 +479,7 @@ module Increase
         #   An instruction of how to interpret the `receiving_depository_financial_institution_id` field for this Transaction.
         #   @return [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier]
         required :receiving_depository_financial_institution_id_qualifier,
-                 enum: lambda {
+                 enum: -> {
                    Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier
                  }
 

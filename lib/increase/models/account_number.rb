@@ -41,7 +41,7 @@ module Increase
       # @!attribute [rw] name_
       #   The name you choose for the Account Number.
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN).

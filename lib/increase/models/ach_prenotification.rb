@@ -47,7 +47,7 @@ module Increase
       #   If the notification is for a future credit or debit.
       #   @return [Symbol, Increase::Models::ACHPrenotification::CreditDebitIndicator]
       required :credit_debit_indicator,
-               enum: lambda {
+               enum: -> {
                  Increase::Models::ACHPrenotification::CreditDebitIndicator
                }
 

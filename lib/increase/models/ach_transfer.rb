@@ -82,7 +82,7 @@ module Increase
       #   The type of entity that owns the account to which the ACH Transfer is being sent.
       #   @return [Symbol, Increase::Models::ACHTransfer::DestinationAccountHolder]
       required :destination_account_holder,
-               enum: lambda {
+               enum: -> {
                  Increase::Models::ACHTransfer::DestinationAccountHolder
                }
 
@@ -140,7 +140,7 @@ module Increase
       # @!attribute [rw] return_
       #   If your transfer is returned, this will contain details of the return.
       #   @return [Increase::Models::ACHTransfer::Return]
-      required :return_, -> { Increase::Models::ACHTransfer::Return }
+      required :return_, -> { Increase::Models::ACHTransfer::Return }, api_name: :return
 
       # @!attribute [rw] routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN).
@@ -232,7 +232,7 @@ module Increase
           #   @return [Array<Increase::Models::ACHTransfer::Addenda::Freeform::Entry>]
           required :entries,
                    Increase::ArrayOf.new(
-                     lambda {
+                     -> {
                        Increase::Models::ACHTransfer::Addenda::Freeform::Entry
                      }
                    )
@@ -265,7 +265,7 @@ module Increase
           #   @return [Array<Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice>]
           required :invoices,
                    Increase::ArrayOf.new(
-                     lambda {
+                     -> {
                        Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice
                      }
                    )
@@ -406,7 +406,7 @@ module Increase
           # @!attribute [rw] name_
           #   The name of the OAuth Application.
           #   @return [String]
-          required :name_, String
+          required :name_, String, api_name: :name
 
           # @!parse
           #   # Create a new instance of OAuthApplication from a Hash of raw data.

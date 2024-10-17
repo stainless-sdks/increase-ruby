@@ -77,7 +77,7 @@ module Increase
         # @!attribute [rw] method_
         #   The shipping method.
         #   @return [Symbol, Increase::Models::PhysicalCard::Shipment::Method]
-        required :method_, enum: -> { Increase::Models::PhysicalCard::Shipment::Method }
+        required :method_, api_name: :method, enum: -> { Increase::Models::PhysicalCard::Shipment::Method }
 
         # @!attribute [rw] status
         #   The status of this shipment.
@@ -113,7 +113,7 @@ module Increase
           # @!attribute [rw] name_
           #   The name of the recipient.
           #   @return [String]
-          required :name_, String
+          required :name_, String, api_name: :name
 
           # @!attribute [rw] postal_code
           #   The postal code of the shipping address.
