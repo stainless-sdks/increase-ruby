@@ -36,7 +36,7 @@ module Increase
       # @!attribute [rw] name_
       #   The name of the Program.
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `program`.

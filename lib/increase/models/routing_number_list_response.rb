@@ -11,7 +11,7 @@ module Increase
       # @!attribute [rw] name_
       #   The name of the financial institution belonging to a routing number.
       #   @return [String]
-      required :name_, String
+      required :name_, String, api_name: :name
 
       # @!attribute [rw] real_time_payments_transfers
       #   This routing number's support for Real-Time Payments Transfers.

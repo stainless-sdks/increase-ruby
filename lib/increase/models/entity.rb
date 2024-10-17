@@ -72,7 +72,7 @@ module Increase
       # @!attribute [rw] trust_
       #   Details of the trust entity. Will be present if `structure` is equal to `trust`.
       #   @return [Increase::Models::Entity::Trust]
-      required :trust_, -> { Increase::Models::Entity::Trust }
+      required :trust_, -> { Increase::Models::Entity::Trust }, api_name: :trust
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `entity`.
@@ -104,7 +104,7 @@ module Increase
         # @!attribute [rw] name_
         #   The legal name of the corporation.
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
         # @!attribute [rw] tax_identifier
         #   The Employer Identification Number (EIN) for the corporation.
@@ -181,7 +181,7 @@ module Increase
             #   The person's address.
             #   @return [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address]
             required :address,
-                     lambda {
+                     -> {
                        Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address
                      }
 
@@ -199,7 +199,7 @@ module Increase
             # @!attribute [rw] name_
             #   The person's legal name.
             #   @return [String]
-            required :name_, String
+            required :name_, String, api_name: :name
 
             class Address < BaseModel
               # @!attribute [rw] city
@@ -245,7 +245,8 @@ module Increase
               #   A method that can be used to verify the individual's identity.
               #   @return [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method]
               required :method_,
-                       enum: lambda {
+                       api_name: :method,
+                       enum: -> {
                          Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method
                        }
 
@@ -350,7 +351,7 @@ module Increase
         # @!attribute [rw] name_
         #   The government authority's name.
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
         # @!attribute [rw] tax_identifier
         #   The Employer Identification Number (EIN) of the government authority.
@@ -410,7 +411,7 @@ module Increase
           # @!attribute [rw] name_
           #   The person's legal name.
           #   @return [String]
-          required :name_, String
+          required :name_, String, api_name: :name
 
           # @!parse
           #   # Create a new instance of AuthorizedPerson from a Hash of raw data.
@@ -449,7 +450,7 @@ module Increase
         # @!attribute [rw] name_
         #   The entity's name.
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
         class Individual < BaseModel
           # @!attribute [rw] address
@@ -470,7 +471,7 @@ module Increase
           # @!attribute [rw] name_
           #   The person's legal name.
           #   @return [String]
-          required :name_, String
+          required :name_, String, api_name: :name
 
           class Address < BaseModel
             # @!attribute [rw] city
@@ -516,9 +517,8 @@ module Increase
             #   A method that can be used to verify the individual's identity.
             #   @return [Symbol, Increase::Models::Entity::Joint::Individual::Identification::Method]
             required :method_,
-                     enum: lambda {
-                       Increase::Models::Entity::Joint::Individual::Identification::Method
-                     }
+                     api_name: :method,
+                     enum: -> { Increase::Models::Entity::Joint::Individual::Identification::Method }
 
             # @!attribute [rw] number_last4
             #   The last 4 digits of the identification number that can be used to verify the individual's identity.
@@ -592,7 +592,7 @@ module Increase
         # @!attribute [rw] name_
         #   The person's legal name.
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
         class Address < BaseModel
           # @!attribute [rw] city
@@ -637,7 +637,9 @@ module Increase
           # @!attribute [rw] method_
           #   A method that can be used to verify the individual's identity.
           #   @return [Symbol, Increase::Models::Entity::NaturalPerson::Identification::Method]
-          required :method_, enum: -> { Increase::Models::Entity::NaturalPerson::Identification::Method }
+          required :method_,
+                   api_name: :method,
+                   enum: -> { Increase::Models::Entity::NaturalPerson::Identification::Method }
 
           # @!attribute [rw] number_last4
           #   The last 4 digits of the identification number that can be used to verify the individual's identity.
@@ -771,7 +773,7 @@ module Increase
         # @!attribute [rw] name_
         #   The trust's name.
         #   @return [String]
-        required :name_, String
+        required :name_, String, api_name: :name
 
         # @!attribute [rw] tax_identifier
         #   The Employer Identification Number (EIN) of the trust itself.
@@ -850,7 +852,7 @@ module Increase
           # @!attribute [rw] name_
           #   The person's legal name.
           #   @return [String]
-          required :name_, String
+          required :name_, String, api_name: :name
 
           class Address < BaseModel
             # @!attribute [rw] city
@@ -895,7 +897,9 @@ module Increase
             # @!attribute [rw] method_
             #   A method that can be used to verify the individual's identity.
             #   @return [Symbol, Increase::Models::Entity::Trust::Grantor::Identification::Method]
-            required :method_, enum: -> { Increase::Models::Entity::Trust::Grantor::Identification::Method }
+            required :method_,
+                     api_name: :method,
+                     enum: -> { Increase::Models::Entity::Trust::Grantor::Identification::Method }
 
             # @!attribute [rw] number_last4
             #   The last 4 digits of the identification number that can be used to verify the individual's identity.
@@ -967,14 +971,14 @@ module Increase
             #   A means of verifying the person's identity.
             #   @return [Increase::Models::Entity::Trust::Trustee::Individual::Identification]
             required :identification,
-                     lambda {
+                     -> {
                        Increase::Models::Entity::Trust::Trustee::Individual::Identification
                      }
 
             # @!attribute [rw] name_
             #   The person's legal name.
             #   @return [String]
-            required :name_, String
+            required :name_, String, api_name: :name
 
             class Address < BaseModel
               # @!attribute [rw] city
@@ -1020,7 +1024,8 @@ module Increase
               #   A method that can be used to verify the individual's identity.
               #   @return [Symbol, Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method]
               required :method_,
-                       enum: lambda {
+                       api_name: :method,
+                       enum: -> {
                          Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method
                        }
 

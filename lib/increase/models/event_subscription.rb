@@ -27,7 +27,7 @@ module Increase
       #   If specified, this subscription will only receive webhooks for Events with the specified `category`.
       #   @return [Symbol, Increase::Models::EventSubscription::SelectedEventCategory]
       required :selected_event_category,
-               enum: lambda {
+               enum: -> {
                  Increase::Models::EventSubscription::SelectedEventCategory
                }
 

@@ -279,7 +279,7 @@ module Increase
           #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner]
           required :actioner,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner
                    }
 
@@ -297,7 +297,7 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Currency]
           required :currency,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::DeclinedTransaction::Source::CardDecline::Currency
                    }
 
@@ -315,7 +315,7 @@ module Increase
           #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Direction]
           required :direction,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::DeclinedTransaction::Source::CardDecline::Direction
                    }
 
@@ -406,7 +406,7 @@ module Increase
           #   Fields related to verification of cardholder-provided values.
           #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification]
           required :verification,
-                   lambda {
+                   -> {
                      Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
                    }
 
@@ -457,7 +457,7 @@ module Increase
             #   The payment network used to process this card authorization.
             #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category]
             required :category,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category
                      }
 
@@ -465,7 +465,7 @@ module Increase
             #   Fields specific to the `visa` network.
             #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa]
             required :visa,
-                     lambda {
+                     -> {
                        Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa
                      }
 
@@ -480,7 +480,7 @@ module Increase
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator]
               required :electronic_commerce_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator
                        }
 
@@ -488,7 +488,7 @@ module Increase
               #   The method used to enter the cardholder's primary account number and card expiration date.
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode]
               required :point_of_service_entry_mode,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode
                        }
 
@@ -690,7 +690,7 @@ module Increase
               #   The result of verifying the Card Verification Code.
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result]
               required :result,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result
                        }
 
@@ -739,7 +739,7 @@ module Increase
               #   The address verification result returned to the card network.
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result]
               required :result,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result
                        }
 
@@ -1086,7 +1086,7 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency]
           required :currency,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency
                    }
 
@@ -1109,7 +1109,7 @@ module Increase
           #   Why the transfer was declined.
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason]
           required :reason,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason
                    }
 

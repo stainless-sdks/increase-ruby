@@ -163,7 +163,7 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency]
           required :currency,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency
                    }
 
@@ -235,7 +235,7 @@ module Increase
           #   Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner]
           required :actioner,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner
                    }
 
@@ -253,7 +253,7 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency]
           required :currency,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::PendingTransaction::Source::CardAuthorization::Currency
                    }
 
@@ -349,7 +349,7 @@ module Increase
           #   The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory]
           required :processing_category,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory
                    }
 
@@ -416,7 +416,7 @@ module Increase
             #   The payment network used to process this card authorization.
             #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category]
             required :category,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category
                      }
 
@@ -437,7 +437,7 @@ module Increase
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator]
               required :electronic_commerce_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
                        }
 
@@ -445,7 +445,7 @@ module Increase
               #   The method used to enter the cardholder's primary account number and card expiration date.
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode]
               required :point_of_service_entry_mode,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
                        }
 
@@ -604,7 +604,7 @@ module Increase
               #   The result of verifying the Card Verification Code.
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result]
               required :result,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result
                        }
 
@@ -653,7 +653,7 @@ module Increase
               #   The address verification result returned to the card network.
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result]
               required :result,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result
                        }
 
@@ -803,7 +803,7 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency]
           required :currency,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency
                    }
 
@@ -858,7 +858,7 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency]
           required :currency,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency
                    }
 
@@ -924,7 +924,7 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency]
           required :currency,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency
                    }
 
@@ -947,7 +947,7 @@ module Increase
           #   The status of the hold.
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Status]
           required :status,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::PendingTransaction::Source::InboundFundsHold::Status
                    }
 

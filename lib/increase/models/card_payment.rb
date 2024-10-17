@@ -145,7 +145,7 @@ module Increase
           #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Direction]
           required :direction,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::CardPayment::Element::CardAuthorization::Direction
                    }
 
@@ -246,7 +246,7 @@ module Increase
           #   Fields related to verification of cardholder-provided values.
           #   @return [Increase::Models::CardPayment::Element::CardAuthorization::Verification]
           required :verification,
-                   lambda {
+                   -> {
                      Increase::Models::CardPayment::Element::CardAuthorization::Verification
                    }
 
@@ -297,7 +297,7 @@ module Increase
             #   The payment network used to process this card authorization.
             #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category]
             required :category,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category
                      }
 
@@ -305,7 +305,7 @@ module Increase
             #   Fields specific to the `visa` network.
             #   @return [Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa]
             required :visa,
-                     lambda {
+                     -> {
                        Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa
                      }
 
@@ -320,7 +320,7 @@ module Increase
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator]
               required :electronic_commerce_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
                        }
 
@@ -328,7 +328,7 @@ module Increase
               #   The method used to enter the cardholder's primary account number and card expiration date.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode]
               required :point_of_service_entry_mode,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
                        }
 
@@ -487,7 +487,7 @@ module Increase
               #   The result of verifying the Card Verification Code.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result]
               required :result,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result
                        }
 
@@ -536,7 +536,7 @@ module Increase
               #   The address verification result returned to the card network.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result]
               required :result,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result
                        }
 
@@ -665,7 +665,7 @@ module Increase
           #   A constant representing the object's type. For this resource it will always be `card_authorization_expiration`.
           #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type]
           required :type,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type
                    }
 
@@ -797,7 +797,7 @@ module Increase
           #   Fields specific to the `network`.
           #   @return [Increase::Models::CardPayment::Element::CardDecline::NetworkDetails]
           required :network_details,
-                   lambda {
+                   -> {
                      Increase::Models::CardPayment::Element::CardDecline::NetworkDetails
                    }
 
@@ -895,7 +895,7 @@ module Increase
             #   The payment network used to process this card authorization.
             #   @return [Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category]
             required :category,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category
                      }
 
@@ -915,7 +915,7 @@ module Increase
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator]
               required :electronic_commerce_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator
                        }
 
@@ -923,7 +923,7 @@ module Increase
               #   The method used to enter the cardholder's primary account number and card expiration date.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode]
               required :point_of_service_entry_mode,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode
                        }
 
@@ -1125,7 +1125,7 @@ module Increase
               #   The result of verifying the Card Verification Code.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result]
               required :result,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result
                        }
 
@@ -1174,7 +1174,7 @@ module Increase
               #   The address verification result returned to the card network.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result]
               required :result,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result
                        }
 
@@ -1283,7 +1283,7 @@ module Increase
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
           #   @return [Symbol, Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency]
           required :currency,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency
                    }
 
@@ -1291,7 +1291,7 @@ module Increase
           #   The card network used to process this card authorization.
           #   @return [Symbol, Increase::Models::CardPayment::Element::CardFuelConfirmation::Network]
           required :network,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::CardPayment::Element::CardFuelConfirmation::Network
                    }
 
@@ -1635,7 +1635,7 @@ module Increase
           #   Additional details about the card purchase, such as tax and industry-specific fields.
           #   @return [Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails]
           required :purchase_details,
-                   lambda {
+                   -> {
                      Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails
                    }
 
@@ -1685,7 +1685,7 @@ module Increase
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency]
             required :currency,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency
                      }
 
@@ -1777,7 +1777,7 @@ module Increase
             #   Fields specific to lodging.
             #   @return [Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging]
             required :lodging,
-                     lambda {
+                     -> {
                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging
                      }
 
@@ -1800,7 +1800,7 @@ module Increase
             #   The format of the purchase identifier.
             #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat]
             required :purchase_identifier_format,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat
                      }
 
@@ -1808,7 +1808,7 @@ module Increase
             #   Fields specific to travel.
             #   @return [Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel]
             required :travel,
-                     lambda {
+                     -> {
                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel
                      }
 
@@ -1842,7 +1842,7 @@ module Increase
               #   Additional charges (gas, late fee, etc.) being billed.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges]
               required :extra_charges,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges
                        }
 
@@ -1870,7 +1870,7 @@ module Increase
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator]
               required :no_show_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator
                        }
 
@@ -1980,7 +1980,7 @@ module Increase
               #   Additional charges (phone, late check-out, etc.) being billed.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges]
               required :extra_charges,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges
                        }
 
@@ -2008,7 +2008,7 @@ module Increase
               #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator]
               required :no_show_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator
                        }
 
@@ -2144,7 +2144,7 @@ module Increase
               #   Indicates the reason for a credit to the cardholder.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator]
               required :credit_reason_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator
                        }
 
@@ -2167,7 +2167,7 @@ module Increase
               #   Indicates whether this ticket is non-refundable.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator]
               required :restricted_ticket_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator
                        }
 
@@ -2175,7 +2175,7 @@ module Increase
               #   Indicates why a ticket was changed.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator]
               required :ticket_change_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator
                        }
 
@@ -2199,7 +2199,7 @@ module Increase
               #   @return [Array<Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg>]
               required :trip_legs,
                        Increase::ArrayOf.new(
-                         lambda {
+                         -> {
                            Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg
                          }
                        )
@@ -2214,7 +2214,7 @@ module Increase
                 #   Indicates the reason for a credit to the cardholder.
                 #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator]
                 required :credit_reason_indicator,
-                         enum: lambda {
+                         enum: -> {
                            Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
                          }
 
@@ -2228,7 +2228,7 @@ module Increase
                 #   @return [Array<Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service>]
                 required :services,
                          Increase::ArrayOf.new(
-                           lambda {
+                           -> {
                              Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service
                            }
                          )
@@ -2258,7 +2258,7 @@ module Increase
                   #   Category of the ancillary service.
                   #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category]
                   required :category,
-                           enum: lambda {
+                           enum: -> {
                              Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category
                            }
 
@@ -2437,7 +2437,7 @@ module Increase
                 #   Indicates whether a stopover is allowed on this ticket.
                 #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode]
                 required :stop_over_code,
-                         enum: lambda {
+                         enum: -> {
                            Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode
                          }
 
@@ -2821,7 +2821,7 @@ module Increase
           #   Additional details about the card purchase, such as tax and industry-specific fields.
           #   @return [Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails]
           required :purchase_details,
-                   lambda {
+                   -> {
                      Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails
                    }
 
@@ -2871,7 +2871,7 @@ module Increase
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency]
             required :currency,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency
                      }
 
@@ -2963,7 +2963,7 @@ module Increase
             #   Fields specific to lodging.
             #   @return [Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging]
             required :lodging,
-                     lambda {
+                     -> {
                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging
                      }
 
@@ -2986,7 +2986,7 @@ module Increase
             #   The format of the purchase identifier.
             #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat]
             required :purchase_identifier_format,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat
                      }
 
@@ -2994,7 +2994,7 @@ module Increase
             #   Fields specific to travel.
             #   @return [Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel]
             required :travel,
-                     lambda {
+                     -> {
                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel
                      }
 
@@ -3028,7 +3028,7 @@ module Increase
               #   Additional charges (gas, late fee, etc.) being billed.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges]
               required :extra_charges,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges
                        }
 
@@ -3056,7 +3056,7 @@ module Increase
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator]
               required :no_show_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator
                        }
 
@@ -3166,7 +3166,7 @@ module Increase
               #   Additional charges (phone, late check-out, etc.) being billed.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges]
               required :extra_charges,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges
                        }
 
@@ -3194,7 +3194,7 @@ module Increase
               #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator]
               required :no_show_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator
                        }
 
@@ -3330,7 +3330,7 @@ module Increase
               #   Indicates the reason for a credit to the cardholder.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator]
               required :credit_reason_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator
                        }
 
@@ -3353,7 +3353,7 @@ module Increase
               #   Indicates whether this ticket is non-refundable.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator]
               required :restricted_ticket_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator
                        }
 
@@ -3361,7 +3361,7 @@ module Increase
               #   Indicates why a ticket was changed.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator]
               required :ticket_change_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator
                        }
 
@@ -3385,7 +3385,7 @@ module Increase
               #   @return [Array<Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg>]
               required :trip_legs,
                        Increase::ArrayOf.new(
-                         lambda {
+                         -> {
                            Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg
                          }
                        )
@@ -3400,7 +3400,7 @@ module Increase
                 #   Indicates the reason for a credit to the cardholder.
                 #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator]
                 required :credit_reason_indicator,
-                         enum: lambda {
+                         enum: -> {
                            Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
                          }
 
@@ -3414,7 +3414,7 @@ module Increase
                 #   @return [Array<Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service>]
                 required :services,
                          Increase::ArrayOf.new(
-                           lambda {
+                           -> {
                              Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service
                            }
                          )
@@ -3444,7 +3444,7 @@ module Increase
                   #   Category of the ancillary service.
                   #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category]
                   required :category,
-                           enum: lambda {
+                           enum: -> {
                              Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category
                            }
 
@@ -3623,7 +3623,7 @@ module Increase
                 #   Indicates whether a stopover is allowed on this ticket.
                 #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode]
                 required :stop_over_code,
-                         enum: lambda {
+                         enum: -> {
                            Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode
                          }
 
@@ -3793,7 +3793,7 @@ module Increase
           #   Fields specific to the `network`.
           #   @return [Increase::Models::CardPayment::Element::CardValidation::NetworkDetails]
           required :network_details,
-                   lambda {
+                   -> {
                      Increase::Models::CardPayment::Element::CardValidation::NetworkDetails
                    }
 
@@ -3866,7 +3866,7 @@ module Increase
             #   The payment network used to process this card authorization.
             #   @return [Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category]
             required :category,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category
                      }
 
@@ -3874,7 +3874,7 @@ module Increase
             #   Fields specific to the `visa` network.
             #   @return [Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa]
             required :visa,
-                     lambda {
+                     -> {
                        Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa
                      }
 
@@ -3889,7 +3889,7 @@ module Increase
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator]
               required :electronic_commerce_indicator,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator
                        }
 
@@ -3897,7 +3897,7 @@ module Increase
               #   The method used to enter the cardholder's primary account number and card expiration date.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode]
               required :point_of_service_entry_mode,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode
                        }
 
@@ -4035,7 +4035,7 @@ module Increase
               #   The result of verifying the Card Verification Code.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result]
               required :result,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result
                        }
 
@@ -4084,7 +4084,7 @@ module Increase
               #   The address verification result returned to the card network.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result]
               required :result,
-                       enum: lambda {
+                       enum: -> {
                          Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result
                        }
 

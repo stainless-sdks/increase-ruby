@@ -213,7 +213,7 @@ module Increase
           # @!attribute [rw] name_
           #   The name of the OAuth Application.
           #   @return [String]
-          required :name_, String
+          required :name_, String, api_name: :name
 
           # @!parse
           #   # Create a new instance of OAuthApplication from a Hash of raw data.
@@ -356,7 +356,7 @@ module Increase
           # @!attribute [rw] name_
           #   The name component of the check's mailing address.
           #   @return [String]
-          required :name_, String
+          required :name_, String, api_name: :name
 
           # @!attribute [rw] postal_code
           #   The postal code of the check's destination.
@@ -400,7 +400,7 @@ module Increase
           # @!attribute [rw] name_
           #   The name component of the check's return address.
           #   @return [String]
-          required :name_, String
+          required :name_, String, api_name: :name
 
           # @!attribute [rw] postal_code
           #   The postal code of the check's destination.
@@ -430,7 +430,7 @@ module Increase
           #   The type of tracking event.
           #   @return [Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category]
           required :category,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category
                    }
 
@@ -438,6 +438,11 @@ module Increase
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the tracking event took place.
           #   @return [Time]
           required :created_at, Time
+
+          # @!attribute [rw] postal_code
+          #   The postal code where the event took place.
+          #   @return [String]
+          required :postal_code, String
 
           # The type of tracking event.
           class Category < Increase::Enum
@@ -461,6 +466,7 @@ module Increase
           #   #   @option data [String] :category The type of tracking event.
           #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
           #   #     the tracking event took place.
+          #   #   @option data [String] :postal_code The postal code where the event took place.
           #   def initialize(data = {}) = super
         end
 

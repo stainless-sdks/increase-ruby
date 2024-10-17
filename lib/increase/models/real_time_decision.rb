@@ -218,7 +218,7 @@ module Increase
         #   Fields specific to the `network`.
         #   @return [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails]
         required :network_details,
-                 lambda {
+                 -> {
                    Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails
                  }
 
@@ -258,7 +258,7 @@ module Increase
         #   Fields specific to the type of request, such as an incremental authorization.
         #   @return [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails]
         required :request_details,
-                 lambda {
+                 -> {
                    Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails
                  }
 
@@ -305,7 +305,7 @@ module Increase
           #   The payment network used to process this card authorization.
           #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category]
           required :category,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category
                    }
 
@@ -325,7 +325,7 @@ module Increase
             #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator]
             required :electronic_commerce_indicator,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
                      }
 
@@ -333,7 +333,7 @@ module Increase
             #   The method used to enter the cardholder's primary account number and card expiration date.
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode]
             required :point_of_service_entry_mode,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
                      }
 
@@ -474,7 +474,7 @@ module Increase
           #   The type of this request (e.g., an initial authorization or an incremental authorization).
           #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category]
           required :category,
-                   enum: lambda {
+                   enum: -> {
                      Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category
                    }
 
@@ -548,7 +548,7 @@ module Increase
             #   The result of verifying the Card Verification Code.
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result]
             required :result,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result
                      }
 
@@ -597,7 +597,7 @@ module Increase
             #   The address verification result returned to the card network.
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result]
             required :result,
-                     enum: lambda {
+                     enum: -> {
                        Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result
                      }
 
@@ -719,7 +719,7 @@ module Increase
         #   The channel to send the card user their one-time passcode.
         #   @return [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel]
         required :channel,
-                 enum: lambda {
+                 enum: -> {
                    Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel
                  }
 

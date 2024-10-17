@@ -183,7 +183,7 @@ module Increase
           # @!attribute [rw] name_
           #   The name of the OAuth Application.
           #   @return [String]
-          required :name_, String
+          required :name_, String, api_name: :name
 
           # @!parse
           #   # Create a new instance of OAuthApplication from a Hash of raw data.
