@@ -776,6 +776,9 @@ module Increase
           # Wire Transfer Instruction: details will be under the `wire_transfer_instruction` object.
           WIRE_TRANSFER_INSTRUCTION = :wire_transfer_instruction
 
+          # Inbound Wire Transfer Reversal: details will be under the `inbound_wire_transfer_reversal` object.
+          INBOUND_WIRE_TRANSFER_REVERSAL = :inbound_wire_transfer_reversal
+
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER = :other
         end
