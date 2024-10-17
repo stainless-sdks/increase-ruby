@@ -726,8 +726,11 @@ module Increase
 
         # The vendor that was used to perform the verification.
         class Vendor < Increase::Enum
-          # Alloy
+          # Alloy. See https://alloy.com for more information.
           ALLOY = :alloy
+
+          # Middesk. See https://middesk.com for more information.
+          MIDDESK = :middesk
         end
 
         # @!parse
