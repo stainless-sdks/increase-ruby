@@ -3170,6 +3170,11 @@ module Increase
           #   @return [Date]
           required :fee_period_start, Date
 
+          # @!attribute [rw] program_id
+          #   The Program for which this fee was incurred.
+          #   @return [String]
+          required :program_id, String
+
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
@@ -3200,6 +3205,7 @@ module Increase
           #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   #     currency.
           #   #   @option data [String] :fee_period_start The start of this payment's fee period, usually the first day of a month.
+          #   #   @option data [String] :program_id The Program for which this fee was incurred.
           #   def initialize(data = {}) = super
         end
 
