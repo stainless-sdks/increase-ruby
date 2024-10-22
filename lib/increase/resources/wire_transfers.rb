@@ -32,6 +32,7 @@ module Increase
       #   @option params [Boolean, nil] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
       #   @option params [String, nil] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #     destination account.
+      #   @option params [String, nil] :source_account_number_id The ID of an Account Number that will be passed to the wire's recipient
       #
       # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

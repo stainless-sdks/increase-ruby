@@ -123,6 +123,11 @@ module Increase
       #   @return [String]
       required :routing_number, String
 
+      # @!attribute [rw] source_account_number_id
+      #   The Account Number that was passed to the wire's recipient.
+      #   @return [String]
+      required :source_account_number_id, String
+
       # @!attribute [rw] status
       #   The lifecycle status of the transfer.
       #   @return [Symbol, Increase::Models::WireTransfer::Status]
@@ -506,6 +511,7 @@ module Increase
       #   #     by someone else in your organization.
       #   #   @option data [Object] :reversal If your transfer is reversed, this will contain details of the reversal.
       #   #   @option data [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN).
+      #   #   @option data [String] :source_account_number_id The Account Number that was passed to the wire's recipient.
       #   #   @option data [String] :status The lifecycle status of the transfer.
       #   #   @option data [Object] :submission After the transfer is submitted to Fedwire, this will contain supplemental
       #   #     details.
