@@ -490,8 +490,17 @@ module Increase
         # The transfer is awaiting approval.
         PENDING_APPROVAL = :pending_approval
 
+        # The transfer has been canceled.
+        CANCELED = :canceled
+
         # The transfer is pending submission.
         PENDING_SUBMISSION = :pending_submission
+
+        # The transfer requires attention from an Increase operator.
+        REQUIRES_ATTENTION = :requires_attention
+
+        # The transfer has been rejected.
+        REJECTED = :rejected
 
         # The check is queued for mailing.
         PENDING_MAILING = :pending_mailing
@@ -499,20 +508,11 @@ module Increase
         # The check has been mailed.
         MAILED = :mailed
 
-        # The transfer has been canceled.
-        CANCELED = :canceled
-
         # The check has been deposited.
         DEPOSITED = :deposited
 
         # A stop-payment was requested for this check.
         STOPPED = :stopped
-
-        # The transfer has been rejected.
-        REJECTED = :rejected
-
-        # The transfer requires attention from an Increase operator.
-        REQUIRES_ATTENTION = :requires_attention
 
         # The transfer has been returned.
         RETURNED = :returned

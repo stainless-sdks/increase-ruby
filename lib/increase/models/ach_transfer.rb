@@ -1026,23 +1026,23 @@ module Increase
         # The transfer has been canceled.
         CANCELED = :canceled
 
-        # The transfer is pending review by Increase.
-        PENDING_REVIEWING = :pending_reviewing
-
         # The transfer is pending submission to the Federal Reserve.
         PENDING_SUBMISSION = :pending_submission
 
-        # The transfer is complete.
-        SUBMITTED = :submitted
-
-        # The transfer has been returned.
-        RETURNED = :returned
+        # The transfer is pending review by Increase.
+        PENDING_REVIEWING = :pending_reviewing
 
         # The transfer requires attention from an Increase operator.
         REQUIRES_ATTENTION = :requires_attention
 
         # The transfer has been rejected.
         REJECTED = :rejected
+
+        # The transfer is complete.
+        SUBMITTED = :submitted
+
+        # The transfer has been returned.
+        RETURNED = :returned
       end
 
       class Submission < BaseModel

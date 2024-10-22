@@ -382,6 +382,12 @@ module Increase
         # The transfer is pending review by Increase.
         PENDING_REVIEWING = :pending_reviewing
 
+        # The transfer requires attention from an Increase operator.
+        REQUIRES_ATTENTION = :requires_attention
+
+        # The transfer was rejected by the network or the recipient's bank.
+        REJECTED = :rejected
+
         # The transfer is queued to be submitted to Real-Time Payments.
         PENDING_SUBMISSION = :pending_submission
 
@@ -390,12 +396,6 @@ module Increase
 
         # The transfer has been sent successfully and is complete.
         COMPLETE = :complete
-
-        # The transfer was rejected by the network or the recipient's bank.
-        REJECTED = :rejected
-
-        # The transfer requires attention from an Increase operator.
-        REQUIRES_ATTENTION = :requires_attention
       end
 
       class Submission < BaseModel
