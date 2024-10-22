@@ -416,20 +416,23 @@ module Increase
 
       # The lifecycle status of the transfer.
       class Status < Increase::Enum
+        # The transfer is pending approval.
+        PENDING_APPROVAL = :pending_approval
+
         # The transfer has been canceled.
         CANCELED = :canceled
-
-        # The transfer requires attention from an Increase operator.
-        REQUIRES_ATTENTION = :requires_attention
 
         # The transfer is pending review by Increase.
         PENDING_REVIEWING = :pending_reviewing
 
-        # The transfer is pending approval.
-        PENDING_APPROVAL = :pending_approval
-
         # The transfer has been rejected by Increase.
         REJECTED = :rejected
+
+        # The transfer requires attention from an Increase operator.
+        REQUIRES_ATTENTION = :requires_attention
+
+        # The transfer is pending creation.
+        PENDING_CREATING = :pending_creating
 
         # The transfer has been reversed.
         REVERSED = :reversed
@@ -439,9 +442,6 @@ module Increase
 
         # The transfer has been acknowledged by Fedwire and can be considered complete.
         COMPLETE = :complete
-
-        # The transfer is pending creation.
-        PENDING_CREATING = :pending_creating
       end
 
       class Submission < BaseModel
