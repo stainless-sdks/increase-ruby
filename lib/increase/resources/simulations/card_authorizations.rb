@@ -17,7 +17,7 @@ module Increase
         #   [Digital Wallet Token](#digital-wallet-tokens) id to simulate the two different
         #   ways purchases can be made.
         #
-        # @param params [Hash] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [Integer] :amount The authorization amount in cents.
         #   @option params [String, nil] :authenticated_card_payment_id The identifier of a Card Payment with a `card_authentication` if you want to
         #     simulate an authenticated authorization.
@@ -40,7 +40,7 @@ module Increase
         #   @option params [String, nil] :merchant_descriptor The merchant descriptor of the merchant the card is transacting with.
         #   @option params [String, nil] :physical_card_id The identifier of the Physical Card to be authorized.
         #
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CardAuthorizationCreateResponse]
         def create(params = {}, opts = {})

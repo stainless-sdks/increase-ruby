@@ -11,7 +11,7 @@ module Increase
       # Retrieve a Pending Transaction
       #
       # @param pending_transaction_id [String] The identifier of the Pending Transaction.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PendingTransaction]
       def retrieve(pending_transaction_id, opts = {})
@@ -25,7 +25,7 @@ module Increase
 
       # List Pending Transactions
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter pending transactions to those belonging to the specified Account.
       #   @option params [Category, nil] :category
       #   @option params [CreatedAt, nil] :created_at
@@ -35,7 +35,7 @@ module Increase
       #   @option params [String, nil] :route_id Filter pending transactions to those belonging to the specified Route.
       #   @option params [Status, nil] :status
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::PendingTransaction>]
       def list(params = {}, opts = {})

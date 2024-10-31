@@ -12,7 +12,7 @@ module Increase
         # Simulates receiving an
         #   [Inbound Wire Drawdown Request](#inbound-wire-drawdown-requests).
         #
-        # @param params [Hash] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [Integer] :amount The amount being requested in cents.
         #   @option params [String] :beneficiary_account_number The drawdown request's beneficiary's account number.
         #   @option params [String] :beneficiary_routing_number The drawdown request's beneficiary's routing number.
@@ -40,7 +40,7 @@ module Increase
         #   @option params [String, nil] :originator_to_beneficiary_information_line4 Line 4 of the information conveyed from the originator of the message to the
         #     beneficiary.
         #
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundWireDrawdownRequest]
         def create(params = {}, opts = {})

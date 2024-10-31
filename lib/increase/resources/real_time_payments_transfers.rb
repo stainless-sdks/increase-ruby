@@ -10,7 +10,7 @@ module Increase
 
       # Create a Real-Time Payments Transfer
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Integer] :amount The transfer amount in USD cents. For Real-Time Payments transfers, must be
       #     positive.
       #   @option params [String] :creditor_name The name of the transfer's recipient.
@@ -30,7 +30,7 @@ module Increase
       #   @option params [String, nil] :ultimate_debtor_name The name of the ultimate sender of the transfer. Set this if the funds are being
       #     sent on behalf of someone who is not the account holder at Increase.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::RealTimePaymentsTransfer]
       def create(params = {}, opts = {})
@@ -47,7 +47,7 @@ module Increase
       # Retrieve a Real-Time Payments Transfer
       #
       # @param real_time_payments_transfer_id [String] The identifier of the Real-Time Payments Transfer.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::RealTimePaymentsTransfer]
       def retrieve(real_time_payments_transfer_id, opts = {})
@@ -61,7 +61,7 @@ module Increase
 
       # List Real-Time Payments Transfers
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter Real-Time Payments Transfers to those belonging to the specified Account.
       #   @option params [CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
@@ -74,7 +74,7 @@ module Increase
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::RealTimePaymentsTransfer>]
       def list(params = {}, opts = {})

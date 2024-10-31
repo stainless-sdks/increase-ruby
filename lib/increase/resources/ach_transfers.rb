@@ -10,7 +10,7 @@ module Increase
 
       # Create an ACH Transfer
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :account_id The Increase identifier for the account that will send the transfer.
       #   @option params [Integer] :amount The transfer amount in USD cents. A positive amount originates a credit transfer
       #     pushing funds to the receiving account. A negative amount originates a debit
@@ -50,7 +50,7 @@ module Increase
       #   @option params [Symbol, StandardEntryClassCode, nil] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the transfer.
       #   @option params [Symbol, TransactionTiming, nil] :transaction_timing The timing of the transaction.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHTransfer]
       def create(params = {}, opts = {})
@@ -67,7 +67,7 @@ module Increase
       # Retrieve an ACH Transfer
       #
       # @param ach_transfer_id [String] The identifier of the ACH Transfer.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHTransfer]
       def retrieve(ach_transfer_id, opts = {})
@@ -81,7 +81,7 @@ module Increase
 
       # List ACH Transfers
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter ACH Transfers to those that originated from the specified Account.
       #   @option params [CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
@@ -93,7 +93,7 @@ module Increase
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ACHTransfer>]
       def list(params = {}, opts = {})
@@ -110,7 +110,7 @@ module Increase
       # Approves an ACH Transfer in a pending_approval state.
       #
       # @param ach_transfer_id [String] The identifier of the ACH Transfer to approve.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHTransfer]
       def approve(ach_transfer_id, opts = {})
@@ -125,7 +125,7 @@ module Increase
       # Cancels an ACH Transfer in a pending_approval state.
       #
       # @param ach_transfer_id [String] The identifier of the pending ACH Transfer to cancel.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHTransfer]
       def cancel(ach_transfer_id, opts = {})

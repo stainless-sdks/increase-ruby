@@ -10,7 +10,7 @@ module Increase
 
       # Submit Proof of Authorization
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :authorization_terms Terms of authorization.
       #   @option params [Time] :authorized_at Time of authorization.
       #   @option params [String] :authorizer_email Email of the authorizer.
@@ -23,7 +23,7 @@ module Increase
       #   @option params [String, nil] :authorizer_company Company of the authorizer.
       #   @option params [String, nil] :authorizer_ip_address IP address of the authorizer.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def create(params = {}, opts = {})
@@ -40,7 +40,7 @@ module Increase
       # Retrieve a Proof of Authorization Request Submission
       #
       # @param proof_of_authorization_request_submission_id [String] The identifier of the Proof of Authorization Request Submission.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       def retrieve(proof_of_authorization_request_submission_id, opts = {})
@@ -54,7 +54,7 @@ module Increase
 
       # List Proof of Authorization Request Submissions
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
       #     that object. This value is unique across Increase and is used to ensure that a
@@ -64,7 +64,7 @@ module Increase
       #     objects.
       #   @option params [String, nil] :proof_of_authorization_request_id ID of the proof of authorization request.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequestSubmission>]
       def list(params = {}, opts = {})

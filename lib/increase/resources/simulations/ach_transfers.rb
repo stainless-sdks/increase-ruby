@@ -17,7 +17,7 @@ module Increase
         #   subresource to the ACH Transfer.
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to become acknowledged.
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::ACHTransfer]
         def acknowledge(ach_transfer_id, opts = {})
@@ -35,11 +35,11 @@ module Increase
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to create a notification of change
         #   for.
         #
-        # @param params [Hash] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [Symbol, ChangeCode] :change_code The reason for the notification of change.
         #   @option params [String] :corrected_data The corrected data for the notification of change (e.g., a new routing number).
         #
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::ACHTransfer]
         def create_notification_of_change(ach_transfer_id, params = {}, opts = {})
@@ -59,11 +59,11 @@ module Increase
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to return.
         #
-        # @param params [Hash] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [Symbol, Reason, nil] :reason The reason why the Federal Reserve or destination bank returned this transfer.
         #     Defaults to `no_account`.
         #
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::ACHTransfer]
         def return_(ach_transfer_id, params = {}, opts = {})
@@ -83,7 +83,7 @@ module Increase
         #   Federal Reserve timeline as in production.
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to become settled.
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::ACHTransfer]
         def settle(ach_transfer_id, opts = {})
@@ -103,7 +103,7 @@ module Increase
         #   delay and transition the ACH Transfer to a status of `submitted`.
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to submit.
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::ACHTransfer]
         def submit(ach_transfer_id, opts = {})

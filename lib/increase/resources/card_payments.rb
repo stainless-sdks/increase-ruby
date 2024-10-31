@@ -11,7 +11,7 @@ module Increase
       # Retrieve a Card Payment
       #
       # @param card_payment_id [String] The identifier of the Card Payment.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CardPayment]
       def retrieve(card_payment_id, opts = {})
@@ -25,7 +25,7 @@ module Increase
 
       # List Card Payments
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter Card Payments to ones belonging to the specified Account.
       #   @option params [String, nil] :card_id Filter Card Payments to ones belonging to the specified Card.
       #   @option params [CreatedAt, nil] :created_at
@@ -33,7 +33,7 @@ module Increase
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::CardPayment>]
       def list(params = {}, opts = {})

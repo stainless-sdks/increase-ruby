@@ -10,7 +10,7 @@ module Increase
 
       # Create a Wire Transfer
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :account_id The identifier for the account that will send the transfer.
       #   @option params [Integer] :amount The transfer amount in USD cents.
       #   @option params [String] :beneficiary_name The beneficiary's name.
@@ -34,7 +34,7 @@ module Increase
       #     destination account.
       #   @option params [String, nil] :source_account_number_id The ID of an Account Number that will be passed to the wire's recipient
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireTransfer]
       def create(params = {}, opts = {})
@@ -51,7 +51,7 @@ module Increase
       # Retrieve a Wire Transfer
       #
       # @param wire_transfer_id [String] The identifier of the Wire Transfer.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireTransfer]
       def retrieve(wire_transfer_id, opts = {})
@@ -65,7 +65,7 @@ module Increase
 
       # List Wire Transfers
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter Wire Transfers to those belonging to the specified Account.
       #   @option params [CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
@@ -77,7 +77,7 @@ module Increase
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::WireTransfer>]
       def list(params = {}, opts = {})
@@ -94,7 +94,7 @@ module Increase
       # Approve a Wire Transfer
       #
       # @param wire_transfer_id [String] The identifier of the Wire Transfer to approve.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireTransfer]
       def approve(wire_transfer_id, opts = {})
@@ -109,7 +109,7 @@ module Increase
       # Cancel a pending Wire Transfer
       #
       # @param wire_transfer_id [String] The identifier of the pending Wire Transfer to cancel.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireTransfer]
       def cancel(wire_transfer_id, opts = {})
