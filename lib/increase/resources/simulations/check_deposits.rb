@@ -14,7 +14,7 @@ module Increase
         #   of `pending`.
         #
         # @param check_deposit_id [String] The identifier of the Check Deposit you wish to reject.
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CheckDeposit]
         def reject(check_deposit_id, opts = {})
@@ -30,7 +30,7 @@ module Increase
         #   must first have a `status` of `submitted`.
         #
         # @param check_deposit_id [String] The identifier of the Check Deposit you wish to return.
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CheckDeposit]
         def return_(check_deposit_id, opts = {})
@@ -46,7 +46,7 @@ module Increase
         #   Reserve. This Check Deposit must first have a `status` of `pending`.
         #
         # @param check_deposit_id [String] The identifier of the Check Deposit you wish to submit.
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CheckDeposit]
         def submit(check_deposit_id, opts = {})

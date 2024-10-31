@@ -10,14 +10,14 @@ module Increase
 
       # Create an Account Number
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :account_id The Account the Account Number should belong to.
       #   @option params [String] :name The name you choose for the Account Number.
       #   @option params [InboundACH, nil] :inbound_ach Options related to how this Account Number should handle inbound ACH transfers.
       #   @option params [InboundChecks, nil] :inbound_checks Options related to how this Account Number should handle inbound check
       #     withdrawals.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountNumber]
       def create(params = {}, opts = {})
@@ -34,7 +34,7 @@ module Increase
       # Retrieve an Account Number
       #
       # @param account_number_id [String] The identifier of the Account Number to retrieve.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountNumber]
       def retrieve(account_number_id, opts = {})
@@ -50,14 +50,14 @@ module Increase
       #
       # @param account_number_id [String] The identifier of the Account Number.
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [InboundACH, nil] :inbound_ach Options related to how this Account Number handles inbound ACH transfers.
       #   @option params [InboundChecks, nil] :inbound_checks Options related to how this Account Number should handle inbound check
       #     withdrawals.
       #   @option params [String, nil] :name The name you choose for the Account Number.
       #   @option params [Symbol, Status, nil] :status This indicates if transfers can be made to the Account Number.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountNumber]
       def update(account_number_id, params = {}, opts = {})
@@ -73,7 +73,7 @@ module Increase
 
       # List Account Numbers
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter Account Numbers to those belonging to the specified Account.
       #   @option params [Symbol, ACHDebitStatus, nil] :ach_debit_status The ACH Debit status to retrieve Account Numbers for.
       #   @option params [CreatedAt, nil] :created_at
@@ -86,7 +86,7 @@ module Increase
       #     objects.
       #   @option params [Symbol, Status, nil] :status The status to retrieve Account Numbers for.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::AccountNumber>]
       def list(params = {}, opts = {})

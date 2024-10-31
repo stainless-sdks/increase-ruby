@@ -10,7 +10,7 @@ module Increase
 
       # Create an ACH Prenotification
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :account_id The Increase identifier for the account that will send the transfer.
       #   @option params [String] :account_number The account number for the destination account.
       #   @option params [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
@@ -28,7 +28,7 @@ module Increase
       #     by the recipient's bank.
       #   @option params [Symbol, StandardEntryClassCode, nil] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHPrenotification]
       def create(params = {}, opts = {})
@@ -45,7 +45,7 @@ module Increase
       # Retrieve an ACH Prenotification
       #
       # @param ach_prenotification_id [String] The identifier of the ACH Prenotification to retrieve.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHPrenotification]
       def retrieve(ach_prenotification_id, opts = {})
@@ -59,7 +59,7 @@ module Increase
 
       # List ACH Prenotifications
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
@@ -69,7 +69,7 @@ module Increase
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ACHPrenotification>]
       def list(params = {}, opts = {})

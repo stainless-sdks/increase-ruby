@@ -10,7 +10,7 @@ module Increase
 
       # Create an Export
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Symbol, Category] :category The type of Export to create.
       #   @option params [AccountStatementOfx, nil] :account_statement_ofx Options for the created export. Required if `category` is equal to
       #     `account_statement_ofx`.
@@ -23,7 +23,7 @@ module Increase
       #     `transaction_csv`.
       #   @option params [Object, nil] :vendor_csv Options for the created export. Required if `category` is equal to `vendor_csv`.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Export]
       def create(params = {}, opts = {})
@@ -40,7 +40,7 @@ module Increase
       # Retrieve an Export
       #
       # @param export_id [String] The identifier of the Export to retrieve.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Export]
       def retrieve(export_id, opts = {})
@@ -54,7 +54,7 @@ module Increase
 
       # List Exports
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Category, nil] :category
       #   @option params [CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
@@ -66,7 +66,7 @@ module Increase
       #     objects.
       #   @option params [Status, nil] :status
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Export>]
       def list(params = {}, opts = {})

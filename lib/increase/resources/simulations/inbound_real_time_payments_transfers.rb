@@ -9,10 +9,11 @@ module Increase
           @client = client
         end
 
-        # Simulates an inbound Real-Time Payments transfer to your account. Real-Time
-        #   Payments are a beta feature.
+        # Simulates an
+        #   [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
+        #   your account. Real-Time Payments are a beta feature.
         #
-        # @param params [Hash] Attributes to send in this request.
+        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
         #   @option params [String] :account_number_id The identifier of the Account Number the inbound Real-Time Payments Transfer is
         #     for.
         #   @option params [Integer] :amount The transfer amount in USD cents. Must be positive.
@@ -22,7 +23,7 @@ module Increase
         #   @option params [String, nil] :remittance_information Additional information included with the transfer.
         #   @option params [String, nil] :request_for_payment_id The identifier of a pending Request for Payment that this transfer will fulfill.
         #
-        # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundRealTimePaymentsTransfer]
         def create(params = {}, opts = {})

@@ -11,7 +11,7 @@ module Increase
       # Retrieve an Inbound Wire Transfer
       #
       # @param inbound_wire_transfer_id [String] The identifier of the Inbound Wire Transfer to get details for.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundWireTransfer]
       def retrieve(inbound_wire_transfer_id, opts = {})
@@ -25,7 +25,7 @@ module Increase
 
       # List Inbound Wire Transfers
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter Inbound Wire Tranfers to ones belonging to the specified Account.
       #   @option params [String, nil] :account_number_id Filter Inbound Wire Tranfers to ones belonging to the specified Account Number.
       #   @option params [CreatedAt, nil] :created_at
@@ -34,7 +34,7 @@ module Increase
       #     objects.
       #   @option params [Symbol, Status, nil] :status Filter Inbound Wire Transfers to those with the specified status.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::InboundWireTransfer>]
       def list(params = {}, opts = {})

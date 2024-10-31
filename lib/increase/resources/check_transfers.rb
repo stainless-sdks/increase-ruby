@@ -10,7 +10,7 @@ module Increase
 
       # Create a Check Transfer
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :account_id The identifier for the account that will send the transfer.
       #   @option params [Integer] :amount The transfer amount in USD cents.
       #   @option params [String] :source_account_number_id The identifier of the Account Number from which to send the transfer and print
@@ -24,7 +24,7 @@ module Increase
       #     `fulfillment_method` is equal to `third_party`. It must not be included if any
       #     other `fulfillment_method` is provided.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       def create(params = {}, opts = {})
@@ -41,7 +41,7 @@ module Increase
       # Retrieve a Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       def retrieve(check_transfer_id, opts = {})
@@ -55,7 +55,7 @@ module Increase
 
       # List Check Transfers
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter Check Transfers to those that originated from the specified Account.
       #   @option params [CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
@@ -66,7 +66,7 @@ module Increase
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::CheckTransfer>]
       def list(params = {}, opts = {})
@@ -83,7 +83,7 @@ module Increase
       # Approve a Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer to approve.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       def approve(check_transfer_id, opts = {})
@@ -98,7 +98,7 @@ module Increase
       # Cancel a pending Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the pending Check Transfer to cancel.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       def cancel(check_transfer_id, opts = {})
@@ -114,10 +114,10 @@ module Increase
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer.
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Symbol, Reason, nil] :reason The reason why this transfer should be stopped.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       def stop_payment(check_transfer_id, params = {}, opts = {})

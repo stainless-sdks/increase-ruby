@@ -10,7 +10,7 @@ module Increase
 
       # Create a Card
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :account_id The Account the card should belong to.
       #   @option params [BillingAddress, nil] :billing_address The card's billing address.
       #   @option params [String, nil] :description The description you choose to give the card.
@@ -22,7 +22,7 @@ module Increase
       #   @option params [String, nil] :entity_id The Entity the card belongs to. You only need to supply this in rare situations
       #     when the card is not for the Account holder.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Card]
       def create(params = {}, opts = {})
@@ -39,7 +39,7 @@ module Increase
       # Retrieve a Card
       #
       # @param card_id [String] The identifier of the Card.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Card]
       def retrieve(card_id, opts = {})
@@ -55,7 +55,7 @@ module Increase
       #
       # @param card_id [String] The card identifier.
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [BillingAddress, nil] :billing_address The card's updated billing address.
       #   @option params [String, nil] :description The description you choose to give the card.
       #   @option params [DigitalWallet, nil] :digital_wallet The contact information used in the two-factor steps for digital wallet card
@@ -65,7 +65,7 @@ module Increase
       #     when the card is not for the Account holder.
       #   @option params [Symbol, Status, nil] :status The status to update the Card with.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Card]
       def update(card_id, params = {}, opts = {})
@@ -81,7 +81,7 @@ module Increase
 
       # List Cards
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter Cards to ones belonging to the specified Account.
       #   @option params [CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
@@ -92,7 +92,7 @@ module Increase
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Card>]
       def list(params = {}, opts = {})
@@ -109,7 +109,7 @@ module Increase
       # Retrieve sensitive details for a Card
       #
       # @param card_id [String] The identifier of the Card to retrieve details for.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CardDetails]
       def details(card_id, opts = {})

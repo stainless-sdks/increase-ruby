@@ -11,7 +11,7 @@ module Increase
       # Retrieve a Digital Wallet Token
       #
       # @param digital_wallet_token_id [String] The identifier of the Digital Wallet Token.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::DigitalWalletToken]
       def retrieve(digital_wallet_token_id, opts = {})
@@ -25,14 +25,14 @@ module Increase
 
       # List Digital Wallet Tokens
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :card_id Filter Digital Wallet Tokens to ones belonging to the specified Card.
       #   @option params [CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::DigitalWalletToken>]
       def list(params = {}, opts = {})

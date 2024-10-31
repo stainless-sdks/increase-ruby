@@ -10,11 +10,11 @@ module Increase
 
       # Create a supplemental document for an Entity
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :entity_id The identifier of the Entity to associate with the supplemental document.
       #   @option params [String] :file_id The identifier of the File containing the document.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::EntitySupplementalDocument]
       def create(params = {}, opts = {})
@@ -30,7 +30,7 @@ module Increase
 
       # List Entity Supplemental Document Submissions
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :entity_id The identifier of the Entity to list supplemental documents for.
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
@@ -40,7 +40,7 @@ module Increase
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::EntitySupplementalDocument>]
       def list(params = {}, opts = {})

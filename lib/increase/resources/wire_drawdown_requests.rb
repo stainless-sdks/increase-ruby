@@ -10,7 +10,7 @@ module Increase
 
       # Create a Wire Drawdown Request
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :account_number_id The Account Number to which the recipient should send funds.
       #   @option params [Integer] :amount The amount requested from the recipient, in USD cents.
       #   @option params [String] :message_to_recipient A message the recipient will see as part of the request.
@@ -33,7 +33,7 @@ module Increase
       #   @option params [String, nil] :recipient_address_line2 Line 2 of the drawdown request's recipient's address.
       #   @option params [String, nil] :recipient_address_line3 Line 3 of the drawdown request's recipient's address.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireDrawdownRequest]
       def create(params = {}, opts = {})
@@ -50,7 +50,7 @@ module Increase
       # Retrieve a Wire Drawdown Request
       #
       # @param wire_drawdown_request_id [String] The identifier of the Wire Drawdown Request to retrieve.
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireDrawdownRequest]
       def retrieve(wire_drawdown_request_id, opts = {})
@@ -64,7 +64,7 @@ module Increase
 
       # List Wire Drawdown Requests
       #
-      # @param params [Hash] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
       #     that object. This value is unique across Increase and is used to ensure that a
@@ -74,7 +74,7 @@ module Increase
       #     objects.
       #   @option params [Symbol, Status, nil] :status Filter Wire Drawdown Requests for those with the specified status.
       #
-      # @param opts [Hash, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::WireDrawdownRequest>]
       def list(params = {}, opts = {})
