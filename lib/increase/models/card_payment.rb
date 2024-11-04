@@ -332,6 +332,14 @@ module Increase
                          Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
                        }
 
+              # @!attribute [rw] stand_in_processing_reason
+              #   Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
+              #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason]
+              required :stand_in_processing_reason,
+                       enum: -> {
+                         Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason
+                       }
+
               # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
@@ -392,6 +400,27 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
               end
 
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
+              class StandInProcessingReason < Increase::Enum
+                # Increase failed to process the authorization in a timely manner.
+                ISSUER_ERROR = :issuer_error
+
+                # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
+                INVALID_PHYSICAL_CARD = :invalid_physical_card
+
+                # The 3DS cardholder authentication verification value was invalid.
+                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
+
+                # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
+                INTERNAL_VISA_ERROR = :internal_visa_error
+
+                # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
+                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
+
+                # An unspecific reason for stand-in processing.
+                OTHER = :other
+              end
+
               # @!parse
               #   # Create a new instance of Visa from a Hash of raw data.
               #   #
@@ -401,6 +430,8 @@ module Increase
               #   #     transactions, identifies the type of mail or telephone order.
               #   #   @option data [String] :point_of_service_entry_mode The method used to enter the cardholder's primary account number and card
               #   #     expiration date.
+              #   #   @option data [String] :stand_in_processing_reason Only present when `actioner: network`. Describes why a card authorization was
+              #   #     approved or declined by Visa through stand-in processing.
               #   def initialize(data = {}) = super
             end
 
@@ -927,6 +958,14 @@ module Increase
                          Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode
                        }
 
+              # @!attribute [rw] stand_in_processing_reason
+              #   Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
+              #   @return [Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason]
+              required :stand_in_processing_reason,
+                       enum: -> {
+                         Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason
+                       }
+
               # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
@@ -987,6 +1026,27 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
               end
 
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
+              class StandInProcessingReason < Increase::Enum
+                # Increase failed to process the authorization in a timely manner.
+                ISSUER_ERROR = :issuer_error
+
+                # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
+                INVALID_PHYSICAL_CARD = :invalid_physical_card
+
+                # The 3DS cardholder authentication verification value was invalid.
+                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
+
+                # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
+                INTERNAL_VISA_ERROR = :internal_visa_error
+
+                # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
+                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
+
+                # An unspecific reason for stand-in processing.
+                OTHER = :other
+              end
+
               # @!parse
               #   # Create a new instance of Visa from a Hash of raw data.
               #   #
@@ -996,6 +1056,8 @@ module Increase
               #   #     transactions, identifies the type of mail or telephone order.
               #   #   @option data [String] :point_of_service_entry_mode The method used to enter the cardholder's primary account number and card
               #   #     expiration date.
+              #   #   @option data [String] :stand_in_processing_reason Only present when `actioner: network`. Describes why a card authorization was
+              #   #     approved or declined by Visa through stand-in processing.
               #   def initialize(data = {}) = super
             end
 
@@ -3901,6 +3963,14 @@ module Increase
                          Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode
                        }
 
+              # @!attribute [rw] stand_in_processing_reason
+              #   Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
+              #   @return [Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason]
+              required :stand_in_processing_reason,
+                       enum: -> {
+                         Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason
+                       }
+
               # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
@@ -3961,6 +4031,27 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
               end
 
+              # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
+              class StandInProcessingReason < Increase::Enum
+                # Increase failed to process the authorization in a timely manner.
+                ISSUER_ERROR = :issuer_error
+
+                # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
+                INVALID_PHYSICAL_CARD = :invalid_physical_card
+
+                # The 3DS cardholder authentication verification value was invalid.
+                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
+
+                # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
+                INTERNAL_VISA_ERROR = :internal_visa_error
+
+                # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
+                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
+
+                # An unspecific reason for stand-in processing.
+                OTHER = :other
+              end
+
               # @!parse
               #   # Create a new instance of Visa from a Hash of raw data.
               #   #
@@ -3970,6 +4061,8 @@ module Increase
               #   #     transactions, identifies the type of mail or telephone order.
               #   #   @option data [String] :point_of_service_entry_mode The method used to enter the cardholder's primary account number and card
               #   #     expiration date.
+              #   #   @option data [String] :stand_in_processing_reason Only present when `actioner: network`. Describes why a card authorization was
+              #   #     approved or declined by Visa through stand-in processing.
               #   def initialize(data = {}) = super
             end
 
