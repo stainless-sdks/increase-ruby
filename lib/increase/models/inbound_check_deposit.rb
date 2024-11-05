@@ -126,6 +126,9 @@ module Increase
 
           # The check was deposited to the wrong payee and the depositing institution has reimbursed the funds with a Wrong Payee Credit.
           WRONG_PAYEE_CREDIT = :wrong_payee_credit
+
+          # The check was deposited with a different amount than what was written on the check.
+          ADJUSTED_AMOUNT = :adjusted_amount
         end
 
         # @!parse
