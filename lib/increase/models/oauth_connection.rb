@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class OAuthConnection < BaseModel
+    class OAuthConnection < Increase::BaseModel
       # @!attribute [rw] id
       #   The OAuth Connection's identifier.
       #   @return [String]

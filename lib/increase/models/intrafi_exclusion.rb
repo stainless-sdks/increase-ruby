@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class IntrafiExclusion < BaseModel
+    class IntrafiExclusion < Increase::BaseModel
       # @!attribute [rw] id
       #   The identifier of this exclusion request.
       #   @return [String]

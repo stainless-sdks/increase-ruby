@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class CardDetails < BaseModel
+    class CardDetails < Increase::BaseModel
       # @!attribute [rw] card_id
       #   The identifier for the Card for which sensitive details have been returned.
       #   @return [String]

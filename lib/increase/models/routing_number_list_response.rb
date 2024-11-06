@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class RoutingNumberListResponse < BaseModel
+    class RoutingNumberListResponse < Increase::BaseModel
       # @!attribute [rw] ach_transfers
       #   This routing number's support for ACH Transfers.
       #   @return [Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers]

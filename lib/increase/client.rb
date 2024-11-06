@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Increase
-  class Client < BaseClient
+  class Client < Increase::BaseClient
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 
@@ -184,8 +184,6 @@ module Increase
     # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
     # @param api_key [String, nil] Defaults to `ENV["INCREASE_API_KEY"]`
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
-    #
-    # @return [Increase::Client]
     def initialize(
       environment: nil,
       base_url: nil,

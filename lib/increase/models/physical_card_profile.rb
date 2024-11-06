@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class PhysicalCardProfile < BaseModel
+    class PhysicalCardProfile < Increase::BaseModel
       # @!attribute [rw] id
       #   The Card Profile identifier.
       #   @return [String]

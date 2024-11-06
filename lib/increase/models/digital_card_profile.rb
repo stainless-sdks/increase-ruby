@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class DigitalCardProfile < BaseModel
+    class DigitalCardProfile < Increase::BaseModel
       # @!attribute [rw] id
       #   The Card Profile identifier.
       #   @return [String]
@@ -88,7 +88,7 @@ module Increase
         ARCHIVED = :archived
       end
 
-      class TextColor < BaseModel
+      class TextColor < Increase::BaseModel
         # @!attribute [rw] blue
         #   The value of the blue channel in the RGB color.
         #   @return [Integer]

@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class Program < BaseModel
+    class Program < Increase::BaseModel
       # @!attribute [rw] id
       #   The Program identifier.
       #   @return [String]

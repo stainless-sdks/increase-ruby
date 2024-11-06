@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class InboundCheckDeposit < BaseModel
+    class InboundCheckDeposit < Increase::BaseModel
       # @!attribute [rw] id
       #   The deposit's identifier.
       #   @return [String]
@@ -98,7 +98,7 @@ module Increase
       #   @return [Symbol, Increase::Models::InboundCheckDeposit::Type]
       required :type, enum: -> { Increase::Models::InboundCheckDeposit::Type }
 
-      class Adjustment < BaseModel
+      class Adjustment < Increase::BaseModel
         # @!attribute [rw] adjusted_at
         #   The time at which the return adjustment was received.
         #   @return [Time]
@@ -163,7 +163,7 @@ module Increase
         USD = :USD
       end
 
-      class DepositReturn < BaseModel
+      class DepositReturn < Increase::BaseModel
         # @!attribute [rw] reason
         #   The reason the deposit was returned.
         #   @return [Symbol, Increase::Models::InboundCheckDeposit::DepositReturn::Reason]

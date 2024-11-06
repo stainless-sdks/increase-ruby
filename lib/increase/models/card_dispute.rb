@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class CardDispute < BaseModel
+    class CardDispute < Increase::BaseModel
       # @!attribute [rw] id
       #   The Card Dispute identifier.
       #   @return [String]
@@ -63,7 +63,7 @@ module Increase
       #   @return [Increase::Models::CardDispute::Win]
       required :win, -> { Increase::Models::CardDispute::Win }
 
-      class Acceptance < BaseModel
+      class Acceptance < Increase::BaseModel
         # @!attribute [rw] accepted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was accepted.
         #   @return [Time]
@@ -91,7 +91,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Loss < BaseModel
+      class Loss < Increase::BaseModel
         # @!attribute [rw] card_dispute_id
         #   The identifier of the Card Dispute that was lost.
         #   @return [String]
@@ -125,7 +125,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Rejection < BaseModel
+      class Rejection < Increase::BaseModel
         # @!attribute [rw] card_dispute_id
         #   The identifier of the Card Dispute that was rejected.
         #   @return [String]
@@ -157,6 +157,9 @@ module Increase
         # The Card Dispute is pending review.
         PENDING_REVIEWING = :pending_reviewing
 
+        # Increase has requested more information related to the Card Dispute from you.
+        PENDING_USER_INFORMATION = :pending_user_information
+
         # The Card Dispute has been accepted and your funds have been returned. The card dispute will eventually transition into `won` or `lost` depending on the outcome.
         ACCEPTED = :accepted
 
@@ -175,7 +178,7 @@ module Increase
         CARD_DISPUTE = :card_dispute
       end
 
-      class Win < BaseModel
+      class Win < Increase::BaseModel
         # @!attribute [rw] card_dispute_id
         #   The identifier of the Card Dispute that was won.
         #   @return [String]

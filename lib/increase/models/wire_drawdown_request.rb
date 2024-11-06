@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class WireDrawdownRequest < BaseModel
+    class WireDrawdownRequest < Increase::BaseModel
       # @!attribute [rw] id
       #   The Wire drawdown request identifier.
       #   @return [String]
@@ -118,7 +118,7 @@ module Increase
         REFUSED = :refused
       end
 
-      class Submission < BaseModel
+      class Submission < Increase::BaseModel
         # @!attribute [rw] input_message_accountability_data
         #   The input message accountability data (IMAD) uniquely identifying the submission with Fedwire.
         #   @return [String]

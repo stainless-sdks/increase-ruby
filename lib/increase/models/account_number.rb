@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class AccountNumber < BaseModel
+    class AccountNumber < Increase::BaseModel
       # @!attribute [rw] id
       #   The Account Number identifier.
       #   @return [String]
@@ -58,7 +58,7 @@ module Increase
       #   @return [Symbol, Increase::Models::AccountNumber::Type]
       required :type, enum: -> { Increase::Models::AccountNumber::Type }
 
-      class InboundACH < BaseModel
+      class InboundACH < Increase::BaseModel
         # @!attribute [rw] debit_status
         #   Whether ACH debits are allowed against this Account Number. Note that they will still be declined if this is `allowed` if the Account Number is not active.
         #   @return [Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus]
@@ -82,7 +82,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class InboundChecks < BaseModel
+      class InboundChecks < Increase::BaseModel
         # @!attribute [rw] status
         #   How Increase should process checks with this account number printed on them.
         #   @return [Symbol, Increase::Models::AccountNumber::InboundChecks::Status]

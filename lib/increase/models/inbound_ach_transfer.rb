@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class InboundACHTransfer < BaseModel
+    class InboundACHTransfer < Increase::BaseModel
       # @!attribute [rw] id
       #   The inbound ACH transfer's identifier.
       #   @return [String]
@@ -130,7 +130,7 @@ module Increase
       #   @return [Symbol, Increase::Models::InboundACHTransfer::Type]
       required :type, enum: -> { Increase::Models::InboundACHTransfer::Type }
 
-      class Acceptance < BaseModel
+      class Acceptance < Increase::BaseModel
         # @!attribute [rw] accepted_at
         #   The time at which the transfer was accepted.
         #   @return [Time]
@@ -150,7 +150,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Addenda < BaseModel
+      class Addenda < Increase::BaseModel
         # @!attribute [rw] category
         #   The type of addendum.
         #   @return [Symbol, Increase::Models::InboundACHTransfer::Addenda::Category]
@@ -167,7 +167,7 @@ module Increase
           FREEFORM = :freeform
         end
 
-        class Freeform < BaseModel
+        class Freeform < Increase::BaseModel
           # @!attribute [rw] entries
           #   Each entry represents an addendum received from the originator.
           #   @return [Array<Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry>]
@@ -178,7 +178,7 @@ module Increase
                      }
                    )
 
-          class Entry < BaseModel
+          class Entry < Increase::BaseModel
             # @!attribute [rw] payment_related_information
             #   The payment related information passed in the addendum.
             #   @return [String]
@@ -209,7 +209,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Decline < BaseModel
+      class Decline < Increase::BaseModel
         # @!attribute [rw] declined_at
         #   The time at which the transfer was declined.
         #   @return [Time]
@@ -307,7 +307,7 @@ module Increase
         FUTURE_DATED = :future_dated
       end
 
-      class InternationalAddenda < BaseModel
+      class InternationalAddenda < Increase::BaseModel
         # @!attribute [rw] destination_country_code
         #   The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country code of the destination country.
         #   @return [String]
@@ -659,7 +659,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class NotificationOfChange < BaseModel
+      class NotificationOfChange < Increase::BaseModel
         # @!attribute [rw] updated_account_number
         #   The new account number provided in the notification of change.
         #   @return [String]
@@ -745,7 +745,7 @@ module Increase
         RETURNED = :returned
       end
 
-      class TransferReturn < BaseModel
+      class TransferReturn < Increase::BaseModel
         # @!attribute [rw] reason
         #   The reason for the transfer return.
         #   @return [Symbol, Increase::Models::InboundACHTransfer::TransferReturn::Reason]

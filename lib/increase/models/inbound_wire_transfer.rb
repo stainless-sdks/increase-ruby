@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class InboundWireTransfer < BaseModel
+    class InboundWireTransfer < Increase::BaseModel
       # @!attribute [rw] id
       #   The inbound wire transfer's identifier.
       #   @return [String]

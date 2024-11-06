@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class PendingTransaction < BaseModel
+    class PendingTransaction < Increase::BaseModel
       # @!attribute [rw] id
       #   The Pending Transaction identifier.
       #   @return [String]
@@ -96,7 +96,7 @@ module Increase
         LOCKBOX = :lockbox
       end
 
-      class Source < BaseModel
+      class Source < Increase::BaseModel
         # @!attribute [rw] account_transfer_instruction
         #   An Account Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `account_transfer_instruction`.
         #   @return [Increase::Models::PendingTransaction::Source::AccountTransferInstruction]
@@ -153,7 +153,7 @@ module Increase
         required :wire_transfer_instruction,
                  -> { Increase::Models::PendingTransaction::Source::WireTransferInstruction }
 
-        class AccountTransferInstruction < BaseModel
+        class AccountTransferInstruction < Increase::BaseModel
           # @!attribute [rw] amount
           #   The pending amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
           #   @return [Integer]
@@ -205,7 +205,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class ACHTransferInstruction < BaseModel
+        class ACHTransferInstruction < Increase::BaseModel
           # @!attribute [rw] amount
           #   The pending amount in USD cents.
           #   @return [Integer]
@@ -225,7 +225,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardAuthorization < BaseModel
+        class CardAuthorization < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Authorization identifier.
           #   @return [String]
@@ -411,7 +411,7 @@ module Increase
             REFUND = :refund
           end
 
-          class NetworkDetails < BaseModel
+          class NetworkDetails < Increase::BaseModel
             # @!attribute [rw] category
             #   The payment network used to process this card authorization.
             #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category]
@@ -432,7 +432,7 @@ module Increase
               VISA = :visa
             end
 
-            class Visa < BaseModel
+            class Visa < Increase::BaseModel
               # @!attribute [rw] electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator]
@@ -561,7 +561,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class NetworkIdentifiers < BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # @!attribute [rw] retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal. Expected to be unique per acquirer within a window of time. For some card networks the retrieval reference number includes the trace counter.
             #   @return [String]
@@ -617,7 +617,7 @@ module Increase
             CARD_AUTHORIZATION = :card_authorization
           end
 
-          class Verification < BaseModel
+          class Verification < Increase::BaseModel
             # @!attribute [rw] card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
             #   @return [Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode]
@@ -630,7 +630,7 @@ module Increase
             required :cardholder_address,
                      -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress }
 
-            class CardVerificationCode < BaseModel
+            class CardVerificationCode < Increase::BaseModel
               # @!attribute [rw] result
               #   The result of verifying the Card Verification Code.
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result]
@@ -659,7 +659,7 @@ module Increase
               #   def initialize(data = {}) = super
             end
 
-            class CardholderAddress < BaseModel
+            class CardholderAddress < Increase::BaseModel
               # @!attribute [rw] actual_line1
               #   Line 1 of the address on file for the cardholder.
               #   @return [String]
@@ -814,7 +814,7 @@ module Increase
           OTHER = :other
         end
 
-        class CheckDepositInstruction < BaseModel
+        class CheckDepositInstruction < Increase::BaseModel
           # @!attribute [rw] amount
           #   The pending amount in USD cents.
           #   @return [Integer]
@@ -879,7 +879,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CheckTransferInstruction < BaseModel
+        class CheckTransferInstruction < Increase::BaseModel
           # @!attribute [rw] amount
           #   The transfer amount in USD cents.
           #   @return [Integer]
@@ -930,7 +930,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class InboundFundsHold < BaseModel
+        class InboundFundsHold < Increase::BaseModel
           # @!attribute [rw] id
           #   The Inbound Funds Hold identifier.
           #   @return [String]
@@ -1044,7 +1044,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class RealTimePaymentsTransferInstruction < BaseModel
+        class RealTimePaymentsTransferInstruction < Increase::BaseModel
           # @!attribute [rw] amount
           #   The transfer amount in USD cents.
           #   @return [Integer]
@@ -1066,7 +1066,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class WireTransferInstruction < BaseModel
+        class WireTransferInstruction < Increase::BaseModel
           # @!attribute [rw] account_number
           #   The account number for the destination account.
           #   @return [String]

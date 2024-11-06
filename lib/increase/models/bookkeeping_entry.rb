@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class BookkeepingEntry < BaseModel
+    class BookkeepingEntry < Increase::BaseModel
       # @!attribute [rw] id
       #   The entry identifier.
       #   @return [String]

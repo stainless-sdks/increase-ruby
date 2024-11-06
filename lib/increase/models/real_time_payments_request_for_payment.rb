@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class RealTimePaymentsRequestForPayment < BaseModel
+    class RealTimePaymentsRequestForPayment < Increase::BaseModel
       # @!attribute [rw] id
       #   The Real-Time Payments Request for Payment's identifier.
       #   @return [String]
@@ -109,7 +109,7 @@ module Increase
         USD = :USD
       end
 
-      class Refusal < BaseModel
+      class Refusal < Increase::BaseModel
         # @!attribute [rw] refusal_reason_code
         #   The reason the request for payment was refused as provided by the recipient bank or the customer.
         #   @return [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Refusal::RefusalReasonCode]
@@ -167,7 +167,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Rejection < BaseModel
+      class Rejection < Increase::BaseModel
         # @!attribute [rw] reject_reason_code
         #   The reason the request for payment was rejected as provided by the recipient bank or the Real-Time Payments network.
         #   @return [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Rejection::RejectReasonCode]
@@ -270,7 +270,7 @@ module Increase
         FULFILLED = :fulfilled
       end
 
-      class Submission < BaseModel
+      class Submission < Increase::BaseModel
         # @!attribute [rw] payment_information_identification
         #   The Real-Time Payments payment information identification of the request.
         #   @return [String]

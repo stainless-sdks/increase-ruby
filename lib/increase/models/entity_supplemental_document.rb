@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class EntitySupplementalDocument < BaseModel
+    class EntitySupplementalDocument < Increase::BaseModel
       # @!attribute [rw] created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Supplemental Document was created.
       #   @return [Time]

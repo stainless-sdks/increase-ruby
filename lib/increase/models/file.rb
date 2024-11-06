@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class File < BaseModel
+    class File < Increase::BaseModel
       # @!attribute [rw] id
       #   The File's identifier.
       #   @return [String]

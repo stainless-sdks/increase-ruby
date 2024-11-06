@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class CheckTransfer < BaseModel
+    class CheckTransfer < Increase::BaseModel
       # @!attribute [rw] id
       #   The Check transfer's identifier.
       #   @return [String]
@@ -118,7 +118,7 @@ module Increase
       #   @return [Symbol, Increase::Models::CheckTransfer::Type]
       required :type, enum: -> { Increase::Models::CheckTransfer::Type }
 
-      class Approval < BaseModel
+      class Approval < Increase::BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
         #   @return [Time]
@@ -140,7 +140,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Cancellation < BaseModel
+      class Cancellation < Increase::BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
         #   @return [Time]
@@ -162,7 +162,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class CreatedBy < BaseModel
+      class CreatedBy < Increase::BaseModel
         # @!attribute [rw] api_key
         #   If present, details about the API key that created the transfer.
         #   @return [Increase::Models::CheckTransfer::CreatedBy::APIKey]
@@ -183,7 +183,7 @@ module Increase
         #   @return [Increase::Models::CheckTransfer::CreatedBy::User]
         required :user, -> { Increase::Models::CheckTransfer::CreatedBy::User }
 
-        class APIKey < BaseModel
+        class APIKey < Increase::BaseModel
           # @!attribute [rw] description
           #   The description set for the API key when it was created.
           #   @return [String]
@@ -209,7 +209,7 @@ module Increase
           USER = :user
         end
 
-        class OAuthApplication < BaseModel
+        class OAuthApplication < Increase::BaseModel
           # @!attribute [rw] name_
           #   The name of the OAuth Application.
           #   @return [String]
@@ -223,7 +223,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class User < BaseModel
+        class User < Increase::BaseModel
           # @!attribute [rw] email
           #   The email address of the User.
           #   @return [String]
@@ -278,7 +278,7 @@ module Increase
         THIRD_PARTY = :third_party
       end
 
-      class Mailing < BaseModel
+      class Mailing < Increase::BaseModel
         # @!attribute [rw] image_id
         #   The ID of the file corresponding to an image of the check that was mailed, if available.
         #   @return [String]
@@ -300,7 +300,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class PhysicalCheck < BaseModel
+      class PhysicalCheck < Increase::BaseModel
         # @!attribute [rw] mailing_address
         #   Details for where Increase will mail the check.
         #   @return [Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress]
@@ -337,7 +337,7 @@ module Increase
         required :tracking_updates,
                  Increase::ArrayOf.new(-> { Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate })
 
-        class MailingAddress < BaseModel
+        class MailingAddress < Increase::BaseModel
           # @!attribute [rw] city
           #   The city of the check's destination.
           #   @return [String]
@@ -381,7 +381,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class ReturnAddress < BaseModel
+        class ReturnAddress < Increase::BaseModel
           # @!attribute [rw] city
           #   The city of the check's destination.
           #   @return [String]
@@ -425,7 +425,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class TrackingUpdate < BaseModel
+        class TrackingUpdate < Increase::BaseModel
           # @!attribute [rw] category
           #   The type of tracking event.
           #   @return [Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category]
@@ -518,7 +518,7 @@ module Increase
         RETURNED = :returned
       end
 
-      class StopPaymentRequest < BaseModel
+      class StopPaymentRequest < Increase::BaseModel
         # @!attribute [rw] reason
         #   The reason why this transfer was stopped.
         #   @return [Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Reason]
@@ -571,7 +571,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Submission < BaseModel
+      class Submission < Increase::BaseModel
         # @!attribute [rw] submitted_at
         #   When this check transfer was submitted to our check printer.
         #   @return [Time]
@@ -585,7 +585,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class ThirdParty < BaseModel
+      class ThirdParty < Increase::BaseModel
         # @!attribute [rw] check_number
         #   The check number that will be printed on the check.
         #   @return [String]

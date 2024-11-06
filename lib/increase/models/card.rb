@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class Card < BaseModel
+    class Card < Increase::BaseModel
       # @!attribute [rw] id
       #   The card identifier.
       #   @return [String]
@@ -68,7 +68,7 @@ module Increase
       #   @return [Symbol, Increase::Models::Card::Type]
       required :type, enum: -> { Increase::Models::Card::Type }
 
-      class BillingAddress < BaseModel
+      class BillingAddress < Increase::BaseModel
         # @!attribute [rw] city
         #   The city of the billing address.
         #   @return [String]
@@ -106,7 +106,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class DigitalWallet < BaseModel
+      class DigitalWallet < Increase::BaseModel
         # @!attribute [rw] digital_card_profile_id
         #   The digital card profile assigned to this digital card. Card profiles may also be assigned at the program level.
         #   @return [String]

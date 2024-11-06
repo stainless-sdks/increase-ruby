@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class DigitalWalletToken < BaseModel
+    class DigitalWalletToken < Increase::BaseModel
       # @!attribute [rw] id
       #   The Digital Wallet Token identifier.
       #   @return [String]

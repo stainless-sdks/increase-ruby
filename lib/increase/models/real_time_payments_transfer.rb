@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class RealTimePaymentsTransfer < BaseModel
+    class RealTimePaymentsTransfer < Increase::BaseModel
       # @!attribute [rw] id
       #   The Real-Time Payments Transfer's identifier.
       #   @return [String]
@@ -123,7 +123,7 @@ module Increase
       #   @return [String]
       required :ultimate_debtor_name, String
 
-      class Approval < BaseModel
+      class Approval < Increase::BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
         #   @return [Time]
@@ -145,7 +145,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Cancellation < BaseModel
+      class Cancellation < Increase::BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
         #   @return [Time]
@@ -167,7 +167,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class CreatedBy < BaseModel
+      class CreatedBy < Increase::BaseModel
         # @!attribute [rw] api_key
         #   If present, details about the API key that created the transfer.
         #   @return [Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey]
@@ -189,7 +189,7 @@ module Increase
         #   @return [Increase::Models::RealTimePaymentsTransfer::CreatedBy::User]
         required :user, -> { Increase::Models::RealTimePaymentsTransfer::CreatedBy::User }
 
-        class APIKey < BaseModel
+        class APIKey < Increase::BaseModel
           # @!attribute [rw] description
           #   The description set for the API key when it was created.
           #   @return [String]
@@ -215,7 +215,7 @@ module Increase
           USER = :user
         end
 
-        class OAuthApplication < BaseModel
+        class OAuthApplication < Increase::BaseModel
           # @!attribute [rw] name_
           #   The name of the OAuth Application.
           #   @return [String]
@@ -229,7 +229,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class User < BaseModel
+        class User < Increase::BaseModel
           # @!attribute [rw] email
           #   The email address of the User.
           #   @return [String]
@@ -275,7 +275,7 @@ module Increase
         USD = :USD
       end
 
-      class Rejection < BaseModel
+      class Rejection < Increase::BaseModel
         # @!attribute [rw] reject_reason_additional_information
         #   Additional information about the rejection provided by the recipient bank when the `reject_reason_code` is `NARRATIVE`.
         #   @return [String]
@@ -398,7 +398,7 @@ module Increase
         COMPLETE = :complete
       end
 
-      class Submission < BaseModel
+      class Submission < Increase::BaseModel
         # @!attribute [rw] submitted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was submitted to The Clearing House.
         #   @return [Time]

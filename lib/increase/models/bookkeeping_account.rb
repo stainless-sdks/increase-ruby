@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class BookkeepingAccount < BaseModel
+    class BookkeepingAccount < Increase::BaseModel
       # @!attribute [rw] id
       #   The account identifier.
       #   @return [String]

@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class CheckDeposit < BaseModel
+    class CheckDeposit < Increase::BaseModel
       # @!attribute [rw] id
       #   The deposit's identifier.
       #   @return [String]
@@ -93,7 +93,7 @@ module Increase
       #   @return [Symbol, Increase::Models::CheckDeposit::Type]
       required :type, enum: -> { Increase::Models::CheckDeposit::Type }
 
-      class DepositAcceptance < BaseModel
+      class DepositAcceptance < Increase::BaseModel
         # @!attribute [rw] account_number
         #   The account number printed on the check.
         #   @return [String]
@@ -168,7 +168,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class DepositRejection < BaseModel
+      class DepositRejection < Increase::BaseModel
         # @!attribute [rw] amount
         #   The rejected amount in the minor unit of check's currency. For dollars, for example, this is cents.
         #   @return [Integer]
@@ -272,7 +272,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class DepositReturn < BaseModel
+      class DepositReturn < Increase::BaseModel
         # @!attribute [rw] amount
         #   The returned amount in USD cents.
         #   @return [Integer]
@@ -422,7 +422,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class DepositSubmission < BaseModel
+      class DepositSubmission < Increase::BaseModel
         # @!attribute [rw] back_file_id
         #   The ID for the File containing the check back image that was submitted to the Check21 network.
         #   @return [String]
@@ -452,7 +452,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class InboundFundsHold < BaseModel
+      class InboundFundsHold < Increase::BaseModel
         # @!attribute [rw] id
         #   The Inbound Funds Hold identifier.
         #   @return [String]

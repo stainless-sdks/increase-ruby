@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class AccountTransfer < BaseModel
+    class AccountTransfer < Increase::BaseModel
       # @!attribute [rw] id
       #   The account transfer's identifier.
       #   @return [String]
@@ -88,7 +88,7 @@ module Increase
       #   @return [Symbol, Increase::Models::AccountTransfer::Type]
       required :type, enum: -> { Increase::Models::AccountTransfer::Type }
 
-      class Approval < BaseModel
+      class Approval < Increase::BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
         #   @return [Time]
@@ -110,7 +110,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Cancellation < BaseModel
+      class Cancellation < Increase::BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
         #   @return [Time]
@@ -132,7 +132,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class CreatedBy < BaseModel
+      class CreatedBy < Increase::BaseModel
         # @!attribute [rw] api_key
         #   If present, details about the API key that created the transfer.
         #   @return [Increase::Models::AccountTransfer::CreatedBy::APIKey]
@@ -153,7 +153,7 @@ module Increase
         #   @return [Increase::Models::AccountTransfer::CreatedBy::User]
         required :user, -> { Increase::Models::AccountTransfer::CreatedBy::User }
 
-        class APIKey < BaseModel
+        class APIKey < Increase::BaseModel
           # @!attribute [rw] description
           #   The description set for the API key when it was created.
           #   @return [String]
@@ -179,7 +179,7 @@ module Increase
           USER = :user
         end
 
-        class OAuthApplication < BaseModel
+        class OAuthApplication < Increase::BaseModel
           # @!attribute [rw] name_
           #   The name of the OAuth Application.
           #   @return [String]
@@ -193,7 +193,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class User < BaseModel
+        class User < Increase::BaseModel
           # @!attribute [rw] email
           #   The email address of the User.
           #   @return [String]

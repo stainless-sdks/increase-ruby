@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class PhysicalCard < BaseModel
+    class PhysicalCard < Increase::BaseModel
       # @!attribute [rw] id
       #   The physical card identifier.
       #   @return [String]
@@ -48,7 +48,7 @@ module Increase
       #   @return [Symbol, Increase::Models::PhysicalCard::Type]
       required :type, enum: -> { Increase::Models::PhysicalCard::Type }
 
-      class Cardholder < BaseModel
+      class Cardholder < Increase::BaseModel
         # @!attribute [rw] first_name
         #   The cardholder's first name.
         #   @return [String]
@@ -68,7 +68,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Shipment < BaseModel
+      class Shipment < Increase::BaseModel
         # @!attribute [rw] address
         #   The location to where the card's packing label is addressed.
         #   @return [Increase::Models::PhysicalCard::Shipment::Address]
@@ -89,7 +89,7 @@ module Increase
         #   @return [Increase::Models::PhysicalCard::Shipment::Tracking]
         required :tracking, -> { Increase::Models::PhysicalCard::Shipment::Tracking }
 
-        class Address < BaseModel
+        class Address < Increase::BaseModel
           # @!attribute [rw] city
           #   The city of the shipping address.
           #   @return [String]
@@ -175,7 +175,7 @@ module Increase
           RETURNED = :returned
         end
 
-        class Tracking < BaseModel
+        class Tracking < Increase::BaseModel
           # @!attribute [rw] number
           #   The tracking number.
           #   @return [String]
