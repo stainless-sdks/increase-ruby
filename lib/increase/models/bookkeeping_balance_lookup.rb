@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class BookkeepingBalanceLookup < BaseModel
+    class BookkeepingBalanceLookup < Increase::BaseModel
       # @!attribute [rw] balance
       #   The Bookkeeping Account's current balance, representing the sum of all Bookkeeping Entries on the Bookkeeping Account.
       #   @return [Integer]

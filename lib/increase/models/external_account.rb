@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class ExternalAccount < BaseModel
+    class ExternalAccount < Increase::BaseModel
       # @!attribute [rw] id
       #   The External Account's identifier.
       #   @return [String]

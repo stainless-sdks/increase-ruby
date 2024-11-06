@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class InboundFundsHoldReleaseResponse < BaseModel
+    class InboundFundsHoldReleaseResponse < Increase::BaseModel
       # @!attribute [rw] id
       #   The Inbound Funds Hold identifier.
       #   @return [String]

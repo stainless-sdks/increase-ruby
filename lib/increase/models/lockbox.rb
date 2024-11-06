@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class Lockbox < BaseModel
+    class Lockbox < Increase::BaseModel
       # @!attribute [rw] id
       #   The Lockbox identifier.
       #   @return [String]
@@ -48,7 +48,7 @@ module Increase
       #   @return [Symbol, Increase::Models::Lockbox::Type]
       required :type, enum: -> { Increase::Models::Lockbox::Type }
 
-      class Address < BaseModel
+      class Address < Increase::BaseModel
         # @!attribute [rw] city
         #   The city of the address.
         #   @return [String]

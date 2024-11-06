@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class CardPurchaseSupplement < BaseModel
+    class CardPurchaseSupplement < Increase::BaseModel
       # @!attribute [rw] id
       #   The Card Purchase Supplement identifier.
       #   @return [String]
@@ -33,7 +33,7 @@ module Increase
       #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Type]
       required :type, enum: -> { Increase::Models::CardPurchaseSupplement::Type }
 
-      class Invoice < BaseModel
+      class Invoice < Increase::BaseModel
         # @!attribute [rw] discount_amount
         #   Discount given to cardholder.
         #   @return [Integer]
@@ -173,7 +173,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class LineItem < BaseModel
+      class LineItem < Increase::BaseModel
         # @!attribute [rw] id
         #   The Card Purchase Supplement Line Item identifier.
         #   @return [String]

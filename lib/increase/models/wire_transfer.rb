@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class WireTransfer < BaseModel
+    class WireTransfer < Increase::BaseModel
       # @!attribute [rw] id
       #   The wire transfer's identifier.
       #   @return [String]
@@ -148,7 +148,7 @@ module Increase
       #   @return [Symbol, Increase::Models::WireTransfer::Type]
       required :type, enum: -> { Increase::Models::WireTransfer::Type }
 
-      class Approval < BaseModel
+      class Approval < Increase::BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
         #   @return [Time]
@@ -170,7 +170,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Cancellation < BaseModel
+      class Cancellation < Increase::BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
         #   @return [Time]
@@ -192,7 +192,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class CreatedBy < BaseModel
+      class CreatedBy < Increase::BaseModel
         # @!attribute [rw] api_key
         #   If present, details about the API key that created the transfer.
         #   @return [Increase::Models::WireTransfer::CreatedBy::APIKey]
@@ -213,7 +213,7 @@ module Increase
         #   @return [Increase::Models::WireTransfer::CreatedBy::User]
         required :user, -> { Increase::Models::WireTransfer::CreatedBy::User }
 
-        class APIKey < BaseModel
+        class APIKey < Increase::BaseModel
           # @!attribute [rw] description
           #   The description set for the API key when it was created.
           #   @return [String]
@@ -239,7 +239,7 @@ module Increase
           USER = :user
         end
 
-        class OAuthApplication < BaseModel
+        class OAuthApplication < Increase::BaseModel
           # @!attribute [rw] name_
           #   The name of the OAuth Application.
           #   @return [String]
@@ -253,7 +253,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class User < BaseModel
+        class User < Increase::BaseModel
           # @!attribute [rw] email
           #   The email address of the User.
           #   @return [String]
@@ -304,7 +304,7 @@ module Increase
         WIRE = :wire
       end
 
-      class Reversal < BaseModel
+      class Reversal < Increase::BaseModel
         # @!attribute [rw] amount
         #   The amount that was reversed in USD cents.
         #   @return [Integer]
@@ -449,7 +449,7 @@ module Increase
         COMPLETE = :complete
       end
 
-      class Submission < BaseModel
+      class Submission < Increase::BaseModel
         # @!attribute [rw] input_message_accountability_data
         #   The accountability data for the submission.
         #   @return [String]

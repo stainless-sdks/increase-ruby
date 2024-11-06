@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class ProofOfAuthorizationRequest < BaseModel
+    class ProofOfAuthorizationRequest < Increase::BaseModel
       # @!attribute [rw] id
       #   The Proof of Authorization Request identifier.
       #   @return [String]
@@ -34,7 +34,7 @@ module Increase
       #   @return [Time]
       required :updated_at, Time
 
-      class ACHTransfer < BaseModel
+      class ACHTransfer < Increase::BaseModel
         # @!attribute [rw] id
         #   The ACH Transfer identifier.
         #   @return [String]

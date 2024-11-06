@@ -19,7 +19,7 @@ module Increase
       idempotency_header: nil,
       max_retries: 0
     )
-      self.requester = PooledNetRequester.new
+      self.requester = Increase::PooledNetRequester.new
       base_url_parsed = URI.parse(base_url)
       @headers = Increase::Util.normalized_headers(
         {

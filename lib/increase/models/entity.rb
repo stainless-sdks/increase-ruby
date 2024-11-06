@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class Entity < BaseModel
+    class Entity < Increase::BaseModel
       # @!attribute [rw] id
       #   The entity's identifier.
       #   @return [String]
@@ -79,7 +79,7 @@ module Increase
       #   @return [Symbol, Increase::Models::Entity::Type]
       required :type, enum: -> { Increase::Models::Entity::Type }
 
-      class Corporation < BaseModel
+      class Corporation < Increase::BaseModel
         # @!attribute [rw] address
         #   The corporation's address.
         #   @return [Increase::Models::Entity::Corporation::Address]
@@ -116,7 +116,7 @@ module Increase
         #   @return [String]
         required :website, String
 
-        class Address < BaseModel
+        class Address < Increase::BaseModel
           # @!attribute [rw] city
           #   The city of the address.
           #   @return [String]
@@ -155,7 +155,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class BeneficialOwner < BaseModel
+        class BeneficialOwner < Increase::BaseModel
           # @!attribute [rw] beneficial_owner_id
           #   The identifier of this beneficial owner.
           #   @return [String]
@@ -176,7 +176,7 @@ module Increase
           #   @return [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Prong]
           required :prong, enum: -> { Increase::Models::Entity::Corporation::BeneficialOwner::Prong }
 
-          class Individual < BaseModel
+          class Individual < Increase::BaseModel
             # @!attribute [rw] address
             #   The person's address.
             #   @return [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address]
@@ -201,7 +201,7 @@ module Increase
             #   @return [String]
             required :name_, String, api_name: :name
 
-            class Address < BaseModel
+            class Address < Increase::BaseModel
               # @!attribute [rw] city
               #   The city of the address.
               #   @return [String]
@@ -240,7 +240,7 @@ module Increase
               #   def initialize(data = {}) = super
             end
 
-            class Identification < BaseModel
+            class Identification < Increase::BaseModel
               # @!attribute [rw] method_
               #   A method that can be used to verify the individual's identity.
               #   @return [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method]
@@ -331,7 +331,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class GovernmentAuthority < BaseModel
+      class GovernmentAuthority < Increase::BaseModel
         # @!attribute [rw] address
         #   The government authority's address.
         #   @return [Increase::Models::Entity::GovernmentAuthority::Address]
@@ -363,7 +363,7 @@ module Increase
         #   @return [String]
         required :website, String
 
-        class Address < BaseModel
+        class Address < Increase::BaseModel
           # @!attribute [rw] city
           #   The city of the address.
           #   @return [String]
@@ -402,7 +402,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class AuthorizedPerson < BaseModel
+        class AuthorizedPerson < Increase::BaseModel
           # @!attribute [rw] authorized_person_id
           #   The identifier of this authorized person.
           #   @return [String]
@@ -441,7 +441,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Joint < BaseModel
+      class Joint < Increase::BaseModel
         # @!attribute [rw] individuals
         #   The two individuals that share control of the entity.
         #   @return [Array<Increase::Models::Entity::Joint::Individual>]
@@ -452,7 +452,7 @@ module Increase
         #   @return [String]
         required :name_, String, api_name: :name
 
-        class Individual < BaseModel
+        class Individual < Increase::BaseModel
           # @!attribute [rw] address
           #   The person's address.
           #   @return [Increase::Models::Entity::Joint::Individual::Address]
@@ -473,7 +473,7 @@ module Increase
           #   @return [String]
           required :name_, String, api_name: :name
 
-          class Address < BaseModel
+          class Address < Increase::BaseModel
             # @!attribute [rw] city
             #   The city of the address.
             #   @return [String]
@@ -512,7 +512,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class Identification < BaseModel
+          class Identification < Increase::BaseModel
             # @!attribute [rw] method_
             #   A method that can be used to verify the individual's identity.
             #   @return [Symbol, Increase::Models::Entity::Joint::Individual::Identification::Method]
@@ -573,7 +573,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class NaturalPerson < BaseModel
+      class NaturalPerson < Increase::BaseModel
         # @!attribute [rw] address
         #   The person's address.
         #   @return [Increase::Models::Entity::NaturalPerson::Address]
@@ -594,7 +594,7 @@ module Increase
         #   @return [String]
         required :name_, String, api_name: :name
 
-        class Address < BaseModel
+        class Address < Increase::BaseModel
           # @!attribute [rw] city
           #   The city of the address.
           #   @return [String]
@@ -633,7 +633,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class Identification < BaseModel
+        class Identification < Increase::BaseModel
           # @!attribute [rw] method_
           #   A method that can be used to verify the individual's identity.
           #   @return [Symbol, Increase::Models::Entity::NaturalPerson::Identification::Method]
@@ -715,7 +715,7 @@ module Increase
         GOVERNMENT_AUTHORITY = :government_authority
       end
 
-      class ThirdPartyVerification < BaseModel
+      class ThirdPartyVerification < Increase::BaseModel
         # @!attribute [rw] reference
         #   The reference identifier for the third party verification.
         #   @return [String]
@@ -744,7 +744,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Trust < BaseModel
+      class Trust < Increase::BaseModel
         # @!attribute [rw] address
         #   The trust's address.
         #   @return [Increase::Models::Entity::Trust::Address]
@@ -785,7 +785,7 @@ module Increase
         #   @return [Array<Increase::Models::Entity::Trust::Trustee>]
         required :trustees, Increase::ArrayOf.new(-> { Increase::Models::Entity::Trust::Trustee })
 
-        class Address < BaseModel
+        class Address < Increase::BaseModel
           # @!attribute [rw] city
           #   The city of the address.
           #   @return [String]
@@ -833,7 +833,7 @@ module Increase
           IRREVOCABLE = :irrevocable
         end
 
-        class Grantor < BaseModel
+        class Grantor < Increase::BaseModel
           # @!attribute [rw] address
           #   The person's address.
           #   @return [Increase::Models::Entity::Trust::Grantor::Address]
@@ -854,7 +854,7 @@ module Increase
           #   @return [String]
           required :name_, String, api_name: :name
 
-          class Address < BaseModel
+          class Address < Increase::BaseModel
             # @!attribute [rw] city
             #   The city of the address.
             #   @return [String]
@@ -893,7 +893,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class Identification < BaseModel
+          class Identification < Increase::BaseModel
             # @!attribute [rw] method_
             #   A method that can be used to verify the individual's identity.
             #   @return [Symbol, Increase::Models::Entity::Trust::Grantor::Identification::Method]
@@ -945,7 +945,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class Trustee < BaseModel
+        class Trustee < Increase::BaseModel
           # @!attribute [rw] individual
           #   The individual trustee of the trust. Will be present if the trustee's `structure` is equal to `individual`.
           #   @return [Increase::Models::Entity::Trust::Trustee::Individual]
@@ -956,7 +956,7 @@ module Increase
           #   @return [Symbol, Increase::Models::Entity::Trust::Trustee::Structure]
           required :structure, enum: -> { Increase::Models::Entity::Trust::Trustee::Structure }
 
-          class Individual < BaseModel
+          class Individual < Increase::BaseModel
             # @!attribute [rw] address
             #   The person's address.
             #   @return [Increase::Models::Entity::Trust::Trustee::Individual::Address]
@@ -980,7 +980,7 @@ module Increase
             #   @return [String]
             required :name_, String, api_name: :name
 
-            class Address < BaseModel
+            class Address < Increase::BaseModel
               # @!attribute [rw] city
               #   The city of the address.
               #   @return [String]
@@ -1019,7 +1019,7 @@ module Increase
               #   def initialize(data = {}) = super
             end
 
-            class Identification < BaseModel
+            class Identification < Increase::BaseModel
               # @!attribute [rw] method_
               #   A method that can be used to verify the individual's identity.
               #   @return [Symbol, Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method]

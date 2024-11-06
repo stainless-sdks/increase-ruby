@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class Export < BaseModel
+    class Export < Increase::BaseModel
       # @!attribute [rw] id
       #   The Export identifier.
       #   @return [String]

@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class ACHPrenotification < BaseModel
+    class ACHPrenotification < Increase::BaseModel
       # @!attribute [rw] id
       #   The ACH Prenotification's identifier.
       #   @return [String]
@@ -96,7 +96,7 @@ module Increase
         DEBIT = :debit
       end
 
-      class NotificationsOfChange < BaseModel
+      class NotificationsOfChange < Increase::BaseModel
         # @!attribute [rw] change_code
         #   The required type of change that is being signaled by the receiving financial institution.
         #   @return [Symbol, Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode]
@@ -189,7 +189,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class PrenotificationReturn < BaseModel
+      class PrenotificationReturn < Increase::BaseModel
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Prenotification was returned.
         #   @return [Time]

@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class InboundMailItem < BaseModel
+    class InboundMailItem < Increase::BaseModel
       # @!attribute [rw] id
       #   The Inbound Mail Item identifier.
       #   @return [String]

@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class Transaction < BaseModel
+    class Transaction < Increase::BaseModel
       # @!attribute [rw] id
       #   The Transaction identifier.
       #   @return [String]
@@ -86,7 +86,7 @@ module Increase
         LOCKBOX = :lockbox
       end
 
-      class Source < BaseModel
+      class Source < Increase::BaseModel
         # @!attribute [rw] account_transfer_intention
         #   An Account Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `account_transfer_intention`.
         #   @return [Increase::Models::Transaction::Source::AccountTransferIntention]
@@ -224,7 +224,7 @@ module Increase
         #   @return [Increase::Models::Transaction::Source::WireTransferIntention]
         required :wire_transfer_intention, -> { Increase::Models::Transaction::Source::WireTransferIntention }
 
-        class AccountTransferIntention < BaseModel
+        class AccountTransferIntention < Increase::BaseModel
           # @!attribute [rw] amount
           #   The pending amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
           #   @return [Integer]
@@ -294,7 +294,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class ACHTransferIntention < BaseModel
+        class ACHTransferIntention < Increase::BaseModel
           # @!attribute [rw] account_number
           #   The account number for the destination account.
           #   @return [String]
@@ -334,7 +334,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class ACHTransferRejection < BaseModel
+        class ACHTransferRejection < Increase::BaseModel
           # @!attribute [rw] transfer_id
           #   The identifier of the ACH Transfer that led to this Transaction.
           #   @return [String]
@@ -348,7 +348,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class ACHTransferReturn < BaseModel
+        class ACHTransferReturn < Increase::BaseModel
           # @!attribute [rw] created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
           #   @return [Time]
@@ -611,7 +611,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardDisputeAcceptance < BaseModel
+        class CardDisputeAcceptance < Increase::BaseModel
           # @!attribute [rw] accepted_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was accepted.
           #   @return [Time]
@@ -639,7 +639,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardDisputeLoss < BaseModel
+        class CardDisputeLoss < Increase::BaseModel
           # @!attribute [rw] card_dispute_id
           #   The identifier of the Card Dispute that was lost.
           #   @return [String]
@@ -673,7 +673,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardRefund < BaseModel
+        class CardRefund < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Refund identifier.
           #   @return [String]
@@ -784,7 +784,7 @@ module Increase
             USD = :USD
           end
 
-          class Interchange < BaseModel
+          class Interchange < Increase::BaseModel
             # @!attribute [rw] amount
             #   The interchange amount given as a string containing a decimal number. The amount is a positive number if it is credited to Increase (e.g., settlements) and a negative number if it is debited (e.g., refunds).
             #   @return [String]
@@ -837,7 +837,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class NetworkIdentifiers < BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # @!attribute [rw] acquirer_business_id
             #   A network assigned business ID that identifies the acquirer that processed this transaction.
             #   @return [String]
@@ -865,7 +865,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class PurchaseDetails < BaseModel
+          class PurchaseDetails < Increase::BaseModel
             # @!attribute [rw] car_rental
             #   Fields specific to car rentals.
             #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental]
@@ -928,7 +928,7 @@ module Increase
                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel
                      }
 
-            class CarRental < BaseModel
+            class CarRental < Increase::BaseModel
               # @!attribute [rw] car_class_code
               #   Code indicating the vehicle's class.
               #   @return [String]
@@ -1076,7 +1076,7 @@ module Increase
               #   def initialize(data = {}) = super
             end
 
-            class Lodging < BaseModel
+            class Lodging < Increase::BaseModel
               # @!attribute [rw] check_in_date
               #   Date the customer checked in.
               #   @return [Date]
@@ -1244,7 +1244,7 @@ module Increase
               INVOICE_NUMBER = :invoice_number
             end
 
-            class Travel < BaseModel
+            class Travel < Increase::BaseModel
               # @!attribute [rw] ancillary
               #   Ancillary purchases in addition to the airfare.
               #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary]
@@ -1320,7 +1320,7 @@ module Increase
                          }
                        )
 
-              class Ancillary < BaseModel
+              class Ancillary < Increase::BaseModel
                 # @!attribute [rw] connected_ticket_document_number
                 #   If this purchase has a connection or relationship to another purchase, such as a baggage fee for a passenger transport ticket, this field should contain the ticket document number for the other purchase.
                 #   @return [String]
@@ -1369,7 +1369,7 @@ module Increase
                   OTHER = :other
                 end
 
-                class Service < BaseModel
+                class Service < Increase::BaseModel
                   # @!attribute [rw] category
                   #   Category of the ancillary service.
                   #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category]
@@ -1523,7 +1523,7 @@ module Increase
                 NEW_TICKET = :new_ticket
               end
 
-              class TripLeg < BaseModel
+              class TripLeg < Increase::BaseModel
                 # @!attribute [rw] carrier_code
                 #   Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 #   @return [String]
@@ -1655,7 +1655,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardRevenuePayment < BaseModel
+        class CardRevenuePayment < Increase::BaseModel
           # @!attribute [rw] amount
           #   The amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
           #   @return [Integer]
@@ -1716,7 +1716,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardSettlement < BaseModel
+        class CardSettlement < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Settlement identifier.
           #   @return [String]
@@ -1837,7 +1837,7 @@ module Increase
             USD = :USD
           end
 
-          class Interchange < BaseModel
+          class Interchange < Increase::BaseModel
             # @!attribute [rw] amount
             #   The interchange amount given as a string containing a decimal number. The amount is a positive number if it is credited to Increase (e.g., settlements) and a negative number if it is debited (e.g., refunds).
             #   @return [String]
@@ -1888,7 +1888,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class NetworkIdentifiers < BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # @!attribute [rw] acquirer_business_id
             #   A network assigned business ID that identifies the acquirer that processed this transaction.
             #   @return [String]
@@ -1916,7 +1916,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class PurchaseDetails < BaseModel
+          class PurchaseDetails < Increase::BaseModel
             # @!attribute [rw] car_rental
             #   Fields specific to car rentals.
             #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental]
@@ -1977,7 +1977,7 @@ module Increase
                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel
                      }
 
-            class CarRental < BaseModel
+            class CarRental < Increase::BaseModel
               # @!attribute [rw] car_class_code
               #   Code indicating the vehicle's class.
               #   @return [String]
@@ -2125,7 +2125,7 @@ module Increase
               #   def initialize(data = {}) = super
             end
 
-            class Lodging < BaseModel
+            class Lodging < Increase::BaseModel
               # @!attribute [rw] check_in_date
               #   Date the customer checked in.
               #   @return [Date]
@@ -2293,7 +2293,7 @@ module Increase
               INVOICE_NUMBER = :invoice_number
             end
 
-            class Travel < BaseModel
+            class Travel < Increase::BaseModel
               # @!attribute [rw] ancillary
               #   Ancillary purchases in addition to the airfare.
               #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary]
@@ -2369,7 +2369,7 @@ module Increase
                          }
                        )
 
-              class Ancillary < BaseModel
+              class Ancillary < Increase::BaseModel
                 # @!attribute [rw] connected_ticket_document_number
                 #   If this purchase has a connection or relationship to another purchase, such as a baggage fee for a passenger transport ticket, this field should contain the ticket document number for the other purchase.
                 #   @return [String]
@@ -2418,7 +2418,7 @@ module Increase
                   OTHER = :other
                 end
 
-                class Service < BaseModel
+                class Service < Increase::BaseModel
                   # @!attribute [rw] category
                   #   Category of the ancillary service.
                   #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category]
@@ -2572,7 +2572,7 @@ module Increase
                 NEW_TICKET = :new_ticket
               end
 
-              class TripLeg < BaseModel
+              class TripLeg < Increase::BaseModel
                 # @!attribute [rw] carrier_code
                 #   Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 #   @return [String]
@@ -2707,7 +2707,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CashbackPayment < BaseModel
+        class CashbackPayment < Increase::BaseModel
           # @!attribute [rw] accrued_on_card_id
           #   The card on which the cashback was accrued.
           #   @return [String]
@@ -2858,7 +2858,7 @@ module Increase
           OTHER = :other
         end
 
-        class CheckDepositAcceptance < BaseModel
+        class CheckDepositAcceptance < Increase::BaseModel
           # @!attribute [rw] account_number
           #   The account number printed on the check.
           #   @return [String]
@@ -2936,7 +2936,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CheckDepositReturn < BaseModel
+        class CheckDepositReturn < Increase::BaseModel
           # @!attribute [rw] amount
           #   The returned amount in USD cents.
           #   @return [Integer]
@@ -3087,7 +3087,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CheckTransferDeposit < BaseModel
+        class CheckTransferDeposit < Increase::BaseModel
           # @!attribute [rw] back_image_file_id
           #   The identifier of the API File object containing an image of the back of the deposited check.
           #   @return [String]
@@ -3154,7 +3154,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class FeePayment < BaseModel
+        class FeePayment < Increase::BaseModel
           # @!attribute [rw] amount
           #   The amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
           #   @return [Integer]
@@ -3209,7 +3209,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class InboundACHTransfer < BaseModel
+        class InboundACHTransfer < Increase::BaseModel
           # @!attribute [rw] addenda
           #   Additional information sent from the originator.
           #   @return [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda]
@@ -3265,7 +3265,7 @@ module Increase
           #   @return [String]
           required :transfer_id, String
 
-          class Addenda < BaseModel
+          class Addenda < Increase::BaseModel
             # @!attribute [rw] category
             #   The type of addendum.
             #   @return [Symbol, Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category]
@@ -3286,7 +3286,7 @@ module Increase
               FREEFORM = :freeform
             end
 
-            class Freeform < BaseModel
+            class Freeform < Increase::BaseModel
               # @!attribute [rw] entries
               #   Each entry represents an addendum received from the originator.
               #   @return [Array<Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry>]
@@ -3297,7 +3297,7 @@ module Increase
                          }
                        )
 
-              class Entry < BaseModel
+              class Entry < Increase::BaseModel
                 # @!attribute [rw] payment_related_information
                 #   The payment related information passed in the addendum.
                 #   @return [String]
@@ -3352,7 +3352,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class InboundRealTimePaymentsTransferConfirmation < BaseModel
+        class InboundRealTimePaymentsTransferConfirmation < Increase::BaseModel
           # @!attribute [rw] amount
           #   The amount in the minor unit of the transfer's currency. For dollars, for example, this is cents.
           #   @return [Integer]
@@ -3441,7 +3441,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class InboundRealTimePaymentsTransferDecline < BaseModel
+        class InboundRealTimePaymentsTransferDecline < Increase::BaseModel
           # @!attribute [rw] amount
           #   The declined amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
           #   @return [Integer]
@@ -3561,7 +3561,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class InboundWireReversal < BaseModel
+        class InboundWireReversal < Increase::BaseModel
           # @!attribute [rw] amount
           #   The amount that was reversed in USD cents.
           #   @return [Integer]
@@ -3676,7 +3676,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class InboundWireTransfer < BaseModel
+        class InboundWireTransfer < Increase::BaseModel
           # @!attribute [rw] amount
           #   The amount in USD cents.
           #   @return [Integer]
@@ -3801,7 +3801,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class InterestPayment < BaseModel
+        class InterestPayment < Increase::BaseModel
           # @!attribute [rw] accrued_on_account_id
           #   The account on which the interest was accrued.
           #   @return [String]
@@ -3862,7 +3862,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class InternalSource < BaseModel
+        class InternalSource < Increase::BaseModel
           # @!attribute [rw] amount
           #   The amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
           #   @return [Integer]
@@ -3960,7 +3960,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class RealTimePaymentsTransferAcknowledgement < BaseModel
+        class RealTimePaymentsTransferAcknowledgement < Increase::BaseModel
           # @!attribute [rw] amount
           #   The transfer amount in USD cents.
           #   @return [Integer]
@@ -3999,7 +3999,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class SampleFunds < BaseModel
+        class SampleFunds < Increase::BaseModel
           # @!attribute [rw] originator
           #   Where the sample funds came from.
           #   @return [String]
@@ -4013,7 +4013,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class WireTransferIntention < BaseModel
+        class WireTransferIntention < Increase::BaseModel
           # @!attribute [rw] account_number
           #   The destination account number.
           #   @return [String]

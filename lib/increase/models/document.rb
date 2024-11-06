@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class Document < BaseModel
+    class Document < Increase::BaseModel
       # @!attribute [rw] id
       #   The Document identifier.
       #   @return [String]

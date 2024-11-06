@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class BookkeepingEntrySet < BaseModel
+    class BookkeepingEntrySet < Increase::BaseModel
       # @!attribute [rw] id
       #   The entry set identifier.
       #   @return [String]
@@ -38,7 +38,7 @@ module Increase
       #   @return [Symbol, Increase::Models::BookkeepingEntrySet::Type]
       required :type, enum: -> { Increase::Models::BookkeepingEntrySet::Type }
 
-      class Entry < BaseModel
+      class Entry < Increase::BaseModel
         # @!attribute [rw] id
         #   The entry identifier.
         #   @return [String]

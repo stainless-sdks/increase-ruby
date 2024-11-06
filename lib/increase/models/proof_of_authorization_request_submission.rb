@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class ProofOfAuthorizationRequestSubmission < BaseModel
+    class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
       # @!attribute [rw] id
       #   The Proof of Authorization Request Submission identifier.
       #   @return [String]

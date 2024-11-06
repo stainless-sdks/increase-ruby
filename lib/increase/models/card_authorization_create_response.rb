@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class CardAuthorizationCreateResponse < BaseModel
+    class CardAuthorizationCreateResponse < Increase::BaseModel
       # @!attribute [rw] declined_transaction
       #   If the authorization attempt fails, this will contain the resulting [Declined Transaction](#declined-transactions) object. The Declined Transaction's `source` will be of `category: card_decline`.
       #   @return [Increase::Models::DeclinedTransaction]

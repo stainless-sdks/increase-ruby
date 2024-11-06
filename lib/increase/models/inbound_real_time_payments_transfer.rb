@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class InboundRealTimePaymentsTransfer < BaseModel
+    class InboundRealTimePaymentsTransfer < Increase::BaseModel
       # @!attribute [rw] id
       #   The inbound Real-Time Payments transfer's identifier.
       #   @return [String]
@@ -83,7 +83,7 @@ module Increase
       #   @return [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type]
       required :type, enum: -> { Increase::Models::InboundRealTimePaymentsTransfer::Type }
 
-      class Confirmation < BaseModel
+      class Confirmation < Increase::BaseModel
         # @!attribute [rw] confirmed_at
         #   The time at which the transfer was confirmed.
         #   @return [Time]
@@ -124,7 +124,7 @@ module Increase
         USD = :USD
       end
 
-      class Decline < BaseModel
+      class Decline < Increase::BaseModel
         # @!attribute [rw] declined_at
         #   The time at which the transfer was declined.
         #   @return [Time]

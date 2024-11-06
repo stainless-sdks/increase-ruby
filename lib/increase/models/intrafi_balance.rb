@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class IntrafiBalance < BaseModel
+    class IntrafiBalance < Increase::BaseModel
       # @!attribute [rw] id
       #   The identifier of this balance.
       #   @return [String]
@@ -33,7 +33,7 @@ module Increase
       #   @return [Symbol, Increase::Models::IntrafiBalance::Type]
       required :type, enum: -> { Increase::Models::IntrafiBalance::Type }
 
-      class Balance < BaseModel
+      class Balance < Increase::BaseModel
         # @!attribute [rw] id
         #   The identifier of this balance.
         #   @return [String]
@@ -59,7 +59,7 @@ module Increase
         #   @return [String]
         required :fdic_certificate_number, String
 
-        class BankLocation < BaseModel
+        class BankLocation < Increase::BaseModel
           # @!attribute [rw] city
           #   The bank's city.
           #   @return [String]

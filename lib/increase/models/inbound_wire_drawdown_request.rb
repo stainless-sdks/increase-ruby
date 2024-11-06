@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class InboundWireDrawdownRequest < BaseModel
+    class InboundWireDrawdownRequest < Increase::BaseModel
       # @!attribute [rw] id
       #   The Wire drawdown request identifier.
       #   @return [String]

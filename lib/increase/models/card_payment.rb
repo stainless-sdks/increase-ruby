@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class CardPayment < BaseModel
+    class CardPayment < Increase::BaseModel
       # @!attribute [rw] id
       #   The Card Payment identifier.
       #   @return [String]
@@ -48,7 +48,7 @@ module Increase
       #   @return [Symbol, Increase::Models::CardPayment::Type]
       required :type, enum: -> { Increase::Models::CardPayment::Type }
 
-      class Element < BaseModel
+      class Element < Increase::BaseModel
         # @!attribute [rw] card_authorization
         #   A Card Authorization object. This field will be present in the JSON response if and only if `category` is equal to `card_authorization`.
         #   @return [Increase::Models::CardPayment::Element::CardAuthorization]
@@ -110,7 +110,7 @@ module Increase
         #   @return [Object]
         required :other, Increase::Unknown
 
-        class CardAuthorization < BaseModel
+        class CardAuthorization < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Authorization identifier.
           #   @return [String]
@@ -292,7 +292,7 @@ module Increase
             REFUND = :refund
           end
 
-          class NetworkDetails < BaseModel
+          class NetworkDetails < Increase::BaseModel
             # @!attribute [rw] category
             #   The payment network used to process this card authorization.
             #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category]
@@ -315,7 +315,7 @@ module Increase
               VISA = :visa
             end
 
-            class Visa < BaseModel
+            class Visa < Increase::BaseModel
               # @!attribute [rw] electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator]
@@ -444,7 +444,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class NetworkIdentifiers < BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # @!attribute [rw] retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal. Expected to be unique per acquirer within a window of time. For some card networks the retrieval reference number includes the trace counter.
             #   @return [String]
@@ -500,7 +500,7 @@ module Increase
             CARD_AUTHORIZATION = :card_authorization
           end
 
-          class Verification < BaseModel
+          class Verification < Increase::BaseModel
             # @!attribute [rw] card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
             #   @return [Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode]
@@ -513,7 +513,7 @@ module Increase
             required :cardholder_address,
                      -> { Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress }
 
-            class CardVerificationCode < BaseModel
+            class CardVerificationCode < Increase::BaseModel
               # @!attribute [rw] result
               #   The result of verifying the Card Verification Code.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result]
@@ -542,7 +542,7 @@ module Increase
               #   def initialize(data = {}) = super
             end
 
-            class CardholderAddress < BaseModel
+            class CardholderAddress < Increase::BaseModel
               # @!attribute [rw] actual_line1
               #   Line 1 of the address on file for the cardholder.
               #   @return [String]
@@ -664,7 +664,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardAuthorizationExpiration < BaseModel
+        class CardAuthorizationExpiration < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Authorization Expiration identifier.
           #   @return [String]
@@ -748,7 +748,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardDecline < BaseModel
+        class CardDecline < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Decline identifier.
           #   @return [String]
@@ -921,7 +921,7 @@ module Increase
             REFUND = :refund
           end
 
-          class NetworkDetails < BaseModel
+          class NetworkDetails < Increase::BaseModel
             # @!attribute [rw] category
             #   The payment network used to process this card authorization.
             #   @return [Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category]
@@ -941,7 +941,7 @@ module Increase
               VISA = :visa
             end
 
-            class Visa < BaseModel
+            class Visa < Increase::BaseModel
               # @!attribute [rw] electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator]
@@ -1070,7 +1070,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class NetworkIdentifiers < BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # @!attribute [rw] retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal. Expected to be unique per acquirer within a window of time. For some card networks the retrieval reference number includes the trace counter.
             #   @return [String]
@@ -1169,7 +1169,7 @@ module Increase
             SUSPECTED_FRAUD = :suspected_fraud
           end
 
-          class Verification < BaseModel
+          class Verification < Increase::BaseModel
             # @!attribute [rw] card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
             #   @return [Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode]
@@ -1182,7 +1182,7 @@ module Increase
             required :cardholder_address,
                      -> { Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress }
 
-            class CardVerificationCode < BaseModel
+            class CardVerificationCode < Increase::BaseModel
               # @!attribute [rw] result
               #   The result of verifying the Card Verification Code.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result]
@@ -1211,7 +1211,7 @@ module Increase
               #   def initialize(data = {}) = super
             end
 
-            class CardholderAddress < BaseModel
+            class CardholderAddress < Increase::BaseModel
               # @!attribute [rw] actual_line1
               #   Line 1 of the address on file for the cardholder.
               #   @return [String]
@@ -1330,7 +1330,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardFuelConfirmation < BaseModel
+        class CardFuelConfirmation < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Fuel Confirmation identifier.
           #   @return [String]
@@ -1405,7 +1405,7 @@ module Increase
             VISA = :visa
           end
 
-          class NetworkIdentifiers < BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # @!attribute [rw] retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal. Expected to be unique per acquirer within a window of time. For some card networks the retrieval reference number includes the trace counter.
             #   @return [String]
@@ -1459,7 +1459,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardIncrement < BaseModel
+        class CardIncrement < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Increment identifier.
           #   @return [String]
@@ -1560,7 +1560,7 @@ module Increase
             VISA = :visa
           end
 
-          class NetworkIdentifiers < BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # @!attribute [rw] retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal. Expected to be unique per acquirer within a window of time. For some card networks the retrieval reference number includes the trace counter.
             #   @return [String]
@@ -1621,7 +1621,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardRefund < BaseModel
+        class CardRefund < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Refund identifier.
           #   @return [String]
@@ -1732,7 +1732,7 @@ module Increase
             USD = :USD
           end
 
-          class Interchange < BaseModel
+          class Interchange < Increase::BaseModel
             # @!attribute [rw] amount
             #   The interchange amount given as a string containing a decimal number. The amount is a positive number if it is credited to Increase (e.g., settlements) and a negative number if it is debited (e.g., refunds).
             #   @return [String]
@@ -1785,7 +1785,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class NetworkIdentifiers < BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # @!attribute [rw] acquirer_business_id
             #   A network assigned business ID that identifies the acquirer that processed this transaction.
             #   @return [String]
@@ -1813,7 +1813,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class PurchaseDetails < BaseModel
+          class PurchaseDetails < Increase::BaseModel
             # @!attribute [rw] car_rental
             #   Fields specific to car rentals.
             #   @return [Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental]
@@ -1874,7 +1874,7 @@ module Increase
                        Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel
                      }
 
-            class CarRental < BaseModel
+            class CarRental < Increase::BaseModel
               # @!attribute [rw] car_class_code
               #   Code indicating the vehicle's class.
               #   @return [String]
@@ -2022,7 +2022,7 @@ module Increase
               #   def initialize(data = {}) = super
             end
 
-            class Lodging < BaseModel
+            class Lodging < Increase::BaseModel
               # @!attribute [rw] check_in_date
               #   Date the customer checked in.
               #   @return [Date]
@@ -2190,7 +2190,7 @@ module Increase
               INVOICE_NUMBER = :invoice_number
             end
 
-            class Travel < BaseModel
+            class Travel < Increase::BaseModel
               # @!attribute [rw] ancillary
               #   Ancillary purchases in addition to the airfare.
               #   @return [Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary]
@@ -2266,7 +2266,7 @@ module Increase
                          }
                        )
 
-              class Ancillary < BaseModel
+              class Ancillary < Increase::BaseModel
                 # @!attribute [rw] connected_ticket_document_number
                 #   If this purchase has a connection or relationship to another purchase, such as a baggage fee for a passenger transport ticket, this field should contain the ticket document number for the other purchase.
                 #   @return [String]
@@ -2315,7 +2315,7 @@ module Increase
                   OTHER = :other
                 end
 
-                class Service < BaseModel
+                class Service < Increase::BaseModel
                   # @!attribute [rw] category
                   #   Category of the ancillary service.
                   #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category]
@@ -2469,7 +2469,7 @@ module Increase
                 NEW_TICKET = :new_ticket
               end
 
-              class TripLeg < BaseModel
+              class TripLeg < Increase::BaseModel
                 # @!attribute [rw] carrier_code
                 #   Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 #   @return [String]
@@ -2601,7 +2601,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardReversal < BaseModel
+        class CardReversal < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Reversal identifier.
           #   @return [String]
@@ -2716,7 +2716,7 @@ module Increase
             VISA = :visa
           end
 
-          class NetworkIdentifiers < BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # @!attribute [rw] retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal. Expected to be unique per acquirer within a window of time. For some card networks the retrieval reference number includes the trace counter.
             #   @return [String]
@@ -2797,7 +2797,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardSettlement < BaseModel
+        class CardSettlement < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Settlement identifier.
           #   @return [String]
@@ -2918,7 +2918,7 @@ module Increase
             USD = :USD
           end
 
-          class Interchange < BaseModel
+          class Interchange < Increase::BaseModel
             # @!attribute [rw] amount
             #   The interchange amount given as a string containing a decimal number. The amount is a positive number if it is credited to Increase (e.g., settlements) and a negative number if it is debited (e.g., refunds).
             #   @return [String]
@@ -2971,7 +2971,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class NetworkIdentifiers < BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # @!attribute [rw] acquirer_business_id
             #   A network assigned business ID that identifies the acquirer that processed this transaction.
             #   @return [String]
@@ -2999,7 +2999,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class PurchaseDetails < BaseModel
+          class PurchaseDetails < Increase::BaseModel
             # @!attribute [rw] car_rental
             #   Fields specific to car rentals.
             #   @return [Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental]
@@ -3060,7 +3060,7 @@ module Increase
                        Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel
                      }
 
-            class CarRental < BaseModel
+            class CarRental < Increase::BaseModel
               # @!attribute [rw] car_class_code
               #   Code indicating the vehicle's class.
               #   @return [String]
@@ -3208,7 +3208,7 @@ module Increase
               #   def initialize(data = {}) = super
             end
 
-            class Lodging < BaseModel
+            class Lodging < Increase::BaseModel
               # @!attribute [rw] check_in_date
               #   Date the customer checked in.
               #   @return [Date]
@@ -3376,7 +3376,7 @@ module Increase
               INVOICE_NUMBER = :invoice_number
             end
 
-            class Travel < BaseModel
+            class Travel < Increase::BaseModel
               # @!attribute [rw] ancillary
               #   Ancillary purchases in addition to the airfare.
               #   @return [Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary]
@@ -3452,7 +3452,7 @@ module Increase
                          }
                        )
 
-              class Ancillary < BaseModel
+              class Ancillary < Increase::BaseModel
                 # @!attribute [rw] connected_ticket_document_number
                 #   If this purchase has a connection or relationship to another purchase, such as a baggage fee for a passenger transport ticket, this field should contain the ticket document number for the other purchase.
                 #   @return [String]
@@ -3501,7 +3501,7 @@ module Increase
                   OTHER = :other
                 end
 
-                class Service < BaseModel
+                class Service < Increase::BaseModel
                   # @!attribute [rw] category
                   #   Category of the ancillary service.
                   #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category]
@@ -3655,7 +3655,7 @@ module Increase
                 NEW_TICKET = :new_ticket
               end
 
-              class TripLeg < BaseModel
+              class TripLeg < Increase::BaseModel
                 # @!attribute [rw] carrier_code
                 #   Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 #   @return [String]
@@ -3790,7 +3790,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardValidation < BaseModel
+        class CardValidation < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Validation identifier.
           #   @return [String]
@@ -3923,7 +3923,7 @@ module Increase
             USD = :USD
           end
 
-          class NetworkDetails < BaseModel
+          class NetworkDetails < Increase::BaseModel
             # @!attribute [rw] category
             #   The payment network used to process this card authorization.
             #   @return [Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category]
@@ -3946,7 +3946,7 @@ module Increase
               VISA = :visa
             end
 
-            class Visa < BaseModel
+            class Visa < Increase::BaseModel
               # @!attribute [rw] electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator]
@@ -4075,7 +4075,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class NetworkIdentifiers < BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # @!attribute [rw] retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal. Expected to be unique per acquirer within a window of time. For some card networks the retrieval reference number includes the trace counter.
             #   @return [String]
@@ -4110,7 +4110,7 @@ module Increase
             CARD_VALIDATION = :card_validation
           end
 
-          class Verification < BaseModel
+          class Verification < Increase::BaseModel
             # @!attribute [rw] card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
             #   @return [Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode]
@@ -4123,7 +4123,7 @@ module Increase
             required :cardholder_address,
                      -> { Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress }
 
-            class CardVerificationCode < BaseModel
+            class CardVerificationCode < Increase::BaseModel
               # @!attribute [rw] result
               #   The result of verifying the Card Verification Code.
               #   @return [Symbol, Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result]
@@ -4152,7 +4152,7 @@ module Increase
               #   def initialize(data = {}) = super
             end
 
-            class CardholderAddress < BaseModel
+            class CardholderAddress < Increase::BaseModel
               # @!attribute [rw] actual_line1
               #   Line 1 of the address on file for the cardholder.
               #   @return [String]
@@ -4329,7 +4329,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class State < BaseModel
+      class State < Increase::BaseModel
         # @!attribute [rw] authorized_amount
         #   The total authorized amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
         #   @return [Integer]

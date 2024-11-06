@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class IntrafiAccountEnrollment < BaseModel
+    class IntrafiAccountEnrollment < Increase::BaseModel
       # @!attribute [rw] id
       #   The identifier of this enrollment at IntraFi.
       #   @return [String]

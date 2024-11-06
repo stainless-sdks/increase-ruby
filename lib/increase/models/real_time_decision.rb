@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class RealTimeDecision < BaseModel
+    class RealTimeDecision < Increase::BaseModel
       # @!attribute [rw] id
       #   The Real-Time Decision identifier.
       #   @return [String]
@@ -60,7 +60,7 @@ module Increase
       #   @return [Symbol, Increase::Models::RealTimeDecision::Type]
       required :type, enum: -> { Increase::Models::RealTimeDecision::Type }
 
-      class CardAuthentication < BaseModel
+      class CardAuthentication < Increase::BaseModel
         # @!attribute [rw] account_id
         #   The identifier of the Account the card belongs to.
         #   @return [String]
@@ -105,7 +105,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class CardAuthenticationChallenge < BaseModel
+      class CardAuthenticationChallenge < Increase::BaseModel
         # @!attribute [rw] account_id
         #   The identifier of the Account the card belongs to.
         #   @return [String]
@@ -153,7 +153,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class CardAuthorization < BaseModel
+      class CardAuthorization < Increase::BaseModel
         # @!attribute [rw] account_id
         #   The identifier of the Account the authorization will debit.
         #   @return [String]
@@ -300,7 +300,7 @@ module Increase
           REFUND = :refund
         end
 
-        class NetworkDetails < BaseModel
+        class NetworkDetails < Increase::BaseModel
           # @!attribute [rw] category
           #   The payment network used to process this card authorization.
           #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category]
@@ -320,7 +320,7 @@ module Increase
             VISA = :visa
           end
 
-          class Visa < BaseModel
+          class Visa < Increase::BaseModel
             # @!attribute [rw] electronic_commerce_indicator
             #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator]
@@ -449,7 +449,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class NetworkIdentifiers < BaseModel
+        class NetworkIdentifiers < Increase::BaseModel
           # @!attribute [rw] retrieval_reference_number
           #   A life-cycle identifier used across e.g., an authorization and a reversal. Expected to be unique per acquirer within a window of time. For some card networks the retrieval reference number includes the trace counter.
           #   @return [String]
@@ -500,7 +500,7 @@ module Increase
           REFUND = :refund
         end
 
-        class RequestDetails < BaseModel
+        class RequestDetails < Increase::BaseModel
           # @!attribute [rw] category
           #   The type of this request (e.g., an initial authorization or an incremental authorization).
           #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category]
@@ -529,7 +529,7 @@ module Increase
             INCREMENTAL_AUTHORIZATION = :incremental_authorization
           end
 
-          class IncrementalAuthorization < BaseModel
+          class IncrementalAuthorization < Increase::BaseModel
             # @!attribute [rw] card_payment_id
             #   The card payment for this authorization and increment.
             #   @return [String]
@@ -561,7 +561,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class Verification < BaseModel
+        class Verification < Increase::BaseModel
           # @!attribute [rw] card_verification_code
           #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
           #   @return [Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode]
@@ -574,7 +574,7 @@ module Increase
           required :cardholder_address,
                    -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress }
 
-          class CardVerificationCode < BaseModel
+          class CardVerificationCode < Increase::BaseModel
             # @!attribute [rw] result
             #   The result of verifying the Card Verification Code.
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result]
@@ -603,7 +603,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class CardholderAddress < BaseModel
+          class CardholderAddress < Increase::BaseModel
             # @!attribute [rw] actual_line1
             #   Line 1 of the address on file for the cardholder.
             #   @return [String]
@@ -740,7 +740,7 @@ module Increase
         DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :digital_wallet_authentication_requested
       end
 
-      class DigitalWalletAuthentication < BaseModel
+      class DigitalWalletAuthentication < Increase::BaseModel
         # @!attribute [rw] card_id
         #   The identifier of the Card that is being tokenized.
         #   @return [String]
@@ -828,7 +828,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class DigitalWalletToken < BaseModel
+      class DigitalWalletToken < Increase::BaseModel
         # @!attribute [rw] card_id
         #   The identifier of the Card that is being tokenized.
         #   @return [String]

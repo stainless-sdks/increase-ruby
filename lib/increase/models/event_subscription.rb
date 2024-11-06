@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class EventSubscription < BaseModel
+    class EventSubscription < Increase::BaseModel
       # @!attribute [rw] id
       #   The event subscription identifier.
       #   @return [String]

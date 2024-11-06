@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class Event < BaseModel
+    class Event < Increase::BaseModel
       # @!attribute [rw] id
       #   The Event identifier.
       #   @return [String]

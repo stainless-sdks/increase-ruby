@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class AccountStatement < BaseModel
+    class AccountStatement < Increase::BaseModel
       # @!attribute [rw] id
       #   The Account Statement identifier.
       #   @return [String]

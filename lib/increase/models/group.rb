@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class Group < BaseModel
+    class Group < Increase::BaseModel
       # @!attribute [rw] id
       #   The Group identifier.
       #   @return [String]

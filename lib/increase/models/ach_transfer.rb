@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class ACHTransfer < BaseModel
+    class ACHTransfer < Increase::BaseModel
       # @!attribute [rw] id
       #   The ACH transfer's identifier.
       #   @return [String]
@@ -182,7 +182,7 @@ module Increase
       #   @return [Symbol, Increase::Models::ACHTransfer::Type]
       required :type, enum: -> { Increase::Models::ACHTransfer::Type }
 
-      class Acknowledgement < BaseModel
+      class Acknowledgement < Increase::BaseModel
         # @!attribute [rw] acknowledged_at
         #   When the Federal Reserve acknowledged the submitted file containing this transfer.
         #   @return [String]
@@ -197,7 +197,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Addenda < BaseModel
+      class Addenda < Increase::BaseModel
         # @!attribute [rw] category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         #   @return [Symbol, Increase::Models::ACHTransfer::Addenda::Category]
@@ -226,7 +226,7 @@ module Increase
           OTHER = :other
         end
 
-        class Freeform < BaseModel
+        class Freeform < Increase::BaseModel
           # @!attribute [rw] entries
           #   Each entry represents an addendum sent with the transfer.
           #   @return [Array<Increase::Models::ACHTransfer::Addenda::Freeform::Entry>]
@@ -237,7 +237,7 @@ module Increase
                      }
                    )
 
-          class Entry < BaseModel
+          class Entry < Increase::BaseModel
             # @!attribute [rw] payment_related_information
             #   The payment related information passed in the addendum.
             #   @return [String]
@@ -259,7 +259,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class PaymentOrderRemittanceAdvice < BaseModel
+        class PaymentOrderRemittanceAdvice < Increase::BaseModel
           # @!attribute [rw] invoices
           #   ASC X12 RMR records for this specific transfer.
           #   @return [Array<Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice>]
@@ -270,7 +270,7 @@ module Increase
                      }
                    )
 
-          class Invoice < BaseModel
+          class Invoice < Increase::BaseModel
             # @!attribute [rw] invoice_number
             #   The invoice number for this reference, determined in advance with the receiver.
             #   @return [String]
@@ -311,7 +311,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Approval < BaseModel
+      class Approval < Increase::BaseModel
         # @!attribute [rw] approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
         #   @return [Time]
@@ -333,7 +333,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Cancellation < BaseModel
+      class Cancellation < Increase::BaseModel
         # @!attribute [rw] canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
         #   @return [Time]
@@ -355,7 +355,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class CreatedBy < BaseModel
+      class CreatedBy < Increase::BaseModel
         # @!attribute [rw] api_key
         #   If present, details about the API key that created the transfer.
         #   @return [Increase::Models::ACHTransfer::CreatedBy::APIKey]
@@ -376,7 +376,7 @@ module Increase
         #   @return [Increase::Models::ACHTransfer::CreatedBy::User]
         required :user, -> { Increase::Models::ACHTransfer::CreatedBy::User }
 
-        class APIKey < BaseModel
+        class APIKey < Increase::BaseModel
           # @!attribute [rw] description
           #   The description set for the API key when it was created.
           #   @return [String]
@@ -402,7 +402,7 @@ module Increase
           USER = :user
         end
 
-        class OAuthApplication < BaseModel
+        class OAuthApplication < Increase::BaseModel
           # @!attribute [rw] name_
           #   The name of the OAuth Application.
           #   @return [String]
@@ -416,7 +416,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class User < BaseModel
+        class User < Increase::BaseModel
           # @!attribute [rw] email
           #   The email address of the User.
           #   @return [String]
@@ -483,7 +483,7 @@ module Increase
         SAVINGS = :savings
       end
 
-      class InboundFundsHold < BaseModel
+      class InboundFundsHold < Increase::BaseModel
         # @!attribute [rw] id
         #   The Inbound Funds Hold identifier.
         #   @return [String]
@@ -596,7 +596,7 @@ module Increase
         ACH = :ach
       end
 
-      class NotificationsOfChange < BaseModel
+      class NotificationsOfChange < Increase::BaseModel
         # @!attribute [rw] change_code
         #   The required type of change that is being signaled by the receiving financial institution.
         #   @return [Symbol, Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode]
@@ -688,7 +688,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class PreferredEffectiveDate < BaseModel
+      class PreferredEffectiveDate < Increase::BaseModel
         # @!attribute [rw] date
         #   A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to use as the effective date when submitting this transfer.
         #   @return [Date]
@@ -723,7 +723,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Return < BaseModel
+      class Return < Increase::BaseModel
         # @!attribute [rw] created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
         #   @return [Time]
@@ -985,7 +985,7 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
-      class Settlement < BaseModel
+      class Settlement < Increase::BaseModel
         # @!attribute [rw] settled_at
         #   When the funds for this transfer have settled at the destination bank at the Federal Reserve.
         #   @return [Time]
@@ -1045,7 +1045,7 @@ module Increase
         RETURNED = :returned
       end
 
-      class Submission < BaseModel
+      class Submission < Increase::BaseModel
         # @!attribute [rw] effective_date
         #   The ACH transfer's effective date as sent to the Federal Reserve. If a specific date was configured using `preferred_effective_date`, this will match that value. Otherwise, it will be the date selected (following the specified settlement schedule) at the time the transfer was submitted.
         #   @return [Date]

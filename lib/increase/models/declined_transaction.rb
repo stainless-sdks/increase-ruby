@@ -2,7 +2,7 @@
 
 module Increase
   module Models
-    class DeclinedTransaction < BaseModel
+    class DeclinedTransaction < Increase::BaseModel
       # @!attribute [rw] id
       #   The Declined Transaction identifier.
       #   @return [String]
@@ -86,7 +86,7 @@ module Increase
         LOCKBOX = :lockbox
       end
 
-      class Source < BaseModel
+      class Source < Increase::BaseModel
         # @!attribute [rw] ach_decline
         #   An ACH Decline object. This field will be present in the JSON response if and only if `category` is equal to `ach_decline`.
         #   @return [Increase::Models::DeclinedTransaction::Source::ACHDecline]
@@ -129,7 +129,7 @@ module Increase
         #   @return [Increase::Models::DeclinedTransaction::Source::WireDecline]
         required :wire_decline, -> { Increase::Models::DeclinedTransaction::Source::WireDecline }
 
-        class ACHDecline < BaseModel
+        class ACHDecline < Increase::BaseModel
           # @!attribute [rw] id
           #   The ACH Decline's identifier.
           #   @return [String]
@@ -269,7 +269,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CardDecline < BaseModel
+        class CardDecline < Increase::BaseModel
           # @!attribute [rw] id
           #   The Card Decline identifier.
           #   @return [String]
@@ -452,7 +452,7 @@ module Increase
             REFUND = :refund
           end
 
-          class NetworkDetails < BaseModel
+          class NetworkDetails < Increase::BaseModel
             # @!attribute [rw] category
             #   The payment network used to process this card authorization.
             #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category]
@@ -475,7 +475,7 @@ module Increase
               VISA = :visa
             end
 
-            class Visa < BaseModel
+            class Visa < Increase::BaseModel
               # @!attribute [rw] electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator]
@@ -604,7 +604,7 @@ module Increase
             #   def initialize(data = {}) = super
           end
 
-          class NetworkIdentifiers < BaseModel
+          class NetworkIdentifiers < Increase::BaseModel
             # @!attribute [rw] retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal. Expected to be unique per acquirer within a window of time. For some card networks the retrieval reference number includes the trace counter.
             #   @return [String]
@@ -703,7 +703,7 @@ module Increase
             SUSPECTED_FRAUD = :suspected_fraud
           end
 
-          class Verification < BaseModel
+          class Verification < Increase::BaseModel
             # @!attribute [rw] card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
             #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode]
@@ -716,7 +716,7 @@ module Increase
             required :cardholder_address,
                      -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress }
 
-            class CardVerificationCode < BaseModel
+            class CardVerificationCode < Increase::BaseModel
               # @!attribute [rw] result
               #   The result of verifying the Card Verification Code.
               #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result]
@@ -745,7 +745,7 @@ module Increase
               #   def initialize(data = {}) = super
             end
 
-            class CardholderAddress < BaseModel
+            class CardholderAddress < Increase::BaseModel
               # @!attribute [rw] actual_line1
               #   Line 1 of the address on file for the cardholder.
               #   @return [String]
@@ -888,7 +888,7 @@ module Increase
           OTHER = :other
         end
 
-        class CheckDecline < BaseModel
+        class CheckDecline < Increase::BaseModel
           # @!attribute [rw] amount
           #   The declined amount in USD cents.
           #   @return [Integer]
@@ -996,7 +996,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class CheckDepositRejection < BaseModel
+        class CheckDepositRejection < Increase::BaseModel
           # @!attribute [rw] amount
           #   The rejected amount in the minor unit of check's currency. For dollars, for example, this is cents.
           #   @return [Integer]
@@ -1102,7 +1102,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class InboundRealTimePaymentsTransferDecline < BaseModel
+        class InboundRealTimePaymentsTransferDecline < Increase::BaseModel
           # @!attribute [rw] amount
           #   The declined amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
           #   @return [Integer]
@@ -1222,7 +1222,7 @@ module Increase
           #   def initialize(data = {}) = super
         end
 
-        class WireDecline < BaseModel
+        class WireDecline < Increase::BaseModel
           # @!attribute [rw] inbound_wire_transfer_id
           #   The identifier of the Inbound Wire Transfer that was declined.
           #   @return [String]
