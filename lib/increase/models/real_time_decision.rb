@@ -272,6 +272,11 @@ module Increase
         #   @return [String]
         required :settlement_currency, String
 
+        # @!attribute [rw] terminal_id
+        #   The terminal identifier (commonly abbreviated as TID) of the terminal the card is transacting with.
+        #   @return [String]
+        required :terminal_id, String
+
         # @!attribute [rw] upcoming_card_payment_id
         #   The identifier of the Card Payment this authorization will belong to. Available in the API once the card authorization has completed.
         #   @return [String]
@@ -716,6 +721,8 @@ module Increase
         #   #     This currency is the same as that of the Account the card belongs to.
         #   #   @option data [String] :settlement_currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the
         #   #     transaction will be settled in.
+        #   #   @option data [String] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card
+        #   #     is transacting with.
         #   #   @option data [String] :upcoming_card_payment_id The identifier of the Card Payment this authorization will belong to. Available
         #   #     in the API once the card authorization has completed.
         #   #   @option data [Object] :verification Fields related to verification of cardholder-provided values.

@@ -402,6 +402,11 @@ module Increase
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Reason]
           required :reason, enum: -> { Increase::Models::DeclinedTransaction::Source::CardDecline::Reason }
 
+          # @!attribute [rw] terminal_id
+          #   The terminal identifier (commonly abbreviated as TID) of the terminal the card is transacting with.
+          #   @return [String]
+          required :terminal_id, String
+
           # @!attribute [rw] verification
           #   Fields related to verification of cardholder-provided values.
           #   @return [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification]
@@ -860,6 +865,8 @@ module Increase
           #   #   @option data [String] :real_time_decision_id The identifier of the Real-Time Decision sent to approve or decline this
           #   #     transaction.
           #   #   @option data [String] :reason Why the transaction was declined.
+          #   #   @option data [String] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card
+          #   #     is transacting with.
           #   #   @option data [Object] :verification Fields related to verification of cardholder-provided values.
           #   def initialize(data = {}) = super
         end

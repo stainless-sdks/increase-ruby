@@ -237,6 +237,11 @@ module Increase
           #   @return [String]
           required :real_time_decision_id, String
 
+          # @!attribute [rw] terminal_id
+          #   The terminal identifier (commonly abbreviated as TID) of the terminal the card is transacting with.
+          #   @return [String]
+          required :terminal_id, String
+
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_authorization`.
           #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Type]
@@ -658,6 +663,8 @@ module Increase
           #   #     whether it was used for bill payments or an automatic fuel dispenser.
           #   #   @option data [String] :real_time_decision_id The identifier of the Real-Time Decision sent to approve or decline this
           #   #     transaction.
+          #   #   @option data [String] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card
+          #   #     is transacting with.
           #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
           #   #     `card_authorization`.
           #   #   @option data [Object] :verification Fields related to verification of cardholder-provided values.
@@ -873,6 +880,11 @@ module Increase
           #   Why the transaction was declined.
           #   @return [Symbol, Increase::Models::CardPayment::Element::CardDecline::Reason]
           required :reason, enum: -> { Increase::Models::CardPayment::Element::CardDecline::Reason }
+
+          # @!attribute [rw] terminal_id
+          #   The terminal identifier (commonly abbreviated as TID) of the terminal the card is transacting with.
+          #   @return [String]
+          required :terminal_id, String
 
           # @!attribute [rw] verification
           #   Fields related to verification of cardholder-provided values.
@@ -1326,6 +1338,8 @@ module Increase
           #   #   @option data [String] :real_time_decision_id The identifier of the Real-Time Decision sent to approve or decline this
           #   #     transaction.
           #   #   @option data [String] :reason Why the transaction was declined.
+          #   #   @option data [String] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card
+          #   #     is transacting with.
           #   #   @option data [Object] :verification Fields related to verification of cardholder-provided values.
           #   def initialize(data = {}) = super
         end
@@ -2679,6 +2693,11 @@ module Increase
           required :reversal_reason,
                    enum: -> { Increase::Models::CardPayment::Element::CardReversal::ReversalReason }
 
+          # @!attribute [rw] terminal_id
+          #   The terminal identifier (commonly abbreviated as TID) of the terminal the card is transacting with.
+          #   @return [String]
+          required :terminal_id, String
+
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_reversal`.
           #   @return [Symbol, Increase::Models::CardPayment::Element::CardReversal::Type]
@@ -2790,6 +2809,8 @@ module Increase
           #   #   @option data [Integer] :reversal_amount The amount of this reversal in the minor unit of the transaction's currency. For
           #   #     dollars, for example, this is cents.
           #   #   @option data [String] :reversal_reason Why this reversal was initiated.
+          #   #   @option data [String] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card
+          #   #     is transacting with.
           #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
           #   #     `card_reversal`.
           #   #   @option data [Integer] :updated_authorization_amount The amount left pending on the Card Authorization in the minor unit of the
@@ -3880,6 +3901,11 @@ module Increase
           #   @return [String]
           required :real_time_decision_id, String
 
+          # @!attribute [rw] terminal_id
+          #   The terminal identifier (commonly abbreviated as TID) of the terminal the card is transacting with.
+          #   @return [String]
+          required :terminal_id, String
+
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_validation`.
           #   @return [Symbol, Increase::Models::CardPayment::Element::CardValidation::Type]
@@ -4256,6 +4282,8 @@ module Increase
           #   #     that was used.
           #   #   @option data [String] :real_time_decision_id The identifier of the Real-Time Decision sent to approve or decline this
           #   #     transaction.
+          #   #   @option data [String] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card
+          #   #     is transacting with.
           #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
           #   #     `card_validation`.
           #   #   @option data [Object] :verification Fields related to verification of cardholder-provided values.

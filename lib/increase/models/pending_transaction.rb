@@ -358,6 +358,11 @@ module Increase
           #   @return [String]
           required :real_time_decision_id, String
 
+          # @!attribute [rw] terminal_id
+          #   The terminal identifier (commonly abbreviated as TID) of the terminal the card is transacting with.
+          #   @return [String]
+          required :terminal_id, String
+
           # @!attribute [rw] type
           #   A constant representing the object's type. For this resource it will always be `card_authorization`.
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Type]
@@ -775,6 +780,8 @@ module Increase
           #   #     whether it was used for bill payments or an automatic fuel dispenser.
           #   #   @option data [String] :real_time_decision_id The identifier of the Real-Time Decision sent to approve or decline this
           #   #     transaction.
+          #   #   @option data [String] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card
+          #   #     is transacting with.
           #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
           #   #     `card_authorization`.
           #   #   @option data [Object] :verification Fields related to verification of cardholder-provided values.
