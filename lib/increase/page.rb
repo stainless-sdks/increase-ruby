@@ -10,33 +10,18 @@ module Increase
 
     # @!visibility private
     #
-    # @return [Increase::Client]
-    attr_accessor :client
-
-    # @!visibility private
-    #
-    # @return [Hash{Symbol => Object}]
-    attr_accessor :req
-
-    # @!visibility private
-    #
-    # @return [Hash{Symbol => Object}]
-    attr_accessor :opts
-
-    # @!visibility private
-    #
     # @param model [Object]
     # @param raw_data [Hash{Symbol => Object}]
     # @param response [Net::HTTPResponse]
     # @param client [Increase::Client]
     # @param req [Hash{Symbol => Object}]
     # @param opts [Hash{Symbol => Object}]
-    def initialize(model, raw_data, _response, client, req, opts)
+    def initialize(client:, model:, req:, opts:, response:, raw_data:)
       self.data = (raw_data[:data] || []).map { |e| model.convert(e) }
       self.next_cursor = raw_data[:next_cursor]
-      self.client = client
-      self.req = req
-      self.opts = opts
+      @client = client
+      @req = req
+      @opts = opts
     end
 
     # @return [Boolean]
@@ -50,7 +35,9 @@ module Increase
       unless next_page?
         raise "No more pages available; please check #next_page? before calling #next_page"
       end
-      client.request(Increase::Util.deep_merge(req, {query: {cursor: next_cursor}}), opts)
+
+      req = Increase::Util.deep_merge(@req, {query: {cursor: next_cursor}})
+      @client.request(req, @opts)
     end
 
     # @param blk [Proc]
@@ -70,7 +57,7 @@ module Increase
 
     # @return [String]
     def inspect
-      "#<#{selfl.class}:0x#{object_id.to_s(16)} data=#{data.inspect} next_cursor=#{next_cursor.inspect}>"
+      "#<#{self.class}:0x#{object_id.to_s(16)} data=#{data.inspect} next_cursor=#{next_cursor.inspect}>"
     end
   end
 end
