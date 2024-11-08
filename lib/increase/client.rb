@@ -273,27 +273,27 @@ module Increase
     end
 
     # @!visibility private
-    def make_status_error(message:, body:, response:)
+    private def make_status_error(message:, body:, response:)
       case response.code.to_i
-      when 500..599
+      in 500..599
         Increase::HTTP::InternalServerError.new(
           message: message,
           response: response,
           body: {detail: nil, status: 500, title: "", type: "internal_server_error"}
         )
-      when 400
+      in 400
         Increase::HTTP::BadRequestError.new(message: message, response: response, body: body)
-      when 401
+      in 401
         Increase::HTTP::AuthenticationError.new(message: message, response: response, body: body)
-      when 403
+      in 403
         Increase::HTTP::PermissionDeniedError.new(message: message, response: response, body: body)
-      when 404
+      in 404
         Increase::HTTP::NotFoundError.new(message: message, response: response, body: body)
-      when 409
+      in 409
         Increase::HTTP::ConflictError.new(message: message, response: response, body: body)
-      when 422
+      in 422
         Increase::HTTP::UnprocessableEntityError.new(message: message, response: response, body: body)
-      when 429
+      in 429
         Increase::HTTP::RateLimitError.new(message: message, response: response, body: body)
       else
         Increase::HTTP::APIStatusError.new(message: message, response: response, body: body)
