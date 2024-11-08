@@ -39,6 +39,8 @@ module Increase
         #   @option params [String, nil] :merchant_country The country the merchant resides in.
         #   @option params [String, nil] :merchant_descriptor The merchant descriptor of the merchant the card is transacting with.
         #   @option params [String, nil] :physical_card_id The identifier of the Physical Card to be authorized.
+        #   @option params [String, nil] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card
+        #     is transacting with.
         #
         # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
