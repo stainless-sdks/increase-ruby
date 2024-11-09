@@ -83,6 +83,11 @@ module Increase
       #   @return [String]
       required :front_image_file_id, String
 
+      # @!attribute [rw] payee_name_analysis
+      #   Whether the details on the check match the recipient name of the check transfer. This is an optional feature, contact sales to enable.
+      #   @return [Symbol, Increase::Models::InboundCheckDeposit::PayeeNameAnalysis]
+      required :payee_name_analysis, enum: -> { Increase::Models::InboundCheckDeposit::PayeeNameAnalysis }
+
       # @!attribute [rw] status
       #   The status of the Inbound Check Deposit.
       #   @return [Symbol, Increase::Models::InboundCheckDeposit::Status]
@@ -207,6 +212,18 @@ module Increase
         #   def initialize(data = {}) = super
       end
 
+      # Whether the details on the check match the recipient name of the check transfer. This is an optional feature, contact sales to enable.
+      class PayeeNameAnalysis < Increase::Enum
+        # The details on the check match the recipient name of the check transfer.
+        NAME_MATCHES = :name_matches
+
+        # The details on the check do not match the recipient name of the check transfer.
+        DOES_NOT_MATCH = :does_not_match
+
+        # The payee name analysis was not evaluated.
+        NOT_EVALUATED = :not_evaluated
+      end
+
       # The status of the Inbound Check Deposit.
       class Status < Increase::Enum
         # The Inbound Check Deposit is pending.
@@ -261,6 +278,8 @@ module Increase
       #   #   @option data [Object] :deposit_return If you requested a return of this deposit, this will contain details of the
       #   #     return.
       #   #   @option data [String] :front_image_file_id The ID for the File containing the image of the front of the check.
+      #   #   @option data [String] :payee_name_analysis Whether the details on the check match the recipient name of the check transfer.
+      #   #     This is an optional feature, contact sales to enable.
       #   #   @option data [String] :status The status of the Inbound Check Deposit.
       #   #   @option data [String] :transaction_id If the deposit attempt has been accepted, the identifier of the Transaction
       #   #     object created as a result of the successful deposit.
