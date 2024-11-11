@@ -48,6 +48,11 @@ module Increase
       #   @return [Symbol, Increase::Models::InboundACHTransfer::Direction]
       required :direction, enum: -> { Increase::Models::InboundACHTransfer::Direction }
 
+      # @!attribute [rw] effective_date
+      #   The effective date of the transfer. This is sent by the sending bank and is a factor in determining funds availability.
+      #   @return [Date]
+      required :effective_date, Date
+
       # @!attribute [rw] expected_settlement_schedule
       #   The settlement schedule the transfer is expected to follow.
       #   @return [Symbol, Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule]
@@ -822,6 +827,8 @@ module Increase
       #   #   @option data [String] :automatically_resolves_at The time at which the transfer will be automatically resolved.
       #   #   @option data [Object] :decline If your transfer is declined, this will contain details of the decline.
       #   #   @option data [String] :direction The direction of the transfer.
+      #   #   @option data [String] :effective_date The effective date of the transfer. This is sent by the sending bank and is a
+      #   #     factor in determining funds availability.
       #   #   @option data [String] :expected_settlement_schedule The settlement schedule the transfer is expected to follow.
       #   #   @option data [Object] :international_addenda If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
       #   #     contain fields pertaining to the International ACH Transaction.
