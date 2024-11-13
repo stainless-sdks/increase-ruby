@@ -1686,6 +1686,11 @@ module Increase
           #   @return [String]
           required :merchant_name, String
 
+          # @!attribute [rw] merchant_postal_code
+          #   The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
+          #   @return [String]
+          required :merchant_postal_code, String
+
           # @!attribute [rw] merchant_state
           #   The state the merchant resides in.
           #   @return [String]
@@ -2602,6 +2607,7 @@ module Increase
           #   #   @option data [String] :merchant_city The city the merchant resides in.
           #   #   @option data [String] :merchant_country The country the merchant resides in.
           #   #   @option data [String] :merchant_name The name of the merchant.
+          #   #   @option data [String] :merchant_postal_code The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
           #   #   @option data [String] :merchant_state The state the merchant resides in.
           #   #   @option data [Object] :network_identifiers Network-specific identifiers for this refund.
           #   #   @option data [Integer] :presentment_amount The amount in the minor unit of the transaction's presentment currency.
@@ -2873,6 +2879,11 @@ module Increase
           #   The name of the merchant.
           #   @return [String]
           required :merchant_name, String
+
+          # @!attribute [rw] merchant_postal_code
+          #   The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
+          #   @return [String]
+          required :merchant_postal_code, String
 
           # @!attribute [rw] merchant_state
           #   The state the merchant resides in.
@@ -3797,6 +3808,7 @@ module Increase
           #   #   @option data [String] :merchant_city The city the merchant resides in.
           #   #   @option data [String] :merchant_country The country the merchant resides in.
           #   #   @option data [String] :merchant_name The name of the merchant.
+          #   #   @option data [String] :merchant_postal_code The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
           #   #   @option data [String] :merchant_state The state the merchant resides in.
           #   #   @option data [Object] :network_identifiers Network-specific identifiers for this refund.
           #   #   @option data [String] :pending_transaction_id The identifier of the Pending Transaction associated with this Transaction.
