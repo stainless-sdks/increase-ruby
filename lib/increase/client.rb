@@ -5,6 +5,20 @@ module Increase
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 
+    # Default per-request timeout.
+    DEFAULT_TIMEOUT_IN_SECONDS = 60
+
+    # Default initial retry delay in seconds.
+    # Overall delay is calculated using exponential backoff + jitter.
+    DEFAULT_INITIAL_RETRY_DELAY = 0.5
+
+    # Default max retry delay in seconds.
+    DEFAULT_MAX_RETRY_DELAY = 8.0
+
+    # rubocop:disable Style/MutableConstant
+    ENVIRONMENTS = {production: "https://api.increase.com", sandbox: "https://sandbox.increase.com"}
+    # rubocop:enable Style/MutableConstant
+
     # Client option
     # @return [String]
     attr_reader :api_key
@@ -175,7 +189,7 @@ module Increase
 
     # Creates and returns a new client for interacting with the API.
     #
-    # @param environment ["production", "sandbox", nil] Specifies the environment to use for the API.
+    # @param environment [:production, :sandbox, nil] Specifies the environment to use for the API.
     #
     #   Each environment maps to a different base URL:
     #
@@ -187,33 +201,36 @@ module Increase
     def initialize(
       environment: nil,
       base_url: nil,
-      api_key: nil,
+      api_key: ENV["INCREASE_API_KEY"],
       max_retries: DEFAULT_MAX_RETRIES,
-      timeout: 60
+      timeout: DEFAULT_TIMEOUT_IN_SECONDS,
+      initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
+      max_retry_delay: DEFAULT_MAX_RETRY_DELAY,
+      idempotency_header: "Idempotency-Key"
     )
-      environments = {"production" => "https://api.increase.com", "sandbox" => "https://sandbox.increase.com"}
-      if environment && base_url
+      case [environment, base_url]
+      in [Symbol | String, String]
         raise ArgumentError, "both environment and base_url given, expected only one"
-      elsif environment
-        if !environments.key?(environment.to_s)
-          raise ArgumentError, "environment must be one of #{environments.keys}, got #{environment}"
+      in [Symbol | String, nil]
+        base_url = ENVIRONMENTS.fetch(environment.to_sym) do
+          raise ArgumentError, "environment must be one of #{ENVIRONMENTS.keys}, got #{environment}"
         end
-        base_url = environments[environment.to_s]
-      elsif !base_url
-        base_url = "https://api.increase.com"
+      else
+        base_url ||= ENVIRONMENTS.fetch(:production)
       end
 
-      idempotency_header = "Idempotency-Key"
-
-      @api_key = [api_key, ENV["INCREASE_API_KEY"]].find { |v| !v.nil? }
-      if @api_key.nil?
+      if api_key.nil?
         raise ArgumentError, "api_key is required"
       end
 
+      @api_key = api_key.to_s
+
       super(
         base_url: base_url,
-        max_retries: max_retries,
         timeout: timeout,
+        max_retries: max_retries,
+        initial_retry_delay: initial_retry_delay,
+        max_retry_delay: max_retry_delay,
         idempotency_header: idempotency_header
       )
 
