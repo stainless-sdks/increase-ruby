@@ -397,6 +397,14 @@ module Increase
           #   @return [String]
           required :real_time_decision_id, String
 
+          # @!attribute [rw] real_time_decision_reason
+          #   This is present if a specific decline reason was given in the real-time decision.
+          #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason]
+          required :real_time_decision_reason,
+                   enum: -> {
+                     Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason
+                   }
+
           # @!attribute [rw] reason
           #   Why the transaction was declined.
           #   @return [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Reason]
@@ -660,6 +668,27 @@ module Increase
             REFUND = :refund
           end
 
+          # This is present if a specific decline reason was given in the real-time decision.
+          class RealTimeDecisionReason < Increase::Enum
+            # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
+            INSUFFICIENT_FUNDS = :insufficient_funds
+
+            # This type of transaction is not allowed for this card. This transaction should not be retried.
+            TRANSACTION_NEVER_ALLOWED = :transaction_never_allowed
+
+            # The transaction amount exceeds the cardholder's approval limit. The merchant may attempt to process the transaction again.
+            EXCEEDS_APPROVAL_LIMIT = :exceeds_approval_limit
+
+            # The card has been temporarily disabled or not yet activated. The merchant may attempt to process the transaction again.
+            CARD_TEMPORARILY_DISABLED = :card_temporarily_disabled
+
+            # The transaction is suspected to be fraudulent. The merchant may attempt to process the transaction again.
+            SUSPECTED_FRAUD = :suspected_fraud
+
+            # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
+            OTHER = :other
+          end
+
           # Why the transaction was declined.
           class Reason < Increase::Enum
             # The Card was not active.
@@ -864,6 +893,8 @@ module Increase
           #   #     whether it was used for bill payments or an automatic fuel dispenser.
           #   #   @option data [String] :real_time_decision_id The identifier of the Real-Time Decision sent to approve or decline this
           #   #     transaction.
+          #   #   @option data [String] :real_time_decision_reason This is present if a specific decline reason was given in the real-time
+          #   #     decision.
           #   #   @option data [String] :reason Why the transaction was declined.
           #   #   @option data [String] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card
           #   #     is transacting with.
