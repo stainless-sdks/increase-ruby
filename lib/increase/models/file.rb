@@ -79,6 +79,9 @@ module Increase
         # An image of a check that was mailed to a recipient.
         MAILED_CHECK_IMAGE = :mailed_check_image
 
+        # An image to be printed on the bottom or voucher of a check that you've requested Increase print.
+        CHECK_VOUCHER_IMAGE = :check_voucher_image
+
         # A scanned mail item sent to Increase.
         INBOUND_MAIL_ITEM = :inbound_mail_item
 
