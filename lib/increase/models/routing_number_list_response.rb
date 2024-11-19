@@ -8,10 +8,10 @@ module Increase
       #   @return [Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers]
       required :ach_transfers, enum: -> { Increase::Models::RoutingNumberListResponse::ACHTransfers }
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   The name of the financial institution belonging to a routing number.
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] real_time_payments_transfers
       #   This routing number's support for Real-Time Payments Transfers.

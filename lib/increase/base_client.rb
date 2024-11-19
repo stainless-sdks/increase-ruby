@@ -25,8 +25,7 @@ module Increase
       headers: {},
       idempotency_header: nil
     )
-      self.requester = Increase::PooledNetRequester.new
-      base_url_parsed = URI.parse(base_url)
+      @requester = Increase::PooledNetRequester.new
       @headers = Increase::Util.normalized_headers(
         {
           "X-Stainless-Lang" => "ruby",
@@ -37,10 +36,9 @@ module Increase
         },
         headers
       )
-      @host = base_url_parsed.host
-      @scheme = base_url_parsed.scheme
-      @port = base_url_parsed.port
-      @base_path = Increase::Util.normalize_path(base_url_parsed.path)
+      parsed = Increase::Util.parse_uri(base_url)
+      @scheme, @host, @port, path = parsed.fetch_values(:scheme, :host, :port, :path)
+      @base_path = Increase::Util.normalize_path(path)
       @idempotency_header = idempotency_header&.to_s&.downcase
       @max_retries = max_retries
       @timeout = timeout

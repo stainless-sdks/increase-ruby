@@ -210,10 +210,10 @@ module Increase
         end
 
         class OAuthApplication < Increase::BaseModel
-          # @!attribute [rw] name_
+          # @!attribute [rw] name
           #   The name of the OAuth Application.
           #   @return [String]
-          required :name_, String, api_name: :name
+          required :name, String
 
           # @!parse
           #   # Create a new instance of OAuthApplication from a Hash of raw data.
@@ -353,10 +353,10 @@ module Increase
           #   @return [String]
           required :line2, String
 
-          # @!attribute [rw] name_
+          # @!attribute [rw] name
           #   The name component of the check's mailing address.
           #   @return [String]
-          required :name_, String, api_name: :name
+          required :name, String
 
           # @!attribute [rw] postal_code
           #   The postal code of the check's destination.
@@ -397,10 +397,10 @@ module Increase
           #   @return [String]
           required :line2, String
 
-          # @!attribute [rw] name_
+          # @!attribute [rw] name
           #   The name component of the check's return address.
           #   @return [String]
-          required :name_, String, api_name: :name
+          required :name, String
 
           # @!attribute [rw] postal_code
           #   The postal code of the check's destination.

@@ -38,10 +38,10 @@ module Increase
       #   @return [Increase::Models::AccountNumber::InboundChecks]
       required :inbound_checks, -> { Increase::Models::AccountNumber::InboundChecks }
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   The name you choose for the Account Number.
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN).

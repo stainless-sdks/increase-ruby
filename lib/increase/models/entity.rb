@@ -69,10 +69,10 @@ module Increase
       #   @return [Increase::Models::Entity::ThirdPartyVerification]
       required :third_party_verification, -> { Increase::Models::Entity::ThirdPartyVerification }
 
-      # @!attribute [rw] trust_
+      # @!attribute [rw] trust
       #   Details of the trust entity. Will be present if `structure` is equal to `trust`.
       #   @return [Increase::Models::Entity::Trust]
-      required :trust_, -> { Increase::Models::Entity::Trust }, api_name: :trust
+      required :trust, -> { Increase::Models::Entity::Trust }
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `entity`.
@@ -101,10 +101,10 @@ module Increase
         #   @return [String]
         required :industry_code, String
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   The legal name of the corporation.
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!attribute [rw] tax_identifier
         #   The Employer Identification Number (EIN) for the corporation.
@@ -196,10 +196,10 @@ module Increase
             required :identification,
                      -> { Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification }
 
-            # @!attribute [rw] name_
+            # @!attribute [rw] name
             #   The person's legal name.
             #   @return [String]
-            required :name_, String, api_name: :name
+            required :name, String
 
             class Address < Increase::BaseModel
               # @!attribute [rw] city
@@ -348,10 +348,10 @@ module Increase
         #   @return [Symbol, Increase::Models::Entity::GovernmentAuthority::Category]
         required :category, enum: -> { Increase::Models::Entity::GovernmentAuthority::Category }
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   The government authority's name.
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!attribute [rw] tax_identifier
         #   The Employer Identification Number (EIN) of the government authority.
@@ -408,10 +408,10 @@ module Increase
           #   @return [String]
           required :authorized_person_id, String
 
-          # @!attribute [rw] name_
+          # @!attribute [rw] name
           #   The person's legal name.
           #   @return [String]
-          required :name_, String, api_name: :name
+          required :name, String
 
           # @!parse
           #   # Create a new instance of AuthorizedPerson from a Hash of raw data.
@@ -447,10 +447,10 @@ module Increase
         #   @return [Array<Increase::Models::Entity::Joint::Individual>]
         required :individuals, Increase::ArrayOf.new(-> { Increase::Models::Entity::Joint::Individual })
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   The entity's name.
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         class Individual < Increase::BaseModel
           # @!attribute [rw] address
@@ -468,10 +468,10 @@ module Increase
           #   @return [Increase::Models::Entity::Joint::Individual::Identification]
           required :identification, -> { Increase::Models::Entity::Joint::Individual::Identification }
 
-          # @!attribute [rw] name_
+          # @!attribute [rw] name
           #   The person's legal name.
           #   @return [String]
-          required :name_, String, api_name: :name
+          required :name, String
 
           class Address < Increase::BaseModel
             # @!attribute [rw] city
@@ -589,10 +589,10 @@ module Increase
         #   @return [Increase::Models::Entity::NaturalPerson::Identification]
         required :identification, -> { Increase::Models::Entity::NaturalPerson::Identification }
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   The person's legal name.
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         class Address < Increase::BaseModel
           # @!attribute [rw] city
@@ -770,10 +770,10 @@ module Increase
         #   @return [Increase::Models::Entity::Trust::Grantor]
         required :grantor, -> { Increase::Models::Entity::Trust::Grantor }
 
-        # @!attribute [rw] name_
+        # @!attribute [rw] name
         #   The trust's name.
         #   @return [String]
-        required :name_, String, api_name: :name
+        required :name, String
 
         # @!attribute [rw] tax_identifier
         #   The Employer Identification Number (EIN) of the trust itself.
@@ -849,10 +849,10 @@ module Increase
           #   @return [Increase::Models::Entity::Trust::Grantor::Identification]
           required :identification, -> { Increase::Models::Entity::Trust::Grantor::Identification }
 
-          # @!attribute [rw] name_
+          # @!attribute [rw] name
           #   The person's legal name.
           #   @return [String]
-          required :name_, String, api_name: :name
+          required :name, String
 
           class Address < Increase::BaseModel
             # @!attribute [rw] city
@@ -975,10 +975,10 @@ module Increase
                        Increase::Models::Entity::Trust::Trustee::Individual::Identification
                      }
 
-            # @!attribute [rw] name_
+            # @!attribute [rw] name
             #   The person's legal name.
             #   @return [String]
-            required :name_, String, api_name: :name
+            required :name, String
 
             class Address < Increase::BaseModel
               # @!attribute [rw] city
