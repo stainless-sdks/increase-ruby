@@ -33,10 +33,10 @@ module Increase
       #   @return [String]
       required :interest_rate, String
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   The name of the Program.
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] type
       #   A constant representing the object's type. For this resource it will always be `program`.

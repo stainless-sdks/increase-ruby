@@ -58,10 +58,10 @@ module Increase
       #   @return [String]
       required :interest_rate, String
 
-      # @!attribute [rw] name_
+      # @!attribute [rw] name
       #   The name you choose for the Account.
       #   @return [String]
-      required :name_, String, api_name: :name
+      required :name, String
 
       # @!attribute [rw] program_id
       #   The identifier of the Program determining the compliance and commercial terms of this Account.

@@ -17,8 +17,8 @@ module Increase
     # @param req [Hash{Symbol => Object}]
     # @param opts [Hash{Symbol => Object}]
     def initialize(client:, model:, req:, opts:, response:, raw_data:)
-      self.data = (raw_data[:data] || []).map { |e| model.convert(e) }
-      self.next_cursor = raw_data[:next_cursor]
+      @data = (raw_data[:data] || []).map { |e| model.convert(e) }
+      @next_cursor = raw_data[:next_cursor]
       @client = client
       @req = req
       @opts = opts

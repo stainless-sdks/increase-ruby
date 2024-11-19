@@ -216,10 +216,10 @@ module Increase
         end
 
         class OAuthApplication < Increase::BaseModel
-          # @!attribute [rw] name_
+          # @!attribute [rw] name
           #   The name of the OAuth Application.
           #   @return [String]
-          required :name_, String, api_name: :name
+          required :name, String
 
           # @!parse
           #   # Create a new instance of OAuthApplication from a Hash of raw data.
