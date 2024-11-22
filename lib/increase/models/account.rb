@@ -113,11 +113,11 @@ module Increase
 
       # The status of the Account.
       class Status < Increase::Enum
-        # Open Accounts that are ready to use.
-        OPEN = :open
-
         # Closed Accounts on which no new activity can occur.
         CLOSED = :closed
+
+        # Open Accounts that are ready to use.
+        OPEN = :open
       end
 
       # A constant representing the object's type. For this resource it will always be `account`.
