@@ -101,7 +101,7 @@ module Increase
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PhysicalCardProfile]
-      def clone(physical_card_profile_id, params = {}, opts = {})
+      def clone_(physical_card_profile_id, params = {}, opts = {})
         req = {
           method: :post,
           path: "/physical_card_profiles/#{physical_card_profile_id}/clone",
