@@ -21,8 +21,8 @@ module Increase
         req = {
           method: :post,
           path: "/intrafi_exclusions",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::IntrafiExclusion
         }
         @client.request(req, opts)

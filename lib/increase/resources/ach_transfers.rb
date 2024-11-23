@@ -57,8 +57,8 @@ module Increase
         req = {
           method: :post,
           path: "/ach_transfers",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::ACHTransfer
         }
         @client.request(req, opts)

@@ -43,8 +43,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/inbound_ach_transfers",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::InboundACHTransfer
           }
           @client.request(req, opts)

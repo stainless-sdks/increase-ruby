@@ -28,8 +28,8 @@ module Increase
         req = {
           method: :post,
           path: "/digital_card_profiles",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::DigitalCardProfile
         }
         @client.request(req, opts)
@@ -113,8 +113,8 @@ module Increase
         req = {
           method: :post,
           path: "/digital_card_profiles/#{digital_card_profile_id}/clone",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::DigitalCardProfile
         }
         @client.request(req, opts)

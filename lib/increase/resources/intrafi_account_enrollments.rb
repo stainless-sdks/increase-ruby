@@ -21,8 +21,8 @@ module Increase
         req = {
           method: :post,
           path: "/intrafi_account_enrollments",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::IntrafiAccountEnrollment
         }
         @client.request(req, opts)

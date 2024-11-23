@@ -30,8 +30,8 @@ module Increase
         req = {
           method: :post,
           path: "/proof_of_authorization_request_submissions",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::ProofOfAuthorizationRequestSubmission
         }
         @client.request(req, opts)

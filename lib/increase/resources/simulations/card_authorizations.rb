@@ -50,8 +50,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/card_authorizations",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::CardAuthorizationCreateResponse
           }
           @client.request(req, opts)

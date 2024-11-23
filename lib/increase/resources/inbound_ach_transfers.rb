@@ -64,8 +64,8 @@ module Increase
         req = {
           method: :post,
           path: "/inbound_ach_transfers/#{inbound_ach_transfer_id}/create_notification_of_change",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::InboundACHTransfer
         }
         @client.request(req, opts)
@@ -87,8 +87,8 @@ module Increase
         req = {
           method: :post,
           path: "/inbound_ach_transfers/#{inbound_ach_transfer_id}/decline",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::InboundACHTransfer
         }
         @client.request(req, opts)
@@ -110,8 +110,8 @@ module Increase
         req = {
           method: :post,
           path: "/inbound_ach_transfers/#{inbound_ach_transfer_id}/transfer_return",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::InboundACHTransfer
         }
         @client.request(req, opts)

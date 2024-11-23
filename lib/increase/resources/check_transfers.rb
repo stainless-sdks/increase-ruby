@@ -31,8 +31,8 @@ module Increase
         req = {
           method: :post,
           path: "/check_transfers",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::CheckTransfer
         }
         @client.request(req, opts)
@@ -124,8 +124,8 @@ module Increase
         req = {
           method: :post,
           path: "/check_transfers/#{check_transfer_id}/stop_payment",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::CheckTransfer
         }
         @client.request(req, opts)

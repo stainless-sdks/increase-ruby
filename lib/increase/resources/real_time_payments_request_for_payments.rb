@@ -28,8 +28,8 @@ module Increase
         req = {
           method: :post,
           path: "/real_time_payments_request_for_payments",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::RealTimePaymentsRequestForPayment
         }
         @client.request(req, opts)

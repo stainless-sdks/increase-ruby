@@ -25,8 +25,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/physical_cards/#{physical_card_id}/advance_shipment",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::PhysicalCard
           }
           @client.request(req, opts)

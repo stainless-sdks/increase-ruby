@@ -52,8 +52,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/inbound_wire_transfers",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::InboundWireTransfer
           }
           @client.request(req, opts)

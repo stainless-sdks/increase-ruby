@@ -21,8 +21,8 @@ module Increase
         req = {
           method: :post,
           path: "/entity_supplemental_documents",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::EntitySupplementalDocument
         }
         @client.request(req, opts)

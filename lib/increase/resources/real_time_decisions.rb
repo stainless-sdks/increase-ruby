@@ -46,8 +46,8 @@ module Increase
         req = {
           method: :post,
           path: "/real_time_decisions/#{real_time_decision_id}/action",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::RealTimeDecision
         }
         @client.request(req, opts)

@@ -22,8 +22,8 @@ module Increase
         req = {
           method: :post,
           path: "/lockboxes",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::Lockbox
         }
         @client.request(req, opts)
@@ -60,8 +60,8 @@ module Increase
         req = {
           method: :patch,
           path: "/lockboxes/#{lockbox_id}",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::Lockbox
         }
         @client.request(req, opts)

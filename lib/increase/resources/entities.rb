@@ -36,8 +36,8 @@ module Increase
         req = {
           method: :post,
           path: "/entities",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::Entity
         }
         @client.request(req, opts)
@@ -117,8 +117,8 @@ module Increase
         req = {
           method: :post,
           path: "/entities/#{entity_id}/archive_beneficial_owner",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::Entity
         }
         @client.request(req, opts)
@@ -141,8 +141,8 @@ module Increase
         req = {
           method: :post,
           path: "/entities/#{entity_id}/confirm",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::Entity
         }
         @client.request(req, opts)
@@ -163,8 +163,8 @@ module Increase
         req = {
           method: :post,
           path: "/entities/#{entity_id}/create_beneficial_owner",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::Entity
         }
         @client.request(req, opts)
@@ -185,8 +185,8 @@ module Increase
         req = {
           method: :post,
           path: "/entities/#{entity_id}/update_address",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::Entity
         }
         @client.request(req, opts)
@@ -210,8 +210,8 @@ module Increase
         req = {
           method: :post,
           path: "/entities/#{entity_id}/update_beneficial_owner_address",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::Entity
         }
         @client.request(req, opts)
@@ -235,8 +235,8 @@ module Increase
         req = {
           method: :post,
           path: "/entities/#{entity_id}/update_industry_code",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::Entity
         }
         @client.request(req, opts)
