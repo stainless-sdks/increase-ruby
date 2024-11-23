@@ -47,8 +47,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/inbound_wire_drawdown_requests",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::InboundWireDrawdownRequest
           }
           @client.request(req, opts)

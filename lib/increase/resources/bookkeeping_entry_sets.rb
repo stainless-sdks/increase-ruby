@@ -23,8 +23,8 @@ module Increase
         req = {
           method: :post,
           path: "/bookkeeping_entry_sets",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::BookkeepingEntrySet
         }
         @client.request(req, opts)

@@ -26,8 +26,8 @@ module Increase
         req = {
           method: :post,
           path: "/event_subscriptions",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::EventSubscription
         }
         @client.request(req, opts)
@@ -62,8 +62,8 @@ module Increase
         req = {
           method: :patch,
           path: "/event_subscriptions/#{event_subscription_id}",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::EventSubscription
         }
         @client.request(req, opts)

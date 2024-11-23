@@ -24,8 +24,8 @@ module Increase
         req = {
           method: :post,
           path: "/check_deposits",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::CheckDeposit
         }
         @client.request(req, opts)

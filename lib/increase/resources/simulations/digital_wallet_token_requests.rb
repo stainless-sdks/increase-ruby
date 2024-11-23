@@ -22,8 +22,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/digital_wallet_token_requests",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::DigitalWalletTokenRequestCreateResponse
           }
           @client.request(req, opts)

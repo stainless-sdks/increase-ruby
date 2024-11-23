@@ -21,8 +21,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/documents",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::Document
           }
           @client.request(req, opts)

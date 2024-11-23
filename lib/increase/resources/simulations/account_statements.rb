@@ -22,8 +22,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/account_statements",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::AccountStatement
           }
           @client.request(req, opts)

@@ -30,8 +30,8 @@ module Increase
         req = {
           method: :post,
           path: "/exports",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::Export
         }
         @client.request(req, opts)

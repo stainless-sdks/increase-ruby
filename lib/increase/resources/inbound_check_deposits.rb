@@ -77,8 +77,8 @@ module Increase
         req = {
           method: :post,
           path: "/inbound_check_deposits/#{inbound_check_deposit_id}/return",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::InboundCheckDeposit
         }
         @client.request(req, opts)

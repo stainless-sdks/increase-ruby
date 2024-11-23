@@ -23,8 +23,8 @@ module Increase
         req = {
           method: :post,
           path: "/physical_card_profiles",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::PhysicalCardProfile
         }
         @client.request(req, opts)
@@ -105,8 +105,8 @@ module Increase
         req = {
           method: :post,
           path: "/physical_card_profiles/#{physical_card_profile_id}/clone",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::PhysicalCardProfile
         }
         @client.request(req, opts)

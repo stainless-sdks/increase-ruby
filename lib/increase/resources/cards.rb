@@ -29,8 +29,8 @@ module Increase
         req = {
           method: :post,
           path: "/cards",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::Card
         }
         @client.request(req, opts)
@@ -72,8 +72,8 @@ module Increase
         req = {
           method: :patch,
           path: "/cards/#{card_id}",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::Card
         }
         @client.request(req, opts)

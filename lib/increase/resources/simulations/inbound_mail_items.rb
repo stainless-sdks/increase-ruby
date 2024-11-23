@@ -25,8 +25,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/inbound_mail_items",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::InboundMailItem
           }
           @client.request(req, opts)

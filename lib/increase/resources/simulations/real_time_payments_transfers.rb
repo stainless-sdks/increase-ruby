@@ -26,8 +26,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/real_time_payments_transfers/#{real_time_payments_transfer_id}/complete",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::RealTimePaymentsTransfer
           }
           @client.request(req, opts)

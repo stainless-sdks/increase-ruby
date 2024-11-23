@@ -35,8 +35,8 @@ module Increase
         req = {
           method: :post,
           path: "/ach_prenotifications",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::ACHPrenotification
         }
         @client.request(req, opts)

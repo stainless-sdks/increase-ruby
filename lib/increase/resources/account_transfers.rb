@@ -25,8 +25,8 @@ module Increase
         req = {
           method: :post,
           path: "/account_transfers",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::AccountTransfer
         }
         @client.request(req, opts)

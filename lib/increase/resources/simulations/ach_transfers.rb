@@ -46,8 +46,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/ach_transfers/#{ach_transfer_id}/create_notification_of_change",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::ACHTransfer
           }
           @client.request(req, opts)
@@ -70,8 +70,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/ach_transfers/#{ach_transfer_id}/return",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::ACHTransfer
           }
           @client.request(req, opts)

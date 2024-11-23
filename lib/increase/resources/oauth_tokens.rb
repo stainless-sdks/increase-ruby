@@ -30,8 +30,8 @@ module Increase
         req = {
           method: :post,
           path: "/oauth/tokens",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: Increase::Models::OAuthToken
         }
         @client.request(req, opts)

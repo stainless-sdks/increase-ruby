@@ -27,8 +27,8 @@ module Increase
           req = {
             method: :post,
             path: "/simulations/card_increments",
-            body: params,
             headers: {"Content-Type" => "application/json"},
+            body: params,
             model: Increase::Models::CardPayment
           }
           @client.request(req, opts)
