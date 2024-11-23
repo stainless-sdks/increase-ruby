@@ -39,8 +39,8 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Minitest::Test
     assert_kind_of(Increase::Models::PhysicalCardProfile, response)
   end
 
-  def test_clone
-    response = @increase.physical_card_profiles.clone("physical_card_profile_id")
+  def test_clone_
+    response = @increase.physical_card_profiles.clone_("physical_card_profile_id")
     assert_kind_of(Increase::Models::PhysicalCardProfile, response)
   end
 end
