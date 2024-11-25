@@ -72,7 +72,7 @@ module Increase
       #     [idempotency](https://increase.com/documentation/idempotency-keys).
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
-      #   @option params [Symbol, Status, nil] :status Filter Wire Drawdown Requests for those with the specified status.
+      #   @option params [Symbol, Increase::Models::WireDrawdownRequestListParams::Status, nil] :status Filter Wire Drawdown Requests for those with the specified status.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

@@ -67,7 +67,7 @@ module Increase
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter Wire Transfers to those belonging to the specified Account.
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::WireTransferListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :external_account_id Filter Wire Transfers to those made to the specified External Account.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for

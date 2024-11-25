@@ -50,7 +50,7 @@ module Increase
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter Check Deposits to those belonging to the specified Account.
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::CheckDepositListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
       #     that object. This value is unique across Increase and is used to ensure that a

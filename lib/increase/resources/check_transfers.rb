@@ -15,12 +15,12 @@ module Increase
       #   @option params [Integer] :amount The transfer amount in USD cents.
       #   @option params [String] :source_account_number_id The identifier of the Account Number from which to send the transfer and print
       #     on the check.
-      #   @option params [Symbol, FulfillmentMethod, nil] :fulfillment_method Whether Increase will print and mail the check or if you will do it yourself.
-      #   @option params [PhysicalCheck, nil] :physical_check Details relating to the physical check that Increase will print and mail. This
+      #   @option params [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod, nil] :fulfillment_method Whether Increase will print and mail the check or if you will do it yourself.
+      #   @option params [Increase::Models::CheckTransferCreateParams::PhysicalCheck, nil] :physical_check Details relating to the physical check that Increase will print and mail. This
       #     is required if `fulfillment_method` is equal to `physical_check`. It must not be
       #     included if any other `fulfillment_method` is provided.
       #   @option params [Boolean, nil] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
-      #   @option params [ThirdParty, nil] :third_party Details relating to the custom fulfillment you will perform. This is required if
+      #   @option params [Increase::Models::CheckTransferCreateParams::ThirdParty, nil] :third_party Details relating to the custom fulfillment you will perform. This is required if
       #     `fulfillment_method` is equal to `third_party`. It must not be included if any
       #     other `fulfillment_method` is provided.
       #
@@ -57,7 +57,7 @@ module Increase
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter Check Transfers to those that originated from the specified Account.
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::CheckTransferListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
       #     that object. This value is unique across Increase and is used to ensure that a
@@ -115,7 +115,7 @@ module Increase
       # @param check_transfer_id [String] The identifier of the Check Transfer.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Symbol, Reason, nil] :reason The reason why this transfer should be stopped.
+      #   @option params [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason, nil] :reason The reason why this transfer should be stopped.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

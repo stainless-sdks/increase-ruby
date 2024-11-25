@@ -11,7 +11,7 @@ module Increase
       # Create an OAuth Token
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Symbol, GrantType] :grant_type The credential you request in exchange for the code. In Production, this is
+      #   @option params [Symbol, Increase::Models::OAuthTokenCreateParams::GrantType] :grant_type The credential you request in exchange for the code. In Production, this is
       #     always `authorization_code`. In Sandbox, you can pass either enum value.
       #   @option params [String, nil] :client_id The public identifier for your application.
       #   @option params [String, nil] :client_secret The secret that confirms you own the application. This is redundent given that

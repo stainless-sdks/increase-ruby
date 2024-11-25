@@ -13,7 +13,7 @@ module Increase
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :name The name you choose for the account.
       #   @option params [String, nil] :account_id The entity, if `compliance_category` is `commingled_cash`.
-      #   @option params [Symbol, ComplianceCategory, nil] :compliance_category The account compliance category.
+      #   @option params [Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory, nil] :compliance_category The account compliance category.
       #   @option params [String, nil] :entity_id The entity, if `compliance_category` is `customer_balance`.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.

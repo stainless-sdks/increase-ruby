@@ -71,7 +71,7 @@ module Increase
       # List Accounts
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::AccountListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :entity_id Filter Accounts for those belonging to the specified Entity.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
@@ -82,7 +82,7 @@ module Increase
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #   @option params [String, nil] :program_id Filter Accounts for those in a specific Program.
-      #   @option params [Symbol, Status, nil] :status Filter Accounts for those with the specified status.
+      #   @option params [Symbol, Increase::Models::AccountListParams::Status, nil] :status Filter Accounts for those with the specified status.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

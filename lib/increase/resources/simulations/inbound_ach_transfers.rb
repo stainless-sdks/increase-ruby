@@ -34,7 +34,7 @@ module Increase
         #   @option params [String, nil] :receiver_name The name of the receiver of the transfer.
         #   @option params [Time, nil] :resolve_at The time at which the transfer should be resolved. If not provided will resolve
         #     immediately.
-        #   @option params [Symbol, StandardEntryClassCode, nil] :standard_entry_class_code The standard entry class code for the transfer.
+        #   @option params [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode, nil] :standard_entry_class_code The standard entry class code for the transfer.
         #
         # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #

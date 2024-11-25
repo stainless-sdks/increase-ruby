@@ -30,7 +30,7 @@ module Increase
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
-      #   @option params [StatementPeriodStart, nil] :statement_period_start
+      #   @option params [Increase::Models::AccountStatementListParams::StatementPeriodStart, nil] :statement_period_start
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

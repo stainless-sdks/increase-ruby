@@ -55,7 +55,7 @@ module Increase
       #     [idempotency](https://increase.com/documentation/idempotency-keys).
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
-      #   @option params [Status, nil] :status
+      #   @option params [Increase::Models::PhysicalCardProfileListParams::Status, nil] :status
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -95,7 +95,7 @@ module Increase
       #   @option params [String, nil] :contact_phone A phone number the user can contact to receive support for their card.
       #   @option params [String, nil] :description A description you can use to identify the Card Profile.
       #   @option params [String, nil] :front_image_file_id The identifier of the File containing the physical card's front image.
-      #   @option params [FrontText, nil] :front_text Text printed on the front of the card. Reach out to
+      #   @option params [Increase::Models::PhysicalCardProfileCloneParams::FrontText, nil] :front_text Text printed on the front of the card. Reach out to
       #     [support@increase.com](mailto:support@increase.com) for more information.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.

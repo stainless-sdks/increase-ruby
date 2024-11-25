@@ -12,9 +12,9 @@ module Increase
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :account_id The Account the card should belong to.
-      #   @option params [BillingAddress, nil] :billing_address The card's billing address.
+      #   @option params [Increase::Models::CardCreateParams::BillingAddress, nil] :billing_address The card's billing address.
       #   @option params [String, nil] :description The description you choose to give the card.
-      #   @option params [DigitalWallet, nil] :digital_wallet The contact information used in the two-factor steps for digital wallet card
+      #   @option params [Increase::Models::CardCreateParams::DigitalWallet, nil] :digital_wallet The contact information used in the two-factor steps for digital wallet card
       #     creation. To add the card to a digital wallet, you may supply an email or phone
       #     number with this request. Otherwise, subscribe and then action a Real Time
       #     Decision with the category `digital_wallet_token_requested` or
@@ -56,14 +56,14 @@ module Increase
       # @param card_id [String] The card identifier.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [BillingAddress, nil] :billing_address The card's updated billing address.
+      #   @option params [Increase::Models::CardUpdateParams::BillingAddress, nil] :billing_address The card's updated billing address.
       #   @option params [String, nil] :description The description you choose to give the card.
-      #   @option params [DigitalWallet, nil] :digital_wallet The contact information used in the two-factor steps for digital wallet card
+      #   @option params [Increase::Models::CardUpdateParams::DigitalWallet, nil] :digital_wallet The contact information used in the two-factor steps for digital wallet card
       #     creation. At least one field must be present to complete the digital wallet
       #     steps.
       #   @option params [String, nil] :entity_id The Entity the card belongs to. You only need to supply this in rare situations
       #     when the card is not for the Account holder.
-      #   @option params [Symbol, Status, nil] :status The status to update the Card with.
+      #   @option params [Symbol, Increase::Models::CardUpdateParams::Status, nil] :status The status to update the Card with.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -83,7 +83,7 @@ module Increase
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter Cards to ones belonging to the specified Account.
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::CardListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
       #     that object. This value is unique across Increase and is used to ensure that a

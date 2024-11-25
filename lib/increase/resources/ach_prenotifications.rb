@@ -20,13 +20,13 @@ module Increase
       #   @option params [String, nil] :company_discretionary_data The data you choose to associate with the transfer.
       #   @option params [String, nil] :company_entry_description The description of the transfer you wish to be shown to the recipient.
       #   @option params [String, nil] :company_name The name by which the recipient knows you.
-      #   @option params [Symbol, CreditDebitIndicator, nil] :credit_debit_indicator Whether the Prenotification is for a future debit or credit.
+      #   @option params [Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator, nil] :credit_debit_indicator Whether the Prenotification is for a future debit or credit.
       #   @option params [Date, nil] :effective_date The transfer effective date in
       #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       #   @option params [String, nil] :individual_id Your identifier for the transfer recipient.
       #   @option params [String, nil] :individual_name The name of the transfer recipient. This value is information and not verified
       #     by the recipient's bank.
-      #   @option params [Symbol, StandardEntryClassCode, nil] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+      #   @option params [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode, nil] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -60,7 +60,7 @@ module Increase
       # List ACH Prenotifications
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::ACHPrenotificationListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
       #     that object. This value is unique across Increase and is used to ensure that a

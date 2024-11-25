@@ -22,10 +22,10 @@ module Increase
         #   @option params [String, nil] :authenticated_card_payment_id The identifier of a Card Payment with a `card_authentication` if you want to
         #     simulate an authenticated authorization.
         #   @option params [String, nil] :card_id The identifier of the Card to be authorized.
-        #   @option params [Symbol, DeclineReason, nil] :decline_reason Forces a card decline with a specific reason. No real time decision will be
+        #   @option params [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason, nil] :decline_reason Forces a card decline with a specific reason. No real time decision will be
         #     sent.
         #   @option params [String, nil] :digital_wallet_token_id The identifier of the Digital Wallet Token to be authorized.
-        #   @option params [Symbol, Direction, nil] :direction The direction describes the direction the funds will move, either from the
+        #   @option params [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction, nil] :direction The direction describes the direction the funds will move, either from the
         #     cardholder to the merchant or from the merchant to the cardholder.
         #   @option params [String, nil] :event_subscription_id The identifier of the Event Subscription to use. If provided, will override the
         #     default real time event subscription. Because you can only create one real time
@@ -45,14 +45,14 @@ module Increase
         #
         # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Increase::Models::CardAuthorizationCreateResponse]
+        # @return [Increase::Models::Simulations::CardAuthorizationCreateResponse]
         def create(params = {}, opts = {})
           req = {
             method: :post,
             path: "/simulations/card_authorizations",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Increase::Models::CardAuthorizationCreateResponse
+            model: Increase::Models::Simulations::CardAuthorizationCreateResponse
           }
           @client.request(req, opts)
         end

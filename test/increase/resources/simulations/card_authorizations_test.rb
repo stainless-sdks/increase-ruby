@@ -14,6 +14,6 @@ class Increase::Test::Resources::Simulations::CardAuthorizationsTest < Minitest:
 
   def test_create_required_params
     response = @increase.simulations.card_authorizations.create({amount: 1000})
-    assert_kind_of(Increase::Models::CardAuthorizationCreateResponse, response)
+    assert_kind_of(Increase::Models::Simulations::CardAuthorizationCreateResponse, response)
   end
 end
