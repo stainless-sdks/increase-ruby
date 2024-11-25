@@ -15,8 +15,8 @@ module Increase
       #   @option params [String] :description The name you choose for the Account.
       #   @option params [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #     destination account.
-      #   @option params [Symbol, AccountHolder, nil] :account_holder The type of entity that owns the External Account.
-      #   @option params [Symbol, Funding, nil] :funding The type of the destination account. Defaults to `checking`.
+      #   @option params [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder, nil] :account_holder The type of entity that owns the External Account.
+      #   @option params [Symbol, Increase::Models::ExternalAccountCreateParams::Funding, nil] :funding The type of the destination account. Defaults to `checking`.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -52,10 +52,10 @@ module Increase
       # @param external_account_id [String] The external account identifier.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Symbol, AccountHolder, nil] :account_holder The type of entity that owns the External Account.
+      #   @option params [Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder, nil] :account_holder The type of entity that owns the External Account.
       #   @option params [String, nil] :description The description you choose to give the external account.
-      #   @option params [Symbol, Funding, nil] :funding The funding type of the External Account.
-      #   @option params [Symbol, Status, nil] :status The status of the External Account.
+      #   @option params [Symbol, Increase::Models::ExternalAccountUpdateParams::Funding, nil] :funding The funding type of the External Account.
+      #   @option params [Symbol, Increase::Models::ExternalAccountUpdateParams::Status, nil] :status The status of the External Account.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -82,7 +82,7 @@ module Increase
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #   @option params [String, nil] :routing_number Filter External Accounts to those with the specified Routing Number.
-      #   @option params [Status, nil] :status
+      #   @option params [Increase::Models::ExternalAccountListParams::Status, nil] :status
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

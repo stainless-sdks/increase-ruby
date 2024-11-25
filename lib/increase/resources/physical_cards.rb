@@ -12,8 +12,8 @@ module Increase
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :card_id The underlying card representing this physical card.
-      #   @option params [Cardholder] :cardholder Details about the cardholder, as it will appear on the physical card.
-      #   @option params [Shipment] :shipment The details used to ship this physical card.
+      #   @option params [Increase::Models::PhysicalCardCreateParams::Cardholder] :cardholder Details about the cardholder, as it will appear on the physical card.
+      #   @option params [Increase::Models::PhysicalCardCreateParams::Shipment] :shipment The details used to ship this physical card.
       #   @option params [String, nil] :physical_card_profile_id The physical card profile to use for this physical card. The latest default
       #     physical card profile will be used if not provided.
       #
@@ -51,7 +51,7 @@ module Increase
       # @param physical_card_id [String] The Physical Card identifier.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Symbol, Status] :status The status to update the Physical Card to.
+      #   @option params [Symbol, Increase::Models::PhysicalCardUpdateParams::Status] :status The status to update the Physical Card to.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -71,7 +71,7 @@ module Increase
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :card_id Filter Physical Cards to ones belonging to the specified Card.
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::PhysicalCardListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
       #     that object. This value is unique across Increase and is used to ensure that a

@@ -17,14 +17,14 @@ module Increase
         #
         # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
-        # @return [Increase::Models::DigitalWalletTokenRequestCreateResponse]
+        # @return [Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse]
         def create(params = {}, opts = {})
           req = {
             method: :post,
             path: "/simulations/digital_wallet_token_requests",
             headers: {"Content-Type" => "application/json"},
             body: params,
-            model: Increase::Models::DigitalWalletTokenRequestCreateResponse
+            model: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse
           }
           @client.request(req, opts)
         end

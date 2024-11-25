@@ -14,6 +14,6 @@ class Increase::Test::Resources::Simulations::InboundFundsHoldsTest < Minitest::
 
   def test_release
     response = @increase.simulations.inbound_funds_holds.release("inbound_funds_hold_id")
-    assert_kind_of(Increase::Models::InboundFundsHoldReleaseResponse, response)
+    assert_kind_of(Increase::Models::Simulations::InboundFundsHoldReleaseResponse, response)
   end
 end

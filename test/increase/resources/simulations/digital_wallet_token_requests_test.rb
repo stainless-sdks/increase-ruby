@@ -14,6 +14,6 @@ class Increase::Test::Resources::Simulations::DigitalWalletTokenRequestsTest < M
 
   def test_create_required_params
     response = @increase.simulations.digital_wallet_token_requests.create({card_id: "card_oubs0hwk5rn6knuecxg2"})
-    assert_kind_of(Increase::Models::DigitalWalletTokenRequestCreateResponse, response)
+    assert_kind_of(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse, response)
   end
 end

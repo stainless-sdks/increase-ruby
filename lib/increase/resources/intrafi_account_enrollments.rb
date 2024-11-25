@@ -54,7 +54,7 @@ module Increase
       #     [idempotency](https://increase.com/documentation/idempotency-keys).
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
-      #   @option params [Status, nil] :status
+      #   @option params [Increase::Models::IntrafiAccountEnrollmentListParams::Status, nil] :status
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

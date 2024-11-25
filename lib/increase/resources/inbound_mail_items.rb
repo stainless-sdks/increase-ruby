@@ -26,7 +26,7 @@ module Increase
       # List Inbound Mail Items
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::InboundMailItemListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.

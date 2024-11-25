@@ -19,7 +19,7 @@ module Increase
       #   @option params [String, nil] :contact_email An email address the user can contact to receive support for their card.
       #   @option params [String, nil] :contact_phone A phone number the user can contact to receive support for their card.
       #   @option params [String, nil] :contact_website A website the user can visit to view and receive support for their card.
-      #   @option params [TextColor, nil] :text_color The Card's text color, specified as an RGB triple. The default is white.
+      #   @option params [Increase::Models::DigitalCardProfileCreateParams::TextColor, nil] :text_color The Card's text color, specified as an RGB triple. The default is white.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -60,7 +60,7 @@ module Increase
       #     [idempotency](https://increase.com/documentation/idempotency-keys).
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
-      #   @option params [Status, nil] :status
+      #   @option params [Increase::Models::DigitalCardProfileListParams::Status, nil] :status
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -104,7 +104,7 @@ module Increase
       #   @option params [String, nil] :contact_website A website the user can visit to view and receive support for their card.
       #   @option params [String, nil] :description A description you can use to identify the Card Profile.
       #   @option params [String, nil] :issuer_name A user-facing description for whoever is issuing the card.
-      #   @option params [TextColor, nil] :text_color The Card's text color, specified as an RGB triple. The default is white.
+      #   @option params [Increase::Models::DigitalCardProfileCloneParams::TextColor, nil] :text_color The Card's text color, specified as an RGB triple. The default is white.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

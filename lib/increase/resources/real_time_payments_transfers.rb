@@ -63,7 +63,7 @@ module Increase
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter Real-Time Payments Transfers to those belonging to the specified Account.
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::RealTimePaymentsTransferListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :external_account_id Filter Real-Time Payments Transfers to those made to the specified External
       #     Account.

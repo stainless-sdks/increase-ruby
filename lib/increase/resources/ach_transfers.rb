@@ -22,7 +22,7 @@ module Increase
       #     help the customer recognize the transfer. You are highly encouraged to pass
       #     `individual_name` and `company_name` instead of relying on this fallback.
       #   @option params [String, nil] :account_number The account number for the destination account.
-      #   @option params [Addenda, nil] :addenda Additional information that will be sent to the recipient. This is included in
+      #   @option params [Increase::Models::ACHTransferCreateParams::Addenda, nil] :addenda Additional information that will be sent to the recipient. This is included in
       #     the transfer data sent to the receiving bank.
       #   @option params [String, nil] :company_descriptive_date The description of the date of the transfer, usually in the format `YYMMDD`.
       #     This is included in the transfer data sent to the receiving bank.
@@ -32,23 +32,23 @@ module Increase
       #     receiving bank.
       #   @option params [String, nil] :company_name The name by which the recipient knows you. This is included in the transfer data
       #     sent to the receiving bank.
-      #   @option params [Symbol, DestinationAccountHolder, nil] :destination_account_holder The type of entity that owns the account to which the ACH Transfer is being
+      #   @option params [Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder, nil] :destination_account_holder The type of entity that owns the account to which the ACH Transfer is being
       #     sent.
       #   @option params [String, nil] :external_account_id The ID of an External Account to initiate a transfer to. If this parameter is
       #     provided, `account_number`, `routing_number`, and `funding` must be absent.
-      #   @option params [Symbol, Funding, nil] :funding The type of the account to which the transfer will be sent.
+      #   @option params [Symbol, Increase::Models::ACHTransferCreateParams::Funding, nil] :funding The type of the account to which the transfer will be sent.
       #   @option params [String, nil] :individual_id Your identifier for the transfer recipient.
       #   @option params [String, nil] :individual_name The name of the transfer recipient. This value is informational and not verified
       #     by the recipient's bank.
-      #   @option params [PreferredEffectiveDate, nil] :preferred_effective_date Configuration for how the effective date of the transfer will be set. This
+      #   @option params [Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate, nil] :preferred_effective_date Configuration for how the effective date of the transfer will be set. This
       #     determines same-day vs future-dated settlement timing. If not set, defaults to a
       #     `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
       #     must be set.
       #   @option params [Boolean, nil] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
       #   @option params [String, nil] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
       #     destination account.
-      #   @option params [Symbol, StandardEntryClassCode, nil] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the transfer.
-      #   @option params [Symbol, TransactionTiming, nil] :transaction_timing The timing of the transaction.
+      #   @option params [Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode, nil] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the transfer.
+      #   @option params [Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming, nil] :transaction_timing The timing of the transaction.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -83,7 +83,7 @@ module Increase
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String, nil] :account_id Filter ACH Transfers to those that originated from the specified Account.
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::ACHTransferListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :external_account_id Filter ACH Transfers to those made to the specified External Account.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for

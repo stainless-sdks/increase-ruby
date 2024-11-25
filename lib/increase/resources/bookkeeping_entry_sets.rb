@@ -11,7 +11,7 @@ module Increase
       # Create a Bookkeeping Entry Set
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Array<Entry>] :entries The bookkeeping entries.
+      #   @option params [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>] :entries The bookkeeping entries.
       #   @option params [Time, nil] :date The date of the transaction. Optional if `transaction_id` is provided, in which
       #     case we use the `date` of that transaction. Required otherwise.
       #   @option params [String, nil] :transaction_id The identifier of the Transaction related to this entry set, if any.

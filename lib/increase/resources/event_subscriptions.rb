@@ -14,7 +14,7 @@ module Increase
       #   @option params [String] :url The URL you'd like us to send webhooks to.
       #   @option params [String, nil] :oauth_connection_id If specified, this subscription will only receive webhooks for Events associated
       #     with the specified OAuth Connection.
-      #   @option params [Symbol, SelectedEventCategory, nil] :selected_event_category If specified, this subscription will only receive webhooks for Events with the
+      #   @option params [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory, nil] :selected_event_category If specified, this subscription will only receive webhooks for Events with the
       #     specified `category`.
       #   @option params [String, nil] :shared_secret The key that will be used to sign webhooks. If no value is passed, a random
       #     string will be used as default.
@@ -53,7 +53,7 @@ module Increase
       # @param event_subscription_id [String] The identifier of the Event Subscription.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Symbol, Status, nil] :status The status to update the Event Subscription with.
+      #   @option params [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status, nil] :status The status to update the Event Subscription with.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

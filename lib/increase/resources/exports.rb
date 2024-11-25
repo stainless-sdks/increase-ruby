@@ -11,15 +11,15 @@ module Increase
       # Create an Export
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Symbol, Category] :category The type of Export to create.
-      #   @option params [AccountStatementOfx, nil] :account_statement_ofx Options for the created export. Required if `category` is equal to
+      #   @option params [Symbol, Increase::Models::ExportCreateParams::Category] :category The type of Export to create.
+      #   @option params [Increase::Models::ExportCreateParams::AccountStatementOfx, nil] :account_statement_ofx Options for the created export. Required if `category` is equal to
       #     `account_statement_ofx`.
-      #   @option params [BalanceCsv, nil] :balance_csv Options for the created export. Required if `category` is equal to
+      #   @option params [Increase::Models::ExportCreateParams::BalanceCsv, nil] :balance_csv Options for the created export. Required if `category` is equal to
       #     `balance_csv`.
-      #   @option params [BookkeepingAccountBalanceCsv, nil] :bookkeeping_account_balance_csv Options for the created export. Required if `category` is equal to
+      #   @option params [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv, nil] :bookkeeping_account_balance_csv Options for the created export. Required if `category` is equal to
       #     `bookkeeping_account_balance_csv`.
-      #   @option params [EntityCsv, nil] :entity_csv Options for the created export. Required if `category` is equal to `entity_csv`.
-      #   @option params [TransactionCsv, nil] :transaction_csv Options for the created export. Required if `category` is equal to
+      #   @option params [Increase::Models::ExportCreateParams::EntityCsv, nil] :entity_csv Options for the created export. Required if `category` is equal to `entity_csv`.
+      #   @option params [Increase::Models::ExportCreateParams::TransactionCsv, nil] :transaction_csv Options for the created export. Required if `category` is equal to
       #     `transaction_csv`.
       #   @option params [Object, nil] :vendor_csv Options for the created export. Required if `category` is equal to `vendor_csv`.
       #
@@ -55,8 +55,8 @@ module Increase
       # List Exports
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Category, nil] :category
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::ExportListParams::Category, nil] :category
+      #   @option params [Increase::Models::ExportListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
       #     that object. This value is unique across Increase and is used to ensure that a
@@ -64,7 +64,7 @@ module Increase
       #     [idempotency](https://increase.com/documentation/idempotency-keys).
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
-      #   @option params [Status, nil] :status
+      #   @option params [Increase::Models::ExportListParams::Status, nil] :status
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #

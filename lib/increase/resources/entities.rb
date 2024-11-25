@@ -11,22 +11,22 @@ module Increase
       # Create an Entity
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Symbol, Structure] :structure The type of Entity to create.
-      #   @option params [Corporation, nil] :corporation Details of the corporation entity to create. Required if `structure` is equal to
+      #   @option params [Symbol, Increase::Models::EntityCreateParams::Structure] :structure The type of Entity to create.
+      #   @option params [Increase::Models::EntityCreateParams::Corporation, nil] :corporation Details of the corporation entity to create. Required if `structure` is equal to
       #     `corporation`.
       #   @option params [String, nil] :description The description you choose to give the entity.
-      #   @option params [GovernmentAuthority, nil] :government_authority Details of the Government Authority entity to create. Required if `structure` is
+      #   @option params [Increase::Models::EntityCreateParams::GovernmentAuthority, nil] :government_authority Details of the Government Authority entity to create. Required if `structure` is
       #     equal to `Government Authority`.
-      #   @option params [Joint, nil] :joint Details of the joint entity to create. Required if `structure` is equal to
+      #   @option params [Increase::Models::EntityCreateParams::Joint, nil] :joint Details of the joint entity to create. Required if `structure` is equal to
       #     `joint`.
-      #   @option params [NaturalPerson, nil] :natural_person Details of the natural person entity to create. Required if `structure` is equal
+      #   @option params [Increase::Models::EntityCreateParams::NaturalPerson, nil] :natural_person Details of the natural person entity to create. Required if `structure` is equal
       #     to `natural_person`. Natural people entities should be submitted with
       #     `social_security_number` or `individual_taxpayer_identification_number`
       #     identification methods.
-      #   @option params [Array<SupplementalDocument>, nil] :supplemental_documents Additional documentation associated with the entity.
-      #   @option params [ThirdPartyVerification, nil] :third_party_verification A reference to data stored in a third-party verification service. Your
+      #   @option params [Array<Increase::Models::EntityCreateParams::SupplementalDocument>, nil] :supplemental_documents Additional documentation associated with the entity.
+      #   @option params [Increase::Models::EntityCreateParams::ThirdPartyVerification, nil] :third_party_verification A reference to data stored in a third-party verification service. Your
       #     integration may or may not use this field.
-      #   @option params [Trust, nil] :trust Details of the trust entity to create. Required if `structure` is equal to
+      #   @option params [Increase::Models::EntityCreateParams::Trust, nil] :trust Details of the trust entity to create. Required if `structure` is equal to
       #     `trust`.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -61,7 +61,7 @@ module Increase
       # List Entities
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::EntityListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
       #     that object. This value is unique across Increase and is used to ensure that a
@@ -69,7 +69,7 @@ module Increase
       #     [idempotency](https://increase.com/documentation/idempotency-keys).
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
-      #   @option params [Status, nil] :status
+      #   @option params [Increase::Models::EntityListParams::Status, nil] :status
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -153,7 +153,7 @@ module Increase
       # @param entity_id [String] The identifier of the Entity to associate with the new Beneficial Owner.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [BeneficialOwner] :beneficial_owner The identifying details of anyone controlling or owning 25% or more of the
+      #   @option params [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner] :beneficial_owner The identifying details of anyone controlling or owning 25% or more of the
       #     corporation.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -175,7 +175,7 @@ module Increase
       # @param entity_id [String] The identifier of the Entity whose address is being updated.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Address] :address The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+      #   @option params [Increase::Models::EntityUpdateAddressParams::Address] :address The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       #     are disallowed.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -198,7 +198,7 @@ module Increase
       #   is being updated.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Address] :address The individual's physical address. Mail receiving locations like PO Boxes and
+      #   @option params [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address] :address The individual's physical address. Mail receiving locations like PO Boxes and
       #     PMB's are disallowed.
       #   @option params [String] :beneficial_owner_id The identifying details of anyone controlling or owning 25% or more of the
       #     corporation.

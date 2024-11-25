@@ -29,7 +29,7 @@ module Increase
       #   @option params [String, nil] :account_id Filter Inbound Check Deposits to those belonging to the specified Account.
       #   @option params [String, nil] :check_transfer_id Filter Inbound Check Deposits to those belonging to the specified Check
       #     Transfer.
-      #   @option params [CreatedAt, nil] :created_at
+      #   @option params [Increase::Models::InboundCheckDepositListParams::CreatedAt, nil] :created_at
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
@@ -68,7 +68,7 @@ module Increase
       # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to return.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Symbol, Reason] :reason The reason to return the Inbound Check Deposit.
+      #   @option params [Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason] :reason The reason to return the Inbound Check Deposit.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
