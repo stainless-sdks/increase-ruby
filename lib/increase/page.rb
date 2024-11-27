@@ -55,6 +55,11 @@ module Increase
       end
     end
 
+    # @return [Enumerator]
+    def to_enum = super(:auto_paging_each)
+
+    alias_method :enum_for, :to_enum
+
     # @return [String]
     def inspect
       "#<#{self.class}:0x#{object_id.to_s(16)} data=#{data.inspect} next_cursor=#{next_cursor.inspect}>"
