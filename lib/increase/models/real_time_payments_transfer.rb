@@ -13,6 +13,11 @@ module Increase
       #   @return [String]
       required :account_id, String
 
+      # @!attribute [rw] acknowledgement
+      #   If the transfer is acknowledged by the recipient bank, this will contain supplemental details.
+      #   @return [Increase::Models::RealTimePaymentsTransfer::Acknowledgement]
+      required :acknowledgement, -> { Increase::Models::RealTimePaymentsTransfer::Acknowledgement }
+
       # @!attribute [rw] amount
       #   The transfer amount in USD cents.
       #   @return [Integer]
@@ -122,6 +127,20 @@ module Increase
       #   The name of the ultimate sender of the transfer. Set this if the funds are being sent on behalf of someone who is not the account holder at Increase.
       #   @return [String]
       required :ultimate_debtor_name, String
+
+      class Acknowledgement < Increase::BaseModel
+        # @!attribute [rw] acknowledged_at
+        #   When the transfer was acknowledged.
+        #   @return [Time]
+        required :acknowledged_at, Time
+
+        # @!parse
+        #   # Create a new instance of Acknowledgement from a Hash of raw data.
+        #   #
+        #   # @param data [Hash{Symbol => Object}] .
+        #   #   @option data [String] :acknowledged_at When the transfer was acknowledged.
+        #   def initialize(data = {}) = super
+      end
 
       class Approval < Increase::BaseModel
         # @!attribute [rw] approved_at
@@ -430,6 +449,8 @@ module Increase
       #   # @param data [Hash{Symbol => Object}] .
       #   #   @option data [String] :id The Real-Time Payments Transfer's identifier.
       #   #   @option data [String] :account_id The Account from which the transfer was sent.
+      #   #   @option data [Object] :acknowledgement If the transfer is acknowledged by the recipient bank, this will contain
+      #   #     supplemental details.
       #   #   @option data [Integer] :amount The transfer amount in USD cents.
       #   #   @option data [Object] :approval If your account requires approvals for transfers and the transfer was approved,
       #   #     this will contain details of the approval.
