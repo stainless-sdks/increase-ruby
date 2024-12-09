@@ -26,6 +26,7 @@ module Increase
       # List Bookkeeping Entries
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [String, nil] :account_id The identifier for the Bookkeeping Account to filter by.
       #   @option params [String, nil] :cursor Return the page of entries after this one.
       #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
