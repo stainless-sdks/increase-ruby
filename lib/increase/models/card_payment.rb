@@ -1680,6 +1680,11 @@ module Increase
           #   @return [String]
           required :card_payment_id, String
 
+          # @!attribute [rw] cashback
+          #   Cashback debited for this transaction, if eligible. Cashback is paid out in aggregate, monthly.
+          #   @return [Increase::Models::CardPayment::Element::CardRefund::Cashback]
+          required :cashback, -> { Increase::Models::CardPayment::Element::CardRefund::Cashback }
+
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::Currency]
@@ -1758,6 +1763,52 @@ module Increase
           #   A constant representing the object's type. For this resource it will always be `card_refund`.
           #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::Type]
           required :type, enum: -> { Increase::Models::CardPayment::Element::CardRefund::Type }
+
+          class Cashback < Increase::BaseModel
+            # @!attribute [rw] amount
+            #   The cashback amount given as a string containing a decimal number. The amount is a positive number if it will be credited to you (e.g., settlements) and a negative number if it will be debited (e.g., refunds).
+            #   @return [String]
+            required :amount, String
+
+            # @!attribute [rw] currency
+            #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            #   @return [Symbol, Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency]
+            required :currency,
+                     enum: -> {
+                       Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency
+                     }
+
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            class Currency < Increase::Enum
+              # Canadian Dollar (CAD)
+              CAD = :CAD
+
+              # Swiss Franc (CHF)
+              CHF = :CHF
+
+              # Euro (EUR)
+              EUR = :EUR
+
+              # British Pound (GBP)
+              GBP = :GBP
+
+              # Japanese Yen (JPY)
+              JPY = :JPY
+
+              # US Dollar (USD)
+              USD = :USD
+            end
+
+            # @!parse
+            #   # Create a new instance of Cashback from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :amount The cashback amount given as a string containing a decimal number. The amount is
+            #   #     a positive number if it will be credited to you (e.g., settlements) and a
+            #   #     negative number if it will be debited (e.g., refunds).
+            #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            #   def initialize(data = {}) = super
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           class Currency < Increase::Enum
@@ -2627,6 +2678,8 @@ module Increase
           #   #   @option data [Integer] :amount The amount in the minor unit of the transaction's settlement currency. For
           #   #     dollars, for example, this is cents.
           #   #   @option data [String] :card_payment_id The ID of the Card Payment this transaction belongs to.
+          #   #   @option data [Object] :cashback Cashback debited for this transaction, if eligible. Cashback is paid out in
+          #   #     aggregate, monthly.
           #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   #     transaction's settlement currency.
           #   #   @option data [Object] :interchange Interchange assessed as a part of this transaciton.
@@ -2874,6 +2927,11 @@ module Increase
           #   @return [String]
           required :card_payment_id, String
 
+          # @!attribute [rw] cashback
+          #   Cashback earned on this transaction, if eligible. Cashback is paid out in aggregate, monthly.
+          #   @return [Increase::Models::CardPayment::Element::CardSettlement::Cashback]
+          required :cashback, -> { Increase::Models::CardPayment::Element::CardSettlement::Cashback }
+
           # @!attribute [rw] currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::Currency]
@@ -2957,6 +3015,50 @@ module Increase
           #   A constant representing the object's type. For this resource it will always be `card_settlement`.
           #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::Type]
           required :type, enum: -> { Increase::Models::CardPayment::Element::CardSettlement::Type }
+
+          class Cashback < Increase::BaseModel
+            # @!attribute [rw] amount
+            #   The cashback amount given as a string containing a decimal number. The amount is a positive number if it will be credited to you (e.g., settlements) and a negative number if it will be debited (e.g., refunds).
+            #   @return [String]
+            required :amount, String
+
+            # @!attribute [rw] currency
+            #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            #   @return [Symbol, Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency]
+            required :currency,
+                     enum: -> { Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency }
+
+            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            class Currency < Increase::Enum
+              # Canadian Dollar (CAD)
+              CAD = :CAD
+
+              # Swiss Franc (CHF)
+              CHF = :CHF
+
+              # Euro (EUR)
+              EUR = :EUR
+
+              # British Pound (GBP)
+              GBP = :GBP
+
+              # Japanese Yen (JPY)
+              JPY = :JPY
+
+              # US Dollar (USD)
+              USD = :USD
+            end
+
+            # @!parse
+            #   # Create a new instance of Cashback from a Hash of raw data.
+            #   #
+            #   # @param data [Hash{Symbol => Object}] .
+            #   #   @option data [String] :amount The cashback amount given as a string containing a decimal number. The amount is
+            #   #     a positive number if it will be credited to you (e.g., settlements) and a
+            #   #     negative number if it will be debited (e.g., refunds).
+            #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            #   def initialize(data = {}) = super
+          end
 
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           class Currency < Increase::Enum
@@ -3828,6 +3930,8 @@ module Increase
           #   #   @option data [String] :card_authorization The Card Authorization that was created prior to this Card Settlement, if one
           #   #     exists.
           #   #   @option data [String] :card_payment_id The ID of the Card Payment this transaction belongs to.
+          #   #   @option data [Object] :cashback Cashback earned on this transaction, if eligible. Cashback is paid out in
+          #   #     aggregate, monthly.
           #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   #     transaction's settlement currency.
           #   #   @option data [Object] :interchange Interchange assessed as a part of this transaciton.
