@@ -3,9 +3,7 @@
 require_relative "../../test_helper"
 
 class Increase::Test::Resources::Simulations::RealTimePaymentsTransfersTest < Minitest::Test
-  parallelize_me!
-
-  def setup
+  def before_all
     @increase = Increase::Client.new(
       base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
       api_key: "My API Key"
@@ -14,6 +12,9 @@ class Increase::Test::Resources::Simulations::RealTimePaymentsTransfersTest < Mi
 
   def test_complete
     response = @increase.simulations.real_time_payments_transfers.complete("real_time_payments_transfer_id")
-    assert_kind_of(Increase::Models::RealTimePaymentsTransfer, response)
+
+    assert_pattern do
+      response => Increase::Models::RealTimePaymentsTransfer
+    end
   end
 end

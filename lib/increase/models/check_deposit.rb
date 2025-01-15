@@ -2,134 +2,315 @@
 
 module Increase
   module Models
+    # @example
+    #
+    # ```ruby
+    # check_deposit => {
+    #   id: String,
+    #   account_id: String,
+    #   amount: Integer,
+    #   back_image_file_id: String,
+    #   created_at: Time,
+    #   **_
+    # }
+    # ```
     class CheckDeposit < Increase::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   The deposit's identifier.
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] account_id
+      # @!attribute account_id
       #   The Account the check was deposited into.
+      #
       #   @return [String]
       required :account_id, String
 
-      # @!attribute [rw] amount
+      # @!attribute amount
       #   The deposited amount in USD cents.
+      #
       #   @return [Integer]
       required :amount, Integer
 
-      # @!attribute [rw] back_image_file_id
+      # @!attribute back_image_file_id
       #   The ID for the File containing the image of the back of the check.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :back_image_file_id, String
 
-      # @!attribute [rw] created_at
+      # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
+      #
       #   @return [Time]
       required :created_at, Time
 
-      # @!attribute [rw] deposit_acceptance
+      # @!attribute deposit_acceptance
       #   If your deposit is successfully parsed and accepted by Increase, this will contain details of the parsed check.
-      #   @return [Increase::Models::CheckDeposit::DepositAcceptance]
+      #
+      #   @return [Increase::Models::CheckDeposit::DepositAcceptance, nil]
       required :deposit_acceptance, -> { Increase::Models::CheckDeposit::DepositAcceptance }
 
-      # @!attribute [rw] deposit_rejection
+      # @!attribute deposit_rejection
       #   If your deposit is rejected by Increase, this will contain details as to why it was rejected.
-      #   @return [Increase::Models::CheckDeposit::DepositRejection]
+      #
+      #   @return [Increase::Models::CheckDeposit::DepositRejection, nil]
       required :deposit_rejection, -> { Increase::Models::CheckDeposit::DepositRejection }
 
-      # @!attribute [rw] deposit_return
+      # @!attribute deposit_return
       #   If your deposit is returned, this will contain details as to why it was returned.
-      #   @return [Increase::Models::CheckDeposit::DepositReturn]
+      #
+      #   @return [Increase::Models::CheckDeposit::DepositReturn, nil]
       required :deposit_return, -> { Increase::Models::CheckDeposit::DepositReturn }
 
-      # @!attribute [rw] deposit_submission
+      # @!attribute deposit_submission
       #   After the check is parsed, it is submitted to the Check21 network for processing. This will contain details of the submission.
-      #   @return [Increase::Models::CheckDeposit::DepositSubmission]
+      #
+      #   @return [Increase::Models::CheckDeposit::DepositSubmission, nil]
       required :deposit_submission, -> { Increase::Models::CheckDeposit::DepositSubmission }
 
-      # @!attribute [rw] description
+      # @!attribute description
       #   The description of the Check Deposit, for display purposes only.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :description, String
 
-      # @!attribute [rw] front_image_file_id
+      # @!attribute front_image_file_id
       #   The ID for the File containing the image of the front of the check.
+      #
       #   @return [String]
       required :front_image_file_id, String
 
-      # @!attribute [rw] idempotency_key
+      # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :idempotency_key, String
 
-      # @!attribute [rw] inbound_funds_hold
+      # @!attribute inbound_funds_hold
       #   Increase will sometimes hold the funds for Check Deposits. If funds are held, this sub-object will contain details of the hold.
-      #   @return [Increase::Models::CheckDeposit::InboundFundsHold]
+      #
+      #   @return [Increase::Models::CheckDeposit::InboundFundsHold, nil]
       required :inbound_funds_hold, -> { Increase::Models::CheckDeposit::InboundFundsHold }
 
-      # @!attribute [rw] inbound_mail_item_id
+      # @!attribute inbound_mail_item_id
       #   If the Check Deposit was the result of an Inbound Mail Item, this will contain the identifier of the Inbound Mail Item.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :inbound_mail_item_id, String
 
-      # @!attribute [rw] lockbox_id
+      # @!attribute lockbox_id
       #   If the Check Deposit was the result of an Inbound Mail Item, this will contain the identifier of the Lockbox that received it.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :lockbox_id, String
 
-      # @!attribute [rw] status
+      # @!attribute status
       #   The status of the Check Deposit.
+      #
       #   @return [Symbol, Increase::Models::CheckDeposit::Status]
       required :status, enum: -> { Increase::Models::CheckDeposit::Status }
 
-      # @!attribute [rw] transaction_id
+      # @!attribute transaction_id
       #   The ID for the Transaction created by the deposit.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :transaction_id, String
 
-      # @!attribute [rw] type
+      # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `check_deposit`.
+      #
       #   @return [Symbol, Increase::Models::CheckDeposit::Type]
       required :type, enum: -> { Increase::Models::CheckDeposit::Type }
 
+      # @!parse
+      #   # Check Deposits allow you to deposit images of paper checks into your account.
+      #   #
+      #   # @param id [String] The deposit's identifier.
+      #   #
+      #   # @param account_id [String] The Account the check was deposited into.
+      #   #
+      #   # @param amount [Integer] The deposited amount in USD cents.
+      #   #
+      #   # @param back_image_file_id [String, nil] The ID for the File containing the image of the back of the check.
+      #   #
+      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   #   the transfer was created.
+      #   #
+      #   # @param deposit_acceptance [Increase::Models::CheckDeposit::DepositAcceptance, nil] If your deposit is successfully parsed and accepted by Increase, this will
+      #   #   contain details of the parsed check.
+      #   #
+      #   # @param deposit_rejection [Increase::Models::CheckDeposit::DepositRejection, nil] If your deposit is rejected by Increase, this will contain details as to why it
+      #   #   was rejected.
+      #   #
+      #   # @param deposit_return [Increase::Models::CheckDeposit::DepositReturn, nil] If your deposit is returned, this will contain details as to why it was
+      #   #   returned.
+      #   #
+      #   # @param deposit_submission [Increase::Models::CheckDeposit::DepositSubmission, nil] After the check is parsed, it is submitted to the Check21 network for
+      #   #   processing. This will contain details of the submission.
+      #   #
+      #   # @param description [String, nil] The description of the Check Deposit, for display purposes only.
+      #   #
+      #   # @param front_image_file_id [String] The ID for the File containing the image of the front of the check.
+      #   #
+      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
+      #   #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #
+      #   # @param inbound_funds_hold [Increase::Models::CheckDeposit::InboundFundsHold, nil] Increase will sometimes hold the funds for Check Deposits. If funds are held,
+      #   #   this sub-object will contain details of the hold.
+      #   #
+      #   # @param inbound_mail_item_id [String, nil] If the Check Deposit was the result of an Inbound Mail Item, this will contain
+      #   #   the identifier of the Inbound Mail Item.
+      #   #
+      #   # @param lockbox_id [String, nil] If the Check Deposit was the result of an Inbound Mail Item, this will contain
+      #   #   the identifier of the Lockbox that received it.
+      #   #
+      #   # @param status [String] The status of the Check Deposit.
+      #   #
+      #   # @param transaction_id [String, nil] The ID for the Transaction created by the deposit.
+      #   #
+      #   # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   #   `check_deposit`.
+      #   #
+      #   def initialize(
+      #     id:,
+      #     account_id:,
+      #     amount:,
+      #     back_image_file_id:,
+      #     created_at:,
+      #     deposit_acceptance:,
+      #     deposit_rejection:,
+      #     deposit_return:,
+      #     deposit_submission:,
+      #     description:,
+      #     front_image_file_id:,
+      #     idempotency_key:,
+      #     inbound_funds_hold:,
+      #     inbound_mail_item_id:,
+      #     lockbox_id:,
+      #     status:,
+      #     transaction_id:,
+      #     type:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::BaseModel) -> void
+
+      # @example
+      #
+      # ```ruby
+      # deposit_acceptance => {
+      #   account_number: String,
+      #   amount: Integer,
+      #   auxiliary_on_us: String,
+      #   check_deposit_id: String,
+      #   currency: enum: Increase::Models::CheckDeposit::DepositAcceptance::Currency,
+      #   **_
+      # }
+      # ```
       class DepositAcceptance < Increase::BaseModel
-        # @!attribute [rw] account_number
+        # @!attribute account_number
         #   The account number printed on the check.
+        #
         #   @return [String]
         required :account_number, String
 
-        # @!attribute [rw] amount
+        # @!attribute amount
         #   The amount to be deposited in the minor unit of the transaction's currency. For dollars, for example, this is cents.
+        #
         #   @return [Integer]
         required :amount, Integer
 
-        # @!attribute [rw] auxiliary_on_us
+        # @!attribute auxiliary_on_us
         #   An additional line of metadata printed on the check. This typically includes the check number for business checks.
-        #   @return [String]
+        #
+        #   @return [String, nil]
         required :auxiliary_on_us, String
 
-        # @!attribute [rw] check_deposit_id
+        # @!attribute check_deposit_id
         #   The ID of the Check Deposit that was accepted.
+        #
         #   @return [String]
         required :check_deposit_id, String
 
-        # @!attribute [rw] currency
+        # @!attribute currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+        #
         #   @return [Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency]
         required :currency, enum: -> { Increase::Models::CheckDeposit::DepositAcceptance::Currency }
 
-        # @!attribute [rw] routing_number
+        # @!attribute routing_number
         #   The routing number printed on the check.
+        #
         #   @return [String]
         required :routing_number, String
 
-        # @!attribute [rw] serial_number
+        # @!attribute serial_number
         #   The check serial number, if present, for consumer checks. For business checks, the serial number is usually in the `auxiliary_on_us` field.
-        #   @return [String]
+        #
+        #   @return [String, nil]
         required :serial_number, String
 
+        # @!parse
+        #   # If your deposit is successfully parsed and accepted by Increase, this will
+        #   #   contain details of the parsed check.
+        #   #
+        #   # @param account_number [String] The account number printed on the check.
+        #   #
+        #   # @param amount [Integer] The amount to be deposited in the minor unit of the transaction's currency. For
+        #   #   dollars, for example, this is cents.
+        #   #
+        #   # @param auxiliary_on_us [String, nil] An additional line of metadata printed on the check. This typically includes the
+        #   #   check number for business checks.
+        #   #
+        #   # @param check_deposit_id [String] The ID of the Check Deposit that was accepted.
+        #   #
+        #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+        #   #   transaction's currency.
+        #   #
+        #   # @param routing_number [String] The routing number printed on the check.
+        #   #
+        #   # @param serial_number [String, nil] The check serial number, if present, for consumer checks. For business checks,
+        #   #   the serial number is usually in the `auxiliary_on_us` field.
+        #   #
+        #   def initialize(
+        #     account_number:,
+        #     amount:,
+        #     auxiliary_on_us:,
+        #     check_deposit_id:,
+        #     currency:,
+        #     routing_number:,
+        #     serial_number:,
+        #     **
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+        #
+        # @example
+        #
+        # ```ruby
+        # case currency
+        # in :CAD
+        #   # ...
+        # in :CHF
+        #   # ...
+        # in :EUR
+        #   # ...
+        # in :GBP
+        #   # ...
+        # in :JPY
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD = :CAD
@@ -148,58 +329,102 @@ module Increase
 
           # US Dollar (USD)
           USD = :USD
-        end
 
-        # @!parse
-        #   # Create a new instance of DepositAcceptance from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :account_number The account number printed on the check.
-        #   #   @option data [Integer] :amount The amount to be deposited in the minor unit of the transaction's currency. For
-        #   #     dollars, for example, this is cents.
-        #   #   @option data [String] :auxiliary_on_us An additional line of metadata printed on the check. This typically includes the
-        #   #     check number for business checks.
-        #   #   @option data [String] :check_deposit_id The ID of the Check Deposit that was accepted.
-        #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        #   #     transaction's currency.
-        #   #   @option data [String] :routing_number The routing number printed on the check.
-        #   #   @option data [String] :serial_number The check serial number, if present, for consumer checks. For business checks,
-        #   #     the serial number is usually in the `auxiliary_on_us` field.
-        #   def initialize(data = {}) = super
+          finalize!
+        end
       end
 
+      # @example
+      #
+      # ```ruby
+      # deposit_rejection => {
+      #   amount: Integer,
+      #   check_deposit_id: String,
+      #   currency: enum: Increase::Models::CheckDeposit::DepositRejection::Currency,
+      #   declined_transaction_id: String,
+      #   reason: enum: Increase::Models::CheckDeposit::DepositRejection::Reason
+      # }
+      # ```
       class DepositRejection < Increase::BaseModel
-        # @!attribute [rw] amount
+        # @!attribute amount
         #   The rejected amount in the minor unit of check's currency. For dollars, for example, this is cents.
+        #
         #   @return [Integer]
         required :amount, Integer
 
-        # @!attribute [rw] check_deposit_id
+        # @!attribute check_deposit_id
         #   The identifier of the Check Deposit that was rejected.
+        #
         #   @return [String]
         required :check_deposit_id, String
 
-        # @!attribute [rw] currency
+        # @!attribute currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
+        #
         #   @return [Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency]
         required :currency, enum: -> { Increase::Models::CheckDeposit::DepositRejection::Currency }
 
-        # @!attribute [rw] declined_transaction_id
+        # @!attribute declined_transaction_id
         #   The identifier of the associated declined transaction.
+        #
         #   @return [String]
         required :declined_transaction_id, String
 
-        # @!attribute [rw] reason
+        # @!attribute reason
         #   Why the check deposit was rejected.
+        #
         #   @return [Symbol, Increase::Models::CheckDeposit::DepositRejection::Reason]
         required :reason, enum: -> { Increase::Models::CheckDeposit::DepositRejection::Reason }
 
-        # @!attribute [rw] rejected_at
+        # @!attribute rejected_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was rejected.
+        #
         #   @return [Time]
         required :rejected_at, Time
 
+        # @!parse
+        #   # If your deposit is rejected by Increase, this will contain details as to why it
+        #   #   was rejected.
+        #   #
+        #   # @param amount [Integer] The rejected amount in the minor unit of check's currency. For dollars, for
+        #   #   example, this is cents.
+        #   #
+        #   # @param check_deposit_id [String] The identifier of the Check Deposit that was rejected.
+        #   #
+        #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
+        #   #   currency.
+        #   #
+        #   # @param declined_transaction_id [String] The identifier of the associated declined transaction.
+        #   #
+        #   # @param reason [String] Why the check deposit was rejected.
+        #   #
+        #   # @param rejected_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #   the check deposit was rejected.
+        #   #
+        #   def initialize(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
+        #
+        # @example
+        #
+        # ```ruby
+        # case currency
+        # in :CAD
+        #   # ...
+        # in :CHF
+        #   # ...
+        # in :EUR
+        #   # ...
+        # in :GBP
+        #   # ...
+        # in :JPY
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD = :CAD
@@ -218,9 +443,30 @@ module Increase
 
           # US Dollar (USD)
           USD = :USD
+
+          finalize!
         end
 
         # Why the check deposit was rejected.
+        #
+        # @example
+        #
+        # ```ruby
+        # case reason
+        # in :incomplete_image
+        #   # ...
+        # in :duplicate
+        #   # ...
+        # in :poor_image_quality
+        #   # ...
+        # in :incorrect_amount
+        #   # ...
+        # in :incorrect_recipient
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Reason < Increase::Enum
           # The check's image is incomplete.
           INCOMPLETE_IMAGE = :incomplete_image
@@ -254,56 +500,103 @@ module Increase
 
           # The check was rejected for an unknown reason.
           UNKNOWN = :unknown
-        end
 
-        # @!parse
-        #   # Create a new instance of DepositRejection from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [Integer] :amount The rejected amount in the minor unit of check's currency. For dollars, for
-        #   #     example, this is cents.
-        #   #   @option data [String] :check_deposit_id The identifier of the Check Deposit that was rejected.
-        #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-        #   #     currency.
-        #   #   @option data [String] :declined_transaction_id The identifier of the associated declined transaction.
-        #   #   @option data [String] :reason Why the check deposit was rejected.
-        #   #   @option data [String] :rejected_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #     the check deposit was rejected.
-        #   def initialize(data = {}) = super
+          finalize!
+        end
       end
 
+      # @example
+      #
+      # ```ruby
+      # deposit_return => {
+      #   amount: Integer,
+      #   check_deposit_id: String,
+      #   currency: enum: Increase::Models::CheckDeposit::DepositReturn::Currency,
+      #   return_reason: enum: Increase::Models::CheckDeposit::DepositReturn::ReturnReason,
+      #   returned_at: Time
+      # }
+      # ```
       class DepositReturn < Increase::BaseModel
-        # @!attribute [rw] amount
+        # @!attribute amount
         #   The returned amount in USD cents.
+        #
         #   @return [Integer]
         required :amount, Integer
 
-        # @!attribute [rw] check_deposit_id
+        # @!attribute check_deposit_id
         #   The identifier of the Check Deposit that was returned.
+        #
         #   @return [String]
         required :check_deposit_id, String
 
-        # @!attribute [rw] currency
+        # @!attribute currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+        #
         #   @return [Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency]
         required :currency, enum: -> { Increase::Models::CheckDeposit::DepositReturn::Currency }
 
-        # @!attribute [rw] return_reason
+        # @!attribute return_reason
         #   Why this check was returned by the bank holding the account it was drawn against.
+        #
         #   @return [Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason]
         required :return_reason, enum: -> { Increase::Models::CheckDeposit::DepositReturn::ReturnReason }
 
-        # @!attribute [rw] returned_at
+        # @!attribute returned_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check deposit was returned.
+        #
         #   @return [Time]
         required :returned_at, Time
 
-        # @!attribute [rw] transaction_id
+        # @!attribute transaction_id
         #   The identifier of the transaction that reversed the original check deposit transaction.
+        #
         #   @return [String]
         required :transaction_id, String
 
+        # @!parse
+        #   # If your deposit is returned, this will contain details as to why it was
+        #   #   returned.
+        #   #
+        #   # @param amount [Integer] The returned amount in USD cents.
+        #   #
+        #   # @param check_deposit_id [String] The identifier of the Check Deposit that was returned.
+        #   #
+        #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+        #   #   transaction's currency.
+        #   #
+        #   # @param return_reason [String] Why this check was returned by the bank holding the account it was drawn
+        #   #   against.
+        #   #
+        #   # @param returned_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #   the check deposit was returned.
+        #   #
+        #   # @param transaction_id [String] The identifier of the transaction that reversed the original check deposit
+        #   #   transaction.
+        #   #
+        #   def initialize(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
+        #
+        # @example
+        #
+        # ```ruby
+        # case currency
+        # in :CAD
+        #   # ...
+        # in :CHF
+        #   # ...
+        # in :EUR
+        #   # ...
+        # in :GBP
+        #   # ...
+        # in :JPY
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD = :CAD
@@ -322,9 +615,30 @@ module Increase
 
           # US Dollar (USD)
           USD = :USD
+
+          finalize!
         end
 
         # Why this check was returned by the bank holding the account it was drawn against.
+        #
+        # @example
+        #
+        # ```ruby
+        # case return_reason
+        # in :ach_conversion_not_supported
+        #   # ...
+        # in :closed_account
+        #   # ...
+        # in :duplicate_submission
+        #   # ...
+        # in :insufficient_funds
+        #   # ...
+        # in :no_account
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class ReturnReason < Increase::Enum
           # The check doesn't allow ACH conversion.
           ACH_CONVERSION_NOT_SUPPORTED = :ach_conversion_not_supported
@@ -403,107 +717,198 @@ module Increase
 
           # The bank sold this account and no longer services this customer.
           BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
-        end
 
-        # @!parse
-        #   # Create a new instance of DepositReturn from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [Integer] :amount The returned amount in USD cents.
-        #   #   @option data [String] :check_deposit_id The identifier of the Check Deposit that was returned.
-        #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-        #   #     transaction's currency.
-        #   #   @option data [String] :return_reason Why this check was returned by the bank holding the account it was drawn
-        #   #     against.
-        #   #   @option data [String] :returned_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #     the check deposit was returned.
-        #   #   @option data [String] :transaction_id The identifier of the transaction that reversed the original check deposit
-        #   #     transaction.
-        #   def initialize(data = {}) = super
+          finalize!
+        end
       end
 
+      # @example
+      #
+      # ```ruby
+      # deposit_submission => {
+      #   back_file_id: String,
+      #   front_file_id: String,
+      #   submitted_at: Time
+      # }
+      # ```
       class DepositSubmission < Increase::BaseModel
-        # @!attribute [rw] back_file_id
+        # @!attribute back_file_id
         #   The ID for the File containing the check back image that was submitted to the Check21 network.
+        #
         #   @return [String]
         required :back_file_id, String
 
-        # @!attribute [rw] front_file_id
+        # @!attribute front_file_id
         #   The ID for the File containing the check front image that was submitted to the Check21 network.
+        #
         #   @return [String]
         required :front_file_id, String
 
-        # @!attribute [rw] submitted_at
+        # @!attribute submitted_at
         #   When the check deposit was submitted to the Check21 network for processing. During business days, this happens within a few hours of the check being accepted by Increase.
+        #
         #   @return [Time]
         required :submitted_at, Time
 
         # @!parse
-        #   # Create a new instance of DepositSubmission from a Hash of raw data.
+        #   # After the check is parsed, it is submitted to the Check21 network for
+        #   #   processing. This will contain details of the submission.
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :back_file_id The ID for the File containing the check back image that was submitted to the
-        #   #     Check21 network.
-        #   #   @option data [String] :front_file_id The ID for the File containing the check front image that was submitted to the
-        #   #     Check21 network.
-        #   #   @option data [String] :submitted_at When the check deposit was submitted to the Check21 network for processing.
-        #   #     During business days, this happens within a few hours of the check being
-        #   #     accepted by Increase.
-        #   def initialize(data = {}) = super
+        #   # @param back_file_id [String] The ID for the File containing the check back image that was submitted to the
+        #   #   Check21 network.
+        #   #
+        #   # @param front_file_id [String] The ID for the File containing the check front image that was submitted to the
+        #   #   Check21 network.
+        #   #
+        #   # @param submitted_at [String] When the check deposit was submitted to the Check21 network for processing.
+        #   #   During business days, this happens within a few hours of the check being
+        #   #   accepted by Increase.
+        #   #
+        #   def initialize(back_file_id:, front_file_id:, submitted_at:, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      #
+      # ```ruby
+      # inbound_funds_hold => {
+      #   id: String,
+      #   amount: Integer,
+      #   automatically_releases_at: Time,
+      #   created_at: Time,
+      #   currency: enum: Increase::Models::CheckDeposit::InboundFundsHold::Currency,
+      #   **_
+      # }
+      # ```
       class InboundFundsHold < Increase::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   The Inbound Funds Hold identifier.
+        #
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] amount
+        # @!attribute amount
         #   The held amount in the minor unit of the account's currency. For dollars, for example, this is cents.
+        #
         #   @return [Integer]
         required :amount, Integer
 
-        # @!attribute [rw] automatically_releases_at
+        # @!attribute automatically_releases_at
         #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
+        #
         #   @return [Time]
         required :automatically_releases_at, Time
 
-        # @!attribute [rw] created_at
+        # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
+        #
         #   @return [Time]
         required :created_at, Time
 
-        # @!attribute [rw] currency
+        # @!attribute currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+        #
         #   @return [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency]
         required :currency, enum: -> { Increase::Models::CheckDeposit::InboundFundsHold::Currency }
 
-        # @!attribute [rw] held_transaction_id
+        # @!attribute held_transaction_id
         #   The ID of the Transaction for which funds were held.
-        #   @return [String]
+        #
+        #   @return [String, nil]
         required :held_transaction_id, String
 
-        # @!attribute [rw] pending_transaction_id
+        # @!attribute pending_transaction_id
         #   The ID of the Pending Transaction representing the held funds.
-        #   @return [String]
+        #
+        #   @return [String, nil]
         required :pending_transaction_id, String
 
-        # @!attribute [rw] released_at
+        # @!attribute released_at
         #   When the hold was released (if it has been released).
-        #   @return [Time]
+        #
+        #   @return [Time, nil]
         required :released_at, Time
 
-        # @!attribute [rw] status
+        # @!attribute status
         #   The status of the hold.
+        #
         #   @return [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Status]
         required :status, enum: -> { Increase::Models::CheckDeposit::InboundFundsHold::Status }
 
-        # @!attribute [rw] type
+        # @!attribute type
         #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+        #
         #   @return [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Type]
         required :type, enum: -> { Increase::Models::CheckDeposit::InboundFundsHold::Type }
 
+        # @!parse
+        #   # Increase will sometimes hold the funds for Check Deposits. If funds are held,
+        #   #   this sub-object will contain details of the hold.
+        #   #
+        #   # @param id [String] The Inbound Funds Hold identifier.
+        #   #
+        #   # @param amount [Integer] The held amount in the minor unit of the account's currency. For dollars, for
+        #   #   example, this is cents.
+        #   #
+        #   # @param automatically_releases_at [String] When the hold will be released automatically. Certain conditions may cause it to
+        #   #   be released before this time.
+        #   #
+        #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+        #   #   was created.
+        #   #
+        #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+        #   #   currency.
+        #   #
+        #   # @param held_transaction_id [String, nil] The ID of the Transaction for which funds were held.
+        #   #
+        #   # @param pending_transaction_id [String, nil] The ID of the Pending Transaction representing the held funds.
+        #   #
+        #   # @param released_at [String, nil] When the hold was released (if it has been released).
+        #   #
+        #   # @param status [String] The status of the hold.
+        #   #
+        #   # @param type [String] A constant representing the object's type. For this resource it will always be
+        #   #   `inbound_funds_hold`.
+        #   #
+        #   def initialize(
+        #     id:,
+        #     amount:,
+        #     automatically_releases_at:,
+        #     created_at:,
+        #     currency:,
+        #     held_transaction_id:,
+        #     pending_transaction_id:,
+        #     released_at:,
+        #     status:,
+        #     type:,
+        #     **
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+        #
+        # @example
+        #
+        # ```ruby
+        # case currency
+        # in :CAD
+        #   # ...
+        # in :CHF
+        #   # ...
+        # in :EUR
+        #   # ...
+        # in :GBP
+        #   # ...
+        # in :JPY
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD = :CAD
@@ -522,45 +927,65 @@ module Increase
 
           # US Dollar (USD)
           USD = :USD
+
+          finalize!
         end
 
         # The status of the hold.
+        #
+        # @example
+        #
+        # ```ruby
+        # case status
+        # in :held
+        #   # ...
+        # in :complete
+        #   # ...
+        # end
+        # ```
         class Status < Increase::Enum
           # Funds are still being held.
           HELD = :held
 
           # Funds have been released.
           COMPLETE = :complete
+
+          finalize!
         end
 
         # A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+        #
+        # @example
+        #
+        # ```ruby
+        # case type
+        # in :inbound_funds_hold
+        #   # ...
+        # end
+        # ```
         class Type < Increase::Enum
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
-        end
 
-        # @!parse
-        #   # Create a new instance of InboundFundsHold from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :id The Inbound Funds Hold identifier.
-        #   #   @option data [Integer] :amount The held amount in the minor unit of the account's currency. For dollars, for
-        #   #     example, this is cents.
-        #   #   @option data [String] :automatically_releases_at When the hold will be released automatically. Certain conditions may cause it to
-        #   #     be released before this time.
-        #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
-        #   #     was created.
-        #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   #     currency.
-        #   #   @option data [String] :held_transaction_id The ID of the Transaction for which funds were held.
-        #   #   @option data [String] :pending_transaction_id The ID of the Pending Transaction representing the held funds.
-        #   #   @option data [String] :released_at When the hold was released (if it has been released).
-        #   #   @option data [String] :status The status of the hold.
-        #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
-        #   #     `inbound_funds_hold`.
-        #   def initialize(data = {}) = super
+          finalize!
+        end
       end
 
       # The status of the Check Deposit.
+      #
+      # @example
+      #
+      # ```ruby
+      # case status
+      # in :pending
+      #   # ...
+      # in :submitted
+      #   # ...
+      # in :rejected
+      #   # ...
+      # in :returned
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The Check Deposit is pending review.
         PENDING = :pending
@@ -573,47 +998,25 @@ module Increase
 
         # The Check Deposit has been returned.
         RETURNED = :returned
+
+        finalize!
       end
 
       # A constant representing the object's type. For this resource it will always be `check_deposit`.
+      #
+      # @example
+      #
+      # ```ruby
+      # case type
+      # in :check_deposit
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         CHECK_DEPOSIT = :check_deposit
-      end
 
-      # @!parse
-      #   # Create a new instance of CheckDeposit from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id The deposit's identifier.
-      #   #   @option data [String] :account_id The Account the check was deposited into.
-      #   #   @option data [Integer] :amount The deposited amount in USD cents.
-      #   #   @option data [String] :back_image_file_id The ID for the File containing the image of the back of the check.
-      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #     the transfer was created.
-      #   #   @option data [Object] :deposit_acceptance If your deposit is successfully parsed and accepted by Increase, this will
-      #   #     contain details of the parsed check.
-      #   #   @option data [Object] :deposit_rejection If your deposit is rejected by Increase, this will contain details as to why it
-      #   #     was rejected.
-      #   #   @option data [Object] :deposit_return If your deposit is returned, this will contain details as to why it was
-      #   #     returned.
-      #   #   @option data [Object] :deposit_submission After the check is parsed, it is submitted to the Check21 network for
-      #   #     processing. This will contain details of the submission.
-      #   #   @option data [String] :description The description of the Check Deposit, for display purposes only.
-      #   #   @option data [String] :front_image_file_id The ID for the File containing the image of the front of the check.
-      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
-      #   #     Increase and is used to ensure that a request is only processed once. Learn more
-      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #   @option data [Object] :inbound_funds_hold Increase will sometimes hold the funds for Check Deposits. If funds are held,
-      #   #     this sub-object will contain details of the hold.
-      #   #   @option data [String] :inbound_mail_item_id If the Check Deposit was the result of an Inbound Mail Item, this will contain
-      #   #     the identifier of the Inbound Mail Item.
-      #   #   @option data [String] :lockbox_id If the Check Deposit was the result of an Inbound Mail Item, this will contain
-      #   #     the identifier of the Lockbox that received it.
-      #   #   @option data [String] :status The status of the Check Deposit.
-      #   #   @option data [String] :transaction_id The ID for the Transaction created by the deposit.
-      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
-      #   #     `check_deposit`.
-      #   def initialize(data = {}) = super
+        finalize!
+      end
     end
   end
 end

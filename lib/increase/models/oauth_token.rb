@@ -2,42 +2,82 @@
 
 module Increase
   module Models
+    # @example
+    #
+    # ```ruby
+    # oauth_token => {
+    #   access_token: String,
+    #   token_type: enum: Increase::Models::OAuthToken::TokenType,
+    #   type: enum: Increase::Models::OAuthToken::Type
+    # }
+    # ```
     class OAuthToken < Increase::BaseModel
-      # @!attribute [rw] access_token
+      # @!attribute access_token
       #   You may use this token in place of an API key to make OAuth requests on a user's behalf.
+      #
       #   @return [String]
       required :access_token, String
 
-      # @!attribute [rw] token_type
+      # @!attribute token_type
       #   The type of OAuth token.
+      #
       #   @return [Symbol, Increase::Models::OAuthToken::TokenType]
       required :token_type, enum: -> { Increase::Models::OAuthToken::TokenType }
 
-      # @!attribute [rw] type
+      # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `oauth_token`.
+      #
       #   @return [Symbol, Increase::Models::OAuthToken::Type]
       required :type, enum: -> { Increase::Models::OAuthToken::Type }
 
+      # @!parse
+      #   # A token that is returned to your application when a user completes the OAuth
+      #   #   flow and may be used to authenticate requests. Learn more about OAuth
+      #   #   [here](/documentation/oauth).
+      #   #
+      #   # @param access_token [String] You may use this token in place of an API key to make OAuth requests on a user's
+      #   #   behalf.
+      #   #
+      #   # @param token_type [String] The type of OAuth token.
+      #   #
+      #   # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   #   `oauth_token`.
+      #   #
+      #   def initialize(access_token:, token_type:, type:, **) = super
+
+      # def initialize: (Hash | Increase::BaseModel) -> void
+
       # The type of OAuth token.
+      #
+      # @example
+      #
+      # ```ruby
+      # case token_type
+      # in :bearer
+      #   # ...
+      # end
+      # ```
       class TokenType < Increase::Enum
         BEARER = :bearer
+
+        finalize!
       end
 
       # A constant representing the object's type. For this resource it will always be `oauth_token`.
+      #
+      # @example
+      #
+      # ```ruby
+      # case type
+      # in :oauth_token
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         OAUTH_TOKEN = :oauth_token
-      end
 
-      # @!parse
-      #   # Create a new instance of OAuthToken from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :access_token You may use this token in place of an API key to make OAuth requests on a user's
-      #   #     behalf.
-      #   #   @option data [String] :token_type The type of OAuth token.
-      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
-      #   #     `oauth_token`.
-      #   def initialize(data = {}) = super
+        finalize!
+      end
     end
   end
 end

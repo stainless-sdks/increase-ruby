@@ -2,93 +2,208 @@
 
 module Increase
   module Models
+    # @example
+    #
+    # ```ruby
+    # proof_of_authorization_request_submission => {
+    #   id: String,
+    #   authorization_terms: String,
+    #   authorized_at: Time,
+    #   authorizer_company: String,
+    #   authorizer_email: String,
+    #   **_
+    # }
+    # ```
     class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   The Proof of Authorization Request Submission identifier.
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] authorization_terms
+      # @!attribute authorization_terms
       #   Terms of authorization.
+      #
       #   @return [String]
       required :authorization_terms, String
 
-      # @!attribute [rw] authorized_at
+      # @!attribute authorized_at
       #   Time of authorization.
+      #
       #   @return [Time]
       required :authorized_at, Time
 
-      # @!attribute [rw] authorizer_company
+      # @!attribute authorizer_company
       #   Company of the authorizer.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :authorizer_company, String
 
-      # @!attribute [rw] authorizer_email
+      # @!attribute authorizer_email
       #   Email of the authorizer.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :authorizer_email, String
 
-      # @!attribute [rw] authorizer_ip_address
+      # @!attribute authorizer_ip_address
       #   IP address of the authorizer.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :authorizer_ip_address, String
 
-      # @!attribute [rw] authorizer_name
+      # @!attribute authorizer_name
       #   Name of the authorizer.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :authorizer_name, String
 
-      # @!attribute [rw] created_at
+      # @!attribute created_at
       #   The time the Proof of Authorization Request Submission was created.
+      #
       #   @return [Time]
       required :created_at, Time
 
-      # @!attribute [rw] customer_has_been_offboarded
+      # @!attribute customer_has_been_offboarded
       #   Whether the customer has been offboarded.
-      #   @return [Boolean]
+      #
+      #   @return [Boolean, nil]
       required :customer_has_been_offboarded, Increase::BooleanModel
 
-      # @!attribute [rw] idempotency_key
+      # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :idempotency_key, String
 
-      # @!attribute [rw] proof_of_authorization_request_id
+      # @!attribute proof_of_authorization_request_id
       #   ID of the proof of authorization request.
+      #
       #   @return [String]
       required :proof_of_authorization_request_id, String
 
-      # @!attribute [rw] status
+      # @!attribute status
       #   Status of the proof of authorization request submission.
+      #
       #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Status]
       required :status, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Status }
 
-      # @!attribute [rw] type
+      # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `proof_of_authorization_request_submission`.
+      #
       #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type]
       required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Type }
 
-      # @!attribute [rw] updated_at
+      # @!attribute updated_at
       #   The time the Proof of Authorization Request Submission was last updated.
+      #
       #   @return [Time]
       required :updated_at, Time
 
-      # @!attribute [rw] validated_account_ownership_via_credential
+      # @!attribute validated_account_ownership_via_credential
       #   Whether account ownership was validated via credential (for instance, Plaid).
-      #   @return [Boolean]
+      #
+      #   @return [Boolean, nil]
       required :validated_account_ownership_via_credential, Increase::BooleanModel
 
-      # @!attribute [rw] validated_account_ownership_with_account_statement
+      # @!attribute validated_account_ownership_with_account_statement
       #   Whether account ownership was validated with an account statement.
-      #   @return [Boolean]
+      #
+      #   @return [Boolean, nil]
       required :validated_account_ownership_with_account_statement, Increase::BooleanModel
 
-      # @!attribute [rw] validated_account_ownership_with_microdeposit
+      # @!attribute validated_account_ownership_with_microdeposit
       #   Whether account ownership was validated with microdeposit.
-      #   @return [Boolean]
+      #
+      #   @return [Boolean, nil]
       required :validated_account_ownership_with_microdeposit, Increase::BooleanModel
 
+      # @!parse
+      #   # Information submitted in response to a proof of authorization request. Per
+      #   #   Nacha's guidance on proof of authorization, the originator must ensure that the
+      #   #   authorization complies with applicable legal requirements, is readily
+      #   #   identifiable as an authorization, and has clear and readily understandable
+      #   #   terms.
+      #   #
+      #   # @param id [String] The Proof of Authorization Request Submission identifier.
+      #   #
+      #   # @param authorization_terms [String] Terms of authorization.
+      #   #
+      #   # @param authorized_at [String] Time of authorization.
+      #   #
+      #   # @param authorizer_company [String, nil] Company of the authorizer.
+      #   #
+      #   # @param authorizer_email [String, nil] Email of the authorizer.
+      #   #
+      #   # @param authorizer_ip_address [String, nil] IP address of the authorizer.
+      #   #
+      #   # @param authorizer_name [String, nil] Name of the authorizer.
+      #   #
+      #   # @param created_at [String] The time the Proof of Authorization Request Submission was created.
+      #   #
+      #   # @param customer_has_been_offboarded [Boolean, nil] Whether the customer has been offboarded.
+      #   #
+      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
+      #   #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #
+      #   # @param proof_of_authorization_request_id [String] ID of the proof of authorization request.
+      #   #
+      #   # @param status [String] Status of the proof of authorization request submission.
+      #   #
+      #   # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   #   `proof_of_authorization_request_submission`.
+      #   #
+      #   # @param updated_at [String] The time the Proof of Authorization Request Submission was last updated.
+      #   #
+      #   # @param validated_account_ownership_via_credential [Boolean, nil] Whether account ownership was validated via credential (for instance, Plaid).
+      #   #
+      #   # @param validated_account_ownership_with_account_statement [Boolean, nil] Whether account ownership was validated with an account statement.
+      #   #
+      #   # @param validated_account_ownership_with_microdeposit [Boolean, nil] Whether account ownership was validated with microdeposit.
+      #   #
+      #   def initialize(
+      #     id:,
+      #     authorization_terms:,
+      #     authorized_at:,
+      #     authorizer_company:,
+      #     authorizer_email:,
+      #     authorizer_ip_address:,
+      #     authorizer_name:,
+      #     created_at:,
+      #     customer_has_been_offboarded:,
+      #     idempotency_key:,
+      #     proof_of_authorization_request_id:,
+      #     status:,
+      #     type:,
+      #     updated_at:,
+      #     validated_account_ownership_via_credential:,
+      #     validated_account_ownership_with_account_statement:,
+      #     validated_account_ownership_with_microdeposit:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::BaseModel) -> void
+
       # Status of the proof of authorization request submission.
+      #
+      # @example
+      #
+      # ```ruby
+      # case status
+      # in :pending_review
+      #   # ...
+      # in :rejected
+      #   # ...
+      # in :canceled
+      #   # ...
+      # in :pending_sending
+      #   # ...
+      # in :sent
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The proof of authorization request submission is pending review.
         PENDING_REVIEW = :pending_review
@@ -104,39 +219,25 @@ module Increase
 
         # The proof of authorization request submission was sent.
         SENT = :sent
+
+        finalize!
       end
 
       # A constant representing the object's type. For this resource it will always be `proof_of_authorization_request_submission`.
+      #
+      # @example
+      #
+      # ```ruby
+      # case type
+      # in :proof_of_authorization_request_submission
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
-      end
 
-      # @!parse
-      #   # Create a new instance of ProofOfAuthorizationRequestSubmission from a Hash of
-      #   #   raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id The Proof of Authorization Request Submission identifier.
-      #   #   @option data [String] :authorization_terms Terms of authorization.
-      #   #   @option data [String] :authorized_at Time of authorization.
-      #   #   @option data [String] :authorizer_company Company of the authorizer.
-      #   #   @option data [String] :authorizer_email Email of the authorizer.
-      #   #   @option data [String] :authorizer_ip_address IP address of the authorizer.
-      #   #   @option data [String] :authorizer_name Name of the authorizer.
-      #   #   @option data [String] :created_at The time the Proof of Authorization Request Submission was created.
-      #   #   @option data [Hash] :customer_has_been_offboarded Whether the customer has been offboarded.
-      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
-      #   #     Increase and is used to ensure that a request is only processed once. Learn more
-      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #   @option data [String] :proof_of_authorization_request_id ID of the proof of authorization request.
-      #   #   @option data [String] :status Status of the proof of authorization request submission.
-      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
-      #   #     `proof_of_authorization_request_submission`.
-      #   #   @option data [String] :updated_at The time the Proof of Authorization Request Submission was last updated.
-      #   #   @option data [Hash] :validated_account_ownership_via_credential Whether account ownership was validated via credential (for instance, Plaid).
-      #   #   @option data [Hash] :validated_account_ownership_with_account_statement Whether account ownership was validated with an account statement.
-      #   #   @option data [Hash] :validated_account_ownership_with_microdeposit Whether account ownership was validated with microdeposit.
-      #   def initialize(data = {}) = super
+        finalize!
+      end
     end
   end
 end

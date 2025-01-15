@@ -1,72 +1,124 @@
 # frozen_string_literal: true
 
 module Increase
-  # @!visibility private
-  class Util
+  # rubocop:disable Metrics/ModuleLength
+
+  # @private
+  #
+  module Util
+    # @private
+    #
     # Use this to indicate that a value should be explicitly removed from a data structure
     # when using `Increase::Util.deep_merge`.
     # E.g. merging `{a: 1}` and `{a: OMIT}` should produce `{}`, where merging `{a: 1}` and
     # `{}` would produce `{a: 1}`.
+    #
     OMIT = Object.new.freeze
 
+    # @private
+    #
     # Recursively merge one hash with another.
     # If the values at a given key are not both hashes, just take the new value.
-    # @param left [Hash, Array, Symbol, String, Integer, Float, nil, Object]
-    # @param right [Hash, Array, Symbol, String, Integer, Float, nil, Object]
+    #
+    # @param values [Array<Hash, Array, Symbol, String, Integer, Float, nil, Object>]
+    # @param sentinel [nil, Object] the value to return if no values are provided
     # @param concat [true, false] whether to merge sequences by concatenation
     #
     # @return [Object]
-    def self.deep_merge(left, right, concat: false)
-      right_cleaned =
-        case right
-        in Hash
-          right.reject { |_, value| value == OMIT }
-        else
-          right
+    #
+    def self.deep_merge(*values, sentinel: nil, concat: false)
+      case values
+      in [value, *values]
+        values.reduce(value) do |acc, val|
+          _deep_merge(acc, val, concat: concat)
         end
-
-      case [left, right_cleaned, concat]
-      in [Hash, Hash, _]
-        left
-          .reject { |key, _| right[key] == OMIT }
-          .merge(right_cleaned) do |_, old_val, new_val|
-            deep_merge(old_val, new_val, concat: concat)
-          end
-      in [Array, Array, true]
-        left.concat(right_cleaned)
       else
-        right_cleaned
+        sentinel
       end
     end
 
+    # @private
+    #
+    # @param lhs [Hash, Array, Symbol, String, Integer, Float, nil, Object]
+    # @param rhs [Hash, Array, Symbol, String, Integer, Float, nil, Object]
+    # @param concat [true, false]
+    #
+    # @return [Object]
+    #
+    private_class_method def self._deep_merge(lhs, rhs, concat: false)
+      rhs_cleaned =
+        case rhs
+        in Hash
+          rhs.reject { |_, value| value == OMIT }
+        else
+          rhs
+        end
+
+      case [lhs, rhs_cleaned, concat]
+      in [Hash, Hash, _]
+        lhs
+          .reject { |key, _| rhs[key] == OMIT }
+          .merge(rhs_cleaned) do |_, old_val, new_val|
+            _deep_merge(old_val, new_val, concat: concat)
+          end
+      in [Array, Array, true]
+        lhs.concat(rhs_cleaned)
+      else
+        rhs_cleaned
+      end
+    end
+
+    # @private
+    #
     # @param exceptions [Array<Exception>]
+    # @param sentinel [nil, Object]
     # @param blk [Proc]
     #
     # @return [Object, nil]
-    def self.suppress(*exceptions, &blk)
+    #
+    def self.suppress(*exceptions, sentinel: nil, &blk)
       blk.call
     rescue *exceptions
-      nil
+      sentinel
     end
 
+    # @private
+    #
     # @param data [Hash, Array, Object]
     # @param pick [Symbol, Integer, Array, nil]
+    # @param default [Object, nil]
+    # @param blk [Proc, nil]
     #
     # @return [Object, nil]
-    def self.dig(data, pick)
-      case [data, pick]
-      in [_, nil]
+    #
+    def self.dig(data, pick, default = nil, &blk)
+      case [data, pick, blk]
+      in [_, nil, nil]
         data
-      in [Hash, Symbol] | [Array, Integer]
-        data[pick]
-      in [Hash | Array, Array]
-        data.dig(*pick)
+      in [Hash, Symbol, _] | [Array, Integer, _]
+        blk.nil? ? data.fetch(pick, default) : data.fetch(pick, &blk)
+      in [Hash | Array, Array, _]
+        pick.reduce(data) do |acc, key|
+          case acc
+          in Hash if acc.key?(key)
+            acc.fetch(key)
+          in Array if key.is_a?(Integer) && key < acc.length
+            acc[key]
+          else
+            return blk.nil? ? default : blk.call
+          end
+        end
+      in _
+        blk.nil? ? default : blk.call
       end
     end
 
+    # @private
+    #
     # @param input [String, Numeric, Boolean, nil]
     #
     # @return [Integer, String, nil]
+    #
     def self.coerce_integer(input)
       case input
       in true
@@ -78,9 +130,12 @@ module Increase
       end
     end
 
+    # @private
+    #
     # @param input [String, Numeric, Boolean, nil]
     #
     # @return [Float, String, nil]
+    #
     def self.coerce_float(input)
       case input
       in true
@@ -92,9 +147,12 @@ module Increase
       end
     end
 
+    # @private
+    #
     # @param input [String, Numeric, Boolean, nil]
     #
     # @return [Boolean, String, Numeric, nil]
+    #
     def self.coerce_boolean(input)
       case input.is_a?(String) ? input.downcase : input
       in Numeric
@@ -108,37 +166,66 @@ module Increase
       end
     end
 
+    # @private
+    #
     # @param input [String, Numeric, Boolean, nil]
     #
     # @raise [ArgumentError]
     # @return [Boolean, nil]
+    #
     def self.coerce_boolean!(input)
       case (coerced = coerce_boolean(input))
       in true | false | nil
         coerced
       else
-        raise ArgumentError, "Unable to coerce #{input.inspect} into boolean value"
+        raise ArgumentError.new("Unable to coerce #{input.inspect} into boolean value")
       end
     end
 
-    # @param url [URI::Generic, String] -
+    # @private
+    #
+    # @param query [Hash{String => String | Array<String>}]
+    #
+    # @return [String, nil]
+    #
+    def self.encode_query(query)
+      query.empty? ? nil : URI.encode_www_form(query)
+    end
+
+    # @private
+    #
+    # @param query [String, nil]
+    #
+    # @return [Hash{String => Array<String>}]
+    #
+    def self.decode_query(query)
+      CGI.parse(query.to_s)
+    end
+
+    # @private
+    #
+    # @param input [Hash, Object]
+    #
+    # @return [Hash, Object]
+    #
+    def self.coerce_hash(input)
+      case input
+      in NilClass | Array | Set | Enumerator
+        input
+      else
+        input.respond_to?(:to_h) ? input.to_h : input
+      end
+    end
+
+    # @private
+    #
+    # @param url [URI::Generic, String]
     #
     # @return [Hash{Symbol => Object}]
+    #
     def self.parse_uri(url)
-      uri =
-        case url
-        in URI::Generic
-          url
-        in String
-          URI.parse(url)
-        end
-      {
-        scheme: uri.scheme,
-        host: uri.host,
-        port: uri.port,
-        path: uri.path,
-        query: CGI.parse(uri.query || "")
-      }
+      parsed = URI::Generic.component.zip(URI.split(url)).to_h
+      {**parsed, query: decode_query(parsed.fetch(:query))}
     end
 
     # @param parsed [Hash{Symbol => String}] -
@@ -148,54 +235,79 @@ module Increase
     #   @option parsed [String] :path
     #   @option parsed [Hash{String => Array<String>}] :query
     #
-    # @param absolute [Boolean]
-    #
     # @return [URI::Generic]
-    def self.unparse_uri(parsed, absolute: true)
-      scheme, host, port = parsed.fetch_values(:scheme, :host, :port)
-      path, query = parsed.fetch_values(:path, :query)
-      uri = String.new
-
-      if absolute
-        uri << "#{scheme}://#{host}"
-        case [scheme, port]
-        in [_, nil] | ["http", 80] | ["https", 443]
-          nil
-        else
-          uri << ":#{port}"
-        end
-      end
-
-      qs = query.length.positive? ? "?#{URI.encode_www_form(query)}" : ""
-      uri << "#{path}#{qs}"
-      URI.parse(uri)
+    #
+    def self.unparse_uri(parsed)
+      URI::Generic.build(**parsed, query: encode_query(parsed.fetch(:query)))
     end
 
+    # @private
+    #
+    # @param lhs [Hash{Symbol => String}]
+    # @param rhs [Hash{Symbol => String}] -
+    #   @option rhs [Hash{String => Array<String>}] :extra_query
+    #
+    # @return [URI::Generic]
+    #
+    def self.join_parsed_uri(lhs, rhs)
+      base_path, base_query = lhs.fetch_values(:path, :query)
+      slashed = base_path.end_with?("/") ? base_path : "#{base_path}/"
+
+      parsed_path, parsed_query = parse_uri(rhs.fetch(:path)).fetch_values(:path, :query)
+      override = URI::Generic.build(**rhs.slice(:scheme, :host, :port), path: parsed_path)
+
+      joined = URI.join(URI::Generic.build(lhs.except(:path, :query)), slashed, override)
+      query = deep_merge(
+        joined.path == base_path ? base_query : {},
+        parsed_query,
+        *rhs.values_at(:query, :extra_query).compact,
+        concat: true
+      )
+
+      joined.query = encode_query(query)
+      joined
+    end
+
+    # @private
+    #
+    # @param path [String, Array<String>]
+    #
+    # @return [String]
+    #
+    def self.interpolate_path(path)
+      case path
+      in String
+        path
+      in []
+        ""
+      in [String, *interpolations]
+        encoded = interpolations.map { |v| ERB::Util.url_encode(v) }
+        path.first % encoded
+      end
+    end
+
+    # @private
+    #
     # @param uri [URI::Generic]
     #
     # @return [String]
-    def self.uri_origin(uri)
-      if uri.respond_to?(:origin)
-        uri.origin
-      else
-        "#{uri.scheme}://#{uri.host}#{uri.port == uri.default_port ? '' : ":#{uri.port}"}"
-      end
-    end
-
-    # @param path [String]
     #
-    # @return [String]
-    def self.normalize_path(path)
-      path.gsub(%r{/+}, "/")
+    def self.uri_origin(uri)
+      "#{uri.scheme}://#{uri.host}#{uri.port == uri.default_port ? '' : ":#{uri.port}"}"
     end
 
+    # @private
+    #
     # @param headers [Array<Hash{String => String, Integer, nil}>]
     #
     # @return [Hash{String => String, nil}]
+    #
     def self.normalized_headers(*headers)
       {}.merge(*headers.compact).to_h do |key, val|
         [key.downcase, val&.to_s&.strip]
       end
     end
   end
+
+  # rubocop:enable Metrics/ModuleLength
 end

@@ -4,6 +4,7 @@ module Increase
   module Resources
     class ProofOfAuthorizationRequests
       # @param client [Increase::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -11,13 +12,15 @@ module Increase
       # Retrieve a Proof of Authorization Request
       #
       # @param proof_of_authorization_request_id [String] The identifier of the Proof of Authorization Request.
+      #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ProofOfAuthorizationRequest]
+      #
       def retrieve(proof_of_authorization_request_id, opts = {})
         req = {
           method: :get,
-          path: "/proof_of_authorization_requests/#{proof_of_authorization_request_id}",
+          path: ["proof_of_authorization_requests/%0s", proof_of_authorization_request_id],
           model: Increase::Models::ProofOfAuthorizationRequest
         }
         @client.request(req, opts)
@@ -25,20 +28,25 @@ module Increase
 
       # List Proof of Authorization Requests
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt, nil] :created_at
-      #   @option params [String, nil] :cursor Return the page of entries after this one.
-      #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      # @param params [Increase::Models::ProofOfAuthorizationRequestListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      #
+      #   @option params [Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequest>]
+      #
       def list(params = {}, opts = {})
+        parsed = Increase::Models::ProofOfAuthorizationRequestListParams.dump(params)
         req = {
           method: :get,
-          path: "/proof_of_authorization_requests",
-          query: params,
+          path: "proof_of_authorization_requests",
+          query: parsed,
           page: Increase::Page,
           model: Increase::Models::ProofOfAuthorizationRequest
         }

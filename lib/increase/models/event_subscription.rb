@@ -2,51 +2,135 @@
 
 module Increase
   module Models
+    # @example
+    #
+    # ```ruby
+    # event_subscription => {
+    #   id: String,
+    #   created_at: Time,
+    #   idempotency_key: String,
+    #   oauth_connection_id: String,
+    #   selected_event_category: enum: Increase::Models::EventSubscription::SelectedEventCategory,
+    #   **_
+    # }
+    # ```
     class EventSubscription < Increase::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   The event subscription identifier.
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] created_at
+      # @!attribute created_at
       #   The time the event subscription was created.
+      #
       #   @return [Time]
       required :created_at, Time
 
-      # @!attribute [rw] idempotency_key
+      # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :idempotency_key, String
 
-      # @!attribute [rw] oauth_connection_id
+      # @!attribute oauth_connection_id
       #   If specified, this subscription will only receive webhooks for Events associated with this OAuth Connection.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :oauth_connection_id, String
 
-      # @!attribute [rw] selected_event_category
+      # @!attribute selected_event_category
       #   If specified, this subscription will only receive webhooks for Events with the specified `category`.
-      #   @return [Symbol, Increase::Models::EventSubscription::SelectedEventCategory]
+      #
+      #   @return [Symbol, Increase::Models::EventSubscription::SelectedEventCategory, nil]
       required :selected_event_category,
                enum: -> {
                  Increase::Models::EventSubscription::SelectedEventCategory
                }
 
-      # @!attribute [rw] status
+      # @!attribute status
       #   This indicates if we'll send notifications to this subscription.
+      #
       #   @return [Symbol, Increase::Models::EventSubscription::Status]
       required :status, enum: -> { Increase::Models::EventSubscription::Status }
 
-      # @!attribute [rw] type
+      # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `event_subscription`.
+      #
       #   @return [Symbol, Increase::Models::EventSubscription::Type]
       required :type, enum: -> { Increase::Models::EventSubscription::Type }
 
-      # @!attribute [rw] url
+      # @!attribute url
       #   The webhook url where we'll send notifications.
+      #
       #   @return [String]
       required :url, String
 
+      # @!parse
+      #   # Webhooks are event notifications we send to you by HTTPS POST requests. Event
+      #   #   Subscriptions are how you configure your application to listen for them. You can
+      #   #   create an Event Subscription through your
+      #   #   [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the
+      #   #   API. For more information, see our
+      #   #   [webhooks guide](https://increase.com/documentation/webhooks).
+      #   #
+      #   # @param id [String] The event subscription identifier.
+      #   #
+      #   # @param created_at [String] The time the event subscription was created.
+      #   #
+      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
+      #   #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #
+      #   # @param oauth_connection_id [String, nil] If specified, this subscription will only receive webhooks for Events associated
+      #   #   with this OAuth Connection.
+      #   #
+      #   # @param selected_event_category [String, nil] If specified, this subscription will only receive webhooks for Events with the
+      #   #   specified `category`.
+      #   #
+      #   # @param status [String] This indicates if we'll send notifications to this subscription.
+      #   #
+      #   # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   #   `event_subscription`.
+      #   #
+      #   # @param url [String] The webhook url where we'll send notifications.
+      #   #
+      #   def initialize(
+      #     id:,
+      #     created_at:,
+      #     idempotency_key:,
+      #     oauth_connection_id:,
+      #     selected_event_category:,
+      #     status:,
+      #     type:,
+      #     url:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::BaseModel) -> void
+
       # If specified, this subscription will only receive webhooks for Events with the specified `category`.
+      #
+      # @example
+      #
+      # ```ruby
+      # case selected_event_category
+      # in :"account.created"
+      #   # ...
+      # in :"account.updated"
+      #   # ...
+      # in :"account_number.created"
+      #   # ...
+      # in :"account_number.updated"
+      #   # ...
+      # in :"account_statement.created"
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class SelectedEventCategory < Increase::Enum
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED = :"account.created"
@@ -311,9 +395,26 @@ module Increase
 
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
+
+        finalize!
       end
 
       # This indicates if we'll send notifications to this subscription.
+      #
+      # @example
+      #
+      # ```ruby
+      # case status
+      # in :active
+      #   # ...
+      # in :disabled
+      #   # ...
+      # in :deleted
+      #   # ...
+      # in :requires_attention
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The subscription is active and Events will be delivered normally.
         ACTIVE = :active
@@ -326,31 +427,25 @@ module Increase
 
         # The subscription is temporarily disabled due to delivery errors and Events will not be delivered.
         REQUIRES_ATTENTION = :requires_attention
+
+        finalize!
       end
 
       # A constant representing the object's type. For this resource it will always be `event_subscription`.
+      #
+      # @example
+      #
+      # ```ruby
+      # case type
+      # in :event_subscription
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         EVENT_SUBSCRIPTION = :event_subscription
-      end
 
-      # @!parse
-      #   # Create a new instance of EventSubscription from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id The event subscription identifier.
-      #   #   @option data [String] :created_at The time the event subscription was created.
-      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
-      #   #     Increase and is used to ensure that a request is only processed once. Learn more
-      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #   @option data [String] :oauth_connection_id If specified, this subscription will only receive webhooks for Events associated
-      #   #     with this OAuth Connection.
-      #   #   @option data [String] :selected_event_category If specified, this subscription will only receive webhooks for Events with the
-      #   #     specified `category`.
-      #   #   @option data [String] :status This indicates if we'll send notifications to this subscription.
-      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
-      #   #     `event_subscription`.
-      #   #   @option data [String] :url The webhook url where we'll send notifications.
-      #   def initialize(data = {}) = super
+        finalize!
+      end
     end
   end
 end

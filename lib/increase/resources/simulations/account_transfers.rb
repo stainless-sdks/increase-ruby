@@ -5,6 +5,7 @@ module Increase
     class Simulations
       class AccountTransfers
         # @param client [Increase::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -15,13 +16,15 @@ module Increase
         #   must first have a `status` of `pending_approval`.
         #
         # @param account_transfer_id [String] The identifier of the Account Transfer you wish to complete.
+        #
         # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::AccountTransfer]
+        #
         def complete(account_transfer_id, opts = {})
           req = {
             method: :post,
-            path: "/simulations/account_transfers/#{account_transfer_id}/complete",
+            path: ["simulations/account_transfers/%0s/complete", account_transfer_id],
             model: Increase::Models::AccountTransfer
           }
           @client.request(req, opts)

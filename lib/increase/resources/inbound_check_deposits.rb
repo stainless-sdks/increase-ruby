@@ -4,6 +4,7 @@ module Increase
   module Resources
     class InboundCheckDeposits
       # @param client [Increase::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -11,13 +12,15 @@ module Increase
       # Retrieve an Inbound Check Deposit
       #
       # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to get details for.
+      #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundCheckDeposit]
+      #
       def retrieve(inbound_check_deposit_id, opts = {})
         req = {
           method: :get,
-          path: "/inbound_check_deposits/#{inbound_check_deposit_id}",
+          path: ["inbound_check_deposits/%0s", inbound_check_deposit_id],
           model: Increase::Models::InboundCheckDeposit
         }
         @client.request(req, opts)
@@ -25,23 +28,30 @@ module Increase
 
       # List Inbound Check Deposits
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [String, nil] :account_id Filter Inbound Check Deposits to those belonging to the specified Account.
-      #   @option params [String, nil] :check_transfer_id Filter Inbound Check Deposits to those belonging to the specified Check
+      # @param params [Increase::Models::InboundCheckDepositListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      #
+      #   @option params [String] :account_id Filter Inbound Check Deposits to those belonging to the specified Account.
+      #
+      #   @option params [String] :check_transfer_id Filter Inbound Check Deposits to those belonging to the specified Check
       #     Transfer.
-      #   @option params [Increase::Models::InboundCheckDepositListParams::CreatedAt, nil] :created_at
-      #   @option params [String, nil] :cursor Return the page of entries after this one.
-      #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #
+      #   @option params [Increase::Models::InboundCheckDepositListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::InboundCheckDeposit>]
+      #
       def list(params = {}, opts = {})
+        parsed = Increase::Models::InboundCheckDepositListParams.dump(params)
         req = {
           method: :get,
-          path: "/inbound_check_deposits",
-          query: params,
+          path: "inbound_check_deposits",
+          query: parsed,
           page: Increase::Page,
           model: Increase::Models::InboundCheckDeposit
         }
@@ -51,13 +61,15 @@ module Increase
       # Decline an Inbound Check Deposit
       #
       # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to decline.
+      #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundCheckDeposit]
+      #
       def decline(inbound_check_deposit_id, opts = {})
         req = {
           method: :post,
-          path: "/inbound_check_deposits/#{inbound_check_deposit_id}/decline",
+          path: ["inbound_check_deposits/%0s/decline", inbound_check_deposit_id],
           model: Increase::Models::InboundCheckDeposit
         }
         @client.request(req, opts)
@@ -67,18 +79,20 @@ module Increase
       #
       # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to return.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::InboundCheckDepositReturnParams, Hash{Symbol => Object}] Attributes to send in this request.
+      #
       #   @option params [Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason] :reason The reason to return the Inbound Check Deposit.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundCheckDeposit]
+      #
       def return_(inbound_check_deposit_id, params = {}, opts = {})
+        parsed = Increase::Models::InboundCheckDepositReturnParams.dump(params)
         req = {
           method: :post,
-          path: "/inbound_check_deposits/#{inbound_check_deposit_id}/return",
-          headers: {"Content-Type" => "application/json"},
-          body: params,
+          path: ["inbound_check_deposits/%0s/return", inbound_check_deposit_id],
+          body: parsed,
           model: Increase::Models::InboundCheckDeposit
         }
         @client.request(req, opts)

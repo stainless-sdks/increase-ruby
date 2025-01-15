@@ -2,38 +2,90 @@
 
 module Increase
   module Models
+    # @example
+    #
+    # ```ruby
+    # document => {
+    #   id: String,
+    #   category: enum: Increase::Models::Document::Category,
+    #   created_at: Time,
+    #   entity_id: String,
+    #   file_id: String
+    # }
+    # ```
     class Document < Increase::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   The Document identifier.
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] category
+      # @!attribute category
       #   The type of document.
+      #
       #   @return [Symbol, Increase::Models::Document::Category]
       required :category, enum: -> { Increase::Models::Document::Category }
 
-      # @!attribute [rw] created_at
+      # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Document was created.
+      #
       #   @return [Time]
       required :created_at, Time
 
-      # @!attribute [rw] entity_id
+      # @!attribute entity_id
       #   The identifier of the Entity the document was generated for.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :entity_id, String
 
-      # @!attribute [rw] file_id
+      # @!attribute file_id
       #   The identifier of the File containing the Document's contents.
+      #
       #   @return [String]
       required :file_id, String
 
-      # @!attribute [rw] type
+      # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `document`.
+      #
       #   @return [Symbol, Increase::Models::Document::Type]
       required :type, enum: -> { Increase::Models::Document::Type }
 
+      # @!parse
+      #   # Increase generates certain documents / forms automatically for your application;
+      #   #   they can be listed here.
+      #   #
+      #   # @param id [String] The Document identifier.
+      #   #
+      #   # @param category [String] The type of document.
+      #   #
+      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+      #   #   Document was created.
+      #   #
+      #   # @param entity_id [String, nil] The identifier of the Entity the document was generated for.
+      #   #
+      #   # @param file_id [String] The identifier of the File containing the Document's contents.
+      #   #
+      #   # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   #   `document`.
+      #   #
+      #   def initialize(id:, category:, created_at:, entity_id:, file_id:, type:, **) = super
+
+      # def initialize: (Hash | Increase::BaseModel) -> void
+
       # The type of document.
+      #
+      # @example
+      #
+      # ```ruby
+      # case category
+      # in :form_1099_int
+      #   # ...
+      # in :proof_of_authorization
+      #   # ...
+      # in :company_information
+      #   # ...
+      # end
+      # ```
       class Category < Increase::Enum
         # Internal Revenue Service Form 1099-INT.
         FORM_1099_INT = :form_1099_int
@@ -43,26 +95,25 @@ module Increase
 
         # Company information, such a policies or procedures, typically submitted during our due diligence process.
         COMPANY_INFORMATION = :company_information
+
+        finalize!
       end
 
       # A constant representing the object's type. For this resource it will always be `document`.
+      #
+      # @example
+      #
+      # ```ruby
+      # case type
+      # in :document
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         DOCUMENT = :document
-      end
 
-      # @!parse
-      #   # Create a new instance of Document from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id The Document identifier.
-      #   #   @option data [String] :category The type of document.
-      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      #   #     Document was created.
-      #   #   @option data [String] :entity_id The identifier of the Entity the document was generated for.
-      #   #   @option data [String] :file_id The identifier of the File containing the Document's contents.
-      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
-      #   #     `document`.
-      #   def initialize(data = {}) = super
+        finalize!
+      end
     end
   end
 end

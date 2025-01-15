@@ -2,93 +2,219 @@
 
 module Increase
   module Models
+    # @example
+    #
+    # ```ruby
+    # real_time_payments_request_for_payment => {
+    #   id: String,
+    #   amount: Integer,
+    #   created_at: Time,
+    #   currency: enum: Increase::Models::RealTimePaymentsRequestForPayment::Currency,
+    #   debtor_name: String,
+    #   **_
+    # }
+    # ```
     class RealTimePaymentsRequestForPayment < Increase::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   The Real-Time Payments Request for Payment's identifier.
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] amount
+      # @!attribute amount
       #   The transfer amount in USD cents.
+      #
       #   @return [Integer]
       required :amount, Integer
 
-      # @!attribute [rw] created_at
+      # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the request for payment was created.
+      #
       #   @return [Time]
       required :created_at, Time
 
-      # @!attribute [rw] currency
+      # @!attribute currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
+      #
       #   @return [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Currency]
       required :currency, enum: -> { Increase::Models::RealTimePaymentsRequestForPayment::Currency }
 
-      # @!attribute [rw] debtor_name
+      # @!attribute debtor_name
       #   The name of the recipient the sender is requesting a transfer from.
+      #
       #   @return [String]
       required :debtor_name, String
 
-      # @!attribute [rw] destination_account_number_id
+      # @!attribute destination_account_number_id
       #   The Account Number in which a successful transfer will arrive.
+      #
       #   @return [String]
       required :destination_account_number_id, String
 
-      # @!attribute [rw] expires_at
+      # @!attribute expires_at
       #   The expiration time for this request, in UTC. The requestee will not be able to pay after this date.
+      #
       #   @return [Date]
       required :expires_at, Date
 
-      # @!attribute [rw] fulfillment_transaction_id
+      # @!attribute fulfillment_transaction_id
       #   The transaction that fulfilled this request.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :fulfillment_transaction_id, String
 
-      # @!attribute [rw] idempotency_key
+      # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :idempotency_key, String
 
-      # @!attribute [rw] refusal
+      # @!attribute refusal
       #   If the request for payment is refused by the destination financial institution or the receiving customer, this will contain supplemental details.
-      #   @return [Increase::Models::RealTimePaymentsRequestForPayment::Refusal]
+      #
+      #   @return [Increase::Models::RealTimePaymentsRequestForPayment::Refusal, nil]
       required :refusal, -> { Increase::Models::RealTimePaymentsRequestForPayment::Refusal }
 
-      # @!attribute [rw] rejection
+      # @!attribute rejection
       #   If the request for payment is rejected by Real-Time Payments or the destination financial institution, this will contain supplemental details.
-      #   @return [Increase::Models::RealTimePaymentsRequestForPayment::Rejection]
+      #
+      #   @return [Increase::Models::RealTimePaymentsRequestForPayment::Rejection, nil]
       required :rejection, -> { Increase::Models::RealTimePaymentsRequestForPayment::Rejection }
 
-      # @!attribute [rw] remittance_information
+      # @!attribute remittance_information
       #   Unstructured information that will show on the recipient's bank statement.
+      #
       #   @return [String]
       required :remittance_information, String
 
-      # @!attribute [rw] source_account_number
+      # @!attribute source_account_number
       #   The account number the request is sent to.
+      #
       #   @return [String]
       required :source_account_number, String
 
-      # @!attribute [rw] source_routing_number
+      # @!attribute source_routing_number
       #   The receiver's American Bankers' Association (ABA) Routing Transit Number (RTN).
+      #
       #   @return [String]
       required :source_routing_number, String
 
-      # @!attribute [rw] status
+      # @!attribute status
       #   The lifecycle status of the request for payment.
+      #
       #   @return [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Status]
       required :status, enum: -> { Increase::Models::RealTimePaymentsRequestForPayment::Status }
 
-      # @!attribute [rw] submission
+      # @!attribute submission
       #   After the request for payment is submitted to Real-Time Payments, this will contain supplemental details.
-      #   @return [Increase::Models::RealTimePaymentsRequestForPayment::Submission]
+      #
+      #   @return [Increase::Models::RealTimePaymentsRequestForPayment::Submission, nil]
       required :submission, -> { Increase::Models::RealTimePaymentsRequestForPayment::Submission }
 
-      # @!attribute [rw] type
+      # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `real_time_payments_request_for_payment`.
+      #
       #   @return [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Type]
       required :type, enum: -> { Increase::Models::RealTimePaymentsRequestForPayment::Type }
 
+      # @!parse
+      #   # Real-Time Payments transfers move funds, within seconds, between your Increase
+      #   #   account and any other account on the Real-Time Payments network. A request for
+      #   #   payment is a request to the receiver to send funds to your account. The
+      #   #   permitted uses of Requests For Payment are limited by the Real-Time Payments
+      #   #   network to business-to-business payments and transfers between two accounts at
+      #   #   different banks owned by the same individual. Please contact
+      #   #   [support@increase.com](mailto:support@increase.com) to enable this API for your
+      #   #   team.
+      #   #
+      #   # @param id [String] The Real-Time Payments Request for Payment's identifier.
+      #   #
+      #   # @param amount [Integer] The transfer amount in USD cents.
+      #   #
+      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   #   the request for payment was created.
+      #   #
+      #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
+      #   #   currency. For real-time payments transfers this is always equal to `USD`.
+      #   #
+      #   # @param debtor_name [String] The name of the recipient the sender is requesting a transfer from.
+      #   #
+      #   # @param destination_account_number_id [String] The Account Number in which a successful transfer will arrive.
+      #   #
+      #   # @param expires_at [String] The expiration time for this request, in UTC. The requestee will not be able to
+      #   #   pay after this date.
+      #   #
+      #   # @param fulfillment_transaction_id [String, nil] The transaction that fulfilled this request.
+      #   #
+      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
+      #   #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #
+      #   # @param refusal [Increase::Models::RealTimePaymentsRequestForPayment::Refusal, nil] If the request for payment is refused by the destination financial institution
+      #   #   or the receiving customer, this will contain supplemental details.
+      #   #
+      #   # @param rejection [Increase::Models::RealTimePaymentsRequestForPayment::Rejection, nil] If the request for payment is rejected by Real-Time Payments or the destination
+      #   #   financial institution, this will contain supplemental details.
+      #   #
+      #   # @param remittance_information [String] Unstructured information that will show on the recipient's bank statement.
+      #   #
+      #   # @param source_account_number [String] The account number the request is sent to.
+      #   #
+      #   # @param source_routing_number [String] The receiver's American Bankers' Association (ABA) Routing Transit Number (RTN).
+      #   #
+      #   # @param status [String] The lifecycle status of the request for payment.
+      #   #
+      #   # @param submission [Increase::Models::RealTimePaymentsRequestForPayment::Submission, nil] After the request for payment is submitted to Real-Time Payments, this will
+      #   #   contain supplemental details.
+      #   #
+      #   # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   #   `real_time_payments_request_for_payment`.
+      #   #
+      #   def initialize(
+      #     id:,
+      #     amount:,
+      #     created_at:,
+      #     currency:,
+      #     debtor_name:,
+      #     destination_account_number_id:,
+      #     expires_at:,
+      #     fulfillment_transaction_id:,
+      #     idempotency_key:,
+      #     refusal:,
+      #     rejection:,
+      #     remittance_information:,
+      #     source_account_number:,
+      #     source_routing_number:,
+      #     status:,
+      #     submission:,
+      #     type:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::BaseModel) -> void
+
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
+      #
+      # @example
+      #
+      # ```ruby
+      # case currency
+      # in :CAD
+      #   # ...
+      # in :CHF
+      #   # ...
+      # in :EUR
+      #   # ...
+      # in :GBP
+      #   # ...
+      # in :JPY
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -107,16 +233,56 @@ module Increase
 
         # US Dollar (USD)
         USD = :USD
+
+        finalize!
       end
 
+      # @example
+      #
+      # ```ruby
+      # refusal => {
+      #   refusal_reason_code: enum: Increase::Models::RealTimePaymentsRequestForPayment::Refusal::RefusalReasonCode
+      # }
+      # ```
       class Refusal < Increase::BaseModel
-        # @!attribute [rw] refusal_reason_code
+        # @!attribute refusal_reason_code
         #   The reason the request for payment was refused as provided by the recipient bank or the customer.
+        #
         #   @return [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Refusal::RefusalReasonCode]
         required :refusal_reason_code,
                  enum: -> { Increase::Models::RealTimePaymentsRequestForPayment::Refusal::RefusalReasonCode }
 
+        # @!parse
+        #   # If the request for payment is refused by the destination financial institution
+        #   #   or the receiving customer, this will contain supplemental details.
+        #   #
+        #   # @param refusal_reason_code [String] The reason the request for payment was refused as provided by the recipient bank
+        #   #   or the customer.
+        #   #
+        #   def initialize(refusal_reason_code:, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
         # The reason the request for payment was refused as provided by the recipient bank or the customer.
+        #
+        # @example
+        #
+        # ```ruby
+        # case refusal_reason_code
+        # in :account_blocked
+        #   # ...
+        # in :transaction_forbidden
+        #   # ...
+        # in :transaction_type_not_supported
+        #   # ...
+        # in :unexpected_amount
+        #   # ...
+        # in :amount_exceeds_bank_limits
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class RefusalReasonCode < Increase::Enum
           # The destination account is currently blocked from receiving transactions. Corresponds to the Real-Time Payments reason code `AC06`.
           ACCOUNT_BLOCKED = :account_blocked
@@ -156,25 +322,57 @@ module Increase
 
           # Some other error or issue has occurred.
           OTHER = :other
-        end
 
-        # @!parse
-        #   # Create a new instance of Refusal from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :refusal_reason_code The reason the request for payment was refused as provided by the recipient bank
-        #   #     or the customer.
-        #   def initialize(data = {}) = super
+          finalize!
+        end
       end
 
+      # @example
+      #
+      # ```ruby
+      # rejection => {
+      #   reject_reason_code: enum: Increase::Models::RealTimePaymentsRequestForPayment::Rejection::RejectReasonCode
+      # }
+      # ```
       class Rejection < Increase::BaseModel
-        # @!attribute [rw] reject_reason_code
+        # @!attribute reject_reason_code
         #   The reason the request for payment was rejected as provided by the recipient bank or the Real-Time Payments network.
+        #
         #   @return [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Rejection::RejectReasonCode]
         required :reject_reason_code,
                  enum: -> { Increase::Models::RealTimePaymentsRequestForPayment::Rejection::RejectReasonCode }
 
+        # @!parse
+        #   # If the request for payment is rejected by Real-Time Payments or the destination
+        #   #   financial institution, this will contain supplemental details.
+        #   #
+        #   # @param reject_reason_code [String] The reason the request for payment was rejected as provided by the recipient
+        #   #   bank or the Real-Time Payments network.
+        #   #
+        #   def initialize(reject_reason_code:, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
         # The reason the request for payment was rejected as provided by the recipient bank or the Real-Time Payments network.
+        #
+        # @example
+        #
+        # ```ruby
+        # case reject_reason_code
+        # in :account_closed
+        #   # ...
+        # in :account_blocked
+        #   # ...
+        # in :invalid_creditor_account_type
+        #   # ...
+        # in :invalid_creditor_account_number
+        #   # ...
+        # in :invalid_creditor_financial_institution_identifier
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class RejectReasonCode < Increase::Enum
           # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
           ACCOUNT_CLOSED = :account_closed
@@ -238,18 +436,31 @@ module Increase
 
           # Some other error or issue has occurred.
           OTHER = :other
-        end
 
-        # @!parse
-        #   # Create a new instance of Rejection from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :reject_reason_code The reason the request for payment was rejected as provided by the recipient
-        #   #     bank or the Real-Time Payments network.
-        #   def initialize(data = {}) = super
+          finalize!
+        end
       end
 
       # The lifecycle status of the request for payment.
+      #
+      # @example
+      #
+      # ```ruby
+      # case status
+      # in :pending_submission
+      #   # ...
+      # in :pending_response
+      #   # ...
+      # in :rejected
+      #   # ...
+      # in :accepted
+      #   # ...
+      # in :refused
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Status < Increase::Enum
         # The request for payment is queued to be submitted to Real-Time Payments.
         PENDING_SUBMISSION = :pending_submission
@@ -268,59 +479,50 @@ module Increase
 
         # The request for payment was fulfilled by the receiver.
         FULFILLED = :fulfilled
+
+        finalize!
       end
 
+      # @example
+      #
+      # ```ruby
+      # submission => {
+      #   payment_information_identification: String
+      # }
+      # ```
       class Submission < Increase::BaseModel
-        # @!attribute [rw] payment_information_identification
+        # @!attribute payment_information_identification
         #   The Real-Time Payments payment information identification of the request.
+        #
         #   @return [String]
         required :payment_information_identification, String
 
         # @!parse
-        #   # Create a new instance of Submission from a Hash of raw data.
+        #   # After the request for payment is submitted to Real-Time Payments, this will
+        #   #   contain supplemental details.
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :payment_information_identification The Real-Time Payments payment information identification of the request.
-        #   def initialize(data = {}) = super
+        #   # @param payment_information_identification [String] The Real-Time Payments payment information identification of the request.
+        #   #
+        #   def initialize(payment_information_identification:, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # A constant representing the object's type. For this resource it will always be `real_time_payments_request_for_payment`.
+      #
+      # @example
+      #
+      # ```ruby
+      # case type
+      # in :real_time_payments_request_for_payment
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         REAL_TIME_PAYMENTS_REQUEST_FOR_PAYMENT = :real_time_payments_request_for_payment
-      end
 
-      # @!parse
-      #   # Create a new instance of RealTimePaymentsRequestForPayment from a Hash of raw
-      #   #   data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id The Real-Time Payments Request for Payment's identifier.
-      #   #   @option data [Integer] :amount The transfer amount in USD cents.
-      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #     the request for payment was created.
-      #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      #   #     currency. For real-time payments transfers this is always equal to `USD`.
-      #   #   @option data [String] :debtor_name The name of the recipient the sender is requesting a transfer from.
-      #   #   @option data [String] :destination_account_number_id The Account Number in which a successful transfer will arrive.
-      #   #   @option data [String] :expires_at The expiration time for this request, in UTC. The requestee will not be able to
-      #   #     pay after this date.
-      #   #   @option data [String] :fulfillment_transaction_id The transaction that fulfilled this request.
-      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
-      #   #     Increase and is used to ensure that a request is only processed once. Learn more
-      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #   @option data [Object] :refusal If the request for payment is refused by the destination financial institution
-      #   #     or the receiving customer, this will contain supplemental details.
-      #   #   @option data [Object] :rejection If the request for payment is rejected by Real-Time Payments or the destination
-      #   #     financial institution, this will contain supplemental details.
-      #   #   @option data [String] :remittance_information Unstructured information that will show on the recipient's bank statement.
-      #   #   @option data [String] :source_account_number The account number the request is sent to.
-      #   #   @option data [String] :source_routing_number The receiver's American Bankers' Association (ABA) Routing Transit Number (RTN).
-      #   #   @option data [String] :status The lifecycle status of the request for payment.
-      #   #   @option data [Object] :submission After the request for payment is submitted to Real-Time Payments, this will
-      #   #     contain supplemental details.
-      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
-      #   #     `real_time_payments_request_for_payment`.
-      #   def initialize(data = {}) = super
+        finalize!
+      end
     end
   end
 end

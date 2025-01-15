@@ -5,6 +5,7 @@ module Increase
     class Simulations
       class InboundCheckDeposits
         # @param client [Increase::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -16,20 +17,24 @@ module Increase
         #   Transaction as a result. You can inspect the resulting Inbound Check Deposit
         #   object to see the result.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::InboundCheckDepositCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        #
         #   @option params [String] :account_number_id The identifier of the Account Number the Inbound Check Deposit will be against.
+        #
         #   @option params [Integer] :amount The check amount in cents.
+        #
         #   @option params [String] :check_number The check number on the check to be deposited.
         #
         # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundCheckDeposit]
+        #
         def create(params = {}, opts = {})
+          parsed = Increase::Models::Simulations::InboundCheckDepositCreateParams.dump(params)
           req = {
             method: :post,
-            path: "/simulations/inbound_check_deposits",
-            headers: {"Content-Type" => "application/json"},
-            body: params,
+            path: "simulations/inbound_check_deposits",
+            body: parsed,
             model: Increase::Models::InboundCheckDeposit
           }
           @client.request(req, opts)

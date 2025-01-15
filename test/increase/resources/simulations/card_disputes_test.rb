@@ -3,9 +3,7 @@
 require_relative "../../test_helper"
 
 class Increase::Test::Resources::Simulations::CardDisputesTest < Minitest::Test
-  parallelize_me!
-
-  def setup
+  def before_all
     @increase = Increase::Client.new(
       base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
       api_key: "My API Key"
@@ -15,8 +13,11 @@ class Increase::Test::Resources::Simulations::CardDisputesTest < Minitest::Test
   def test_action_required_params
     response = @increase.simulations.card_disputes.action(
       "card_dispute_id",
-      {status: "pending_user_information"}
+      status: "pending_user_information"
     )
-    assert_kind_of(Increase::Models::CardDispute, response)
+
+    assert_pattern do
+      response => Increase::Models::CardDispute
+    end
   end
 end

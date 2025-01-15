@@ -1,36 +1,71 @@
 # frozen_string_literal: true
 
 module Increase
-  class Page
+  # @example
+  #
+  # ```ruby
+  # if page.has_next?
+  #   page = page.next_page
+  # end
+  # ```
+  #
+  # @example
+  #
+  # ```ruby
+  # page.auto_paging_each do |item|
+  # #   item ...
+  # end
+  # ```
+  #
+  # @example
+  #
+  # ```ruby
+  # items = page.to_enum.take(2)
+  #
+  # items => Array
+  # ```
+  class Page < Increase::BasePage
     # @return [Array<Object>]
     attr_accessor :data
 
-    # @return [String]
+    # @return [String, nil]
     attr_accessor :next_cursor
 
-    # @!visibility private
+    # @private
     #
-    # @param model [Object]
-    # @param raw_data [Hash{Symbol => Object}]
-    # @param response [Net::HTTPResponse]
-    # @param client [Increase::Client]
+    # @param client [Increase::BaseClient]
     # @param req [Hash{Symbol => Object}]
     # @param opts [Hash{Symbol => Object}]
-    def initialize(client:, model:, req:, opts:, response:, raw_data:)
-      @data = (raw_data[:data] || []).map { |e| model.convert(e) }
-      @next_cursor = raw_data[:next_cursor]
-      @client = client
-      @req = req
-      @opts = opts
+    # @param headers [Hash{String => String}]
+    # @param unwrapped [Hash{Symbol => Object}]
+    #
+    def initialize(client:, req:, opts:, headers:, unwrapped:)
+      model = req.fetch(:model)
+
+      case unwrapped
+      in {data: data} if data.is_a?(Array) || data.nil?
+        @data = data&.map { |row| model.coerce(row) }
+      else
+      end
+
+      case unwrapped
+      in {next_cursor: next_cursor} if next_cursor.is_a?(String) || next_cursor.is_nil?
+        @next_cursor = next_cursor
+      else
+      end
+
+      super
     end
 
     # @return [Boolean]
+    #
     def next_page?
       !next_cursor.nil?
     end
 
     # @raise [Increase::HTTP::Error]
     # @return [Increase::Page]
+    #
     def next_page
       unless next_page?
         raise "No more pages available; please check #next_page? before calling #next_page"
@@ -42,25 +77,20 @@ module Increase
 
     # @param blk [Proc]
     #
-    # @return [nil]
     def auto_paging_each(&blk)
       unless block_given?
-        raise "A block must be given to #auto_paging_each"
+        raise ArgumentError.new("A block must be given to #auto_paging_each")
       end
       page = self
       loop do
-        page.data.each { |e| blk.call(e) }
+        page.data&.each { |row| blk.call(row) }
         break unless page.next_page?
         page = page.next_page
       end
     end
 
-    # @return [Enumerator]
-    def to_enum = super(:auto_paging_each)
-
-    alias_method :enum_for, :to_enum
-
     # @return [String]
+    #
     def inspect
       "#<#{self.class}:0x#{object_id.to_s(16)} data=#{data.inspect} next_cursor=#{next_cursor.inspect}>"
     end

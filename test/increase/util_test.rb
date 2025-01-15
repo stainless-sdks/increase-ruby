@@ -4,86 +4,91 @@ require_relative "test_helper"
 
 class Increase::Test::UtilTest < Minitest::Test
   def test_left_map
-    assert_nil(Increase::Util.deep_merge({a: 1}, nil))
+    assert_pattern do
+      Increase::Util.deep_merge({a: 1}, nil) => nil
+    end
   end
 
   def test_right_map
-    assert_equal(Increase::Util.deep_merge(nil, {a: 1}), {a: 1})
+    assert_pattern do
+      Increase::Util.deep_merge(nil, {a: 1}) => {a: 1}
+    end
   end
 
   def test_disjoint_maps
-    assert_equal(
-      Increase::Util.deep_merge({b: 2}, {a: 1}), {a: 1, b: 2}
-    )
+    assert_pattern do
+      Increase::Util.deep_merge({b: 2}, {a: 1}) => {a: 1, b: 2}
+    end
   end
 
   def test_overlapping_maps
-    assert_equal(
-      Increase::Util.deep_merge({b: 2, c: 3}, {a: 1, c: 4}),
-      {a: 1, b: 2, c: 4}
-    )
+    assert_pattern do
+      Increase::Util.deep_merge({b: 2, c: 3}, {a: 1, c: 4}) => {a: 1, b: 2, c: 4}
+    end
   end
 
   def test_nested
-    assert_equal(
-      Increase::Util.deep_merge({b: {b2: 1}}, {b: {b2: 2}}),
-      {b: {b2: 2}}
-    )
+    assert_pattern do
+      Increase::Util.deep_merge({b: {b2: 1}}, {b: {b2: 2}}) => {b: {b2: 2}}
+    end
   end
 
   def test_nested_left_map
-    assert_equal(
-      Increase::Util.deep_merge({b: {b2: 1}}, {b: 6}),
-      {b: 6}
-    )
+    assert_pattern do
+      Increase::Util.deep_merge({b: {b2: 1}}, {b: 6}) => {b: 6}
+    end
   end
 
   def test_omission
-    assert_equal(
-      {b: {b2: 1, b3: {d: 5}}},
-      Increase::Util.deep_merge(
-        {b: {b2: 1, b3: {c: 4, d: 5}}},
-        {b: {b2: 1, b3: {c: Increase::Util::OMIT, d: 5}}}
-      )
+    merged = Increase::Util.deep_merge(
+      {b: {b2: 1, b3: {c: 4, d: 5}}},
+      {b: {b2: 1, b3: {c: Increase::Util::OMIT, d: 5}}}
     )
+
+    assert_pattern do
+      merged => {b: {b2: 1, b3: {d: 5}}}
+    end
   end
 
   def test_concat
-    assert_equal(
-      {a: {b: [1, 2, 3, 4]}},
-      Increase::Util.deep_merge(
-        {a: {b: [1, 2]}},
-        {a: {b: [3, 4]}},
-        concat: true
-      )
+    merged = Increase::Util.deep_merge(
+      {a: {b: [1, 2]}},
+      {a: {b: [3, 4]}},
+      concat: true
     )
+
+    assert_pattern do
+      merged => {a: {b: [1, 2, 3, 4]}}
+    end
   end
 
   def test_concat_false
-    assert_equal(
+    merged = Increase::Util.deep_merge(
+      {a: {b: [1, 2]}},
       {a: {b: [3, 4]}},
-      Increase::Util.deep_merge(
-        {a: {b: [1, 2]}},
-        {a: {b: [3, 4]}},
-        concat: false
-      )
+      concat: false
     )
+
+    assert_pattern do
+      merged => {a: {b: [3, 4]}}
+    end
   end
 
   def test_dig
-    assert_equal(1, Increase::Util.dig(1, nil))
-    assert_nil(Increase::Util.dig({a: 1}, :b))
-    assert_equal(1, Increase::Util.dig({a: 1}, :a))
-    assert_equal(1, Increase::Util.dig({a: {b: 1}}, [:a, :b]))
-    assert_nil(Increase::Util.dig([], 1))
-    assert_equal(1, Increase::Util.dig([nil, [nil, 1]], [1, 1]))
-    assert_equal(1, Increase::Util.dig({a: [nil, 1]}, [:a, 1]))
+    assert_pattern do
+      Increase::Util.dig(1, nil) => 1
+      Increase::Util.dig({a: 1}, :b) => nil
+      Increase::Util.dig({a: 1}, :a) => 1
+      Increase::Util.dig({a: {b: 1}}, [:a, :b]) => 1
 
-    assert_raises(NoMatchingPatternError) do
-      Increase::Util.dig([], 1.0)
-    end
-    assert_raises(NoMatchingPatternError) do
-      Increase::Util.dig(Object, 1)
+      Increase::Util.dig([], 1) => nil
+      Increase::Util.dig([nil, [nil, 1]], [1, 1]) => 1
+      Increase::Util.dig({a: [nil, 1]}, [:a, 1]) => 1
+      Increase::Util.dig([], 1.0) => nil
+
+      Increase::Util.dig(Object, 1) => nil
+      Increase::Util.dig([], 1.0, 2) => 2
+      Increase::Util.dig([], 1.0) { 2 } => 2
     end
   end
 
@@ -93,12 +98,62 @@ class Increase::Test::UtilTest < Minitest::Test
       https://example.com/
       https://example.com:443/example?e1=e1&e2=e2&e=
     ].each do |url|
-      uri = URI.parse(url)
-      parsed = Increase::Util.parse_uri(uri)
-      unparsed = Increase::Util.unparse_uri(parsed)
+      parsed = Increase::Util.parse_uri(url)
+      unparsed = Increase::Util.unparse_uri(parsed).to_s
 
-      assert_equal(unparsed, uri)
+      assert_equal(url, unparsed)
       assert_equal(parsed, Increase::Util.parse_uri(unparsed))
+    end
+  end
+
+  def test_joining_uris
+    cases = [
+      [
+        "h://a.b/c?d=e",
+        "h://nope/ignored",
+        Increase::Util.parse_uri("h://a.b/c?d=e")
+      ],
+      [
+        "h://a.b/c?d=e&f=g",
+        "h://nope",
+        {
+          host: "a.b",
+          path: "/c",
+          query: {"d" => ["e"]},
+          extra_query: {
+            "f" => ["g"]
+          }
+        }
+      ]
+    ]
+
+    cases.each do |expect, lhs, rhs|
+      assert_equal(
+        URI.parse(expect),
+        Increase::Util.join_parsed_uri(
+          Increase::Util.parse_uri(lhs),
+          rhs
+        )
+      )
+    end
+  end
+
+  def test_joining_uri_queries
+    base_url = "h://a.b/c?d=e"
+    cases = {
+      "c2" => "h://a.b/c/c2",
+      "/c2?f=g" => "h://a.b/c2?f=g",
+      "/c?f=g" => "h://a.b/c?d=e&f=g"
+    }
+
+    cases.each do |path, expected|
+      assert_equal(
+        URI.parse(expected),
+        Increase::Util.join_parsed_uri(
+          Increase::Util.parse_uri(base_url),
+          {path: path}
+        )
+      )
     end
   end
 end
