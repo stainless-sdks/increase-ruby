@@ -3,9 +3,7 @@
 require_relative "../test_helper"
 
 class Increase::Test::Resources::DigitalWalletTokensTest < Minitest::Test
-  parallelize_me!
-
-  def setup
+  def before_all
     @increase = Increase::Client.new(
       base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
       api_key: "My API Key"
@@ -14,11 +12,22 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Minitest::Test
 
   def test_retrieve
     response = @increase.digital_wallet_tokens.retrieve("digital_wallet_token_id")
-    assert_kind_of(Increase::Models::DigitalWalletToken, response)
+
+    assert_pattern do
+      response => Increase::Models::DigitalWalletToken
+    end
   end
 
   def test_list
     response = @increase.digital_wallet_tokens.list
-    assert_kind_of(Increase::Page, response)
+
+    assert_pattern do
+      response => Increase::Page
+    end
+
+    page = response.next_page
+    assert_pattern do
+      page => Increase::Page
+    end
   end
 end

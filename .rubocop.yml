@@ -64,8 +64,29 @@ Style/ClassAndModuleChildren:
   Exclude:
     - test/**/*
 
+# Perfectly fine
+Style/MultipleComparison:
+  Enabled: false
+
 # Rubocop is pretty bad about mangling single line lambdas
 Style/Lambda:
+  Enabled: false
+
+# Not all parameters should be named
+Style/NumberedParameters:
+  Enabled: false
+
+# Fairly useful in tests for pattern matching
+Style/CaseEquality:
+  Exclude:
+    - test/**/*
+
+# Reasonable to use brackets for errors with long messages.
+Style/RaiseArgs:
+  Enabled: false
+
+# Literally nothing wrong with `symbol_1`
+Naming/VariableNumber:
   Enabled: false
 
 # Set a reasonable line length; rely on other cops to correct long lines.

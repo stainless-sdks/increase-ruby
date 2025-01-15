@@ -5,6 +5,7 @@ module Increase
     class Simulations
       class WireTransfers
         # @param client [Increase::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -15,13 +16,15 @@ module Increase
         #   Transfer must first have a `status` of `complete`.
         #
         # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to reverse.
+        #
         # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::WireTransfer]
+        #
         def reverse(wire_transfer_id, opts = {})
           req = {
             method: :post,
-            path: "/simulations/wire_transfers/#{wire_transfer_id}/reverse",
+            path: ["simulations/wire_transfers/%0s/reverse", wire_transfer_id],
             model: Increase::Models::WireTransfer
           }
           @client.request(req, opts)
@@ -32,13 +35,15 @@ module Increase
         #   `pending_creating`.
         #
         # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to submit.
+        #
         # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::WireTransfer]
+        #
         def submit(wire_transfer_id, opts = {})
           req = {
             method: :post,
-            path: "/simulations/wire_transfers/#{wire_transfer_id}/submit",
+            path: ["simulations/wire_transfers/%0s/submit", wire_transfer_id],
             model: Increase::Models::WireTransfer
           }
           @client.request(req, opts)

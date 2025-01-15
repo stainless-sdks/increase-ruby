@@ -3,9 +3,7 @@
 require_relative "../../test_helper"
 
 class Increase::Test::Resources::Simulations::InboundFundsHoldsTest < Minitest::Test
-  parallelize_me!
-
-  def setup
+  def before_all
     @increase = Increase::Client.new(
       base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
       api_key: "My API Key"
@@ -14,6 +12,9 @@ class Increase::Test::Resources::Simulations::InboundFundsHoldsTest < Minitest::
 
   def test_release
     response = @increase.simulations.inbound_funds_holds.release("inbound_funds_hold_id")
-    assert_kind_of(Increase::Models::Simulations::InboundFundsHoldReleaseResponse, response)
+
+    assert_pattern do
+      response => Increase::Models::Simulations::InboundFundsHoldReleaseResponse
+    end
   end
 end

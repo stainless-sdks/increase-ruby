@@ -2,157 +2,310 @@
 
 module Increase
   module Models
+    # @example
+    #
+    # ```ruby
+    # card_dispute => {
+    #   id: String,
+    #   acceptance: Increase::Models::CardDispute::Acceptance,
+    #   amount: Integer,
+    #   created_at: Time,
+    #   disputed_transaction_id: String,
+    #   **_
+    # }
+    # ```
     class CardDispute < Increase::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   The Card Dispute identifier.
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] acceptance
+      # @!attribute acceptance
       #   If the Card Dispute's status is `accepted`, this will contain details of the successful dispute.
-      #   @return [Increase::Models::CardDispute::Acceptance]
+      #
+      #   @return [Increase::Models::CardDispute::Acceptance, nil]
       required :acceptance, -> { Increase::Models::CardDispute::Acceptance }
 
-      # @!attribute [rw] amount
+      # @!attribute amount
       #   The amount of the dispute, if provided, or the transaction amount otherwise.
-      #   @return [Integer]
+      #
+      #   @return [Integer, nil]
       required :amount, Integer
 
-      # @!attribute [rw] created_at
+      # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was created.
+      #
       #   @return [Time]
       required :created_at, Time
 
-      # @!attribute [rw] disputed_transaction_id
+      # @!attribute disputed_transaction_id
       #   The identifier of the Transaction that was disputed.
+      #
       #   @return [String]
       required :disputed_transaction_id, String
 
-      # @!attribute [rw] explanation
+      # @!attribute explanation
       #   Why you disputed the Transaction in question.
+      #
       #   @return [String]
       required :explanation, String
 
-      # @!attribute [rw] idempotency_key
+      # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :idempotency_key, String
 
-      # @!attribute [rw] loss
+      # @!attribute loss
       #   If the Card Dispute's status is `lost`, this will contain details of the lost dispute.
-      #   @return [Increase::Models::CardDispute::Loss]
+      #
+      #   @return [Increase::Models::CardDispute::Loss, nil]
       required :loss, -> { Increase::Models::CardDispute::Loss }
 
-      # @!attribute [rw] rejection
+      # @!attribute rejection
       #   If the Card Dispute's status is `rejected`, this will contain details of the unsuccessful dispute.
-      #   @return [Increase::Models::CardDispute::Rejection]
+      #
+      #   @return [Increase::Models::CardDispute::Rejection, nil]
       required :rejection, -> { Increase::Models::CardDispute::Rejection }
 
-      # @!attribute [rw] status
+      # @!attribute status
       #   The results of the Dispute investigation.
+      #
       #   @return [Symbol, Increase::Models::CardDispute::Status]
       required :status, enum: -> { Increase::Models::CardDispute::Status }
 
-      # @!attribute [rw] type
+      # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `card_dispute`.
+      #
       #   @return [Symbol, Increase::Models::CardDispute::Type]
       required :type, enum: -> { Increase::Models::CardDispute::Type }
 
-      # @!attribute [rw] win
+      # @!attribute win
       #   If the Card Dispute's status is `won`, this will contain details of the won dispute.
-      #   @return [Increase::Models::CardDispute::Win]
+      #
+      #   @return [Increase::Models::CardDispute::Win, nil]
       required :win, -> { Increase::Models::CardDispute::Win }
 
+      # @!parse
+      #   # If unauthorized activity occurs on a card, you can create a Card Dispute and
+      #   #   we'll return the funds if appropriate.
+      #   #
+      #   # @param id [String] The Card Dispute identifier.
+      #   #
+      #   # @param acceptance [Increase::Models::CardDispute::Acceptance, nil] If the Card Dispute's status is `accepted`, this will contain details of the
+      #   #   successful dispute.
+      #   #
+      #   # @param amount [Integer, nil] The amount of the dispute, if provided, or the transaction amount otherwise.
+      #   #
+      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   #   the Card Dispute was created.
+      #   #
+      #   # @param disputed_transaction_id [String] The identifier of the Transaction that was disputed.
+      #   #
+      #   # @param explanation [String] Why you disputed the Transaction in question.
+      #   #
+      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
+      #   #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #
+      #   # @param loss [Increase::Models::CardDispute::Loss, nil] If the Card Dispute's status is `lost`, this will contain details of the lost
+      #   #   dispute.
+      #   #
+      #   # @param rejection [Increase::Models::CardDispute::Rejection, nil] If the Card Dispute's status is `rejected`, this will contain details of the
+      #   #   unsuccessful dispute.
+      #   #
+      #   # @param status [String] The results of the Dispute investigation.
+      #   #
+      #   # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   #   `card_dispute`.
+      #   #
+      #   # @param win [Increase::Models::CardDispute::Win, nil] If the Card Dispute's status is `won`, this will contain details of the won
+      #   #   dispute.
+      #   #
+      #   def initialize(
+      #     id:,
+      #     acceptance:,
+      #     amount:,
+      #     created_at:,
+      #     disputed_transaction_id:,
+      #     explanation:,
+      #     idempotency_key:,
+      #     loss:,
+      #     rejection:,
+      #     status:,
+      #     type:,
+      #     win:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::BaseModel) -> void
+
+      # @example
+      #
+      # ```ruby
+      # acceptance => {
+      #   accepted_at: Time,
+      #   card_dispute_id: String,
+      #   transaction_id: String
+      # }
+      # ```
       class Acceptance < Increase::BaseModel
-        # @!attribute [rw] accepted_at
+        # @!attribute accepted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was accepted.
+        #
         #   @return [Time]
         required :accepted_at, Time
 
-        # @!attribute [rw] card_dispute_id
+        # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was accepted.
+        #
         #   @return [String]
         required :card_dispute_id, String
 
-        # @!attribute [rw] transaction_id
+        # @!attribute transaction_id
         #   The identifier of the Transaction that was created to return the disputed funds to your account.
+        #
         #   @return [String]
         required :transaction_id, String
 
         # @!parse
-        #   # Create a new instance of Acceptance from a Hash of raw data.
+        #   # If the Card Dispute's status is `accepted`, this will contain details of the
+        #   #   successful dispute.
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :accepted_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #     the Card Dispute was accepted.
-        #   #   @option data [String] :card_dispute_id The identifier of the Card Dispute that was accepted.
-        #   #   @option data [String] :transaction_id The identifier of the Transaction that was created to return the disputed funds
-        #   #     to your account.
-        #   def initialize(data = {}) = super
+        #   # @param accepted_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #   the Card Dispute was accepted.
+        #   #
+        #   # @param card_dispute_id [String] The identifier of the Card Dispute that was accepted.
+        #   #
+        #   # @param transaction_id [String] The identifier of the Transaction that was created to return the disputed funds
+        #   #   to your account.
+        #   #
+        #   def initialize(accepted_at:, card_dispute_id:, transaction_id:, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      #
+      # ```ruby
+      # loss => {
+      #   card_dispute_id: String,
+      #   explanation: String,
+      #   lost_at: Time,
+      #   transaction_id: String
+      # }
+      # ```
       class Loss < Increase::BaseModel
-        # @!attribute [rw] card_dispute_id
+        # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was lost.
+        #
         #   @return [String]
         required :card_dispute_id, String
 
-        # @!attribute [rw] explanation
+        # @!attribute explanation
         #   Why the Card Dispute was lost.
+        #
         #   @return [String]
         required :explanation, String
 
-        # @!attribute [rw] lost_at
+        # @!attribute lost_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was lost.
+        #
         #   @return [Time]
         required :lost_at, Time
 
-        # @!attribute [rw] transaction_id
+        # @!attribute transaction_id
         #   The identifier of the Transaction that was created to debit the disputed funds from your account.
+        #
         #   @return [String]
         required :transaction_id, String
 
         # @!parse
-        #   # Create a new instance of Loss from a Hash of raw data.
+        #   # If the Card Dispute's status is `lost`, this will contain details of the lost
+        #   #   dispute.
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :card_dispute_id The identifier of the Card Dispute that was lost.
-        #   #   @option data [String] :explanation Why the Card Dispute was lost.
-        #   #   @option data [String] :lost_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #     the Card Dispute was lost.
-        #   #   @option data [String] :transaction_id The identifier of the Transaction that was created to debit the disputed funds
-        #   #     from your account.
-        #   def initialize(data = {}) = super
+        #   # @param card_dispute_id [String] The identifier of the Card Dispute that was lost.
+        #   #
+        #   # @param explanation [String] Why the Card Dispute was lost.
+        #   #
+        #   # @param lost_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #   the Card Dispute was lost.
+        #   #
+        #   # @param transaction_id [String] The identifier of the Transaction that was created to debit the disputed funds
+        #   #   from your account.
+        #   #
+        #   def initialize(card_dispute_id:, explanation:, lost_at:, transaction_id:, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      #
+      # ```ruby
+      # rejection => {
+      #   card_dispute_id: String,
+      #   explanation: String,
+      #   rejected_at: Time
+      # }
+      # ```
       class Rejection < Increase::BaseModel
-        # @!attribute [rw] card_dispute_id
+        # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was rejected.
+        #
         #   @return [String]
         required :card_dispute_id, String
 
-        # @!attribute [rw] explanation
+        # @!attribute explanation
         #   Why the Card Dispute was rejected.
+        #
         #   @return [String]
         required :explanation, String
 
-        # @!attribute [rw] rejected_at
+        # @!attribute rejected_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was rejected.
+        #
         #   @return [Time]
         required :rejected_at, Time
 
         # @!parse
-        #   # Create a new instance of Rejection from a Hash of raw data.
+        #   # If the Card Dispute's status is `rejected`, this will contain details of the
+        #   #   unsuccessful dispute.
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :card_dispute_id The identifier of the Card Dispute that was rejected.
-        #   #   @option data [String] :explanation Why the Card Dispute was rejected.
-        #   #   @option data [String] :rejected_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #     the Card Dispute was rejected.
-        #   def initialize(data = {}) = super
+        #   # @param card_dispute_id [String] The identifier of the Card Dispute that was rejected.
+        #   #
+        #   # @param explanation [String] Why the Card Dispute was rejected.
+        #   #
+        #   # @param rejected_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #   the Card Dispute was rejected.
+        #   #
+        #   def initialize(card_dispute_id:, explanation:, rejected_at:, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
       # The results of the Dispute investigation.
+      #
+      # @example
+      #
+      # ```ruby
+      # case status
+      # in :pending_reviewing
+      #   # ...
+      # in :pending_user_information
+      #   # ...
+      # in :accepted
+      #   # ...
+      # in :rejected
+      #   # ...
+      # in :lost
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Status < Increase::Enum
         # The Card Dispute is pending review.
         PENDING_REVIEWING = :pending_reviewing
@@ -171,59 +324,60 @@ module Increase
 
         # The Card Dispute has been won and no further action can be taken.
         WON = :won
+
+        finalize!
       end
 
       # A constant representing the object's type. For this resource it will always be `card_dispute`.
+      #
+      # @example
+      #
+      # ```ruby
+      # case type
+      # in :card_dispute
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         CARD_DISPUTE = :card_dispute
+
+        finalize!
       end
 
+      # @example
+      #
+      # ```ruby
+      # win => {
+      #   card_dispute_id: String,
+      #   won_at: Time
+      # }
+      # ```
       class Win < Increase::BaseModel
-        # @!attribute [rw] card_dispute_id
+        # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was won.
+        #
         #   @return [String]
         required :card_dispute_id, String
 
-        # @!attribute [rw] won_at
+        # @!attribute won_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was won.
+        #
         #   @return [Time]
         required :won_at, Time
 
         # @!parse
-        #   # Create a new instance of Win from a Hash of raw data.
+        #   # If the Card Dispute's status is `won`, this will contain details of the won
+        #   #   dispute.
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :card_dispute_id The identifier of the Card Dispute that was won.
-        #   #   @option data [String] :won_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #     the Card Dispute was won.
-        #   def initialize(data = {}) = super
-      end
+        #   # @param card_dispute_id [String] The identifier of the Card Dispute that was won.
+        #   #
+        #   # @param won_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #   the Card Dispute was won.
+        #   #
+        #   def initialize(card_dispute_id:, won_at:, **) = super
 
-      # @!parse
-      #   # Create a new instance of CardDispute from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id The Card Dispute identifier.
-      #   #   @option data [Object] :acceptance If the Card Dispute's status is `accepted`, this will contain details of the
-      #   #     successful dispute.
-      #   #   @option data [Integer] :amount The amount of the dispute, if provided, or the transaction amount otherwise.
-      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #     the Card Dispute was created.
-      #   #   @option data [String] :disputed_transaction_id The identifier of the Transaction that was disputed.
-      #   #   @option data [String] :explanation Why you disputed the Transaction in question.
-      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
-      #   #     Increase and is used to ensure that a request is only processed once. Learn more
-      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #   @option data [Object] :loss If the Card Dispute's status is `lost`, this will contain details of the lost
-      #   #     dispute.
-      #   #   @option data [Object] :rejection If the Card Dispute's status is `rejected`, this will contain details of the
-      #   #     unsuccessful dispute.
-      #   #   @option data [String] :status The results of the Dispute investigation.
-      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
-      #   #     `card_dispute`.
-      #   #   @option data [Object] :win If the Card Dispute's status is `won`, this will contain details of the won
-      #   #     dispute.
-      #   def initialize(data = {}) = super
+        # def initialize: (Hash | Increase::BaseModel) -> void
+      end
     end
   end
 end

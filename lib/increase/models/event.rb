@@ -2,38 +2,98 @@
 
 module Increase
   module Models
+    # @example
+    #
+    # ```ruby
+    # event => {
+    #   id: String,
+    #   associated_object_id: String,
+    #   associated_object_type: String,
+    #   category: enum: Increase::Models::Event::Category,
+    #   created_at: Time
+    # }
+    # ```
     class Event < Increase::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   The Event identifier.
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] associated_object_id
+      # @!attribute associated_object_id
       #   The identifier of the object that generated this Event.
+      #
       #   @return [String]
       required :associated_object_id, String
 
-      # @!attribute [rw] associated_object_type
+      # @!attribute associated_object_type
       #   The type of the object that generated this Event.
+      #
       #   @return [String]
       required :associated_object_type, String
 
-      # @!attribute [rw] category
+      # @!attribute category
       #   The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+      #
       #   @return [Symbol, Increase::Models::Event::Category]
       required :category, enum: -> { Increase::Models::Event::Category }
 
-      # @!attribute [rw] created_at
+      # @!attribute created_at
       #   The time the Event was created.
+      #
       #   @return [Time]
       required :created_at, Time
 
-      # @!attribute [rw] type
+      # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `event`.
+      #
       #   @return [Symbol, Increase::Models::Event::Type]
       required :type, enum: -> { Increase::Models::Event::Type }
 
+      # @!parse
+      #   # Events are records of things that happened to objects at Increase. Events are
+      #   #   accessible via the List Events endpoint and can be delivered to your application
+      #   #   via webhooks. For more information, see our
+      #   #   [webhooks guide](https://increase.com/documentation/webhooks).
+      #   #
+      #   # @param id [String] The Event identifier.
+      #   #
+      #   # @param associated_object_id [String] The identifier of the object that generated this Event.
+      #   #
+      #   # @param associated_object_type [String] The type of the object that generated this Event.
+      #   #
+      #   # @param category [String] The category of the Event. We may add additional possible values for this enum
+      #   #   over time; your application should be able to handle such additions gracefully.
+      #   #
+      #   # @param created_at [String] The time the Event was created.
+      #   #
+      #   # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   #   `event`.
+      #   #
+      #   def initialize(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:, **) = super
+
+      # def initialize: (Hash | Increase::BaseModel) -> void
+
       # The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+      #
+      # @example
+      #
+      # ```ruby
+      # case category
+      # in :"account.created"
+      #   # ...
+      # in :"account.updated"
+      #   # ...
+      # in :"account_number.created"
+      #   # ...
+      # in :"account_number.updated"
+      #   # ...
+      # in :"account_statement.created"
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Category < Increase::Enum
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED = :"account.created"
@@ -298,26 +358,25 @@ module Increase
 
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
+
+        finalize!
       end
 
       # A constant representing the object's type. For this resource it will always be `event`.
+      #
+      # @example
+      #
+      # ```ruby
+      # case type
+      # in :event
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         EVENT = :event
-      end
 
-      # @!parse
-      #   # Create a new instance of Event from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id The Event identifier.
-      #   #   @option data [String] :associated_object_id The identifier of the object that generated this Event.
-      #   #   @option data [String] :associated_object_type The type of the object that generated this Event.
-      #   #   @option data [String] :category The category of the Event. We may add additional possible values for this enum
-      #   #     over time; your application should be able to handle such additions gracefully.
-      #   #   @option data [String] :created_at The time the Event was created.
-      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
-      #   #     `event`.
-      #   def initialize(data = {}) = super
+        finalize!
+      end
     end
   end
 end

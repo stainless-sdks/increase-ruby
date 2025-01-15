@@ -3,9 +3,7 @@
 require_relative "../../test_helper"
 
 class Increase::Test::Resources::Simulations::ProgramsTest < Minitest::Test
-  parallelize_me!
-
-  def setup
+  def before_all
     @increase = Increase::Client.new(
       base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
       api_key: "My API Key"
@@ -13,7 +11,10 @@ class Increase::Test::Resources::Simulations::ProgramsTest < Minitest::Test
   end
 
   def test_create_required_params
-    response = @increase.simulations.programs.create({name: "For Benefit Of"})
-    assert_kind_of(Increase::Models::Program, response)
+    response = @increase.simulations.programs.create(name: "For Benefit Of")
+
+    assert_pattern do
+      response => Increase::Models::Program
+    end
   end
 end

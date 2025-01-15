@@ -5,7 +5,7 @@ application.
 
 ## Documentation
 
-Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/Increase/increase-ruby).
+Documentation for the most recent release of this gem can be found [on RubyDoc](https://gemdocs.org/gems/increase/latest).
 
 The underlying REST API documentation can be found on [increase.com](https://increase.com/documentation).
 
@@ -54,12 +54,12 @@ puts(account.id)
 
 When the library is unable to connect to the API, or if the API returns a
 non-success status code (i.e., 4xx or 5xx response), a subclass of
-`Increase::HTTP::Error` will be thrown:
+`Increase::Error` will be thrown:
 
 ```ruby
 begin
   account = increase.accounts.create
-rescue Increase::HTTP::Error => e
+rescue Increase::Error => e
   puts(e.code) # 400
 end
 ```

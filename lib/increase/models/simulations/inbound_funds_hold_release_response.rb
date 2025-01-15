@@ -3,61 +3,149 @@
 module Increase
   module Models
     module Simulations
+      # @example
+      #
+      # ```ruby
+      # inbound_funds_hold_release_response => {
+      #   id: String,
+      #   amount: Integer,
+      #   automatically_releases_at: Time,
+      #   created_at: Time,
+      #   currency: enum: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency,
+      #   **_
+      # }
+      # ```
       class InboundFundsHoldReleaseResponse < Increase::BaseModel
-        # @!attribute [rw] id
+        # @!attribute id
         #   The Inbound Funds Hold identifier.
+        #
         #   @return [String]
         required :id, String
 
-        # @!attribute [rw] amount
+        # @!attribute amount
         #   The held amount in the minor unit of the account's currency. For dollars, for example, this is cents.
+        #
         #   @return [Integer]
         required :amount, Integer
 
-        # @!attribute [rw] automatically_releases_at
+        # @!attribute automatically_releases_at
         #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
+        #
         #   @return [Time]
         required :automatically_releases_at, Time
 
-        # @!attribute [rw] created_at
+        # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
+        #
         #   @return [Time]
         required :created_at, Time
 
-        # @!attribute [rw] currency
+        # @!attribute currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+        #
         #   @return [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency]
         required :currency,
                  enum: -> {
                    Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency
                  }
 
-        # @!attribute [rw] held_transaction_id
+        # @!attribute held_transaction_id
         #   The ID of the Transaction for which funds were held.
-        #   @return [String]
+        #
+        #   @return [String, nil]
         required :held_transaction_id, String
 
-        # @!attribute [rw] pending_transaction_id
+        # @!attribute pending_transaction_id
         #   The ID of the Pending Transaction representing the held funds.
-        #   @return [String]
+        #
+        #   @return [String, nil]
         required :pending_transaction_id, String
 
-        # @!attribute [rw] released_at
+        # @!attribute released_at
         #   When the hold was released (if it has been released).
-        #   @return [Time]
+        #
+        #   @return [Time, nil]
         required :released_at, Time
 
-        # @!attribute [rw] status
+        # @!attribute status
         #   The status of the hold.
+        #
         #   @return [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status]
         required :status, enum: -> { Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status }
 
-        # @!attribute [rw] type
+        # @!attribute type
         #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+        #
         #   @return [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type]
         required :type, enum: -> { Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type }
 
+        # @!parse
+        #   # We hold funds for certain transaction types to account for return windows where
+        #   #   funds might still be clawed back by the sending institution.
+        #   #
+        #   # @param id [String] The Inbound Funds Hold identifier.
+        #   #
+        #   # @param amount [Integer] The held amount in the minor unit of the account's currency. For dollars, for
+        #   #   example, this is cents.
+        #   #
+        #   # @param automatically_releases_at [String] When the hold will be released automatically. Certain conditions may cause it to
+        #   #   be released before this time.
+        #   #
+        #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+        #   #   was created.
+        #   #
+        #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+        #   #   currency.
+        #   #
+        #   # @param held_transaction_id [String, nil] The ID of the Transaction for which funds were held.
+        #   #
+        #   # @param pending_transaction_id [String, nil] The ID of the Pending Transaction representing the held funds.
+        #   #
+        #   # @param released_at [String, nil] When the hold was released (if it has been released).
+        #   #
+        #   # @param status [String] The status of the hold.
+        #   #
+        #   # @param type [String] A constant representing the object's type. For this resource it will always be
+        #   #   `inbound_funds_hold`.
+        #   #
+        #   def initialize(
+        #     id:,
+        #     amount:,
+        #     automatically_releases_at:,
+        #     created_at:,
+        #     currency:,
+        #     held_transaction_id:,
+        #     pending_transaction_id:,
+        #     released_at:,
+        #     status:,
+        #     type:,
+        #     **
+        #   )
+        #     super
+        #   end
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+        #
+        # @example
+        #
+        # ```ruby
+        # case currency
+        # in :CAD
+        #   # ...
+        # in :CHF
+        #   # ...
+        # in :EUR
+        #   # ...
+        # in :GBP
+        #   # ...
+        # in :JPY
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD = :CAD
@@ -76,43 +164,47 @@ module Increase
 
           # US Dollar (USD)
           USD = :USD
+
+          finalize!
         end
 
         # The status of the hold.
+        #
+        # @example
+        #
+        # ```ruby
+        # case status
+        # in :held
+        #   # ...
+        # in :complete
+        #   # ...
+        # end
+        # ```
         class Status < Increase::Enum
           # Funds are still being held.
           HELD = :held
 
           # Funds have been released.
           COMPLETE = :complete
+
+          finalize!
         end
 
         # A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+        #
+        # @example
+        #
+        # ```ruby
+        # case type
+        # in :inbound_funds_hold
+        #   # ...
+        # end
+        # ```
         class Type < Increase::Enum
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
-        end
 
-        # @!parse
-        #   # Create a new instance of InboundFundsHoldReleaseResponse from a Hash of raw
-        #   #   data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :id The Inbound Funds Hold identifier.
-        #   #   @option data [Integer] :amount The held amount in the minor unit of the account's currency. For dollars, for
-        #   #     example, this is cents.
-        #   #   @option data [String] :automatically_releases_at When the hold will be released automatically. Certain conditions may cause it to
-        #   #     be released before this time.
-        #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
-        #   #     was created.
-        #   #   @option data [String] :currency The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   #     currency.
-        #   #   @option data [String] :held_transaction_id The ID of the Transaction for which funds were held.
-        #   #   @option data [String] :pending_transaction_id The ID of the Pending Transaction representing the held funds.
-        #   #   @option data [String] :released_at When the hold was released (if it has been released).
-        #   #   @option data [String] :status The status of the hold.
-        #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
-        #   #     `inbound_funds_hold`.
-        #   def initialize(data = {}) = super
+          finalize!
+        end
       end
     end
   end

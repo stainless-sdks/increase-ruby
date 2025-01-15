@@ -2,118 +2,272 @@
 
 module Increase
   module Models
+    # @example
+    #
+    # ```ruby
+    # ach_prenotification => {
+    #   id: String,
+    #   account_number: String,
+    #   addendum: String,
+    #   company_descriptive_date: String,
+    #   company_discretionary_data: String,
+    #   **_
+    # }
+    # ```
     class ACHPrenotification < Increase::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   The ACH Prenotification's identifier.
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] account_number
+      # @!attribute account_number
       #   The destination account number.
+      #
       #   @return [String]
       required :account_number, String
 
-      # @!attribute [rw] addendum
+      # @!attribute addendum
       #   Additional information for the recipient.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :addendum, String
 
-      # @!attribute [rw] company_descriptive_date
+      # @!attribute company_descriptive_date
       #   The description of the date of the notification.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :company_descriptive_date, String
 
-      # @!attribute [rw] company_discretionary_data
+      # @!attribute company_discretionary_data
       #   Optional data associated with the notification.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :company_discretionary_data, String
 
-      # @!attribute [rw] company_entry_description
+      # @!attribute company_entry_description
       #   The description of the notification.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :company_entry_description, String
 
-      # @!attribute [rw] company_name
+      # @!attribute company_name
       #   The name by which you know the company.
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :company_name, String
 
-      # @!attribute [rw] created_at
+      # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the prenotification was created.
+      #
       #   @return [Time]
       required :created_at, Time
 
-      # @!attribute [rw] credit_debit_indicator
+      # @!attribute credit_debit_indicator
       #   If the notification is for a future credit or debit.
-      #   @return [Symbol, Increase::Models::ACHPrenotification::CreditDebitIndicator]
+      #
+      #   @return [Symbol, Increase::Models::ACHPrenotification::CreditDebitIndicator, nil]
       required :credit_debit_indicator,
                enum: -> {
                  Increase::Models::ACHPrenotification::CreditDebitIndicator
                }
 
-      # @!attribute [rw] effective_date
+      # @!attribute effective_date
       #   The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-      #   @return [Time]
+      #
+      #   @return [Time, nil]
       required :effective_date, Time
 
-      # @!attribute [rw] idempotency_key
+      # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   @return [String]
+      #
+      #   @return [String, nil]
       required :idempotency_key, String
 
-      # @!attribute [rw] notifications_of_change
+      # @!attribute notifications_of_change
       #   If the receiving bank notifies that future transfers should use different details, this will contain those details.
+      #
       #   @return [Array<Increase::Models::ACHPrenotification::NotificationsOfChange>]
       required :notifications_of_change,
-               Increase::ArrayOf.new(-> { Increase::Models::ACHPrenotification::NotificationsOfChange })
+               -> { Increase::ArrayOf[Increase::Models::ACHPrenotification::NotificationsOfChange] }
 
-      # @!attribute [rw] prenotification_return
+      # @!attribute prenotification_return
       #   If your prenotification is returned, this will contain details of the return.
-      #   @return [Increase::Models::ACHPrenotification::PrenotificationReturn]
+      #
+      #   @return [Increase::Models::ACHPrenotification::PrenotificationReturn, nil]
       required :prenotification_return, -> { Increase::Models::ACHPrenotification::PrenotificationReturn }
 
-      # @!attribute [rw] routing_number
+      # @!attribute routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN).
+      #
       #   @return [String]
       required :routing_number, String
 
-      # @!attribute [rw] status
+      # @!attribute status
       #   The lifecycle status of the ACH Prenotification.
+      #
       #   @return [Symbol, Increase::Models::ACHPrenotification::Status]
       required :status, enum: -> { Increase::Models::ACHPrenotification::Status }
 
-      # @!attribute [rw] type
+      # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `ach_prenotification`.
+      #
       #   @return [Symbol, Increase::Models::ACHPrenotification::Type]
       required :type, enum: -> { Increase::Models::ACHPrenotification::Type }
 
+      # @!parse
+      #   # ACH Prenotifications are one way you can verify account and routing numbers by
+      #   #   Automated Clearing House (ACH).
+      #   #
+      #   # @param id [String] The ACH Prenotification's identifier.
+      #   #
+      #   # @param account_number [String] The destination account number.
+      #   #
+      #   # @param addendum [String, nil] Additional information for the recipient.
+      #   #
+      #   # @param company_descriptive_date [String, nil] The description of the date of the notification.
+      #   #
+      #   # @param company_discretionary_data [String, nil] Optional data associated with the notification.
+      #   #
+      #   # @param company_entry_description [String, nil] The description of the notification.
+      #   #
+      #   # @param company_name [String, nil] The name by which you know the company.
+      #   #
+      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   #   the prenotification was created.
+      #   #
+      #   # @param credit_debit_indicator [String, nil] If the notification is for a future credit or debit.
+      #   #
+      #   # @param effective_date [String, nil] The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+      #   #
+      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
+      #   #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   #
+      #   # @param notifications_of_change [Array<Increase::Models::ACHPrenotification::NotificationsOfChange>] If the receiving bank notifies that future transfers should use different
+      #   #   details, this will contain those details.
+      #   #
+      #   # @param prenotification_return [Increase::Models::ACHPrenotification::PrenotificationReturn, nil] If your prenotification is returned, this will contain details of the return.
+      #   #
+      #   # @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN).
+      #   #
+      #   # @param status [String] The lifecycle status of the ACH Prenotification.
+      #   #
+      #   # @param type [String] A constant representing the object's type. For this resource it will always be
+      #   #   `ach_prenotification`.
+      #   #
+      #   def initialize(
+      #     id:,
+      #     account_number:,
+      #     addendum:,
+      #     company_descriptive_date:,
+      #     company_discretionary_data:,
+      #     company_entry_description:,
+      #     company_name:,
+      #     created_at:,
+      #     credit_debit_indicator:,
+      #     effective_date:,
+      #     idempotency_key:,
+      #     notifications_of_change:,
+      #     prenotification_return:,
+      #     routing_number:,
+      #     status:,
+      #     type:,
+      #     **
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | Increase::BaseModel) -> void
+
       # If the notification is for a future credit or debit.
+      #
+      # @example
+      #
+      # ```ruby
+      # case credit_debit_indicator
+      # in :credit
+      #   # ...
+      # in :debit
+      #   # ...
+      # end
+      # ```
       class CreditDebitIndicator < Increase::Enum
         # The Prenotification is for an anticipated credit.
         CREDIT = :credit
 
         # The Prenotification is for an anticipated debit.
         DEBIT = :debit
+
+        finalize!
       end
 
+      # @example
+      #
+      # ```ruby
+      # notifications_of_change => {
+      #   change_code: enum: Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode,
+      #   corrected_data: String,
+      #   created_at: Time
+      # }
+      # ```
       class NotificationsOfChange < Increase::BaseModel
-        # @!attribute [rw] change_code
+        # @!attribute change_code
         #   The required type of change that is being signaled by the receiving financial institution.
+        #
         #   @return [Symbol, Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode]
         required :change_code,
                  enum: -> { Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode }
 
-        # @!attribute [rw] corrected_data
+        # @!attribute corrected_data
         #   The corrected data that should be used in future ACHs to this account. This may contain the suggested new account number or routing number. When the `change_code` is `incorrect_transaction_code`, this field contains an integer. Numbers starting with a 2 encourage changing the `funding` parameter to checking; numbers starting with a 3 encourage changing to savings.
+        #
         #   @return [String]
         required :corrected_data, String
 
-        # @!attribute [rw] created_at
+        # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the notification occurred.
+        #
         #   @return [Time]
         required :created_at, Time
 
+        # @!parse
+        #   # @param change_code [String] The required type of change that is being signaled by the receiving financial
+        #   #   institution.
+        #   #
+        #   # @param corrected_data [String] The corrected data that should be used in future ACHs to this account. This may
+        #   #   contain the suggested new account number or routing number. When the
+        #   #   `change_code` is `incorrect_transaction_code`, this field contains an integer.
+        #   #   Numbers starting with a 2 encourage changing the `funding` parameter to
+        #   #   checking; numbers starting with a 3 encourage changing to savings.
+        #   #
+        #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #   the notification occurred.
+        #   #
+        #   def initialize(change_code:, corrected_data:, created_at:, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
         # The required type of change that is being signaled by the receiving financial institution.
+        #
+        # @example
+        #
+        # ```ruby
+        # case change_code
+        # in :incorrect_account_number
+        #   # ...
+        # in :incorrect_routing_number
+        #   # ...
+        # in :incorrect_routing_number_and_account_number
+        #   # ...
+        # in :incorrect_transaction_code
+        #   # ...
+        # in :incorrect_account_number_and_transaction_code
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class ChangeCode < Increase::Enum
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
@@ -171,37 +325,65 @@ module Increase
 
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
-        end
 
-        # @!parse
-        #   # Create a new instance of NotificationsOfChange from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :change_code The required type of change that is being signaled by the receiving financial
-        #   #     institution.
-        #   #   @option data [String] :corrected_data The corrected data that should be used in future ACHs to this account. This may
-        #   #     contain the suggested new account number or routing number. When the
-        #   #     `change_code` is `incorrect_transaction_code`, this field contains an integer.
-        #   #     Numbers starting with a 2 encourage changing the `funding` parameter to
-        #   #     checking; numbers starting with a 3 encourage changing to savings.
-        #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #     the notification occurred.
-        #   def initialize(data = {}) = super
+          finalize!
+        end
       end
 
+      # @example
+      #
+      # ```ruby
+      # prenotification_return => {
+      #   created_at: Time,
+      #   return_reason_code: enum: Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode
+      # }
+      # ```
       class PrenotificationReturn < Increase::BaseModel
-        # @!attribute [rw] created_at
+        # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Prenotification was returned.
+        #
         #   @return [Time]
         required :created_at, Time
 
-        # @!attribute [rw] return_reason_code
+        # @!attribute return_reason_code
         #   Why the Prenotification was returned.
+        #
         #   @return [Symbol, Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode]
         required :return_reason_code,
                  enum: -> { Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode }
 
+        # @!parse
+        #   # If your prenotification is returned, this will contain details of the return.
+        #   #
+        #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   #   the Prenotification was returned.
+        #   #
+        #   # @param return_reason_code [String] Why the Prenotification was returned.
+        #   #
+        #   def initialize(created_at:, return_reason_code:, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
         # Why the Prenotification was returned.
+        #
+        # @example
+        #
+        # ```ruby
+        # case return_reason_code
+        # in :insufficient_fund
+        #   # ...
+        # in :no_account
+        #   # ...
+        # in :account_closed
+        #   # ...
+        # in :invalid_account_number_structure
+        #   # ...
+        # in :account_frozen_entry_returned_per_ofac_instruction
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class ReturnReasonCode < Increase::Enum
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
@@ -412,19 +594,27 @@ module Increase
 
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN = :untimely_return
-        end
 
-        # @!parse
-        #   # Create a new instance of PrenotificationReturn from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #     the Prenotification was returned.
-        #   #   @option data [String] :return_reason_code Why the Prenotification was returned.
-        #   def initialize(data = {}) = super
+          finalize!
+        end
       end
 
       # The lifecycle status of the ACH Prenotification.
+      #
+      # @example
+      #
+      # ```ruby
+      # case status
+      # in :pending_submitting
+      #   # ...
+      # in :requires_attention
+      #   # ...
+      # in :returned
+      #   # ...
+      # in :submitted
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The Prenotification is pending submission.
         PENDING_SUBMITTING = :pending_submitting
@@ -437,39 +627,25 @@ module Increase
 
         # The Prenotification is complete.
         SUBMITTED = :submitted
+
+        finalize!
       end
 
       # A constant representing the object's type. For this resource it will always be `ach_prenotification`.
+      #
+      # @example
+      #
+      # ```ruby
+      # case type
+      # in :ach_prenotification
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         ACH_PRENOTIFICATION = :ach_prenotification
-      end
 
-      # @!parse
-      #   # Create a new instance of ACHPrenotification from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id The ACH Prenotification's identifier.
-      #   #   @option data [String] :account_number The destination account number.
-      #   #   @option data [String] :addendum Additional information for the recipient.
-      #   #   @option data [String] :company_descriptive_date The description of the date of the notification.
-      #   #   @option data [String] :company_discretionary_data Optional data associated with the notification.
-      #   #   @option data [String] :company_entry_description The description of the notification.
-      #   #   @option data [String] :company_name The name by which you know the company.
-      #   #   @option data [String] :created_at The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #     the prenotification was created.
-      #   #   @option data [String] :credit_debit_indicator If the notification is for a future credit or debit.
-      #   #   @option data [String] :effective_date The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-      #   #   @option data [String] :idempotency_key The idempotency key you chose for this object. This value is unique across
-      #   #     Increase and is used to ensure that a request is only processed once. Learn more
-      #   #     about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #   @option data [Array<Object>] :notifications_of_change If the receiving bank notifies that future transfers should use different
-      #   #     details, this will contain those details.
-      #   #   @option data [Object] :prenotification_return If your prenotification is returned, this will contain details of the return.
-      #   #   @option data [String] :routing_number The American Bankers' Association (ABA) Routing Transit Number (RTN).
-      #   #   @option data [String] :status The lifecycle status of the ACH Prenotification.
-      #   #   @option data [String] :type A constant representing the object's type. For this resource it will always be
-      #   #     `ach_prenotification`.
-      #   def initialize(data = {}) = super
+        finalize!
+      end
     end
   end
 end

@@ -5,6 +5,7 @@ module Increase
     class Simulations
       class InboundFundsHolds
         # @param client [Increase::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -13,13 +14,15 @@ module Increase
         #   be created as a result of e.g., an ACH debit.
         #
         # @param inbound_funds_hold_id [String] The inbound funds hold to release.
+        #
         # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Simulations::InboundFundsHoldReleaseResponse]
+        #
         def release(inbound_funds_hold_id, opts = {})
           req = {
             method: :post,
-            path: "/simulations/inbound_funds_holds/#{inbound_funds_hold_id}/release",
+            path: ["simulations/inbound_funds_holds/%0s/release", inbound_funds_hold_id],
             model: Increase::Models::Simulations::InboundFundsHoldReleaseResponse
           }
           @client.request(req, opts)

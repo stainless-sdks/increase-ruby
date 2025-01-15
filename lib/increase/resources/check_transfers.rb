@@ -4,35 +4,44 @@ module Increase
   module Resources
     class CheckTransfers
       # @param client [Increase::Client]
+      #
       def initialize(client:)
         @client = client
       end
 
       # Create a Check Transfer
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CheckTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      #
       #   @option params [String] :account_id The identifier for the account that will send the transfer.
+      #
       #   @option params [Integer] :amount The transfer amount in USD cents.
+      #
       #   @option params [String] :source_account_number_id The identifier of the Account Number from which to send the transfer and print
       #     on the check.
-      #   @option params [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod, nil] :fulfillment_method Whether Increase will print and mail the check or if you will do it yourself.
-      #   @option params [Increase::Models::CheckTransferCreateParams::PhysicalCheck, nil] :physical_check Details relating to the physical check that Increase will print and mail. This
+      #
+      #   @option params [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod] :fulfillment_method Whether Increase will print and mail the check or if you will do it yourself.
+      #
+      #   @option params [Increase::Models::CheckTransferCreateParams::PhysicalCheck] :physical_check Details relating to the physical check that Increase will print and mail. This
       #     is required if `fulfillment_method` is equal to `physical_check`. It must not be
       #     included if any other `fulfillment_method` is provided.
-      #   @option params [Boolean, nil] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
-      #   @option params [Increase::Models::CheckTransferCreateParams::ThirdParty, nil] :third_party Details relating to the custom fulfillment you will perform. This is required if
+      #
+      #   @option params [Boolean] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
+      #
+      #   @option params [Increase::Models::CheckTransferCreateParams::ThirdParty] :third_party Details relating to the custom fulfillment you will perform. This is required if
       #     `fulfillment_method` is equal to `third_party`. It must not be included if any
       #     other `fulfillment_method` is provided.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
+      #
       def create(params = {}, opts = {})
+        parsed = Increase::Models::CheckTransferCreateParams.dump(params)
         req = {
           method: :post,
-          path: "/check_transfers",
-          headers: {"Content-Type" => "application/json"},
-          body: params,
+          path: "check_transfers",
+          body: parsed,
           model: Increase::Models::CheckTransfer
         }
         @client.request(req, opts)
@@ -41,13 +50,15 @@ module Increase
       # Retrieve a Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer.
+      #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
+      #
       def retrieve(check_transfer_id, opts = {})
         req = {
           method: :get,
-          path: "/check_transfers/#{check_transfer_id}",
+          path: ["check_transfers/%0s", check_transfer_id],
           model: Increase::Models::CheckTransfer
         }
         @client.request(req, opts)
@@ -55,25 +66,32 @@ module Increase
 
       # List Check Transfers
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [String, nil] :account_id Filter Check Transfers to those that originated from the specified Account.
-      #   @option params [Increase::Models::CheckTransferListParams::CreatedAt, nil] :created_at
-      #   @option params [String, nil] :cursor Return the page of entries after this one.
-      #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      # @param params [Increase::Models::CheckTransferListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      #
+      #   @option params [String] :account_id Filter Check Transfers to those that originated from the specified Account.
+      #
+      #   @option params [Increase::Models::CheckTransferListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
       #     that object. This value is unique across Increase and is used to ensure that a
       #     request is only processed once. Learn more about
       #     [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::CheckTransfer>]
+      #
       def list(params = {}, opts = {})
+        parsed = Increase::Models::CheckTransferListParams.dump(params)
         req = {
           method: :get,
-          path: "/check_transfers",
-          query: params,
+          path: "check_transfers",
+          query: parsed,
           page: Increase::Page,
           model: Increase::Models::CheckTransfer
         }
@@ -83,13 +101,15 @@ module Increase
       # Approve a Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer to approve.
+      #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
+      #
       def approve(check_transfer_id, opts = {})
         req = {
           method: :post,
-          path: "/check_transfers/#{check_transfer_id}/approve",
+          path: ["check_transfers/%0s/approve", check_transfer_id],
           model: Increase::Models::CheckTransfer
         }
         @client.request(req, opts)
@@ -98,13 +118,15 @@ module Increase
       # Cancel a pending Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the pending Check Transfer to cancel.
+      #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
+      #
       def cancel(check_transfer_id, opts = {})
         req = {
           method: :post,
-          path: "/check_transfers/#{check_transfer_id}/cancel",
+          path: ["check_transfers/%0s/cancel", check_transfer_id],
           model: Increase::Models::CheckTransfer
         }
         @client.request(req, opts)
@@ -114,18 +136,20 @@ module Increase
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason, nil] :reason The reason why this transfer should be stopped.
+      # @param params [Increase::Models::CheckTransferStopPaymentParams, Hash{Symbol => Object}] Attributes to send in this request.
+      #
+      #   @option params [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason] :reason The reason why this transfer should be stopped.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
+      #
       def stop_payment(check_transfer_id, params = {}, opts = {})
+        parsed = Increase::Models::CheckTransferStopPaymentParams.dump(params)
         req = {
           method: :post,
-          path: "/check_transfers/#{check_transfer_id}/stop_payment",
-          headers: {"Content-Type" => "application/json"},
-          body: params,
+          path: ["check_transfers/%0s/stop_payment", check_transfer_id],
+          body: parsed,
           model: Increase::Models::CheckTransfer
         }
         @client.request(req, opts)

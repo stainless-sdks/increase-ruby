@@ -3,9 +3,7 @@
 require_relative "../test_helper"
 
 class Increase::Test::Resources::DocumentsTest < Minitest::Test
-  parallelize_me!
-
-  def setup
+  def before_all
     @increase = Increase::Client.new(
       base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
       api_key: "My API Key"
@@ -14,11 +12,22 @@ class Increase::Test::Resources::DocumentsTest < Minitest::Test
 
   def test_retrieve
     response = @increase.documents.retrieve("document_id")
-    assert_kind_of(Increase::Models::Document, response)
+
+    assert_pattern do
+      response => Increase::Models::Document
+    end
   end
 
   def test_list
     response = @increase.documents.list
-    assert_kind_of(Increase::Page, response)
+
+    assert_pattern do
+      response => Increase::Page
+    end
+
+    page = response.next_page
+    assert_pattern do
+      page => Increase::Page
+    end
   end
 end

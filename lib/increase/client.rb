@@ -161,6 +161,9 @@ module Increase
     # @return [Increase::Resources::Groups]
     attr_reader :groups
 
+    # @return [Increase::Resources::OAuthApplications]
+    attr_reader :oauth_applications
+
     # @return [Increase::Resources::OAuthConnections]
     attr_reader :oauth_connections
 
@@ -182,8 +185,11 @@ module Increase
     # @return [Increase::Resources::Simulations]
     attr_reader :simulations
 
-    # @!visibility private
-    def auth_headers
+    # @private
+    #
+    # @return [Hash{String => String}]
+    #
+    private def auth_headers
       {"Authorization" => "Bearer #{@api_key}"}
     end
 
@@ -195,9 +201,21 @@ module Increase
     #
     #   - `production` corresponds to `https://api.increase.com`
     #   - `sandbox` corresponds to `https://sandbox.increase.com`
+    #
     # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
+    #
     # @param api_key [String, nil] Defaults to `ENV["INCREASE_API_KEY"]`
+    #
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
+    #
+    # @param timeout [Float]
+    #
+    # @param initial_retry_delay [Float]
+    #
+    # @param max_retry_delay [Float]
+    #
+    # @param idempotency_header [String]
+    #
     def initialize(
       environment: nil,
       base_url: nil,
@@ -210,17 +228,17 @@ module Increase
     )
       case [environment, base_url]
       in [Symbol | String, String]
-        raise ArgumentError, "both environment and base_url given, expected only one"
+        raise ArgumentError.new("both environment and base_url given, expected only one")
       in [Symbol | String, nil]
         base_url = ENVIRONMENTS.fetch(environment.to_sym) do
-          raise ArgumentError, "environment must be one of #{ENVIRONMENTS.keys}, got #{environment}"
+          raise ArgumentError.new("environment must be one of #{ENVIRONMENTS.keys}, got #{environment}")
         end
       else
         base_url ||= ENVIRONMENTS.fetch(:production)
       end
 
       if api_key.nil?
-        raise ArgumentError, "api_key is required"
+        raise ArgumentError.new("api_key is required")
       end
 
       @api_key = api_key.to_s
@@ -280,6 +298,7 @@ module Increase
       @bookkeeping_entry_sets = Increase::Resources::BookkeepingEntrySets.new(client: self)
       @bookkeeping_entries = Increase::Resources::BookkeepingEntries.new(client: self)
       @groups = Increase::Resources::Groups.new(client: self)
+      @oauth_applications = Increase::Resources::OAuthApplications.new(client: self)
       @oauth_connections = Increase::Resources::OAuthConnections.new(client: self)
       @oauth_tokens = Increase::Resources::OAuthTokens.new(client: self)
       @intrafi_account_enrollments = Increase::Resources::IntrafiAccountEnrollments.new(client: self)
@@ -287,34 +306,6 @@ module Increase
       @intrafi_exclusions = Increase::Resources::IntrafiExclusions.new(client: self)
       @real_time_payments_request_for_payments = Increase::Resources::RealTimePaymentsRequestForPayments.new(client: self)
       @simulations = Increase::Resources::Simulations.new(client: self)
-    end
-
-    # @!visibility private
-    private def make_status_error(message:, body:, response:)
-      case response.code.to_i
-      in 500..599
-        Increase::HTTP::InternalServerError.new(
-          message: message,
-          response: response,
-          body: {detail: nil, status: 500, title: "", type: "internal_server_error"}
-        )
-      in 400
-        Increase::HTTP::BadRequestError.new(message: message, response: response, body: body)
-      in 401
-        Increase::HTTP::AuthenticationError.new(message: message, response: response, body: body)
-      in 403
-        Increase::HTTP::PermissionDeniedError.new(message: message, response: response, body: body)
-      in 404
-        Increase::HTTP::NotFoundError.new(message: message, response: response, body: body)
-      in 409
-        Increase::HTTP::ConflictError.new(message: message, response: response, body: body)
-      in 422
-        Increase::HTTP::UnprocessableEntityError.new(message: message, response: response, body: body)
-      in 429
-        Increase::HTTP::RateLimitError.new(message: message, response: response, body: body)
-      else
-        Increase::HTTP::APIStatusError.new(message: message, response: response, body: body)
-      end
     end
   end
 end

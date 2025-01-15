@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Groups
       # @param client [Increase::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -13,10 +14,11 @@ module Increase
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Group]
+      #
       def retrieve(opts = {})
         req = {
           method: :get,
-          path: "/groups/current",
+          path: "groups/current",
           model: Increase::Models::Group
         }
         @client.request(req, opts)

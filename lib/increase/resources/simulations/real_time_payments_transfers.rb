@@ -5,6 +5,7 @@ module Increase
     class Simulations
       class RealTimePaymentsTransfers
         # @param client [Increase::Client]
+        #
         def initialize(client:)
           @client = client
         end
@@ -16,18 +17,20 @@ module Increase
         #
         # @param real_time_payments_transfer_id [String] The identifier of the Real-Time Payments Transfer you wish to complete.
         #
-        # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-        #   @option params [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection, nil] :rejection If set, the simulation will reject the transfer.
+        # @param params [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams, Hash{Symbol => Object}] Attributes to send in this request.
+        #
+        #   @option params [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection] :rejection If set, the simulation will reject the transfer.
         #
         # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::RealTimePaymentsTransfer]
+        #
         def complete(real_time_payments_transfer_id, params = {}, opts = {})
+          parsed = Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams.dump(params)
           req = {
             method: :post,
-            path: "/simulations/real_time_payments_transfers/#{real_time_payments_transfer_id}/complete",
-            headers: {"Content-Type" => "application/json"},
-            body: params,
+            path: ["simulations/real_time_payments_transfers/%0s/complete", real_time_payments_transfer_id],
+            body: parsed,
             model: Increase::Models::RealTimePaymentsTransfer
           }
           @client.request(req, opts)

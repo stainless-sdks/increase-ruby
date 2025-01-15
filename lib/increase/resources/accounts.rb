@@ -4,29 +4,35 @@ module Increase
   module Resources
     class Accounts
       # @param client [Increase::Client]
+      #
       def initialize(client:)
         @client = client
       end
 
       # Create an Account
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      #
       #   @option params [String] :name The name you choose for the Account.
-      #   @option params [String, nil] :entity_id The identifier for the Entity that will own the Account.
-      #   @option params [String, nil] :informational_entity_id The identifier of an Entity that, while not owning the Account, is associated
+      #
+      #   @option params [String] :entity_id The identifier for the Entity that will own the Account.
+      #
+      #   @option params [String] :informational_entity_id The identifier of an Entity that, while not owning the Account, is associated
       #     with its activity. Its relationship to your group must be `informational`.
-      #   @option params [String, nil] :program_id The identifier for the Program that this Account falls under. Required if you
+      #
+      #   @option params [String] :program_id The identifier for the Program that this Account falls under. Required if you
       #     operate more than one Program.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Account]
+      #
       def create(params = {}, opts = {})
+        parsed = Increase::Models::AccountCreateParams.dump(params)
         req = {
           method: :post,
-          path: "/accounts",
-          headers: {"Content-Type" => "application/json"},
-          body: params,
+          path: "accounts",
+          body: parsed,
           model: Increase::Models::Account
         }
         @client.request(req, opts)
@@ -35,13 +41,15 @@ module Increase
       # Retrieve an Account
       #
       # @param account_id [String] The identifier of the Account to retrieve.
+      #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Account]
+      #
       def retrieve(account_id, opts = {})
         req = {
           method: :get,
-          path: "/accounts/#{account_id}",
+          path: ["accounts/%0s", account_id],
           model: Increase::Models::Account
         }
         @client.request(req, opts)
@@ -51,18 +59,20 @@ module Increase
       #
       # @param account_id [String] The identifier of the Account to update.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [String, nil] :name The new name of the Account.
+      # @param params [Increase::Models::AccountUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      #
+      #   @option params [String] :name The new name of the Account.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Account]
+      #
       def update(account_id, params = {}, opts = {})
+        parsed = Increase::Models::AccountUpdateParams.dump(params)
         req = {
           method: :patch,
-          path: "/accounts/#{account_id}",
-          headers: {"Content-Type" => "application/json"},
-          body: params,
+          path: ["accounts/%0s", account_id],
+          body: parsed,
           model: Increase::Models::Account
         }
         @client.request(req, opts)
@@ -70,28 +80,38 @@ module Increase
 
       # List Accounts
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Increase::Models::AccountListParams::CreatedAt, nil] :created_at
-      #   @option params [String, nil] :cursor Return the page of entries after this one.
-      #   @option params [String, nil] :entity_id Filter Accounts for those belonging to the specified Entity.
-      #   @option params [String, nil] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
+      # @param params [Increase::Models::AccountListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      #
+      #   @option params [Increase::Models::AccountListParams::CreatedAt] :created_at
+      #
+      #   @option params [String] :cursor Return the page of entries after this one.
+      #
+      #   @option params [String] :entity_id Filter Accounts for those belonging to the specified Entity.
+      #
+      #   @option params [String] :idempotency_key Filter records to the one with the specified `idempotency_key` you chose for
       #     that object. This value is unique across Increase and is used to ensure that a
       #     request is only processed once. Learn more about
       #     [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   @option params [String, nil] :informational_entity_id Filter Accounts for those belonging to the specified Entity as informational.
-      #   @option params [Integer, nil] :limit Limit the size of the list that is returned. The default (and maximum) is 100
+      #
+      #   @option params [String] :informational_entity_id Filter Accounts for those belonging to the specified Entity as informational.
+      #
+      #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
-      #   @option params [String, nil] :program_id Filter Accounts for those in a specific Program.
-      #   @option params [Symbol, Increase::Models::AccountListParams::Status, nil] :status Filter Accounts for those with the specified status.
+      #
+      #   @option params [String] :program_id Filter Accounts for those in a specific Program.
+      #
+      #   @option params [Symbol, Increase::Models::AccountListParams::Status] :status Filter Accounts for those with the specified status.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Account>]
+      #
       def list(params = {}, opts = {})
+        parsed = Increase::Models::AccountListParams.dump(params)
         req = {
           method: :get,
-          path: "/accounts",
-          query: params,
+          path: "accounts",
+          query: parsed,
           page: Increase::Page,
           model: Increase::Models::Account
         }
@@ -102,17 +122,20 @@ module Increase
       #
       # @param account_id [String] The identifier of the Account to retrieve.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Time, nil] :at_time The moment to query the balance at. If not set, returns the current balances.
+      # @param params [Increase::Models::AccountBalanceParams, Hash{Symbol => Object}] Attributes to send in this request.
+      #
+      #   @option params [Time] :at_time The moment to query the balance at. If not set, returns the current balances.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::BalanceLookup]
+      #
       def balance(account_id, params = {}, opts = {})
+        parsed = Increase::Models::AccountBalanceParams.dump(params)
         req = {
           method: :get,
-          path: "/accounts/#{account_id}/balance",
-          query: params,
+          path: ["accounts/%0s/balance", account_id],
+          query: parsed,
           model: Increase::Models::BalanceLookup
         }
         @client.request(req, opts)
@@ -121,13 +144,15 @@ module Increase
       # Close an Account
       #
       # @param account_id [String] The identifier of the Account to close. The account must have a zero balance.
+      #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Account]
+      #
       def close(account_id, opts = {})
         req = {
           method: :post,
-          path: "/accounts/#{account_id}/close",
+          path: ["accounts/%0s/close", account_id],
           model: Increase::Models::Account
         }
         @client.request(req, opts)
