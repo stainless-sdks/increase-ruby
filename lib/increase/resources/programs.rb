@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class Programs
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve a Program
       #
       # @param program_id [String] The identifier of the Program to retrieve.
@@ -49,6 +43,12 @@ module Increase
           model: Increase::Models::Program
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

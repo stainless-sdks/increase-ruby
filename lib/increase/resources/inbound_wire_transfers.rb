@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class InboundWireTransfers
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve an Inbound Wire Transfer
       #
       # @param inbound_wire_transfer_id [String] The identifier of the Inbound Wire Transfer to get details for.
@@ -57,6 +51,12 @@ module Increase
           model: Increase::Models::InboundWireTransfer
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

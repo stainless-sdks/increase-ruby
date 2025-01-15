@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class CheckTransfers
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a Check Transfer
       #
       # @param params [Increase::Models::CheckTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -153,6 +147,12 @@ module Increase
           model: Increase::Models::CheckTransfer
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

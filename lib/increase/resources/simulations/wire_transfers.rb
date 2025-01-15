@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class WireTransfers
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
         #   Reserve due to error conditions. This will also create a
         #   [Transaction](#transaction) to account for the returned funds. This Wire
@@ -47,6 +41,12 @@ module Increase
             model: Increase::Models::WireTransfer
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

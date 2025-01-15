@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class InboundACHTransfers
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates an inbound ACH transfer to your account. This imitates initiating a
         #   transfer to an Increase account from a different financial institution. The
         #   transfer may be either a credit or a debit depending on if the `amount` is
@@ -61,6 +55,12 @@ module Increase
             model: Increase::Models::InboundACHTransfer
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

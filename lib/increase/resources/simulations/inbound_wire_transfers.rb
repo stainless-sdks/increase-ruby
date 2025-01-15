@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class InboundWireTransfers
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates an [Inbound Wire Transfer](#inbound-wire-transfers) to your account.
         #
         # @param params [Increase::Models::Simulations::InboundWireTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -76,6 +70,12 @@ module Increase
             model: Increase::Models::InboundWireTransfer
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

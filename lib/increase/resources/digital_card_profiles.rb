@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class DigitalCardProfiles
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a Digital Card Profile
       #
       # @param params [Increase::Models::DigitalCardProfileCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -149,6 +143,12 @@ module Increase
           model: Increase::Models::DigitalCardProfile
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

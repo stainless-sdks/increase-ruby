@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class Documents
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates an tax document being created for an account.
         #
         # @param params [Increase::Models::Simulations::DocumentCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -29,6 +23,12 @@ module Increase
             model: Increase::Models::Document
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

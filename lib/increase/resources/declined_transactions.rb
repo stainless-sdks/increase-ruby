@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class DeclinedTransactions
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve a Declined Transaction
       #
       # @param declined_transaction_id [String] The identifier of the Declined Transaction.
@@ -57,6 +51,12 @@ module Increase
           model: Increase::Models::DeclinedTransaction
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

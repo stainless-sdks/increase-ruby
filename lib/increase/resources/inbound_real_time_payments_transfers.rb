@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class InboundRealTimePaymentsTransfers
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve an Inbound Real-Time Payments Transfer
       #
       # @param inbound_real_time_payments_transfer_id [String] The identifier of the Inbound Real-Time Payments Transfer to get details for.
@@ -57,6 +51,12 @@ module Increase
           model: Increase::Models::InboundRealTimePaymentsTransfer
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

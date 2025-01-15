@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class CheckTransfers
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates the mailing of a [Check Transfer](#check-transfers), which happens
         #   periodically throughout the day in production but can be sped up in sandbox.
         #   This transfer must first have a `status` of `pending_approval` or
@@ -28,6 +22,12 @@ module Increase
             model: Increase::Models::CheckTransfer
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

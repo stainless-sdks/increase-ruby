@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class CardDisputes
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # After a [Card Dispute](#card-disputes) is created in production, the dispute
         #   will be reviewed. Since no review happens in sandbox, this endpoint simulates
         #   moving a Card Dispute into a rejected or accepted state. A Card Dispute can only
@@ -36,6 +30,12 @@ module Increase
             model: Increase::Models::CardDispute
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

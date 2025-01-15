@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class AccountTransfers
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create an Account Transfer
       #
       # @param params [Increase::Models::AccountTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -122,6 +116,12 @@ module Increase
           model: Increase::Models::AccountTransfer
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class DigitalWalletTokenRequests
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates a user attempting add a [Card](#cards) to a digital wallet such as
         #   Apple Pay.
         #
@@ -30,6 +24,12 @@ module Increase
             model: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

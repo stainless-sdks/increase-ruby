@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class InboundCheckDeposits
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates an Inbound Check Deposit against your account. This imitates someone
         #   depositing a check at their bank that was issued from your account. It may or
         #   may not be associated with a Check Transfer. Increase will evaluate the Check
@@ -38,6 +32,12 @@ module Increase
             model: Increase::Models::InboundCheckDeposit
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

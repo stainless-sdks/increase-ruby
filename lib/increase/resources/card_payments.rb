@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class CardPayments
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve a Card Payment
       #
       # @param card_payment_id [String] The identifier of the Card Payment.
@@ -55,6 +49,12 @@ module Increase
           model: Increase::Models::CardPayment
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

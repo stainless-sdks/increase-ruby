@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class InboundCheckDeposits
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve an Inbound Check Deposit
       #
       # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to get details for.
@@ -96,6 +90,12 @@ module Increase
           model: Increase::Models::InboundCheckDeposit
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

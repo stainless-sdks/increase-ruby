@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class Lockboxes
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a Lockbox
       #
       # @param params [Increase::Models::LockboxCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -110,6 +104,12 @@ module Increase
           model: Increase::Models::Lockbox
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

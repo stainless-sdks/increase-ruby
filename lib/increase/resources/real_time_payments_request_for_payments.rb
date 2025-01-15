@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class RealTimePaymentsRequestForPayments
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a Real-Time Payments Request for Payment
       #
       # @param params [Increase::Models::RealTimePaymentsRequestForPaymentCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -94,6 +88,12 @@ module Increase
           model: Increase::Models::RealTimePaymentsRequestForPayment
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

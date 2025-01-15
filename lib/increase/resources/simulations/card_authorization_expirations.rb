@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class CardAuthorizationExpirations
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates expiring a Card Authorization immediately.
         #
         # @param params [Increase::Models::Simulations::CardAuthorizationExpirationCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -29,6 +23,12 @@ module Increase
             model: Increase::Models::CardPayment
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

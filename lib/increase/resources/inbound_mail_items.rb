@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class InboundMailItems
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve an Inbound Mail Item
       #
       # @param inbound_mail_item_id [String] The identifier of the Inbound Mail Item to retrieve.
@@ -53,6 +47,12 @@ module Increase
           model: Increase::Models::InboundMailItem
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

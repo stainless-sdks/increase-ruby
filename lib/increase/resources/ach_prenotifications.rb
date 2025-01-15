@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class ACHPrenotifications
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create an ACH Prenotification
       #
       # @param params [Increase::Models::ACHPrenotificationCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -104,6 +98,12 @@ module Increase
           model: Increase::Models::ACHPrenotification
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

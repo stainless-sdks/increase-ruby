@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class Groups
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Returns details for the currently authenticated Group.
       #
       # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -22,6 +16,12 @@ module Increase
           model: Increase::Models::Group
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

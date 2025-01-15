@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class ExternalAccounts
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create an External Account
       #
       # @param params [Increase::Models::ExternalAccountCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -117,6 +111,12 @@ module Increase
           model: Increase::Models::ExternalAccount
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

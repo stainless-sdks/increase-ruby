@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class CardPurchaseSupplements
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve a Card Purchase Supplement
       #
       # @param card_purchase_supplement_id [String] The identifier of the Card Purchase Supplement.
@@ -54,6 +48,12 @@ module Increase
           model: Increase::Models::CardPurchaseSupplement
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

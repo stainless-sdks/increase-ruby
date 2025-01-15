@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class IntrafiBalances
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Get IntraFi balances by bank
       #
       # @param account_id [String] The identifier of the Account to get balances for.
@@ -24,6 +18,12 @@ module Increase
           model: Increase::Models::IntrafiBalance
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

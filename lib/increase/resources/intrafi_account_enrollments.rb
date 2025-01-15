@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class IntrafiAccountEnrollments
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Enroll an account in the IntraFi deposit sweep network
       #
       # @param params [Increase::Models::IntrafiAccountEnrollmentCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -98,6 +92,12 @@ module Increase
           model: Increase::Models::IntrafiAccountEnrollment
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class InboundMailItems
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates an inbound mail item to your account, as if someone had mailed a
         #   physical check to one of your account's Lockboxes.
         #
@@ -35,6 +29,12 @@ module Increase
             model: Increase::Models::InboundMailItem
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

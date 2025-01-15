@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class SupplementalDocuments
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a supplemental document for an Entity
       #
       # @param params [Increase::Models::SupplementalDocumentCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -62,6 +56,12 @@ module Increase
           model: Increase::Models::EntitySupplementalDocument
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

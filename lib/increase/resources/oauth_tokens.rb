@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class OAuthTokens
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create an OAuth Token
       #
       # @param params [Increase::Models::OAuthTokenCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -42,6 +36,12 @@ module Increase
           model: Increase::Models::OAuthToken
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end
