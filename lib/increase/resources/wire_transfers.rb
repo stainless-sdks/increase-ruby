@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class WireTransfers
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a Wire Transfer
       #
       # @param params [Increase::Models::WireTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -151,6 +145,12 @@ module Increase
           model: Increase::Models::WireTransfer
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

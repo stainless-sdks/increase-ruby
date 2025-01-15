@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class CheckDeposits
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates the rejection of a [Check Deposit](#check-deposits) by Increase due to
         #   factors like poor image quality. This Check Deposit must first have a `status`
         #   of `pending`.
@@ -63,6 +57,12 @@ module Increase
             model: Increase::Models::CheckDeposit
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

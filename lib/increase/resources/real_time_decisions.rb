@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class RealTimeDecisions
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve a Real-Time Decision
       #
       # @param real_time_decision_id [String] The identifier of the Real-Time Decision.
@@ -60,6 +54,12 @@ module Increase
           model: Increase::Models::RealTimeDecision
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

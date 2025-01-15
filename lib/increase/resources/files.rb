@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class Files
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # To upload a file to Increase, you'll need to send a request of Content-Type
       #   `multipart/form-data`. The request should contain the file you would like to
       #   upload, as well as the parameters for creating a file.
@@ -88,6 +82,12 @@ module Increase
           model: Increase::Models::File
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

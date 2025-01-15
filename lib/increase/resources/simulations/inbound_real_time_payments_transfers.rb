@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class InboundRealTimePaymentsTransfers
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates an
         #   [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
         #   your account. Real-Time Payments are a beta feature.
@@ -44,6 +38,12 @@ module Increase
             model: Increase::Models::InboundRealTimePaymentsTransfer
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

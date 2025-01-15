@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class InboundACHTransfers
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve an Inbound ACH Transfer
       #
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to get details for.
@@ -133,6 +127,12 @@ module Increase
           model: Increase::Models::InboundACHTransfer
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

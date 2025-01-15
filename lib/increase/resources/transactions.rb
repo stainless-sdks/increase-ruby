@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class Transactions
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve a Transaction
       #
       # @param transaction_id [String] The identifier of the Transaction to retrieve.
@@ -58,6 +52,12 @@ module Increase
           model: Increase::Models::Transaction
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

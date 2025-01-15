@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class InboundWireDrawdownRequests
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve an Inbound Wire Drawdown Request
       #
       # @param inbound_wire_drawdown_request_id [String] The identifier of the Inbound Wire Drawdown Request to retrieve.
@@ -49,6 +43,12 @@ module Increase
           model: Increase::Models::InboundWireDrawdownRequest
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

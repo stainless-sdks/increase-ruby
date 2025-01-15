@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class AccountStatements
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates an [Account Statement](#account-statements) being created for an
         #   account. In production, Account Statements are generated once per month.
         #
@@ -30,6 +24,12 @@ module Increase
             model: Increase::Models::AccountStatement
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

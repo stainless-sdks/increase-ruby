@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class ACHTransfers
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create an ACH Transfer
       #
       # @param params [Increase::Models::ACHTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -170,6 +164,12 @@ module Increase
           model: Increase::Models::ACHTransfer
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

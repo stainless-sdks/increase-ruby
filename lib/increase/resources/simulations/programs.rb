@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class Programs
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates a [Program](#programs) being created in your group. By default, your
         #   group has one program called Commercial Banking. Note that when your group
         #   operates more than one program, `program_id` is a required field when creating
@@ -32,6 +26,12 @@ module Increase
             model: Increase::Models::Program
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

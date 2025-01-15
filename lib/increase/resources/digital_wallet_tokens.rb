@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class DigitalWalletTokens
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve a Digital Wallet Token
       #
       # @param digital_wallet_token_id [String] The identifier of the Digital Wallet Token.
@@ -53,6 +47,12 @@ module Increase
           model: Increase::Models::DigitalWalletToken
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class OAuthApplications
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve an OAuth Application
       #
       # @param oauth_application_id [String] The identifier of the OAuth Application.
@@ -53,6 +47,12 @@ module Increase
           model: Increase::Models::OAuthApplication
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

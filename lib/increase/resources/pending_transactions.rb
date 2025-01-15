@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class PendingTransactions
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve a Pending Transaction
       #
       # @param pending_transaction_id [String] The identifier of the Pending Transaction.
@@ -59,6 +53,12 @@ module Increase
           model: Increase::Models::PendingTransaction
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

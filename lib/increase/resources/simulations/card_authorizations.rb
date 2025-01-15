@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class CardAuthorizations
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates a purchase authorization on a [Card](#cards). Depending on the balance
         #   available to the card and the `amount` submitted, the authorization activity
         #   will result in a [Pending Transaction](#pending-transactions) of type
@@ -72,6 +66,12 @@ module Increase
             model: Increase::Models::Simulations::CardAuthorizationCreateResponse
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

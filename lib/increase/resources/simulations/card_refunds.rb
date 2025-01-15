@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class CardRefunds
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates refunding a card transaction. The full value of the original sandbox
         #   transaction is refunded.
         #
@@ -31,6 +25,12 @@ module Increase
             model: Increase::Models::Transaction
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

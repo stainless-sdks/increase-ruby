@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class CheckDeposits
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a Check Deposit
       #
       # @param params [Increase::Models::CheckDepositCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -87,6 +81,12 @@ module Increase
           model: Increase::Models::CheckDeposit
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

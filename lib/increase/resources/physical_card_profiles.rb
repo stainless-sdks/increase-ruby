@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class PhysicalCardProfiles
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a Physical Card Profile
       #
       # @param params [Increase::Models::PhysicalCardProfileCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -132,6 +126,12 @@ module Increase
           model: Increase::Models::PhysicalCardProfile
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

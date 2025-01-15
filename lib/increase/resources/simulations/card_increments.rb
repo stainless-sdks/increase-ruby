@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class CardIncrements
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates the increment of an authorization by a card acquirer. An authorization
         #   can be incremented multiple times.
         #
@@ -37,6 +31,12 @@ module Increase
             model: Increase::Models::CardPayment
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

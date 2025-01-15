@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class RealTimePaymentsTransfers
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates submission of a
         #   [Real-Time Payments Transfer](#real-time-payments-transfers) and handling the
         #   response from the destination financial institution. This transfer must first
@@ -34,6 +28,12 @@ module Increase
             model: Increase::Models::RealTimePaymentsTransfer
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

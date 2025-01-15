@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class Documents
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve a Document
       #
       # @param document_id [String] The identifier of the Document to retrieve.
@@ -55,6 +49,12 @@ module Increase
           model: Increase::Models::Document
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

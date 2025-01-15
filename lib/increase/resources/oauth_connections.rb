@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class OAuthConnections
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve an OAuth Connection
       #
       # @param oauth_connection_id [String] The identifier of the OAuth Connection.
@@ -54,6 +48,12 @@ module Increase
           model: Increase::Models::OAuthConnection
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

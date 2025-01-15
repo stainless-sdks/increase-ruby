@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class ACHTransfers
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates the acknowledgement of an [ACH Transfer](#ach-transfers) by the
         #   Federal Reserve. This transfer must first have a `status` of `submitted` . In
         #   production, the Federal Reserve generally acknowledges submitted ACH files
@@ -125,6 +119,12 @@ module Increase
             model: Increase::Models::ACHTransfer
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

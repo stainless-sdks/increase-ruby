@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class CardFuelConfirmations
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates the fuel confirmation of an authorization by a card acquirer. This
         #   happens asynchronously right after a fuel pump transaction is completed. A fuel
         #   confirmation can only happen once per authorization.
@@ -34,6 +28,12 @@ module Increase
             model: Increase::Models::CardPayment
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

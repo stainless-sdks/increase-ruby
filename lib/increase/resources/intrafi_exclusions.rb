@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class IntrafiExclusions
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create an IntraFi Exclusion
       #
       # @param params [Increase::Models::IntrafiExclusionCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -98,6 +92,12 @@ module Increase
           model: Increase::Models::IntrafiExclusion
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

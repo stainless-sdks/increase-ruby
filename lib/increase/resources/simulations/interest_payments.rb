@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class InterestPayments
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates an interest payment to your account. In production, this happens
         #   automatically on the first of each month.
         #
@@ -36,6 +30,12 @@ module Increase
             model: Increase::Models::Transaction
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

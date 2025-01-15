@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class WireDrawdownRequests
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a Wire Drawdown Request
       #
       # @param params [Increase::Models::WireDrawdownRequestCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -109,6 +103,12 @@ module Increase
           model: Increase::Models::WireDrawdownRequest
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

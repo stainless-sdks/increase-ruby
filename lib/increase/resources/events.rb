@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class Events
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve an Event
       #
       # @param event_id [String] The identifier of the Event.
@@ -55,6 +49,12 @@ module Increase
           model: Increase::Models::Event
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

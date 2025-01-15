@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class EventSubscriptions
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create an Event Subscription
       #
       # @param params [Increase::Models::EventSubscriptionCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -107,6 +101,12 @@ module Increase
           model: Increase::Models::EventSubscription
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

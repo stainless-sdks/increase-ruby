@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class AccountStatements
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve an Account Statement
       #
       # @param account_statement_id [String] The identifier of the Account Statement to retrieve.
@@ -53,6 +47,12 @@ module Increase
           model: Increase::Models::AccountStatement
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class ProofOfAuthorizationRequests
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Retrieve a Proof of Authorization Request
       #
       # @param proof_of_authorization_request_id [String] The identifier of the Proof of Authorization Request.
@@ -51,6 +45,12 @@ module Increase
           model: Increase::Models::ProofOfAuthorizationRequest
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class BookkeepingEntrySets
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create a Bookkeeping Entry Set
       #
       # @param params [Increase::Models::BookkeepingEntrySetCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -82,6 +76,12 @@ module Increase
           model: Increase::Models::BookkeepingEntrySet
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

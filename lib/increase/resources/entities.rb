@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class Entities
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create an Entity
       #
       # @param params [Increase::Models::EntityCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -275,6 +269,12 @@ module Increase
           model: Increase::Models::Entity
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end

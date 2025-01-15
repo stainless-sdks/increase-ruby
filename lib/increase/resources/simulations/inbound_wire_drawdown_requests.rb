@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class InboundWireDrawdownRequests
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # Simulates receiving an
         #   [Inbound Wire Drawdown Request](#inbound-wire-drawdown-requests).
         #
@@ -74,6 +68,12 @@ module Increase
             model: Increase::Models::InboundWireDrawdownRequest
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

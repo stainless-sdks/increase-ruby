@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class InboundFundsHolds
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # This endpoint simulates immediately releasing an Inbound Funds Hold, which might
         #   be created as a result of e.g., an ACH debit.
         #
@@ -26,6 +20,12 @@ module Increase
             model: Increase::Models::Simulations::InboundFundsHoldReleaseResponse
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

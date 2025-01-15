@@ -4,12 +4,6 @@ module Increase
   module Resources
     class Simulations
       class PhysicalCards
-        # @param client [Increase::Client]
-        #
-        def initialize(client:)
-          @client = client
-        end
-
         # This endpoint allows you to simulate advancing the shipment status of a Physical
         #   Card, to simulate e.g., that a physical card was attempted shipped but then
         #   failed delivery.
@@ -33,6 +27,12 @@ module Increase
             model: Increase::Models::PhysicalCard
           }
           @client.request(req, opts)
+        end
+
+        # @param client [Increase::Client]
+        #
+        def initialize(client:)
+          @client = client
         end
       end
     end

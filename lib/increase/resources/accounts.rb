@@ -3,12 +3,6 @@
 module Increase
   module Resources
     class Accounts
-      # @param client [Increase::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Create an Account
       #
       # @param params [Increase::Models::AccountCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -156,6 +150,12 @@ module Increase
           model: Increase::Models::Account
         }
         @client.request(req, opts)
+      end
+
+      # @param client [Increase::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end
