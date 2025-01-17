@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # card => {
     #   id: String,
@@ -153,7 +152,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # billing_address => {
       #   city: String,
@@ -213,7 +211,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # digital_wallet => {
       #   digital_card_profile_id: String,
@@ -262,7 +259,6 @@ module Increase
       # This indicates if payments can be made with the card.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active
@@ -289,7 +285,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `card`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :card

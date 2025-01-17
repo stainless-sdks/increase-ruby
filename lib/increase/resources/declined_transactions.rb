@@ -7,7 +7,7 @@ module Increase
       #
       # @param declined_transaction_id [String] The identifier of the Declined Transaction.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::DeclinedTransaction]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Declined Transactions
       #
-      # @param params [Increase::Models::DeclinedTransactionListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::DeclinedTransactionListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Declined Transactions to ones belonging to the specified Account.
       #
@@ -37,7 +37,7 @@ module Increase
       #
       #   @option params [String] :route_id Filter Declined Transactions to those belonging to the specified route.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::DeclinedTransaction>]
       #

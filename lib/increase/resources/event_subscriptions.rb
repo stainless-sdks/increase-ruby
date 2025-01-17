@@ -5,7 +5,7 @@ module Increase
     class EventSubscriptions
       # Create an Event Subscription
       #
-      # @param params [Increase::Models::EventSubscriptionCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EventSubscriptionCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :url The URL you'd like us to send webhooks to.
       #
@@ -18,7 +18,7 @@ module Increase
       #   @option params [String] :shared_secret The key that will be used to sign webhooks. If no value is passed, a random
       #     string will be used as default.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::EventSubscription]
       #
@@ -37,7 +37,7 @@ module Increase
       #
       # @param event_subscription_id [String] The identifier of the Event Subscription.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::EventSubscription]
       #
@@ -54,11 +54,11 @@ module Increase
       #
       # @param event_subscription_id [String] The identifier of the Event Subscription.
       #
-      # @param params [Increase::Models::EventSubscriptionUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EventSubscriptionUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status] :status The status to update the Event Subscription with.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::EventSubscription]
       #
@@ -75,7 +75,7 @@ module Increase
 
       # List Event Subscriptions
       #
-      # @param params [Increase::Models::EventSubscriptionListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EventSubscriptionListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -87,7 +87,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::EventSubscription>]
       #

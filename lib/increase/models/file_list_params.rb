@@ -51,7 +51,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # created_at => {
       #   after: Time,
@@ -104,7 +103,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # purpose => {
       #   in_: -> { Increase::ArrayOf[enum: Increase::Models::FileListParams::Purpose::In] === _1 }
@@ -128,7 +126,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case in
         # in :check_image_front

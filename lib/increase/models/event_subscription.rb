@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # event_subscription => {
     #   id: String,
@@ -114,7 +113,6 @@ module Increase
       # If specified, this subscription will only receive webhooks for Events with the specified `category`.
       #
       # @example
-      #
       # ```ruby
       # case selected_event_category
       # in :"account.created"
@@ -402,7 +400,6 @@ module Increase
       # This indicates if we'll send notifications to this subscription.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active
@@ -434,7 +431,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `event_subscription`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :event_subscription

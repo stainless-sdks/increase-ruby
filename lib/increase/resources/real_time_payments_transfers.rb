@@ -5,7 +5,7 @@ module Increase
     class RealTimePaymentsTransfers
       # Create a Real-Time Payments Transfer
       #
-      # @param params [Increase::Models::RealTimePaymentsTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::RealTimePaymentsTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Integer] :amount The transfer amount in USD cents. For Real-Time Payments transfers, must be
       #     positive.
@@ -36,7 +36,7 @@ module Increase
       #   @option params [String] :ultimate_debtor_name The name of the ultimate sender of the transfer. Set this if the funds are being
       #     sent on behalf of someone who is not the account holder at Increase.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::RealTimePaymentsTransfer]
       #
@@ -55,7 +55,7 @@ module Increase
       #
       # @param real_time_payments_transfer_id [String] The identifier of the Real-Time Payments Transfer.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::RealTimePaymentsTransfer]
       #
@@ -70,7 +70,7 @@ module Increase
 
       # List Real-Time Payments Transfers
       #
-      # @param params [Increase::Models::RealTimePaymentsTransferListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::RealTimePaymentsTransferListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Real-Time Payments Transfers to those belonging to the specified Account.
       #
@@ -89,7 +89,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::RealTimePaymentsTransfer>]
       #

@@ -21,7 +21,6 @@ module Increase
         # The shipment status to move the Physical Card to.
         #
         # @example
-        #
         # ```ruby
         # case shipment_status
         # in :pending

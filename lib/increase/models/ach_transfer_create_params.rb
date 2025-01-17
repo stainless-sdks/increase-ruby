@@ -206,7 +206,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # addenda => {
       #   category: enum: Increase::Models::ACHTransferCreateParams::Addenda::Category,
@@ -252,7 +251,6 @@ module Increase
         # The type of addenda to pass with the transfer.
         #
         # @example
-        #
         # ```ruby
         # case category
         # in :freeform
@@ -272,7 +270,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # freeform => {
         #   entries: -> { Increase::ArrayOf[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry] === _1 }
@@ -300,7 +297,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # entry => {
           #   payment_related_information: String
@@ -323,7 +319,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # payment_order_remittance_advice => {
         #   invoices: -> { Increase::ArrayOf[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice] === _1 }
@@ -350,7 +345,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # invoice => {
           #   invoice_number: String,
@@ -386,7 +380,6 @@ module Increase
       # The type of entity that owns the account to which the ACH Transfer is being sent.
       #
       # @example
-      #
       # ```ruby
       # case destination_account_holder
       # in :business
@@ -413,7 +406,6 @@ module Increase
       # The type of the account to which the transfer will be sent.
       #
       # @example
-      #
       # ```ruby
       # case funding
       # in :checking
@@ -433,7 +425,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # preferred_effective_date => {
       #   date: Date,
@@ -474,7 +465,6 @@ module Increase
         # A schedule by which Increase will choose an effective date for the transfer.
         #
         # @example
-        #
         # ```ruby
         # case settlement_schedule
         # in :same_day
@@ -497,7 +487,6 @@ module Increase
       # The Standard Entry Class (SEC) code to use for the transfer.
       #
       # @example
-      #
       # ```ruby
       # case standard_entry_class_code
       # in :corporate_credit_or_debit
@@ -529,7 +518,6 @@ module Increase
       # The timing of the transaction.
       #
       # @example
-      #
       # ```ruby
       # case transaction_timing
       # in :synchronous

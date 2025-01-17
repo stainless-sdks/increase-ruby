@@ -5,7 +5,7 @@ module Increase
     class ACHTransfers
       # Create an ACH Transfer
       #
-      # @param params [Increase::Models::ACHTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ACHTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id The Increase identifier for the account that will send the transfer.
       #
@@ -64,7 +64,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming] :transaction_timing The timing of the transaction.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHTransfer]
       #
@@ -83,7 +83,7 @@ module Increase
       #
       # @param ach_transfer_id [String] The identifier of the ACH Transfer.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHTransfer]
       #
@@ -98,7 +98,7 @@ module Increase
 
       # List ACH Transfers
       #
-      # @param params [Increase::Models::ACHTransferListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ACHTransferListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter ACH Transfers to those that originated from the specified Account.
       #
@@ -116,7 +116,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ACHTransfer>]
       #
@@ -136,7 +136,7 @@ module Increase
       #
       # @param ach_transfer_id [String] The identifier of the ACH Transfer to approve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHTransfer]
       #
@@ -153,7 +153,7 @@ module Increase
       #
       # @param ach_transfer_id [String] The identifier of the pending ACH Transfer to cancel.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHTransfer]
       #

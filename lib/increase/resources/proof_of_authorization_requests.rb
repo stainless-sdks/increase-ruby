@@ -7,7 +7,7 @@ module Increase
       #
       # @param proof_of_authorization_request_id [String] The identifier of the Proof of Authorization Request.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ProofOfAuthorizationRequest]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Proof of Authorization Requests
       #
-      # @param params [Increase::Models::ProofOfAuthorizationRequestListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ProofOfAuthorizationRequestListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt] :created_at
       #
@@ -31,7 +31,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequest>]
       #

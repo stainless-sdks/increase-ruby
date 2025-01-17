@@ -44,7 +44,6 @@ module Increase
       # The account compliance category.
       #
       # @example
-      #
       # ```ruby
       # case compliance_category
       # in :commingled_cash

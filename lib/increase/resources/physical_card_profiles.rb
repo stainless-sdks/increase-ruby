@@ -5,7 +5,7 @@ module Increase
     class PhysicalCardProfiles
       # Create a Physical Card Profile
       #
-      # @param params [Increase::Models::PhysicalCardProfileCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::PhysicalCardProfileCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :carrier_image_file_id The identifier of the File containing the physical card's carrier image.
       #
@@ -15,7 +15,7 @@ module Increase
       #
       #   @option params [String] :front_image_file_id The identifier of the File containing the physical card's front image.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PhysicalCardProfile]
       #
@@ -34,7 +34,7 @@ module Increase
       #
       # @param physical_card_profile_id [String] The identifier of the Card Profile.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PhysicalCardProfile]
       #
@@ -49,7 +49,7 @@ module Increase
 
       # List Physical Card Profiles
       #
-      # @param params [Increase::Models::PhysicalCardProfileListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::PhysicalCardProfileListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -63,7 +63,7 @@ module Increase
       #
       #   @option params [Increase::Models::PhysicalCardProfileListParams::Status] :status
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::PhysicalCardProfile>]
       #
@@ -83,7 +83,7 @@ module Increase
       #
       # @param physical_card_profile_id [String] The identifier of the Physical Card Profile to archive.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PhysicalCardProfile]
       #
@@ -100,7 +100,7 @@ module Increase
       #
       # @param physical_card_profile_id [String] The identifier of the Physical Card Profile to clone.
       #
-      # @param params [Increase::Models::PhysicalCardProfileCloneParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::PhysicalCardProfileCloneParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :carrier_image_file_id The identifier of the File containing the physical card's carrier image.
       #
@@ -113,7 +113,7 @@ module Increase
       #   @option params [Increase::Models::PhysicalCardProfileCloneParams::FrontText] :front_text Text printed on the front of the card. Reach out to
       #     [support@increase.com](mailto:support@increase.com) for more information.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PhysicalCardProfile]
       #

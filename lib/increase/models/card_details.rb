@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # card_details => {
     #   card_id: String,
@@ -75,7 +74,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `card_details`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :card_details

@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # inbound_real_time_payments_transfer => {
     #   id: String,
@@ -175,7 +174,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # confirmation => {
       #   confirmed_at: Time,
@@ -210,7 +208,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
       #
       # @example
-      #
       # ```ruby
       # case currency
       # in :CAD
@@ -250,7 +247,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # decline => {
       #   declined_at: Time,
@@ -293,7 +289,6 @@ module Increase
         # The reason for the transfer decline.
         #
         # @example
-        #
         # ```ruby
         # case reason
         # in :account_number_canceled
@@ -336,7 +331,6 @@ module Increase
       # The lifecycle status of the transfer.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_confirming
@@ -368,7 +362,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `inbound_real_time_payments_transfer`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :inbound_real_time_payments_transfer

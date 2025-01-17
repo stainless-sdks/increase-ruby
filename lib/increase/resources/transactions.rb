@@ -7,7 +7,7 @@ module Increase
       #
       # @param transaction_id [String] The identifier of the Transaction to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Transaction]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Transactions
       #
-      # @param params [Increase::Models::TransactionListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::TransactionListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Transactions for those belonging to the specified Account.
       #
@@ -38,7 +38,7 @@ module Increase
       #   @option params [String] :route_id Filter Transactions for those belonging to the specified route. This could be a
       #     Card ID or an Account Number ID.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Transaction>]
       #

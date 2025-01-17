@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # wire_transfer => {
     #   id: String,
@@ -300,7 +299,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # approval => {
       #   approved_at: Time,
@@ -336,7 +334,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # cancellation => {
       #   canceled_at: Time,
@@ -372,7 +369,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # created_by => {
       #   api_key: Increase::Models::WireTransfer::CreatedBy::APIKey,
@@ -422,7 +418,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # api_key => {
         #   description: String
@@ -448,7 +443,6 @@ module Increase
         # The type of object that created this transfer.
         #
         # @example
-        #
         # ```ruby
         # case category
         # in :api_key
@@ -473,7 +467,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # oauth_application => {
         #   name: String
@@ -497,7 +490,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # user => {
         #   email: String
@@ -524,7 +516,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For wire transfers this is always equal to `usd`.
       #
       # @example
-      #
       # ```ruby
       # case currency
       # in :CAD
@@ -566,7 +557,6 @@ module Increase
       # The transfer's network.
       #
       # @example
-      #
       # ```ruby
       # case network
       # in :wire
@@ -580,7 +570,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # reversal => {
       #   amount: Integer,
@@ -765,7 +754,6 @@ module Increase
       # The lifecycle status of the transfer.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_approval
@@ -814,7 +802,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # submission => {
       #   input_message_accountability_data: String,
@@ -850,7 +837,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `wire_transfer`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :wire_transfer

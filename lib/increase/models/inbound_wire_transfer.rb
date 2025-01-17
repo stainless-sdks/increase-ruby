@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # inbound_wire_transfer => {
     #   id: String,
@@ -250,7 +249,6 @@ module Increase
       # The status of the transfer.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending
@@ -282,7 +280,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `inbound_wire_transfer`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :inbound_wire_transfer

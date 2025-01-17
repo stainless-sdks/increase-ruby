@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # account => {
     #   id: String,
@@ -177,7 +176,6 @@ module Increase
       # The bank the Account is with.
       #
       # @example
-      #
       # ```ruby
       # case bank
       # in :blue_ridge_bank
@@ -204,7 +202,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.
       #
       # @example
-      #
       # ```ruby
       # case currency
       # in :CAD
@@ -246,7 +243,6 @@ module Increase
       # The status of the Account.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :closed
@@ -268,7 +264,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `account`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :account

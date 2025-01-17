@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # physical_card_profile => {
     #   id: String,
@@ -144,7 +143,6 @@ module Increase
       # The creator of this Physical Card Profile.
       #
       # @example
-      #
       # ```ruby
       # case creator
       # in :increase
@@ -166,7 +164,6 @@ module Increase
       # The status of the Physical Card Profile.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_creating
@@ -208,7 +205,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `physical_card_profile`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :physical_card_profile

@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # intrafi_balance => {
     #   id: String,
@@ -76,7 +75,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # balance => {
       #   id: String,
@@ -135,7 +133,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # bank_location => {
         #   city: String,
@@ -171,7 +168,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account currency.
       #
       # @example
-      #
       # ```ruby
       # case currency
       # in :CAD
@@ -213,7 +209,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `intrafi_balance`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :intrafi_balance

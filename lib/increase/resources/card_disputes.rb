@@ -5,7 +5,7 @@ module Increase
     class CardDisputes
       # Create a Card Dispute
       #
-      # @param params [Increase::Models::CardDisputeCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardDisputeCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :disputed_transaction_id The Transaction you wish to dispute. This Transaction must have a `source_type`
       #     of `card_settlement`.
@@ -17,7 +17,7 @@ module Increase
       #     provided. If provided, the amount must be less than or equal to the amount of
       #     the transaction.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CardDispute]
       #
@@ -36,7 +36,7 @@ module Increase
       #
       # @param card_dispute_id [String] The identifier of the Card Dispute.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CardDispute]
       #
@@ -51,7 +51,7 @@ module Increase
 
       # List Card Disputes
       #
-      # @param params [Increase::Models::CardDisputeListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardDisputeListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::CardDisputeListParams::CreatedAt] :created_at
       #
@@ -67,7 +67,7 @@ module Increase
       #
       #   @option params [Increase::Models::CardDisputeListParams::Status] :status
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::CardDispute>]
       #

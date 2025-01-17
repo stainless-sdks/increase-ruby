@@ -6,11 +6,11 @@ module Increase
       class Documents
         # Simulates an tax document being created for an account.
         #
-        # @param params [Increase::Models::Simulations::DocumentCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::DocumentCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :account_id The identifier of the Account the tax document is for.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Document]
         #

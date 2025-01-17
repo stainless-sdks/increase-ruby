@@ -5,7 +5,7 @@ module Increase
     class ExternalAccounts
       # Create an External Account
       #
-      # @param params [Increase::Models::ExternalAccountCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ExternalAccountCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_number The account number for the destination account.
       #
@@ -18,7 +18,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::ExternalAccountCreateParams::Funding] :funding The type of the destination account. Defaults to `checking`.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ExternalAccount]
       #
@@ -37,7 +37,7 @@ module Increase
       #
       # @param external_account_id [String] The identifier of the External Account.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ExternalAccount]
       #
@@ -54,7 +54,7 @@ module Increase
       #
       # @param external_account_id [String] The external account identifier.
       #
-      # @param params [Increase::Models::ExternalAccountUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ExternalAccountUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder] :account_holder The type of entity that owns the External Account.
       #
@@ -64,7 +64,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::ExternalAccountUpdateParams::Status] :status The status of the External Account.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ExternalAccount]
       #
@@ -81,7 +81,7 @@ module Increase
 
       # List External Accounts
       #
-      # @param params [Increase::Models::ExternalAccountListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ExternalAccountListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -97,7 +97,7 @@ module Increase
       #
       #   @option params [Increase::Models::ExternalAccountListParams::Status] :status
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ExternalAccount>]
       #

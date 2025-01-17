@@ -2,7 +2,6 @@
 
 module Increase
   # @example
-  #
   # ```ruby
   # if page.has_next?
   #   page = page.next_page
@@ -10,7 +9,6 @@ module Increase
   # ```
   #
   # @example
-  #
   # ```ruby
   # page.auto_paging_each do |item|
   # #   item ...
@@ -18,7 +16,6 @@ module Increase
   # ```
   #
   # @example
-  #
   # ```ruby
   # items = page.to_enum.take(2)
   #
@@ -34,10 +31,10 @@ module Increase
     # @private
     #
     # @param client [Increase::BaseClient]
-    # @param req [Hash{Symbol => Object}]
-    # @param opts [Hash{Symbol => Object}]
-    # @param headers [Hash{String => String}]
-    # @param unwrapped [Hash{Symbol => Object}]
+    # @param req [Hash{Symbol=>Object}]
+    # @param opts [Hash{Symbol=>Object}]
+    # @param headers [Hash{String=>String}]
+    # @param unwrapped [Hash{Symbol=>Object}]
     #
     def initialize(client:, req:, opts:, headers:, unwrapped:)
       model = req.fetch(:model)

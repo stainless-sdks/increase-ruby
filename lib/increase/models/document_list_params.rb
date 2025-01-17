@@ -48,7 +48,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # category => {
       #   in_: -> { Increase::ArrayOf[enum: Increase::Models::DocumentListParams::Category::In] === _1 }
@@ -73,7 +72,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case in
         # in :form_1099_int
@@ -99,7 +97,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # created_at => {
       #   after: Time,

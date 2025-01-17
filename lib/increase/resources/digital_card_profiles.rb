@@ -5,7 +5,7 @@ module Increase
     class DigitalCardProfiles
       # Create a Digital Card Profile
       #
-      # @param params [Increase::Models::DigitalCardProfileCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::DigitalCardProfileCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :app_icon_file_id The identifier of the File containing the card's icon image.
       #
@@ -25,7 +25,7 @@ module Increase
       #
       #   @option params [Increase::Models::DigitalCardProfileCreateParams::TextColor] :text_color The Card's text color, specified as an RGB triple. The default is white.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::DigitalCardProfile]
       #
@@ -44,7 +44,7 @@ module Increase
       #
       # @param digital_card_profile_id [String] The identifier of the Digital Card Profile.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::DigitalCardProfile]
       #
@@ -59,7 +59,7 @@ module Increase
 
       # List Card Profiles
       #
-      # @param params [Increase::Models::DigitalCardProfileListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::DigitalCardProfileListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -73,7 +73,7 @@ module Increase
       #
       #   @option params [Increase::Models::DigitalCardProfileListParams::Status] :status
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::DigitalCardProfile>]
       #
@@ -93,7 +93,7 @@ module Increase
       #
       # @param digital_card_profile_id [String] The identifier of the Digital Card Profile to archive.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::DigitalCardProfile]
       #
@@ -110,7 +110,7 @@ module Increase
       #
       # @param digital_card_profile_id [String] The identifier of the Digital Card Profile to clone.
       #
-      # @param params [Increase::Models::DigitalCardProfileCloneParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::DigitalCardProfileCloneParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :app_icon_file_id The identifier of the File containing the card's icon image.
       #
@@ -130,7 +130,7 @@ module Increase
       #
       #   @option params [Increase::Models::DigitalCardProfileCloneParams::TextColor] :text_color The Card's text color, specified as an RGB triple. The default is white.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::DigitalCardProfile]
       #

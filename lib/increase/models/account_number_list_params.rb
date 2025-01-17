@@ -81,7 +81,6 @@ module Increase
       # The ACH Debit status to retrieve Account Numbers for.
       #
       # @example
-      #
       # ```ruby
       # case ach_debit_status
       # in :allowed
@@ -101,7 +100,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # created_at => {
       #   after: Time,
@@ -156,7 +154,6 @@ module Increase
       # The status to retrieve Account Numbers for.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active

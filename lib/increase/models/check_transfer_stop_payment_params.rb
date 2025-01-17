@@ -19,7 +19,6 @@ module Increase
       # The reason why this transfer should be stopped.
       #
       # @example
-      #
       # ```ruby
       # case reason
       # in :mail_delivery_failed

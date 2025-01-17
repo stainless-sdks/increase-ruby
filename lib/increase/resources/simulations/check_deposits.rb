@@ -10,7 +10,7 @@ module Increase
         #
         # @param check_deposit_id [String] The identifier of the Check Deposit you wish to reject.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CheckDeposit]
         #
@@ -28,7 +28,7 @@ module Increase
         #
         # @param check_deposit_id [String] The identifier of the Check Deposit you wish to return.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CheckDeposit]
         #
@@ -46,7 +46,7 @@ module Increase
         #
         # @param check_deposit_id [String] The identifier of the Check Deposit you wish to submit.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CheckDeposit]
         #

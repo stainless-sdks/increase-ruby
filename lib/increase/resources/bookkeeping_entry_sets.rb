@@ -5,7 +5,7 @@ module Increase
     class BookkeepingEntrySets
       # Create a Bookkeeping Entry Set
       #
-      # @param params [Increase::Models::BookkeepingEntrySetCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::BookkeepingEntrySetCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>] :entries The bookkeeping entries.
       #
@@ -14,7 +14,7 @@ module Increase
       #
       #   @option params [String] :transaction_id The identifier of the Transaction related to this entry set, if any.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::BookkeepingEntrySet]
       #
@@ -33,7 +33,7 @@ module Increase
       #
       # @param bookkeeping_entry_set_id [String] The identifier of the Bookkeeping Entry Set.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::BookkeepingEntrySet]
       #
@@ -48,7 +48,7 @@ module Increase
 
       # List Bookkeeping Entry Sets
       #
-      # @param params [Increase::Models::BookkeepingEntrySetListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::BookkeepingEntrySetListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -62,7 +62,7 @@ module Increase
       #
       #   @option params [String] :transaction_id Filter to the Bookkeeping Entry Set that maps to this Transaction.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::BookkeepingEntrySet>]
       #

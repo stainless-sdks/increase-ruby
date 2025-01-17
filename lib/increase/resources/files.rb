@@ -7,7 +7,7 @@ module Increase
       #   `multipart/form-data`. The request should contain the file you would like to
       #   upload, as well as the parameters for creating a file.
       #
-      # @param params [Increase::Models::FileCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::FileCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :file The file contents. This should follow the specifications of
       #     [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
@@ -17,7 +17,7 @@ module Increase
       #
       #   @option params [String] :description The description you choose to give the File.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::File]
       #
@@ -37,7 +37,7 @@ module Increase
       #
       # @param file_id [String] The identifier of the File.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::File]
       #
@@ -52,7 +52,7 @@ module Increase
 
       # List Files
       #
-      # @param params [Increase::Models::FileListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::FileListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::FileListParams::CreatedAt] :created_at
       #
@@ -68,7 +68,7 @@ module Increase
       #
       #   @option params [Increase::Models::FileListParams::Purpose] :purpose
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::File>]
       #

@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # ach_prenotification => {
     #   id: String,
@@ -183,7 +182,6 @@ module Increase
       # If the notification is for a future credit or debit.
       #
       # @example
-      #
       # ```ruby
       # case credit_debit_indicator
       # in :credit
@@ -203,7 +201,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # notifications_of_change => {
       #   change_code: enum: Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode,
@@ -251,7 +248,6 @@ module Increase
         # The required type of change that is being signaled by the receiving financial institution.
         #
         # @example
-        #
         # ```ruby
         # case change_code
         # in :incorrect_account_number
@@ -331,7 +327,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # prenotification_return => {
       #   created_at: Time,
@@ -367,7 +362,6 @@ module Increase
         # Why the Prenotification was returned.
         #
         # @example
-        #
         # ```ruby
         # case return_reason_code
         # in :insufficient_fund
@@ -602,7 +596,6 @@ module Increase
       # The lifecycle status of the ACH Prenotification.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_submitting
@@ -634,7 +627,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `ach_prenotification`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :ach_prenotification

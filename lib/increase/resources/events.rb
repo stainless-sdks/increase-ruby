@@ -7,7 +7,7 @@ module Increase
       #
       # @param event_id [String] The identifier of the Event.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Event]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Events
       #
-      # @param params [Increase::Models::EventListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EventListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :associated_object_id Filter Events to those belonging to the object with the provided identifier.
       #
@@ -35,7 +35,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Event>]
       #

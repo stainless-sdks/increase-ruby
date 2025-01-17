@@ -78,7 +78,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # debtor => {
       #   address: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address,
@@ -113,7 +112,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # address => {
         #   country: String,

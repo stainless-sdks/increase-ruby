@@ -42,7 +42,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # statement_period_start => {
       #   after: Time,

@@ -28,7 +28,6 @@ module Increase
         # The status to move the dispute to.
         #
         # @example
-        #
         # ```ruby
         # case status
         # in :pending_user_information

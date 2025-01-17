@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # bookkeeping_account => {
     #   id: String,
@@ -86,7 +85,6 @@ module Increase
       # The compliance category of the account.
       #
       # @example
-      #
       # ```ruby
       # case compliance_category
       # in :commingled_cash
@@ -108,7 +106,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `bookkeeping_account`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :bookkeeping_account

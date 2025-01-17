@@ -5,7 +5,7 @@ module Increase
     class Entities
       # Create an Entity
       #
-      # @param params [Increase::Models::EntityCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EntityCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Symbol, Increase::Models::EntityCreateParams::Structure] :structure The type of Entity to create.
       #
@@ -33,7 +33,7 @@ module Increase
       #   @option params [Increase::Models::EntityCreateParams::Trust] :trust Details of the trust entity to create. Required if `structure` is equal to
       #     `trust`.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       #
@@ -52,7 +52,7 @@ module Increase
       #
       # @param entity_id [String] The identifier of the Entity to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       #
@@ -67,7 +67,7 @@ module Increase
 
       # List Entities
       #
-      # @param params [Increase::Models::EntityListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EntityListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::EntityListParams::CreatedAt] :created_at
       #
@@ -83,7 +83,7 @@ module Increase
       #
       #   @option params [Increase::Models::EntityListParams::Status] :status
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Entity>]
       #
@@ -104,7 +104,7 @@ module Increase
       # @param entity_id [String] The identifier of the Entity to archive. Any accounts associated with an entity
       #   must be closed before the entity can be archived.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       #
@@ -122,12 +122,12 @@ module Increase
       # @param entity_id [String] The identifier of the Entity associated with the Beneficial Owner that is being
       #   archived.
       #
-      # @param params [Increase::Models::EntityArchiveBeneficialOwnerParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EntityArchiveBeneficialOwnerParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :beneficial_owner_id The identifying details of anyone controlling or owning 25% or more of the
       #     corporation.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       #
@@ -148,12 +148,12 @@ module Increase
       #
       # @param entity_id [String] The identifier of the Entity to confirm the details of.
       #
-      # @param params [Increase::Models::EntityConfirmParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EntityConfirmParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Time] :confirmed_at When your user confirmed the Entity's details. If not provided, the current time
       #     will be used.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       #
@@ -172,12 +172,12 @@ module Increase
       #
       # @param entity_id [String] The identifier of the Entity to associate with the new Beneficial Owner.
       #
-      # @param params [Increase::Models::EntityCreateBeneficialOwnerParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EntityCreateBeneficialOwnerParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner] :beneficial_owner The identifying details of anyone controlling or owning 25% or more of the
       #     corporation.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       #
@@ -196,12 +196,12 @@ module Increase
       #
       # @param entity_id [String] The identifier of the Entity whose address is being updated.
       #
-      # @param params [Increase::Models::EntityUpdateAddressParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EntityUpdateAddressParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::EntityUpdateAddressParams::Address] :address The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       #     are disallowed.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       #
@@ -221,7 +221,7 @@ module Increase
       # @param entity_id [String] The identifier of the Entity associated with the Beneficial Owner whose address
       #   is being updated.
       #
-      # @param params [Increase::Models::EntityUpdateBeneficialOwnerAddressParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EntityUpdateBeneficialOwnerAddressParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address] :address The individual's physical address. Mail receiving locations like PO Boxes and
       #     PMB's are disallowed.
@@ -229,7 +229,7 @@ module Increase
       #   @option params [String] :beneficial_owner_id The identifying details of anyone controlling or owning 25% or more of the
       #     corporation.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       #
@@ -249,14 +249,14 @@ module Increase
       # @param entity_id [String] The identifier of the Entity to update. This endpoint only accepts `corporation`
       #   entities.
       #
-      # @param params [Increase::Models::EntityUpdateIndustryCodeParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EntityUpdateIndustryCodeParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :industry_code The North American Industry Classification System (NAICS) code for the
       #     corporation's primary line of business. This is a number, like `5132` for
       #     `Software Publishers`. A full list of classification codes is available
       #     [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Entity]
       #

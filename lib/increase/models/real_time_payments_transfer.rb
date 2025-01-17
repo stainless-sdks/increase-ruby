@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # real_time_payments_transfer => {
     #   id: String,
@@ -271,7 +270,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # acknowledgement => {
       #   acknowledged_at: Time
@@ -296,7 +294,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # approval => {
       #   approved_at: Time,
@@ -332,7 +329,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # cancellation => {
       #   canceled_at: Time,
@@ -368,7 +364,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # created_by => {
       #   api_key: Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey,
@@ -419,7 +414,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # api_key => {
         #   description: String
@@ -445,7 +439,6 @@ module Increase
         # The type of object that created this transfer.
         #
         # @example
-        #
         # ```ruby
         # case category
         # in :api_key
@@ -470,7 +463,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # oauth_application => {
         #   name: String
@@ -494,7 +486,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # user => {
         #   email: String
@@ -521,7 +512,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
       #
       # @example
-      #
       # ```ruby
       # case currency
       # in :CAD
@@ -561,7 +551,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # rejection => {
       #   reject_reason_additional_information: String,
@@ -609,7 +598,6 @@ module Increase
         # The reason the transfer was rejected as provided by the recipient bank or the Real-Time Payments network.
         #
         # @example
-        #
         # ```ruby
         # case reject_reason_code
         # in :account_closed
@@ -697,7 +685,6 @@ module Increase
       # The lifecycle status of the transfer.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_approval
@@ -743,7 +730,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # submission => {
       #   submitted_at: Time,
@@ -780,7 +766,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `real_time_payments_transfer`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :real_time_payments_transfer

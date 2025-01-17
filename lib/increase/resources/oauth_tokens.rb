@@ -5,7 +5,7 @@ module Increase
     class OAuthTokens
       # Create an OAuth Token
       #
-      # @param params [Increase::Models::OAuthTokenCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::OAuthTokenCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Symbol, Increase::Models::OAuthTokenCreateParams::GrantType] :grant_type The credential you request in exchange for the code. In Production, this is
       #     always `authorization_code`. In Sandbox, you can pass either enum value.
@@ -23,7 +23,7 @@ module Increase
       #     available in Sandbox. Set `grant_type` to `production_token` to use this
       #     parameter.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::OAuthToken]
       #

@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # check_deposit => {
     #   id: String,
@@ -200,7 +199,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # deposit_acceptance => {
       #   account_number: String,
@@ -294,7 +292,6 @@ module Increase
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
         #
         # @example
-        #
         # ```ruby
         # case currency
         # in :CAD
@@ -335,7 +332,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # deposit_rejection => {
       #   amount: Integer,
@@ -408,7 +404,6 @@ module Increase
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
         #
         # @example
-        #
         # ```ruby
         # case currency
         # in :CAD
@@ -450,7 +445,6 @@ module Increase
         # Why the check deposit was rejected.
         #
         # @example
-        #
         # ```ruby
         # case reason
         # in :incomplete_image
@@ -506,7 +500,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # deposit_return => {
       #   amount: Integer,
@@ -580,7 +573,6 @@ module Increase
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
         #
         # @example
-        #
         # ```ruby
         # case currency
         # in :CAD
@@ -622,7 +614,6 @@ module Increase
         # Why this check was returned by the bank holding the account it was drawn against.
         #
         # @example
-        #
         # ```ruby
         # case return_reason
         # in :ach_conversion_not_supported
@@ -723,7 +714,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # deposit_submission => {
       #   back_file_id: String,
@@ -770,7 +760,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # inbound_funds_hold => {
       #   id: String,
@@ -892,7 +881,6 @@ module Increase
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         #
         # @example
-        #
         # ```ruby
         # case currency
         # in :CAD
@@ -934,7 +922,6 @@ module Increase
         # The status of the hold.
         #
         # @example
-        #
         # ```ruby
         # case status
         # in :held
@@ -956,7 +943,6 @@ module Increase
         # A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :inbound_funds_hold
@@ -973,7 +959,6 @@ module Increase
       # The status of the Check Deposit.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending
@@ -1005,7 +990,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `check_deposit`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :check_deposit

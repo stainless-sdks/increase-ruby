@@ -4,7 +4,6 @@ module Increase
   module Models
     module Simulations
       # @example
-      #
       # ```ruby
       # card_authorization_create_response => {
       #   declined_transaction: Increase::Models::DeclinedTransaction,
@@ -52,7 +51,6 @@ module Increase
         # A constant representing the object's type. For this resource it will always be `inbound_card_authorization_simulation_result`.
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :inbound_card_authorization_simulation_result

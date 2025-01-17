@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # digital_wallet_token => {
     #   id: String,
@@ -76,7 +75,6 @@ module Increase
       # This indicates if payments can be made with the Digital Wallet Token.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active
@@ -108,7 +106,6 @@ module Increase
       # The digital wallet app being used.
       #
       # @example
-      #
       # ```ruby
       # case token_requestor
       # in :apple_pay
@@ -140,7 +137,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `digital_wallet_token`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :digital_wallet_token

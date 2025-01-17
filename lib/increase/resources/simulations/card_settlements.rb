@@ -10,7 +10,7 @@ module Increase
         #   production. The amount settled can be different from the amount originally
         #   authorized, for example, when adding a tip to a restaurant bill.
         #
-        # @param params [Increase::Models::Simulations::CardSettlementCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::CardSettlementCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :card_id The identifier of the Card to create a settlement on.
         #
@@ -20,7 +20,7 @@ module Increase
         #   @option params [Integer] :amount The amount to be settled. This defaults to the amount of the Pending Transaction
         #     being settled.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Transaction]
         #

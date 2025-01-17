@@ -59,7 +59,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # front_text => {
       #   line1: String,

@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # entity => {
     #   id: String,
@@ -174,7 +173,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # corporation => {
       #   address: Increase::Models::Entity::Corporation::Address,
@@ -255,7 +253,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # address => {
         #   city: String,
@@ -316,7 +313,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # beneficial_owner => {
         #   beneficial_owner_id: String,
@@ -364,7 +360,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # individual => {
           #   address: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
@@ -418,7 +413,6 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # address => {
             #   city: String,
@@ -479,7 +473,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # identification => {
             #   method_: enum: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method,
@@ -518,7 +511,6 @@ module Increase
               # A method that can be used to verify the individual's identity.
               #
               # @example
-              #
               # ```ruby
               # case method
               # in :social_security_number
@@ -557,7 +549,6 @@ module Increase
           # Why this person is considered a beneficial owner of the entity.
           #
           # @example
-          #
           # ```ruby
           # case prong
           # in :ownership
@@ -579,7 +570,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # government_authority => {
       #   address: Increase::Models::Entity::GovernmentAuthority::Address,
@@ -648,7 +638,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # address => {
         #   city: String,
@@ -709,7 +698,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # authorized_person => {
         #   authorized_person_id: String,
@@ -742,7 +730,6 @@ module Increase
         # The category of the government authority.
         #
         # @example
-        #
         # ```ruby
         # case category
         # in :municipality
@@ -758,7 +745,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # joint => {
       #   individuals: -> { Increase::ArrayOf[Increase::Models::Entity::Joint::Individual] === _1 },
@@ -790,7 +776,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # individual => {
         #   address: Increase::Models::Entity::Joint::Individual::Address,
@@ -838,7 +823,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # address => {
           #   city: String,
@@ -899,7 +883,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # identification => {
           #   method_: enum: Increase::Models::Entity::Joint::Individual::Identification::Method,
@@ -936,7 +919,6 @@ module Increase
             # A method that can be used to verify the individual's identity.
             #
             # @example
-            #
             # ```ruby
             # case method
             # in :social_security_number
@@ -974,7 +956,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # natural_person => {
       #   address: Increase::Models::Entity::NaturalPerson::Address,
@@ -1025,7 +1006,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # address => {
         #   city: String,
@@ -1086,7 +1066,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # identification => {
         #   method_: enum: Increase::Models::Entity::NaturalPerson::Identification::Method,
@@ -1123,7 +1102,6 @@ module Increase
           # A method that can be used to verify the individual's identity.
           #
           # @example
-          #
           # ```ruby
           # case method
           # in :social_security_number
@@ -1162,7 +1140,6 @@ module Increase
       # The status of the entity.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active
@@ -1189,7 +1166,6 @@ module Increase
       # The entity's legal structure.
       #
       # @example
-      #
       # ```ruby
       # case structure
       # in :corporation
@@ -1224,7 +1200,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # third_party_verification => {
       #   reference: String,
@@ -1259,7 +1234,6 @@ module Increase
         # The vendor that was used to perform the verification.
         #
         # @example
-        #
         # ```ruby
         # case vendor
         # in :alloy
@@ -1280,7 +1254,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # trust => {
       #   address: Increase::Models::Entity::Trust::Address,
@@ -1377,7 +1350,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # address => {
         #   city: String,
@@ -1440,7 +1412,6 @@ module Increase
         # Whether the trust is `revocable` or `irrevocable`.
         #
         # @example
-        #
         # ```ruby
         # case category
         # in :revocable
@@ -1460,7 +1431,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # grantor => {
         #   address: Increase::Models::Entity::Trust::Grantor::Address,
@@ -1510,7 +1480,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # address => {
           #   city: String,
@@ -1571,7 +1540,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # identification => {
           #   method_: enum: Increase::Models::Entity::Trust::Grantor::Identification::Method,
@@ -1608,7 +1576,6 @@ module Increase
             # A method that can be used to verify the individual's identity.
             #
             # @example
-            #
             # ```ruby
             # case method
             # in :social_security_number
@@ -1645,7 +1612,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # trustee => {
         #   individual: Increase::Models::Entity::Trust::Trustee::Individual,
@@ -1676,7 +1642,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # individual => {
           #   address: Increase::Models::Entity::Trust::Trustee::Individual::Address,
@@ -1730,7 +1695,6 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # address => {
             #   city: String,
@@ -1791,7 +1755,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # identification => {
             #   method_: enum: Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method,
@@ -1830,7 +1793,6 @@ module Increase
               # A method that can be used to verify the individual's identity.
               #
               # @example
-              #
               # ```ruby
               # case method
               # in :social_security_number
@@ -1869,7 +1831,6 @@ module Increase
           # The structure of the trustee. Will always be equal to `individual`.
           #
           # @example
-          #
           # ```ruby
           # case structure
           # in :individual
@@ -1888,7 +1849,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `entity`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :entity

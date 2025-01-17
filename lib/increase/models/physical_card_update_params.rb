@@ -19,7 +19,6 @@ module Increase
       # The status to update the Physical Card to.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active

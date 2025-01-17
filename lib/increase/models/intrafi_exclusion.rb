@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # intrafi_exclusion => {
     #   id: String,
@@ -117,7 +116,6 @@ module Increase
       # The status of the exclusion request.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending
@@ -144,7 +142,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `intrafi_exclusion`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :intrafi_exclusion

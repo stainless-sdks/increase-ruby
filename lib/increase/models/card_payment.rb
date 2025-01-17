@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # card_payment => {
     #   id: String,
@@ -111,7 +110,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # element => {
       #   card_authorization: Increase::Models::CardPayment::Element::CardAuthorization,
@@ -254,7 +252,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # card_authorization => {
         #   id: String,
@@ -549,7 +546,6 @@ module Increase
           # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           #
           # @example
-          #
           # ```ruby
           # case actioner
           # in :user
@@ -576,7 +572,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -618,7 +613,6 @@ module Increase
           # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           #
           # @example
-          #
           # ```ruby
           # case direction
           # in :settlement
@@ -638,7 +632,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_details => {
           #   category: enum: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category,
@@ -678,7 +671,6 @@ module Increase
             # The payment network used to process this card authorization.
             #
             # @example
-            #
             # ```ruby
             # case category
             # in :visa
@@ -693,7 +685,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # visa => {
             #   electronic_commerce_indicator: enum: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator,
@@ -749,7 +740,6 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #
               # @example
-              #
               # ```ruby
               # case electronic_commerce_indicator
               # in :mail_phone_order
@@ -797,7 +787,6 @@ module Increase
               # The method used to enter the cardholder's primary account number and card expiration date.
               #
               # @example
-              #
               # ```ruby
               # case point_of_service_entry_mode
               # in :unknown
@@ -851,7 +840,6 @@ module Increase
               # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               #
               # @example
-              #
               # ```ruby
               # case stand_in_processing_reason
               # in :issuer_error
@@ -893,7 +881,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_identifiers => {
           #   retrieval_reference_number: String,
@@ -941,7 +928,6 @@ module Increase
           # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           #
           # @example
-          #
           # ```ruby
           # case processing_category
           # in :account_funding
@@ -983,7 +969,6 @@ module Increase
           # A constant representing the object's type. For this resource it will always be `card_authorization`.
           #
           # @example
-          #
           # ```ruby
           # case type
           # in :card_authorization
@@ -997,7 +982,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # verification => {
           #   card_verification_code: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
@@ -1033,7 +1017,6 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # card_verification_code => {
             #   result: enum: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result
@@ -1062,7 +1045,6 @@ module Increase
               # The result of verifying the Card Verification Code.
               #
               # @example
-              #
               # ```ruby
               # case result
               # in :not_checked
@@ -1088,7 +1070,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # cardholder_address => {
             #   actual_line1: String,
@@ -1154,7 +1135,6 @@ module Increase
               # The address verification result returned to the card network.
               #
               # @example
-              #
               # ```ruby
               # case result
               # in :not_checked
@@ -1197,7 +1177,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_authorization_expiration => {
         #   id: String,
@@ -1275,7 +1254,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -1317,7 +1295,6 @@ module Increase
           # The card network used to process this card authorization.
           #
           # @example
-          #
           # ```ruby
           # case network
           # in :visa
@@ -1334,7 +1311,6 @@ module Increase
           # A constant representing the object's type. For this resource it will always be `card_authorization_expiration`.
           #
           # @example
-          #
           # ```ruby
           # case type
           # in :card_authorization_expiration
@@ -1349,7 +1325,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_decline => {
         #   id: String,
@@ -1640,7 +1615,6 @@ module Increase
           # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           #
           # @example
-          #
           # ```ruby
           # case actioner
           # in :user
@@ -1667,7 +1641,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -1709,7 +1682,6 @@ module Increase
           # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
           #
           # @example
-          #
           # ```ruby
           # case direction
           # in :settlement
@@ -1729,7 +1701,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_details => {
           #   category: enum: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category,
@@ -1766,7 +1737,6 @@ module Increase
             # The payment network used to process this card authorization.
             #
             # @example
-            #
             # ```ruby
             # case category
             # in :visa
@@ -1781,7 +1751,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # visa => {
             #   electronic_commerce_indicator: enum: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator,
@@ -1837,7 +1806,6 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #
               # @example
-              #
               # ```ruby
               # case electronic_commerce_indicator
               # in :mail_phone_order
@@ -1885,7 +1853,6 @@ module Increase
               # The method used to enter the cardholder's primary account number and card expiration date.
               #
               # @example
-              #
               # ```ruby
               # case point_of_service_entry_mode
               # in :unknown
@@ -1939,7 +1906,6 @@ module Increase
               # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               #
               # @example
-              #
               # ```ruby
               # case stand_in_processing_reason
               # in :issuer_error
@@ -1981,7 +1947,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_identifiers => {
           #   retrieval_reference_number: String,
@@ -2029,7 +1994,6 @@ module Increase
           # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
           #
           # @example
-          #
           # ```ruby
           # case processing_category
           # in :account_funding
@@ -2071,7 +2035,6 @@ module Increase
           # This is present if a specific decline reason was given in the real-time decision.
           #
           # @example
-          #
           # ```ruby
           # case real_time_decision_reason
           # in :insufficient_funds
@@ -2113,7 +2076,6 @@ module Increase
           # Why the transaction was declined.
           #
           # @example
-          #
           # ```ruby
           # case reason
           # in :card_not_active
@@ -2180,7 +2142,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # verification => {
           #   card_verification_code: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
@@ -2216,7 +2177,6 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # card_verification_code => {
             #   result: enum: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result
@@ -2245,7 +2205,6 @@ module Increase
               # The result of verifying the Card Verification Code.
               #
               # @example
-              #
               # ```ruby
               # case result
               # in :not_checked
@@ -2271,7 +2230,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # cardholder_address => {
             #   actual_line1: String,
@@ -2337,7 +2295,6 @@ module Increase
               # The address verification result returned to the card network.
               #
               # @example
-              #
               # ```ruby
               # case result
               # in :not_checked
@@ -2380,7 +2337,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_fuel_confirmation => {
         #   id: String,
@@ -2490,7 +2446,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -2532,7 +2487,6 @@ module Increase
           # The card network used to process this card authorization.
           #
           # @example
-          #
           # ```ruby
           # case network
           # in :visa
@@ -2547,7 +2501,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_identifiers => {
           #   retrieval_reference_number: String,
@@ -2595,7 +2548,6 @@ module Increase
           # A constant representing the object's type. For this resource it will always be `card_fuel_confirmation`.
           #
           # @example
-          #
           # ```ruby
           # case type
           # in :card_fuel_confirmation
@@ -2610,7 +2562,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_increment => {
         #   id: String,
@@ -2753,7 +2704,6 @@ module Increase
           # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           #
           # @example
-          #
           # ```ruby
           # case actioner
           # in :user
@@ -2780,7 +2730,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -2822,7 +2771,6 @@ module Increase
           # The card network used to process this card authorization.
           #
           # @example
-          #
           # ```ruby
           # case network
           # in :visa
@@ -2837,7 +2785,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_identifiers => {
           #   retrieval_reference_number: String,
@@ -2885,7 +2832,6 @@ module Increase
           # A constant representing the object's type. For this resource it will always be `card_increment`.
           #
           # @example
-          #
           # ```ruby
           # case type
           # in :card_increment
@@ -2900,7 +2846,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_refund => {
         #   id: String,
@@ -3107,7 +3052,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # cashback => {
           #   amount: String,
@@ -3147,7 +3091,6 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
             # @example
-            #
             # ```ruby
             # case currency
             # in :CAD
@@ -3190,7 +3133,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -3230,7 +3172,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # interchange => {
           #   amount: String,
@@ -3279,7 +3220,6 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             #
             # @example
-            #
             # ```ruby
             # case currency
             # in :CAD
@@ -3320,7 +3260,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_identifiers => {
           #   acquirer_business_id: String,
@@ -3364,7 +3303,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # purchase_details => {
           #   car_rental: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental,
@@ -3491,7 +3429,6 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # car_rental => {
             #   car_class_code: String,
@@ -3675,7 +3612,6 @@ module Increase
               # Additional charges (gas, late fee, etc.) being billed.
               #
               # @example
-              #
               # ```ruby
               # case extra_charges
               # in :no_extra_charge
@@ -3717,7 +3653,6 @@ module Increase
               # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #
               # @example
-              #
               # ```ruby
               # case no_show_indicator
               # in :not_applicable
@@ -3738,7 +3673,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # lodging => {
             #   check_in_date: Date,
@@ -3921,7 +3855,6 @@ module Increase
               # Additional charges (phone, late check-out, etc.) being billed.
               #
               # @example
-              #
               # ```ruby
               # case extra_charges
               # in :no_extra_charge
@@ -3966,7 +3899,6 @@ module Increase
               # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               #
               # @example
-              #
               # ```ruby
               # case no_show_indicator
               # in :not_applicable
@@ -3989,7 +3921,6 @@ module Increase
             # The format of the purchase identifier.
             #
             # @example
-            #
             # ```ruby
             # case purchase_identifier_format
             # in :free_text
@@ -4024,7 +3955,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # travel => {
             #   ancillary: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary,
@@ -4169,7 +4099,6 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # @example
-              #
               # ```ruby
               # ancillary => {
               #   connected_ticket_document_number: String,
@@ -4247,7 +4176,6 @@ module Increase
                 # Indicates the reason for a credit to the cardholder.
                 #
                 # @example
-                #
                 # ```ruby
                 # case credit_reason_indicator
                 # in :no_credit
@@ -4277,7 +4205,6 @@ module Increase
                 end
 
                 # @example
-                #
                 # ```ruby
                 # service => {
                 #   category: enum: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category,
@@ -4312,7 +4239,6 @@ module Increase
                   # Category of the ancillary service.
                   #
                   # @example
-                  #
                   # ```ruby
                   # case category
                   # in :none
@@ -4410,7 +4336,6 @@ module Increase
               # Indicates the reason for a credit to the cardholder.
               #
               # @example
-              #
               # ```ruby
               # case credit_reason_indicator
               # in :no_credit
@@ -4452,7 +4377,6 @@ module Increase
               # Indicates whether this ticket is non-refundable.
               #
               # @example
-              #
               # ```ruby
               # case restricted_ticket_indicator
               # in :no_restrictions
@@ -4474,7 +4398,6 @@ module Increase
               # Indicates why a ticket was changed.
               #
               # @example
-              #
               # ```ruby
               # case ticket_change_indicator
               # in :none
@@ -4499,7 +4422,6 @@ module Increase
               end
 
               # @example
-              #
               # ```ruby
               # trip_leg => {
               #   carrier_code: String,
@@ -4579,7 +4501,6 @@ module Increase
                 # Indicates whether a stopover is allowed on this ticket.
                 #
                 # @example
-                #
                 # ```ruby
                 # case stop_over_code
                 # in :none
@@ -4609,7 +4530,6 @@ module Increase
           # A constant representing the object's type. For this resource it will always be `card_refund`.
           #
           # @example
-          #
           # ```ruby
           # case type
           # in :card_refund
@@ -4624,7 +4544,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_reversal => {
         #   id: String,
@@ -4823,7 +4742,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -4865,7 +4783,6 @@ module Increase
           # The card network used to process this card authorization.
           #
           # @example
-          #
           # ```ruby
           # case network
           # in :visa
@@ -4880,7 +4797,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_identifiers => {
           #   retrieval_reference_number: String,
@@ -4928,7 +4844,6 @@ module Increase
           # Why this reversal was initiated.
           #
           # @example
-          #
           # ```ruby
           # case reversal_reason
           # in :reversed_by_customer
@@ -4960,7 +4875,6 @@ module Increase
           # A constant representing the object's type. For this resource it will always be `card_reversal`.
           #
           # @example
-          #
           # ```ruby
           # case type
           # in :card_reversal
@@ -4975,7 +4889,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_settlement => {
         #   id: String,
@@ -5201,7 +5114,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # cashback => {
           #   amount: String,
@@ -5239,7 +5151,6 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
             # @example
-            #
             # ```ruby
             # case currency
             # in :CAD
@@ -5282,7 +5193,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -5322,7 +5232,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # interchange => {
           #   amount: String,
@@ -5371,7 +5280,6 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             #
             # @example
-            #
             # ```ruby
             # case currency
             # in :CAD
@@ -5412,7 +5320,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_identifiers => {
           #   acquirer_business_id: String,
@@ -5456,7 +5363,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # purchase_details => {
           #   car_rental: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental,
@@ -5583,7 +5489,6 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # car_rental => {
             #   car_class_code: String,
@@ -5767,7 +5672,6 @@ module Increase
               # Additional charges (gas, late fee, etc.) being billed.
               #
               # @example
-              #
               # ```ruby
               # case extra_charges
               # in :no_extra_charge
@@ -5809,7 +5713,6 @@ module Increase
               # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #
               # @example
-              #
               # ```ruby
               # case no_show_indicator
               # in :not_applicable
@@ -5830,7 +5733,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # lodging => {
             #   check_in_date: Date,
@@ -6013,7 +5915,6 @@ module Increase
               # Additional charges (phone, late check-out, etc.) being billed.
               #
               # @example
-              #
               # ```ruby
               # case extra_charges
               # in :no_extra_charge
@@ -6058,7 +5959,6 @@ module Increase
               # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               #
               # @example
-              #
               # ```ruby
               # case no_show_indicator
               # in :not_applicable
@@ -6081,7 +5981,6 @@ module Increase
             # The format of the purchase identifier.
             #
             # @example
-            #
             # ```ruby
             # case purchase_identifier_format
             # in :free_text
@@ -6116,7 +6015,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # travel => {
             #   ancillary: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary,
@@ -6261,7 +6159,6 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # @example
-              #
               # ```ruby
               # ancillary => {
               #   connected_ticket_document_number: String,
@@ -6339,7 +6236,6 @@ module Increase
                 # Indicates the reason for a credit to the cardholder.
                 #
                 # @example
-                #
                 # ```ruby
                 # case credit_reason_indicator
                 # in :no_credit
@@ -6369,7 +6265,6 @@ module Increase
                 end
 
                 # @example
-                #
                 # ```ruby
                 # service => {
                 #   category: enum: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category,
@@ -6404,7 +6299,6 @@ module Increase
                   # Category of the ancillary service.
                   #
                   # @example
-                  #
                   # ```ruby
                   # case category
                   # in :none
@@ -6502,7 +6396,6 @@ module Increase
               # Indicates the reason for a credit to the cardholder.
               #
               # @example
-              #
               # ```ruby
               # case credit_reason_indicator
               # in :no_credit
@@ -6544,7 +6437,6 @@ module Increase
               # Indicates whether this ticket is non-refundable.
               #
               # @example
-              #
               # ```ruby
               # case restricted_ticket_indicator
               # in :no_restrictions
@@ -6566,7 +6458,6 @@ module Increase
               # Indicates why a ticket was changed.
               #
               # @example
-              #
               # ```ruby
               # case ticket_change_indicator
               # in :none
@@ -6591,7 +6482,6 @@ module Increase
               end
 
               # @example
-              #
               # ```ruby
               # trip_leg => {
               #   carrier_code: String,
@@ -6671,7 +6561,6 @@ module Increase
                 # Indicates whether a stopover is allowed on this ticket.
                 #
                 # @example
-                #
                 # ```ruby
                 # case stop_over_code
                 # in :none
@@ -6701,7 +6590,6 @@ module Increase
           # A constant representing the object's type. For this resource it will always be `card_settlement`.
           #
           # @example
-          #
           # ```ruby
           # case type
           # in :card_settlement
@@ -6716,7 +6604,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_validation => {
         #   id: String,
@@ -6938,7 +6825,6 @@ module Increase
           # Whether this authorization was approved by Increase, the card network through stand-in processing, or the user through a real-time decision.
           #
           # @example
-          #
           # ```ruby
           # case actioner
           # in :user
@@ -6965,7 +6851,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -7005,7 +6890,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_details => {
           #   category: enum: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category,
@@ -7045,7 +6929,6 @@ module Increase
             # The payment network used to process this card authorization.
             #
             # @example
-            #
             # ```ruby
             # case category
             # in :visa
@@ -7060,7 +6943,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # visa => {
             #   electronic_commerce_indicator: enum: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator,
@@ -7116,7 +6998,6 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
               #
               # @example
-              #
               # ```ruby
               # case electronic_commerce_indicator
               # in :mail_phone_order
@@ -7164,7 +7045,6 @@ module Increase
               # The method used to enter the cardholder's primary account number and card expiration date.
               #
               # @example
-              #
               # ```ruby
               # case point_of_service_entry_mode
               # in :unknown
@@ -7218,7 +7098,6 @@ module Increase
               # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
               #
               # @example
-              #
               # ```ruby
               # case stand_in_processing_reason
               # in :issuer_error
@@ -7260,7 +7139,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_identifiers => {
           #   retrieval_reference_number: String,
@@ -7308,7 +7186,6 @@ module Increase
           # A constant representing the object's type. For this resource it will always be `card_validation`.
           #
           # @example
-          #
           # ```ruby
           # case type
           # in :card_validation
@@ -7322,7 +7199,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # verification => {
           #   card_verification_code: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
@@ -7358,7 +7234,6 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # card_verification_code => {
             #   result: enum: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result
@@ -7387,7 +7262,6 @@ module Increase
               # The result of verifying the Card Verification Code.
               #
               # @example
-              #
               # ```ruby
               # case result
               # in :not_checked
@@ -7413,7 +7287,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # cardholder_address => {
             #   actual_line1: String,
@@ -7479,7 +7352,6 @@ module Increase
               # The address verification result returned to the card network.
               #
               # @example
-              #
               # ```ruby
               # case result
               # in :not_checked
@@ -7524,7 +7396,6 @@ module Increase
         # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         #
         # @example
-        #
         # ```ruby
         # case category
         # in :card_authorization
@@ -7580,7 +7451,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # state => {
       #   authorized_amount: Integer,
@@ -7647,7 +7517,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `card_payment`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :card_payment

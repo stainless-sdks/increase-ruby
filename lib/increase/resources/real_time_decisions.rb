@@ -7,7 +7,7 @@ module Increase
       #
       # @param real_time_decision_id [String] The identifier of the Real-Time Decision.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::RealTimeDecision]
       #
@@ -24,7 +24,7 @@ module Increase
       #
       # @param real_time_decision_id [String] The identifier of the Real-Time Decision.
       #
-      # @param params [Increase::Models::RealTimeDecisionActionParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::RealTimeDecisionActionParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::RealTimeDecisionActionParams::CardAuthentication] :card_authentication If the Real-Time Decision relates to a 3DS card authentication attempt, this
       #     object contains your response to the authentication.
@@ -41,7 +41,7 @@ module Increase
       #   @option params [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken] :digital_wallet_token If the Real-Time Decision relates to a digital wallet token provisioning
       #     attempt, this object contains your response to the attempt.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::RealTimeDecision]
       #

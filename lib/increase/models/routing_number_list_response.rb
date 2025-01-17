@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # routing_number_list_response => {
     #   ach_transfers: enum: Increase::Models::RoutingNumberListResponse::ACHTransfers,
@@ -74,7 +73,6 @@ module Increase
       # This routing number's support for ACH Transfers.
       #
       # @example
-      #
       # ```ruby
       # case ach_transfers
       # in :supported
@@ -96,7 +94,6 @@ module Increase
       # This routing number's support for Real-Time Payments Transfers.
       #
       # @example
-      #
       # ```ruby
       # case real_time_payments_transfers
       # in :supported
@@ -118,7 +115,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `routing_number`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :routing_number
@@ -134,7 +130,6 @@ module Increase
       # This routing number's support for Wire Transfers.
       #
       # @example
-      #
       # ```ruby
       # case wire_transfers
       # in :supported

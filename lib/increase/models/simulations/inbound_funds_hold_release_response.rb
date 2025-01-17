@@ -4,7 +4,6 @@ module Increase
   module Models
     module Simulations
       # @example
-      #
       # ```ruby
       # inbound_funds_hold_release_response => {
       #   id: String,
@@ -129,7 +128,6 @@ module Increase
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         #
         # @example
-        #
         # ```ruby
         # case currency
         # in :CAD
@@ -171,7 +169,6 @@ module Increase
         # The status of the hold.
         #
         # @example
-        #
         # ```ruby
         # case status
         # in :held
@@ -193,7 +190,6 @@ module Increase
         # A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :inbound_funds_hold

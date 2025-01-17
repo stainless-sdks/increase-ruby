@@ -7,7 +7,7 @@ module Increase
       #
       # @param oauth_connection_id [String] The identifier of the OAuth Connection.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::OAuthConnection]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List OAuth Connections
       #
-      # @param params [Increase::Models::OAuthConnectionListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::OAuthConnectionListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -34,7 +34,7 @@ module Increase
       #
       #   @option params [Increase::Models::OAuthConnectionListParams::Status] :status
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::OAuthConnection>]
       #

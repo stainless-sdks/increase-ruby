@@ -19,7 +19,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # rejection => {
         #   reject_reason_code: enum: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode
@@ -47,7 +46,6 @@ module Increase
           # The reason code that the simulated rejection will have.
           #
           # @example
-          #
           # ```ruby
           # case reject_reason_code
           # in :account_closed

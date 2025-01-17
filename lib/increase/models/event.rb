@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # event => {
     #   id: String,
@@ -77,7 +76,6 @@ module Increase
       # The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
       #
       # @example
-      #
       # ```ruby
       # case category
       # in :"account.created"
@@ -365,7 +363,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `event`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :event

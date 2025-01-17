@@ -54,7 +54,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # billing_address => {
       #   city: String,
@@ -114,7 +113,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # digital_wallet => {
       #   digital_card_profile_id: String,

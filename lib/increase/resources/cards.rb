@@ -5,7 +5,7 @@ module Increase
     class Cards
       # Create a Card
       #
-      # @param params [Increase::Models::CardCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id The Account the card should belong to.
       #
@@ -22,7 +22,7 @@ module Increase
       #   @option params [String] :entity_id The Entity the card belongs to. You only need to supply this in rare situations
       #     when the card is not for the Account holder.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Card]
       #
@@ -41,7 +41,7 @@ module Increase
       #
       # @param card_id [String] The identifier of the Card.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Card]
       #
@@ -58,7 +58,7 @@ module Increase
       #
       # @param card_id [String] The card identifier.
       #
-      # @param params [Increase::Models::CardUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::CardUpdateParams::BillingAddress] :billing_address The card's updated billing address.
       #
@@ -73,7 +73,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::CardUpdateParams::Status] :status The status to update the Card with.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Card]
       #
@@ -90,7 +90,7 @@ module Increase
 
       # List Cards
       #
-      # @param params [Increase::Models::CardListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Cards to ones belonging to the specified Account.
       #
@@ -106,7 +106,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Card>]
       #
@@ -126,7 +126,7 @@ module Increase
       #
       # @param card_id [String] The identifier of the Card to retrieve details for.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CardDetails]
       #

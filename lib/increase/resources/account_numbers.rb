@@ -5,7 +5,7 @@ module Increase
     class AccountNumbers
       # Create an Account Number
       #
-      # @param params [Increase::Models::AccountNumberCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountNumberCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id The Account the Account Number should belong to.
       #
@@ -16,7 +16,7 @@ module Increase
       #   @option params [Increase::Models::AccountNumberCreateParams::InboundChecks] :inbound_checks Options related to how this Account Number should handle inbound check
       #     withdrawals.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountNumber]
       #
@@ -35,7 +35,7 @@ module Increase
       #
       # @param account_number_id [String] The identifier of the Account Number to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountNumber]
       #
@@ -52,7 +52,7 @@ module Increase
       #
       # @param account_number_id [String] The identifier of the Account Number.
       #
-      # @param params [Increase::Models::AccountNumberUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountNumberUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::AccountNumberUpdateParams::InboundACH] :inbound_ach Options related to how this Account Number handles inbound ACH transfers.
       #
@@ -63,7 +63,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::AccountNumberUpdateParams::Status] :status This indicates if transfers can be made to the Account Number.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountNumber]
       #
@@ -80,7 +80,7 @@ module Increase
 
       # List Account Numbers
       #
-      # @param params [Increase::Models::AccountNumberListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountNumberListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Account Numbers to those belonging to the specified Account.
       #
@@ -100,7 +100,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::AccountNumberListParams::Status] :status The status to retrieve Account Numbers for.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::AccountNumber>]
       #

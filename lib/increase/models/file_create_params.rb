@@ -37,7 +37,6 @@ module Increase
       # What the File will be used for in Increase's systems.
       #
       # @example
-      #
       # ```ruby
       # case purpose
       # in :check_image_front

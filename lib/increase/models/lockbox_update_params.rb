@@ -35,7 +35,6 @@ module Increase
       # This indicates if checks can be sent to the Lockbox.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active

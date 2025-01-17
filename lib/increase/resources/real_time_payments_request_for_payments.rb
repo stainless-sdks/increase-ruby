@@ -5,7 +5,7 @@ module Increase
     class RealTimePaymentsRequestForPayments
       # Create a Real-Time Payments Request for Payment
       #
-      # @param params [Increase::Models::RealTimePaymentsRequestForPaymentCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::RealTimePaymentsRequestForPaymentCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Integer] :amount The requested amount in USD cents. Must be positive.
       #
@@ -23,7 +23,7 @@ module Increase
       #   @option params [String] :source_routing_number The requestee's American Bankers' Association (ABA) Routing Transit Number
       #     (RTN).
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::RealTimePaymentsRequestForPayment]
       #
@@ -42,7 +42,7 @@ module Increase
       #
       # @param request_for_payment_id [String] The identifier of the Real-Time Payments Request for Payment.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::RealTimePaymentsRequestForPayment]
       #
@@ -57,7 +57,7 @@ module Increase
 
       # List Real-Time Payments Request for Payments
       #
-      # @param params [Increase::Models::RealTimePaymentsRequestForPaymentListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::RealTimePaymentsRequestForPaymentListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Real-Time Payments Request for Payments to those destined to the
       #     specified Account.
@@ -74,7 +74,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::RealTimePaymentsRequestForPayment>]
       #

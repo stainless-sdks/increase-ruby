@@ -5,7 +5,7 @@ module Increase
     class AccountTransfers
       # Create an Account Transfer
       #
-      # @param params [Increase::Models::AccountTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id The identifier for the account that will send the transfer.
       #
@@ -18,7 +18,7 @@ module Increase
       #
       #   @option params [Boolean] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountTransfer]
       #
@@ -37,7 +37,7 @@ module Increase
       #
       # @param account_transfer_id [String] The identifier of the Account Transfer.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountTransfer]
       #
@@ -52,7 +52,7 @@ module Increase
 
       # List Account Transfers
       #
-      # @param params [Increase::Models::AccountTransferListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountTransferListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Account Transfers to those that originated from the specified Account.
       #
@@ -68,7 +68,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::AccountTransfer>]
       #
@@ -88,7 +88,7 @@ module Increase
       #
       # @param account_transfer_id [String] The identifier of the Account Transfer to approve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountTransfer]
       #
@@ -105,7 +105,7 @@ module Increase
       #
       # @param account_transfer_id [String] The identifier of the pending Account Transfer to cancel.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountTransfer]
       #

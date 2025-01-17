@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # inbound_mail_item => {
     #   id: String,
@@ -92,7 +91,6 @@ module Increase
       # If the mail item has been rejected, why it was rejected.
       #
       # @example
-      #
       # ```ruby
       # case rejection_reason
       # in :no_matching_lockbox
@@ -119,7 +117,6 @@ module Increase
       # If the mail item has been processed.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending
@@ -146,7 +143,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `inbound_mail_item`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :inbound_mail_item

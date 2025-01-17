@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # intrafi_account_enrollment => {
     #   id: String,
@@ -83,7 +82,6 @@ module Increase
       # The status of the account in the network. An account takes about one business day to go from `pending_enrolling` to `enrolled`.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_enrolling
@@ -120,7 +118,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `intrafi_account_enrollment`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :intrafi_account_enrollment

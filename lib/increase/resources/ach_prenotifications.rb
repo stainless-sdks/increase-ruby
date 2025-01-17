@@ -5,7 +5,7 @@ module Increase
     class ACHPrenotifications
       # Create an ACH Prenotification
       #
-      # @param params [Increase::Models::ACHPrenotificationCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ACHPrenotificationCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id The Increase identifier for the account that will send the transfer.
       #
@@ -36,7 +36,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHPrenotification]
       #
@@ -55,7 +55,7 @@ module Increase
       #
       # @param ach_prenotification_id [String] The identifier of the ACH Prenotification to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ACHPrenotification]
       #
@@ -70,7 +70,7 @@ module Increase
 
       # List ACH Prenotifications
       #
-      # @param params [Increase::Models::ACHPrenotificationListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ACHPrenotificationListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::ACHPrenotificationListParams::CreatedAt] :created_at
       #
@@ -84,7 +84,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ACHPrenotification>]
       #

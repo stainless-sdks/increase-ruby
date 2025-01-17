@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # card_purchase_supplement => {
     #   id: String,
@@ -72,7 +71,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # invoice => {
       #   discount_amount: Integer,
@@ -248,7 +246,6 @@ module Increase
         # Indicates how the merchant applied the discount.
         #
         # @example
-        #
         # ```ruby
         # case discount_treatment_code
         # in :no_invoice_level_discount_provided
@@ -275,7 +272,6 @@ module Increase
         # Indicates how the merchant applied taxes.
         #
         # @example
-        #
         # ```ruby
         # case tax_treatments
         # in :no_tax_applies
@@ -311,7 +307,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # line_item => {
       #   id: String,
@@ -492,7 +487,6 @@ module Increase
         # Indicates the type of line item.
         #
         # @example
-        #
         # ```ruby
         # case detail_indicator
         # in :normal
@@ -519,7 +513,6 @@ module Increase
         # Indicates how the merchant applied the discount for this specific line item.
         #
         # @example
-        #
         # ```ruby
         # case discount_treatment_code
         # in :no_line_item_level_discount_provided
@@ -547,7 +540,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `card_purchase_supplement`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :card_purchase_supplement

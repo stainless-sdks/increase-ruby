@@ -21,7 +21,6 @@ module Increase
         # The reason why the Federal Reserve or destination bank returned this transfer. Defaults to `no_account`.
         #
         # @example
-        #
         # ```ruby
         # case reason
         # in :insufficient_fund

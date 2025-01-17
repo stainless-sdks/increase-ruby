@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # real_time_payments_request_for_payment => {
     #   id: String,
@@ -198,7 +197,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For real-time payments transfers this is always equal to `USD`.
       #
       # @example
-      #
       # ```ruby
       # case currency
       # in :CAD
@@ -238,7 +236,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # refusal => {
       #   refusal_reason_code: enum: Increase::Models::RealTimePaymentsRequestForPayment::Refusal::RefusalReasonCode
@@ -266,7 +263,6 @@ module Increase
         # The reason the request for payment was refused as provided by the recipient bank or the customer.
         #
         # @example
-        #
         # ```ruby
         # case refusal_reason_code
         # in :account_blocked
@@ -328,7 +324,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # rejection => {
       #   reject_reason_code: enum: Increase::Models::RealTimePaymentsRequestForPayment::Rejection::RejectReasonCode
@@ -356,7 +351,6 @@ module Increase
         # The reason the request for payment was rejected as provided by the recipient bank or the Real-Time Payments network.
         #
         # @example
-        #
         # ```ruby
         # case reject_reason_code
         # in :account_closed
@@ -444,7 +438,6 @@ module Increase
       # The lifecycle status of the request for payment.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_submission
@@ -484,7 +477,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # submission => {
       #   payment_information_identification: String
@@ -511,7 +503,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `real_time_payments_request_for_payment`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :real_time_payments_request_for_payment

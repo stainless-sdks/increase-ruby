@@ -42,7 +42,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # cardholder => {
       #   first_name: String,
@@ -75,7 +74,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # shipment => {
       #   address: Increase::Models::PhysicalCardCreateParams::Shipment::Address,
@@ -109,7 +107,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # address => {
         #   city: String,
@@ -196,7 +193,6 @@ module Increase
         # The shipping method to use.
         #
         # @example
-        #
         # ```ruby
         # case method
         # in :usps

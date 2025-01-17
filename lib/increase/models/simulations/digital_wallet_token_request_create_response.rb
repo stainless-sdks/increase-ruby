@@ -4,7 +4,6 @@ module Increase
   module Models
     module Simulations
       # @example
-      #
       # ```ruby
       # digital_wallet_token_request_create_response => {
       #   decline_reason: enum: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason,
@@ -56,7 +55,6 @@ module Increase
         # If the simulated tokenization attempt was declined, this field contains details as to why.
         #
         # @example
-        #
         # ```ruby
         # case decline_reason
         # in :card_not_active
@@ -88,7 +86,6 @@ module Increase
         # A constant representing the object's type. For this resource it will always be `inbound_digital_wallet_token_request_simulation_result`.
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :inbound_digital_wallet_token_request_simulation_result

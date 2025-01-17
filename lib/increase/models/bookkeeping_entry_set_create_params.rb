@@ -34,7 +34,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # entry => {
       #   account_id: String,
