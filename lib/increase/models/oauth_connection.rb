@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # oauth_connection => {
     #   id: String,
@@ -86,7 +85,6 @@ module Increase
       # Whether the connection is active.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active
@@ -108,7 +106,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `oauth_connection`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :oauth_connection

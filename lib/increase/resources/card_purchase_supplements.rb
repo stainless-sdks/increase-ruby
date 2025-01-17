@@ -7,7 +7,7 @@ module Increase
       #
       # @param card_purchase_supplement_id [String] The identifier of the Card Purchase Supplement.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CardPurchaseSupplement]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Card Purchase Supplements
       #
-      # @param params [Increase::Models::CardPurchaseSupplementListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardPurchaseSupplementListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :card_payment_id Filter Card Purchase Supplements to ones belonging to the specified Card
       #     Payment.
@@ -34,7 +34,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::CardPurchaseSupplement>]
       #

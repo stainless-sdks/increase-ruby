@@ -47,7 +47,6 @@ module Increase
       # Filter Wire Drawdown Requests for those with the specified status.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_submission

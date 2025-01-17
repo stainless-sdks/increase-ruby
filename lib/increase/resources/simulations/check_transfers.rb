@@ -11,7 +11,7 @@ module Increase
         #
         # @param check_transfer_id [String] The identifier of the Check Transfer you wish to mail.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CheckTransfer]
         #

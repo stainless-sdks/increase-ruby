@@ -86,7 +86,6 @@ module Increase
       # Whether Increase will print and mail the check or if you will do it yourself.
       #
       # @example
-      #
       # ```ruby
       # case fulfillment_method
       # in :physical_check
@@ -106,7 +105,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # physical_check => {
       #   mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
@@ -182,7 +180,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # mailing_address => {
         #   city: String,
@@ -251,7 +248,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # return_address => {
         #   city: String,
@@ -322,7 +318,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # third_party => {
       #   check_number: String

@@ -5,7 +5,7 @@ module Increase
     class WireDrawdownRequests
       # Create a Wire Drawdown Request
       #
-      # @param params [Increase::Models::WireDrawdownRequestCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::WireDrawdownRequestCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_number_id The Account Number to which the recipient should send funds.
       #
@@ -41,7 +41,7 @@ module Increase
       #
       #   @option params [String] :recipient_address_line3 Line 3 of the drawdown request's recipient's address.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireDrawdownRequest]
       #
@@ -60,7 +60,7 @@ module Increase
       #
       # @param wire_drawdown_request_id [String] The identifier of the Wire Drawdown Request to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireDrawdownRequest]
       #
@@ -75,7 +75,7 @@ module Increase
 
       # List Wire Drawdown Requests
       #
-      # @param params [Increase::Models::WireDrawdownRequestListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::WireDrawdownRequestListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -89,7 +89,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::WireDrawdownRequestListParams::Status] :status Filter Wire Drawdown Requests for those with the specified status.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::WireDrawdownRequest>]
       #

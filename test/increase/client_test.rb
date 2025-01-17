@@ -46,7 +46,7 @@ class IncreaseTest < Minitest::Test
     attr_accessor :body
 
     # @param code [Integer]
-    # @param headers [Hash{String => String}]
+    # @param headers [Hash{String=>String}]
     # @param data [Object]
     #
     def initialize(code, headers, data)
@@ -77,17 +77,17 @@ class IncreaseTest < Minitest::Test
     # @return [Integer]
     attr_accessor :response_code
 
-    # @return [Hash{String => String}]
+    # @return [Hash{String=>String}]
     attr_accessor :response_headers
 
     # @return [Object]
     attr_accessor :response_data
 
-    # @return [Array<Hash{Symbol => Object}>]
+    # @return [Array<Hash{Symbol=>Object}>]
     attr_accessor :attempts
 
     # @param response_code [Integer]
-    # @param response_headers [Hash{String => String}]
+    # @param response_headers [Hash{String=>String}]
     # @param response_data [Object]
     #
     def initialize(response_code, response_headers, response_data)
@@ -97,7 +97,7 @@ class IncreaseTest < Minitest::Test
       @attempts = []
     end
 
-    # @param req [Hash{Symbol => Object}]
+    # @param req [Hash{Symbol=>Object}]
     #
     def execute(req)
       # Deep copy the request because it is mutated on each retry.

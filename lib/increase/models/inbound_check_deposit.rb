@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # inbound_check_deposit => {
     #   id: String,
@@ -222,7 +221,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # adjustment => {
       #   adjusted_at: Time,
@@ -272,7 +270,6 @@ module Increase
         # The reason for the adjustment.
         #
         # @example
-        #
         # ```ruby
         # case reason
         # in :late_return
@@ -300,7 +297,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
       #
       # @example
-      #
       # ```ruby
       # case currency
       # in :CAD
@@ -340,7 +336,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # deposit_return => {
       #   reason: enum: Increase::Models::InboundCheckDeposit::DepositReturn::Reason,
@@ -384,7 +379,6 @@ module Increase
         # The reason the deposit was returned.
         #
         # @example
-        #
         # ```ruby
         # case reason
         # in :altered_or_fictitious
@@ -422,7 +416,6 @@ module Increase
       # Whether the details on the check match the recipient name of the check transfer. This is an optional feature, contact sales to enable.
       #
       # @example
-      #
       # ```ruby
       # case payee_name_analysis
       # in :name_matches
@@ -449,7 +442,6 @@ module Increase
       # The status of the Inbound Check Deposit.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending
@@ -486,7 +478,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `inbound_check_deposit`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :inbound_check_deposit

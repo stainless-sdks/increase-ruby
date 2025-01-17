@@ -7,7 +7,7 @@ module Increase
         # Simulates receiving an
         #   [Inbound Wire Drawdown Request](#inbound-wire-drawdown-requests).
         #
-        # @param params [Increase::Models::Simulations::InboundWireDrawdownRequestCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::InboundWireDrawdownRequestCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [Integer] :amount The amount being requested in cents.
         #
@@ -55,7 +55,7 @@ module Increase
         #   @option params [String] :originator_to_beneficiary_information_line4 Line 4 of the information conveyed from the originator of the message to the
         #     beneficiary.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundWireDrawdownRequest]
         #

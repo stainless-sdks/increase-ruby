@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # program => {
     #   id: String,
@@ -118,7 +117,6 @@ module Increase
       # The Bank the Program is with.
       #
       # @example
-      #
       # ```ruby
       # case bank
       # in :blue_ridge_bank
@@ -145,7 +143,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `program`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :program

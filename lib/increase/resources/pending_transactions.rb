@@ -7,7 +7,7 @@ module Increase
       #
       # @param pending_transaction_id [String] The identifier of the Pending Transaction.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::PendingTransaction]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Pending Transactions
       #
-      # @param params [Increase::Models::PendingTransactionListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::PendingTransactionListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter pending transactions to those belonging to the specified Account.
       #
@@ -39,7 +39,7 @@ module Increase
       #
       #   @option params [Increase::Models::PendingTransactionListParams::Status] :status
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::PendingTransaction>]
       #

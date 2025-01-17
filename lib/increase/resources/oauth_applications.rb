@@ -7,7 +7,7 @@ module Increase
       #
       # @param oauth_application_id [String] The identifier of the OAuth Application.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::OAuthApplication]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List OAuth Applications
       #
-      # @param params [Increase::Models::OAuthApplicationListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::OAuthApplicationListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::OAuthApplicationListParams::CreatedAt] :created_at
       #
@@ -33,7 +33,7 @@ module Increase
       #
       #   @option params [Increase::Models::OAuthApplicationListParams::Status] :status
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::OAuthApplication>]
       #

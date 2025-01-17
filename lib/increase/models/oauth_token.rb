@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # oauth_token => {
     #   access_token: String,
@@ -50,7 +49,6 @@ module Increase
       # The type of OAuth token.
       #
       # @example
-      #
       # ```ruby
       # case token_type
       # in :bearer
@@ -66,7 +64,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `oauth_token`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :oauth_token

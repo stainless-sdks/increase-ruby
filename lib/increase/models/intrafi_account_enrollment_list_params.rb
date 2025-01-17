@@ -52,7 +52,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # status => {
       #   in_: -> { Increase::ArrayOf[enum: Increase::Models::IntrafiAccountEnrollmentListParams::Status::In] === _1 }
@@ -79,7 +78,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case in
         # in :pending_enrolling

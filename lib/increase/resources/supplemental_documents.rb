@@ -5,13 +5,13 @@ module Increase
     class SupplementalDocuments
       # Create a supplemental document for an Entity
       #
-      # @param params [Increase::Models::SupplementalDocumentCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::SupplementalDocumentCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :entity_id The identifier of the Entity to associate with the supplemental document.
       #
       #   @option params [String] :file_id The identifier of the File containing the document.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::EntitySupplementalDocument]
       #
@@ -28,7 +28,7 @@ module Increase
 
       # List Entity Supplemental Document Submissions
       #
-      # @param params [Increase::Models::SupplementalDocumentListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::SupplementalDocumentListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :entity_id The identifier of the Entity to list supplemental documents for.
       #
@@ -42,7 +42,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::EntitySupplementalDocument>]
       #

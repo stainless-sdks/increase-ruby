@@ -7,7 +7,7 @@ module Increase
       #
       # @param account_statement_id [String] The identifier of the Account Statement to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::AccountStatement]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Account Statements
       #
-      # @param params [Increase::Models::AccountStatementListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountStatementListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Account Statements to those belonging to the specified Account.
       #
@@ -33,7 +33,7 @@ module Increase
       #
       #   @option params [Increase::Models::AccountStatementListParams::StatementPeriodStart] :statement_period_start
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::AccountStatement>]
       #

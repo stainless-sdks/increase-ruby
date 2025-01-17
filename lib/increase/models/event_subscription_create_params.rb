@@ -47,7 +47,6 @@ module Increase
       # If specified, this subscription will only receive webhooks for Events with the specified `category`.
       #
       # @example
-      #
       # ```ruby
       # case selected_event_category
       # in :"account.created"

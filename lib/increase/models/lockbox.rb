@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # lockbox => {
     #   id: String,
@@ -114,7 +113,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # address => {
       #   city: String,
@@ -188,7 +186,6 @@ module Increase
       # This indicates if mail can be sent to this address.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active
@@ -210,7 +207,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `lockbox`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :lockbox

@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # export => {
     #   id: String,
@@ -99,7 +98,6 @@ module Increase
       # The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
       #
       # @example
-      #
       # ```ruby
       # case category
       # in :account_statement_ofx
@@ -144,7 +142,6 @@ module Increase
       # The status of the Export.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending
@@ -171,7 +168,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `export`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :export

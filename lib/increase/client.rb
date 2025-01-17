@@ -187,7 +187,7 @@ module Increase
 
     # @private
     #
-    # @return [Hash{String => String}]
+    # @return [Hash{String=>String}]
     #
     private def auth_headers
       {"Authorization" => "Bearer #{@api_key}"}

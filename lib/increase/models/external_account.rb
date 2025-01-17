@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # external_account => {
     #   id: String,
@@ -133,7 +132,6 @@ module Increase
       # The type of entity that owns the External Account.
       #
       # @example
-      #
       # ```ruby
       # case account_holder
       # in :business
@@ -160,7 +158,6 @@ module Increase
       # The type of the account to which the transfer will be sent.
       #
       # @example
-      #
       # ```ruby
       # case funding
       # in :checking
@@ -187,7 +184,6 @@ module Increase
       # The External Account's status.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active
@@ -209,7 +205,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `external_account`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :external_account
@@ -225,7 +220,6 @@ module Increase
       # If you have verified ownership of the External Account.
       #
       # @example
-      #
       # ```ruby
       # case verification_status
       # in :unverified

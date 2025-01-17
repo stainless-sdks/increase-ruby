@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # inbound_wire_drawdown_request => {
     #   id: String,
@@ -246,7 +245,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `inbound_wire_drawdown_request`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :inbound_wire_drawdown_request

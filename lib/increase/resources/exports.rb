@@ -5,7 +5,7 @@ module Increase
     class Exports
       # Create an Export
       #
-      # @param params [Increase::Models::ExportCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ExportCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Symbol, Increase::Models::ExportCreateParams::Category] :category The type of Export to create.
       #
@@ -25,7 +25,7 @@ module Increase
       #
       #   @option params [Object] :vendor_csv Options for the created export. Required if `category` is equal to `vendor_csv`.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Export]
       #
@@ -44,7 +44,7 @@ module Increase
       #
       # @param export_id [String] The identifier of the Export to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Export]
       #
@@ -59,7 +59,7 @@ module Increase
 
       # List Exports
       #
-      # @param params [Increase::Models::ExportListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ExportListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::ExportListParams::Category] :category
       #
@@ -77,7 +77,7 @@ module Increase
       #
       #   @option params [Increase::Models::ExportListParams::Status] :status
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Export>]
       #

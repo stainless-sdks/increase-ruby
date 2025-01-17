@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # real_time_decision => {
     #   id: String,
@@ -134,7 +133,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # card_authentication => {
       #   account_id: String,
@@ -187,7 +185,6 @@ module Increase
         # Whether or not the authentication attempt was approved.
         #
         # @example
-        #
         # ```ruby
         # case decision
         # in :approve
@@ -213,7 +210,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # card_authentication_challenge => {
       #   account_id: String,
@@ -275,7 +271,6 @@ module Increase
         # Whether or not the challenge was delivered to the cardholder.
         #
         # @example
-        #
         # ```ruby
         # case result
         # in :success
@@ -296,7 +291,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # card_authorization => {
       #   account_id: String,
@@ -570,7 +564,6 @@ module Increase
         # Whether or not the authorization was approved.
         #
         # @example
-        #
         # ```ruby
         # case decision
         # in :approve
@@ -592,7 +585,6 @@ module Increase
         # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
         #
         # @example
-        #
         # ```ruby
         # case direction
         # in :settlement
@@ -612,7 +604,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # network_details => {
         #   category: enum: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category,
@@ -649,7 +640,6 @@ module Increase
           # The payment network used to process this card authorization.
           #
           # @example
-          #
           # ```ruby
           # case category
           # in :visa
@@ -664,7 +654,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # visa => {
           #   electronic_commerce_indicator: enum: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator,
@@ -720,7 +709,6 @@ module Increase
             # For electronic commerce transactions, this identifies the level of security used in obtaining the customer's payment credential. For mail or telephone order transactions, identifies the type of mail or telephone order.
             #
             # @example
-            #
             # ```ruby
             # case electronic_commerce_indicator
             # in :mail_phone_order
@@ -768,7 +756,6 @@ module Increase
             # The method used to enter the cardholder's primary account number and card expiration date.
             #
             # @example
-            #
             # ```ruby
             # case point_of_service_entry_mode
             # in :unknown
@@ -822,7 +809,6 @@ module Increase
             # Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
             #
             # @example
-            #
             # ```ruby
             # case stand_in_processing_reason
             # in :issuer_error
@@ -864,7 +850,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # network_identifiers => {
         #   retrieval_reference_number: String,
@@ -912,7 +897,6 @@ module Increase
         # The processing category describes the intent behind the authorization, such as whether it was used for bill payments or an automatic fuel dispenser.
         #
         # @example
-        #
         # ```ruby
         # case processing_category
         # in :account_funding
@@ -952,7 +936,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # request_details => {
         #   category: enum: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category,
@@ -1000,7 +983,6 @@ module Increase
           # The type of this request (e.g., an initial authorization or an incremental authorization).
           #
           # @example
-          #
           # ```ruby
           # case category
           # in :initial_authorization
@@ -1020,7 +1002,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # incremental_authorization => {
           #   card_payment_id: String,
@@ -1055,7 +1036,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # verification => {
         #   card_verification_code: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode,
@@ -1091,7 +1071,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # card_verification_code => {
           #   result: enum: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result
@@ -1120,7 +1099,6 @@ module Increase
             # The result of verifying the Card Verification Code.
             #
             # @example
-            #
             # ```ruby
             # case result
             # in :not_checked
@@ -1146,7 +1124,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # cardholder_address => {
           #   actual_line1: String,
@@ -1212,7 +1189,6 @@ module Increase
             # The address verification result returned to the card network.
             #
             # @example
-            #
             # ```ruby
             # case result
             # in :not_checked
@@ -1257,7 +1233,6 @@ module Increase
       # The category of the Real-Time Decision.
       #
       # @example
-      #
       # ```ruby
       # case category
       # in :card_authorization_requested
@@ -1292,7 +1267,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # digital_wallet_authentication => {
       #   card_id: String,
@@ -1375,7 +1349,6 @@ module Increase
         # The channel to send the card user their one-time passcode.
         #
         # @example
-        #
         # ```ruby
         # case channel
         # in :sms
@@ -1397,7 +1370,6 @@ module Increase
         # The digital wallet app being used.
         #
         # @example
-        #
         # ```ruby
         # case digital_wallet
         # in :apple_pay
@@ -1429,7 +1401,6 @@ module Increase
         # Whether your application successfully delivered the one-time passcode.
         #
         # @example
-        #
         # ```ruby
         # case result
         # in :success
@@ -1450,7 +1421,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # digital_wallet_token => {
       #   card_id: String,
@@ -1506,7 +1476,6 @@ module Increase
         # Whether or not the provisioning request was approved. This will be null until the real time decision is responded to.
         #
         # @example
-        #
         # ```ruby
         # case decision
         # in :approve
@@ -1528,7 +1497,6 @@ module Increase
         # The digital wallet app being used.
         #
         # @example
-        #
         # ```ruby
         # case digital_wallet
         # in :apple_pay
@@ -1561,7 +1529,6 @@ module Increase
       # The status of the Real-Time Decision.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending
@@ -1588,7 +1555,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `real_time_decision`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :real_time_decision

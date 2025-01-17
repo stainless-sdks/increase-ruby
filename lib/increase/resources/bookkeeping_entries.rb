@@ -7,7 +7,7 @@ module Increase
       #
       # @param bookkeeping_entry_id [String] The identifier of the Bookkeeping Entry.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::BookkeepingEntry]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Bookkeeping Entries
       #
-      # @param params [Increase::Models::BookkeepingEntryListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::BookkeepingEntryListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id The identifier for the Bookkeeping Account to filter by.
       #
@@ -31,7 +31,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::BookkeepingEntry>]
       #

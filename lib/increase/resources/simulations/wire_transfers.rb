@@ -11,7 +11,7 @@ module Increase
         #
         # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to reverse.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::WireTransfer]
         #
@@ -30,7 +30,7 @@ module Increase
         #
         # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to submit.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::WireTransfer]
         #

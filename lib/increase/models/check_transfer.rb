@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # check_transfer => {
     #   id: String,
@@ -251,7 +250,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # approval => {
       #   approved_at: Time,
@@ -287,7 +285,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # cancellation => {
       #   canceled_at: Time,
@@ -323,7 +320,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # created_by => {
       #   api_key: Increase::Models::CheckTransfer::CreatedBy::APIKey,
@@ -373,7 +369,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # api_key => {
         #   description: String
@@ -399,7 +394,6 @@ module Increase
         # The type of object that created this transfer.
         #
         # @example
-        #
         # ```ruby
         # case category
         # in :api_key
@@ -424,7 +418,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # oauth_application => {
         #   name: String
@@ -448,7 +441,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # user => {
         #   email: String
@@ -475,7 +467,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
       #
       # @example
-      #
       # ```ruby
       # case currency
       # in :CAD
@@ -517,7 +508,6 @@ module Increase
       # Whether Increase will print and mail the check or if you will do it yourself.
       #
       # @example
-      #
       # ```ruby
       # case fulfillment_method
       # in :physical_check
@@ -537,7 +527,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # mailing => {
       #   image_id: String,
@@ -573,7 +562,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # physical_check => {
       #   mailing_address: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress,
@@ -652,7 +640,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # mailing_address => {
         #   city: String,
@@ -720,7 +707,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # return_address => {
         #   city: String,
@@ -788,7 +774,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # tracking_update => {
         #   category: enum: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category,
@@ -833,7 +818,6 @@ module Increase
           # The type of tracking event.
           #
           # @example
-          #
           # ```ruby
           # case category
           # in :in_transit
@@ -867,7 +851,6 @@ module Increase
       # The lifecycle status of the transfer.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_approval
@@ -919,7 +902,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # stop_payment_request => {
       #   reason: enum: Increase::Models::CheckTransfer::StopPaymentRequest::Reason,
@@ -973,7 +955,6 @@ module Increase
         # The reason why this transfer was stopped.
         #
         # @example
-        #
         # ```ruby
         # case reason
         # in :mail_delivery_failed
@@ -1005,7 +986,6 @@ module Increase
         # A constant representing the object's type. For this resource it will always be `check_transfer_stop_payment_request`.
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :check_transfer_stop_payment_request
@@ -1020,7 +1000,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # submission => {
       #   submitted_at: Time
@@ -1044,7 +1023,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # third_party => {
       #   check_number: String
@@ -1071,7 +1049,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `check_transfer`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :check_transfer

@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # transaction => {
     #   id: String,
@@ -131,7 +130,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Transaction's currency. This will match the currency on the Transaction's Account.
       #
       # @example
-      #
       # ```ruby
       # case currency
       # in :CAD
@@ -173,7 +171,6 @@ module Increase
       # The type of the route this Transaction came through.
       #
       # @example
-      #
       # ```ruby
       # case route_type
       # in :account_number
@@ -198,7 +195,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # source => {
       #   account_transfer_intention: Increase::Models::Transaction::Source::AccountTransferIntention,
@@ -495,7 +491,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # account_transfer_intention => {
         #   amount: Integer,
@@ -570,7 +565,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -611,7 +605,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # ach_transfer_intention => {
         #   account_number: String,
@@ -674,7 +667,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # ach_transfer_rejection => {
         #   transfer_id: String
@@ -699,7 +691,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # ach_transfer_return => {
         #   created_at: Time,
@@ -785,7 +776,6 @@ module Increase
           # Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
           #
           # @example
-          #
           # ```ruby
           # case return_reason_code
           # in :insufficient_fund
@@ -1018,7 +1008,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_dispute_acceptance => {
         #   accepted_at: Time,
@@ -1063,7 +1052,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_dispute_loss => {
         #   card_dispute_id: String,
@@ -1117,7 +1105,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_refund => {
         #   id: String,
@@ -1324,7 +1311,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # cashback => {
           #   amount: String,
@@ -1364,7 +1350,6 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
             # @example
-            #
             # ```ruby
             # case currency
             # in :CAD
@@ -1407,7 +1392,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -1447,7 +1431,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # interchange => {
           #   amount: String,
@@ -1496,7 +1479,6 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             #
             # @example
-            #
             # ```ruby
             # case currency
             # in :CAD
@@ -1537,7 +1519,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_identifiers => {
           #   acquirer_business_id: String,
@@ -1581,7 +1562,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # purchase_details => {
           #   car_rental: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental,
@@ -1710,7 +1690,6 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # car_rental => {
             #   car_class_code: String,
@@ -1894,7 +1873,6 @@ module Increase
               # Additional charges (gas, late fee, etc.) being billed.
               #
               # @example
-              #
               # ```ruby
               # case extra_charges
               # in :no_extra_charge
@@ -1936,7 +1914,6 @@ module Increase
               # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #
               # @example
-              #
               # ```ruby
               # case no_show_indicator
               # in :not_applicable
@@ -1957,7 +1934,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # lodging => {
             #   check_in_date: Date,
@@ -2140,7 +2116,6 @@ module Increase
               # Additional charges (phone, late check-out, etc.) being billed.
               #
               # @example
-              #
               # ```ruby
               # case extra_charges
               # in :no_extra_charge
@@ -2185,7 +2160,6 @@ module Increase
               # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               #
               # @example
-              #
               # ```ruby
               # case no_show_indicator
               # in :not_applicable
@@ -2208,7 +2182,6 @@ module Increase
             # The format of the purchase identifier.
             #
             # @example
-            #
             # ```ruby
             # case purchase_identifier_format
             # in :free_text
@@ -2243,7 +2216,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # travel => {
             #   ancillary: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary,
@@ -2388,7 +2360,6 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # @example
-              #
               # ```ruby
               # ancillary => {
               #   connected_ticket_document_number: String,
@@ -2466,7 +2437,6 @@ module Increase
                 # Indicates the reason for a credit to the cardholder.
                 #
                 # @example
-                #
                 # ```ruby
                 # case credit_reason_indicator
                 # in :no_credit
@@ -2496,7 +2466,6 @@ module Increase
                 end
 
                 # @example
-                #
                 # ```ruby
                 # service => {
                 #   category: enum: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category,
@@ -2531,7 +2500,6 @@ module Increase
                   # Category of the ancillary service.
                   #
                   # @example
-                  #
                   # ```ruby
                   # case category
                   # in :none
@@ -2629,7 +2597,6 @@ module Increase
               # Indicates the reason for a credit to the cardholder.
               #
               # @example
-              #
               # ```ruby
               # case credit_reason_indicator
               # in :no_credit
@@ -2671,7 +2638,6 @@ module Increase
               # Indicates whether this ticket is non-refundable.
               #
               # @example
-              #
               # ```ruby
               # case restricted_ticket_indicator
               # in :no_restrictions
@@ -2693,7 +2659,6 @@ module Increase
               # Indicates why a ticket was changed.
               #
               # @example
-              #
               # ```ruby
               # case ticket_change_indicator
               # in :none
@@ -2718,7 +2683,6 @@ module Increase
               end
 
               # @example
-              #
               # ```ruby
               # trip_leg => {
               #   carrier_code: String,
@@ -2798,7 +2762,6 @@ module Increase
                 # Indicates whether a stopover is allowed on this ticket.
                 #
                 # @example
-                #
                 # ```ruby
                 # case stop_over_code
                 # in :none
@@ -2828,7 +2791,6 @@ module Increase
           # A constant representing the object's type. For this resource it will always be `card_refund`.
           #
           # @example
-          #
           # ```ruby
           # case type
           # in :card_refund
@@ -2843,7 +2805,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_revenue_payment => {
         #   amount: Integer,
@@ -2907,7 +2868,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -2948,7 +2908,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # card_settlement => {
         #   id: String,
@@ -3174,7 +3133,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # cashback => {
           #   amount: String,
@@ -3214,7 +3172,6 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
             # @example
-            #
             # ```ruby
             # case currency
             # in :CAD
@@ -3257,7 +3214,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -3297,7 +3253,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # interchange => {
           #   amount: String,
@@ -3344,7 +3299,6 @@ module Increase
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
             #
             # @example
-            #
             # ```ruby
             # case currency
             # in :CAD
@@ -3385,7 +3339,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # network_identifiers => {
           #   acquirer_business_id: String,
@@ -3429,7 +3382,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # purchase_details => {
           #   car_rental: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental,
@@ -3556,7 +3508,6 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
 
             # @example
-            #
             # ```ruby
             # car_rental => {
             #   car_class_code: String,
@@ -3740,7 +3691,6 @@ module Increase
               # Additional charges (gas, late fee, etc.) being billed.
               #
               # @example
-              #
               # ```ruby
               # case extra_charges
               # in :no_extra_charge
@@ -3782,7 +3732,6 @@ module Increase
               # An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
               #
               # @example
-              #
               # ```ruby
               # case no_show_indicator
               # in :not_applicable
@@ -3803,7 +3752,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # lodging => {
             #   check_in_date: Date,
@@ -3986,7 +3934,6 @@ module Increase
               # Additional charges (phone, late check-out, etc.) being billed.
               #
               # @example
-              #
               # ```ruby
               # case extra_charges
               # in :no_extra_charge
@@ -4031,7 +3978,6 @@ module Increase
               # Indicator that the cardholder is being billed for a reserved room that was not actually used.
               #
               # @example
-              #
               # ```ruby
               # case no_show_indicator
               # in :not_applicable
@@ -4054,7 +4000,6 @@ module Increase
             # The format of the purchase identifier.
             #
             # @example
-            #
             # ```ruby
             # case purchase_identifier_format
             # in :free_text
@@ -4089,7 +4034,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # travel => {
             #   ancillary: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary,
@@ -4234,7 +4178,6 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # @example
-              #
               # ```ruby
               # ancillary => {
               #   connected_ticket_document_number: String,
@@ -4312,7 +4255,6 @@ module Increase
                 # Indicates the reason for a credit to the cardholder.
                 #
                 # @example
-                #
                 # ```ruby
                 # case credit_reason_indicator
                 # in :no_credit
@@ -4342,7 +4284,6 @@ module Increase
                 end
 
                 # @example
-                #
                 # ```ruby
                 # service => {
                 #   category: enum: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category,
@@ -4377,7 +4318,6 @@ module Increase
                   # Category of the ancillary service.
                   #
                   # @example
-                  #
                   # ```ruby
                   # case category
                   # in :none
@@ -4475,7 +4415,6 @@ module Increase
               # Indicates the reason for a credit to the cardholder.
               #
               # @example
-              #
               # ```ruby
               # case credit_reason_indicator
               # in :no_credit
@@ -4517,7 +4456,6 @@ module Increase
               # Indicates whether this ticket is non-refundable.
               #
               # @example
-              #
               # ```ruby
               # case restricted_ticket_indicator
               # in :no_restrictions
@@ -4539,7 +4477,6 @@ module Increase
               # Indicates why a ticket was changed.
               #
               # @example
-              #
               # ```ruby
               # case ticket_change_indicator
               # in :none
@@ -4564,7 +4501,6 @@ module Increase
               end
 
               # @example
-              #
               # ```ruby
               # trip_leg => {
               #   carrier_code: String,
@@ -4644,7 +4580,6 @@ module Increase
                 # Indicates whether a stopover is allowed on this ticket.
                 #
                 # @example
-                #
                 # ```ruby
                 # case stop_over_code
                 # in :none
@@ -4674,7 +4609,6 @@ module Increase
           # A constant representing the object's type. For this resource it will always be `card_settlement`.
           #
           # @example
-          #
           # ```ruby
           # case type
           # in :card_settlement
@@ -4689,7 +4623,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # cashback_payment => {
         #   accrued_on_card_id: String,
@@ -4753,7 +4686,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -4796,7 +4728,6 @@ module Increase
         # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         #
         # @example
-        #
         # ```ruby
         # case category
         # in :account_transfer_intention
@@ -4905,7 +4836,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # check_deposit_acceptance => {
         #   account_number: String,
@@ -5002,7 +4932,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -5043,7 +4972,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # check_deposit_return => {
         #   amount: Integer,
@@ -5118,7 +5046,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -5160,7 +5087,6 @@ module Increase
           # Why this check was returned by the bank holding the account it was drawn against.
           #
           # @example
-          #
           # ```ruby
           # case return_reason
           # in :ach_conversion_not_supported
@@ -5261,7 +5187,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # check_transfer_deposit => {
         #   back_image_file_id: String,
@@ -5366,7 +5291,6 @@ module Increase
           # A constant representing the object's type. For this resource it will always be `check_transfer_deposit`.
           #
           # @example
-          #
           # ```ruby
           # case type
           # in :check_transfer_deposit
@@ -5381,7 +5305,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # fee_payment => {
         #   amount: Integer,
@@ -5436,7 +5359,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -5477,7 +5399,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # inbound_ach_transfer => {
         #   addenda: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda,
@@ -5607,7 +5528,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # addenda => {
           #   category: enum: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category,
@@ -5645,7 +5565,6 @@ module Increase
             # The type of addendum.
             #
             # @example
-            #
             # ```ruby
             # case category
             # in :freeform
@@ -5660,7 +5579,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # freeform => {
             #   entries: -> { Increase::ArrayOf[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry] === _1 }
@@ -5686,7 +5604,6 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
 
               # @example
-              #
               # ```ruby
               # entry => {
               #   payment_related_information: String
@@ -5711,7 +5628,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # inbound_real_time_payments_transfer_confirmation => {
         #   amount: Integer,
@@ -5825,7 +5741,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -5866,7 +5781,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # inbound_real_time_payments_transfer_decline => {
         #   amount: Integer,
@@ -5993,7 +5907,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined transfer's currency. This will always be "USD" for a Real-Time Payments transfer.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -6035,7 +5948,6 @@ module Increase
           # Why the transfer was declined.
           #
           # @example
-          #
           # ```ruby
           # case reason
           # in :account_number_canceled
@@ -6076,7 +5988,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # inbound_wire_reversal => {
         #   amount: Integer,
@@ -6260,7 +6171,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # inbound_wire_transfer => {
         #   amount: Integer,
@@ -6460,7 +6370,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # interest_payment => {
         #   accrued_on_account_id: String,
@@ -6524,7 +6433,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -6565,7 +6473,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # internal_source => {
         #   amount: Integer,
@@ -6612,7 +6519,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction currency.
           #
           # @example
-          #
           # ```ruby
           # case currency
           # in :CAD
@@ -6654,7 +6560,6 @@ module Increase
           # An Internal Source is a transaction between you and Increase. This describes the reason for the transaction.
           #
           # @example
-          #
           # ```ruby
           # case reason
           # in :account_closure
@@ -6722,7 +6627,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # real_time_payments_transfer_acknowledgement => {
         #   amount: Integer,
@@ -6793,7 +6697,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # sample_funds => {
         #   originator: String
@@ -6818,7 +6721,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # wire_transfer_intention => {
         #   account_number: String,
@@ -6882,7 +6784,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `transaction`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :transaction

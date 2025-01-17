@@ -57,7 +57,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # category => {
       #   in_: -> { Increase::ArrayOf[enum: Increase::Models::TransactionListParams::Category::In] === _1 }
@@ -81,7 +80,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case in
         # in :account_transfer_intention
@@ -191,7 +189,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # created_at => {
       #   after: Time,

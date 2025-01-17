@@ -5,7 +5,7 @@ module Increase
     class ProofOfAuthorizationRequestSubmissions
       # Submit Proof of Authorization
       #
-      # @param params [Increase::Models::ProofOfAuthorizationRequestSubmissionCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ProofOfAuthorizationRequestSubmissionCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :authorization_terms Terms of authorization.
       #
@@ -29,7 +29,7 @@ module Increase
       #
       #   @option params [String] :authorizer_ip_address IP address of the authorizer.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       #
@@ -48,7 +48,7 @@ module Increase
       #
       # @param proof_of_authorization_request_submission_id [String] The identifier of the Proof of Authorization Request Submission.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       #
@@ -66,7 +66,7 @@ module Increase
 
       # List Proof of Authorization Request Submissions
       #
-      # @param params [Increase::Models::ProofOfAuthorizationRequestSubmissionListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ProofOfAuthorizationRequestSubmissionListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -80,7 +80,7 @@ module Increase
       #
       #   @option params [String] :proof_of_authorization_request_id ID of the proof of authorization request.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequestSubmission>]
       #

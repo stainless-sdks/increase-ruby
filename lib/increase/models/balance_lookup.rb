@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # balance_lookup => {
     #   account_id: String,
@@ -59,7 +58,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `balance_lookup`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :balance_lookup

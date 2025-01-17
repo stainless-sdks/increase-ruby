@@ -164,7 +164,6 @@ module Increase
         # Forces a card decline with a specific reason. No real time decision will be sent.
         #
         # @example
-        #
         # ```ruby
         # case decline_reason
         # in :card_not_active
@@ -233,7 +232,6 @@ module Increase
         # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
         #
         # @example
-        #
         # ```ruby
         # case direction
         # in :settlement

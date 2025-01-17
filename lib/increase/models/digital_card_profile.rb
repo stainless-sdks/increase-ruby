@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # digital_card_profile => {
     #   id: String,
@@ -161,7 +160,6 @@ module Increase
       # The status of the Card Profile.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending
@@ -191,7 +189,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # text_color => {
       #   blue: Integer,
@@ -235,7 +232,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `digital_card_profile`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :digital_card_profile

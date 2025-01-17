@@ -7,7 +7,7 @@ module Increase
       #
       # @param inbound_wire_drawdown_request_id [String] The identifier of the Inbound Wire Drawdown Request to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundWireDrawdownRequest]
       #
@@ -22,14 +22,14 @@ module Increase
 
       # List Inbound Wire Drawdown Requests
       #
-      # @param params [Increase::Models::InboundWireDrawdownRequestListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::InboundWireDrawdownRequestListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::InboundWireDrawdownRequest>]
       #

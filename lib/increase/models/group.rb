@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # group => {
     #   id: String,
@@ -69,7 +68,6 @@ module Increase
       # If the Group is allowed to create ACH debits.
       #
       # @example
-      #
       # ```ruby
       # case ach_debit_status
       # in :disabled
@@ -91,7 +89,6 @@ module Increase
       # If the Group is activated or not.
       #
       # @example
-      #
       # ```ruby
       # case activation_status
       # in :unactivated
@@ -113,7 +110,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `group`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :group

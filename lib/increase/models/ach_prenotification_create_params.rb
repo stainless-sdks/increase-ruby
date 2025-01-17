@@ -137,7 +137,6 @@ module Increase
       # Whether the Prenotification is for a future debit or credit.
       #
       # @example
-      #
       # ```ruby
       # case credit_debit_indicator
       # in :credit
@@ -159,7 +158,6 @@ module Increase
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       #
       # @example
-      #
       # ```ruby
       # case standard_entry_class_code
       # in :corporate_credit_or_debit

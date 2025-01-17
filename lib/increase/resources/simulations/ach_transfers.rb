@@ -13,7 +13,7 @@ module Increase
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to become acknowledged.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::ACHTransfer]
         #
@@ -32,13 +32,13 @@ module Increase
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to create a notification of change
         #   for.
         #
-        # @param params [Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode] :change_code The reason for the notification of change.
         #
         #   @option params [String] :corrected_data The corrected data for the notification of change (e.g., a new routing number).
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::ACHTransfer]
         #
@@ -59,12 +59,12 @@ module Increase
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to return.
         #
-        # @param params [Increase::Models::Simulations::ACHTransferReturnParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::ACHTransferReturnParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason] :reason The reason why the Federal Reserve or destination bank returned this transfer.
         #     Defaults to `no_account`.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::ACHTransfer]
         #
@@ -86,7 +86,7 @@ module Increase
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to become settled.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::ACHTransfer]
         #
@@ -108,7 +108,7 @@ module Increase
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to submit.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::ACHTransfer]
         #

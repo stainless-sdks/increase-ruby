@@ -7,7 +7,7 @@ module Increase
         # Simulates the increment of an authorization by a card acquirer. An authorization
         #   can be incremented multiple times.
         #
-        # @param params [Increase::Models::Simulations::CardIncrementCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::CardIncrementCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [Integer] :amount The amount of the increment in minor units in the card authorization's currency.
         #
@@ -18,7 +18,7 @@ module Increase
         #     decision event subscription, you can use this field to route events to any
         #     specified event subscription for testing purposes.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CardPayment]
         #

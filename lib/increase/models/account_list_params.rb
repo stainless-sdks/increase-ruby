@@ -88,7 +88,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # created_at => {
       #   after: Time,
@@ -143,7 +142,6 @@ module Increase
       # Filter Accounts for those with the specified status.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :closed

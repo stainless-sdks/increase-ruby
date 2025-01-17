@@ -5,7 +5,7 @@ module Increase
     class CheckTransfers
       # Create a Check Transfer
       #
-      # @param params [Increase::Models::CheckTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CheckTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id The identifier for the account that will send the transfer.
       #
@@ -26,7 +26,7 @@ module Increase
       #     `fulfillment_method` is equal to `third_party`. It must not be included if any
       #     other `fulfillment_method` is provided.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       #
@@ -45,7 +45,7 @@ module Increase
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       #
@@ -60,7 +60,7 @@ module Increase
 
       # List Check Transfers
       #
-      # @param params [Increase::Models::CheckTransferListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CheckTransferListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Check Transfers to those that originated from the specified Account.
       #
@@ -76,7 +76,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::CheckTransfer>]
       #
@@ -96,7 +96,7 @@ module Increase
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer to approve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       #
@@ -113,7 +113,7 @@ module Increase
       #
       # @param check_transfer_id [String] The identifier of the pending Check Transfer to cancel.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       #
@@ -130,11 +130,11 @@ module Increase
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer.
       #
-      # @param params [Increase::Models::CheckTransferStopPaymentParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CheckTransferStopPaymentParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason] :reason The reason why this transfer should be stopped.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckTransfer]
       #

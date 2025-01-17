@@ -7,7 +7,7 @@ module Increase
       #
       # @param digital_wallet_token_id [String] The identifier of the Digital Wallet Token.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::DigitalWalletToken]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Digital Wallet Tokens
       #
-      # @param params [Increase::Models::DigitalWalletTokenListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::DigitalWalletTokenListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :card_id Filter Digital Wallet Tokens to ones belonging to the specified Card.
       #
@@ -33,7 +33,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::DigitalWalletToken>]
       #

@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # physical_card => {
     #   id: String,
@@ -116,7 +115,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # cardholder => {
       #   first_name: String,
@@ -149,7 +147,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # shipment => {
       #   address: Increase::Models::PhysicalCard::Shipment::Address,
@@ -199,7 +196,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # address => {
         #   city: String,
@@ -278,7 +274,6 @@ module Increase
         # The shipping method.
         #
         # @example
-        #
         # ```ruby
         # case method
         # in :usps
@@ -305,7 +300,6 @@ module Increase
         # The status of this shipment.
         #
         # @example
-        #
         # ```ruby
         # case status
         # in :pending
@@ -348,7 +342,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # tracking => {
         #   number: String,
@@ -404,7 +397,6 @@ module Increase
       # The status of the Physical Card.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active
@@ -431,7 +423,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `physical_card`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :physical_card

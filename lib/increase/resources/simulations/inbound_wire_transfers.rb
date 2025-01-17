@@ -6,7 +6,7 @@ module Increase
       class InboundWireTransfers
         # Simulates an [Inbound Wire Transfer](#inbound-wire-transfers) to your account.
         #
-        # @param params [Increase::Models::Simulations::InboundWireTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::InboundWireTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :account_number_id The identifier of the Account Number the inbound Wire Transfer is for.
         #
@@ -57,7 +57,7 @@ module Increase
         #   @option params [String] :sender_reference The sending bank will set sender_reference in production. You can simulate any
         #     value here.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundWireTransfer]
         #

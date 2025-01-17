@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # bookkeeping_entry_set => {
     #   id: String,
@@ -85,7 +84,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # entry => {
       #   id: String,
@@ -127,7 +125,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `bookkeeping_entry_set`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :bookkeeping_entry_set

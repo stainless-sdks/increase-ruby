@@ -5,7 +5,7 @@ module Increase
     class Accounts
       # Create an Account
       #
-      # @param params [Increase::Models::AccountCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :name The name you choose for the Account.
       #
@@ -17,7 +17,7 @@ module Increase
       #   @option params [String] :program_id The identifier for the Program that this Account falls under. Required if you
       #     operate more than one Program.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Account]
       #
@@ -36,7 +36,7 @@ module Increase
       #
       # @param account_id [String] The identifier of the Account to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Account]
       #
@@ -53,11 +53,11 @@ module Increase
       #
       # @param account_id [String] The identifier of the Account to update.
       #
-      # @param params [Increase::Models::AccountUpdateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :name The new name of the Account.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Account]
       #
@@ -74,7 +74,7 @@ module Increase
 
       # List Accounts
       #
-      # @param params [Increase::Models::AccountListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::AccountListParams::CreatedAt] :created_at
       #
@@ -96,7 +96,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::AccountListParams::Status] :status Filter Accounts for those with the specified status.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Account>]
       #
@@ -116,11 +116,11 @@ module Increase
       #
       # @param account_id [String] The identifier of the Account to retrieve.
       #
-      # @param params [Increase::Models::AccountBalanceParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountBalanceParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Time] :at_time The moment to query the balance at. If not set, returns the current balances.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::BalanceLookup]
       #
@@ -139,7 +139,7 @@ module Increase
       #
       # @param account_id [String] The identifier of the Account to close. The account must have a zero balance.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Account]
       #

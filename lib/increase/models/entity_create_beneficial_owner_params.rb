@@ -18,7 +18,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # beneficial_owner => {
       #   individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
@@ -66,7 +65,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # individual => {
         #   address: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
@@ -131,7 +129,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # address => {
           #   city: String,
@@ -193,7 +190,6 @@ module Increase
           end
 
           # @example
-          #
           # ```ruby
           # identification => {
           #   method_: enum: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method,
@@ -265,7 +261,6 @@ module Increase
             # A method that can be used to verify the individual's identity.
             #
             # @example
-            #
             # ```ruby
             # case method
             # in :social_security_number
@@ -300,7 +295,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # drivers_license => {
             #   expiration_date: Date,
@@ -352,7 +346,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # other => {
             #   country: String,
@@ -415,7 +408,6 @@ module Increase
             end
 
             # @example
-            #
             # ```ruby
             # passport => {
             #   country: String,
@@ -460,7 +452,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # case prong
         # in :ownership

@@ -31,7 +31,6 @@ module Increase
         # The reason for the notification of change.
         #
         # @example
-        #
         # ```ruby
         # case change_code
         # in :incorrect_account_number

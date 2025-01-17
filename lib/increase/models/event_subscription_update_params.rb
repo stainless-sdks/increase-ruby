@@ -19,7 +19,6 @@ module Increase
       # The status to update the Event Subscription with.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active

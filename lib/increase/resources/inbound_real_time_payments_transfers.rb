@@ -7,7 +7,7 @@ module Increase
       #
       # @param inbound_real_time_payments_transfer_id [String] The identifier of the Inbound Real-Time Payments Transfer to get details for.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundRealTimePaymentsTransfer]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Inbound Real-Time Payments Transfers
       #
-      # @param params [Increase::Models::InboundRealTimePaymentsTransferListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::InboundRealTimePaymentsTransferListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Inbound Real-Time Payments Transfers to those belonging to the specified
       #     Account.
@@ -37,7 +37,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::InboundRealTimePaymentsTransfer>]
       #

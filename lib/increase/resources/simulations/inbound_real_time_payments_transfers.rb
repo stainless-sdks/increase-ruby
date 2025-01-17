@@ -8,7 +8,7 @@ module Increase
         #   [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
         #   your account. Real-Time Payments are a beta feature.
         #
-        # @param params [Increase::Models::Simulations::InboundRealTimePaymentsTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::InboundRealTimePaymentsTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :account_number_id The identifier of the Account Number the inbound Real-Time Payments Transfer is
         #     for.
@@ -25,7 +25,7 @@ module Increase
         #
         #   @option params [String] :request_for_payment_id The identifier of a pending Request for Payment that this transfer will fulfill.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::InboundRealTimePaymentsTransfer]
         #

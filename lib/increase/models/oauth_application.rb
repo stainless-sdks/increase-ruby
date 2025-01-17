@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # oauth_application => {
     #   id: String,
@@ -88,7 +87,6 @@ module Increase
       # Whether the application is active.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active
@@ -110,7 +108,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `oauth_application`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :oauth_application

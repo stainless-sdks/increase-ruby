@@ -7,7 +7,7 @@ module Increase
       #
       # @param inbound_mail_item_id [String] The identifier of the Inbound Mail Item to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundMailItem]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Inbound Mail Items
       #
-      # @param params [Increase::Models::InboundMailItemListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::InboundMailItemListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::InboundMailItemListParams::CreatedAt] :created_at
       #
@@ -33,7 +33,7 @@ module Increase
       #
       #   @option params [String] :lockbox_id Filter Inbound Mail Items to ones sent to the provided Lockbox.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::InboundMailItem>]
       #

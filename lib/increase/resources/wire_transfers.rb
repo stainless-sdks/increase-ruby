@@ -5,7 +5,7 @@ module Increase
     class WireTransfers
       # Create a Wire Transfer
       #
-      # @param params [Increase::Models::WireTransferCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::WireTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id The identifier for the account that will send the transfer.
       #
@@ -45,7 +45,7 @@ module Increase
       #
       #   @option params [String] :source_account_number_id The ID of an Account Number that will be passed to the wire's recipient
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireTransfer]
       #
@@ -64,7 +64,7 @@ module Increase
       #
       # @param wire_transfer_id [String] The identifier of the Wire Transfer.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireTransfer]
       #
@@ -79,7 +79,7 @@ module Increase
 
       # List Wire Transfers
       #
-      # @param params [Increase::Models::WireTransferListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::WireTransferListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Wire Transfers to those belonging to the specified Account.
       #
@@ -97,7 +97,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::WireTransfer>]
       #
@@ -117,7 +117,7 @@ module Increase
       #
       # @param wire_transfer_id [String] The identifier of the Wire Transfer to approve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireTransfer]
       #
@@ -134,7 +134,7 @@ module Increase
       #
       # @param wire_transfer_id [String] The identifier of the pending Wire Transfer to cancel.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::WireTransfer]
       #

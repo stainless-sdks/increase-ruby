@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # document => {
     #   id: String,
@@ -75,7 +74,6 @@ module Increase
       # The type of document.
       #
       # @example
-      #
       # ```ruby
       # case category
       # in :form_1099_int
@@ -102,7 +100,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `document`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :document

@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # wire_drawdown_request => {
     #   id: String,
@@ -218,7 +217,6 @@ module Increase
       # The lifecycle status of the drawdown request.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_submission
@@ -248,7 +246,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # submission => {
       #   input_message_accountability_data: String
@@ -276,7 +273,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `wire_drawdown_request`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :wire_drawdown_request

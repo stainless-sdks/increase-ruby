@@ -5,7 +5,7 @@ module Increase
     class CheckDeposits
       # Create a Check Deposit
       #
-      # @param params [Increase::Models::CheckDepositCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CheckDepositCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id The identifier for the Account to deposit the check in.
       #
@@ -17,7 +17,7 @@ module Increase
       #
       #   @option params [String] :description The description you choose to give the Check Deposit, for display purposes only.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckDeposit]
       #
@@ -36,7 +36,7 @@ module Increase
       #
       # @param check_deposit_id [String] The identifier of the Check Deposit to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::CheckDeposit]
       #
@@ -51,7 +51,7 @@ module Increase
 
       # List Check Deposits
       #
-      # @param params [Increase::Models::CheckDepositListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CheckDepositListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Check Deposits to those belonging to the specified Account.
       #
@@ -67,7 +67,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::CheckDeposit>]
       #

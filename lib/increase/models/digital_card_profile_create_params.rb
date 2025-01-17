@@ -94,7 +94,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # text_color => {
       #   blue: Integer,

@@ -68,7 +68,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # card_authentication => {
       #   decision: enum: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision
@@ -95,7 +94,6 @@ module Increase
         # Whether the card authentication attempt should be approved or declined.
         #
         # @example
-        #
         # ```ruby
         # case decision
         # in :approve
@@ -121,7 +119,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # card_authentication_challenge => {
       #   result: enum: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result
@@ -151,7 +148,6 @@ module Increase
         # Whether the card authentication challenge was successfully delivered to the cardholder.
         #
         # @example
-        #
         # ```ruby
         # case result
         # in :success
@@ -172,7 +168,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # card_authorization => {
       #   decision: enum: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision,
@@ -210,7 +205,6 @@ module Increase
         # Whether the card authorization should be approved or declined.
         #
         # @example
-        #
         # ```ruby
         # case decision
         # in :approve
@@ -232,7 +226,6 @@ module Increase
         # The reason the card authorization was declined. This translates to a specific decline code that is sent to the card network.
         #
         # @example
-        #
         # ```ruby
         # case decline_reason
         # in :insufficient_funds
@@ -273,7 +266,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # digital_wallet_authentication => {
       #   result: enum: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result,
@@ -311,7 +303,6 @@ module Increase
         # Whether your application was able to deliver the one-time passcode.
         #
         # @example
-        #
         # ```ruby
         # case result
         # in :success
@@ -331,7 +322,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # success => {
         #   email: String,
@@ -364,7 +354,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # digital_wallet_token => {
       #   approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
@@ -402,7 +391,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # approval => {
         #   email: String,
@@ -438,7 +426,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # decline => {
         #   reason: String

@@ -19,7 +19,6 @@ module Increase
       # The reason to return the Inbound Check Deposit.
       #
       # @example
-      #
       # ```ruby
       # case reason
       # in :altered_or_fictitious

@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # account_transfer => {
     #   id: String,
@@ -191,7 +190,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # approval => {
       #   approved_at: Time,
@@ -227,7 +225,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # cancellation => {
       #   canceled_at: Time,
@@ -263,7 +260,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # created_by => {
       #   api_key: Increase::Models::AccountTransfer::CreatedBy::APIKey,
@@ -313,7 +309,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # api_key => {
         #   description: String
@@ -339,7 +334,6 @@ module Increase
         # The type of object that created this transfer.
         #
         # @example
-        #
         # ```ruby
         # case category
         # in :api_key
@@ -364,7 +358,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # oauth_application => {
         #   name: String
@@ -388,7 +381,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # user => {
         #   email: String
@@ -415,7 +407,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
       #
       # @example
-      #
       # ```ruby
       # case currency
       # in :CAD
@@ -457,7 +448,6 @@ module Increase
       # The transfer's network.
       #
       # @example
-      #
       # ```ruby
       # case network
       # in :account
@@ -473,7 +463,6 @@ module Increase
       # The lifecycle status of the transfer.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_approval
@@ -500,7 +489,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `account_transfer`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :account_transfer

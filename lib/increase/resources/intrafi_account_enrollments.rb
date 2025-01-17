@@ -5,13 +5,13 @@ module Increase
     class IntrafiAccountEnrollments
       # Enroll an account in the IntraFi deposit sweep network
       #
-      # @param params [Increase::Models::IntrafiAccountEnrollmentCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::IntrafiAccountEnrollmentCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id The identifier for the account to be added to IntraFi.
       #
       #   @option params [String] :email_address The contact email for the account owner, to be shared with IntraFi.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
       #
@@ -30,7 +30,7 @@ module Increase
       #
       # @param intrafi_account_enrollment_id [String] The identifier of the IntraFi Account Enrollment to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
       #
@@ -45,7 +45,7 @@ module Increase
 
       # List IntraFi Account Enrollments
       #
-      # @param params [Increase::Models::IntrafiAccountEnrollmentListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::IntrafiAccountEnrollmentListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter IntraFi Account Enrollments to the one belonging to an account.
       #
@@ -61,7 +61,7 @@ module Increase
       #
       #   @option params [Increase::Models::IntrafiAccountEnrollmentListParams::Status] :status
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::IntrafiAccountEnrollment>]
       #
@@ -81,7 +81,7 @@ module Increase
       #
       # @param intrafi_account_enrollment_id [String] The Identifier of the IntraFi Account Enrollment to remove from IntraFi.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
       #

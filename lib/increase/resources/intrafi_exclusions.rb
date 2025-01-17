@@ -5,13 +5,13 @@ module Increase
     class IntrafiExclusions
       # Create an IntraFi Exclusion
       #
-      # @param params [Increase::Models::IntrafiExclusionCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::IntrafiExclusionCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :bank_name The name of the financial institution to be excluded.
       #
       #   @option params [String] :entity_id The identifier of the Entity whose deposits will be excluded.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::IntrafiExclusion]
       #
@@ -30,7 +30,7 @@ module Increase
       #
       # @param intrafi_exclusion_id [String] The identifier of the IntraFi Exclusion to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::IntrafiExclusion]
       #
@@ -45,7 +45,7 @@ module Increase
 
       # List IntraFi Exclusions
       #
-      # @param params [Increase::Models::IntrafiExclusionListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::IntrafiExclusionListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -59,7 +59,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::IntrafiExclusion>]
       #
@@ -81,7 +81,7 @@ module Increase
       #   business days for an exclusion removal to be processed. Removing an exclusion
       #   does not guarantee that funds will be swept to the previously-excluded bank.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::IntrafiExclusion]
       #

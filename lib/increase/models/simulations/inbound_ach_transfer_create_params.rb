@@ -121,7 +121,6 @@ module Increase
         # The standard entry class code for the transfer.
         #
         # @example
-        #
         # ```ruby
         # case standard_entry_class_code
         # in :corporate_credit_or_debit

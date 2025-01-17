@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # inbound_ach_transfer => {
     #   id: String,
@@ -272,7 +271,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # acceptance => {
       #   accepted_at: Time,
@@ -305,7 +303,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # addenda => {
       #   category: enum: Increase::Models::InboundACHTransfer::Addenda::Category,
@@ -339,7 +336,6 @@ module Increase
         # The type of addendum.
         #
         # @example
-        #
         # ```ruby
         # case category
         # in :freeform
@@ -354,7 +350,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # freeform => {
         #   entries: -> { Increase::ArrayOf[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry] === _1 }
@@ -378,7 +373,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # entry => {
           #   payment_related_information: String
@@ -402,7 +396,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # decline => {
       #   declined_at: Time,
@@ -445,7 +438,6 @@ module Increase
         # The reason for the transfer decline.
         #
         # @example
-        #
         # ```ruby
         # case reason
         # in :ach_route_canceled
@@ -521,7 +513,6 @@ module Increase
       # The direction of the transfer.
       #
       # @example
-      #
       # ```ruby
       # case direction
       # in :credit
@@ -543,7 +534,6 @@ module Increase
       # The settlement schedule the transfer is expected to follow.
       #
       # @example
-      #
       # ```ruby
       # case expected_settlement_schedule
       # in :same_day
@@ -563,7 +553,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # international_addenda => {
       #   destination_country_code: String,
@@ -922,7 +911,6 @@ module Increase
         # A description of how the foreign exchange rate was calculated.
         #
         # @example
-        #
         # ```ruby
         # case foreign_exchange_indicator
         # in :fixed_to_variable
@@ -949,7 +937,6 @@ module Increase
         # An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
         #
         # @example
-        #
         # ```ruby
         # case foreign_exchange_reference_indicator
         # in :foreign_exchange_rate
@@ -976,7 +963,6 @@ module Increase
         # The type of transfer. Set by the originator.
         #
         # @example
-        #
         # ```ruby
         # case international_transaction_type_code
         # in :annuity
@@ -1060,7 +1046,6 @@ module Increase
         # An instruction of how to interpret the `originating_depository_financial_institution_id` field for this Transaction.
         #
         # @example
-        #
         # ```ruby
         # case originating_depository_financial_institution_id_qualifier
         # in :national_clearing_system_number
@@ -1087,7 +1072,6 @@ module Increase
         # An instruction of how to interpret the `receiving_depository_financial_institution_id` field for this Transaction.
         #
         # @example
-        #
         # ```ruby
         # case receiving_depository_financial_institution_id_qualifier
         # in :national_clearing_system_number
@@ -1113,7 +1097,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # notification_of_change => {
       #   updated_account_number: String,
@@ -1149,7 +1132,6 @@ module Increase
       # The Standard Entry Class (SEC) code of the transfer.
       #
       # @example
-      #
       # ```ruby
       # case standard_entry_class_code
       # in :corporate_credit_or_debit
@@ -1221,7 +1203,6 @@ module Increase
       # The status of the transfer.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending
@@ -1251,7 +1232,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # transfer_return => {
       #   reason: enum: Increase::Models::InboundACHTransfer::TransferReturn::Reason,
@@ -1294,7 +1274,6 @@ module Increase
         # The reason for the transfer return.
         #
         # @example
-        #
         # ```ruby
         # case reason
         # in :insufficient_funds
@@ -1349,7 +1328,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `inbound_ach_transfer`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :inbound_ach_transfer

@@ -7,7 +7,7 @@ module Increase
       #
       # @param document_id [String] The identifier of the Document to retrieve.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::Document]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Documents
       #
-      # @param params [Increase::Models::DocumentListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::DocumentListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Increase::Models::DocumentListParams::Category] :category
       #
@@ -35,7 +35,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::Document>]
       #

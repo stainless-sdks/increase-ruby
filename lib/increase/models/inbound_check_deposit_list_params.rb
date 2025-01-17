@@ -50,7 +50,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # created_at => {
       #   after: Time,

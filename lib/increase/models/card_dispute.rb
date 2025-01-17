@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # card_dispute => {
     #   id: String,
@@ -144,7 +143,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # acceptance => {
       #   accepted_at: Time,
@@ -189,7 +187,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # loss => {
       #   card_dispute_id: String,
@@ -243,7 +240,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # rejection => {
       #   card_dispute_id: String,
@@ -289,7 +285,6 @@ module Increase
       # The results of the Dispute investigation.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_reviewing
@@ -331,7 +326,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `card_dispute`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :card_dispute
@@ -345,7 +339,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # win => {
       #   card_dispute_id: String,

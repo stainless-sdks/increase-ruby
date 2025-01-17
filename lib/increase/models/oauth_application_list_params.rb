@@ -40,7 +40,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # created_at => {
       #   after: Time,
@@ -93,7 +92,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # status => {
       #   in_: -> { Increase::ArrayOf[enum: Increase::Models::OAuthApplicationListParams::Status::In] === _1 }
@@ -117,7 +115,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # case in
         # in :active

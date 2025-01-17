@@ -42,7 +42,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # inbound_ach => {
       #   debit_status: enum: Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus
@@ -72,7 +71,6 @@ module Increase
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active. If you do not specify this field, the default is `allowed`.
         #
         # @example
-        #
         # ```ruby
         # case debit_status
         # in :allowed
@@ -93,7 +91,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # inbound_checks => {
       #   status: enum: Increase::Models::AccountNumberCreateParams::InboundChecks::Status
@@ -120,7 +117,6 @@ module Increase
         # How Increase should process checks with this account number printed on them. If you do not specify this field, the default is `check_transfers_only`.
         #
         # @example
-        #
         # ```ruby
         # case status
         # in :allowed

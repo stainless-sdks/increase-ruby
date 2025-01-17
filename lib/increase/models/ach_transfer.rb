@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # ach_transfer => {
     #   id: String,
@@ -373,7 +372,6 @@ module Increase
       # def initialize: (Hash | Increase::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # acknowledgement => {
       #   acknowledged_at: String
@@ -400,7 +398,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # addenda => {
       #   category: enum: Increase::Models::ACHTransfer::Addenda::Category,
@@ -446,7 +443,6 @@ module Increase
         # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
         #
         # @example
-        #
         # ```ruby
         # case category
         # in :freeform
@@ -471,7 +467,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # freeform => {
         #   entries: -> { Increase::ArrayOf[Increase::Models::ACHTransfer::Addenda::Freeform::Entry] === _1 }
@@ -494,7 +489,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # entry => {
           #   payment_related_information: String
@@ -517,7 +511,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # payment_order_remittance_advice => {
         #   invoices: -> { Increase::ArrayOf[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice] === _1 }
@@ -544,7 +537,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
 
           # @example
-          #
           # ```ruby
           # invoice => {
           #   invoice_number: String,
@@ -578,7 +570,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # approval => {
       #   approved_at: Time,
@@ -614,7 +605,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # cancellation => {
       #   canceled_at: Time,
@@ -650,7 +640,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # created_by => {
       #   api_key: Increase::Models::ACHTransfer::CreatedBy::APIKey,
@@ -700,7 +689,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # api_key => {
         #   description: String
@@ -726,7 +714,6 @@ module Increase
         # The type of object that created this transfer.
         #
         # @example
-        #
         # ```ruby
         # case category
         # in :api_key
@@ -751,7 +738,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # oauth_application => {
         #   name: String
@@ -775,7 +761,6 @@ module Increase
         end
 
         # @example
-        #
         # ```ruby
         # user => {
         #   email: String
@@ -802,7 +787,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
       #
       # @example
-      #
       # ```ruby
       # case currency
       # in :CAD
@@ -844,7 +828,6 @@ module Increase
       # The type of entity that owns the account to which the ACH Transfer is being sent.
       #
       # @example
-      #
       # ```ruby
       # case destination_account_holder
       # in :business
@@ -871,7 +854,6 @@ module Increase
       # The type of the account to which the transfer will be sent.
       #
       # @example
-      #
       # ```ruby
       # case funding
       # in :checking
@@ -891,7 +873,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # inbound_funds_hold => {
       #   id: String,
@@ -1013,7 +994,6 @@ module Increase
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
         #
         # @example
-        #
         # ```ruby
         # case currency
         # in :CAD
@@ -1055,7 +1035,6 @@ module Increase
         # The status of the hold.
         #
         # @example
-        #
         # ```ruby
         # case status
         # in :held
@@ -1077,7 +1056,6 @@ module Increase
         # A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :inbound_funds_hold
@@ -1094,7 +1072,6 @@ module Increase
       # The transfer's network.
       #
       # @example
-      #
       # ```ruby
       # case network
       # in :ach
@@ -1108,7 +1085,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # notifications_of_change => {
       #   change_code: enum: Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode,
@@ -1155,7 +1131,6 @@ module Increase
         # The required type of change that is being signaled by the receiving financial institution.
         #
         # @example
-        #
         # ```ruby
         # case change_code
         # in :incorrect_account_number
@@ -1235,7 +1210,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # preferred_effective_date => {
       #   date: Date,
@@ -1274,7 +1248,6 @@ module Increase
         # A schedule by which Increase will choose an effective date for the transfer.
         #
         # @example
-        #
         # ```ruby
         # case settlement_schedule
         # in :same_day
@@ -1298,7 +1271,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # return => {
       #   created_at: Time,
@@ -1382,7 +1354,6 @@ module Increase
         # Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
         #
         # @example
-        #
         # ```ruby
         # case return_reason_code
         # in :insufficient_fund
@@ -1615,7 +1586,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # settlement => {
       #   settled_at: Time
@@ -1643,7 +1613,6 @@ module Increase
       # The Standard Entry Class (SEC) code to use for the transfer.
       #
       # @example
-      #
       # ```ruby
       # case standard_entry_class_code
       # in :corporate_credit_or_debit
@@ -1675,7 +1644,6 @@ module Increase
       # The lifecycle status of the transfer.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_approval
@@ -1724,7 +1692,6 @@ module Increase
       end
 
       # @example
-      #
       # ```ruby
       # submission => {
       #   effective_date: Date,
@@ -1811,7 +1778,6 @@ module Increase
         # The settlement schedule the transfer is expected to follow. This expectation takes into account the `effective_date`, `submitted_at`, and the amount of the transfer.
         #
         # @example
-        #
         # ```ruby
         # case expected_settlement_schedule
         # in :same_day
@@ -1834,7 +1800,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `ach_transfer`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :ach_transfer

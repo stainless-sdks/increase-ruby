@@ -12,7 +12,7 @@ module Increase
         #   [Digital Wallet Token](#digital-wallet-tokens) id to simulate the two different
         #   ways purchases can be made.
         #
-        # @param params [Increase::Models::Simulations::CardAuthorizationCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::CardAuthorizationCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [Integer] :amount The authorization amount in cents.
         #
@@ -53,7 +53,7 @@ module Increase
         #   @option params [String] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card
         #     is transacting with.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Simulations::CardAuthorizationCreateResponse]
         #

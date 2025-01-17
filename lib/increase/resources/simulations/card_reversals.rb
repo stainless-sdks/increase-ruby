@@ -9,14 +9,14 @@ module Increase
         #   Marks the pending transaction as complete if the authorization is fully
         #   reversed.
         #
-        # @param params [Increase::Models::Simulations::CardReversalCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::CardReversalCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [String] :card_payment_id The identifier of the Card Payment to create a reversal on.
         #
         #   @option params [Integer] :amount The amount of the reversal in minor units in the card authorization's currency.
         #     This defaults to the authorization amount.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::CardPayment]
         #

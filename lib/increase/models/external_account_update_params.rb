@@ -43,7 +43,6 @@ module Increase
       # The type of entity that owns the External Account.
       #
       # @example
-      #
       # ```ruby
       # case account_holder
       # in :business
@@ -65,7 +64,6 @@ module Increase
       # The funding type of the External Account.
       #
       # @example
-      #
       # ```ruby
       # case funding
       # in :checking
@@ -92,7 +90,6 @@ module Increase
       # The status of the External Account.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :active

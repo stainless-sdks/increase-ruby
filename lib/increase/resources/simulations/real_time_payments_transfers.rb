@@ -11,11 +11,11 @@ module Increase
         #
         # @param real_time_payments_transfer_id [String] The identifier of the Real-Time Payments Transfer you wish to complete.
         #
-        # @param params [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams, Hash{Symbol => Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams, Hash{Symbol=>Object}] Attributes to send in this request.
         #
         #   @option params [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection] :rejection If set, the simulation will reject the transfer.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::RealTimePaymentsTransfer]
         #

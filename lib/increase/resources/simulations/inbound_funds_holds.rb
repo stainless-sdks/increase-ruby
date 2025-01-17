@@ -9,7 +9,7 @@ module Increase
         #
         # @param inbound_funds_hold_id [String] The inbound funds hold to release.
         #
-        # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
         #
         # @return [Increase::Models::Simulations::InboundFundsHoldReleaseResponse]
         #

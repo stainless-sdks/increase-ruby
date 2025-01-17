@@ -3,7 +3,6 @@
 module Increase
   module Models
     # @example
-    #
     # ```ruby
     # proof_of_authorization_request_submission => {
     #   id: String,
@@ -189,7 +188,6 @@ module Increase
       # Status of the proof of authorization request submission.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :pending_review
@@ -226,7 +224,6 @@ module Increase
       # A constant representing the object's type. For this resource it will always be `proof_of_authorization_request_submission`.
       #
       # @example
-      #
       # ```ruby
       # case type
       # in :proof_of_authorization_request_submission

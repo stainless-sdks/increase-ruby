@@ -7,7 +7,7 @@ module Increase
       #
       # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to get details for.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundCheckDeposit]
       #
@@ -22,7 +22,7 @@ module Increase
 
       # List Inbound Check Deposits
       #
-      # @param params [Increase::Models::InboundCheckDepositListParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::InboundCheckDepositListParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :account_id Filter Inbound Check Deposits to those belonging to the specified Account.
       #
@@ -36,7 +36,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Page<Increase::Models::InboundCheckDeposit>]
       #
@@ -56,7 +56,7 @@ module Increase
       #
       # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to decline.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundCheckDeposit]
       #
@@ -73,11 +73,11 @@ module Increase
       #
       # @param inbound_check_deposit_id [String] The identifier of the Inbound Check Deposit to return.
       #
-      # @param params [Increase::Models::InboundCheckDepositReturnParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Increase::Models::InboundCheckDepositReturnParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [Symbol, Increase::Models::InboundCheckDepositReturnParams::Reason] :reason The reason to return the Inbound Check Deposit.
       #
-      # @param opts [Hash{Symbol => Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [Increase::Models::InboundCheckDeposit]
       #
