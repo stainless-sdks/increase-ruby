@@ -9,17 +9,25 @@ module Increase
       #   @return [String]
       required :routing_number, String
 
-      # @!attribute cursor
+      # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :cursor, String
 
-      # @!attribute limit
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :cursor
+
+      # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100 objects.
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
+
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
 
       # @!parse
       #   # @param routing_number [String] Filter financial institutions by routing number.

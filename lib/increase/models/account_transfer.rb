@@ -36,13 +36,13 @@ module Increase
       #   If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
       #
       #   @return [Increase::Models::AccountTransfer::Approval, nil]
-      required :approval, -> { Increase::Models::AccountTransfer::Approval }
+      required :approval, -> { Increase::Models::AccountTransfer::Approval }, nil?: true
 
       # @!attribute cancellation
       #   If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
       #
       #   @return [Increase::Models::AccountTransfer::Cancellation, nil]
-      required :cancellation, -> { Increase::Models::AccountTransfer::Cancellation }
+      required :cancellation, -> { Increase::Models::AccountTransfer::Cancellation }, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
@@ -54,7 +54,7 @@ module Increase
       #   What object created the transfer, either via the API or the dashboard.
       #
       #   @return [Increase::Models::AccountTransfer::CreatedBy, nil]
-      required :created_by, -> { Increase::Models::AccountTransfer::CreatedBy }
+      required :created_by, -> { Increase::Models::AccountTransfer::CreatedBy }, nil?: true
 
       # @!attribute currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
@@ -78,13 +78,13 @@ module Increase
       #   The ID for the transaction receiving the transfer.
       #
       #   @return [String, nil]
-      required :destination_transaction_id, String
+      required :destination_transaction_id, String, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute network
       #   The transfer's network.
@@ -96,7 +96,7 @@ module Increase
       #   The ID for the pending transaction representing the transfer. A pending transaction is created when the transfer [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals) by someone else in your organization.
       #
       #   @return [String, nil]
-      required :pending_transaction_id, String
+      required :pending_transaction_id, String, nil?: true
 
       # @!attribute status
       #   The lifecycle status of the transfer.
@@ -108,7 +108,7 @@ module Increase
       #   The ID for the transaction funding the transfer.
       #
       #   @return [String, nil]
-      required :transaction_id, String
+      required :transaction_id, String, nil?: true
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `account_transfer`.
@@ -207,7 +207,7 @@ module Increase
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
         #
         #   @return [String, nil]
-        required :approved_by, String
+        required :approved_by, String, nil?: true
 
         # @!parse
         #   # If your account requires approvals for transfers and the transfer was approved,
@@ -242,7 +242,7 @@ module Increase
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
         #
         #   @return [String, nil]
-        required :canceled_by, String
+        required :canceled_by, String, nil?: true
 
         # @!parse
         #   # If your account requires approvals for transfers and the transfer was not
@@ -273,7 +273,7 @@ module Increase
         #   If present, details about the API key that created the transfer.
         #
         #   @return [Increase::Models::AccountTransfer::CreatedBy::APIKey, nil]
-        required :api_key, -> { Increase::Models::AccountTransfer::CreatedBy::APIKey }
+        required :api_key, -> { Increase::Models::AccountTransfer::CreatedBy::APIKey }, nil?: true
 
         # @!attribute category
         #   The type of object that created this transfer.
@@ -285,13 +285,15 @@ module Increase
         #   If present, details about the OAuth Application that created the transfer.
         #
         #   @return [Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, nil]
-        required :oauth_application, -> { Increase::Models::AccountTransfer::CreatedBy::OAuthApplication }
+        required :oauth_application,
+                 -> { Increase::Models::AccountTransfer::CreatedBy::OAuthApplication },
+                 nil?: true
 
         # @!attribute user
         #   If present, details about the User that created the transfer.
         #
         #   @return [Increase::Models::AccountTransfer::CreatedBy::User, nil]
-        required :user, -> { Increase::Models::AccountTransfer::CreatedBy::User }
+        required :user, -> { Increase::Models::AccountTransfer::CreatedBy::User }, nil?: true
 
         # @!parse
         #   # What object created the transfer, either via the API or the dashboard.
@@ -319,7 +321,7 @@ module Increase
           #   The description set for the API key when it was created.
           #
           #   @return [String, nil]
-          required :description, String
+          required :description, String, nil?: true
 
           # @!parse
           #   # If present, details about the API key that created the transfer.

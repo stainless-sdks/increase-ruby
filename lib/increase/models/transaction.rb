@@ -54,13 +54,13 @@ module Increase
       #   The identifier for the route this Transaction came through. Routes are things like cards and ACH details.
       #
       #   @return [String, nil]
-      required :route_id, String
+      required :route_id, String, nil?: true
 
       # @!attribute route_type
       #   The type of the route this Transaction came through.
       #
       #   @return [Symbol, Increase::Models::Transaction::RouteType, nil]
-      required :route_type, enum: -> { Increase::Models::Transaction::RouteType }
+      required :route_type, enum: -> { Increase::Models::Transaction::RouteType }, nil?: true
 
       # @!attribute source
       #   This is an object giving more details on the network-level event that caused the Transaction. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
@@ -211,61 +211,74 @@ module Increase
         #
         #   @return [Increase::Models::Transaction::Source::AccountTransferIntention, nil]
         required :account_transfer_intention,
-                 -> { Increase::Models::Transaction::Source::AccountTransferIntention }
+                 -> { Increase::Models::Transaction::Source::AccountTransferIntention },
+                 nil?: true
 
         # @!attribute ach_transfer_intention
         #   An ACH Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_intention`.
         #
         #   @return [Increase::Models::Transaction::Source::ACHTransferIntention, nil]
-        required :ach_transfer_intention, -> { Increase::Models::Transaction::Source::ACHTransferIntention }
+        required :ach_transfer_intention,
+                 -> { Increase::Models::Transaction::Source::ACHTransferIntention },
+                 nil?: true
 
         # @!attribute ach_transfer_rejection
         #   An ACH Transfer Rejection object. This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_rejection`.
         #
         #   @return [Increase::Models::Transaction::Source::ACHTransferRejection, nil]
-        required :ach_transfer_rejection, -> { Increase::Models::Transaction::Source::ACHTransferRejection }
+        required :ach_transfer_rejection,
+                 -> { Increase::Models::Transaction::Source::ACHTransferRejection },
+                 nil?: true
 
         # @!attribute ach_transfer_return
         #   An ACH Transfer Return object. This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_return`.
         #
         #   @return [Increase::Models::Transaction::Source::ACHTransferReturn, nil]
-        required :ach_transfer_return, -> { Increase::Models::Transaction::Source::ACHTransferReturn }
+        required :ach_transfer_return,
+                 -> {
+                   Increase::Models::Transaction::Source::ACHTransferReturn
+                 },
+                 nil?: true
 
         # @!attribute card_dispute_acceptance
         #   A Card Dispute Acceptance object. This field will be present in the JSON response if and only if `category` is equal to `card_dispute_acceptance`.
         #
         #   @return [Increase::Models::Transaction::Source::CardDisputeAcceptance, nil]
-        required :card_dispute_acceptance, -> { Increase::Models::Transaction::Source::CardDisputeAcceptance }
+        required :card_dispute_acceptance,
+                 -> { Increase::Models::Transaction::Source::CardDisputeAcceptance },
+                 nil?: true
 
         # @!attribute card_dispute_loss
         #   A Card Dispute Loss object. This field will be present in the JSON response if and only if `category` is equal to `card_dispute_loss`.
         #
         #   @return [Increase::Models::Transaction::Source::CardDisputeLoss, nil]
-        required :card_dispute_loss, -> { Increase::Models::Transaction::Source::CardDisputeLoss }
+        required :card_dispute_loss, -> { Increase::Models::Transaction::Source::CardDisputeLoss }, nil?: true
 
         # @!attribute card_refund
         #   A Card Refund object. This field will be present in the JSON response if and only if `category` is equal to `card_refund`.
         #
         #   @return [Increase::Models::Transaction::Source::CardRefund, nil]
-        required :card_refund, -> { Increase::Models::Transaction::Source::CardRefund }
+        required :card_refund, -> { Increase::Models::Transaction::Source::CardRefund }, nil?: true
 
         # @!attribute card_revenue_payment
         #   A Card Revenue Payment object. This field will be present in the JSON response if and only if `category` is equal to `card_revenue_payment`.
         #
         #   @return [Increase::Models::Transaction::Source::CardRevenuePayment, nil]
-        required :card_revenue_payment, -> { Increase::Models::Transaction::Source::CardRevenuePayment }
+        required :card_revenue_payment,
+                 -> { Increase::Models::Transaction::Source::CardRevenuePayment },
+                 nil?: true
 
         # @!attribute card_settlement
         #   A Card Settlement object. This field will be present in the JSON response if and only if `category` is equal to `card_settlement`.
         #
         #   @return [Increase::Models::Transaction::Source::CardSettlement, nil]
-        required :card_settlement, -> { Increase::Models::Transaction::Source::CardSettlement }
+        required :card_settlement, -> { Increase::Models::Transaction::Source::CardSettlement }, nil?: true
 
         # @!attribute cashback_payment
         #   A Cashback Payment object. This field will be present in the JSON response if and only if `category` is equal to `cashback_payment`.
         #
         #   @return [Increase::Models::Transaction::Source::CashbackPayment, nil]
-        required :cashback_payment, -> { Increase::Models::Transaction::Source::CashbackPayment }
+        required :cashback_payment, -> { Increase::Models::Transaction::Source::CashbackPayment }, nil?: true
 
         # @!attribute category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
@@ -278,96 +291,110 @@ module Increase
         #
         #   @return [Increase::Models::Transaction::Source::CheckDepositAcceptance, nil]
         required :check_deposit_acceptance,
-                 -> {
-                   Increase::Models::Transaction::Source::CheckDepositAcceptance
-                 }
+                 -> { Increase::Models::Transaction::Source::CheckDepositAcceptance },
+                 nil?: true
 
         # @!attribute check_deposit_return
         #   A Check Deposit Return object. This field will be present in the JSON response if and only if `category` is equal to `check_deposit_return`.
         #
         #   @return [Increase::Models::Transaction::Source::CheckDepositReturn, nil]
-        required :check_deposit_return, -> { Increase::Models::Transaction::Source::CheckDepositReturn }
+        required :check_deposit_return,
+                 -> { Increase::Models::Transaction::Source::CheckDepositReturn },
+                 nil?: true
 
         # @!attribute check_transfer_deposit
         #   A Check Transfer Deposit object. This field will be present in the JSON response if and only if `category` is equal to `check_transfer_deposit`.
         #
         #   @return [Increase::Models::Transaction::Source::CheckTransferDeposit, nil]
-        required :check_transfer_deposit, -> { Increase::Models::Transaction::Source::CheckTransferDeposit }
+        required :check_transfer_deposit,
+                 -> { Increase::Models::Transaction::Source::CheckTransferDeposit },
+                 nil?: true
 
         # @!attribute fee_payment
         #   A Fee Payment object. This field will be present in the JSON response if and only if `category` is equal to `fee_payment`.
         #
         #   @return [Increase::Models::Transaction::Source::FeePayment, nil]
-        required :fee_payment, -> { Increase::Models::Transaction::Source::FeePayment }
+        required :fee_payment, -> { Increase::Models::Transaction::Source::FeePayment }, nil?: true
 
         # @!attribute inbound_ach_transfer
         #   An Inbound ACH Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `inbound_ach_transfer`.
         #
         #   @return [Increase::Models::Transaction::Source::InboundACHTransfer, nil]
-        required :inbound_ach_transfer, -> { Increase::Models::Transaction::Source::InboundACHTransfer }
+        required :inbound_ach_transfer,
+                 -> { Increase::Models::Transaction::Source::InboundACHTransfer },
+                 nil?: true
 
         # @!attribute inbound_real_time_payments_transfer_confirmation
         #   An Inbound Real-Time Payments Transfer Confirmation object. This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_confirmation`.
         #
         #   @return [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation, nil]
         required :inbound_real_time_payments_transfer_confirmation,
-                 -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation }
+                 -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation },
+                 nil?: true
 
         # @!attribute inbound_real_time_payments_transfer_decline
         #   An Inbound Real-Time Payments Transfer Decline object. This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_decline`.
         #
         #   @return [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline, nil]
         required :inbound_real_time_payments_transfer_decline,
-                 -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline }
+                 -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline },
+                 nil?: true
 
         # @!attribute inbound_wire_reversal
         #   An Inbound Wire Reversal object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_reversal`.
         #
         #   @return [Increase::Models::Transaction::Source::InboundWireReversal, nil]
-        required :inbound_wire_reversal, -> { Increase::Models::Transaction::Source::InboundWireReversal }
+        required :inbound_wire_reversal,
+                 -> { Increase::Models::Transaction::Source::InboundWireReversal },
+                 nil?: true
 
         # @!attribute inbound_wire_transfer
         #   An Inbound Wire Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_transfer`.
         #
         #   @return [Increase::Models::Transaction::Source::InboundWireTransfer, nil]
-        required :inbound_wire_transfer, -> { Increase::Models::Transaction::Source::InboundWireTransfer }
+        required :inbound_wire_transfer,
+                 -> { Increase::Models::Transaction::Source::InboundWireTransfer },
+                 nil?: true
 
         # @!attribute interest_payment
         #   An Interest Payment object. This field will be present in the JSON response if and only if `category` is equal to `interest_payment`.
         #
         #   @return [Increase::Models::Transaction::Source::InterestPayment, nil]
-        required :interest_payment, -> { Increase::Models::Transaction::Source::InterestPayment }
+        required :interest_payment, -> { Increase::Models::Transaction::Source::InterestPayment }, nil?: true
 
         # @!attribute internal_source
         #   An Internal Source object. This field will be present in the JSON response if and only if `category` is equal to `internal_source`.
         #
         #   @return [Increase::Models::Transaction::Source::InternalSource, nil]
-        required :internal_source, -> { Increase::Models::Transaction::Source::InternalSource }
+        required :internal_source, -> { Increase::Models::Transaction::Source::InternalSource }, nil?: true
 
         # @!attribute other
         #   If the category of this Transaction source is equal to `other`, this field will contain an empty object, otherwise it will contain null.
         #
         #   @return [Object, nil]
-        required :other, Increase::Unknown
+        required :other, Increase::Unknown, nil?: true
 
         # @!attribute real_time_payments_transfer_acknowledgement
         #   A Real-Time Payments Transfer Acknowledgement object. This field will be present in the JSON response if and only if `category` is equal to `real_time_payments_transfer_acknowledgement`.
         #
         #   @return [Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement, nil]
         required :real_time_payments_transfer_acknowledgement,
-                 -> { Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement }
+                 -> { Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement },
+                 nil?: true
 
         # @!attribute sample_funds
         #   A Sample Funds object. This field will be present in the JSON response if and only if `category` is equal to `sample_funds`.
         #
         #   @return [Increase::Models::Transaction::Source::SampleFunds, nil]
-        required :sample_funds, -> { Increase::Models::Transaction::Source::SampleFunds }
+        required :sample_funds, -> { Increase::Models::Transaction::Source::SampleFunds }, nil?: true
 
         # @!attribute wire_transfer_intention
         #   A Wire Transfer Intention object. This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_intention`.
         #
         #   @return [Increase::Models::Transaction::Source::WireTransferIntention, nil]
-        required :wire_transfer_intention, -> { Increase::Models::Transaction::Source::WireTransferIntention }
+        required :wire_transfer_intention,
+                 -> { Increase::Models::Transaction::Source::WireTransferIntention },
+                 nil?: true
 
         # @!parse
         #   # This is an object giving more details on the network-level event that caused the
@@ -1138,7 +1165,7 @@ module Increase
           #   Cashback debited for this transaction, if eligible. Cashback is paid out in aggregate, monthly.
           #
           #   @return [Increase::Models::Transaction::Source::CardRefund::Cashback, nil]
-          required :cashback, -> { Increase::Models::Transaction::Source::CardRefund::Cashback }
+          required :cashback, -> { Increase::Models::Transaction::Source::CardRefund::Cashback }, nil?: true
 
           # @!attribute currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
@@ -1150,7 +1177,11 @@ module Increase
           #   Interchange assessed as a part of this transaciton.
           #
           #   @return [Increase::Models::Transaction::Source::CardRefund::Interchange, nil]
-          required :interchange, -> { Increase::Models::Transaction::Source::CardRefund::Interchange }
+          required :interchange,
+                   -> {
+                     Increase::Models::Transaction::Source::CardRefund::Interchange
+                   },
+                   nil?: true
 
           # @!attribute merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
@@ -1186,13 +1217,13 @@ module Increase
           #   The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
           #
           #   @return [String, nil]
-          required :merchant_postal_code, String
+          required :merchant_postal_code, String, nil?: true
 
           # @!attribute merchant_state
           #   The state the merchant resides in.
           #
           #   @return [String, nil]
-          required :merchant_state, String
+          required :merchant_state, String, nil?: true
 
           # @!attribute network_identifiers
           #   Network-specific identifiers for this refund.
@@ -1218,9 +1249,8 @@ module Increase
           #
           #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails, nil]
           required :purchase_details,
-                   -> {
-                     Increase::Models::Transaction::Source::CardRefund::PurchaseDetails
-                   }
+                   -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails },
+                   nil?: true
 
           # @!attribute transaction_id
           #   The identifier of the Transaction associated with this Transaction.
@@ -1449,7 +1479,7 @@ module Increase
             #   The card network specific interchange code.
             #
             #   @return [String, nil]
-            required :code, String
+            required :code, String, nil?: true
 
             # @!attribute currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
@@ -1543,7 +1573,7 @@ module Increase
             #   A globally unique transaction identifier provided by the card network, used across multiple life-cycle requests.
             #
             #   @return [String, nil]
-            required :transaction_id, String
+            required :transaction_id, String, nil?: true
 
             # @!parse
             #   # Network-specific identifiers for this refund.
@@ -1578,54 +1608,52 @@ module Increase
             #
             #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental, nil]
             required :car_rental,
-                     -> {
-                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental
-                     }
+                     -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental },
+                     nil?: true
 
             # @!attribute customer_reference_identifier
             #   An identifier from the merchant for the customer or consumer.
             #
             #   @return [String, nil]
-            required :customer_reference_identifier, String
+            required :customer_reference_identifier, String, nil?: true
 
             # @!attribute local_tax_amount
             #   The state or provincial tax amount in minor units.
             #
             #   @return [Integer, nil]
-            required :local_tax_amount, Integer
+            required :local_tax_amount, Integer, nil?: true
 
             # @!attribute local_tax_currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax assessed.
             #
             #   @return [String, nil]
-            required :local_tax_currency, String
+            required :local_tax_currency, String, nil?: true
 
             # @!attribute lodging
             #   Fields specific to lodging.
             #
             #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging, nil]
             required :lodging,
-                     -> {
-                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging
-                     }
+                     -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging },
+                     nil?: true
 
             # @!attribute national_tax_amount
             #   The national tax amount in minor units.
             #
             #   @return [Integer, nil]
-            required :national_tax_amount, Integer
+            required :national_tax_amount, Integer, nil?: true
 
             # @!attribute national_tax_currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax assessed.
             #
             #   @return [String, nil]
-            required :national_tax_currency, String
+            required :national_tax_currency, String, nil?: true
 
             # @!attribute purchase_identifier
             #   An identifier from the merchant for the purchase to the issuer and cardholder.
             #
             #   @return [String, nil]
-            required :purchase_identifier, String
+            required :purchase_identifier, String, nil?: true
 
             # @!attribute purchase_identifier_format
             #   The format of the purchase identifier.
@@ -1634,16 +1662,16 @@ module Increase
             required :purchase_identifier_format,
                      enum: -> {
                        Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat
-                     }
+                     },
+                     nil?: true
 
             # @!attribute travel
             #   Fields specific to travel.
             #
             #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel, nil]
             required :travel,
-                     -> {
-                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel
-                     }
+                     -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel },
+                     nil?: true
 
             # @!parse
             #   # Additional details about the card purchase, such as tax and industry-specific
@@ -1705,31 +1733,31 @@ module Increase
               #   Code indicating the vehicle's class.
               #
               #   @return [String, nil]
-              required :car_class_code, String
+              required :car_class_code, String, nil?: true
 
               # @!attribute checkout_date
               #   Date the customer picked up the car or, in the case of a no-show or pre-pay transaction, the scheduled pick up date.
               #
               #   @return [Date, nil]
-              required :checkout_date, Date
+              required :checkout_date, Date, nil?: true
 
               # @!attribute daily_rental_rate_amount
               #   Daily rate being charged for the vehicle.
               #
               #   @return [Integer, nil]
-              required :daily_rental_rate_amount, Integer
+              required :daily_rental_rate_amount, Integer, nil?: true
 
               # @!attribute daily_rental_rate_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental rate.
               #
               #   @return [String, nil]
-              required :daily_rental_rate_currency, String
+              required :daily_rental_rate_currency, String, nil?: true
 
               # @!attribute days_rented
               #   Number of days the vehicle was rented.
               #
               #   @return [Integer, nil]
-              required :days_rented, Integer
+              required :days_rented, Integer, nil?: true
 
               # @!attribute extra_charges
               #   Additional charges (gas, late fee, etc.) being billed.
@@ -1738,31 +1766,32 @@ module Increase
               required :extra_charges,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges
-                       }
+                       },
+                       nil?: true
 
               # @!attribute fuel_charges_amount
               #   Fuel charges for the vehicle.
               #
               #   @return [Integer, nil]
-              required :fuel_charges_amount, Integer
+              required :fuel_charges_amount, Integer, nil?: true
 
               # @!attribute fuel_charges_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges assessed.
               #
               #   @return [String, nil]
-              required :fuel_charges_currency, String
+              required :fuel_charges_currency, String, nil?: true
 
               # @!attribute insurance_charges_amount
               #   Any insurance being charged for the vehicle.
               #
               #   @return [Integer, nil]
-              required :insurance_charges_amount, Integer
+              required :insurance_charges_amount, Integer, nil?: true
 
               # @!attribute insurance_charges_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance charges assessed.
               #
               #   @return [String, nil]
-              required :insurance_charges_currency, String
+              required :insurance_charges_currency, String, nil?: true
 
               # @!attribute no_show_indicator
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
@@ -1771,37 +1800,38 @@ module Increase
               required :no_show_indicator,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator
-                       }
+                       },
+                       nil?: true
 
               # @!attribute one_way_drop_off_charges_amount
               #   Charges for returning the vehicle at a different location than where it was picked up.
               #
               #   @return [Integer, nil]
-              required :one_way_drop_off_charges_amount, Integer
+              required :one_way_drop_off_charges_amount, Integer, nil?: true
 
               # @!attribute one_way_drop_off_charges_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way drop-off charges assessed.
               #
               #   @return [String, nil]
-              required :one_way_drop_off_charges_currency, String
+              required :one_way_drop_off_charges_currency, String, nil?: true
 
               # @!attribute renter_name
               #   Name of the person renting the vehicle.
               #
               #   @return [String, nil]
-              required :renter_name, String
+              required :renter_name, String, nil?: true
 
               # @!attribute weekly_rental_rate_amount
               #   Weekly rate being charged for the vehicle.
               #
               #   @return [Integer, nil]
-              required :weekly_rental_rate_amount, Integer
+              required :weekly_rental_rate_amount, Integer, nil?: true
 
               # @!attribute weekly_rental_rate_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly rental rate.
               #
               #   @return [String, nil]
-              required :weekly_rental_rate_currency, String
+              required :weekly_rental_rate_currency, String, nil?: true
 
               # @!parse
               #   # Fields specific to car rentals.
@@ -1949,19 +1979,19 @@ module Increase
               #   Date the customer checked in.
               #
               #   @return [Date, nil]
-              required :check_in_date, Date
+              required :check_in_date, Date, nil?: true
 
               # @!attribute daily_room_rate_amount
               #   Daily rate being charged for the room.
               #
               #   @return [Integer, nil]
-              required :daily_room_rate_amount, Integer
+              required :daily_room_rate_amount, Integer, nil?: true
 
               # @!attribute daily_room_rate_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room rate.
               #
               #   @return [String, nil]
-              required :daily_room_rate_currency, String
+              required :daily_room_rate_currency, String, nil?: true
 
               # @!attribute extra_charges
               #   Additional charges (phone, late check-out, etc.) being billed.
@@ -1970,31 +2000,32 @@ module Increase
               required :extra_charges,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges
-                       }
+                       },
+                       nil?: true
 
               # @!attribute folio_cash_advances_amount
               #   Folio cash advances for the room.
               #
               #   @return [Integer, nil]
-              required :folio_cash_advances_amount, Integer
+              required :folio_cash_advances_amount, Integer, nil?: true
 
               # @!attribute folio_cash_advances_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash advances.
               #
               #   @return [String, nil]
-              required :folio_cash_advances_currency, String
+              required :folio_cash_advances_currency, String, nil?: true
 
               # @!attribute food_beverage_charges_amount
               #   Food and beverage charges for the room.
               #
               #   @return [Integer, nil]
-              required :food_beverage_charges_amount, Integer
+              required :food_beverage_charges_amount, Integer, nil?: true
 
               # @!attribute food_beverage_charges_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and beverage charges.
               #
               #   @return [String, nil]
-              required :food_beverage_charges_currency, String
+              required :food_beverage_charges_currency, String, nil?: true
 
               # @!attribute no_show_indicator
               #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
@@ -2003,49 +2034,50 @@ module Increase
               required :no_show_indicator,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator
-                       }
+                       },
+                       nil?: true
 
               # @!attribute prepaid_expenses_amount
               #   Prepaid expenses being charged for the room.
               #
               #   @return [Integer, nil]
-              required :prepaid_expenses_amount, Integer
+              required :prepaid_expenses_amount, Integer, nil?: true
 
               # @!attribute prepaid_expenses_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid expenses.
               #
               #   @return [String, nil]
-              required :prepaid_expenses_currency, String
+              required :prepaid_expenses_currency, String, nil?: true
 
               # @!attribute room_nights
               #   Number of nights the room was rented.
               #
               #   @return [Integer, nil]
-              required :room_nights, Integer
+              required :room_nights, Integer, nil?: true
 
               # @!attribute total_room_tax_amount
               #   Total room tax being charged.
               #
               #   @return [Integer, nil]
-              required :total_room_tax_amount, Integer
+              required :total_room_tax_amount, Integer, nil?: true
 
               # @!attribute total_room_tax_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room tax.
               #
               #   @return [String, nil]
-              required :total_room_tax_currency, String
+              required :total_room_tax_currency, String, nil?: true
 
               # @!attribute total_tax_amount
               #   Total tax being charged for the room.
               #
               #   @return [Integer, nil]
-              required :total_tax_amount, Integer
+              required :total_tax_amount, Integer, nil?: true
 
               # @!attribute total_tax_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax assessed.
               #
               #   @return [String, nil]
-              required :total_tax_currency, String
+              required :total_tax_currency, String, nil?: true
 
               # @!parse
               #   # Fields specific to lodging.
@@ -2232,13 +2264,16 @@ module Increase
               #
               #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary, nil]
               required :ancillary,
-                       -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary }
+                       -> {
+                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary
+                       },
+                       nil?: true
 
               # @!attribute computerized_reservation_system
               #   Indicates the computerized reservation system used to book the ticket.
               #
               #   @return [String, nil]
-              required :computerized_reservation_system, String
+              required :computerized_reservation_system, String, nil?: true
 
               # @!attribute credit_reason_indicator
               #   Indicates the reason for a credit to the cardholder.
@@ -2247,25 +2282,26 @@ module Increase
               required :credit_reason_indicator,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator
-                       }
+                       },
+                       nil?: true
 
               # @!attribute departure_date
               #   Date of departure.
               #
               #   @return [Date, nil]
-              required :departure_date, Date
+              required :departure_date, Date, nil?: true
 
               # @!attribute origination_city_airport_code
               #   Code for the originating city or airport.
               #
               #   @return [String, nil]
-              required :origination_city_airport_code, String
+              required :origination_city_airport_code, String, nil?: true
 
               # @!attribute passenger_name
               #   Name of the passenger.
               #
               #   @return [String, nil]
-              required :passenger_name, String
+              required :passenger_name, String, nil?: true
 
               # @!attribute restricted_ticket_indicator
               #   Indicates whether this ticket is non-refundable.
@@ -2274,7 +2310,8 @@ module Increase
               required :restricted_ticket_indicator,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator
-                       }
+                       },
+                       nil?: true
 
               # @!attribute ticket_change_indicator
               #   Indicates why a ticket was changed.
@@ -2283,34 +2320,36 @@ module Increase
               required :ticket_change_indicator,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator
-                       }
+                       },
+                       nil?: true
 
               # @!attribute ticket_number
               #   Ticket number.
               #
               #   @return [String, nil]
-              required :ticket_number, String
+              required :ticket_number, String, nil?: true
 
               # @!attribute travel_agency_code
               #   Code for the travel agency if the ticket was issued by a travel agency.
               #
               #   @return [String, nil]
-              required :travel_agency_code, String
+              required :travel_agency_code, String, nil?: true
 
               # @!attribute travel_agency_name
               #   Name of the travel agency if the ticket was issued by a travel agency.
               #
               #   @return [String, nil]
-              required :travel_agency_name, String
+              required :travel_agency_name, String, nil?: true
 
               # @!attribute trip_legs
               #   Fields specific to each leg of the journey.
               #
-              #   @return [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>, nil]
+              #   @return [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>]
               required :trip_legs,
                        -> {
                          Increase::ArrayOf[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]
-                       }
+                       },
+                       nil?: true
 
               # @!parse
               #   # Fields specific to travel.
@@ -2337,7 +2376,7 @@ module Increase
               #   #
               #   # @param travel_agency_name [String, nil] Name of the travel agency if the ticket was issued by a travel agency.
               #   #
-              #   # @param trip_legs [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>, nil] Fields specific to each leg of the journey.
+              #   # @param trip_legs [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>] Fields specific to each leg of the journey.
               #   #
               #   def initialize(
               #     ancillary:,
@@ -2374,7 +2413,7 @@ module Increase
                 #   If this purchase has a connection or relationship to another purchase, such as a baggage fee for a passenger transport ticket, this field should contain the ticket document number for the other purchase.
                 #
                 #   @return [String, nil]
-                required :connected_ticket_document_number, String
+                required :connected_ticket_document_number, String, nil?: true
 
                 # @!attribute credit_reason_indicator
                 #   Indicates the reason for a credit to the cardholder.
@@ -2383,13 +2422,14 @@ module Increase
                 required :credit_reason_indicator,
                          enum: -> {
                            Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
-                         }
+                         },
+                         nil?: true
 
                 # @!attribute passenger_name_or_description
                 #   Name of the passenger or description of the ancillary purchase.
                 #
                 #   @return [String, nil]
-                required :passenger_name_or_description, String
+                required :passenger_name_or_description, String, nil?: true
 
                 # @!attribute services
                 #   Additional travel charges, such as baggage fees.
@@ -2404,7 +2444,7 @@ module Increase
                 #   Ticket document number.
                 #
                 #   @return [String, nil]
-                required :ticket_document_number, String
+                required :ticket_document_number, String, nil?: true
 
                 # @!parse
                 #   # Ancillary purchases in addition to the airfare.
@@ -2480,13 +2520,14 @@ module Increase
                   required :category,
                            enum: -> {
                              Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category
-                           }
+                           },
+                           nil?: true
 
                   # @!attribute sub_category
                   #   Sub-category of the ancillary service, free-form.
                   #
                   #   @return [String, nil]
-                  required :sub_category, String
+                  required :sub_category, String, nil?: true
 
                   # @!parse
                   #   # @param category [String, nil] Category of the ancillary service.
@@ -2697,31 +2738,31 @@ module Increase
                 #   Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 #
                 #   @return [String, nil]
-                required :carrier_code, String
+                required :carrier_code, String, nil?: true
 
                 # @!attribute destination_city_airport_code
                 #   Code for the destination city or airport.
                 #
                 #   @return [String, nil]
-                required :destination_city_airport_code, String
+                required :destination_city_airport_code, String, nil?: true
 
                 # @!attribute fare_basis_code
                 #   Fare basis code.
                 #
                 #   @return [String, nil]
-                required :fare_basis_code, String
+                required :fare_basis_code, String, nil?: true
 
                 # @!attribute flight_number
                 #   Flight number.
                 #
                 #   @return [String, nil]
-                required :flight_number, String
+                required :flight_number, String, nil?: true
 
                 # @!attribute service_class
                 #   Service class (e.g., first class, business class, etc.).
                 #
                 #   @return [String, nil]
-                required :service_class, String
+                required :service_class, String, nil?: true
 
                 # @!attribute stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
@@ -2730,7 +2771,8 @@ module Increase
                 required :stop_over_code,
                          enum: -> {
                            Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode
-                         }
+                         },
+                         nil?: true
 
                 # @!parse
                 #   # @param carrier_code [String, nil] Carrier code (e.g., United Airlines, Jet Blue, etc.).
@@ -2843,7 +2885,7 @@ module Increase
           #   The account the card belonged to.
           #
           #   @return [String, nil]
-          required :transacted_on_account_id, String
+          required :transacted_on_account_id, String, nil?: true
 
           # @!parse
           #   # A Card Revenue Payment object. This field will be present in the JSON response
@@ -2935,7 +2977,7 @@ module Increase
           #   The Card Authorization that was created prior to this Card Settlement, if one exists.
           #
           #   @return [String, nil]
-          required :card_authorization, String
+          required :card_authorization, String, nil?: true
 
           # @!attribute card_payment_id
           #   The ID of the Card Payment this transaction belongs to.
@@ -2947,7 +2989,11 @@ module Increase
           #   Cashback earned on this transaction, if eligible. Cashback is paid out in aggregate, monthly.
           #
           #   @return [Increase::Models::Transaction::Source::CardSettlement::Cashback, nil]
-          required :cashback, -> { Increase::Models::Transaction::Source::CardSettlement::Cashback }
+          required :cashback,
+                   -> {
+                     Increase::Models::Transaction::Source::CardSettlement::Cashback
+                   },
+                   nil?: true
 
           # @!attribute currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's settlement currency.
@@ -2959,7 +3005,9 @@ module Increase
           #   Interchange assessed as a part of this transaction.
           #
           #   @return [Increase::Models::Transaction::Source::CardSettlement::Interchange, nil]
-          required :interchange, -> { Increase::Models::Transaction::Source::CardSettlement::Interchange }
+          required :interchange,
+                   -> { Increase::Models::Transaction::Source::CardSettlement::Interchange },
+                   nil?: true
 
           # @!attribute merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
@@ -2995,13 +3043,13 @@ module Increase
           #   The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
           #
           #   @return [String, nil]
-          required :merchant_postal_code, String
+          required :merchant_postal_code, String, nil?: true
 
           # @!attribute merchant_state
           #   The state the merchant resides in.
           #
           #   @return [String, nil]
-          required :merchant_state, String
+          required :merchant_state, String, nil?: true
 
           # @!attribute network_identifiers
           #   Network-specific identifiers for this refund.
@@ -3014,7 +3062,7 @@ module Increase
           #   The identifier of the Pending Transaction associated with this Transaction.
           #
           #   @return [String, nil]
-          required :pending_transaction_id, String
+          required :pending_transaction_id, String, nil?: true
 
           # @!attribute presentment_amount
           #   The amount in the minor unit of the transaction's presentment currency.
@@ -3033,9 +3081,8 @@ module Increase
           #
           #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails, nil]
           required :purchase_details,
-                   -> {
-                     Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails
-                   }
+                   -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails },
+                   nil?: true
 
           # @!attribute transaction_id
           #   The identifier of the Transaction associated with this Transaction.
@@ -3271,7 +3318,7 @@ module Increase
             #   The card network specific interchange code.
             #
             #   @return [String, nil]
-            required :code, String
+            required :code, String, nil?: true
 
             # @!attribute currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange reimbursement.
@@ -3363,7 +3410,7 @@ module Increase
             #   A globally unique transaction identifier provided by the card network, used across multiple life-cycle requests.
             #
             #   @return [String, nil]
-            required :transaction_id, String
+            required :transaction_id, String, nil?: true
 
             # @!parse
             #   # Network-specific identifiers for this refund.
@@ -3398,52 +3445,52 @@ module Increase
             #
             #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental, nil]
             required :car_rental,
-                     -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental }
+                     -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental },
+                     nil?: true
 
             # @!attribute customer_reference_identifier
             #   An identifier from the merchant for the customer or consumer.
             #
             #   @return [String, nil]
-            required :customer_reference_identifier, String
+            required :customer_reference_identifier, String, nil?: true
 
             # @!attribute local_tax_amount
             #   The state or provincial tax amount in minor units.
             #
             #   @return [Integer, nil]
-            required :local_tax_amount, Integer
+            required :local_tax_amount, Integer, nil?: true
 
             # @!attribute local_tax_currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax assessed.
             #
             #   @return [String, nil]
-            required :local_tax_currency, String
+            required :local_tax_currency, String, nil?: true
 
             # @!attribute lodging
             #   Fields specific to lodging.
             #
             #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging, nil]
             required :lodging,
-                     -> {
-                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging
-                     }
+                     -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging },
+                     nil?: true
 
             # @!attribute national_tax_amount
             #   The national tax amount in minor units.
             #
             #   @return [Integer, nil]
-            required :national_tax_amount, Integer
+            required :national_tax_amount, Integer, nil?: true
 
             # @!attribute national_tax_currency
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax assessed.
             #
             #   @return [String, nil]
-            required :national_tax_currency, String
+            required :national_tax_currency, String, nil?: true
 
             # @!attribute purchase_identifier
             #   An identifier from the merchant for the purchase to the issuer and cardholder.
             #
             #   @return [String, nil]
-            required :purchase_identifier, String
+            required :purchase_identifier, String, nil?: true
 
             # @!attribute purchase_identifier_format
             #   The format of the purchase identifier.
@@ -3452,16 +3499,16 @@ module Increase
             required :purchase_identifier_format,
                      enum: -> {
                        Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat
-                     }
+                     },
+                     nil?: true
 
             # @!attribute travel
             #   Fields specific to travel.
             #
             #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel, nil]
             required :travel,
-                     -> {
-                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel
-                     }
+                     -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel },
+                     nil?: true
 
             # @!parse
             #   # Additional details about the card purchase, such as tax and industry-specific
@@ -3523,31 +3570,31 @@ module Increase
               #   Code indicating the vehicle's class.
               #
               #   @return [String, nil]
-              required :car_class_code, String
+              required :car_class_code, String, nil?: true
 
               # @!attribute checkout_date
               #   Date the customer picked up the car or, in the case of a no-show or pre-pay transaction, the scheduled pick up date.
               #
               #   @return [Date, nil]
-              required :checkout_date, Date
+              required :checkout_date, Date, nil?: true
 
               # @!attribute daily_rental_rate_amount
               #   Daily rate being charged for the vehicle.
               #
               #   @return [Integer, nil]
-              required :daily_rental_rate_amount, Integer
+              required :daily_rental_rate_amount, Integer, nil?: true
 
               # @!attribute daily_rental_rate_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental rate.
               #
               #   @return [String, nil]
-              required :daily_rental_rate_currency, String
+              required :daily_rental_rate_currency, String, nil?: true
 
               # @!attribute days_rented
               #   Number of days the vehicle was rented.
               #
               #   @return [Integer, nil]
-              required :days_rented, Integer
+              required :days_rented, Integer, nil?: true
 
               # @!attribute extra_charges
               #   Additional charges (gas, late fee, etc.) being billed.
@@ -3556,31 +3603,32 @@ module Increase
               required :extra_charges,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges
-                       }
+                       },
+                       nil?: true
 
               # @!attribute fuel_charges_amount
               #   Fuel charges for the vehicle.
               #
               #   @return [Integer, nil]
-              required :fuel_charges_amount, Integer
+              required :fuel_charges_amount, Integer, nil?: true
 
               # @!attribute fuel_charges_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges assessed.
               #
               #   @return [String, nil]
-              required :fuel_charges_currency, String
+              required :fuel_charges_currency, String, nil?: true
 
               # @!attribute insurance_charges_amount
               #   Any insurance being charged for the vehicle.
               #
               #   @return [Integer, nil]
-              required :insurance_charges_amount, Integer
+              required :insurance_charges_amount, Integer, nil?: true
 
               # @!attribute insurance_charges_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance charges assessed.
               #
               #   @return [String, nil]
-              required :insurance_charges_currency, String
+              required :insurance_charges_currency, String, nil?: true
 
               # @!attribute no_show_indicator
               #   An indicator that the cardholder is being billed for a reserved vehicle that was not actually rented (that is, a "no-show" charge).
@@ -3589,37 +3637,38 @@ module Increase
               required :no_show_indicator,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator
-                       }
+                       },
+                       nil?: true
 
               # @!attribute one_way_drop_off_charges_amount
               #   Charges for returning the vehicle at a different location than where it was picked up.
               #
               #   @return [Integer, nil]
-              required :one_way_drop_off_charges_amount, Integer
+              required :one_way_drop_off_charges_amount, Integer, nil?: true
 
               # @!attribute one_way_drop_off_charges_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way drop-off charges assessed.
               #
               #   @return [String, nil]
-              required :one_way_drop_off_charges_currency, String
+              required :one_way_drop_off_charges_currency, String, nil?: true
 
               # @!attribute renter_name
               #   Name of the person renting the vehicle.
               #
               #   @return [String, nil]
-              required :renter_name, String
+              required :renter_name, String, nil?: true
 
               # @!attribute weekly_rental_rate_amount
               #   Weekly rate being charged for the vehicle.
               #
               #   @return [Integer, nil]
-              required :weekly_rental_rate_amount, Integer
+              required :weekly_rental_rate_amount, Integer, nil?: true
 
               # @!attribute weekly_rental_rate_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly rental rate.
               #
               #   @return [String, nil]
-              required :weekly_rental_rate_currency, String
+              required :weekly_rental_rate_currency, String, nil?: true
 
               # @!parse
               #   # Fields specific to car rentals.
@@ -3767,19 +3816,19 @@ module Increase
               #   Date the customer checked in.
               #
               #   @return [Date, nil]
-              required :check_in_date, Date
+              required :check_in_date, Date, nil?: true
 
               # @!attribute daily_room_rate_amount
               #   Daily rate being charged for the room.
               #
               #   @return [Integer, nil]
-              required :daily_room_rate_amount, Integer
+              required :daily_room_rate_amount, Integer, nil?: true
 
               # @!attribute daily_room_rate_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room rate.
               #
               #   @return [String, nil]
-              required :daily_room_rate_currency, String
+              required :daily_room_rate_currency, String, nil?: true
 
               # @!attribute extra_charges
               #   Additional charges (phone, late check-out, etc.) being billed.
@@ -3788,31 +3837,32 @@ module Increase
               required :extra_charges,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges
-                       }
+                       },
+                       nil?: true
 
               # @!attribute folio_cash_advances_amount
               #   Folio cash advances for the room.
               #
               #   @return [Integer, nil]
-              required :folio_cash_advances_amount, Integer
+              required :folio_cash_advances_amount, Integer, nil?: true
 
               # @!attribute folio_cash_advances_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash advances.
               #
               #   @return [String, nil]
-              required :folio_cash_advances_currency, String
+              required :folio_cash_advances_currency, String, nil?: true
 
               # @!attribute food_beverage_charges_amount
               #   Food and beverage charges for the room.
               #
               #   @return [Integer, nil]
-              required :food_beverage_charges_amount, Integer
+              required :food_beverage_charges_amount, Integer, nil?: true
 
               # @!attribute food_beverage_charges_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and beverage charges.
               #
               #   @return [String, nil]
-              required :food_beverage_charges_currency, String
+              required :food_beverage_charges_currency, String, nil?: true
 
               # @!attribute no_show_indicator
               #   Indicator that the cardholder is being billed for a reserved room that was not actually used.
@@ -3821,49 +3871,50 @@ module Increase
               required :no_show_indicator,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator
-                       }
+                       },
+                       nil?: true
 
               # @!attribute prepaid_expenses_amount
               #   Prepaid expenses being charged for the room.
               #
               #   @return [Integer, nil]
-              required :prepaid_expenses_amount, Integer
+              required :prepaid_expenses_amount, Integer, nil?: true
 
               # @!attribute prepaid_expenses_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid expenses.
               #
               #   @return [String, nil]
-              required :prepaid_expenses_currency, String
+              required :prepaid_expenses_currency, String, nil?: true
 
               # @!attribute room_nights
               #   Number of nights the room was rented.
               #
               #   @return [Integer, nil]
-              required :room_nights, Integer
+              required :room_nights, Integer, nil?: true
 
               # @!attribute total_room_tax_amount
               #   Total room tax being charged.
               #
               #   @return [Integer, nil]
-              required :total_room_tax_amount, Integer
+              required :total_room_tax_amount, Integer, nil?: true
 
               # @!attribute total_room_tax_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room tax.
               #
               #   @return [String, nil]
-              required :total_room_tax_currency, String
+              required :total_room_tax_currency, String, nil?: true
 
               # @!attribute total_tax_amount
               #   Total tax being charged for the room.
               #
               #   @return [Integer, nil]
-              required :total_tax_amount, Integer
+              required :total_tax_amount, Integer, nil?: true
 
               # @!attribute total_tax_currency
               #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax assessed.
               #
               #   @return [String, nil]
-              required :total_tax_currency, String
+              required :total_tax_currency, String, nil?: true
 
               # @!parse
               #   # Fields specific to lodging.
@@ -4050,13 +4101,16 @@ module Increase
               #
               #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary, nil]
               required :ancillary,
-                       -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary }
+                       -> {
+                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary
+                       },
+                       nil?: true
 
               # @!attribute computerized_reservation_system
               #   Indicates the computerized reservation system used to book the ticket.
               #
               #   @return [String, nil]
-              required :computerized_reservation_system, String
+              required :computerized_reservation_system, String, nil?: true
 
               # @!attribute credit_reason_indicator
               #   Indicates the reason for a credit to the cardholder.
@@ -4065,25 +4119,26 @@ module Increase
               required :credit_reason_indicator,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator
-                       }
+                       },
+                       nil?: true
 
               # @!attribute departure_date
               #   Date of departure.
               #
               #   @return [Date, nil]
-              required :departure_date, Date
+              required :departure_date, Date, nil?: true
 
               # @!attribute origination_city_airport_code
               #   Code for the originating city or airport.
               #
               #   @return [String, nil]
-              required :origination_city_airport_code, String
+              required :origination_city_airport_code, String, nil?: true
 
               # @!attribute passenger_name
               #   Name of the passenger.
               #
               #   @return [String, nil]
-              required :passenger_name, String
+              required :passenger_name, String, nil?: true
 
               # @!attribute restricted_ticket_indicator
               #   Indicates whether this ticket is non-refundable.
@@ -4092,7 +4147,8 @@ module Increase
               required :restricted_ticket_indicator,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator
-                       }
+                       },
+                       nil?: true
 
               # @!attribute ticket_change_indicator
               #   Indicates why a ticket was changed.
@@ -4101,34 +4157,36 @@ module Increase
               required :ticket_change_indicator,
                        enum: -> {
                          Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator
-                       }
+                       },
+                       nil?: true
 
               # @!attribute ticket_number
               #   Ticket number.
               #
               #   @return [String, nil]
-              required :ticket_number, String
+              required :ticket_number, String, nil?: true
 
               # @!attribute travel_agency_code
               #   Code for the travel agency if the ticket was issued by a travel agency.
               #
               #   @return [String, nil]
-              required :travel_agency_code, String
+              required :travel_agency_code, String, nil?: true
 
               # @!attribute travel_agency_name
               #   Name of the travel agency if the ticket was issued by a travel agency.
               #
               #   @return [String, nil]
-              required :travel_agency_name, String
+              required :travel_agency_name, String, nil?: true
 
               # @!attribute trip_legs
               #   Fields specific to each leg of the journey.
               #
-              #   @return [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>, nil]
+              #   @return [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>]
               required :trip_legs,
                        -> {
                          Increase::ArrayOf[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]
-                       }
+                       },
+                       nil?: true
 
               # @!parse
               #   # Fields specific to travel.
@@ -4155,7 +4213,7 @@ module Increase
               #   #
               #   # @param travel_agency_name [String, nil] Name of the travel agency if the ticket was issued by a travel agency.
               #   #
-              #   # @param trip_legs [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>, nil] Fields specific to each leg of the journey.
+              #   # @param trip_legs [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>] Fields specific to each leg of the journey.
               #   #
               #   def initialize(
               #     ancillary:,
@@ -4192,7 +4250,7 @@ module Increase
                 #   If this purchase has a connection or relationship to another purchase, such as a baggage fee for a passenger transport ticket, this field should contain the ticket document number for the other purchase.
                 #
                 #   @return [String, nil]
-                required :connected_ticket_document_number, String
+                required :connected_ticket_document_number, String, nil?: true
 
                 # @!attribute credit_reason_indicator
                 #   Indicates the reason for a credit to the cardholder.
@@ -4201,13 +4259,14 @@ module Increase
                 required :credit_reason_indicator,
                          enum: -> {
                            Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
-                         }
+                         },
+                         nil?: true
 
                 # @!attribute passenger_name_or_description
                 #   Name of the passenger or description of the ancillary purchase.
                 #
                 #   @return [String, nil]
-                required :passenger_name_or_description, String
+                required :passenger_name_or_description, String, nil?: true
 
                 # @!attribute services
                 #   Additional travel charges, such as baggage fees.
@@ -4222,7 +4281,7 @@ module Increase
                 #   Ticket document number.
                 #
                 #   @return [String, nil]
-                required :ticket_document_number, String
+                required :ticket_document_number, String, nil?: true
 
                 # @!parse
                 #   # Ancillary purchases in addition to the airfare.
@@ -4298,13 +4357,14 @@ module Increase
                   required :category,
                            enum: -> {
                              Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category
-                           }
+                           },
+                           nil?: true
 
                   # @!attribute sub_category
                   #   Sub-category of the ancillary service, free-form.
                   #
                   #   @return [String, nil]
-                  required :sub_category, String
+                  required :sub_category, String, nil?: true
 
                   # @!parse
                   #   # @param category [String, nil] Category of the ancillary service.
@@ -4515,31 +4575,31 @@ module Increase
                 #   Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 #
                 #   @return [String, nil]
-                required :carrier_code, String
+                required :carrier_code, String, nil?: true
 
                 # @!attribute destination_city_airport_code
                 #   Code for the destination city or airport.
                 #
                 #   @return [String, nil]
-                required :destination_city_airport_code, String
+                required :destination_city_airport_code, String, nil?: true
 
                 # @!attribute fare_basis_code
                 #   Fare basis code.
                 #
                 #   @return [String, nil]
-                required :fare_basis_code, String
+                required :fare_basis_code, String, nil?: true
 
                 # @!attribute flight_number
                 #   Flight number.
                 #
                 #   @return [String, nil]
-                required :flight_number, String
+                required :flight_number, String, nil?: true
 
                 # @!attribute service_class
                 #   Service class (e.g., first class, business class, etc.).
                 #
                 #   @return [String, nil]
-                required :service_class, String
+                required :service_class, String, nil?: true
 
                 # @!attribute stop_over_code
                 #   Indicates whether a stopover is allowed on this ticket.
@@ -4548,7 +4608,8 @@ module Increase
                 required :stop_over_code,
                          enum: -> {
                            Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode
-                         }
+                         },
+                         nil?: true
 
                 # @!parse
                 #   # @param carrier_code [String, nil] Carrier code (e.g., United Airlines, Jet Blue, etc.).
@@ -4637,7 +4698,7 @@ module Increase
           #   The card on which the cashback was accrued.
           #
           #   @return [String, nil]
-          required :accrued_on_card_id, String
+          required :accrued_on_card_id, String, nil?: true
 
           # @!attribute amount
           #   The amount in the minor unit of the transaction's currency. For dollars, for example, this is cents.
@@ -4863,7 +4924,7 @@ module Increase
           #   An additional line of metadata printed on the check. This typically includes the check number for business checks.
           #
           #   @return [String, nil]
-          required :auxiliary_on_us, String
+          required :auxiliary_on_us, String, nil?: true
 
           # @!attribute check_deposit_id
           #   The ID of the Check Deposit that was accepted.
@@ -4890,7 +4951,7 @@ module Increase
           #   The check serial number, if present, for consumer checks. For business checks, the serial number is usually in the `auxiliary_on_us` field.
           #
           #   @return [String, nil]
-          required :serial_number, String
+          required :serial_number, String, nil?: true
 
           # @!parse
           #   # A Check Deposit Acceptance object. This field will be present in the JSON
@@ -5202,13 +5263,13 @@ module Increase
           #   The identifier of the API File object containing an image of the back of the deposited check.
           #
           #   @return [String, nil]
-          required :back_image_file_id, String
+          required :back_image_file_id, String, nil?: true
 
           # @!attribute bank_of_first_deposit_routing_number
           #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the bank depositing this check. In some rare cases, this is not transmitted via Check21 and the value will be null.
           #
           #   @return [String, nil]
-          required :bank_of_first_deposit_routing_number, String
+          required :bank_of_first_deposit_routing_number, String, nil?: true
 
           # @!attribute deposited_at
           #   When the check was deposited.
@@ -5220,25 +5281,25 @@ module Increase
           #   The identifier of the API File object containing an image of the front of the deposited check.
           #
           #   @return [String, nil]
-          required :front_image_file_id, String
+          required :front_image_file_id, String, nil?: true
 
           # @!attribute inbound_check_deposit_id
           #   The identifier of the Inbound Check Deposit object associated with this transaction.
           #
           #   @return [String, nil]
-          required :inbound_check_deposit_id, String
+          required :inbound_check_deposit_id, String, nil?: true
 
           # @!attribute transaction_id
           #   The identifier of the Transaction object created when the check was deposited.
           #
           #   @return [String, nil]
-          required :transaction_id, String
+          required :transaction_id, String, nil?: true
 
           # @!attribute transfer_id
           #   The identifier of the Check Transfer object that was deposited.
           #
           #   @return [String, nil]
-          required :transfer_id, String
+          required :transfer_id, String, nil?: true
 
           # @!attribute type
           #   A constant representing the object's type. For this resource it will always be `check_transfer_deposit`.
@@ -5336,7 +5397,7 @@ module Increase
           #   The Program for which this fee was incurred.
           #
           #   @return [String, nil]
-          required :program_id, String
+          required :program_id, String, nil?: true
 
           # @!parse
           #   # A Fee Payment object. This field will be present in the JSON response if and
@@ -5414,7 +5475,11 @@ module Increase
           #   Additional information sent from the originator.
           #
           #   @return [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda, nil]
-          required :addenda, -> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda }
+          required :addenda,
+                   -> {
+                     Increase::Models::Transaction::Source::InboundACHTransfer::Addenda
+                   },
+                   nil?: true
 
           # @!attribute amount
           #   The transfer amount in USD cents.
@@ -5426,13 +5491,13 @@ module Increase
           #   The description of the date of the transfer, usually in the format `YYMMDD`.
           #
           #   @return [String, nil]
-          required :originator_company_descriptive_date, String
+          required :originator_company_descriptive_date, String, nil?: true
 
           # @!attribute originator_company_discretionary_data
           #   Data set by the originator.
           #
           #   @return [String, nil]
-          required :originator_company_discretionary_data, String
+          required :originator_company_discretionary_data, String, nil?: true
 
           # @!attribute originator_company_entry_description
           #   An informational description of the transfer.
@@ -5456,13 +5521,13 @@ module Increase
           #   The originator's identifier for the transfer recipient.
           #
           #   @return [String, nil]
-          required :receiver_id_number, String
+          required :receiver_id_number, String, nil?: true
 
           # @!attribute receiver_name
           #   The name of the transfer recipient. This value is informational and not verified by Increase.
           #
           #   @return [String, nil]
-          required :receiver_name, String
+          required :receiver_name, String, nil?: true
 
           # @!attribute trace_number
           #   A 15 digit number recorded in the Nacha file and available to both the originating and receiving bank. Along with the amount, date, and originating routing number, this can be used to identify the ACH transfer at either bank. ACH trace numbers are not unique, but are [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
@@ -5547,9 +5612,8 @@ module Increase
             #
             #   @return [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform, nil]
             required :freeform,
-                     -> {
-                       Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform
-                     }
+                     -> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform },
+                     nil?: true
 
             # @!parse
             #   # Additional information sent from the originator.
@@ -5682,7 +5746,7 @@ module Increase
           #   Additional information included with the transfer.
           #
           #   @return [String, nil]
-          required :remittance_information, String
+          required :remittance_information, String, nil?: true
 
           # @!attribute transaction_identification
           #   The Real-Time Payments network identification of the transfer.
@@ -5844,7 +5908,7 @@ module Increase
           #   Additional information included with the transfer.
           #
           #   @return [String, nil]
-          required :remittance_information, String
+          required :remittance_information, String, nil?: true
 
           # @!attribute transaction_identification
           #   The Real-Time Payments network identification of the declined transfer.
@@ -6021,7 +6085,7 @@ module Increase
           #   Additional financial institution information included in the wire reversal.
           #
           #   @return [String, nil]
-          required :financial_institution_to_financial_institution_information, String
+          required :financial_institution_to_financial_institution_information, String, nil?: true
 
           # @!attribute input_cycle_date
           #   The Fedwire cycle date for the wire reversal. The "Fedwire day" begins at 9:00 PM Eastern Time on the evening before the `cycle date`.
@@ -6051,7 +6115,7 @@ module Increase
           #   The American Banking Association (ABA) routing number of the bank originating the transfer.
           #
           #   @return [String, nil]
-          required :originator_routing_number, String
+          required :originator_routing_number, String, nil?: true
 
           # @!attribute previous_message_input_cycle_date
           #   The Fedwire cycle date for the wire transfer that is being reversed by this message.
@@ -6081,13 +6145,13 @@ module Increase
           #   Information included in the wire reversal for the receiving financial institution.
           #
           #   @return [String, nil]
-          required :receiver_financial_institution_information, String
+          required :receiver_financial_institution_information, String, nil?: true
 
           # @!attribute sender_reference
           #   The sending bank's reference number for the wire reversal.
           #
           #   @return [String, nil]
-          required :sender_reference, String
+          required :sender_reference, String, nil?: true
 
           # @!attribute transaction_id
           #   The ID for the Transaction associated with the transfer reversal.
@@ -6192,31 +6256,31 @@ module Increase
           #   A free-form address field set by the sender.
           #
           #   @return [String, nil]
-          required :beneficiary_address_line1, String
+          required :beneficiary_address_line1, String, nil?: true
 
           # @!attribute beneficiary_address_line2
           #   A free-form address field set by the sender.
           #
           #   @return [String, nil]
-          required :beneficiary_address_line2, String
+          required :beneficiary_address_line2, String, nil?: true
 
           # @!attribute beneficiary_address_line3
           #   A free-form address field set by the sender.
           #
           #   @return [String, nil]
-          required :beneficiary_address_line3, String
+          required :beneficiary_address_line3, String, nil?: true
 
           # @!attribute beneficiary_name
           #   A name set by the sender.
           #
           #   @return [String, nil]
-          required :beneficiary_name, String
+          required :beneficiary_name, String, nil?: true
 
           # @!attribute beneficiary_reference
           #   A free-form reference string set by the sender, to help identify the transfer.
           #
           #   @return [String, nil]
-          required :beneficiary_reference, String
+          required :beneficiary_reference, String, nil?: true
 
           # @!attribute description
           #   An Increase-constructed description of the transfer.
@@ -6228,67 +6292,67 @@ module Increase
           #   A unique identifier available to the originating and receiving banks, commonly abbreviated as IMAD. It is created when the wire is submitted to the Fedwire service and is helpful when debugging wires with the originating bank.
           #
           #   @return [String, nil]
-          required :input_message_accountability_data, String
+          required :input_message_accountability_data, String, nil?: true
 
           # @!attribute originator_address_line1
           #   The address of the wire originator, set by the sending bank.
           #
           #   @return [String, nil]
-          required :originator_address_line1, String
+          required :originator_address_line1, String, nil?: true
 
           # @!attribute originator_address_line2
           #   The address of the wire originator, set by the sending bank.
           #
           #   @return [String, nil]
-          required :originator_address_line2, String
+          required :originator_address_line2, String, nil?: true
 
           # @!attribute originator_address_line3
           #   The address of the wire originator, set by the sending bank.
           #
           #   @return [String, nil]
-          required :originator_address_line3, String
+          required :originator_address_line3, String, nil?: true
 
           # @!attribute originator_name
           #   The originator of the wire, set by the sending bank.
           #
           #   @return [String, nil]
-          required :originator_name, String
+          required :originator_name, String, nil?: true
 
           # @!attribute originator_routing_number
           #   The American Banking Association (ABA) routing number of the bank originating the transfer.
           #
           #   @return [String, nil]
-          required :originator_routing_number, String
+          required :originator_routing_number, String, nil?: true
 
           # @!attribute originator_to_beneficiary_information
           #   An Increase-created concatenation of the Originator-to-Beneficiary lines.
           #
           #   @return [String, nil]
-          required :originator_to_beneficiary_information, String
+          required :originator_to_beneficiary_information, String, nil?: true
 
           # @!attribute originator_to_beneficiary_information_line1
           #   A free-form message set by the wire originator.
           #
           #   @return [String, nil]
-          required :originator_to_beneficiary_information_line1, String
+          required :originator_to_beneficiary_information_line1, String, nil?: true
 
           # @!attribute originator_to_beneficiary_information_line2
           #   A free-form message set by the wire originator.
           #
           #   @return [String, nil]
-          required :originator_to_beneficiary_information_line2, String
+          required :originator_to_beneficiary_information_line2, String, nil?: true
 
           # @!attribute originator_to_beneficiary_information_line3
           #   A free-form message set by the wire originator.
           #
           #   @return [String, nil]
-          required :originator_to_beneficiary_information_line3, String
+          required :originator_to_beneficiary_information_line3, String, nil?: true
 
           # @!attribute originator_to_beneficiary_information_line4
           #   A free-form message set by the wire originator.
           #
           #   @return [String, nil]
-          required :originator_to_beneficiary_information_line4, String
+          required :originator_to_beneficiary_information_line4, String, nil?: true
 
           # @!attribute transfer_id
           #   The ID of the Inbound Wire Transfer object that resulted in this Transaction.

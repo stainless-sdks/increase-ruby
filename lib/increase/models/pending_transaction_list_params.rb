@@ -3,44 +3,72 @@
 module Increase
   module Models
     class PendingTransactionListParams < Increase::BaseModel
-      # @!attribute account_id
+      # @!attribute [r] account_id
       #   Filter pending transactions to those belonging to the specified Account.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :account_id, String
 
-      # @!attribute category
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :account_id
+
+      # @!attribute [r] category
       #
-      #   @return [Increase::Models::PendingTransactionListParams::Category]
+      #   @return [Increase::Models::PendingTransactionListParams::Category, nil]
       optional :category, -> { Increase::Models::PendingTransactionListParams::Category }
 
-      # @!attribute created_at
+      # @!parse
+      #   # @return [Increase::Models::PendingTransactionListParams::Category]
+      #   attr_writer :category
+
+      # @!attribute [r] created_at
       #
-      #   @return [Increase::Models::PendingTransactionListParams::CreatedAt]
+      #   @return [Increase::Models::PendingTransactionListParams::CreatedAt, nil]
       optional :created_at, -> { Increase::Models::PendingTransactionListParams::CreatedAt }
 
-      # @!attribute cursor
+      # @!parse
+      #   # @return [Increase::Models::PendingTransactionListParams::CreatedAt]
+      #   attr_writer :created_at
+
+      # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :cursor, String
 
-      # @!attribute limit
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :cursor
+
+      # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100 objects.
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!attribute route_id
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
+
+      # @!attribute [r] route_id
       #   Filter pending transactions to those belonging to the specified Route.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :route_id, String
 
-      # @!attribute status
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :route_id
+
+      # @!attribute [r] status
       #
-      #   @return [Increase::Models::PendingTransactionListParams::Status]
+      #   @return [Increase::Models::PendingTransactionListParams::Status, nil]
       optional :status, -> { Increase::Models::PendingTransactionListParams::Status }
+
+      # @!parse
+      #   # @return [Increase::Models::PendingTransactionListParams::Status]
+      #   attr_writer :status
 
       # @!parse
       #   # @param account_id [String] Filter pending transactions to those belonging to the specified Account.
@@ -69,13 +97,17 @@ module Increase
       # }
       # ```
       class Category < Increase::BaseModel
-        # @!attribute in_
+        # @!attribute [r] in_
         #   Return results whose value is in the provided list. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         #
         #   @return [Array<Symbol, Increase::Models::PendingTransactionListParams::Category::In>]
         optional :in_,
                  -> { Increase::ArrayOf[enum: Increase::Models::PendingTransactionListParams::Category::In] },
                  api_name: :in
+
+        # @!parse
+        #   # @return [Array<Symbol, Increase::Models::PendingTransactionListParams::Category::In>]
+        #   attr_writer :in_
 
         # @!parse
         #   # @param in_ [Array<String>] Return results whose value is in the provided list. For GET requests, this
@@ -147,29 +179,45 @@ module Increase
       # }
       # ```
       class CreatedAt < Increase::BaseModel
-        # @!attribute after
+        # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :after, Time
 
-        # @!attribute before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :after
+
+        # @!attribute [r] before
         #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :before, Time
 
-        # @!attribute on_or_after
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :before
+
+        # @!attribute [r] on_or_after
         #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_after, Time
 
-        # @!attribute on_or_before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_after
+
+        # @!attribute [r] on_or_before
         #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_before, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_before
 
         # @!parse
         #   # @param after [String] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -196,13 +244,17 @@ module Increase
       # }
       # ```
       class Status < Increase::BaseModel
-        # @!attribute in_
+        # @!attribute [r] in_
         #   Filter Pending Transactions for those with the specified status. By default only Pending Transactions in with status `pending` will be returned. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         #
         #   @return [Array<Symbol, Increase::Models::PendingTransactionListParams::Status::In>]
         optional :in_,
                  -> { Increase::ArrayOf[enum: Increase::Models::PendingTransactionListParams::Status::In] },
                  api_name: :in
+
+        # @!parse
+        #   # @return [Array<Symbol, Increase::Models::PendingTransactionListParams::Status::In>]
+        #   attr_writer :in_
 
         # @!parse
         #   # @param in_ [Array<String>] Filter Pending Transactions for those with the specified status. By default only

@@ -30,31 +30,31 @@ module Increase
       #   Additional information for the recipient.
       #
       #   @return [String, nil]
-      required :addendum, String
+      required :addendum, String, nil?: true
 
       # @!attribute company_descriptive_date
       #   The description of the date of the notification.
       #
       #   @return [String, nil]
-      required :company_descriptive_date, String
+      required :company_descriptive_date, String, nil?: true
 
       # @!attribute company_discretionary_data
       #   Optional data associated with the notification.
       #
       #   @return [String, nil]
-      required :company_discretionary_data, String
+      required :company_discretionary_data, String, nil?: true
 
       # @!attribute company_entry_description
       #   The description of the notification.
       #
       #   @return [String, nil]
-      required :company_entry_description, String
+      required :company_entry_description, String, nil?: true
 
       # @!attribute company_name
       #   The name by which you know the company.
       #
       #   @return [String, nil]
-      required :company_name, String
+      required :company_name, String, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the prenotification was created.
@@ -67,21 +67,20 @@ module Increase
       #
       #   @return [Symbol, Increase::Models::ACHPrenotification::CreditDebitIndicator, nil]
       required :credit_debit_indicator,
-               enum: -> {
-                 Increase::Models::ACHPrenotification::CreditDebitIndicator
-               }
+               enum: -> { Increase::Models::ACHPrenotification::CreditDebitIndicator },
+               nil?: true
 
       # @!attribute effective_date
       #   The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       #
       #   @return [Time, nil]
-      required :effective_date, Time
+      required :effective_date, Time, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute notifications_of_change
       #   If the receiving bank notifies that future transfers should use different details, this will contain those details.
@@ -94,7 +93,9 @@ module Increase
       #   If your prenotification is returned, this will contain details of the return.
       #
       #   @return [Increase::Models::ACHPrenotification::PrenotificationReturn, nil]
-      required :prenotification_return, -> { Increase::Models::ACHPrenotification::PrenotificationReturn }
+      required :prenotification_return,
+               -> { Increase::Models::ACHPrenotification::PrenotificationReturn },
+               nil?: true
 
       # @!attribute routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN).

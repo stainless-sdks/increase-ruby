@@ -3,33 +3,53 @@
 module Increase
   module Models
     class DocumentListParams < Increase::BaseModel
-      # @!attribute category
+      # @!attribute [r] category
       #
-      #   @return [Increase::Models::DocumentListParams::Category]
+      #   @return [Increase::Models::DocumentListParams::Category, nil]
       optional :category, -> { Increase::Models::DocumentListParams::Category }
 
-      # @!attribute created_at
+      # @!parse
+      #   # @return [Increase::Models::DocumentListParams::Category]
+      #   attr_writer :category
+
+      # @!attribute [r] created_at
       #
-      #   @return [Increase::Models::DocumentListParams::CreatedAt]
+      #   @return [Increase::Models::DocumentListParams::CreatedAt, nil]
       optional :created_at, -> { Increase::Models::DocumentListParams::CreatedAt }
 
-      # @!attribute cursor
+      # @!parse
+      #   # @return [Increase::Models::DocumentListParams::CreatedAt]
+      #   attr_writer :created_at
+
+      # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :cursor, String
 
-      # @!attribute entity_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :cursor
+
+      # @!attribute [r] entity_id
       #   Filter Documents to ones belonging to the specified Entity.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :entity_id, String
 
-      # @!attribute limit
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :entity_id
+
+      # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100 objects.
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
+
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
 
       # @!parse
       #   # @param category [Increase::Models::DocumentListParams::Category]
@@ -54,13 +74,17 @@ module Increase
       # }
       # ```
       class Category < Increase::BaseModel
-        # @!attribute in_
+        # @!attribute [r] in_
         #   Filter Documents for those with the specified category or categories. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         #
         #   @return [Array<Symbol, Increase::Models::DocumentListParams::Category::In>]
         optional :in_,
                  -> { Increase::ArrayOf[enum: Increase::Models::DocumentListParams::Category::In] },
                  api_name: :in
+
+        # @!parse
+        #   # @return [Array<Symbol, Increase::Models::DocumentListParams::Category::In>]
+        #   attr_writer :in_
 
         # @!parse
         #   # @param in_ [Array<String>] Filter Documents for those with the specified category or categories. For GET
@@ -106,29 +130,45 @@ module Increase
       # }
       # ```
       class CreatedAt < Increase::BaseModel
-        # @!attribute after
+        # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :after, Time
 
-        # @!attribute before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :after
+
+        # @!attribute [r] before
         #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :before, Time
 
-        # @!attribute on_or_after
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :before
+
+        # @!attribute [r] on_or_after
         #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_after, Time
 
-        # @!attribute on_or_before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_after
+
+        # @!attribute [r] on_or_before
         #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_before, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_before
 
         # @!parse
         #   # @param after [String] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)

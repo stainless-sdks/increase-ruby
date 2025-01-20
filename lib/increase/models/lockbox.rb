@@ -42,19 +42,19 @@ module Increase
       #   The description you choose for the Lockbox.
       #
       #   @return [String, nil]
-      required :description, String
+      required :description, String, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute recipient_name
       #   The recipient name you choose for the Lockbox.
       #
       #   @return [String, nil]
-      required :recipient_name, String
+      required :recipient_name, String, nil?: true
 
       # @!attribute status
       #   This indicates if mail can be sent to this address.
@@ -151,7 +151,7 @@ module Increase
         #   The recipient line of the address. This will include the recipient name you provide when creating the address, as well as an ATTN suffix to help route the mail to your lockbox. Mail senders must include this ATTN line to receive mail at this Lockbox.
         #
         #   @return [String, nil]
-        required :recipient, String
+        required :recipient, String, nil?: true
 
         # @!attribute state
         #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.

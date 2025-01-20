@@ -4,12 +4,16 @@ module Increase
   module Models
     module Simulations
       class RealTimePaymentsTransferCompleteParams < Increase::BaseModel
-        # @!attribute rejection
+        # @!attribute [r] rejection
         #   If set, the simulation will reject the transfer.
         #
-        #   @return [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection]
+        #   @return [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection, nil]
         optional :rejection,
                  -> { Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection }
+
+        # @!parse
+        #   # @return [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection]
+        #   attr_writer :rejection
 
         # @!parse
         #   # @param rejection [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection] If set, the simulation will reject the transfer.

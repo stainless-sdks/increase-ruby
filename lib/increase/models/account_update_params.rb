@@ -3,11 +3,15 @@
 module Increase
   module Models
     class AccountUpdateParams < Increase::BaseModel
-      # @!attribute name
+      # @!attribute [r] name
       #   The new name of the Account.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :name, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :name
 
       # @!parse
       #   # @param name [String] The new name of the Account.

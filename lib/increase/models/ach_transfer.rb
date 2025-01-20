@@ -36,13 +36,13 @@ module Increase
       #   After the transfer is acknowledged by FedACH, this will contain supplemental details. The Federal Reserve sends an acknowledgement message for each file that Increase submits.
       #
       #   @return [Increase::Models::ACHTransfer::Acknowledgement, nil]
-      required :acknowledgement, -> { Increase::Models::ACHTransfer::Acknowledgement }
+      required :acknowledgement, -> { Increase::Models::ACHTransfer::Acknowledgement }, nil?: true
 
       # @!attribute addenda
       #   Additional information that will be sent to the recipient.
       #
       #   @return [Increase::Models::ACHTransfer::Addenda, nil]
-      required :addenda, -> { Increase::Models::ACHTransfer::Addenda }
+      required :addenda, -> { Increase::Models::ACHTransfer::Addenda }, nil?: true
 
       # @!attribute amount
       #   The transfer amount in USD cents. A positive amount indicates a credit transfer pushing funds to the receiving account. A negative amount indicates a debit transfer pulling funds from the receiving account.
@@ -54,37 +54,37 @@ module Increase
       #   If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
       #
       #   @return [Increase::Models::ACHTransfer::Approval, nil]
-      required :approval, -> { Increase::Models::ACHTransfer::Approval }
+      required :approval, -> { Increase::Models::ACHTransfer::Approval }, nil?: true
 
       # @!attribute cancellation
       #   If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
       #
       #   @return [Increase::Models::ACHTransfer::Cancellation, nil]
-      required :cancellation, -> { Increase::Models::ACHTransfer::Cancellation }
+      required :cancellation, -> { Increase::Models::ACHTransfer::Cancellation }, nil?: true
 
       # @!attribute company_descriptive_date
       #   The description of the date of the transfer.
       #
       #   @return [String, nil]
-      required :company_descriptive_date, String
+      required :company_descriptive_date, String, nil?: true
 
       # @!attribute company_discretionary_data
       #   The data you chose to associate with the transfer.
       #
       #   @return [String, nil]
-      required :company_discretionary_data, String
+      required :company_discretionary_data, String, nil?: true
 
       # @!attribute company_entry_description
       #   The description of the transfer you set to be shown to the recipient.
       #
       #   @return [String, nil]
-      required :company_entry_description, String
+      required :company_entry_description, String, nil?: true
 
       # @!attribute company_name
       #   The name by which the recipient knows you.
       #
       #   @return [String, nil]
-      required :company_name, String
+      required :company_name, String, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
@@ -96,7 +96,7 @@ module Increase
       #   What object created the transfer, either via the API or the dashboard.
       #
       #   @return [Increase::Models::ACHTransfer::CreatedBy, nil]
-      required :created_by, -> { Increase::Models::ACHTransfer::CreatedBy }
+      required :created_by, -> { Increase::Models::ACHTransfer::CreatedBy }, nil?: true
 
       # @!attribute currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
@@ -117,7 +117,7 @@ module Increase
       #   The identifier of the External Account the transfer was made to, if any.
       #
       #   @return [String, nil]
-      required :external_account_id, String
+      required :external_account_id, String, nil?: true
 
       # @!attribute funding
       #   The type of the account to which the transfer will be sent.
@@ -129,25 +129,25 @@ module Increase
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute inbound_funds_hold
       #   Increase will sometimes hold the funds for ACH debit transfers. If funds are held, this sub-object will contain details of the hold.
       #
       #   @return [Increase::Models::ACHTransfer::InboundFundsHold, nil]
-      required :inbound_funds_hold, -> { Increase::Models::ACHTransfer::InboundFundsHold }
+      required :inbound_funds_hold, -> { Increase::Models::ACHTransfer::InboundFundsHold }, nil?: true
 
       # @!attribute individual_id
       #   Your identifier for the transfer recipient.
       #
       #   @return [String, nil]
-      required :individual_id, String
+      required :individual_id, String, nil?: true
 
       # @!attribute individual_name
       #   The name of the transfer recipient. This value is information and not verified by the recipient's bank.
       #
       #   @return [String, nil]
-      required :individual_name, String
+      required :individual_name, String, nil?: true
 
       # @!attribute network
       #   The transfer's network.
@@ -166,7 +166,7 @@ module Increase
       #   The ID for the pending transaction representing the transfer. A pending transaction is created when the transfer [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals) by someone else in your organization.
       #
       #   @return [String, nil]
-      required :pending_transaction_id, String
+      required :pending_transaction_id, String, nil?: true
 
       # @!attribute preferred_effective_date
       #   Configuration for how the effective date of the transfer will be set. This determines same-day vs future-dated settlement timing. If not set, defaults to a `settlement_schedule` of `same_day`. If set, exactly one of the child attributes must be set.
@@ -178,7 +178,7 @@ module Increase
       #   If your transfer is returned, this will contain details of the return.
       #
       #   @return [Increase::Models::ACHTransfer::Return, nil]
-      required :return_, -> { Increase::Models::ACHTransfer::Return }, api_name: :return
+      required :return_, -> { Increase::Models::ACHTransfer::Return }, api_name: :return, nil?: true
 
       # @!attribute routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN).
@@ -190,7 +190,7 @@ module Increase
       #   A subhash containing information about when and how the transfer settled at the Federal Reserve.
       #
       #   @return [Increase::Models::ACHTransfer::Settlement, nil]
-      required :settlement, -> { Increase::Models::ACHTransfer::Settlement }
+      required :settlement, -> { Increase::Models::ACHTransfer::Settlement }, nil?: true
 
       # @!attribute standard_entry_class_code
       #   The Standard Entry Class (SEC) code to use for the transfer.
@@ -214,13 +214,13 @@ module Increase
       #   After the transfer is submitted to FedACH, this will contain supplemental details. Increase batches transfers and submits a file to the Federal Reserve roughly every 30 minutes. The Federal Reserve processes ACH transfers during weekdays according to their [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
       #
       #   @return [Increase::Models::ACHTransfer::Submission, nil]
-      required :submission, -> { Increase::Models::ACHTransfer::Submission }
+      required :submission, -> { Increase::Models::ACHTransfer::Submission }, nil?: true
 
       # @!attribute transaction_id
       #   The ID for the transaction funding the transfer.
       #
       #   @return [String, nil]
-      required :transaction_id, String
+      required :transaction_id, String, nil?: true
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `ach_transfer`.
@@ -416,14 +416,15 @@ module Increase
         #   Unstructured `payment_related_information` passed through with the transfer.
         #
         #   @return [Increase::Models::ACHTransfer::Addenda::Freeform, nil]
-        required :freeform, -> { Increase::Models::ACHTransfer::Addenda::Freeform }
+        required :freeform, -> { Increase::Models::ACHTransfer::Addenda::Freeform }, nil?: true
 
         # @!attribute payment_order_remittance_advice
         #   Structured ASC X12 820 remittance advice records. Please reach out to [support@increase.com](mailto:support@increase.com) for more information.
         #
         #   @return [Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, nil]
         required :payment_order_remittance_advice,
-                 -> { Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice }
+                 -> { Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice },
+                 nil?: true
 
         # @!parse
         #   # Additional information that will be sent to the recipient.
@@ -587,7 +588,7 @@ module Increase
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
         #
         #   @return [String, nil]
-        required :approved_by, String
+        required :approved_by, String, nil?: true
 
         # @!parse
         #   # If your account requires approvals for transfers and the transfer was approved,
@@ -622,7 +623,7 @@ module Increase
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
         #
         #   @return [String, nil]
-        required :canceled_by, String
+        required :canceled_by, String, nil?: true
 
         # @!parse
         #   # If your account requires approvals for transfers and the transfer was not
@@ -653,7 +654,7 @@ module Increase
         #   If present, details about the API key that created the transfer.
         #
         #   @return [Increase::Models::ACHTransfer::CreatedBy::APIKey, nil]
-        required :api_key, -> { Increase::Models::ACHTransfer::CreatedBy::APIKey }
+        required :api_key, -> { Increase::Models::ACHTransfer::CreatedBy::APIKey }, nil?: true
 
         # @!attribute category
         #   The type of object that created this transfer.
@@ -665,13 +666,17 @@ module Increase
         #   If present, details about the OAuth Application that created the transfer.
         #
         #   @return [Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, nil]
-        required :oauth_application, -> { Increase::Models::ACHTransfer::CreatedBy::OAuthApplication }
+        required :oauth_application,
+                 -> {
+                   Increase::Models::ACHTransfer::CreatedBy::OAuthApplication
+                 },
+                 nil?: true
 
         # @!attribute user
         #   If present, details about the User that created the transfer.
         #
         #   @return [Increase::Models::ACHTransfer::CreatedBy::User, nil]
-        required :user, -> { Increase::Models::ACHTransfer::CreatedBy::User }
+        required :user, -> { Increase::Models::ACHTransfer::CreatedBy::User }, nil?: true
 
         # @!parse
         #   # What object created the transfer, either via the API or the dashboard.
@@ -699,7 +704,7 @@ module Increase
           #   The description set for the API key when it was created.
           #
           #   @return [String, nil]
-          required :description, String
+          required :description, String, nil?: true
 
           # @!parse
           #   # If present, details about the API key that created the transfer.
@@ -918,19 +923,19 @@ module Increase
         #   The ID of the Transaction for which funds were held.
         #
         #   @return [String, nil]
-        required :held_transaction_id, String
+        required :held_transaction_id, String, nil?: true
 
         # @!attribute pending_transaction_id
         #   The ID of the Pending Transaction representing the held funds.
         #
         #   @return [String, nil]
-        required :pending_transaction_id, String
+        required :pending_transaction_id, String, nil?: true
 
         # @!attribute released_at
         #   When the hold was released (if it has been released).
         #
         #   @return [Time, nil]
-        required :released_at, Time
+        required :released_at, Time, nil?: true
 
         # @!attribute status
         #   The status of the hold.
@@ -1221,14 +1226,15 @@ module Increase
         #   A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to use as the effective date when submitting this transfer.
         #
         #   @return [Date, nil]
-        required :date, Date
+        required :date, Date, nil?: true
 
         # @!attribute settlement_schedule
         #   A schedule by which Increase will choose an effective date for the transfer.
         #
         #   @return [Symbol, Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule, nil]
         required :settlement_schedule,
-                 enum: -> { Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule }
+                 enum: -> { Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule },
+                 nil?: true
 
         # @!parse
         #   # Configuration for how the effective date of the transfer will be set. This

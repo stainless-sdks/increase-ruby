@@ -42,19 +42,19 @@ module Increase
       #   The card's description for display purposes.
       #
       #   @return [String, nil]
-      required :description, String
+      required :description, String, nil?: true
 
       # @!attribute digital_wallet
       #   The contact information used in the two-factor steps for digital wallet card creation. At least one field must be present to complete the digital wallet steps.
       #
       #   @return [Increase::Models::Card::DigitalWallet, nil]
-      required :digital_wallet, -> { Increase::Models::Card::DigitalWallet }
+      required :digital_wallet, -> { Increase::Models::Card::DigitalWallet }, nil?: true
 
       # @!attribute entity_id
       #   The identifier for the entity associated with this card.
       #
       #   @return [String, nil]
-      required :entity_id, String
+      required :entity_id, String, nil?: true
 
       # @!attribute expiration_month
       #   The month the card expires in M format (e.g., August is 8).
@@ -72,7 +72,7 @@ module Increase
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute last4
       #   The last 4 digits of the Card's Primary Account Number.
@@ -166,31 +166,31 @@ module Increase
         #   The city of the billing address.
         #
         #   @return [String, nil]
-        required :city, String
+        required :city, String, nil?: true
 
         # @!attribute line1
         #   The first line of the billing address.
         #
         #   @return [String, nil]
-        required :line1, String
+        required :line1, String, nil?: true
 
         # @!attribute line2
         #   The second line of the billing address.
         #
         #   @return [String, nil]
-        required :line2, String
+        required :line2, String, nil?: true
 
         # @!attribute postal_code
         #   The postal code of the billing address.
         #
         #   @return [String, nil]
-        required :postal_code, String
+        required :postal_code, String, nil?: true
 
         # @!attribute state
         #   The US state of the billing address.
         #
         #   @return [String, nil]
-        required :state, String
+        required :state, String, nil?: true
 
         # @!parse
         #   # The Card's billing address.
@@ -223,19 +223,19 @@ module Increase
         #   The digital card profile assigned to this digital card. Card profiles may also be assigned at the program level.
         #
         #   @return [String, nil]
-        required :digital_card_profile_id, String
+        required :digital_card_profile_id, String, nil?: true
 
         # @!attribute email
         #   An email address that can be used to verify the cardholder via one-time passcode over email.
         #
         #   @return [String, nil]
-        required :email, String
+        required :email, String, nil?: true
 
         # @!attribute phone
         #   A phone number that can be used to verify the cardholder via one-time passcode over SMS.
         #
         #   @return [String, nil]
-        required :phone, String
+        required :phone, String, nil?: true
 
         # @!parse
         #   # The contact information used in the two-factor steps for digital wallet card

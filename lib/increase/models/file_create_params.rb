@@ -15,11 +15,15 @@ module Increase
       #   @return [Symbol, Increase::Models::FileCreateParams::Purpose]
       required :purpose, enum: -> { Increase::Models::FileCreateParams::Purpose }
 
-      # @!attribute description
+      # @!attribute [r] description
       #   The description you choose to give the File.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :description, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
 
       # @!parse
       #   # @param file [String] The file contents. This should follow the specifications of

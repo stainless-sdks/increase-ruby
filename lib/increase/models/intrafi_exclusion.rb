@@ -36,19 +36,19 @@ module Increase
       #   When this was exclusion was confirmed by IntraFi.
       #
       #   @return [Time, nil]
-      required :excluded_at, Time
+      required :excluded_at, Time, nil?: true
 
       # @!attribute fdic_certificate_number
       #   The Federal Deposit Insurance Corporation's certificate number for the institution.
       #
       #   @return [String, nil]
-      required :fdic_certificate_number, String
+      required :fdic_certificate_number, String, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute status
       #   The status of the exclusion request.
@@ -60,7 +60,7 @@ module Increase
       #   When this was exclusion was submitted to IntraFi by Increase.
       #
       #   @return [Time, nil]
-      required :submitted_at, Time
+      required :submitted_at, Time, nil?: true
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `intrafi_exclusion`.

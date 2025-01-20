@@ -24,25 +24,27 @@ module Increase
       #   The API Account associated with this bookkeeping account.
       #
       #   @return [String, nil]
-      required :account_id, String
+      required :account_id, String, nil?: true
 
       # @!attribute compliance_category
       #   The compliance category of the account.
       #
       #   @return [Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory, nil]
-      required :compliance_category, enum: -> { Increase::Models::BookkeepingAccount::ComplianceCategory }
+      required :compliance_category,
+               enum: -> { Increase::Models::BookkeepingAccount::ComplianceCategory },
+               nil?: true
 
       # @!attribute entity_id
       #   The Entity associated with this bookkeeping account.
       #
       #   @return [String, nil]
-      required :entity_id, String
+      required :entity_id, String, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute name
       #   The name you choose for the account.

@@ -15,11 +15,15 @@ module Increase
       #   @return [String]
       required :explanation, String
 
-      # @!attribute amount
+      # @!attribute [r] amount
       #   The monetary amount of the part of the transaction that is being disputed. This is optional and will default to the full amount of the transaction if not provided. If provided, the amount must be less than or equal to the amount of the transaction.
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :amount, Integer
+
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :amount
 
       # @!parse
       #   # @param disputed_transaction_id [String] The Transaction you wish to dispute. This Transaction must have a `source_type`

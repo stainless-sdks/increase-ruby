@@ -9,24 +9,36 @@ module Increase
       #   @return [String]
       required :url, String
 
-      # @!attribute oauth_connection_id
+      # @!attribute [r] oauth_connection_id
       #   If specified, this subscription will only receive webhooks for Events associated with the specified OAuth Connection.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :oauth_connection_id, String
 
-      # @!attribute selected_event_category
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :oauth_connection_id
+
+      # @!attribute [r] selected_event_category
       #   If specified, this subscription will only receive webhooks for Events with the specified `category`.
       #
-      #   @return [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory]
+      #   @return [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory, nil]
       optional :selected_event_category,
                enum: -> { Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory }
 
-      # @!attribute shared_secret
+      # @!parse
+      #   # @return [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory]
+      #   attr_writer :selected_event_category
+
+      # @!attribute [r] shared_secret
       #   The key that will be used to sign webhooks. If no value is passed, a random string will be used as default.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :shared_secret, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :shared_secret
 
       # @!parse
       #   # @param url [String] The URL you'd like us to send webhooks to.

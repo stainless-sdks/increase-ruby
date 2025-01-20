@@ -21,11 +21,15 @@ module Increase
       #   @return [Increase::Models::PhysicalCardCreateParams::Shipment]
       required :shipment, -> { Increase::Models::PhysicalCardCreateParams::Shipment }
 
-      # @!attribute physical_card_profile_id
+      # @!attribute [r] physical_card_profile_id
       #   The physical card profile to use for this physical card. The latest default physical card profile will be used if not provided.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :physical_card_profile_id, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :physical_card_profile_id
 
       # @!parse
       #   # @param card_id [String] The underlying card representing this physical card.
@@ -148,23 +152,35 @@ module Increase
           #   @return [String]
           required :state, String
 
-          # @!attribute line2
+          # @!attribute [r] line2
           #   The second line of the shipping address.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :line2, String
 
-          # @!attribute line3
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :line2
+
+          # @!attribute [r] line3
           #   The third line of the shipping address.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :line3, String
 
-          # @!attribute phone_number
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :line3
+
+          # @!attribute [r] phone_number
           #   The phone number of the recipient.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :phone_number, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :phone_number
 
           # @!parse
           #   # The address to where the card should be shipped.

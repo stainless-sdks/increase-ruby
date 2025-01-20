@@ -36,25 +36,25 @@ module Increase
       #   Company of the authorizer.
       #
       #   @return [String, nil]
-      required :authorizer_company, String
+      required :authorizer_company, String, nil?: true
 
       # @!attribute authorizer_email
       #   Email of the authorizer.
       #
       #   @return [String, nil]
-      required :authorizer_email, String
+      required :authorizer_email, String, nil?: true
 
       # @!attribute authorizer_ip_address
       #   IP address of the authorizer.
       #
       #   @return [String, nil]
-      required :authorizer_ip_address, String
+      required :authorizer_ip_address, String, nil?: true
 
       # @!attribute authorizer_name
       #   Name of the authorizer.
       #
       #   @return [String, nil]
-      required :authorizer_name, String
+      required :authorizer_name, String, nil?: true
 
       # @!attribute created_at
       #   The time the Proof of Authorization Request Submission was created.
@@ -66,13 +66,13 @@ module Increase
       #   Whether the customer has been offboarded.
       #
       #   @return [Boolean, nil]
-      required :customer_has_been_offboarded, Increase::BooleanModel
+      required :customer_has_been_offboarded, Increase::BooleanModel, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute proof_of_authorization_request_id
       #   ID of the proof of authorization request.
@@ -102,19 +102,19 @@ module Increase
       #   Whether account ownership was validated via credential (for instance, Plaid).
       #
       #   @return [Boolean, nil]
-      required :validated_account_ownership_via_credential, Increase::BooleanModel
+      required :validated_account_ownership_via_credential, Increase::BooleanModel, nil?: true
 
       # @!attribute validated_account_ownership_with_account_statement
       #   Whether account ownership was validated with an account statement.
       #
       #   @return [Boolean, nil]
-      required :validated_account_ownership_with_account_statement, Increase::BooleanModel
+      required :validated_account_ownership_with_account_statement, Increase::BooleanModel, nil?: true
 
       # @!attribute validated_account_ownership_with_microdeposit
       #   Whether account ownership was validated with microdeposit.
       #
       #   @return [Boolean, nil]
-      required :validated_account_ownership_with_microdeposit, Increase::BooleanModel
+      required :validated_account_ownership_with_microdeposit, Increase::BooleanModel, nil?: true
 
       # @!parse
       #   # Information submitted in response to a proof of authorization request. Per

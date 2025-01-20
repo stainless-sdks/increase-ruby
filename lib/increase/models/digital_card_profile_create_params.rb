@@ -33,29 +33,45 @@ module Increase
       #   @return [String]
       required :issuer_name, String
 
-      # @!attribute contact_email
+      # @!attribute [r] contact_email
       #   An email address the user can contact to receive support for their card.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :contact_email, String
 
-      # @!attribute contact_phone
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :contact_email
+
+      # @!attribute [r] contact_phone
       #   A phone number the user can contact to receive support for their card.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :contact_phone, String
 
-      # @!attribute contact_website
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :contact_phone
+
+      # @!attribute [r] contact_website
       #   A website the user can visit to view and receive support for their card.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :contact_website, String
 
-      # @!attribute text_color
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :contact_website
+
+      # @!attribute [r] text_color
       #   The Card's text color, specified as an RGB triple. The default is white.
       #
-      #   @return [Increase::Models::DigitalCardProfileCreateParams::TextColor]
+      #   @return [Increase::Models::DigitalCardProfileCreateParams::TextColor, nil]
       optional :text_color, -> { Increase::Models::DigitalCardProfileCreateParams::TextColor }
+
+      # @!parse
+      #   # @return [Increase::Models::DigitalCardProfileCreateParams::TextColor]
+      #   attr_writer :text_color
 
       # @!parse
       #   # @param app_icon_file_id [String] The identifier of the File containing the card's icon image.

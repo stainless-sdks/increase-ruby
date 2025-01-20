@@ -3,11 +3,15 @@
 module Increase
   module Models
     class CheckTransferStopPaymentParams < Increase::BaseModel
-      # @!attribute reason
+      # @!attribute [r] reason
       #   The reason why this transfer should be stopped.
       #
-      #   @return [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason]
+      #   @return [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason, nil]
       optional :reason, enum: -> { Increase::Models::CheckTransferStopPaymentParams::Reason }
+
+      # @!parse
+      #   # @return [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason]
+      #   attr_writer :reason
 
       # @!parse
       #   # @param reason [String] The reason why this transfer should be stopped.

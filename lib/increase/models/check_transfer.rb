@@ -42,19 +42,19 @@ module Increase
       #   If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
       #
       #   @return [Increase::Models::CheckTransfer::Approval, nil]
-      required :approval, -> { Increase::Models::CheckTransfer::Approval }
+      required :approval, -> { Increase::Models::CheckTransfer::Approval }, nil?: true
 
       # @!attribute approved_inbound_check_deposit_id
       #   If the Check Transfer was successfully deposited, this will contain the identifier of the Inbound Check Deposit object with details of the deposit.
       #
       #   @return [String, nil]
-      required :approved_inbound_check_deposit_id, String
+      required :approved_inbound_check_deposit_id, String, nil?: true
 
       # @!attribute cancellation
       #   If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
       #
       #   @return [Increase::Models::CheckTransfer::Cancellation, nil]
-      required :cancellation, -> { Increase::Models::CheckTransfer::Cancellation }
+      required :cancellation, -> { Increase::Models::CheckTransfer::Cancellation }, nil?: true
 
       # @!attribute check_number
       #   The check number printed on the check.
@@ -72,7 +72,7 @@ module Increase
       #   What object created the transfer, either via the API or the dashboard.
       #
       #   @return [Increase::Models::CheckTransfer::CreatedBy, nil]
-      required :created_by, -> { Increase::Models::CheckTransfer::CreatedBy }
+      required :created_by, -> { Increase::Models::CheckTransfer::CreatedBy }, nil?: true
 
       # @!attribute currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's currency.
@@ -90,25 +90,25 @@ module Increase
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute mailing
       #   If the check has been mailed by Increase, this will contain details of the shipment.
       #
       #   @return [Increase::Models::CheckTransfer::Mailing, nil]
-      required :mailing, -> { Increase::Models::CheckTransfer::Mailing }
+      required :mailing, -> { Increase::Models::CheckTransfer::Mailing }, nil?: true
 
       # @!attribute pending_transaction_id
       #   The ID for the pending transaction representing the transfer. A pending transaction is created when the transfer [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals) by someone else in your organization.
       #
       #   @return [String, nil]
-      required :pending_transaction_id, String
+      required :pending_transaction_id, String, nil?: true
 
       # @!attribute physical_check
       #   Details relating to the physical check that Increase will print and mail. Will be present if and only if `fulfillment_method` is equal to `physical_check`.
       #
       #   @return [Increase::Models::CheckTransfer::PhysicalCheck, nil]
-      required :physical_check, -> { Increase::Models::CheckTransfer::PhysicalCheck }
+      required :physical_check, -> { Increase::Models::CheckTransfer::PhysicalCheck }, nil?: true
 
       # @!attribute routing_number
       #   The routing number printed on the check.
@@ -120,7 +120,7 @@ module Increase
       #   The identifier of the Account Number from which to send the transfer and print on the check.
       #
       #   @return [String, nil]
-      required :source_account_number_id, String
+      required :source_account_number_id, String, nil?: true
 
       # @!attribute status
       #   The lifecycle status of the transfer.
@@ -132,19 +132,19 @@ module Increase
       #   After a stop-payment is requested on the check, this will contain supplemental details.
       #
       #   @return [Increase::Models::CheckTransfer::StopPaymentRequest, nil]
-      required :stop_payment_request, -> { Increase::Models::CheckTransfer::StopPaymentRequest }
+      required :stop_payment_request, -> { Increase::Models::CheckTransfer::StopPaymentRequest }, nil?: true
 
       # @!attribute submission
       #   After the transfer is submitted, this will contain supplemental details.
       #
       #   @return [Increase::Models::CheckTransfer::Submission, nil]
-      required :submission, -> { Increase::Models::CheckTransfer::Submission }
+      required :submission, -> { Increase::Models::CheckTransfer::Submission }, nil?: true
 
       # @!attribute third_party
       #   Details relating to the custom fulfillment you will perform. Will be present if and only if `fulfillment_method` is equal to `third_party`.
       #
       #   @return [Increase::Models::CheckTransfer::ThirdParty, nil]
-      required :third_party, -> { Increase::Models::CheckTransfer::ThirdParty }
+      required :third_party, -> { Increase::Models::CheckTransfer::ThirdParty }, nil?: true
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `check_transfer`.
@@ -267,7 +267,7 @@ module Increase
         #   If the Transfer was approved by a user in the dashboard, the email address of that user.
         #
         #   @return [String, nil]
-        required :approved_by, String
+        required :approved_by, String, nil?: true
 
         # @!parse
         #   # If your account requires approvals for transfers and the transfer was approved,
@@ -302,7 +302,7 @@ module Increase
         #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
         #
         #   @return [String, nil]
-        required :canceled_by, String
+        required :canceled_by, String, nil?: true
 
         # @!parse
         #   # If your account requires approvals for transfers and the transfer was not
@@ -333,7 +333,7 @@ module Increase
         #   If present, details about the API key that created the transfer.
         #
         #   @return [Increase::Models::CheckTransfer::CreatedBy::APIKey, nil]
-        required :api_key, -> { Increase::Models::CheckTransfer::CreatedBy::APIKey }
+        required :api_key, -> { Increase::Models::CheckTransfer::CreatedBy::APIKey }, nil?: true
 
         # @!attribute category
         #   The type of object that created this transfer.
@@ -345,13 +345,15 @@ module Increase
         #   If present, details about the OAuth Application that created the transfer.
         #
         #   @return [Increase::Models::CheckTransfer::CreatedBy::OAuthApplication, nil]
-        required :oauth_application, -> { Increase::Models::CheckTransfer::CreatedBy::OAuthApplication }
+        required :oauth_application,
+                 -> { Increase::Models::CheckTransfer::CreatedBy::OAuthApplication },
+                 nil?: true
 
         # @!attribute user
         #   If present, details about the User that created the transfer.
         #
         #   @return [Increase::Models::CheckTransfer::CreatedBy::User, nil]
-        required :user, -> { Increase::Models::CheckTransfer::CreatedBy::User }
+        required :user, -> { Increase::Models::CheckTransfer::CreatedBy::User }, nil?: true
 
         # @!parse
         #   # What object created the transfer, either via the API or the dashboard.
@@ -379,7 +381,7 @@ module Increase
           #   The description set for the API key when it was created.
           #
           #   @return [String, nil]
-          required :description, String
+          required :description, String, nil?: true
 
           # @!parse
           #   # If present, details about the API key that created the transfer.
@@ -538,7 +540,7 @@ module Increase
         #   The ID of the file corresponding to an image of the check that was mailed, if available.
         #
         #   @return [String, nil]
-        required :image_id, String
+        required :image_id, String, nil?: true
 
         # @!attribute mailed_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the check was mailed.
@@ -583,13 +585,13 @@ module Increase
         #   The descriptor that will be printed on the memo field on the check.
         #
         #   @return [String, nil]
-        required :memo, String
+        required :memo, String, nil?: true
 
         # @!attribute note
         #   The descriptor that will be printed on the letter included with the check.
         #
         #   @return [String, nil]
-        required :note, String
+        required :note, String, nil?: true
 
         # @!attribute recipient_name
         #   The name that will be printed on the check.
@@ -601,13 +603,17 @@ module Increase
         #   The return address to be printed on the check.
         #
         #   @return [Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress, nil]
-        required :return_address, -> { Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress }
+        required :return_address,
+                 -> {
+                   Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress
+                 },
+                 nil?: true
 
         # @!attribute signature_text
         #   The text that will appear as the signature on the check in cursive font. If blank, the check will be printed with 'No signature required'.
         #
         #   @return [String, nil]
-        required :signature_text, String
+        required :signature_text, String, nil?: true
 
         # @!attribute tracking_updates
         #   Tracking updates relating to the physical check's delivery.
@@ -654,37 +660,37 @@ module Increase
           #   The city of the check's destination.
           #
           #   @return [String, nil]
-          required :city, String
+          required :city, String, nil?: true
 
           # @!attribute line1
           #   The street address of the check's destination.
           #
           #   @return [String, nil]
-          required :line1, String
+          required :line1, String, nil?: true
 
           # @!attribute line2
           #   The second line of the address of the check's destination.
           #
           #   @return [String, nil]
-          required :line2, String
+          required :line2, String, nil?: true
 
           # @!attribute name
           #   The name component of the check's mailing address.
           #
           #   @return [String, nil]
-          required :name, String
+          required :name, String, nil?: true
 
           # @!attribute postal_code
           #   The postal code of the check's destination.
           #
           #   @return [String, nil]
-          required :postal_code, String
+          required :postal_code, String, nil?: true
 
           # @!attribute state
           #   The state of the check's destination.
           #
           #   @return [String, nil]
-          required :state, String
+          required :state, String, nil?: true
 
           # @!parse
           #   # Details for where Increase will mail the check.
@@ -721,37 +727,37 @@ module Increase
           #   The city of the check's destination.
           #
           #   @return [String, nil]
-          required :city, String
+          required :city, String, nil?: true
 
           # @!attribute line1
           #   The street address of the check's destination.
           #
           #   @return [String, nil]
-          required :line1, String
+          required :line1, String, nil?: true
 
           # @!attribute line2
           #   The second line of the address of the check's destination.
           #
           #   @return [String, nil]
-          required :line2, String
+          required :line2, String, nil?: true
 
           # @!attribute name
           #   The name component of the check's return address.
           #
           #   @return [String, nil]
-          required :name, String
+          required :name, String, nil?: true
 
           # @!attribute postal_code
           #   The postal code of the check's destination.
           #
           #   @return [String, nil]
-          required :postal_code, String
+          required :postal_code, String, nil?: true
 
           # @!attribute state
           #   The state of the check's destination.
           #
           #   @return [String, nil]
-          required :state, String
+          required :state, String, nil?: true
 
           # @!parse
           #   # The return address to be printed on the check.
@@ -1033,7 +1039,7 @@ module Increase
         #   The check number that will be printed on the check.
         #
         #   @return [String, nil]
-        required :check_number, String
+        required :check_number, String, nil?: true
 
         # @!parse
         #   # Details relating to the custom fulfillment you will perform. Will be present if

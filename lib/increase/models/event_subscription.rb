@@ -30,22 +30,21 @@ module Increase
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute oauth_connection_id
       #   If specified, this subscription will only receive webhooks for Events associated with this OAuth Connection.
       #
       #   @return [String, nil]
-      required :oauth_connection_id, String
+      required :oauth_connection_id, String, nil?: true
 
       # @!attribute selected_event_category
       #   If specified, this subscription will only receive webhooks for Events with the specified `category`.
       #
       #   @return [Symbol, Increase::Models::EventSubscription::SelectedEventCategory, nil]
       required :selected_event_category,
-               enum: -> {
-                 Increase::Models::EventSubscription::SelectedEventCategory
-               }
+               enum: -> { Increase::Models::EventSubscription::SelectedEventCategory },
+               nil?: true
 
       # @!attribute status
       #   This indicates if we'll send notifications to this subscription.

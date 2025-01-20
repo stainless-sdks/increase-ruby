@@ -9,17 +9,25 @@ module Increase
       #   @return [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>]
       required :entries, -> { Increase::ArrayOf[Increase::Models::BookkeepingEntrySetCreateParams::Entry] }
 
-      # @!attribute date
+      # @!attribute [r] date
       #   The date of the transaction. Optional if `transaction_id` is provided, in which case we use the `date` of that transaction. Required otherwise.
       #
-      #   @return [Time]
+      #   @return [Time, nil]
       optional :date, Time
 
-      # @!attribute transaction_id
+      # @!parse
+      #   # @return [Time]
+      #   attr_writer :date
+
+      # @!attribute [r] transaction_id
       #   The identifier of the Transaction related to this entry set, if any.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :transaction_id, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :transaction_id
 
       # @!parse
       #   # @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>] The bookkeeping entries.

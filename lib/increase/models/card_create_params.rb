@@ -9,29 +9,45 @@ module Increase
       #   @return [String]
       required :account_id, String
 
-      # @!attribute billing_address
+      # @!attribute [r] billing_address
       #   The card's billing address.
       #
-      #   @return [Increase::Models::CardCreateParams::BillingAddress]
+      #   @return [Increase::Models::CardCreateParams::BillingAddress, nil]
       optional :billing_address, -> { Increase::Models::CardCreateParams::BillingAddress }
 
-      # @!attribute description
+      # @!parse
+      #   # @return [Increase::Models::CardCreateParams::BillingAddress]
+      #   attr_writer :billing_address
+
+      # @!attribute [r] description
       #   The description you choose to give the card.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :description, String
 
-      # @!attribute digital_wallet
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
+
+      # @!attribute [r] digital_wallet
       #   The contact information used in the two-factor steps for digital wallet card creation. To add the card to a digital wallet, you may supply an email or phone number with this request. Otherwise, subscribe and then action a Real Time Decision with the category `digital_wallet_token_requested` or `digital_wallet_authentication_requested`.
       #
-      #   @return [Increase::Models::CardCreateParams::DigitalWallet]
+      #   @return [Increase::Models::CardCreateParams::DigitalWallet, nil]
       optional :digital_wallet, -> { Increase::Models::CardCreateParams::DigitalWallet }
 
-      # @!attribute entity_id
+      # @!parse
+      #   # @return [Increase::Models::CardCreateParams::DigitalWallet]
+      #   attr_writer :digital_wallet
+
+      # @!attribute [r] entity_id
       #   The Entity the card belongs to. You only need to supply this in rare situations when the card is not for the Account holder.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :entity_id, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :entity_id
 
       # @!parse
       #   # @param account_id [String] The Account the card should belong to.
@@ -88,11 +104,15 @@ module Increase
         #   @return [String]
         required :state, String
 
-        # @!attribute line2
+        # @!attribute [r] line2
         #   The second line of the billing address.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :line2, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :line2
 
         # @!parse
         #   # The card's billing address.
@@ -121,23 +141,35 @@ module Increase
       # }
       # ```
       class DigitalWallet < Increase::BaseModel
-        # @!attribute digital_card_profile_id
+        # @!attribute [r] digital_card_profile_id
         #   The digital card profile assigned to this digital card.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :digital_card_profile_id, String
 
-        # @!attribute email
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :digital_card_profile_id
+
+        # @!attribute [r] email
         #   An email address that can be used to contact and verify the cardholder via one-time passcode over email.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :email, String
 
-        # @!attribute phone
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :email
+
+        # @!attribute [r] phone
         #   A phone number that can be used to contact and verify the cardholder via one-time passcode over SMS.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :phone, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :phone
 
         # @!parse
         #   # The contact information used in the two-factor steps for digital wallet card

@@ -27,77 +27,125 @@ module Increase
       #   @return [String]
       required :message_to_recipient, String
 
-      # @!attribute account_number
+      # @!attribute [r] account_number
       #   The account number for the destination account.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :account_number, String
 
-      # @!attribute beneficiary_address_line1
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :account_number
+
+      # @!attribute [r] beneficiary_address_line1
       #   The beneficiary's address line 1.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :beneficiary_address_line1, String
 
-      # @!attribute beneficiary_address_line2
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :beneficiary_address_line1
+
+      # @!attribute [r] beneficiary_address_line2
       #   The beneficiary's address line 2.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :beneficiary_address_line2, String
 
-      # @!attribute beneficiary_address_line3
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :beneficiary_address_line2
+
+      # @!attribute [r] beneficiary_address_line3
       #   The beneficiary's address line 3.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :beneficiary_address_line3, String
 
-      # @!attribute external_account_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :beneficiary_address_line3
+
+      # @!attribute [r] external_account_id
       #   The ID of an External Account to initiate a transfer to. If this parameter is provided, `account_number` and `routing_number` must be absent.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :external_account_id, String
 
-      # @!attribute originator_address_line1
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :external_account_id
+
+      # @!attribute [r] originator_address_line1
       #   The originator's address line 1. This is only necessary if you're transferring from a commingled account. Otherwise, we'll use the associated entity's details.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :originator_address_line1, String
 
-      # @!attribute originator_address_line2
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :originator_address_line1
+
+      # @!attribute [r] originator_address_line2
       #   The originator's address line 2. This is only necessary if you're transferring from a commingled account. Otherwise, we'll use the associated entity's details.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :originator_address_line2, String
 
-      # @!attribute originator_address_line3
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :originator_address_line2
+
+      # @!attribute [r] originator_address_line3
       #   The originator's address line 3. This is only necessary if you're transferring from a commingled account. Otherwise, we'll use the associated entity's details.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :originator_address_line3, String
 
-      # @!attribute originator_name
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :originator_address_line3
+
+      # @!attribute [r] originator_name
       #   The originator's name. This is only necessary if you're transferring from a commingled account. Otherwise, we'll use the associated entity's details.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :originator_name, String
 
-      # @!attribute require_approval
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :originator_name
+
+      # @!attribute [r] require_approval
       #   Whether the transfer requires explicit approval via the dashboard or API.
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :require_approval, Increase::BooleanModel
 
-      # @!attribute routing_number
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :require_approval
+
+      # @!attribute [r] routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the destination account.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :routing_number, String
 
-      # @!attribute source_account_number_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :routing_number
+
+      # @!attribute [r] source_account_number_id
       #   The ID of an Account Number that will be passed to the wire's recipient
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :source_account_number_id, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :source_account_number_id
 
       # @!parse
       #   # @param account_id [String] The identifier for the account that will send the transfer.

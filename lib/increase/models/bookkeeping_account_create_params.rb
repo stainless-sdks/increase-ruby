@@ -9,24 +9,36 @@ module Increase
       #   @return [String]
       required :name, String
 
-      # @!attribute account_id
+      # @!attribute [r] account_id
       #   The entity, if `compliance_category` is `commingled_cash`.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :account_id, String
 
-      # @!attribute compliance_category
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :account_id
+
+      # @!attribute [r] compliance_category
       #   The account compliance category.
       #
-      #   @return [Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory]
+      #   @return [Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory, nil]
       optional :compliance_category,
                enum: -> { Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory }
 
-      # @!attribute entity_id
+      # @!parse
+      #   # @return [Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory]
+      #   attr_writer :compliance_category
+
+      # @!attribute [r] entity_id
       #   The entity, if `compliance_category` is `customer_balance`.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :entity_id, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :entity_id
 
       # @!parse
       #   # @param name [String] The name you choose for the account.

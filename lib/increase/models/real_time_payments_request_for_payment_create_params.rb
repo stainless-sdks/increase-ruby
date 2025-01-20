@@ -127,23 +127,35 @@ module Increase
           #   @return [String]
           required :country, String
 
-          # @!attribute city
+          # @!attribute [r] city
           #   The town or city.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :city, String
 
-          # @!attribute post_code
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :city
+
+          # @!attribute [r] post_code
           #   The postal code or zip.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :post_code, String
 
-          # @!attribute street_name
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :post_code
+
+          # @!attribute [r] street_name
           #   The street name without the street number.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :street_name, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :street_name
 
           # @!parse
           #   # Address of the debtor.

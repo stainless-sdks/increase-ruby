@@ -52,19 +52,19 @@ module Increase
         #   The ID of the Transaction for which funds were held.
         #
         #   @return [String, nil]
-        required :held_transaction_id, String
+        required :held_transaction_id, String, nil?: true
 
         # @!attribute pending_transaction_id
         #   The ID of the Pending Transaction representing the held funds.
         #
         #   @return [String, nil]
-        required :pending_transaction_id, String
+        required :pending_transaction_id, String, nil?: true
 
         # @!attribute released_at
         #   When the hold was released (if it has been released).
         #
         #   @return [Time, nil]
-        required :released_at, Time
+        required :released_at, Time, nil?: true
 
         # @!attribute status
         #   The status of the hold.

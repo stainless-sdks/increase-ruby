@@ -3,27 +3,43 @@
 module Increase
   module Models
     class OAuthApplicationListParams < Increase::BaseModel
-      # @!attribute created_at
+      # @!attribute [r] created_at
       #
-      #   @return [Increase::Models::OAuthApplicationListParams::CreatedAt]
+      #   @return [Increase::Models::OAuthApplicationListParams::CreatedAt, nil]
       optional :created_at, -> { Increase::Models::OAuthApplicationListParams::CreatedAt }
 
-      # @!attribute cursor
+      # @!parse
+      #   # @return [Increase::Models::OAuthApplicationListParams::CreatedAt]
+      #   attr_writer :created_at
+
+      # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :cursor, String
 
-      # @!attribute limit
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :cursor
+
+      # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100 objects.
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!attribute status
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
+
+      # @!attribute [r] status
       #
-      #   @return [Increase::Models::OAuthApplicationListParams::Status]
+      #   @return [Increase::Models::OAuthApplicationListParams::Status, nil]
       optional :status, -> { Increase::Models::OAuthApplicationListParams::Status }
+
+      # @!parse
+      #   # @return [Increase::Models::OAuthApplicationListParams::Status]
+      #   attr_writer :status
 
       # @!parse
       #   # @param created_at [Increase::Models::OAuthApplicationListParams::CreatedAt]
@@ -49,29 +65,45 @@ module Increase
       # }
       # ```
       class CreatedAt < Increase::BaseModel
-        # @!attribute after
+        # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :after, Time
 
-        # @!attribute before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :after
+
+        # @!attribute [r] before
         #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :before, Time
 
-        # @!attribute on_or_after
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :before
+
+        # @!attribute [r] on_or_after
         #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_after, Time
 
-        # @!attribute on_or_before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_after
+
+        # @!attribute [r] on_or_before
         #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_before, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_before
 
         # @!parse
         #   # @param after [String] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -98,13 +130,17 @@ module Increase
       # }
       # ```
       class Status < Increase::BaseModel
-        # @!attribute in_
+        # @!attribute [r] in_
         #   Return results whose value is in the provided list. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         #
         #   @return [Array<Symbol, Increase::Models::OAuthApplicationListParams::Status::In>]
         optional :in_,
                  -> { Increase::ArrayOf[enum: Increase::Models::OAuthApplicationListParams::Status::In] },
                  api_name: :in
+
+        # @!parse
+        #   # @return [Array<Symbol, Increase::Models::OAuthApplicationListParams::Status::In>]
+        #   attr_writer :in_
 
         # @!parse
         #   # @param in_ [Array<String>] Return results whose value is in the provided list. For GET requests, this

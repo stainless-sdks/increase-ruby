@@ -36,25 +36,25 @@ module Increase
       #   Line 1 of the drawdown request's beneficiary's address.
       #
       #   @return [String, nil]
-      required :beneficiary_address_line1, String
+      required :beneficiary_address_line1, String, nil?: true
 
       # @!attribute beneficiary_address_line2
       #   Line 2 of the drawdown request's beneficiary's address.
       #
       #   @return [String, nil]
-      required :beneficiary_address_line2, String
+      required :beneficiary_address_line2, String, nil?: true
 
       # @!attribute beneficiary_address_line3
       #   Line 3 of the drawdown request's beneficiary's address.
       #
       #   @return [String, nil]
-      required :beneficiary_address_line3, String
+      required :beneficiary_address_line3, String, nil?: true
 
       # @!attribute beneficiary_name
       #   The drawdown request's beneficiary's name.
       #
       #   @return [String, nil]
-      required :beneficiary_name, String
+      required :beneficiary_name, String, nil?: true
 
       # @!attribute beneficiary_routing_number
       #   The drawdown request's beneficiary's routing number.
@@ -78,7 +78,7 @@ module Increase
       #   A message from the drawdown request's originator.
       #
       #   @return [String, nil]
-      required :message_to_recipient, String
+      required :message_to_recipient, String, nil?: true
 
       # @!attribute originator_account_number
       #   The drawdown request's originator's account number.
@@ -90,25 +90,25 @@ module Increase
       #   Line 1 of the drawdown request's originator's address.
       #
       #   @return [String, nil]
-      required :originator_address_line1, String
+      required :originator_address_line1, String, nil?: true
 
       # @!attribute originator_address_line2
       #   Line 2 of the drawdown request's originator's address.
       #
       #   @return [String, nil]
-      required :originator_address_line2, String
+      required :originator_address_line2, String, nil?: true
 
       # @!attribute originator_address_line3
       #   Line 3 of the drawdown request's originator's address.
       #
       #   @return [String, nil]
-      required :originator_address_line3, String
+      required :originator_address_line3, String, nil?: true
 
       # @!attribute originator_name
       #   The drawdown request's originator's name.
       #
       #   @return [String, nil]
-      required :originator_name, String
+      required :originator_name, String, nil?: true
 
       # @!attribute originator_routing_number
       #   The drawdown request's originator's routing number.
@@ -120,25 +120,25 @@ module Increase
       #   Line 1 of the information conveyed from the originator of the message to the beneficiary.
       #
       #   @return [String, nil]
-      required :originator_to_beneficiary_information_line1, String
+      required :originator_to_beneficiary_information_line1, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line2
       #   Line 2 of the information conveyed from the originator of the message to the beneficiary.
       #
       #   @return [String, nil]
-      required :originator_to_beneficiary_information_line2, String
+      required :originator_to_beneficiary_information_line2, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line3
       #   Line 3 of the information conveyed from the originator of the message to the beneficiary.
       #
       #   @return [String, nil]
-      required :originator_to_beneficiary_information_line3, String
+      required :originator_to_beneficiary_information_line3, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line4
       #   Line 4 of the information conveyed from the originator of the message to the beneficiary.
       #
       #   @return [String, nil]
-      required :originator_to_beneficiary_information_line4, String
+      required :originator_to_beneficiary_information_line4, String, nil?: true
 
       # @!attribute recipient_account_number_id
       #   The Account Number from which the recipient of this request is being requested to send funds.

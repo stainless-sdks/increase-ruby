@@ -10,11 +10,15 @@ module Increase
         #   @return [String]
         required :card_payment_id, String
 
-        # @!attribute amount
+        # @!attribute [r] amount
         #   The amount of the reversal in minor units in the card authorization's currency. This defaults to the authorization amount.
         #
-        #   @return [Integer]
+        #   @return [Integer, nil]
         optional :amount, Integer
+
+        # @!parse
+        #   # @return [Integer]
+        #   attr_writer :amount
 
         # @!parse
         #   # @param card_payment_id [String] The identifier of the Card Payment to create a reversal on.

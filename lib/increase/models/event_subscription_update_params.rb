@@ -3,11 +3,15 @@
 module Increase
   module Models
     class EventSubscriptionUpdateParams < Increase::BaseModel
-      # @!attribute status
+      # @!attribute [r] status
       #   The status to update the Event Subscription with.
       #
-      #   @return [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status]
+      #   @return [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status, nil]
       optional :status, enum: -> { Increase::Models::EventSubscriptionUpdateParams::Status }
+
+      # @!parse
+      #   # @return [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status]
+      #   attr_writer :status
 
       # @!parse
       #   # @param status [String] The status to update the Event Subscription with.

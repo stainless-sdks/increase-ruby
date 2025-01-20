@@ -107,7 +107,7 @@ module Increase
         #   The primary location of the bank.
         #
         #   @return [Increase::Models::IntrafiBalance::Balance::BankLocation, nil]
-        required :bank_location, -> { Increase::Models::IntrafiBalance::Balance::BankLocation }
+        required :bank_location, -> { Increase::Models::IntrafiBalance::Balance::BankLocation }, nil?: true
 
         # @!attribute fdic_certificate_number
         #   The Federal Deposit Insurance Corporation (FDIC) certificate number of the bank. Because many banks have the same or similar names, this can be used to uniquely identify the institution.

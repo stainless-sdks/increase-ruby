@@ -3,17 +3,25 @@
 module Increase
   module Models
     class InboundACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
-      # @!attribute updated_account_number
+      # @!attribute [r] updated_account_number
       #   The updated account number to send in the notification of change.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :updated_account_number, String
 
-      # @!attribute updated_routing_number
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :updated_account_number
+
+      # @!attribute [r] updated_routing_number
       #   The updated routing number to send in the notification of change.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :updated_routing_number, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :updated_routing_number
 
       # @!parse
       #   # @param updated_account_number [String] The updated account number to send in the notification of change.

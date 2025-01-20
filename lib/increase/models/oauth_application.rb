@@ -36,13 +36,13 @@ module Increase
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth Application was deleted.
       #
       #   @return [Time, nil]
-      required :deleted_at, Time
+      required :deleted_at, Time, nil?: true
 
       # @!attribute name
       #   The name you chose for this OAuth Application.
       #
       #   @return [String, nil]
-      required :name, String
+      required :name, String, nil?: true
 
       # @!attribute status
       #   Whether the application is active.
