@@ -36,19 +36,19 @@ module Increase
       #   The identifier for the Lockbox that received this mail item. For mail items that could not be processed due to an invalid address, this will be null.
       #
       #   @return [String, nil]
-      required :lockbox_id, String
+      required :lockbox_id, String, nil?: true
 
       # @!attribute recipient_name
       #   The recipient name as written on the mail item.
       #
       #   @return [String, nil]
-      required :recipient_name, String
+      required :recipient_name, String, nil?: true
 
       # @!attribute rejection_reason
       #   If the mail item has been rejected, why it was rejected.
       #
       #   @return [Symbol, Increase::Models::InboundMailItem::RejectionReason, nil]
-      required :rejection_reason, enum: -> { Increase::Models::InboundMailItem::RejectionReason }
+      required :rejection_reason, enum: -> { Increase::Models::InboundMailItem::RejectionReason }, nil?: true
 
       # @!attribute status
       #   If the mail item has been processed.

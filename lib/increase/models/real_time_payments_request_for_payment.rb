@@ -60,25 +60,25 @@ module Increase
       #   The transaction that fulfilled this request.
       #
       #   @return [String, nil]
-      required :fulfillment_transaction_id, String
+      required :fulfillment_transaction_id, String, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute refusal
       #   If the request for payment is refused by the destination financial institution or the receiving customer, this will contain supplemental details.
       #
       #   @return [Increase::Models::RealTimePaymentsRequestForPayment::Refusal, nil]
-      required :refusal, -> { Increase::Models::RealTimePaymentsRequestForPayment::Refusal }
+      required :refusal, -> { Increase::Models::RealTimePaymentsRequestForPayment::Refusal }, nil?: true
 
       # @!attribute rejection
       #   If the request for payment is rejected by Real-Time Payments or the destination financial institution, this will contain supplemental details.
       #
       #   @return [Increase::Models::RealTimePaymentsRequestForPayment::Rejection, nil]
-      required :rejection, -> { Increase::Models::RealTimePaymentsRequestForPayment::Rejection }
+      required :rejection, -> { Increase::Models::RealTimePaymentsRequestForPayment::Rejection }, nil?: true
 
       # @!attribute remittance_information
       #   Unstructured information that will show on the recipient's bank statement.
@@ -108,7 +108,7 @@ module Increase
       #   After the request for payment is submitted to Real-Time Payments, this will contain supplemental details.
       #
       #   @return [Increase::Models::RealTimePaymentsRequestForPayment::Submission, nil]
-      required :submission, -> { Increase::Models::RealTimePaymentsRequestForPayment::Submission }
+      required :submission, -> { Increase::Models::RealTimePaymentsRequestForPayment::Submission }, nil?: true
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `real_time_payments_request_for_payment`.

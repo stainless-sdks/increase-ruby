@@ -3,52 +3,84 @@
 module Increase
   module Models
     class AccountListParams < Increase::BaseModel
-      # @!attribute created_at
+      # @!attribute [r] created_at
       #
-      #   @return [Increase::Models::AccountListParams::CreatedAt]
+      #   @return [Increase::Models::AccountListParams::CreatedAt, nil]
       optional :created_at, -> { Increase::Models::AccountListParams::CreatedAt }
 
-      # @!attribute cursor
+      # @!parse
+      #   # @return [Increase::Models::AccountListParams::CreatedAt]
+      #   attr_writer :created_at
+
+      # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :cursor, String
 
-      # @!attribute entity_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :cursor
+
+      # @!attribute [r] entity_id
       #   Filter Accounts for those belonging to the specified Entity.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :entity_id, String
 
-      # @!attribute idempotency_key
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :entity_id
+
+      # @!attribute [r] idempotency_key
       #   Filter records to the one with the specified `idempotency_key` you chose for that object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :idempotency_key, String
 
-      # @!attribute informational_entity_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :idempotency_key
+
+      # @!attribute [r] informational_entity_id
       #   Filter Accounts for those belonging to the specified Entity as informational.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :informational_entity_id, String
 
-      # @!attribute limit
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :informational_entity_id
+
+      # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100 objects.
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!attribute program_id
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
+
+      # @!attribute [r] program_id
       #   Filter Accounts for those in a specific Program.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :program_id, String
 
-      # @!attribute status
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :program_id
+
+      # @!attribute [r] status
       #   Filter Accounts for those with the specified status.
       #
-      #   @return [Symbol, Increase::Models::AccountListParams::Status]
+      #   @return [Symbol, Increase::Models::AccountListParams::Status, nil]
       optional :status, enum: -> { Increase::Models::AccountListParams::Status }
+
+      # @!parse
+      #   # @return [Symbol, Increase::Models::AccountListParams::Status]
+      #   attr_writer :status
 
       # @!parse
       #   # @param created_at [Increase::Models::AccountListParams::CreatedAt]
@@ -97,29 +129,45 @@ module Increase
       # }
       # ```
       class CreatedAt < Increase::BaseModel
-        # @!attribute after
+        # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :after, Time
 
-        # @!attribute before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :after
+
+        # @!attribute [r] before
         #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :before, Time
 
-        # @!attribute on_or_after
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :before
+
+        # @!attribute [r] on_or_after
         #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_after, Time
 
-        # @!attribute on_or_before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_after
+
+        # @!attribute [r] on_or_before
         #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_before, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_before
 
         # @!parse
         #   # @param after [String] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)

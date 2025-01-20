@@ -42,31 +42,31 @@ module Increase
       #   A free-form address field set by the sender.
       #
       #   @return [String, nil]
-      required :beneficiary_address_line1, String
+      required :beneficiary_address_line1, String, nil?: true
 
       # @!attribute beneficiary_address_line2
       #   A free-form address field set by the sender.
       #
       #   @return [String, nil]
-      required :beneficiary_address_line2, String
+      required :beneficiary_address_line2, String, nil?: true
 
       # @!attribute beneficiary_address_line3
       #   A free-form address field set by the sender.
       #
       #   @return [String, nil]
-      required :beneficiary_address_line3, String
+      required :beneficiary_address_line3, String, nil?: true
 
       # @!attribute beneficiary_name
       #   A name set by the sender.
       #
       #   @return [String, nil]
-      required :beneficiary_name, String
+      required :beneficiary_name, String, nil?: true
 
       # @!attribute beneficiary_reference
       #   A free-form reference string set by the sender, to help identify the transfer.
       #
       #   @return [String, nil]
-      required :beneficiary_reference, String
+      required :beneficiary_reference, String, nil?: true
 
       # @!attribute description
       #   An Increase-constructed description of the transfer.
@@ -78,73 +78,73 @@ module Increase
       #   A unique identifier available to the originating and receiving banks, commonly abbreviated as IMAD. It is created when the wire is submitted to the Fedwire service and is helpful when debugging wires with the originating bank.
       #
       #   @return [String, nil]
-      required :input_message_accountability_data, String
+      required :input_message_accountability_data, String, nil?: true
 
       # @!attribute originator_address_line1
       #   The address of the wire originator, set by the sending bank.
       #
       #   @return [String, nil]
-      required :originator_address_line1, String
+      required :originator_address_line1, String, nil?: true
 
       # @!attribute originator_address_line2
       #   The address of the wire originator, set by the sending bank.
       #
       #   @return [String, nil]
-      required :originator_address_line2, String
+      required :originator_address_line2, String, nil?: true
 
       # @!attribute originator_address_line3
       #   The address of the wire originator, set by the sending bank.
       #
       #   @return [String, nil]
-      required :originator_address_line3, String
+      required :originator_address_line3, String, nil?: true
 
       # @!attribute originator_name
       #   The originator of the wire, set by the sending bank.
       #
       #   @return [String, nil]
-      required :originator_name, String
+      required :originator_name, String, nil?: true
 
       # @!attribute originator_routing_number
       #   The American Banking Association (ABA) routing number of the bank originating the transfer.
       #
       #   @return [String, nil]
-      required :originator_routing_number, String
+      required :originator_routing_number, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information
       #   An Increase-created concatenation of the Originator-to-Beneficiary lines.
       #
       #   @return [String, nil]
-      required :originator_to_beneficiary_information, String
+      required :originator_to_beneficiary_information, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line1
       #   A free-form message set by the wire originator.
       #
       #   @return [String, nil]
-      required :originator_to_beneficiary_information_line1, String
+      required :originator_to_beneficiary_information_line1, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line2
       #   A free-form message set by the wire originator.
       #
       #   @return [String, nil]
-      required :originator_to_beneficiary_information_line2, String
+      required :originator_to_beneficiary_information_line2, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line3
       #   A free-form message set by the wire originator.
       #
       #   @return [String, nil]
-      required :originator_to_beneficiary_information_line3, String
+      required :originator_to_beneficiary_information_line3, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line4
       #   A free-form message set by the wire originator.
       #
       #   @return [String, nil]
-      required :originator_to_beneficiary_information_line4, String
+      required :originator_to_beneficiary_information_line4, String, nil?: true
 
       # @!attribute sender_reference
       #   The sending bank's reference number for the wire transfer.
       #
       #   @return [String, nil]
-      required :sender_reference, String
+      required :sender_reference, String, nil?: true
 
       # @!attribute status
       #   The status of the transfer.

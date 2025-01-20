@@ -15,17 +15,25 @@ module Increase
       #   @return [String]
       required :name, String
 
-      # @!attribute inbound_ach
+      # @!attribute [r] inbound_ach
       #   Options related to how this Account Number should handle inbound ACH transfers.
       #
-      #   @return [Increase::Models::AccountNumberCreateParams::InboundACH]
+      #   @return [Increase::Models::AccountNumberCreateParams::InboundACH, nil]
       optional :inbound_ach, -> { Increase::Models::AccountNumberCreateParams::InboundACH }
 
-      # @!attribute inbound_checks
+      # @!parse
+      #   # @return [Increase::Models::AccountNumberCreateParams::InboundACH]
+      #   attr_writer :inbound_ach
+
+      # @!attribute [r] inbound_checks
       #   Options related to how this Account Number should handle inbound check withdrawals.
       #
-      #   @return [Increase::Models::AccountNumberCreateParams::InboundChecks]
+      #   @return [Increase::Models::AccountNumberCreateParams::InboundChecks, nil]
       optional :inbound_checks, -> { Increase::Models::AccountNumberCreateParams::InboundChecks }
+
+      # @!parse
+      #   # @return [Increase::Models::AccountNumberCreateParams::InboundChecks]
+      #   attr_writer :inbound_checks
 
       # @!parse
       #   # @param account_id [String] The Account the Account Number should belong to.

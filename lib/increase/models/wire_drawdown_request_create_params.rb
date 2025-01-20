@@ -39,47 +39,75 @@ module Increase
       #   @return [String]
       required :recipient_routing_number, String
 
-      # @!attribute originator_address_line1
+      # @!attribute [r] originator_address_line1
       #   The drawdown request originator's address line 1. This is only necessary if you're requesting a payment to a commingled account. Otherwise, we'll use the associated entity's details.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :originator_address_line1, String
 
-      # @!attribute originator_address_line2
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :originator_address_line1
+
+      # @!attribute [r] originator_address_line2
       #   The drawdown request originator's address line 2. This is only necessary if you're requesting a payment to a commingled account. Otherwise, we'll use the associated entity's details.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :originator_address_line2, String
 
-      # @!attribute originator_address_line3
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :originator_address_line2
+
+      # @!attribute [r] originator_address_line3
       #   The drawdown request originator's address line 3. This is only necessary if you're requesting a payment to a commingled account. Otherwise, we'll use the associated entity's details.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :originator_address_line3, String
 
-      # @!attribute originator_name
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :originator_address_line3
+
+      # @!attribute [r] originator_name
       #   The drawdown request originator's name. This is only necessary if you're requesting a payment to a commingled account. Otherwise, we'll use the associated entity's details.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :originator_name, String
 
-      # @!attribute recipient_address_line1
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :originator_name
+
+      # @!attribute [r] recipient_address_line1
       #   Line 1 of the drawdown request's recipient's address.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :recipient_address_line1, String
 
-      # @!attribute recipient_address_line2
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :recipient_address_line1
+
+      # @!attribute [r] recipient_address_line2
       #   Line 2 of the drawdown request's recipient's address.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :recipient_address_line2, String
 
-      # @!attribute recipient_address_line3
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :recipient_address_line2
+
+      # @!attribute [r] recipient_address_line3
       #   Line 3 of the drawdown request's recipient's address.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :recipient_address_line3, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :recipient_address_line3
 
       # @!parse
       #   # @param account_number_id [String] The Account Number to which the recipient should send funds.

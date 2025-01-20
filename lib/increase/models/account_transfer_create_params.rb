@@ -27,11 +27,15 @@ module Increase
       #   @return [String]
       required :destination_account_id, String
 
-      # @!attribute require_approval
+      # @!attribute [r] require_approval
       #   Whether the transfer requires explicit approval via the dashboard or API.
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :require_approval, Increase::BooleanModel
+
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :require_approval
 
       # @!parse
       #   # @param account_id [String] The identifier for the account that will send the transfer.

@@ -3,29 +3,45 @@
 module Increase
   module Models
     class AccountStatementListParams < Increase::BaseModel
-      # @!attribute account_id
+      # @!attribute [r] account_id
       #   Filter Account Statements to those belonging to the specified Account.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :account_id, String
 
-      # @!attribute cursor
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :account_id
+
+      # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :cursor, String
 
-      # @!attribute limit
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :cursor
+
+      # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100 objects.
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!attribute statement_period_start
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
+
+      # @!attribute [r] statement_period_start
       #
-      #   @return [Increase::Models::AccountStatementListParams::StatementPeriodStart]
+      #   @return [Increase::Models::AccountStatementListParams::StatementPeriodStart, nil]
       optional :statement_period_start,
                -> { Increase::Models::AccountStatementListParams::StatementPeriodStart }
+
+      # @!parse
+      #   # @return [Increase::Models::AccountStatementListParams::StatementPeriodStart]
+      #   attr_writer :statement_period_start
 
       # @!parse
       #   # @param account_id [String] Filter Account Statements to those belonging to the specified Account.
@@ -51,29 +67,45 @@ module Increase
       # }
       # ```
       class StatementPeriodStart < Increase::BaseModel
-        # @!attribute after
+        # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :after, Time
 
-        # @!attribute before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :after
+
+        # @!attribute [r] before
         #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :before, Time
 
-        # @!attribute on_or_after
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :before
+
+        # @!attribute [r] on_or_after
         #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_after, Time
 
-        # @!attribute on_or_before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_after
+
+        # @!attribute [r] on_or_before
         #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_before, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_before
 
         # @!parse
         #   # @param after [String] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)

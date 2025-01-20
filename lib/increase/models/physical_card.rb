@@ -42,13 +42,13 @@ module Increase
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute physical_card_profile_id
       #   The Physical Card Profile used for this Physical Card.
       #
       #   @return [String, nil]
-      required :physical_card_profile_id, String
+      required :physical_card_profile_id, String, nil?: true
 
       # @!attribute shipment
       #   The details used to ship this physical card.
@@ -178,7 +178,7 @@ module Increase
         #   Tracking details for the shipment.
         #
         #   @return [Increase::Models::PhysicalCard::Shipment::Tracking, nil]
-        required :tracking, -> { Increase::Models::PhysicalCard::Shipment::Tracking }
+        required :tracking, -> { Increase::Models::PhysicalCard::Shipment::Tracking }, nil?: true
 
         # @!parse
         #   # The details used to ship this physical card.
@@ -223,13 +223,13 @@ module Increase
           #   The second line of the shipping address.
           #
           #   @return [String, nil]
-          required :line2, String
+          required :line2, String, nil?: true
 
           # @!attribute line3
           #   The third line of the shipping address.
           #
           #   @return [String, nil]
-          required :line3, String
+          required :line3, String, nil?: true
 
           # @!attribute name
           #   The name of the recipient.
@@ -361,13 +361,13 @@ module Increase
           #   For returned shipments, the tracking number of the return shipment.
           #
           #   @return [String, nil]
-          required :return_number, String
+          required :return_number, String, nil?: true
 
           # @!attribute return_reason
           #   For returned shipments, this describes why the package was returned.
           #
           #   @return [String, nil]
-          required :return_reason, String
+          required :return_reason, String, nil?: true
 
           # @!attribute shipped_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the fulfillment provider marked the card as ready for pick-up by the shipment carrier.

@@ -21,32 +21,48 @@ module Increase
       #   @return [String]
       required :source_account_number_id, String
 
-      # @!attribute fulfillment_method
+      # @!attribute [r] fulfillment_method
       #   Whether Increase will print and mail the check or if you will do it yourself.
       #
-      #   @return [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod]
+      #   @return [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod, nil]
       optional :fulfillment_method,
                enum: -> {
                  Increase::Models::CheckTransferCreateParams::FulfillmentMethod
                }
 
-      # @!attribute physical_check
+      # @!parse
+      #   # @return [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod]
+      #   attr_writer :fulfillment_method
+
+      # @!attribute [r] physical_check
       #   Details relating to the physical check that Increase will print and mail. This is required if `fulfillment_method` is equal to `physical_check`. It must not be included if any other `fulfillment_method` is provided.
       #
-      #   @return [Increase::Models::CheckTransferCreateParams::PhysicalCheck]
+      #   @return [Increase::Models::CheckTransferCreateParams::PhysicalCheck, nil]
       optional :physical_check, -> { Increase::Models::CheckTransferCreateParams::PhysicalCheck }
 
-      # @!attribute require_approval
+      # @!parse
+      #   # @return [Increase::Models::CheckTransferCreateParams::PhysicalCheck]
+      #   attr_writer :physical_check
+
+      # @!attribute [r] require_approval
       #   Whether the transfer requires explicit approval via the dashboard or API.
       #
-      #   @return [Boolean]
+      #   @return [Boolean, nil]
       optional :require_approval, Increase::BooleanModel
 
-      # @!attribute third_party
+      # @!parse
+      #   # @return [Boolean]
+      #   attr_writer :require_approval
+
+      # @!attribute [r] third_party
       #   Details relating to the custom fulfillment you will perform. This is required if `fulfillment_method` is equal to `third_party`. It must not be included if any other `fulfillment_method` is provided.
       #
-      #   @return [Increase::Models::CheckTransferCreateParams::ThirdParty]
+      #   @return [Increase::Models::CheckTransferCreateParams::ThirdParty, nil]
       optional :third_party, -> { Increase::Models::CheckTransferCreateParams::ThirdParty }
+
+      # @!parse
+      #   # @return [Increase::Models::CheckTransferCreateParams::ThirdParty]
+      #   attr_writer :third_party
 
       # @!parse
       #   # @param account_id [String] The identifier for the account that will send the transfer.
@@ -134,26 +150,38 @@ module Increase
         #   @return [String]
         required :recipient_name, String
 
-        # @!attribute note
+        # @!attribute [r] note
         #   The descriptor that will be printed on the letter included with the check.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :note, String
 
-        # @!attribute return_address
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :note
+
+        # @!attribute [r] return_address
         #   The return address to be printed on the check. If omitted this will default to an Increase-owned address that will mark checks as delivery failed and shred them.
         #
-        #   @return [Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress]
+        #   @return [Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, nil]
         optional :return_address,
                  -> {
                    Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
                  }
 
-        # @!attribute signature_text
+        # @!parse
+        #   # @return [Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress]
+        #   attr_writer :return_address
+
+        # @!attribute [r] signature_text
         #   The text that will appear as the signature on the check in cursive font. If not provided, the check will be printed with 'No signature required'.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :signature_text, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :signature_text
 
         # @!parse
         #   # Details relating to the physical check that Increase will print and mail. This
@@ -214,17 +242,25 @@ module Increase
           #   @return [String]
           required :state, String
 
-          # @!attribute line2
+          # @!attribute [r] line2
           #   The second line of the address component of the check's destination address.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :line2, String
 
-          # @!attribute name
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :line2
+
+          # @!attribute [r] name
           #   The name component of the check's destination address. Defaults to the provided `recipient_name` parameter.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :name, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :name
 
           # @!parse
           #   # Details for where Increase will mail the check.
@@ -288,11 +324,15 @@ module Increase
           #   @return [String]
           required :state, String
 
-          # @!attribute line2
+          # @!attribute [r] line2
           #   The second line of the return address.
           #
-          #   @return [String]
+          #   @return [String, nil]
           optional :line2, String
+
+          # @!parse
+          #   # @return [String]
+          #   attr_writer :line2
 
           # @!parse
           #   # The return address to be printed on the check. If omitted this will default to
@@ -324,11 +364,15 @@ module Increase
       # }
       # ```
       class ThirdParty < Increase::BaseModel
-        # @!attribute check_number
+        # @!attribute [r] check_number
         #   The check number you will print on the check. This should not contain leading zeroes. If this is omitted, Increase will generate a check number for you; you should inspect the response and use that check number.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :check_number, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :check_number
 
         # @!parse
         #   # Details relating to the custom fulfillment you will perform. This is required if

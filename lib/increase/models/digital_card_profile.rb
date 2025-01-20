@@ -42,19 +42,19 @@ module Increase
       #   An email address the user can contact to receive support for their card.
       #
       #   @return [String, nil]
-      required :contact_email, String
+      required :contact_email, String, nil?: true
 
       # @!attribute contact_phone
       #   A phone number the user can contact to receive support for their card.
       #
       #   @return [String, nil]
-      required :contact_phone, String
+      required :contact_phone, String, nil?: true
 
       # @!attribute contact_website
       #   A website the user can visit to view and receive support for their card.
       #
       #   @return [String, nil]
-      required :contact_website, String
+      required :contact_website, String, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was created.
@@ -72,7 +72,7 @@ module Increase
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute issuer_name
       #   A user-facing description for whoever is issuing the card.

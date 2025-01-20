@@ -3,28 +3,44 @@
 module Increase
   module Models
     class DigitalWalletTokenListParams < Increase::BaseModel
-      # @!attribute card_id
+      # @!attribute [r] card_id
       #   Filter Digital Wallet Tokens to ones belonging to the specified Card.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :card_id, String
 
-      # @!attribute created_at
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :card_id
+
+      # @!attribute [r] created_at
       #
-      #   @return [Increase::Models::DigitalWalletTokenListParams::CreatedAt]
+      #   @return [Increase::Models::DigitalWalletTokenListParams::CreatedAt, nil]
       optional :created_at, -> { Increase::Models::DigitalWalletTokenListParams::CreatedAt }
 
-      # @!attribute cursor
+      # @!parse
+      #   # @return [Increase::Models::DigitalWalletTokenListParams::CreatedAt]
+      #   attr_writer :created_at
+
+      # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :cursor, String
 
-      # @!attribute limit
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :cursor
+
+      # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100 objects.
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
+
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
 
       # @!parse
       #   # @param card_id [String] Filter Digital Wallet Tokens to ones belonging to the specified Card.
@@ -50,29 +66,45 @@ module Increase
       # }
       # ```
       class CreatedAt < Increase::BaseModel
-        # @!attribute after
+        # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :after, Time
 
-        # @!attribute before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :after
+
+        # @!attribute [r] before
         #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :before, Time
 
-        # @!attribute on_or_after
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :before
+
+        # @!attribute [r] on_or_after
         #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_after, Time
 
-        # @!attribute on_or_before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_after
+
+        # @!attribute [r] on_or_before
         #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_before, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_before
 
         # @!parse
         #   # @param after [String] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)

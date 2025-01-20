@@ -52,77 +52,125 @@ module Increase
         #   @return [String]
         required :recipient_account_number_id, String
 
-        # @!attribute beneficiary_address_line1
+        # @!attribute [r] beneficiary_address_line1
         #   Line 1 of the drawdown request's beneficiary's address.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :beneficiary_address_line1, String
 
-        # @!attribute beneficiary_address_line2
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :beneficiary_address_line1
+
+        # @!attribute [r] beneficiary_address_line2
         #   Line 2 of the drawdown request's beneficiary's address.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :beneficiary_address_line2, String
 
-        # @!attribute beneficiary_address_line3
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :beneficiary_address_line2
+
+        # @!attribute [r] beneficiary_address_line3
         #   Line 3 of the drawdown request's beneficiary's address.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :beneficiary_address_line3, String
 
-        # @!attribute beneficiary_name
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :beneficiary_address_line3
+
+        # @!attribute [r] beneficiary_name
         #   The drawdown request's beneficiary's name.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :beneficiary_name, String
 
-        # @!attribute originator_address_line1
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :beneficiary_name
+
+        # @!attribute [r] originator_address_line1
         #   Line 1 of the drawdown request's originator's address.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :originator_address_line1, String
 
-        # @!attribute originator_address_line2
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :originator_address_line1
+
+        # @!attribute [r] originator_address_line2
         #   Line 2 of the drawdown request's originator's address.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :originator_address_line2, String
 
-        # @!attribute originator_address_line3
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :originator_address_line2
+
+        # @!attribute [r] originator_address_line3
         #   Line 3 of the drawdown request's originator's address.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :originator_address_line3, String
 
-        # @!attribute originator_name
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :originator_address_line3
+
+        # @!attribute [r] originator_name
         #   The drawdown request's originator's name.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :originator_name, String
 
-        # @!attribute originator_to_beneficiary_information_line1
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :originator_name
+
+        # @!attribute [r] originator_to_beneficiary_information_line1
         #   Line 1 of the information conveyed from the originator of the message to the beneficiary.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :originator_to_beneficiary_information_line1, String
 
-        # @!attribute originator_to_beneficiary_information_line2
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :originator_to_beneficiary_information_line1
+
+        # @!attribute [r] originator_to_beneficiary_information_line2
         #   Line 2 of the information conveyed from the originator of the message to the beneficiary.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :originator_to_beneficiary_information_line2, String
 
-        # @!attribute originator_to_beneficiary_information_line3
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :originator_to_beneficiary_information_line2
+
+        # @!attribute [r] originator_to_beneficiary_information_line3
         #   Line 3 of the information conveyed from the originator of the message to the beneficiary.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :originator_to_beneficiary_information_line3, String
 
-        # @!attribute originator_to_beneficiary_information_line4
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :originator_to_beneficiary_information_line3
+
+        # @!attribute [r] originator_to_beneficiary_information_line4
         #   Line 4 of the information conveyed from the originator of the message to the beneficiary.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :originator_to_beneficiary_information_line4, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :originator_to_beneficiary_information_line4
 
         # @!parse
         #   # @param amount [Integer] The amount being requested in cents.

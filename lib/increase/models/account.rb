@@ -30,7 +30,7 @@ module Increase
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was closed.
       #
       #   @return [Time, nil]
-      required :closed_at, Time
+      required :closed_at, Time, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was created.
@@ -48,19 +48,19 @@ module Increase
       #   The identifier for the Entity the Account belongs to.
       #
       #   @return [String, nil]
-      required :entity_id, String
+      required :entity_id, String, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute informational_entity_id
       #   The identifier of an Entity that, while not owning the Account, is associated with its activity.
       #
       #   @return [String, nil]
-      required :informational_entity_id, String
+      required :informational_entity_id, String, nil?: true
 
       # @!attribute interest_accrued
       #   The interest accrued but not yet paid, expressed as a string containing a floating-point value.
@@ -72,7 +72,7 @@ module Increase
       #   The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which interest was accrued.
       #
       #   @return [Date, nil]
-      required :interest_accrued_at, Date
+      required :interest_accrued_at, Date, nil?: true
 
       # @!attribute interest_rate
       #   The Interest Rate currently being earned on the account, as a string containing a decimal number. For example, a 1% interest rate would be represented as "0.01".

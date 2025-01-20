@@ -3,35 +3,55 @@
 module Increase
   module Models
     class PhysicalCardProfileCloneParams < Increase::BaseModel
-      # @!attribute carrier_image_file_id
+      # @!attribute [r] carrier_image_file_id
       #   The identifier of the File containing the physical card's carrier image.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :carrier_image_file_id, String
 
-      # @!attribute contact_phone
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :carrier_image_file_id
+
+      # @!attribute [r] contact_phone
       #   A phone number the user can contact to receive support for their card.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :contact_phone, String
 
-      # @!attribute description
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :contact_phone
+
+      # @!attribute [r] description
       #   A description you can use to identify the Card Profile.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :description, String
 
-      # @!attribute front_image_file_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
+
+      # @!attribute [r] front_image_file_id
       #   The identifier of the File containing the physical card's front image.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :front_image_file_id, String
 
-      # @!attribute front_text
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :front_image_file_id
+
+      # @!attribute [r] front_text
       #   Text printed on the front of the card. Reach out to [support@increase.com](mailto:support@increase.com) for more information.
       #
-      #   @return [Increase::Models::PhysicalCardProfileCloneParams::FrontText]
+      #   @return [Increase::Models::PhysicalCardProfileCloneParams::FrontText, nil]
       optional :front_text, -> { Increase::Models::PhysicalCardProfileCloneParams::FrontText }
+
+      # @!parse
+      #   # @return [Increase::Models::PhysicalCardProfileCloneParams::FrontText]
+      #   attr_writer :front_text
 
       # @!parse
       #   # @param carrier_image_file_id [String] The identifier of the File containing the physical card's carrier image.
@@ -72,11 +92,15 @@ module Increase
         #   @return [String]
         required :line1, String
 
-        # @!attribute line2
+        # @!attribute [r] line2
         #   The second line of text on the front of the card. Providing a second line moves the first line slightly higher and prints the second line in the spot where the first line would have otherwise been printed.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :line2, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :line2
 
         # @!parse
         #   # Text printed on the front of the card. Reach out to

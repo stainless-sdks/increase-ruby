@@ -16,11 +16,15 @@ module Increase
         #   @return [String]
         required :card_payment_id, String
 
-        # @!attribute event_subscription_id
+        # @!attribute [r] event_subscription_id
         #   The identifier of the Event Subscription to use. If provided, will override the default real time event subscription. Because you can only create one real time decision event subscription, you can use this field to route events to any specified event subscription for testing purposes.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :event_subscription_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :event_subscription_id
 
         # @!parse
         #   # @param amount [Integer] The amount of the increment in minor units in the card authorization's currency.

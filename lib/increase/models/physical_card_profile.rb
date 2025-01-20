@@ -24,19 +24,19 @@ module Increase
       #   The identifier of the File containing the physical card's back image.
       #
       #   @return [String, nil]
-      required :back_image_file_id, String
+      required :back_image_file_id, String, nil?: true
 
       # @!attribute carrier_image_file_id
       #   The identifier of the File containing the physical card's carrier image.
       #
       #   @return [String, nil]
-      required :carrier_image_file_id, String
+      required :carrier_image_file_id, String, nil?: true
 
       # @!attribute contact_phone
       #   A phone number the user can contact to receive support for their card.
       #
       #   @return [String, nil]
-      required :contact_phone, String
+      required :contact_phone, String, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was created.
@@ -60,13 +60,13 @@ module Increase
       #   The identifier of the File containing the physical card's front image.
       #
       #   @return [String, nil]
-      required :front_image_file_id, String
+      required :front_image_file_id, String, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute is_default
       #   Whether this Physical Card Profile is the default for all cards in its Increase group.

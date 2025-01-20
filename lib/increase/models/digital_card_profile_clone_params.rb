@@ -3,59 +3,95 @@
 module Increase
   module Models
     class DigitalCardProfileCloneParams < Increase::BaseModel
-      # @!attribute app_icon_file_id
+      # @!attribute [r] app_icon_file_id
       #   The identifier of the File containing the card's icon image.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :app_icon_file_id, String
 
-      # @!attribute background_image_file_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :app_icon_file_id
+
+      # @!attribute [r] background_image_file_id
       #   The identifier of the File containing the card's front image.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :background_image_file_id, String
 
-      # @!attribute card_description
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :background_image_file_id
+
+      # @!attribute [r] card_description
       #   A user-facing description for the card itself.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :card_description, String
 
-      # @!attribute contact_email
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :card_description
+
+      # @!attribute [r] contact_email
       #   An email address the user can contact to receive support for their card.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :contact_email, String
 
-      # @!attribute contact_phone
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :contact_email
+
+      # @!attribute [r] contact_phone
       #   A phone number the user can contact to receive support for their card.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :contact_phone, String
 
-      # @!attribute contact_website
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :contact_phone
+
+      # @!attribute [r] contact_website
       #   A website the user can visit to view and receive support for their card.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :contact_website, String
 
-      # @!attribute description
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :contact_website
+
+      # @!attribute [r] description
       #   A description you can use to identify the Card Profile.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :description, String
 
-      # @!attribute issuer_name
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
+
+      # @!attribute [r] issuer_name
       #   A user-facing description for whoever is issuing the card.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :issuer_name, String
 
-      # @!attribute text_color
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :issuer_name
+
+      # @!attribute [r] text_color
       #   The Card's text color, specified as an RGB triple. The default is white.
       #
-      #   @return [Increase::Models::DigitalCardProfileCloneParams::TextColor]
+      #   @return [Increase::Models::DigitalCardProfileCloneParams::TextColor, nil]
       optional :text_color, -> { Increase::Models::DigitalCardProfileCloneParams::TextColor }
+
+      # @!parse
+      #   # @return [Increase::Models::DigitalCardProfileCloneParams::TextColor]
+      #   attr_writer :text_color
 
       # @!parse
       #   # @param app_icon_file_id [String] The identifier of the File containing the card's icon image.

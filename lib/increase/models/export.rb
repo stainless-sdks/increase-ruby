@@ -36,19 +36,19 @@ module Increase
       #   A URL at which the Export's file can be downloaded. This will be present when the Export's status transitions to `complete`.
       #
       #   @return [String, nil]
-      required :file_download_url, String
+      required :file_download_url, String, nil?: true
 
       # @!attribute file_id
       #   The File containing the contents of the Export. This will be present when the Export's status transitions to `complete`.
       #
       #   @return [String, nil]
-      required :file_id, String
+      required :file_id, String, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute status
       #   The status of the Export.

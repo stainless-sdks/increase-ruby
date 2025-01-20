@@ -21,67 +21,107 @@ module Increase
       #   @return [String]
       required :routing_number, String
 
-      # @!attribute addendum
+      # @!attribute [r] addendum
       #   Additional information that will be sent to the recipient.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :addendum, String
 
-      # @!attribute company_descriptive_date
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :addendum
+
+      # @!attribute [r] company_descriptive_date
       #   The description of the date of the transfer.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :company_descriptive_date, String
 
-      # @!attribute company_discretionary_data
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :company_descriptive_date
+
+      # @!attribute [r] company_discretionary_data
       #   The data you choose to associate with the transfer.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :company_discretionary_data, String
 
-      # @!attribute company_entry_description
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :company_discretionary_data
+
+      # @!attribute [r] company_entry_description
       #   The description of the transfer you wish to be shown to the recipient.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :company_entry_description, String
 
-      # @!attribute company_name
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :company_entry_description
+
+      # @!attribute [r] company_name
       #   The name by which the recipient knows you.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :company_name, String
 
-      # @!attribute credit_debit_indicator
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :company_name
+
+      # @!attribute [r] credit_debit_indicator
       #   Whether the Prenotification is for a future debit or credit.
       #
-      #   @return [Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator]
+      #   @return [Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator, nil]
       optional :credit_debit_indicator,
                enum: -> { Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator }
 
-      # @!attribute effective_date
+      # @!parse
+      #   # @return [Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator]
+      #   attr_writer :credit_debit_indicator
+
+      # @!attribute [r] effective_date
       #   The transfer effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       #
-      #   @return [Date]
+      #   @return [Date, nil]
       optional :effective_date, Date
 
-      # @!attribute individual_id
+      # @!parse
+      #   # @return [Date]
+      #   attr_writer :effective_date
+
+      # @!attribute [r] individual_id
       #   Your identifier for the transfer recipient.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :individual_id, String
 
-      # @!attribute individual_name
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :individual_id
+
+      # @!attribute [r] individual_name
       #   The name of the transfer recipient. This value is information and not verified by the recipient's bank.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :individual_name, String
 
-      # @!attribute standard_entry_class_code
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :individual_name
+
+      # @!attribute [r] standard_entry_class_code
       #   The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       #
-      #   @return [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode]
+      #   @return [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode, nil]
       optional :standard_entry_class_code,
                enum: -> { Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode }
+
+      # @!parse
+      #   # @return [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode]
+      #   attr_writer :standard_entry_class_code
 
       # @!parse
       #   # @param account_id [String] The Increase identifier for the account that will send the transfer.

@@ -42,7 +42,11 @@ module Increase
       #   If your transfer is confirmed, this will contain details of the confirmation.
       #
       #   @return [Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, nil]
-      required :confirmation, -> { Increase::Models::InboundRealTimePaymentsTransfer::Confirmation }
+      required :confirmation,
+               -> {
+                 Increase::Models::InboundRealTimePaymentsTransfer::Confirmation
+               },
+               nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
@@ -84,13 +88,13 @@ module Increase
       #   If your transfer is declined, this will contain details of the decline.
       #
       #   @return [Increase::Models::InboundRealTimePaymentsTransfer::Decline, nil]
-      required :decline, -> { Increase::Models::InboundRealTimePaymentsTransfer::Decline }
+      required :decline, -> { Increase::Models::InboundRealTimePaymentsTransfer::Decline }, nil?: true
 
       # @!attribute remittance_information
       #   Additional information included with the transfer.
       #
       #   @return [String, nil]
-      required :remittance_information, String
+      required :remittance_information, String, nil?: true
 
       # @!attribute status
       #   The lifecycle status of the transfer.

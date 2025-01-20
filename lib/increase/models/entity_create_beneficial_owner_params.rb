@@ -42,11 +42,15 @@ module Increase
                    Increase::ArrayOf[enum: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong]
                  }
 
-        # @!attribute company_title
+        # @!attribute [r] company_title
         #   This person's role or title within the entity.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :company_title, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :company_title
 
         # @!parse
         #   # The identifying details of anyone controlling or owning 25% or more of the
@@ -101,11 +105,15 @@ module Increase
           #   @return [String]
           required :name, String
 
-          # @!attribute confirmed_no_us_tax_id
+          # @!attribute [r] confirmed_no_us_tax_id
           #   The identification method for an individual can only be a passport, driver's license, or other document if you've confirmed the individual does not have a US tax id (either a Social Security Number or Individual Taxpayer Identification Number).
           #
-          #   @return [Boolean]
+          #   @return [Boolean, nil]
           optional :confirmed_no_us_tax_id, Increase::BooleanModel
+
+          # @!parse
+          #   # @return [Boolean]
+          #   attr_writer :confirmed_no_us_tax_id
 
           # @!parse
           #   # Personal details for the beneficial owner.
@@ -163,11 +171,15 @@ module Increase
             #   @return [String]
             required :zip, String
 
-            # @!attribute line2
+            # @!attribute [r] line2
             #   The second line of the address. This might be the floor or room number.
             #
-            #   @return [String]
+            #   @return [String, nil]
             optional :line2, String
+
+            # @!parse
+            #   # @return [String]
+            #   attr_writer :line2
 
             # @!parse
             #   # The individual's physical address. Mail receiving locations like PO Boxes and
@@ -216,26 +228,38 @@ module Increase
             #   @return [String]
             required :number, String
 
-            # @!attribute drivers_license
+            # @!attribute [r] drivers_license
             #   Information about the United States driver's license used for identification. Required if `method` is equal to `drivers_license`.
             #
-            #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense]
+            #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense, nil]
             optional :drivers_license,
                      -> { Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense }
 
-            # @!attribute other
+            # @!parse
+            #   # @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense]
+            #   attr_writer :drivers_license
+
+            # @!attribute [r] other
             #   Information about the identification document provided. Required if `method` is equal to `other`.
             #
-            #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other]
+            #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other, nil]
             optional :other,
                      -> { Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other }
 
-            # @!attribute passport
+            # @!parse
+            #   # @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other]
+            #   attr_writer :other
+
+            # @!attribute [r] passport
             #   Information about the passport used for identification. Required if `method` is equal to `passport`.
             #
-            #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport]
+            #   @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport, nil]
             optional :passport,
                      -> { Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport }
+
+            # @!parse
+            #   # @return [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport]
+            #   attr_writer :passport
 
             # @!parse
             #   # A means of verifying the person's identity.
@@ -322,11 +346,15 @@ module Increase
               #   @return [String]
               required :state, String
 
-              # @!attribute back_file_id
+              # @!attribute [r] back_file_id
               #   The identifier of the File containing the back of the driver's license.
               #
-              #   @return [String]
+              #   @return [String, nil]
               optional :back_file_id, String
+
+              # @!parse
+              #   # @return [String]
+              #   attr_writer :back_file_id
 
               # @!parse
               #   # Information about the United States driver's license used for identification.
@@ -374,17 +402,25 @@ module Increase
               #   @return [String]
               required :file_id, String
 
-              # @!attribute back_file_id
+              # @!attribute [r] back_file_id
               #   The identifier of the File containing the back of the document. Not every document has a reverse side.
               #
-              #   @return [String]
+              #   @return [String, nil]
               optional :back_file_id, String
 
-              # @!attribute expiration_date
+              # @!parse
+              #   # @return [String]
+              #   attr_writer :back_file_id
+
+              # @!attribute [r] expiration_date
               #   The document's expiration date in YYYY-MM-DD format.
               #
-              #   @return [Date]
+              #   @return [Date, nil]
               optional :expiration_date, Date
+
+              # @!parse
+              #   # @return [Date]
+              #   attr_writer :expiration_date
 
               # @!parse
               #   # Information about the identification document provided. Required if `method` is

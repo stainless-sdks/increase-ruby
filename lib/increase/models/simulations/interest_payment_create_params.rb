@@ -16,17 +16,25 @@ module Increase
         #   @return [Integer]
         required :amount, Integer
 
-        # @!attribute period_end
+        # @!attribute [r] period_end
         #   The end of the interest period. If not provided, defaults to the current time.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :period_end, Time
 
-        # @!attribute period_start
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :period_end
+
+        # @!attribute [r] period_start
         #   The start of the interest period. If not provided, defaults to the current time.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :period_start, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :period_start
 
         # @!parse
         #   # @param account_id [String] The identifier of the Account Number the Interest Payment is for.

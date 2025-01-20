@@ -35,7 +35,7 @@ module Increase
       #   The identifier of the Entity the document was generated for.
       #
       #   @return [String, nil]
-      required :entity_id, String
+      required :entity_id, String, nil?: true
 
       # @!attribute file_id
       #   The identifier of the File containing the Document's contents.

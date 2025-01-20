@@ -24,13 +24,13 @@ module Increase
       #   If the Card Dispute's status is `accepted`, this will contain details of the successful dispute.
       #
       #   @return [Increase::Models::CardDispute::Acceptance, nil]
-      required :acceptance, -> { Increase::Models::CardDispute::Acceptance }
+      required :acceptance, -> { Increase::Models::CardDispute::Acceptance }, nil?: true
 
       # @!attribute amount
       #   The amount of the dispute, if provided, or the transaction amount otherwise.
       #
       #   @return [Integer, nil]
-      required :amount, Integer
+      required :amount, Integer, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was created.
@@ -54,19 +54,19 @@ module Increase
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute loss
       #   If the Card Dispute's status is `lost`, this will contain details of the lost dispute.
       #
       #   @return [Increase::Models::CardDispute::Loss, nil]
-      required :loss, -> { Increase::Models::CardDispute::Loss }
+      required :loss, -> { Increase::Models::CardDispute::Loss }, nil?: true
 
       # @!attribute rejection
       #   If the Card Dispute's status is `rejected`, this will contain details of the unsuccessful dispute.
       #
       #   @return [Increase::Models::CardDispute::Rejection, nil]
-      required :rejection, -> { Increase::Models::CardDispute::Rejection }
+      required :rejection, -> { Increase::Models::CardDispute::Rejection }, nil?: true
 
       # @!attribute status
       #   The results of the Dispute investigation.
@@ -84,7 +84,7 @@ module Increase
       #   If the Card Dispute's status is `won`, this will contain details of the won dispute.
       #
       #   @return [Increase::Models::CardDispute::Win, nil]
-      required :win, -> { Increase::Models::CardDispute::Win }
+      required :win, -> { Increase::Models::CardDispute::Win }, nil?: true
 
       # @!parse
       #   # If unauthorized activity occurs on a card, you can create a Card Dispute and

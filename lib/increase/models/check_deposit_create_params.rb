@@ -27,11 +27,15 @@ module Increase
       #   @return [String]
       required :front_image_file_id, String
 
-      # @!attribute description
+      # @!attribute [r] description
       #   The description you choose to give the Check Deposit, for display purposes only.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :description, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :description
 
       # @!parse
       #   # @param account_id [String] The identifier for the Account to deposit the check in.

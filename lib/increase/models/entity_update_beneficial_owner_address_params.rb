@@ -61,11 +61,15 @@ module Increase
         #   @return [String]
         required :zip, String
 
-        # @!attribute line2
+        # @!attribute [r] line2
         #   The second line of the address. This might be the floor or room number.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :line2, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :line2
 
         # @!parse
         #   # The individual's physical address. Mail receiving locations like PO Boxes and

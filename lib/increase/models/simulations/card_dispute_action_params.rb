@@ -10,11 +10,15 @@ module Increase
         #   @return [Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status]
         required :status, enum: -> { Increase::Models::Simulations::CardDisputeActionParams::Status }
 
-        # @!attribute explanation
+        # @!attribute [r] explanation
         #   Why the dispute was rejected. Not required for accepting disputes.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :explanation, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :explanation
 
         # @!parse
         #   # @param status [String] The status to move the dispute to.

@@ -42,13 +42,13 @@ module Increase
       #   If the recipient fulfills the drawdown request by sending funds, then this will be the identifier of the corresponding Transaction.
       #
       #   @return [String, nil]
-      required :fulfillment_inbound_wire_transfer_id, String
+      required :fulfillment_inbound_wire_transfer_id, String, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute message_to_recipient
       #   The message the recipient will see as part of the drawdown request.
@@ -60,25 +60,25 @@ module Increase
       #   The originator's address line 1.
       #
       #   @return [String, nil]
-      required :originator_address_line1, String
+      required :originator_address_line1, String, nil?: true
 
       # @!attribute originator_address_line2
       #   The originator's address line 2.
       #
       #   @return [String, nil]
-      required :originator_address_line2, String
+      required :originator_address_line2, String, nil?: true
 
       # @!attribute originator_address_line3
       #   The originator's address line 3.
       #
       #   @return [String, nil]
-      required :originator_address_line3, String
+      required :originator_address_line3, String, nil?: true
 
       # @!attribute originator_name
       #   The originator's name.
       #
       #   @return [String, nil]
-      required :originator_name, String
+      required :originator_name, String, nil?: true
 
       # @!attribute recipient_account_number
       #   The drawdown request's recipient's account number.
@@ -90,25 +90,25 @@ module Increase
       #   Line 1 of the drawdown request's recipient's address.
       #
       #   @return [String, nil]
-      required :recipient_address_line1, String
+      required :recipient_address_line1, String, nil?: true
 
       # @!attribute recipient_address_line2
       #   Line 2 of the drawdown request's recipient's address.
       #
       #   @return [String, nil]
-      required :recipient_address_line2, String
+      required :recipient_address_line2, String, nil?: true
 
       # @!attribute recipient_address_line3
       #   Line 3 of the drawdown request's recipient's address.
       #
       #   @return [String, nil]
-      required :recipient_address_line3, String
+      required :recipient_address_line3, String, nil?: true
 
       # @!attribute recipient_name
       #   The drawdown request's recipient's name.
       #
       #   @return [String, nil]
-      required :recipient_name, String
+      required :recipient_name, String, nil?: true
 
       # @!attribute recipient_routing_number
       #   The drawdown request's recipient's routing number.
@@ -126,7 +126,7 @@ module Increase
       #   After the drawdown request is submitted to Fedwire, this will contain supplemental details.
       #
       #   @return [Increase::Models::WireDrawdownRequest::Submission, nil]
-      required :submission, -> { Increase::Models::WireDrawdownRequest::Submission }
+      required :submission, -> { Increase::Models::WireDrawdownRequest::Submission }, nil?: true
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `wire_drawdown_request`.

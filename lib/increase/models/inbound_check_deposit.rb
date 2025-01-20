@@ -24,7 +24,7 @@ module Increase
       #   If the Inbound Check Deposit was accepted, the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this took place.
       #
       #   @return [Time, nil]
-      required :accepted_at, Time
+      required :accepted_at, Time, nil?: true
 
       # @!attribute account_id
       #   The Account the check is being deposited against.
@@ -36,7 +36,7 @@ module Increase
       #   The Account Number the check is being deposited against.
       #
       #   @return [String, nil]
-      required :account_number_id, String
+      required :account_number_id, String, nil?: true
 
       # @!attribute adjustments
       #   If the deposit or the return was adjusted by the sending institution, this will contain details of the adjustments.
@@ -54,25 +54,25 @@ module Increase
       #   The ID for the File containing the image of the back of the check.
       #
       #   @return [String, nil]
-      required :back_image_file_id, String
+      required :back_image_file_id, String, nil?: true
 
       # @!attribute bank_of_first_deposit_routing_number
       #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the bank depositing this check. In some rare cases, this is not transmitted via Check21 and the value will be null.
       #
       #   @return [String, nil]
-      required :bank_of_first_deposit_routing_number, String
+      required :bank_of_first_deposit_routing_number, String, nil?: true
 
       # @!attribute check_number
       #   The check number printed on the check being deposited.
       #
       #   @return [String, nil]
-      required :check_number, String
+      required :check_number, String, nil?: true
 
       # @!attribute check_transfer_id
       #   If this deposit is for an existing Check Transfer, the identifier of that Check Transfer.
       #
       #   @return [String, nil]
-      required :check_transfer_id, String
+      required :check_transfer_id, String, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the deposit was attempted.
@@ -90,25 +90,25 @@ module Increase
       #   If the Inbound Check Deposit was declined, the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this took place.
       #
       #   @return [Time, nil]
-      required :declined_at, Time
+      required :declined_at, Time, nil?: true
 
       # @!attribute declined_transaction_id
       #   If the deposit attempt has been rejected, the identifier of the Declined Transaction object created as a result of the failed deposit.
       #
       #   @return [String, nil]
-      required :declined_transaction_id, String
+      required :declined_transaction_id, String, nil?: true
 
       # @!attribute deposit_return
       #   If you requested a return of this deposit, this will contain details of the return.
       #
       #   @return [Increase::Models::InboundCheckDeposit::DepositReturn, nil]
-      required :deposit_return, -> { Increase::Models::InboundCheckDeposit::DepositReturn }
+      required :deposit_return, -> { Increase::Models::InboundCheckDeposit::DepositReturn }, nil?: true
 
       # @!attribute front_image_file_id
       #   The ID for the File containing the image of the front of the check.
       #
       #   @return [String, nil]
-      required :front_image_file_id, String
+      required :front_image_file_id, String, nil?: true
 
       # @!attribute payee_name_analysis
       #   Whether the details on the check match the recipient name of the check transfer. This is an optional feature, contact sales to enable.
@@ -126,7 +126,7 @@ module Increase
       #   If the deposit attempt has been accepted, the identifier of the Transaction object created as a result of the successful deposit.
       #
       #   @return [String, nil]
-      required :transaction_id, String
+      required :transaction_id, String, nil?: true
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `inbound_check_deposit`.

@@ -36,7 +36,7 @@ module Increase
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending Transaction was completed.
       #
       #   @return [Time, nil]
-      required :completed_at, Time
+      required :completed_at, Time, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending Transaction occurred.
@@ -60,13 +60,13 @@ module Increase
       #   The identifier for the route this Pending Transaction came through. Routes are things like cards and ACH details.
       #
       #   @return [String, nil]
-      required :route_id, String
+      required :route_id, String, nil?: true
 
       # @!attribute route_type
       #   The type of the route this Pending Transaction came through.
       #
       #   @return [Symbol, Increase::Models::PendingTransaction::RouteType, nil]
-      required :route_type, enum: -> { Increase::Models::PendingTransaction::RouteType }
+      required :route_type, enum: -> { Increase::Models::PendingTransaction::RouteType }, nil?: true
 
       # @!attribute source
       #   This is an object giving more details on the network-level event that caused the Pending Transaction. For example, for a card transaction this lists the merchant's industry and location.
@@ -230,20 +230,24 @@ module Increase
         #
         #   @return [Increase::Models::PendingTransaction::Source::AccountTransferInstruction, nil]
         required :account_transfer_instruction,
-                 -> { Increase::Models::PendingTransaction::Source::AccountTransferInstruction }
+                 -> { Increase::Models::PendingTransaction::Source::AccountTransferInstruction },
+                 nil?: true
 
         # @!attribute ach_transfer_instruction
         #   An ACH Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_instruction`.
         #
         #   @return [Increase::Models::PendingTransaction::Source::ACHTransferInstruction, nil]
         required :ach_transfer_instruction,
-                 -> { Increase::Models::PendingTransaction::Source::ACHTransferInstruction }
+                 -> { Increase::Models::PendingTransaction::Source::ACHTransferInstruction },
+                 nil?: true
 
         # @!attribute card_authorization
         #   A Card Authorization object. This field will be present in the JSON response if and only if `category` is equal to `card_authorization`.
         #
         #   @return [Increase::Models::PendingTransaction::Source::CardAuthorization, nil]
-        required :card_authorization, -> { Increase::Models::PendingTransaction::Source::CardAuthorization }
+        required :card_authorization,
+                 -> { Increase::Models::PendingTransaction::Source::CardAuthorization },
+                 nil?: true
 
         # @!attribute category
         #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
@@ -256,40 +260,46 @@ module Increase
         #
         #   @return [Increase::Models::PendingTransaction::Source::CheckDepositInstruction, nil]
         required :check_deposit_instruction,
-                 -> { Increase::Models::PendingTransaction::Source::CheckDepositInstruction }
+                 -> { Increase::Models::PendingTransaction::Source::CheckDepositInstruction },
+                 nil?: true
 
         # @!attribute check_transfer_instruction
         #   A Check Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `check_transfer_instruction`.
         #
         #   @return [Increase::Models::PendingTransaction::Source::CheckTransferInstruction, nil]
         required :check_transfer_instruction,
-                 -> { Increase::Models::PendingTransaction::Source::CheckTransferInstruction }
+                 -> { Increase::Models::PendingTransaction::Source::CheckTransferInstruction },
+                 nil?: true
 
         # @!attribute inbound_funds_hold
         #   An Inbound Funds Hold object. This field will be present in the JSON response if and only if `category` is equal to `inbound_funds_hold`.
         #
         #   @return [Increase::Models::PendingTransaction::Source::InboundFundsHold, nil]
-        required :inbound_funds_hold, -> { Increase::Models::PendingTransaction::Source::InboundFundsHold }
+        required :inbound_funds_hold,
+                 -> { Increase::Models::PendingTransaction::Source::InboundFundsHold },
+                 nil?: true
 
         # @!attribute other
         #   If the category of this Transaction source is equal to `other`, this field will contain an empty object, otherwise it will contain null.
         #
         #   @return [Object, nil]
-        required :other, Increase::Unknown
+        required :other, Increase::Unknown, nil?: true
 
         # @!attribute real_time_payments_transfer_instruction
         #   A Real-Time Payments Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `real_time_payments_transfer_instruction`.
         #
         #   @return [Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction, nil]
         required :real_time_payments_transfer_instruction,
-                 -> { Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction }
+                 -> { Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction },
+                 nil?: true
 
         # @!attribute wire_transfer_instruction
         #   A Wire Transfer Instruction object. This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_instruction`.
         #
         #   @return [Increase::Models::PendingTransaction::Source::WireTransferInstruction, nil]
         required :wire_transfer_instruction,
-                 -> { Increase::Models::PendingTransaction::Source::WireTransferInstruction }
+                 -> { Increase::Models::PendingTransaction::Source::WireTransferInstruction },
+                 nil?: true
 
         # @!parse
         #   # This is an object giving more details on the network-level event that caused the
@@ -518,7 +528,7 @@ module Increase
           #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay purchase), the identifier of the token that was used.
           #
           #   @return [String, nil]
-          required :digital_wallet_token_id, String
+          required :digital_wallet_token_id, String, nil?: true
 
           # @!attribute direction
           #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
@@ -549,7 +559,7 @@ module Increase
           #   The city the merchant resides in.
           #
           #   @return [String, nil]
-          required :merchant_city, String
+          required :merchant_city, String, nil?: true
 
           # @!attribute merchant_country
           #   The country the merchant resides in.
@@ -567,13 +577,13 @@ module Increase
           #   The merchant's postal code. For US merchants this is either a 5-digit or 9-digit ZIP code, where the first 5 and last 4 are separated by a dash.
           #
           #   @return [String, nil]
-          required :merchant_postal_code, String
+          required :merchant_postal_code, String, nil?: true
 
           # @!attribute merchant_state
           #   The state the merchant resides in.
           #
           #   @return [String, nil]
-          required :merchant_state, String
+          required :merchant_state, String, nil?: true
 
           # @!attribute network_details
           #   Fields specific to the `network`.
@@ -593,19 +603,19 @@ module Increase
           #   The risk score generated by the card network. For Visa this is the Visa Advanced Authorization risk score, from 0 to 99, where 99 is the riskiest.
           #
           #   @return [Integer, nil]
-          required :network_risk_score, Integer
+          required :network_risk_score, Integer, nil?: true
 
           # @!attribute pending_transaction_id
           #   The identifier of the Pending Transaction associated with this Transaction.
           #
           #   @return [String, nil]
-          required :pending_transaction_id, String
+          required :pending_transaction_id, String, nil?: true
 
           # @!attribute physical_card_id
           #   If the authorization was made in-person with a physical card, the Physical Card that was used.
           #
           #   @return [String, nil]
-          required :physical_card_id, String
+          required :physical_card_id, String, nil?: true
 
           # @!attribute presentment_amount
           #   The pending amount in the minor unit of the transaction's presentment currency.
@@ -632,13 +642,13 @@ module Increase
           #   The identifier of the Real-Time Decision sent to approve or decline this transaction.
           #
           #   @return [String, nil]
-          required :real_time_decision_id, String
+          required :real_time_decision_id, String, nil?: true
 
           # @!attribute terminal_id
           #   The terminal identifier (commonly abbreviated as TID) of the terminal the card is transacting with.
           #
           #   @return [String, nil]
-          required :terminal_id, String
+          required :terminal_id, String, nil?: true
 
           # @!attribute type
           #   A constant representing the object's type. For this resource it will always be `card_authorization`.
@@ -872,7 +882,10 @@ module Increase
             #
             #   @return [Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa, nil]
             required :visa,
-                     -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa }
+                     -> {
+                       Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa
+                     },
+                     nil?: true
 
             # @!parse
             #   # Fields specific to the `network`.
@@ -917,7 +930,8 @@ module Increase
               required :electronic_commerce_indicator,
                        enum: -> {
                          Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
-                       }
+                       },
+                       nil?: true
 
               # @!attribute point_of_service_entry_mode
               #   The method used to enter the cardholder's primary account number and card expiration date.
@@ -926,7 +940,8 @@ module Increase
               required :point_of_service_entry_mode,
                        enum: -> {
                          Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
-                       }
+                       },
+                       nil?: true
 
               # @!attribute stand_in_processing_reason
               #   Only present when `actioner: network`. Describes why a card authorization was approved or declined by Visa through stand-in processing.
@@ -935,7 +950,8 @@ module Increase
               required :stand_in_processing_reason,
                        enum: -> {
                          Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason
-                       }
+                       },
+                       nil?: true
 
               # @!parse
               #   # Fields specific to the `visa` network.
@@ -1110,19 +1126,19 @@ module Increase
             #   A life-cycle identifier used across e.g., an authorization and a reversal. Expected to be unique per acquirer within a window of time. For some card networks the retrieval reference number includes the trace counter.
             #
             #   @return [String, nil]
-            required :retrieval_reference_number, String
+            required :retrieval_reference_number, String, nil?: true
 
             # @!attribute trace_number
             #   A counter used to verify an individual authorization. Expected to be unique per acquirer within a window of time.
             #
             #   @return [String, nil]
-            required :trace_number, String
+            required :trace_number, String, nil?: true
 
             # @!attribute transaction_id
             #   A globally unique transaction identifier provided by the card network, used across multiple life-cycle requests.
             #
             #   @return [String, nil]
-            required :transaction_id, String
+            required :transaction_id, String, nil?: true
 
             # @!parse
             #   # Network-specific identifiers for a specific request or transaction.
@@ -1301,25 +1317,25 @@ module Increase
               #   Line 1 of the address on file for the cardholder.
               #
               #   @return [String, nil]
-              required :actual_line1, String
+              required :actual_line1, String, nil?: true
 
               # @!attribute actual_postal_code
               #   The postal code of the address on file for the cardholder.
               #
               #   @return [String, nil]
-              required :actual_postal_code, String
+              required :actual_postal_code, String, nil?: true
 
               # @!attribute provided_line1
               #   The cardholder address line 1 provided for verification in the authorization request.
               #
               #   @return [String, nil]
-              required :provided_line1, String
+              required :provided_line1, String, nil?: true
 
               # @!attribute provided_postal_code
               #   The postal code provided for verification in the authorization request.
               #
               #   @return [String, nil]
-              required :provided_postal_code, String
+              required :provided_postal_code, String, nil?: true
 
               # @!attribute result
               #   The address verification result returned to the card network.
@@ -1467,13 +1483,13 @@ module Increase
           #   The identifier of the File containing the image of the back of the check that was deposited.
           #
           #   @return [String, nil]
-          required :back_image_file_id, String
+          required :back_image_file_id, String, nil?: true
 
           # @!attribute check_deposit_id
           #   The identifier of the Check Deposit.
           #
           #   @return [String, nil]
-          required :check_deposit_id, String
+          required :check_deposit_id, String, nil?: true
 
           # @!attribute currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction's currency.
@@ -1689,19 +1705,19 @@ module Increase
           #   The ID of the Transaction for which funds were held.
           #
           #   @return [String, nil]
-          required :held_transaction_id, String
+          required :held_transaction_id, String, nil?: true
 
           # @!attribute pending_transaction_id
           #   The ID of the Pending Transaction representing the held funds.
           #
           #   @return [String, nil]
-          required :pending_transaction_id, String
+          required :pending_transaction_id, String, nil?: true
 
           # @!attribute released_at
           #   When the hold was released (if it has been released).
           #
           #   @return [Time, nil]
-          required :released_at, Time
+          required :released_at, Time, nil?: true
 
           # @!attribute status
           #   The status of the hold.

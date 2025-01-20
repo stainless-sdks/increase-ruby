@@ -23,19 +23,21 @@ module Increase
       #   The ID of the Card Payment this transaction belongs to.
       #
       #   @return [String, nil]
-      required :card_payment_id, String
+      required :card_payment_id, String, nil?: true
 
       # @!attribute invoice
       #   Invoice-level information about the payment.
       #
       #   @return [Increase::Models::CardPurchaseSupplement::Invoice, nil]
-      required :invoice, -> { Increase::Models::CardPurchaseSupplement::Invoice }
+      required :invoice, -> { Increase::Models::CardPurchaseSupplement::Invoice }, nil?: true
 
       # @!attribute line_items
       #   Line item information, such as individual products purchased.
       #
-      #   @return [Array<Increase::Models::CardPurchaseSupplement::LineItem>, nil]
-      required :line_items, -> { Increase::ArrayOf[Increase::Models::CardPurchaseSupplement::LineItem] }
+      #   @return [Array<Increase::Models::CardPurchaseSupplement::LineItem>]
+      required :line_items,
+               -> { Increase::ArrayOf[Increase::Models::CardPurchaseSupplement::LineItem] },
+               nil?: true
 
       # @!attribute transaction_id
       #   The ID of the transaction.
@@ -59,7 +61,7 @@ module Increase
       #   #
       #   # @param invoice [Increase::Models::CardPurchaseSupplement::Invoice, nil] Invoice-level information about the payment.
       #   #
-      #   # @param line_items [Array<Increase::Models::CardPurchaseSupplement::LineItem>, nil] Line item information, such as individual products purchased.
+      #   # @param line_items [Array<Increase::Models::CardPurchaseSupplement::LineItem>] Line item information, such as individual products purchased.
       #   #
       #   # @param transaction_id [String] The ID of the transaction.
       #   #
@@ -86,101 +88,101 @@ module Increase
         #   Discount given to cardholder.
         #
         #   @return [Integer, nil]
-        required :discount_amount, Integer
+        required :discount_amount, Integer, nil?: true
 
         # @!attribute discount_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
         #
         #   @return [String, nil]
-        required :discount_currency, String
+        required :discount_currency, String, nil?: true
 
         # @!attribute discount_treatment_code
         #   Indicates how the merchant applied the discount.
         #
         #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode, nil]
         required :discount_treatment_code,
-                 enum: -> { Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode }
+                 enum: -> { Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode },
+                 nil?: true
 
         # @!attribute duty_tax_amount
         #   Amount of duty taxes.
         #
         #   @return [Integer, nil]
-        required :duty_tax_amount, Integer
+        required :duty_tax_amount, Integer, nil?: true
 
         # @!attribute duty_tax_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the duty tax.
         #
         #   @return [String, nil]
-        required :duty_tax_currency, String
+        required :duty_tax_currency, String, nil?: true
 
         # @!attribute order_date
         #   Date the order was taken.
         #
         #   @return [Date, nil]
-        required :order_date, Date
+        required :order_date, Date, nil?: true
 
         # @!attribute shipping_amount
         #   The shipping cost.
         #
         #   @return [Integer, nil]
-        required :shipping_amount, Integer
+        required :shipping_amount, Integer, nil?: true
 
         # @!attribute shipping_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping cost.
         #
         #   @return [String, nil]
-        required :shipping_currency, String
+        required :shipping_currency, String, nil?: true
 
         # @!attribute shipping_destination_country_code
         #   Country code of the shipping destination.
         #
         #   @return [String, nil]
-        required :shipping_destination_country_code, String
+        required :shipping_destination_country_code, String, nil?: true
 
         # @!attribute shipping_destination_postal_code
         #   Postal code of the shipping destination.
         #
         #   @return [String, nil]
-        required :shipping_destination_postal_code, String
+        required :shipping_destination_postal_code, String, nil?: true
 
         # @!attribute shipping_source_postal_code
         #   Postal code of the location being shipped from.
         #
         #   @return [String, nil]
-        required :shipping_source_postal_code, String
+        required :shipping_source_postal_code, String, nil?: true
 
         # @!attribute shipping_tax_amount
         #   Taxes paid for freight and shipping.
         #
         #   @return [Integer, nil]
-        required :shipping_tax_amount, Integer
+        required :shipping_tax_amount, Integer, nil?: true
 
         # @!attribute shipping_tax_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping tax.
         #
         #   @return [String, nil]
-        required :shipping_tax_currency, String
+        required :shipping_tax_currency, String, nil?: true
 
         # @!attribute shipping_tax_rate
         #   Tax rate for freight and shipping.
         #
         #   @return [String, nil]
-        required :shipping_tax_rate, String
+        required :shipping_tax_rate, String, nil?: true
 
         # @!attribute tax_treatments
         #   Indicates how the merchant applied taxes.
         #
         #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments, nil]
         required :tax_treatments,
-                 enum: -> {
-                   Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments
-                 }
+                 enum: -> { Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments },
+                 nil?: true
 
         # @!attribute unique_value_added_tax_invoice_reference
         #   Value added tax invoice reference number.
         #
         #   @return [String, nil]
-        required :unique_value_added_tax_invoice_reference, String
+        required :unique_value_added_tax_invoice_reference, String, nil?: true
 
         # @!parse
         #   # Invoice-level information about the payment.
@@ -329,98 +331,100 @@ module Increase
         #
         #   @return [Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator, nil]
         required :detail_indicator,
-                 enum: -> { Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator }
+                 enum: -> { Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator },
+                 nil?: true
 
         # @!attribute discount_amount
         #   Discount amount for this specific line item.
         #
         #   @return [Integer, nil]
-        required :discount_amount, Integer
+        required :discount_amount, Integer, nil?: true
 
         # @!attribute discount_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
         #
         #   @return [String, nil]
-        required :discount_currency, String
+        required :discount_currency, String, nil?: true
 
         # @!attribute discount_treatment_code
         #   Indicates how the merchant applied the discount for this specific line item.
         #
         #   @return [Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode, nil]
         required :discount_treatment_code,
-                 enum: -> { Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode }
+                 enum: -> { Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode },
+                 nil?: true
 
         # @!attribute item_commodity_code
         #   Code used to categorize the purchase item.
         #
         #   @return [String, nil]
-        required :item_commodity_code, String
+        required :item_commodity_code, String, nil?: true
 
         # @!attribute item_descriptor
         #   Description of the purchase item.
         #
         #   @return [String, nil]
-        required :item_descriptor, String
+        required :item_descriptor, String, nil?: true
 
         # @!attribute item_quantity
         #   The number of units of the product being purchased.
         #
         #   @return [String, nil]
-        required :item_quantity, String
+        required :item_quantity, String, nil?: true
 
         # @!attribute product_code
         #   Code used to categorize the product being purchased.
         #
         #   @return [String, nil]
-        required :product_code, String
+        required :product_code, String, nil?: true
 
         # @!attribute sales_tax_amount
         #   Sales tax amount for this line item.
         #
         #   @return [Integer, nil]
-        required :sales_tax_amount, Integer
+        required :sales_tax_amount, Integer, nil?: true
 
         # @!attribute sales_tax_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax assessed.
         #
         #   @return [String, nil]
-        required :sales_tax_currency, String
+        required :sales_tax_currency, String, nil?: true
 
         # @!attribute sales_tax_rate
         #   Sales tax rate for this line item.
         #
         #   @return [String, nil]
-        required :sales_tax_rate, String
+        required :sales_tax_rate, String, nil?: true
 
         # @!attribute total_amount
         #   Total amount of all line items.
         #
         #   @return [Integer, nil]
-        required :total_amount, Integer
+        required :total_amount, Integer, nil?: true
 
         # @!attribute total_amount_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total amount.
         #
         #   @return [String, nil]
-        required :total_amount_currency, String
+        required :total_amount_currency, String, nil?: true
 
         # @!attribute unit_cost
         #   Cost of line item per unit of measure, in major units.
         #
         #   @return [String, nil]
-        required :unit_cost, String
+        required :unit_cost, String, nil?: true
 
         # @!attribute unit_cost_currency
         #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the unit cost.
         #
         #   @return [String, nil]
-        required :unit_cost_currency, String
+        required :unit_cost_currency, String, nil?: true
 
         # @!attribute unit_of_measure_code
         #   Code indicating unit of measure (gallons, etc.).
         #
         #   @return [String, nil]
-        required :unit_of_measure_code, String
+        required :unit_of_measure_code, String, nil?: true
 
         # @!parse
         #   # @param id [String] The Card Purchase Supplement Line Item identifier.

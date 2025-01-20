@@ -57,17 +57,25 @@ module Increase
       #   @return [Boolean]
       required :validated_account_ownership_with_microdeposit, Increase::BooleanModel
 
-      # @!attribute authorizer_company
+      # @!attribute [r] authorizer_company
       #   Company of the authorizer.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :authorizer_company, String
 
-      # @!attribute authorizer_ip_address
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :authorizer_company
+
+      # @!attribute [r] authorizer_ip_address
       #   IP address of the authorizer.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :authorizer_ip_address, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :authorizer_ip_address
 
       # @!parse
       #   # @param authorization_terms [String] Terms of authorization.

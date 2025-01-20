@@ -21,17 +21,25 @@ module Increase
       #   @return [String]
       required :routing_number, String
 
-      # @!attribute account_holder
+      # @!attribute [r] account_holder
       #   The type of entity that owns the External Account.
       #
-      #   @return [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder]
+      #   @return [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder, nil]
       optional :account_holder, enum: -> { Increase::Models::ExternalAccountCreateParams::AccountHolder }
 
-      # @!attribute funding
+      # @!parse
+      #   # @return [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder]
+      #   attr_writer :account_holder
+
+      # @!attribute [r] funding
       #   The type of the destination account. Defaults to `checking`.
       #
-      #   @return [Symbol, Increase::Models::ExternalAccountCreateParams::Funding]
+      #   @return [Symbol, Increase::Models::ExternalAccountCreateParams::Funding, nil]
       optional :funding, enum: -> { Increase::Models::ExternalAccountCreateParams::Funding }
+
+      # @!parse
+      #   # @return [Symbol, Increase::Models::ExternalAccountCreateParams::Funding]
+      #   attr_writer :funding
 
       # @!parse
       #   # @param account_number [String] The account number for the destination account.

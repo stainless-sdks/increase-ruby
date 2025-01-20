@@ -3,33 +3,53 @@
 module Increase
   module Models
     class FileListParams < Increase::BaseModel
-      # @!attribute created_at
+      # @!attribute [r] created_at
       #
-      #   @return [Increase::Models::FileListParams::CreatedAt]
+      #   @return [Increase::Models::FileListParams::CreatedAt, nil]
       optional :created_at, -> { Increase::Models::FileListParams::CreatedAt }
 
-      # @!attribute cursor
+      # @!parse
+      #   # @return [Increase::Models::FileListParams::CreatedAt]
+      #   attr_writer :created_at
+
+      # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :cursor, String
 
-      # @!attribute idempotency_key
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :cursor
+
+      # @!attribute [r] idempotency_key
       #   Filter records to the one with the specified `idempotency_key` you chose for that object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :idempotency_key, String
 
-      # @!attribute limit
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :idempotency_key
+
+      # @!attribute [r] limit
       #   Limit the size of the list that is returned. The default (and maximum) is 100 objects.
       #
-      #   @return [Integer]
+      #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!attribute purpose
+      # @!parse
+      #   # @return [Integer]
+      #   attr_writer :limit
+
+      # @!attribute [r] purpose
       #
-      #   @return [Increase::Models::FileListParams::Purpose]
+      #   @return [Increase::Models::FileListParams::Purpose, nil]
       optional :purpose, -> { Increase::Models::FileListParams::Purpose }
+
+      # @!parse
+      #   # @return [Increase::Models::FileListParams::Purpose]
+      #   attr_writer :purpose
 
       # @!parse
       #   # @param created_at [Increase::Models::FileListParams::CreatedAt]
@@ -60,29 +80,45 @@ module Increase
       # }
       # ```
       class CreatedAt < Increase::BaseModel
-        # @!attribute after
+        # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :after, Time
 
-        # @!attribute before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :after
+
+        # @!attribute [r] before
         #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :before, Time
 
-        # @!attribute on_or_after
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :before
+
+        # @!attribute [r] on_or_after
         #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_after, Time
 
-        # @!attribute on_or_before
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_after
+
+        # @!attribute [r] on_or_before
         #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :on_or_before, Time
+
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :on_or_before
 
         # @!parse
         #   # @param after [String] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -109,13 +145,17 @@ module Increase
       # }
       # ```
       class Purpose < Increase::BaseModel
-        # @!attribute in_
+        # @!attribute [r] in_
         #   Filter Files for those with the specified purpose or purposes. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         #
         #   @return [Array<Symbol, Increase::Models::FileListParams::Purpose::In>]
         optional :in_,
                  -> { Increase::ArrayOf[enum: Increase::Models::FileListParams::Purpose::In] },
                  api_name: :in
+
+        # @!parse
+        #   # @return [Array<Symbol, Increase::Models::FileListParams::Purpose::In>]
+        #   attr_writer :in_
 
         # @!parse
         #   # @param in_ [Array<String>] Filter Files for those with the specified purpose or purposes. For GET requests,

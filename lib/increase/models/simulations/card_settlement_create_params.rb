@@ -16,11 +16,15 @@ module Increase
         #   @return [String]
         required :pending_transaction_id, String
 
-        # @!attribute amount
+        # @!attribute [r] amount
         #   The amount to be settled. This defaults to the amount of the Pending Transaction being settled.
         #
-        #   @return [Integer]
+        #   @return [Integer, nil]
         optional :amount, Integer
+
+        # @!parse
+        #   # @return [Integer]
+        #   attr_writer :amount
 
         # @!parse
         #   # @param card_id [String] The identifier of the Card to create a settlement on.

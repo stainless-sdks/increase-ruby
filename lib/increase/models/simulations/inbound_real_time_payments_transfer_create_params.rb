@@ -16,35 +16,55 @@ module Increase
         #   @return [Integer]
         required :amount, Integer
 
-        # @!attribute debtor_account_number
+        # @!attribute [r] debtor_account_number
         #   The account number of the account that sent the transfer.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :debtor_account_number, String
 
-        # @!attribute debtor_name
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :debtor_account_number
+
+        # @!attribute [r] debtor_name
         #   The name provided by the sender of the transfer.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :debtor_name, String
 
-        # @!attribute debtor_routing_number
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :debtor_name
+
+        # @!attribute [r] debtor_routing_number
         #   The routing number of the account that sent the transfer.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :debtor_routing_number, String
 
-        # @!attribute remittance_information
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :debtor_routing_number
+
+        # @!attribute [r] remittance_information
         #   Additional information included with the transfer.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :remittance_information, String
 
-        # @!attribute request_for_payment_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :remittance_information
+
+        # @!attribute [r] request_for_payment_id
         #   The identifier of a pending Request for Payment that this transfer will fulfill.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :request_for_payment_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :request_for_payment_id
 
         # @!parse
         #   # @param account_number_id [String] The identifier of the Account Number the inbound Real-Time Payments Transfer is

@@ -24,7 +24,7 @@ module Increase
       #   If your transfer is accepted, this will contain details of the acceptance.
       #
       #   @return [Increase::Models::InboundACHTransfer::Acceptance, nil]
-      required :acceptance, -> { Increase::Models::InboundACHTransfer::Acceptance }
+      required :acceptance, -> { Increase::Models::InboundACHTransfer::Acceptance }, nil?: true
 
       # @!attribute account_id
       #   The Account to which the transfer belongs.
@@ -42,7 +42,7 @@ module Increase
       #   Additional information sent from the originator.
       #
       #   @return [Increase::Models::InboundACHTransfer::Addenda, nil]
-      required :addenda, -> { Increase::Models::InboundACHTransfer::Addenda }
+      required :addenda, -> { Increase::Models::InboundACHTransfer::Addenda }, nil?: true
 
       # @!attribute amount
       #   The transfer amount in USD cents.
@@ -60,7 +60,7 @@ module Increase
       #   If your transfer is declined, this will contain details of the decline.
       #
       #   @return [Increase::Models::InboundACHTransfer::Decline, nil]
-      required :decline, -> { Increase::Models::InboundACHTransfer::Decline }
+      required :decline, -> { Increase::Models::InboundACHTransfer::Decline }, nil?: true
 
       # @!attribute direction
       #   The direction of the transfer.
@@ -85,25 +85,29 @@ module Increase
       #   If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will contain fields pertaining to the International ACH Transaction.
       #
       #   @return [Increase::Models::InboundACHTransfer::InternationalAddenda, nil]
-      required :international_addenda, -> { Increase::Models::InboundACHTransfer::InternationalAddenda }
+      required :international_addenda,
+               -> { Increase::Models::InboundACHTransfer::InternationalAddenda },
+               nil?: true
 
       # @!attribute notification_of_change
       #   If you initiate a notification of change in response to the transfer, this will contain its details.
       #
       #   @return [Increase::Models::InboundACHTransfer::NotificationOfChange, nil]
-      required :notification_of_change, -> { Increase::Models::InboundACHTransfer::NotificationOfChange }
+      required :notification_of_change,
+               -> { Increase::Models::InboundACHTransfer::NotificationOfChange },
+               nil?: true
 
       # @!attribute originator_company_descriptive_date
       #   The descriptive date of the transfer.
       #
       #   @return [String, nil]
-      required :originator_company_descriptive_date, String
+      required :originator_company_descriptive_date, String, nil?: true
 
       # @!attribute originator_company_discretionary_data
       #   The additional information included with the transfer.
       #
       #   @return [String, nil]
-      required :originator_company_discretionary_data, String
+      required :originator_company_discretionary_data, String, nil?: true
 
       # @!attribute originator_company_entry_description
       #   The description of the transfer.
@@ -133,13 +137,13 @@ module Increase
       #   The id of the receiver of the transfer.
       #
       #   @return [String, nil]
-      required :receiver_id_number, String
+      required :receiver_id_number, String, nil?: true
 
       # @!attribute receiver_name
       #   The name of the receiver of the transfer.
       #
       #   @return [String, nil]
-      required :receiver_name, String
+      required :receiver_name, String, nil?: true
 
       # @!attribute standard_entry_class_code
       #   The Standard Entry Class (SEC) code of the transfer.
@@ -164,7 +168,7 @@ module Increase
       #   If your transfer is returned, this will contain details of the return.
       #
       #   @return [Increase::Models::InboundACHTransfer::TransferReturn, nil]
-      required :transfer_return, -> { Increase::Models::InboundACHTransfer::TransferReturn }
+      required :transfer_return, -> { Increase::Models::InboundACHTransfer::TransferReturn }, nil?: true
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `inbound_ach_transfer`.
@@ -320,7 +324,7 @@ module Increase
         #   Unstructured `payment_related_information` passed through by the originator.
         #
         #   @return [Increase::Models::InboundACHTransfer::Addenda::Freeform, nil]
-        required :freeform, -> { Increase::Models::InboundACHTransfer::Addenda::Freeform }
+        required :freeform, -> { Increase::Models::InboundACHTransfer::Addenda::Freeform }, nil?: true
 
         # @!parse
         #   # Additional information sent from the originator.
@@ -589,7 +593,7 @@ module Increase
         #   Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a reference to a well-known rate.
         #
         #   @return [String, nil]
-        required :foreign_exchange_reference, String
+        required :foreign_exchange_reference, String, nil?: true
 
         # @!attribute foreign_exchange_reference_indicator
         #   An instruction of how to interpret the `foreign_exchange_reference` field for this Transaction.
@@ -610,7 +614,7 @@ module Increase
         #   A reference number in the foreign banking infrastructure.
         #
         #   @return [String, nil]
-        required :foreign_trace_number, String
+        required :foreign_trace_number, String, nil?: true
 
         # @!attribute international_transaction_type_code
         #   The type of transfer. Set by the originator.
@@ -682,13 +686,13 @@ module Increase
         #   A portion of the originator address. This may be incomplete.
         #
         #   @return [String, nil]
-        required :originator_postal_code, String
+        required :originator_postal_code, String, nil?: true
 
         # @!attribute originator_state_or_province
         #   A portion of the originator address. This may be incomplete.
         #
         #   @return [String, nil]
-        required :originator_state_or_province, String
+        required :originator_state_or_province, String, nil?: true
 
         # @!attribute originator_street_address
         #   A portion of the originator address. This may be incomplete.
@@ -700,13 +704,13 @@ module Increase
         #   A description field set by the originator.
         #
         #   @return [String, nil]
-        required :payment_related_information, String
+        required :payment_related_information, String, nil?: true
 
         # @!attribute payment_related_information2
         #   A description field set by the originator.
         #
         #   @return [String, nil]
-        required :payment_related_information2, String
+        required :payment_related_information2, String, nil?: true
 
         # @!attribute receiver_city
         #   A portion of the receiver address. This may be incomplete.
@@ -724,19 +728,19 @@ module Increase
         #   An identification number the originator uses for the receiver.
         #
         #   @return [String, nil]
-        required :receiver_identification_number, String
+        required :receiver_identification_number, String, nil?: true
 
         # @!attribute receiver_postal_code
         #   A portion of the receiver address. This may be incomplete.
         #
         #   @return [String, nil]
-        required :receiver_postal_code, String
+        required :receiver_postal_code, String, nil?: true
 
         # @!attribute receiver_state_or_province
         #   A portion of the receiver address. This may be incomplete.
         #
         #   @return [String, nil]
-        required :receiver_state_or_province, String
+        required :receiver_state_or_province, String, nil?: true
 
         # @!attribute receiver_street_address
         #   A portion of the receiver address. This may be incomplete.
@@ -1108,13 +1112,13 @@ module Increase
         #   The new account number provided in the notification of change.
         #
         #   @return [String, nil]
-        required :updated_account_number, String
+        required :updated_account_number, String, nil?: true
 
         # @!attribute updated_routing_number
         #   The new account number provided in the notification of change.
         #
         #   @return [String, nil]
-        required :updated_routing_number, String
+        required :updated_routing_number, String, nil?: true
 
         # @!parse
         #   # If you initiate a notification of change in response to the transfer, this will

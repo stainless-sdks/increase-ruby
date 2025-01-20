@@ -3,29 +3,45 @@
 module Increase
   module Models
     class AccountNumberUpdateParams < Increase::BaseModel
-      # @!attribute inbound_ach
+      # @!attribute [r] inbound_ach
       #   Options related to how this Account Number handles inbound ACH transfers.
       #
-      #   @return [Increase::Models::AccountNumberUpdateParams::InboundACH]
+      #   @return [Increase::Models::AccountNumberUpdateParams::InboundACH, nil]
       optional :inbound_ach, -> { Increase::Models::AccountNumberUpdateParams::InboundACH }
 
-      # @!attribute inbound_checks
+      # @!parse
+      #   # @return [Increase::Models::AccountNumberUpdateParams::InboundACH]
+      #   attr_writer :inbound_ach
+
+      # @!attribute [r] inbound_checks
       #   Options related to how this Account Number should handle inbound check withdrawals.
       #
-      #   @return [Increase::Models::AccountNumberUpdateParams::InboundChecks]
+      #   @return [Increase::Models::AccountNumberUpdateParams::InboundChecks, nil]
       optional :inbound_checks, -> { Increase::Models::AccountNumberUpdateParams::InboundChecks }
 
-      # @!attribute name
+      # @!parse
+      #   # @return [Increase::Models::AccountNumberUpdateParams::InboundChecks]
+      #   attr_writer :inbound_checks
+
+      # @!attribute [r] name
       #   The name you choose for the Account Number.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :name, String
 
-      # @!attribute status
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :name
+
+      # @!attribute [r] status
       #   This indicates if transfers can be made to the Account Number.
       #
-      #   @return [Symbol, Increase::Models::AccountNumberUpdateParams::Status]
+      #   @return [Symbol, Increase::Models::AccountNumberUpdateParams::Status, nil]
       optional :status, enum: -> { Increase::Models::AccountNumberUpdateParams::Status }
+
+      # @!parse
+      #   # @return [Symbol, Increase::Models::AccountNumberUpdateParams::Status]
+      #   attr_writer :status
 
       # @!parse
       #   # @param inbound_ach [Increase::Models::AccountNumberUpdateParams::InboundACH] Options related to how this Account Number handles inbound ACH transfers.
@@ -48,14 +64,18 @@ module Increase
       # }
       # ```
       class InboundACH < Increase::BaseModel
-        # @!attribute debit_status
+        # @!attribute [r] debit_status
         #   Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active.
         #
-        #   @return [Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus]
+        #   @return [Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus, nil]
         optional :debit_status,
                  enum: -> {
                    Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus
                  }
+
+        # @!parse
+        #   # @return [Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus]
+        #   attr_writer :debit_status
 
         # @!parse
         #   # Options related to how this Account Number handles inbound ACH transfers.

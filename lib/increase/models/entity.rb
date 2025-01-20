@@ -24,7 +24,7 @@ module Increase
       #   Details of the corporation entity. Will be present if `structure` is equal to `corporation`.
       #
       #   @return [Increase::Models::Entity::Corporation, nil]
-      required :corporation, -> { Increase::Models::Entity::Corporation }
+      required :corporation, -> { Increase::Models::Entity::Corporation }, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity was created.
@@ -36,37 +36,37 @@ module Increase
       #   The entity's description for display purposes.
       #
       #   @return [String, nil]
-      required :description, String
+      required :description, String, nil?: true
 
       # @!attribute details_confirmed_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity's details were most recently confirmed.
       #
       #   @return [Time, nil]
-      required :details_confirmed_at, Time
+      required :details_confirmed_at, Time, nil?: true
 
       # @!attribute government_authority
       #   Details of the government authority entity. Will be present if `structure` is equal to `government_authority`.
       #
       #   @return [Increase::Models::Entity::GovernmentAuthority, nil]
-      required :government_authority, -> { Increase::Models::Entity::GovernmentAuthority }
+      required :government_authority, -> { Increase::Models::Entity::GovernmentAuthority }, nil?: true
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute joint
       #   Details of the joint entity. Will be present if `structure` is equal to `joint`.
       #
       #   @return [Increase::Models::Entity::Joint, nil]
-      required :joint, -> { Increase::Models::Entity::Joint }
+      required :joint, -> { Increase::Models::Entity::Joint }, nil?: true
 
       # @!attribute natural_person
       #   Details of the natural person entity. Will be present if `structure` is equal to `natural_person`.
       #
       #   @return [Increase::Models::Entity::NaturalPerson, nil]
-      required :natural_person, -> { Increase::Models::Entity::NaturalPerson }
+      required :natural_person, -> { Increase::Models::Entity::NaturalPerson }, nil?: true
 
       # @!attribute status
       #   The status of the entity.
@@ -90,13 +90,13 @@ module Increase
       #   A reference to data stored in a third-party verification service. Your integration may or may not use this field.
       #
       #   @return [Increase::Models::Entity::ThirdPartyVerification, nil]
-      required :third_party_verification, -> { Increase::Models::Entity::ThirdPartyVerification }
+      required :third_party_verification, -> { Increase::Models::Entity::ThirdPartyVerification }, nil?: true
 
       # @!attribute trust
       #   Details of the trust entity. Will be present if `structure` is equal to `trust`.
       #
       #   @return [Increase::Models::Entity::Trust, nil]
-      required :trust, -> { Increase::Models::Entity::Trust }
+      required :trust, -> { Increase::Models::Entity::Trust }, nil?: true
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `entity`.
@@ -201,13 +201,13 @@ module Increase
         #   The two-letter United States Postal Service (USPS) abbreviation for the corporation's state of incorporation.
         #
         #   @return [String, nil]
-        required :incorporation_state, String
+        required :incorporation_state, String, nil?: true
 
         # @!attribute industry_code
         #   The numeric North American Industry Classification System (NAICS) code submitted for the corporation.
         #
         #   @return [String, nil]
-        required :industry_code, String
+        required :industry_code, String, nil?: true
 
         # @!attribute name
         #   The legal name of the corporation.
@@ -219,13 +219,13 @@ module Increase
         #   The Employer Identification Number (EIN) for the corporation.
         #
         #   @return [String, nil]
-        required :tax_identifier, String
+        required :tax_identifier, String, nil?: true
 
         # @!attribute website
         #   The website of the corporation.
         #
         #   @return [String, nil]
-        required :website, String
+        required :website, String, nil?: true
 
         # @!parse
         #   # Details of the corporation entity. Will be present if `structure` is equal to
@@ -279,7 +279,7 @@ module Increase
           #   The second line of the address.
           #
           #   @return [String, nil]
-          required :line2, String
+          required :line2, String, nil?: true
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
@@ -332,7 +332,7 @@ module Increase
           #   This person's role or title within the entity.
           #
           #   @return [String, nil]
-          required :company_title, String
+          required :company_title, String, nil?: true
 
           # @!attribute individual
           #   Personal details for the beneficial owner.
@@ -439,7 +439,7 @@ module Increase
               #   The second line of the address.
               #
               #   @return [String, nil]
-              required :line2, String
+              required :line2, String, nil?: true
 
               # @!attribute state
               #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
@@ -609,13 +609,13 @@ module Increase
         #   The Employer Identification Number (EIN) of the government authority.
         #
         #   @return [String, nil]
-        required :tax_identifier, String
+        required :tax_identifier, String, nil?: true
 
         # @!attribute website
         #   The government authority's website.
         #
         #   @return [String, nil]
-        required :website, String
+        required :website, String, nil?: true
 
         # @!parse
         #   # Details of the government authority entity. Will be present if `structure` is
@@ -664,7 +664,7 @@ module Increase
           #   The second line of the address.
           #
           #   @return [String, nil]
-          required :line2, String
+          required :line2, String, nil?: true
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
@@ -849,7 +849,7 @@ module Increase
             #   The second line of the address.
             #
             #   @return [String, nil]
-            required :line2, String
+            required :line2, String, nil?: true
 
             # @!attribute state
             #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
@@ -1032,7 +1032,7 @@ module Increase
           #   The second line of the address.
           #
           #   @return [String, nil]
-          required :line2, String
+          required :line2, String, nil?: true
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
@@ -1281,19 +1281,19 @@ module Increase
         #   The ID for the File containing the formation document of the trust.
         #
         #   @return [String, nil]
-        required :formation_document_file_id, String
+        required :formation_document_file_id, String, nil?: true
 
         # @!attribute formation_state
         #   The two-letter United States Postal Service (USPS) abbreviation for the state in which the trust was formed.
         #
         #   @return [String, nil]
-        required :formation_state, String
+        required :formation_state, String, nil?: true
 
         # @!attribute grantor
         #   The grantor of the trust. Will be present if the `category` is `revocable`.
         #
         #   @return [Increase::Models::Entity::Trust::Grantor, nil]
-        required :grantor, -> { Increase::Models::Entity::Trust::Grantor }
+        required :grantor, -> { Increase::Models::Entity::Trust::Grantor }, nil?: true
 
         # @!attribute name
         #   The trust's name.
@@ -1305,7 +1305,7 @@ module Increase
         #   The Employer Identification Number (EIN) of the trust itself.
         #
         #   @return [String, nil]
-        required :tax_identifier, String
+        required :tax_identifier, String, nil?: true
 
         # @!attribute trustees
         #   The trustees of the trust.
@@ -1376,7 +1376,7 @@ module Increase
           #   The second line of the address.
           #
           #   @return [String, nil]
-          required :line2, String
+          required :line2, String, nil?: true
 
           # @!attribute state
           #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
@@ -1506,7 +1506,7 @@ module Increase
             #   The second line of the address.
             #
             #   @return [String, nil]
-            required :line2, String
+            required :line2, String, nil?: true
 
             # @!attribute state
             #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
@@ -1623,7 +1623,7 @@ module Increase
           #   The individual trustee of the trust. Will be present if the trustee's `structure` is equal to `individual`.
           #
           #   @return [Increase::Models::Entity::Trust::Trustee::Individual, nil]
-          required :individual, -> { Increase::Models::Entity::Trust::Trustee::Individual }
+          required :individual, -> { Increase::Models::Entity::Trust::Trustee::Individual }, nil?: true
 
           # @!attribute structure
           #   The structure of the trustee. Will always be equal to `individual`.
@@ -1721,7 +1721,7 @@ module Increase
               #   The second line of the address.
               #
               #   @return [String, nil]
-              required :line2, String
+              required :line2, String, nil?: true
 
               # @!attribute state
               #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.

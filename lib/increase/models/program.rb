@@ -30,7 +30,7 @@ module Increase
       #   The Program billing account.
       #
       #   @return [String, nil]
-      required :billing_account_id, String
+      required :billing_account_id, String, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program was created.
@@ -42,7 +42,7 @@ module Increase
       #   The default configuration for digital cards attached to this Program.
       #
       #   @return [String, nil]
-      required :default_digital_card_profile_id, String
+      required :default_digital_card_profile_id, String, nil?: true
 
       # @!attribute interest_rate
       #   The Interest Rate currently being earned on the accounts in this program, as a string containing a decimal number. For example, a 1% interest rate would be represented as "0.01".

@@ -16,62 +16,98 @@ module Increase
         #   @return [Integer]
         required :amount, Integer
 
-        # @!attribute company_descriptive_date
+        # @!attribute [r] company_descriptive_date
         #   The description of the date of the transfer.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :company_descriptive_date, String
 
-        # @!attribute company_discretionary_data
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :company_descriptive_date
+
+        # @!attribute [r] company_discretionary_data
         #   Data associated with the transfer set by the sender.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :company_discretionary_data, String
 
-        # @!attribute company_entry_description
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :company_discretionary_data
+
+        # @!attribute [r] company_entry_description
         #   The description of the transfer set by the sender.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :company_entry_description, String
 
-        # @!attribute company_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :company_entry_description
+
+        # @!attribute [r] company_id
         #   The sender's company ID.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :company_id, String
 
-        # @!attribute company_name
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :company_id
+
+        # @!attribute [r] company_name
         #   The name of the sender.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :company_name, String
 
-        # @!attribute receiver_id_number
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :company_name
+
+        # @!attribute [r] receiver_id_number
         #   The ID of the receiver of the transfer.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :receiver_id_number, String
 
-        # @!attribute receiver_name
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :receiver_id_number
+
+        # @!attribute [r] receiver_name
         #   The name of the receiver of the transfer.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :receiver_name, String
 
-        # @!attribute resolve_at
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :receiver_name
+
+        # @!attribute [r] resolve_at
         #   The time at which the transfer should be resolved. If not provided will resolve immediately.
         #
-        #   @return [Time]
+        #   @return [Time, nil]
         optional :resolve_at, Time
 
-        # @!attribute standard_entry_class_code
+        # @!parse
+        #   # @return [Time]
+        #   attr_writer :resolve_at
+
+        # @!attribute [r] standard_entry_class_code
         #   The standard entry class code for the transfer.
         #
-        #   @return [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode]
+        #   @return [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode, nil]
         optional :standard_entry_class_code,
                  enum: -> {
                    Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode
                  }
+
+        # @!parse
+        #   # @return [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode]
+        #   attr_writer :standard_entry_class_code
 
         # @!parse
         #   # @param account_number_id [String] The identifier of the Account Number the inbound ACH Transfer is for.

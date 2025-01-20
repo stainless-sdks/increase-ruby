@@ -10,93 +10,149 @@ module Increase
         #   @return [Integer]
         required :amount, Integer
 
-        # @!attribute authenticated_card_payment_id
+        # @!attribute [r] authenticated_card_payment_id
         #   The identifier of a Card Payment with a `card_authentication` if you want to simulate an authenticated authorization.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :authenticated_card_payment_id, String
 
-        # @!attribute card_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :authenticated_card_payment_id
+
+        # @!attribute [r] card_id
         #   The identifier of the Card to be authorized.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :card_id, String
 
-        # @!attribute decline_reason
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :card_id
+
+        # @!attribute [r] decline_reason
         #   Forces a card decline with a specific reason. No real time decision will be sent.
         #
-        #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason]
+        #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason, nil]
         optional :decline_reason,
                  enum: -> { Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason }
 
-        # @!attribute digital_wallet_token_id
+        # @!parse
+        #   # @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason]
+        #   attr_writer :decline_reason
+
+        # @!attribute [r] digital_wallet_token_id
         #   The identifier of the Digital Wallet Token to be authorized.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :digital_wallet_token_id, String
 
-        # @!attribute direction
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :digital_wallet_token_id
+
+        # @!attribute [r] direction
         #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
         #
-        #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction]
+        #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction, nil]
         optional :direction,
                  enum: -> {
                    Increase::Models::Simulations::CardAuthorizationCreateParams::Direction
                  }
 
-        # @!attribute event_subscription_id
+        # @!parse
+        #   # @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction]
+        #   attr_writer :direction
+
+        # @!attribute [r] event_subscription_id
         #   The identifier of the Event Subscription to use. If provided, will override the default real time event subscription. Because you can only create one real time decision event subscription, you can use this field to route events to any specified event subscription for testing purposes.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :event_subscription_id, String
 
-        # @!attribute merchant_acceptor_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :event_subscription_id
+
+        # @!attribute [r] merchant_acceptor_id
         #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :merchant_acceptor_id, String
 
-        # @!attribute merchant_category_code
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :merchant_acceptor_id
+
+        # @!attribute [r] merchant_category_code
         #   The Merchant Category Code (commonly abbreviated as MCC) of the merchant the card is transacting with.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :merchant_category_code, String
 
-        # @!attribute merchant_city
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :merchant_category_code
+
+        # @!attribute [r] merchant_city
         #   The city the merchant resides in.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :merchant_city, String
 
-        # @!attribute merchant_country
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :merchant_city
+
+        # @!attribute [r] merchant_country
         #   The country the merchant resides in.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :merchant_country, String
 
-        # @!attribute merchant_descriptor
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :merchant_country
+
+        # @!attribute [r] merchant_descriptor
         #   The merchant descriptor of the merchant the card is transacting with.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :merchant_descriptor, String
 
-        # @!attribute merchant_state
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :merchant_descriptor
+
+        # @!attribute [r] merchant_state
         #   The state the merchant resides in.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :merchant_state, String
 
-        # @!attribute physical_card_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :merchant_state
+
+        # @!attribute [r] physical_card_id
         #   The identifier of the Physical Card to be authorized.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :physical_card_id, String
 
-        # @!attribute terminal_id
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :physical_card_id
+
+        # @!attribute [r] terminal_id
         #   The terminal identifier (commonly abbreviated as TID) of the terminal the card is transacting with.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :terminal_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :terminal_id
 
         # @!parse
         #   # @param amount [Integer] The authorization amount in cents.

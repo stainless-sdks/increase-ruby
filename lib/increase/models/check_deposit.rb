@@ -36,7 +36,7 @@ module Increase
       #   The ID for the File containing the image of the back of the check.
       #
       #   @return [String, nil]
-      required :back_image_file_id, String
+      required :back_image_file_id, String, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
@@ -48,31 +48,31 @@ module Increase
       #   If your deposit is successfully parsed and accepted by Increase, this will contain details of the parsed check.
       #
       #   @return [Increase::Models::CheckDeposit::DepositAcceptance, nil]
-      required :deposit_acceptance, -> { Increase::Models::CheckDeposit::DepositAcceptance }
+      required :deposit_acceptance, -> { Increase::Models::CheckDeposit::DepositAcceptance }, nil?: true
 
       # @!attribute deposit_rejection
       #   If your deposit is rejected by Increase, this will contain details as to why it was rejected.
       #
       #   @return [Increase::Models::CheckDeposit::DepositRejection, nil]
-      required :deposit_rejection, -> { Increase::Models::CheckDeposit::DepositRejection }
+      required :deposit_rejection, -> { Increase::Models::CheckDeposit::DepositRejection }, nil?: true
 
       # @!attribute deposit_return
       #   If your deposit is returned, this will contain details as to why it was returned.
       #
       #   @return [Increase::Models::CheckDeposit::DepositReturn, nil]
-      required :deposit_return, -> { Increase::Models::CheckDeposit::DepositReturn }
+      required :deposit_return, -> { Increase::Models::CheckDeposit::DepositReturn }, nil?: true
 
       # @!attribute deposit_submission
       #   After the check is parsed, it is submitted to the Check21 network for processing. This will contain details of the submission.
       #
       #   @return [Increase::Models::CheckDeposit::DepositSubmission, nil]
-      required :deposit_submission, -> { Increase::Models::CheckDeposit::DepositSubmission }
+      required :deposit_submission, -> { Increase::Models::CheckDeposit::DepositSubmission }, nil?: true
 
       # @!attribute description
       #   The description of the Check Deposit, for display purposes only.
       #
       #   @return [String, nil]
-      required :description, String
+      required :description, String, nil?: true
 
       # @!attribute front_image_file_id
       #   The ID for the File containing the image of the front of the check.
@@ -84,25 +84,25 @@ module Increase
       #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
-      required :idempotency_key, String
+      required :idempotency_key, String, nil?: true
 
       # @!attribute inbound_funds_hold
       #   Increase will sometimes hold the funds for Check Deposits. If funds are held, this sub-object will contain details of the hold.
       #
       #   @return [Increase::Models::CheckDeposit::InboundFundsHold, nil]
-      required :inbound_funds_hold, -> { Increase::Models::CheckDeposit::InboundFundsHold }
+      required :inbound_funds_hold, -> { Increase::Models::CheckDeposit::InboundFundsHold }, nil?: true
 
       # @!attribute inbound_mail_item_id
       #   If the Check Deposit was the result of an Inbound Mail Item, this will contain the identifier of the Inbound Mail Item.
       #
       #   @return [String, nil]
-      required :inbound_mail_item_id, String
+      required :inbound_mail_item_id, String, nil?: true
 
       # @!attribute lockbox_id
       #   If the Check Deposit was the result of an Inbound Mail Item, this will contain the identifier of the Lockbox that received it.
       #
       #   @return [String, nil]
-      required :lockbox_id, String
+      required :lockbox_id, String, nil?: true
 
       # @!attribute status
       #   The status of the Check Deposit.
@@ -114,7 +114,7 @@ module Increase
       #   The ID for the Transaction created by the deposit.
       #
       #   @return [String, nil]
-      required :transaction_id, String
+      required :transaction_id, String, nil?: true
 
       # @!attribute type
       #   A constant representing the object's type. For this resource it will always be `check_deposit`.
@@ -226,7 +226,7 @@ module Increase
         #   An additional line of metadata printed on the check. This typically includes the check number for business checks.
         #
         #   @return [String, nil]
-        required :auxiliary_on_us, String
+        required :auxiliary_on_us, String, nil?: true
 
         # @!attribute check_deposit_id
         #   The ID of the Check Deposit that was accepted.
@@ -250,7 +250,7 @@ module Increase
         #   The check serial number, if present, for consumer checks. For business checks, the serial number is usually in the `auxiliary_on_us` field.
         #
         #   @return [String, nil]
-        required :serial_number, String
+        required :serial_number, String, nil?: true
 
         # @!parse
         #   # If your deposit is successfully parsed and accepted by Increase, this will
@@ -805,19 +805,19 @@ module Increase
         #   The ID of the Transaction for which funds were held.
         #
         #   @return [String, nil]
-        required :held_transaction_id, String
+        required :held_transaction_id, String, nil?: true
 
         # @!attribute pending_transaction_id
         #   The ID of the Pending Transaction representing the held funds.
         #
         #   @return [String, nil]
-        required :pending_transaction_id, String
+        required :pending_transaction_id, String, nil?: true
 
         # @!attribute released_at
         #   When the hold was released (if it has been released).
         #
         #   @return [Time, nil]
-        required :released_at, Time
+        required :released_at, Time, nil?: true
 
         # @!attribute status
         #   The status of the hold.

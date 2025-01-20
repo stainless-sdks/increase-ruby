@@ -30,7 +30,7 @@ module Increase
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth Connection was deleted.
       #
       #   @return [Time, nil]
-      required :deleted_at, Time
+      required :deleted_at, Time, nil?: true
 
       # @!attribute group_id
       #   The identifier of the Group that has authorized your OAuth application.
