@@ -6,10 +6,10 @@ module Increase
     # ```ruby
     # group => {
     #   id: String,
-    #   ach_debit_status: enum: Increase::Models::Group::ACHDebitStatus,
-    #   activation_status: enum: Increase::Models::Group::ActivationStatus,
+    #   ach_debit_status: Increase::Models::Group::ACHDebitStatus,
+    #   activation_status: Increase::Models::Group::ActivationStatus,
     #   created_at: Time,
-    #   type: enum: Increase::Models::Group::Type
+    #   type: Increase::Models::Group::Type
     # }
     # ```
     class Group < Increase::BaseModel
@@ -32,13 +32,15 @@ module Increase
       required :activation_status, enum: -> { Increase::Models::Group::ActivationStatus }
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group
+      #     was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `group`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `group`.
       #
       #   @return [Symbol, Increase::Models::Group::Type]
       required :type, enum: -> { Increase::Models::Group::Type }
@@ -49,17 +51,11 @@ module Increase
       #   #   retrieve information about the organizations that have granted them access.
       #   #   Learn more about OAuth [here](https://increase.com/documentation/oauth).
       #   #
-      #   # @param id [String] The Group identifier.
-      #   #
-      #   # @param ach_debit_status [String] If the Group is allowed to create ACH debits.
-      #   #
-      #   # @param activation_status [String] If the Group is activated or not.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group
-      #   #   was created.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `group`.
+      #   # @param id [String]
+      #   # @param ach_debit_status [String]
+      #   # @param activation_status [String]
+      #   # @param created_at [String]
+      #   # @param type [String]
       #   #
       #   def initialize(id:, ach_debit_status:, activation_status:, created_at:, type:, **) = super
 
@@ -107,7 +103,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `group`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `group`.
       #
       # @example
       # ```ruby

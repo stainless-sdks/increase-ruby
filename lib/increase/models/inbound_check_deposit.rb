@@ -21,7 +21,9 @@ module Increase
       required :id, String
 
       # @!attribute accepted_at
-      #   If the Inbound Check Deposit was accepted, the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this took place.
+      #   If the Inbound Check Deposit was accepted, the
+      #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
+      #     took place.
       #
       #   @return [Time, nil]
       required :accepted_at, Time, nil?: true
@@ -39,7 +41,8 @@ module Increase
       required :account_number_id, String, nil?: true
 
       # @!attribute adjustments
-      #   If the deposit or the return was adjusted by the sending institution, this will contain details of the adjustments.
+      #   If the deposit or the return was adjusted by the sending institution, this will
+      #     contain details of the adjustments.
       #
       #   @return [Array<Increase::Models::InboundCheckDeposit::Adjustment>]
       required :adjustments, -> { Increase::ArrayOf[Increase::Models::InboundCheckDeposit::Adjustment] }
@@ -57,7 +60,9 @@ module Increase
       required :back_image_file_id, String, nil?: true
 
       # @!attribute bank_of_first_deposit_routing_number
-      #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the bank depositing this check. In some rare cases, this is not transmitted via Check21 and the value will be null.
+      #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+      #     bank depositing this check. In some rare cases, this is not transmitted via
+      #     Check21 and the value will be null.
       #
       #   @return [String, nil]
       required :bank_of_first_deposit_routing_number, String, nil?: true
@@ -69,13 +74,15 @@ module Increase
       required :check_number, String, nil?: true
 
       # @!attribute check_transfer_id
-      #   If this deposit is for an existing Check Transfer, the identifier of that Check Transfer.
+      #   If this deposit is for an existing Check Transfer, the identifier of that Check
+      #     Transfer.
       #
       #   @return [String, nil]
       required :check_transfer_id, String, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the deposit was attempted.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the deposit was attempted.
       #
       #   @return [Time]
       required :created_at, Time
@@ -87,19 +94,23 @@ module Increase
       required :currency, enum: -> { Increase::Models::InboundCheckDeposit::Currency }
 
       # @!attribute declined_at
-      #   If the Inbound Check Deposit was declined, the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this took place.
+      #   If the Inbound Check Deposit was declined, the
+      #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
+      #     took place.
       #
       #   @return [Time, nil]
       required :declined_at, Time, nil?: true
 
       # @!attribute declined_transaction_id
-      #   If the deposit attempt has been rejected, the identifier of the Declined Transaction object created as a result of the failed deposit.
+      #   If the deposit attempt has been rejected, the identifier of the Declined
+      #     Transaction object created as a result of the failed deposit.
       #
       #   @return [String, nil]
       required :declined_transaction_id, String, nil?: true
 
       # @!attribute deposit_return
-      #   If you requested a return of this deposit, this will contain details of the return.
+      #   If you requested a return of this deposit, this will contain details of the
+      #     return.
       #
       #   @return [Increase::Models::InboundCheckDeposit::DepositReturn, nil]
       required :deposit_return, -> { Increase::Models::InboundCheckDeposit::DepositReturn }, nil?: true
@@ -111,7 +122,8 @@ module Increase
       required :front_image_file_id, String, nil?: true
 
       # @!attribute payee_name_analysis
-      #   Whether the details on the check match the recipient name of the check transfer. This is an optional feature, contact sales to enable.
+      #   Whether the details on the check match the recipient name of the check transfer.
+      #     This is an optional feature, contact sales to enable.
       #
       #   @return [Symbol, Increase::Models::InboundCheckDeposit::PayeeNameAnalysis]
       required :payee_name_analysis, enum: -> { Increase::Models::InboundCheckDeposit::PayeeNameAnalysis }
@@ -123,13 +135,15 @@ module Increase
       required :status, enum: -> { Increase::Models::InboundCheckDeposit::Status }
 
       # @!attribute transaction_id
-      #   If the deposit attempt has been accepted, the identifier of the Transaction object created as a result of the successful deposit.
+      #   If the deposit attempt has been accepted, the identifier of the Transaction
+      #     object created as a result of the successful deposit.
       #
       #   @return [String, nil]
       required :transaction_id, String, nil?: true
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `inbound_check_deposit`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `inbound_check_deposit`.
       #
       #   @return [Symbol, Increase::Models::InboundCheckDeposit::Type]
       required :type, enum: -> { Increase::Models::InboundCheckDeposit::Type }
@@ -138,59 +152,26 @@ module Increase
       #   # Inbound Check Deposits are records of third-parties attempting to deposit checks
       #   #   against your account.
       #   #
-      #   # @param id [String] The deposit's identifier.
-      #   #
-      #   # @param accepted_at [String, nil] If the Inbound Check Deposit was accepted, the
-      #   #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
-      #   #   took place.
-      #   #
-      #   # @param account_id [String] The Account the check is being deposited against.
-      #   #
-      #   # @param account_number_id [String, nil] The Account Number the check is being deposited against.
-      #   #
-      #   # @param adjustments [Array<Increase::Models::InboundCheckDeposit::Adjustment>] If the deposit or the return was adjusted by the sending institution, this will
-      #   #   contain details of the adjustments.
-      #   #
-      #   # @param amount [Integer] The deposited amount in USD cents.
-      #   #
-      #   # @param back_image_file_id [String, nil] The ID for the File containing the image of the back of the check.
-      #   #
-      #   # @param bank_of_first_deposit_routing_number [String, nil] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   #   bank depositing this check. In some rare cases, this is not transmitted via
-      #   #   Check21 and the value will be null.
-      #   #
-      #   # @param check_number [String, nil] The check number printed on the check being deposited.
-      #   #
-      #   # @param check_transfer_id [String, nil] If this deposit is for an existing Check Transfer, the identifier of that Check
-      #   #   Transfer.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #   the deposit was attempted.
-      #   #
-      #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
-      #   #
-      #   # @param declined_at [String, nil] If the Inbound Check Deposit was declined, the
-      #   #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
-      #   #   took place.
-      #   #
-      #   # @param declined_transaction_id [String, nil] If the deposit attempt has been rejected, the identifier of the Declined
-      #   #   Transaction object created as a result of the failed deposit.
-      #   #
-      #   # @param deposit_return [Increase::Models::InboundCheckDeposit::DepositReturn, nil] If you requested a return of this deposit, this will contain details of the
-      #   #   return.
-      #   #
-      #   # @param front_image_file_id [String, nil] The ID for the File containing the image of the front of the check.
-      #   #
-      #   # @param payee_name_analysis [String] Whether the details on the check match the recipient name of the check transfer.
-      #   #   This is an optional feature, contact sales to enable.
-      #   #
-      #   # @param status [String] The status of the Inbound Check Deposit.
-      #   #
-      #   # @param transaction_id [String, nil] If the deposit attempt has been accepted, the identifier of the Transaction
-      #   #   object created as a result of the successful deposit.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `inbound_check_deposit`.
+      #   # @param id [String]
+      #   # @param accepted_at [String, nil]
+      #   # @param account_id [String]
+      #   # @param account_number_id [String, nil]
+      #   # @param adjustments [Array<Increase::Models::InboundCheckDeposit::Adjustment>]
+      #   # @param amount [Integer]
+      #   # @param back_image_file_id [String, nil]
+      #   # @param bank_of_first_deposit_routing_number [String, nil]
+      #   # @param check_number [String, nil]
+      #   # @param check_transfer_id [String, nil]
+      #   # @param created_at [String]
+      #   # @param currency [String]
+      #   # @param declined_at [String, nil]
+      #   # @param declined_transaction_id [String, nil]
+      #   # @param deposit_return [Increase::Models::InboundCheckDeposit::DepositReturn, nil]
+      #   # @param front_image_file_id [String, nil]
+      #   # @param payee_name_analysis [String]
+      #   # @param status [String]
+      #   # @param transaction_id [String, nil]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -225,7 +206,7 @@ module Increase
       # adjustment => {
       #   adjusted_at: Time,
       #   amount: Integer,
-      #   reason: enum: Increase::Models::InboundCheckDeposit::Adjustment::Reason,
+      #   reason: Increase::Models::InboundCheckDeposit::Adjustment::Reason,
       #   transaction_id: String
       # }
       # ```
@@ -255,13 +236,10 @@ module Increase
         required :transaction_id, String
 
         # @!parse
-        #   # @param adjusted_at [String] The time at which the return adjustment was received.
-        #   #
-        #   # @param amount [Integer] The amount of the adjustment.
-        #   #
-        #   # @param reason [String] The reason for the adjustment.
-        #   #
-        #   # @param transaction_id [String] The id of the transaction for the adjustment.
+        #   # @param adjusted_at [String]
+        #   # @param amount [Integer]
+        #   # @param reason [String]
+        #   # @param transaction_id [String]
         #   #
         #   def initialize(adjusted_at:, amount:, reason:, transaction_id:, **) = super
 
@@ -338,7 +316,7 @@ module Increase
       # @example
       # ```ruby
       # deposit_return => {
-      #   reason: enum: Increase::Models::InboundCheckDeposit::DepositReturn::Reason,
+      #   reason: Increase::Models::InboundCheckDeposit::DepositReturn::Reason,
       #   returned_at: Time,
       #   transaction_id: String
       # }
@@ -366,11 +344,9 @@ module Increase
         #   # If you requested a return of this deposit, this will contain details of the
         #   #   return.
         #   #
-        #   # @param reason [String] The reason the deposit was returned.
-        #   #
-        #   # @param returned_at [String] The time at which the deposit was returned.
-        #   #
-        #   # @param transaction_id [String] The id of the transaction for the returned deposit.
+        #   # @param reason [String]
+        #   # @param returned_at [String]
+        #   # @param transaction_id [String]
         #   #
         #   def initialize(reason:, returned_at:, transaction_id:, **) = super
 
@@ -413,7 +389,8 @@ module Increase
         end
       end
 
-      # Whether the details on the check match the recipient name of the check transfer. This is an optional feature, contact sales to enable.
+      # Whether the details on the check match the recipient name of the check transfer.
+      #   This is an optional feature, contact sales to enable.
       #
       # @example
       # ```ruby
@@ -475,7 +452,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `inbound_check_deposit`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `inbound_check_deposit`.
       #
       # @example
       # ```ruby

@@ -16,9 +16,8 @@ module Increase
       required :file_id, String
 
       # @!parse
-      #   # @param entity_id [String] The identifier of the Entity to associate with the supplemental document.
-      #   #
-      #   # @param file_id [String] The identifier of the File containing the document.
+      #   # @param entity_id [String]
+      #   # @param file_id [String]
       #   #
       #   def initialize(entity_id:, file_id:, **) = super
 

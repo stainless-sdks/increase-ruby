@@ -5,7 +5,8 @@ module Increase
     module Simulations
       class InboundRealTimePaymentsTransferCreateParams < Increase::BaseModel
         # @!attribute account_number_id
-        #   The identifier of the Account Number the inbound Real-Time Payments Transfer is for.
+        #   The identifier of the Account Number the inbound Real-Time Payments Transfer is
+        #     for.
         #
         #   @return [String]
         required :account_number_id, String
@@ -67,20 +68,13 @@ module Increase
         #   attr_writer :request_for_payment_id
 
         # @!parse
-        #   # @param account_number_id [String] The identifier of the Account Number the inbound Real-Time Payments Transfer is
-        #   #   for.
-        #   #
-        #   # @param amount [Integer] The transfer amount in USD cents. Must be positive.
-        #   #
-        #   # @param debtor_account_number [String] The account number of the account that sent the transfer.
-        #   #
-        #   # @param debtor_name [String] The name provided by the sender of the transfer.
-        #   #
-        #   # @param debtor_routing_number [String] The routing number of the account that sent the transfer.
-        #   #
-        #   # @param remittance_information [String] Additional information included with the transfer.
-        #   #
-        #   # @param request_for_payment_id [String] The identifier of a pending Request for Payment that this transfer will fulfill.
+        #   # @param account_number_id [String]
+        #   # @param amount [Integer]
+        #   # @param debtor_account_number [String]
+        #   # @param debtor_name [String]
+        #   # @param debtor_routing_number [String]
+        #   # @param remittance_information [String]
+        #   # @param request_for_payment_id [String]
         #   #
         #   def initialize(
         #     account_number_id:,

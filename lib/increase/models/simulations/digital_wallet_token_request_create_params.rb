@@ -11,7 +11,7 @@ module Increase
         required :card_id, String
 
         # @!parse
-        #   # @param card_id [String] The identifier of the Card to be authorized.
+        #   # @param card_id [String]
         #   #
         #   def initialize(card_id:, **) = super
 

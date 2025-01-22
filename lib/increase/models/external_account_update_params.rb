@@ -44,13 +44,10 @@ module Increase
       #   attr_writer :status
 
       # @!parse
-      #   # @param account_holder [String] The type of entity that owns the External Account.
-      #   #
-      #   # @param description [String] The description you choose to give the external account.
-      #   #
-      #   # @param funding [String] The funding type of the External Account.
-      #   #
-      #   # @param status [String] The status of the External Account.
+      #   # @param account_holder [String]
+      #   # @param description [String]
+      #   # @param funding [String]
+      #   # @param status [String]
       #   #
       #   def initialize(account_holder: nil, description: nil, funding: nil, status: nil, **) = super
 

@@ -6,7 +6,7 @@ module Increase
     # ```ruby
     # external_account => {
     #   id: String,
-    #   account_holder: enum: Increase::Models::ExternalAccount::AccountHolder,
+    #   account_holder: Increase::Models::ExternalAccount::AccountHolder,
     #   account_number: String,
     #   created_at: Time,
     #   description: String,
@@ -33,7 +33,8 @@ module Increase
       required :account_number, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the External Account was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the External Account was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -51,7 +52,9 @@ module Increase
       required :funding, enum: -> { Increase::Models::ExternalAccount::Funding }
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -69,7 +72,8 @@ module Increase
       required :status, enum: -> { Increase::Models::ExternalAccount::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `external_account`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `external_account`.
       #
       #   @return [Symbol, Increase::Models::ExternalAccount::Type]
       required :type, enum: -> { Increase::Models::ExternalAccount::Type }
@@ -84,31 +88,17 @@ module Increase
       #   # External Accounts represent accounts at financial institutions other than
       #   #   Increase. You can use this API to store their details for reuse.
       #   #
-      #   # @param id [String] The External Account's identifier.
-      #   #
-      #   # @param account_holder [String] The type of entity that owns the External Account.
-      #   #
-      #   # @param account_number [String] The destination account number.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #   the External Account was created.
-      #   #
-      #   # @param description [String] The External Account's description for display purposes.
-      #   #
-      #   # @param funding [String] The type of the account to which the transfer will be sent.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN).
-      #   #
-      #   # @param status [String] The External Account's status.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `external_account`.
-      #   #
-      #   # @param verification_status [String] If you have verified ownership of the External Account.
+      #   # @param id [String]
+      #   # @param account_holder [String]
+      #   # @param account_number [String]
+      #   # @param created_at [String]
+      #   # @param description [String]
+      #   # @param funding [String]
+      #   # @param idempotency_key [String, nil]
+      #   # @param routing_number [String]
+      #   # @param status [String]
+      #   # @param type [String]
+      #   # @param verification_status [String]
       #   #
       #   def initialize(
       #     id:,
@@ -202,7 +192,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `external_account`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `external_account`.
       #
       # @example
       # ```ruby

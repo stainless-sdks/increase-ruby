@@ -16,7 +16,8 @@ module Increase
       required :description, String
 
       # @!attribute routing_number
-      #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the destination account.
+      #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+      #     destination account.
       #
       #   @return [String]
       required :routing_number, String
@@ -42,16 +43,11 @@ module Increase
       #   attr_writer :funding
 
       # @!parse
-      #   # @param account_number [String] The account number for the destination account.
-      #   #
-      #   # @param description [String] The name you choose for the Account.
-      #   #
-      #   # @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   #   destination account.
-      #   #
-      #   # @param account_holder [String] The type of entity that owns the External Account.
-      #   #
-      #   # @param funding [String] The type of the destination account. Defaults to `checking`.
+      #   # @param account_number [String]
+      #   # @param description [String]
+      #   # @param routing_number [String]
+      #   # @param account_holder [String]
+      #   # @param funding [String]
       #   #
       #   def initialize(account_number:, description:, routing_number:, account_holder: nil, funding: nil, **) = super
 

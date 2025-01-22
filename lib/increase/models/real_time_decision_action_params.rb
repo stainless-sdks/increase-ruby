@@ -4,7 +4,8 @@ module Increase
   module Models
     class RealTimeDecisionActionParams < Increase::BaseModel
       # @!attribute [r] card_authentication
-      #   If the Real-Time Decision relates to a 3DS card authentication attempt, this object contains your response to the authentication.
+      #   If the Real-Time Decision relates to a 3DS card authentication attempt, this
+      #     object contains your response to the authentication.
       #
       #   @return [Increase::Models::RealTimeDecisionActionParams::CardAuthentication, nil]
       optional :card_authentication, -> { Increase::Models::RealTimeDecisionActionParams::CardAuthentication }
@@ -14,7 +15,8 @@ module Increase
       #   attr_writer :card_authentication
 
       # @!attribute [r] card_authentication_challenge
-      #   If the Real-Time Decision relates to 3DS card authentication challenge delivery, this object contains your response.
+      #   If the Real-Time Decision relates to 3DS card authentication challenge delivery,
+      #     this object contains your response.
       #
       #   @return [Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge, nil]
       optional :card_authentication_challenge,
@@ -25,7 +27,8 @@ module Increase
       #   attr_writer :card_authentication_challenge
 
       # @!attribute [r] card_authorization
-      #   If the Real-Time Decision relates to a card authorization attempt, this object contains your response to the authorization.
+      #   If the Real-Time Decision relates to a card authorization attempt, this object
+      #     contains your response to the authorization.
       #
       #   @return [Increase::Models::RealTimeDecisionActionParams::CardAuthorization, nil]
       optional :card_authorization, -> { Increase::Models::RealTimeDecisionActionParams::CardAuthorization }
@@ -35,7 +38,8 @@ module Increase
       #   attr_writer :card_authorization
 
       # @!attribute [r] digital_wallet_authentication
-      #   If the Real-Time Decision relates to a digital wallet authentication attempt, this object contains your response to the authentication.
+      #   If the Real-Time Decision relates to a digital wallet authentication attempt,
+      #     this object contains your response to the authentication.
       #
       #   @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication, nil]
       optional :digital_wallet_authentication,
@@ -46,7 +50,8 @@ module Increase
       #   attr_writer :digital_wallet_authentication
 
       # @!attribute [r] digital_wallet_token
-      #   If the Real-Time Decision relates to a digital wallet token provisioning attempt, this object contains your response to the attempt.
+      #   If the Real-Time Decision relates to a digital wallet token provisioning
+      #     attempt, this object contains your response to the attempt.
       #
       #   @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, nil]
       optional :digital_wallet_token,
@@ -59,20 +64,11 @@ module Increase
       #   attr_writer :digital_wallet_token
 
       # @!parse
-      #   # @param card_authentication [Increase::Models::RealTimeDecisionActionParams::CardAuthentication] If the Real-Time Decision relates to a 3DS card authentication attempt, this
-      #   #   object contains your response to the authentication.
-      #   #
-      #   # @param card_authentication_challenge [Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge] If the Real-Time Decision relates to 3DS card authentication challenge delivery,
-      #   #   this object contains your response.
-      #   #
-      #   # @param card_authorization [Increase::Models::RealTimeDecisionActionParams::CardAuthorization] If the Real-Time Decision relates to a card authorization attempt, this object
-      #   #   contains your response to the authorization.
-      #   #
-      #   # @param digital_wallet_authentication [Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication] If the Real-Time Decision relates to a digital wallet authentication attempt,
-      #   #   this object contains your response to the authentication.
-      #   #
-      #   # @param digital_wallet_token [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken] If the Real-Time Decision relates to a digital wallet token provisioning
-      #   #   attempt, this object contains your response to the attempt.
+      #   # @param card_authentication [Increase::Models::RealTimeDecisionActionParams::CardAuthentication]
+      #   # @param card_authentication_challenge [Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge]
+      #   # @param card_authorization [Increase::Models::RealTimeDecisionActionParams::CardAuthorization]
+      #   # @param digital_wallet_authentication [Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication]
+      #   # @param digital_wallet_token [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken]
       #   #
       #   def initialize(
       #     card_authentication: nil,
@@ -90,7 +86,7 @@ module Increase
       # @example
       # ```ruby
       # card_authentication => {
-      #   decision: enum: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision
+      #   decision: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision
       # }
       # ```
       class CardAuthentication < Increase::BaseModel
@@ -105,7 +101,7 @@ module Increase
         #   # If the Real-Time Decision relates to a 3DS card authentication attempt, this
         #   #   object contains your response to the authentication.
         #   #
-        #   # @param decision [String] Whether the card authentication attempt should be approved or declined.
+        #   # @param decision [String]
         #   #
         #   def initialize(decision:, **) = super
 
@@ -141,12 +137,13 @@ module Increase
       # @example
       # ```ruby
       # card_authentication_challenge => {
-      #   result: enum: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result
+      #   result: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result
       # }
       # ```
       class CardAuthenticationChallenge < Increase::BaseModel
         # @!attribute result
-        #   Whether the card authentication challenge was successfully delivered to the cardholder.
+        #   Whether the card authentication challenge was successfully delivered to the
+        #     cardholder.
         #
         #   @return [Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result]
         required :result,
@@ -158,14 +155,14 @@ module Increase
         #   # If the Real-Time Decision relates to 3DS card authentication challenge delivery,
         #   #   this object contains your response.
         #   #
-        #   # @param result [String] Whether the card authentication challenge was successfully delivered to the
-        #   #   cardholder.
+        #   # @param result [String]
         #   #
         #   def initialize(result:, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # Whether the card authentication challenge was successfully delivered to the cardholder.
+        # Whether the card authentication challenge was successfully delivered to the
+        #   cardholder.
         #
         # @example
         # ```ruby
@@ -190,8 +187,8 @@ module Increase
       # @example
       # ```ruby
       # card_authorization => {
-      #   decision: enum: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision,
-      #   decline_reason: enum: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason
+      #   decision: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision,
+      #   decline_reason: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason
       # }
       # ```
       class CardAuthorization < Increase::BaseModel
@@ -203,7 +200,8 @@ module Increase
                  enum: -> { Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision }
 
         # @!attribute [r] decline_reason
-        #   The reason the card authorization was declined. This translates to a specific decline code that is sent to the card network.
+        #   The reason the card authorization was declined. This translates to a specific
+        #     decline code that is sent to the card network.
         #
         #   @return [Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason, nil]
         optional :decline_reason,
@@ -217,10 +215,8 @@ module Increase
         #   # If the Real-Time Decision relates to a card authorization attempt, this object
         #   #   contains your response to the authorization.
         #   #
-        #   # @param decision [String] Whether the card authorization should be approved or declined.
-        #   #
-        #   # @param decline_reason [String] The reason the card authorization was declined. This translates to a specific
-        #   #   decline code that is sent to the card network.
+        #   # @param decision [String]
+        #   # @param decline_reason [String]
         #   #
         #   def initialize(decision:, decline_reason: nil, **) = super
 
@@ -247,7 +243,8 @@ module Increase
           finalize!
         end
 
-        # The reason the card authorization was declined. This translates to a specific decline code that is sent to the card network.
+        # The reason the card authorization was declined. This translates to a specific
+        #   decline code that is sent to the card network.
         #
         # @example
         # ```ruby
@@ -292,7 +289,7 @@ module Increase
       # @example
       # ```ruby
       # digital_wallet_authentication => {
-      #   result: enum: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result,
+      #   result: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result,
       #   success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
       # }
       # ```
@@ -320,8 +317,7 @@ module Increase
         #   # If the Real-Time Decision relates to a digital wallet authentication attempt,
         #   #   this object contains your response to the authentication.
         #   #
-        #   # @param result [String] Whether your application was able to deliver the one-time passcode.
-        #   #
+        #   # @param result [String]
         #   # @param success [Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success]
         #   #
         #   def initialize(result:, success: nil, **) = super
@@ -368,7 +364,8 @@ module Increase
           #   attr_writer :email
 
           # @!attribute [r] phone
-          #   The phone number that was used to verify the cardholder via one-time passcode over SMS.
+          #   The phone number that was used to verify the cardholder via one-time passcode
+          #     over SMS.
           #
           #   @return [String, nil]
           optional :phone, String
@@ -378,10 +375,8 @@ module Increase
           #   attr_writer :phone
 
           # @!parse
-          #   # @param email [String] The email address that was used to verify the cardholder via one-time passcode.
-          #   #
-          #   # @param phone [String] The phone number that was used to verify the cardholder via one-time passcode
-          #   #   over SMS.
+          #   # @param email [String]
+          #   # @param phone [String]
           #   #
           #   def initialize(email: nil, phone: nil, **) = super
 
@@ -398,7 +393,8 @@ module Increase
       # ```
       class DigitalWalletToken < Increase::BaseModel
         # @!attribute [r] approval
-        #   If your application approves the provisioning attempt, this contains metadata about the digital wallet token that will be generated.
+        #   If your application approves the provisioning attempt, this contains metadata
+        #     about the digital wallet token that will be generated.
         #
         #   @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval, nil]
         optional :approval,
@@ -411,7 +407,8 @@ module Increase
         #   attr_writer :approval
 
         # @!attribute [r] decline
-        #   If your application declines the provisioning attempt, this contains details about the decline.
+        #   If your application declines the provisioning attempt, this contains details
+        #     about the decline.
         #
         #   @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline, nil]
         optional :decline, -> { Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline }
@@ -424,11 +421,8 @@ module Increase
         #   # If the Real-Time Decision relates to a digital wallet token provisioning
         #   #   attempt, this object contains your response to the attempt.
         #   #
-        #   # @param approval [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval] If your application approves the provisioning attempt, this contains metadata
-        #   #   about the digital wallet token that will be generated.
-        #   #
-        #   # @param decline [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline] If your application declines the provisioning attempt, this contains details
-        #   #   about the decline.
+        #   # @param approval [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval]
+        #   # @param decline [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline]
         #   #
         #   def initialize(approval: nil, decline: nil, **) = super
 
@@ -443,7 +437,8 @@ module Increase
         # ```
         class Approval < Increase::BaseModel
           # @!attribute [r] email
-          #   An email address that can be used to verify the cardholder via one-time passcode.
+          #   An email address that can be used to verify the cardholder via one-time
+          #     passcode.
           #
           #   @return [String, nil]
           optional :email, String
@@ -453,7 +448,8 @@ module Increase
           #   attr_writer :email
 
           # @!attribute [r] phone
-          #   A phone number that can be used to verify the cardholder via one-time passcode over SMS.
+          #   A phone number that can be used to verify the cardholder via one-time passcode
+          #     over SMS.
           #
           #   @return [String, nil]
           optional :phone, String
@@ -466,11 +462,8 @@ module Increase
           #   # If your application approves the provisioning attempt, this contains metadata
           #   #   about the digital wallet token that will be generated.
           #   #
-          #   # @param email [String] An email address that can be used to verify the cardholder via one-time
-          #   #   passcode.
-          #   #
-          #   # @param phone [String] A phone number that can be used to verify the cardholder via one-time passcode
-          #   #   over SMS.
+          #   # @param email [String]
+          #   # @param phone [String]
           #   #
           #   def initialize(email: nil, phone: nil, **) = super
 
@@ -485,7 +478,8 @@ module Increase
         # ```
         class Decline < Increase::BaseModel
           # @!attribute [r] reason
-          #   Why the tokenization attempt was declined. This is for logging purposes only and is not displayed to the end-user.
+          #   Why the tokenization attempt was declined. This is for logging purposes only and
+          #     is not displayed to the end-user.
           #
           #   @return [String, nil]
           optional :reason, String
@@ -498,8 +492,7 @@ module Increase
           #   # If your application declines the provisioning attempt, this contains details
           #   #   about the decline.
           #   #
-          #   # @param reason [String] Why the tokenization attempt was declined. This is for logging purposes only and
-          #   #   is not displayed to the end-user.
+          #   # @param reason [String]
           #   #
           #   def initialize(reason: nil, **) = super
 

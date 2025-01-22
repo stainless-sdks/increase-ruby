@@ -10,7 +10,7 @@ module Increase
       required :reason, enum: -> { Increase::Models::InboundCheckDepositReturnParams::Reason }
 
       # @!parse
-      #   # @param reason [String] The reason to return the Inbound Check Deposit.
+      #   # @param reason [String]
       #   #
       #   def initialize(reason:, **) = super
 

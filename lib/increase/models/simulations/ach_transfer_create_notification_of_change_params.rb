@@ -20,9 +20,8 @@ module Increase
         required :corrected_data, String
 
         # @!parse
-        #   # @param change_code [String] The reason for the notification of change.
-        #   #
-        #   # @param corrected_data [String] The corrected data for the notification of change (e.g., a new routing number).
+        #   # @param change_code [String]
+        #   # @param corrected_data [String]
         #   #
         #   def initialize(change_code:, corrected_data:, **) = super
 

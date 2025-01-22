@@ -75,7 +75,9 @@ module Increase
       required :description, String
 
       # @!attribute input_message_accountability_data
-      #   A unique identifier available to the originating and receiving banks, commonly abbreviated as IMAD. It is created when the wire is submitted to the Fedwire service and is helpful when debugging wires with the originating bank.
+      #   A unique identifier available to the originating and receiving banks, commonly
+      #     abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+      #     service and is helpful when debugging wires with the originating bank.
       #
       #   @return [String, nil]
       required :input_message_accountability_data, String, nil?: true
@@ -105,7 +107,8 @@ module Increase
       required :originator_name, String, nil?: true
 
       # @!attribute originator_routing_number
-      #   The American Banking Association (ABA) routing number of the bank originating the transfer.
+      #   The American Banking Association (ABA) routing number of the bank originating
+      #     the transfer.
       #
       #   @return [String, nil]
       required :originator_routing_number, String, nil?: true
@@ -153,7 +156,8 @@ module Increase
       required :status, enum: -> { Increase::Models::InboundWireTransfer::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `inbound_wire_transfer`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `inbound_wire_transfer`.
       #
       #   @return [Symbol, Increase::Models::InboundWireTransfer::Type]
       required :type, enum: -> { Increase::Models::InboundWireTransfer::Type }
@@ -162,57 +166,30 @@ module Increase
       #   # An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
       #   #   your account.
       #   #
-      #   # @param id [String] The inbound wire transfer's identifier.
-      #   #
-      #   # @param account_id [String] The Account to which the transfer belongs.
-      #   #
-      #   # @param account_number_id [String] The identifier of the Account Number to which this transfer was sent.
-      #   #
-      #   # @param amount [Integer] The amount in USD cents.
-      #   #
-      #   # @param beneficiary_address_line1 [String, nil] A free-form address field set by the sender.
-      #   #
-      #   # @param beneficiary_address_line2 [String, nil] A free-form address field set by the sender.
-      #   #
-      #   # @param beneficiary_address_line3 [String, nil] A free-form address field set by the sender.
-      #   #
-      #   # @param beneficiary_name [String, nil] A name set by the sender.
-      #   #
-      #   # @param beneficiary_reference [String, nil] A free-form reference string set by the sender, to help identify the transfer.
-      #   #
-      #   # @param description [String] An Increase-constructed description of the transfer.
-      #   #
-      #   # @param input_message_accountability_data [String, nil] A unique identifier available to the originating and receiving banks, commonly
-      #   #   abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
-      #   #   service and is helpful when debugging wires with the originating bank.
-      #   #
-      #   # @param originator_address_line1 [String, nil] The address of the wire originator, set by the sending bank.
-      #   #
-      #   # @param originator_address_line2 [String, nil] The address of the wire originator, set by the sending bank.
-      #   #
-      #   # @param originator_address_line3 [String, nil] The address of the wire originator, set by the sending bank.
-      #   #
-      #   # @param originator_name [String, nil] The originator of the wire, set by the sending bank.
-      #   #
-      #   # @param originator_routing_number [String, nil] The American Banking Association (ABA) routing number of the bank originating
-      #   #   the transfer.
-      #   #
-      #   # @param originator_to_beneficiary_information [String, nil] An Increase-created concatenation of the Originator-to-Beneficiary lines.
-      #   #
-      #   # @param originator_to_beneficiary_information_line1 [String, nil] A free-form message set by the wire originator.
-      #   #
-      #   # @param originator_to_beneficiary_information_line2 [String, nil] A free-form message set by the wire originator.
-      #   #
-      #   # @param originator_to_beneficiary_information_line3 [String, nil] A free-form message set by the wire originator.
-      #   #
-      #   # @param originator_to_beneficiary_information_line4 [String, nil] A free-form message set by the wire originator.
-      #   #
-      #   # @param sender_reference [String, nil] The sending bank's reference number for the wire transfer.
-      #   #
-      #   # @param status [String] The status of the transfer.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `inbound_wire_transfer`.
+      #   # @param id [String]
+      #   # @param account_id [String]
+      #   # @param account_number_id [String]
+      #   # @param amount [Integer]
+      #   # @param beneficiary_address_line1 [String, nil]
+      #   # @param beneficiary_address_line2 [String, nil]
+      #   # @param beneficiary_address_line3 [String, nil]
+      #   # @param beneficiary_name [String, nil]
+      #   # @param beneficiary_reference [String, nil]
+      #   # @param description [String]
+      #   # @param input_message_accountability_data [String, nil]
+      #   # @param originator_address_line1 [String, nil]
+      #   # @param originator_address_line2 [String, nil]
+      #   # @param originator_address_line3 [String, nil]
+      #   # @param originator_name [String, nil]
+      #   # @param originator_routing_number [String, nil]
+      #   # @param originator_to_beneficiary_information [String, nil]
+      #   # @param originator_to_beneficiary_information_line1 [String, nil]
+      #   # @param originator_to_beneficiary_information_line2 [String, nil]
+      #   # @param originator_to_beneficiary_information_line3 [String, nil]
+      #   # @param originator_to_beneficiary_information_line4 [String, nil]
+      #   # @param sender_reference [String, nil]
+      #   # @param status [String]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -277,7 +254,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `inbound_wire_transfer`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `inbound_wire_transfer`.
       #
       # @example
       # ```ruby

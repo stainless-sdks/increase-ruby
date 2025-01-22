@@ -23,7 +23,10 @@ module Increase
       #   attr_writer :cursor
 
       # @!attribute [r] idempotency_key
-      #   Filter records to the one with the specified `idempotency_key` you chose for that object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   Filter records to the one with the specified `idempotency_key` you chose for
+      #     that object. This value is unique across Increase and is used to ensure that a
+      #     request is only processed once. Learn more about
+      #     [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       optional :idempotency_key, String
@@ -33,7 +36,8 @@ module Increase
       #   attr_writer :idempotency_key
 
       # @!attribute [r] limit
-      #   Limit the size of the list that is returned. The default (and maximum) is 100 objects.
+      #   Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -53,17 +57,9 @@ module Increase
 
       # @!parse
       #   # @param created_at [Increase::Models::FileListParams::CreatedAt]
-      #   #
-      #   # @param cursor [String] Return the page of entries after this one.
-      #   #
-      #   # @param idempotency_key [String] Filter records to the one with the specified `idempotency_key` you chose for
-      #   #   that object. This value is unique across Increase and is used to ensure that a
-      #   #   request is only processed once. Learn more about
-      #   #   [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100
-      #   #   objects.
-      #   #
+      #   # @param cursor [String]
+      #   # @param idempotency_key [String]
+      #   # @param limit [Integer]
       #   # @param purpose [Increase::Models::FileListParams::Purpose]
       #   #
       #   def initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, purpose: nil, **) = super
@@ -81,7 +77,8 @@ module Increase
       # ```
       class CreatedAt < Increase::BaseModel
         # @!attribute [r] after
-        #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+        #     timestamp.
         #
         #   @return [Time, nil]
         optional :after, Time
@@ -91,7 +88,8 @@ module Increase
         #   attr_writer :after
 
         # @!attribute [r] before
-        #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+        #     timestamp.
         #
         #   @return [Time, nil]
         optional :before, Time
@@ -101,7 +99,8 @@ module Increase
         #   attr_writer :before
 
         # @!attribute [r] on_or_after
-        #   Return results on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   Return results on or after this
+        #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
         #   @return [Time, nil]
         optional :on_or_after, Time
@@ -111,7 +110,8 @@ module Increase
         #   attr_writer :on_or_after
 
         # @!attribute [r] on_or_before
-        #   Return results on or before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   Return results on or before this
+        #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         #
         #   @return [Time, nil]
         optional :on_or_before, Time
@@ -121,17 +121,10 @@ module Increase
         #   attr_writer :on_or_before
 
         # @!parse
-        #   # @param after [String] Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   #   timestamp.
-        #   #
-        #   # @param before [String] Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-        #   #   timestamp.
-        #   #
-        #   # @param on_or_after [String] Return results on or after this
-        #   #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-        #   #
-        #   # @param on_or_before [String] Return results on or before this
-        #   #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+        #   # @param after [String]
+        #   # @param before [String]
+        #   # @param on_or_after [String]
+        #   # @param on_or_before [String]
         #   #
         #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
 
@@ -146,7 +139,8 @@ module Increase
       # ```
       class Purpose < Increase::BaseModel
         # @!attribute [r] in_
-        #   Filter Files for those with the specified purpose or purposes. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        #   Filter Files for those with the specified purpose or purposes. For GET requests,
+        #     this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         #
         #   @return [Array<Symbol, Increase::Models::FileListParams::Purpose::In>]
         optional :in_,
@@ -158,8 +152,7 @@ module Increase
         #   attr_writer :in_
 
         # @!parse
-        #   # @param in_ [Array<String>] Filter Files for those with the specified purpose or purposes. For GET requests,
-        #   #   this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        #   # @param in_ [Array<String>]
         #   #
         #   def initialize(in_: nil, **) = super
 

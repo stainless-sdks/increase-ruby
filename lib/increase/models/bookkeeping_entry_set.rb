@@ -39,7 +39,9 @@ module Increase
       required :entries, -> { Increase::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry] }
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -51,7 +53,8 @@ module Increase
       required :transaction_id, String, nil?: true
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `bookkeeping_entry_set`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `bookkeeping_entry_set`.
       #
       #   @return [Symbol, Increase::Models::BookkeepingEntrySet::Type]
       required :type, enum: -> { Increase::Models::BookkeepingEntrySet::Type }
@@ -62,22 +65,13 @@ module Increase
       #   #   more in our
       #   #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       #   #
-      #   # @param id [String] The entry set identifier.
-      #   #
-      #   # @param created_at [String] When the entry set was created.
-      #   #
-      #   # @param date [String] The timestamp of the entry set.
-      #   #
-      #   # @param entries [Array<Increase::Models::BookkeepingEntrySet::Entry>] The entries.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param transaction_id [String, nil] The transaction identifier, if any.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `bookkeeping_entry_set`.
+      #   # @param id [String]
+      #   # @param created_at [String]
+      #   # @param date [String]
+      #   # @param entries [Array<Increase::Models::BookkeepingEntrySet::Entry>]
+      #   # @param idempotency_key [String, nil]
+      #   # @param transaction_id [String, nil]
+      #   # @param type [String]
       #   #
       #   def initialize(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:, **) = super
 
@@ -111,18 +105,17 @@ module Increase
         required :amount, Integer
 
         # @!parse
-        #   # @param id [String] The entry identifier.
-        #   #
-        #   # @param account_id [String] The bookkeeping account impacted by the entry.
-        #   #
-        #   # @param amount [Integer] The amount of the entry in minor units.
+        #   # @param id [String]
+        #   # @param account_id [String]
+        #   # @param amount [Integer]
         #   #
         #   def initialize(id:, account_id:, amount:, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # A constant representing the object's type. For this resource it will always be `bookkeeping_entry_set`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `bookkeeping_entry_set`.
       #
       # @example
       # ```ruby

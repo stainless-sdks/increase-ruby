@@ -33,7 +33,8 @@ module Increase
       required :billing_address, -> { Increase::Models::Card::BillingAddress }
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the Card was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -45,7 +46,9 @@ module Increase
       required :description, String, nil?: true
 
       # @!attribute digital_wallet
-      #   The contact information used in the two-factor steps for digital wallet card creation. At least one field must be present to complete the digital wallet steps.
+      #   The contact information used in the two-factor steps for digital wallet card
+      #     creation. At least one field must be present to complete the digital wallet
+      #     steps.
       #
       #   @return [Increase::Models::Card::DigitalWallet, nil]
       required :digital_wallet, -> { Increase::Models::Card::DigitalWallet }, nil?: true
@@ -69,7 +72,9 @@ module Increase
       required :expiration_year, Integer
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -87,7 +92,8 @@ module Increase
       required :status, enum: -> { Increase::Models::Card::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `card`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `card`.
       #
       #   @return [Symbol, Increase::Models::Card::Type]
       required :type, enum: -> { Increase::Models::Card::Type }
@@ -98,37 +104,19 @@ module Increase
       #   #   Account’s available balance at the time of transaction. Funds are deducted from
       #   #   the Account upon transaction settlement.
       #   #
-      #   # @param id [String] The card identifier.
-      #   #
-      #   # @param account_id [String] The identifier for the account this card belongs to.
-      #   #
-      #   # @param billing_address [Increase::Models::Card::BillingAddress] The Card's billing address.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #   the Card was created.
-      #   #
-      #   # @param description [String, nil] The card's description for display purposes.
-      #   #
-      #   # @param digital_wallet [Increase::Models::Card::DigitalWallet, nil] The contact information used in the two-factor steps for digital wallet card
-      #   #   creation. At least one field must be present to complete the digital wallet
-      #   #   steps.
-      #   #
-      #   # @param entity_id [String, nil] The identifier for the entity associated with this card.
-      #   #
-      #   # @param expiration_month [Integer] The month the card expires in M format (e.g., August is 8).
-      #   #
-      #   # @param expiration_year [Integer] The year the card expires in YYYY format (e.g., 2025).
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param last4 [String] The last 4 digits of the Card's Primary Account Number.
-      #   #
-      #   # @param status [String] This indicates if payments can be made with the card.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `card`.
+      #   # @param id [String]
+      #   # @param account_id [String]
+      #   # @param billing_address [Increase::Models::Card::BillingAddress]
+      #   # @param created_at [String]
+      #   # @param description [String, nil]
+      #   # @param digital_wallet [Increase::Models::Card::DigitalWallet, nil]
+      #   # @param entity_id [String, nil]
+      #   # @param expiration_month [Integer]
+      #   # @param expiration_year [Integer]
+      #   # @param idempotency_key [String, nil]
+      #   # @param last4 [String]
+      #   # @param status [String]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -195,15 +183,11 @@ module Increase
         # @!parse
         #   # The Card's billing address.
         #   #
-        #   # @param city [String, nil] The city of the billing address.
-        #   #
-        #   # @param line1 [String, nil] The first line of the billing address.
-        #   #
-        #   # @param line2 [String, nil] The second line of the billing address.
-        #   #
-        #   # @param postal_code [String, nil] The postal code of the billing address.
-        #   #
-        #   # @param state [String, nil] The US state of the billing address.
+        #   # @param city [String, nil]
+        #   # @param line1 [String, nil]
+        #   # @param line2 [String, nil]
+        #   # @param postal_code [String, nil]
+        #   # @param state [String, nil]
         #   #
         #   def initialize(city:, line1:, line2:, postal_code:, state:, **) = super
 
@@ -220,19 +204,22 @@ module Increase
       # ```
       class DigitalWallet < Increase::BaseModel
         # @!attribute digital_card_profile_id
-        #   The digital card profile assigned to this digital card. Card profiles may also be assigned at the program level.
+        #   The digital card profile assigned to this digital card. Card profiles may also
+        #     be assigned at the program level.
         #
         #   @return [String, nil]
         required :digital_card_profile_id, String, nil?: true
 
         # @!attribute email
-        #   An email address that can be used to verify the cardholder via one-time passcode over email.
+        #   An email address that can be used to verify the cardholder via one-time passcode
+        #     over email.
         #
         #   @return [String, nil]
         required :email, String, nil?: true
 
         # @!attribute phone
-        #   A phone number that can be used to verify the cardholder via one-time passcode over SMS.
+        #   A phone number that can be used to verify the cardholder via one-time passcode
+        #     over SMS.
         #
         #   @return [String, nil]
         required :phone, String, nil?: true
@@ -242,14 +229,9 @@ module Increase
         #   #   creation. At least one field must be present to complete the digital wallet
         #   #   steps.
         #   #
-        #   # @param digital_card_profile_id [String, nil] The digital card profile assigned to this digital card. Card profiles may also
-        #   #   be assigned at the program level.
-        #   #
-        #   # @param email [String, nil] An email address that can be used to verify the cardholder via one-time passcode
-        #   #   over email.
-        #   #
-        #   # @param phone [String, nil] A phone number that can be used to verify the cardholder via one-time passcode
-        #   #   over SMS.
+        #   # @param digital_card_profile_id [String, nil]
+        #   # @param email [String, nil]
+        #   # @param phone [String, nil]
         #   #
         #   def initialize(digital_card_profile_id:, email:, phone:, **) = super
 
@@ -282,7 +264,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `card`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `card`.
       #
       # @example
       # ```ruby

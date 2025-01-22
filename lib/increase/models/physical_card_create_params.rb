@@ -22,7 +22,8 @@ module Increase
       required :shipment, -> { Increase::Models::PhysicalCardCreateParams::Shipment }
 
       # @!attribute [r] physical_card_profile_id
-      #   The physical card profile to use for this physical card. The latest default physical card profile will be used if not provided.
+      #   The physical card profile to use for this physical card. The latest default
+      #     physical card profile will be used if not provided.
       #
       #   @return [String, nil]
       optional :physical_card_profile_id, String
@@ -32,14 +33,10 @@ module Increase
       #   attr_writer :physical_card_profile_id
 
       # @!parse
-      #   # @param card_id [String] The underlying card representing this physical card.
-      #   #
-      #   # @param cardholder [Increase::Models::PhysicalCardCreateParams::Cardholder] Details about the cardholder, as it will appear on the physical card.
-      #   #
-      #   # @param shipment [Increase::Models::PhysicalCardCreateParams::Shipment] The details used to ship this physical card.
-      #   #
-      #   # @param physical_card_profile_id [String] The physical card profile to use for this physical card. The latest default
-      #   #   physical card profile will be used if not provided.
+      #   # @param card_id [String]
+      #   # @param cardholder [Increase::Models::PhysicalCardCreateParams::Cardholder]
+      #   # @param shipment [Increase::Models::PhysicalCardCreateParams::Shipment]
+      #   # @param physical_card_profile_id [String]
       #   #
       #   def initialize(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, **) = super
 
@@ -68,9 +65,8 @@ module Increase
         # @!parse
         #   # Details about the cardholder, as it will appear on the physical card.
         #   #
-        #   # @param first_name [String] The cardholder's first name.
-        #   #
-        #   # @param last_name [String] The cardholder's last name.
+        #   # @param first_name [String]
+        #   # @param last_name [String]
         #   #
         #   def initialize(first_name:, last_name:, **) = super
 
@@ -81,7 +77,7 @@ module Increase
       # ```ruby
       # shipment => {
       #   address: Increase::Models::PhysicalCardCreateParams::Shipment::Address,
-      #   method_: enum: Increase::Models::PhysicalCardCreateParams::Shipment::Method
+      #   method_: Increase::Models::PhysicalCardCreateParams::Shipment::Method
       # }
       # ```
       class Shipment < Increase::BaseModel
@@ -102,9 +98,8 @@ module Increase
         # @!parse
         #   # The details used to ship this physical card.
         #   #
-        #   # @param address [Increase::Models::PhysicalCardCreateParams::Shipment::Address] The address to where the card should be shipped.
-        #   #
-        #   # @param method_ [String] The shipping method to use.
+        #   # @param address [Increase::Models::PhysicalCardCreateParams::Shipment::Address]
+        #   # @param method_ [String]
         #   #
         #   def initialize(address:, method_:, **) = super
 
@@ -185,21 +180,14 @@ module Increase
           # @!parse
           #   # The address to where the card should be shipped.
           #   #
-          #   # @param city [String] The city of the shipping address.
-          #   #
-          #   # @param line1 [String] The first line of the shipping address.
-          #   #
-          #   # @param name [String] The name of the recipient.
-          #   #
-          #   # @param postal_code [String] The postal code of the shipping address.
-          #   #
-          #   # @param state [String] The US state of the shipping address.
-          #   #
-          #   # @param line2 [String] The second line of the shipping address.
-          #   #
-          #   # @param line3 [String] The third line of the shipping address.
-          #   #
-          #   # @param phone_number [String] The phone number of the recipient.
+          #   # @param city [String]
+          #   # @param line1 [String]
+          #   # @param name [String]
+          #   # @param postal_code [String]
+          #   # @param state [String]
+          #   # @param line2 [String]
+          #   # @param line3 [String]
+          #   # @param phone_number [String]
           #   #
           #   def initialize(city:, line1:, name:, postal_code:, state:, line2: nil, line3: nil, phone_number: nil, **) = super
 

@@ -11,7 +11,7 @@ module Increase
         required :account_id, String
 
         # @!parse
-        #   # @param account_id [String] The identifier of the Account the tax document is for.
+        #   # @param account_id [String]
         #   #
         #   def initialize(account_id:, **) = super
 

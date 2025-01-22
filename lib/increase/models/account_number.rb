@@ -33,13 +33,16 @@ module Increase
       required :account_number, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account Number was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+      #     Number was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -51,7 +54,8 @@ module Increase
       required :inbound_ach, -> { Increase::Models::AccountNumber::InboundACH }
 
       # @!attribute inbound_checks
-      #   Properties related to how this Account Number should handle inbound check withdrawals.
+      #   Properties related to how this Account Number should handle inbound check
+      #     withdrawals.
       #
       #   @return [Increase::Models::AccountNumber::InboundChecks]
       required :inbound_checks, -> { Increase::Models::AccountNumber::InboundChecks }
@@ -75,7 +79,8 @@ module Increase
       required :status, enum: -> { Increase::Models::AccountNumber::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `account_number`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `account_number`.
       #
       #   @return [Symbol, Increase::Models::AccountNumber::Type]
       required :type, enum: -> { Increase::Models::AccountNumber::Type }
@@ -87,32 +92,17 @@ module Increase
       #   #   inbound payments. Generating a unique account number per vendor ensures you
       #   #   always know the originator of an incoming payment.
       #   #
-      #   # @param id [String] The Account Number identifier.
-      #   #
-      #   # @param account_id [String] The identifier for the account this Account Number belongs to.
-      #   #
-      #   # @param account_number [String] The account number.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   #   Number was created.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param inbound_ach [Increase::Models::AccountNumber::InboundACH] Properties related to how this Account Number handles inbound ACH transfers.
-      #   #
-      #   # @param inbound_checks [Increase::Models::AccountNumber::InboundChecks] Properties related to how this Account Number should handle inbound check
-      #   #   withdrawals.
-      #   #
-      #   # @param name [String] The name you choose for the Account Number.
-      #   #
-      #   # @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN).
-      #   #
-      #   # @param status [String] This indicates if payments can be made to the Account Number.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `account_number`.
+      #   # @param id [String]
+      #   # @param account_id [String]
+      #   # @param account_number [String]
+      #   # @param created_at [String]
+      #   # @param idempotency_key [String, nil]
+      #   # @param inbound_ach [Increase::Models::AccountNumber::InboundACH]
+      #   # @param inbound_checks [Increase::Models::AccountNumber::InboundChecks]
+      #   # @param name [String]
+      #   # @param routing_number [String]
+      #   # @param status [String]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -136,12 +126,13 @@ module Increase
       # @example
       # ```ruby
       # inbound_ach => {
-      #   debit_status: enum: Increase::Models::AccountNumber::InboundACH::DebitStatus
+      #   debit_status: Increase::Models::AccountNumber::InboundACH::DebitStatus
       # }
       # ```
       class InboundACH < Increase::BaseModel
         # @!attribute debit_status
-        #   Whether ACH debits are allowed against this Account Number. Note that they will still be declined if this is `allowed` if the Account Number is not active.
+        #   Whether ACH debits are allowed against this Account Number. Note that they will
+        #     still be declined if this is `allowed` if the Account Number is not active.
         #
         #   @return [Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus]
         required :debit_status, enum: -> { Increase::Models::AccountNumber::InboundACH::DebitStatus }
@@ -149,14 +140,14 @@ module Increase
         # @!parse
         #   # Properties related to how this Account Number handles inbound ACH transfers.
         #   #
-        #   # @param debit_status [String] Whether ACH debits are allowed against this Account Number. Note that they will
-        #   #   still be declined if this is `allowed` if the Account Number is not active.
+        #   # @param debit_status [String]
         #   #
         #   def initialize(debit_status:, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # Whether ACH debits are allowed against this Account Number. Note that they will still be declined if this is `allowed` if the Account Number is not active.
+        # Whether ACH debits are allowed against this Account Number. Note that they will
+        #   still be declined if this is `allowed` if the Account Number is not active.
         #
         # @example
         # ```ruby
@@ -181,7 +172,7 @@ module Increase
       # @example
       # ```ruby
       # inbound_checks => {
-      #   status: enum: Increase::Models::AccountNumber::InboundChecks::Status
+      #   status: Increase::Models::AccountNumber::InboundChecks::Status
       # }
       # ```
       class InboundChecks < Increase::BaseModel
@@ -195,7 +186,7 @@ module Increase
         #   # Properties related to how this Account Number should handle inbound check
         #   #   withdrawals.
         #   #
-        #   # @param status [String] How Increase should process checks with this account number printed on them.
+        #   # @param status [String]
         #   #
         #   def initialize(status:, **) = super
 
@@ -249,7 +240,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `account_number`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `account_number`.
       #
       # @example
       # ```ruby

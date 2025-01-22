@@ -16,9 +16,8 @@ module Increase
       required :email_address, String
 
       # @!parse
-      #   # @param account_id [String] The identifier for the account to be added to IntraFi.
-      #   #
-      #   # @param email_address [String] The contact email for the account owner, to be shared with IntraFi.
+      #   # @param account_id [String]
+      #   # @param email_address [String]
       #   #
       #   def initialize(account_id:, email_address:, **) = super
 

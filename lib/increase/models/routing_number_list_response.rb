@@ -5,11 +5,11 @@ module Increase
     # @example
     # ```ruby
     # routing_number_list_response => {
-    #   ach_transfers: enum: Increase::Models::RoutingNumberListResponse::ACHTransfers,
+    #   ach_transfers: Increase::Models::RoutingNumberListResponse::ACHTransfers,
     #   name: String,
-    #   real_time_payments_transfers: enum: Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers,
+    #   real_time_payments_transfers: Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers,
     #   routing_number: String,
-    #   type: enum: Increase::Models::RoutingNumberListResponse::Type
+    #   type: Increase::Models::RoutingNumberListResponse::Type
     # }
     # ```
     class RoutingNumberListResponse < Increase::BaseModel
@@ -39,7 +39,8 @@ module Increase
       required :routing_number, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `routing_number`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `routing_number`.
       #
       #   @return [Symbol, Increase::Models::RoutingNumberListResponse::Type]
       required :type, enum: -> { Increase::Models::RoutingNumberListResponse::Type }
@@ -53,18 +54,12 @@ module Increase
       # @!parse
       #   # Routing numbers are used to identify your bank in a financial transaction.
       #   #
-      #   # @param ach_transfers [String] This routing number's support for ACH Transfers.
-      #   #
-      #   # @param name [String] The name of the financial institution belonging to a routing number.
-      #   #
-      #   # @param real_time_payments_transfers [String] This routing number's support for Real-Time Payments Transfers.
-      #   #
-      #   # @param routing_number [String] The nine digit routing number identifier.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `routing_number`.
-      #   #
-      #   # @param wire_transfers [String] This routing number's support for Wire Transfers.
+      #   # @param ach_transfers [String]
+      #   # @param name [String]
+      #   # @param real_time_payments_transfers [String]
+      #   # @param routing_number [String]
+      #   # @param type [String]
+      #   # @param wire_transfers [String]
       #   #
       #   def initialize(ach_transfers:, name:, real_time_payments_transfers:, routing_number:, type:, wire_transfers:, **) = super
 
@@ -112,7 +107,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `routing_number`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `routing_number`.
       #
       # @example
       # ```ruby

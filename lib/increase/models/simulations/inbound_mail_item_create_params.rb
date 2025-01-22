@@ -17,7 +17,8 @@ module Increase
         required :lockbox_id, String
 
         # @!attribute [r] contents_file_id
-        #   The file containing the PDF contents. If not present, a default check image file will be used.
+        #   The file containing the PDF contents. If not present, a default check image file
+        #     will be used.
         #
         #   @return [String, nil]
         optional :contents_file_id, String
@@ -27,12 +28,9 @@ module Increase
         #   attr_writer :contents_file_id
 
         # @!parse
-        #   # @param amount [Integer] The amount of the check to be simulated, in cents.
-        #   #
-        #   # @param lockbox_id [String] The identifier of the Lockbox to simulate inbound mail to.
-        #   #
-        #   # @param contents_file_id [String] The file containing the PDF contents. If not present, a default check image file
-        #   #   will be used.
+        #   # @param amount [Integer]
+        #   # @param lockbox_id [String]
+        #   # @param contents_file_id [String]
         #   #
         #   def initialize(amount:, lockbox_id:, contents_file_id: nil, **) = super
 

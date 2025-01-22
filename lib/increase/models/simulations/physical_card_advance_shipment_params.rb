@@ -12,7 +12,7 @@ module Increase
                  enum: -> { Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus }
 
         # @!parse
-        #   # @param shipment_status [String] The shipment status to move the Physical Card to.
+        #   # @param shipment_status [String]
         #   #
         #   def initialize(shipment_status:, **) = super
 

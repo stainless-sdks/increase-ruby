@@ -74,23 +74,15 @@ module Increase
       #   attr_writer :text_color
 
       # @!parse
-      #   # @param app_icon_file_id [String] The identifier of the File containing the card's icon image.
-      #   #
-      #   # @param background_image_file_id [String] The identifier of the File containing the card's front image.
-      #   #
-      #   # @param card_description [String] A user-facing description for the card itself.
-      #   #
-      #   # @param description [String] A description you can use to identify the Card Profile.
-      #   #
-      #   # @param issuer_name [String] A user-facing description for whoever is issuing the card.
-      #   #
-      #   # @param contact_email [String] An email address the user can contact to receive support for their card.
-      #   #
-      #   # @param contact_phone [String] A phone number the user can contact to receive support for their card.
-      #   #
-      #   # @param contact_website [String] A website the user can visit to view and receive support for their card.
-      #   #
-      #   # @param text_color [Increase::Models::DigitalCardProfileCreateParams::TextColor] The Card's text color, specified as an RGB triple. The default is white.
+      #   # @param app_icon_file_id [String]
+      #   # @param background_image_file_id [String]
+      #   # @param card_description [String]
+      #   # @param description [String]
+      #   # @param issuer_name [String]
+      #   # @param contact_email [String]
+      #   # @param contact_phone [String]
+      #   # @param contact_website [String]
+      #   # @param text_color [Increase::Models::DigitalCardProfileCreateParams::TextColor]
       #   #
       #   def initialize(
       #     app_icon_file_id:,
@@ -139,11 +131,9 @@ module Increase
         # @!parse
         #   # The Card's text color, specified as an RGB triple. The default is white.
         #   #
-        #   # @param blue [Integer] The value of the blue channel in the RGB color.
-        #   #
-        #   # @param green [Integer] The value of the green channel in the RGB color.
-        #   #
-        #   # @param red [Integer] The value of the red channel in the RGB color.
+        #   # @param blue [Integer]
+        #   # @param green [Integer]
+        #   # @param red [Integer]
         #   #
         #   def initialize(blue:, green:, red:, **) = super
 

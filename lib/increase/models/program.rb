@@ -6,7 +6,7 @@ module Increase
     # ```ruby
     # program => {
     #   id: String,
-    #   bank: enum: Increase::Models::Program::Bank,
+    #   bank: Increase::Models::Program::Bank,
     #   billing_account_id: String,
     #   created_at: Time,
     #   default_digital_card_profile_id: String,
@@ -33,7 +33,8 @@ module Increase
       required :billing_account_id, String, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
+      #     was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -45,7 +46,9 @@ module Increase
       required :default_digital_card_profile_id, String, nil?: true
 
       # @!attribute interest_rate
-      #   The Interest Rate currently being earned on the accounts in this program, as a string containing a decimal number. For example, a 1% interest rate would be represented as "0.01".
+      #   The Interest Rate currently being earned on the accounts in this program, as a
+      #     string containing a decimal number. For example, a 1% interest rate would be
+      #     represented as "0.01".
       #
       #   @return [String]
       required :interest_rate, String
@@ -57,13 +60,15 @@ module Increase
       required :name, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `program`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `program`.
       #
       #   @return [Symbol, Increase::Models::Program::Type]
       required :type, enum: -> { Increase::Models::Program::Type }
 
       # @!attribute updated_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program was last updated.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
+      #     was last updated.
       #
       #   @return [Time]
       required :updated_at, Time
@@ -74,28 +79,15 @@ module Increase
       #   #   lending or managing funds on behalf of your customers, or otherwise engaged in
       #   #   regulated activity, we will work together to create additional Programs for you.
       #   #
-      #   # @param id [String] The Program identifier.
-      #   #
-      #   # @param bank [String] The Bank the Program is with.
-      #   #
-      #   # @param billing_account_id [String, nil] The Program billing account.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #   #   was created.
-      #   #
-      #   # @param default_digital_card_profile_id [String, nil] The default configuration for digital cards attached to this Program.
-      #   #
-      #   # @param interest_rate [String] The Interest Rate currently being earned on the accounts in this program, as a
-      #   #   string containing a decimal number. For example, a 1% interest rate would be
-      #   #   represented as "0.01".
-      #   #
-      #   # @param name [String] The name of the Program.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `program`.
-      #   #
-      #   # @param updated_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #   #   was last updated.
+      #   # @param id [String]
+      #   # @param bank [String]
+      #   # @param billing_account_id [String, nil]
+      #   # @param created_at [String]
+      #   # @param default_digital_card_profile_id [String, nil]
+      #   # @param interest_rate [String]
+      #   # @param name [String]
+      #   # @param type [String]
+      #   # @param updated_at [String]
       #   #
       #   def initialize(
       #     id:,
@@ -140,7 +132,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `program`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `program`.
       #
       # @example
       # ```ruby

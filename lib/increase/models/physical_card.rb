@@ -33,13 +33,16 @@ module Increase
       required :cardholder, -> { Increase::Models::PhysicalCard::Cardholder }
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Physical Card was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the Physical Card was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -63,7 +66,8 @@ module Increase
       required :status, enum: -> { Increase::Models::PhysicalCard::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `physical_card`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `physical_card`.
       #
       #   @return [Symbol, Increase::Models::PhysicalCard::Type]
       required :type, enum: -> { Increase::Models::PhysicalCard::Type }
@@ -75,27 +79,15 @@ module Increase
       #   #   fee. Please contact [support@increase.com](mailto:support@increase.com) for
       #   #   pricing!
       #   #
-      #   # @param id [String] The physical card identifier.
-      #   #
-      #   # @param card_id [String] The identifier for the Card this Physical Card represents.
-      #   #
-      #   # @param cardholder [Increase::Models::PhysicalCard::Cardholder] Details about the cardholder, as it appears on the printed card.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #   the Physical Card was created.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param physical_card_profile_id [String, nil] The Physical Card Profile used for this Physical Card.
-      #   #
-      #   # @param shipment [Increase::Models::PhysicalCard::Shipment] The details used to ship this physical card.
-      #   #
-      #   # @param status [String] The status of the Physical Card.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `physical_card`.
+      #   # @param id [String]
+      #   # @param card_id [String]
+      #   # @param cardholder [Increase::Models::PhysicalCard::Cardholder]
+      #   # @param created_at [String]
+      #   # @param idempotency_key [String, nil]
+      #   # @param physical_card_profile_id [String, nil]
+      #   # @param shipment [Increase::Models::PhysicalCard::Shipment]
+      #   # @param status [String]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -137,9 +129,8 @@ module Increase
         # @!parse
         #   # Details about the cardholder, as it appears on the printed card.
         #   #
-        #   # @param first_name [String] The cardholder's first name.
-        #   #
-        #   # @param last_name [String] The cardholder's last name.
+        #   # @param first_name [String]
+        #   # @param last_name [String]
         #   #
         #   def initialize(first_name:, last_name:, **) = super
 
@@ -150,8 +141,8 @@ module Increase
       # ```ruby
       # shipment => {
       #   address: Increase::Models::PhysicalCard::Shipment::Address,
-      #   method_: enum: Increase::Models::PhysicalCard::Shipment::Method,
-      #   status: enum: Increase::Models::PhysicalCard::Shipment::Status,
+      #   method_: Increase::Models::PhysicalCard::Shipment::Method,
+      #   status: Increase::Models::PhysicalCard::Shipment::Status,
       #   tracking: Increase::Models::PhysicalCard::Shipment::Tracking
       # }
       # ```
@@ -183,13 +174,10 @@ module Increase
         # @!parse
         #   # The details used to ship this physical card.
         #   #
-        #   # @param address [Increase::Models::PhysicalCard::Shipment::Address] The location to where the card's packing label is addressed.
-        #   #
-        #   # @param method_ [String] The shipping method.
-        #   #
-        #   # @param status [String] The status of this shipment.
-        #   #
-        #   # @param tracking [Increase::Models::PhysicalCard::Shipment::Tracking, nil] Tracking details for the shipment.
+        #   # @param address [Increase::Models::PhysicalCard::Shipment::Address]
+        #   # @param method_ [String]
+        #   # @param status [String]
+        #   # @param tracking [Increase::Models::PhysicalCard::Shipment::Tracking, nil]
         #   #
         #   def initialize(address:, method_:, status:, tracking:, **) = super
 
@@ -252,19 +240,13 @@ module Increase
           # @!parse
           #   # The location to where the card's packing label is addressed.
           #   #
-          #   # @param city [String] The city of the shipping address.
-          #   #
-          #   # @param line1 [String] The first line of the shipping address.
-          #   #
-          #   # @param line2 [String, nil] The second line of the shipping address.
-          #   #
-          #   # @param line3 [String, nil] The third line of the shipping address.
-          #   #
-          #   # @param name [String] The name of the recipient.
-          #   #
-          #   # @param postal_code [String] The postal code of the shipping address.
-          #   #
-          #   # @param state [String] The US state of the shipping address.
+          #   # @param city [String]
+          #   # @param line1 [String]
+          #   # @param line2 [String, nil]
+          #   # @param line3 [String, nil]
+          #   # @param name [String]
+          #   # @param postal_code [String]
+          #   # @param state [String]
           #   #
           #   def initialize(city:, line1:, line2:, line3:, name:, postal_code:, state:, **) = super
 
@@ -370,7 +352,9 @@ module Increase
           required :return_reason, String, nil?: true
 
           # @!attribute shipped_at
-          #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the fulfillment provider marked the card as ready for pick-up by the shipment carrier.
+          #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          #     the fulfillment provider marked the card as ready for pick-up by the shipment
+          #     carrier.
           #
           #   @return [Time]
           required :shipped_at, Time
@@ -378,15 +362,10 @@ module Increase
           # @!parse
           #   # Tracking details for the shipment.
           #   #
-          #   # @param number [String] The tracking number.
-          #   #
-          #   # @param return_number [String, nil] For returned shipments, the tracking number of the return shipment.
-          #   #
-          #   # @param return_reason [String, nil] For returned shipments, this describes why the package was returned.
-          #   #
-          #   # @param shipped_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-          #   #   the fulfillment provider marked the card as ready for pick-up by the shipment
-          #   #   carrier.
+          #   # @param number [String]
+          #   # @param return_number [String, nil]
+          #   # @param return_reason [String, nil]
+          #   # @param shipped_at [String]
           #   #
           #   def initialize(number:, return_number:, return_reason:, shipped_at:, **) = super
 
@@ -420,7 +399,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `physical_card`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `physical_card`.
       #
       # @example
       # ```ruby

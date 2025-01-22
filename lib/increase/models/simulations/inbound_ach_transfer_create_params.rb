@@ -11,7 +11,9 @@ module Increase
         required :account_number_id, String
 
         # @!attribute amount
-        #   The transfer amount in cents. A positive amount originates a credit transfer pushing funds to the receiving account. A negative amount originates a debit transfer pulling funds from the receiving account.
+        #   The transfer amount in cents. A positive amount originates a credit transfer
+        #     pushing funds to the receiving account. A negative amount originates a debit
+        #     transfer pulling funds from the receiving account.
         #
         #   @return [Integer]
         required :amount, Integer
@@ -87,7 +89,8 @@ module Increase
         #   attr_writer :receiver_name
 
         # @!attribute [r] resolve_at
-        #   The time at which the transfer should be resolved. If not provided will resolve immediately.
+        #   The time at which the transfer should be resolved. If not provided will resolve
+        #     immediately.
         #
         #   @return [Time, nil]
         optional :resolve_at, Time
@@ -110,30 +113,17 @@ module Increase
         #   attr_writer :standard_entry_class_code
 
         # @!parse
-        #   # @param account_number_id [String] The identifier of the Account Number the inbound ACH Transfer is for.
-        #   #
-        #   # @param amount [Integer] The transfer amount in cents. A positive amount originates a credit transfer
-        #   #   pushing funds to the receiving account. A negative amount originates a debit
-        #   #   transfer pulling funds from the receiving account.
-        #   #
-        #   # @param company_descriptive_date [String] The description of the date of the transfer.
-        #   #
-        #   # @param company_discretionary_data [String] Data associated with the transfer set by the sender.
-        #   #
-        #   # @param company_entry_description [String] The description of the transfer set by the sender.
-        #   #
-        #   # @param company_id [String] The sender's company ID.
-        #   #
-        #   # @param company_name [String] The name of the sender.
-        #   #
-        #   # @param receiver_id_number [String] The ID of the receiver of the transfer.
-        #   #
-        #   # @param receiver_name [String] The name of the receiver of the transfer.
-        #   #
-        #   # @param resolve_at [String] The time at which the transfer should be resolved. If not provided will resolve
-        #   #   immediately.
-        #   #
-        #   # @param standard_entry_class_code [String] The standard entry class code for the transfer.
+        #   # @param account_number_id [String]
+        #   # @param amount [Integer]
+        #   # @param company_descriptive_date [String]
+        #   # @param company_discretionary_data [String]
+        #   # @param company_entry_description [String]
+        #   # @param company_id [String]
+        #   # @param company_name [String]
+        #   # @param receiver_id_number [String]
+        #   # @param receiver_name [String]
+        #   # @param resolve_at [String]
+        #   # @param standard_entry_class_code [String]
         #   #
         #   def initialize(
         #     account_number_id:,

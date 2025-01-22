@@ -4,7 +4,8 @@ module Increase
   module Models
     class RealTimePaymentsTransferCreateParams < Increase::BaseModel
       # @!attribute amount
-      #   The transfer amount in USD cents. For Real-Time Payments transfers, must be positive.
+      #   The transfer amount in USD cents. For Real-Time Payments transfers, must be
+      #     positive.
       #
       #   @return [Integer]
       required :amount, Integer
@@ -28,7 +29,8 @@ module Increase
       required :source_account_number_id, String
 
       # @!attribute [r] debtor_name
-      #   The name of the transfer's sender. If not provided, defaults to the name of the account's entity.
+      #   The name of the transfer's sender. If not provided, defaults to the name of the
+      #     account's entity.
       #
       #   @return [String, nil]
       optional :debtor_name, String
@@ -48,7 +50,8 @@ module Increase
       #   attr_writer :destination_account_number
 
       # @!attribute [r] destination_routing_number
-      #   The destination American Bankers' Association (ABA) Routing Transit Number (RTN).
+      #   The destination American Bankers' Association (ABA) Routing Transit Number
+      #     (RTN).
       #
       #   @return [String, nil]
       optional :destination_routing_number, String
@@ -58,7 +61,9 @@ module Increase
       #   attr_writer :destination_routing_number
 
       # @!attribute [r] external_account_id
-      #   The ID of an External Account to initiate a transfer to. If this parameter is provided, `destination_account_number` and `destination_routing_number` must be absent.
+      #   The ID of an External Account to initiate a transfer to. If this parameter is
+      #     provided, `destination_account_number` and `destination_routing_number` must be
+      #     absent.
       #
       #   @return [String, nil]
       optional :external_account_id, String
@@ -78,7 +83,8 @@ module Increase
       #   attr_writer :require_approval
 
       # @!attribute [r] ultimate_creditor_name
-      #   The name of the ultimate recipient of the transfer. Set this if the creditor is an intermediary receiving the payment for someone else.
+      #   The name of the ultimate recipient of the transfer. Set this if the creditor is
+      #     an intermediary receiving the payment for someone else.
       #
       #   @return [String, nil]
       optional :ultimate_creditor_name, String
@@ -88,7 +94,8 @@ module Increase
       #   attr_writer :ultimate_creditor_name
 
       # @!attribute [r] ultimate_debtor_name
-      #   The name of the ultimate sender of the transfer. Set this if the funds are being sent on behalf of someone who is not the account holder at Increase.
+      #   The name of the ultimate sender of the transfer. Set this if the funds are being
+      #     sent on behalf of someone who is not the account holder at Increase.
       #
       #   @return [String, nil]
       optional :ultimate_debtor_name, String
@@ -98,34 +105,17 @@ module Increase
       #   attr_writer :ultimate_debtor_name
 
       # @!parse
-      #   # @param amount [Integer] The transfer amount in USD cents. For Real-Time Payments transfers, must be
-      #   #   positive.
-      #   #
-      #   # @param creditor_name [String] The name of the transfer's recipient.
-      #   #
-      #   # @param remittance_information [String] Unstructured information that will show on the recipient's bank statement.
-      #   #
-      #   # @param source_account_number_id [String] The identifier of the Account Number from which to send the transfer.
-      #   #
-      #   # @param debtor_name [String] The name of the transfer's sender. If not provided, defaults to the name of the
-      #   #   account's entity.
-      #   #
-      #   # @param destination_account_number [String] The destination account number.
-      #   #
-      #   # @param destination_routing_number [String] The destination American Bankers' Association (ABA) Routing Transit Number
-      #   #   (RTN).
-      #   #
-      #   # @param external_account_id [String] The ID of an External Account to initiate a transfer to. If this parameter is
-      #   #   provided, `destination_account_number` and `destination_routing_number` must be
-      #   #   absent.
-      #   #
-      #   # @param require_approval [Boolean] Whether the transfer requires explicit approval via the dashboard or API.
-      #   #
-      #   # @param ultimate_creditor_name [String] The name of the ultimate recipient of the transfer. Set this if the creditor is
-      #   #   an intermediary receiving the payment for someone else.
-      #   #
-      #   # @param ultimate_debtor_name [String] The name of the ultimate sender of the transfer. Set this if the funds are being
-      #   #   sent on behalf of someone who is not the account holder at Increase.
+      #   # @param amount [Integer]
+      #   # @param creditor_name [String]
+      #   # @param remittance_information [String]
+      #   # @param source_account_number_id [String]
+      #   # @param debtor_name [String]
+      #   # @param destination_account_number [String]
+      #   # @param destination_routing_number [String]
+      #   # @param external_account_id [String]
+      #   # @param require_approval [Boolean]
+      #   # @param ultimate_creditor_name [String]
+      #   # @param ultimate_debtor_name [String]
       #   #
       #   def initialize(
       #     amount:,

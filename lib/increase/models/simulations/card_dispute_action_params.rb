@@ -21,9 +21,8 @@ module Increase
         #   attr_writer :explanation
 
         # @!parse
-        #   # @param status [String] The status to move the dispute to.
-        #   #
-        #   # @param explanation [String] Why the dispute was rejected. Not required for accepting disputes.
+        #   # @param status [String]
+        #   # @param explanation [String]
         #   #
         #   def initialize(status:, explanation: nil, **) = super
 

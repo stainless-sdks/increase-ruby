@@ -16,7 +16,7 @@ module Increase
         #   attr_writer :rejection
 
         # @!parse
-        #   # @param rejection [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection] If set, the simulation will reject the transfer.
+        #   # @param rejection [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection]
         #   #
         #   def initialize(rejection: nil, **) = super
 
@@ -25,7 +25,7 @@ module Increase
         # @example
         # ```ruby
         # rejection => {
-        #   reject_reason_code: enum: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode
+        #   reject_reason_code: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode
         # }
         # ```
         class Rejection < Increase::BaseModel
@@ -41,7 +41,7 @@ module Increase
           # @!parse
           #   # If set, the simulation will reject the transfer.
           #   #
-          #   # @param reject_reason_code [String] The reason code that the simulated rejection will have.
+          #   # @param reject_reason_code [String]
           #   #
           #   def initialize(reject_reason_code:, **) = super
 

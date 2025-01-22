@@ -16,9 +16,8 @@ module Increase
       required :entity_id, String
 
       # @!parse
-      #   # @param bank_name [String] The name of the financial institution to be excluded.
-      #   #
-      #   # @param entity_id [String] The identifier of the Entity whose deposits will be excluded.
+      #   # @param bank_name [String]
+      #   # @param entity_id [String]
       #   #
       #   def initialize(bank_name:, entity_id:, **) = super
 

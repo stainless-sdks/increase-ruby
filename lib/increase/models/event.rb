@@ -8,7 +8,7 @@ module Increase
     #   id: String,
     #   associated_object_id: String,
     #   associated_object_type: String,
-    #   category: enum: Increase::Models::Event::Category,
+    #   category: Increase::Models::Event::Category,
     #   created_at: Time
     # }
     # ```
@@ -32,7 +32,8 @@ module Increase
       required :associated_object_type, String
 
       # @!attribute category
-      #   The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+      #   The category of the Event. We may add additional possible values for this enum
+      #     over time; your application should be able to handle such additions gracefully.
       #
       #   @return [Symbol, Increase::Models::Event::Category]
       required :category, enum: -> { Increase::Models::Event::Category }
@@ -44,7 +45,8 @@ module Increase
       required :created_at, Time
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `event`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `event`.
       #
       #   @return [Symbol, Increase::Models::Event::Type]
       required :type, enum: -> { Increase::Models::Event::Type }
@@ -55,25 +57,19 @@ module Increase
       #   #   via webhooks. For more information, see our
       #   #   [webhooks guide](https://increase.com/documentation/webhooks).
       #   #
-      #   # @param id [String] The Event identifier.
-      #   #
-      #   # @param associated_object_id [String] The identifier of the object that generated this Event.
-      #   #
-      #   # @param associated_object_type [String] The type of the object that generated this Event.
-      #   #
-      #   # @param category [String] The category of the Event. We may add additional possible values for this enum
-      #   #   over time; your application should be able to handle such additions gracefully.
-      #   #
-      #   # @param created_at [String] The time the Event was created.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `event`.
+      #   # @param id [String]
+      #   # @param associated_object_id [String]
+      #   # @param associated_object_type [String]
+      #   # @param category [String]
+      #   # @param created_at [String]
+      #   # @param type [String]
       #   #
       #   def initialize(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # The category of the Event. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+      # The category of the Event. We may add additional possible values for this enum
+      #   over time; your application should be able to handle such additions gracefully.
       #
       # @example
       # ```ruby
@@ -360,7 +356,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `event`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `event`.
       #
       # @example
       # ```ruby

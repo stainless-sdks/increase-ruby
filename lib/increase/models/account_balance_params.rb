@@ -14,7 +14,7 @@ module Increase
       #   attr_writer :at_time
 
       # @!parse
-      #   # @param at_time [String] The moment to query the balance at. If not set, returns the current balances.
+      #   # @param at_time [String]
       #   #
       #   def initialize(at_time: nil, **) = super
 

@@ -5,7 +5,8 @@ module Increase
     module Simulations
       class ACHTransferReturnParams < Increase::BaseModel
         # @!attribute [r] reason
-        #   The reason why the Federal Reserve or destination bank returned this transfer. Defaults to `no_account`.
+        #   The reason why the Federal Reserve or destination bank returned this transfer.
+        #     Defaults to `no_account`.
         #
         #   @return [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason, nil]
         optional :reason, enum: -> { Increase::Models::Simulations::ACHTransferReturnParams::Reason }
@@ -15,14 +16,14 @@ module Increase
         #   attr_writer :reason
 
         # @!parse
-        #   # @param reason [String] The reason why the Federal Reserve or destination bank returned this transfer.
-        #   #   Defaults to `no_account`.
+        #   # @param reason [String]
         #   #
         #   def initialize(reason: nil, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # The reason why the Federal Reserve or destination bank returned this transfer. Defaults to `no_account`.
+        # The reason why the Federal Reserve or destination bank returned this transfer.
+        #   Defaults to `no_account`.
         #
         # @example
         # ```ruby

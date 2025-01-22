@@ -8,8 +8,8 @@ module Increase
     #   id: String,
     #   card_id: String,
     #   created_at: Time,
-    #   status: enum: Increase::Models::DigitalWalletToken::Status,
-    #   token_requestor: enum: Increase::Models::DigitalWalletToken::TokenRequestor
+    #   status: Increase::Models::DigitalWalletToken::Status,
+    #   token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor
     # }
     # ```
     class DigitalWalletToken < Increase::BaseModel
@@ -26,7 +26,8 @@ module Increase
       required :card_id, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the Card was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -44,7 +45,8 @@ module Increase
       required :token_requestor, enum: -> { Increase::Models::DigitalWalletToken::TokenRequestor }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `digital_wallet_token`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `digital_wallet_token`.
       #
       #   @return [Symbol, Increase::Models::DigitalWalletToken::Type]
       required :type, enum: -> { Increase::Models::DigitalWalletToken::Type }
@@ -54,19 +56,12 @@ module Increase
       #   #   Google Pay app. The Digital Wallet Token can be used for purchases just like a
       #   #   Card.
       #   #
-      #   # @param id [String] The Digital Wallet Token identifier.
-      #   #
-      #   # @param card_id [String] The identifier for the Card this Digital Wallet Token belongs to.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #   the Card was created.
-      #   #
-      #   # @param status [String] This indicates if payments can be made with the Digital Wallet Token.
-      #   #
-      #   # @param token_requestor [String] The digital wallet app being used.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `digital_wallet_token`.
+      #   # @param id [String]
+      #   # @param card_id [String]
+      #   # @param created_at [String]
+      #   # @param status [String]
+      #   # @param token_requestor [String]
+      #   # @param type [String]
       #   #
       #   def initialize(id:, card_id:, created_at:, status:, token_requestor:, type:, **) = super
 
@@ -134,7 +129,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `digital_wallet_token`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `digital_wallet_token`.
       #
       # @example
       # ```ruby

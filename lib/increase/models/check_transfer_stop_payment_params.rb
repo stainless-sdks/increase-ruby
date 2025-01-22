@@ -14,7 +14,7 @@ module Increase
       #   attr_writer :reason
 
       # @!parse
-      #   # @param reason [String] The reason why this transfer should be stopped.
+      #   # @param reason [String]
       #   #
       #   def initialize(reason: nil, **) = super
 

@@ -4,23 +4,22 @@ module Increase
   module Models
     class EntityUpdateBeneficialOwnerAddressParams < Increase::BaseModel
       # @!attribute address
-      #   The individual's physical address. Mail receiving locations like PO Boxes and PMB's are disallowed.
+      #   The individual's physical address. Mail receiving locations like PO Boxes and
+      #     PMB's are disallowed.
       #
       #   @return [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address]
       required :address, -> { Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address }
 
       # @!attribute beneficial_owner_id
-      #   The identifying details of anyone controlling or owning 25% or more of the corporation.
+      #   The identifying details of anyone controlling or owning 25% or more of the
+      #     corporation.
       #
       #   @return [String]
       required :beneficial_owner_id, String
 
       # @!parse
-      #   # @param address [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address] The individual's physical address. Mail receiving locations like PO Boxes and
-      #   #   PMB's are disallowed.
-      #   #
-      #   # @param beneficial_owner_id [String] The identifying details of anyone controlling or owning 25% or more of the
-      #   #   corporation.
+      #   # @param address [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address]
+      #   # @param beneficial_owner_id [String]
       #   #
       #   def initialize(address:, beneficial_owner_id:, **) = super
 
@@ -50,7 +49,8 @@ module Increase
         required :line1, String
 
         # @!attribute state
-        #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
+        #   The two-letter United States Postal Service (USPS) abbreviation for the state of
+        #     the address.
         #
         #   @return [String]
         required :state, String
@@ -75,16 +75,11 @@ module Increase
         #   # The individual's physical address. Mail receiving locations like PO Boxes and
         #   #   PMB's are disallowed.
         #   #
-        #   # @param city [String] The city of the address.
-        #   #
-        #   # @param line1 [String] The first line of the address. This is usually the street number and street.
-        #   #
-        #   # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-        #   #   the address.
-        #   #
-        #   # @param zip [String] The ZIP code of the address.
-        #   #
-        #   # @param line2 [String] The second line of the address. This might be the floor or room number.
+        #   # @param city [String]
+        #   # @param line1 [String]
+        #   # @param state [String]
+        #   # @param zip [String]
+        #   # @param line2 [String]
         #   #
         #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 

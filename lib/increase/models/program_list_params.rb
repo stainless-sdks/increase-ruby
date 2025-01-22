@@ -14,7 +14,8 @@ module Increase
       #   attr_writer :cursor
 
       # @!attribute [r] limit
-      #   Limit the size of the list that is returned. The default (and maximum) is 100 objects.
+      #   Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -24,10 +25,8 @@ module Increase
       #   attr_writer :limit
 
       # @!parse
-      #   # @param cursor [String] Return the page of entries after this one.
-      #   #
-      #   # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100
-      #   #   objects.
+      #   # @param cursor [String]
+      #   # @param limit [Integer]
       #   #
       #   def initialize(cursor: nil, limit: nil, **) = super
 

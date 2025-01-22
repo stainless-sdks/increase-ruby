@@ -10,7 +10,7 @@ module Increase
       required :name, String
 
       # @!parse
-      #   # @param name [String] The name you choose for the account.
+      #   # @param name [String]
       #   #
       #   def initialize(name:, **) = super
 

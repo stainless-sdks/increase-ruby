@@ -14,7 +14,7 @@ module Increase
       #   attr_writer :name
 
       # @!parse
-      #   # @param name [String] The new name of the Account.
+      #   # @param name [String]
       #   #
       #   def initialize(name: nil, **) = super
 

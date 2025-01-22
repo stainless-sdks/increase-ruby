@@ -11,7 +11,8 @@ module Increase
         required :card_payment_id, String
 
         # @!attribute [r] amount
-        #   The amount of the reversal in minor units in the card authorization's currency. This defaults to the authorization amount.
+        #   The amount of the reversal in minor units in the card authorization's currency.
+        #     This defaults to the authorization amount.
         #
         #   @return [Integer, nil]
         optional :amount, Integer
@@ -21,10 +22,8 @@ module Increase
         #   attr_writer :amount
 
         # @!parse
-        #   # @param card_payment_id [String] The identifier of the Card Payment to create a reversal on.
-        #   #
-        #   # @param amount [Integer] The amount of the reversal in minor units in the card authorization's currency.
-        #   #   This defaults to the authorization amount.
+        #   # @param card_payment_id [String]
+        #   # @param amount [Integer]
         #   #
         #   def initialize(card_payment_id:, amount: nil, **) = super
 

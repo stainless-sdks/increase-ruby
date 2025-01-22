@@ -33,7 +33,9 @@ module Increase
       required :account_number, String
 
       # @!attribute acknowledgement
-      #   After the transfer is acknowledged by FedACH, this will contain supplemental details. The Federal Reserve sends an acknowledgement message for each file that Increase submits.
+      #   After the transfer is acknowledged by FedACH, this will contain supplemental
+      #     details. The Federal Reserve sends an acknowledgement message for each file that
+      #     Increase submits.
       #
       #   @return [Increase::Models::ACHTransfer::Acknowledgement, nil]
       required :acknowledgement, -> { Increase::Models::ACHTransfer::Acknowledgement }, nil?: true
@@ -45,19 +47,23 @@ module Increase
       required :addenda, -> { Increase::Models::ACHTransfer::Addenda }, nil?: true
 
       # @!attribute amount
-      #   The transfer amount in USD cents. A positive amount indicates a credit transfer pushing funds to the receiving account. A negative amount indicates a debit transfer pulling funds from the receiving account.
+      #   The transfer amount in USD cents. A positive amount indicates a credit transfer
+      #     pushing funds to the receiving account. A negative amount indicates a debit
+      #     transfer pulling funds from the receiving account.
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute approval
-      #   If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
+      #   If your account requires approvals for transfers and the transfer was approved,
+      #     this will contain details of the approval.
       #
       #   @return [Increase::Models::ACHTransfer::Approval, nil]
       required :approval, -> { Increase::Models::ACHTransfer::Approval }, nil?: true
 
       # @!attribute cancellation
-      #   If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
+      #   If your account requires approvals for transfers and the transfer was not
+      #     approved, this will contain details of the cancellation.
       #
       #   @return [Increase::Models::ACHTransfer::Cancellation, nil]
       required :cancellation, -> { Increase::Models::ACHTransfer::Cancellation }, nil?: true
@@ -87,7 +93,8 @@ module Increase
       required :company_name, String, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the transfer was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -99,13 +106,15 @@ module Increase
       required :created_by, -> { Increase::Models::ACHTransfer::CreatedBy }, nil?: true
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
+      #     currency. For ACH transfers this is always equal to `usd`.
       #
       #   @return [Symbol, Increase::Models::ACHTransfer::Currency]
       required :currency, enum: -> { Increase::Models::ACHTransfer::Currency }
 
       # @!attribute destination_account_holder
-      #   The type of entity that owns the account to which the ACH Transfer is being sent.
+      #   The type of entity that owns the account to which the ACH Transfer is being
+      #     sent.
       #
       #   @return [Symbol, Increase::Models::ACHTransfer::DestinationAccountHolder]
       required :destination_account_holder,
@@ -126,13 +135,16 @@ module Increase
       required :funding, enum: -> { Increase::Models::ACHTransfer::Funding }
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute inbound_funds_hold
-      #   Increase will sometimes hold the funds for ACH debit transfers. If funds are held, this sub-object will contain details of the hold.
+      #   Increase will sometimes hold the funds for ACH debit transfers. If funds are
+      #     held, this sub-object will contain details of the hold.
       #
       #   @return [Increase::Models::ACHTransfer::InboundFundsHold, nil]
       required :inbound_funds_hold, -> { Increase::Models::ACHTransfer::InboundFundsHold }, nil?: true
@@ -144,7 +156,8 @@ module Increase
       required :individual_id, String, nil?: true
 
       # @!attribute individual_name
-      #   The name of the transfer recipient. This value is information and not verified by the recipient's bank.
+      #   The name of the transfer recipient. This value is information and not verified
+      #     by the recipient's bank.
       #
       #   @return [String, nil]
       required :individual_name, String, nil?: true
@@ -156,20 +169,27 @@ module Increase
       required :network, enum: -> { Increase::Models::ACHTransfer::Network }
 
       # @!attribute notifications_of_change
-      #   If the receiving bank accepts the transfer but notifies that future transfers should use different details, this will contain those details.
+      #   If the receiving bank accepts the transfer but notifies that future transfers
+      #     should use different details, this will contain those details.
       #
       #   @return [Array<Increase::Models::ACHTransfer::NotificationsOfChange>]
       required :notifications_of_change,
                -> { Increase::ArrayOf[Increase::Models::ACHTransfer::NotificationsOfChange] }
 
       # @!attribute pending_transaction_id
-      #   The ID for the pending transaction representing the transfer. A pending transaction is created when the transfer [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals) by someone else in your organization.
+      #   The ID for the pending transaction representing the transfer. A pending
+      #     transaction is created when the transfer
+      #     [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      #     by someone else in your organization.
       #
       #   @return [String, nil]
       required :pending_transaction_id, String, nil?: true
 
       # @!attribute preferred_effective_date
-      #   Configuration for how the effective date of the transfer will be set. This determines same-day vs future-dated settlement timing. If not set, defaults to a `settlement_schedule` of `same_day`. If set, exactly one of the child attributes must be set.
+      #   Configuration for how the effective date of the transfer will be set. This
+      #     determines same-day vs future-dated settlement timing. If not set, defaults to a
+      #     `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
+      #     must be set.
       #
       #   @return [Increase::Models::ACHTransfer::PreferredEffectiveDate]
       required :preferred_effective_date, -> { Increase::Models::ACHTransfer::PreferredEffectiveDate }
@@ -187,7 +207,8 @@ module Increase
       required :routing_number, String
 
       # @!attribute settlement
-      #   A subhash containing information about when and how the transfer settled at the Federal Reserve.
+      #   A subhash containing information about when and how the transfer settled at the
+      #     Federal Reserve.
       #
       #   @return [Increase::Models::ACHTransfer::Settlement, nil]
       required :settlement, -> { Increase::Models::ACHTransfer::Settlement }, nil?: true
@@ -211,7 +232,11 @@ module Increase
       required :status, enum: -> { Increase::Models::ACHTransfer::Status }
 
       # @!attribute submission
-      #   After the transfer is submitted to FedACH, this will contain supplemental details. Increase batches transfers and submits a file to the Federal Reserve roughly every 30 minutes. The Federal Reserve processes ACH transfers during weekdays according to their [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
+      #   After the transfer is submitted to FedACH, this will contain supplemental
+      #     details. Increase batches transfers and submits a file to the Federal Reserve
+      #     roughly every 30 minutes. The Federal Reserve processes ACH transfers during
+      #     weekdays according to their
+      #     [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
       #
       #   @return [Increase::Models::ACHTransfer::Submission, nil]
       required :submission, -> { Increase::Models::ACHTransfer::Submission }, nil?: true
@@ -223,7 +248,8 @@ module Increase
       required :transaction_id, String, nil?: true
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `ach_transfer`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `ach_transfer`.
       #
       #   @return [Symbol, Increase::Models::ACHTransfer::Type]
       required :type, enum: -> { Increase::Models::ACHTransfer::Type }
@@ -232,101 +258,41 @@ module Increase
       #   # ACH transfers move funds between your Increase account and any other account
       #   #   accessible by the Automated Clearing House (ACH).
       #   #
-      #   # @param id [String] The ACH transfer's identifier.
-      #   #
-      #   # @param account_id [String] The Account to which the transfer belongs.
-      #   #
-      #   # @param account_number [String] The destination account number.
-      #   #
-      #   # @param acknowledgement [Increase::Models::ACHTransfer::Acknowledgement, nil] After the transfer is acknowledged by FedACH, this will contain supplemental
-      #   #   details. The Federal Reserve sends an acknowledgement message for each file that
-      #   #   Increase submits.
-      #   #
-      #   # @param addenda [Increase::Models::ACHTransfer::Addenda, nil] Additional information that will be sent to the recipient.
-      #   #
-      #   # @param amount [Integer] The transfer amount in USD cents. A positive amount indicates a credit transfer
-      #   #   pushing funds to the receiving account. A negative amount indicates a debit
-      #   #   transfer pulling funds from the receiving account.
-      #   #
-      #   # @param approval [Increase::Models::ACHTransfer::Approval, nil] If your account requires approvals for transfers and the transfer was approved,
-      #   #   this will contain details of the approval.
-      #   #
-      #   # @param cancellation [Increase::Models::ACHTransfer::Cancellation, nil] If your account requires approvals for transfers and the transfer was not
-      #   #   approved, this will contain details of the cancellation.
-      #   #
-      #   # @param company_descriptive_date [String, nil] The description of the date of the transfer.
-      #   #
-      #   # @param company_discretionary_data [String, nil] The data you chose to associate with the transfer.
-      #   #
-      #   # @param company_entry_description [String, nil] The description of the transfer you set to be shown to the recipient.
-      #   #
-      #   # @param company_name [String, nil] The name by which the recipient knows you.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #   the transfer was created.
-      #   #
-      #   # @param created_by [Increase::Models::ACHTransfer::CreatedBy, nil] What object created the transfer, either via the API or the dashboard.
-      #   #
-      #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
-      #   #   currency. For ACH transfers this is always equal to `usd`.
-      #   #
-      #   # @param destination_account_holder [String] The type of entity that owns the account to which the ACH Transfer is being
-      #   #   sent.
-      #   #
-      #   # @param external_account_id [String, nil] The identifier of the External Account the transfer was made to, if any.
-      #   #
-      #   # @param funding [String] The type of the account to which the transfer will be sent.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param inbound_funds_hold [Increase::Models::ACHTransfer::InboundFundsHold, nil] Increase will sometimes hold the funds for ACH debit transfers. If funds are
-      #   #   held, this sub-object will contain details of the hold.
-      #   #
-      #   # @param individual_id [String, nil] Your identifier for the transfer recipient.
-      #   #
-      #   # @param individual_name [String, nil] The name of the transfer recipient. This value is information and not verified
-      #   #   by the recipient's bank.
-      #   #
-      #   # @param network [String] The transfer's network.
-      #   #
-      #   # @param notifications_of_change [Array<Increase::Models::ACHTransfer::NotificationsOfChange>] If the receiving bank accepts the transfer but notifies that future transfers
-      #   #   should use different details, this will contain those details.
-      #   #
-      #   # @param pending_transaction_id [String, nil] The ID for the pending transaction representing the transfer. A pending
-      #   #   transaction is created when the transfer
-      #   #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      #   #   by someone else in your organization.
-      #   #
-      #   # @param preferred_effective_date [Increase::Models::ACHTransfer::PreferredEffectiveDate] Configuration for how the effective date of the transfer will be set. This
-      #   #   determines same-day vs future-dated settlement timing. If not set, defaults to a
-      #   #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
-      #   #   must be set.
-      #   #
-      #   # @param return_ [Increase::Models::ACHTransfer::Return, nil] If your transfer is returned, this will contain details of the return.
-      #   #
-      #   # @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN).
-      #   #
-      #   # @param settlement [Increase::Models::ACHTransfer::Settlement, nil] A subhash containing information about when and how the transfer settled at the
-      #   #   Federal Reserve.
-      #   #
-      #   # @param standard_entry_class_code [String] The Standard Entry Class (SEC) code to use for the transfer.
-      #   #
-      #   # @param statement_descriptor [String] The descriptor that will show on the recipient's bank statement.
-      #   #
-      #   # @param status [String] The lifecycle status of the transfer.
-      #   #
-      #   # @param submission [Increase::Models::ACHTransfer::Submission, nil] After the transfer is submitted to FedACH, this will contain supplemental
-      #   #   details. Increase batches transfers and submits a file to the Federal Reserve
-      #   #   roughly every 30 minutes. The Federal Reserve processes ACH transfers during
-      #   #   weekdays according to their
-      #   #   [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
-      #   #
-      #   # @param transaction_id [String, nil] The ID for the transaction funding the transfer.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `ach_transfer`.
+      #   # @param id [String]
+      #   # @param account_id [String]
+      #   # @param account_number [String]
+      #   # @param acknowledgement [Increase::Models::ACHTransfer::Acknowledgement, nil]
+      #   # @param addenda [Increase::Models::ACHTransfer::Addenda, nil]
+      #   # @param amount [Integer]
+      #   # @param approval [Increase::Models::ACHTransfer::Approval, nil]
+      #   # @param cancellation [Increase::Models::ACHTransfer::Cancellation, nil]
+      #   # @param company_descriptive_date [String, nil]
+      #   # @param company_discretionary_data [String, nil]
+      #   # @param company_entry_description [String, nil]
+      #   # @param company_name [String, nil]
+      #   # @param created_at [String]
+      #   # @param created_by [Increase::Models::ACHTransfer::CreatedBy, nil]
+      #   # @param currency [String]
+      #   # @param destination_account_holder [String]
+      #   # @param external_account_id [String, nil]
+      #   # @param funding [String]
+      #   # @param idempotency_key [String, nil]
+      #   # @param inbound_funds_hold [Increase::Models::ACHTransfer::InboundFundsHold, nil]
+      #   # @param individual_id [String, nil]
+      #   # @param individual_name [String, nil]
+      #   # @param network [String]
+      #   # @param notifications_of_change [Array<Increase::Models::ACHTransfer::NotificationsOfChange>]
+      #   # @param pending_transaction_id [String, nil]
+      #   # @param preferred_effective_date [Increase::Models::ACHTransfer::PreferredEffectiveDate]
+      #   # @param return_ [Increase::Models::ACHTransfer::Return, nil]
+      #   # @param routing_number [String]
+      #   # @param settlement [Increase::Models::ACHTransfer::Settlement, nil]
+      #   # @param standard_entry_class_code [String]
+      #   # @param statement_descriptor [String]
+      #   # @param status [String]
+      #   # @param submission [Increase::Models::ACHTransfer::Submission, nil]
+      #   # @param transaction_id [String, nil]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -379,7 +345,8 @@ module Increase
       # ```
       class Acknowledgement < Increase::BaseModel
         # @!attribute acknowledged_at
-        #   When the Federal Reserve acknowledged the submitted file containing this transfer.
+        #   When the Federal Reserve acknowledged the submitted file containing this
+        #     transfer.
         #
         #   @return [String]
         required :acknowledged_at, String
@@ -389,8 +356,7 @@ module Increase
         #   #   details. The Federal Reserve sends an acknowledgement message for each file that
         #   #   Increase submits.
         #   #
-        #   # @param acknowledged_at [String] When the Federal Reserve acknowledged the submitted file containing this
-        #   #   transfer.
+        #   # @param acknowledged_at [String]
         #   #
         #   def initialize(acknowledged_at:, **) = super
 
@@ -400,14 +366,15 @@ module Increase
       # @example
       # ```ruby
       # addenda => {
-      #   category: enum: Increase::Models::ACHTransfer::Addenda::Category,
+      #   category: Increase::Models::ACHTransfer::Addenda::Category,
       #   freeform: Increase::Models::ACHTransfer::Addenda::Freeform,
       #   payment_order_remittance_advice: Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice
       # }
       # ```
       class Addenda < Increase::BaseModel
         # @!attribute category
-        #   The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+        #   The type of the resource. We may add additional possible values for this enum
+        #     over time; your application should be able to handle such additions gracefully.
         #
         #   @return [Symbol, Increase::Models::ACHTransfer::Addenda::Category]
         required :category, enum: -> { Increase::Models::ACHTransfer::Addenda::Category }
@@ -419,7 +386,8 @@ module Increase
         required :freeform, -> { Increase::Models::ACHTransfer::Addenda::Freeform }, nil?: true
 
         # @!attribute payment_order_remittance_advice
-        #   Structured ASC X12 820 remittance advice records. Please reach out to [support@increase.com](mailto:support@increase.com) for more information.
+        #   Structured ASC X12 820 remittance advice records. Please reach out to
+        #     [support@increase.com](mailto:support@increase.com) for more information.
         #
         #   @return [Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, nil]
         required :payment_order_remittance_advice,
@@ -429,19 +397,16 @@ module Increase
         # @!parse
         #   # Additional information that will be sent to the recipient.
         #   #
-        #   # @param category [String] The type of the resource. We may add additional possible values for this enum
-        #   #   over time; your application should be able to handle such additions gracefully.
-        #   #
-        #   # @param freeform [Increase::Models::ACHTransfer::Addenda::Freeform, nil] Unstructured `payment_related_information` passed through with the transfer.
-        #   #
-        #   # @param payment_order_remittance_advice [Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, nil] Structured ASC X12 820 remittance advice records. Please reach out to
-        #   #   [support@increase.com](mailto:support@increase.com) for more information.
+        #   # @param category [String]
+        #   # @param freeform [Increase::Models::ACHTransfer::Addenda::Freeform, nil]
+        #   # @param payment_order_remittance_advice [Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, nil]
         #   #
         #   def initialize(category:, freeform:, payment_order_remittance_advice:, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # The type of the resource. We may add additional possible values for this enum over time; your application should be able to handle such additions gracefully.
+        # The type of the resource. We may add additional possible values for this enum
+        #   over time; your application should be able to handle such additions gracefully.
         #
         # @example
         # ```ruby
@@ -483,7 +448,7 @@ module Increase
           # @!parse
           #   # Unstructured `payment_related_information` passed through with the transfer.
           #   #
-          #   # @param entries [Array<Increase::Models::ACHTransfer::Addenda::Freeform::Entry>] Each entry represents an addendum sent with the transfer.
+          #   # @param entries [Array<Increase::Models::ACHTransfer::Addenda::Freeform::Entry>]
           #   #
           #   def initialize(entries:, **) = super
 
@@ -503,7 +468,7 @@ module Increase
             required :payment_related_information, String
 
             # @!parse
-            #   # @param payment_related_information [String] The payment related information passed in the addendum.
+            #   # @param payment_related_information [String]
             #   #
             #   def initialize(payment_related_information:, **) = super
 
@@ -531,7 +496,7 @@ module Increase
           #   # Structured ASC X12 820 remittance advice records. Please reach out to
           #   #   [support@increase.com](mailto:support@increase.com) for more information.
           #   #
-          #   # @param invoices [Array<Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice>] ASC X12 RMR records for this specific transfer.
+          #   # @param invoices [Array<Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice>]
           #   #
           #   def initialize(invoices:, **) = super
 
@@ -552,16 +517,15 @@ module Increase
             required :invoice_number, String
 
             # @!attribute paid_amount
-            #   The amount that was paid for this invoice in the minor unit of its currency. For dollars, for example, this is cents.
+            #   The amount that was paid for this invoice in the minor unit of its currency. For
+            #     dollars, for example, this is cents.
             #
             #   @return [Integer]
             required :paid_amount, Integer
 
             # @!parse
-            #   # @param invoice_number [String] The invoice number for this reference, determined in advance with the receiver.
-            #   #
-            #   # @param paid_amount [Integer] The amount that was paid for this invoice in the minor unit of its currency. For
-            #   #   dollars, for example, this is cents.
+            #   # @param invoice_number [String]
+            #   # @param paid_amount [Integer]
             #   #
             #   def initialize(invoice_number:, paid_amount:, **) = super
 
@@ -579,13 +543,15 @@ module Increase
       # ```
       class Approval < Increase::BaseModel
         # @!attribute approved_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #     the transfer was approved.
         #
         #   @return [Time]
         required :approved_at, Time
 
         # @!attribute approved_by
-        #   If the Transfer was approved by a user in the dashboard, the email address of that user.
+        #   If the Transfer was approved by a user in the dashboard, the email address of
+        #     that user.
         #
         #   @return [String, nil]
         required :approved_by, String, nil?: true
@@ -594,11 +560,8 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was approved,
         #   #   this will contain details of the approval.
         #   #
-        #   # @param approved_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #   the transfer was approved.
-        #   #
-        #   # @param approved_by [String, nil] If the Transfer was approved by a user in the dashboard, the email address of
-        #   #   that user.
+        #   # @param approved_at [String]
+        #   # @param approved_by [String, nil]
         #   #
         #   def initialize(approved_at:, approved_by:, **) = super
 
@@ -614,13 +577,15 @@ module Increase
       # ```
       class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #     the Transfer was canceled.
         #
         #   @return [Time]
         required :canceled_at, Time
 
         # @!attribute canceled_by
-        #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
+        #   If the Transfer was canceled by a user in the dashboard, the email address of
+        #     that user.
         #
         #   @return [String, nil]
         required :canceled_by, String, nil?: true
@@ -629,11 +594,8 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was not
         #   #   approved, this will contain details of the cancellation.
         #   #
-        #   # @param canceled_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #   the Transfer was canceled.
-        #   #
-        #   # @param canceled_by [String, nil] If the Transfer was canceled by a user in the dashboard, the email address of
-        #   #   that user.
+        #   # @param canceled_at [String]
+        #   # @param canceled_by [String, nil]
         #   #
         #   def initialize(canceled_at:, canceled_by:, **) = super
 
@@ -644,7 +606,7 @@ module Increase
       # ```ruby
       # created_by => {
       #   api_key: Increase::Models::ACHTransfer::CreatedBy::APIKey,
-      #   category: enum: Increase::Models::ACHTransfer::CreatedBy::Category,
+      #   category: Increase::Models::ACHTransfer::CreatedBy::Category,
       #   oauth_application: Increase::Models::ACHTransfer::CreatedBy::OAuthApplication,
       #   user: Increase::Models::ACHTransfer::CreatedBy::User
       # }
@@ -681,13 +643,10 @@ module Increase
         # @!parse
         #   # What object created the transfer, either via the API or the dashboard.
         #   #
-        #   # @param api_key [Increase::Models::ACHTransfer::CreatedBy::APIKey, nil] If present, details about the API key that created the transfer.
-        #   #
-        #   # @param category [String] The type of object that created this transfer.
-        #   #
-        #   # @param oauth_application [Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, nil] If present, details about the OAuth Application that created the transfer.
-        #   #
-        #   # @param user [Increase::Models::ACHTransfer::CreatedBy::User, nil] If present, details about the User that created the transfer.
+        #   # @param api_key [Increase::Models::ACHTransfer::CreatedBy::APIKey, nil]
+        #   # @param category [String]
+        #   # @param oauth_application [Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, nil]
+        #   # @param user [Increase::Models::ACHTransfer::CreatedBy::User, nil]
         #   #
         #   def initialize(api_key:, category:, oauth_application:, user:, **) = super
 
@@ -709,7 +668,7 @@ module Increase
           # @!parse
           #   # If present, details about the API key that created the transfer.
           #   #
-          #   # @param description [String, nil] The description set for the API key when it was created.
+          #   # @param description [String, nil]
           #   #
           #   def initialize(description:, **) = super
 
@@ -758,7 +717,7 @@ module Increase
           # @!parse
           #   # If present, details about the OAuth Application that created the transfer.
           #   #
-          #   # @param name [String] The name of the OAuth Application.
+          #   # @param name [String]
           #   #
           #   def initialize(name:, **) = super
 
@@ -781,7 +740,7 @@ module Increase
           # @!parse
           #   # If present, details about the User that created the transfer.
           #   #
-          #   # @param email [String] The email address of the User.
+          #   # @param email [String]
           #   #
           #   def initialize(email:, **) = super
 
@@ -789,7 +748,8 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's currency. For ACH transfers this is always equal to `usd`.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
+      #   currency. For ACH transfers this is always equal to `usd`.
       #
       # @example
       # ```ruby
@@ -830,7 +790,8 @@ module Increase
         finalize!
       end
 
-      # The type of entity that owns the account to which the ACH Transfer is being sent.
+      # The type of entity that owns the account to which the ACH Transfer is being
+      #   sent.
       #
       # @example
       # ```ruby
@@ -884,7 +845,7 @@ module Increase
       #   amount: Integer,
       #   automatically_releases_at: Time,
       #   created_at: Time,
-      #   currency: enum: Increase::Models::ACHTransfer::InboundFundsHold::Currency,
+      #   currency: Increase::Models::ACHTransfer::InboundFundsHold::Currency,
       #   **_
       # }
       # ```
@@ -896,25 +857,29 @@ module Increase
         required :id, String
 
         # @!attribute amount
-        #   The held amount in the minor unit of the account's currency. For dollars, for example, this is cents.
+        #   The held amount in the minor unit of the account's currency. For dollars, for
+        #     example, this is cents.
         #
         #   @return [Integer]
         required :amount, Integer
 
         # @!attribute automatically_releases_at
-        #   When the hold will be released automatically. Certain conditions may cause it to be released before this time.
+        #   When the hold will be released automatically. Certain conditions may cause it to
+        #     be released before this time.
         #
         #   @return [Time]
         required :automatically_releases_at, Time
 
         # @!attribute created_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold was created.
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+        #     was created.
         #
         #   @return [Time]
         required :created_at, Time
 
         # @!attribute currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+        #     currency.
         #
         #   @return [Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Currency]
         required :currency, enum: -> { Increase::Models::ACHTransfer::InboundFundsHold::Currency }
@@ -944,7 +909,8 @@ module Increase
         required :status, enum: -> { Increase::Models::ACHTransfer::InboundFundsHold::Status }
 
         # @!attribute type
-        #   A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+        #   A constant representing the object's type. For this resource it will always be
+        #     `inbound_funds_hold`.
         #
         #   @return [Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Type]
         required :type, enum: -> { Increase::Models::ACHTransfer::InboundFundsHold::Type }
@@ -953,30 +919,16 @@ module Increase
         #   # Increase will sometimes hold the funds for ACH debit transfers. If funds are
         #   #   held, this sub-object will contain details of the hold.
         #   #
-        #   # @param id [String] The Inbound Funds Hold identifier.
-        #   #
-        #   # @param amount [Integer] The held amount in the minor unit of the account's currency. For dollars, for
-        #   #   example, this is cents.
-        #   #
-        #   # @param automatically_releases_at [String] When the hold will be released automatically. Certain conditions may cause it to
-        #   #   be released before this time.
-        #   #
-        #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
-        #   #   was created.
-        #   #
-        #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   #   currency.
-        #   #
-        #   # @param held_transaction_id [String, nil] The ID of the Transaction for which funds were held.
-        #   #
-        #   # @param pending_transaction_id [String, nil] The ID of the Pending Transaction representing the held funds.
-        #   #
-        #   # @param released_at [String, nil] When the hold was released (if it has been released).
-        #   #
-        #   # @param status [String] The status of the hold.
-        #   #
-        #   # @param type [String] A constant representing the object's type. For this resource it will always be
-        #   #   `inbound_funds_hold`.
+        #   # @param id [String]
+        #   # @param amount [Integer]
+        #   # @param automatically_releases_at [String]
+        #   # @param created_at [String]
+        #   # @param currency [String]
+        #   # @param held_transaction_id [String, nil]
+        #   # @param pending_transaction_id [String, nil]
+        #   # @param released_at [String, nil]
+        #   # @param status [String]
+        #   # @param type [String]
         #   #
         #   def initialize(
         #     id:,
@@ -996,7 +948,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's currency.
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+        #   currency.
         #
         # @example
         # ```ruby
@@ -1058,7 +1011,8 @@ module Increase
           finalize!
         end
 
-        # A constant representing the object's type. For this resource it will always be `inbound_funds_hold`.
+        # A constant representing the object's type. For this resource it will always be
+        #   `inbound_funds_hold`.
         #
         # @example
         # ```ruby
@@ -1092,48 +1046,47 @@ module Increase
       # @example
       # ```ruby
       # notifications_of_change => {
-      #   change_code: enum: Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode,
+      #   change_code: Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode,
       #   corrected_data: String,
       #   created_at: Time
       # }
       # ```
       class NotificationsOfChange < Increase::BaseModel
         # @!attribute change_code
-        #   The required type of change that is being signaled by the receiving financial institution.
+        #   The required type of change that is being signaled by the receiving financial
+        #     institution.
         #
         #   @return [Symbol, Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode]
         required :change_code, enum: -> { Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode }
 
         # @!attribute corrected_data
-        #   The corrected data that should be used in future ACHs to this account. This may contain the suggested new account number or routing number. When the `change_code` is `incorrect_transaction_code`, this field contains an integer. Numbers starting with a 2 encourage changing the `funding` parameter to checking; numbers starting with a 3 encourage changing to savings.
+        #   The corrected data that should be used in future ACHs to this account. This may
+        #     contain the suggested new account number or routing number. When the
+        #     `change_code` is `incorrect_transaction_code`, this field contains an integer.
+        #     Numbers starting with a 2 encourage changing the `funding` parameter to
+        #     checking; numbers starting with a 3 encourage changing to savings.
         #
         #   @return [String]
         required :corrected_data, String
 
         # @!attribute created_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the notification occurred.
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #     the notification occurred.
         #
         #   @return [Time]
         required :created_at, Time
 
         # @!parse
-        #   # @param change_code [String] The required type of change that is being signaled by the receiving financial
-        #   #   institution.
-        #   #
-        #   # @param corrected_data [String] The corrected data that should be used in future ACHs to this account. This may
-        #   #   contain the suggested new account number or routing number. When the
-        #   #   `change_code` is `incorrect_transaction_code`, this field contains an integer.
-        #   #   Numbers starting with a 2 encourage changing the `funding` parameter to
-        #   #   checking; numbers starting with a 3 encourage changing to savings.
-        #   #
-        #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #   the notification occurred.
+        #   # @param change_code [String]
+        #   # @param corrected_data [String]
+        #   # @param created_at [String]
         #   #
         #   def initialize(change_code:, corrected_data:, created_at:, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # The required type of change that is being signaled by the receiving financial institution.
+        # The required type of change that is being signaled by the receiving financial
+        #   institution.
         #
         # @example
         # ```ruby
@@ -1218,12 +1171,13 @@ module Increase
       # ```ruby
       # preferred_effective_date => {
       #   date: Date,
-      #   settlement_schedule: enum: Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule
+      #   settlement_schedule: Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule
       # }
       # ```
       class PreferredEffectiveDate < Increase::BaseModel
         # @!attribute date
-        #   A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to use as the effective date when submitting this transfer.
+        #   A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
+        #     use as the effective date when submitting this transfer.
         #
         #   @return [Date, nil]
         required :date, Date, nil?: true
@@ -1242,10 +1196,8 @@ module Increase
         #   #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
         #   #   must be set.
         #   #
-        #   # @param date [String, nil] A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
-        #   #   use as the effective date when submitting this transfer.
-        #   #
-        #   # @param settlement_schedule [String, nil] A schedule by which Increase will choose an effective date for the transfer.
+        #   # @param date [String, nil]
+        #   # @param settlement_schedule [String, nil]
         #   #
         #   def initialize(date:, settlement_schedule:, **) = super
 
@@ -1281,14 +1233,15 @@ module Increase
       # return => {
       #   created_at: Time,
       #   raw_return_reason_code: String,
-      #   return_reason_code: enum: Increase::Models::ACHTransfer::Return::ReturnReasonCode,
+      #   return_reason_code: Increase::Models::ACHTransfer::Return::ReturnReasonCode,
       #   trace_number: String,
       #   transaction_id: String
       # }
       # ```
       class Return < Increase::BaseModel
         # @!attribute created_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #     the transfer was created.
         #
         #   @return [Time]
         required :created_at, Time
@@ -1300,13 +1253,17 @@ module Increase
         required :raw_return_reason_code, String
 
         # @!attribute return_reason_code
-        #   Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
+        #   Why the ACH Transfer was returned. This reason code is sent by the receiving
+        #     bank back to Increase.
         #
         #   @return [Symbol, Increase::Models::ACHTransfer::Return::ReturnReasonCode]
         required :return_reason_code, enum: -> { Increase::Models::ACHTransfer::Return::ReturnReasonCode }
 
         # @!attribute trace_number
-        #   A 15 digit number that was generated by the bank that initiated the return. The trace number of the return is different than that of the original transfer. ACH trace numbers are not unique, but along with the amount and date this number can be used to identify the ACH return at the bank that initiated it.
+        #   A 15 digit number that was generated by the bank that initiated the return. The
+        #     trace number of the return is different than that of the original transfer. ACH
+        #     trace numbers are not unique, but along with the amount and date this number can
+        #     be used to identify the ACH return at the bank that initiated it.
         #
         #   @return [String]
         required :trace_number, String
@@ -1326,22 +1283,12 @@ module Increase
         # @!parse
         #   # If your transfer is returned, this will contain details of the return.
         #   #
-        #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #   the transfer was created.
-        #   #
-        #   # @param raw_return_reason_code [String] The three character ACH return code, in the range R01 to R85.
-        #   #
-        #   # @param return_reason_code [String] Why the ACH Transfer was returned. This reason code is sent by the receiving
-        #   #   bank back to Increase.
-        #   #
-        #   # @param trace_number [String] A 15 digit number that was generated by the bank that initiated the return. The
-        #   #   trace number of the return is different than that of the original transfer. ACH
-        #   #   trace numbers are not unique, but along with the amount and date this number can
-        #   #   be used to identify the ACH return at the bank that initiated it.
-        #   #
-        #   # @param transaction_id [String] The identifier of the Transaction associated with this return.
-        #   #
-        #   # @param transfer_id [String] The identifier of the ACH Transfer associated with this return.
+        #   # @param created_at [String]
+        #   # @param raw_return_reason_code [String]
+        #   # @param return_reason_code [String]
+        #   # @param trace_number [String]
+        #   # @param transaction_id [String]
+        #   # @param transfer_id [String]
         #   #
         #   def initialize(
         #     created_at:,
@@ -1357,7 +1304,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # Why the ACH Transfer was returned. This reason code is sent by the receiving bank back to Increase.
+        # Why the ACH Transfer was returned. This reason code is sent by the receiving
+        #   bank back to Increase.
         #
         # @example
         # ```ruby
@@ -1599,7 +1547,8 @@ module Increase
       # ```
       class Settlement < Increase::BaseModel
         # @!attribute settled_at
-        #   When the funds for this transfer have settled at the destination bank at the Federal Reserve.
+        #   When the funds for this transfer have settled at the destination bank at the
+        #     Federal Reserve.
         #
         #   @return [Time]
         required :settled_at, Time
@@ -1608,8 +1557,7 @@ module Increase
         #   # A subhash containing information about when and how the transfer settled at the
         #   #   Federal Reserve.
         #   #
-        #   # @param settled_at [String] When the funds for this transfer have settled at the destination bank at the
-        #   #   Federal Reserve.
+        #   # @param settled_at [String]
         #   #
         #   def initialize(settled_at:, **) = super
 
@@ -1702,26 +1650,34 @@ module Increase
       # submission => {
       #   effective_date: Date,
       #   expected_funds_settlement_at: Time,
-      #   expected_settlement_schedule: enum: Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule,
+      #   expected_settlement_schedule: Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule,
       #   submitted_at: Time,
       #   trace_number: String
       # }
       # ```
       class Submission < Increase::BaseModel
         # @!attribute effective_date
-        #   The ACH transfer's effective date as sent to the Federal Reserve. If a specific date was configured using `preferred_effective_date`, this will match that value. Otherwise, it will be the date selected (following the specified settlement schedule) at the time the transfer was submitted.
+        #   The ACH transfer's effective date as sent to the Federal Reserve. If a specific
+        #     date was configured using `preferred_effective_date`, this will match that
+        #     value. Otherwise, it will be the date selected (following the specified
+        #     settlement schedule) at the time the transfer was submitted.
         #
         #   @return [Date]
         required :effective_date, Date
 
         # @!attribute expected_funds_settlement_at
-        #   When the transfer is expected to settle in the recipient's account. Credits may be available sooner, at the receiving banks discretion. The FedACH schedule is published [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
+        #   When the transfer is expected to settle in the recipient's account. Credits may
+        #     be available sooner, at the receiving banks discretion. The FedACH schedule is
+        #     published
+        #     [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
         #
         #   @return [Time]
         required :expected_funds_settlement_at, Time
 
         # @!attribute expected_settlement_schedule
-        #   The settlement schedule the transfer is expected to follow. This expectation takes into account the `effective_date`, `submitted_at`, and the amount of the transfer.
+        #   The settlement schedule the transfer is expected to follow. This expectation
+        #     takes into account the `effective_date`, `submitted_at`, and the amount of the
+        #     transfer.
         #
         #   @return [Symbol, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule]
         required :expected_settlement_schedule,
@@ -1734,7 +1690,11 @@ module Increase
         required :submitted_at, Time
 
         # @!attribute trace_number
-        #   A 15 digit number recorded in the Nacha file and transmitted to the receiving bank. Along with the amount, date, and originating routing number, this can be used to identify the ACH transfer at the receiving bank. ACH trace numbers are not unique, but are [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
+        #   A 15 digit number recorded in the Nacha file and transmitted to the receiving
+        #     bank. Along with the amount, date, and originating routing number, this can be
+        #     used to identify the ACH transfer at the receiving bank. ACH trace numbers are
+        #     not unique, but are
+        #     [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
         #
         #   @return [String]
         required :trace_number, String
@@ -1746,27 +1706,11 @@ module Increase
         #   #   weekdays according to their
         #   #   [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
         #   #
-        #   # @param effective_date [String] The ACH transfer's effective date as sent to the Federal Reserve. If a specific
-        #   #   date was configured using `preferred_effective_date`, this will match that
-        #   #   value. Otherwise, it will be the date selected (following the specified
-        #   #   settlement schedule) at the time the transfer was submitted.
-        #   #
-        #   # @param expected_funds_settlement_at [String] When the transfer is expected to settle in the recipient's account. Credits may
-        #   #   be available sooner, at the receiving banks discretion. The FedACH schedule is
-        #   #   published
-        #   #   [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
-        #   #
-        #   # @param expected_settlement_schedule [String] The settlement schedule the transfer is expected to follow. This expectation
-        #   #   takes into account the `effective_date`, `submitted_at`, and the amount of the
-        #   #   transfer.
-        #   #
-        #   # @param submitted_at [String] When the ACH transfer was sent to FedACH.
-        #   #
-        #   # @param trace_number [String] A 15 digit number recorded in the Nacha file and transmitted to the receiving
-        #   #   bank. Along with the amount, date, and originating routing number, this can be
-        #   #   used to identify the ACH transfer at the receiving bank. ACH trace numbers are
-        #   #   not unique, but are
-        #   #   [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
+        #   # @param effective_date [String]
+        #   # @param expected_funds_settlement_at [String]
+        #   # @param expected_settlement_schedule [String]
+        #   # @param submitted_at [String]
+        #   # @param trace_number [String]
         #   #
         #   def initialize(
         #     effective_date:,
@@ -1781,7 +1725,9 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # The settlement schedule the transfer is expected to follow. This expectation takes into account the `effective_date`, `submitted_at`, and the amount of the transfer.
+        # The settlement schedule the transfer is expected to follow. This expectation
+        #   takes into account the `effective_date`, `submitted_at`, and the amount of the
+        #   transfer.
         #
         # @example
         # ```ruby
@@ -1803,7 +1749,8 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be `ach_transfer`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `ach_transfer`.
       #
       # @example
       # ```ruby

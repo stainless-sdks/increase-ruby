@@ -6,14 +6,15 @@ module Increase
       # @example
       # ```ruby
       # digital_wallet_token_request_create_response => {
-      #   decline_reason: enum: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason,
+      #   decline_reason: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason,
       #   digital_wallet_token_id: String,
-      #   type: enum: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type
+      #   type: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type
       # }
       # ```
       class DigitalWalletTokenRequestCreateResponse < Increase::BaseModel
         # @!attribute decline_reason
-        #   If the simulated tokenization attempt was declined, this field contains details as to why.
+        #   If the simulated tokenization attempt was declined, this field contains details
+        #     as to why.
         #
         #   @return [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason, nil]
         required :decline_reason,
@@ -23,13 +24,15 @@ module Increase
                  nil?: true
 
         # @!attribute digital_wallet_token_id
-        #   If the simulated tokenization attempt was accepted, this field contains the id of the Digital Wallet Token that was created.
+        #   If the simulated tokenization attempt was accepted, this field contains the id
+        #     of the Digital Wallet Token that was created.
         #
         #   @return [String, nil]
         required :digital_wallet_token_id, String, nil?: true
 
         # @!attribute type
-        #   A constant representing the object's type. For this resource it will always be `inbound_digital_wallet_token_request_simulation_result`.
+        #   A constant representing the object's type. For this resource it will always be
+        #     `inbound_digital_wallet_token_request_simulation_result`.
         #
         #   @return [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type]
         required :type,
@@ -40,20 +43,16 @@ module Increase
         # @!parse
         #   # The results of a Digital Wallet Token simulation.
         #   #
-        #   # @param decline_reason [String, nil] If the simulated tokenization attempt was declined, this field contains details
-        #   #   as to why.
-        #   #
-        #   # @param digital_wallet_token_id [String, nil] If the simulated tokenization attempt was accepted, this field contains the id
-        #   #   of the Digital Wallet Token that was created.
-        #   #
-        #   # @param type [String] A constant representing the object's type. For this resource it will always be
-        #   #   `inbound_digital_wallet_token_request_simulation_result`.
+        #   # @param decline_reason [String, nil]
+        #   # @param digital_wallet_token_id [String, nil]
+        #   # @param type [String]
         #   #
         #   def initialize(decline_reason:, digital_wallet_token_id:, type:, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # If the simulated tokenization attempt was declined, this field contains details as to why.
+        # If the simulated tokenization attempt was declined, this field contains details
+        #   as to why.
         #
         # @example
         # ```ruby
@@ -84,7 +83,8 @@ module Increase
           finalize!
         end
 
-        # A constant representing the object's type. For this resource it will always be `inbound_digital_wallet_token_request_simulation_result`.
+        # A constant representing the object's type. For this resource it will always be
+        #   `inbound_digital_wallet_token_request_simulation_result`.
         #
         # @example
         # ```ruby

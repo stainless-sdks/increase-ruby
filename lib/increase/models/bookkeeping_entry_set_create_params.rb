@@ -10,7 +10,8 @@ module Increase
       required :entries, -> { Increase::ArrayOf[Increase::Models::BookkeepingEntrySetCreateParams::Entry] }
 
       # @!attribute [r] date
-      #   The date of the transaction. Optional if `transaction_id` is provided, in which case we use the `date` of that transaction. Required otherwise.
+      #   The date of the transaction. Optional if `transaction_id` is provided, in which
+      #     case we use the `date` of that transaction. Required otherwise.
       #
       #   @return [Time, nil]
       optional :date, Time
@@ -30,12 +31,9 @@ module Increase
       #   attr_writer :transaction_id
 
       # @!parse
-      #   # @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>] The bookkeeping entries.
-      #   #
-      #   # @param date [String] The date of the transaction. Optional if `transaction_id` is provided, in which
-      #   #   case we use the `date` of that transaction. Required otherwise.
-      #   #
-      #   # @param transaction_id [String] The identifier of the Transaction related to this entry set, if any.
+      #   # @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>]
+      #   # @param date [String]
+      #   # @param transaction_id [String]
       #   #
       #   def initialize(entries:, date: nil, transaction_id: nil, **) = super
 
@@ -56,17 +54,16 @@ module Increase
         required :account_id, String
 
         # @!attribute amount
-        #   The entry amount in the minor unit of the account currency. For dollars, for example, this is cents. Debit entries have positive amounts; credit entries have negative amounts.
+        #   The entry amount in the minor unit of the account currency. For dollars, for
+        #     example, this is cents. Debit entries have positive amounts; credit entries have
+        #     negative amounts.
         #
         #   @return [Integer]
         required :amount, Integer
 
         # @!parse
-        #   # @param account_id [String] The identifier for the Bookkeeping Account impacted by this entry.
-        #   #
-        #   # @param amount [Integer] The entry amount in the minor unit of the account currency. For dollars, for
-        #   #   example, this is cents. Debit entries have positive amounts; credit entries have
-        #   #   negative amounts.
+        #   # @param account_id [String]
+        #   # @param amount [Integer]
         #   #
         #   def initialize(account_id:, amount:, **) = super
 

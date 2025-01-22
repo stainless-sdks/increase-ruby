@@ -10,7 +10,8 @@ module Increase
       required :structure, enum: -> { Increase::Models::EntityCreateParams::Structure }
 
       # @!attribute [r] corporation
-      #   Details of the corporation entity to create. Required if `structure` is equal to `corporation`.
+      #   Details of the corporation entity to create. Required if `structure` is equal to
+      #     `corporation`.
       #
       #   @return [Increase::Models::EntityCreateParams::Corporation, nil]
       optional :corporation, -> { Increase::Models::EntityCreateParams::Corporation }
@@ -30,7 +31,8 @@ module Increase
       #   attr_writer :description
 
       # @!attribute [r] government_authority
-      #   Details of the Government Authority entity to create. Required if `structure` is equal to `Government Authority`.
+      #   Details of the Government Authority entity to create. Required if `structure` is
+      #     equal to `Government Authority`.
       #
       #   @return [Increase::Models::EntityCreateParams::GovernmentAuthority, nil]
       optional :government_authority, -> { Increase::Models::EntityCreateParams::GovernmentAuthority }
@@ -40,7 +42,8 @@ module Increase
       #   attr_writer :government_authority
 
       # @!attribute [r] joint
-      #   Details of the joint entity to create. Required if `structure` is equal to `joint`.
+      #   Details of the joint entity to create. Required if `structure` is equal to
+      #     `joint`.
       #
       #   @return [Increase::Models::EntityCreateParams::Joint, nil]
       optional :joint, -> { Increase::Models::EntityCreateParams::Joint }
@@ -50,7 +53,10 @@ module Increase
       #   attr_writer :joint
 
       # @!attribute [r] natural_person
-      #   Details of the natural person entity to create. Required if `structure` is equal to `natural_person`. Natural people entities should be submitted with `social_security_number` or `individual_taxpayer_identification_number` identification methods.
+      #   Details of the natural person entity to create. Required if `structure` is equal
+      #     to `natural_person`. Natural people entities should be submitted with
+      #     `social_security_number` or `individual_taxpayer_identification_number`
+      #     identification methods.
       #
       #   @return [Increase::Models::EntityCreateParams::NaturalPerson, nil]
       optional :natural_person, -> { Increase::Models::EntityCreateParams::NaturalPerson }
@@ -71,7 +77,8 @@ module Increase
       #   attr_writer :supplemental_documents
 
       # @!attribute [r] third_party_verification
-      #   A reference to data stored in a third-party verification service. Your integration may or may not use this field.
+      #   A reference to data stored in a third-party verification service. Your
+      #     integration may or may not use this field.
       #
       #   @return [Increase::Models::EntityCreateParams::ThirdPartyVerification, nil]
       optional :third_party_verification, -> { Increase::Models::EntityCreateParams::ThirdPartyVerification }
@@ -81,7 +88,8 @@ module Increase
       #   attr_writer :third_party_verification
 
       # @!attribute [r] trust
-      #   Details of the trust entity to create. Required if `structure` is equal to `trust`.
+      #   Details of the trust entity to create. Required if `structure` is equal to
+      #     `trust`.
       #
       #   @return [Increase::Models::EntityCreateParams::Trust, nil]
       optional :trust, -> { Increase::Models::EntityCreateParams::Trust }
@@ -91,31 +99,15 @@ module Increase
       #   attr_writer :trust
 
       # @!parse
-      #   # @param structure [String] The type of Entity to create.
-      #   #
-      #   # @param corporation [Increase::Models::EntityCreateParams::Corporation] Details of the corporation entity to create. Required if `structure` is equal to
-      #   #   `corporation`.
-      #   #
-      #   # @param description [String] The description you choose to give the entity.
-      #   #
-      #   # @param government_authority [Increase::Models::EntityCreateParams::GovernmentAuthority] Details of the Government Authority entity to create. Required if `structure` is
-      #   #   equal to `Government Authority`.
-      #   #
-      #   # @param joint [Increase::Models::EntityCreateParams::Joint] Details of the joint entity to create. Required if `structure` is equal to
-      #   #   `joint`.
-      #   #
-      #   # @param natural_person [Increase::Models::EntityCreateParams::NaturalPerson] Details of the natural person entity to create. Required if `structure` is equal
-      #   #   to `natural_person`. Natural people entities should be submitted with
-      #   #   `social_security_number` or `individual_taxpayer_identification_number`
-      #   #   identification methods.
-      #   #
-      #   # @param supplemental_documents [Array<Increase::Models::EntityCreateParams::SupplementalDocument>] Additional documentation associated with the entity.
-      #   #
-      #   # @param third_party_verification [Increase::Models::EntityCreateParams::ThirdPartyVerification] A reference to data stored in a third-party verification service. Your
-      #   #   integration may or may not use this field.
-      #   #
-      #   # @param trust [Increase::Models::EntityCreateParams::Trust] Details of the trust entity to create. Required if `structure` is equal to
-      #   #   `trust`.
+      #   # @param structure [String]
+      #   # @param corporation [Increase::Models::EntityCreateParams::Corporation]
+      #   # @param description [String]
+      #   # @param government_authority [Increase::Models::EntityCreateParams::GovernmentAuthority]
+      #   # @param joint [Increase::Models::EntityCreateParams::Joint]
+      #   # @param natural_person [Increase::Models::EntityCreateParams::NaturalPerson]
+      #   # @param supplemental_documents [Array<Increase::Models::EntityCreateParams::SupplementalDocument>]
+      #   # @param third_party_verification [Increase::Models::EntityCreateParams::ThirdPartyVerification]
+      #   # @param trust [Increase::Models::EntityCreateParams::Trust]
       #   #
       #   def initialize(
       #     structure:,
@@ -183,13 +175,15 @@ module Increase
       # ```
       class Corporation < Increase::BaseModel
         # @!attribute address
-        #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's are disallowed.
+        #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+        #     are disallowed.
         #
         #   @return [Increase::Models::EntityCreateParams::Corporation::Address]
         required :address, -> { Increase::Models::EntityCreateParams::Corporation::Address }
 
         # @!attribute beneficial_owners
-        #   The identifying details of anyone controlling or owning 25% or more of the corporation.
+        #   The identifying details of anyone controlling or owning 25% or more of the
+        #     corporation.
         #
         #   @return [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>]
         required :beneficial_owners,
@@ -208,7 +202,8 @@ module Increase
         required :tax_identifier, String
 
         # @!attribute [r] incorporation_state
-        #   The two-letter United States Postal Service (USPS) abbreviation for the corporation's state of incorporation.
+        #   The two-letter United States Postal Service (USPS) abbreviation for the
+        #     corporation's state of incorporation.
         #
         #   @return [String, nil]
         optional :incorporation_state, String
@@ -218,7 +213,10 @@ module Increase
         #   attr_writer :incorporation_state
 
         # @!attribute [r] industry_code
-        #   The North American Industry Classification System (NAICS) code for the corporation's primary line of business. This is a number, like `5132` for `Software Publishers`. A full list of classification codes is available [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
+        #   The North American Industry Classification System (NAICS) code for the
+        #     corporation's primary line of business. This is a number, like `5132` for
+        #     `Software Publishers`. A full list of classification codes is available
+        #     [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
         #
         #   @return [String, nil]
         optional :industry_code, String
@@ -241,25 +239,13 @@ module Increase
         #   # Details of the corporation entity to create. Required if `structure` is equal to
         #   #   `corporation`.
         #   #
-        #   # @param address [Increase::Models::EntityCreateParams::Corporation::Address] The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   #   are disallowed.
-        #   #
-        #   # @param beneficial_owners [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>] The identifying details of anyone controlling or owning 25% or more of the
-        #   #   corporation.
-        #   #
-        #   # @param name [String] The legal name of the corporation.
-        #   #
-        #   # @param tax_identifier [String] The Employer Identification Number (EIN) for the corporation.
-        #   #
-        #   # @param incorporation_state [String] The two-letter United States Postal Service (USPS) abbreviation for the
-        #   #   corporation's state of incorporation.
-        #   #
-        #   # @param industry_code [String] The North American Industry Classification System (NAICS) code for the
-        #   #   corporation's primary line of business. This is a number, like `5132` for
-        #   #   `Software Publishers`. A full list of classification codes is available
-        #   #   [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
-        #   #
-        #   # @param website [String] The website of the corporation.
+        #   # @param address [Increase::Models::EntityCreateParams::Corporation::Address]
+        #   # @param beneficial_owners [Array<Increase::Models::EntityCreateParams::Corporation::BeneficialOwner>]
+        #   # @param name [String]
+        #   # @param tax_identifier [String]
+        #   # @param incorporation_state [String]
+        #   # @param industry_code [String]
+        #   # @param website [String]
         #   #
         #   def initialize(
         #     address:,
@@ -300,7 +286,8 @@ module Increase
           required :line1, String
 
           # @!attribute state
-          #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
+          #   The two-letter United States Postal Service (USPS) abbreviation for the state of
+          #     the address.
           #
           #   @return [String]
           required :state, String
@@ -325,16 +312,11 @@ module Increase
           #   # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
           #   #   are disallowed.
           #   #
-          #   # @param city [String] The city of the address.
-          #   #
-          #   # @param line1 [String] The first line of the address. This is usually the street number and street.
-          #   #
-          #   # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   #   the address.
-          #   #
-          #   # @param zip [String] The ZIP code of the address.
-          #   #
-          #   # @param line2 [String] The second line of the address. This might be the floor or room number.
+          #   # @param city [String]
+          #   # @param line1 [String]
+          #   # @param state [String]
+          #   # @param zip [String]
+          #   # @param line2 [String]
           #   #
           #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
@@ -358,7 +340,9 @@ module Increase
                    -> { Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual }
 
           # @!attribute prongs
-          #   Why this person is considered a beneficial owner of the entity. At least one option is required, if a person is both a control person and owner, submit an array containing both.
+          #   Why this person is considered a beneficial owner of the entity. At least one
+          #     option is required, if a person is both a control person and owner, submit an
+          #     array containing both.
           #
           #   @return [Array<Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong>]
           required :prongs,
@@ -377,13 +361,9 @@ module Increase
           #   attr_writer :company_title
 
           # @!parse
-          #   # @param individual [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual] Personal details for the beneficial owner.
-          #   #
-          #   # @param prongs [Array<String>] Why this person is considered a beneficial owner of the entity. At least one
-          #   #   option is required, if a person is both a control person and owner, submit an
-          #   #   array containing both.
-          #   #
-          #   # @param company_title [String] This person's role or title within the entity.
+          #   # @param individual [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual]
+          #   # @param prongs [Array<String>]
+          #   # @param company_title [String]
           #   #
           #   def initialize(individual:, prongs:, company_title: nil, **) = super
 
@@ -401,7 +381,8 @@ module Increase
           # ```
           class Individual < Increase::BaseModel
             # @!attribute address
-            #   The individual's physical address. Mail receiving locations like PO Boxes and PMB's are disallowed.
+            #   The individual's physical address. Mail receiving locations like PO Boxes and
+            #     PMB's are disallowed.
             #
             #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address]
             required :address,
@@ -427,7 +408,10 @@ module Increase
             required :name, String
 
             # @!attribute [r] confirmed_no_us_tax_id
-            #   The identification method for an individual can only be a passport, driver's license, or other document if you've confirmed the individual does not have a US tax id (either a Social Security Number or Individual Taxpayer Identification Number).
+            #   The identification method for an individual can only be a passport, driver's
+            #     license, or other document if you've confirmed the individual does not have a US
+            #     tax id (either a Social Security Number or Individual Taxpayer Identification
+            #     Number).
             #
             #   @return [Boolean, nil]
             optional :confirmed_no_us_tax_id, Increase::BooleanModel
@@ -439,19 +423,11 @@ module Increase
             # @!parse
             #   # Personal details for the beneficial owner.
             #   #
-            #   # @param address [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address] The individual's physical address. Mail receiving locations like PO Boxes and
-            #   #   PMB's are disallowed.
-            #   #
-            #   # @param date_of_birth [String] The person's date of birth in YYYY-MM-DD format.
-            #   #
-            #   # @param identification [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification] A means of verifying the person's identity.
-            #   #
-            #   # @param name [String] The person's legal name.
-            #   #
-            #   # @param confirmed_no_us_tax_id [Boolean] The identification method for an individual can only be a passport, driver's
-            #   #   license, or other document if you've confirmed the individual does not have a US
-            #   #   tax id (either a Social Security Number or Individual Taxpayer Identification
-            #   #   Number).
+            #   # @param address [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address]
+            #   # @param date_of_birth [String]
+            #   # @param identification [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification]
+            #   # @param name [String]
+            #   # @param confirmed_no_us_tax_id [Boolean]
             #   #
             #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
 
@@ -481,7 +457,8 @@ module Increase
               required :line1, String
 
               # @!attribute state
-              #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
+              #   The two-letter United States Postal Service (USPS) abbreviation for the state of
+              #     the address.
               #
               #   @return [String]
               required :state, String
@@ -506,16 +483,11 @@ module Increase
               #   # The individual's physical address. Mail receiving locations like PO Boxes and
               #   #   PMB's are disallowed.
               #   #
-              #   # @param city [String] The city of the address.
-              #   #
-              #   # @param line1 [String] The first line of the address. This is usually the street number and street.
-              #   #
-              #   # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #   #   the address.
-              #   #
-              #   # @param zip [String] The ZIP code of the address.
-              #   #
-              #   # @param line2 [String] The second line of the address. This might be the floor or room number.
+              #   # @param city [String]
+              #   # @param line1 [String]
+              #   # @param state [String]
+              #   # @param zip [String]
+              #   # @param line2 [String]
               #   #
               #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
@@ -525,7 +497,7 @@ module Increase
             # @example
             # ```ruby
             # identification => {
-            #   method_: enum: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method,
+            #   method_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method,
             #   number: String,
             #   drivers_license: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
             #   other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
@@ -544,13 +516,15 @@ module Increase
                        api_name: :method
 
               # @!attribute number
-              #   An identification number that can be used to verify the individual's identity, such as a social security number.
+              #   An identification number that can be used to verify the individual's identity,
+              #     such as a social security number.
               #
               #   @return [String]
               required :number, String
 
               # @!attribute [r] drivers_license
-              #   Information about the United States driver's license used for identification. Required if `method` is equal to `drivers_license`.
+              #   Information about the United States driver's license used for identification.
+              #     Required if `method` is equal to `drivers_license`.
               #
               #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense, nil]
               optional :drivers_license,
@@ -561,7 +535,8 @@ module Increase
               #   attr_writer :drivers_license
 
               # @!attribute [r] other
-              #   Information about the identification document provided. Required if `method` is equal to `other`.
+              #   Information about the identification document provided. Required if `method` is
+              #     equal to `other`.
               #
               #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other, nil]
               optional :other,
@@ -572,7 +547,8 @@ module Increase
               #   attr_writer :other
 
               # @!attribute [r] passport
-              #   Information about the passport used for identification. Required if `method` is equal to `passport`.
+              #   Information about the passport used for identification. Required if `method` is
+              #     equal to `passport`.
               #
               #   @return [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport, nil]
               optional :passport,
@@ -585,19 +561,11 @@ module Increase
               # @!parse
               #   # A means of verifying the person's identity.
               #   #
-              #   # @param method_ [String] A method that can be used to verify the individual's identity.
-              #   #
-              #   # @param number [String] An identification number that can be used to verify the individual's identity,
-              #   #   such as a social security number.
-              #   #
-              #   # @param drivers_license [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense] Information about the United States driver's license used for identification.
-              #   #   Required if `method` is equal to `drivers_license`.
-              #   #
-              #   # @param other [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other] Information about the identification document provided. Required if `method` is
-              #   #   equal to `other`.
-              #   #
-              #   # @param passport [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport] Information about the passport used for identification. Required if `method` is
-              #   #   equal to `passport`.
+              #   # @param method_ [String]
+              #   # @param number [String]
+              #   # @param drivers_license [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense]
+              #   # @param other [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other]
+              #   # @param passport [Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport]
               #   #
               #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
 
@@ -681,13 +649,10 @@ module Increase
                 #   # Information about the United States driver's license used for identification.
                 #   #   Required if `method` is equal to `drivers_license`.
                 #   #
-                #   # @param expiration_date [String] The driver's license's expiration date in YYYY-MM-DD format.
-                #   #
-                #   # @param file_id [String] The identifier of the File containing the front of the driver's license.
-                #   #
-                #   # @param state [String] The state that issued the provided driver's license.
-                #   #
-                #   # @param back_file_id [String] The identifier of the File containing the back of the driver's license.
+                #   # @param expiration_date [String]
+                #   # @param file_id [String]
+                #   # @param state [String]
+                #   # @param back_file_id [String]
                 #   #
                 #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
 
@@ -706,7 +671,8 @@ module Increase
               # ```
               class Other < Increase::BaseModel
                 # @!attribute country
-                #   The two-character ISO 3166-1 code representing the country that issued the document.
+                #   The two-character ISO 3166-1 code representing the country that issued the
+                #     document.
                 #
                 #   @return [String]
                 required :country, String
@@ -724,7 +690,8 @@ module Increase
                 required :file_id, String
 
                 # @!attribute [r] back_file_id
-                #   The identifier of the File containing the back of the document. Not every document has a reverse side.
+                #   The identifier of the File containing the back of the document. Not every
+                #     document has a reverse side.
                 #
                 #   @return [String, nil]
                 optional :back_file_id, String
@@ -747,17 +714,11 @@ module Increase
                 #   # Information about the identification document provided. Required if `method` is
                 #   #   equal to `other`.
                 #   #
-                #   # @param country [String] The two-character ISO 3166-1 code representing the country that issued the
-                #   #   document.
-                #   #
-                #   # @param description [String] A description of the document submitted.
-                #   #
-                #   # @param file_id [String] The identifier of the File containing the front of the document.
-                #   #
-                #   # @param back_file_id [String] The identifier of the File containing the back of the document. Not every
-                #   #   document has a reverse side.
-                #   #
-                #   # @param expiration_date [String] The document's expiration date in YYYY-MM-DD format.
+                #   # @param country [String]
+                #   # @param description [String]
+                #   # @param file_id [String]
+                #   # @param back_file_id [String]
+                #   # @param expiration_date [String]
                 #   #
                 #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
 
@@ -795,11 +756,9 @@ module Increase
                 #   # Information about the passport used for identification. Required if `method` is
                 #   #   equal to `passport`.
                 #   #
-                #   # @param country [String] The country that issued the passport.
-                #   #
-                #   # @param expiration_date [String] The passport's expiration date in YYYY-MM-DD format.
-                #   #
-                #   # @param file_id [String] The identifier of the File containing the passport.
+                #   # @param country [String]
+                #   # @param expiration_date [String]
+                #   # @param file_id [String]
                 #   #
                 #   def initialize(country:, expiration_date:, file_id:, **) = super
 
@@ -834,14 +793,15 @@ module Increase
       # government_authority => {
       #   address: Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
       #   authorized_persons: -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson] === _1 },
-      #   category: enum: Increase::Models::EntityCreateParams::GovernmentAuthority::Category,
+      #   category: Increase::Models::EntityCreateParams::GovernmentAuthority::Category,
       #   name: String,
       #   tax_identifier: String
       # }
       # ```
       class GovernmentAuthority < Increase::BaseModel
         # @!attribute address
-        #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's are disallowed.
+        #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+        #     are disallowed.
         #
         #   @return [Increase::Models::EntityCreateParams::GovernmentAuthority::Address]
         required :address, -> { Increase::Models::EntityCreateParams::GovernmentAuthority::Address }
@@ -887,18 +847,12 @@ module Increase
         #   # Details of the Government Authority entity to create. Required if `structure` is
         #   #   equal to `Government Authority`.
         #   #
-        #   # @param address [Increase::Models::EntityCreateParams::GovernmentAuthority::Address] The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   #   are disallowed.
-        #   #
-        #   # @param authorized_persons [Array<Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson>] The identifying details of authorized officials acting on the entity's behalf.
-        #   #
-        #   # @param category [String] The category of the government authority.
-        #   #
-        #   # @param name [String] The legal name of the government authority.
-        #   #
-        #   # @param tax_identifier [String] The Employer Identification Number (EIN) for the government authority.
-        #   #
-        #   # @param website [String] The website of the government authority.
+        #   # @param address [Increase::Models::EntityCreateParams::GovernmentAuthority::Address]
+        #   # @param authorized_persons [Array<Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson>]
+        #   # @param category [String]
+        #   # @param name [String]
+        #   # @param tax_identifier [String]
+        #   # @param website [String]
         #   #
         #   def initialize(address:, authorized_persons:, category:, name:, tax_identifier:, website: nil, **) = super
 
@@ -928,7 +882,8 @@ module Increase
           required :line1, String
 
           # @!attribute state
-          #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
+          #   The two-letter United States Postal Service (USPS) abbreviation for the state of
+          #     the address.
           #
           #   @return [String]
           required :state, String
@@ -953,16 +908,11 @@ module Increase
           #   # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
           #   #   are disallowed.
           #   #
-          #   # @param city [String] The city of the address.
-          #   #
-          #   # @param line1 [String] The first line of the address. This is usually the street number and street.
-          #   #
-          #   # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   #   the address.
-          #   #
-          #   # @param zip [String] The ZIP code of the address.
-          #   #
-          #   # @param line2 [String] The second line of the address. This might be the floor or room number.
+          #   # @param city [String]
+          #   # @param line1 [String]
+          #   # @param state [String]
+          #   # @param zip [String]
+          #   # @param line2 [String]
           #   #
           #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
@@ -983,7 +933,7 @@ module Increase
           required :name, String
 
           # @!parse
-          #   # @param name [String] The person's legal name.
+          #   # @param name [String]
           #   #
           #   def initialize(name:, **) = super
 
@@ -1038,9 +988,8 @@ module Increase
         #   # Details of the joint entity to create. Required if `structure` is equal to
         #   #   `joint`.
         #   #
-        #   # @param individuals [Array<Increase::Models::EntityCreateParams::Joint::Individual>] The two individuals that share control of the entity.
-        #   #
-        #   # @param name [String] The name of the joint entity.
+        #   # @param individuals [Array<Increase::Models::EntityCreateParams::Joint::Individual>]
+        #   # @param name [String]
         #   #
         #   def initialize(individuals:, name: nil, **) = super
 
@@ -1058,7 +1007,8 @@ module Increase
         # ```
         class Individual < Increase::BaseModel
           # @!attribute address
-          #   The individual's physical address. Mail receiving locations like PO Boxes and PMB's are disallowed.
+          #   The individual's physical address. Mail receiving locations like PO Boxes and
+          #     PMB's are disallowed.
           #
           #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Address]
           required :address, -> { Increase::Models::EntityCreateParams::Joint::Individual::Address }
@@ -1085,7 +1035,10 @@ module Increase
           required :name, String
 
           # @!attribute [r] confirmed_no_us_tax_id
-          #   The identification method for an individual can only be a passport, driver's license, or other document if you've confirmed the individual does not have a US tax id (either a Social Security Number or Individual Taxpayer Identification Number).
+          #   The identification method for an individual can only be a passport, driver's
+          #     license, or other document if you've confirmed the individual does not have a US
+          #     tax id (either a Social Security Number or Individual Taxpayer Identification
+          #     Number).
           #
           #   @return [Boolean, nil]
           optional :confirmed_no_us_tax_id, Increase::BooleanModel
@@ -1095,19 +1048,11 @@ module Increase
           #   attr_writer :confirmed_no_us_tax_id
 
           # @!parse
-          #   # @param address [Increase::Models::EntityCreateParams::Joint::Individual::Address] The individual's physical address. Mail receiving locations like PO Boxes and
-          #   #   PMB's are disallowed.
-          #   #
-          #   # @param date_of_birth [String] The person's date of birth in YYYY-MM-DD format.
-          #   #
-          #   # @param identification [Increase::Models::EntityCreateParams::Joint::Individual::Identification] A means of verifying the person's identity.
-          #   #
-          #   # @param name [String] The person's legal name.
-          #   #
-          #   # @param confirmed_no_us_tax_id [Boolean] The identification method for an individual can only be a passport, driver's
-          #   #   license, or other document if you've confirmed the individual does not have a US
-          #   #   tax id (either a Social Security Number or Individual Taxpayer Identification
-          #   #   Number).
+          #   # @param address [Increase::Models::EntityCreateParams::Joint::Individual::Address]
+          #   # @param date_of_birth [String]
+          #   # @param identification [Increase::Models::EntityCreateParams::Joint::Individual::Identification]
+          #   # @param name [String]
+          #   # @param confirmed_no_us_tax_id [Boolean]
           #   #
           #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
 
@@ -1137,7 +1082,8 @@ module Increase
             required :line1, String
 
             # @!attribute state
-            #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
+            #   The two-letter United States Postal Service (USPS) abbreviation for the state of
+            #     the address.
             #
             #   @return [String]
             required :state, String
@@ -1162,16 +1108,11 @@ module Increase
             #   # The individual's physical address. Mail receiving locations like PO Boxes and
             #   #   PMB's are disallowed.
             #   #
-            #   # @param city [String] The city of the address.
-            #   #
-            #   # @param line1 [String] The first line of the address. This is usually the street number and street.
-            #   #
-            #   # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   #   the address.
-            #   #
-            #   # @param zip [String] The ZIP code of the address.
-            #   #
-            #   # @param line2 [String] The second line of the address. This might be the floor or room number.
+            #   # @param city [String]
+            #   # @param line1 [String]
+            #   # @param state [String]
+            #   # @param zip [String]
+            #   # @param line2 [String]
             #   #
             #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
@@ -1181,7 +1122,7 @@ module Increase
           # @example
           # ```ruby
           # identification => {
-          #   method_: enum: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method,
+          #   method_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method,
           #   number: String,
           #   drivers_license: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
           #   other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
@@ -1200,13 +1141,15 @@ module Increase
                      api_name: :method
 
             # @!attribute number
-            #   An identification number that can be used to verify the individual's identity, such as a social security number.
+            #   An identification number that can be used to verify the individual's identity,
+            #     such as a social security number.
             #
             #   @return [String]
             required :number, String
 
             # @!attribute [r] drivers_license
-            #   Information about the United States driver's license used for identification. Required if `method` is equal to `drivers_license`.
+            #   Information about the United States driver's license used for identification.
+            #     Required if `method` is equal to `drivers_license`.
             #
             #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense, nil]
             optional :drivers_license,
@@ -1217,7 +1160,8 @@ module Increase
             #   attr_writer :drivers_license
 
             # @!attribute [r] other
-            #   Information about the identification document provided. Required if `method` is equal to `other`.
+            #   Information about the identification document provided. Required if `method` is
+            #     equal to `other`.
             #
             #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other, nil]
             optional :other,
@@ -1230,7 +1174,8 @@ module Increase
             #   attr_writer :other
 
             # @!attribute [r] passport
-            #   Information about the passport used for identification. Required if `method` is equal to `passport`.
+            #   Information about the passport used for identification. Required if `method` is
+            #     equal to `passport`.
             #
             #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport, nil]
             optional :passport,
@@ -1243,19 +1188,11 @@ module Increase
             # @!parse
             #   # A means of verifying the person's identity.
             #   #
-            #   # @param method_ [String] A method that can be used to verify the individual's identity.
-            #   #
-            #   # @param number [String] An identification number that can be used to verify the individual's identity,
-            #   #   such as a social security number.
-            #   #
-            #   # @param drivers_license [Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense] Information about the United States driver's license used for identification.
-            #   #   Required if `method` is equal to `drivers_license`.
-            #   #
-            #   # @param other [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other] Information about the identification document provided. Required if `method` is
-            #   #   equal to `other`.
-            #   #
-            #   # @param passport [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport] Information about the passport used for identification. Required if `method` is
-            #   #   equal to `passport`.
+            #   # @param method_ [String]
+            #   # @param number [String]
+            #   # @param drivers_license [Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense]
+            #   # @param other [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other]
+            #   # @param passport [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport]
             #   #
             #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
 
@@ -1339,13 +1276,10 @@ module Increase
               #   # Information about the United States driver's license used for identification.
               #   #   Required if `method` is equal to `drivers_license`.
               #   #
-              #   # @param expiration_date [String] The driver's license's expiration date in YYYY-MM-DD format.
-              #   #
-              #   # @param file_id [String] The identifier of the File containing the front of the driver's license.
-              #   #
-              #   # @param state [String] The state that issued the provided driver's license.
-              #   #
-              #   # @param back_file_id [String] The identifier of the File containing the back of the driver's license.
+              #   # @param expiration_date [String]
+              #   # @param file_id [String]
+              #   # @param state [String]
+              #   # @param back_file_id [String]
               #   #
               #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
 
@@ -1364,7 +1298,8 @@ module Increase
             # ```
             class Other < Increase::BaseModel
               # @!attribute country
-              #   The two-character ISO 3166-1 code representing the country that issued the document.
+              #   The two-character ISO 3166-1 code representing the country that issued the
+              #     document.
               #
               #   @return [String]
               required :country, String
@@ -1382,7 +1317,8 @@ module Increase
               required :file_id, String
 
               # @!attribute [r] back_file_id
-              #   The identifier of the File containing the back of the document. Not every document has a reverse side.
+              #   The identifier of the File containing the back of the document. Not every
+              #     document has a reverse side.
               #
               #   @return [String, nil]
               optional :back_file_id, String
@@ -1405,17 +1341,11 @@ module Increase
               #   # Information about the identification document provided. Required if `method` is
               #   #   equal to `other`.
               #   #
-              #   # @param country [String] The two-character ISO 3166-1 code representing the country that issued the
-              #   #   document.
-              #   #
-              #   # @param description [String] A description of the document submitted.
-              #   #
-              #   # @param file_id [String] The identifier of the File containing the front of the document.
-              #   #
-              #   # @param back_file_id [String] The identifier of the File containing the back of the document. Not every
-              #   #   document has a reverse side.
-              #   #
-              #   # @param expiration_date [String] The document's expiration date in YYYY-MM-DD format.
+              #   # @param country [String]
+              #   # @param description [String]
+              #   # @param file_id [String]
+              #   # @param back_file_id [String]
+              #   # @param expiration_date [String]
               #   #
               #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
 
@@ -1453,11 +1383,9 @@ module Increase
               #   # Information about the passport used for identification. Required if `method` is
               #   #   equal to `passport`.
               #   #
-              #   # @param country [String] The country that issued the passport.
-              #   #
-              #   # @param expiration_date [String] The passport's expiration date in YYYY-MM-DD format.
-              #   #
-              #   # @param file_id [String] The identifier of the File containing the passport.
+              #   # @param country [String]
+              #   # @param expiration_date [String]
+              #   # @param file_id [String]
               #   #
               #   def initialize(country:, expiration_date:, file_id:, **) = super
 
@@ -1479,7 +1407,8 @@ module Increase
       # ```
       class NaturalPerson < Increase::BaseModel
         # @!attribute address
-        #   The individual's physical address. Mail receiving locations like PO Boxes and PMB's are disallowed.
+        #   The individual's physical address. Mail receiving locations like PO Boxes and
+        #     PMB's are disallowed.
         #
         #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Address]
         required :address, -> { Increase::Models::EntityCreateParams::NaturalPerson::Address }
@@ -1503,7 +1432,10 @@ module Increase
         required :name, String
 
         # @!attribute [r] confirmed_no_us_tax_id
-        #   The identification method for an individual can only be a passport, driver's license, or other document if you've confirmed the individual does not have a US tax id (either a Social Security Number or Individual Taxpayer Identification Number).
+        #   The identification method for an individual can only be a passport, driver's
+        #     license, or other document if you've confirmed the individual does not have a US
+        #     tax id (either a Social Security Number or Individual Taxpayer Identification
+        #     Number).
         #
         #   @return [Boolean, nil]
         optional :confirmed_no_us_tax_id, Increase::BooleanModel
@@ -1518,19 +1450,11 @@ module Increase
         #   #   `social_security_number` or `individual_taxpayer_identification_number`
         #   #   identification methods.
         #   #
-        #   # @param address [Increase::Models::EntityCreateParams::NaturalPerson::Address] The individual's physical address. Mail receiving locations like PO Boxes and
-        #   #   PMB's are disallowed.
-        #   #
-        #   # @param date_of_birth [String] The person's date of birth in YYYY-MM-DD format.
-        #   #
-        #   # @param identification [Increase::Models::EntityCreateParams::NaturalPerson::Identification] A means of verifying the person's identity.
-        #   #
-        #   # @param name [String] The person's legal name.
-        #   #
-        #   # @param confirmed_no_us_tax_id [Boolean] The identification method for an individual can only be a passport, driver's
-        #   #   license, or other document if you've confirmed the individual does not have a US
-        #   #   tax id (either a Social Security Number or Individual Taxpayer Identification
-        #   #   Number).
+        #   # @param address [Increase::Models::EntityCreateParams::NaturalPerson::Address]
+        #   # @param date_of_birth [String]
+        #   # @param identification [Increase::Models::EntityCreateParams::NaturalPerson::Identification]
+        #   # @param name [String]
+        #   # @param confirmed_no_us_tax_id [Boolean]
         #   #
         #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
 
@@ -1560,7 +1484,8 @@ module Increase
           required :line1, String
 
           # @!attribute state
-          #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
+          #   The two-letter United States Postal Service (USPS) abbreviation for the state of
+          #     the address.
           #
           #   @return [String]
           required :state, String
@@ -1585,16 +1510,11 @@ module Increase
           #   # The individual's physical address. Mail receiving locations like PO Boxes and
           #   #   PMB's are disallowed.
           #   #
-          #   # @param city [String] The city of the address.
-          #   #
-          #   # @param line1 [String] The first line of the address. This is usually the street number and street.
-          #   #
-          #   # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   #   the address.
-          #   #
-          #   # @param zip [String] The ZIP code of the address.
-          #   #
-          #   # @param line2 [String] The second line of the address. This might be the floor or room number.
+          #   # @param city [String]
+          #   # @param line1 [String]
+          #   # @param state [String]
+          #   # @param zip [String]
+          #   # @param line2 [String]
           #   #
           #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
@@ -1604,7 +1524,7 @@ module Increase
         # @example
         # ```ruby
         # identification => {
-        #   method_: enum: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method,
+        #   method_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method,
         #   number: String,
         #   drivers_license: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
         #   other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
@@ -1621,13 +1541,15 @@ module Increase
                    api_name: :method
 
           # @!attribute number
-          #   An identification number that can be used to verify the individual's identity, such as a social security number.
+          #   An identification number that can be used to verify the individual's identity,
+          #     such as a social security number.
           #
           #   @return [String]
           required :number, String
 
           # @!attribute [r] drivers_license
-          #   Information about the United States driver's license used for identification. Required if `method` is equal to `drivers_license`.
+          #   Information about the United States driver's license used for identification.
+          #     Required if `method` is equal to `drivers_license`.
           #
           #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense, nil]
           optional :drivers_license,
@@ -1638,7 +1560,8 @@ module Increase
           #   attr_writer :drivers_license
 
           # @!attribute [r] other
-          #   Information about the identification document provided. Required if `method` is equal to `other`.
+          #   Information about the identification document provided. Required if `method` is
+          #     equal to `other`.
           #
           #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other, nil]
           optional :other, -> { Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other }
@@ -1648,7 +1571,8 @@ module Increase
           #   attr_writer :other
 
           # @!attribute [r] passport
-          #   Information about the passport used for identification. Required if `method` is equal to `passport`.
+          #   Information about the passport used for identification. Required if `method` is
+          #     equal to `passport`.
           #
           #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport, nil]
           optional :passport,
@@ -1663,19 +1587,11 @@ module Increase
           # @!parse
           #   # A means of verifying the person's identity.
           #   #
-          #   # @param method_ [String] A method that can be used to verify the individual's identity.
-          #   #
-          #   # @param number [String] An identification number that can be used to verify the individual's identity,
-          #   #   such as a social security number.
-          #   #
-          #   # @param drivers_license [Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense] Information about the United States driver's license used for identification.
-          #   #   Required if `method` is equal to `drivers_license`.
-          #   #
-          #   # @param other [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other] Information about the identification document provided. Required if `method` is
-          #   #   equal to `other`.
-          #   #
-          #   # @param passport [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport] Information about the passport used for identification. Required if `method` is
-          #   #   equal to `passport`.
+          #   # @param method_ [String]
+          #   # @param number [String]
+          #   # @param drivers_license [Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense]
+          #   # @param other [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other]
+          #   # @param passport [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport]
           #   #
           #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
 
@@ -1759,13 +1675,10 @@ module Increase
             #   # Information about the United States driver's license used for identification.
             #   #   Required if `method` is equal to `drivers_license`.
             #   #
-            #   # @param expiration_date [String] The driver's license's expiration date in YYYY-MM-DD format.
-            #   #
-            #   # @param file_id [String] The identifier of the File containing the front of the driver's license.
-            #   #
-            #   # @param state [String] The state that issued the provided driver's license.
-            #   #
-            #   # @param back_file_id [String] The identifier of the File containing the back of the driver's license.
+            #   # @param expiration_date [String]
+            #   # @param file_id [String]
+            #   # @param state [String]
+            #   # @param back_file_id [String]
             #   #
             #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
 
@@ -1784,7 +1697,8 @@ module Increase
           # ```
           class Other < Increase::BaseModel
             # @!attribute country
-            #   The two-character ISO 3166-1 code representing the country that issued the document.
+            #   The two-character ISO 3166-1 code representing the country that issued the
+            #     document.
             #
             #   @return [String]
             required :country, String
@@ -1802,7 +1716,8 @@ module Increase
             required :file_id, String
 
             # @!attribute [r] back_file_id
-            #   The identifier of the File containing the back of the document. Not every document has a reverse side.
+            #   The identifier of the File containing the back of the document. Not every
+            #     document has a reverse side.
             #
             #   @return [String, nil]
             optional :back_file_id, String
@@ -1825,17 +1740,11 @@ module Increase
             #   # Information about the identification document provided. Required if `method` is
             #   #   equal to `other`.
             #   #
-            #   # @param country [String] The two-character ISO 3166-1 code representing the country that issued the
-            #   #   document.
-            #   #
-            #   # @param description [String] A description of the document submitted.
-            #   #
-            #   # @param file_id [String] The identifier of the File containing the front of the document.
-            #   #
-            #   # @param back_file_id [String] The identifier of the File containing the back of the document. Not every
-            #   #   document has a reverse side.
-            #   #
-            #   # @param expiration_date [String] The document's expiration date in YYYY-MM-DD format.
+            #   # @param country [String]
+            #   # @param description [String]
+            #   # @param file_id [String]
+            #   # @param back_file_id [String]
+            #   # @param expiration_date [String]
             #   #
             #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
 
@@ -1873,11 +1782,9 @@ module Increase
             #   # Information about the passport used for identification. Required if `method` is
             #   #   equal to `passport`.
             #   #
-            #   # @param country [String] The country that issued the passport.
-            #   #
-            #   # @param expiration_date [String] The passport's expiration date in YYYY-MM-DD format.
-            #   #
-            #   # @param file_id [String] The identifier of the File containing the passport.
+            #   # @param country [String]
+            #   # @param expiration_date [String]
+            #   # @param file_id [String]
             #   #
             #   def initialize(country:, expiration_date:, file_id:, **) = super
 
@@ -1900,7 +1807,7 @@ module Increase
         required :file_id, String
 
         # @!parse
-        #   # @param file_id [String] The identifier of the File containing the document.
+        #   # @param file_id [String]
         #   #
         #   def initialize(file_id:, **) = super
 
@@ -1911,7 +1818,7 @@ module Increase
       # ```ruby
       # third_party_verification => {
       #   reference: String,
-      #   vendor: enum: Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor
+      #   vendor: Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor
       # }
       # ```
       class ThirdPartyVerification < Increase::BaseModel
@@ -1931,9 +1838,8 @@ module Increase
         #   # A reference to data stored in a third-party verification service. Your
         #   #   integration may or may not use this field.
         #   #
-        #   # @param reference [String] The reference identifier for the third party verification.
-        #   #
-        #   # @param vendor [String] The vendor that was used to perform the verification.
+        #   # @param reference [String]
+        #   # @param vendor [String]
         #   #
         #   def initialize(reference:, vendor:, **) = super
 
@@ -1965,7 +1871,7 @@ module Increase
       # ```ruby
       # trust => {
       #   address: Increase::Models::EntityCreateParams::Trust::Address,
-      #   category: enum: Increase::Models::EntityCreateParams::Trust::Category,
+      #   category: Increase::Models::EntityCreateParams::Trust::Category,
       #   name: String,
       #   trustees: -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::Trust::Trustee] === _1 },
       #   formation_document_file_id: String,
@@ -1974,13 +1880,16 @@ module Increase
       # ```
       class Trust < Increase::BaseModel
         # @!attribute address
-        #   The trust's physical address. Mail receiving locations like PO Boxes and PMB's are disallowed.
+        #   The trust's physical address. Mail receiving locations like PO Boxes and PMB's
+        #     are disallowed.
         #
         #   @return [Increase::Models::EntityCreateParams::Trust::Address]
         required :address, -> { Increase::Models::EntityCreateParams::Trust::Address }
 
         # @!attribute category
-        #   Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require their own Employer Identification Number. Revocable trusts require information about the individual `grantor` who created the trust.
+        #   Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
+        #     their own Employer Identification Number. Revocable trusts require information
+        #     about the individual `grantor` who created the trust.
         #
         #   @return [Symbol, Increase::Models::EntityCreateParams::Trust::Category]
         required :category, enum: -> { Increase::Models::EntityCreateParams::Trust::Category }
@@ -2008,7 +1917,8 @@ module Increase
         #   attr_writer :formation_document_file_id
 
         # @!attribute [r] formation_state
-        #   The two-letter United States Postal Service (USPS) abbreviation for the state in which the trust was formed.
+        #   The two-letter United States Postal Service (USPS) abbreviation for the state in
+        #     which the trust was formed.
         #
         #   @return [String, nil]
         optional :formation_state, String
@@ -2028,7 +1938,8 @@ module Increase
         #   attr_writer :grantor
 
         # @!attribute [r] tax_identifier
-        #   The Employer Identification Number (EIN) for the trust. Required if `category` is equal to `irrevocable`.
+        #   The Employer Identification Number (EIN) for the trust. Required if `category`
+        #     is equal to `irrevocable`.
         #
         #   @return [String, nil]
         optional :tax_identifier, String
@@ -2041,26 +1952,14 @@ module Increase
         #   # Details of the trust entity to create. Required if `structure` is equal to
         #   #   `trust`.
         #   #
-        #   # @param address [Increase::Models::EntityCreateParams::Trust::Address] The trust's physical address. Mail receiving locations like PO Boxes and PMB's
-        #   #   are disallowed.
-        #   #
-        #   # @param category [String] Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
-        #   #   their own Employer Identification Number. Revocable trusts require information
-        #   #   about the individual `grantor` who created the trust.
-        #   #
-        #   # @param name [String] The legal name of the trust.
-        #   #
-        #   # @param trustees [Array<Increase::Models::EntityCreateParams::Trust::Trustee>] The trustees of the trust.
-        #   #
-        #   # @param formation_document_file_id [String] The identifier of the File containing the formation document of the trust.
-        #   #
-        #   # @param formation_state [String] The two-letter United States Postal Service (USPS) abbreviation for the state in
-        #   #   which the trust was formed.
-        #   #
-        #   # @param grantor [Increase::Models::EntityCreateParams::Trust::Grantor] The grantor of the trust. Required if `category` is equal to `revocable`.
-        #   #
-        #   # @param tax_identifier [String] The Employer Identification Number (EIN) for the trust. Required if `category`
-        #   #   is equal to `irrevocable`.
+        #   # @param address [Increase::Models::EntityCreateParams::Trust::Address]
+        #   # @param category [String]
+        #   # @param name [String]
+        #   # @param trustees [Array<Increase::Models::EntityCreateParams::Trust::Trustee>]
+        #   # @param formation_document_file_id [String]
+        #   # @param formation_state [String]
+        #   # @param grantor [Increase::Models::EntityCreateParams::Trust::Grantor]
+        #   # @param tax_identifier [String]
         #   #
         #   def initialize(
         #     address:,
@@ -2102,7 +2001,8 @@ module Increase
           required :line1, String
 
           # @!attribute state
-          #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
+          #   The two-letter United States Postal Service (USPS) abbreviation for the state of
+          #     the address.
           #
           #   @return [String]
           required :state, String
@@ -2127,23 +2027,20 @@ module Increase
           #   # The trust's physical address. Mail receiving locations like PO Boxes and PMB's
           #   #   are disallowed.
           #   #
-          #   # @param city [String] The city of the address.
-          #   #
-          #   # @param line1 [String] The first line of the address. This is usually the street number and street.
-          #   #
-          #   # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-          #   #   the address.
-          #   #
-          #   # @param zip [String] The ZIP code of the address.
-          #   #
-          #   # @param line2 [String] The second line of the address. This might be the floor or room number.
+          #   # @param city [String]
+          #   # @param line1 [String]
+          #   # @param state [String]
+          #   # @param zip [String]
+          #   # @param line2 [String]
           #   #
           #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require their own Employer Identification Number. Revocable trusts require information about the individual `grantor` who created the trust.
+        # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
+        #   their own Employer Identification Number. Revocable trusts require information
+        #   about the individual `grantor` who created the trust.
         #
         # @example
         # ```ruby
@@ -2167,7 +2064,7 @@ module Increase
         # @example
         # ```ruby
         # trustee => {
-        #   structure: enum: Increase::Models::EntityCreateParams::Trust::Trustee::Structure,
+        #   structure: Increase::Models::EntityCreateParams::Trust::Trustee::Structure,
         #   individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual
         # }
         # ```
@@ -2179,7 +2076,8 @@ module Increase
           required :structure, enum: -> { Increase::Models::EntityCreateParams::Trust::Trustee::Structure }
 
           # @!attribute [r] individual
-          #   Details of the individual trustee. Required when the trustee `structure` is equal to `individual`.
+          #   Details of the individual trustee. Required when the trustee `structure` is
+          #     equal to `individual`.
           #
           #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual, nil]
           optional :individual, -> { Increase::Models::EntityCreateParams::Trust::Trustee::Individual }
@@ -2189,10 +2087,8 @@ module Increase
           #   attr_writer :individual
 
           # @!parse
-          #   # @param structure [String] The structure of the trustee.
-          #   #
-          #   # @param individual [Increase::Models::EntityCreateParams::Trust::Trustee::Individual] Details of the individual trustee. Required when the trustee `structure` is
-          #   #   equal to `individual`.
+          #   # @param structure [String]
+          #   # @param individual [Increase::Models::EntityCreateParams::Trust::Trustee::Individual]
           #   #
           #   def initialize(structure:, individual: nil, **) = super
 
@@ -2226,7 +2122,8 @@ module Increase
           # ```
           class Individual < Increase::BaseModel
             # @!attribute address
-            #   The individual's physical address. Mail receiving locations like PO Boxes and PMB's are disallowed.
+            #   The individual's physical address. Mail receiving locations like PO Boxes and
+            #     PMB's are disallowed.
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address]
             required :address,
@@ -2254,7 +2151,10 @@ module Increase
             required :name, String
 
             # @!attribute [r] confirmed_no_us_tax_id
-            #   The identification method for an individual can only be a passport, driver's license, or other document if you've confirmed the individual does not have a US tax id (either a Social Security Number or Individual Taxpayer Identification Number).
+            #   The identification method for an individual can only be a passport, driver's
+            #     license, or other document if you've confirmed the individual does not have a US
+            #     tax id (either a Social Security Number or Individual Taxpayer Identification
+            #     Number).
             #
             #   @return [Boolean, nil]
             optional :confirmed_no_us_tax_id, Increase::BooleanModel
@@ -2267,19 +2167,11 @@ module Increase
             #   # Details of the individual trustee. Required when the trustee `structure` is
             #   #   equal to `individual`.
             #   #
-            #   # @param address [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address] The individual's physical address. Mail receiving locations like PO Boxes and
-            #   #   PMB's are disallowed.
-            #   #
-            #   # @param date_of_birth [String] The person's date of birth in YYYY-MM-DD format.
-            #   #
-            #   # @param identification [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification] A means of verifying the person's identity.
-            #   #
-            #   # @param name [String] The person's legal name.
-            #   #
-            #   # @param confirmed_no_us_tax_id [Boolean] The identification method for an individual can only be a passport, driver's
-            #   #   license, or other document if you've confirmed the individual does not have a US
-            #   #   tax id (either a Social Security Number or Individual Taxpayer Identification
-            #   #   Number).
+            #   # @param address [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address]
+            #   # @param date_of_birth [String]
+            #   # @param identification [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification]
+            #   # @param name [String]
+            #   # @param confirmed_no_us_tax_id [Boolean]
             #   #
             #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
 
@@ -2309,7 +2201,8 @@ module Increase
               required :line1, String
 
               # @!attribute state
-              #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
+              #   The two-letter United States Postal Service (USPS) abbreviation for the state of
+              #     the address.
               #
               #   @return [String]
               required :state, String
@@ -2334,16 +2227,11 @@ module Increase
               #   # The individual's physical address. Mail receiving locations like PO Boxes and
               #   #   PMB's are disallowed.
               #   #
-              #   # @param city [String] The city of the address.
-              #   #
-              #   # @param line1 [String] The first line of the address. This is usually the street number and street.
-              #   #
-              #   # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-              #   #   the address.
-              #   #
-              #   # @param zip [String] The ZIP code of the address.
-              #   #
-              #   # @param line2 [String] The second line of the address. This might be the floor or room number.
+              #   # @param city [String]
+              #   # @param line1 [String]
+              #   # @param state [String]
+              #   # @param zip [String]
+              #   # @param line2 [String]
               #   #
               #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
@@ -2353,7 +2241,7 @@ module Increase
             # @example
             # ```ruby
             # identification => {
-            #   method_: enum: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method,
+            #   method_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method,
             #   number: String,
             #   drivers_license: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
             #   other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
@@ -2372,13 +2260,15 @@ module Increase
                        api_name: :method
 
               # @!attribute number
-              #   An identification number that can be used to verify the individual's identity, such as a social security number.
+              #   An identification number that can be used to verify the individual's identity,
+              #     such as a social security number.
               #
               #   @return [String]
               required :number, String
 
               # @!attribute [r] drivers_license
-              #   Information about the United States driver's license used for identification. Required if `method` is equal to `drivers_license`.
+              #   Information about the United States driver's license used for identification.
+              #     Required if `method` is equal to `drivers_license`.
               #
               #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense, nil]
               optional :drivers_license,
@@ -2389,7 +2279,8 @@ module Increase
               #   attr_writer :drivers_license
 
               # @!attribute [r] other
-              #   Information about the identification document provided. Required if `method` is equal to `other`.
+              #   Information about the identification document provided. Required if `method` is
+              #     equal to `other`.
               #
               #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other, nil]
               optional :other,
@@ -2400,7 +2291,8 @@ module Increase
               #   attr_writer :other
 
               # @!attribute [r] passport
-              #   Information about the passport used for identification. Required if `method` is equal to `passport`.
+              #   Information about the passport used for identification. Required if `method` is
+              #     equal to `passport`.
               #
               #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport, nil]
               optional :passport,
@@ -2413,19 +2305,11 @@ module Increase
               # @!parse
               #   # A means of verifying the person's identity.
               #   #
-              #   # @param method_ [String] A method that can be used to verify the individual's identity.
-              #   #
-              #   # @param number [String] An identification number that can be used to verify the individual's identity,
-              #   #   such as a social security number.
-              #   #
-              #   # @param drivers_license [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense] Information about the United States driver's license used for identification.
-              #   #   Required if `method` is equal to `drivers_license`.
-              #   #
-              #   # @param other [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other] Information about the identification document provided. Required if `method` is
-              #   #   equal to `other`.
-              #   #
-              #   # @param passport [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport] Information about the passport used for identification. Required if `method` is
-              #   #   equal to `passport`.
+              #   # @param method_ [String]
+              #   # @param number [String]
+              #   # @param drivers_license [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense]
+              #   # @param other [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other]
+              #   # @param passport [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport]
               #   #
               #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
 
@@ -2509,13 +2393,10 @@ module Increase
                 #   # Information about the United States driver's license used for identification.
                 #   #   Required if `method` is equal to `drivers_license`.
                 #   #
-                #   # @param expiration_date [String] The driver's license's expiration date in YYYY-MM-DD format.
-                #   #
-                #   # @param file_id [String] The identifier of the File containing the front of the driver's license.
-                #   #
-                #   # @param state [String] The state that issued the provided driver's license.
-                #   #
-                #   # @param back_file_id [String] The identifier of the File containing the back of the driver's license.
+                #   # @param expiration_date [String]
+                #   # @param file_id [String]
+                #   # @param state [String]
+                #   # @param back_file_id [String]
                 #   #
                 #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
 
@@ -2534,7 +2415,8 @@ module Increase
               # ```
               class Other < Increase::BaseModel
                 # @!attribute country
-                #   The two-character ISO 3166-1 code representing the country that issued the document.
+                #   The two-character ISO 3166-1 code representing the country that issued the
+                #     document.
                 #
                 #   @return [String]
                 required :country, String
@@ -2552,7 +2434,8 @@ module Increase
                 required :file_id, String
 
                 # @!attribute [r] back_file_id
-                #   The identifier of the File containing the back of the document. Not every document has a reverse side.
+                #   The identifier of the File containing the back of the document. Not every
+                #     document has a reverse side.
                 #
                 #   @return [String, nil]
                 optional :back_file_id, String
@@ -2575,17 +2458,11 @@ module Increase
                 #   # Information about the identification document provided. Required if `method` is
                 #   #   equal to `other`.
                 #   #
-                #   # @param country [String] The two-character ISO 3166-1 code representing the country that issued the
-                #   #   document.
-                #   #
-                #   # @param description [String] A description of the document submitted.
-                #   #
-                #   # @param file_id [String] The identifier of the File containing the front of the document.
-                #   #
-                #   # @param back_file_id [String] The identifier of the File containing the back of the document. Not every
-                #   #   document has a reverse side.
-                #   #
-                #   # @param expiration_date [String] The document's expiration date in YYYY-MM-DD format.
+                #   # @param country [String]
+                #   # @param description [String]
+                #   # @param file_id [String]
+                #   # @param back_file_id [String]
+                #   # @param expiration_date [String]
                 #   #
                 #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
 
@@ -2623,11 +2500,9 @@ module Increase
                 #   # Information about the passport used for identification. Required if `method` is
                 #   #   equal to `passport`.
                 #   #
-                #   # @param country [String] The country that issued the passport.
-                #   #
-                #   # @param expiration_date [String] The passport's expiration date in YYYY-MM-DD format.
-                #   #
-                #   # @param file_id [String] The identifier of the File containing the passport.
+                #   # @param country [String]
+                #   # @param expiration_date [String]
+                #   # @param file_id [String]
                 #   #
                 #   def initialize(country:, expiration_date:, file_id:, **) = super
 
@@ -2649,7 +2524,8 @@ module Increase
         # ```
         class Grantor < Increase::BaseModel
           # @!attribute address
-          #   The individual's physical address. Mail receiving locations like PO Boxes and PMB's are disallowed.
+          #   The individual's physical address. Mail receiving locations like PO Boxes and
+          #     PMB's are disallowed.
           #
           #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Address]
           required :address, -> { Increase::Models::EntityCreateParams::Trust::Grantor::Address }
@@ -2676,7 +2552,10 @@ module Increase
           required :name, String
 
           # @!attribute [r] confirmed_no_us_tax_id
-          #   The identification method for an individual can only be a passport, driver's license, or other document if you've confirmed the individual does not have a US tax id (either a Social Security Number or Individual Taxpayer Identification Number).
+          #   The identification method for an individual can only be a passport, driver's
+          #     license, or other document if you've confirmed the individual does not have a US
+          #     tax id (either a Social Security Number or Individual Taxpayer Identification
+          #     Number).
           #
           #   @return [Boolean, nil]
           optional :confirmed_no_us_tax_id, Increase::BooleanModel
@@ -2688,19 +2567,11 @@ module Increase
           # @!parse
           #   # The grantor of the trust. Required if `category` is equal to `revocable`.
           #   #
-          #   # @param address [Increase::Models::EntityCreateParams::Trust::Grantor::Address] The individual's physical address. Mail receiving locations like PO Boxes and
-          #   #   PMB's are disallowed.
-          #   #
-          #   # @param date_of_birth [String] The person's date of birth in YYYY-MM-DD format.
-          #   #
-          #   # @param identification [Increase::Models::EntityCreateParams::Trust::Grantor::Identification] A means of verifying the person's identity.
-          #   #
-          #   # @param name [String] The person's legal name.
-          #   #
-          #   # @param confirmed_no_us_tax_id [Boolean] The identification method for an individual can only be a passport, driver's
-          #   #   license, or other document if you've confirmed the individual does not have a US
-          #   #   tax id (either a Social Security Number or Individual Taxpayer Identification
-          #   #   Number).
+          #   # @param address [Increase::Models::EntityCreateParams::Trust::Grantor::Address]
+          #   # @param date_of_birth [String]
+          #   # @param identification [Increase::Models::EntityCreateParams::Trust::Grantor::Identification]
+          #   # @param name [String]
+          #   # @param confirmed_no_us_tax_id [Boolean]
           #   #
           #   def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil, **) = super
 
@@ -2730,7 +2601,8 @@ module Increase
             required :line1, String
 
             # @!attribute state
-            #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
+            #   The two-letter United States Postal Service (USPS) abbreviation for the state of
+            #     the address.
             #
             #   @return [String]
             required :state, String
@@ -2755,16 +2627,11 @@ module Increase
             #   # The individual's physical address. Mail receiving locations like PO Boxes and
             #   #   PMB's are disallowed.
             #   #
-            #   # @param city [String] The city of the address.
-            #   #
-            #   # @param line1 [String] The first line of the address. This is usually the street number and street.
-            #   #
-            #   # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-            #   #   the address.
-            #   #
-            #   # @param zip [String] The ZIP code of the address.
-            #   #
-            #   # @param line2 [String] The second line of the address. This might be the floor or room number.
+            #   # @param city [String]
+            #   # @param line1 [String]
+            #   # @param state [String]
+            #   # @param zip [String]
+            #   # @param line2 [String]
             #   #
             #   def initialize(city:, line1:, state:, zip:, line2: nil, **) = super
 
@@ -2774,7 +2641,7 @@ module Increase
           # @example
           # ```ruby
           # identification => {
-          #   method_: enum: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method,
+          #   method_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method,
           #   number: String,
           #   drivers_license: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
           #   other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
@@ -2793,13 +2660,15 @@ module Increase
                      api_name: :method
 
             # @!attribute number
-            #   An identification number that can be used to verify the individual's identity, such as a social security number.
+            #   An identification number that can be used to verify the individual's identity,
+            #     such as a social security number.
             #
             #   @return [String]
             required :number, String
 
             # @!attribute [r] drivers_license
-            #   Information about the United States driver's license used for identification. Required if `method` is equal to `drivers_license`.
+            #   Information about the United States driver's license used for identification.
+            #     Required if `method` is equal to `drivers_license`.
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense, nil]
             optional :drivers_license,
@@ -2810,7 +2679,8 @@ module Increase
             #   attr_writer :drivers_license
 
             # @!attribute [r] other
-            #   Information about the identification document provided. Required if `method` is equal to `other`.
+            #   Information about the identification document provided. Required if `method` is
+            #     equal to `other`.
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other, nil]
             optional :other,
@@ -2823,7 +2693,8 @@ module Increase
             #   attr_writer :other
 
             # @!attribute [r] passport
-            #   Information about the passport used for identification. Required if `method` is equal to `passport`.
+            #   Information about the passport used for identification. Required if `method` is
+            #     equal to `passport`.
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport, nil]
             optional :passport,
@@ -2838,19 +2709,11 @@ module Increase
             # @!parse
             #   # A means of verifying the person's identity.
             #   #
-            #   # @param method_ [String] A method that can be used to verify the individual's identity.
-            #   #
-            #   # @param number [String] An identification number that can be used to verify the individual's identity,
-            #   #   such as a social security number.
-            #   #
-            #   # @param drivers_license [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense] Information about the United States driver's license used for identification.
-            #   #   Required if `method` is equal to `drivers_license`.
-            #   #
-            #   # @param other [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other] Information about the identification document provided. Required if `method` is
-            #   #   equal to `other`.
-            #   #
-            #   # @param passport [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport] Information about the passport used for identification. Required if `method` is
-            #   #   equal to `passport`.
+            #   # @param method_ [String]
+            #   # @param number [String]
+            #   # @param drivers_license [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense]
+            #   # @param other [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other]
+            #   # @param passport [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport]
             #   #
             #   def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil, **) = super
 
@@ -2934,13 +2797,10 @@ module Increase
               #   # Information about the United States driver's license used for identification.
               #   #   Required if `method` is equal to `drivers_license`.
               #   #
-              #   # @param expiration_date [String] The driver's license's expiration date in YYYY-MM-DD format.
-              #   #
-              #   # @param file_id [String] The identifier of the File containing the front of the driver's license.
-              #   #
-              #   # @param state [String] The state that issued the provided driver's license.
-              #   #
-              #   # @param back_file_id [String] The identifier of the File containing the back of the driver's license.
+              #   # @param expiration_date [String]
+              #   # @param file_id [String]
+              #   # @param state [String]
+              #   # @param back_file_id [String]
               #   #
               #   def initialize(expiration_date:, file_id:, state:, back_file_id: nil, **) = super
 
@@ -2959,7 +2819,8 @@ module Increase
             # ```
             class Other < Increase::BaseModel
               # @!attribute country
-              #   The two-character ISO 3166-1 code representing the country that issued the document.
+              #   The two-character ISO 3166-1 code representing the country that issued the
+              #     document.
               #
               #   @return [String]
               required :country, String
@@ -2977,7 +2838,8 @@ module Increase
               required :file_id, String
 
               # @!attribute [r] back_file_id
-              #   The identifier of the File containing the back of the document. Not every document has a reverse side.
+              #   The identifier of the File containing the back of the document. Not every
+              #     document has a reverse side.
               #
               #   @return [String, nil]
               optional :back_file_id, String
@@ -3000,17 +2862,11 @@ module Increase
               #   # Information about the identification document provided. Required if `method` is
               #   #   equal to `other`.
               #   #
-              #   # @param country [String] The two-character ISO 3166-1 code representing the country that issued the
-              #   #   document.
-              #   #
-              #   # @param description [String] A description of the document submitted.
-              #   #
-              #   # @param file_id [String] The identifier of the File containing the front of the document.
-              #   #
-              #   # @param back_file_id [String] The identifier of the File containing the back of the document. Not every
-              #   #   document has a reverse side.
-              #   #
-              #   # @param expiration_date [String] The document's expiration date in YYYY-MM-DD format.
+              #   # @param country [String]
+              #   # @param description [String]
+              #   # @param file_id [String]
+              #   # @param back_file_id [String]
+              #   # @param expiration_date [String]
               #   #
               #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
 
@@ -3048,11 +2904,9 @@ module Increase
               #   # Information about the passport used for identification. Required if `method` is
               #   #   equal to `passport`.
               #   #
-              #   # @param country [String] The country that issued the passport.
-              #   #
-              #   # @param expiration_date [String] The passport's expiration date in YYYY-MM-DD format.
-              #   #
-              #   # @param file_id [String] The identifier of the File containing the passport.
+              #   # @param country [String]
+              #   # @param expiration_date [String]
+              #   # @param file_id [String]
               #   #
               #   def initialize(country:, expiration_date:, file_id:, **) = super
 

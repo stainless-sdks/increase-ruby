@@ -22,7 +22,8 @@ module Increase
       required :destination_account_number_id, String
 
       # @!attribute expires_at
-      #   The expiration time for this request, in UTC. The requestee will not be able to pay after this date.
+      #   The expiration time for this request, in UTC. The requestee will not be able to
+      #     pay after this date.
       #
       #   @return [Date]
       required :expires_at, Date
@@ -40,27 +41,20 @@ module Increase
       required :source_account_number, String
 
       # @!attribute source_routing_number
-      #   The requestee's American Bankers' Association (ABA) Routing Transit Number (RTN).
+      #   The requestee's American Bankers' Association (ABA) Routing Transit Number
+      #     (RTN).
       #
       #   @return [String]
       required :source_routing_number, String
 
       # @!parse
-      #   # @param amount [Integer] The requested amount in USD cents. Must be positive.
-      #   #
-      #   # @param debtor [Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor] Details of the person being requested to pay.
-      #   #
-      #   # @param destination_account_number_id [String] The identifier of the Account Number where the funds will land.
-      #   #
-      #   # @param expires_at [String] The expiration time for this request, in UTC. The requestee will not be able to
-      #   #   pay after this date.
-      #   #
-      #   # @param remittance_information [String] Unstructured information that will show on the requestee's bank statement.
-      #   #
-      #   # @param source_account_number [String] The account number the funds will be requested from.
-      #   #
-      #   # @param source_routing_number [String] The requestee's American Bankers' Association (ABA) Routing Transit Number
-      #   #   (RTN).
+      #   # @param amount [Integer]
+      #   # @param debtor [Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor]
+      #   # @param destination_account_number_id [String]
+      #   # @param expires_at [String]
+      #   # @param remittance_information [String]
+      #   # @param source_account_number [String]
+      #   # @param source_routing_number [String]
       #   #
       #   def initialize(
       #     amount:,
@@ -103,9 +97,8 @@ module Increase
         # @!parse
         #   # Details of the person being requested to pay.
         #   #
-        #   # @param address [Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address] Address of the debtor.
-        #   #
-        #   # @param name [String] The name of the debtor.
+        #   # @param address [Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address]
+        #   # @param name [String]
         #   #
         #   def initialize(address:, name:, **) = super
 
@@ -160,13 +153,10 @@ module Increase
           # @!parse
           #   # Address of the debtor.
           #   #
-          #   # @param country [String] The ISO 3166, Alpha-2 country code.
-          #   #
-          #   # @param city [String] The town or city.
-          #   #
-          #   # @param post_code [String] The postal code or zip.
-          #   #
-          #   # @param street_name [String] The street name without the street number.
+          #   # @param country [String]
+          #   # @param city [String]
+          #   # @param post_code [String]
+          #   # @param street_name [String]
           #   #
           #   def initialize(country:, city: nil, post_code: nil, street_name: nil, **) = super
 

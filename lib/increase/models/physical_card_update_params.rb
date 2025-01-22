@@ -10,7 +10,7 @@ module Increase
       required :status, enum: -> { Increase::Models::PhysicalCardUpdateParams::Status }
 
       # @!parse
-      #   # @param status [String] The status to update the Physical Card to.
+      #   # @param status [String]
       #   #
       #   def initialize(status:, **) = super
 

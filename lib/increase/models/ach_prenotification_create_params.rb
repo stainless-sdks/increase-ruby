@@ -16,7 +16,8 @@ module Increase
       required :account_number, String
 
       # @!attribute routing_number
-      #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the destination account.
+      #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+      #     destination account.
       #
       #   @return [String]
       required :routing_number, String
@@ -83,7 +84,8 @@ module Increase
       #   attr_writer :credit_debit_indicator
 
       # @!attribute [r] effective_date
-      #   The transfer effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+      #   The transfer effective date in
+      #     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       #
       #   @return [Date, nil]
       optional :effective_date, Date
@@ -103,7 +105,8 @@ module Increase
       #   attr_writer :individual_id
 
       # @!attribute [r] individual_name
-      #   The name of the transfer recipient. This value is information and not verified by the recipient's bank.
+      #   The name of the transfer recipient. This value is information and not verified
+      #     by the recipient's bank.
       #
       #   @return [String, nil]
       optional :individual_name, String
@@ -124,34 +127,19 @@ module Increase
       #   attr_writer :standard_entry_class_code
 
       # @!parse
-      #   # @param account_id [String] The Increase identifier for the account that will send the transfer.
-      #   #
-      #   # @param account_number [String] The account number for the destination account.
-      #   #
-      #   # @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   #   destination account.
-      #   #
-      #   # @param addendum [String] Additional information that will be sent to the recipient.
-      #   #
-      #   # @param company_descriptive_date [String] The description of the date of the transfer.
-      #   #
-      #   # @param company_discretionary_data [String] The data you choose to associate with the transfer.
-      #   #
-      #   # @param company_entry_description [String] The description of the transfer you wish to be shown to the recipient.
-      #   #
-      #   # @param company_name [String] The name by which the recipient knows you.
-      #   #
-      #   # @param credit_debit_indicator [String] Whether the Prenotification is for a future debit or credit.
-      #   #
-      #   # @param effective_date [String] The transfer effective date in
-      #   #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-      #   #
-      #   # @param individual_id [String] Your identifier for the transfer recipient.
-      #   #
-      #   # @param individual_name [String] The name of the transfer recipient. This value is information and not verified
-      #   #   by the recipient's bank.
-      #   #
-      #   # @param standard_entry_class_code [String] The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+      #   # @param account_id [String]
+      #   # @param account_number [String]
+      #   # @param routing_number [String]
+      #   # @param addendum [String]
+      #   # @param company_descriptive_date [String]
+      #   # @param company_discretionary_data [String]
+      #   # @param company_entry_description [String]
+      #   # @param company_name [String]
+      #   # @param credit_debit_indicator [String]
+      #   # @param effective_date [String]
+      #   # @param individual_id [String]
+      #   # @param individual_name [String]
+      #   # @param standard_entry_class_code [String]
       #   #
       #   def initialize(
       #     account_id:,
