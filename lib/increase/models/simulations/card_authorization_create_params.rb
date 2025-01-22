@@ -11,7 +11,8 @@ module Increase
         required :amount, Integer
 
         # @!attribute [r] authenticated_card_payment_id
-        #   The identifier of a Card Payment with a `card_authentication` if you want to simulate an authenticated authorization.
+        #   The identifier of a Card Payment with a `card_authentication` if you want to
+        #     simulate an authenticated authorization.
         #
         #   @return [String, nil]
         optional :authenticated_card_payment_id, String
@@ -31,7 +32,8 @@ module Increase
         #   attr_writer :card_id
 
         # @!attribute [r] decline_reason
-        #   Forces a card decline with a specific reason. No real time decision will be sent.
+        #   Forces a card decline with a specific reason. No real time decision will be
+        #     sent.
         #
         #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::DeclineReason, nil]
         optional :decline_reason,
@@ -52,7 +54,8 @@ module Increase
         #   attr_writer :digital_wallet_token_id
 
         # @!attribute [r] direction
-        #   The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+        #   The direction describes the direction the funds will move, either from the
+        #     cardholder to the merchant or from the merchant to the cardholder.
         #
         #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction, nil]
         optional :direction,
@@ -65,7 +68,10 @@ module Increase
         #   attr_writer :direction
 
         # @!attribute [r] event_subscription_id
-        #   The identifier of the Event Subscription to use. If provided, will override the default real time event subscription. Because you can only create one real time decision event subscription, you can use this field to route events to any specified event subscription for testing purposes.
+        #   The identifier of the Event Subscription to use. If provided, will override the
+        #     default real time event subscription. Because you can only create one real time
+        #     decision event subscription, you can use this field to route events to any
+        #     specified event subscription for testing purposes.
         #
         #   @return [String, nil]
         optional :event_subscription_id, String
@@ -75,7 +81,8 @@ module Increase
         #   attr_writer :event_subscription_id
 
         # @!attribute [r] merchant_acceptor_id
-        #   The merchant identifier (commonly abbreviated as MID) of the merchant the card is transacting with.
+        #   The merchant identifier (commonly abbreviated as MID) of the merchant the card
+        #     is transacting with.
         #
         #   @return [String, nil]
         optional :merchant_acceptor_id, String
@@ -85,7 +92,8 @@ module Increase
         #   attr_writer :merchant_acceptor_id
 
         # @!attribute [r] merchant_category_code
-        #   The Merchant Category Code (commonly abbreviated as MCC) of the merchant the card is transacting with.
+        #   The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+        #     card is transacting with.
         #
         #   @return [String, nil]
         optional :merchant_category_code, String
@@ -145,7 +153,8 @@ module Increase
         #   attr_writer :physical_card_id
 
         # @!attribute [r] terminal_id
-        #   The terminal identifier (commonly abbreviated as TID) of the terminal the card is transacting with.
+        #   The terminal identifier (commonly abbreviated as TID) of the terminal the card
+        #     is transacting with.
         #
         #   @return [String, nil]
         optional :terminal_id, String
@@ -155,44 +164,21 @@ module Increase
         #   attr_writer :terminal_id
 
         # @!parse
-        #   # @param amount [Integer] The authorization amount in cents.
-        #   #
-        #   # @param authenticated_card_payment_id [String] The identifier of a Card Payment with a `card_authentication` if you want to
-        #   #   simulate an authenticated authorization.
-        #   #
-        #   # @param card_id [String] The identifier of the Card to be authorized.
-        #   #
-        #   # @param decline_reason [String] Forces a card decline with a specific reason. No real time decision will be
-        #   #   sent.
-        #   #
-        #   # @param digital_wallet_token_id [String] The identifier of the Digital Wallet Token to be authorized.
-        #   #
-        #   # @param direction [String] The direction describes the direction the funds will move, either from the
-        #   #   cardholder to the merchant or from the merchant to the cardholder.
-        #   #
-        #   # @param event_subscription_id [String] The identifier of the Event Subscription to use. If provided, will override the
-        #   #   default real time event subscription. Because you can only create one real time
-        #   #   decision event subscription, you can use this field to route events to any
-        #   #   specified event subscription for testing purposes.
-        #   #
-        #   # @param merchant_acceptor_id [String] The merchant identifier (commonly abbreviated as MID) of the merchant the card
-        #   #   is transacting with.
-        #   #
-        #   # @param merchant_category_code [String] The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-        #   #   card is transacting with.
-        #   #
-        #   # @param merchant_city [String] The city the merchant resides in.
-        #   #
-        #   # @param merchant_country [String] The country the merchant resides in.
-        #   #
-        #   # @param merchant_descriptor [String] The merchant descriptor of the merchant the card is transacting with.
-        #   #
-        #   # @param merchant_state [String] The state the merchant resides in.
-        #   #
-        #   # @param physical_card_id [String] The identifier of the Physical Card to be authorized.
-        #   #
-        #   # @param terminal_id [String] The terminal identifier (commonly abbreviated as TID) of the terminal the card
-        #   #   is transacting with.
+        #   # @param amount [Integer]
+        #   # @param authenticated_card_payment_id [String]
+        #   # @param card_id [String]
+        #   # @param decline_reason [String]
+        #   # @param digital_wallet_token_id [String]
+        #   # @param direction [String]
+        #   # @param event_subscription_id [String]
+        #   # @param merchant_acceptor_id [String]
+        #   # @param merchant_category_code [String]
+        #   # @param merchant_city [String]
+        #   # @param merchant_country [String]
+        #   # @param merchant_descriptor [String]
+        #   # @param merchant_state [String]
+        #   # @param physical_card_id [String]
+        #   # @param terminal_id [String]
         #   #
         #   def initialize(
         #     amount:,
@@ -217,7 +203,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # Forces a card decline with a specific reason. No real time decision will be sent.
+        # Forces a card decline with a specific reason. No real time decision will be
+        #   sent.
         #
         # @example
         # ```ruby
@@ -285,7 +272,8 @@ module Increase
           finalize!
         end
 
-        # The direction describes the direction the funds will move, either from the cardholder to the merchant or from the merchant to the cardholder.
+        # The direction describes the direction the funds will move, either from the
+        #   cardholder to the merchant or from the merchant to the cardholder.
         #
         # @example
         # ```ruby

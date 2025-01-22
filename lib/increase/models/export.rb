@@ -6,7 +6,7 @@ module Increase
     # ```ruby
     # export => {
     #   id: String,
-    #   category: enum: Increase::Models::Export::Category,
+    #   category: Increase::Models::Export::Category,
     #   created_at: Time,
     #   file_download_url: String,
     #   file_id: String,
@@ -21,7 +21,8 @@ module Increase
       required :id, String
 
       # @!attribute category
-      #   The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
+      #   The category of the Export. We may add additional possible values for this enum
+      #     over time; your application should be able to handle that gracefully.
       #
       #   @return [Symbol, Increase::Models::Export::Category]
       required :category, enum: -> { Increase::Models::Export::Category }
@@ -33,19 +34,23 @@ module Increase
       required :created_at, Time
 
       # @!attribute file_download_url
-      #   A URL at which the Export's file can be downloaded. This will be present when the Export's status transitions to `complete`.
+      #   A URL at which the Export's file can be downloaded. This will be present when
+      #     the Export's status transitions to `complete`.
       #
       #   @return [String, nil]
       required :file_download_url, String, nil?: true
 
       # @!attribute file_id
-      #   The File containing the contents of the Export. This will be present when the Export's status transitions to `complete`.
+      #   The File containing the contents of the Export. This will be present when the
+      #     Export's status transitions to `complete`.
       #
       #   @return [String, nil]
       required :file_id, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -57,7 +62,8 @@ module Increase
       required :status, enum: -> { Increase::Models::Export::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `export`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `export`.
       #
       #   @return [Symbol, Increase::Models::Export::Type]
       required :type, enum: -> { Increase::Models::Export::Type }
@@ -69,33 +75,21 @@ module Increase
       #   #   please read our
       #   #   [Exports documentation](https://increase.com/documentation/exports).
       #   #
-      #   # @param id [String] The Export identifier.
-      #   #
-      #   # @param category [String] The category of the Export. We may add additional possible values for this enum
-      #   #   over time; your application should be able to handle that gracefully.
-      #   #
-      #   # @param created_at [String] The time the Export was created.
-      #   #
-      #   # @param file_download_url [String, nil] A URL at which the Export's file can be downloaded. This will be present when
-      #   #   the Export's status transitions to `complete`.
-      #   #
-      #   # @param file_id [String, nil] The File containing the contents of the Export. This will be present when the
-      #   #   Export's status transitions to `complete`.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param status [String] The status of the Export.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `export`.
+      #   # @param id [String]
+      #   # @param category [String]
+      #   # @param created_at [String]
+      #   # @param file_download_url [String, nil]
+      #   # @param file_id [String, nil]
+      #   # @param idempotency_key [String, nil]
+      #   # @param status [String]
+      #   # @param type [String]
       #   #
       #   def initialize(id:, category:, created_at:, file_download_url:, file_id:, idempotency_key:, status:, type:, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # The category of the Export. We may add additional possible values for this enum over time; your application should be able to handle that gracefully.
+      # The category of the Export. We may add additional possible values for this enum
+      #   over time; your application should be able to handle that gracefully.
       #
       # @example
       # ```ruby
@@ -165,7 +159,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `export`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `export`.
       #
       # @example
       # ```ruby

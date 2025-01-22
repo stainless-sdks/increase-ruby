@@ -10,7 +10,8 @@ module Increase
       required :url, String
 
       # @!attribute [r] oauth_connection_id
-      #   If specified, this subscription will only receive webhooks for Events associated with the specified OAuth Connection.
+      #   If specified, this subscription will only receive webhooks for Events associated
+      #     with the specified OAuth Connection.
       #
       #   @return [String, nil]
       optional :oauth_connection_id, String
@@ -20,7 +21,8 @@ module Increase
       #   attr_writer :oauth_connection_id
 
       # @!attribute [r] selected_event_category
-      #   If specified, this subscription will only receive webhooks for Events with the specified `category`.
+      #   If specified, this subscription will only receive webhooks for Events with the
+      #     specified `category`.
       #
       #   @return [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory, nil]
       optional :selected_event_category,
@@ -31,7 +33,8 @@ module Increase
       #   attr_writer :selected_event_category
 
       # @!attribute [r] shared_secret
-      #   The key that will be used to sign webhooks. If no value is passed, a random string will be used as default.
+      #   The key that will be used to sign webhooks. If no value is passed, a random
+      #     string will be used as default.
       #
       #   @return [String, nil]
       optional :shared_secret, String
@@ -41,22 +44,17 @@ module Increase
       #   attr_writer :shared_secret
 
       # @!parse
-      #   # @param url [String] The URL you'd like us to send webhooks to.
-      #   #
-      #   # @param oauth_connection_id [String] If specified, this subscription will only receive webhooks for Events associated
-      #   #   with the specified OAuth Connection.
-      #   #
-      #   # @param selected_event_category [String] If specified, this subscription will only receive webhooks for Events with the
-      #   #   specified `category`.
-      #   #
-      #   # @param shared_secret [String] The key that will be used to sign webhooks. If no value is passed, a random
-      #   #   string will be used as default.
+      #   # @param url [String]
+      #   # @param oauth_connection_id [String]
+      #   # @param selected_event_category [String]
+      #   # @param shared_secret [String]
       #   #
       #   def initialize(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # If specified, this subscription will only receive webhooks for Events with the specified `category`.
+      # If specified, this subscription will only receive webhooks for Events with the
+      #   specified `category`.
       #
       # @example
       # ```ruby

@@ -9,7 +9,7 @@ module Increase
     #   ach_transfers: -> { Increase::ArrayOf[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer] === _1 },
     #   created_at: Time,
     #   due_on: Time,
-    #   type: enum: Increase::Models::ProofOfAuthorizationRequest::Type
+    #   type: Increase::Models::ProofOfAuthorizationRequest::Type
     # }
     # ```
     class ProofOfAuthorizationRequest < Increase::BaseModel
@@ -39,7 +39,8 @@ module Increase
       required :due_on, Time
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `proof_of_authorization_request`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `proof_of_authorization_request`.
       #
       #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequest::Type]
       required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequest::Type }
@@ -53,18 +54,12 @@ module Increase
       # @!parse
       #   # A request for proof of authorization for one or more ACH debit transfers.
       #   #
-      #   # @param id [String] The Proof of Authorization Request identifier.
-      #   #
-      #   # @param ach_transfers [Array<Increase::Models::ProofOfAuthorizationRequest::ACHTransfer>] The ACH Transfers associated with the request.
-      #   #
-      #   # @param created_at [String] The time the Proof of Authorization Request was created.
-      #   #
-      #   # @param due_on [String] The time the Proof of Authorization Request is due.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `proof_of_authorization_request`.
-      #   #
-      #   # @param updated_at [String] The time the Proof of Authorization Request was last updated.
+      #   # @param id [String]
+      #   # @param ach_transfers [Array<Increase::Models::ProofOfAuthorizationRequest::ACHTransfer>]
+      #   # @param created_at [String]
+      #   # @param due_on [String]
+      #   # @param type [String]
+      #   # @param updated_at [String]
       #   #
       #   def initialize(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:, **) = super
 
@@ -84,14 +79,15 @@ module Increase
         required :id, String
 
         # @!parse
-        #   # @param id [String] The ACH Transfer identifier.
+        #   # @param id [String]
         #   #
         #   def initialize(id:, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # A constant representing the object's type. For this resource it will always be `proof_of_authorization_request`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `proof_of_authorization_request`.
       #
       # @example
       # ```ruby

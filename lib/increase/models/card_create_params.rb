@@ -30,7 +30,11 @@ module Increase
       #   attr_writer :description
 
       # @!attribute [r] digital_wallet
-      #   The contact information used in the two-factor steps for digital wallet card creation. To add the card to a digital wallet, you may supply an email or phone number with this request. Otherwise, subscribe and then action a Real Time Decision with the category `digital_wallet_token_requested` or `digital_wallet_authentication_requested`.
+      #   The contact information used in the two-factor steps for digital wallet card
+      #     creation. To add the card to a digital wallet, you may supply an email or phone
+      #     number with this request. Otherwise, subscribe and then action a Real Time
+      #     Decision with the category `digital_wallet_token_requested` or
+      #     `digital_wallet_authentication_requested`.
       #
       #   @return [Increase::Models::CardCreateParams::DigitalWallet, nil]
       optional :digital_wallet, -> { Increase::Models::CardCreateParams::DigitalWallet }
@@ -40,7 +44,8 @@ module Increase
       #   attr_writer :digital_wallet
 
       # @!attribute [r] entity_id
-      #   The Entity the card belongs to. You only need to supply this in rare situations when the card is not for the Account holder.
+      #   The Entity the card belongs to. You only need to supply this in rare situations
+      #     when the card is not for the Account holder.
       #
       #   @return [String, nil]
       optional :entity_id, String
@@ -50,20 +55,11 @@ module Increase
       #   attr_writer :entity_id
 
       # @!parse
-      #   # @param account_id [String] The Account the card should belong to.
-      #   #
-      #   # @param billing_address [Increase::Models::CardCreateParams::BillingAddress] The card's billing address.
-      #   #
-      #   # @param description [String] The description you choose to give the card.
-      #   #
-      #   # @param digital_wallet [Increase::Models::CardCreateParams::DigitalWallet] The contact information used in the two-factor steps for digital wallet card
-      #   #   creation. To add the card to a digital wallet, you may supply an email or phone
-      #   #   number with this request. Otherwise, subscribe and then action a Real Time
-      #   #   Decision with the category `digital_wallet_token_requested` or
-      #   #   `digital_wallet_authentication_requested`.
-      #   #
-      #   # @param entity_id [String] The Entity the card belongs to. You only need to supply this in rare situations
-      #   #   when the card is not for the Account holder.
+      #   # @param account_id [String]
+      #   # @param billing_address [Increase::Models::CardCreateParams::BillingAddress]
+      #   # @param description [String]
+      #   # @param digital_wallet [Increase::Models::CardCreateParams::DigitalWallet]
+      #   # @param entity_id [String]
       #   #
       #   def initialize(account_id:, billing_address: nil, description: nil, digital_wallet: nil, entity_id: nil, **) = super
 
@@ -117,15 +113,11 @@ module Increase
         # @!parse
         #   # The card's billing address.
         #   #
-        #   # @param city [String] The city of the billing address.
-        #   #
-        #   # @param line1 [String] The first line of the billing address.
-        #   #
-        #   # @param postal_code [String] The postal code of the billing address.
-        #   #
-        #   # @param state [String] The US state of the billing address.
-        #   #
-        #   # @param line2 [String] The second line of the billing address.
+        #   # @param city [String]
+        #   # @param line1 [String]
+        #   # @param postal_code [String]
+        #   # @param state [String]
+        #   # @param line2 [String]
         #   #
         #   def initialize(city:, line1:, postal_code:, state:, line2: nil, **) = super
 
@@ -152,7 +144,8 @@ module Increase
         #   attr_writer :digital_card_profile_id
 
         # @!attribute [r] email
-        #   An email address that can be used to contact and verify the cardholder via one-time passcode over email.
+        #   An email address that can be used to contact and verify the cardholder via
+        #     one-time passcode over email.
         #
         #   @return [String, nil]
         optional :email, String
@@ -162,7 +155,8 @@ module Increase
         #   attr_writer :email
 
         # @!attribute [r] phone
-        #   A phone number that can be used to contact and verify the cardholder via one-time passcode over SMS.
+        #   A phone number that can be used to contact and verify the cardholder via
+        #     one-time passcode over SMS.
         #
         #   @return [String, nil]
         optional :phone, String
@@ -178,13 +172,9 @@ module Increase
         #   #   Decision with the category `digital_wallet_token_requested` or
         #   #   `digital_wallet_authentication_requested`.
         #   #
-        #   # @param digital_card_profile_id [String] The digital card profile assigned to this digital card.
-        #   #
-        #   # @param email [String] An email address that can be used to contact and verify the cardholder via
-        #   #   one-time passcode over email.
-        #   #
-        #   # @param phone [String] A phone number that can be used to contact and verify the cardholder via
-        #   #   one-time passcode over SMS.
+        #   # @param digital_card_profile_id [String]
+        #   # @param email [String]
+        #   # @param phone [String]
         #   #
         #   def initialize(digital_card_profile_id: nil, email: nil, phone: nil, **) = super
 

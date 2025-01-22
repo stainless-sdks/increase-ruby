@@ -11,7 +11,7 @@ module Increase
         required :card_payment_id, String
 
         # @!parse
-        #   # @param card_payment_id [String] The identifier of the Card Payment to expire.
+        #   # @param card_payment_id [String]
         #   #
         #   def initialize(card_payment_id:, **) = super
 

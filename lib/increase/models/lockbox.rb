@@ -21,7 +21,8 @@ module Increase
       required :id, String
 
       # @!attribute account_id
-      #   The identifier for the Account checks sent to this lockbox will be deposited into.
+      #   The identifier for the Account checks sent to this lockbox will be deposited
+      #     into.
       #
       #   @return [String]
       required :account_id, String
@@ -33,7 +34,8 @@ module Increase
       required :address, -> { Increase::Models::Lockbox::Address }
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
+      #     was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -45,7 +47,9 @@ module Increase
       required :description, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -63,7 +67,8 @@ module Increase
       required :status, enum: -> { Increase::Models::Lockbox::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `lockbox`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `lockbox`.
       #
       #   @return [Symbol, Increase::Models::Lockbox::Type]
       required :type, enum: -> { Increase::Models::Lockbox::Type }
@@ -72,28 +77,15 @@ module Increase
       #   # Lockboxes are physical locations that can receive mail containing paper checks.
       #   #   Increase will automatically create a Check Deposit for checks received this way.
       #   #
-      #   # @param id [String] The Lockbox identifier.
-      #   #
-      #   # @param account_id [String] The identifier for the Account checks sent to this lockbox will be deposited
-      #   #   into.
-      #   #
-      #   # @param address [Increase::Models::Lockbox::Address] The mailing address for the Lockbox.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
-      #   #   was created.
-      #   #
-      #   # @param description [String, nil] The description you choose for the Lockbox.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param recipient_name [String, nil] The recipient name you choose for the Lockbox.
-      #   #
-      #   # @param status [String] This indicates if mail can be sent to this address.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `lockbox`.
+      #   # @param id [String]
+      #   # @param account_id [String]
+      #   # @param address [Increase::Models::Lockbox::Address]
+      #   # @param created_at [String]
+      #   # @param description [String, nil]
+      #   # @param idempotency_key [String, nil]
+      #   # @param recipient_name [String, nil]
+      #   # @param status [String]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -148,13 +140,17 @@ module Increase
         required :postal_code, String
 
         # @!attribute recipient
-        #   The recipient line of the address. This will include the recipient name you provide when creating the address, as well as an ATTN suffix to help route the mail to your lockbox. Mail senders must include this ATTN line to receive mail at this Lockbox.
+        #   The recipient line of the address. This will include the recipient name you
+        #     provide when creating the address, as well as an ATTN suffix to help route the
+        #     mail to your lockbox. Mail senders must include this ATTN line to receive mail
+        #     at this Lockbox.
         #
         #   @return [String, nil]
         required :recipient, String, nil?: true
 
         # @!attribute state
-        #   The two-letter United States Postal Service (USPS) abbreviation for the state of the address.
+        #   The two-letter United States Postal Service (USPS) abbreviation for the state of
+        #     the address.
         #
         #   @return [String]
         required :state, String
@@ -162,21 +158,12 @@ module Increase
         # @!parse
         #   # The mailing address for the Lockbox.
         #   #
-        #   # @param city [String] The city of the address.
-        #   #
-        #   # @param line1 [String] The first line of the address.
-        #   #
-        #   # @param line2 [String] The second line of the address.
-        #   #
-        #   # @param postal_code [String] The postal code of the address.
-        #   #
-        #   # @param recipient [String, nil] The recipient line of the address. This will include the recipient name you
-        #   #   provide when creating the address, as well as an ATTN suffix to help route the
-        #   #   mail to your lockbox. Mail senders must include this ATTN line to receive mail
-        #   #   at this Lockbox.
-        #   #
-        #   # @param state [String] The two-letter United States Postal Service (USPS) abbreviation for the state of
-        #   #   the address.
+        #   # @param city [String]
+        #   # @param line1 [String]
+        #   # @param line2 [String]
+        #   # @param postal_code [String]
+        #   # @param recipient [String, nil]
+        #   # @param state [String]
         #   #
         #   def initialize(city:, line1:, line2:, postal_code:, recipient:, state:, **) = super
 
@@ -204,7 +191,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `lockbox`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `lockbox`.
       #
       # @example
       # ```ruby

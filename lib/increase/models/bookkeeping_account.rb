@@ -7,7 +7,7 @@ module Increase
     # bookkeeping_account => {
     #   id: String,
     #   account_id: String,
-    #   compliance_category: enum: Increase::Models::BookkeepingAccount::ComplianceCategory,
+    #   compliance_category: Increase::Models::BookkeepingAccount::ComplianceCategory,
     #   entity_id: String,
     #   idempotency_key: String,
     #   **_
@@ -41,7 +41,9 @@ module Increase
       required :entity_id, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -53,7 +55,8 @@ module Increase
       required :name, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `bookkeeping_account`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `bookkeeping_account`.
       #
       #   @return [Symbol, Increase::Models::BookkeepingAccount::Type]
       required :type, enum: -> { Increase::Models::BookkeepingAccount::Type }
@@ -63,22 +66,13 @@ module Increase
       #   #   setup might require annotating money movements using this API. Learn more in our
       #   #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       #   #
-      #   # @param id [String] The account identifier.
-      #   #
-      #   # @param account_id [String, nil] The API Account associated with this bookkeeping account.
-      #   #
-      #   # @param compliance_category [String, nil] The compliance category of the account.
-      #   #
-      #   # @param entity_id [String, nil] The Entity associated with this bookkeeping account.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param name [String] The name you choose for the account.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `bookkeeping_account`.
+      #   # @param id [String]
+      #   # @param account_id [String, nil]
+      #   # @param compliance_category [String, nil]
+      #   # @param entity_id [String, nil]
+      #   # @param idempotency_key [String, nil]
+      #   # @param name [String]
+      #   # @param type [String]
       #   #
       #   def initialize(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:, **) = super
 
@@ -105,7 +99,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `bookkeeping_account`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `bookkeeping_account`.
       #
       # @example
       # ```ruby

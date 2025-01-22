@@ -5,7 +5,8 @@ module Increase
     module Simulations
       class CardFuelConfirmationCreateParams < Increase::BaseModel
         # @!attribute amount
-        #   The amount of the fuel_confirmation in minor units in the card authorization's currency.
+        #   The amount of the fuel_confirmation in minor units in the card authorization's
+        #     currency.
         #
         #   @return [Integer]
         required :amount, Integer
@@ -17,10 +18,8 @@ module Increase
         required :card_payment_id, String
 
         # @!parse
-        #   # @param amount [Integer] The amount of the fuel_confirmation in minor units in the card authorization's
-        #   #   currency.
-        #   #
-        #   # @param card_payment_id [String] The identifier of the Card Payment to create a fuel_confirmation on.
+        #   # @param amount [Integer]
+        #   # @param card_payment_id [String]
         #   #
         #   def initialize(amount:, card_payment_id:, **) = super
 

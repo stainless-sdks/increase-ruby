@@ -40,7 +40,9 @@ module Increase
       required :recipient_routing_number, String
 
       # @!attribute [r] originator_address_line1
-      #   The drawdown request originator's address line 1. This is only necessary if you're requesting a payment to a commingled account. Otherwise, we'll use the associated entity's details.
+      #   The drawdown request originator's address line 1. This is only necessary if
+      #     you're requesting a payment to a commingled account. Otherwise, we'll use the
+      #     associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_address_line1, String
@@ -50,7 +52,9 @@ module Increase
       #   attr_writer :originator_address_line1
 
       # @!attribute [r] originator_address_line2
-      #   The drawdown request originator's address line 2. This is only necessary if you're requesting a payment to a commingled account. Otherwise, we'll use the associated entity's details.
+      #   The drawdown request originator's address line 2. This is only necessary if
+      #     you're requesting a payment to a commingled account. Otherwise, we'll use the
+      #     associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_address_line2, String
@@ -60,7 +64,9 @@ module Increase
       #   attr_writer :originator_address_line2
 
       # @!attribute [r] originator_address_line3
-      #   The drawdown request originator's address line 3. This is only necessary if you're requesting a payment to a commingled account. Otherwise, we'll use the associated entity's details.
+      #   The drawdown request originator's address line 3. This is only necessary if
+      #     you're requesting a payment to a commingled account. Otherwise, we'll use the
+      #     associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_address_line3, String
@@ -70,7 +76,9 @@ module Increase
       #   attr_writer :originator_address_line3
 
       # @!attribute [r] originator_name
-      #   The drawdown request originator's name. This is only necessary if you're requesting a payment to a commingled account. Otherwise, we'll use the associated entity's details.
+      #   The drawdown request originator's name. This is only necessary if you're
+      #     requesting a payment to a commingled account. Otherwise, we'll use the
+      #     associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_name, String
@@ -110,39 +118,19 @@ module Increase
       #   attr_writer :recipient_address_line3
 
       # @!parse
-      #   # @param account_number_id [String] The Account Number to which the recipient should send funds.
-      #   #
-      #   # @param amount [Integer] The amount requested from the recipient, in USD cents.
-      #   #
-      #   # @param message_to_recipient [String] A message the recipient will see as part of the request.
-      #   #
-      #   # @param recipient_account_number [String] The drawdown request's recipient's account number.
-      #   #
-      #   # @param recipient_name [String] The drawdown request's recipient's name.
-      #   #
-      #   # @param recipient_routing_number [String] The drawdown request's recipient's routing number.
-      #   #
-      #   # @param originator_address_line1 [String] The drawdown request originator's address line 1. This is only necessary if
-      #   #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #   #   associated entity's details.
-      #   #
-      #   # @param originator_address_line2 [String] The drawdown request originator's address line 2. This is only necessary if
-      #   #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #   #   associated entity's details.
-      #   #
-      #   # @param originator_address_line3 [String] The drawdown request originator's address line 3. This is only necessary if
-      #   #   you're requesting a payment to a commingled account. Otherwise, we'll use the
-      #   #   associated entity's details.
-      #   #
-      #   # @param originator_name [String] The drawdown request originator's name. This is only necessary if you're
-      #   #   requesting a payment to a commingled account. Otherwise, we'll use the
-      #   #   associated entity's details.
-      #   #
-      #   # @param recipient_address_line1 [String] Line 1 of the drawdown request's recipient's address.
-      #   #
-      #   # @param recipient_address_line2 [String] Line 2 of the drawdown request's recipient's address.
-      #   #
-      #   # @param recipient_address_line3 [String] Line 3 of the drawdown request's recipient's address.
+      #   # @param account_number_id [String]
+      #   # @param amount [Integer]
+      #   # @param message_to_recipient [String]
+      #   # @param recipient_account_number [String]
+      #   # @param recipient_name [String]
+      #   # @param recipient_routing_number [String]
+      #   # @param originator_address_line1 [String]
+      #   # @param originator_address_line2 [String]
+      #   # @param originator_address_line3 [String]
+      #   # @param originator_name [String]
+      #   # @param recipient_address_line1 [String]
+      #   # @param recipient_address_line2 [String]
+      #   # @param recipient_address_line3 [String]
       #   #
       #   def initialize(
       #     account_number_id:,

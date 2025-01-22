@@ -11,7 +11,7 @@ module Increase
         required :name, String
 
         # @!parse
-        #   # @param name [String] The name of the program being added.
+        #   # @param name [String]
         #   #
         #   def initialize(name:, **) = super
 

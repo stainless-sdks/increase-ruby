@@ -14,7 +14,7 @@ module Increase
       #   attr_writer :status
 
       # @!parse
-      #   # @param status [String] The status to update the Event Subscription with.
+      #   # @param status [String]
       #   #
       #   def initialize(status: nil, **) = super
 

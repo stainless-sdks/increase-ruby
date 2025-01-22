@@ -6,7 +6,7 @@ module Increase
     # ```ruby
     # document => {
     #   id: String,
-    #   category: enum: Increase::Models::Document::Category,
+    #   category: Increase::Models::Document::Category,
     #   created_at: Time,
     #   entity_id: String,
     #   file_id: String
@@ -26,7 +26,8 @@ module Increase
       required :category, enum: -> { Increase::Models::Document::Category }
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Document was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+      #     Document was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -44,7 +45,8 @@ module Increase
       required :file_id, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `document`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `document`.
       #
       #   @return [Symbol, Increase::Models::Document::Type]
       required :type, enum: -> { Increase::Models::Document::Type }
@@ -53,19 +55,12 @@ module Increase
       #   # Increase generates certain documents / forms automatically for your application;
       #   #   they can be listed here.
       #   #
-      #   # @param id [String] The Document identifier.
-      #   #
-      #   # @param category [String] The type of document.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-      #   #   Document was created.
-      #   #
-      #   # @param entity_id [String, nil] The identifier of the Entity the document was generated for.
-      #   #
-      #   # @param file_id [String] The identifier of the File containing the Document's contents.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `document`.
+      #   # @param id [String]
+      #   # @param category [String]
+      #   # @param created_at [String]
+      #   # @param entity_id [String, nil]
+      #   # @param file_id [String]
+      #   # @param type [String]
       #   #
       #   def initialize(id:, category:, created_at:, entity_id:, file_id:, type:, **) = super
 
@@ -97,7 +92,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `document`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `document`.
       #
       # @example
       # ```ruby

@@ -6,13 +6,14 @@ module Increase
     # ```ruby
     # oauth_token => {
     #   access_token: String,
-    #   token_type: enum: Increase::Models::OAuthToken::TokenType,
-    #   type: enum: Increase::Models::OAuthToken::Type
+    #   token_type: Increase::Models::OAuthToken::TokenType,
+    #   type: Increase::Models::OAuthToken::Type
     # }
     # ```
     class OAuthToken < Increase::BaseModel
       # @!attribute access_token
-      #   You may use this token in place of an API key to make OAuth requests on a user's behalf.
+      #   You may use this token in place of an API key to make OAuth requests on a user's
+      #     behalf.
       #
       #   @return [String]
       required :access_token, String
@@ -24,7 +25,8 @@ module Increase
       required :token_type, enum: -> { Increase::Models::OAuthToken::TokenType }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `oauth_token`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `oauth_token`.
       #
       #   @return [Symbol, Increase::Models::OAuthToken::Type]
       required :type, enum: -> { Increase::Models::OAuthToken::Type }
@@ -34,13 +36,9 @@ module Increase
       #   #   flow and may be used to authenticate requests. Learn more about OAuth
       #   #   [here](/documentation/oauth).
       #   #
-      #   # @param access_token [String] You may use this token in place of an API key to make OAuth requests on a user's
-      #   #   behalf.
-      #   #
-      #   # @param token_type [String] The type of OAuth token.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `oauth_token`.
+      #   # @param access_token [String]
+      #   # @param token_type [String]
+      #   # @param type [String]
       #   #
       #   def initialize(access_token:, token_type:, type:, **) = super
 
@@ -61,7 +59,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `oauth_token`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `oauth_token`.
       #
       # @example
       # ```ruby

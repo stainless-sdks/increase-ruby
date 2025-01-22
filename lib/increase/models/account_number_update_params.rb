@@ -14,7 +14,8 @@ module Increase
       #   attr_writer :inbound_ach
 
       # @!attribute [r] inbound_checks
-      #   Options related to how this Account Number should handle inbound check withdrawals.
+      #   Options related to how this Account Number should handle inbound check
+      #     withdrawals.
       #
       #   @return [Increase::Models::AccountNumberUpdateParams::InboundChecks, nil]
       optional :inbound_checks, -> { Increase::Models::AccountNumberUpdateParams::InboundChecks }
@@ -44,14 +45,10 @@ module Increase
       #   attr_writer :status
 
       # @!parse
-      #   # @param inbound_ach [Increase::Models::AccountNumberUpdateParams::InboundACH] Options related to how this Account Number handles inbound ACH transfers.
-      #   #
-      #   # @param inbound_checks [Increase::Models::AccountNumberUpdateParams::InboundChecks] Options related to how this Account Number should handle inbound check
-      #   #   withdrawals.
-      #   #
-      #   # @param name [String] The name you choose for the Account Number.
-      #   #
-      #   # @param status [String] This indicates if transfers can be made to the Account Number.
+      #   # @param inbound_ach [Increase::Models::AccountNumberUpdateParams::InboundACH]
+      #   # @param inbound_checks [Increase::Models::AccountNumberUpdateParams::InboundChecks]
+      #   # @param name [String]
+      #   # @param status [String]
       #   #
       #   def initialize(inbound_ach: nil, inbound_checks: nil, name: nil, status: nil, **) = super
 
@@ -60,12 +57,13 @@ module Increase
       # @example
       # ```ruby
       # inbound_ach => {
-      #   debit_status: enum: Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus
+      #   debit_status: Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus
       # }
       # ```
       class InboundACH < Increase::BaseModel
         # @!attribute [r] debit_status
-        #   Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active.
+        #   Whether ACH debits are allowed against this Account Number. Note that ACH debits
+        #     will be declined if this is `allowed` but the Account Number is not active.
         #
         #   @return [Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus, nil]
         optional :debit_status,
@@ -80,14 +78,14 @@ module Increase
         # @!parse
         #   # Options related to how this Account Number handles inbound ACH transfers.
         #   #
-        #   # @param debit_status [String] Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   #   will be declined if this is `allowed` but the Account Number is not active.
+        #   # @param debit_status [String]
         #   #
         #   def initialize(debit_status: nil, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active.
+        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
+        #   will be declined if this is `allowed` but the Account Number is not active.
         #
         # @example
         # ```ruby
@@ -112,7 +110,7 @@ module Increase
       # @example
       # ```ruby
       # inbound_checks => {
-      #   status: enum: Increase::Models::AccountNumberUpdateParams::InboundChecks::Status
+      #   status: Increase::Models::AccountNumberUpdateParams::InboundChecks::Status
       # }
       # ```
       class InboundChecks < Increase::BaseModel
@@ -126,7 +124,7 @@ module Increase
         #   # Options related to how this Account Number should handle inbound check
         #   #   withdrawals.
         #   #
-        #   # @param status [String] How Increase should process checks with this account number printed on them.
+        #   # @param status [String]
         #   #
         #   def initialize(status:, **) = super
 

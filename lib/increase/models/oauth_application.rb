@@ -21,19 +21,22 @@ module Increase
       required :id, String
 
       # @!attribute client_id
-      #   The OAuth Application's client_id. Use this to authenticate with the OAuth Application.
+      #   The OAuth Application's client_id. Use this to authenticate with the OAuth
+      #     Application.
       #
       #   @return [String]
       required :client_id, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth Application was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+      #     Application was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute deleted_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth Application was deleted.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+      #     Application was deleted.
       #
       #   @return [Time, nil]
       required :deleted_at, Time, nil?: true
@@ -51,7 +54,8 @@ module Increase
       required :status, enum: -> { Increase::Models::OAuthApplication::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `oauth_application`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `oauth_application`.
       #
       #   @return [Symbol, Increase::Models::OAuthApplication::Type]
       required :type, enum: -> { Increase::Models::OAuthApplication::Type }
@@ -62,23 +66,13 @@ module Increase
       #   #   information about it with the API. Learn more about OAuth
       #   #   [here](https://increase.com/documentation/oauth).
       #   #
-      #   # @param id [String] The OAuth Application's identifier.
-      #   #
-      #   # @param client_id [String] The OAuth Application's client_id. Use this to authenticate with the OAuth
-      #   #   Application.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   #   Application was created.
-      #   #
-      #   # @param deleted_at [String, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   #   Application was deleted.
-      #   #
-      #   # @param name [String, nil] The name you chose for this OAuth Application.
-      #   #
-      #   # @param status [String] Whether the application is active.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `oauth_application`.
+      #   # @param id [String]
+      #   # @param client_id [String]
+      #   # @param created_at [String]
+      #   # @param deleted_at [String, nil]
+      #   # @param name [String, nil]
+      #   # @param status [String]
+      #   # @param type [String]
       #   #
       #   def initialize(id:, client_id:, created_at:, deleted_at:, name:, status:, type:, **) = super
 
@@ -105,7 +99,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `oauth_application`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `oauth_application`.
       #
       # @example
       # ```ruby

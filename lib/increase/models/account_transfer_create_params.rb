@@ -10,7 +10,8 @@ module Increase
       required :account_id, String
 
       # @!attribute amount
-      #   The transfer amount in the minor unit of the account currency. For dollars, for example, this is cents.
+      #   The transfer amount in the minor unit of the account currency. For dollars, for
+      #     example, this is cents.
       #
       #   @return [Integer]
       required :amount, Integer
@@ -38,16 +39,11 @@ module Increase
       #   attr_writer :require_approval
 
       # @!parse
-      #   # @param account_id [String] The identifier for the account that will send the transfer.
-      #   #
-      #   # @param amount [Integer] The transfer amount in the minor unit of the account currency. For dollars, for
-      #   #   example, this is cents.
-      #   #
-      #   # @param description [String] The description you choose to give the transfer.
-      #   #
-      #   # @param destination_account_id [String] The identifier for the account that will receive the transfer.
-      #   #
-      #   # @param require_approval [Boolean] Whether the transfer requires explicit approval via the dashboard or API.
+      #   # @param account_id [String]
+      #   # @param amount [Integer]
+      #   # @param description [String]
+      #   # @param destination_account_id [String]
+      #   # @param require_approval [Boolean]
       #   #
       #   def initialize(account_id:, amount:, description:, destination_account_id:, require_approval: nil, **) = super
 

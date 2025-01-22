@@ -69,7 +69,9 @@ module Increase
       required :customer_has_been_offboarded, Increase::BooleanModel, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -87,7 +89,8 @@ module Increase
       required :status, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `proof_of_authorization_request_submission`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `proof_of_authorization_request_submission`.
       #
       #   @return [Symbol, Increase::Models::ProofOfAuthorizationRequestSubmission::Type]
       required :type, enum: -> { Increase::Models::ProofOfAuthorizationRequestSubmission::Type }
@@ -123,42 +126,23 @@ module Increase
       #   #   identifiable as an authorization, and has clear and readily understandable
       #   #   terms.
       #   #
-      #   # @param id [String] The Proof of Authorization Request Submission identifier.
-      #   #
-      #   # @param authorization_terms [String] Terms of authorization.
-      #   #
-      #   # @param authorized_at [String] Time of authorization.
-      #   #
-      #   # @param authorizer_company [String, nil] Company of the authorizer.
-      #   #
-      #   # @param authorizer_email [String, nil] Email of the authorizer.
-      #   #
-      #   # @param authorizer_ip_address [String, nil] IP address of the authorizer.
-      #   #
-      #   # @param authorizer_name [String, nil] Name of the authorizer.
-      #   #
-      #   # @param created_at [String] The time the Proof of Authorization Request Submission was created.
-      #   #
-      #   # @param customer_has_been_offboarded [Boolean, nil] Whether the customer has been offboarded.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param proof_of_authorization_request_id [String] ID of the proof of authorization request.
-      #   #
-      #   # @param status [String] Status of the proof of authorization request submission.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `proof_of_authorization_request_submission`.
-      #   #
-      #   # @param updated_at [String] The time the Proof of Authorization Request Submission was last updated.
-      #   #
-      #   # @param validated_account_ownership_via_credential [Boolean, nil] Whether account ownership was validated via credential (for instance, Plaid).
-      #   #
-      #   # @param validated_account_ownership_with_account_statement [Boolean, nil] Whether account ownership was validated with an account statement.
-      #   #
-      #   # @param validated_account_ownership_with_microdeposit [Boolean, nil] Whether account ownership was validated with microdeposit.
+      #   # @param id [String]
+      #   # @param authorization_terms [String]
+      #   # @param authorized_at [String]
+      #   # @param authorizer_company [String, nil]
+      #   # @param authorizer_email [String, nil]
+      #   # @param authorizer_ip_address [String, nil]
+      #   # @param authorizer_name [String, nil]
+      #   # @param created_at [String]
+      #   # @param customer_has_been_offboarded [Boolean, nil]
+      #   # @param idempotency_key [String, nil]
+      #   # @param proof_of_authorization_request_id [String]
+      #   # @param status [String]
+      #   # @param type [String]
+      #   # @param updated_at [String]
+      #   # @param validated_account_ownership_via_credential [Boolean, nil]
+      #   # @param validated_account_ownership_with_account_statement [Boolean, nil]
+      #   # @param validated_account_ownership_with_microdeposit [Boolean, nil]
       #   #
       #   def initialize(
       #     id:,
@@ -221,7 +205,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `proof_of_authorization_request_submission`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `proof_of_authorization_request_submission`.
       #
       # @example
       # ```ruby

@@ -24,7 +24,8 @@ module Increase
       #   attr_writer :cursor
 
       # @!attribute [r] limit
-      #   Limit the size of the list that is returned. The default (and maximum) is 100 objects.
+      #   Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -34,12 +35,9 @@ module Increase
       #   attr_writer :limit
 
       # @!parse
-      #   # @param account_id [String] The identifier for the Bookkeeping Account to filter by.
-      #   #
-      #   # @param cursor [String] Return the page of entries after this one.
-      #   #
-      #   # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100
-      #   #   objects.
+      #   # @param account_id [String]
+      #   # @param cursor [String]
+      #   # @param limit [Integer]
       #   #
       #   def initialize(account_id: nil, cursor: nil, limit: nil, **) = super
 

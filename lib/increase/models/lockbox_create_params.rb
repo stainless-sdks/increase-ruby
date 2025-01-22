@@ -30,11 +30,9 @@ module Increase
       #   attr_writer :recipient_name
 
       # @!parse
-      #   # @param account_id [String] The Account checks sent to this Lockbox should be deposited into.
-      #   #
-      #   # @param description [String] The description you choose for the Lockbox, for display purposes.
-      #   #
-      #   # @param recipient_name [String] The name of the recipient that will receive mail at this location.
+      #   # @param account_id [String]
+      #   # @param description [String]
+      #   # @param recipient_name [String]
       #   #
       #   def initialize(account_id:, description: nil, recipient_name: nil, **) = super
 

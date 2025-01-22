@@ -39,7 +39,8 @@ module Increase
       required :contact_phone, String, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Card Dispute was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the Card Dispute was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -63,13 +64,16 @@ module Increase
       required :front_image_file_id, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute is_default
-      #   Whether this Physical Card Profile is the default for all cards in its Increase group.
+      #   Whether this Physical Card Profile is the default for all cards in its Increase
+      #     group.
       #
       #   @return [Boolean]
       required :is_default, Increase::BooleanModel
@@ -81,7 +85,8 @@ module Increase
       required :status, enum: -> { Increase::Models::PhysicalCardProfile::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `physical_card_profile`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `physical_card_profile`.
       #
       #   @return [Symbol, Increase::Models::PhysicalCardProfile::Type]
       required :type, enum: -> { Increase::Models::PhysicalCardProfile::Type }
@@ -91,34 +96,18 @@ module Increase
       #   #   more information, see our guide on
       #   #   [physical card artwork](https://increase.com/documentation/card-art-physical-cards).
       #   #
-      #   # @param id [String] The Card Profile identifier.
-      #   #
-      #   # @param back_image_file_id [String, nil] The identifier of the File containing the physical card's back image.
-      #   #
-      #   # @param carrier_image_file_id [String, nil] The identifier of the File containing the physical card's carrier image.
-      #   #
-      #   # @param contact_phone [String, nil] A phone number the user can contact to receive support for their card.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #   the Card Dispute was created.
-      #   #
-      #   # @param creator [String] The creator of this Physical Card Profile.
-      #   #
-      #   # @param description [String] A description you can use to identify the Physical Card Profile.
-      #   #
-      #   # @param front_image_file_id [String, nil] The identifier of the File containing the physical card's front image.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param is_default [Boolean] Whether this Physical Card Profile is the default for all cards in its Increase
-      #   #   group.
-      #   #
-      #   # @param status [String] The status of the Physical Card Profile.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `physical_card_profile`.
+      #   # @param id [String]
+      #   # @param back_image_file_id [String, nil]
+      #   # @param carrier_image_file_id [String, nil]
+      #   # @param contact_phone [String, nil]
+      #   # @param created_at [String]
+      #   # @param creator [String]
+      #   # @param description [String]
+      #   # @param front_image_file_id [String, nil]
+      #   # @param idempotency_key [String, nil]
+      #   # @param is_default [Boolean]
+      #   # @param status [String]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -202,7 +191,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `physical_card_profile`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `physical_card_profile`.
       #
       # @example
       # ```ruby

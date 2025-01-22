@@ -78,27 +78,17 @@ module Increase
       #   attr_writer :authorizer_ip_address
 
       # @!parse
-      #   # @param authorization_terms [String] Terms of authorization.
-      #   #
-      #   # @param authorized_at [String] Time of authorization.
-      #   #
-      #   # @param authorizer_email [String] Email of the authorizer.
-      #   #
-      #   # @param authorizer_name [String] Name of the authorizer.
-      #   #
-      #   # @param customer_has_been_offboarded [Boolean] Whether the customer has been offboarded or suspended.
-      #   #
-      #   # @param proof_of_authorization_request_id [String] ID of the proof of authorization request.
-      #   #
-      #   # @param validated_account_ownership_via_credential [Boolean] Whether the account ownership was validated via credential (e.g. Plaid).
-      #   #
-      #   # @param validated_account_ownership_with_account_statement [Boolean] Whether the account ownership was validated with an account statement.
-      #   #
-      #   # @param validated_account_ownership_with_microdeposit [Boolean] Whether the account ownership was validated with a microdeposit.
-      #   #
-      #   # @param authorizer_company [String] Company of the authorizer.
-      #   #
-      #   # @param authorizer_ip_address [String] IP address of the authorizer.
+      #   # @param authorization_terms [String]
+      #   # @param authorized_at [String]
+      #   # @param authorizer_email [String]
+      #   # @param authorizer_name [String]
+      #   # @param customer_has_been_offboarded [Boolean]
+      #   # @param proof_of_authorization_request_id [String]
+      #   # @param validated_account_ownership_via_credential [Boolean]
+      #   # @param validated_account_ownership_with_account_statement [Boolean]
+      #   # @param validated_account_ownership_with_microdeposit [Boolean]
+      #   # @param authorizer_company [String]
+      #   # @param authorizer_ip_address [String]
       #   #
       #   def initialize(
       #     authorization_terms:,

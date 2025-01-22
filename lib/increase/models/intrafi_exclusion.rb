@@ -39,13 +39,16 @@ module Increase
       required :excluded_at, Time, nil?: true
 
       # @!attribute fdic_certificate_number
-      #   The Federal Deposit Insurance Corporation's certificate number for the institution.
+      #   The Federal Deposit Insurance Corporation's certificate number for the
+      #     institution.
       #
       #   @return [String, nil]
       required :fdic_certificate_number, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -63,7 +66,8 @@ module Increase
       required :submitted_at, Time, nil?: true
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `intrafi_exclusion`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `intrafi_exclusion`.
       #
       #   @return [Symbol, Increase::Models::IntrafiExclusion::Type]
       required :type, enum: -> { Increase::Models::IntrafiExclusion::Type }
@@ -74,27 +78,15 @@ module Increase
       #   #   particular bank, and does not want to sweep additional funds to it. It may take
       #   #   5 business days for an exclusion to be processed.
       #   #
-      #   # @param id [String] The identifier of this exclusion request.
-      #   #
-      #   # @param bank_name [String] The name of the excluded institution.
-      #   #
-      #   # @param entity_id [String] The entity for which this institution is excluded.
-      #   #
-      #   # @param excluded_at [String, nil] When this was exclusion was confirmed by IntraFi.
-      #   #
-      #   # @param fdic_certificate_number [String, nil] The Federal Deposit Insurance Corporation's certificate number for the
-      #   #   institution.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param status [String] The status of the exclusion request.
-      #   #
-      #   # @param submitted_at [String, nil] When this was exclusion was submitted to IntraFi by Increase.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `intrafi_exclusion`.
+      #   # @param id [String]
+      #   # @param bank_name [String]
+      #   # @param entity_id [String]
+      #   # @param excluded_at [String, nil]
+      #   # @param fdic_certificate_number [String, nil]
+      #   # @param idempotency_key [String, nil]
+      #   # @param status [String]
+      #   # @param submitted_at [String, nil]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -139,7 +131,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `intrafi_exclusion`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `intrafi_exclusion`.
       #
       # @example
       # ```ruby

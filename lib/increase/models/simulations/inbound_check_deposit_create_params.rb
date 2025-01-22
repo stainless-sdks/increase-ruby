@@ -23,11 +23,9 @@ module Increase
         required :check_number, String
 
         # @!parse
-        #   # @param account_number_id [String] The identifier of the Account Number the Inbound Check Deposit will be against.
-        #   #
-        #   # @param amount [Integer] The check amount in cents.
-        #   #
-        #   # @param check_number [String] The check number on the check to be deposited.
+        #   # @param account_number_id [String]
+        #   # @param amount [Integer]
+        #   # @param check_number [String]
         #   #
         #   def initialize(account_number_id:, amount:, check_number:, **) = super
 

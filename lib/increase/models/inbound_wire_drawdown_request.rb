@@ -63,13 +63,15 @@ module Increase
       required :beneficiary_routing_number, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the inbound wire drawdown requested was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the inbound wire drawdown requested was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being requested. Will always be "USD".
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
+      #     requested. Will always be "USD".
       #
       #   @return [String]
       required :currency, String
@@ -117,37 +119,43 @@ module Increase
       required :originator_routing_number, String
 
       # @!attribute originator_to_beneficiary_information_line1
-      #   Line 1 of the information conveyed from the originator of the message to the beneficiary.
+      #   Line 1 of the information conveyed from the originator of the message to the
+      #     beneficiary.
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information_line1, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line2
-      #   Line 2 of the information conveyed from the originator of the message to the beneficiary.
+      #   Line 2 of the information conveyed from the originator of the message to the
+      #     beneficiary.
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information_line2, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line3
-      #   Line 3 of the information conveyed from the originator of the message to the beneficiary.
+      #   Line 3 of the information conveyed from the originator of the message to the
+      #     beneficiary.
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information_line3, String, nil?: true
 
       # @!attribute originator_to_beneficiary_information_line4
-      #   Line 4 of the information conveyed from the originator of the message to the beneficiary.
+      #   Line 4 of the information conveyed from the originator of the message to the
+      #     beneficiary.
       #
       #   @return [String, nil]
       required :originator_to_beneficiary_information_line4, String, nil?: true
 
       # @!attribute recipient_account_number_id
-      #   The Account Number from which the recipient of this request is being requested to send funds.
+      #   The Account Number from which the recipient of this request is being requested
+      #     to send funds.
       #
       #   @return [String]
       required :recipient_account_number_id, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `inbound_wire_drawdown_request`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `inbound_wire_drawdown_request`.
       #
       #   @return [Symbol, Increase::Models::InboundWireDrawdownRequest::Type]
       required :type, enum: -> { Increase::Models::InboundWireDrawdownRequest::Type }
@@ -157,59 +165,29 @@ module Increase
       #   #   wire. This feature is in beta; reach out to
       #   #   [support@increase.com](mailto:support@increase.com) to learn more.
       #   #
-      #   # @param id [String] The Wire drawdown request identifier.
-      #   #
-      #   # @param amount [Integer] The amount being requested in cents.
-      #   #
-      #   # @param beneficiary_account_number [String] The drawdown request's beneficiary's account number.
-      #   #
-      #   # @param beneficiary_address_line1 [String, nil] Line 1 of the drawdown request's beneficiary's address.
-      #   #
-      #   # @param beneficiary_address_line2 [String, nil] Line 2 of the drawdown request's beneficiary's address.
-      #   #
-      #   # @param beneficiary_address_line3 [String, nil] Line 3 of the drawdown request's beneficiary's address.
-      #   #
-      #   # @param beneficiary_name [String, nil] The drawdown request's beneficiary's name.
-      #   #
-      #   # @param beneficiary_routing_number [String] The drawdown request's beneficiary's routing number.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #   the inbound wire drawdown requested was created.
-      #   #
-      #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-      #   #   requested. Will always be "USD".
-      #   #
-      #   # @param message_to_recipient [String, nil] A message from the drawdown request's originator.
-      #   #
-      #   # @param originator_account_number [String] The drawdown request's originator's account number.
-      #   #
-      #   # @param originator_address_line1 [String, nil] Line 1 of the drawdown request's originator's address.
-      #   #
-      #   # @param originator_address_line2 [String, nil] Line 2 of the drawdown request's originator's address.
-      #   #
-      #   # @param originator_address_line3 [String, nil] Line 3 of the drawdown request's originator's address.
-      #   #
-      #   # @param originator_name [String, nil] The drawdown request's originator's name.
-      #   #
-      #   # @param originator_routing_number [String] The drawdown request's originator's routing number.
-      #   #
-      #   # @param originator_to_beneficiary_information_line1 [String, nil] Line 1 of the information conveyed from the originator of the message to the
-      #   #   beneficiary.
-      #   #
-      #   # @param originator_to_beneficiary_information_line2 [String, nil] Line 2 of the information conveyed from the originator of the message to the
-      #   #   beneficiary.
-      #   #
-      #   # @param originator_to_beneficiary_information_line3 [String, nil] Line 3 of the information conveyed from the originator of the message to the
-      #   #   beneficiary.
-      #   #
-      #   # @param originator_to_beneficiary_information_line4 [String, nil] Line 4 of the information conveyed from the originator of the message to the
-      #   #   beneficiary.
-      #   #
-      #   # @param recipient_account_number_id [String] The Account Number from which the recipient of this request is being requested
-      #   #   to send funds.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `inbound_wire_drawdown_request`.
+      #   # @param id [String]
+      #   # @param amount [Integer]
+      #   # @param beneficiary_account_number [String]
+      #   # @param beneficiary_address_line1 [String, nil]
+      #   # @param beneficiary_address_line2 [String, nil]
+      #   # @param beneficiary_address_line3 [String, nil]
+      #   # @param beneficiary_name [String, nil]
+      #   # @param beneficiary_routing_number [String]
+      #   # @param created_at [String]
+      #   # @param currency [String]
+      #   # @param message_to_recipient [String, nil]
+      #   # @param originator_account_number [String]
+      #   # @param originator_address_line1 [String, nil]
+      #   # @param originator_address_line2 [String, nil]
+      #   # @param originator_address_line3 [String, nil]
+      #   # @param originator_name [String, nil]
+      #   # @param originator_routing_number [String]
+      #   # @param originator_to_beneficiary_information_line1 [String, nil]
+      #   # @param originator_to_beneficiary_information_line2 [String, nil]
+      #   # @param originator_to_beneficiary_information_line3 [String, nil]
+      #   # @param originator_to_beneficiary_information_line4 [String, nil]
+      #   # @param recipient_account_number_id [String]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -242,7 +220,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # A constant representing the object's type. For this resource it will always be `inbound_wire_drawdown_request`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `inbound_wire_drawdown_request`.
       #
       # @example
       # ```ruby

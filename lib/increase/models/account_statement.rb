@@ -27,7 +27,8 @@ module Increase
       required :account_id, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account Statement was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+      #     Statement was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -51,19 +52,22 @@ module Increase
       required :starting_balance, Integer
 
       # @!attribute statement_period_end
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end of the period the Account Statement covers.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
+      #     of the period the Account Statement covers.
       #
       #   @return [Time]
       required :statement_period_end, Time
 
       # @!attribute statement_period_start
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the start of the period the Account Statement covers.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the
+      #     start of the period the Account Statement covers.
       #
       #   @return [Time]
       required :statement_period_start, Time
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `account_statement`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `account_statement`.
       #
       #   @return [Symbol, Increase::Models::AccountStatement::Type]
       required :type, enum: -> { Increase::Models::AccountStatement::Type }
@@ -73,27 +77,15 @@ module Increase
       #   #   access the statement's data via the API or retrieve a PDF with its details via
       #   #   its associated File.
       #   #
-      #   # @param id [String] The Account Statement identifier.
-      #   #
-      #   # @param account_id [String] The identifier for the Account this Account Statement belongs to.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   #   Statement was created.
-      #   #
-      #   # @param ending_balance [Integer] The Account's balance at the start of its statement period.
-      #   #
-      #   # @param file_id [String] The identifier of the File containing a PDF of the statement.
-      #   #
-      #   # @param starting_balance [Integer] The Account's balance at the start of its statement period.
-      #   #
-      #   # @param statement_period_end [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
-      #   #   of the period the Account Statement covers.
-      #   #
-      #   # @param statement_period_start [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the
-      #   #   start of the period the Account Statement covers.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `account_statement`.
+      #   # @param id [String]
+      #   # @param account_id [String]
+      #   # @param created_at [String]
+      #   # @param ending_balance [Integer]
+      #   # @param file_id [String]
+      #   # @param starting_balance [Integer]
+      #   # @param statement_period_end [String]
+      #   # @param statement_period_start [String]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -112,7 +104,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # A constant representing the object's type. For this resource it will always be `account_statement`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `account_statement`.
       #
       # @example
       # ```ruby

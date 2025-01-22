@@ -41,13 +41,10 @@ module Increase
       #   attr_writer :entity_id
 
       # @!parse
-      #   # @param name [String] The name you choose for the account.
-      #   #
-      #   # @param account_id [String] The entity, if `compliance_category` is `commingled_cash`.
-      #   #
-      #   # @param compliance_category [String] The account compliance category.
-      #   #
-      #   # @param entity_id [String] The entity, if `compliance_category` is `customer_balance`.
+      #   # @param name [String]
+      #   # @param account_id [String]
+      #   # @param compliance_category [String]
+      #   # @param entity_id [String]
       #   #
       #   def initialize(name:, account_id: nil, compliance_category: nil, entity_id: nil, **) = super
 

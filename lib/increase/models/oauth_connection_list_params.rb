@@ -14,7 +14,8 @@ module Increase
       #   attr_writer :cursor
 
       # @!attribute [r] limit
-      #   Limit the size of the list that is returned. The default (and maximum) is 100 objects.
+      #   Limit the size of the list that is returned. The default (and maximum) is 100
+      #     objects.
       #
       #   @return [Integer, nil]
       optional :limit, Integer
@@ -24,7 +25,8 @@ module Increase
       #   attr_writer :limit
 
       # @!attribute [r] oauth_application_id
-      #   Filter results to only include OAuth Connections for a specific OAuth Application.
+      #   Filter results to only include OAuth Connections for a specific OAuth
+      #     Application.
       #
       #   @return [String, nil]
       optional :oauth_application_id, String
@@ -43,14 +45,9 @@ module Increase
       #   attr_writer :status
 
       # @!parse
-      #   # @param cursor [String] Return the page of entries after this one.
-      #   #
-      #   # @param limit [Integer] Limit the size of the list that is returned. The default (and maximum) is 100
-      #   #   objects.
-      #   #
-      #   # @param oauth_application_id [String] Filter results to only include OAuth Connections for a specific OAuth
-      #   #   Application.
-      #   #
+      #   # @param cursor [String]
+      #   # @param limit [Integer]
+      #   # @param oauth_application_id [String]
       #   # @param status [Increase::Models::OAuthConnectionListParams::Status]
       #   #
       #   def initialize(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, **) = super
@@ -65,7 +62,9 @@ module Increase
       # ```
       class Status < Increase::BaseModel
         # @!attribute [r] in_
-        #   Filter to OAuth Connections by their status. By default, return only the `active` ones. For GET requests, this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        #   Filter to OAuth Connections by their status. By default, return only the
+        #     `active` ones. For GET requests, this should be encoded as a comma-delimited
+        #     string, such as `?in=one,two,three`.
         #
         #   @return [Array<Symbol, Increase::Models::OAuthConnectionListParams::Status::In>]
         optional :in_,
@@ -77,9 +76,7 @@ module Increase
         #   attr_writer :in_
 
         # @!parse
-        #   # @param in_ [Array<String>] Filter to OAuth Connections by their status. By default, return only the
-        #   #   `active` ones. For GET requests, this should be encoded as a comma-delimited
-        #   #   string, such as `?in=one,two,three`.
+        #   # @param in_ [Array<String>]
         #   #
         #   def initialize(in_: nil, **) = super
 

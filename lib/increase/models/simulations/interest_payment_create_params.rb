@@ -37,13 +37,10 @@ module Increase
         #   attr_writer :period_start
 
         # @!parse
-        #   # @param account_id [String] The identifier of the Account Number the Interest Payment is for.
-        #   #
-        #   # @param amount [Integer] The interest amount in cents. Must be positive.
-        #   #
-        #   # @param period_end [String] The end of the interest period. If not provided, defaults to the current time.
-        #   #
-        #   # @param period_start [String] The start of the interest period. If not provided, defaults to the current time.
+        #   # @param account_id [String]
+        #   # @param amount [Integer]
+        #   # @param period_end [String]
+        #   # @param period_start [String]
         #   #
         #   def initialize(account_id:, amount:, period_end: nil, period_start: nil, **) = super
 

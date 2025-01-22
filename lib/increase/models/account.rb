@@ -6,10 +6,10 @@ module Increase
     # ```ruby
     # account => {
     #   id: String,
-    #   bank: enum: Increase::Models::Account::Bank,
+    #   bank: Increase::Models::Account::Bank,
     #   closed_at: Time,
     #   created_at: Time,
-    #   currency: enum: Increase::Models::Account::Currency,
+    #   currency: Increase::Models::Account::Currency,
     #   **_
     # }
     # ```
@@ -27,19 +27,22 @@ module Increase
       required :bank, enum: -> { Increase::Models::Account::Bank }
 
       # @!attribute closed_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was closed.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+      #     was closed.
       #
       #   @return [Time, nil]
       required :closed_at, Time, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+      #     was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
+      #     currency.
       #
       #   @return [Symbol, Increase::Models::Account::Currency]
       required :currency, enum: -> { Increase::Models::Account::Currency }
@@ -51,31 +54,38 @@ module Increase
       required :entity_id, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
 
       # @!attribute informational_entity_id
-      #   The identifier of an Entity that, while not owning the Account, is associated with its activity.
+      #   The identifier of an Entity that, while not owning the Account, is associated
+      #     with its activity.
       #
       #   @return [String, nil]
       required :informational_entity_id, String, nil?: true
 
       # @!attribute interest_accrued
-      #   The interest accrued but not yet paid, expressed as a string containing a floating-point value.
+      #   The interest accrued but not yet paid, expressed as a string containing a
+      #     floating-point value.
       #
       #   @return [String]
       required :interest_accrued, String
 
       # @!attribute interest_accrued_at
-      #   The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which interest was accrued.
+      #   The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
+      #     interest was accrued.
       #
       #   @return [Date, nil]
       required :interest_accrued_at, Date, nil?: true
 
       # @!attribute interest_rate
-      #   The Interest Rate currently being earned on the account, as a string containing a decimal number. For example, a 1% interest rate would be represented as "0.01".
+      #   The Interest Rate currently being earned on the account, as a string containing
+      #     a decimal number. For example, a 1% interest rate would be represented as
+      #     "0.01".
       #
       #   @return [String]
       required :interest_rate, String
@@ -87,7 +97,8 @@ module Increase
       required :name, String
 
       # @!attribute program_id
-      #   The identifier of the Program determining the compliance and commercial terms of this Account.
+      #   The identifier of the Program determining the compliance and commercial terms of
+      #     this Account.
       #
       #   @return [String]
       required :program_id, String
@@ -99,7 +110,8 @@ module Increase
       required :status, enum: -> { Increase::Models::Account::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `account`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `account`.
       #
       #   @return [Symbol, Increase::Models::Account::Type]
       required :type, enum: -> { Increase::Models::Account::Type }
@@ -108,47 +120,21 @@ module Increase
       #   # Accounts are your bank accounts with Increase. They store money, receive
       #   #   transfers, and send payments. They earn interest and have depository insurance.
       #   #
-      #   # @param id [String] The Account identifier.
-      #   #
-      #   # @param bank [String] The bank the Account is with.
-      #   #
-      #   # @param closed_at [String, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   #   was closed.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   #   was created.
-      #   #
-      #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
-      #   #   currency.
-      #   #
-      #   # @param entity_id [String, nil] The identifier for the Entity the Account belongs to.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param informational_entity_id [String, nil] The identifier of an Entity that, while not owning the Account, is associated
-      #   #   with its activity.
-      #   #
-      #   # @param interest_accrued [String] The interest accrued but not yet paid, expressed as a string containing a
-      #   #   floating-point value.
-      #   #
-      #   # @param interest_accrued_at [String, nil] The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
-      #   #   interest was accrued.
-      #   #
-      #   # @param interest_rate [String] The Interest Rate currently being earned on the account, as a string containing
-      #   #   a decimal number. For example, a 1% interest rate would be represented as
-      #   #   "0.01".
-      #   #
-      #   # @param name [String] The name you choose for the Account.
-      #   #
-      #   # @param program_id [String] The identifier of the Program determining the compliance and commercial terms of
-      #   #   this Account.
-      #   #
-      #   # @param status [String] The status of the Account.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `account`.
+      #   # @param id [String]
+      #   # @param bank [String]
+      #   # @param closed_at [String, nil]
+      #   # @param created_at [String]
+      #   # @param currency [String]
+      #   # @param entity_id [String, nil]
+      #   # @param idempotency_key [String, nil]
+      #   # @param informational_entity_id [String, nil]
+      #   # @param interest_accrued [String]
+      #   # @param interest_accrued_at [String, nil]
+      #   # @param interest_rate [String]
+      #   # @param name [String]
+      #   # @param program_id [String]
+      #   # @param status [String]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -199,7 +185,8 @@ module Increase
         finalize!
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
+      #   currency.
       #
       # @example
       # ```ruby
@@ -261,7 +248,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `account`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `account`.
       #
       # @example
       # ```ruby

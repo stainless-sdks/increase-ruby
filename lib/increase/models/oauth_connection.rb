@@ -21,13 +21,15 @@ module Increase
       required :id, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth Connection was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+      #     Connection was created.
       #
       #   @return [Time]
       required :created_at, Time
 
       # @!attribute deleted_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth Connection was deleted.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+      #     Connection was deleted.
       #
       #   @return [Time, nil]
       required :deleted_at, Time, nil?: true
@@ -51,7 +53,8 @@ module Increase
       required :status, enum: -> { Increase::Models::OAuthConnection::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `oauth_connection`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `oauth_connection`.
       #
       #   @return [Symbol, Increase::Models::OAuthConnection::Type]
       required :type, enum: -> { Increase::Models::OAuthConnection::Type }
@@ -61,22 +64,13 @@ module Increase
       #   #   created. Learn more about OAuth
       #   #   [here](https://increase.com/documentation/oauth).
       #   #
-      #   # @param id [String] The OAuth Connection's identifier.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   #   Connection was created.
-      #   #
-      #   # @param deleted_at [String, nil] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
-      #   #   Connection was deleted.
-      #   #
-      #   # @param group_id [String] The identifier of the Group that has authorized your OAuth application.
-      #   #
-      #   # @param oauth_application_id [String] The identifier of the OAuth application this connection is for.
-      #   #
-      #   # @param status [String] Whether the connection is active.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `oauth_connection`.
+      #   # @param id [String]
+      #   # @param created_at [String]
+      #   # @param deleted_at [String, nil]
+      #   # @param group_id [String]
+      #   # @param oauth_application_id [String]
+      #   # @param status [String]
+      #   # @param type [String]
       #   #
       #   def initialize(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:, **) = super
 
@@ -103,7 +97,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `oauth_connection`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `oauth_connection`.
       #
       # @example
       # ```ruby

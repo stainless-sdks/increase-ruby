@@ -44,7 +44,8 @@ module Increase
       #   attr_writer :front_image_file_id
 
       # @!attribute [r] front_text
-      #   Text printed on the front of the card. Reach out to [support@increase.com](mailto:support@increase.com) for more information.
+      #   Text printed on the front of the card. Reach out to
+      #     [support@increase.com](mailto:support@increase.com) for more information.
       #
       #   @return [Increase::Models::PhysicalCardProfileCloneParams::FrontText, nil]
       optional :front_text, -> { Increase::Models::PhysicalCardProfileCloneParams::FrontText }
@@ -54,16 +55,11 @@ module Increase
       #   attr_writer :front_text
 
       # @!parse
-      #   # @param carrier_image_file_id [String] The identifier of the File containing the physical card's carrier image.
-      #   #
-      #   # @param contact_phone [String] A phone number the user can contact to receive support for their card.
-      #   #
-      #   # @param description [String] A description you can use to identify the Card Profile.
-      #   #
-      #   # @param front_image_file_id [String] The identifier of the File containing the physical card's front image.
-      #   #
-      #   # @param front_text [Increase::Models::PhysicalCardProfileCloneParams::FrontText] Text printed on the front of the card. Reach out to
-      #   #   [support@increase.com](mailto:support@increase.com) for more information.
+      #   # @param carrier_image_file_id [String]
+      #   # @param contact_phone [String]
+      #   # @param description [String]
+      #   # @param front_image_file_id [String]
+      #   # @param front_text [Increase::Models::PhysicalCardProfileCloneParams::FrontText]
       #   #
       #   def initialize(
       #     carrier_image_file_id: nil,
@@ -93,7 +89,9 @@ module Increase
         required :line1, String
 
         # @!attribute [r] line2
-        #   The second line of text on the front of the card. Providing a second line moves the first line slightly higher and prints the second line in the spot where the first line would have otherwise been printed.
+        #   The second line of text on the front of the card. Providing a second line moves
+        #     the first line slightly higher and prints the second line in the spot where the
+        #     first line would have otherwise been printed.
         #
         #   @return [String, nil]
         optional :line2, String
@@ -106,11 +104,8 @@ module Increase
         #   # Text printed on the front of the card. Reach out to
         #   #   [support@increase.com](mailto:support@increase.com) for more information.
         #   #
-        #   # @param line1 [String] The first line of text on the front of the card.
-        #   #
-        #   # @param line2 [String] The second line of text on the front of the card. Providing a second line moves
-        #   #   the first line slightly higher and prints the second line in the spot where the
-        #   #   first line would have otherwise been printed.
+        #   # @param line1 [String]
+        #   # @param line2 [String]
         #   #
         #   def initialize(line1:, line2: nil, **) = super
 

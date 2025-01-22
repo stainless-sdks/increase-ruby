@@ -9,7 +9,7 @@ module Increase
     #   expiration_month: Integer,
     #   expiration_year: Integer,
     #   primary_account_number: String,
-    #   type: enum: Increase::Models::CardDetails::Type
+    #   type: Increase::Models::CardDetails::Type
     # }
     # ```
     class CardDetails < Increase::BaseModel
@@ -38,13 +38,16 @@ module Increase
       required :primary_account_number, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `card_details`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `card_details`.
       #
       #   @return [Symbol, Increase::Models::CardDetails::Type]
       required :type, enum: -> { Increase::Models::CardDetails::Type }
 
       # @!attribute verification_code
-      #   The three-digit verification code for the card. It's also known as the Card Verification Code (CVC), the Card Verification Value (CVV), or the Card Identification (CID).
+      #   The three-digit verification code for the card. It's also known as the Card
+      #     Verification Code (CVC), the Card Verification Value (CVV), or the Card
+      #     Identification (CID).
       #
       #   @return [String]
       required :verification_code, String
@@ -52,26 +55,19 @@ module Increase
       # @!parse
       #   # An object containing the sensitive details (card number, cvc, etc) for a Card.
       #   #
-      #   # @param card_id [String] The identifier for the Card for which sensitive details have been returned.
-      #   #
-      #   # @param expiration_month [Integer] The month the card expires in M format (e.g., August is 8).
-      #   #
-      #   # @param expiration_year [Integer] The year the card expires in YYYY format (e.g., 2025).
-      #   #
-      #   # @param primary_account_number [String] The card number.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `card_details`.
-      #   #
-      #   # @param verification_code [String] The three-digit verification code for the card. It's also known as the Card
-      #   #   Verification Code (CVC), the Card Verification Value (CVV), or the Card
-      #   #   Identification (CID).
+      #   # @param card_id [String]
+      #   # @param expiration_month [Integer]
+      #   # @param expiration_year [Integer]
+      #   # @param primary_account_number [String]
+      #   # @param type [String]
+      #   # @param verification_code [String]
       #   #
       #   def initialize(card_id:, expiration_month:, expiration_year:, primary_account_number:, type:, verification_code:, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # A constant representing the object's type. For this resource it will always be `card_details`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `card_details`.
       #
       # @example
       # ```ruby

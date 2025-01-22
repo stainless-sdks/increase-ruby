@@ -27,25 +27,29 @@ module Increase
       required :account_id, String
 
       # @!attribute amount
-      #   The transfer amount in the minor unit of the destination account currency. For dollars, for example, this is cents.
+      #   The transfer amount in the minor unit of the destination account currency. For
+      #     dollars, for example, this is cents.
       #
       #   @return [Integer]
       required :amount, Integer
 
       # @!attribute approval
-      #   If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
+      #   If your account requires approvals for transfers and the transfer was approved,
+      #     this will contain details of the approval.
       #
       #   @return [Increase::Models::AccountTransfer::Approval, nil]
       required :approval, -> { Increase::Models::AccountTransfer::Approval }, nil?: true
 
       # @!attribute cancellation
-      #   If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
+      #   If your account requires approvals for transfers and the transfer was not
+      #     approved, this will contain details of the cancellation.
       #
       #   @return [Increase::Models::AccountTransfer::Cancellation, nil]
       required :cancellation, -> { Increase::Models::AccountTransfer::Cancellation }, nil?: true
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the transfer was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -57,7 +61,8 @@ module Increase
       required :created_by, -> { Increase::Models::AccountTransfer::CreatedBy }, nil?: true
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
+      #     account currency.
       #
       #   @return [Symbol, Increase::Models::AccountTransfer::Currency]
       required :currency, enum: -> { Increase::Models::AccountTransfer::Currency }
@@ -81,7 +86,9 @@ module Increase
       required :destination_transaction_id, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -93,7 +100,10 @@ module Increase
       required :network, enum: -> { Increase::Models::AccountTransfer::Network }
 
       # @!attribute pending_transaction_id
-      #   The ID for the pending transaction representing the transfer. A pending transaction is created when the transfer [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals) by someone else in your organization.
+      #   The ID for the pending transaction representing the transfer. A pending
+      #     transaction is created when the transfer
+      #     [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+      #     by someone else in your organization.
       #
       #   @return [String, nil]
       required :pending_transaction_id, String, nil?: true
@@ -111,7 +121,8 @@ module Increase
       required :transaction_id, String, nil?: true
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `account_transfer`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `account_transfer`.
       #
       #   @return [Symbol, Increase::Models::AccountTransfer::Type]
       required :type, enum: -> { Increase::Models::AccountTransfer::Type }
@@ -119,50 +130,23 @@ module Increase
       # @!parse
       #   # Account transfers move funds between your own accounts at Increase.
       #   #
-      #   # @param id [String] The account transfer's identifier.
-      #   #
-      #   # @param account_id [String] The Account to which the transfer belongs.
-      #   #
-      #   # @param amount [Integer] The transfer amount in the minor unit of the destination account currency. For
-      #   #   dollars, for example, this is cents.
-      #   #
-      #   # @param approval [Increase::Models::AccountTransfer::Approval, nil] If your account requires approvals for transfers and the transfer was approved,
-      #   #   this will contain details of the approval.
-      #   #
-      #   # @param cancellation [Increase::Models::AccountTransfer::Cancellation, nil] If your account requires approvals for transfers and the transfer was not
-      #   #   approved, this will contain details of the cancellation.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   #   the transfer was created.
-      #   #
-      #   # @param created_by [Increase::Models::AccountTransfer::CreatedBy, nil] What object created the transfer, either via the API or the dashboard.
-      #   #
-      #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-      #   #   account currency.
-      #   #
-      #   # @param description [String] The description that will show on the transactions.
-      #   #
-      #   # @param destination_account_id [String] The destination account's identifier.
-      #   #
-      #   # @param destination_transaction_id [String, nil] The ID for the transaction receiving the transfer.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param network [String] The transfer's network.
-      #   #
-      #   # @param pending_transaction_id [String, nil] The ID for the pending transaction representing the transfer. A pending
-      #   #   transaction is created when the transfer
-      #   #   [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
-      #   #   by someone else in your organization.
-      #   #
-      #   # @param status [String] The lifecycle status of the transfer.
-      #   #
-      #   # @param transaction_id [String, nil] The ID for the transaction funding the transfer.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `account_transfer`.
+      #   # @param id [String]
+      #   # @param account_id [String]
+      #   # @param amount [Integer]
+      #   # @param approval [Increase::Models::AccountTransfer::Approval, nil]
+      #   # @param cancellation [Increase::Models::AccountTransfer::Cancellation, nil]
+      #   # @param created_at [String]
+      #   # @param created_by [Increase::Models::AccountTransfer::CreatedBy, nil]
+      #   # @param currency [String]
+      #   # @param description [String]
+      #   # @param destination_account_id [String]
+      #   # @param destination_transaction_id [String, nil]
+      #   # @param idempotency_key [String, nil]
+      #   # @param network [String]
+      #   # @param pending_transaction_id [String, nil]
+      #   # @param status [String]
+      #   # @param transaction_id [String, nil]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -198,13 +182,15 @@ module Increase
       # ```
       class Approval < Increase::BaseModel
         # @!attribute approved_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the transfer was approved.
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #     the transfer was approved.
         #
         #   @return [Time]
         required :approved_at, Time
 
         # @!attribute approved_by
-        #   If the Transfer was approved by a user in the dashboard, the email address of that user.
+        #   If the Transfer was approved by a user in the dashboard, the email address of
+        #     that user.
         #
         #   @return [String, nil]
         required :approved_by, String, nil?: true
@@ -213,11 +199,8 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was approved,
         #   #   this will contain details of the approval.
         #   #
-        #   # @param approved_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #   the transfer was approved.
-        #   #
-        #   # @param approved_by [String, nil] If the Transfer was approved by a user in the dashboard, the email address of
-        #   #   that user.
+        #   # @param approved_at [String]
+        #   # @param approved_by [String, nil]
         #   #
         #   def initialize(approved_at:, approved_by:, **) = super
 
@@ -233,13 +216,15 @@ module Increase
       # ```
       class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
-        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which the Transfer was canceled.
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #     the Transfer was canceled.
         #
         #   @return [Time]
         required :canceled_at, Time
 
         # @!attribute canceled_by
-        #   If the Transfer was canceled by a user in the dashboard, the email address of that user.
+        #   If the Transfer was canceled by a user in the dashboard, the email address of
+        #     that user.
         #
         #   @return [String, nil]
         required :canceled_by, String, nil?: true
@@ -248,11 +233,8 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was not
         #   #   approved, this will contain details of the cancellation.
         #   #
-        #   # @param canceled_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   #   the Transfer was canceled.
-        #   #
-        #   # @param canceled_by [String, nil] If the Transfer was canceled by a user in the dashboard, the email address of
-        #   #   that user.
+        #   # @param canceled_at [String]
+        #   # @param canceled_by [String, nil]
         #   #
         #   def initialize(canceled_at:, canceled_by:, **) = super
 
@@ -263,7 +245,7 @@ module Increase
       # ```ruby
       # created_by => {
       #   api_key: Increase::Models::AccountTransfer::CreatedBy::APIKey,
-      #   category: enum: Increase::Models::AccountTransfer::CreatedBy::Category,
+      #   category: Increase::Models::AccountTransfer::CreatedBy::Category,
       #   oauth_application: Increase::Models::AccountTransfer::CreatedBy::OAuthApplication,
       #   user: Increase::Models::AccountTransfer::CreatedBy::User
       # }
@@ -298,13 +280,10 @@ module Increase
         # @!parse
         #   # What object created the transfer, either via the API or the dashboard.
         #   #
-        #   # @param api_key [Increase::Models::AccountTransfer::CreatedBy::APIKey, nil] If present, details about the API key that created the transfer.
-        #   #
-        #   # @param category [String] The type of object that created this transfer.
-        #   #
-        #   # @param oauth_application [Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, nil] If present, details about the OAuth Application that created the transfer.
-        #   #
-        #   # @param user [Increase::Models::AccountTransfer::CreatedBy::User, nil] If present, details about the User that created the transfer.
+        #   # @param api_key [Increase::Models::AccountTransfer::CreatedBy::APIKey, nil]
+        #   # @param category [String]
+        #   # @param oauth_application [Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, nil]
+        #   # @param user [Increase::Models::AccountTransfer::CreatedBy::User, nil]
         #   #
         #   def initialize(api_key:, category:, oauth_application:, user:, **) = super
 
@@ -326,7 +305,7 @@ module Increase
           # @!parse
           #   # If present, details about the API key that created the transfer.
           #   #
-          #   # @param description [String, nil] The description set for the API key when it was created.
+          #   # @param description [String, nil]
           #   #
           #   def initialize(description:, **) = super
 
@@ -375,7 +354,7 @@ module Increase
           # @!parse
           #   # If present, details about the OAuth Application that created the transfer.
           #   #
-          #   # @param name [String] The name of the OAuth Application.
+          #   # @param name [String]
           #   #
           #   def initialize(name:, **) = super
 
@@ -398,7 +377,7 @@ module Increase
           # @!parse
           #   # If present, details about the User that created the transfer.
           #   #
-          #   # @param email [String] The email address of the User.
+          #   # @param email [String]
           #   #
           #   def initialize(email:, **) = super
 
@@ -406,7 +385,8 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination account currency.
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
+      #   account currency.
       #
       # @example
       # ```ruby
@@ -488,7 +468,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `account_transfer`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `account_transfer`.
       #
       # @example
       # ```ruby

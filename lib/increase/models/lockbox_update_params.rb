@@ -34,11 +34,9 @@ module Increase
       #   attr_writer :status
 
       # @!parse
-      #   # @param description [String] The description you choose for the Lockbox.
-      #   #
-      #   # @param recipient_name [String] The recipient name you choose for the Lockbox.
-      #   #
-      #   # @param status [String] This indicates if checks can be sent to the Lockbox.
+      #   # @param description [String]
+      #   # @param recipient_name [String]
+      #   # @param status [String]
       #   #
       #   def initialize(description: nil, recipient_name: nil, status: nil, **) = super
 

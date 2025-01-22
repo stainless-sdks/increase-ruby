@@ -68,7 +68,8 @@ module Increase
       #   attr_writer :beneficiary_address_line3
 
       # @!attribute [r] external_account_id
-      #   The ID of an External Account to initiate a transfer to. If this parameter is provided, `account_number` and `routing_number` must be absent.
+      #   The ID of an External Account to initiate a transfer to. If this parameter is
+      #     provided, `account_number` and `routing_number` must be absent.
       #
       #   @return [String, nil]
       optional :external_account_id, String
@@ -78,7 +79,8 @@ module Increase
       #   attr_writer :external_account_id
 
       # @!attribute [r] originator_address_line1
-      #   The originator's address line 1. This is only necessary if you're transferring from a commingled account. Otherwise, we'll use the associated entity's details.
+      #   The originator's address line 1. This is only necessary if you're transferring
+      #     from a commingled account. Otherwise, we'll use the associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_address_line1, String
@@ -88,7 +90,8 @@ module Increase
       #   attr_writer :originator_address_line1
 
       # @!attribute [r] originator_address_line2
-      #   The originator's address line 2. This is only necessary if you're transferring from a commingled account. Otherwise, we'll use the associated entity's details.
+      #   The originator's address line 2. This is only necessary if you're transferring
+      #     from a commingled account. Otherwise, we'll use the associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_address_line2, String
@@ -98,7 +101,8 @@ module Increase
       #   attr_writer :originator_address_line2
 
       # @!attribute [r] originator_address_line3
-      #   The originator's address line 3. This is only necessary if you're transferring from a commingled account. Otherwise, we'll use the associated entity's details.
+      #   The originator's address line 3. This is only necessary if you're transferring
+      #     from a commingled account. Otherwise, we'll use the associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_address_line3, String
@@ -108,7 +112,8 @@ module Increase
       #   attr_writer :originator_address_line3
 
       # @!attribute [r] originator_name
-      #   The originator's name. This is only necessary if you're transferring from a commingled account. Otherwise, we'll use the associated entity's details.
+      #   The originator's name. This is only necessary if you're transferring from a
+      #     commingled account. Otherwise, we'll use the associated entity's details.
       #
       #   @return [String, nil]
       optional :originator_name, String
@@ -128,7 +133,8 @@ module Increase
       #   attr_writer :require_approval
 
       # @!attribute [r] routing_number
-      #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the destination account.
+      #   The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+      #     destination account.
       #
       #   @return [String, nil]
       optional :routing_number, String
@@ -148,43 +154,22 @@ module Increase
       #   attr_writer :source_account_number_id
 
       # @!parse
-      #   # @param account_id [String] The identifier for the account that will send the transfer.
-      #   #
-      #   # @param amount [Integer] The transfer amount in USD cents.
-      #   #
-      #   # @param beneficiary_name [String] The beneficiary's name.
-      #   #
-      #   # @param message_to_recipient [String] The message that will show on the recipient's bank statement.
-      #   #
-      #   # @param account_number [String] The account number for the destination account.
-      #   #
-      #   # @param beneficiary_address_line1 [String] The beneficiary's address line 1.
-      #   #
-      #   # @param beneficiary_address_line2 [String] The beneficiary's address line 2.
-      #   #
-      #   # @param beneficiary_address_line3 [String] The beneficiary's address line 3.
-      #   #
-      #   # @param external_account_id [String] The ID of an External Account to initiate a transfer to. If this parameter is
-      #   #   provided, `account_number` and `routing_number` must be absent.
-      #   #
-      #   # @param originator_address_line1 [String] The originator's address line 1. This is only necessary if you're transferring
-      #   #   from a commingled account. Otherwise, we'll use the associated entity's details.
-      #   #
-      #   # @param originator_address_line2 [String] The originator's address line 2. This is only necessary if you're transferring
-      #   #   from a commingled account. Otherwise, we'll use the associated entity's details.
-      #   #
-      #   # @param originator_address_line3 [String] The originator's address line 3. This is only necessary if you're transferring
-      #   #   from a commingled account. Otherwise, we'll use the associated entity's details.
-      #   #
-      #   # @param originator_name [String] The originator's name. This is only necessary if you're transferring from a
-      #   #   commingled account. Otherwise, we'll use the associated entity's details.
-      #   #
-      #   # @param require_approval [Boolean] Whether the transfer requires explicit approval via the dashboard or API.
-      #   #
-      #   # @param routing_number [String] The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   #   destination account.
-      #   #
-      #   # @param source_account_number_id [String] The ID of an Account Number that will be passed to the wire's recipient
+      #   # @param account_id [String]
+      #   # @param amount [Integer]
+      #   # @param beneficiary_name [String]
+      #   # @param message_to_recipient [String]
+      #   # @param account_number [String]
+      #   # @param beneficiary_address_line1 [String]
+      #   # @param beneficiary_address_line2 [String]
+      #   # @param beneficiary_address_line3 [String]
+      #   # @param external_account_id [String]
+      #   # @param originator_address_line1 [String]
+      #   # @param originator_address_line2 [String]
+      #   # @param originator_address_line3 [String]
+      #   # @param originator_name [String]
+      #   # @param require_approval [Boolean]
+      #   # @param routing_number [String]
+      #   # @param source_account_number_id [String]
       #   #
       #   def initialize(
       #     account_id:,

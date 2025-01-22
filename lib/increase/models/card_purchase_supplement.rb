@@ -46,7 +46,8 @@ module Increase
       required :transaction_id, String
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `card_purchase_supplement`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `card_purchase_supplement`.
       #
       #   @return [Symbol, Increase::Models::CardPurchaseSupplement::Type]
       required :type, enum: -> { Increase::Models::CardPurchaseSupplement::Type }
@@ -55,18 +56,12 @@ module Increase
       #   # Additional information about a card purchase (e.g., settlement or refund), such
       #   #   as level 3 line item data.
       #   #
-      #   # @param id [String] The Card Purchase Supplement identifier.
-      #   #
-      #   # @param card_payment_id [String, nil] The ID of the Card Payment this transaction belongs to.
-      #   #
-      #   # @param invoice [Increase::Models::CardPurchaseSupplement::Invoice, nil] Invoice-level information about the payment.
-      #   #
-      #   # @param line_items [Array<Increase::Models::CardPurchaseSupplement::LineItem>] Line item information, such as individual products purchased.
-      #   #
-      #   # @param transaction_id [String] The ID of the transaction.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `card_purchase_supplement`.
+      #   # @param id [String]
+      #   # @param card_payment_id [String, nil]
+      #   # @param invoice [Increase::Models::CardPurchaseSupplement::Invoice, nil]
+      #   # @param line_items [Array<Increase::Models::CardPurchaseSupplement::LineItem>]
+      #   # @param transaction_id [String]
+      #   # @param type [String]
       #   #
       #   def initialize(id:, card_payment_id:, invoice:, line_items:, transaction_id:, type:, **) = super
 
@@ -77,7 +72,7 @@ module Increase
       # invoice => {
       #   discount_amount: Integer,
       #   discount_currency: String,
-      #   discount_treatment_code: enum: Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode,
+      #   discount_treatment_code: Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode,
       #   duty_tax_amount: Integer,
       #   duty_tax_currency: String,
       #   **_
@@ -129,7 +124,8 @@ module Increase
         required :shipping_amount, Integer, nil?: true
 
         # @!attribute shipping_currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping cost.
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
+        #     cost.
         #
         #   @return [String, nil]
         required :shipping_currency, String, nil?: true
@@ -159,7 +155,8 @@ module Increase
         required :shipping_tax_amount, Integer, nil?: true
 
         # @!attribute shipping_tax_currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping tax.
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
+        #     tax.
         #
         #   @return [String, nil]
         required :shipping_tax_currency, String, nil?: true
@@ -187,39 +184,22 @@ module Increase
         # @!parse
         #   # Invoice-level information about the payment.
         #   #
-        #   # @param discount_amount [Integer, nil] Discount given to cardholder.
-        #   #
-        #   # @param discount_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
-        #   #
-        #   # @param discount_treatment_code [String, nil] Indicates how the merchant applied the discount.
-        #   #
-        #   # @param duty_tax_amount [Integer, nil] Amount of duty taxes.
-        #   #
-        #   # @param duty_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the duty tax.
-        #   #
-        #   # @param order_date [String, nil] Date the order was taken.
-        #   #
-        #   # @param shipping_amount [Integer, nil] The shipping cost.
-        #   #
-        #   # @param shipping_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        #   #   cost.
-        #   #
-        #   # @param shipping_destination_country_code [String, nil] Country code of the shipping destination.
-        #   #
-        #   # @param shipping_destination_postal_code [String, nil] Postal code of the shipping destination.
-        #   #
-        #   # @param shipping_source_postal_code [String, nil] Postal code of the location being shipped from.
-        #   #
-        #   # @param shipping_tax_amount [Integer, nil] Taxes paid for freight and shipping.
-        #   #
-        #   # @param shipping_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        #   #   tax.
-        #   #
-        #   # @param shipping_tax_rate [String, nil] Tax rate for freight and shipping.
-        #   #
-        #   # @param tax_treatments [String, nil] Indicates how the merchant applied taxes.
-        #   #
-        #   # @param unique_value_added_tax_invoice_reference [String, nil] Value added tax invoice reference number.
+        #   # @param discount_amount [Integer, nil]
+        #   # @param discount_currency [String, nil]
+        #   # @param discount_treatment_code [String, nil]
+        #   # @param duty_tax_amount [Integer, nil]
+        #   # @param duty_tax_currency [String, nil]
+        #   # @param order_date [String, nil]
+        #   # @param shipping_amount [Integer, nil]
+        #   # @param shipping_currency [String, nil]
+        #   # @param shipping_destination_country_code [String, nil]
+        #   # @param shipping_destination_postal_code [String, nil]
+        #   # @param shipping_source_postal_code [String, nil]
+        #   # @param shipping_tax_amount [Integer, nil]
+        #   # @param shipping_tax_currency [String, nil]
+        #   # @param shipping_tax_rate [String, nil]
+        #   # @param tax_treatments [String, nil]
+        #   # @param unique_value_added_tax_invoice_reference [String, nil]
         #   #
         #   def initialize(
         #     discount_amount:,
@@ -312,10 +292,10 @@ module Increase
       # ```ruby
       # line_item => {
       #   id: String,
-      #   detail_indicator: enum: Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator,
+      #   detail_indicator: Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator,
       #   discount_amount: Integer,
       #   discount_currency: String,
-      #   discount_treatment_code: enum: Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode,
+      #   discount_treatment_code: Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode,
       #   **_
       # }
       # ```
@@ -385,7 +365,8 @@ module Increase
         required :sales_tax_amount, Integer, nil?: true
 
         # @!attribute sales_tax_currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax assessed.
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax
+        #     assessed.
         #
         #   @return [String, nil]
         required :sales_tax_currency, String, nil?: true
@@ -403,7 +384,8 @@ module Increase
         required :total_amount, Integer, nil?: true
 
         # @!attribute total_amount_currency
-        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total amount.
+        #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
+        #     amount.
         #
         #   @return [String, nil]
         required :total_amount_currency, String, nil?: true
@@ -427,41 +409,23 @@ module Increase
         required :unit_of_measure_code, String, nil?: true
 
         # @!parse
-        #   # @param id [String] The Card Purchase Supplement Line Item identifier.
-        #   #
-        #   # @param detail_indicator [String, nil] Indicates the type of line item.
-        #   #
-        #   # @param discount_amount [Integer, nil] Discount amount for this specific line item.
-        #   #
-        #   # @param discount_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
-        #   #
-        #   # @param discount_treatment_code [String, nil] Indicates how the merchant applied the discount for this specific line item.
-        #   #
-        #   # @param item_commodity_code [String, nil] Code used to categorize the purchase item.
-        #   #
-        #   # @param item_descriptor [String, nil] Description of the purchase item.
-        #   #
-        #   # @param item_quantity [String, nil] The number of units of the product being purchased.
-        #   #
-        #   # @param product_code [String, nil] Code used to categorize the product being purchased.
-        #   #
-        #   # @param sales_tax_amount [Integer, nil] Sales tax amount for this line item.
-        #   #
-        #   # @param sales_tax_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax
-        #   #   assessed.
-        #   #
-        #   # @param sales_tax_rate [String, nil] Sales tax rate for this line item.
-        #   #
-        #   # @param total_amount [Integer, nil] Total amount of all line items.
-        #   #
-        #   # @param total_amount_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
-        #   #   amount.
-        #   #
-        #   # @param unit_cost [String, nil] Cost of line item per unit of measure, in major units.
-        #   #
-        #   # @param unit_cost_currency [String, nil] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the unit cost.
-        #   #
-        #   # @param unit_of_measure_code [String, nil] Code indicating unit of measure (gallons, etc.).
+        #   # @param id [String]
+        #   # @param detail_indicator [String, nil]
+        #   # @param discount_amount [Integer, nil]
+        #   # @param discount_currency [String, nil]
+        #   # @param discount_treatment_code [String, nil]
+        #   # @param item_commodity_code [String, nil]
+        #   # @param item_descriptor [String, nil]
+        #   # @param item_quantity [String, nil]
+        #   # @param product_code [String, nil]
+        #   # @param sales_tax_amount [Integer, nil]
+        #   # @param sales_tax_currency [String, nil]
+        #   # @param sales_tax_rate [String, nil]
+        #   # @param total_amount [Integer, nil]
+        #   # @param total_amount_currency [String, nil]
+        #   # @param unit_cost [String, nil]
+        #   # @param unit_cost_currency [String, nil]
+        #   # @param unit_of_measure_code [String, nil]
         #   #
         #   def initialize(
         #     id:,
@@ -541,7 +505,8 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be `card_purchase_supplement`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `card_purchase_supplement`.
       #
       # @example
       # ```ruby

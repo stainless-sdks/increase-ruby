@@ -26,7 +26,8 @@ module Increase
       #   attr_writer :inbound_ach
 
       # @!attribute [r] inbound_checks
-      #   Options related to how this Account Number should handle inbound check withdrawals.
+      #   Options related to how this Account Number should handle inbound check
+      #     withdrawals.
       #
       #   @return [Increase::Models::AccountNumberCreateParams::InboundChecks, nil]
       optional :inbound_checks, -> { Increase::Models::AccountNumberCreateParams::InboundChecks }
@@ -36,14 +37,10 @@ module Increase
       #   attr_writer :inbound_checks
 
       # @!parse
-      #   # @param account_id [String] The Account the Account Number should belong to.
-      #   #
-      #   # @param name [String] The name you choose for the Account Number.
-      #   #
-      #   # @param inbound_ach [Increase::Models::AccountNumberCreateParams::InboundACH] Options related to how this Account Number should handle inbound ACH transfers.
-      #   #
-      #   # @param inbound_checks [Increase::Models::AccountNumberCreateParams::InboundChecks] Options related to how this Account Number should handle inbound check
-      #   #   withdrawals.
+      #   # @param account_id [String]
+      #   # @param name [String]
+      #   # @param inbound_ach [Increase::Models::AccountNumberCreateParams::InboundACH]
+      #   # @param inbound_checks [Increase::Models::AccountNumberCreateParams::InboundChecks]
       #   #
       #   def initialize(account_id:, name:, inbound_ach: nil, inbound_checks: nil, **) = super
 
@@ -52,12 +49,14 @@ module Increase
       # @example
       # ```ruby
       # inbound_ach => {
-      #   debit_status: enum: Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus
+      #   debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus
       # }
       # ```
       class InboundACH < Increase::BaseModel
         # @!attribute debit_status
-        #   Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active. If you do not specify this field, the default is `allowed`.
+        #   Whether ACH debits are allowed against this Account Number. Note that ACH debits
+        #     will be declined if this is `allowed` but the Account Number is not active. If
+        #     you do not specify this field, the default is `allowed`.
         #
         #   @return [Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus]
         required :debit_status,
@@ -68,15 +67,15 @@ module Increase
         # @!parse
         #   # Options related to how this Account Number should handle inbound ACH transfers.
         #   #
-        #   # @param debit_status [String] Whether ACH debits are allowed against this Account Number. Note that ACH debits
-        #   #   will be declined if this is `allowed` but the Account Number is not active. If
-        #   #   you do not specify this field, the default is `allowed`.
+        #   # @param debit_status [String]
         #   #
         #   def initialize(debit_status:, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # Whether ACH debits are allowed against this Account Number. Note that ACH debits will be declined if this is `allowed` but the Account Number is not active. If you do not specify this field, the default is `allowed`.
+        # Whether ACH debits are allowed against this Account Number. Note that ACH debits
+        #   will be declined if this is `allowed` but the Account Number is not active. If
+        #   you do not specify this field, the default is `allowed`.
         #
         # @example
         # ```ruby
@@ -101,12 +100,13 @@ module Increase
       # @example
       # ```ruby
       # inbound_checks => {
-      #   status: enum: Increase::Models::AccountNumberCreateParams::InboundChecks::Status
+      #   status: Increase::Models::AccountNumberCreateParams::InboundChecks::Status
       # }
       # ```
       class InboundChecks < Increase::BaseModel
         # @!attribute status
-        #   How Increase should process checks with this account number printed on them. If you do not specify this field, the default is `check_transfers_only`.
+        #   How Increase should process checks with this account number printed on them. If
+        #     you do not specify this field, the default is `check_transfers_only`.
         #
         #   @return [Symbol, Increase::Models::AccountNumberCreateParams::InboundChecks::Status]
         required :status, enum: -> { Increase::Models::AccountNumberCreateParams::InboundChecks::Status }
@@ -115,14 +115,14 @@ module Increase
         #   # Options related to how this Account Number should handle inbound check
         #   #   withdrawals.
         #   #
-        #   # @param status [String] How Increase should process checks with this account number printed on them. If
-        #   #   you do not specify this field, the default is `check_transfers_only`.
+        #   # @param status [String]
         #   #
         #   def initialize(status:, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # How Increase should process checks with this account number printed on them. If you do not specify this field, the default is `check_transfers_only`.
+        # How Increase should process checks with this account number printed on them. If
+        #   you do not specify this field, the default is `check_transfers_only`.
         #
         # @example
         # ```ruby

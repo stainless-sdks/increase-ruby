@@ -21,7 +21,8 @@ module Increase
       required :id, String
 
       # @!attribute created_at
-      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound Mail Item was created.
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
+      #     Mail Item was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -33,7 +34,8 @@ module Increase
       required :file_id, String
 
       # @!attribute lockbox_id
-      #   The identifier for the Lockbox that received this mail item. For mail items that could not be processed due to an invalid address, this will be null.
+      #   The identifier for the Lockbox that received this mail item. For mail items that
+      #     could not be processed due to an invalid address, this will be null.
       #
       #   @return [String, nil]
       required :lockbox_id, String, nil?: true
@@ -57,7 +59,8 @@ module Increase
       required :status, enum: -> { Increase::Models::InboundMailItem::Status }
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `inbound_mail_item`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `inbound_mail_item`.
       #
       #   @return [Symbol, Increase::Models::InboundMailItem::Type]
       required :type, enum: -> { Increase::Models::InboundMailItem::Type }
@@ -65,24 +68,14 @@ module Increase
       # @!parse
       #   # Inbound Mail Items represent pieces of physical mail delivered to a Lockbox.
       #   #
-      #   # @param id [String] The Inbound Mail Item identifier.
-      #   #
-      #   # @param created_at [String] The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Inbound
-      #   #   Mail Item was created.
-      #   #
-      #   # @param file_id [String] The identifier for the File containing the scanned contents of the mail item.
-      #   #
-      #   # @param lockbox_id [String, nil] The identifier for the Lockbox that received this mail item. For mail items that
-      #   #   could not be processed due to an invalid address, this will be null.
-      #   #
-      #   # @param recipient_name [String, nil] The recipient name as written on the mail item.
-      #   #
-      #   # @param rejection_reason [String, nil] If the mail item has been rejected, why it was rejected.
-      #   #
-      #   # @param status [String] If the mail item has been processed.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `inbound_mail_item`.
+      #   # @param id [String]
+      #   # @param created_at [String]
+      #   # @param file_id [String]
+      #   # @param lockbox_id [String, nil]
+      #   # @param recipient_name [String, nil]
+      #   # @param rejection_reason [String, nil]
+      #   # @param status [String]
+      #   # @param type [String]
       #   #
       #   def initialize(id:, created_at:, file_id:, lockbox_id:, recipient_name:, rejection_reason:, status:, type:, **) = super
 
@@ -140,7 +133,8 @@ module Increase
         finalize!
       end
 
-      # A constant representing the object's type. For this resource it will always be `inbound_mail_item`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `inbound_mail_item`.
       #
       # @example
       # ```ruby

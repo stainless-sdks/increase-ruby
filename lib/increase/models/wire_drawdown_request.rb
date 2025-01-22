@@ -21,7 +21,8 @@ module Increase
       required :id, String
 
       # @!attribute account_number_id
-      #   The Account Number to which the recipient of this request is being requested to send funds.
+      #   The Account Number to which the recipient of this request is being requested to
+      #     send funds.
       #
       #   @return [String]
       required :account_number_id, String
@@ -33,19 +34,23 @@ module Increase
       required :amount, Integer
 
       # @!attribute currency
-      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being requested. Will always be "USD".
+      #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
+      #     requested. Will always be "USD".
       #
       #   @return [String]
       required :currency, String
 
       # @!attribute fulfillment_inbound_wire_transfer_id
-      #   If the recipient fulfills the drawdown request by sending funds, then this will be the identifier of the corresponding Transaction.
+      #   If the recipient fulfills the drawdown request by sending funds, then this will
+      #     be the identifier of the corresponding Transaction.
       #
       #   @return [String, nil]
       required :fulfillment_inbound_wire_transfer_id, String, nil?: true
 
       # @!attribute idempotency_key
-      #   The idempotency key you chose for this object. This value is unique across Increase and is used to ensure that a request is only processed once. Learn more about [idempotency](https://increase.com/documentation/idempotency-keys).
+      #   The idempotency key you chose for this object. This value is unique across
+      #     Increase and is used to ensure that a request is only processed once. Learn more
+      #     about [idempotency](https://increase.com/documentation/idempotency-keys).
       #
       #   @return [String, nil]
       required :idempotency_key, String, nil?: true
@@ -123,13 +128,15 @@ module Increase
       required :status, enum: -> { Increase::Models::WireDrawdownRequest::Status }
 
       # @!attribute submission
-      #   After the drawdown request is submitted to Fedwire, this will contain supplemental details.
+      #   After the drawdown request is submitted to Fedwire, this will contain
+      #     supplemental details.
       #
       #   @return [Increase::Models::WireDrawdownRequest::Submission, nil]
       required :submission, -> { Increase::Models::WireDrawdownRequest::Submission }, nil?: true
 
       # @!attribute type
-      #   A constant representing the object's type. For this resource it will always be `wire_drawdown_request`.
+      #   A constant representing the object's type. For this resource it will always be
+      #     `wire_drawdown_request`.
       #
       #   @return [Symbol, Increase::Models::WireDrawdownRequest::Type]
       required :type, enum: -> { Increase::Models::WireDrawdownRequest::Type }
@@ -139,52 +146,26 @@ module Increase
       #   #   This feature is in beta; reach out to
       #   #   [support@increase.com](mailto:support@increase.com) to learn more.
       #   #
-      #   # @param id [String] The Wire drawdown request identifier.
-      #   #
-      #   # @param account_number_id [String] The Account Number to which the recipient of this request is being requested to
-      #   #   send funds.
-      #   #
-      #   # @param amount [Integer] The amount being requested in cents.
-      #   #
-      #   # @param currency [String] The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
-      #   #   requested. Will always be "USD".
-      #   #
-      #   # @param fulfillment_inbound_wire_transfer_id [String, nil] If the recipient fulfills the drawdown request by sending funds, then this will
-      #   #   be the identifier of the corresponding Transaction.
-      #   #
-      #   # @param idempotency_key [String, nil] The idempotency key you chose for this object. This value is unique across
-      #   #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   #   about [idempotency](https://increase.com/documentation/idempotency-keys).
-      #   #
-      #   # @param message_to_recipient [String] The message the recipient will see as part of the drawdown request.
-      #   #
-      #   # @param originator_address_line1 [String, nil] The originator's address line 1.
-      #   #
-      #   # @param originator_address_line2 [String, nil] The originator's address line 2.
-      #   #
-      #   # @param originator_address_line3 [String, nil] The originator's address line 3.
-      #   #
-      #   # @param originator_name [String, nil] The originator's name.
-      #   #
-      #   # @param recipient_account_number [String] The drawdown request's recipient's account number.
-      #   #
-      #   # @param recipient_address_line1 [String, nil] Line 1 of the drawdown request's recipient's address.
-      #   #
-      #   # @param recipient_address_line2 [String, nil] Line 2 of the drawdown request's recipient's address.
-      #   #
-      #   # @param recipient_address_line3 [String, nil] Line 3 of the drawdown request's recipient's address.
-      #   #
-      #   # @param recipient_name [String, nil] The drawdown request's recipient's name.
-      #   #
-      #   # @param recipient_routing_number [String] The drawdown request's recipient's routing number.
-      #   #
-      #   # @param status [String] The lifecycle status of the drawdown request.
-      #   #
-      #   # @param submission [Increase::Models::WireDrawdownRequest::Submission, nil] After the drawdown request is submitted to Fedwire, this will contain
-      #   #   supplemental details.
-      #   #
-      #   # @param type [String] A constant representing the object's type. For this resource it will always be
-      #   #   `wire_drawdown_request`.
+      #   # @param id [String]
+      #   # @param account_number_id [String]
+      #   # @param amount [Integer]
+      #   # @param currency [String]
+      #   # @param fulfillment_inbound_wire_transfer_id [String, nil]
+      #   # @param idempotency_key [String, nil]
+      #   # @param message_to_recipient [String]
+      #   # @param originator_address_line1 [String, nil]
+      #   # @param originator_address_line2 [String, nil]
+      #   # @param originator_address_line3 [String, nil]
+      #   # @param originator_name [String, nil]
+      #   # @param recipient_account_number [String]
+      #   # @param recipient_address_line1 [String, nil]
+      #   # @param recipient_address_line2 [String, nil]
+      #   # @param recipient_address_line3 [String, nil]
+      #   # @param recipient_name [String, nil]
+      #   # @param recipient_routing_number [String]
+      #   # @param status [String]
+      #   # @param submission [Increase::Models::WireDrawdownRequest::Submission, nil]
+      #   # @param type [String]
       #   #
       #   def initialize(
       #     id:,
@@ -253,7 +234,8 @@ module Increase
       # ```
       class Submission < Increase::BaseModel
         # @!attribute input_message_accountability_data
-        #   The input message accountability data (IMAD) uniquely identifying the submission with Fedwire.
+        #   The input message accountability data (IMAD) uniquely identifying the submission
+        #     with Fedwire.
         #
         #   @return [String]
         required :input_message_accountability_data, String
@@ -262,15 +244,15 @@ module Increase
         #   # After the drawdown request is submitted to Fedwire, this will contain
         #   #   supplemental details.
         #   #
-        #   # @param input_message_accountability_data [String] The input message accountability data (IMAD) uniquely identifying the submission
-        #   #   with Fedwire.
+        #   # @param input_message_accountability_data [String]
         #   #
         #   def initialize(input_message_accountability_data:, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # A constant representing the object's type. For this resource it will always be `wire_drawdown_request`.
+      # A constant representing the object's type. For this resource it will always be
+      #   `wire_drawdown_request`.
       #
       # @example
       # ```ruby
