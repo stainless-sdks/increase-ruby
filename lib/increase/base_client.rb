@@ -79,7 +79,7 @@ module Increase
     #
     #   @option req [Class, nil] :page
     #
-    #   @option req [Class, Increase::Converter] :model
+    #   @option req [Class, Increase::Converter, Symbol, Boolean, Integer, Float] :model
     #
     # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] .
     #
@@ -374,7 +374,7 @@ module Increase
     #
     #   @option req [Class, nil] :page
     #
-    #   @option req [Class, Increase::Converter] :model
+    #   @option req [Class, Increase::Converter, Symbol, Boolean, Integer, Float] :model
     #
     # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] .
     #
@@ -427,7 +427,7 @@ module Increase
     #
     #   @option req [Class, nil] :page
     #
-    #   @option req [Class, Increase::Converter] :model
+    #   @option req [Class, Increase::Converter, Symbol, Boolean, Integer, Float] :model
     #
     # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] .
     #
