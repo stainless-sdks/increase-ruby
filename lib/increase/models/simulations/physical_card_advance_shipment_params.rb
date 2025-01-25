@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class PhysicalCardAdvanceShipmentParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute shipment_status
         #   The shipment status to move the Physical Card to.
         #
@@ -13,8 +17,9 @@ module Increase
 
         # @!parse
         #   # @param shipment_status [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(shipment_status:, **) = super
+        #   def initialize(shipment_status:, request_options: {}, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 

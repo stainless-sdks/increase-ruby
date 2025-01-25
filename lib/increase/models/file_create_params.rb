@@ -3,6 +3,10 @@
 module Increase
   module Models
     class FileCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute file
       #   The file contents. This should follow the specifications of
       #     [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
@@ -31,8 +35,9 @@ module Increase
       #   # @param file [String]
       #   # @param purpose [String]
       #   # @param description [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(file:, purpose:, description: nil, **) = super
+      #   def initialize(file:, purpose:, description: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

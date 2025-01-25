@@ -7,7 +7,7 @@ module Increase
       #   `multipart/form-data`. The request should contain the file you would like to
       #   upload, as well as the parameters for creating a file.
       #
-      # @param params [Increase::Models::FileCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::FileCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :file The file contents. This should follow the specifications of
       #     [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
@@ -17,42 +17,44 @@ module Increase
       #
       #   @option params [String] :description The description you choose to give the File.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::File]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::FileCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::FileCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "files",
           headers: {"Content-Type" => "multipart/form-data"},
           body: parsed,
-          model: Increase::Models::File
-        }
-        @client.request(req, opts)
+          model: Increase::Models::File,
+          options: options
+        )
       end
 
       # Retrieve a File
       #
       # @param file_id [String] The identifier of the File.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::FileRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::File]
       #
-      def retrieve(file_id, opts = {})
-        req = {
+      def retrieve(file_id, params = {})
+        @client.request(
           method: :get,
           path: ["files/%0s", file_id],
-          model: Increase::Models::File
-        }
-        @client.request(req, opts)
+          model: Increase::Models::File,
+          options: params[:request_options]
+        )
       end
 
       # List Files
       #
-      # @param params [Increase::Models::FileListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::FileListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Increase::Models::FileListParams::CreatedAt] :created_at
       #
@@ -68,20 +70,20 @@ module Increase
       #
       #   @option params [Increase::Models::FileListParams::Purpose] :purpose
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::File>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::FileListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::FileListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "files",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::File
-        }
-        @client.request(req, opts)
+          model: Increase::Models::File,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

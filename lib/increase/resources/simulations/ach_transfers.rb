@@ -13,17 +13,19 @@ module Increase
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to become acknowledged.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Increase::Models::Simulations::ACHTransferAcknowledgeParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
         #
-        def acknowledge(ach_transfer_id, opts = {})
-          req = {
+        def acknowledge(ach_transfer_id, params = {})
+          @client.request(
             method: :post,
             path: ["simulations/ach_transfers/%0s/acknowledge", ach_transfer_id],
-            model: Increase::Models::ACHTransfer
-          }
-          @client.request(req, opts)
+            model: Increase::Models::ACHTransfer,
+            options: params[:request_options]
+          )
         end
 
         # Simulates receiving a Notification of Change for an
@@ -32,25 +34,25 @@ module Increase
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to create a notification of change
         #   for.
         #
-        # @param params [Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams, Hash{Symbol=>Object}] .
         #
         #   @option params [Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode] :change_code The reason for the notification of change.
         #
         #   @option params [String] :corrected_data The corrected data for the notification of change (e.g., a new routing number).
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
         #
-        def create_notification_of_change(ach_transfer_id, params = {}, opts = {})
-          parsed = Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams.dump(params)
-          req = {
+        def create_notification_of_change(ach_transfer_id, params)
+          parsed, options = Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams.dump_request(params)
+          @client.request(
             method: :post,
             path: ["simulations/ach_transfers/%0s/create_notification_of_change", ach_transfer_id],
             body: parsed,
-            model: Increase::Models::ACHTransfer
-          }
-          @client.request(req, opts)
+            model: Increase::Models::ACHTransfer,
+            options: options
+          )
         end
 
         # Simulates the return of an [ACH Transfer](#ach-transfers) by the Federal Reserve
@@ -59,24 +61,24 @@ module Increase
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to return.
         #
-        # @param params [Increase::Models::Simulations::ACHTransferReturnParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::ACHTransferReturnParams, Hash{Symbol=>Object}] .
         #
         #   @option params [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason] :reason The reason why the Federal Reserve or destination bank returned this transfer.
         #     Defaults to `no_account`.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
         #
-        def return_(ach_transfer_id, params = {}, opts = {})
-          parsed = Increase::Models::Simulations::ACHTransferReturnParams.dump(params)
-          req = {
+        def return_(ach_transfer_id, params = {})
+          parsed, options = Increase::Models::Simulations::ACHTransferReturnParams.dump_request(params)
+          @client.request(
             method: :post,
             path: ["simulations/ach_transfers/%0s/return", ach_transfer_id],
             body: parsed,
-            model: Increase::Models::ACHTransfer
-          }
-          @client.request(req, opts)
+            model: Increase::Models::ACHTransfer,
+            options: options
+          )
         end
 
         # Simulates the settlement of an [ACH Transfer](#ach-transfers) by the Federal
@@ -86,17 +88,19 @@ module Increase
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to become settled.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Increase::Models::Simulations::ACHTransferSettleParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
         #
-        def settle(ach_transfer_id, opts = {})
-          req = {
+        def settle(ach_transfer_id, params = {})
+          @client.request(
             method: :post,
             path: ["simulations/ach_transfers/%0s/settle", ach_transfer_id],
-            model: Increase::Models::ACHTransfer
-          }
-          @client.request(req, opts)
+            model: Increase::Models::ACHTransfer,
+            options: params[:request_options]
+          )
         end
 
         # Simulates the submission of an [ACH Transfer](#ach-transfers) to the Federal
@@ -108,17 +112,19 @@ module Increase
         #
         # @param ach_transfer_id [String] The identifier of the ACH Transfer you wish to submit.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Increase::Models::Simulations::ACHTransferSubmitParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
         #
-        def submit(ach_transfer_id, opts = {})
-          req = {
+        def submit(ach_transfer_id, params = {})
+          @client.request(
             method: :post,
             path: ["simulations/ach_transfers/%0s/submit", ach_transfer_id],
-            model: Increase::Models::ACHTransfer
-          }
-          @client.request(req, opts)
+            model: Increase::Models::ACHTransfer,
+            options: params[:request_options]
+          )
         end
 
         # @param client [Increase::Client]

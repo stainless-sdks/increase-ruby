@@ -3,6 +3,10 @@
 module Increase
   module Models
     class LockboxUpdateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] description
       #   The description you choose for the Lockbox.
       #
@@ -37,8 +41,9 @@ module Increase
       #   # @param description [String]
       #   # @param recipient_name [String]
       #   # @param status [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(description: nil, recipient_name: nil, status: nil, **) = super
+      #   def initialize(description: nil, recipient_name: nil, status: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

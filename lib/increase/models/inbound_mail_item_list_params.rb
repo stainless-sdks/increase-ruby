@@ -3,6 +3,10 @@
 module Increase
   module Models
     class InboundMailItemListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] created_at
       #
       #   @return [Increase::Models::InboundMailItemListParams::CreatedAt, nil]
@@ -48,8 +52,9 @@ module Increase
       #   # @param cursor [String]
       #   # @param limit [Integer]
       #   # @param lockbox_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(created_at: nil, cursor: nil, limit: nil, lockbox_id: nil, **) = super
+      #   def initialize(created_at: nil, cursor: nil, limit: nil, lockbox_id: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

@@ -5,17 +5,19 @@ module Increase
     class Groups
       # Returns details for the currently authenticated Group.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::GroupRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Group]
       #
-      def retrieve(opts = {})
-        req = {
+      def retrieve(params = {})
+        @client.request(
           method: :get,
           path: "groups/current",
-          model: Increase::Models::Group
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Group,
+          options: params[:request_options]
+        )
       end
 
       # @param client [Increase::Client]

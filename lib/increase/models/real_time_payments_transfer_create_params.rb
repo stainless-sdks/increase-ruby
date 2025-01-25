@@ -3,6 +3,10 @@
 module Increase
   module Models
     class RealTimePaymentsTransferCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute amount
       #   The transfer amount in USD cents. For Real-Time Payments transfers, must be
       #     positive.
@@ -116,6 +120,7 @@ module Increase
       #   # @param require_approval [Boolean]
       #   # @param ultimate_creditor_name [String]
       #   # @param ultimate_debtor_name [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     amount:,
@@ -129,6 +134,7 @@ module Increase
       #     require_approval: nil,
       #     ultimate_creditor_name: nil,
       #     ultimate_debtor_name: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

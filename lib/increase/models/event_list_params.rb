@@ -3,6 +3,10 @@
 module Increase
   module Models
     class EventListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] associated_object_id
       #   Filter Events to those belonging to the object with the provided identifier.
       #
@@ -58,8 +62,19 @@ module Increase
       #   # @param created_at [Increase::Models::EventListParams::CreatedAt]
       #   # @param cursor [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(associated_object_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, **) = super
+      #   def initialize(
+      #     associated_object_id: nil,
+      #     category: nil,
+      #     created_at: nil,
+      #     cursor: nil,
+      #     limit: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

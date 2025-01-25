@@ -5,7 +5,7 @@ module Increase
     class ACHTransfers
       # Create an ACH Transfer
       #
-      # @param params [Increase::Models::ACHTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ACHTransferCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id The Increase identifier for the account that will send the transfer.
       #
@@ -64,41 +64,43 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming] :transaction_timing The timing of the transaction.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::ACHTransfer]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::ACHTransferCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::ACHTransferCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "ach_transfers",
           body: parsed,
-          model: Increase::Models::ACHTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::ACHTransfer,
+          options: options
+        )
       end
 
       # Retrieve an ACH Transfer
       #
       # @param ach_transfer_id [String] The identifier of the ACH Transfer.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::ACHTransferRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::ACHTransfer]
       #
-      def retrieve(ach_transfer_id, opts = {})
-        req = {
+      def retrieve(ach_transfer_id, params = {})
+        @client.request(
           method: :get,
           path: ["ach_transfers/%0s", ach_transfer_id],
-          model: Increase::Models::ACHTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::ACHTransfer,
+          options: params[:request_options]
+        )
       end
 
       # List ACH Transfers
       #
-      # @param params [Increase::Models::ACHTransferListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ACHTransferListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter ACH Transfers to those that originated from the specified Account.
       #
@@ -116,54 +118,58 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::ACHTransfer>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::ACHTransferListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::ACHTransferListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "ach_transfers",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::ACHTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::ACHTransfer,
+          options: options
+        )
       end
 
       # Approves an ACH Transfer in a pending_approval state.
       #
       # @param ach_transfer_id [String] The identifier of the ACH Transfer to approve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::ACHTransferApproveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::ACHTransfer]
       #
-      def approve(ach_transfer_id, opts = {})
-        req = {
+      def approve(ach_transfer_id, params = {})
+        @client.request(
           method: :post,
           path: ["ach_transfers/%0s/approve", ach_transfer_id],
-          model: Increase::Models::ACHTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::ACHTransfer,
+          options: params[:request_options]
+        )
       end
 
       # Cancels an ACH Transfer in a pending_approval state.
       #
       # @param ach_transfer_id [String] The identifier of the pending ACH Transfer to cancel.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::ACHTransferCancelParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::ACHTransfer]
       #
-      def cancel(ach_transfer_id, opts = {})
-        req = {
+      def cancel(ach_transfer_id, params = {})
+        @client.request(
           method: :post,
           path: ["ach_transfers/%0s/cancel", ach_transfer_id],
-          model: Increase::Models::ACHTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::ACHTransfer,
+          options: params[:request_options]
+        )
       end
 
       # @param client [Increase::Client]

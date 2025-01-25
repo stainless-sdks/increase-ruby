@@ -5,7 +5,7 @@ module Increase
     class CardDisputes
       # Create a Card Dispute
       #
-      # @param params [Increase::Models::CardDisputeCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardDisputeCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :disputed_transaction_id The Transaction you wish to dispute. This Transaction must have a `source_type`
       #     of `card_settlement`.
@@ -17,41 +17,43 @@ module Increase
       #     provided. If provided, the amount must be less than or equal to the amount of
       #     the transaction.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::CardDispute]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::CardDisputeCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::CardDisputeCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "card_disputes",
           body: parsed,
-          model: Increase::Models::CardDispute
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CardDispute,
+          options: options
+        )
       end
 
       # Retrieve a Card Dispute
       #
       # @param card_dispute_id [String] The identifier of the Card Dispute.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::CardDisputeRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::CardDispute]
       #
-      def retrieve(card_dispute_id, opts = {})
-        req = {
+      def retrieve(card_dispute_id, params = {})
+        @client.request(
           method: :get,
           path: ["card_disputes/%0s", card_dispute_id],
-          model: Increase::Models::CardDispute
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CardDispute,
+          options: params[:request_options]
+        )
       end
 
       # List Card Disputes
       #
-      # @param params [Increase::Models::CardDisputeListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardDisputeListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Increase::Models::CardDisputeListParams::CreatedAt] :created_at
       #
@@ -67,20 +69,20 @@ module Increase
       #
       #   @option params [Increase::Models::CardDisputeListParams::Status] :status
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::CardDispute>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::CardDisputeListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::CardDisputeListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "card_disputes",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::CardDispute
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CardDispute,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

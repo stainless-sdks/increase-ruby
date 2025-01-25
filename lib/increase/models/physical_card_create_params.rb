@@ -3,6 +3,10 @@
 module Increase
   module Models
     class PhysicalCardCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute card_id
       #   The underlying card representing this physical card.
       #
@@ -37,8 +41,9 @@ module Increase
       #   # @param cardholder [Increase::Models::PhysicalCardCreateParams::Cardholder]
       #   # @param shipment [Increase::Models::PhysicalCardCreateParams::Shipment]
       #   # @param physical_card_profile_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, **) = super
+      #   def initialize(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

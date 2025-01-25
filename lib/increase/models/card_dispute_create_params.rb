@@ -3,6 +3,10 @@
 module Increase
   module Models
     class CardDisputeCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute disputed_transaction_id
       #   The Transaction you wish to dispute. This Transaction must have a `source_type`
       #     of `card_settlement`.
@@ -33,8 +37,9 @@ module Increase
       #   # @param disputed_transaction_id [String]
       #   # @param explanation [String]
       #   # @param amount [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(disputed_transaction_id:, explanation:, amount: nil, **) = super
+      #   def initialize(disputed_transaction_id:, explanation:, amount: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

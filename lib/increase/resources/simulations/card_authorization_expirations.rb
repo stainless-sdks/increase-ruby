@@ -6,23 +6,23 @@ module Increase
       class CardAuthorizationExpirations
         # Simulates expiring a Card Authorization immediately.
         #
-        # @param params [Increase::Models::Simulations::CardAuthorizationExpirationCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::CardAuthorizationExpirationCreateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :card_payment_id The identifier of the Card Payment to expire.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::CardPayment]
         #
-        def create(params = {}, opts = {})
-          parsed = Increase::Models::Simulations::CardAuthorizationExpirationCreateParams.dump(params)
-          req = {
+        def create(params)
+          parsed, options = Increase::Models::Simulations::CardAuthorizationExpirationCreateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "simulations/card_authorization_expirations",
             body: parsed,
-            model: Increase::Models::CardPayment
-          }
-          @client.request(req, opts)
+            model: Increase::Models::CardPayment,
+            options: options
+          )
         end
 
         # @param client [Increase::Client]

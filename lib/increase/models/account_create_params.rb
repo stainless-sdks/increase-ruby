@@ -3,6 +3,10 @@
 module Increase
   module Models
     class AccountCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute name
       #   The name you choose for the Account.
       #
@@ -46,8 +50,9 @@ module Increase
       #   # @param entity_id [String]
       #   # @param informational_entity_id [String]
       #   # @param program_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(name:, entity_id: nil, informational_entity_id: nil, program_id: nil, **) = super
+      #   def initialize(name:, entity_id: nil, informational_entity_id: nil, program_id: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

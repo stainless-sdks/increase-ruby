@@ -7,22 +7,24 @@ module Increase
       #
       # @param pending_transaction_id [String] The identifier of the Pending Transaction.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::PendingTransactionRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::PendingTransaction]
       #
-      def retrieve(pending_transaction_id, opts = {})
-        req = {
+      def retrieve(pending_transaction_id, params = {})
+        @client.request(
           method: :get,
           path: ["pending_transactions/%0s", pending_transaction_id],
-          model: Increase::Models::PendingTransaction
-        }
-        @client.request(req, opts)
+          model: Increase::Models::PendingTransaction,
+          options: params[:request_options]
+        )
       end
 
       # List Pending Transactions
       #
-      # @param params [Increase::Models::PendingTransactionListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::PendingTransactionListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter pending transactions to those belonging to the specified Account.
       #
@@ -39,20 +41,20 @@ module Increase
       #
       #   @option params [Increase::Models::PendingTransactionListParams::Status] :status
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::PendingTransaction>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::PendingTransactionListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::PendingTransactionListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "pending_transactions",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::PendingTransaction
-        }
-        @client.request(req, opts)
+          model: Increase::Models::PendingTransaction,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

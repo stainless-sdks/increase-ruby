@@ -32,11 +32,10 @@ module Increase
     #
     # @param client [Increase::BaseClient]
     # @param req [Hash{Symbol=>Object}]
-    # @param opts [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}]
     # @param unwrapped [Hash{Symbol=>Object}]
     #
-    def initialize(client:, req:, opts:, headers:, unwrapped:)
+    def initialize(client:, req:, headers:, unwrapped:)
       model = req.fetch(:model)
 
       case unwrapped
@@ -69,7 +68,7 @@ module Increase
       end
 
       req = Increase::Util.deep_merge(@req, {query: {cursor: next_cursor}})
-      @client.request(req, @opts)
+      @client.request(req)
     end
 
     # @param blk [Proc]

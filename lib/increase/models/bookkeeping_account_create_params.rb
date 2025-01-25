@@ -3,6 +3,10 @@
 module Increase
   module Models
     class BookkeepingAccountCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute name
       #   The name you choose for the account.
       #
@@ -45,8 +49,9 @@ module Increase
       #   # @param account_id [String]
       #   # @param compliance_category [String]
       #   # @param entity_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(name:, account_id: nil, compliance_category: nil, entity_id: nil, **) = super
+      #   def initialize(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

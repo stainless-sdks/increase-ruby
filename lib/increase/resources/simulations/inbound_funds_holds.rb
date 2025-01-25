@@ -9,17 +9,19 @@ module Increase
         #
         # @param inbound_funds_hold_id [String] The inbound funds hold to release.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Increase::Models::Simulations::InboundFundsHoldReleaseParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::Simulations::InboundFundsHoldReleaseResponse]
         #
-        def release(inbound_funds_hold_id, opts = {})
-          req = {
+        def release(inbound_funds_hold_id, params = {})
+          @client.request(
             method: :post,
             path: ["simulations/inbound_funds_holds/%0s/release", inbound_funds_hold_id],
-            model: Increase::Models::Simulations::InboundFundsHoldReleaseResponse
-          }
-          @client.request(req, opts)
+            model: Increase::Models::Simulations::InboundFundsHoldReleaseResponse,
+            options: params[:request_options]
+          )
         end
 
         # @param client [Increase::Client]

@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class InboundWireTransferCreateParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute account_number_id
         #   The identifier of the Account Number the inbound Wire Transfer is for.
         #
@@ -199,6 +203,7 @@ module Increase
         #   # @param originator_to_beneficiary_information_line3 [String]
         #   # @param originator_to_beneficiary_information_line4 [String]
         #   # @param sender_reference [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(
         #     account_number_id:,
@@ -218,6 +223,7 @@ module Increase
         #     originator_to_beneficiary_information_line3: nil,
         #     originator_to_beneficiary_information_line4: nil,
         #     sender_reference: nil,
+        #     request_options: {},
         #     **
         #   )
         #     super

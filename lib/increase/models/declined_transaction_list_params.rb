@@ -3,6 +3,10 @@
 module Increase
   module Models
     class DeclinedTransactionListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] account_id
       #   Filter Declined Transactions to ones belonging to the specified Account.
       #
@@ -69,8 +73,20 @@ module Increase
       #   # @param cursor [String]
       #   # @param limit [Integer]
       #   # @param route_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, route_id: nil, **) = super
+      #   def initialize(
+      #     account_id: nil,
+      #     category: nil,
+      #     created_at: nil,
+      #     cursor: nil,
+      #     limit: nil,
+      #     route_id: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

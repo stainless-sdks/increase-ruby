@@ -3,6 +3,10 @@
 module Increase
   module Models
     class FileListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] created_at
       #
       #   @return [Increase::Models::FileListParams::CreatedAt, nil]
@@ -61,8 +65,9 @@ module Increase
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
       #   # @param purpose [Increase::Models::FileListParams::Purpose]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, purpose: nil, **) = super
+      #   def initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, purpose: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

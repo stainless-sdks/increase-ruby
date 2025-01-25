@@ -7,42 +7,44 @@ module Increase
       #
       # @param program_id [String] The identifier of the Program to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::ProgramRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Program]
       #
-      def retrieve(program_id, opts = {})
-        req = {
+      def retrieve(program_id, params = {})
+        @client.request(
           method: :get,
           path: ["programs/%0s", program_id],
-          model: Increase::Models::Program
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Program,
+          options: params[:request_options]
+        )
       end
 
       # List Programs
       #
-      # @param params [Increase::Models::ProgramListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ProgramListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::Program>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::ProgramListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::ProgramListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "programs",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::Program
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Program,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

@@ -5,7 +5,7 @@ module Increase
     class ACHPrenotifications
       # Create an ACH Prenotification
       #
-      # @param params [Increase::Models::ACHPrenotificationCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ACHPrenotificationCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id The Increase identifier for the account that will send the transfer.
       #
@@ -36,41 +36,43 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode] :standard_entry_class_code The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::ACHPrenotification]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::ACHPrenotificationCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::ACHPrenotificationCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "ach_prenotifications",
           body: parsed,
-          model: Increase::Models::ACHPrenotification
-        }
-        @client.request(req, opts)
+          model: Increase::Models::ACHPrenotification,
+          options: options
+        )
       end
 
       # Retrieve an ACH Prenotification
       #
       # @param ach_prenotification_id [String] The identifier of the ACH Prenotification to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::ACHPrenotificationRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::ACHPrenotification]
       #
-      def retrieve(ach_prenotification_id, opts = {})
-        req = {
+      def retrieve(ach_prenotification_id, params = {})
+        @client.request(
           method: :get,
           path: ["ach_prenotifications/%0s", ach_prenotification_id],
-          model: Increase::Models::ACHPrenotification
-        }
-        @client.request(req, opts)
+          model: Increase::Models::ACHPrenotification,
+          options: params[:request_options]
+        )
       end
 
       # List ACH Prenotifications
       #
-      # @param params [Increase::Models::ACHPrenotificationListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ACHPrenotificationListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Increase::Models::ACHPrenotificationListParams::CreatedAt] :created_at
       #
@@ -84,20 +86,20 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::ACHPrenotification>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::ACHPrenotificationListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::ACHPrenotificationListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "ach_prenotifications",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::ACHPrenotification
-        }
-        @client.request(req, opts)
+          model: Increase::Models::ACHPrenotification,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

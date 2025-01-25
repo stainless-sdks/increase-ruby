@@ -11,17 +11,19 @@ module Increase
         #
         # @param account_transfer_id [String] The identifier of the Account Transfer you wish to complete.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Increase::Models::Simulations::AccountTransferCompleteParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::AccountTransfer]
         #
-        def complete(account_transfer_id, opts = {})
-          req = {
+        def complete(account_transfer_id, params = {})
+          @client.request(
             method: :post,
             path: ["simulations/account_transfers/%0s/complete", account_transfer_id],
-            model: Increase::Models::AccountTransfer
-          }
-          @client.request(req, opts)
+            model: Increase::Models::AccountTransfer,
+            options: params[:request_options]
+          )
         end
 
         # @param client [Increase::Client]

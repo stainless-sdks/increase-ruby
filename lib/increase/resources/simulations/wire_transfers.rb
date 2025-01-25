@@ -11,17 +11,19 @@ module Increase
         #
         # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to reverse.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Increase::Models::Simulations::WireTransferReverseParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::WireTransfer]
         #
-        def reverse(wire_transfer_id, opts = {})
-          req = {
+        def reverse(wire_transfer_id, params = {})
+          @client.request(
             method: :post,
             path: ["simulations/wire_transfers/%0s/reverse", wire_transfer_id],
-            model: Increase::Models::WireTransfer
-          }
-          @client.request(req, opts)
+            model: Increase::Models::WireTransfer,
+            options: params[:request_options]
+          )
         end
 
         # Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
@@ -30,17 +32,19 @@ module Increase
         #
         # @param wire_transfer_id [String] The identifier of the Wire Transfer you wish to submit.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Increase::Models::Simulations::WireTransferSubmitParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::WireTransfer]
         #
-        def submit(wire_transfer_id, opts = {})
-          req = {
+        def submit(wire_transfer_id, params = {})
+          @client.request(
             method: :post,
             path: ["simulations/wire_transfers/%0s/submit", wire_transfer_id],
-            model: Increase::Models::WireTransfer
-          }
-          @client.request(req, opts)
+            model: Increase::Models::WireTransfer,
+            options: params[:request_options]
+          )
         end
 
         # @param client [Increase::Client]

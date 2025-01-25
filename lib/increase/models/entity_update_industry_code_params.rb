@@ -3,6 +3,10 @@
 module Increase
   module Models
     class EntityUpdateIndustryCodeParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute industry_code
       #   The North American Industry Classification System (NAICS) code for the
       #     corporation's primary line of business. This is a number, like `5132` for
@@ -14,8 +18,9 @@ module Increase
 
       # @!parse
       #   # @param industry_code [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(industry_code:, **) = super
+      #   def initialize(industry_code:, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

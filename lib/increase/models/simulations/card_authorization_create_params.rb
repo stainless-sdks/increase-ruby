@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class CardAuthorizationCreateParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute amount
         #   The authorization amount in cents.
         #
@@ -179,6 +183,7 @@ module Increase
         #   # @param merchant_state [String]
         #   # @param physical_card_id [String]
         #   # @param terminal_id [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(
         #     amount:,
@@ -196,6 +201,7 @@ module Increase
         #     merchant_state: nil,
         #     physical_card_id: nil,
         #     terminal_id: nil,
+        #     request_options: {},
         #     **
         #   )
         #     super

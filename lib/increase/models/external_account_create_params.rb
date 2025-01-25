@@ -3,6 +3,10 @@
 module Increase
   module Models
     class ExternalAccountCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute account_number
       #   The account number for the destination account.
       #
@@ -48,8 +52,9 @@ module Increase
       #   # @param routing_number [String]
       #   # @param account_holder [String]
       #   # @param funding [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_number:, description:, routing_number:, account_holder: nil, funding: nil, **) = super
+      #   def initialize(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

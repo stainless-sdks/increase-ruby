@@ -3,6 +3,10 @@
 module Increase
   module Models
     class ACHPrenotificationCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute account_id
       #   The Increase identifier for the account that will send the transfer.
       #
@@ -140,6 +144,7 @@ module Increase
       #   # @param individual_id [String]
       #   # @param individual_name [String]
       #   # @param standard_entry_class_code [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     account_id:,
@@ -155,6 +160,7 @@ module Increase
       #     individual_id: nil,
       #     individual_name: nil,
       #     standard_entry_class_code: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

@@ -3,6 +3,10 @@
 module Increase
   module Models
     class EventSubscriptionUpdateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] status
       #   The status to update the Event Subscription with.
       #
@@ -15,8 +19,9 @@ module Increase
 
       # @!parse
       #   # @param status [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(status: nil, **) = super
+      #   def initialize(status: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

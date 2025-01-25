@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class ACHTransferReturnParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute [r] reason
         #   The reason why the Federal Reserve or destination bank returned this transfer.
         #     Defaults to `no_account`.
@@ -17,8 +21,9 @@ module Increase
 
         # @!parse
         #   # @param reason [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(reason: nil, **) = super
+        #   def initialize(reason: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 

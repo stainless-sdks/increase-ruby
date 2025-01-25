@@ -3,6 +3,10 @@
 module Increase
   module Models
     class CardPurchaseSupplementListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] card_payment_id
       #   Filter Card Purchase Supplements to ones belonging to the specified Card
       #     Payment.
@@ -49,8 +53,9 @@ module Increase
       #   # @param created_at [Increase::Models::CardPurchaseSupplementListParams::CreatedAt]
       #   # @param cursor [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(card_payment_id: nil, created_at: nil, cursor: nil, limit: nil, **) = super
+      #   def initialize(card_payment_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

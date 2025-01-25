@@ -3,6 +3,10 @@
 module Increase
   module Models
     class BookkeepingAccountBalanceParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] at_time
       #   The moment to query the balance at. If not set, returns the current balances.
       #
@@ -15,8 +19,9 @@ module Increase
 
       # @!parse
       #   # @param at_time [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(at_time: nil, **) = super
+      #   def initialize(at_time: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

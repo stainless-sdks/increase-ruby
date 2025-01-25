@@ -5,47 +5,49 @@ module Increase
     class IntrafiAccountEnrollments
       # Enroll an account in the IntraFi deposit sweep network
       #
-      # @param params [Increase::Models::IntrafiAccountEnrollmentCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::IntrafiAccountEnrollmentCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id The identifier for the account to be added to IntraFi.
       #
       #   @option params [String] :email_address The contact email for the account owner, to be shared with IntraFi.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::IntrafiAccountEnrollmentCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::IntrafiAccountEnrollmentCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "intrafi_account_enrollments",
           body: parsed,
-          model: Increase::Models::IntrafiAccountEnrollment
-        }
-        @client.request(req, opts)
+          model: Increase::Models::IntrafiAccountEnrollment,
+          options: options
+        )
       end
 
       # Get an IntraFi Account Enrollment
       #
       # @param intrafi_account_enrollment_id [String] The identifier of the IntraFi Account Enrollment to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::IntrafiAccountEnrollmentRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
       #
-      def retrieve(intrafi_account_enrollment_id, opts = {})
-        req = {
+      def retrieve(intrafi_account_enrollment_id, params = {})
+        @client.request(
           method: :get,
           path: ["intrafi_account_enrollments/%0s", intrafi_account_enrollment_id],
-          model: Increase::Models::IntrafiAccountEnrollment
-        }
-        @client.request(req, opts)
+          model: Increase::Models::IntrafiAccountEnrollment,
+          options: params[:request_options]
+        )
       end
 
       # List IntraFi Account Enrollments
       #
-      # @param params [Increase::Models::IntrafiAccountEnrollmentListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::IntrafiAccountEnrollmentListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter IntraFi Account Enrollments to the one belonging to an account.
       #
@@ -61,37 +63,39 @@ module Increase
       #
       #   @option params [Increase::Models::IntrafiAccountEnrollmentListParams::Status] :status
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::IntrafiAccountEnrollment>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::IntrafiAccountEnrollmentListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::IntrafiAccountEnrollmentListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "intrafi_account_enrollments",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::IntrafiAccountEnrollment
-        }
-        @client.request(req, opts)
+          model: Increase::Models::IntrafiAccountEnrollment,
+          options: options
+        )
       end
 
       # Unenroll an account from IntraFi
       #
       # @param intrafi_account_enrollment_id [String] The Identifier of the IntraFi Account Enrollment to remove from IntraFi.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::IntrafiAccountEnrollmentUnenrollParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::IntrafiAccountEnrollment]
       #
-      def unenroll(intrafi_account_enrollment_id, opts = {})
-        req = {
+      def unenroll(intrafi_account_enrollment_id, params = {})
+        @client.request(
           method: :post,
           path: ["intrafi_account_enrollments/%0s/unenroll", intrafi_account_enrollment_id],
-          model: Increase::Models::IntrafiAccountEnrollment
-        }
-        @client.request(req, opts)
+          model: Increase::Models::IntrafiAccountEnrollment,
+          options: params[:request_options]
+        )
       end
 
       # @param client [Increase::Client]

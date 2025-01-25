@@ -5,7 +5,7 @@ module Increase
     class ExternalAccounts
       # Create an External Account
       #
-      # @param params [Increase::Models::ExternalAccountCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ExternalAccountCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_number The account number for the destination account.
       #
@@ -18,43 +18,45 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::ExternalAccountCreateParams::Funding] :funding The type of the destination account. Defaults to `checking`.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::ExternalAccount]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::ExternalAccountCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::ExternalAccountCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "external_accounts",
           body: parsed,
-          model: Increase::Models::ExternalAccount
-        }
-        @client.request(req, opts)
+          model: Increase::Models::ExternalAccount,
+          options: options
+        )
       end
 
       # Retrieve an External Account
       #
       # @param external_account_id [String] The identifier of the External Account.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::ExternalAccountRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::ExternalAccount]
       #
-      def retrieve(external_account_id, opts = {})
-        req = {
+      def retrieve(external_account_id, params = {})
+        @client.request(
           method: :get,
           path: ["external_accounts/%0s", external_account_id],
-          model: Increase::Models::ExternalAccount
-        }
-        @client.request(req, opts)
+          model: Increase::Models::ExternalAccount,
+          options: params[:request_options]
+        )
       end
 
       # Update an External Account
       #
       # @param external_account_id [String] The external account identifier.
       #
-      # @param params [Increase::Models::ExternalAccountUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ExternalAccountUpdateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder] :account_holder The type of entity that owns the External Account.
       #
@@ -64,24 +66,24 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::ExternalAccountUpdateParams::Status] :status The status of the External Account.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::ExternalAccount]
       #
-      def update(external_account_id, params = {}, opts = {})
-        parsed = Increase::Models::ExternalAccountUpdateParams.dump(params)
-        req = {
+      def update(external_account_id, params = {})
+        parsed, options = Increase::Models::ExternalAccountUpdateParams.dump_request(params)
+        @client.request(
           method: :patch,
           path: ["external_accounts/%0s", external_account_id],
           body: parsed,
-          model: Increase::Models::ExternalAccount
-        }
-        @client.request(req, opts)
+          model: Increase::Models::ExternalAccount,
+          options: options
+        )
       end
 
       # List External Accounts
       #
-      # @param params [Increase::Models::ExternalAccountListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ExternalAccountListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -97,20 +99,20 @@ module Increase
       #
       #   @option params [Increase::Models::ExternalAccountListParams::Status] :status
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::ExternalAccount>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::ExternalAccountListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::ExternalAccountListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "external_accounts",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::ExternalAccount
-        }
-        @client.request(req, opts)
+          model: Increase::Models::ExternalAccount,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

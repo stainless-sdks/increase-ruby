@@ -7,22 +7,24 @@ module Increase
       #
       # @param oauth_connection_id [String] The identifier of the OAuth Connection.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::OAuthConnectionRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::OAuthConnection]
       #
-      def retrieve(oauth_connection_id, opts = {})
-        req = {
+      def retrieve(oauth_connection_id, params = {})
+        @client.request(
           method: :get,
           path: ["oauth_connections/%0s", oauth_connection_id],
-          model: Increase::Models::OAuthConnection
-        }
-        @client.request(req, opts)
+          model: Increase::Models::OAuthConnection,
+          options: params[:request_options]
+        )
       end
 
       # List OAuth Connections
       #
-      # @param params [Increase::Models::OAuthConnectionListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::OAuthConnectionListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -34,20 +36,20 @@ module Increase
       #
       #   @option params [Increase::Models::OAuthConnectionListParams::Status] :status
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::OAuthConnection>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::OAuthConnectionListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::OAuthConnectionListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "oauth_connections",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::OAuthConnection
-        }
-        @client.request(req, opts)
+          model: Increase::Models::OAuthConnection,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

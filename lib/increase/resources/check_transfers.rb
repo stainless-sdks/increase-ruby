@@ -5,7 +5,7 @@ module Increase
     class CheckTransfers
       # Create a Check Transfer
       #
-      # @param params [Increase::Models::CheckTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CheckTransferCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id The identifier for the account that will send the transfer.
       #
@@ -26,41 +26,43 @@ module Increase
       #     `fulfillment_method` is equal to `third_party`. It must not be included if any
       #     other `fulfillment_method` is provided.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::CheckTransferCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::CheckTransferCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "check_transfers",
           body: parsed,
-          model: Increase::Models::CheckTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CheckTransfer,
+          options: options
+        )
       end
 
       # Retrieve a Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::CheckTransferRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
       #
-      def retrieve(check_transfer_id, opts = {})
-        req = {
+      def retrieve(check_transfer_id, params = {})
+        @client.request(
           method: :get,
           path: ["check_transfers/%0s", check_transfer_id],
-          model: Increase::Models::CheckTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CheckTransfer,
+          options: params[:request_options]
+        )
       end
 
       # List Check Transfers
       #
-      # @param params [Increase::Models::CheckTransferListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CheckTransferListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter Check Transfers to those that originated from the specified Account.
       #
@@ -76,77 +78,81 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::CheckTransfer>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::CheckTransferListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::CheckTransferListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "check_transfers",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::CheckTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CheckTransfer,
+          options: options
+        )
       end
 
       # Approve a Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer to approve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::CheckTransferApproveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
       #
-      def approve(check_transfer_id, opts = {})
-        req = {
+      def approve(check_transfer_id, params = {})
+        @client.request(
           method: :post,
           path: ["check_transfers/%0s/approve", check_transfer_id],
-          model: Increase::Models::CheckTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CheckTransfer,
+          options: params[:request_options]
+        )
       end
 
       # Cancel a pending Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the pending Check Transfer to cancel.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::CheckTransferCancelParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
       #
-      def cancel(check_transfer_id, opts = {})
-        req = {
+      def cancel(check_transfer_id, params = {})
+        @client.request(
           method: :post,
           path: ["check_transfers/%0s/cancel", check_transfer_id],
-          model: Increase::Models::CheckTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CheckTransfer,
+          options: params[:request_options]
+        )
       end
 
       # Request a stop payment on a Check Transfer
       #
       # @param check_transfer_id [String] The identifier of the Check Transfer.
       #
-      # @param params [Increase::Models::CheckTransferStopPaymentParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CheckTransferStopPaymentParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason] :reason The reason why this transfer should be stopped.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
       #
-      def stop_payment(check_transfer_id, params = {}, opts = {})
-        parsed = Increase::Models::CheckTransferStopPaymentParams.dump(params)
-        req = {
+      def stop_payment(check_transfer_id, params = {})
+        parsed, options = Increase::Models::CheckTransferStopPaymentParams.dump_request(params)
+        @client.request(
           method: :post,
           path: ["check_transfers/%0s/stop_payment", check_transfer_id],
           body: parsed,
-          model: Increase::Models::CheckTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CheckTransfer,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

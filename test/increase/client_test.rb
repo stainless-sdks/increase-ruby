@@ -136,7 +136,7 @@ class IncreaseTest < Minitest::Test
     increase.requester = requester
 
     assert_raises(Increase::InternalServerError) do
-      increase.accounts.create({name: "New Account!"}, max_retries: 3)
+      increase.accounts.create(name: "New Account!", request_options: {max_retries: 3})
     end
 
     assert_equal(4, requester.attempts.length)
@@ -148,7 +148,7 @@ class IncreaseTest < Minitest::Test
     increase.requester = requester
 
     assert_raises(Increase::InternalServerError) do
-      increase.accounts.create({name: "New Account!"}, max_retries: 4)
+      increase.accounts.create(name: "New Account!", request_options: {max_retries: 4})
     end
 
     assert_equal(5, requester.attempts.length)
@@ -214,7 +214,10 @@ class IncreaseTest < Minitest::Test
     increase.requester = requester
 
     assert_raises(Increase::InternalServerError) do
-      increase.accounts.create({name: "New Account!"}, extra_headers: {"x-stainless-retry-count" => nil})
+      increase.accounts.create(
+        name: "New Account!",
+        request_options: {extra_headers: {"x-stainless-retry-count" => nil}}
+      )
     end
 
     retry_count_headers = requester.attempts.map { |a| a[:headers]["x-stainless-retry-count"] }
@@ -227,7 +230,10 @@ class IncreaseTest < Minitest::Test
     increase.requester = requester
 
     assert_raises(Increase::InternalServerError) do
-      increase.accounts.create({name: "New Account!"}, extra_headers: {"x-stainless-retry-count" => "42"})
+      increase.accounts.create(
+        name: "New Account!",
+        request_options: {extra_headers: {"x-stainless-retry-count" => "42"}}
+      )
     end
 
     retry_count_headers = requester.attempts.map { |a| a[:headers]["x-stainless-retry-count"] }
@@ -240,7 +246,7 @@ class IncreaseTest < Minitest::Test
     increase.requester = requester
 
     assert_raises(Increase::APIConnectionError) do
-      increase.accounts.create({name: "New Account!"}, extra_headers: {})
+      increase.accounts.create(name: "New Account!", request_options: {extra_headers: {}})
     end
 
     assert_equal("/redirected", requester.attempts.last[:url].path)
@@ -258,7 +264,7 @@ class IncreaseTest < Minitest::Test
     increase.requester = requester
 
     assert_raises(Increase::APIConnectionError) do
-      increase.accounts.create({name: "New Account!"}, extra_headers: {})
+      increase.accounts.create(name: "New Account!", request_options: {extra_headers: {}})
     end
 
     assert_equal("/redirected", requester.attempts.last[:url].path)
@@ -273,7 +279,10 @@ class IncreaseTest < Minitest::Test
     increase.requester = requester
 
     assert_raises(Increase::APIConnectionError) do
-      increase.accounts.create({name: "New Account!"}, extra_headers: {"Authorization" => "Bearer xyz"})
+      increase.accounts.create(
+        name: "New Account!",
+        request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
+      )
     end
 
     assert_equal(
@@ -288,7 +297,10 @@ class IncreaseTest < Minitest::Test
     increase.requester = requester
 
     assert_raises(Increase::APIConnectionError) do
-      increase.accounts.create({name: "New Account!"}, extra_headers: {"Authorization" => "Bearer xyz"})
+      increase.accounts.create(
+        name: "New Account!",
+        request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
+      )
     end
 
     assert_nil(requester.attempts.last[:headers]["Authorization"])
@@ -300,7 +312,7 @@ class IncreaseTest < Minitest::Test
     increase.requester = requester
 
     assert_raises(Increase::InternalServerError) do
-      increase.accounts.create({name: "New Account!"}, max_retries: 1)
+      increase.accounts.create(name: "New Account!", request_options: {max_retries: 1})
     end
 
     idempotency_headers = requester.attempts.map { |a| a[:headers]["Idempotency-Key".downcase] }
@@ -316,7 +328,10 @@ class IncreaseTest < Minitest::Test
     increase.requester = requester
 
     assert_raises(Increase::InternalServerError) do
-      increase.accounts.create({name: "New Account!"}, max_retries: 1, idempotency_key: "user-supplied-key")
+      increase.accounts.create(
+        name: "New Account!",
+        request_options: {max_retries: 1, idempotency_key: "user-supplied-key"}
+      )
     end
 
     requester.attempts.each { |a| assert_equal("user-supplied-key", a[:headers]["Idempotency-Key".downcase]) }

@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class InboundACHTransferCreateParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute account_number_id
         #   The identifier of the Account Number the inbound ACH Transfer is for.
         #
@@ -124,6 +128,7 @@ module Increase
         #   # @param receiver_name [String]
         #   # @param resolve_at [String]
         #   # @param standard_entry_class_code [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(
         #     account_number_id:,
@@ -137,6 +142,7 @@ module Increase
         #     receiver_name: nil,
         #     resolve_at: nil,
         #     standard_entry_class_code: nil,
+        #     request_options: {},
         #     **
         #   )
         #     super

@@ -7,23 +7,23 @@ module Increase
         # Simulates a user attempting add a [Card](#cards) to a digital wallet such as
         #   Apple Pay.
         #
-        # @param params [Increase::Models::Simulations::DigitalWalletTokenRequestCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::DigitalWalletTokenRequestCreateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :card_id The identifier of the Card to be authorized.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse]
         #
-        def create(params = {}, opts = {})
-          parsed = Increase::Models::Simulations::DigitalWalletTokenRequestCreateParams.dump(params)
-          req = {
+        def create(params)
+          parsed, options = Increase::Models::Simulations::DigitalWalletTokenRequestCreateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "simulations/digital_wallet_token_requests",
             body: parsed,
-            model: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse
-          }
-          @client.request(req, opts)
+            model: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse,
+            options: options
+          )
         end
 
         # @param client [Increase::Client]

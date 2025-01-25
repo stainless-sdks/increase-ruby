@@ -3,6 +3,10 @@
 module Increase
   module Models
     class CheckDepositCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute account_id
       #   The identifier for the Account to deposit the check in.
       #
@@ -43,8 +47,9 @@ module Increase
       #   # @param back_image_file_id [String]
       #   # @param front_image_file_id [String]
       #   # @param description [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id:, amount:, back_image_file_id:, front_image_file_id:, description: nil, **) = super
+      #   def initialize(account_id:, amount:, back_image_file_id:, front_image_file_id:, description: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

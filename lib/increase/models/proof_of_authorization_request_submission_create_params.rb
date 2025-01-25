@@ -3,6 +3,10 @@
 module Increase
   module Models
     class ProofOfAuthorizationRequestSubmissionCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute authorization_terms
       #   Terms of authorization.
       #
@@ -89,6 +93,7 @@ module Increase
       #   # @param validated_account_ownership_with_microdeposit [Boolean]
       #   # @param authorizer_company [String]
       #   # @param authorizer_ip_address [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     authorization_terms:,
@@ -102,6 +107,7 @@ module Increase
       #     validated_account_ownership_with_microdeposit:,
       #     authorizer_company: nil,
       #     authorizer_ip_address: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

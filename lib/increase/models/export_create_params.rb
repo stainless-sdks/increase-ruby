@@ -3,6 +3,10 @@
 module Increase
   module Models
     class ExportCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute category
       #   The type of Export to create.
       #
@@ -82,6 +86,7 @@ module Increase
       #   # @param entity_csv [Increase::Models::ExportCreateParams::EntityCsv]
       #   # @param transaction_csv [Increase::Models::ExportCreateParams::TransactionCsv]
       #   # @param vendor_csv [Object]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     category:,
@@ -91,6 +96,7 @@ module Increase
       #     entity_csv: nil,
       #     transaction_csv: nil,
       #     vendor_csv: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

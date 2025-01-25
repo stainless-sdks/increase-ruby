@@ -3,6 +3,10 @@
 module Increase
   module Models
     class InboundCheckDepositReturnParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute reason
       #   The reason to return the Inbound Check Deposit.
       #
@@ -11,8 +15,9 @@ module Increase
 
       # @!parse
       #   # @param reason [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(reason:, **) = super
+      #   def initialize(reason:, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

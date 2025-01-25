@@ -3,6 +3,10 @@
 module Increase
   module Models
     class EventSubscriptionListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
@@ -41,8 +45,9 @@ module Increase
       #   # @param cursor [String]
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(cursor: nil, idempotency_key: nil, limit: nil, **) = super
+      #   def initialize(cursor: nil, idempotency_key: nil, limit: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

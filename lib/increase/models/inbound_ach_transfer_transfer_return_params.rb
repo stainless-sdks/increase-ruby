@@ -3,6 +3,10 @@
 module Increase
   module Models
     class InboundACHTransferTransferReturnParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute reason
       #   The reason why this transfer will be returned. The most usual return codes are
       #     `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
@@ -12,8 +16,9 @@ module Increase
 
       # @!parse
       #   # @param reason [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(reason:, **) = super
+      #   def initialize(reason:, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

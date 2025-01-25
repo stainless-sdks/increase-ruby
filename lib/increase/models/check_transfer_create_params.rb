@@ -3,6 +3,10 @@
 module Increase
   module Models
     class CheckTransferCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute account_id
       #   The identifier for the account that will send the transfer.
       #
@@ -77,6 +81,7 @@ module Increase
       #   # @param physical_check [Increase::Models::CheckTransferCreateParams::PhysicalCheck]
       #   # @param require_approval [Boolean]
       #   # @param third_party [Increase::Models::CheckTransferCreateParams::ThirdParty]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     account_id:,
@@ -86,6 +91,7 @@ module Increase
       #     physical_check: nil,
       #     require_approval: nil,
       #     third_party: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

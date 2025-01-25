@@ -3,6 +3,10 @@
 module Increase
   module Models
     class IntrafiExclusionCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute bank_name
       #   The name of the financial institution to be excluded.
       #
@@ -18,8 +22,9 @@ module Increase
       # @!parse
       #   # @param bank_name [String]
       #   # @param entity_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(bank_name:, entity_id:, **) = super
+      #   def initialize(bank_name:, entity_id:, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

@@ -5,7 +5,7 @@ module Increase
     class Lockboxes
       # Create a Lockbox
       #
-      # @param params [Increase::Models::LockboxCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::LockboxCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id The Account checks sent to this Lockbox should be deposited into.
       #
@@ -13,43 +13,45 @@ module Increase
       #
       #   @option params [String] :recipient_name The name of the recipient that will receive mail at this location.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Lockbox]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::LockboxCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::LockboxCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "lockboxes",
           body: parsed,
-          model: Increase::Models::Lockbox
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Lockbox,
+          options: options
+        )
       end
 
       # Retrieve a Lockbox
       #
       # @param lockbox_id [String] The identifier of the Lockbox to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::LockboxRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Lockbox]
       #
-      def retrieve(lockbox_id, opts = {})
-        req = {
+      def retrieve(lockbox_id, params = {})
+        @client.request(
           method: :get,
           path: ["lockboxes/%0s", lockbox_id],
-          model: Increase::Models::Lockbox
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Lockbox,
+          options: params[:request_options]
+        )
       end
 
       # Update a Lockbox
       #
       # @param lockbox_id [String] The identifier of the Lockbox.
       #
-      # @param params [Increase::Models::LockboxUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::LockboxUpdateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :description The description you choose for the Lockbox.
       #
@@ -57,24 +59,24 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::LockboxUpdateParams::Status] :status This indicates if checks can be sent to the Lockbox.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Lockbox]
       #
-      def update(lockbox_id, params = {}, opts = {})
-        parsed = Increase::Models::LockboxUpdateParams.dump(params)
-        req = {
+      def update(lockbox_id, params = {})
+        parsed, options = Increase::Models::LockboxUpdateParams.dump_request(params)
+        @client.request(
           method: :patch,
           path: ["lockboxes/%0s", lockbox_id],
           body: parsed,
-          model: Increase::Models::Lockbox
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Lockbox,
+          options: options
+        )
       end
 
       # List Lockboxes
       #
-      # @param params [Increase::Models::LockboxListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::LockboxListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter Lockboxes to those associated with the provided Account.
       #
@@ -90,20 +92,20 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::Lockbox>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::LockboxListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::LockboxListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "lockboxes",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::Lockbox
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Lockbox,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

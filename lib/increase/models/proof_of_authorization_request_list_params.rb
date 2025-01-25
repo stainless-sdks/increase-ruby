@@ -3,6 +3,10 @@
 module Increase
   module Models
     class ProofOfAuthorizationRequestListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] created_at
       #
       #   @return [Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt, nil]
@@ -37,8 +41,9 @@ module Increase
       #   # @param created_at [Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt]
       #   # @param cursor [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(created_at: nil, cursor: nil, limit: nil, **) = super
+      #   def initialize(created_at: nil, cursor: nil, limit: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

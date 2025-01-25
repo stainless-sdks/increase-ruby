@@ -3,6 +3,10 @@
 module Increase
   module Models
     class AccountStatementListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] account_id
       #   Filter Account Statements to those belonging to the specified Account.
       #
@@ -49,8 +53,9 @@ module Increase
       #   # @param cursor [String]
       #   # @param limit [Integer]
       #   # @param statement_period_start [Increase::Models::AccountStatementListParams::StatementPeriodStart]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id: nil, cursor: nil, limit: nil, statement_period_start: nil, **) = super
+      #   def initialize(account_id: nil, cursor: nil, limit: nil, statement_period_start: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

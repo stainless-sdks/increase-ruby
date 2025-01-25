@@ -3,6 +3,10 @@
 module Increase
   module Models
     class PhysicalCardProfileCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute carrier_image_file_id
       #   The identifier of the File containing the physical card's carrier image.
       #
@@ -32,8 +36,9 @@ module Increase
       #   # @param contact_phone [String]
       #   # @param description [String]
       #   # @param front_image_file_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(carrier_image_file_id:, contact_phone:, description:, front_image_file_id:, **) = super
+      #   def initialize(carrier_image_file_id:, contact_phone:, description:, front_image_file_id:, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

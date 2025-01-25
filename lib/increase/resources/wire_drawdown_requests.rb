@@ -5,7 +5,7 @@ module Increase
     class WireDrawdownRequests
       # Create a Wire Drawdown Request
       #
-      # @param params [Increase::Models::WireDrawdownRequestCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::WireDrawdownRequestCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_number_id The Account Number to which the recipient should send funds.
       #
@@ -41,41 +41,43 @@ module Increase
       #
       #   @option params [String] :recipient_address_line3 Line 3 of the drawdown request's recipient's address.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::WireDrawdownRequest]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::WireDrawdownRequestCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::WireDrawdownRequestCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "wire_drawdown_requests",
           body: parsed,
-          model: Increase::Models::WireDrawdownRequest
-        }
-        @client.request(req, opts)
+          model: Increase::Models::WireDrawdownRequest,
+          options: options
+        )
       end
 
       # Retrieve a Wire Drawdown Request
       #
       # @param wire_drawdown_request_id [String] The identifier of the Wire Drawdown Request to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::WireDrawdownRequestRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::WireDrawdownRequest]
       #
-      def retrieve(wire_drawdown_request_id, opts = {})
-        req = {
+      def retrieve(wire_drawdown_request_id, params = {})
+        @client.request(
           method: :get,
           path: ["wire_drawdown_requests/%0s", wire_drawdown_request_id],
-          model: Increase::Models::WireDrawdownRequest
-        }
-        @client.request(req, opts)
+          model: Increase::Models::WireDrawdownRequest,
+          options: params[:request_options]
+        )
       end
 
       # List Wire Drawdown Requests
       #
-      # @param params [Increase::Models::WireDrawdownRequestListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::WireDrawdownRequestListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -89,20 +91,20 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::WireDrawdownRequestListParams::Status] :status Filter Wire Drawdown Requests for those with the specified status.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::WireDrawdownRequest>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::WireDrawdownRequestListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::WireDrawdownRequestListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "wire_drawdown_requests",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::WireDrawdownRequest
-        }
-        @client.request(req, opts)
+          model: Increase::Models::WireDrawdownRequest,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

@@ -3,6 +3,10 @@
 module Increase
   module Models
     class WireDrawdownRequestCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute account_number_id
       #   The Account Number to which the recipient should send funds.
       #
@@ -131,6 +135,7 @@ module Increase
       #   # @param recipient_address_line1 [String]
       #   # @param recipient_address_line2 [String]
       #   # @param recipient_address_line3 [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     account_number_id:,
@@ -146,6 +151,7 @@ module Increase
       #     recipient_address_line1: nil,
       #     recipient_address_line2: nil,
       #     recipient_address_line3: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

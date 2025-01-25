@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class ACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute change_code
         #   The reason for the notification of change.
         #
@@ -22,8 +26,9 @@ module Increase
         # @!parse
         #   # @param change_code [String]
         #   # @param corrected_data [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(change_code:, corrected_data:, **) = super
+        #   def initialize(change_code:, corrected_data:, request_options: {}, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 

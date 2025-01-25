@@ -7,22 +7,24 @@ module Increase
       #
       # @param inbound_mail_item_id [String] The identifier of the Inbound Mail Item to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::InboundMailItemRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::InboundMailItem]
       #
-      def retrieve(inbound_mail_item_id, opts = {})
-        req = {
+      def retrieve(inbound_mail_item_id, params = {})
+        @client.request(
           method: :get,
           path: ["inbound_mail_items/%0s", inbound_mail_item_id],
-          model: Increase::Models::InboundMailItem
-        }
-        @client.request(req, opts)
+          model: Increase::Models::InboundMailItem,
+          options: params[:request_options]
+        )
       end
 
       # List Inbound Mail Items
       #
-      # @param params [Increase::Models::InboundMailItemListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::InboundMailItemListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Increase::Models::InboundMailItemListParams::CreatedAt] :created_at
       #
@@ -33,20 +35,20 @@ module Increase
       #
       #   @option params [String] :lockbox_id Filter Inbound Mail Items to ones sent to the provided Lockbox.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::InboundMailItem>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::InboundMailItemListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::InboundMailItemListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "inbound_mail_items",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::InboundMailItem
-        }
-        @client.request(req, opts)
+          model: Increase::Models::InboundMailItem,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

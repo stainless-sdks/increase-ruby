@@ -3,6 +3,10 @@
 module Increase
   module Models
     class SupplementalDocumentListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute entity_id
       #   The identifier of the Entity to list supplemental documents for.
       #
@@ -48,8 +52,9 @@ module Increase
       #   # @param cursor [String]
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, **) = super
+      #   def initialize(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

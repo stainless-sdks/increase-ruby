@@ -3,6 +3,10 @@
 module Increase
   module Models
     class RealTimePaymentsRequestForPaymentCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute amount
       #   The requested amount in USD cents. Must be positive.
       #
@@ -55,6 +59,7 @@ module Increase
       #   # @param remittance_information [String]
       #   # @param source_account_number [String]
       #   # @param source_routing_number [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     amount:,
@@ -64,6 +69,7 @@ module Increase
       #     remittance_information:,
       #     source_account_number:,
       #     source_routing_number:,
+      #     request_options: {},
       #     **
       #   )
       #     super

@@ -3,6 +3,10 @@
 module Increase
   module Models
     class IntrafiAccountEnrollmentListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] account_id
       #   Filter IntraFi Account Enrollments to the one belonging to an account.
       #
@@ -62,8 +66,9 @@ module Increase
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
       #   # @param status [Increase::Models::IntrafiAccountEnrollmentListParams::Status]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, **) = super
+      #   def initialize(account_id: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

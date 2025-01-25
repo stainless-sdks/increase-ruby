@@ -3,6 +3,10 @@
 module Increase
   module Models
     class WireTransferListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] account_id
       #   Filter Wire Transfers to those belonging to the specified Account.
       #
@@ -73,6 +77,7 @@ module Increase
       #   # @param external_account_id [String]
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     account_id: nil,
@@ -81,6 +86,7 @@ module Increase
       #     external_account_id: nil,
       #     idempotency_key: nil,
       #     limit: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

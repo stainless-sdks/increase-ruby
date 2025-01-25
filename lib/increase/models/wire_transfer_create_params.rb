@@ -3,6 +3,10 @@
 module Increase
   module Models
     class WireTransferCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute account_id
       #   The identifier for the account that will send the transfer.
       #
@@ -170,6 +174,7 @@ module Increase
       #   # @param require_approval [Boolean]
       #   # @param routing_number [String]
       #   # @param source_account_number_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     account_id:,
@@ -188,6 +193,7 @@ module Increase
       #     require_approval: nil,
       #     routing_number: nil,
       #     source_account_number_id: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super
