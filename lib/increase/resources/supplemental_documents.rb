@@ -5,30 +5,30 @@ module Increase
     class SupplementalDocuments
       # Create a supplemental document for an Entity
       #
-      # @param params [Increase::Models::SupplementalDocumentCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::SupplementalDocumentCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :entity_id The identifier of the Entity to associate with the supplemental document.
       #
       #   @option params [String] :file_id The identifier of the File containing the document.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::EntitySupplementalDocument]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::SupplementalDocumentCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::SupplementalDocumentCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "entity_supplemental_documents",
           body: parsed,
-          model: Increase::Models::EntitySupplementalDocument
-        }
-        @client.request(req, opts)
+          model: Increase::Models::EntitySupplementalDocument,
+          options: options
+        )
       end
 
       # List Entity Supplemental Document Submissions
       #
-      # @param params [Increase::Models::SupplementalDocumentListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::SupplementalDocumentListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :entity_id The identifier of the Entity to list supplemental documents for.
       #
@@ -42,20 +42,20 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::EntitySupplementalDocument>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::SupplementalDocumentListParams.dump(params)
-        req = {
+      def list(params)
+        parsed, options = Increase::Models::SupplementalDocumentListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "entity_supplemental_documents",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::EntitySupplementalDocument
-        }
-        @client.request(req, opts)
+          model: Increase::Models::EntitySupplementalDocument,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

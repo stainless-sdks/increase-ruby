@@ -3,6 +3,10 @@
 module Increase
   module Models
     class ExternalAccountListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
@@ -62,8 +66,9 @@ module Increase
       #   # @param limit [Integer]
       #   # @param routing_number [String]
       #   # @param status [Increase::Models::ExternalAccountListParams::Status]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(cursor: nil, idempotency_key: nil, limit: nil, routing_number: nil, status: nil, **) = super
+      #   def initialize(cursor: nil, idempotency_key: nil, limit: nil, routing_number: nil, status: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

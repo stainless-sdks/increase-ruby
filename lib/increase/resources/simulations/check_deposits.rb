@@ -10,17 +10,19 @@ module Increase
         #
         # @param check_deposit_id [String] The identifier of the Check Deposit you wish to reject.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Increase::Models::Simulations::CheckDepositRejectParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
         #
-        def reject(check_deposit_id, opts = {})
-          req = {
+        def reject(check_deposit_id, params = {})
+          @client.request(
             method: :post,
             path: ["simulations/check_deposits/%0s/reject", check_deposit_id],
-            model: Increase::Models::CheckDeposit
-          }
-          @client.request(req, opts)
+            model: Increase::Models::CheckDeposit,
+            options: params[:request_options]
+          )
         end
 
         # Simulates the return of a [Check Deposit](#check-deposits). This Check Deposit
@@ -28,17 +30,19 @@ module Increase
         #
         # @param check_deposit_id [String] The identifier of the Check Deposit you wish to return.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Increase::Models::Simulations::CheckDepositReturnParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
         #
-        def return_(check_deposit_id, opts = {})
-          req = {
+        def return_(check_deposit_id, params = {})
+          @client.request(
             method: :post,
             path: ["simulations/check_deposits/%0s/return", check_deposit_id],
-            model: Increase::Models::CheckDeposit
-          }
-          @client.request(req, opts)
+            model: Increase::Models::CheckDeposit,
+            options: params[:request_options]
+          )
         end
 
         # Simulates the submission of a [Check Deposit](#check-deposits) to the Federal
@@ -46,17 +50,19 @@ module Increase
         #
         # @param check_deposit_id [String] The identifier of the Check Deposit you wish to submit.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Increase::Models::Simulations::CheckDepositSubmitParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
         #
-        def submit(check_deposit_id, opts = {})
-          req = {
+        def submit(check_deposit_id, params = {})
+          @client.request(
             method: :post,
             path: ["simulations/check_deposits/%0s/submit", check_deposit_id],
-            model: Increase::Models::CheckDeposit
-          }
-          @client.request(req, opts)
+            model: Increase::Models::CheckDeposit,
+            options: params[:request_options]
+          )
         end
 
         # @param client [Increase::Client]

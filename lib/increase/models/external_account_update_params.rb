@@ -3,6 +3,10 @@
 module Increase
   module Models
     class ExternalAccountUpdateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] account_holder
       #   The type of entity that owns the External Account.
       #
@@ -48,8 +52,9 @@ module Increase
       #   # @param description [String]
       #   # @param funding [String]
       #   # @param status [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_holder: nil, description: nil, funding: nil, status: nil, **) = super
+      #   def initialize(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

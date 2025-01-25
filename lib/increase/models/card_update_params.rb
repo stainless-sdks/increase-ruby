@@ -3,6 +3,10 @@
 module Increase
   module Models
     class CardUpdateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] billing_address
       #   The card's updated billing address.
       #
@@ -62,8 +66,19 @@ module Increase
       #   # @param digital_wallet [Increase::Models::CardUpdateParams::DigitalWallet]
       #   # @param entity_id [String]
       #   # @param status [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(billing_address: nil, description: nil, digital_wallet: nil, entity_id: nil, status: nil, **) = super
+      #   def initialize(
+      #     billing_address: nil,
+      #     description: nil,
+      #     digital_wallet: nil,
+      #     entity_id: nil,
+      #     status: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

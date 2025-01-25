@@ -3,6 +3,10 @@
 module Increase
   module Models
     class LockboxCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute account_id
       #   The Account checks sent to this Lockbox should be deposited into.
       #
@@ -33,8 +37,9 @@ module Increase
       #   # @param account_id [String]
       #   # @param description [String]
       #   # @param recipient_name [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id:, description: nil, recipient_name: nil, **) = super
+      #   def initialize(account_id:, description: nil, recipient_name: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

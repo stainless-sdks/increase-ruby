@@ -7,22 +7,24 @@ module Increase
       #
       # @param transaction_id [String] The identifier of the Transaction to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::TransactionRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Transaction]
       #
-      def retrieve(transaction_id, opts = {})
-        req = {
+      def retrieve(transaction_id, params = {})
+        @client.request(
           method: :get,
           path: ["transactions/%0s", transaction_id],
-          model: Increase::Models::Transaction
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Transaction,
+          options: params[:request_options]
+        )
       end
 
       # List Transactions
       #
-      # @param params [Increase::Models::TransactionListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::TransactionListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter Transactions for those belonging to the specified Account.
       #
@@ -38,20 +40,20 @@ module Increase
       #   @option params [String] :route_id Filter Transactions for those belonging to the specified route. This could be a
       #     Card ID or an Account Number ID.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::Transaction>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::TransactionListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::TransactionListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "transactions",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::Transaction
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Transaction,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

@@ -7,22 +7,24 @@ module Increase
       #
       # @param card_payment_id [String] The identifier of the Card Payment.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::CardPaymentRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::CardPayment]
       #
-      def retrieve(card_payment_id, opts = {})
-        req = {
+      def retrieve(card_payment_id, params = {})
+        @client.request(
           method: :get,
           path: ["card_payments/%0s", card_payment_id],
-          model: Increase::Models::CardPayment
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CardPayment,
+          options: params[:request_options]
+        )
       end
 
       # List Card Payments
       #
-      # @param params [Increase::Models::CardPaymentListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardPaymentListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter Card Payments to ones belonging to the specified Account.
       #
@@ -35,20 +37,20 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::CardPayment>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::CardPaymentListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::CardPaymentListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "card_payments",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::CardPayment
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CardPayment,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

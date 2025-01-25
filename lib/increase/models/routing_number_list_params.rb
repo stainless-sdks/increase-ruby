@@ -3,6 +3,10 @@
 module Increase
   module Models
     class RoutingNumberListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute routing_number
       #   Filter financial institutions by routing number.
       #
@@ -34,8 +38,9 @@ module Increase
       #   # @param routing_number [String]
       #   # @param cursor [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(routing_number:, cursor: nil, limit: nil, **) = super
+      #   def initialize(routing_number:, cursor: nil, limit: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

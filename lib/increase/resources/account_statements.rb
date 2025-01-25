@@ -7,22 +7,24 @@ module Increase
       #
       # @param account_statement_id [String] The identifier of the Account Statement to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::AccountStatementRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::AccountStatement]
       #
-      def retrieve(account_statement_id, opts = {})
-        req = {
+      def retrieve(account_statement_id, params = {})
+        @client.request(
           method: :get,
           path: ["account_statements/%0s", account_statement_id],
-          model: Increase::Models::AccountStatement
-        }
-        @client.request(req, opts)
+          model: Increase::Models::AccountStatement,
+          options: params[:request_options]
+        )
       end
 
       # List Account Statements
       #
-      # @param params [Increase::Models::AccountStatementListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountStatementListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter Account Statements to those belonging to the specified Account.
       #
@@ -33,20 +35,20 @@ module Increase
       #
       #   @option params [Increase::Models::AccountStatementListParams::StatementPeriodStart] :statement_period_start
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::AccountStatement>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::AccountStatementListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::AccountStatementListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "account_statements",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::AccountStatement
-        }
-        @client.request(req, opts)
+          model: Increase::Models::AccountStatement,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

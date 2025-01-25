@@ -3,6 +3,10 @@
 module Increase
   module Models
     class InboundWireTransferListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] account_id
       #   Filter Inbound Wire Tranfers to ones belonging to the specified Account.
       #
@@ -70,8 +74,20 @@ module Increase
       #   # @param cursor [String]
       #   # @param limit [Integer]
       #   # @param status [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id: nil, account_number_id: nil, created_at: nil, cursor: nil, limit: nil, status: nil, **) = super
+      #   def initialize(
+      #     account_id: nil,
+      #     account_number_id: nil,
+      #     created_at: nil,
+      #     cursor: nil,
+      #     limit: nil,
+      #     status: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

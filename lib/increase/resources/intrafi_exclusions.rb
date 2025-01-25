@@ -5,47 +5,49 @@ module Increase
     class IntrafiExclusions
       # Create an IntraFi Exclusion
       #
-      # @param params [Increase::Models::IntrafiExclusionCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::IntrafiExclusionCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :bank_name The name of the financial institution to be excluded.
       #
       #   @option params [String] :entity_id The identifier of the Entity whose deposits will be excluded.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::IntrafiExclusion]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::IntrafiExclusionCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::IntrafiExclusionCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "intrafi_exclusions",
           body: parsed,
-          model: Increase::Models::IntrafiExclusion
-        }
-        @client.request(req, opts)
+          model: Increase::Models::IntrafiExclusion,
+          options: options
+        )
       end
 
       # Get an IntraFi Exclusion
       #
       # @param intrafi_exclusion_id [String] The identifier of the IntraFi Exclusion to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::IntrafiExclusionRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::IntrafiExclusion]
       #
-      def retrieve(intrafi_exclusion_id, opts = {})
-        req = {
+      def retrieve(intrafi_exclusion_id, params = {})
+        @client.request(
           method: :get,
           path: ["intrafi_exclusions/%0s", intrafi_exclusion_id],
-          model: Increase::Models::IntrafiExclusion
-        }
-        @client.request(req, opts)
+          model: Increase::Models::IntrafiExclusion,
+          options: params[:request_options]
+        )
       end
 
       # List IntraFi Exclusions
       #
-      # @param params [Increase::Models::IntrafiExclusionListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::IntrafiExclusionListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -59,20 +61,20 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::IntrafiExclusion>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::IntrafiExclusionListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::IntrafiExclusionListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "intrafi_exclusions",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::IntrafiExclusion
-        }
-        @client.request(req, opts)
+          model: Increase::Models::IntrafiExclusion,
+          options: options
+        )
       end
 
       # Archive an IntraFi Exclusion
@@ -81,17 +83,19 @@ module Increase
       #   business days for an exclusion removal to be processed. Removing an exclusion
       #   does not guarantee that funds will be swept to the previously-excluded bank.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::IntrafiExclusionArchiveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::IntrafiExclusion]
       #
-      def archive(intrafi_exclusion_id, opts = {})
-        req = {
+      def archive(intrafi_exclusion_id, params = {})
+        @client.request(
           method: :post,
           path: ["intrafi_exclusions/%0s/archive", intrafi_exclusion_id],
-          model: Increase::Models::IntrafiExclusion
-        }
-        @client.request(req, opts)
+          model: Increase::Models::IntrafiExclusion,
+          options: params[:request_options]
+        )
       end
 
       # @param client [Increase::Client]

@@ -15,7 +15,7 @@ module Increase
         #   [Declined Transaction](#declined-transactions) depending on whether or not the
         #   transfer is allowed.
         #
-        # @param params [Increase::Models::Simulations::InboundACHTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::InboundACHTransferCreateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :account_number_id The identifier of the Account Number the inbound ACH Transfer is for.
         #
@@ -42,19 +42,19 @@ module Increase
         #
         #   @option params [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode] :standard_entry_class_code The standard entry class code for the transfer.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::InboundACHTransfer]
         #
-        def create(params = {}, opts = {})
-          parsed = Increase::Models::Simulations::InboundACHTransferCreateParams.dump(params)
-          req = {
+        def create(params)
+          parsed, options = Increase::Models::Simulations::InboundACHTransferCreateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "simulations/inbound_ach_transfers",
             body: parsed,
-            model: Increase::Models::InboundACHTransfer
-          }
-          @client.request(req, opts)
+            model: Increase::Models::InboundACHTransfer,
+            options: options
+          )
         end
 
         # @param client [Increase::Client]

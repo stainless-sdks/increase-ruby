@@ -7,7 +7,7 @@ module Increase
         # Simulates receiving an
         #   [Inbound Wire Drawdown Request](#inbound-wire-drawdown-requests).
         #
-        # @param params [Increase::Models::Simulations::InboundWireDrawdownRequestCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::InboundWireDrawdownRequestCreateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [Integer] :amount The amount being requested in cents.
         #
@@ -55,19 +55,19 @@ module Increase
         #   @option params [String] :originator_to_beneficiary_information_line4 Line 4 of the information conveyed from the originator of the message to the
         #     beneficiary.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::InboundWireDrawdownRequest]
         #
-        def create(params = {}, opts = {})
-          parsed = Increase::Models::Simulations::InboundWireDrawdownRequestCreateParams.dump(params)
-          req = {
+        def create(params)
+          parsed, options = Increase::Models::Simulations::InboundWireDrawdownRequestCreateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "simulations/inbound_wire_drawdown_requests",
             body: parsed,
-            model: Increase::Models::InboundWireDrawdownRequest
-          }
-          @client.request(req, opts)
+            model: Increase::Models::InboundWireDrawdownRequest,
+            options: options
+          )
         end
 
         # @param client [Increase::Client]

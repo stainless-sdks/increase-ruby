@@ -3,6 +3,10 @@
 module Increase
   module Models
     class CheckTransferStopPaymentParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] reason
       #   The reason why this transfer should be stopped.
       #
@@ -15,8 +19,9 @@ module Increase
 
       # @!parse
       #   # @param reason [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(reason: nil, **) = super
+      #   def initialize(reason: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

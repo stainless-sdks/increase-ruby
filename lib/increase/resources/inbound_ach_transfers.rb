@@ -7,22 +7,24 @@ module Increase
       #
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to get details for.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::InboundACHTransferRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
       #
-      def retrieve(inbound_ach_transfer_id, opts = {})
-        req = {
+      def retrieve(inbound_ach_transfer_id, params = {})
+        @client.request(
           method: :get,
           path: ["inbound_ach_transfers/%0s", inbound_ach_transfer_id],
-          model: Increase::Models::InboundACHTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::InboundACHTransfer,
+          options: params[:request_options]
+        )
       end
 
       # List Inbound ACH Transfers
       #
-      # @param params [Increase::Models::InboundACHTransferListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::InboundACHTransferListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter Inbound ACH Tranfers to ones belonging to the specified Account.
       #
@@ -37,20 +39,20 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::InboundACHTransferListParams::Status] :status Filter Inbound ACH Transfers to those with the specified status.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::InboundACHTransfer>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::InboundACHTransferListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::InboundACHTransferListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "inbound_ach_transfers",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::InboundACHTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::InboundACHTransfer,
+          options: options
+        )
       end
 
       # Create a notification of change for an Inbound ACH Transfer
@@ -58,50 +60,50 @@ module Increase
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer for which to create a notification of
       #   change.
       #
-      # @param params [Increase::Models::InboundACHTransferCreateNotificationOfChangeParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::InboundACHTransferCreateNotificationOfChangeParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :updated_account_number The updated account number to send in the notification of change.
       #
       #   @option params [String] :updated_routing_number The updated routing number to send in the notification of change.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
       #
-      def create_notification_of_change(inbound_ach_transfer_id, params = {}, opts = {})
-        parsed = Increase::Models::InboundACHTransferCreateNotificationOfChangeParams.dump(params)
-        req = {
+      def create_notification_of_change(inbound_ach_transfer_id, params = {})
+        parsed, options = Increase::Models::InboundACHTransferCreateNotificationOfChangeParams.dump_request(params)
+        @client.request(
           method: :post,
           path: ["inbound_ach_transfers/%0s/create_notification_of_change", inbound_ach_transfer_id],
           body: parsed,
-          model: Increase::Models::InboundACHTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::InboundACHTransfer,
+          options: options
+        )
       end
 
       # Decline an Inbound ACH Transfer
       #
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to decline.
       #
-      # @param params [Increase::Models::InboundACHTransferDeclineParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::InboundACHTransferDeclineParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Symbol, Increase::Models::InboundACHTransferDeclineParams::Reason] :reason The reason why this transfer will be returned. If this parameter is unset, the
       #     return codes will be `payment_stopped` for debits and
       #     `credit_entry_refused_by_receiver` for credits.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
       #
-      def decline(inbound_ach_transfer_id, params = {}, opts = {})
-        parsed = Increase::Models::InboundACHTransferDeclineParams.dump(params)
-        req = {
+      def decline(inbound_ach_transfer_id, params = {})
+        parsed, options = Increase::Models::InboundACHTransferDeclineParams.dump_request(params)
+        @client.request(
           method: :post,
           path: ["inbound_ach_transfers/%0s/decline", inbound_ach_transfer_id],
           body: parsed,
-          model: Increase::Models::InboundACHTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::InboundACHTransfer,
+          options: options
+        )
       end
 
       # Return an Inbound ACH Transfer
@@ -109,24 +111,24 @@ module Increase
       # @param inbound_ach_transfer_id [String] The identifier of the Inbound ACH Transfer to return to the originating
       #   financial institution.
       #
-      # @param params [Increase::Models::InboundACHTransferTransferReturnParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::InboundACHTransferTransferReturnParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason] :reason The reason why this transfer will be returned. The most usual return codes are
       #     `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
       #
-      def transfer_return(inbound_ach_transfer_id, params = {}, opts = {})
-        parsed = Increase::Models::InboundACHTransferTransferReturnParams.dump(params)
-        req = {
+      def transfer_return(inbound_ach_transfer_id, params)
+        parsed, options = Increase::Models::InboundACHTransferTransferReturnParams.dump_request(params)
+        @client.request(
           method: :post,
           path: ["inbound_ach_transfers/%0s/transfer_return", inbound_ach_transfer_id],
           body: parsed,
-          model: Increase::Models::InboundACHTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::InboundACHTransfer,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

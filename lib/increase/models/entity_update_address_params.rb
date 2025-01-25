@@ -3,6 +3,10 @@
 module Increase
   module Models
     class EntityUpdateAddressParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute address
       #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       #     are disallowed.
@@ -12,8 +16,9 @@ module Increase
 
       # @!parse
       #   # @param address [Increase::Models::EntityUpdateAddressParams::Address]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(address:, **) = super
+      #   def initialize(address:, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

@@ -7,24 +7,26 @@ module Increase
       #
       # @param real_time_decision_id [String] The identifier of the Real-Time Decision.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::RealTimeDecisionRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::RealTimeDecision]
       #
-      def retrieve(real_time_decision_id, opts = {})
-        req = {
+      def retrieve(real_time_decision_id, params = {})
+        @client.request(
           method: :get,
           path: ["real_time_decisions/%0s", real_time_decision_id],
-          model: Increase::Models::RealTimeDecision
-        }
-        @client.request(req, opts)
+          model: Increase::Models::RealTimeDecision,
+          options: params[:request_options]
+        )
       end
 
       # Action a Real-Time Decision
       #
       # @param real_time_decision_id [String] The identifier of the Real-Time Decision.
       #
-      # @param params [Increase::Models::RealTimeDecisionActionParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::RealTimeDecisionActionParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Increase::Models::RealTimeDecisionActionParams::CardAuthentication] :card_authentication If the Real-Time Decision relates to a 3DS card authentication attempt, this
       #     object contains your response to the authentication.
@@ -41,19 +43,19 @@ module Increase
       #   @option params [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken] :digital_wallet_token If the Real-Time Decision relates to a digital wallet token provisioning
       #     attempt, this object contains your response to the attempt.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::RealTimeDecision]
       #
-      def action(real_time_decision_id, params = {}, opts = {})
-        parsed = Increase::Models::RealTimeDecisionActionParams.dump(params)
-        req = {
+      def action(real_time_decision_id, params = {})
+        parsed, options = Increase::Models::RealTimeDecisionActionParams.dump_request(params)
+        @client.request(
           method: :post,
           path: ["real_time_decisions/%0s/action", real_time_decision_id],
           body: parsed,
-          model: Increase::Models::RealTimeDecision
-        }
-        @client.request(req, opts)
+          model: Increase::Models::RealTimeDecision,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

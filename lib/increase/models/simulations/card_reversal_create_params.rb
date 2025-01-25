@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class CardReversalCreateParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute card_payment_id
         #   The identifier of the Card Payment to create a reversal on.
         #
@@ -24,8 +28,9 @@ module Increase
         # @!parse
         #   # @param card_payment_id [String]
         #   # @param amount [Integer]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(card_payment_id:, amount: nil, **) = super
+        #   def initialize(card_payment_id:, amount: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
       end

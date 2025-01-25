@@ -7,22 +7,24 @@ module Increase
       #
       # @param event_id [String] The identifier of the Event.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::EventRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Event]
       #
-      def retrieve(event_id, opts = {})
-        req = {
+      def retrieve(event_id, params = {})
+        @client.request(
           method: :get,
           path: ["events/%0s", event_id],
-          model: Increase::Models::Event
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Event,
+          options: params[:request_options]
+        )
       end
 
       # List Events
       #
-      # @param params [Increase::Models::EventListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EventListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :associated_object_id Filter Events to those belonging to the object with the provided identifier.
       #
@@ -35,20 +37,20 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::Event>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::EventListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::EventListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "events",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::Event
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Event,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

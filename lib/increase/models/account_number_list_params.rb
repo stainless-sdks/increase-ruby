@@ -3,6 +3,10 @@
 module Increase
   module Models
     class AccountNumberListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] account_id
       #   Filter Account Numbers to those belonging to the specified Account.
       #
@@ -84,6 +88,7 @@ module Increase
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
       #   # @param status [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     account_id: nil,
@@ -93,6 +98,7 @@ module Increase
       #     idempotency_key: nil,
       #     limit: nil,
       #     status: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

@@ -4,7 +4,13 @@ module Increase
   module Models
     class PhysicalCardProfileArchiveParams < Increase::BaseModel
       # @!parse
-      #   def initialize(**) = super
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      # @!parse
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

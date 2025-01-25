@@ -3,6 +3,10 @@
 module Increase
   module Models
     class DigitalCardProfileCloneParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] app_icon_file_id
       #   The identifier of the File containing the card's icon image.
       #
@@ -103,6 +107,7 @@ module Increase
       #   # @param description [String]
       #   # @param issuer_name [String]
       #   # @param text_color [Increase::Models::DigitalCardProfileCloneParams::TextColor]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     app_icon_file_id: nil,
@@ -114,6 +119,7 @@ module Increase
       #     description: nil,
       #     issuer_name: nil,
       #     text_color: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

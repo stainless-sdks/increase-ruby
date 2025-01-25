@@ -9,23 +9,23 @@ module Increase
         #   operates more than one program, `program_id` is a required field when creating
         #   accounts.
         #
-        # @param params [Increase::Models::Simulations::ProgramCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::ProgramCreateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :name The name of the program being added.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::Program]
         #
-        def create(params = {}, opts = {})
-          parsed = Increase::Models::Simulations::ProgramCreateParams.dump(params)
-          req = {
+        def create(params)
+          parsed, options = Increase::Models::Simulations::ProgramCreateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "simulations/programs",
             body: parsed,
-            model: Increase::Models::Program
-          }
-          @client.request(req, opts)
+            model: Increase::Models::Program,
+            options: options
+          )
         end
 
         # @param client [Increase::Client]

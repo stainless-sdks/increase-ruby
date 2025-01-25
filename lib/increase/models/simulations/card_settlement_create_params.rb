@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class CardSettlementCreateParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute card_id
         #   The identifier of the Card to create a settlement on.
         #
@@ -32,8 +36,9 @@ module Increase
         #   # @param card_id [String]
         #   # @param pending_transaction_id [String]
         #   # @param amount [Integer]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(card_id:, pending_transaction_id:, amount: nil, **) = super
+        #   def initialize(card_id:, pending_transaction_id:, amount: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
       end

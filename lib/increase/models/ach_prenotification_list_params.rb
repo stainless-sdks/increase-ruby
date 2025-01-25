@@ -3,6 +3,10 @@
 module Increase
   module Models
     class ACHPrenotificationListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] created_at
       #
       #   @return [Increase::Models::ACHPrenotificationListParams::CreatedAt, nil]
@@ -51,8 +55,9 @@ module Increase
       #   # @param cursor [String]
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, **) = super
+      #   def initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

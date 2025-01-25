@@ -3,6 +3,10 @@
 module Increase
   module Models
     class EntityListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] created_at
       #
       #   @return [Increase::Models::EntityListParams::CreatedAt, nil]
@@ -61,8 +65,9 @@ module Increase
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
       #   # @param status [Increase::Models::EntityListParams::Status]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, **) = super
+      #   def initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

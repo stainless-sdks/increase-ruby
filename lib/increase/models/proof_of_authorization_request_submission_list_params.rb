@@ -3,6 +3,10 @@
 module Increase
   module Models
     class ProofOfAuthorizationRequestSubmissionListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
@@ -52,8 +56,18 @@ module Increase
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
       #   # @param proof_of_authorization_request_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(cursor: nil, idempotency_key: nil, limit: nil, proof_of_authorization_request_id: nil, **) = super
+      #   def initialize(
+      #     cursor: nil,
+      #     idempotency_key: nil,
+      #     limit: nil,
+      #     proof_of_authorization_request_id: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

@@ -5,7 +5,7 @@ module Increase
     class AccountTransfers
       # Create an Account Transfer
       #
-      # @param params [Increase::Models::AccountTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountTransferCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id The identifier for the account that will send the transfer.
       #
@@ -18,41 +18,43 @@ module Increase
       #
       #   @option params [Boolean] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::AccountTransfer]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::AccountTransferCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::AccountTransferCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "account_transfers",
           body: parsed,
-          model: Increase::Models::AccountTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::AccountTransfer,
+          options: options
+        )
       end
 
       # Retrieve an Account Transfer
       #
       # @param account_transfer_id [String] The identifier of the Account Transfer.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::AccountTransferRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::AccountTransfer]
       #
-      def retrieve(account_transfer_id, opts = {})
-        req = {
+      def retrieve(account_transfer_id, params = {})
+        @client.request(
           method: :get,
           path: ["account_transfers/%0s", account_transfer_id],
-          model: Increase::Models::AccountTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::AccountTransfer,
+          options: params[:request_options]
+        )
       end
 
       # List Account Transfers
       #
-      # @param params [Increase::Models::AccountTransferListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountTransferListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter Account Transfers to those that originated from the specified Account.
       #
@@ -68,54 +70,58 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::AccountTransfer>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::AccountTransferListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::AccountTransferListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "account_transfers",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::AccountTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::AccountTransfer,
+          options: options
+        )
       end
 
       # Approve an Account Transfer
       #
       # @param account_transfer_id [String] The identifier of the Account Transfer to approve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::AccountTransferApproveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::AccountTransfer]
       #
-      def approve(account_transfer_id, opts = {})
-        req = {
+      def approve(account_transfer_id, params = {})
+        @client.request(
           method: :post,
           path: ["account_transfers/%0s/approve", account_transfer_id],
-          model: Increase::Models::AccountTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::AccountTransfer,
+          options: params[:request_options]
+        )
       end
 
       # Cancel an Account Transfer
       #
       # @param account_transfer_id [String] The identifier of the pending Account Transfer to cancel.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::AccountTransferCancelParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::AccountTransfer]
       #
-      def cancel(account_transfer_id, opts = {})
-        req = {
+      def cancel(account_transfer_id, params = {})
+        @client.request(
           method: :post,
           path: ["account_transfers/%0s/cancel", account_transfer_id],
-          model: Increase::Models::AccountTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::AccountTransfer,
+          options: params[:request_options]
+        )
       end
 
       # @param client [Increase::Client]

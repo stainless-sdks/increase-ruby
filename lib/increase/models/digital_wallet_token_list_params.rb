@@ -3,6 +3,10 @@
 module Increase
   module Models
     class DigitalWalletTokenListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] card_id
       #   Filter Digital Wallet Tokens to ones belonging to the specified Card.
       #
@@ -48,8 +52,9 @@ module Increase
       #   # @param created_at [Increase::Models::DigitalWalletTokenListParams::CreatedAt]
       #   # @param cursor [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(card_id: nil, created_at: nil, cursor: nil, limit: nil, **) = super
+      #   def initialize(card_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

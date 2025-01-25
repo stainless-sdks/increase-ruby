@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class CardIncrementCreateParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute amount
         #   The amount of the increment in minor units in the card authorization's currency.
         #
@@ -33,8 +37,9 @@ module Increase
         #   # @param amount [Integer]
         #   # @param card_payment_id [String]
         #   # @param event_subscription_id [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(amount:, card_payment_id:, event_subscription_id: nil, **) = super
+        #   def initialize(amount:, card_payment_id:, event_subscription_id: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
       end

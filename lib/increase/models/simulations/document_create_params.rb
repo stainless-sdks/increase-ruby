@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class DocumentCreateParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute account_id
         #   The identifier of the Account the tax document is for.
         #
@@ -12,8 +16,9 @@ module Increase
 
         # @!parse
         #   # @param account_id [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(account_id:, **) = super
+        #   def initialize(account_id:, request_options: {}, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
       end

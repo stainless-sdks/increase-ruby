@@ -3,6 +3,10 @@
 module Increase
   module Models
     class RealTimeDecisionActionParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] card_authentication
       #   If the Real-Time Decision relates to a 3DS card authentication attempt, this
       #     object contains your response to the authentication.
@@ -69,6 +73,7 @@ module Increase
       #   # @param card_authorization [Increase::Models::RealTimeDecisionActionParams::CardAuthorization]
       #   # @param digital_wallet_authentication [Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication]
       #   # @param digital_wallet_token [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     card_authentication: nil,
@@ -76,6 +81,7 @@ module Increase
       #     card_authorization: nil,
       #     digital_wallet_authentication: nil,
       #     digital_wallet_token: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

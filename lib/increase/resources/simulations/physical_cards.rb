@@ -10,23 +10,23 @@ module Increase
         #
         # @param physical_card_id [String] The Physical Card you would like to action.
         #
-        # @param params [Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams, Hash{Symbol=>Object}] .
         #
         #   @option params [Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus] :shipment_status The shipment status to move the Physical Card to.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::PhysicalCard]
         #
-        def advance_shipment(physical_card_id, params = {}, opts = {})
-          parsed = Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams.dump(params)
-          req = {
+        def advance_shipment(physical_card_id, params)
+          parsed, options = Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams.dump_request(params)
+          @client.request(
             method: :post,
             path: ["simulations/physical_cards/%0s/advance_shipment", physical_card_id],
             body: parsed,
-            model: Increase::Models::PhysicalCard
-          }
-          @client.request(req, opts)
+            model: Increase::Models::PhysicalCard,
+            options: options
+          )
         end
 
         # @param client [Increase::Client]

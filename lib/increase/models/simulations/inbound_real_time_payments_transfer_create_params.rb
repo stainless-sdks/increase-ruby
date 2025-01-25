@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class InboundRealTimePaymentsTransferCreateParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute account_number_id
         #   The identifier of the Account Number the inbound Real-Time Payments Transfer is
         #     for.
@@ -75,6 +79,7 @@ module Increase
         #   # @param debtor_routing_number [String]
         #   # @param remittance_information [String]
         #   # @param request_for_payment_id [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(
         #     account_number_id:,
@@ -84,6 +89,7 @@ module Increase
         #     debtor_routing_number: nil,
         #     remittance_information: nil,
         #     request_for_payment_id: nil,
+        #     request_options: {},
         #     **
         #   )
         #     super

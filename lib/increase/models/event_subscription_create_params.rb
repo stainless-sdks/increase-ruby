@@ -3,6 +3,10 @@
 module Increase
   module Models
     class EventSubscriptionCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute url
       #   The URL you'd like us to send webhooks to.
       #
@@ -48,8 +52,9 @@ module Increase
       #   # @param oauth_connection_id [String]
       #   # @param selected_event_category [String]
       #   # @param shared_secret [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, **) = super
+      #   def initialize(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

@@ -5,7 +5,7 @@ module Increase
     class Exports
       # Create an Export
       #
-      # @param params [Increase::Models::ExportCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ExportCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Symbol, Increase::Models::ExportCreateParams::Category] :category The type of Export to create.
       #
@@ -25,41 +25,43 @@ module Increase
       #
       #   @option params [Object] :vendor_csv Options for the created export. Required if `category` is equal to `vendor_csv`.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Export]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::ExportCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::ExportCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "exports",
           body: parsed,
-          model: Increase::Models::Export
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Export,
+          options: options
+        )
       end
 
       # Retrieve an Export
       #
       # @param export_id [String] The identifier of the Export to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::ExportRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Export]
       #
-      def retrieve(export_id, opts = {})
-        req = {
+      def retrieve(export_id, params = {})
+        @client.request(
           method: :get,
           path: ["exports/%0s", export_id],
-          model: Increase::Models::Export
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Export,
+          options: params[:request_options]
+        )
       end
 
       # List Exports
       #
-      # @param params [Increase::Models::ExportListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::ExportListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Increase::Models::ExportListParams::Category] :category
       #
@@ -77,20 +79,20 @@ module Increase
       #
       #   @option params [Increase::Models::ExportListParams::Status] :status
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::Export>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::ExportListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::ExportListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "exports",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::Export
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Export,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

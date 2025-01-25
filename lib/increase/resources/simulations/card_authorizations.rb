@@ -12,7 +12,7 @@ module Increase
         #   [Digital Wallet Token](#digital-wallet-tokens) id to simulate the two different
         #   ways purchases can be made.
         #
-        # @param params [Increase::Models::Simulations::CardAuthorizationCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::CardAuthorizationCreateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [Integer] :amount The authorization amount in cents.
         #
@@ -53,19 +53,19 @@ module Increase
         #   @option params [String] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card
         #     is transacting with.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::Simulations::CardAuthorizationCreateResponse]
         #
-        def create(params = {}, opts = {})
-          parsed = Increase::Models::Simulations::CardAuthorizationCreateParams.dump(params)
-          req = {
+        def create(params)
+          parsed, options = Increase::Models::Simulations::CardAuthorizationCreateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "simulations/card_authorizations",
             body: parsed,
-            model: Increase::Models::Simulations::CardAuthorizationCreateResponse
-          }
-          @client.request(req, opts)
+            model: Increase::Models::Simulations::CardAuthorizationCreateResponse,
+            options: options
+          )
         end
 
         # @param client [Increase::Client]

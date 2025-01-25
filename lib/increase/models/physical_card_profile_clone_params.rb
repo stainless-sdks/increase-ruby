@@ -3,6 +3,10 @@
 module Increase
   module Models
     class PhysicalCardProfileCloneParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] carrier_image_file_id
       #   The identifier of the File containing the physical card's carrier image.
       #
@@ -60,6 +64,7 @@ module Increase
       #   # @param description [String]
       #   # @param front_image_file_id [String]
       #   # @param front_text [Increase::Models::PhysicalCardProfileCloneParams::FrontText]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     carrier_image_file_id: nil,
@@ -67,6 +72,7 @@ module Increase
       #     description: nil,
       #     front_image_file_id: nil,
       #     front_text: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

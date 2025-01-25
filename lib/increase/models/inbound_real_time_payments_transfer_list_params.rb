@@ -3,6 +3,10 @@
 module Increase
   module Models
     class InboundRealTimePaymentsTransferListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] account_id
       #   Filter Inbound Real-Time Payments Transfers to those belonging to the specified
       #     Account.
@@ -61,8 +65,9 @@ module Increase
       #   # @param created_at [Increase::Models::InboundRealTimePaymentsTransferListParams::CreatedAt]
       #   # @param cursor [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id: nil, account_number_id: nil, created_at: nil, cursor: nil, limit: nil, **) = super
+      #   def initialize(account_id: nil, account_number_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

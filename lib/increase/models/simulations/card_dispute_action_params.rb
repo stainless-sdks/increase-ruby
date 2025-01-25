@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class CardDisputeActionParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute status
         #   The status to move the dispute to.
         #
@@ -23,8 +27,9 @@ module Increase
         # @!parse
         #   # @param status [String]
         #   # @param explanation [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(status:, explanation: nil, **) = super
+        #   def initialize(status:, explanation: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 

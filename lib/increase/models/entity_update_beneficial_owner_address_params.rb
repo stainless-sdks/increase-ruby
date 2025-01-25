@@ -3,6 +3,10 @@
 module Increase
   module Models
     class EntityUpdateBeneficialOwnerAddressParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute address
       #   The individual's physical address. Mail receiving locations like PO Boxes and
       #     PMB's are disallowed.
@@ -20,8 +24,9 @@ module Increase
       # @!parse
       #   # @param address [Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address]
       #   # @param beneficial_owner_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(address:, beneficial_owner_id:, **) = super
+      #   def initialize(address:, beneficial_owner_id:, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

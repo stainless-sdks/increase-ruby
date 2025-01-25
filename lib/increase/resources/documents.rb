@@ -7,22 +7,24 @@ module Increase
       #
       # @param document_id [String] The identifier of the Document to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::DocumentRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Document]
       #
-      def retrieve(document_id, opts = {})
-        req = {
+      def retrieve(document_id, params = {})
+        @client.request(
           method: :get,
           path: ["documents/%0s", document_id],
-          model: Increase::Models::Document
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Document,
+          options: params[:request_options]
+        )
       end
 
       # List Documents
       #
-      # @param params [Increase::Models::DocumentListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::DocumentListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Increase::Models::DocumentListParams::Category] :category
       #
@@ -35,20 +37,20 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::Document>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::DocumentListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::DocumentListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "documents",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::Document
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Document,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

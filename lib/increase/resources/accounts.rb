@@ -5,7 +5,7 @@ module Increase
     class Accounts
       # Create an Account
       #
-      # @param params [Increase::Models::AccountCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :name The name you choose for the Account.
       #
@@ -17,64 +17,66 @@ module Increase
       #   @option params [String] :program_id The identifier for the Program that this Account falls under. Required if you
       #     operate more than one Program.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Account]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::AccountCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::AccountCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "accounts",
           body: parsed,
-          model: Increase::Models::Account
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Account,
+          options: options
+        )
       end
 
       # Retrieve an Account
       #
       # @param account_id [String] The identifier of the Account to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::AccountRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Account]
       #
-      def retrieve(account_id, opts = {})
-        req = {
+      def retrieve(account_id, params = {})
+        @client.request(
           method: :get,
           path: ["accounts/%0s", account_id],
-          model: Increase::Models::Account
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Account,
+          options: params[:request_options]
+        )
       end
 
       # Update an Account
       #
       # @param account_id [String] The identifier of the Account to update.
       #
-      # @param params [Increase::Models::AccountUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountUpdateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :name The new name of the Account.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Account]
       #
-      def update(account_id, params = {}, opts = {})
-        parsed = Increase::Models::AccountUpdateParams.dump(params)
-        req = {
+      def update(account_id, params = {})
+        parsed, options = Increase::Models::AccountUpdateParams.dump_request(params)
+        @client.request(
           method: :patch,
           path: ["accounts/%0s", account_id],
           body: parsed,
-          model: Increase::Models::Account
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Account,
+          options: options
+        )
       end
 
       # List Accounts
       #
-      # @param params [Increase::Models::AccountListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Increase::Models::AccountListParams::CreatedAt] :created_at
       #
@@ -96,60 +98,62 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::AccountListParams::Status] :status Filter Accounts for those with the specified status.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::Account>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::AccountListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::AccountListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "accounts",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::Account
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Account,
+          options: options
+        )
       end
 
       # Retrieve an Account Balance
       #
       # @param account_id [String] The identifier of the Account to retrieve.
       #
-      # @param params [Increase::Models::AccountBalanceParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountBalanceParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Time] :at_time The moment to query the balance at. If not set, returns the current balances.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::BalanceLookup]
       #
-      def balance(account_id, params = {}, opts = {})
-        parsed = Increase::Models::AccountBalanceParams.dump(params)
-        req = {
+      def balance(account_id, params = {})
+        parsed, options = Increase::Models::AccountBalanceParams.dump_request(params)
+        @client.request(
           method: :get,
           path: ["accounts/%0s/balance", account_id],
           query: parsed,
-          model: Increase::Models::BalanceLookup
-        }
-        @client.request(req, opts)
+          model: Increase::Models::BalanceLookup,
+          options: options
+        )
       end
 
       # Close an Account
       #
       # @param account_id [String] The identifier of the Account to close. The account must have a zero balance.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::AccountCloseParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Account]
       #
-      def close(account_id, opts = {})
-        req = {
+      def close(account_id, params = {})
+        @client.request(
           method: :post,
           path: ["accounts/%0s/close", account_id],
-          model: Increase::Models::Account
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Account,
+          options: params[:request_options]
+        )
       end
 
       # @param client [Increase::Client]

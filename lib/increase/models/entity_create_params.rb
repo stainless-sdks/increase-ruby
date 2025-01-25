@@ -3,6 +3,10 @@
 module Increase
   module Models
     class EntityCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute structure
       #   The type of Entity to create.
       #
@@ -108,6 +112,7 @@ module Increase
       #   # @param supplemental_documents [Array<Increase::Models::EntityCreateParams::SupplementalDocument>]
       #   # @param third_party_verification [Increase::Models::EntityCreateParams::ThirdPartyVerification]
       #   # @param trust [Increase::Models::EntityCreateParams::Trust]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     structure:,
@@ -119,6 +124,7 @@ module Increase
       #     supplemental_documents: nil,
       #     third_party_verification: nil,
       #     trust: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

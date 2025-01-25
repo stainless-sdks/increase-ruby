@@ -11,17 +11,19 @@ module Increase
         #
         # @param check_transfer_id [String] The identifier of the Check Transfer you wish to mail.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        # @param params [Increase::Models::Simulations::CheckTransferMailParams, Hash{Symbol=>Object}] .
+        #
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::CheckTransfer]
         #
-        def mail(check_transfer_id, opts = {})
-          req = {
+        def mail(check_transfer_id, params = {})
+          @client.request(
             method: :post,
             path: ["simulations/check_transfers/%0s/mail", check_transfer_id],
-            model: Increase::Models::CheckTransfer
-          }
-          @client.request(req, opts)
+            model: Increase::Models::CheckTransfer,
+            options: params[:request_options]
+          )
         end
 
         # @param client [Increase::Client]

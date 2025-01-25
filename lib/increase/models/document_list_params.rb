@@ -3,6 +3,10 @@
 module Increase
   module Models
     class DocumentListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] category
       #
       #   @return [Increase::Models::DocumentListParams::Category, nil]
@@ -58,8 +62,9 @@ module Increase
       #   # @param cursor [String]
       #   # @param entity_id [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(category: nil, created_at: nil, cursor: nil, entity_id: nil, limit: nil, **) = super
+      #   def initialize(category: nil, created_at: nil, cursor: nil, entity_id: nil, limit: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

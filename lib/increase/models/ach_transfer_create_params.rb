@@ -3,6 +3,10 @@
 module Increase
   module Models
     class ACHTransferCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute account_id
       #   The Increase identifier for the account that will send the transfer.
       #
@@ -223,6 +227,7 @@ module Increase
       #   # @param routing_number [String]
       #   # @param standard_entry_class_code [String]
       #   # @param transaction_timing [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     account_id:,
@@ -244,6 +249,7 @@ module Increase
       #     routing_number: nil,
       #     standard_entry_class_code: nil,
       #     transaction_timing: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

@@ -7,22 +7,24 @@ module Increase
       #
       # @param bookkeeping_entry_id [String] The identifier of the Bookkeeping Entry.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::BookkeepingEntryRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::BookkeepingEntry]
       #
-      def retrieve(bookkeeping_entry_id, opts = {})
-        req = {
+      def retrieve(bookkeeping_entry_id, params = {})
+        @client.request(
           method: :get,
           path: ["bookkeeping_entries/%0s", bookkeeping_entry_id],
-          model: Increase::Models::BookkeepingEntry
-        }
-        @client.request(req, opts)
+          model: Increase::Models::BookkeepingEntry,
+          options: params[:request_options]
+        )
       end
 
       # List Bookkeeping Entries
       #
-      # @param params [Increase::Models::BookkeepingEntryListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::BookkeepingEntryListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id The identifier for the Bookkeeping Account to filter by.
       #
@@ -31,20 +33,20 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::BookkeepingEntry>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::BookkeepingEntryListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::BookkeepingEntryListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "bookkeeping_entries",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::BookkeepingEntry
-        }
-        @client.request(req, opts)
+          model: Increase::Models::BookkeepingEntry,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

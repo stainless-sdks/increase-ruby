@@ -3,6 +3,10 @@
 module Increase
   module Models
     class PhysicalCardListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] card_id
       #   Filter Physical Cards to ones belonging to the specified Card.
       #
@@ -62,8 +66,9 @@ module Increase
       #   # @param cursor [String]
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(card_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, **) = super
+      #   def initialize(card_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

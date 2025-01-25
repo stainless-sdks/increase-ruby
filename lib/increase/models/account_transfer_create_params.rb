@@ -3,6 +3,10 @@
 module Increase
   module Models
     class AccountTransferCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute account_id
       #   The identifier for the account that will send the transfer.
       #
@@ -44,8 +48,19 @@ module Increase
       #   # @param description [String]
       #   # @param destination_account_id [String]
       #   # @param require_approval [Boolean]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id:, amount:, description:, destination_account_id:, require_approval: nil, **) = super
+      #   def initialize(
+      #     account_id:,
+      #     amount:,
+      #     description:,
+      #     destination_account_id:,
+      #     require_approval: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

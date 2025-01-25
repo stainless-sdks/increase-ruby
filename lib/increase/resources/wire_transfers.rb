@@ -5,7 +5,7 @@ module Increase
     class WireTransfers
       # Create a Wire Transfer
       #
-      # @param params [Increase::Models::WireTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::WireTransferCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id The identifier for the account that will send the transfer.
       #
@@ -45,41 +45,43 @@ module Increase
       #
       #   @option params [String] :source_account_number_id The ID of an Account Number that will be passed to the wire's recipient
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::WireTransfer]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::WireTransferCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::WireTransferCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "wire_transfers",
           body: parsed,
-          model: Increase::Models::WireTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::WireTransfer,
+          options: options
+        )
       end
 
       # Retrieve a Wire Transfer
       #
       # @param wire_transfer_id [String] The identifier of the Wire Transfer.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::WireTransferRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::WireTransfer]
       #
-      def retrieve(wire_transfer_id, opts = {})
-        req = {
+      def retrieve(wire_transfer_id, params = {})
+        @client.request(
           method: :get,
           path: ["wire_transfers/%0s", wire_transfer_id],
-          model: Increase::Models::WireTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::WireTransfer,
+          options: params[:request_options]
+        )
       end
 
       # List Wire Transfers
       #
-      # @param params [Increase::Models::WireTransferListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::WireTransferListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter Wire Transfers to those belonging to the specified Account.
       #
@@ -97,54 +99,58 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::WireTransfer>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::WireTransferListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::WireTransferListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "wire_transfers",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::WireTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::WireTransfer,
+          options: options
+        )
       end
 
       # Approve a Wire Transfer
       #
       # @param wire_transfer_id [String] The identifier of the Wire Transfer to approve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::WireTransferApproveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::WireTransfer]
       #
-      def approve(wire_transfer_id, opts = {})
-        req = {
+      def approve(wire_transfer_id, params = {})
+        @client.request(
           method: :post,
           path: ["wire_transfers/%0s/approve", wire_transfer_id],
-          model: Increase::Models::WireTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::WireTransfer,
+          options: params[:request_options]
+        )
       end
 
       # Cancel a pending Wire Transfer
       #
       # @param wire_transfer_id [String] The identifier of the pending Wire Transfer to cancel.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::WireTransferCancelParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::WireTransfer]
       #
-      def cancel(wire_transfer_id, opts = {})
-        req = {
+      def cancel(wire_transfer_id, params = {})
+        @client.request(
           method: :post,
           path: ["wire_transfers/%0s/cancel", wire_transfer_id],
-          model: Increase::Models::WireTransfer
-        }
-        @client.request(req, opts)
+          model: Increase::Models::WireTransfer,
+          options: params[:request_options]
+        )
       end
 
       # @param client [Increase::Client]

@@ -3,6 +3,10 @@
 module Increase
   module Models
     class ExportListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] category
       #
       #   @return [Increase::Models::ExportListParams::Category, nil]
@@ -71,8 +75,20 @@ module Increase
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
       #   # @param status [Increase::Models::ExportListParams::Status]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(category: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, **) = super
+      #   def initialize(
+      #     category: nil,
+      #     created_at: nil,
+      #     cursor: nil,
+      #     idempotency_key: nil,
+      #     limit: nil,
+      #     status: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

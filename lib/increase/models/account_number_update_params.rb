@@ -3,6 +3,10 @@
 module Increase
   module Models
     class AccountNumberUpdateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] inbound_ach
       #   Options related to how this Account Number handles inbound ACH transfers.
       #
@@ -49,8 +53,9 @@ module Increase
       #   # @param inbound_checks [Increase::Models::AccountNumberUpdateParams::InboundChecks]
       #   # @param name [String]
       #   # @param status [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(inbound_ach: nil, inbound_checks: nil, name: nil, status: nil, **) = super
+      #   def initialize(inbound_ach: nil, inbound_checks: nil, name: nil, status: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

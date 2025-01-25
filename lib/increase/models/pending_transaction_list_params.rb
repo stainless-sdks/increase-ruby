@@ -3,6 +3,10 @@
 module Increase
   module Models
     class PendingTransactionListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] account_id
       #   Filter pending transactions to those belonging to the specified Account.
       #
@@ -79,8 +83,21 @@ module Increase
       #   # @param limit [Integer]
       #   # @param route_id [String]
       #   # @param status [Increase::Models::PendingTransactionListParams::Status]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, route_id: nil, status: nil, **) = super
+      #   def initialize(
+      #     account_id: nil,
+      #     category: nil,
+      #     created_at: nil,
+      #     cursor: nil,
+      #     limit: nil,
+      #     route_id: nil,
+      #     status: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

@@ -3,6 +3,10 @@
 module Increase
   module Models
     class InboundWireDrawdownRequestListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
@@ -27,8 +31,9 @@ module Increase
       # @!parse
       #   # @param cursor [String]
       #   # @param limit [Integer]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(cursor: nil, limit: nil, **) = super
+      #   def initialize(cursor: nil, limit: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

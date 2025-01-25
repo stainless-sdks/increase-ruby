@@ -3,6 +3,10 @@
 module Increase
   module Models
     class AccountNumberCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute account_id
       #   The Account the Account Number should belong to.
       #
@@ -41,8 +45,9 @@ module Increase
       #   # @param name [String]
       #   # @param inbound_ach [Increase::Models::AccountNumberCreateParams::InboundACH]
       #   # @param inbound_checks [Increase::Models::AccountNumberCreateParams::InboundChecks]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id:, name:, inbound_ach: nil, inbound_checks: nil, **) = super
+      #   def initialize(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

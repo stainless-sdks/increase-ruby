@@ -5,7 +5,7 @@ module Increase
     class RealTimePaymentsRequestForPayments
       # Create a Real-Time Payments Request for Payment
       #
-      # @param params [Increase::Models::RealTimePaymentsRequestForPaymentCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::RealTimePaymentsRequestForPaymentCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Integer] :amount The requested amount in USD cents. Must be positive.
       #
@@ -23,41 +23,43 @@ module Increase
       #   @option params [String] :source_routing_number The requestee's American Bankers' Association (ABA) Routing Transit Number
       #     (RTN).
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::RealTimePaymentsRequestForPayment]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::RealTimePaymentsRequestForPaymentCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::RealTimePaymentsRequestForPaymentCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "real_time_payments_request_for_payments",
           body: parsed,
-          model: Increase::Models::RealTimePaymentsRequestForPayment
-        }
-        @client.request(req, opts)
+          model: Increase::Models::RealTimePaymentsRequestForPayment,
+          options: options
+        )
       end
 
       # Retrieve a Real-Time Payments Request for Payment
       #
       # @param request_for_payment_id [String] The identifier of the Real-Time Payments Request for Payment.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::RealTimePaymentsRequestForPaymentRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::RealTimePaymentsRequestForPayment]
       #
-      def retrieve(request_for_payment_id, opts = {})
-        req = {
+      def retrieve(request_for_payment_id, params = {})
+        @client.request(
           method: :get,
           path: ["real_time_payments_request_for_payments/%0s", request_for_payment_id],
-          model: Increase::Models::RealTimePaymentsRequestForPayment
-        }
-        @client.request(req, opts)
+          model: Increase::Models::RealTimePaymentsRequestForPayment,
+          options: params[:request_options]
+        )
       end
 
       # List Real-Time Payments Request for Payments
       #
-      # @param params [Increase::Models::RealTimePaymentsRequestForPaymentListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::RealTimePaymentsRequestForPaymentListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter Real-Time Payments Request for Payments to those destined to the
       #     specified Account.
@@ -74,20 +76,20 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::RealTimePaymentsRequestForPayment>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::RealTimePaymentsRequestForPaymentListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::RealTimePaymentsRequestForPaymentListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "real_time_payments_request_for_payments",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::RealTimePaymentsRequestForPayment
-        }
-        @client.request(req, opts)
+          model: Increase::Models::RealTimePaymentsRequestForPayment,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

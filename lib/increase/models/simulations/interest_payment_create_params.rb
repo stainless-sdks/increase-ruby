@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class InterestPaymentCreateParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute account_id
         #   The identifier of the Account Number the Interest Payment is for.
         #
@@ -41,8 +45,9 @@ module Increase
         #   # @param amount [Integer]
         #   # @param period_end [String]
         #   # @param period_start [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(account_id:, amount:, period_end: nil, period_start: nil, **) = super
+        #   def initialize(account_id:, amount:, period_end: nil, period_start: nil, request_options: {}, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
       end

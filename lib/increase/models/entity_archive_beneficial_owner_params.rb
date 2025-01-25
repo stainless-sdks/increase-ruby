@@ -3,6 +3,10 @@
 module Increase
   module Models
     class EntityArchiveBeneficialOwnerParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute beneficial_owner_id
       #   The identifying details of anyone controlling or owning 25% or more of the
       #     corporation.
@@ -12,8 +16,9 @@ module Increase
 
       # @!parse
       #   # @param beneficial_owner_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(beneficial_owner_id:, **) = super
+      #   def initialize(beneficial_owner_id:, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end

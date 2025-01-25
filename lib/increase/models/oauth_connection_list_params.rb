@@ -3,6 +3,10 @@
 module Increase
   module Models
     class OAuthConnectionListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
@@ -49,8 +53,9 @@ module Increase
       #   # @param limit [Integer]
       #   # @param oauth_application_id [String]
       #   # @param status [Increase::Models::OAuthConnectionListParams::Status]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, **) = super
+      #   def initialize(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

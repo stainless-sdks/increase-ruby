@@ -5,7 +5,7 @@ module Increase
     class EventSubscriptions
       # Create an Event Subscription
       #
-      # @param params [Increase::Models::EventSubscriptionCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EventSubscriptionCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :url The URL you'd like us to send webhooks to.
       #
@@ -18,64 +18,66 @@ module Increase
       #   @option params [String] :shared_secret The key that will be used to sign webhooks. If no value is passed, a random
       #     string will be used as default.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::EventSubscription]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::EventSubscriptionCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::EventSubscriptionCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "event_subscriptions",
           body: parsed,
-          model: Increase::Models::EventSubscription
-        }
-        @client.request(req, opts)
+          model: Increase::Models::EventSubscription,
+          options: options
+        )
       end
 
       # Retrieve an Event Subscription
       #
       # @param event_subscription_id [String] The identifier of the Event Subscription.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::EventSubscriptionRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::EventSubscription]
       #
-      def retrieve(event_subscription_id, opts = {})
-        req = {
+      def retrieve(event_subscription_id, params = {})
+        @client.request(
           method: :get,
           path: ["event_subscriptions/%0s", event_subscription_id],
-          model: Increase::Models::EventSubscription
-        }
-        @client.request(req, opts)
+          model: Increase::Models::EventSubscription,
+          options: params[:request_options]
+        )
       end
 
       # Update an Event Subscription
       #
       # @param event_subscription_id [String] The identifier of the Event Subscription.
       #
-      # @param params [Increase::Models::EventSubscriptionUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EventSubscriptionUpdateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status] :status The status to update the Event Subscription with.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::EventSubscription]
       #
-      def update(event_subscription_id, params = {}, opts = {})
-        parsed = Increase::Models::EventSubscriptionUpdateParams.dump(params)
-        req = {
+      def update(event_subscription_id, params = {})
+        parsed, options = Increase::Models::EventSubscriptionUpdateParams.dump_request(params)
+        @client.request(
           method: :patch,
           path: ["event_subscriptions/%0s", event_subscription_id],
           body: parsed,
-          model: Increase::Models::EventSubscription
-        }
-        @client.request(req, opts)
+          model: Increase::Models::EventSubscription,
+          options: options
+        )
       end
 
       # List Event Subscriptions
       #
-      # @param params [Increase::Models::EventSubscriptionListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::EventSubscriptionListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -87,20 +89,20 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::EventSubscription>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::EventSubscriptionListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::EventSubscriptionListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "event_subscriptions",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::EventSubscription
-        }
-        @client.request(req, opts)
+          model: Increase::Models::EventSubscription,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

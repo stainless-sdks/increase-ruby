@@ -5,7 +5,7 @@ module Increase
     class BookkeepingAccounts
       # Create a Bookkeeping Account
       #
-      # @param params [Increase::Models::BookkeepingAccountCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::BookkeepingAccountCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :name The name you choose for the account.
       #
@@ -15,47 +15,47 @@ module Increase
       #
       #   @option params [String] :entity_id The entity, if `compliance_category` is `customer_balance`.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::BookkeepingAccount]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::BookkeepingAccountCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::BookkeepingAccountCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "bookkeeping_accounts",
           body: parsed,
-          model: Increase::Models::BookkeepingAccount
-        }
-        @client.request(req, opts)
+          model: Increase::Models::BookkeepingAccount,
+          options: options
+        )
       end
 
       # Update a Bookkeeping Account
       #
       # @param bookkeeping_account_id [String] The bookkeeping account you would like to update.
       #
-      # @param params [Increase::Models::BookkeepingAccountUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::BookkeepingAccountUpdateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :name The name you choose for the account.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::BookkeepingAccount]
       #
-      def update(bookkeeping_account_id, params = {}, opts = {})
-        parsed = Increase::Models::BookkeepingAccountUpdateParams.dump(params)
-        req = {
+      def update(bookkeeping_account_id, params)
+        parsed, options = Increase::Models::BookkeepingAccountUpdateParams.dump_request(params)
+        @client.request(
           method: :patch,
           path: ["bookkeeping_accounts/%0s", bookkeeping_account_id],
           body: parsed,
-          model: Increase::Models::BookkeepingAccount
-        }
-        @client.request(req, opts)
+          model: Increase::Models::BookkeepingAccount,
+          options: options
+        )
       end
 
       # List Bookkeeping Accounts
       #
-      # @param params [Increase::Models::BookkeepingAccountListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::BookkeepingAccountListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -67,43 +67,43 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::BookkeepingAccount>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::BookkeepingAccountListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::BookkeepingAccountListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "bookkeeping_accounts",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::BookkeepingAccount
-        }
-        @client.request(req, opts)
+          model: Increase::Models::BookkeepingAccount,
+          options: options
+        )
       end
 
       # Retrieve a Bookkeeping Account Balance
       #
       # @param bookkeeping_account_id [String] The identifier of the Bookkeeping Account to retrieve.
       #
-      # @param params [Increase::Models::BookkeepingAccountBalanceParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::BookkeepingAccountBalanceParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Time] :at_time The moment to query the balance at. If not set, returns the current balances.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::BookkeepingBalanceLookup]
       #
-      def balance(bookkeeping_account_id, params = {}, opts = {})
-        parsed = Increase::Models::BookkeepingAccountBalanceParams.dump(params)
-        req = {
+      def balance(bookkeeping_account_id, params = {})
+        parsed, options = Increase::Models::BookkeepingAccountBalanceParams.dump_request(params)
+        @client.request(
           method: :get,
           path: ["bookkeeping_accounts/%0s/balance", bookkeeping_account_id],
           query: parsed,
-          model: Increase::Models::BookkeepingBalanceLookup
-        }
-        @client.request(req, opts)
+          model: Increase::Models::BookkeepingBalanceLookup,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

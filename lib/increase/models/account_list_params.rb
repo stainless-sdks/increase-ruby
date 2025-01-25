@@ -3,6 +3,10 @@
 module Increase
   module Models
     class AccountListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] created_at
       #
       #   @return [Increase::Models::AccountListParams::CreatedAt, nil]
@@ -95,6 +99,7 @@ module Increase
       #   # @param limit [Integer]
       #   # @param program_id [String]
       #   # @param status [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
       #     created_at: nil,
@@ -105,6 +110,7 @@ module Increase
       #     limit: nil,
       #     program_id: nil,
       #     status: nil,
+      #     request_options: {},
       #     **
       #   )
       #     super

@@ -7,23 +7,23 @@ module Increase
         # Simulates an [Account Statement](#account-statements) being created for an
         #   account. In production, Account Statements are generated once per month.
         #
-        # @param params [Increase::Models::Simulations::AccountStatementCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::AccountStatementCreateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :account_id The identifier of the Account the statement is for.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::AccountStatement]
         #
-        def create(params = {}, opts = {})
-          parsed = Increase::Models::Simulations::AccountStatementCreateParams.dump(params)
-          req = {
+        def create(params)
+          parsed, options = Increase::Models::Simulations::AccountStatementCreateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "simulations/account_statements",
             body: parsed,
-            model: Increase::Models::AccountStatement
-          }
-          @client.request(req, opts)
+            model: Increase::Models::AccountStatement,
+            options: options
+          )
         end
 
         # @param client [Increase::Client]

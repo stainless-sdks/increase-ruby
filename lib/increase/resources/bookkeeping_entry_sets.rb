@@ -5,7 +5,7 @@ module Increase
     class BookkeepingEntrySets
       # Create a Bookkeeping Entry Set
       #
-      # @param params [Increase::Models::BookkeepingEntrySetCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::BookkeepingEntrySetCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>] :entries The bookkeeping entries.
       #
@@ -14,41 +14,43 @@ module Increase
       #
       #   @option params [String] :transaction_id The identifier of the Transaction related to this entry set, if any.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::BookkeepingEntrySet]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::BookkeepingEntrySetCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::BookkeepingEntrySetCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "bookkeeping_entry_sets",
           body: parsed,
-          model: Increase::Models::BookkeepingEntrySet
-        }
-        @client.request(req, opts)
+          model: Increase::Models::BookkeepingEntrySet,
+          options: options
+        )
       end
 
       # Retrieve a Bookkeeping Entry Set
       #
       # @param bookkeeping_entry_set_id [String] The identifier of the Bookkeeping Entry Set.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::BookkeepingEntrySetRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::BookkeepingEntrySet]
       #
-      def retrieve(bookkeeping_entry_set_id, opts = {})
-        req = {
+      def retrieve(bookkeeping_entry_set_id, params = {})
+        @client.request(
           method: :get,
           path: ["bookkeeping_entry_sets/%0s", bookkeeping_entry_set_id],
-          model: Increase::Models::BookkeepingEntrySet
-        }
-        @client.request(req, opts)
+          model: Increase::Models::BookkeepingEntrySet,
+          options: params[:request_options]
+        )
       end
 
       # List Bookkeeping Entry Sets
       #
-      # @param params [Increase::Models::BookkeepingEntrySetListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::BookkeepingEntrySetListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :cursor Return the page of entries after this one.
       #
@@ -62,20 +64,20 @@ module Increase
       #
       #   @option params [String] :transaction_id Filter to the Bookkeeping Entry Set that maps to this Transaction.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::BookkeepingEntrySet>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::BookkeepingEntrySetListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::BookkeepingEntrySetListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "bookkeeping_entry_sets",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::BookkeepingEntrySet
-        }
-        @client.request(req, opts)
+          model: Increase::Models::BookkeepingEntrySet,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

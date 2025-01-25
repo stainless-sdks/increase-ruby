@@ -4,6 +4,10 @@ module Increase
   module Models
     module Simulations
       class InboundWireDrawdownRequestCreateParams < Increase::BaseModel
+        # @!parse
+        #   extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
         # @!attribute amount
         #   The amount being requested in cents.
         #
@@ -199,6 +203,7 @@ module Increase
         #   # @param originator_to_beneficiary_information_line2 [String]
         #   # @param originator_to_beneficiary_information_line3 [String]
         #   # @param originator_to_beneficiary_information_line4 [String]
+        #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(
         #     amount:,
@@ -221,6 +226,7 @@ module Increase
         #     originator_to_beneficiary_information_line2: nil,
         #     originator_to_beneficiary_information_line3: nil,
         #     originator_to_beneficiary_information_line4: nil,
+        #     request_options: {},
         #     **
         #   )
         #     super

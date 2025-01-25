@@ -5,7 +5,7 @@ module Increase
     class AccountNumbers
       # Create an Account Number
       #
-      # @param params [Increase::Models::AccountNumberCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountNumberCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id The Account the Account Number should belong to.
       #
@@ -16,43 +16,45 @@ module Increase
       #   @option params [Increase::Models::AccountNumberCreateParams::InboundChecks] :inbound_checks Options related to how this Account Number should handle inbound check
       #     withdrawals.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::AccountNumber]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::AccountNumberCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::AccountNumberCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "account_numbers",
           body: parsed,
-          model: Increase::Models::AccountNumber
-        }
-        @client.request(req, opts)
+          model: Increase::Models::AccountNumber,
+          options: options
+        )
       end
 
       # Retrieve an Account Number
       #
       # @param account_number_id [String] The identifier of the Account Number to retrieve.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::AccountNumberRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::AccountNumber]
       #
-      def retrieve(account_number_id, opts = {})
-        req = {
+      def retrieve(account_number_id, params = {})
+        @client.request(
           method: :get,
           path: ["account_numbers/%0s", account_number_id],
-          model: Increase::Models::AccountNumber
-        }
-        @client.request(req, opts)
+          model: Increase::Models::AccountNumber,
+          options: params[:request_options]
+        )
       end
 
       # Update an Account Number
       #
       # @param account_number_id [String] The identifier of the Account Number.
       #
-      # @param params [Increase::Models::AccountNumberUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountNumberUpdateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Increase::Models::AccountNumberUpdateParams::InboundACH] :inbound_ach Options related to how this Account Number handles inbound ACH transfers.
       #
@@ -63,24 +65,24 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::AccountNumberUpdateParams::Status] :status This indicates if transfers can be made to the Account Number.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::AccountNumber]
       #
-      def update(account_number_id, params = {}, opts = {})
-        parsed = Increase::Models::AccountNumberUpdateParams.dump(params)
-        req = {
+      def update(account_number_id, params = {})
+        parsed, options = Increase::Models::AccountNumberUpdateParams.dump_request(params)
+        @client.request(
           method: :patch,
           path: ["account_numbers/%0s", account_number_id],
           body: parsed,
-          model: Increase::Models::AccountNumber
-        }
-        @client.request(req, opts)
+          model: Increase::Models::AccountNumber,
+          options: options
+        )
       end
 
       # List Account Numbers
       #
-      # @param params [Increase::Models::AccountNumberListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::AccountNumberListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter Account Numbers to those belonging to the specified Account.
       #
@@ -100,20 +102,20 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::AccountNumberListParams::Status] :status The status to retrieve Account Numbers for.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::AccountNumber>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::AccountNumberListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::AccountNumberListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "account_numbers",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::AccountNumber
-        }
-        @client.request(req, opts)
+          model: Increase::Models::AccountNumber,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

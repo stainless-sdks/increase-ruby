@@ -3,6 +3,10 @@
 module Increase
   module Models
     class CardCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute account_id
       #   The Account the card should belong to.
       #
@@ -60,8 +64,19 @@ module Increase
       #   # @param description [String]
       #   # @param digital_wallet [Increase::Models::CardCreateParams::DigitalWallet]
       #   # @param entity_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id:, billing_address: nil, description: nil, digital_wallet: nil, entity_id: nil, **) = super
+      #   def initialize(
+      #     account_id:,
+      #     billing_address: nil,
+      #     description: nil,
+      #     digital_wallet: nil,
+      #     entity_id: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

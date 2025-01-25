@@ -7,22 +7,24 @@ module Increase
       #
       # @param card_purchase_supplement_id [String] The identifier of the Card Purchase Supplement.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::CardPurchaseSupplementRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::CardPurchaseSupplement]
       #
-      def retrieve(card_purchase_supplement_id, opts = {})
-        req = {
+      def retrieve(card_purchase_supplement_id, params = {})
+        @client.request(
           method: :get,
           path: ["card_purchase_supplements/%0s", card_purchase_supplement_id],
-          model: Increase::Models::CardPurchaseSupplement
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CardPurchaseSupplement,
+          options: params[:request_options]
+        )
       end
 
       # List Card Purchase Supplements
       #
-      # @param params [Increase::Models::CardPurchaseSupplementListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardPurchaseSupplementListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :card_payment_id Filter Card Purchase Supplements to ones belonging to the specified Card
       #     Payment.
@@ -34,20 +36,20 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::CardPurchaseSupplement>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::CardPurchaseSupplementListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::CardPurchaseSupplementListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "card_purchase_supplements",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::CardPurchaseSupplement
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CardPurchaseSupplement,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

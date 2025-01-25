@@ -7,22 +7,24 @@ module Increase
       #
       # @param oauth_application_id [String] The identifier of the OAuth Application.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::OAuthApplicationRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::OAuthApplication]
       #
-      def retrieve(oauth_application_id, opts = {})
-        req = {
+      def retrieve(oauth_application_id, params = {})
+        @client.request(
           method: :get,
           path: ["oauth_applications/%0s", oauth_application_id],
-          model: Increase::Models::OAuthApplication
-        }
-        @client.request(req, opts)
+          model: Increase::Models::OAuthApplication,
+          options: params[:request_options]
+        )
       end
 
       # List OAuth Applications
       #
-      # @param params [Increase::Models::OAuthApplicationListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::OAuthApplicationListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Increase::Models::OAuthApplicationListParams::CreatedAt] :created_at
       #
@@ -33,20 +35,20 @@ module Increase
       #
       #   @option params [Increase::Models::OAuthApplicationListParams::Status] :status
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::OAuthApplication>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::OAuthApplicationListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::OAuthApplicationListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "oauth_applications",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::OAuthApplication
-        }
-        @client.request(req, opts)
+          model: Increase::Models::OAuthApplication,
+          options: options
+        )
       end
 
       # @param client [Increase::Client]

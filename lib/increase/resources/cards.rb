@@ -5,7 +5,7 @@ module Increase
     class Cards
       # Create a Card
       #
-      # @param params [Increase::Models::CardCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id The Account the card should belong to.
       #
@@ -22,43 +22,45 @@ module Increase
       #   @option params [String] :entity_id The Entity the card belongs to. You only need to supply this in rare situations
       #     when the card is not for the Account holder.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Card]
       #
-      def create(params = {}, opts = {})
-        parsed = Increase::Models::CardCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = Increase::Models::CardCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "cards",
           body: parsed,
-          model: Increase::Models::Card
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Card,
+          options: options
+        )
       end
 
       # Retrieve a Card
       #
       # @param card_id [String] The identifier of the Card.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::CardRetrieveParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Card]
       #
-      def retrieve(card_id, opts = {})
-        req = {
+      def retrieve(card_id, params = {})
+        @client.request(
           method: :get,
           path: ["cards/%0s", card_id],
-          model: Increase::Models::Card
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Card,
+          options: params[:request_options]
+        )
       end
 
       # Update a Card
       #
       # @param card_id [String] The card identifier.
       #
-      # @param params [Increase::Models::CardUpdateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardUpdateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [Increase::Models::CardUpdateParams::BillingAddress] :billing_address The card's updated billing address.
       #
@@ -73,24 +75,24 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::CardUpdateParams::Status] :status The status to update the Card with.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::Card]
       #
-      def update(card_id, params = {}, opts = {})
-        parsed = Increase::Models::CardUpdateParams.dump(params)
-        req = {
+      def update(card_id, params = {})
+        parsed, options = Increase::Models::CardUpdateParams.dump_request(params)
+        @client.request(
           method: :patch,
           path: ["cards/%0s", card_id],
           body: parsed,
-          model: Increase::Models::Card
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Card,
+          options: options
+        )
       end
 
       # List Cards
       #
-      # @param params [Increase::Models::CardListParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [Increase::Models::CardListParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :account_id Filter Cards to ones belonging to the specified Account.
       #
@@ -106,37 +108,39 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Page<Increase::Models::Card>]
       #
-      def list(params = {}, opts = {})
-        parsed = Increase::Models::CardListParams.dump(params)
-        req = {
+      def list(params = {})
+        parsed, options = Increase::Models::CardListParams.dump_request(params)
+        @client.request(
           method: :get,
           path: "cards",
           query: parsed,
           page: Increase::Page,
-          model: Increase::Models::Card
-        }
-        @client.request(req, opts)
+          model: Increase::Models::Card,
+          options: options
+        )
       end
 
       # Retrieve sensitive details for a Card
       #
       # @param card_id [String] The identifier of the Card to retrieve details for.
       #
-      # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param params [Increase::Models::CardDetailsParams, Hash{Symbol=>Object}] .
+      #
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [Increase::Models::CardDetails]
       #
-      def details(card_id, opts = {})
-        req = {
+      def details(card_id, params = {})
+        @client.request(
           method: :get,
           path: ["cards/%0s/details", card_id],
-          model: Increase::Models::CardDetails
-        }
-        @client.request(req, opts)
+          model: Increase::Models::CardDetails,
+          options: params[:request_options]
+        )
       end
 
       # @param client [Increase::Client]

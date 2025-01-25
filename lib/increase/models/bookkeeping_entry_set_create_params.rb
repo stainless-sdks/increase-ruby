@@ -3,6 +3,10 @@
 module Increase
   module Models
     class BookkeepingEntrySetCreateParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute entries
       #   The bookkeeping entries.
       #
@@ -34,8 +38,9 @@ module Increase
       #   # @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>]
       #   # @param date [String]
       #   # @param transaction_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(entries:, date: nil, transaction_id: nil, **) = super
+      #   def initialize(entries:, date: nil, transaction_id: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

@@ -8,7 +8,7 @@ module Increase
         #   [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
         #   your account. Real-Time Payments are a beta feature.
         #
-        # @param params [Increase::Models::Simulations::InboundRealTimePaymentsTransferCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+        # @param params [Increase::Models::Simulations::InboundRealTimePaymentsTransferCreateParams, Hash{Symbol=>Object}] .
         #
         #   @option params [String] :account_number_id The identifier of the Account Number the inbound Real-Time Payments Transfer is
         #     for.
@@ -25,19 +25,19 @@ module Increase
         #
         #   @option params [String] :request_for_payment_id The identifier of a pending Request for Payment that this transfer will fulfill.
         #
-        # @param opts [Hash{Symbol=>Object}, Increase::RequestOptions] Options to specify HTTP behaviour for this request.
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
         #
         # @return [Increase::Models::InboundRealTimePaymentsTransfer]
         #
-        def create(params = {}, opts = {})
-          parsed = Increase::Models::Simulations::InboundRealTimePaymentsTransferCreateParams.dump(params)
-          req = {
+        def create(params)
+          parsed, options = Increase::Models::Simulations::InboundRealTimePaymentsTransferCreateParams.dump_request(params)
+          @client.request(
             method: :post,
             path: "simulations/inbound_real_time_payments_transfers",
             body: parsed,
-            model: Increase::Models::InboundRealTimePaymentsTransfer
-          }
-          @client.request(req, opts)
+            model: Increase::Models::InboundRealTimePaymentsTransfer,
+            options: options
+          )
         end
 
         # @param client [Increase::Client]

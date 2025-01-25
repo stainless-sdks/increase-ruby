@@ -3,6 +3,10 @@
 module Increase
   module Models
     class BookkeepingEntrySetListParams < Increase::BaseModel
+      # @!parse
+      #   extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
       # @!attribute [r] cursor
       #   Return the page of entries after this one.
       #
@@ -52,8 +56,9 @@ module Increase
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
       #   # @param transaction_id [String]
+      #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(cursor: nil, idempotency_key: nil, limit: nil, transaction_id: nil, **) = super
+      #   def initialize(cursor: nil, idempotency_key: nil, limit: nil, transaction_id: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
     end
