@@ -100,14 +100,14 @@ module Increase
       #   # @param back_image_file_id [String, nil]
       #   # @param carrier_image_file_id [String, nil]
       #   # @param contact_phone [String, nil]
-      #   # @param created_at [String]
-      #   # @param creator [String]
+      #   # @param created_at [Time]
+      #   # @param creator [Symbol, Increase::Models::PhysicalCardProfile::Creator]
       #   # @param description [String]
       #   # @param front_image_file_id [String, nil]
       #   # @param idempotency_key [String, nil]
       #   # @param is_default [Boolean]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::PhysicalCardProfile::Status]
+      #   # @param type [Symbol, Increase::Models::PhysicalCardProfile::Type]
       #   #
       #   def initialize(
       #     id:,

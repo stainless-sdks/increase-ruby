@@ -64,7 +64,7 @@ module Increase
         #   #   corporation.
         #   #
         #   # @param individual [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual]
-        #   # @param prongs [Array<String>]
+        #   # @param prongs [Array<Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong>]
         #   # @param company_title [String]
         #   #
         #   def initialize(individual:, prongs:, company_title: nil, **) = super
@@ -126,7 +126,7 @@ module Increase
           #   # Personal details for the beneficial owner.
           #   #
           #   # @param address [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address]
-          #   # @param date_of_birth [String]
+          #   # @param date_of_birth [Date]
           #   # @param identification [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification]
           #   # @param name [String]
           #   # @param confirmed_no_us_tax_id [Boolean]
@@ -263,7 +263,7 @@ module Increase
             # @!parse
             #   # A means of verifying the person's identity.
             #   #
-            #   # @param method_ [String]
+            #   # @param method_ [Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method]
             #   # @param number [String]
             #   # @param drivers_license [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense]
             #   # @param other [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other]
@@ -351,7 +351,7 @@ module Increase
               #   # Information about the United States driver's license used for identification.
               #   #   Required if `method` is equal to `drivers_license`.
               #   #
-              #   # @param expiration_date [String]
+              #   # @param expiration_date [Date]
               #   # @param file_id [String]
               #   # @param state [String]
               #   # @param back_file_id [String]
@@ -420,7 +420,7 @@ module Increase
               #   # @param description [String]
               #   # @param file_id [String]
               #   # @param back_file_id [String]
-              #   # @param expiration_date [String]
+              #   # @param expiration_date [Date]
               #   #
               #   def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil, **) = super
 
@@ -459,7 +459,7 @@ module Increase
               #   #   equal to `passport`.
               #   #
               #   # @param country [String]
-              #   # @param expiration_date [String]
+              #   # @param expiration_date [Date]
               #   # @param file_id [String]
               #   #
               #   def initialize(country:, expiration_date:, file_id:, **) = super

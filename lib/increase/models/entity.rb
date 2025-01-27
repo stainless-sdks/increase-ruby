@@ -121,19 +121,19 @@ module Increase
       #   #
       #   # @param id [String]
       #   # @param corporation [Increase::Models::Entity::Corporation, nil]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param description [String, nil]
-      #   # @param details_confirmed_at [String, nil]
+      #   # @param details_confirmed_at [Time, nil]
       #   # @param government_authority [Increase::Models::Entity::GovernmentAuthority, nil]
       #   # @param idempotency_key [String, nil]
       #   # @param joint [Increase::Models::Entity::Joint, nil]
       #   # @param natural_person [Increase::Models::Entity::NaturalPerson, nil]
-      #   # @param status [String]
-      #   # @param structure [String]
+      #   # @param status [Symbol, Increase::Models::Entity::Status]
+      #   # @param structure [Symbol, Increase::Models::Entity::Structure]
       #   # @param supplemental_documents [Array<Increase::Models::EntitySupplementalDocument>]
       #   # @param third_party_verification [Increase::Models::Entity::ThirdPartyVerification, nil]
       #   # @param trust [Increase::Models::Entity::Trust, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::Entity::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -326,7 +326,7 @@ module Increase
           #   # @param beneficial_owner_id [String]
           #   # @param company_title [String, nil]
           #   # @param individual [Increase::Models::Entity::Corporation::BeneficialOwner::Individual]
-          #   # @param prong [String]
+          #   # @param prong [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Prong]
           #   #
           #   def initialize(beneficial_owner_id:, company_title:, individual:, prong:, **) = super
 
@@ -374,7 +374,7 @@ module Increase
             #   # Personal details for the beneficial owner.
             #   #
             #   # @param address [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address]
-            #   # @param date_of_birth [String]
+            #   # @param date_of_birth [Date]
             #   # @param identification [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification]
             #   # @param name [String]
             #   #
@@ -466,7 +466,7 @@ module Increase
               # @!parse
               #   # A means of verifying the person's identity.
               #   #
-              #   # @param method_ [String]
+              #   # @param method_ [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method]
               #   # @param number_last4 [String]
               #   #
               #   def initialize(method_:, number_last4:, **) = super
@@ -588,7 +588,7 @@ module Increase
         #   #
         #   # @param address [Increase::Models::Entity::GovernmentAuthority::Address]
         #   # @param authorized_persons [Array<Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson>]
-        #   # @param category [String]
+        #   # @param category [Symbol, Increase::Models::Entity::GovernmentAuthority::Category]
         #   # @param name [String]
         #   # @param tax_identifier [String, nil]
         #   # @param website [String, nil]
@@ -765,7 +765,7 @@ module Increase
 
           # @!parse
           #   # @param address [Increase::Models::Entity::Joint::Individual::Address]
-          #   # @param date_of_birth [String]
+          #   # @param date_of_birth [Date]
           #   # @param identification [Increase::Models::Entity::Joint::Individual::Identification]
           #   # @param name [String]
           #   #
@@ -855,7 +855,7 @@ module Increase
             # @!parse
             #   # A means of verifying the person's identity.
             #   #
-            #   # @param method_ [String]
+            #   # @param method_ [Symbol, Increase::Models::Entity::Joint::Individual::Identification::Method]
             #   # @param number_last4 [String]
             #   #
             #   def initialize(method_:, number_last4:, **) = super
@@ -940,7 +940,7 @@ module Increase
         #   #   `natural_person`.
         #   #
         #   # @param address [Increase::Models::Entity::NaturalPerson::Address]
-        #   # @param date_of_birth [String]
+        #   # @param date_of_birth [Date]
         #   # @param identification [Increase::Models::Entity::NaturalPerson::Identification]
         #   # @param name [String]
         #   #
@@ -1030,7 +1030,7 @@ module Increase
           # @!parse
           #   # A means of verifying the person's identity.
           #   #
-          #   # @param method_ [String]
+          #   # @param method_ [Symbol, Increase::Models::Entity::NaturalPerson::Identification::Method]
           #   # @param number_last4 [String]
           #   #
           #   def initialize(method_:, number_last4:, **) = super
@@ -1162,7 +1162,7 @@ module Increase
         #   #   integration may or may not use this field.
         #   #
         #   # @param reference [String]
-        #   # @param vendor [String]
+        #   # @param vendor [Symbol, Increase::Models::Entity::ThirdPartyVerification::Vendor]
         #   #
         #   def initialize(reference:, vendor:, **) = super
 
@@ -1255,7 +1255,7 @@ module Increase
         #   # Details of the trust entity. Will be present if `structure` is equal to `trust`.
         #   #
         #   # @param address [Increase::Models::Entity::Trust::Address]
-        #   # @param category [String]
+        #   # @param category [Symbol, Increase::Models::Entity::Trust::Category]
         #   # @param formation_document_file_id [String, nil]
         #   # @param formation_state [String, nil]
         #   # @param grantor [Increase::Models::Entity::Trust::Grantor, nil]
@@ -1394,7 +1394,7 @@ module Increase
           #   # The grantor of the trust. Will be present if the `category` is `revocable`.
           #   #
           #   # @param address [Increase::Models::Entity::Trust::Grantor::Address]
-          #   # @param date_of_birth [String]
+          #   # @param date_of_birth [Date]
           #   # @param identification [Increase::Models::Entity::Trust::Grantor::Identification]
           #   # @param name [String]
           #   #
@@ -1484,7 +1484,7 @@ module Increase
             # @!parse
             #   # A means of verifying the person's identity.
             #   #
-            #   # @param method_ [String]
+            #   # @param method_ [Symbol, Increase::Models::Entity::Trust::Grantor::Identification::Method]
             #   # @param number_last4 [String]
             #   #
             #   def initialize(method_:, number_last4:, **) = super
@@ -1552,7 +1552,7 @@ module Increase
 
           # @!parse
           #   # @param individual [Increase::Models::Entity::Trust::Trustee::Individual, nil]
-          #   # @param structure [String]
+          #   # @param structure [Symbol, Increase::Models::Entity::Trust::Trustee::Structure]
           #   #
           #   def initialize(individual:, structure:, **) = super
 
@@ -1600,7 +1600,7 @@ module Increase
             #   #   `structure` is equal to `individual`.
             #   #
             #   # @param address [Increase::Models::Entity::Trust::Trustee::Individual::Address]
-            #   # @param date_of_birth [String]
+            #   # @param date_of_birth [Date]
             #   # @param identification [Increase::Models::Entity::Trust::Trustee::Individual::Identification]
             #   # @param name [String]
             #   #
@@ -1692,7 +1692,7 @@ module Increase
               # @!parse
               #   # A means of verifying the person's identity.
               #   #
-              #   # @param method_ [String]
+              #   # @param method_ [Symbol, Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method]
               #   # @param number_last4 [String]
               #   #
               #   def initialize(method_:, number_last4:, **) = super

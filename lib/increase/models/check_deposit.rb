@@ -140,7 +140,7 @@ module Increase
       #   # @param account_id [String]
       #   # @param amount [Integer]
       #   # @param back_image_file_id [String, nil]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param deposit_acceptance [Increase::Models::CheckDeposit::DepositAcceptance, nil]
       #   # @param deposit_rejection [Increase::Models::CheckDeposit::DepositRejection, nil]
       #   # @param deposit_return [Increase::Models::CheckDeposit::DepositReturn, nil]
@@ -151,9 +151,9 @@ module Increase
       #   # @param inbound_funds_hold [Increase::Models::CheckDeposit::InboundFundsHold, nil]
       #   # @param inbound_mail_item_id [String, nil]
       #   # @param lockbox_id [String, nil]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::CheckDeposit::Status]
       #   # @param transaction_id [String, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::CheckDeposit::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -247,7 +247,7 @@ module Increase
         #   # @param amount [Integer]
         #   # @param auxiliary_on_us [String, nil]
         #   # @param check_deposit_id [String]
-        #   # @param currency [String]
+        #   # @param currency [Symbol, Increase::Models::CheckDeposit::DepositAcceptance::Currency]
         #   # @param routing_number [String]
         #   # @param serial_number [String, nil]
         #   #
@@ -365,10 +365,10 @@ module Increase
         #   #
         #   # @param amount [Integer]
         #   # @param check_deposit_id [String]
-        #   # @param currency [String]
+        #   # @param currency [Symbol, Increase::Models::CheckDeposit::DepositRejection::Currency]
         #   # @param declined_transaction_id [String]
-        #   # @param reason [String]
-        #   # @param rejected_at [String]
+        #   # @param reason [Symbol, Increase::Models::CheckDeposit::DepositRejection::Reason]
+        #   # @param rejected_at [Time]
         #   #
         #   def initialize(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:, **) = super
 
@@ -530,9 +530,9 @@ module Increase
         #   #
         #   # @param amount [Integer]
         #   # @param check_deposit_id [String]
-        #   # @param currency [String]
-        #   # @param return_reason [String]
-        #   # @param returned_at [String]
+        #   # @param currency [Symbol, Increase::Models::CheckDeposit::DepositReturn::Currency]
+        #   # @param return_reason [Symbol, Increase::Models::CheckDeposit::DepositReturn::ReturnReason]
+        #   # @param returned_at [Time]
         #   # @param transaction_id [String]
         #   #
         #   def initialize(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:, **) = super
@@ -721,7 +721,7 @@ module Increase
         #   #
         #   # @param back_file_id [String]
         #   # @param front_file_id [String]
-        #   # @param submitted_at [String]
+        #   # @param submitted_at [Time]
         #   #
         #   def initialize(back_file_id:, front_file_id:, submitted_at:, **) = super
 
@@ -811,14 +811,14 @@ module Increase
         #   #
         #   # @param id [String]
         #   # @param amount [Integer]
-        #   # @param automatically_releases_at [String]
-        #   # @param created_at [String]
-        #   # @param currency [String]
+        #   # @param automatically_releases_at [Time]
+        #   # @param created_at [Time]
+        #   # @param currency [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Currency]
         #   # @param held_transaction_id [String, nil]
         #   # @param pending_transaction_id [String, nil]
-        #   # @param released_at [String, nil]
-        #   # @param status [String]
-        #   # @param type [String]
+        #   # @param released_at [Time, nil]
+        #   # @param status [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Status]
+        #   # @param type [Symbol, Increase::Models::CheckDeposit::InboundFundsHold::Type]
         #   #
         #   def initialize(
         #     id:,

@@ -65,7 +65,7 @@ module Increase
       #   # @param description [String]
       #   # @param digital_wallet [Increase::Models::CardUpdateParams::DigitalWallet]
       #   # @param entity_id [String]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::CardUpdateParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(

@@ -48,10 +48,10 @@ module Increase
       #   attr_writer :status
 
       # @!parse
-      #   # @param account_holder [String]
+      #   # @param account_holder [Symbol, Increase::Models::ExternalAccountUpdateParams::AccountHolder]
       #   # @param description [String]
-      #   # @param funding [String]
-      #   # @param status [String]
+      #   # @param funding [Symbol, Increase::Models::ExternalAccountUpdateParams::Funding]
+      #   # @param status [Symbol, Increase::Models::ExternalAccountUpdateParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {}, **) = super

@@ -14,7 +14,7 @@ module Increase
       required :status, enum: -> { Increase::Models::PhysicalCardUpdateParams::Status }
 
       # @!parse
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::PhysicalCardUpdateParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(status:, request_options: {}, **) = super

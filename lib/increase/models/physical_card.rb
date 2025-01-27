@@ -82,12 +82,12 @@ module Increase
       #   # @param id [String]
       #   # @param card_id [String]
       #   # @param cardholder [Increase::Models::PhysicalCard::Cardholder]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param idempotency_key [String, nil]
       #   # @param physical_card_profile_id [String, nil]
       #   # @param shipment [Increase::Models::PhysicalCard::Shipment]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::PhysicalCard::Status]
+      #   # @param type [Symbol, Increase::Models::PhysicalCard::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -175,8 +175,8 @@ module Increase
         #   # The details used to ship this physical card.
         #   #
         #   # @param address [Increase::Models::PhysicalCard::Shipment::Address]
-        #   # @param method_ [String]
-        #   # @param status [String]
+        #   # @param method_ [Symbol, Increase::Models::PhysicalCard::Shipment::Method]
+        #   # @param status [Symbol, Increase::Models::PhysicalCard::Shipment::Status]
         #   # @param tracking [Increase::Models::PhysicalCard::Shipment::Tracking, nil]
         #   #
         #   def initialize(address:, method_:, status:, tracking:, **) = super
@@ -365,7 +365,7 @@ module Increase
           #   # @param number [String]
           #   # @param return_number [String, nil]
           #   # @param return_reason [String, nil]
-          #   # @param shipped_at [String]
+          #   # @param shipped_at [Time]
           #   #
           #   def initialize(number:, return_number:, return_reason:, shipped_at:, **) = super
 

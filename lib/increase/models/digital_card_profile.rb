@@ -114,13 +114,13 @@ module Increase
       #   # @param contact_email [String, nil]
       #   # @param contact_phone [String, nil]
       #   # @param contact_website [String, nil]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param description [String]
       #   # @param idempotency_key [String, nil]
       #   # @param issuer_name [String]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::DigitalCardProfile::Status]
       #   # @param text_color [Increase::Models::DigitalCardProfile::TextColor]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::DigitalCardProfile::Type]
       #   #
       #   def initialize(
       #     id:,

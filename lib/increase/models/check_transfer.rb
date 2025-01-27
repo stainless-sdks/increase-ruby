@@ -180,21 +180,21 @@ module Increase
       #   # @param approved_inbound_check_deposit_id [String, nil]
       #   # @param cancellation [Increase::Models::CheckTransfer::Cancellation, nil]
       #   # @param check_number [String]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param created_by [Increase::Models::CheckTransfer::CreatedBy, nil]
-      #   # @param currency [String]
-      #   # @param fulfillment_method [String]
+      #   # @param currency [Symbol, Increase::Models::CheckTransfer::Currency]
+      #   # @param fulfillment_method [Symbol, Increase::Models::CheckTransfer::FulfillmentMethod]
       #   # @param idempotency_key [String, nil]
       #   # @param mailing [Increase::Models::CheckTransfer::Mailing, nil]
       #   # @param pending_transaction_id [String, nil]
       #   # @param physical_check [Increase::Models::CheckTransfer::PhysicalCheck, nil]
       #   # @param routing_number [String]
       #   # @param source_account_number_id [String, nil]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::CheckTransfer::Status]
       #   # @param stop_payment_request [Increase::Models::CheckTransfer::StopPaymentRequest, nil]
       #   # @param submission [Increase::Models::CheckTransfer::Submission, nil]
       #   # @param third_party [Increase::Models::CheckTransfer::ThirdParty, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::CheckTransfer::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -253,7 +253,7 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was approved,
         #   #   this will contain details of the approval.
         #   #
-        #   # @param approved_at [String]
+        #   # @param approved_at [Time]
         #   # @param approved_by [String, nil]
         #   #
         #   def initialize(approved_at:, approved_by:, **) = super
@@ -287,7 +287,7 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was not
         #   #   approved, this will contain details of the cancellation.
         #   #
-        #   # @param canceled_at [String]
+        #   # @param canceled_at [Time]
         #   # @param canceled_by [String, nil]
         #   #
         #   def initialize(canceled_at:, canceled_by:, **) = super
@@ -335,7 +335,7 @@ module Increase
         #   # What object created the transfer, either via the API or the dashboard.
         #   #
         #   # @param api_key [Increase::Models::CheckTransfer::CreatedBy::APIKey, nil]
-        #   # @param category [String]
+        #   # @param category [Symbol, Increase::Models::CheckTransfer::CreatedBy::Category]
         #   # @param oauth_application [Increase::Models::CheckTransfer::CreatedBy::OAuthApplication, nil]
         #   # @param user [Increase::Models::CheckTransfer::CreatedBy::User, nil]
         #   #
@@ -529,7 +529,7 @@ module Increase
         #   #   shipment.
         #   #
         #   # @param image_id [String, nil]
-        #   # @param mailed_at [String]
+        #   # @param mailed_at [Time]
         #   #
         #   def initialize(image_id:, mailed_at:, **) = super
 
@@ -768,8 +768,8 @@ module Increase
           required :postal_code, String
 
           # @!parse
-          #   # @param category [String]
-          #   # @param created_at [String]
+          #   # @param category [Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category]
+          #   # @param created_at [Time]
           #   # @param postal_code [String]
           #   #
           #   def initialize(category:, created_at:, postal_code:, **) = super
@@ -901,10 +901,10 @@ module Increase
         #   # After a stop-payment is requested on the check, this will contain supplemental
         #   #   details.
         #   #
-        #   # @param reason [String]
-        #   # @param requested_at [String]
+        #   # @param reason [Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Reason]
+        #   # @param requested_at [Time]
         #   # @param transfer_id [String]
-        #   # @param type [String]
+        #   # @param type [Symbol, Increase::Models::CheckTransfer::StopPaymentRequest::Type]
         #   #
         #   def initialize(reason:, requested_at:, transfer_id:, type:, **) = super
 
@@ -974,7 +974,7 @@ module Increase
         # @!parse
         #   # After the transfer is submitted, this will contain supplemental details.
         #   #
-        #   # @param submitted_at [String]
+        #   # @param submitted_at [Time]
         #   #
         #   def initialize(submitted_at:, **) = super
 

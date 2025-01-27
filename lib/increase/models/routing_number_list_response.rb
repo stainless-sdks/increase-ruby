@@ -54,12 +54,12 @@ module Increase
       # @!parse
       #   # Routing numbers are used to identify your bank in a financial transaction.
       #   #
-      #   # @param ach_transfers [String]
+      #   # @param ach_transfers [Symbol, Increase::Models::RoutingNumberListResponse::ACHTransfers]
       #   # @param name [String]
-      #   # @param real_time_payments_transfers [String]
+      #   # @param real_time_payments_transfers [Symbol, Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers]
       #   # @param routing_number [String]
-      #   # @param type [String]
-      #   # @param wire_transfers [String]
+      #   # @param type [Symbol, Increase::Models::RoutingNumberListResponse::Type]
+      #   # @param wire_transfers [Symbol, Increase::Models::RoutingNumberListResponse::WireTransfers]
       #   #
       #   def initialize(ach_transfers:, name:, real_time_payments_transfers:, routing_number:, type:, wire_transfers:, **) = super
 

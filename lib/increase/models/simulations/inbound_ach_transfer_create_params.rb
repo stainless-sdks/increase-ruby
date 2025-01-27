@@ -126,8 +126,8 @@ module Increase
         #   # @param company_name [String]
         #   # @param receiver_id_number [String]
         #   # @param receiver_name [String]
-        #   # @param resolve_at [String]
-        #   # @param standard_entry_class_code [String]
+        #   # @param resolve_at [Time]
+        #   # @param standard_entry_class_code [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode]
         #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(

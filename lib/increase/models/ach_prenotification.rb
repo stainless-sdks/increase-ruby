@@ -131,15 +131,15 @@ module Increase
       #   # @param company_discretionary_data [String, nil]
       #   # @param company_entry_description [String, nil]
       #   # @param company_name [String, nil]
-      #   # @param created_at [String]
-      #   # @param credit_debit_indicator [String, nil]
-      #   # @param effective_date [String, nil]
+      #   # @param created_at [Time]
+      #   # @param credit_debit_indicator [Symbol, Increase::Models::ACHPrenotification::CreditDebitIndicator, nil]
+      #   # @param effective_date [Time, nil]
       #   # @param idempotency_key [String, nil]
       #   # @param notifications_of_change [Array<Increase::Models::ACHPrenotification::NotificationsOfChange>]
       #   # @param prenotification_return [Increase::Models::ACHPrenotification::PrenotificationReturn, nil]
       #   # @param routing_number [String]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::ACHPrenotification::Status]
+      #   # @param type [Symbol, Increase::Models::ACHPrenotification::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -221,9 +221,9 @@ module Increase
         required :created_at, Time
 
         # @!parse
-        #   # @param change_code [String]
+        #   # @param change_code [Symbol, Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode]
         #   # @param corrected_data [String]
-        #   # @param created_at [String]
+        #   # @param created_at [Time]
         #   #
         #   def initialize(change_code:, corrected_data:, created_at:, **) = super
 
@@ -336,8 +336,8 @@ module Increase
         # @!parse
         #   # If your prenotification is returned, this will contain details of the return.
         #   #
-        #   # @param created_at [String]
-        #   # @param return_reason_code [String]
+        #   # @param created_at [Time]
+        #   # @param return_reason_code [Symbol, Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode]
         #   #
         #   def initialize(created_at:, return_reason_code:, **) = super
 

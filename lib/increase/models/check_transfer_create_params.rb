@@ -77,7 +77,7 @@ module Increase
       #   # @param account_id [String]
       #   # @param amount [Integer]
       #   # @param source_account_number_id [String]
-      #   # @param fulfillment_method [String]
+      #   # @param fulfillment_method [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod]
       #   # @param physical_check [Increase::Models::CheckTransferCreateParams::PhysicalCheck]
       #   # @param require_approval [Boolean]
       #   # @param third_party [Increase::Models::CheckTransferCreateParams::ThirdParty]

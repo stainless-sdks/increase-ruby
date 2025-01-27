@@ -270,29 +270,29 @@ module Increase
       #   # @param company_discretionary_data [String, nil]
       #   # @param company_entry_description [String, nil]
       #   # @param company_name [String, nil]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param created_by [Increase::Models::ACHTransfer::CreatedBy, nil]
-      #   # @param currency [String]
-      #   # @param destination_account_holder [String]
+      #   # @param currency [Symbol, Increase::Models::ACHTransfer::Currency]
+      #   # @param destination_account_holder [Symbol, Increase::Models::ACHTransfer::DestinationAccountHolder]
       #   # @param external_account_id [String, nil]
-      #   # @param funding [String]
+      #   # @param funding [Symbol, Increase::Models::ACHTransfer::Funding]
       #   # @param idempotency_key [String, nil]
       #   # @param inbound_funds_hold [Increase::Models::ACHTransfer::InboundFundsHold, nil]
       #   # @param individual_id [String, nil]
       #   # @param individual_name [String, nil]
-      #   # @param network [String]
+      #   # @param network [Symbol, Increase::Models::ACHTransfer::Network]
       #   # @param notifications_of_change [Array<Increase::Models::ACHTransfer::NotificationsOfChange>]
       #   # @param pending_transaction_id [String, nil]
       #   # @param preferred_effective_date [Increase::Models::ACHTransfer::PreferredEffectiveDate]
       #   # @param return_ [Increase::Models::ACHTransfer::Return, nil]
       #   # @param routing_number [String]
       #   # @param settlement [Increase::Models::ACHTransfer::Settlement, nil]
-      #   # @param standard_entry_class_code [String]
+      #   # @param standard_entry_class_code [Symbol, Increase::Models::ACHTransfer::StandardEntryClassCode]
       #   # @param statement_descriptor [String]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::ACHTransfer::Status]
       #   # @param submission [Increase::Models::ACHTransfer::Submission, nil]
       #   # @param transaction_id [String, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::ACHTransfer::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -397,7 +397,7 @@ module Increase
         # @!parse
         #   # Additional information that will be sent to the recipient.
         #   #
-        #   # @param category [String]
+        #   # @param category [Symbol, Increase::Models::ACHTransfer::Addenda::Category]
         #   # @param freeform [Increase::Models::ACHTransfer::Addenda::Freeform, nil]
         #   # @param payment_order_remittance_advice [Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice, nil]
         #   #
@@ -560,7 +560,7 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was approved,
         #   #   this will contain details of the approval.
         #   #
-        #   # @param approved_at [String]
+        #   # @param approved_at [Time]
         #   # @param approved_by [String, nil]
         #   #
         #   def initialize(approved_at:, approved_by:, **) = super
@@ -594,7 +594,7 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was not
         #   #   approved, this will contain details of the cancellation.
         #   #
-        #   # @param canceled_at [String]
+        #   # @param canceled_at [Time]
         #   # @param canceled_by [String, nil]
         #   #
         #   def initialize(canceled_at:, canceled_by:, **) = super
@@ -644,7 +644,7 @@ module Increase
         #   # What object created the transfer, either via the API or the dashboard.
         #   #
         #   # @param api_key [Increase::Models::ACHTransfer::CreatedBy::APIKey, nil]
-        #   # @param category [String]
+        #   # @param category [Symbol, Increase::Models::ACHTransfer::CreatedBy::Category]
         #   # @param oauth_application [Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, nil]
         #   # @param user [Increase::Models::ACHTransfer::CreatedBy::User, nil]
         #   #
@@ -921,14 +921,14 @@ module Increase
         #   #
         #   # @param id [String]
         #   # @param amount [Integer]
-        #   # @param automatically_releases_at [String]
-        #   # @param created_at [String]
-        #   # @param currency [String]
+        #   # @param automatically_releases_at [Time]
+        #   # @param created_at [Time]
+        #   # @param currency [Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Currency]
         #   # @param held_transaction_id [String, nil]
         #   # @param pending_transaction_id [String, nil]
-        #   # @param released_at [String, nil]
-        #   # @param status [String]
-        #   # @param type [String]
+        #   # @param released_at [Time, nil]
+        #   # @param status [Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Status]
+        #   # @param type [Symbol, Increase::Models::ACHTransfer::InboundFundsHold::Type]
         #   #
         #   def initialize(
         #     id:,
@@ -1077,9 +1077,9 @@ module Increase
         required :created_at, Time
 
         # @!parse
-        #   # @param change_code [String]
+        #   # @param change_code [Symbol, Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode]
         #   # @param corrected_data [String]
-        #   # @param created_at [String]
+        #   # @param created_at [Time]
         #   #
         #   def initialize(change_code:, corrected_data:, created_at:, **) = super
 
@@ -1196,8 +1196,8 @@ module Increase
         #   #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
         #   #   must be set.
         #   #
-        #   # @param date [String, nil]
-        #   # @param settlement_schedule [String, nil]
+        #   # @param date [Date, nil]
+        #   # @param settlement_schedule [Symbol, Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule, nil]
         #   #
         #   def initialize(date:, settlement_schedule:, **) = super
 
@@ -1283,9 +1283,9 @@ module Increase
         # @!parse
         #   # If your transfer is returned, this will contain details of the return.
         #   #
-        #   # @param created_at [String]
+        #   # @param created_at [Time]
         #   # @param raw_return_reason_code [String]
-        #   # @param return_reason_code [String]
+        #   # @param return_reason_code [Symbol, Increase::Models::ACHTransfer::Return::ReturnReasonCode]
         #   # @param trace_number [String]
         #   # @param transaction_id [String]
         #   # @param transfer_id [String]
@@ -1557,7 +1557,7 @@ module Increase
         #   # A subhash containing information about when and how the transfer settled at the
         #   #   Federal Reserve.
         #   #
-        #   # @param settled_at [String]
+        #   # @param settled_at [Time]
         #   #
         #   def initialize(settled_at:, **) = super
 
@@ -1706,10 +1706,10 @@ module Increase
         #   #   weekdays according to their
         #   #   [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
         #   #
-        #   # @param effective_date [String]
-        #   # @param expected_funds_settlement_at [String]
-        #   # @param expected_settlement_schedule [String]
-        #   # @param submitted_at [String]
+        #   # @param effective_date [Date]
+        #   # @param expected_funds_settlement_at [Time]
+        #   # @param expected_settlement_schedule [Symbol, Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule]
+        #   # @param submitted_at [Time]
         #   # @param trace_number [String]
         #   #
         #   def initialize(

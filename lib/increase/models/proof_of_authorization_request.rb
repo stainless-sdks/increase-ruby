@@ -56,10 +56,10 @@ module Increase
       #   #
       #   # @param id [String]
       #   # @param ach_transfers [Array<Increase::Models::ProofOfAuthorizationRequest::ACHTransfer>]
-      #   # @param created_at [String]
-      #   # @param due_on [String]
-      #   # @param type [String]
-      #   # @param updated_at [String]
+      #   # @param created_at [Time]
+      #   # @param due_on [Time]
+      #   # @param type [Symbol, Increase::Models::ProofOfAuthorizationRequest::Type]
+      #   # @param updated_at [Time]
       #   #
       #   def initialize(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:, **) = super
 

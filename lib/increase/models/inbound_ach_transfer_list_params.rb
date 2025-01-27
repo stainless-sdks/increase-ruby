@@ -73,7 +73,7 @@ module Increase
       #   # @param created_at [Increase::Models::InboundACHTransferListParams::CreatedAt]
       #   # @param cursor [String]
       #   # @param limit [Integer]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::InboundACHTransferListParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
@@ -146,10 +146,10 @@ module Increase
         #   attr_writer :on_or_before
 
         # @!parse
-        #   # @param after [String]
-        #   # @param before [String]
-        #   # @param on_or_after [String]
-        #   # @param on_or_before [String]
+        #   # @param after [Time]
+        #   # @param before [Time]
+        #   # @param on_or_after [Time]
+        #   # @param on_or_before [Time]
         #   #
         #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
 

@@ -188,8 +188,8 @@ module Increase
       #   # @param originator_to_beneficiary_information_line3 [String, nil]
       #   # @param originator_to_beneficiary_information_line4 [String, nil]
       #   # @param sender_reference [String, nil]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::InboundWireTransfer::Status]
+      #   # @param type [Symbol, Increase::Models::InboundWireTransfer::Type]
       #   #
       #   def initialize(
       #     id:,

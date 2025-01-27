@@ -40,7 +40,7 @@ module Increase
       # @!parse
       #   # @param description [String]
       #   # @param recipient_name [String]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::LockboxUpdateParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(description: nil, recipient_name: nil, status: nil, request_options: {}, **) = super

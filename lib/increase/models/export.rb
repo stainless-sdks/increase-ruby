@@ -76,13 +76,13 @@ module Increase
       #   #   [Exports documentation](https://increase.com/documentation/exports).
       #   #
       #   # @param id [String]
-      #   # @param category [String]
-      #   # @param created_at [String]
+      #   # @param category [Symbol, Increase::Models::Export::Category]
+      #   # @param created_at [Time]
       #   # @param file_download_url [String, nil]
       #   # @param file_id [String, nil]
       #   # @param idempotency_key [String, nil]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::Export::Status]
+      #   # @param type [Symbol, Increase::Models::Export::Type]
       #   #
       #   def initialize(id:, category:, created_at:, file_download_url:, file_id:, idempotency_key:, status:, type:, **) = super
 

@@ -33,7 +33,7 @@ module Increase
 
       # @!parse
       #   # @param file [String]
-      #   # @param purpose [String]
+      #   # @param purpose [Symbol, Increase::Models::FileCreateParams::Purpose]
       #   # @param description [String]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #

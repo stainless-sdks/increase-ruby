@@ -96,7 +96,7 @@ module Increase
         #   attr_writer :in_
 
         # @!parse
-        #   # @param in_ [Array<String>]
+        #   # @param in_ [Array<Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In>]
         #   #
         #   def initialize(in_: nil, **) = super
 

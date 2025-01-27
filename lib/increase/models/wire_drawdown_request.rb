@@ -163,9 +163,9 @@ module Increase
       #   # @param recipient_address_line3 [String, nil]
       #   # @param recipient_name [String, nil]
       #   # @param recipient_routing_number [String]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::WireDrawdownRequest::Status]
       #   # @param submission [Increase::Models::WireDrawdownRequest::Submission, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::WireDrawdownRequest::Type]
       #   #
       #   def initialize(
       #     id:,

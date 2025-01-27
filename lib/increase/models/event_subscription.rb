@@ -78,12 +78,12 @@ module Increase
       #   #   [webhooks guide](https://increase.com/documentation/webhooks).
       #   #
       #   # @param id [String]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param idempotency_key [String, nil]
       #   # @param oauth_connection_id [String, nil]
-      #   # @param selected_event_category [String, nil]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param selected_event_category [Symbol, Increase::Models::EventSubscription::SelectedEventCategory, nil]
+      #   # @param status [Symbol, Increase::Models::EventSubscription::Status]
+      #   # @param type [Symbol, Increase::Models::EventSubscription::Type]
       #   # @param url [String]
       #   #
       #   def initialize(

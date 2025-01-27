@@ -196,10 +196,10 @@ module Increase
       #   # @param amount [Integer]
       #   # @param approval [Increase::Models::RealTimePaymentsTransfer::Approval, nil]
       #   # @param cancellation [Increase::Models::RealTimePaymentsTransfer::Cancellation, nil]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param created_by [Increase::Models::RealTimePaymentsTransfer::CreatedBy, nil]
       #   # @param creditor_name [String]
-      #   # @param currency [String]
+      #   # @param currency [Symbol, Increase::Models::RealTimePaymentsTransfer::Currency]
       #   # @param debtor_name [String, nil]
       #   # @param destination_account_number [String]
       #   # @param destination_routing_number [String]
@@ -209,10 +209,10 @@ module Increase
       #   # @param rejection [Increase::Models::RealTimePaymentsTransfer::Rejection, nil]
       #   # @param remittance_information [String]
       #   # @param source_account_number_id [String]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::RealTimePaymentsTransfer::Status]
       #   # @param submission [Increase::Models::RealTimePaymentsTransfer::Submission, nil]
       #   # @param transaction_id [String, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::RealTimePaymentsTransfer::Type]
       #   # @param ultimate_creditor_name [String, nil]
       #   # @param ultimate_debtor_name [String, nil]
       #   #
@@ -266,7 +266,7 @@ module Increase
         #   # If the transfer is acknowledged by the recipient bank, this will contain
         #   #   supplemental details.
         #   #
-        #   # @param acknowledged_at [String]
+        #   # @param acknowledged_at [Time]
         #   #
         #   def initialize(acknowledged_at:, **) = super
 
@@ -299,7 +299,7 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was approved,
         #   #   this will contain details of the approval.
         #   #
-        #   # @param approved_at [String]
+        #   # @param approved_at [Time]
         #   # @param approved_by [String, nil]
         #   #
         #   def initialize(approved_at:, approved_by:, **) = super
@@ -333,7 +333,7 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was not
         #   #   approved, this will contain details of the cancellation.
         #   #
-        #   # @param canceled_at [String]
+        #   # @param canceled_at [Time]
         #   # @param canceled_by [String, nil]
         #   #
         #   def initialize(canceled_at:, canceled_by:, **) = super
@@ -381,7 +381,7 @@ module Increase
         #   # What object created the transfer, either via the API or the dashboard.
         #   #
         #   # @param api_key [Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey, nil]
-        #   # @param category [String]
+        #   # @param category [Symbol, Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category]
         #   # @param oauth_application [Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication, nil]
         #   # @param user [Increase::Models::RealTimePaymentsTransfer::CreatedBy::User, nil]
         #   #
@@ -563,8 +563,8 @@ module Increase
         #   #   institution, this will contain supplemental details.
         #   #
         #   # @param reject_reason_additional_information [String, nil]
-        #   # @param reject_reason_code [String]
-        #   # @param rejected_at [String, nil]
+        #   # @param reject_reason_code [Symbol, Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode]
+        #   # @param rejected_at [Time, nil]
         #   #
         #   def initialize(reject_reason_additional_information:, reject_reason_code:, rejected_at:, **) = super
 
@@ -730,7 +730,7 @@ module Increase
         #   # After the transfer is submitted to Real-Time Payments, this will contain
         #   #   supplemental details.
         #   #
-        #   # @param submitted_at [String, nil]
+        #   # @param submitted_at [Time, nil]
         #   # @param transaction_identification [String]
         #   #
         #   def initialize(submitted_at:, transaction_identification:, **) = super

@@ -55,7 +55,7 @@ module Increase
       #   # @param cursor [String]
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::WireDrawdownRequestListParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {}, **) = super

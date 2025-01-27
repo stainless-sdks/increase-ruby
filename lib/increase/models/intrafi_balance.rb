@@ -60,10 +60,10 @@ module Increase
       #   #
       #   # @param id [String]
       #   # @param balances [Array<Increase::Models::IntrafiBalance::Balance>]
-      #   # @param currency [String]
-      #   # @param effective_date [String]
+      #   # @param currency [Symbol, Increase::Models::IntrafiBalance::Currency]
+      #   # @param effective_date [Date]
       #   # @param total_balance [Integer]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::IntrafiBalance::Type]
       #   #
       #   def initialize(id:, balances:, currency:, effective_date:, total_balance:, type:, **) = super
 

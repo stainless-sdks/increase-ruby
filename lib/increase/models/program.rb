@@ -80,14 +80,14 @@ module Increase
       #   #   regulated activity, we will work together to create additional Programs for you.
       #   #
       #   # @param id [String]
-      #   # @param bank [String]
+      #   # @param bank [Symbol, Increase::Models::Program::Bank]
       #   # @param billing_account_id [String, nil]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param default_digital_card_profile_id [String, nil]
       #   # @param interest_rate [String]
       #   # @param name [String]
-      #   # @param type [String]
-      #   # @param updated_at [String]
+      #   # @param type [Symbol, Increase::Models::Program::Type]
+      #   # @param updated_at [Time]
       #   #
       #   def initialize(
       #     id:,

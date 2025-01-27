@@ -37,8 +37,8 @@ module Increase
       #   #   [here](/documentation/oauth).
       #   #
       #   # @param access_token [String]
-      #   # @param token_type [String]
-      #   # @param type [String]
+      #   # @param token_type [Symbol, Increase::Models::OAuthToken::TokenType]
+      #   # @param type [Symbol, Increase::Models::OAuthToken::Type]
       #   #
       #   def initialize(access_token:, token_type:, type:, **) = super
 

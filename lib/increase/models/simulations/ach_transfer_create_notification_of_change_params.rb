@@ -24,7 +24,7 @@ module Increase
         required :corrected_data, String
 
         # @!parse
-        #   # @param change_code [String]
+        #   # @param change_code [Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode]
         #   # @param corrected_data [String]
         #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #

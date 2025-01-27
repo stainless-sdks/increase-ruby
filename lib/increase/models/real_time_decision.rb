@@ -101,13 +101,13 @@ module Increase
       #   # @param card_authentication [Increase::Models::RealTimeDecision::CardAuthentication, nil]
       #   # @param card_authentication_challenge [Increase::Models::RealTimeDecision::CardAuthenticationChallenge, nil]
       #   # @param card_authorization [Increase::Models::RealTimeDecision::CardAuthorization, nil]
-      #   # @param category [String]
-      #   # @param created_at [String]
+      #   # @param category [Symbol, Increase::Models::RealTimeDecision::Category]
+      #   # @param created_at [Time]
       #   # @param digital_wallet_authentication [Increase::Models::RealTimeDecision::DigitalWalletAuthentication, nil]
       #   # @param digital_wallet_token [Increase::Models::RealTimeDecision::DigitalWalletToken, nil]
-      #   # @param status [String]
-      #   # @param timeout_at [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::RealTimeDecision::Status]
+      #   # @param timeout_at [Time]
+      #   # @param type [Symbol, Increase::Models::RealTimeDecision::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -170,7 +170,7 @@ module Increase
         #   #
         #   # @param account_id [String]
         #   # @param card_id [String]
-        #   # @param decision [String, nil]
+        #   # @param decision [Symbol, Increase::Models::RealTimeDecision::CardAuthentication::Decision, nil]
         #   # @param upcoming_card_payment_id [String]
         #   #
         #   def initialize(account_id:, card_id:, decision:, upcoming_card_payment_id:, **) = super
@@ -255,7 +255,7 @@ module Increase
         #   # @param card_id [String]
         #   # @param card_payment_id [String]
         #   # @param one_time_code [String]
-        #   # @param result [String, nil]
+        #   # @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result, nil]
         #   #
         #   def initialize(account_id:, card_id:, card_payment_id:, one_time_code:, result:, **) = super
 
@@ -475,9 +475,9 @@ module Increase
         #   #
         #   # @param account_id [String]
         #   # @param card_id [String]
-        #   # @param decision [String, nil]
+        #   # @param decision [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Decision, nil]
         #   # @param digital_wallet_token_id [String, nil]
-        #   # @param direction [String]
+        #   # @param direction [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Direction]
         #   # @param merchant_acceptor_id [String]
         #   # @param merchant_category_code [String]
         #   # @param merchant_city [String, nil]
@@ -491,7 +491,7 @@ module Increase
         #   # @param physical_card_id [String, nil]
         #   # @param presentment_amount [Integer]
         #   # @param presentment_currency [String]
-        #   # @param processing_category [String]
+        #   # @param processing_category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::ProcessingCategory]
         #   # @param request_details [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails]
         #   # @param settlement_amount [Integer]
         #   # @param settlement_currency [String]
@@ -603,7 +603,7 @@ module Increase
           # @!parse
           #   # Fields specific to the `network`.
           #   #
-          #   # @param category [String]
+          #   # @param category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category]
           #   # @param visa [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa, nil]
           #   #
           #   def initialize(category:, visa:, **) = super
@@ -672,9 +672,9 @@ module Increase
             # @!parse
             #   # Fields specific to the `visa` network.
             #   #
-            #   # @param electronic_commerce_indicator [String, nil]
-            #   # @param point_of_service_entry_mode [String, nil]
-            #   # @param stand_in_processing_reason [String, nil]
+            #   # @param electronic_commerce_indicator [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
+            #   # @param point_of_service_entry_mode [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
+            #   # @param stand_in_processing_reason [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil]
             #   #
             #   def initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:, **) = super
 
@@ -950,7 +950,7 @@ module Increase
           # @!parse
           #   # Fields specific to the type of request, such as an incremental authorization.
           #   #
-          #   # @param category [String]
+          #   # @param category [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category]
           #   # @param incremental_authorization [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization, nil]
           #   # @param initial_authorization [Object, nil]
           #   #
@@ -1067,7 +1067,7 @@ module Increase
             #   # Fields related to verification of the Card Verification Code, a 3-digit code on
             #   #   the back of the card.
             #   #
-            #   # @param result [String]
+            #   # @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result]
             #   #
             #   def initialize(result:, **) = super
 
@@ -1153,7 +1153,7 @@ module Increase
             #   # @param actual_postal_code [String, nil]
             #   # @param provided_line1 [String, nil]
             #   # @param provided_postal_code [String, nil]
-            #   # @param result [String]
+            #   # @param result [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result]
             #   #
             #   def initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:, **) = super
 
@@ -1304,12 +1304,12 @@ module Increase
         #   # Fields related to a digital wallet authentication attempt.
         #   #
         #   # @param card_id [String]
-        #   # @param channel [String]
-        #   # @param digital_wallet [String]
+        #   # @param channel [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel]
+        #   # @param digital_wallet [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet]
         #   # @param email [String, nil]
         #   # @param one_time_passcode [String]
         #   # @param phone [String, nil]
-        #   # @param result [String, nil]
+        #   # @param result [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Result, nil]
         #   #
         #   def initialize(card_id:, channel:, digital_wallet:, email:, one_time_passcode:, phone:, result:, **) = super
 
@@ -1434,8 +1434,8 @@ module Increase
         #   #
         #   # @param card_id [String]
         #   # @param card_profile_id [String, nil]
-        #   # @param decision [String, nil]
-        #   # @param digital_wallet [String]
+        #   # @param decision [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::Decision, nil]
+        #   # @param digital_wallet [Symbol, Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet]
         #   #
         #   def initialize(card_id:, card_profile_id:, decision:, digital_wallet:, **) = super
 

@@ -101,14 +101,14 @@ module Increase
       #   # @param id [String]
       #   # @param acceptance [Increase::Models::CardDispute::Acceptance, nil]
       #   # @param amount [Integer, nil]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param disputed_transaction_id [String]
       #   # @param explanation [String]
       #   # @param idempotency_key [String, nil]
       #   # @param loss [Increase::Models::CardDispute::Loss, nil]
       #   # @param rejection [Increase::Models::CardDispute::Rejection, nil]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::CardDispute::Status]
+      #   # @param type [Symbol, Increase::Models::CardDispute::Type]
       #   # @param win [Increase::Models::CardDispute::Win, nil]
       #   #
       #   def initialize(
@@ -164,7 +164,7 @@ module Increase
         #   # If the Card Dispute's status is `accepted`, this will contain details of the
         #   #   successful dispute.
         #   #
-        #   # @param accepted_at [String]
+        #   # @param accepted_at [Time]
         #   # @param card_dispute_id [String]
         #   # @param transaction_id [String]
         #   #
@@ -215,7 +215,7 @@ module Increase
         #   #
         #   # @param card_dispute_id [String]
         #   # @param explanation [String]
-        #   # @param lost_at [String]
+        #   # @param lost_at [Time]
         #   # @param transaction_id [String]
         #   #
         #   def initialize(card_dispute_id:, explanation:, lost_at:, transaction_id:, **) = super
@@ -257,7 +257,7 @@ module Increase
         #   #
         #   # @param card_dispute_id [String]
         #   # @param explanation [String]
-        #   # @param rejected_at [String]
+        #   # @param rejected_at [Time]
         #   #
         #   def initialize(card_dispute_id:, explanation:, rejected_at:, **) = super
 
@@ -347,7 +347,7 @@ module Increase
         #   #   dispute.
         #   #
         #   # @param card_dispute_id [String]
-        #   # @param won_at [String]
+        #   # @param won_at [Time]
         #   #
         #   def initialize(card_dispute_id:, won_at:, **) = super
 

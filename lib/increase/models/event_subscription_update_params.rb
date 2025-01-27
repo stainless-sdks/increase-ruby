@@ -18,7 +18,7 @@ module Increase
       #   attr_writer :status
 
       # @!parse
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(status: nil, request_options: {}, **) = super
