@@ -101,6 +101,8 @@ module Increase
         # case in
         # in :form_1099_int
         #   # ...
+        # in :form_1099_misc
+        #   # ...
         # in :proof_of_authorization
         #   # ...
         # in :company_information
@@ -110,6 +112,9 @@ module Increase
         class In < Increase::Enum
           # Internal Revenue Service Form 1099-INT.
           FORM_1099_INT = :form_1099_int
+
+          # Internal Revenue Service Form 1099-MISC.
+          FORM_1099_MISC = :form_1099_misc
 
           # A document submitted in response to a proof of authorization request for an ACH transfer.
           PROOF_OF_AUTHORIZATION = :proof_of_authorization

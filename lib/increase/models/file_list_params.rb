@@ -208,6 +208,9 @@ module Increase
           # IRS Form 1099-INT.
           FORM_1099_INT = :form_1099_int
 
+          # IRS Form 1099-MISC.
+          FORM_1099_MISC = :form_1099_misc
+
           # IRS Form SS-4.
           FORM_SS_4 = :form_ss_4
 
