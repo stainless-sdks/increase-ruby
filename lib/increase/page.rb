@@ -21,7 +21,9 @@ module Increase
   #
   # items => Array
   # ```
-  class Page < Increase::BasePage
+  class Page
+    include Increase::BasePage
+
     # @return [Array<Object>]
     attr_accessor :data
 
@@ -36,6 +38,9 @@ module Increase
     # @param unwrapped [Hash{Symbol=>Object}]
     #
     def initialize(client:, req:, headers:, unwrapped:)
+      @client = client
+      @req = req
+
       model = req.fetch(:model)
 
       case unwrapped
@@ -49,8 +54,6 @@ module Increase
         @next_cursor = next_cursor
       else
       end
-
-      super
     end
 
     # @return [Boolean]
