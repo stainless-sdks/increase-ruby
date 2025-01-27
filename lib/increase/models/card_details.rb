@@ -59,7 +59,7 @@ module Increase
       #   # @param expiration_month [Integer]
       #   # @param expiration_year [Integer]
       #   # @param primary_account_number [String]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::CardDetails::Type]
       #   # @param verification_code [String]
       #   #
       #   def initialize(card_id:, expiration_month:, expiration_year:, primary_account_number:, type:, verification_code:, **) = super

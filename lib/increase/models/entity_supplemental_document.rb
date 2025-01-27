@@ -51,11 +51,11 @@ module Increase
       #   # Supplemental Documents are uploaded files connected to an Entity during
       #   #   onboarding.
       #   #
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param entity_id [String]
       #   # @param file_id [String]
       #   # @param idempotency_key [String, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::EntitySupplementalDocument::Type]
       #   #
       #   def initialize(created_at:, entity_id:, file_id:, idempotency_key:, type:, **) = super
 

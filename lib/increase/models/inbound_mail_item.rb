@@ -69,13 +69,13 @@ module Increase
       #   # Inbound Mail Items represent pieces of physical mail delivered to a Lockbox.
       #   #
       #   # @param id [String]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param file_id [String]
       #   # @param lockbox_id [String, nil]
       #   # @param recipient_name [String, nil]
-      #   # @param rejection_reason [String, nil]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param rejection_reason [Symbol, Increase::Models::InboundMailItem::RejectionReason, nil]
+      #   # @param status [Symbol, Increase::Models::InboundMailItem::Status]
+      #   # @param type [Symbol, Increase::Models::InboundMailItem::Type]
       #   #
       #   def initialize(id:, created_at:, file_id:, lockbox_id:, recipient_name:, rejection_reason:, status:, type:, **) = super
 

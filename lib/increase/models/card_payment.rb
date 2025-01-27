@@ -77,12 +77,12 @@ module Increase
       #   # @param id [String]
       #   # @param account_id [String]
       #   # @param card_id [String]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param digital_wallet_token_id [String, nil]
       #   # @param elements [Array<Increase::Models::CardPayment::Element>]
       #   # @param physical_card_id [String, nil]
       #   # @param state [Increase::Models::CardPayment::State]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::CardPayment::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -215,8 +215,8 @@ module Increase
         #   # @param card_reversal [Increase::Models::CardPayment::Element::CardReversal, nil]
         #   # @param card_settlement [Increase::Models::CardPayment::Element::CardSettlement, nil]
         #   # @param card_validation [Increase::Models::CardPayment::Element::CardValidation, nil]
-        #   # @param category [String]
-        #   # @param created_at [String]
+        #   # @param category [Symbol, Increase::Models::CardPayment::Element::Category]
+        #   # @param created_at [Time]
         #   # @param other [Object, nil]
         #   #
         #   def initialize(
@@ -443,13 +443,13 @@ module Increase
           #   #   and only if `category` is equal to `card_authorization`.
           #   #
           #   # @param id [String]
-          #   # @param actioner [String]
+          #   # @param actioner [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Actioner]
           #   # @param amount [Integer]
           #   # @param card_payment_id [String]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Currency]
           #   # @param digital_wallet_token_id [String, nil]
-          #   # @param direction [String]
-          #   # @param expires_at [String]
+          #   # @param direction [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Direction]
+          #   # @param expires_at [Time]
           #   # @param merchant_acceptor_id [String]
           #   # @param merchant_category_code [String]
           #   # @param merchant_city [String, nil]
@@ -464,10 +464,10 @@ module Increase
           #   # @param physical_card_id [String, nil]
           #   # @param presentment_amount [Integer]
           #   # @param presentment_currency [String]
-          #   # @param processing_category [String]
+          #   # @param processing_category [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::ProcessingCategory]
           #   # @param real_time_decision_id [String, nil]
           #   # @param terminal_id [String, nil]
-          #   # @param type [String]
+          #   # @param type [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Type]
           #   # @param verification [Increase::Models::CardPayment::Element::CardAuthorization::Verification]
           #   #
           #   def initialize(
@@ -624,7 +624,7 @@ module Increase
             # @!parse
             #   # Fields specific to the `network`.
             #   #
-            #   # @param category [String]
+            #   # @param category [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category]
             #   # @param visa [Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa, nil]
             #   #
             #   def initialize(category:, visa:, **) = super
@@ -693,9 +693,9 @@ module Increase
               # @!parse
               #   # Fields specific to the `visa` network.
               #   #
-              #   # @param electronic_commerce_indicator [String, nil]
-              #   # @param point_of_service_entry_mode [String, nil]
-              #   # @param stand_in_processing_reason [String, nil]
+              #   # @param electronic_commerce_indicator [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
+              #   # @param point_of_service_entry_mode [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
+              #   # @param stand_in_processing_reason [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil]
               #   #
               #   def initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:, **) = super
 
@@ -1003,7 +1003,7 @@ module Increase
               #   # Fields related to verification of the Card Verification Code, a 3-digit code on
               #   #   the back of the card.
               #   #
-              #   # @param result [String]
+              #   # @param result [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result]
               #   #
               #   def initialize(result:, **) = super
 
@@ -1089,7 +1089,7 @@ module Increase
               #   # @param actual_postal_code [String, nil]
               #   # @param provided_line1 [String, nil]
               #   # @param provided_postal_code [String, nil]
-              #   # @param result [String]
+              #   # @param result [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result]
               #   #
               #   def initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:, **) = super
 
@@ -1200,10 +1200,10 @@ module Increase
           #   #
           #   # @param id [String]
           #   # @param card_authorization_id [String]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency]
           #   # @param expired_amount [Integer]
-          #   # @param network [String]
-          #   # @param type [String]
+          #   # @param network [Symbol, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network]
+          #   # @param type [Symbol, Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Type]
           #   #
           #   def initialize(id:, card_authorization_id:, currency:, expired_amount:, network:, type:, **) = super
 
@@ -1485,13 +1485,13 @@ module Increase
           #   #   only if `category` is equal to `card_decline`.
           #   #
           #   # @param id [String]
-          #   # @param actioner [String]
+          #   # @param actioner [Symbol, Increase::Models::CardPayment::Element::CardDecline::Actioner]
           #   # @param amount [Integer]
           #   # @param card_payment_id [String]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardDecline::Currency]
           #   # @param declined_transaction_id [String]
           #   # @param digital_wallet_token_id [String, nil]
-          #   # @param direction [String]
+          #   # @param direction [Symbol, Increase::Models::CardPayment::Element::CardDecline::Direction]
           #   # @param merchant_acceptor_id [String]
           #   # @param merchant_category_code [String]
           #   # @param merchant_city [String, nil]
@@ -1505,10 +1505,10 @@ module Increase
           #   # @param physical_card_id [String, nil]
           #   # @param presentment_amount [Integer]
           #   # @param presentment_currency [String]
-          #   # @param processing_category [String]
+          #   # @param processing_category [Symbol, Increase::Models::CardPayment::Element::CardDecline::ProcessingCategory]
           #   # @param real_time_decision_id [String, nil]
-          #   # @param real_time_decision_reason [String, nil]
-          #   # @param reason [String]
+          #   # @param real_time_decision_reason [Symbol, Increase::Models::CardPayment::Element::CardDecline::RealTimeDecisionReason, nil]
+          #   # @param reason [Symbol, Increase::Models::CardPayment::Element::CardDecline::Reason]
           #   # @param terminal_id [String, nil]
           #   # @param verification [Increase::Models::CardPayment::Element::CardDecline::Verification]
           #   #
@@ -1666,7 +1666,7 @@ module Increase
             # @!parse
             #   # Fields specific to the `network`.
             #   #
-            #   # @param category [String]
+            #   # @param category [Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category]
             #   # @param visa [Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa, nil]
             #   #
             #   def initialize(category:, visa:, **) = super
@@ -1735,9 +1735,9 @@ module Increase
               # @!parse
               #   # Fields specific to the `visa` network.
               #   #
-              #   # @param electronic_commerce_indicator [String, nil]
-              #   # @param point_of_service_entry_mode [String, nil]
-              #   # @param stand_in_processing_reason [String, nil]
+              #   # @param electronic_commerce_indicator [Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
+              #   # @param point_of_service_entry_mode [Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
+              #   # @param stand_in_processing_reason [Symbol, Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason, nil]
               #   #
               #   def initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:, **) = super
 
@@ -2139,7 +2139,7 @@ module Increase
               #   # Fields related to verification of the Card Verification Code, a 3-digit code on
               #   #   the back of the card.
               #   #
-              #   # @param result [String]
+              #   # @param result [Symbol, Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result]
               #   #
               #   def initialize(result:, **) = super
 
@@ -2225,7 +2225,7 @@ module Increase
               #   # @param actual_postal_code [String, nil]
               #   # @param provided_line1 [String, nil]
               #   # @param provided_postal_code [String, nil]
-              #   # @param result [String]
+              #   # @param result [Symbol, Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result]
               #   #
               #   def initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:, **) = super
 
@@ -2352,11 +2352,11 @@ module Increase
           #   #
           #   # @param id [String]
           #   # @param card_authorization_id [String]
-          #   # @param currency [String]
-          #   # @param network [String]
+          #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency]
+          #   # @param network [Symbol, Increase::Models::CardPayment::Element::CardFuelConfirmation::Network]
           #   # @param network_identifiers [Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers]
           #   # @param pending_transaction_id [String, nil]
-          #   # @param type [String]
+          #   # @param type [Symbol, Increase::Models::CardPayment::Element::CardFuelConfirmation::Type]
           #   # @param updated_authorization_amount [Integer]
           #   #
           #   def initialize(
@@ -2590,16 +2590,16 @@ module Increase
           #   #   only if `category` is equal to `card_increment`.
           #   #
           #   # @param id [String]
-          #   # @param actioner [String]
+          #   # @param actioner [Symbol, Increase::Models::CardPayment::Element::CardIncrement::Actioner]
           #   # @param amount [Integer]
           #   # @param card_authorization_id [String]
-          #   # @param currency [String]
-          #   # @param network [String]
+          #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardIncrement::Currency]
+          #   # @param network [Symbol, Increase::Models::CardPayment::Element::CardIncrement::Network]
           #   # @param network_identifiers [Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers]
           #   # @param network_risk_score [Integer, nil]
           #   # @param pending_transaction_id [String, nil]
           #   # @param real_time_decision_id [String, nil]
-          #   # @param type [String]
+          #   # @param type [Symbol, Increase::Models::CardPayment::Element::CardIncrement::Type]
           #   # @param updated_authorization_amount [Integer]
           #   #
           #   def initialize(
@@ -2915,7 +2915,7 @@ module Increase
           #   # @param amount [Integer]
           #   # @param card_payment_id [String]
           #   # @param cashback [Increase::Models::CardPayment::Element::CardRefund::Cashback, nil]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardRefund::Currency]
           #   # @param interchange [Increase::Models::CardPayment::Element::CardRefund::Interchange, nil]
           #   # @param merchant_acceptor_id [String]
           #   # @param merchant_category_code [String]
@@ -2929,7 +2929,7 @@ module Increase
           #   # @param presentment_currency [String]
           #   # @param purchase_details [Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails, nil]
           #   # @param transaction_id [String]
-          #   # @param type [String]
+          #   # @param type [Symbol, Increase::Models::CardPayment::Element::CardRefund::Type]
           #   #
           #   def initialize(
           #     id:,
@@ -2988,7 +2988,7 @@ module Increase
             #   #   aggregate, monthly.
             #   #
             #   # @param amount [String]
-            #   # @param currency [String]
+            #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency]
             #   #
             #   def initialize(amount:, currency:, **) = super
 
@@ -3116,7 +3116,7 @@ module Increase
             #   #
             #   # @param amount [String]
             #   # @param code [String, nil]
-            #   # @param currency [String]
+            #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency]
             #   #
             #   def initialize(amount:, code:, currency:, **) = super
 
@@ -3302,7 +3302,7 @@ module Increase
             #   # @param national_tax_amount [Integer, nil]
             #   # @param national_tax_currency [String, nil]
             #   # @param purchase_identifier [String, nil]
-            #   # @param purchase_identifier_format [String, nil]
+            #   # @param purchase_identifier_format [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::PurchaseIdentifierFormat, nil]
             #   # @param travel [Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel, nil]
             #   #
             #   def initialize(
@@ -3451,16 +3451,16 @@ module Increase
               #   # Fields specific to car rentals.
               #   #
               #   # @param car_class_code [String, nil]
-              #   # @param checkout_date [String, nil]
+              #   # @param checkout_date [Date, nil]
               #   # @param daily_rental_rate_amount [Integer, nil]
               #   # @param daily_rental_rate_currency [String, nil]
               #   # @param days_rented [Integer, nil]
-              #   # @param extra_charges [String, nil]
+              #   # @param extra_charges [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::ExtraCharges, nil]
               #   # @param fuel_charges_amount [Integer, nil]
               #   # @param fuel_charges_currency [String, nil]
               #   # @param insurance_charges_amount [Integer, nil]
               #   # @param insurance_charges_currency [String, nil]
-              #   # @param no_show_indicator [String, nil]
+              #   # @param no_show_indicator [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::NoShowIndicator, nil]
               #   # @param one_way_drop_off_charges_amount [Integer, nil]
               #   # @param one_way_drop_off_charges_currency [String, nil]
               #   # @param renter_name [String, nil]
@@ -3681,15 +3681,15 @@ module Increase
               # @!parse
               #   # Fields specific to lodging.
               #   #
-              #   # @param check_in_date [String, nil]
+              #   # @param check_in_date [Date, nil]
               #   # @param daily_room_rate_amount [Integer, nil]
               #   # @param daily_room_rate_currency [String, nil]
-              #   # @param extra_charges [String, nil]
+              #   # @param extra_charges [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges, nil]
               #   # @param folio_cash_advances_amount [Integer, nil]
               #   # @param folio_cash_advances_currency [String, nil]
               #   # @param food_beverage_charges_amount [Integer, nil]
               #   # @param food_beverage_charges_currency [String, nil]
-              #   # @param no_show_indicator [String, nil]
+              #   # @param no_show_indicator [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::NoShowIndicator, nil]
               #   # @param prepaid_expenses_amount [Integer, nil]
               #   # @param prepaid_expenses_currency [String, nil]
               #   # @param room_nights [Integer, nil]
@@ -3934,12 +3934,12 @@ module Increase
               #   #
               #   # @param ancillary [Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary, nil]
               #   # @param computerized_reservation_system [String, nil]
-              #   # @param credit_reason_indicator [String, nil]
-              #   # @param departure_date [String, nil]
+              #   # @param credit_reason_indicator [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator, nil]
+              #   # @param departure_date [Date, nil]
               #   # @param origination_city_airport_code [String, nil]
               #   # @param passenger_name [String, nil]
-              #   # @param restricted_ticket_indicator [String, nil]
-              #   # @param ticket_change_indicator [String, nil]
+              #   # @param restricted_ticket_indicator [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator, nil]
+              #   # @param ticket_change_indicator [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator, nil]
               #   # @param ticket_number [String, nil]
               #   # @param travel_agency_code [String, nil]
               #   # @param travel_agency_name [String, nil]
@@ -4019,7 +4019,7 @@ module Increase
                 #   # Ancillary purchases in addition to the airfare.
                 #   #
                 #   # @param connected_ticket_document_number [String, nil]
-                #   # @param credit_reason_indicator [String, nil]
+                #   # @param credit_reason_indicator [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil]
                 #   # @param passenger_name_or_description [String, nil]
                 #   # @param services [Array<Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service>]
                 #   # @param ticket_document_number [String, nil]
@@ -4093,7 +4093,7 @@ module Increase
                   required :sub_category, String, nil?: true
 
                   # @!parse
-                  #   # @param category [String, nil]
+                  #   # @param category [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category, nil]
                   #   # @param sub_category [String, nil]
                   #   #
                   #   def initialize(category:, sub_category:, **) = super
@@ -4342,7 +4342,7 @@ module Increase
                 #   # @param fare_basis_code [String, nil]
                 #   # @param flight_number [String, nil]
                 #   # @param service_class [String, nil]
-                #   # @param stop_over_code [String, nil]
+                #   # @param stop_over_code [Symbol, Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode, nil]
                 #   #
                 #   def initialize(
                 #     carrier_code:,
@@ -4541,7 +4541,7 @@ module Increase
           #   #
           #   # @param id [String]
           #   # @param card_authorization_id [String]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardReversal::Currency]
           #   # @param merchant_acceptor_id [String]
           #   # @param merchant_category_code [String]
           #   # @param merchant_city [String, nil]
@@ -4549,13 +4549,13 @@ module Increase
           #   # @param merchant_descriptor [String]
           #   # @param merchant_postal_code [String, nil]
           #   # @param merchant_state [String, nil]
-          #   # @param network [String]
+          #   # @param network [Symbol, Increase::Models::CardPayment::Element::CardReversal::Network]
           #   # @param network_identifiers [Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers]
           #   # @param pending_transaction_id [String, nil]
           #   # @param reversal_amount [Integer]
-          #   # @param reversal_reason [String, nil]
+          #   # @param reversal_reason [Symbol, Increase::Models::CardPayment::Element::CardReversal::ReversalReason, nil]
           #   # @param terminal_id [String, nil]
-          #   # @param type [String]
+          #   # @param type [Symbol, Increase::Models::CardPayment::Element::CardReversal::Type]
           #   # @param updated_authorization_amount [Integer]
           #   #
           #   def initialize(
@@ -4897,7 +4897,7 @@ module Increase
           #   # @param card_authorization [String, nil]
           #   # @param card_payment_id [String]
           #   # @param cashback [Increase::Models::CardPayment::Element::CardSettlement::Cashback, nil]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardSettlement::Currency]
           #   # @param interchange [Increase::Models::CardPayment::Element::CardSettlement::Interchange, nil]
           #   # @param merchant_acceptor_id [String]
           #   # @param merchant_category_code [String]
@@ -4912,7 +4912,7 @@ module Increase
           #   # @param presentment_currency [String]
           #   # @param purchase_details [Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails, nil]
           #   # @param transaction_id [String]
-          #   # @param type [String]
+          #   # @param type [Symbol, Increase::Models::CardPayment::Element::CardSettlement::Type]
           #   #
           #   def initialize(
           #     id:,
@@ -4971,7 +4971,7 @@ module Increase
             #   #   aggregate, monthly.
             #   #
             #   # @param amount [String]
-            #   # @param currency [String]
+            #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency]
             #   #
             #   def initialize(amount:, currency:, **) = super
 
@@ -5099,7 +5099,7 @@ module Increase
             #   #
             #   # @param amount [String]
             #   # @param code [String, nil]
-            #   # @param currency [String]
+            #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency]
             #   #
             #   def initialize(amount:, code:, currency:, **) = super
 
@@ -5287,7 +5287,7 @@ module Increase
             #   # @param national_tax_amount [Integer, nil]
             #   # @param national_tax_currency [String, nil]
             #   # @param purchase_identifier [String, nil]
-            #   # @param purchase_identifier_format [String, nil]
+            #   # @param purchase_identifier_format [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat, nil]
             #   # @param travel [Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel, nil]
             #   #
             #   def initialize(
@@ -5436,16 +5436,16 @@ module Increase
               #   # Fields specific to car rentals.
               #   #
               #   # @param car_class_code [String, nil]
-              #   # @param checkout_date [String, nil]
+              #   # @param checkout_date [Date, nil]
               #   # @param daily_rental_rate_amount [Integer, nil]
               #   # @param daily_rental_rate_currency [String, nil]
               #   # @param days_rented [Integer, nil]
-              #   # @param extra_charges [String, nil]
+              #   # @param extra_charges [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::ExtraCharges, nil]
               #   # @param fuel_charges_amount [Integer, nil]
               #   # @param fuel_charges_currency [String, nil]
               #   # @param insurance_charges_amount [Integer, nil]
               #   # @param insurance_charges_currency [String, nil]
-              #   # @param no_show_indicator [String, nil]
+              #   # @param no_show_indicator [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator, nil]
               #   # @param one_way_drop_off_charges_amount [Integer, nil]
               #   # @param one_way_drop_off_charges_currency [String, nil]
               #   # @param renter_name [String, nil]
@@ -5666,15 +5666,15 @@ module Increase
               # @!parse
               #   # Fields specific to lodging.
               #   #
-              #   # @param check_in_date [String, nil]
+              #   # @param check_in_date [Date, nil]
               #   # @param daily_room_rate_amount [Integer, nil]
               #   # @param daily_room_rate_currency [String, nil]
-              #   # @param extra_charges [String, nil]
+              #   # @param extra_charges [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges, nil]
               #   # @param folio_cash_advances_amount [Integer, nil]
               #   # @param folio_cash_advances_currency [String, nil]
               #   # @param food_beverage_charges_amount [Integer, nil]
               #   # @param food_beverage_charges_currency [String, nil]
-              #   # @param no_show_indicator [String, nil]
+              #   # @param no_show_indicator [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator, nil]
               #   # @param prepaid_expenses_amount [Integer, nil]
               #   # @param prepaid_expenses_currency [String, nil]
               #   # @param room_nights [Integer, nil]
@@ -5919,12 +5919,12 @@ module Increase
               #   #
               #   # @param ancillary [Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary, nil]
               #   # @param computerized_reservation_system [String, nil]
-              #   # @param credit_reason_indicator [String, nil]
-              #   # @param departure_date [String, nil]
+              #   # @param credit_reason_indicator [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator, nil]
+              #   # @param departure_date [Date, nil]
               #   # @param origination_city_airport_code [String, nil]
               #   # @param passenger_name [String, nil]
-              #   # @param restricted_ticket_indicator [String, nil]
-              #   # @param ticket_change_indicator [String, nil]
+              #   # @param restricted_ticket_indicator [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator, nil]
+              #   # @param ticket_change_indicator [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator, nil]
               #   # @param ticket_number [String, nil]
               #   # @param travel_agency_code [String, nil]
               #   # @param travel_agency_name [String, nil]
@@ -6004,7 +6004,7 @@ module Increase
                 #   # Ancillary purchases in addition to the airfare.
                 #   #
                 #   # @param connected_ticket_document_number [String, nil]
-                #   # @param credit_reason_indicator [String, nil]
+                #   # @param credit_reason_indicator [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil]
                 #   # @param passenger_name_or_description [String, nil]
                 #   # @param services [Array<Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service>]
                 #   # @param ticket_document_number [String, nil]
@@ -6078,7 +6078,7 @@ module Increase
                   required :sub_category, String, nil?: true
 
                   # @!parse
-                  #   # @param category [String, nil]
+                  #   # @param category [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category, nil]
                   #   # @param sub_category [String, nil]
                   #   #
                   #   def initialize(category:, sub_category:, **) = super
@@ -6327,7 +6327,7 @@ module Increase
                 #   # @param fare_basis_code [String, nil]
                 #   # @param flight_number [String, nil]
                 #   # @param service_class [String, nil]
-                #   # @param stop_over_code [String, nil]
+                #   # @param stop_over_code [Symbol, Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode, nil]
                 #   #
                 #   def initialize(
                 #     carrier_code:,
@@ -6541,9 +6541,9 @@ module Increase
           #   #   only if `category` is equal to `card_validation`.
           #   #
           #   # @param id [String]
-          #   # @param actioner [String]
+          #   # @param actioner [Symbol, Increase::Models::CardPayment::Element::CardValidation::Actioner]
           #   # @param card_payment_id [String]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::CardPayment::Element::CardValidation::Currency]
           #   # @param digital_wallet_token_id [String, nil]
           #   # @param merchant_acceptor_id [String]
           #   # @param merchant_category_code [String]
@@ -6558,7 +6558,7 @@ module Increase
           #   # @param physical_card_id [String, nil]
           #   # @param real_time_decision_id [String, nil]
           #   # @param terminal_id [String, nil]
-          #   # @param type [String]
+          #   # @param type [Symbol, Increase::Models::CardPayment::Element::CardValidation::Type]
           #   # @param verification [Increase::Models::CardPayment::Element::CardValidation::Verification]
           #   #
           #   def initialize(
@@ -6686,7 +6686,7 @@ module Increase
             # @!parse
             #   # Fields specific to the `network`.
             #   #
-            #   # @param category [String]
+            #   # @param category [Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category]
             #   # @param visa [Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa, nil]
             #   #
             #   def initialize(category:, visa:, **) = super
@@ -6755,9 +6755,9 @@ module Increase
               # @!parse
               #   # Fields specific to the `visa` network.
               #   #
-              #   # @param electronic_commerce_indicator [String, nil]
-              #   # @param point_of_service_entry_mode [String, nil]
-              #   # @param stand_in_processing_reason [String, nil]
+              #   # @param electronic_commerce_indicator [Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
+              #   # @param point_of_service_entry_mode [Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
+              #   # @param stand_in_processing_reason [Symbol, Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason, nil]
               #   #
               #   def initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:, **) = super
 
@@ -7023,7 +7023,7 @@ module Increase
               #   # Fields related to verification of the Card Verification Code, a 3-digit code on
               #   #   the back of the card.
               #   #
-              #   # @param result [String]
+              #   # @param result [Symbol, Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result]
               #   #
               #   def initialize(result:, **) = super
 
@@ -7109,7 +7109,7 @@ module Increase
               #   # @param actual_postal_code [String, nil]
               #   # @param provided_line1 [String, nil]
               #   # @param provided_postal_code [String, nil]
-              #   # @param result [String]
+              #   # @param result [Symbol, Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result]
               #   #
               #   def initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:, **) = super
 

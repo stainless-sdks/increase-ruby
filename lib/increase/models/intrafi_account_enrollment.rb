@@ -67,8 +67,8 @@ module Increase
       #   # @param account_id [String]
       #   # @param idempotency_key [String, nil]
       #   # @param intrafi_id [String]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::IntrafiAccountEnrollment::Status]
+      #   # @param type [Symbol, Increase::Models::IntrafiAccountEnrollment::Type]
       #   #
       #   def initialize(id:, account_id:, idempotency_key:, intrafi_id:, status:, type:, **) = super
 

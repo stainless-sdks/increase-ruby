@@ -121,20 +121,20 @@ module Increase
       #   #   transfers, and send payments. They earn interest and have depository insurance.
       #   #
       #   # @param id [String]
-      #   # @param bank [String]
-      #   # @param closed_at [String, nil]
-      #   # @param created_at [String]
-      #   # @param currency [String]
+      #   # @param bank [Symbol, Increase::Models::Account::Bank]
+      #   # @param closed_at [Time, nil]
+      #   # @param created_at [Time]
+      #   # @param currency [Symbol, Increase::Models::Account::Currency]
       #   # @param entity_id [String, nil]
       #   # @param idempotency_key [String, nil]
       #   # @param informational_entity_id [String, nil]
       #   # @param interest_accrued [String]
-      #   # @param interest_accrued_at [String, nil]
+      #   # @param interest_accrued_at [Date, nil]
       #   # @param interest_rate [String]
       #   # @param name [String]
       #   # @param program_id [String]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::Account::Status]
+      #   # @param type [Symbol, Increase::Models::Account::Type]
       #   #
       #   def initialize(
       #     id:,

@@ -47,7 +47,7 @@ module Increase
       # @!parse
       #   # @param name [String]
       #   # @param account_id [String]
-      #   # @param compliance_category [String]
+      #   # @param compliance_category [Symbol, Increase::Models::BookkeepingAccountCreateParams::ComplianceCategory]
       #   # @param entity_id [String]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #

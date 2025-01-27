@@ -46,7 +46,7 @@ module Increase
           # @!parse
           #   # If set, the simulation will reject the transfer.
           #   #
-          #   # @param reject_reason_code [String]
+          #   # @param reject_reason_code [Symbol, Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode]
           #   #
           #   def initialize(reject_reason_code:, **) = super
 

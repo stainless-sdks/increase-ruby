@@ -89,16 +89,16 @@ module Increase
       #   #   Increase. You can use this API to store their details for reuse.
       #   #
       #   # @param id [String]
-      #   # @param account_holder [String]
+      #   # @param account_holder [Symbol, Increase::Models::ExternalAccount::AccountHolder]
       #   # @param account_number [String]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param description [String]
-      #   # @param funding [String]
+      #   # @param funding [Symbol, Increase::Models::ExternalAccount::Funding]
       #   # @param idempotency_key [String, nil]
       #   # @param routing_number [String]
-      #   # @param status [String]
-      #   # @param type [String]
-      #   # @param verification_status [String]
+      #   # @param status [Symbol, Increase::Models::ExternalAccount::Status]
+      #   # @param type [Symbol, Increase::Models::ExternalAccount::Type]
+      #   # @param verification_status [Symbol, Increase::Models::ExternalAccount::VerificationStatus]
       #   #
       #   def initialize(
       #     id:,

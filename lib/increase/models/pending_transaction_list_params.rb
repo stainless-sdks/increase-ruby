@@ -122,7 +122,7 @@ module Increase
         #   attr_writer :in_
 
         # @!parse
-        #   # @param in_ [Array<String>]
+        #   # @param in_ [Array<Symbol, Increase::Models::PendingTransactionListParams::Category::In>]
         #   #
         #   def initialize(in_: nil, **) = super
 
@@ -235,10 +235,10 @@ module Increase
         #   attr_writer :on_or_before
 
         # @!parse
-        #   # @param after [String]
-        #   # @param before [String]
-        #   # @param on_or_after [String]
-        #   # @param on_or_before [String]
+        #   # @param after [Time]
+        #   # @param before [Time]
+        #   # @param on_or_after [Time]
+        #   # @param on_or_before [Time]
         #   #
         #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
 
@@ -268,7 +268,7 @@ module Increase
         #   attr_writer :in_
 
         # @!parse
-        #   # @param in_ [Array<String>]
+        #   # @param in_ [Array<Symbol, Increase::Models::PendingTransactionListParams::Status::In>]
         #   #
         #   def initialize(in_: nil, **) = super
 

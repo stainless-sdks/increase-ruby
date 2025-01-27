@@ -126,17 +126,17 @@ module Increase
       #   # @param account_number_id [String]
       #   # @param amount [Integer]
       #   # @param confirmation [Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, nil]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param creditor_name [String]
-      #   # @param currency [String]
+      #   # @param currency [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Currency]
       #   # @param debtor_account_number [String]
       #   # @param debtor_name [String]
       #   # @param debtor_routing_number [String]
       #   # @param decline [Increase::Models::InboundRealTimePaymentsTransfer::Decline, nil]
       #   # @param remittance_information [String, nil]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Status]
       #   # @param transaction_identification [String]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -185,7 +185,7 @@ module Increase
         # @!parse
         #   # If your transfer is confirmed, this will contain details of the confirmation.
         #   #
-        #   # @param confirmed_at [String]
+        #   # @param confirmed_at [Time]
         #   # @param transaction_id [String]
         #   #
         #   def initialize(confirmed_at:, transaction_id:, **) = super
@@ -265,9 +265,9 @@ module Increase
         # @!parse
         #   # If your transfer is declined, this will contain details of the decline.
         #   #
-        #   # @param declined_at [String]
+        #   # @param declined_at [Time]
         #   # @param declined_transaction_id [String]
-        #   # @param reason [String]
+        #   # @param reason [Symbol, Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason]
         #   #
         #   def initialize(declined_at:, declined_transaction_id:, reason:, **) = super
 

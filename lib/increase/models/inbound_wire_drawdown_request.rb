@@ -173,7 +173,7 @@ module Increase
       #   # @param beneficiary_address_line3 [String, nil]
       #   # @param beneficiary_name [String, nil]
       #   # @param beneficiary_routing_number [String]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param currency [String]
       #   # @param message_to_recipient [String, nil]
       #   # @param originator_account_number [String]
@@ -187,7 +187,7 @@ module Increase
       #   # @param originator_to_beneficiary_information_line3 [String, nil]
       #   # @param originator_to_beneficiary_information_line4 [String, nil]
       #   # @param recipient_account_number_id [String]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::InboundWireDrawdownRequest::Type]
       #   #
       #   def initialize(
       #     id:,

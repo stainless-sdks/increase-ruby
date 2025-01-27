@@ -50,7 +50,7 @@ module Increase
       # @!parse
       #   # @param url [String]
       #   # @param oauth_connection_id [String]
-      #   # @param selected_event_category [String]
+      #   # @param selected_event_category [Symbol, Increase::Models::EventSubscriptionCreateParams::SelectedEventCategory]
       #   # @param shared_secret [String]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #

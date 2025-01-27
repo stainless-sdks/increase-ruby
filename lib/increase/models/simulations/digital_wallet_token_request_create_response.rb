@@ -43,9 +43,9 @@ module Increase
         # @!parse
         #   # The results of a Digital Wallet Token simulation.
         #   #
-        #   # @param decline_reason [String, nil]
+        #   # @param decline_reason [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason, nil]
         #   # @param digital_wallet_token_id [String, nil]
-        #   # @param type [String]
+        #   # @param type [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type]
         #   #
         #   def initialize(decline_reason:, digital_wallet_token_id:, type:, **) = super
 

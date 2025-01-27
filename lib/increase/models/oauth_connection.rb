@@ -65,12 +65,12 @@ module Increase
       #   #   [here](https://increase.com/documentation/oauth).
       #   #
       #   # @param id [String]
-      #   # @param created_at [String]
-      #   # @param deleted_at [String, nil]
+      #   # @param created_at [Time]
+      #   # @param deleted_at [Time, nil]
       #   # @param group_id [String]
       #   # @param oauth_application_id [String]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::OAuthConnection::Status]
+      #   # @param type [Symbol, Increase::Models::OAuthConnection::Type]
       #   #
       #   def initialize(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:, **) = super
 

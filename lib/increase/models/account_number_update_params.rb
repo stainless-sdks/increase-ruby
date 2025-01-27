@@ -52,7 +52,7 @@ module Increase
       #   # @param inbound_ach [Increase::Models::AccountNumberUpdateParams::InboundACH]
       #   # @param inbound_checks [Increase::Models::AccountNumberUpdateParams::InboundChecks]
       #   # @param name [String]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::AccountNumberUpdateParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(inbound_ach: nil, inbound_checks: nil, name: nil, status: nil, request_options: {}, **) = super
@@ -83,7 +83,7 @@ module Increase
         # @!parse
         #   # Options related to how this Account Number handles inbound ACH transfers.
         #   #
-        #   # @param debit_status [String]
+        #   # @param debit_status [Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus]
         #   #
         #   def initialize(debit_status: nil, **) = super
 
@@ -129,7 +129,7 @@ module Increase
         #   # Options related to how this Account Number should handle inbound check
         #   #   withdrawals.
         #   #
-        #   # @param status [String]
+        #   # @param status [Symbol, Increase::Models::AccountNumberUpdateParams::InboundChecks::Status]
         #   #
         #   def initialize(status:, **) = super
 

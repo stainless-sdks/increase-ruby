@@ -107,7 +107,7 @@ module Increase
         #   # If the Real-Time Decision relates to a 3DS card authentication attempt, this
         #   #   object contains your response to the authentication.
         #   #
-        #   # @param decision [String]
+        #   # @param decision [Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision]
         #   #
         #   def initialize(decision:, **) = super
 
@@ -161,7 +161,7 @@ module Increase
         #   # If the Real-Time Decision relates to 3DS card authentication challenge delivery,
         #   #   this object contains your response.
         #   #
-        #   # @param result [String]
+        #   # @param result [Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result]
         #   #
         #   def initialize(result:, **) = super
 
@@ -221,8 +221,8 @@ module Increase
         #   # If the Real-Time Decision relates to a card authorization attempt, this object
         #   #   contains your response to the authorization.
         #   #
-        #   # @param decision [String]
-        #   # @param decline_reason [String]
+        #   # @param decision [Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision]
+        #   # @param decline_reason [Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason]
         #   #
         #   def initialize(decision:, decline_reason: nil, **) = super
 
@@ -323,7 +323,7 @@ module Increase
         #   # If the Real-Time Decision relates to a digital wallet authentication attempt,
         #   #   this object contains your response to the authentication.
         #   #
-        #   # @param result [String]
+        #   # @param result [Symbol, Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result]
         #   # @param success [Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success]
         #   #
         #   def initialize(result:, success: nil, **) = super

@@ -37,7 +37,7 @@ module Increase
       #   #
       #   # @param balance [Integer]
       #   # @param bookkeeping_account_id [String]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::BookkeepingBalanceLookup::Type]
       #   #
       #   def initialize(balance:, bookkeeping_account_id:, type:, **) = super
 

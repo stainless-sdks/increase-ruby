@@ -153,7 +153,7 @@ module Increase
       #   #   against your account.
       #   #
       #   # @param id [String]
-      #   # @param accepted_at [String, nil]
+      #   # @param accepted_at [Time, nil]
       #   # @param account_id [String]
       #   # @param account_number_id [String, nil]
       #   # @param adjustments [Array<Increase::Models::InboundCheckDeposit::Adjustment>]
@@ -162,16 +162,16 @@ module Increase
       #   # @param bank_of_first_deposit_routing_number [String, nil]
       #   # @param check_number [String, nil]
       #   # @param check_transfer_id [String, nil]
-      #   # @param created_at [String]
-      #   # @param currency [String]
-      #   # @param declined_at [String, nil]
+      #   # @param created_at [Time]
+      #   # @param currency [Symbol, Increase::Models::InboundCheckDeposit::Currency]
+      #   # @param declined_at [Time, nil]
       #   # @param declined_transaction_id [String, nil]
       #   # @param deposit_return [Increase::Models::InboundCheckDeposit::DepositReturn, nil]
       #   # @param front_image_file_id [String, nil]
-      #   # @param payee_name_analysis [String]
-      #   # @param status [String]
+      #   # @param payee_name_analysis [Symbol, Increase::Models::InboundCheckDeposit::PayeeNameAnalysis]
+      #   # @param status [Symbol, Increase::Models::InboundCheckDeposit::Status]
       #   # @param transaction_id [String, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::InboundCheckDeposit::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -236,9 +236,9 @@ module Increase
         required :transaction_id, String
 
         # @!parse
-        #   # @param adjusted_at [String]
+        #   # @param adjusted_at [Time]
         #   # @param amount [Integer]
-        #   # @param reason [String]
+        #   # @param reason [Symbol, Increase::Models::InboundCheckDeposit::Adjustment::Reason]
         #   # @param transaction_id [String]
         #   #
         #   def initialize(adjusted_at:, amount:, reason:, transaction_id:, **) = super
@@ -344,8 +344,8 @@ module Increase
         #   # If you requested a return of this deposit, this will contain details of the
         #   #   return.
         #   #
-        #   # @param reason [String]
-        #   # @param returned_at [String]
+        #   # @param reason [Symbol, Increase::Models::InboundCheckDeposit::DepositReturn::Reason]
+        #   # @param returned_at [Time]
         #   # @param transaction_id [String]
         #   #
         #   def initialize(reason:, returned_at:, transaction_id:, **) = super

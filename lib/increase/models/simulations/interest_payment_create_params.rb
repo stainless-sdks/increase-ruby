@@ -43,8 +43,8 @@ module Increase
         # @!parse
         #   # @param account_id [String]
         #   # @param amount [Integer]
-        #   # @param period_end [String]
-        #   # @param period_start [String]
+        #   # @param period_end [Time]
+        #   # @param period_start [Time]
         #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(account_id:, amount:, period_end: nil, period_start: nil, request_options: {}, **) = super

@@ -55,7 +55,7 @@ module Increase
       #   # @param amount [Integer]
       #   # @param debtor [Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor]
       #   # @param destination_account_number_id [String]
-      #   # @param expires_at [String]
+      #   # @param expires_at [Date]
       #   # @param remittance_information [String]
       #   # @param source_account_number [String]
       #   # @param source_routing_number [String]

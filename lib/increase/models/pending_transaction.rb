@@ -105,15 +105,15 @@ module Increase
       #   # @param id [String]
       #   # @param account_id [String]
       #   # @param amount [Integer]
-      #   # @param completed_at [String, nil]
-      #   # @param created_at [String]
-      #   # @param currency [String]
+      #   # @param completed_at [Time, nil]
+      #   # @param created_at [Time]
+      #   # @param currency [Symbol, Increase::Models::PendingTransaction::Currency]
       #   # @param description [String]
       #   # @param route_id [String, nil]
-      #   # @param route_type [String, nil]
+      #   # @param route_type [Symbol, Increase::Models::PendingTransaction::RouteType, nil]
       #   # @param source [Increase::Models::PendingTransaction::Source]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::PendingTransaction::Status]
+      #   # @param type [Symbol, Increase::Models::PendingTransaction::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -311,7 +311,7 @@ module Increase
         #   # @param account_transfer_instruction [Increase::Models::PendingTransaction::Source::AccountTransferInstruction, nil]
         #   # @param ach_transfer_instruction [Increase::Models::PendingTransaction::Source::ACHTransferInstruction, nil]
         #   # @param card_authorization [Increase::Models::PendingTransaction::Source::CardAuthorization, nil]
-        #   # @param category [String]
+        #   # @param category [Symbol, Increase::Models::PendingTransaction::Source::Category]
         #   # @param check_deposit_instruction [Increase::Models::PendingTransaction::Source::CheckDepositInstruction, nil]
         #   # @param check_transfer_instruction [Increase::Models::PendingTransaction::Source::CheckTransferInstruction, nil]
         #   # @param inbound_funds_hold [Increase::Models::PendingTransaction::Source::InboundFundsHold, nil]
@@ -374,7 +374,7 @@ module Increase
           #   #   response if and only if `category` is equal to `account_transfer_instruction`.
           #   #
           #   # @param amount [Integer]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency]
           #   # @param transfer_id [String]
           #   #
           #   def initialize(amount:, currency:, transfer_id:, **) = super
@@ -664,13 +664,13 @@ module Increase
           #   #   and only if `category` is equal to `card_authorization`.
           #   #
           #   # @param id [String]
-          #   # @param actioner [String]
+          #   # @param actioner [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner]
           #   # @param amount [Integer]
           #   # @param card_payment_id [String]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency]
           #   # @param digital_wallet_token_id [String, nil]
-          #   # @param direction [String]
-          #   # @param expires_at [String]
+          #   # @param direction [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Direction]
+          #   # @param expires_at [Time]
           #   # @param merchant_acceptor_id [String]
           #   # @param merchant_category_code [String]
           #   # @param merchant_city [String, nil]
@@ -685,10 +685,10 @@ module Increase
           #   # @param physical_card_id [String, nil]
           #   # @param presentment_amount [Integer]
           #   # @param presentment_currency [String]
-          #   # @param processing_category [String]
+          #   # @param processing_category [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory]
           #   # @param real_time_decision_id [String, nil]
           #   # @param terminal_id [String, nil]
-          #   # @param type [String]
+          #   # @param type [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Type]
           #   # @param verification [Increase::Models::PendingTransaction::Source::CardAuthorization::Verification]
           #   #
           #   def initialize(
@@ -847,7 +847,7 @@ module Increase
             # @!parse
             #   # Fields specific to the `network`.
             #   #
-            #   # @param category [String]
+            #   # @param category [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category]
             #   # @param visa [Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa, nil]
             #   #
             #   def initialize(category:, visa:, **) = super
@@ -916,9 +916,9 @@ module Increase
               # @!parse
               #   # Fields specific to the `visa` network.
               #   #
-              #   # @param electronic_commerce_indicator [String, nil]
-              #   # @param point_of_service_entry_mode [String, nil]
-              #   # @param stand_in_processing_reason [String, nil]
+              #   # @param electronic_commerce_indicator [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
+              #   # @param point_of_service_entry_mode [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
+              #   # @param stand_in_processing_reason [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil]
               #   #
               #   def initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:, **) = super
 
@@ -1226,7 +1226,7 @@ module Increase
               #   # Fields related to verification of the Card Verification Code, a 3-digit code on
               #   #   the back of the card.
               #   #
-              #   # @param result [String]
+              #   # @param result [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result]
               #   #
               #   def initialize(result:, **) = super
 
@@ -1312,7 +1312,7 @@ module Increase
               #   # @param actual_postal_code [String, nil]
               #   # @param provided_line1 [String, nil]
               #   # @param provided_postal_code [String, nil]
-              #   # @param result [String]
+              #   # @param result [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result]
               #   #
               #   def initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:, **) = super
 
@@ -1470,7 +1470,7 @@ module Increase
           #   # @param amount [Integer]
           #   # @param back_image_file_id [String, nil]
           #   # @param check_deposit_id [String, nil]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency]
           #   # @param front_image_file_id [String]
           #   #
           #   def initialize(amount:, back_image_file_id:, check_deposit_id:, currency:, front_image_file_id:, **) = super
@@ -1556,7 +1556,7 @@ module Increase
           #   #   response if and only if `category` is equal to `check_transfer_instruction`.
           #   #
           #   # @param amount [Integer]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency]
           #   # @param transfer_id [String]
           #   #
           #   def initialize(amount:, currency:, transfer_id:, **) = super
@@ -1695,14 +1695,14 @@ module Increase
           #   #
           #   # @param id [String]
           #   # @param amount [Integer]
-          #   # @param automatically_releases_at [String]
-          #   # @param created_at [String]
-          #   # @param currency [String]
+          #   # @param automatically_releases_at [Time]
+          #   # @param created_at [Time]
+          #   # @param currency [Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency]
           #   # @param held_transaction_id [String, nil]
           #   # @param pending_transaction_id [String, nil]
-          #   # @param released_at [String, nil]
-          #   # @param status [String]
-          #   # @param type [String]
+          #   # @param released_at [Time, nil]
+          #   # @param status [Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Status]
+          #   # @param type [Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Type]
           #   #
           #   def initialize(
           #     id:,

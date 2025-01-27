@@ -80,12 +80,12 @@ module Increase
       #   # @param id [String]
       #   # @param account_id [String]
       #   # @param address [Increase::Models::Lockbox::Address]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param description [String, nil]
       #   # @param idempotency_key [String, nil]
       #   # @param recipient_name [String, nil]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::Lockbox::Status]
+      #   # @param type [Symbol, Increase::Models::Lockbox::Type]
       #   #
       #   def initialize(
       #     id:,

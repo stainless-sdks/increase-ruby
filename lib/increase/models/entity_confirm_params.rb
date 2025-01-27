@@ -19,7 +19,7 @@ module Increase
       #   attr_writer :confirmed_at
 
       # @!parse
-      #   # @param confirmed_at [String]
+      #   # @param confirmed_at [Time]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(confirmed_at: nil, request_options: {}, **) = super

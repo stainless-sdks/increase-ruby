@@ -59,9 +59,9 @@ module Increase
       #   # @param id [String]
       #   # @param account_id [String]
       #   # @param amount [Integer]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param entry_set_id [String]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::BookkeepingEntry::Type]
       #   #
       #   def initialize(id:, account_id:, amount:, created_at:, entry_set_id:, type:, **) = super
 

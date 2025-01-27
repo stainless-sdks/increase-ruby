@@ -194,11 +194,11 @@ module Increase
       #   # @param account_number_id [String]
       #   # @param addenda [Increase::Models::InboundACHTransfer::Addenda, nil]
       #   # @param amount [Integer]
-      #   # @param automatically_resolves_at [String]
+      #   # @param automatically_resolves_at [Time]
       #   # @param decline [Increase::Models::InboundACHTransfer::Decline, nil]
-      #   # @param direction [String]
-      #   # @param effective_date [String]
-      #   # @param expected_settlement_schedule [String]
+      #   # @param direction [Symbol, Increase::Models::InboundACHTransfer::Direction]
+      #   # @param effective_date [Date]
+      #   # @param expected_settlement_schedule [Symbol, Increase::Models::InboundACHTransfer::ExpectedSettlementSchedule]
       #   # @param international_addenda [Increase::Models::InboundACHTransfer::InternationalAddenda, nil]
       #   # @param notification_of_change [Increase::Models::InboundACHTransfer::NotificationOfChange, nil]
       #   # @param originator_company_descriptive_date [String, nil]
@@ -209,11 +209,11 @@ module Increase
       #   # @param originator_routing_number [String]
       #   # @param receiver_id_number [String, nil]
       #   # @param receiver_name [String, nil]
-      #   # @param standard_entry_class_code [String]
-      #   # @param status [String]
+      #   # @param standard_entry_class_code [Symbol, Increase::Models::InboundACHTransfer::StandardEntryClassCode]
+      #   # @param status [Symbol, Increase::Models::InboundACHTransfer::Status]
       #   # @param trace_number [String]
       #   # @param transfer_return [Increase::Models::InboundACHTransfer::TransferReturn, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::InboundACHTransfer::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -272,7 +272,7 @@ module Increase
         # @!parse
         #   # If your transfer is accepted, this will contain details of the acceptance.
         #   #
-        #   # @param accepted_at [String]
+        #   # @param accepted_at [Time]
         #   # @param transaction_id [String]
         #   #
         #   def initialize(accepted_at:, transaction_id:, **) = super
@@ -303,7 +303,7 @@ module Increase
         # @!parse
         #   # Additional information sent from the originator.
         #   #
-        #   # @param category [String]
+        #   # @param category [Symbol, Increase::Models::InboundACHTransfer::Addenda::Category]
         #   # @param freeform [Increase::Models::InboundACHTransfer::Addenda::Freeform, nil]
         #   #
         #   def initialize(category:, freeform:, **) = super
@@ -402,9 +402,9 @@ module Increase
         # @!parse
         #   # If your transfer is declined, this will contain details of the decline.
         #   #
-        #   # @param declined_at [String]
+        #   # @param declined_at [Time]
         #   # @param declined_transaction_id [String]
-        #   # @param reason [String]
+        #   # @param reason [Symbol, Increase::Models::InboundACHTransfer::Decline::Reason]
         #   #
         #   def initialize(declined_at:, declined_transaction_id:, reason:, **) = super
 
@@ -778,16 +778,16 @@ module Increase
         #   #
         #   # @param destination_country_code [String]
         #   # @param destination_currency_code [String]
-        #   # @param foreign_exchange_indicator [String]
+        #   # @param foreign_exchange_indicator [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator]
         #   # @param foreign_exchange_reference [String, nil]
-        #   # @param foreign_exchange_reference_indicator [String]
+        #   # @param foreign_exchange_reference_indicator [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator]
         #   # @param foreign_payment_amount [Integer]
         #   # @param foreign_trace_number [String, nil]
-        #   # @param international_transaction_type_code [String]
+        #   # @param international_transaction_type_code [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::InternationalTransactionTypeCode]
         #   # @param originating_currency_code [String]
         #   # @param originating_depository_financial_institution_branch_country [String]
         #   # @param originating_depository_financial_institution_id [String]
-        #   # @param originating_depository_financial_institution_id_qualifier [String]
+        #   # @param originating_depository_financial_institution_id_qualifier [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::OriginatingDepositoryFinancialInstitutionIDQualifier]
         #   # @param originating_depository_financial_institution_name [String]
         #   # @param originator_city [String]
         #   # @param originator_country [String]
@@ -807,7 +807,7 @@ module Increase
         #   # @param receiving_company_or_individual_name [String]
         #   # @param receiving_depository_financial_institution_country [String]
         #   # @param receiving_depository_financial_institution_id [String]
-        #   # @param receiving_depository_financial_institution_id_qualifier [String]
+        #   # @param receiving_depository_financial_institution_id_qualifier [Symbol, Increase::Models::InboundACHTransfer::InternationalAddenda::ReceivingDepositoryFinancialInstitutionIDQualifier]
         #   # @param receiving_depository_financial_institution_name [String]
         #   #
         #   def initialize(
@@ -1206,8 +1206,8 @@ module Increase
         # @!parse
         #   # If your transfer is returned, this will contain details of the return.
         #   #
-        #   # @param reason [String]
-        #   # @param returned_at [String]
+        #   # @param reason [Symbol, Increase::Models::InboundACHTransfer::TransferReturn::Reason]
+        #   # @param returned_at [Time]
         #   # @param transaction_id [String]
         #   #
         #   def initialize(reason:, returned_at:, transaction_id:, **) = super

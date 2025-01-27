@@ -217,16 +217,16 @@ module Increase
       #   # @param company_discretionary_data [String]
       #   # @param company_entry_description [String]
       #   # @param company_name [String]
-      #   # @param destination_account_holder [String]
+      #   # @param destination_account_holder [Symbol, Increase::Models::ACHTransferCreateParams::DestinationAccountHolder]
       #   # @param external_account_id [String]
-      #   # @param funding [String]
+      #   # @param funding [Symbol, Increase::Models::ACHTransferCreateParams::Funding]
       #   # @param individual_id [String]
       #   # @param individual_name [String]
       #   # @param preferred_effective_date [Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate]
       #   # @param require_approval [Boolean]
       #   # @param routing_number [String]
-      #   # @param standard_entry_class_code [String]
-      #   # @param transaction_timing [String]
+      #   # @param standard_entry_class_code [Symbol, Increase::Models::ACHTransferCreateParams::StandardEntryClassCode]
+      #   # @param transaction_timing [Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
@@ -298,7 +298,7 @@ module Increase
         #   # Additional information that will be sent to the recipient. This is included in
         #   #   the transfer data sent to the receiving bank.
         #   #
-        #   # @param category [String]
+        #   # @param category [Symbol, Increase::Models::ACHTransferCreateParams::Addenda::Category]
         #   # @param freeform [Increase::Models::ACHTransferCreateParams::Addenda::Freeform]
         #   # @param payment_order_remittance_advice [Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice]
         #   #
@@ -520,8 +520,8 @@ module Increase
         #   #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
         #   #   must be set.
         #   #
-        #   # @param date [String]
-        #   # @param settlement_schedule [String]
+        #   # @param date [Date]
+        #   # @param settlement_schedule [Symbol, Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule]
         #   #
         #   def initialize(date: nil, settlement_schedule: nil, **) = super
 

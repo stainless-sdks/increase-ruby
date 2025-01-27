@@ -56,11 +56,11 @@ module Increase
       #   #   they can be listed here.
       #   #
       #   # @param id [String]
-      #   # @param category [String]
-      #   # @param created_at [String]
+      #   # @param category [Symbol, Increase::Models::Document::Category]
+      #   # @param created_at [Time]
       #   # @param entity_id [String, nil]
       #   # @param file_id [String]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::Document::Type]
       #   #
       #   def initialize(id:, category:, created_at:, entity_id:, file_id:, type:, **) = super
 

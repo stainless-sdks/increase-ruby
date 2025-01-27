@@ -15,7 +15,7 @@ module Increase
       required :reason, enum: -> { Increase::Models::InboundACHTransferTransferReturnParams::Reason }
 
       # @!parse
-      #   # @param reason [String]
+      #   # @param reason [Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(reason:, request_options: {}, **) = super

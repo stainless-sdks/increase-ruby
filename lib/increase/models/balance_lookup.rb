@@ -46,7 +46,7 @@ module Increase
       #   # @param account_id [String]
       #   # @param available_balance [Integer]
       #   # @param current_balance [Integer]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::BalanceLookup::Type]
       #   #
       #   def initialize(account_id:, available_balance:, current_balance:, type:, **) = super
 

@@ -104,7 +104,7 @@ module Increase
         #   # The details used to ship this physical card.
         #   #
         #   # @param address [Increase::Models::PhysicalCardCreateParams::Shipment::Address]
-        #   # @param method_ [String]
+        #   # @param method_ [Symbol, Increase::Models::PhysicalCardCreateParams::Shipment::Method]
         #   #
         #   def initialize(address:, method_:, **) = super
 

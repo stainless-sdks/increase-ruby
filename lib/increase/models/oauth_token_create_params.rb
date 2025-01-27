@@ -60,7 +60,7 @@ module Increase
       #   attr_writer :production_token
 
       # @!parse
-      #   # @param grant_type [String]
+      #   # @param grant_type [Symbol, Increase::Models::OAuthTokenCreateParams::GrantType]
       #   # @param client_id [String]
       #   # @param client_secret [String]
       #   # @param code [String]

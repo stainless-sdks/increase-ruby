@@ -50,8 +50,8 @@ module Increase
       #   # @param account_number [String]
       #   # @param description [String]
       #   # @param routing_number [String]
-      #   # @param account_holder [String]
-      #   # @param funding [String]
+      #   # @param account_holder [Symbol, Increase::Models::ExternalAccountCreateParams::AccountHolder]
+      #   # @param funding [Symbol, Increase::Models::ExternalAccountCreateParams::Funding]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {}, **) = super

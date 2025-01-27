@@ -25,7 +25,7 @@ module Increase
         #   attr_writer :explanation
 
         # @!parse
-        #   # @param status [String]
+        #   # @param status [Symbol, Increase::Models::Simulations::CardDisputeActionParams::Status]
         #   # @param explanation [String]
         #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #

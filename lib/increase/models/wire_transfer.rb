@@ -213,13 +213,13 @@ module Increase
       #   # @param beneficiary_address_line3 [String, nil]
       #   # @param beneficiary_name [String, nil]
       #   # @param cancellation [Increase::Models::WireTransfer::Cancellation, nil]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param created_by [Increase::Models::WireTransfer::CreatedBy, nil]
-      #   # @param currency [String]
+      #   # @param currency [Symbol, Increase::Models::WireTransfer::Currency]
       #   # @param external_account_id [String, nil]
       #   # @param idempotency_key [String, nil]
       #   # @param message_to_recipient [String, nil]
-      #   # @param network [String]
+      #   # @param network [Symbol, Increase::Models::WireTransfer::Network]
       #   # @param originator_address_line1 [String, nil]
       #   # @param originator_address_line2 [String, nil]
       #   # @param originator_address_line3 [String, nil]
@@ -228,10 +228,10 @@ module Increase
       #   # @param reversal [Increase::Models::WireTransfer::Reversal, nil]
       #   # @param routing_number [String]
       #   # @param source_account_number_id [String, nil]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::WireTransfer::Status]
       #   # @param submission [Increase::Models::WireTransfer::Submission, nil]
       #   # @param transaction_id [String, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::WireTransfer::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -296,7 +296,7 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was approved,
         #   #   this will contain details of the approval.
         #   #
-        #   # @param approved_at [String]
+        #   # @param approved_at [Time]
         #   # @param approved_by [String, nil]
         #   #
         #   def initialize(approved_at:, approved_by:, **) = super
@@ -330,7 +330,7 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was not
         #   #   approved, this will contain details of the cancellation.
         #   #
-        #   # @param canceled_at [String]
+        #   # @param canceled_at [Time]
         #   # @param canceled_by [String, nil]
         #   #
         #   def initialize(canceled_at:, canceled_by:, **) = super
@@ -378,7 +378,7 @@ module Increase
         #   # What object created the transfer, either via the API or the dashboard.
         #   #
         #   # @param api_key [Increase::Models::WireTransfer::CreatedBy::APIKey, nil]
-        #   # @param category [String]
+        #   # @param category [Symbol, Increase::Models::WireTransfer::CreatedBy::Category]
         #   # @param oauth_application [Increase::Models::WireTransfer::CreatedBy::OAuthApplication, nil]
         #   # @param user [Increase::Models::WireTransfer::CreatedBy::User, nil]
         #   #
@@ -662,15 +662,15 @@ module Increase
         #   # If your transfer is reversed, this will contain details of the reversal.
         #   #
         #   # @param amount [Integer]
-        #   # @param created_at [String]
+        #   # @param created_at [Time]
         #   # @param description [String]
         #   # @param financial_institution_to_financial_institution_information [String, nil]
-        #   # @param input_cycle_date [String]
+        #   # @param input_cycle_date [Date]
         #   # @param input_message_accountability_data [String]
         #   # @param input_sequence_number [String]
         #   # @param input_source [String]
         #   # @param originator_routing_number [String, nil]
-        #   # @param previous_message_input_cycle_date [String]
+        #   # @param previous_message_input_cycle_date [Date]
         #   # @param previous_message_input_message_accountability_data [String]
         #   # @param previous_message_input_sequence_number [String]
         #   # @param previous_message_input_source [String]
@@ -780,7 +780,7 @@ module Increase
         #   #   details.
         #   #
         #   # @param input_message_accountability_data [String]
-        #   # @param submitted_at [String]
+        #   # @param submitted_at [Time]
         #   #
         #   def initialize(input_message_accountability_data:, submitted_at:, **) = super
 

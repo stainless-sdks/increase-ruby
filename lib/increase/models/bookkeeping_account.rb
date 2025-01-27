@@ -68,11 +68,11 @@ module Increase
       #   #
       #   # @param id [String]
       #   # @param account_id [String, nil]
-      #   # @param compliance_category [String, nil]
+      #   # @param compliance_category [Symbol, Increase::Models::BookkeepingAccount::ComplianceCategory, nil]
       #   # @param entity_id [String, nil]
       #   # @param idempotency_key [String, nil]
       #   # @param name [String]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::BookkeepingAccount::Type]
       #   #
       #   def initialize(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:, **) = super
 

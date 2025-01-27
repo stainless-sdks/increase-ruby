@@ -18,7 +18,7 @@ module Increase
       #   attr_writer :at_time
 
       # @!parse
-      #   # @param at_time [String]
+      #   # @param at_time [Time]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(at_time: nil, request_options: {}, **) = super

@@ -135,18 +135,18 @@ module Increase
       #   # @param amount [Integer]
       #   # @param approval [Increase::Models::AccountTransfer::Approval, nil]
       #   # @param cancellation [Increase::Models::AccountTransfer::Cancellation, nil]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param created_by [Increase::Models::AccountTransfer::CreatedBy, nil]
-      #   # @param currency [String]
+      #   # @param currency [Symbol, Increase::Models::AccountTransfer::Currency]
       #   # @param description [String]
       #   # @param destination_account_id [String]
       #   # @param destination_transaction_id [String, nil]
       #   # @param idempotency_key [String, nil]
-      #   # @param network [String]
+      #   # @param network [Symbol, Increase::Models::AccountTransfer::Network]
       #   # @param pending_transaction_id [String, nil]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::AccountTransfer::Status]
       #   # @param transaction_id [String, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::AccountTransfer::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -199,7 +199,7 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was approved,
         #   #   this will contain details of the approval.
         #   #
-        #   # @param approved_at [String]
+        #   # @param approved_at [Time]
         #   # @param approved_by [String, nil]
         #   #
         #   def initialize(approved_at:, approved_by:, **) = super
@@ -233,7 +233,7 @@ module Increase
         #   # If your account requires approvals for transfers and the transfer was not
         #   #   approved, this will contain details of the cancellation.
         #   #
-        #   # @param canceled_at [String]
+        #   # @param canceled_at [Time]
         #   # @param canceled_by [String, nil]
         #   #
         #   def initialize(canceled_at:, canceled_by:, **) = super
@@ -281,7 +281,7 @@ module Increase
         #   # What object created the transfer, either via the API or the dashboard.
         #   #
         #   # @param api_key [Increase::Models::AccountTransfer::CreatedBy::APIKey, nil]
-        #   # @param category [String]
+        #   # @param category [Symbol, Increase::Models::AccountTransfer::CreatedBy::Category]
         #   # @param oauth_application [Increase::Models::AccountTransfer::CreatedBy::OAuthApplication, nil]
         #   # @param user [Increase::Models::AccountTransfer::CreatedBy::User, nil]
         #   #

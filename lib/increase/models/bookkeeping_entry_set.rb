@@ -66,12 +66,12 @@ module Increase
       #   #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       #   #
       #   # @param id [String]
-      #   # @param created_at [String]
-      #   # @param date [String]
+      #   # @param created_at [Time]
+      #   # @param date [Time]
       #   # @param entries [Array<Increase::Models::BookkeepingEntrySet::Entry>]
       #   # @param idempotency_key [String, nil]
       #   # @param transaction_id [String, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::BookkeepingEntrySet::Type]
       #   #
       #   def initialize(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:, **) = super
 

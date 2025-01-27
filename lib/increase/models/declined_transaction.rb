@@ -92,13 +92,13 @@ module Increase
       #   # @param id [String]
       #   # @param account_id [String]
       #   # @param amount [Integer]
-      #   # @param created_at [String]
-      #   # @param currency [String]
+      #   # @param created_at [Time]
+      #   # @param currency [Symbol, Increase::Models::DeclinedTransaction::Currency]
       #   # @param description [String]
       #   # @param route_id [String, nil]
-      #   # @param route_type [String, nil]
+      #   # @param route_type [Symbol, Increase::Models::DeclinedTransaction::RouteType, nil]
       #   # @param source [Increase::Models::DeclinedTransaction::Source]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::DeclinedTransaction::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -273,7 +273,7 @@ module Increase
         #   #
         #   # @param ach_decline [Increase::Models::DeclinedTransaction::Source::ACHDecline, nil]
         #   # @param card_decline [Increase::Models::DeclinedTransaction::Source::CardDecline, nil]
-        #   # @param category [String]
+        #   # @param category [Symbol, Increase::Models::DeclinedTransaction::Source::Category]
         #   # @param check_decline [Increase::Models::DeclinedTransaction::Source::CheckDecline, nil]
         #   # @param check_deposit_rejection [Increase::Models::DeclinedTransaction::Source::CheckDepositRejection, nil]
         #   # @param inbound_real_time_payments_transfer_decline [Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline, nil]
@@ -392,11 +392,11 @@ module Increase
           #   # @param originator_company_discretionary_data [String, nil]
           #   # @param originator_company_id [String]
           #   # @param originator_company_name [String]
-          #   # @param reason [String]
+          #   # @param reason [Symbol, Increase::Models::DeclinedTransaction::Source::ACHDecline::Reason]
           #   # @param receiver_id_number [String, nil]
           #   # @param receiver_name [String, nil]
           #   # @param trace_number [String]
-          #   # @param type [String]
+          #   # @param type [Symbol, Increase::Models::DeclinedTransaction::Source::ACHDecline::Type]
           #   #
           #   def initialize(
           #     id:,
@@ -722,13 +722,13 @@ module Increase
           #   #   only if `category` is equal to `card_decline`.
           #   #
           #   # @param id [String]
-          #   # @param actioner [String]
+          #   # @param actioner [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner]
           #   # @param amount [Integer]
           #   # @param card_payment_id [String]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Currency]
           #   # @param declined_transaction_id [String]
           #   # @param digital_wallet_token_id [String, nil]
-          #   # @param direction [String]
+          #   # @param direction [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Direction]
           #   # @param merchant_acceptor_id [String]
           #   # @param merchant_category_code [String]
           #   # @param merchant_city [String, nil]
@@ -742,10 +742,10 @@ module Increase
           #   # @param physical_card_id [String, nil]
           #   # @param presentment_amount [Integer]
           #   # @param presentment_currency [String]
-          #   # @param processing_category [String]
+          #   # @param processing_category [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::ProcessingCategory]
           #   # @param real_time_decision_id [String, nil]
-          #   # @param real_time_decision_reason [String, nil]
-          #   # @param reason [String]
+          #   # @param real_time_decision_reason [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::RealTimeDecisionReason, nil]
+          #   # @param reason [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Reason]
           #   # @param terminal_id [String, nil]
           #   # @param verification [Increase::Models::DeclinedTransaction::Source::CardDecline::Verification]
           #   #
@@ -903,7 +903,7 @@ module Increase
             # @!parse
             #   # Fields specific to the `network`.
             #   #
-            #   # @param category [String]
+            #   # @param category [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category]
             #   # @param visa [Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa, nil]
             #   #
             #   def initialize(category:, visa:, **) = super
@@ -972,9 +972,9 @@ module Increase
               # @!parse
               #   # Fields specific to the `visa` network.
               #   #
-              #   # @param electronic_commerce_indicator [String, nil]
-              #   # @param point_of_service_entry_mode [String, nil]
-              #   # @param stand_in_processing_reason [String, nil]
+              #   # @param electronic_commerce_indicator [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
+              #   # @param point_of_service_entry_mode [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
+              #   # @param stand_in_processing_reason [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason, nil]
               #   #
               #   def initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:, **) = super
 
@@ -1376,7 +1376,7 @@ module Increase
               #   # Fields related to verification of the Card Verification Code, a 3-digit code on
               #   #   the back of the card.
               #   #
-              #   # @param result [String]
+              #   # @param result [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result]
               #   #
               #   def initialize(result:, **) = super
 
@@ -1462,7 +1462,7 @@ module Increase
               #   # @param actual_postal_code [String, nil]
               #   # @param provided_line1 [String, nil]
               #   # @param provided_postal_code [String, nil]
-              #   # @param result [String]
+              #   # @param result [Symbol, Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result]
               #   #
               #   def initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:, **) = super
 
@@ -1625,7 +1625,7 @@ module Increase
           #   # @param check_transfer_id [String, nil]
           #   # @param front_image_file_id [String, nil]
           #   # @param inbound_check_deposit_id [String, nil]
-          #   # @param reason [String]
+          #   # @param reason [Symbol, Increase::Models::DeclinedTransaction::Source::CheckDecline::Reason]
           #   #
           #   def initialize(
           #     amount:,
@@ -1775,10 +1775,10 @@ module Increase
           #   #
           #   # @param amount [Integer]
           #   # @param check_deposit_id [String]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency]
           #   # @param declined_transaction_id [String]
-          #   # @param reason [String]
-          #   # @param rejected_at [String]
+          #   # @param reason [Symbol, Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason]
+          #   # @param rejected_at [Time]
           #   #
           #   def initialize(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:, **) = super
 
@@ -1971,11 +1971,11 @@ module Increase
           #   #
           #   # @param amount [Integer]
           #   # @param creditor_name [String]
-          #   # @param currency [String]
+          #   # @param currency [Symbol, Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency]
           #   # @param debtor_account_number [String]
           #   # @param debtor_name [String]
           #   # @param debtor_routing_number [String]
-          #   # @param reason [String]
+          #   # @param reason [Symbol, Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Reason]
           #   # @param remittance_information [String, nil]
           #   # @param transaction_identification [String]
           #   # @param transfer_id [String]
@@ -2108,7 +2108,7 @@ module Increase
           #   #   only if `category` is equal to `wire_decline`.
           #   #
           #   # @param inbound_wire_transfer_id [String]
-          #   # @param reason [String]
+          #   # @param reason [Symbol, Increase::Models::DeclinedTransaction::Source::WireDecline::Reason]
           #   #
           #   def initialize(inbound_wire_transfer_id:, reason:, **) = super
 

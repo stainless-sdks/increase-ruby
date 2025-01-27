@@ -40,7 +40,7 @@ module Increase
         #   #
         #   # @param declined_transaction [Increase::Models::DeclinedTransaction, nil]
         #   # @param pending_transaction [Increase::Models::PendingTransaction, nil]
-        #   # @param type [String]
+        #   # @param type [Symbol, Increase::Models::Simulations::CardAuthorizationCreateResponse::Type]
         #   #
         #   def initialize(declined_transaction:, pending_transaction:, type:, **) = super
 

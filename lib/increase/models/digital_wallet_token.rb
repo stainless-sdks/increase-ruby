@@ -58,10 +58,10 @@ module Increase
       #   #
       #   # @param id [String]
       #   # @param card_id [String]
-      #   # @param created_at [String]
-      #   # @param status [String]
-      #   # @param token_requestor [String]
-      #   # @param type [String]
+      #   # @param created_at [Time]
+      #   # @param status [Symbol, Increase::Models::DigitalWalletToken::Status]
+      #   # @param token_requestor [Symbol, Increase::Models::DigitalWalletToken::TokenRequestor]
+      #   # @param type [Symbol, Increase::Models::DigitalWalletToken::Type]
       #   #
       #   def initialize(id:, card_id:, created_at:, status:, token_requestor:, type:, **) = super
 

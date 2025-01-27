@@ -36,7 +36,7 @@ module Increase
 
       # @!parse
       #   # @param entries [Array<Increase::Models::BookkeepingEntrySetCreateParams::Entry>]
-      #   # @param date [String]
+      #   # @param date [Time]
       #   # @param transaction_id [String]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #

@@ -20,7 +20,7 @@ module Increase
         #   attr_writer :reason
 
         # @!parse
-        #   # @param reason [String]
+        #   # @param reason [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason]
         #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(reason: nil, request_options: {}, **) = super

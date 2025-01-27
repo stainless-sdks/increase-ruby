@@ -137,11 +137,11 @@ module Increase
       #   #
       #   # @param id [String]
       #   # @param amount [Integer]
-      #   # @param created_at [String]
-      #   # @param currency [String]
+      #   # @param created_at [Time]
+      #   # @param currency [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Currency]
       #   # @param debtor_name [String]
       #   # @param destination_account_number_id [String]
-      #   # @param expires_at [String]
+      #   # @param expires_at [Date]
       #   # @param fulfillment_transaction_id [String, nil]
       #   # @param idempotency_key [String, nil]
       #   # @param refusal [Increase::Models::RealTimePaymentsRequestForPayment::Refusal, nil]
@@ -149,9 +149,9 @@ module Increase
       #   # @param remittance_information [String]
       #   # @param source_account_number [String]
       #   # @param source_routing_number [String]
-      #   # @param status [String]
+      #   # @param status [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Status]
       #   # @param submission [Increase::Models::RealTimePaymentsRequestForPayment::Submission, nil]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -239,7 +239,7 @@ module Increase
         #   # If the request for payment is refused by the destination financial institution
         #   #   or the receiving customer, this will contain supplemental details.
         #   #
-        #   # @param refusal_reason_code [String]
+        #   # @param refusal_reason_code [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Refusal::RefusalReasonCode]
         #   #
         #   def initialize(refusal_reason_code:, **) = super
 
@@ -328,7 +328,7 @@ module Increase
         #   # If the request for payment is rejected by Real-Time Payments or the destination
         #   #   financial institution, this will contain supplemental details.
         #   #
-        #   # @param reject_reason_code [String]
+        #   # @param reject_reason_code [Symbol, Increase::Models::RealTimePaymentsRequestForPayment::Rejection::RejectReasonCode]
         #   #
         #   def initialize(reject_reason_code:, **) = super
 

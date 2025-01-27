@@ -83,7 +83,7 @@ module Increase
 
       # @!parse
       #   # @param authorization_terms [String]
-      #   # @param authorized_at [String]
+      #   # @param authorized_at [Time]
       #   # @param authorizer_email [String]
       #   # @param authorizer_name [String]
       #   # @param customer_has_been_offboarded [Boolean]

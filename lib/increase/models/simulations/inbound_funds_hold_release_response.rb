@@ -89,14 +89,14 @@ module Increase
         #   #
         #   # @param id [String]
         #   # @param amount [Integer]
-        #   # @param automatically_releases_at [String]
-        #   # @param created_at [String]
-        #   # @param currency [String]
+        #   # @param automatically_releases_at [Time]
+        #   # @param created_at [Time]
+        #   # @param currency [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency]
         #   # @param held_transaction_id [String, nil]
         #   # @param pending_transaction_id [String, nil]
-        #   # @param released_at [String, nil]
-        #   # @param status [String]
-        #   # @param type [String]
+        #   # @param released_at [Time, nil]
+        #   # @param status [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Status]
+        #   # @param type [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Type]
         #   #
         #   def initialize(
         #     id:,

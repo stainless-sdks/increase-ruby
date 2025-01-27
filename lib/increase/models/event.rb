@@ -60,9 +60,9 @@ module Increase
       #   # @param id [String]
       #   # @param associated_object_id [String]
       #   # @param associated_object_type [String]
-      #   # @param category [String]
-      #   # @param created_at [String]
-      #   # @param type [String]
+      #   # @param category [Symbol, Increase::Models::Event::Category]
+      #   # @param created_at [Time]
+      #   # @param type [Symbol, Increase::Models::Event::Type]
       #   #
       #   def initialize(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:, **) = super
 

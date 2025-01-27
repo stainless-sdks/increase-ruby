@@ -107,7 +107,7 @@ module Increase
       #   # @param id [String]
       #   # @param account_id [String]
       #   # @param billing_address [Increase::Models::Card::BillingAddress]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param description [String, nil]
       #   # @param digital_wallet [Increase::Models::Card::DigitalWallet, nil]
       #   # @param entity_id [String, nil]
@@ -115,8 +115,8 @@ module Increase
       #   # @param expiration_year [Integer]
       #   # @param idempotency_key [String, nil]
       #   # @param last4 [String]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::Card::Status]
+      #   # @param type [Symbol, Increase::Models::Card::Type]
       #   #
       #   def initialize(
       #     id:,

@@ -81,12 +81,12 @@ module Increase
       #   # @param id [String]
       #   # @param bank_name [String]
       #   # @param entity_id [String]
-      #   # @param excluded_at [String, nil]
+      #   # @param excluded_at [Time, nil]
       #   # @param fdic_certificate_number [String, nil]
       #   # @param idempotency_key [String, nil]
-      #   # @param status [String]
-      #   # @param submitted_at [String, nil]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::IntrafiExclusion::Status]
+      #   # @param submitted_at [Time, nil]
+      #   # @param type [Symbol, Increase::Models::IntrafiExclusion::Type]
       #   #
       #   def initialize(
       #     id:,

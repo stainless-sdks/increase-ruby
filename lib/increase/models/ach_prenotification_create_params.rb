@@ -139,11 +139,11 @@ module Increase
       #   # @param company_discretionary_data [String]
       #   # @param company_entry_description [String]
       #   # @param company_name [String]
-      #   # @param credit_debit_indicator [String]
-      #   # @param effective_date [String]
+      #   # @param credit_debit_indicator [Symbol, Increase::Models::ACHPrenotificationCreateParams::CreditDebitIndicator]
+      #   # @param effective_date [Date]
       #   # @param individual_id [String]
       #   # @param individual_name [String]
-      #   # @param standard_entry_class_code [String]
+      #   # @param standard_entry_class_code [Symbol, Increase::Models::ACHPrenotificationCreateParams::StandardEntryClassCode]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(

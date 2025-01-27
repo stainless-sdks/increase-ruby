@@ -16,7 +16,7 @@ module Increase
                  enum: -> { Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus }
 
         # @!parse
-        #   # @param shipment_status [String]
+        #   # @param shipment_status [Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus]
         #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
         #   def initialize(shipment_status:, request_options: {}, **) = super

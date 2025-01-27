@@ -95,14 +95,14 @@ module Increase
       #   # @param id [String]
       #   # @param account_id [String]
       #   # @param account_number [String]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param idempotency_key [String, nil]
       #   # @param inbound_ach [Increase::Models::AccountNumber::InboundACH]
       #   # @param inbound_checks [Increase::Models::AccountNumber::InboundChecks]
       #   # @param name [String]
       #   # @param routing_number [String]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::AccountNumber::Status]
+      #   # @param type [Symbol, Increase::Models::AccountNumber::Type]
       #   #
       #   def initialize(
       #     id:,
@@ -140,7 +140,7 @@ module Increase
         # @!parse
         #   # Properties related to how this Account Number handles inbound ACH transfers.
         #   #
-        #   # @param debit_status [String]
+        #   # @param debit_status [Symbol, Increase::Models::AccountNumber::InboundACH::DebitStatus]
         #   #
         #   def initialize(debit_status:, **) = super
 
@@ -186,7 +186,7 @@ module Increase
         #   # Properties related to how this Account Number should handle inbound check
         #   #   withdrawals.
         #   #
-        #   # @param status [String]
+        #   # @param status [Symbol, Increase::Models::AccountNumber::InboundChecks::Status]
         #   #
         #   def initialize(status:, **) = super
 

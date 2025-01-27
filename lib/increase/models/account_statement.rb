@@ -79,13 +79,13 @@ module Increase
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
-      #   # @param created_at [String]
+      #   # @param created_at [Time]
       #   # @param ending_balance [Integer]
       #   # @param file_id [String]
       #   # @param starting_balance [Integer]
-      #   # @param statement_period_end [String]
-      #   # @param statement_period_start [String]
-      #   # @param type [String]
+      #   # @param statement_period_end [Time]
+      #   # @param statement_period_start [Time]
+      #   # @param type [Symbol, Increase::Models::AccountStatement::Type]
       #   #
       #   def initialize(
       #     id:,

@@ -61,7 +61,7 @@ module Increase
       #   # @param invoice [Increase::Models::CardPurchaseSupplement::Invoice, nil]
       #   # @param line_items [Array<Increase::Models::CardPurchaseSupplement::LineItem>]
       #   # @param transaction_id [String]
-      #   # @param type [String]
+      #   # @param type [Symbol, Increase::Models::CardPurchaseSupplement::Type]
       #   #
       #   def initialize(id:, card_payment_id:, invoice:, line_items:, transaction_id:, type:, **) = super
 
@@ -186,10 +186,10 @@ module Increase
         #   #
         #   # @param discount_amount [Integer, nil]
         #   # @param discount_currency [String, nil]
-        #   # @param discount_treatment_code [String, nil]
+        #   # @param discount_treatment_code [Symbol, Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode, nil]
         #   # @param duty_tax_amount [Integer, nil]
         #   # @param duty_tax_currency [String, nil]
-        #   # @param order_date [String, nil]
+        #   # @param order_date [Date, nil]
         #   # @param shipping_amount [Integer, nil]
         #   # @param shipping_currency [String, nil]
         #   # @param shipping_destination_country_code [String, nil]
@@ -198,7 +198,7 @@ module Increase
         #   # @param shipping_tax_amount [Integer, nil]
         #   # @param shipping_tax_currency [String, nil]
         #   # @param shipping_tax_rate [String, nil]
-        #   # @param tax_treatments [String, nil]
+        #   # @param tax_treatments [Symbol, Increase::Models::CardPurchaseSupplement::Invoice::TaxTreatments, nil]
         #   # @param unique_value_added_tax_invoice_reference [String, nil]
         #   #
         #   def initialize(
@@ -410,10 +410,10 @@ module Increase
 
         # @!parse
         #   # @param id [String]
-        #   # @param detail_indicator [String, nil]
+        #   # @param detail_indicator [Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator, nil]
         #   # @param discount_amount [Integer, nil]
         #   # @param discount_currency [String, nil]
-        #   # @param discount_treatment_code [String, nil]
+        #   # @param discount_treatment_code [Symbol, Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode, nil]
         #   # @param item_commodity_code [String, nil]
         #   # @param item_descriptor [String, nil]
         #   # @param item_quantity [String, nil]

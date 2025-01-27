@@ -68,11 +68,11 @@ module Increase
       #   #
       #   # @param id [String]
       #   # @param client_id [String]
-      #   # @param created_at [String]
-      #   # @param deleted_at [String, nil]
+      #   # @param created_at [Time]
+      #   # @param deleted_at [Time, nil]
       #   # @param name [String, nil]
-      #   # @param status [String]
-      #   # @param type [String]
+      #   # @param status [Symbol, Increase::Models::OAuthApplication::Status]
+      #   # @param type [Symbol, Increase::Models::OAuthApplication::Type]
       #   #
       #   def initialize(id:, client_id:, created_at:, deleted_at:, name:, status:, type:, **) = super
 

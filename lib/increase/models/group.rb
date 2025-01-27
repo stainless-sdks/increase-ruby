@@ -52,10 +52,10 @@ module Increase
       #   #   Learn more about OAuth [here](https://increase.com/documentation/oauth).
       #   #
       #   # @param id [String]
-      #   # @param ach_debit_status [String]
-      #   # @param activation_status [String]
-      #   # @param created_at [String]
-      #   # @param type [String]
+      #   # @param ach_debit_status [Symbol, Increase::Models::Group::ACHDebitStatus]
+      #   # @param activation_status [Symbol, Increase::Models::Group::ActivationStatus]
+      #   # @param created_at [Time]
+      #   # @param type [Symbol, Increase::Models::Group::Type]
       #   #
       #   def initialize(id:, ach_debit_status:, activation_status:, created_at:, type:, **) = super
 
