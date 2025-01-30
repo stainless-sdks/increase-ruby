@@ -590,6 +590,14 @@ module Increase
                  },
                  nil?: true
 
+        # @!attribute shipping_method
+        #   The shipping method for the check.
+        #
+        #   @return [Symbol, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod, nil]
+        required :shipping_method,
+                 enum: -> { Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod },
+                 nil?: true
+
         # @!attribute signature_text
         #   The text that will appear as the signature on the check in cursive font. If
         #     blank, the check will be printed with 'No signature required'.
@@ -613,10 +621,23 @@ module Increase
         #   # @param note [String, nil]
         #   # @param recipient_name [String]
         #   # @param return_address [Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress, nil]
+        #   # @param shipping_method [Symbol, Increase::Models::CheckTransfer::PhysicalCheck::ShippingMethod, nil]
         #   # @param signature_text [String, nil]
         #   # @param tracking_updates [Array<Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate>]
         #   #
-        #   def initialize(mailing_address:, memo:, note:, recipient_name:, return_address:, signature_text:, tracking_updates:, **) = super
+        #   def initialize(
+        #     mailing_address:,
+        #     memo:,
+        #     note:,
+        #     recipient_name:,
+        #     return_address:,
+        #     shipping_method:,
+        #     signature_text:,
+        #     tracking_updates:,
+        #     **
+        #   )
+        #     super
+        #   end
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
@@ -742,6 +763,27 @@ module Increase
           #   def initialize(city:, line1:, line2:, name:, postal_code:, state:, **) = super
 
           # def initialize: (Hash | Increase::BaseModel) -> void
+        end
+
+        # The shipping method for the check.
+        #
+        # @example
+        # ```ruby
+        # case shipping_method
+        # in :usps_first_class
+        #   # ...
+        # in :fedex_overnight
+        #   # ...
+        # end
+        # ```
+        class ShippingMethod < Increase::Enum
+          # USPS First Class
+          USPS_FIRST_CLASS = :usps_first_class
+
+          # FedEx Overnight
+          FEDEX_OVERNIGHT = :fedex_overnight
+
+          finalize!
         end
 
         # @example
