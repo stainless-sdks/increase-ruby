@@ -506,7 +506,8 @@ module Increase
       # ```ruby
       # mailing => {
       #   image_id: String,
-      #   mailed_at: Time
+      #   mailed_at: Time,
+      #   tracking_number: String
       # }
       # ```
       class Mailing < Increase::BaseModel
@@ -524,14 +525,21 @@ module Increase
         #   @return [Time]
         required :mailed_at, Time
 
+        # @!attribute tracking_number
+        #   The tracking number of the shipment, if available for the shipping method.
+        #
+        #   @return [String, nil]
+        required :tracking_number, String, nil?: true
+
         # @!parse
         #   # If the check has been mailed by Increase, this will contain details of the
         #   #   shipment.
         #   #
         #   # @param image_id [String, nil]
         #   # @param mailed_at [Time]
+        #   # @param tracking_number [String, nil]
         #   #
-        #   def initialize(image_id:, mailed_at:, **) = super
+        #   def initialize(image_id:, mailed_at:, tracking_number:, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
