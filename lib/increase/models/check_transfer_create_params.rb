@@ -19,25 +19,21 @@ module Increase
       #   @return [Integer]
       required :amount, Integer
 
+      # @!attribute fulfillment_method
+      #   Whether Increase will print and mail the check or if you will do it yourself.
+      #
+      #   @return [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod]
+      required :fulfillment_method,
+               enum: -> {
+                 Increase::Models::CheckTransferCreateParams::FulfillmentMethod
+               }
+
       # @!attribute source_account_number_id
       #   The identifier of the Account Number from which to send the transfer and print
       #     on the check.
       #
       #   @return [String]
       required :source_account_number_id, String
-
-      # @!attribute [r] fulfillment_method
-      #   Whether Increase will print and mail the check or if you will do it yourself.
-      #
-      #   @return [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod, nil]
-      optional :fulfillment_method,
-               enum: -> {
-                 Increase::Models::CheckTransferCreateParams::FulfillmentMethod
-               }
-
-      # @!parse
-      #   # @return [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod]
-      #   attr_writer :fulfillment_method
 
       # @!attribute [r] physical_check
       #   Details relating to the physical check that Increase will print and mail. This
@@ -76,8 +72,8 @@ module Increase
       # @!parse
       #   # @param account_id [String]
       #   # @param amount [Integer]
-      #   # @param source_account_number_id [String]
       #   # @param fulfillment_method [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod]
+      #   # @param source_account_number_id [String]
       #   # @param physical_check [Increase::Models::CheckTransferCreateParams::PhysicalCheck]
       #   # @param require_approval [Boolean]
       #   # @param third_party [Increase::Models::CheckTransferCreateParams::ThirdParty]
@@ -86,8 +82,8 @@ module Increase
       #   def initialize(
       #     account_id:,
       #     amount:,
+      #     fulfillment_method:,
       #     source_account_number_id:,
-      #     fulfillment_method: nil,
       #     physical_check: nil,
       #     require_approval: nil,
       #     third_party: nil,
