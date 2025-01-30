@@ -11,10 +11,10 @@ module Increase
       #
       #   @option params [Integer] :amount The transfer amount in USD cents.
       #
+      #   @option params [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod] :fulfillment_method Whether Increase will print and mail the check or if you will do it yourself.
+      #
       #   @option params [String] :source_account_number_id The identifier of the Account Number from which to send the transfer and print
       #     on the check.
-      #
-      #   @option params [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod] :fulfillment_method Whether Increase will print and mail the check or if you will do it yourself.
       #
       #   @option params [Increase::Models::CheckTransferCreateParams::PhysicalCheck] :physical_check Details relating to the physical check that Increase will print and mail. This
       #     is required if `fulfillment_method` is equal to `physical_check`. It must not be
