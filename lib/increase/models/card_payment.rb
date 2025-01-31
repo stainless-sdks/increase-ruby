@@ -115,7 +115,8 @@ module Increase
       class Element < Increase::BaseModel
         # @!attribute card_authentication
         #   A Card Authentication object. This field will be present in the JSON response if
-        #     and only if `category` is equal to `card_authentication`.
+        #     and only if `category` is equal to `card_authentication`. Card Authentications
+        #     are attempts to authenticate a transaction or a card with 3DS.
         #
         #   @return [Increase::Models::CardPayment::Element::CardAuthentication, nil]
         required :card_authentication,
@@ -124,7 +125,9 @@ module Increase
 
         # @!attribute card_authorization
         #   A Card Authorization object. This field will be present in the JSON response if
-        #     and only if `category` is equal to `card_authorization`.
+        #     and only if `category` is equal to `card_authorization`. Card Authorizations are
+        #     temporary holds placed on a customers funds with the intent to later clear a
+        #     transaction.
         #
         #   @return [Increase::Models::CardPayment::Element::CardAuthorization, nil]
         required :card_authorization,
@@ -136,6 +139,8 @@ module Increase
         # @!attribute card_authorization_expiration
         #   A Card Authorization Expiration object. This field will be present in the JSON
         #     response if and only if `category` is equal to `card_authorization_expiration`.
+        #     Card Authorization Expirations are cancellations of authorizations that were
+        #     never settled by the acquirer.
         #
         #   @return [Increase::Models::CardPayment::Element::CardAuthorizationExpiration, nil]
         required :card_authorization_expiration,
@@ -151,7 +156,9 @@ module Increase
 
         # @!attribute card_fuel_confirmation
         #   A Card Fuel Confirmation object. This field will be present in the JSON response
-        #     if and only if `category` is equal to `card_fuel_confirmation`.
+        #     if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel
+        #     Confirmations update the amount of a Card Authorization after a fuel pump
+        #     transaction is completed.
         #
         #   @return [Increase::Models::CardPayment::Element::CardFuelConfirmation, nil]
         required :card_fuel_confirmation,
@@ -160,35 +167,45 @@ module Increase
 
         # @!attribute card_increment
         #   A Card Increment object. This field will be present in the JSON response if and
-        #     only if `category` is equal to `card_increment`.
+        #     only if `category` is equal to `card_increment`. Card Increments increase the
+        #     pending amount of an authorized transaction.
         #
         #   @return [Increase::Models::CardPayment::Element::CardIncrement, nil]
         required :card_increment, -> { Increase::Models::CardPayment::Element::CardIncrement }, nil?: true
 
         # @!attribute card_refund
         #   A Card Refund object. This field will be present in the JSON response if and
-        #     only if `category` is equal to `card_refund`.
+        #     only if `category` is equal to `card_refund`. Card Refunds move money back to
+        #     the cardholder. While they are usually connected to a Card Settlement an
+        #     acquirer can also refund money directly to a card without relation to a
+        #     transaction.
         #
         #   @return [Increase::Models::CardPayment::Element::CardRefund, nil]
         required :card_refund, -> { Increase::Models::CardPayment::Element::CardRefund }, nil?: true
 
         # @!attribute card_reversal
         #   A Card Reversal object. This field will be present in the JSON response if and
-        #     only if `category` is equal to `card_reversal`.
+        #     only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
+        #     or the entirety of an existing Card Authorization.
         #
         #   @return [Increase::Models::CardPayment::Element::CardReversal, nil]
         required :card_reversal, -> { Increase::Models::CardPayment::Element::CardReversal }, nil?: true
 
         # @!attribute card_settlement
         #   A Card Settlement object. This field will be present in the JSON response if and
-        #     only if `category` is equal to `card_settlement`.
+        #     only if `category` is equal to `card_settlement`. Card Settlements are card
+        #     transactions that have cleared and settled. While a settlement is usually
+        #     preceded by an authorization, an acquirer can also directly clear a transaction
+        #     without first authorizing it.
         #
         #   @return [Increase::Models::CardPayment::Element::CardSettlement, nil]
         required :card_settlement, -> { Increase::Models::CardPayment::Element::CardSettlement }, nil?: true
 
         # @!attribute card_validation
         #   A Card Validation object. This field will be present in the JSON response if and
-        #     only if `category` is equal to `card_validation`.
+        #     only if `category` is equal to `card_validation`. Card Validations are requests
+        #     from a merchant to verify that a card number and optionally its address and/or
+        #     Card Verification Value are valid.
         #
         #   @return [Increase::Models::CardPayment::Element::CardValidation, nil]
         required :card_validation, -> { Increase::Models::CardPayment::Element::CardValidation }, nil?: true
@@ -380,7 +397,8 @@ module Increase
 
           # @!parse
           #   # A Card Authentication object. This field will be present in the JSON response if
-          #   #   and only if `category` is equal to `card_authentication`.
+          #   #   and only if `category` is equal to `card_authentication`. Card Authentications
+          #   #   are attempts to authenticate a transaction or a card with 3DS.
           #   #
           #   # @param id [String]
           #   # @param card_id [String]
@@ -924,7 +942,9 @@ module Increase
 
           # @!parse
           #   # A Card Authorization object. This field will be present in the JSON response if
-          #   #   and only if `category` is equal to `card_authorization`.
+          #   #   and only if `category` is equal to `card_authorization`. Card Authorizations are
+          #   #   temporary holds placed on a customers funds with the intent to later clear a
+          #   #   transaction.
           #   #
           #   # @param id [String]
           #   # @param actioner [Symbol, Increase::Models::CardPayment::Element::CardAuthorization::Actioner]
@@ -1684,6 +1704,8 @@ module Increase
           # @!parse
           #   # A Card Authorization Expiration object. This field will be present in the JSON
           #   #   response if and only if `category` is equal to `card_authorization_expiration`.
+          #   #   Card Authorization Expirations are cancellations of authorizations that were
+          #   #   never settled by the acquirer.
           #   #
           #   # @param id [String]
           #   # @param card_authorization_id [String]
@@ -2838,7 +2860,9 @@ module Increase
 
           # @!parse
           #   # A Card Fuel Confirmation object. This field will be present in the JSON response
-          #   #   if and only if `category` is equal to `card_fuel_confirmation`.
+          #   #   if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel
+          #   #   Confirmations update the amount of a Card Authorization after a fuel pump
+          #   #   transaction is completed.
           #   #
           #   # @param id [String]
           #   # @param card_authorization_id [String]
@@ -3077,7 +3101,8 @@ module Increase
 
           # @!parse
           #   # A Card Increment object. This field will be present in the JSON response if and
-          #   #   only if `category` is equal to `card_increment`.
+          #   #   only if `category` is equal to `card_increment`. Card Increments increase the
+          #   #   pending amount of an authorized transaction.
           #   #
           #   # @param id [String]
           #   # @param actioner [Symbol, Increase::Models::CardPayment::Element::CardIncrement::Actioner]
@@ -3399,7 +3424,10 @@ module Increase
 
           # @!parse
           #   # A Card Refund object. This field will be present in the JSON response if and
-          #   #   only if `category` is equal to `card_refund`.
+          #   #   only if `category` is equal to `card_refund`. Card Refunds move money back to
+          #   #   the cardholder. While they are usually connected to a Card Settlement an
+          #   #   acquirer can also refund money directly to a card without relation to a
+          #   #   transaction.
           #   #
           #   # @param id [String]
           #   # @param amount [Integer]
@@ -5027,7 +5055,8 @@ module Increase
 
           # @!parse
           #   # A Card Reversal object. This field will be present in the JSON response if and
-          #   #   only if `category` is equal to `card_reversal`.
+          #   #   only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
+          #   #   or the entirety of an existing Card Authorization.
           #   #
           #   # @param id [String]
           #   # @param card_authorization_id [String]
@@ -5380,7 +5409,10 @@ module Increase
 
           # @!parse
           #   # A Card Settlement object. This field will be present in the JSON response if and
-          #   #   only if `category` is equal to `card_settlement`.
+          #   #   only if `category` is equal to `card_settlement`. Card Settlements are card
+          #   #   transactions that have cleared and settled. While a settlement is usually
+          #   #   preceded by an authorization, an acquirer can also directly clear a transaction
+          #   #   without first authorizing it.
           #   #
           #   # @param id [String]
           #   # @param amount [Integer]
@@ -7028,7 +7060,9 @@ module Increase
 
           # @!parse
           #   # A Card Validation object. This field will be present in the JSON response if and
-          #   #   only if `category` is equal to `card_validation`.
+          #   #   only if `category` is equal to `card_validation`. Card Validations are requests
+          #   #   from a merchant to verify that a card number and optionally its address and/or
+          #   #   Card Verification Value are valid.
           #   #
           #   # @param id [String]
           #   # @param actioner [Symbol, Increase::Models::CardPayment::Element::CardValidation::Actioner]

@@ -201,7 +201,9 @@ module Increase
       class Source < Increase::BaseModel
         # @!attribute account_transfer_intention
         #   An Account Transfer Intention object. This field will be present in the JSON
-        #     response if and only if `category` is equal to `account_transfer_intention`.
+        #     response if and only if `category` is equal to `account_transfer_intention`. Two
+        #     Account Transfer Intentions are created from each Account Transfer. One
+        #     decrements the source account, and the other increments the destination account.
         #
         #   @return [Increase::Models::Transaction::Source::AccountTransferIntention, nil]
         required :account_transfer_intention,
@@ -210,7 +212,9 @@ module Increase
 
         # @!attribute ach_transfer_intention
         #   An ACH Transfer Intention object. This field will be present in the JSON
-        #     response if and only if `category` is equal to `ach_transfer_intention`.
+        #     response if and only if `category` is equal to `ach_transfer_intention`. An ACH
+        #     Transfer Intention is created from an ACH Transfer. It reflects the intention to
+        #     move money into or out of an Increase account via the ACH network.
         #
         #   @return [Increase::Models::Transaction::Source::ACHTransferIntention, nil]
         required :ach_transfer_intention,
@@ -219,7 +223,9 @@ module Increase
 
         # @!attribute ach_transfer_rejection
         #   An ACH Transfer Rejection object. This field will be present in the JSON
-        #     response if and only if `category` is equal to `ach_transfer_rejection`.
+        #     response if and only if `category` is equal to `ach_transfer_rejection`. An ACH
+        #     Transfer Rejection is created when an ACH Transfer is rejected by Increase. It
+        #     offsets the ACH Transfer Intention. These rejections are rare.
         #
         #   @return [Increase::Models::Transaction::Source::ACHTransferRejection, nil]
         required :ach_transfer_rejection,
@@ -228,7 +234,11 @@ module Increase
 
         # @!attribute ach_transfer_return
         #   An ACH Transfer Return object. This field will be present in the JSON response
-        #     if and only if `category` is equal to `ach_transfer_return`.
+        #     if and only if `category` is equal to `ach_transfer_return`. An ACH Transfer
+        #     Return is created when an ACH Transfer is returned by the receiving bank. It
+        #     offsets the ACH Transfer Intention. ACH Transfer Returns usually occur within
+        #     the first two business days after the transfer is initiated, but can occur much
+        #     later.
         #
         #   @return [Increase::Models::Transaction::Source::ACHTransferReturn, nil]
         required :ach_transfer_return,
@@ -240,6 +250,7 @@ module Increase
         # @!attribute card_dispute_acceptance
         #   A Card Dispute Acceptance object. This field will be present in the JSON
         #     response if and only if `category` is equal to `card_dispute_acceptance`.
+        #     Contains the details of a successful Card Dispute.
         #
         #   @return [Increase::Models::Transaction::Source::CardDisputeAcceptance, nil]
         required :card_dispute_acceptance,
@@ -248,21 +259,26 @@ module Increase
 
         # @!attribute card_dispute_loss
         #   A Card Dispute Loss object. This field will be present in the JSON response if
-        #     and only if `category` is equal to `card_dispute_loss`.
+        #     and only if `category` is equal to `card_dispute_loss`. Contains the details of
+        #     a lost Card Dispute.
         #
         #   @return [Increase::Models::Transaction::Source::CardDisputeLoss, nil]
         required :card_dispute_loss, -> { Increase::Models::Transaction::Source::CardDisputeLoss }, nil?: true
 
         # @!attribute card_refund
         #   A Card Refund object. This field will be present in the JSON response if and
-        #     only if `category` is equal to `card_refund`.
+        #     only if `category` is equal to `card_refund`. Card Refunds move money back to
+        #     the cardholder. While they are usually connected to a Card Settlement an
+        #     acquirer can also refund money directly to a card without relation to a
+        #     transaction.
         #
         #   @return [Increase::Models::Transaction::Source::CardRefund, nil]
         required :card_refund, -> { Increase::Models::Transaction::Source::CardRefund }, nil?: true
 
         # @!attribute card_revenue_payment
         #   A Card Revenue Payment object. This field will be present in the JSON response
-        #     if and only if `category` is equal to `card_revenue_payment`.
+        #     if and only if `category` is equal to `card_revenue_payment`. Card Revenue
+        #     Payments reflect earnings from fees on card transactions.
         #
         #   @return [Increase::Models::Transaction::Source::CardRevenuePayment, nil]
         required :card_revenue_payment,
@@ -271,14 +287,19 @@ module Increase
 
         # @!attribute card_settlement
         #   A Card Settlement object. This field will be present in the JSON response if and
-        #     only if `category` is equal to `card_settlement`.
+        #     only if `category` is equal to `card_settlement`. Card Settlements are card
+        #     transactions that have cleared and settled. While a settlement is usually
+        #     preceded by an authorization, an acquirer can also directly clear a transaction
+        #     without first authorizing it.
         #
         #   @return [Increase::Models::Transaction::Source::CardSettlement, nil]
         required :card_settlement, -> { Increase::Models::Transaction::Source::CardSettlement }, nil?: true
 
         # @!attribute cashback_payment
         #   A Cashback Payment object. This field will be present in the JSON response if
-        #     and only if `category` is equal to `cashback_payment`.
+        #     and only if `category` is equal to `cashback_payment`. A Cashback Payment
+        #     represents the cashback paid to a cardholder for a given period. Cashback is
+        #     usually paid monthly for the prior month's transactions.
         #
         #   @return [Increase::Models::Transaction::Source::CashbackPayment, nil]
         required :cashback_payment, -> { Increase::Models::Transaction::Source::CashbackPayment }, nil?: true
@@ -292,7 +313,10 @@ module Increase
 
         # @!attribute check_deposit_acceptance
         #   A Check Deposit Acceptance object. This field will be present in the JSON
-        #     response if and only if `category` is equal to `check_deposit_acceptance`.
+        #     response if and only if `category` is equal to `check_deposit_acceptance`. A
+        #     Check Deposit Acceptance is created when a Check Deposit is processed and its
+        #     details confirmed. Check Deposits may be returned by the receiving bank, which
+        #     will appear as a Check Deposit Return.
         #
         #   @return [Increase::Models::Transaction::Source::CheckDepositAcceptance, nil]
         required :check_deposit_acceptance,
@@ -301,7 +325,11 @@ module Increase
 
         # @!attribute check_deposit_return
         #   A Check Deposit Return object. This field will be present in the JSON response
-        #     if and only if `category` is equal to `check_deposit_return`.
+        #     if and only if `category` is equal to `check_deposit_return`. A Check Deposit
+        #     Return is created when a Check Deposit is returned by the bank holding the
+        #     account it was drawn against. Check Deposits may be returned for a variety of
+        #     reasons, including insufficient funds or a mismatched account number. Usually,
+        #     checks are returned within the first 7 days after the deposit is made.
         #
         #   @return [Increase::Models::Transaction::Source::CheckDepositReturn, nil]
         required :check_deposit_return,
@@ -310,7 +338,9 @@ module Increase
 
         # @!attribute check_transfer_deposit
         #   A Check Transfer Deposit object. This field will be present in the JSON response
-        #     if and only if `category` is equal to `check_transfer_deposit`.
+        #     if and only if `category` is equal to `check_transfer_deposit`. An Inbound Check
+        #     is a check drawn on an Increase account that has been deposited by an external
+        #     bank account. These types of checks are not pre-registered.
         #
         #   @return [Increase::Models::Transaction::Source::CheckTransferDeposit, nil]
         required :check_transfer_deposit,
@@ -319,14 +349,17 @@ module Increase
 
         # @!attribute fee_payment
         #   A Fee Payment object. This field will be present in the JSON response if and
-        #     only if `category` is equal to `fee_payment`.
+        #     only if `category` is equal to `fee_payment`. A Fee Payment represents a payment
+        #     made to Increase.
         #
         #   @return [Increase::Models::Transaction::Source::FeePayment, nil]
         required :fee_payment, -> { Increase::Models::Transaction::Source::FeePayment }, nil?: true
 
         # @!attribute inbound_ach_transfer
         #   An Inbound ACH Transfer Intention object. This field will be present in the JSON
-        #     response if and only if `category` is equal to `inbound_ach_transfer`.
+        #     response if and only if `category` is equal to `inbound_ach_transfer`. An
+        #     Inbound ACH Transfer Intention is created when an ACH transfer is initiated at
+        #     another bank and received by Increase.
         #
         #   @return [Increase::Models::Transaction::Source::InboundACHTransfer, nil]
         required :inbound_ach_transfer,
@@ -336,7 +369,9 @@ module Increase
         # @!attribute inbound_ach_transfer_return_intention
         #   An Inbound ACH Transfer Return Intention object. This field will be present in
         #     the JSON response if and only if `category` is equal to
-        #     `inbound_ach_transfer_return_intention`.
+        #     `inbound_ach_transfer_return_intention`. An Inbound ACH Transfer Return
+        #     Intention is created when an ACH transfer is initiated at another bank and
+        #     returned by Increase.
         #
         #   @return [Increase::Models::Transaction::Source::InboundACHTransferReturnIntention, nil]
         required :inbound_ach_transfer_return_intention,
@@ -345,7 +380,9 @@ module Increase
 
         # @!attribute inbound_check_adjustment
         #   An Inbound Check Adjustment object. This field will be present in the JSON
-        #     response if and only if `category` is equal to `inbound_check_adjustment`.
+        #     response if and only if `category` is equal to `inbound_check_adjustment`. An
+        #     Inbound Check Adjustment is created when Increase receives an adjustment for a
+        #     check or return deposited through Check21.
         #
         #   @return [Increase::Models::Transaction::Source::InboundCheckAdjustment, nil]
         required :inbound_check_adjustment,
@@ -355,7 +392,9 @@ module Increase
         # @!attribute inbound_check_deposit_return_intention
         #   An Inbound Check Deposit Return Intention object. This field will be present in
         #     the JSON response if and only if `category` is equal to
-        #     `inbound_check_deposit_return_intention`.
+        #     `inbound_check_deposit_return_intention`. An Inbound Check Deposit Return
+        #     Intention is created when Increase receives an Inbound Check and the User
+        #     requests that it be returned.
         #
         #   @return [Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention, nil]
         required :inbound_check_deposit_return_intention,
@@ -365,7 +404,9 @@ module Increase
         # @!attribute inbound_real_time_payments_transfer_confirmation
         #   An Inbound Real-Time Payments Transfer Confirmation object. This field will be
         #     present in the JSON response if and only if `category` is equal to
-        #     `inbound_real_time_payments_transfer_confirmation`.
+        #     `inbound_real_time_payments_transfer_confirmation`. An Inbound Real-Time
+        #     Payments Transfer Confirmation is created when a Real-Time Payments transfer is
+        #     initiated at another bank and received by Increase.
         #
         #   @return [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation, nil]
         required :inbound_real_time_payments_transfer_confirmation,
@@ -384,7 +425,10 @@ module Increase
 
         # @!attribute inbound_wire_reversal
         #   An Inbound Wire Reversal object. This field will be present in the JSON response
-        #     if and only if `category` is equal to `inbound_wire_reversal`.
+        #     if and only if `category` is equal to `inbound_wire_reversal`. An Inbound Wire
+        #     Reversal represents a reversal of a wire transfer that was initiated via
+        #     Increase. The other bank is sending the money back. This most often happens when
+        #     the original destination account details were incorrect.
         #
         #   @return [Increase::Models::Transaction::Source::InboundWireReversal, nil]
         required :inbound_wire_reversal,
@@ -393,7 +437,9 @@ module Increase
 
         # @!attribute inbound_wire_transfer
         #   An Inbound Wire Transfer Intention object. This field will be present in the
-        #     JSON response if and only if `category` is equal to `inbound_wire_transfer`.
+        #     JSON response if and only if `category` is equal to `inbound_wire_transfer`. An
+        #     Inbound Wire Transfer Intention is created when a wire transfer is initiated at
+        #     another bank and received by Increase.
         #
         #   @return [Increase::Models::Transaction::Source::InboundWireTransfer, nil]
         required :inbound_wire_transfer,
@@ -403,7 +449,9 @@ module Increase
         # @!attribute inbound_wire_transfer_reversal
         #   An Inbound Wire Transfer Reversal Intention object. This field will be present
         #     in the JSON response if and only if `category` is equal to
-        #     `inbound_wire_transfer_reversal`.
+        #     `inbound_wire_transfer_reversal`. An Inbound Wire Transfer Reversal Intention is
+        #     created when Increase has received a wire and the User requests that it be
+        #     reversed.
         #
         #   @return [Increase::Models::Transaction::Source::InboundWireTransferReversal, nil]
         required :inbound_wire_transfer_reversal,
@@ -412,14 +460,17 @@ module Increase
 
         # @!attribute interest_payment
         #   An Interest Payment object. This field will be present in the JSON response if
-        #     and only if `category` is equal to `interest_payment`.
+        #     and only if `category` is equal to `interest_payment`. An Interest Payment
+        #     represents a payment of interest on an account. Interest is usually paid
+        #     monthly.
         #
         #   @return [Increase::Models::Transaction::Source::InterestPayment, nil]
         required :interest_payment, -> { Increase::Models::Transaction::Source::InterestPayment }, nil?: true
 
         # @!attribute internal_source
         #   An Internal Source object. This field will be present in the JSON response if
-        #     and only if `category` is equal to `internal_source`.
+        #     and only if `category` is equal to `internal_source`. A transaction between the
+        #     user and Increase. See the `reason` attribute for more information.
         #
         #   @return [Increase::Models::Transaction::Source::InternalSource, nil]
         required :internal_source, -> { Increase::Models::Transaction::Source::InternalSource }, nil?: true
@@ -434,7 +485,9 @@ module Increase
         # @!attribute real_time_payments_transfer_acknowledgement
         #   A Real-Time Payments Transfer Acknowledgement object. This field will be present
         #     in the JSON response if and only if `category` is equal to
-        #     `real_time_payments_transfer_acknowledgement`.
+        #     `real_time_payments_transfer_acknowledgement`. A Real-Time Payments Transfer
+        #     Acknowledgement is created when a Real-Time Payments Transfer sent from Increase
+        #     is acknowledged by the receiving bank.
         #
         #   @return [Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement, nil]
         required :real_time_payments_transfer_acknowledgement,
@@ -443,14 +496,16 @@ module Increase
 
         # @!attribute sample_funds
         #   A Sample Funds object. This field will be present in the JSON response if and
-        #     only if `category` is equal to `sample_funds`.
+        #     only if `category` is equal to `sample_funds`. Sample funds for testing
+        #     purposes.
         #
         #   @return [Increase::Models::Transaction::Source::SampleFunds, nil]
         required :sample_funds, -> { Increase::Models::Transaction::Source::SampleFunds }, nil?: true
 
         # @!attribute wire_transfer_intention
         #   A Wire Transfer Intention object. This field will be present in the JSON
-        #     response if and only if `category` is equal to `wire_transfer_intention`.
+        #     response if and only if `category` is equal to `wire_transfer_intention`. A Wire
+        #     Transfer initiated via Increase and sent to a different bank.
         #
         #   @return [Increase::Models::Transaction::Source::WireTransferIntention, nil]
         required :wire_transfer_intention,
@@ -586,7 +641,9 @@ module Increase
 
           # @!parse
           #   # An Account Transfer Intention object. This field will be present in the JSON
-          #   #   response if and only if `category` is equal to `account_transfer_intention`.
+          #   #   response if and only if `category` is equal to `account_transfer_intention`. Two
+          #   #   Account Transfer Intentions are created from each Account Transfer. One
+          #   #   decrements the source account, and the other increments the destination account.
           #   #
           #   # @param amount [Integer]
           #   # @param currency [Symbol, Increase::Models::Transaction::Source::AccountTransferIntention::Currency]
@@ -687,7 +744,9 @@ module Increase
 
           # @!parse
           #   # An ACH Transfer Intention object. This field will be present in the JSON
-          #   #   response if and only if `category` is equal to `ach_transfer_intention`.
+          #   #   response if and only if `category` is equal to `ach_transfer_intention`. An ACH
+          #   #   Transfer Intention is created from an ACH Transfer. It reflects the intention to
+          #   #   move money into or out of an Increase account via the ACH network.
           #   #
           #   # @param account_number [String]
           #   # @param amount [Integer]
@@ -715,7 +774,9 @@ module Increase
 
           # @!parse
           #   # An ACH Transfer Rejection object. This field will be present in the JSON
-          #   #   response if and only if `category` is equal to `ach_transfer_rejection`.
+          #   #   response if and only if `category` is equal to `ach_transfer_rejection`. An ACH
+          #   #   Transfer Rejection is created when an ACH Transfer is rejected by Increase. It
+          #   #   offsets the ACH Transfer Intention. These rejections are rare.
           #   #
           #   # @param transfer_id [String]
           #   #
@@ -779,7 +840,11 @@ module Increase
 
           # @!parse
           #   # An ACH Transfer Return object. This field will be present in the JSON response
-          #   #   if and only if `category` is equal to `ach_transfer_return`.
+          #   #   if and only if `category` is equal to `ach_transfer_return`. An ACH Transfer
+          #   #   Return is created when an ACH Transfer is returned by the receiving bank. It
+          #   #   offsets the ACH Transfer Intention. ACH Transfer Returns usually occur within
+          #   #   the first two business days after the transfer is initiated, but can occur much
+          #   #   later.
           #   #
           #   # @param created_at [Time]
           #   # @param raw_return_reason_code [String]
@@ -1069,6 +1134,7 @@ module Increase
           # @!parse
           #   # A Card Dispute Acceptance object. This field will be present in the JSON
           #   #   response if and only if `category` is equal to `card_dispute_acceptance`.
+          #   #   Contains the details of a successful Card Dispute.
           #   #
           #   # @param accepted_at [Time]
           #   # @param card_dispute_id [String]
@@ -1117,7 +1183,8 @@ module Increase
 
           # @!parse
           #   # A Card Dispute Loss object. This field will be present in the JSON response if
-          #   #   and only if `category` is equal to `card_dispute_loss`.
+          #   #   and only if `category` is equal to `card_dispute_loss`. Contains the details of
+          #   #   a lost Card Dispute.
           #   #
           #   # @param card_dispute_id [String]
           #   # @param explanation [String]
@@ -1271,7 +1338,10 @@ module Increase
 
           # @!parse
           #   # A Card Refund object. This field will be present in the JSON response if and
-          #   #   only if `category` is equal to `card_refund`.
+          #   #   only if `category` is equal to `card_refund`. Card Refunds move money back to
+          #   #   the cardholder. While they are usually connected to a Card Settlement an
+          #   #   acquirer can also refund money directly to a card without relation to a
+          #   #   transaction.
           #   #
           #   # @param id [String]
           #   # @param amount [Integer]
@@ -2811,7 +2881,8 @@ module Increase
 
           # @!parse
           #   # A Card Revenue Payment object. This field will be present in the JSON response
-          #   #   if and only if `category` is equal to `card_revenue_payment`.
+          #   #   if and only if `category` is equal to `card_revenue_payment`. Card Revenue
+          #   #   Payments reflect earnings from fees on card transactions.
           #   #
           #   # @param amount [Integer]
           #   # @param currency [Symbol, Increase::Models::Transaction::Source::CardRevenuePayment::Currency]
@@ -3023,7 +3094,10 @@ module Increase
 
           # @!parse
           #   # A Card Settlement object. This field will be present in the JSON response if and
-          #   #   only if `category` is equal to `card_settlement`.
+          #   #   only if `category` is equal to `card_settlement`. Card Settlements are card
+          #   #   transactions that have cleared and settled. While a settlement is usually
+          #   #   preceded by an authorization, an acquirer can also directly clear a transaction
+          #   #   without first authorizing it.
           #   #
           #   # @param id [String]
           #   # @param amount [Integer]
@@ -4565,7 +4639,9 @@ module Increase
 
           # @!parse
           #   # A Cashback Payment object. This field will be present in the JSON response if
-          #   #   and only if `category` is equal to `cashback_payment`.
+          #   #   and only if `category` is equal to `cashback_payment`. A Cashback Payment
+          #   #   represents the cashback paid to a cardholder for a given period. Cashback is
+          #   #   usually paid monthly for the prior month's transactions.
           #   #
           #   # @param accrued_on_card_id [String, nil]
           #   # @param amount [Integer]
@@ -4794,7 +4870,10 @@ module Increase
 
           # @!parse
           #   # A Check Deposit Acceptance object. This field will be present in the JSON
-          #   #   response if and only if `category` is equal to `check_deposit_acceptance`.
+          #   #   response if and only if `category` is equal to `check_deposit_acceptance`. A
+          #   #   Check Deposit Acceptance is created when a Check Deposit is processed and its
+          #   #   details confirmed. Check Deposits may be returned by the receiving bank, which
+          #   #   will appear as a Check Deposit Return.
           #   #
           #   # @param account_number [String]
           #   # @param amount [Integer]
@@ -4916,7 +4995,11 @@ module Increase
 
           # @!parse
           #   # A Check Deposit Return object. This field will be present in the JSON response
-          #   #   if and only if `category` is equal to `check_deposit_return`.
+          #   #   if and only if `category` is equal to `check_deposit_return`. A Check Deposit
+          #   #   Return is created when a Check Deposit is returned by the bank holding the
+          #   #   account it was drawn against. Check Deposits may be returned for a variety of
+          #   #   reasons, including insufficient funds or a mismatched account number. Usually,
+          #   #   checks are returned within the first 7 days after the deposit is made.
           #   #
           #   # @param amount [Integer]
           #   # @param check_deposit_id [String]
@@ -5142,7 +5225,9 @@ module Increase
 
           # @!parse
           #   # A Check Transfer Deposit object. This field will be present in the JSON response
-          #   #   if and only if `category` is equal to `check_transfer_deposit`.
+          #   #   if and only if `category` is equal to `check_transfer_deposit`. An Inbound Check
+          #   #   is a check drawn on an Increase account that has been deposited by an external
+          #   #   bank account. These types of checks are not pre-registered.
           #   #
           #   # @param back_image_file_id [String, nil]
           #   # @param bank_of_first_deposit_routing_number [String, nil]
@@ -5224,7 +5309,8 @@ module Increase
 
           # @!parse
           #   # A Fee Payment object. This field will be present in the JSON response if and
-          #   #   only if `category` is equal to `fee_payment`.
+          #   #   only if `category` is equal to `fee_payment`. A Fee Payment represents a payment
+          #   #   made to Increase.
           #   #
           #   # @param amount [Integer]
           #   # @param currency [Symbol, Increase::Models::Transaction::Source::FeePayment::Currency]
@@ -5368,7 +5454,9 @@ module Increase
 
           # @!parse
           #   # An Inbound ACH Transfer Intention object. This field will be present in the JSON
-          #   #   response if and only if `category` is equal to `inbound_ach_transfer`.
+          #   #   response if and only if `category` is equal to `inbound_ach_transfer`. An
+          #   #   Inbound ACH Transfer Intention is created when an ACH transfer is initiated at
+          #   #   another bank and received by Increase.
           #   #
           #   # @param addenda [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda, nil]
           #   # @param amount [Integer]
@@ -5515,7 +5603,9 @@ module Increase
           # @!parse
           #   # An Inbound ACH Transfer Return Intention object. This field will be present in
           #   #   the JSON response if and only if `category` is equal to
-          #   #   `inbound_ach_transfer_return_intention`.
+          #   #   `inbound_ach_transfer_return_intention`. An Inbound ACH Transfer Return
+          #   #   Intention is created when an ACH transfer is initiated at another bank and
+          #   #   returned by Increase.
           #   #
           #   # @param inbound_ach_transfer_id [String]
           #   #
@@ -5553,7 +5643,9 @@ module Increase
 
           # @!parse
           #   # An Inbound Check Adjustment object. This field will be present in the JSON
-          #   #   response if and only if `category` is equal to `inbound_check_adjustment`.
+          #   #   response if and only if `category` is equal to `inbound_check_adjustment`. An
+          #   #   Inbound Check Adjustment is created when Increase receives an adjustment for a
+          #   #   check or return deposited through Check21.
           #   #
           #   # @param adjusted_transaction_id [String]
           #   # @param amount [Integer]
@@ -5613,7 +5705,9 @@ module Increase
           # @!parse
           #   # An Inbound Check Deposit Return Intention object. This field will be present in
           #   #   the JSON response if and only if `category` is equal to
-          #   #   `inbound_check_deposit_return_intention`.
+          #   #   `inbound_check_deposit_return_intention`. An Inbound Check Deposit Return
+          #   #   Intention is created when Increase receives an Inbound Check and the User
+          #   #   requests that it be returned.
           #   #
           #   # @param inbound_check_deposit_id [String]
           #   # @param transfer_id [String, nil]
@@ -5697,7 +5791,9 @@ module Increase
           # @!parse
           #   # An Inbound Real-Time Payments Transfer Confirmation object. This field will be
           #   #   present in the JSON response if and only if `category` is equal to
-          #   #   `inbound_real_time_payments_transfer_confirmation`.
+          #   #   `inbound_real_time_payments_transfer_confirmation`. An Inbound Real-Time
+          #   #   Payments Transfer Confirmation is created when a Real-Time Payments transfer is
+          #   #   initiated at another bank and received by Increase.
           #   #
           #   # @param amount [Integer]
           #   # @param creditor_name [String]
@@ -6090,7 +6186,10 @@ module Increase
 
           # @!parse
           #   # An Inbound Wire Reversal object. This field will be present in the JSON response
-          #   #   if and only if `category` is equal to `inbound_wire_reversal`.
+          #   #   if and only if `category` is equal to `inbound_wire_reversal`. An Inbound Wire
+          #   #   Reversal represents a reversal of a wire transfer that was initiated via
+          #   #   Increase. The other bank is sending the money back. This most often happens when
+          #   #   the original destination account details were incorrect.
           #   #
           #   # @param amount [Integer]
           #   # @param created_at [Time]
@@ -6267,7 +6366,9 @@ module Increase
 
           # @!parse
           #   # An Inbound Wire Transfer Intention object. This field will be present in the
-          #   #   JSON response if and only if `category` is equal to `inbound_wire_transfer`.
+          #   #   JSON response if and only if `category` is equal to `inbound_wire_transfer`. An
+          #   #   Inbound Wire Transfer Intention is created when a wire transfer is initiated at
+          #   #   another bank and received by Increase.
           #   #
           #   # @param amount [Integer]
           #   # @param beneficiary_address_line1 [String, nil]
@@ -6333,7 +6434,9 @@ module Increase
           # @!parse
           #   # An Inbound Wire Transfer Reversal Intention object. This field will be present
           #   #   in the JSON response if and only if `category` is equal to
-          #   #   `inbound_wire_transfer_reversal`.
+          #   #   `inbound_wire_transfer_reversal`. An Inbound Wire Transfer Reversal Intention is
+          #   #   created when Increase has received a wire and the User requests that it be
+          #   #   reversed.
           #   #
           #   # @param inbound_wire_transfer_id [String]
           #   #
@@ -6387,7 +6490,9 @@ module Increase
 
           # @!parse
           #   # An Interest Payment object. This field will be present in the JSON response if
-          #   #   and only if `category` is equal to `interest_payment`.
+          #   #   and only if `category` is equal to `interest_payment`. An Interest Payment
+          #   #   represents a payment of interest on an account. Interest is usually paid
+          #   #   monthly.
           #   #
           #   # @param accrued_on_account_id [String]
           #   # @param amount [Integer]
@@ -6474,7 +6579,8 @@ module Increase
 
           # @!parse
           #   # An Internal Source object. This field will be present in the JSON response if
-          #   #   and only if `category` is equal to `internal_source`.
+          #   #   and only if `category` is equal to `internal_source`. A transaction between the
+          #   #   user and Increase. See the `reason` attribute for more information.
           #   #
           #   # @param amount [Integer]
           #   # @param currency [Symbol, Increase::Models::Transaction::Source::InternalSource::Currency]
@@ -6640,7 +6746,9 @@ module Increase
           # @!parse
           #   # A Real-Time Payments Transfer Acknowledgement object. This field will be present
           #   #   in the JSON response if and only if `category` is equal to
-          #   #   `real_time_payments_transfer_acknowledgement`.
+          #   #   `real_time_payments_transfer_acknowledgement`. A Real-Time Payments Transfer
+          #   #   Acknowledgement is created when a Real-Time Payments Transfer sent from Increase
+          #   #   is acknowledged by the receiving bank.
           #   #
           #   # @param amount [Integer]
           #   # @param destination_account_number [String]
@@ -6677,7 +6785,8 @@ module Increase
 
           # @!parse
           #   # A Sample Funds object. This field will be present in the JSON response if and
-          #   #   only if `category` is equal to `sample_funds`.
+          #   #   only if `category` is equal to `sample_funds`. Sample funds for testing
+          #   #   purposes.
           #   #
           #   # @param originator [String]
           #   #
@@ -6729,7 +6838,8 @@ module Increase
 
           # @!parse
           #   # A Wire Transfer Intention object. This field will be present in the JSON
-          #   #   response if and only if `category` is equal to `wire_transfer_intention`.
+          #   #   response if and only if `category` is equal to `wire_transfer_intention`. A Wire
+          #   #   Transfer initiated via Increase and sent to a different bank.
           #   #
           #   # @param account_number [String]
           #   # @param amount [Integer]
