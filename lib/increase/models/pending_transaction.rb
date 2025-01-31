@@ -236,7 +236,9 @@ module Increase
 
         # @!attribute card_authorization
         #   A Card Authorization object. This field will be present in the JSON response if
-        #     and only if `category` is equal to `card_authorization`.
+        #     and only if `category` is equal to `card_authorization`. Card Authorizations are
+        #     temporary holds placed on a customers funds with the intent to later clear a
+        #     transaction.
         #
         #   @return [Increase::Models::PendingTransaction::Source::CardAuthorization, nil]
         required :card_authorization,
@@ -270,7 +272,9 @@ module Increase
 
         # @!attribute inbound_funds_hold
         #   An Inbound Funds Hold object. This field will be present in the JSON response if
-        #     and only if `category` is equal to `inbound_funds_hold`.
+        #     and only if `category` is equal to `inbound_funds_hold`. We hold funds for
+        #     certain transaction types to account for return windows where funds might still
+        #     be clawed back by the sending institution.
         #
         #   @return [Increase::Models::PendingTransaction::Source::InboundFundsHold, nil]
         required :inbound_funds_hold,
@@ -280,6 +284,8 @@ module Increase
         # @!attribute inbound_wire_transfer_reversal
         #   An Inbound Wire Transfer Reversal object. This field will be present in the JSON
         #     response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
+        #     An Inbound Wire Transfer Reversal is created when Increase has received a wire
+        #     and the User requests that it be reversed.
         #
         #   @return [Increase::Models::PendingTransaction::Source::InboundWireTransferReversal, nil]
         required :inbound_wire_transfer_reversal,
@@ -672,7 +678,9 @@ module Increase
 
           # @!parse
           #   # A Card Authorization object. This field will be present in the JSON response if
-          #   #   and only if `category` is equal to `card_authorization`.
+          #   #   and only if `category` is equal to `card_authorization`. Card Authorizations are
+          #   #   temporary holds placed on a customers funds with the intent to later clear a
+          #   #   transaction.
           #   #
           #   # @param id [String]
           #   # @param actioner [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner]
@@ -1705,7 +1713,9 @@ module Increase
 
           # @!parse
           #   # An Inbound Funds Hold object. This field will be present in the JSON response if
-          #   #   and only if `category` is equal to `inbound_funds_hold`.
+          #   #   and only if `category` is equal to `inbound_funds_hold`. We hold funds for
+          #   #   certain transaction types to account for return windows where funds might still
+          #   #   be clawed back by the sending institution.
           #   #
           #   # @param id [String]
           #   # @param amount [Integer]
@@ -1832,6 +1842,8 @@ module Increase
           # @!parse
           #   # An Inbound Wire Transfer Reversal object. This field will be present in the JSON
           #   #   response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
+          #   #   An Inbound Wire Transfer Reversal is created when Increase has received a wire
+          #   #   and the User requests that it be reversed.
           #   #
           #   # @param inbound_wire_transfer_id [String]
           #   #
