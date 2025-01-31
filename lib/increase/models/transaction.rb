@@ -333,6 +333,35 @@ module Increase
                  -> { Increase::Models::Transaction::Source::InboundACHTransfer },
                  nil?: true
 
+        # @!attribute inbound_ach_transfer_return_intention
+        #   An Inbound ACH Transfer Return Intention object. This field will be present in
+        #     the JSON response if and only if `category` is equal to
+        #     `inbound_ach_transfer_return_intention`.
+        #
+        #   @return [Increase::Models::Transaction::Source::InboundACHTransferReturnIntention, nil]
+        required :inbound_ach_transfer_return_intention,
+                 -> { Increase::Models::Transaction::Source::InboundACHTransferReturnIntention },
+                 nil?: true
+
+        # @!attribute inbound_check_adjustment
+        #   An Inbound Check Adjustment object. This field will be present in the JSON
+        #     response if and only if `category` is equal to `inbound_check_adjustment`.
+        #
+        #   @return [Increase::Models::Transaction::Source::InboundCheckAdjustment, nil]
+        required :inbound_check_adjustment,
+                 -> { Increase::Models::Transaction::Source::InboundCheckAdjustment },
+                 nil?: true
+
+        # @!attribute inbound_check_deposit_return_intention
+        #   An Inbound Check Deposit Return Intention object. This field will be present in
+        #     the JSON response if and only if `category` is equal to
+        #     `inbound_check_deposit_return_intention`.
+        #
+        #   @return [Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention, nil]
+        required :inbound_check_deposit_return_intention,
+                 -> { Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention },
+                 nil?: true
+
         # @!attribute inbound_real_time_payments_transfer_confirmation
         #   An Inbound Real-Time Payments Transfer Confirmation object. This field will be
         #     present in the JSON response if and only if `category` is equal to
@@ -369,6 +398,16 @@ module Increase
         #   @return [Increase::Models::Transaction::Source::InboundWireTransfer, nil]
         required :inbound_wire_transfer,
                  -> { Increase::Models::Transaction::Source::InboundWireTransfer },
+                 nil?: true
+
+        # @!attribute inbound_wire_transfer_reversal
+        #   An Inbound Wire Transfer Reversal Intention object. This field will be present
+        #     in the JSON response if and only if `category` is equal to
+        #     `inbound_wire_transfer_reversal`.
+        #
+        #   @return [Increase::Models::Transaction::Source::InboundWireTransferReversal, nil]
+        required :inbound_wire_transfer_reversal,
+                 -> { Increase::Models::Transaction::Source::InboundWireTransferReversal },
                  nil?: true
 
         # @!attribute interest_payment
@@ -440,10 +479,14 @@ module Increase
         #   # @param check_transfer_deposit [Increase::Models::Transaction::Source::CheckTransferDeposit, nil]
         #   # @param fee_payment [Increase::Models::Transaction::Source::FeePayment, nil]
         #   # @param inbound_ach_transfer [Increase::Models::Transaction::Source::InboundACHTransfer, nil]
+        #   # @param inbound_ach_transfer_return_intention [Increase::Models::Transaction::Source::InboundACHTransferReturnIntention, nil]
+        #   # @param inbound_check_adjustment [Increase::Models::Transaction::Source::InboundCheckAdjustment, nil]
+        #   # @param inbound_check_deposit_return_intention [Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention, nil]
         #   # @param inbound_real_time_payments_transfer_confirmation [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation, nil]
         #   # @param inbound_real_time_payments_transfer_decline [Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline, nil]
         #   # @param inbound_wire_reversal [Increase::Models::Transaction::Source::InboundWireReversal, nil]
         #   # @param inbound_wire_transfer [Increase::Models::Transaction::Source::InboundWireTransfer, nil]
+        #   # @param inbound_wire_transfer_reversal [Increase::Models::Transaction::Source::InboundWireTransferReversal, nil]
         #   # @param interest_payment [Increase::Models::Transaction::Source::InterestPayment, nil]
         #   # @param internal_source [Increase::Models::Transaction::Source::InternalSource, nil]
         #   # @param other [Object, nil]
@@ -468,10 +511,14 @@ module Increase
         #     check_transfer_deposit:,
         #     fee_payment:,
         #     inbound_ach_transfer:,
+        #     inbound_ach_transfer_return_intention:,
+        #     inbound_check_adjustment:,
+        #     inbound_check_deposit_return_intention:,
         #     inbound_real_time_payments_transfer_confirmation:,
         #     inbound_real_time_payments_transfer_decline:,
         #     inbound_wire_reversal:,
         #     inbound_wire_transfer:,
+        #     inbound_wire_transfer_reversal:,
         #     interest_payment:,
         #     internal_source:,
         #     other:,
@@ -5454,6 +5501,130 @@ module Increase
 
         # @example
         # ```ruby
+        # inbound_ach_transfer_return_intention => {
+        #   inbound_ach_transfer_id: String
+        # }
+        # ```
+        class InboundACHTransferReturnIntention < Increase::BaseModel
+          # @!attribute inbound_ach_transfer_id
+          #   The ID of the Inbound ACH Transfer that is being returned.
+          #
+          #   @return [String]
+          required :inbound_ach_transfer_id, String
+
+          # @!parse
+          #   # An Inbound ACH Transfer Return Intention object. This field will be present in
+          #   #   the JSON response if and only if `category` is equal to
+          #   #   `inbound_ach_transfer_return_intention`.
+          #   #
+          #   # @param inbound_ach_transfer_id [String]
+          #   #
+          #   def initialize(inbound_ach_transfer_id:, **) = super
+
+          # def initialize: (Hash | Increase::BaseModel) -> void
+        end
+
+        # @example
+        # ```ruby
+        # inbound_check_adjustment => {
+        #   adjusted_transaction_id: String,
+        #   amount: Integer,
+        #   reason: Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason
+        # }
+        # ```
+        class InboundCheckAdjustment < Increase::BaseModel
+          # @!attribute adjusted_transaction_id
+          #   The ID of the transaction that was adjusted.
+          #
+          #   @return [String]
+          required :adjusted_transaction_id, String
+
+          # @!attribute amount
+          #   The amount of the check adjustment.
+          #
+          #   @return [Integer]
+          required :amount, Integer
+
+          # @!attribute reason
+          #   The reason for the adjustment.
+          #
+          #   @return [Symbol, Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason]
+          required :reason, enum: -> { Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason }
+
+          # @!parse
+          #   # An Inbound Check Adjustment object. This field will be present in the JSON
+          #   #   response if and only if `category` is equal to `inbound_check_adjustment`.
+          #   #
+          #   # @param adjusted_transaction_id [String]
+          #   # @param amount [Integer]
+          #   # @param reason [Symbol, Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason]
+          #   #
+          #   def initialize(adjusted_transaction_id:, amount:, reason:, **) = super
+
+          # def initialize: (Hash | Increase::BaseModel) -> void
+
+          # The reason for the adjustment.
+          #
+          # @example
+          # ```ruby
+          # case reason
+          # in :late_return
+          #   # ...
+          # in :wrong_payee_credit
+          #   # ...
+          # in :adjusted_amount
+          #   # ...
+          # end
+          # ```
+          class Reason < Increase::Enum
+            # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
+            LATE_RETURN = :late_return
+
+            # The check was deposited to the wrong payee and the depositing institution has reimbursed the funds with a Wrong Payee Credit.
+            WRONG_PAYEE_CREDIT = :wrong_payee_credit
+
+            # The check was deposited with a different amount than what was written on the check.
+            ADJUSTED_AMOUNT = :adjusted_amount
+
+            finalize!
+          end
+        end
+
+        # @example
+        # ```ruby
+        # inbound_check_deposit_return_intention => {
+        #   inbound_check_deposit_id: String,
+        #   transfer_id: String
+        # }
+        # ```
+        class InboundCheckDepositReturnIntention < Increase::BaseModel
+          # @!attribute inbound_check_deposit_id
+          #   The ID of the Inbound Check Deposit that is being returned.
+          #
+          #   @return [String]
+          required :inbound_check_deposit_id, String
+
+          # @!attribute transfer_id
+          #   The identifier of the Check Transfer object that was deposited.
+          #
+          #   @return [String, nil]
+          required :transfer_id, String, nil?: true
+
+          # @!parse
+          #   # An Inbound Check Deposit Return Intention object. This field will be present in
+          #   #   the JSON response if and only if `category` is equal to
+          #   #   `inbound_check_deposit_return_intention`.
+          #   #
+          #   # @param inbound_check_deposit_id [String]
+          #   # @param transfer_id [String, nil]
+          #   #
+          #   def initialize(inbound_check_deposit_id:, transfer_id:, **) = super
+
+          # def initialize: (Hash | Increase::BaseModel) -> void
+        end
+
+        # @example
+        # ```ruby
         # inbound_real_time_payments_transfer_confirmation => {
         #   amount: Integer,
         #   creditor_name: String,
@@ -6142,6 +6313,31 @@ module Increase
           #   )
           #     super
           #   end
+
+          # def initialize: (Hash | Increase::BaseModel) -> void
+        end
+
+        # @example
+        # ```ruby
+        # inbound_wire_transfer_reversal => {
+        #   inbound_wire_transfer_id: String
+        # }
+        # ```
+        class InboundWireTransferReversal < Increase::BaseModel
+          # @!attribute inbound_wire_transfer_id
+          #   The ID of the Inbound Wire Transfer that is being reversed.
+          #
+          #   @return [String]
+          required :inbound_wire_transfer_id, String
+
+          # @!parse
+          #   # An Inbound Wire Transfer Reversal Intention object. This field will be present
+          #   #   in the JSON response if and only if `category` is equal to
+          #   #   `inbound_wire_transfer_reversal`.
+          #   #
+          #   # @param inbound_wire_transfer_id [String]
+          #   #
+          #   def initialize(inbound_wire_transfer_id:, **) = super
 
           # def initialize: (Hash | Increase::BaseModel) -> void
         end

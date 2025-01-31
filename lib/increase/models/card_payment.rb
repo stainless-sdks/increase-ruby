@@ -104,15 +104,24 @@ module Increase
       # @example
       # ```ruby
       # element => {
+      #   card_authentication: Increase::Models::CardPayment::Element::CardAuthentication,
       #   card_authorization: Increase::Models::CardPayment::Element::CardAuthorization,
       #   card_authorization_expiration: Increase::Models::CardPayment::Element::CardAuthorizationExpiration,
       #   card_decline: Increase::Models::CardPayment::Element::CardDecline,
       #   card_fuel_confirmation: Increase::Models::CardPayment::Element::CardFuelConfirmation,
-      #   card_increment: Increase::Models::CardPayment::Element::CardIncrement,
       #   **_
       # }
       # ```
       class Element < Increase::BaseModel
+        # @!attribute card_authentication
+        #   A Card Authentication object. This field will be present in the JSON response if
+        #     and only if `category` is equal to `card_authentication`.
+        #
+        #   @return [Increase::Models::CardPayment::Element::CardAuthentication, nil]
+        required :card_authentication,
+                 -> { Increase::Models::CardPayment::Element::CardAuthentication },
+                 nil?: true
+
         # @!attribute card_authorization
         #   A Card Authorization object. This field will be present in the JSON response if
         #     and only if `category` is equal to `card_authorization`.
@@ -206,6 +215,7 @@ module Increase
         required :other, Increase::Unknown, nil?: true
 
         # @!parse
+        #   # @param card_authentication [Increase::Models::CardPayment::Element::CardAuthentication, nil]
         #   # @param card_authorization [Increase::Models::CardPayment::Element::CardAuthorization, nil]
         #   # @param card_authorization_expiration [Increase::Models::CardPayment::Element::CardAuthorizationExpiration, nil]
         #   # @param card_decline [Increase::Models::CardPayment::Element::CardDecline, nil]
@@ -220,6 +230,7 @@ module Increase
         #   # @param other [Object, nil]
         #   #
         #   def initialize(
+        #     card_authentication:,
         #     card_authorization:,
         #     card_authorization_expiration:,
         #     card_decline:,
@@ -238,6 +249,479 @@ module Increase
         #   end
 
         # def initialize: (Hash | Increase::BaseModel) -> void
+
+        # @example
+        # ```ruby
+        # card_authentication => {
+        #   id: String,
+        #   card_id: String,
+        #   card_payment_id: String,
+        #   category: Increase::Models::CardPayment::Element::CardAuthentication::Category,
+        #   challenge: Increase::Models::CardPayment::Element::CardAuthentication::Challenge,
+        #   **_
+        # }
+        # ```
+        class CardAuthentication < Increase::BaseModel
+          # @!attribute id
+          #   The Card Authentication identifier.
+          #
+          #   @return [String]
+          required :id, String
+
+          # @!attribute card_id
+          #   The identifier of the Card.
+          #
+          #   @return [String]
+          required :card_id, String
+
+          # @!attribute card_payment_id
+          #   The ID of the Card Payment this transaction belongs to.
+          #
+          #   @return [String]
+          required :card_payment_id, String
+
+          # @!attribute category
+          #   The category of the card authentication attempt.
+          #
+          #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Category, nil]
+          required :category,
+                   enum: -> { Increase::Models::CardPayment::Element::CardAuthentication::Category },
+                   nil?: true
+
+          # @!attribute challenge
+          #   Details about the challenge, if one was requested.
+          #
+          #   @return [Increase::Models::CardPayment::Element::CardAuthentication::Challenge, nil]
+          required :challenge,
+                   -> { Increase::Models::CardPayment::Element::CardAuthentication::Challenge },
+                   nil?: true
+
+          # @!attribute created_at
+          #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
+          #     Authentication was attempted.
+          #
+          #   @return [Time]
+          required :created_at, Time
+
+          # @!attribute deny_reason
+          #   The reason why this authentication attempt was denied, if it was.
+          #
+          #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::DenyReason, nil]
+          required :deny_reason,
+                   enum: -> { Increase::Models::CardPayment::Element::CardAuthentication::DenyReason },
+                   nil?: true
+
+          # @!attribute device_channel
+          #   The device channel of the card authentication attempt.
+          #
+          #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel, nil]
+          required :device_channel,
+                   enum: -> { Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel },
+                   nil?: true
+
+          # @!attribute merchant_acceptor_id
+          #   The merchant identifier (commonly abbreviated as MID) of the merchant the card
+          #     is transacting with.
+          #
+          #   @return [String]
+          required :merchant_acceptor_id, String
+
+          # @!attribute merchant_category_code
+          #   The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+          #     card is transacting with.
+          #
+          #   @return [String]
+          required :merchant_category_code, String
+
+          # @!attribute merchant_country
+          #   The country the merchant resides in.
+          #
+          #   @return [String]
+          required :merchant_country, String
+
+          # @!attribute merchant_name
+          #   The name of the merchant.
+          #
+          #   @return [String]
+          required :merchant_name, String
+
+          # @!attribute purchase_amount
+          #   The purchase amount in minor units.
+          #
+          #   @return [Integer, nil]
+          required :purchase_amount, Integer, nil?: true
+
+          # @!attribute purchase_currency
+          #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          #     authentication attempt's purchase currency.
+          #
+          #   @return [String, nil]
+          required :purchase_currency, String, nil?: true
+
+          # @!attribute real_time_decision_id
+          #   The identifier of the Real-Time Decision sent to approve or decline this
+          #     authentication attempt.
+          #
+          #   @return [String, nil]
+          required :real_time_decision_id, String, nil?: true
+
+          # @!attribute status
+          #   The status of the card authentication.
+          #
+          #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Status]
+          required :status, enum: -> { Increase::Models::CardPayment::Element::CardAuthentication::Status }
+
+          # @!attribute type
+          #   A constant representing the object's type. For this resource it will always be
+          #     `card_authentication`.
+          #
+          #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Type]
+          required :type, enum: -> { Increase::Models::CardPayment::Element::CardAuthentication::Type }
+
+          # @!parse
+          #   # A Card Authentication object. This field will be present in the JSON response if
+          #   #   and only if `category` is equal to `card_authentication`.
+          #   #
+          #   # @param id [String]
+          #   # @param card_id [String]
+          #   # @param card_payment_id [String]
+          #   # @param category [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Category, nil]
+          #   # @param challenge [Increase::Models::CardPayment::Element::CardAuthentication::Challenge, nil]
+          #   # @param created_at [Time]
+          #   # @param deny_reason [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::DenyReason, nil]
+          #   # @param device_channel [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::DeviceChannel, nil]
+          #   # @param merchant_acceptor_id [String]
+          #   # @param merchant_category_code [String]
+          #   # @param merchant_country [String]
+          #   # @param merchant_name [String]
+          #   # @param purchase_amount [Integer, nil]
+          #   # @param purchase_currency [String, nil]
+          #   # @param real_time_decision_id [String, nil]
+          #   # @param status [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Status]
+          #   # @param type [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Type]
+          #   #
+          #   def initialize(
+          #     id:,
+          #     card_id:,
+          #     card_payment_id:,
+          #     category:,
+          #     challenge:,
+          #     created_at:,
+          #     deny_reason:,
+          #     device_channel:,
+          #     merchant_acceptor_id:,
+          #     merchant_category_code:,
+          #     merchant_country:,
+          #     merchant_name:,
+          #     purchase_amount:,
+          #     purchase_currency:,
+          #     real_time_decision_id:,
+          #     status:,
+          #     type:,
+          #     **
+          #   )
+          #     super
+          #   end
+
+          # def initialize: (Hash | Increase::BaseModel) -> void
+
+          # The category of the card authentication attempt.
+          #
+          # @example
+          # ```ruby
+          # case category
+          # in :payment_authentication
+          #   # ...
+          # in :non_payment_authentication
+          #   # ...
+          # end
+          # ```
+          class Category < Increase::Enum
+            # The authentication attempt is for a payment.
+            PAYMENT_AUTHENTICATION = :payment_authentication
+
+            # The authentication attempt is not for a payment.
+            NON_PAYMENT_AUTHENTICATION = :non_payment_authentication
+
+            finalize!
+          end
+
+          # @example
+          # ```ruby
+          # challenge => {
+          #   attempts: -> { Increase::ArrayOf[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt] === _1 },
+          #   created_at: Time,
+          #   one_time_code: String,
+          #   verification_method: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod,
+          #   verification_value: String
+          # }
+          # ```
+          class Challenge < Increase::BaseModel
+            # @!attribute attempts
+            #   Details about the challenge verification attempts, if any happened.
+            #
+            #   @return [Array<Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt>]
+            required :attempts,
+                     -> {
+                       Increase::ArrayOf[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt]
+                     }
+
+            # @!attribute created_at
+            #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
+            #     Authentication Challenge was started.
+            #
+            #   @return [Time]
+            required :created_at, Time
+
+            # @!attribute one_time_code
+            #   The one-time code used for the Card Authentication Challenge.
+            #
+            #   @return [String]
+            required :one_time_code, String
+
+            # @!attribute verification_method
+            #   The method used to verify the Card Authentication Challenge.
+            #
+            #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod]
+            required :verification_method,
+                     enum: -> {
+                       Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod
+                     }
+
+            # @!attribute verification_value
+            #   E.g., the email address or phone number used for the Card Authentication
+            #     Challenge.
+            #
+            #   @return [String, nil]
+            required :verification_value, String, nil?: true
+
+            # @!parse
+            #   # Details about the challenge, if one was requested.
+            #   #
+            #   # @param attempts [Array<Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt>]
+            #   # @param created_at [Time]
+            #   # @param one_time_code [String]
+            #   # @param verification_method [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod]
+            #   # @param verification_value [String, nil]
+            #   #
+            #   def initialize(attempts:, created_at:, one_time_code:, verification_method:, verification_value:, **) = super
+
+            # def initialize: (Hash | Increase::BaseModel) -> void
+
+            # @example
+            # ```ruby
+            # attempt => {
+            #   created_at: Time,
+            #   outcome: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome
+            # }
+            # ```
+            class Attempt < Increase::BaseModel
+              # @!attribute created_at
+              #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time of the Card
+              #     Authentication Challenge Attempt.
+              #
+              #   @return [Time]
+              required :created_at, Time
+
+              # @!attribute outcome
+              #   The outcome of the Card Authentication Challenge Attempt.
+              #
+              #   @return [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome]
+              required :outcome,
+                       enum: -> {
+                         Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome
+                       }
+
+              # @!parse
+              #   # @param created_at [Time]
+              #   # @param outcome [Symbol, Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome]
+              #   #
+              #   def initialize(created_at:, outcome:, **) = super
+
+              # def initialize: (Hash | Increase::BaseModel) -> void
+
+              # The outcome of the Card Authentication Challenge Attempt.
+              #
+              # @example
+              # ```ruby
+              # case outcome
+              # in :successful
+              #   # ...
+              # in :failed
+              #   # ...
+              # end
+              # ```
+              class Outcome < Increase::Enum
+                # The attempt was successful.
+                SUCCESSFUL = :successful
+
+                # The attempt was unsuccessful.
+                FAILED = :failed
+
+                finalize!
+              end
+            end
+
+            # The method used to verify the Card Authentication Challenge.
+            #
+            # @example
+            # ```ruby
+            # case verification_method
+            # in :text_message
+            #   # ...
+            # in :email
+            #   # ...
+            # in :none_available
+            #   # ...
+            # end
+            # ```
+            class VerificationMethod < Increase::Enum
+              # The one-time code was sent via text message.
+              TEXT_MESSAGE = :text_message
+
+              # The one-time code was sent via email.
+              EMAIL = :email
+
+              # The one-time code was not successfully delievered.
+              NONE_AVAILABLE = :none_available
+
+              finalize!
+            end
+          end
+
+          # The reason why this authentication attempt was denied, if it was.
+          #
+          # @example
+          # ```ruby
+          # case deny_reason
+          # in :group_locked
+          #   # ...
+          # in :card_not_active
+          #   # ...
+          # in :entity_not_active
+          #   # ...
+          # in :transaction_not_allowed
+          #   # ...
+          # in :webhook_denied
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
+          class DenyReason < Increase::Enum
+            # The group was locked.
+            GROUP_LOCKED = :group_locked
+
+            # The card was not active.
+            CARD_NOT_ACTIVE = :card_not_active
+
+            # The entity was not active.
+            ENTITY_NOT_ACTIVE = :entity_not_active
+
+            # The transaction was not allowed.
+            TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
+
+            # The webhook was denied.
+            WEBHOOK_DENIED = :webhook_denied
+
+            # The webhook timed out.
+            WEBHOOK_TIMED_OUT = :webhook_timed_out
+
+            finalize!
+          end
+
+          # The device channel of the card authentication attempt.
+          #
+          # @example
+          # ```ruby
+          # case device_channel
+          # in :app
+          #   # ...
+          # in :browser
+          #   # ...
+          # in :three_ds_requestor_initiated
+          #   # ...
+          # end
+          # ```
+          class DeviceChannel < Increase::Enum
+            # The authentication attempt was made from an app.
+            APP = :app
+
+            # The authentication attempt was made from a browser.
+            BROWSER = :browser
+
+            # The authentication attempt was initiated by the 3DS Requestor.
+            THREE_DS_REQUESTOR_INITIATED = :three_ds_requestor_initiated
+
+            finalize!
+          end
+
+          # The status of the card authentication.
+          #
+          # @example
+          # ```ruby
+          # case status
+          # in :denied
+          #   # ...
+          # in :authenticated_with_challenge
+          #   # ...
+          # in :authenticated_without_challenge
+          #   # ...
+          # in :awaiting_challenge
+          #   # ...
+          # in :validating_challenge
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
+          class Status < Increase::Enum
+            # The authentication attempt was denied.
+            DENIED = :denied
+
+            # The authentication attempt was authenticated with a challenge.
+            AUTHENTICATED_WITH_CHALLENGE = :authenticated_with_challenge
+
+            # The authentication attempt was authenticated without a challenge.
+            AUTHENTICATED_WITHOUT_CHALLENGE = :authenticated_without_challenge
+
+            # The authentication attempt is awaiting a challenge.
+            AWAITING_CHALLENGE = :awaiting_challenge
+
+            # The authentication attempt is validating a challenge.
+            VALIDATING_CHALLENGE = :validating_challenge
+
+            # The authentication attempt was canceled.
+            CANCELED = :canceled
+
+            # The authentication attempt timed out while awaiting a challenge.
+            TIMED_OUT_AWAITING_CHALLENGE = :timed_out_awaiting_challenge
+
+            # The authentication attempt errored.
+            ERRORED = :errored
+
+            # The authentication attempt exceeded the attempt threshold.
+            EXCEEDED_ATTEMPT_THRESHOLD = :exceeded_attempt_threshold
+
+            finalize!
+          end
+
+          # A constant representing the object's type. For this resource it will always be
+          #   `card_authentication`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :card_authentication
+          #   # ...
+          # end
+          # ```
+          class Type < Increase::Enum
+            CARD_AUTHENTICATION = :card_authentication
+
+            finalize!
+          end
+        end
 
         # @example
         # ```ruby

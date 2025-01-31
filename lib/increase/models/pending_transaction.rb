@@ -277,6 +277,15 @@ module Increase
                  -> { Increase::Models::PendingTransaction::Source::InboundFundsHold },
                  nil?: true
 
+        # @!attribute inbound_wire_transfer_reversal
+        #   An Inbound Wire Transfer Reversal object. This field will be present in the JSON
+        #     response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
+        #
+        #   @return [Increase::Models::PendingTransaction::Source::InboundWireTransferReversal, nil]
+        required :inbound_wire_transfer_reversal,
+                 -> { Increase::Models::PendingTransaction::Source::InboundWireTransferReversal },
+                 nil?: true
+
         # @!attribute other
         #   If the category of this Transaction source is equal to `other`, this field will
         #     contain an empty object, otherwise it will contain null.
@@ -315,6 +324,7 @@ module Increase
         #   # @param check_deposit_instruction [Increase::Models::PendingTransaction::Source::CheckDepositInstruction, nil]
         #   # @param check_transfer_instruction [Increase::Models::PendingTransaction::Source::CheckTransferInstruction, nil]
         #   # @param inbound_funds_hold [Increase::Models::PendingTransaction::Source::InboundFundsHold, nil]
+        #   # @param inbound_wire_transfer_reversal [Increase::Models::PendingTransaction::Source::InboundWireTransferReversal, nil]
         #   # @param other [Object, nil]
         #   # @param real_time_payments_transfer_instruction [Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction, nil]
         #   # @param wire_transfer_instruction [Increase::Models::PendingTransaction::Source::WireTransferInstruction, nil]
@@ -327,6 +337,7 @@ module Increase
         #     check_deposit_instruction:,
         #     check_transfer_instruction:,
         #     inbound_funds_hold:,
+        #     inbound_wire_transfer_reversal:,
         #     other:,
         #     real_time_payments_transfer_instruction:,
         #     wire_transfer_instruction:,
@@ -1803,6 +1814,30 @@ module Increase
 
             finalize!
           end
+        end
+
+        # @example
+        # ```ruby
+        # inbound_wire_transfer_reversal => {
+        #   inbound_wire_transfer_id: String
+        # }
+        # ```
+        class InboundWireTransferReversal < Increase::BaseModel
+          # @!attribute inbound_wire_transfer_id
+          #   The ID of the Inbound Wire Transfer that is being reversed.
+          #
+          #   @return [String]
+          required :inbound_wire_transfer_id, String
+
+          # @!parse
+          #   # An Inbound Wire Transfer Reversal object. This field will be present in the JSON
+          #   #   response if and only if `category` is equal to `inbound_wire_transfer_reversal`.
+          #   #
+          #   # @param inbound_wire_transfer_id [String]
+          #   #
+          #   def initialize(inbound_wire_transfer_id:, **) = super
+
+          # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
         # @example
