@@ -56,6 +56,13 @@ module Increase
       #   @return [Time]
       required :automatically_resolves_at, Time
 
+      # @!attribute created_at
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the inbound ACH transfer was created.
+      #
+      #   @return [Time]
+      required :created_at, Time
+
       # @!attribute decline
       #   If your transfer is declined, this will contain details of the decline.
       #
@@ -195,6 +202,7 @@ module Increase
       #   # @param addenda [Increase::Models::InboundACHTransfer::Addenda, nil]
       #   # @param amount [Integer]
       #   # @param automatically_resolves_at [Time]
+      #   # @param created_at [Time]
       #   # @param decline [Increase::Models::InboundACHTransfer::Decline, nil]
       #   # @param direction [Symbol, Increase::Models::InboundACHTransfer::Direction]
       #   # @param effective_date [Date]
@@ -223,6 +231,7 @@ module Increase
       #     addenda:,
       #     amount:,
       #     automatically_resolves_at:,
+      #     created_at:,
       #     decline:,
       #     direction:,
       #     effective_date:,
