@@ -1,0 +1,42 @@
+module Increase
+  module Resources
+    class CardDisputes
+      def create:
+        (
+          Increase::Models::CardDisputeCreateParams | Hash[Symbol, top] params
+        ) -> Increase::Models::CardDispute
+        | (
+          disputed_transaction_id: String,
+          explanation: String,
+          amount: Integer,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::CardDispute
+
+      def retrieve:
+        (
+          String card_dispute_id,
+          ?Increase::Models::CardDisputeRetrieveParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Models::CardDispute
+        | (
+          String card_dispute_id,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::CardDispute
+
+      def list:
+        (
+          ?Increase::Models::CardDisputeListParams | Hash[Symbol, top] params
+        ) -> Increase::Page[Increase::Models::CardDispute]
+        | (
+          created_at: Increase::Models::CardDisputeListParams::CreatedAt,
+          cursor: String,
+          idempotency_key: String,
+          limit: Integer,
+          status: Increase::Models::CardDisputeListParams::Status,
+          request_options: Increase::request_opts
+        ) -> Increase::Page[Increase::Models::CardDispute]
+
+      def initialize: (client: Increase::Client) -> void
+    end
+  end
+end

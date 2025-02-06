@@ -12,7 +12,7 @@ module Increase
         #
         # @param params [Increase::Models::Simulations::CheckDepositRejectParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
         #
@@ -32,7 +32,7 @@ module Increase
         #
         # @param params [Increase::Models::Simulations::CheckDepositReturnParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
         #
@@ -52,7 +52,7 @@ module Increase
         #
         # @param params [Increase::Models::Simulations::CheckDepositSubmitParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
         #

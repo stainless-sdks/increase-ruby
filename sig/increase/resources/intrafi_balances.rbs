@@ -1,0 +1,18 @@
+module Increase
+  module Resources
+    class IntrafiBalances
+      def retrieve:
+        (
+          String account_id,
+          ?Increase::Models::IntrafiBalanceRetrieveParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Models::IntrafiBalance
+        | (
+          String account_id,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::IntrafiBalance
+
+      def initialize: (client: Increase::Client) -> void
+    end
+  end
+end

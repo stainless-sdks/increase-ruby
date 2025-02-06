@@ -12,7 +12,7 @@ module Increase
         #   @option params [String] :transaction_id The identifier for the Transaction to refund. The Transaction's source must have
         #     a category of card_settlement.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::Transaction]
         #

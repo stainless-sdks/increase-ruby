@@ -3,6 +3,8 @@
 module Increase
   # @private
   #
+  # @abstract
+  #
   module BasePage
     # rubocop:disable Lint/UnusedMethodArgument
 

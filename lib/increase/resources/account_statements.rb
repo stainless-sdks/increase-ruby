@@ -9,7 +9,7 @@ module Increase
       #
       # @param params [Increase::Models::AccountStatementRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountStatement]
       #
@@ -35,7 +35,7 @@ module Increase
       #
       #   @option params [Increase::Models::AccountStatementListParams::StatementPeriodStart] :statement_period_start
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::AccountStatement>]
       #

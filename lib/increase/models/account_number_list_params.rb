@@ -106,6 +106,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The ACH Debit status to retrieve Account Numbers for.
       #
       # @example
@@ -125,6 +127,11 @@ module Increase
         BLOCKED = :blocked
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -192,6 +199,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # The status to retrieve Account Numbers for.
       #
       # @example
@@ -216,6 +225,11 @@ module Increase
         CANCELED = :canceled
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

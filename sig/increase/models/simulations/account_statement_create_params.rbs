@@ -1,0 +1,24 @@
+module Increase
+  module Models
+    module Simulations
+      type account_statement_create_params =
+        { account_id: String } & Increase::request_parameters
+
+      class AccountStatementCreateParams < Increase::BaseModel
+        extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
+        attr_accessor account_id: String
+
+        def initialize:
+          (account_id: String, request_options: Increase::request_opts) -> void
+          | (
+            ?Increase::Models::Simulations::account_statement_create_params
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::Simulations::account_statement_create_params
+      end
+    end
+  end
+end

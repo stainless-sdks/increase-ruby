@@ -23,7 +23,7 @@ module Increase
       #   @option params [String] :source_routing_number The requestee's American Bankers' Association (ABA) Routing Transit Number
       #     (RTN).
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::RealTimePaymentsRequestForPayment]
       #
@@ -44,7 +44,7 @@ module Increase
       #
       # @param params [Increase::Models::RealTimePaymentsRequestForPaymentRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::RealTimePaymentsRequestForPayment]
       #
@@ -76,7 +76,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::RealTimePaymentsRequestForPayment>]
       #

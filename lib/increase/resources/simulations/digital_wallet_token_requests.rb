@@ -11,7 +11,7 @@ module Increase
         #
         #   @option params [String] :card_id The identifier of the Card to be authorized.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse]
         #

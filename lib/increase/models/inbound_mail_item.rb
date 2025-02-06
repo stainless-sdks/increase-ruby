@@ -81,6 +81,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # If the mail item has been rejected, why it was rejected.
       #
       # @example
@@ -105,8 +107,15 @@ module Increase
         LOCKBOX_NOT_ACTIVE = :lockbox_not_active
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # If the mail item has been processed.
       #
       # @example
@@ -131,8 +140,15 @@ module Increase
         REJECTED = :rejected
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_mail_item`.
       #
@@ -147,6 +163,11 @@ module Increase
         INBOUND_MAIL_ITEM = :inbound_mail_item
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

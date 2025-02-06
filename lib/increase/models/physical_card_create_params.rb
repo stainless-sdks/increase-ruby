@@ -199,6 +199,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The shipping method to use.
         #
         # @example
@@ -223,6 +225,11 @@ module Increase
           FEDEX_2_DAY = :fedex_2_day
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

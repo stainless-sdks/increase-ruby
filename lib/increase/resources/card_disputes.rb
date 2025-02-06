@@ -17,7 +17,7 @@ module Increase
       #     provided. If provided, the amount must be less than or equal to the amount of
       #     the transaction.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CardDispute]
       #
@@ -38,7 +38,7 @@ module Increase
       #
       # @param params [Increase::Models::CardDisputeRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CardDispute]
       #
@@ -69,7 +69,7 @@ module Increase
       #
       #   @option params [Increase::Models::CardDisputeListParams::Status] :status
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::CardDispute>]
       #

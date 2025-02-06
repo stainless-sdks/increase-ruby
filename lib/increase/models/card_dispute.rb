@@ -264,6 +264,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # The results of the Dispute investigation.
       #
       # @example
@@ -303,8 +305,15 @@ module Increase
         WON = :won
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `card_dispute`.
       #
@@ -319,6 +328,11 @@ module Increase
         CARD_DISPUTE = :card_dispute
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example

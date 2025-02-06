@@ -1,0 +1,66 @@
+module Increase
+  module Models
+    type proof_of_authorization_request =
+      {
+        id: String,
+        ach_transfers: Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
+        created_at: Time,
+        due_on: Time,
+        type: Increase::Models::ProofOfAuthorizationRequest::type_,
+        updated_at: Time
+      }
+
+    class ProofOfAuthorizationRequest < Increase::BaseModel
+      attr_accessor id: String
+
+      attr_accessor ach_transfers: Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer]
+
+      attr_accessor created_at: Time
+
+      attr_accessor due_on: Time
+
+      attr_accessor type: Increase::Models::ProofOfAuthorizationRequest::type_
+
+      attr_accessor updated_at: Time
+
+      def initialize:
+        (
+          id: String,
+          ach_transfers: Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
+          created_at: Time,
+          due_on: Time,
+          type: Increase::Models::ProofOfAuthorizationRequest::type_,
+          updated_at: Time
+        ) -> void
+        | (
+          ?Increase::Models::proof_of_authorization_request
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::proof_of_authorization_request
+
+      type ach_transfer = { id: String }
+
+      class ACHTransfer < Increase::BaseModel
+        attr_accessor id: String
+
+        def initialize:
+          (id: String) -> void
+          | (
+            ?Increase::Models::ProofOfAuthorizationRequest::ach_transfer
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::ProofOfAuthorizationRequest::ach_transfer
+      end
+
+      type type_ = :proof_of_authorization_request
+
+      class Type < Increase::Enum
+        PROOF_OF_AUTHORIZATION_REQUEST: :proof_of_authorization_request
+
+        def self.values: -> Array[Increase::Models::ProofOfAuthorizationRequest::type_]
+      end
+    end
+  end
+end

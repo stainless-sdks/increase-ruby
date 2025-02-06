@@ -366,6 +366,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The type of object that created this transfer.
         #
         # @example
@@ -390,6 +392,11 @@ module Increase
           USER = :user
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -439,6 +446,8 @@ module Increase
         end
       end
 
+      # @abstract
+      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
       #   currency.
       #
@@ -479,8 +488,15 @@ module Increase
         USD = :USD
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # Whether Increase will print and mail the check or if you will do it yourself.
       #
       # @example
@@ -500,6 +516,11 @@ module Increase
         THIRD_PARTY = :third_party
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -765,6 +786,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The shipping method for the check.
         #
         # @example
@@ -784,6 +807,11 @@ module Increase
           FEDEX_OVERNIGHT = :fedex_overnight
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -826,6 +854,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The type of tracking event.
           #
           # @example
@@ -855,10 +885,17 @@ module Increase
             RETURNED_TO_SENDER = :returned_to_sender
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end
 
+      # @abstract
+      #
       # The lifecycle status of the transfer.
       #
       # @example
@@ -910,6 +947,11 @@ module Increase
         RETURNED = :returned
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -960,6 +1002,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason why this transfer was stopped.
         #
         # @example
@@ -989,8 +1033,15 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # A constant representing the object's type. For this resource it will always be
         #   `check_transfer_stop_payment_request`.
         #
@@ -1005,6 +1056,11 @@ module Increase
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST = :check_transfer_stop_payment_request
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -1055,6 +1111,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `check_transfer`.
       #
@@ -1069,6 +1127,11 @@ module Increase
         CHECK_TRANSFER = :check_transfer
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

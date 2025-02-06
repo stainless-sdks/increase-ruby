@@ -1,0 +1,19 @@
+module Increase
+  module Resources
+    class Simulations
+      class DigitalWalletTokenRequests
+        def create:
+          (
+            Increase::Models::Simulations::DigitalWalletTokenRequestCreateParams
+            | Hash[Symbol, top] params
+          ) -> Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse
+          | (
+            card_id: String,
+            request_options: Increase::request_opts
+          ) -> Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse
+
+        def initialize: (client: Increase::Client) -> void
+      end
+    end
+  end
+end

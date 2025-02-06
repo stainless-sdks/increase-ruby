@@ -104,7 +104,7 @@ module Increase
         #     requests, this should be encoded as a comma-delimited string, such as
         #     `?in=one,two,three`.
         #
-        #   @return [Array<Symbol, Increase::Models::ExportListParams::Category::In>]
+        #   @return [Array<Symbol, Increase::Models::ExportListParams::Category::In>, nil]
         optional :in_,
                  -> { Increase::ArrayOf[enum: Increase::Models::ExportListParams::Category::In] },
                  api_name: :in
@@ -120,6 +120,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case in
@@ -160,6 +162,11 @@ module Increase
           DASHBOARD_TABLE_CSV = :dashboard_table_csv
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -240,7 +247,7 @@ module Increase
         #     requests, this should be encoded as a comma-delimited string, such as
         #     `?in=one,two,three`.
         #
-        #   @return [Array<Symbol, Increase::Models::ExportListParams::Status::In>]
+        #   @return [Array<Symbol, Increase::Models::ExportListParams::Status::In>, nil]
         optional :in_,
                  -> { Increase::ArrayOf[enum: Increase::Models::ExportListParams::Status::In] },
                  api_name: :in
@@ -256,6 +263,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case in
@@ -278,6 +287,11 @@ module Increase
           FAILED = :failed
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

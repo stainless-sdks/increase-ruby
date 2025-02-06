@@ -119,6 +119,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The type of entity that owns the External Account.
       #
       # @example
@@ -143,8 +145,15 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The type of the account to which the transfer will be sent.
       #
       # @example
@@ -169,8 +178,15 @@ module Increase
         OTHER = :other
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The External Account's status.
       #
       # @example
@@ -190,8 +206,15 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `external_account`.
       #
@@ -206,8 +229,15 @@ module Increase
         EXTERNAL_ACCOUNT = :external_account
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # If you have verified ownership of the External Account.
       #
       # @example
@@ -232,6 +262,11 @@ module Increase
         VERIFIED = :verified
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

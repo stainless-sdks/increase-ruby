@@ -106,6 +106,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The Bank the Program is with.
       #
       # @example
@@ -135,8 +137,15 @@ module Increase
         GRASSHOPPER_BANK = :grasshopper_bank
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `program`.
       #
@@ -151,6 +160,11 @@ module Increase
         PROGRAM = :program
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

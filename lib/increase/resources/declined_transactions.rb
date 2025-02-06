@@ -9,7 +9,7 @@ module Increase
       #
       # @param params [Increase::Models::DeclinedTransactionRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::DeclinedTransaction]
       #
@@ -39,7 +39,7 @@ module Increase
       #
       #   @option params [String] :route_id Filter Declined Transactions to those belonging to the specified route.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::DeclinedTransaction>]
       #

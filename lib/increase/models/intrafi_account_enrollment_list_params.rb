@@ -84,7 +84,7 @@ module Increase
         #     statuses. For GET requests, this should be encoded as a comma-delimited string,
         #     such as `?in=one,two,three`.
         #
-        #   @return [Array<Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In>]
+        #   @return [Array<Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In>, nil]
         optional :in_,
                  -> {
                    Increase::ArrayOf[enum: Increase::Models::IntrafiAccountEnrollmentListParams::Status::In]
@@ -102,6 +102,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case in
@@ -134,6 +136,11 @@ module Increase
           REQUIRES_ATTENTION = :requires_attention
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

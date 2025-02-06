@@ -25,6 +25,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The status to update the Event Subscription with.
       #
       # @example
@@ -49,6 +51,11 @@ module Increase
         DELETED = :deleted
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

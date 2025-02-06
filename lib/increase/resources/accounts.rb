@@ -17,7 +17,7 @@ module Increase
       #   @option params [String] :program_id The identifier for the Program that this Account falls under. Required if you
       #     operate more than one Program.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Account]
       #
@@ -38,7 +38,7 @@ module Increase
       #
       # @param params [Increase::Models::AccountRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Account]
       #
@@ -59,7 +59,7 @@ module Increase
       #
       #   @option params [String] :name The new name of the Account.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Account]
       #
@@ -98,7 +98,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::AccountListParams::Status] :status Filter Accounts for those with the specified status.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Account>]
       #
@@ -122,7 +122,7 @@ module Increase
       #
       #   @option params [Time] :at_time The moment to query the balance at. If not set, returns the current balances.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BalanceLookup]
       #
@@ -143,7 +143,7 @@ module Increase
       #
       # @param params [Increase::Models::AccountCloseParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Account]
       #

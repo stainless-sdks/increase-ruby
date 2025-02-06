@@ -16,7 +16,7 @@ module Increase
         #   @option params [Integer] :amount The amount of the reversal in minor units in the card authorization's currency.
         #     This defaults to the authorization amount.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CardPayment]
         #

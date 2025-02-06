@@ -147,7 +147,7 @@ module Increase
         #   Filter Files for those with the specified purpose or purposes. For GET requests,
         #     this should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         #
-        #   @return [Array<Symbol, Increase::Models::FileListParams::Purpose::In>]
+        #   @return [Array<Symbol, Increase::Models::FileListParams::Purpose::In>, nil]
         optional :in_,
                  -> { Increase::ArrayOf[enum: Increase::Models::FileListParams::Purpose::In] },
                  api_name: :in
@@ -163,6 +163,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case in
@@ -257,6 +259,11 @@ module Increase
           DEPOSIT_ACCOUNT_CONTROL_AGREEMENT = :deposit_account_control_agreement
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

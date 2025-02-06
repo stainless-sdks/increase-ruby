@@ -1,0 +1,82 @@
+module Increase
+  module Models
+    type real_time_payments_transfer_create_params =
+      {
+        amount: Integer,
+        creditor_name: String,
+        remittance_information: String,
+        source_account_number_id: String,
+        debtor_name: String,
+        destination_account_number: String,
+        destination_routing_number: String,
+        external_account_id: String,
+        require_approval: bool,
+        ultimate_creditor_name: String,
+        ultimate_debtor_name: String
+      }
+      & Increase::request_parameters
+
+    class RealTimePaymentsTransferCreateParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      attr_accessor amount: Integer
+
+      attr_accessor creditor_name: String
+
+      attr_accessor remittance_information: String
+
+      attr_accessor source_account_number_id: String
+
+      attr_reader debtor_name: String?
+
+      def debtor_name=: (String) -> void
+
+      attr_reader destination_account_number: String?
+
+      def destination_account_number=: (String) -> void
+
+      attr_reader destination_routing_number: String?
+
+      def destination_routing_number=: (String) -> void
+
+      attr_reader external_account_id: String?
+
+      def external_account_id=: (String) -> void
+
+      attr_reader require_approval: bool?
+
+      def require_approval=: (bool) -> void
+
+      attr_reader ultimate_creditor_name: String?
+
+      def ultimate_creditor_name=: (String) -> void
+
+      attr_reader ultimate_debtor_name: String?
+
+      def ultimate_debtor_name=: (String) -> void
+
+      def initialize:
+        (
+          amount: Integer,
+          creditor_name: String,
+          remittance_information: String,
+          source_account_number_id: String,
+          debtor_name: String,
+          destination_account_number: String,
+          destination_routing_number: String,
+          external_account_id: String,
+          require_approval: bool,
+          ultimate_creditor_name: String,
+          ultimate_debtor_name: String,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::real_time_payments_transfer_create_params
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::real_time_payments_transfer_create_params
+    end
+  end
+end

@@ -66,6 +66,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The type of document.
       #
       # @example
@@ -95,8 +97,15 @@ module Increase
         COMPANY_INFORMATION = :company_information
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `document`.
       #
@@ -111,6 +120,11 @@ module Increase
         DOCUMENT = :document
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

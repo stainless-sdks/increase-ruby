@@ -1,0 +1,41 @@
+module Increase
+  module Models
+    module Simulations
+      type card_authorization_create_response =
+        {
+          declined_transaction: Increase::Models::DeclinedTransaction?,
+          pending_transaction: Increase::Models::PendingTransaction?,
+          type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
+        }
+
+      class CardAuthorizationCreateResponse < Increase::BaseModel
+        attr_accessor declined_transaction: Increase::Models::DeclinedTransaction?
+
+        attr_accessor pending_transaction: Increase::Models::PendingTransaction?
+
+        attr_accessor type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
+
+        def initialize:
+          (
+            declined_transaction: Increase::Models::DeclinedTransaction?,
+            pending_transaction: Increase::Models::PendingTransaction?,
+            type: Increase::Models::Simulations::CardAuthorizationCreateResponse::type_
+          ) -> void
+          | (
+            ?Increase::Models::Simulations::card_authorization_create_response
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::Simulations::card_authorization_create_response
+
+        type type_ = :inbound_card_authorization_simulation_result
+
+        class Type < Increase::Enum
+          INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT: :inbound_card_authorization_simulation_result
+
+          def self.values: -> Array[Increase::Models::Simulations::CardAuthorizationCreateResponse::type_]
+        end
+      end
+    end
+  end
+end

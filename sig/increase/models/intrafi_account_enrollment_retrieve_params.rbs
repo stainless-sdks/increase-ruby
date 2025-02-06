@@ -1,0 +1,20 @@
+module Increase
+  module Models
+    type intrafi_account_enrollment_retrieve_params =
+      {  } & Increase::request_parameters
+
+    class IntrafiAccountEnrollmentRetrieveParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      def initialize:
+        (request_options: Increase::request_opts) -> void
+        | (
+          ?Increase::Models::intrafi_account_enrollment_retrieve_params
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::intrafi_account_enrollment_retrieve_params
+    end
+  end
+end

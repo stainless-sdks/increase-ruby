@@ -78,6 +78,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # Whether the application is active.
       #
       # @example
@@ -97,8 +99,15 @@ module Increase
         DELETED = :deleted
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_application`.
       #
@@ -113,6 +122,11 @@ module Increase
         OAUTH_APPLICATION = :oauth_application
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

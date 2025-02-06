@@ -1,0 +1,20 @@
+module Increase
+  module Models
+    type wire_drawdown_request_retrieve_params =
+      {  } & Increase::request_parameters
+
+    class WireDrawdownRequestRetrieveParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      def initialize:
+        (request_options: Increase::request_opts) -> void
+        | (
+          ?Increase::Models::wire_drawdown_request_retrieve_params
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::wire_drawdown_request_retrieve_params
+    end
+  end
+end

@@ -443,6 +443,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The category of the card authentication attempt.
           #
           # @example
@@ -462,6 +464,11 @@ module Increase
             NON_PAYMENT_AUTHENTICATION = :non_payment_authentication
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -558,6 +565,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The outcome of the Card Authentication Challenge Attempt.
               #
               # @example
@@ -577,9 +586,16 @@ module Increase
                 FAILED = :failed
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
+            # @abstract
+            #
             # The method used to verify the Card Authentication Challenge.
             #
             # @example
@@ -604,9 +620,16 @@ module Increase
               NONE_AVAILABLE = :none_available
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
+          # @abstract
+          #
           # The reason why this authentication attempt was denied, if it was.
           #
           # @example
@@ -646,8 +669,15 @@ module Increase
             WEBHOOK_TIMED_OUT = :webhook_timed_out
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The device channel of the card authentication attempt.
           #
           # @example
@@ -672,8 +702,15 @@ module Increase
             THREE_DS_REQUESTOR_INITIATED = :three_ds_requestor_initiated
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The status of the card authentication.
           #
           # @example
@@ -722,8 +759,15 @@ module Increase
             EXCEEDED_ATTEMPT_THRESHOLD = :exceeded_attempt_threshold
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_authentication`.
           #
@@ -738,6 +782,11 @@ module Increase
             CARD_AUTHENTICATION = :card_authentication
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -1009,6 +1058,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
           #
@@ -1034,8 +1085,15 @@ module Increase
             NETWORK = :network
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
           #
@@ -1076,8 +1134,15 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
           #
@@ -1098,6 +1163,11 @@ module Increase
             REFUND = :refund
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -1135,6 +1205,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The payment network used to process this card authorization.
             #
             # @example
@@ -1149,6 +1221,11 @@ module Increase
               VISA = :visa
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @example
@@ -1205,6 +1282,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
@@ -1252,8 +1331,15 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
               #
@@ -1306,8 +1392,15 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
               #
@@ -1351,6 +1444,11 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
           end
@@ -1398,6 +1496,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
           #
@@ -1438,8 +1538,15 @@ module Increase
             REFUND = :refund
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization`.
           #
@@ -1454,6 +1561,11 @@ module Increase
             CARD_AUTHORIZATION = :card_authorization
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -1516,6 +1628,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The result of verifying the Card Verification Code.
               #
               # @example
@@ -1540,6 +1654,11 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
@@ -1602,6 +1721,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The address verification result returned to the card network.
               #
               # @example
@@ -1641,6 +1762,11 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
           end
@@ -1718,6 +1844,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
           #   currency.
           #
@@ -1758,8 +1886,15 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The card network used to process this card authorization.
           #
           # @example
@@ -1774,8 +1909,15 @@ module Increase
             VISA = :visa
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization_expiration`.
           #
@@ -1790,6 +1932,11 @@ module Increase
             CARD_AUTHORIZATION_EXPIRATION = :card_authorization_expiration
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -2056,6 +2203,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
           #
@@ -2081,8 +2230,15 @@ module Increase
             NETWORK = :network
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
           #
@@ -2123,8 +2279,15 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
           #
@@ -2145,6 +2308,11 @@ module Increase
             REFUND = :refund
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -2182,6 +2350,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The payment network used to process this card authorization.
             #
             # @example
@@ -2196,6 +2366,11 @@ module Increase
               VISA = :visa
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @example
@@ -2252,6 +2427,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
@@ -2299,8 +2476,15 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
               #
@@ -2353,8 +2537,15 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
               #
@@ -2398,6 +2589,11 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
           end
@@ -2445,6 +2641,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
           #
@@ -2485,8 +2683,15 @@ module Increase
             REFUND = :refund
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # This is present if a specific decline reason was given in the real-time
           #   decision.
           #
@@ -2527,8 +2732,15 @@ module Increase
             OTHER = :other
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # Why the transaction was declined.
           #
           # @example
@@ -2595,6 +2807,11 @@ module Increase
             SUSPECTED_FRAUD = :suspected_fraud
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -2657,6 +2874,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The result of verifying the Card Verification Code.
               #
               # @example
@@ -2681,6 +2900,11 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
@@ -2743,6 +2967,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The address verification result returned to the card network.
               #
               # @example
@@ -2782,6 +3008,11 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
           end
@@ -2889,6 +3120,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
           #   currency.
           #
@@ -2929,8 +3162,15 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The card network used to process this card authorization.
           #
           # @example
@@ -2945,6 +3185,11 @@ module Increase
             VISA = :visa
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -2990,6 +3235,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_fuel_confirmation`.
           #
@@ -3004,6 +3251,11 @@ module Increase
             CARD_FUEL_CONFIRMATION = :card_fuel_confirmation
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -3137,6 +3389,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
           #
@@ -3162,8 +3416,15 @@ module Increase
             NETWORK = :network
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
           #   currency.
           #
@@ -3204,8 +3465,15 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The card network used to process this card authorization.
           #
           # @example
@@ -3220,6 +3488,11 @@ module Increase
             VISA = :visa
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -3265,6 +3538,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_increment`.
           #
@@ -3279,6 +3554,11 @@ module Increase
             CARD_INCREMENT = :card_increment
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -3512,6 +3792,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
             # @example
@@ -3551,9 +3833,16 @@ module Increase
               USD = :USD
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
           #
@@ -3594,6 +3883,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -3640,6 +3934,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
             #
@@ -3680,6 +3976,11 @@ module Increase
               USD = :USD
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -4009,6 +4310,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # Additional charges (gas, late fee, etc.) being billed.
               #
               # @example
@@ -4048,8 +4351,15 @@ module Increase
                 PARKING_VIOLATION = :parking_violation
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
               #
@@ -4070,6 +4380,11 @@ module Increase
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
@@ -4240,6 +4555,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # Additional charges (phone, late check-out, etc.) being billed.
               #
               # @example
@@ -4282,8 +4599,15 @@ module Increase
                 LAUNDRY = :laundry
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
               #
@@ -4304,9 +4628,16 @@ module Increase
                 NO_SHOW = :no_show
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
+            # @abstract
+            #
             # The format of the purchase identifier.
             #
             # @example
@@ -4341,6 +4672,11 @@ module Increase
               INVOICE_NUMBER = :invoice_number
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @example
@@ -4440,7 +4776,7 @@ module Increase
               # @!attribute trip_legs
               #   Fields specific to each leg of the journey.
               #
-              #   @return [Array<Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg>]
+              #   @return [Array<Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg>, nil]
               required :trip_legs,
                        -> {
                          Increase::ArrayOf[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg]
@@ -4461,7 +4797,7 @@ module Increase
               #   # @param ticket_number [String, nil]
               #   # @param travel_agency_code [String, nil]
               #   # @param travel_agency_name [String, nil]
-              #   # @param trip_legs [Array<Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg>]
+              #   # @param trip_legs [Array<Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg>, nil]
               #   #
               #   def initialize(
               #     ancillary:,
@@ -4555,6 +4891,8 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
+                # @abstract
+                #
                 # Indicates the reason for a credit to the cardholder.
                 #
                 # @example
@@ -4584,6 +4922,11 @@ module Increase
                   OTHER = :other
 
                   finalize!
+
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   #
+                  #   def self.values; end
                 end
 
                 # @example
@@ -4618,6 +4961,8 @@ module Increase
 
                   # def initialize: (Hash | Increase::BaseModel) -> void
 
+                  # @abstract
+                  #
                   # Category of the ancillary service.
                   #
                   # @example
@@ -4711,10 +5056,17 @@ module Increase
                     WIFI = :wifi
 
                     finalize!
+
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   #
+                    #   def self.values; end
                   end
                 end
               end
 
+              # @abstract
+              #
               # Indicates the reason for a credit to the cardholder.
               #
               # @example
@@ -4754,8 +5106,15 @@ module Increase
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Indicates whether this ticket is non-refundable.
               #
               # @example
@@ -4775,8 +5134,15 @@ module Increase
                 RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Indicates why a ticket was changed.
               #
               # @example
@@ -4801,6 +5167,11 @@ module Increase
                 NEW_TICKET = :new_ticket
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
               # @example
@@ -4876,6 +5247,8 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
+                # @abstract
+                #
                 # Indicates whether a stopover is allowed on this ticket.
                 #
                 # @example
@@ -4900,11 +5273,18 @@ module Increase
                   STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
 
                   finalize!
+
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   #
+                  #   def self.values; end
                 end
               end
             end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_refund`.
           #
@@ -4919,6 +5299,11 @@ module Increase
             CARD_REFUND = :card_refund
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -5103,6 +5488,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
           #   currency.
           #
@@ -5143,8 +5530,15 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The card network used to process this card authorization.
           #
           # @example
@@ -5159,6 +5553,11 @@ module Increase
             VISA = :visa
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -5204,6 +5603,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # Why this reversal was initiated.
           #
           # @example
@@ -5233,8 +5634,15 @@ module Increase
             PARTIAL_REVERSAL = :partial_reversal
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_reversal`.
           #
@@ -5249,6 +5657,11 @@ module Increase
             CARD_REVERSAL = :card_reversal
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -5499,6 +5912,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
             # @example
@@ -5538,9 +5953,16 @@ module Increase
               USD = :USD
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
           #
@@ -5581,6 +6003,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -5627,6 +6054,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
             #
@@ -5667,6 +6096,11 @@ module Increase
               USD = :USD
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -5998,6 +6432,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # Additional charges (gas, late fee, etc.) being billed.
               #
               # @example
@@ -6037,8 +6473,15 @@ module Increase
                 PARKING_VIOLATION = :parking_violation
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
               #
@@ -6059,6 +6502,11 @@ module Increase
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
@@ -6229,6 +6677,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # Additional charges (phone, late check-out, etc.) being billed.
               #
               # @example
@@ -6271,8 +6721,15 @@ module Increase
                 LAUNDRY = :laundry
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
               #
@@ -6293,9 +6750,16 @@ module Increase
                 NO_SHOW = :no_show
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
+            # @abstract
+            #
             # The format of the purchase identifier.
             #
             # @example
@@ -6330,6 +6794,11 @@ module Increase
               INVOICE_NUMBER = :invoice_number
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @example
@@ -6429,7 +6898,7 @@ module Increase
               # @!attribute trip_legs
               #   Fields specific to each leg of the journey.
               #
-              #   @return [Array<Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg>]
+              #   @return [Array<Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg>, nil]
               required :trip_legs,
                        -> {
                          Increase::ArrayOf[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
@@ -6450,7 +6919,7 @@ module Increase
               #   # @param ticket_number [String, nil]
               #   # @param travel_agency_code [String, nil]
               #   # @param travel_agency_name [String, nil]
-              #   # @param trip_legs [Array<Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg>]
+              #   # @param trip_legs [Array<Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg>, nil]
               #   #
               #   def initialize(
               #     ancillary:,
@@ -6544,6 +7013,8 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
+                # @abstract
+                #
                 # Indicates the reason for a credit to the cardholder.
                 #
                 # @example
@@ -6573,6 +7044,11 @@ module Increase
                   OTHER = :other
 
                   finalize!
+
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   #
+                  #   def self.values; end
                 end
 
                 # @example
@@ -6607,6 +7083,8 @@ module Increase
 
                   # def initialize: (Hash | Increase::BaseModel) -> void
 
+                  # @abstract
+                  #
                   # Category of the ancillary service.
                   #
                   # @example
@@ -6700,10 +7178,17 @@ module Increase
                     WIFI = :wifi
 
                     finalize!
+
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   #
+                    #   def self.values; end
                   end
                 end
               end
 
+              # @abstract
+              #
               # Indicates the reason for a credit to the cardholder.
               #
               # @example
@@ -6743,8 +7228,15 @@ module Increase
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Indicates whether this ticket is non-refundable.
               #
               # @example
@@ -6764,8 +7256,15 @@ module Increase
                 RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Indicates why a ticket was changed.
               #
               # @example
@@ -6790,6 +7289,11 @@ module Increase
                 NEW_TICKET = :new_ticket
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
               # @example
@@ -6865,6 +7369,8 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
+                # @abstract
+                #
                 # Indicates whether a stopover is allowed on this ticket.
                 #
                 # @example
@@ -6889,11 +7395,18 @@ module Increase
                   STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
 
                   finalize!
+
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   #
+                  #   def self.values; end
                 end
               end
             end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_settlement`.
           #
@@ -6908,6 +7421,11 @@ module Increase
             CARD_SETTLEMENT = :card_settlement
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -7113,6 +7631,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
           #
@@ -7138,8 +7658,15 @@ module Increase
             NETWORK = :network
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
           #
@@ -7180,6 +7707,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -7217,6 +7749,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The payment network used to process this card authorization.
             #
             # @example
@@ -7231,6 +7765,11 @@ module Increase
               VISA = :visa
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @example
@@ -7287,6 +7826,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
@@ -7334,8 +7875,15 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
               #
@@ -7388,8 +7936,15 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
               #
@@ -7433,6 +7988,11 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
           end
@@ -7480,6 +8040,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_validation`.
           #
@@ -7494,6 +8056,11 @@ module Increase
             CARD_VALIDATION = :card_validation
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -7556,6 +8123,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The result of verifying the Card Verification Code.
               #
               # @example
@@ -7580,6 +8149,11 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
@@ -7642,6 +8216,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The address verification result returned to the card network.
               #
               # @example
@@ -7681,11 +8257,18 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
           end
         end
 
+        # @abstract
+        #
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
         #
@@ -7741,6 +8324,11 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -7804,6 +8392,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `card_payment`.
       #
@@ -7818,6 +8408,11 @@ module Increase
         CARD_PAYMENT = :card_payment
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

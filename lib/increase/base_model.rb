@@ -3,133 +3,9 @@
 module Increase
   # @private
   #
+  # @abstract
+  #
   module Converter
-    # @private
-    #
-    # @param spec [Hash{Symbol=>Object}, Proc, Increase::Converter, Class] .
-    #
-    #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
-    #
-    #   @option spec [Proc, Increase::Converter, Class] :enum
-    #
-    #   @option spec [Proc, Increase::Converter, Class] :union
-    #
-    #   @option spec [Boolean] :"nil?"
-    #
-    # @return [Proc]
-    #
-    def self.type_info(spec)
-      case spec
-      in Hash
-        type_info(spec.slice(:const, :enum, :union).first&.last)
-      in Proc
-        spec
-      in Increase::Converter | Class
-        -> { spec }
-      in true | false
-        -> { Increase::BooleanModel  }
-      in NilClass | Symbol | Integer | Float
-        -> { spec.class }
-      end
-    end
-
-    # @private
-    #
-    # Based on `target`, transform `value` into `target`, to the extent possible:
-    #
-    #   1. if the given `value` conforms to `target` already, return the given `value`
-    #   2. if it's possible and safe to convert the given `value` to `target`, then the
-    #      converted value
-    #   3. otherwise, the given `value` unaltered
-    #
-    # @param target [Increase::Converter, Class]
-    # @param value [Object]
-    #
-    # @return [Object]
-    #
-    def self.coerce(target, value)
-      case target
-      in Increase::Converter
-        target.coerce(value)
-      in Class
-        case target
-        in -> { _1 <= NilClass }
-          nil
-        in -> { _1 <= Integer }
-          value.is_a?(Numeric) ? Integer(value) : value
-        in -> { _1 <= Float }
-          value.is_a?(Numeric) ? Float(value) : value
-        in -> { _1 <= Symbol }
-          value.is_a?(String) ? value.to_sym : value
-        in -> { _1 <= String }
-          value.is_a?(Symbol) ? value.to_s : value
-        in -> { _1 <= Date || _1 <= Time }
-          value.is_a?(String) ? target.parse(value) : value
-        else
-          value
-        end
-      end
-    end
-
-    # @private
-    #
-    # @param target [Increase::Converter, Class]
-    # @param value [Object]
-    #
-    # @return [Object]
-    #
-    def self.dump(target, value)
-      case target
-      in Increase::Converter
-        target.dump(value)
-      else
-        value
-      end
-    end
-
-    # @private
-    #
-    # The underlying algorithm for computing maximal compatibility is subject to
-    #   future improvements.
-    #
-    #   Similar to `#.coerce`, used to determine the best union variant to decode into.
-    #
-    #   1. determine if strict-ish coercion is possible
-    #   2. return either result of successful coercion or if loose coercion is possible
-    #   3. return a score for recursively tallied count for fields that can be coerced
-    #
-    # @param target [Increase::Converter, Class]
-    # @param value [Object]
-    #
-    # @return [Object]
-    #
-    def self.try_strict_coerce(target, value)
-      case target
-      in Increase::Converter
-        target.try_strict_coerce(value)
-      in Class
-        case [target, value]
-        in [-> { _1 <= NilClass }, _]
-          [true, nil, value.nil? ? 1 : 0]
-        in [-> { _1 <= Integer }, Numeric]
-          [true, Integer(value), 1]
-        in [-> { _1 <= Float }, Numeric]
-          [true, Float(value), 1]
-        in [-> { _1 <= String }, Symbol]
-          [true, value.to_s, 1]
-        in [-> { _1 <= Date || _1 <= Time }, String]
-          Increase::Util.suppress(ArgumentError, Date::Error) do
-            return [true, target.parse(value), 1]
-          end
-          [false, false, 0]
-        in [_, ^target]
-          [true, value, 1]
-        else
-          [false, false, 0]
-        end
-      end
-    end
-
     # rubocop:disable Lint/UnusedMethodArgument
 
     # @private
@@ -157,9 +33,141 @@ module Increase
     def try_strict_coerce(value) = (raise NotImplementedError)
 
     # rubocop:enable Lint/UnusedMethodArgument
+
+    class << self
+      # @private
+      #
+      # @param spec [Hash{Symbol=>Object}, Proc, Increase::Converter, Class] .
+      #
+      #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
+      #
+      #   @option spec [Proc] :enum
+      #
+      #   @option spec [Proc] :union
+      #
+      #   @option spec [Boolean] :"nil?"
+      #
+      # @return [Proc]
+      #
+      def type_info(spec)
+        case spec
+        in Hash
+          type_info(spec.slice(:const, :enum, :union).first&.last)
+        in Proc
+          spec
+        in Increase::Converter | Class
+          -> { spec }
+        in true | false
+          -> { Increase::BooleanModel }
+        in NilClass | true | false | Symbol | Integer | Float
+          -> { spec.class }
+        end
+      end
+
+      # @private
+      #
+      # Based on `target`, transform `value` into `target`, to the extent possible:
+      #
+      #   1. if the given `value` conforms to `target` already, return the given `value`
+      #   2. if it's possible and safe to convert the given `value` to `target`, then the
+      #      converted value
+      #   3. otherwise, the given `value` unaltered
+      #
+      # @param target [Increase::Converter, Class]
+      # @param value [Object]
+      #
+      # @return [Object]
+      #
+      def coerce(target, value)
+        case target
+        in Increase::Converter
+          target.coerce(value)
+        in Class
+          case target
+          in -> { _1 <= NilClass }
+            nil
+          in -> { _1 <= Integer }
+            value.is_a?(Numeric) ? Integer(value) : value
+          in -> { _1 <= Float }
+            value.is_a?(Numeric) ? Float(value) : value
+          in -> { _1 <= Symbol }
+            value.is_a?(String) ? value.to_sym : value
+          in -> { _1 <= String }
+            value.is_a?(Symbol) ? value.to_s : value
+          in -> { _1 <= Date || _1 <= Time }
+            value.is_a?(String) ? target.parse(value) : value
+          in -> { _1 <= IO }
+            value.is_a?(String) ? StringIO.new(value) : value
+          else
+            value
+          end
+        end
+      end
+
+      # @private
+      #
+      # @param target [Increase::Converter, Class]
+      # @param value [Object]
+      #
+      # @return [Object]
+      #
+      def dump(target, value)
+        case target
+        in Increase::Converter
+          target.dump(value)
+        else
+          value
+        end
+      end
+
+      # @private
+      #
+      # The underlying algorithm for computing maximal compatibility is subject to
+      #   future improvements.
+      #
+      #   Similar to `#.coerce`, used to determine the best union variant to decode into.
+      #
+      #   1. determine if strict-ish coercion is possible
+      #   2. return either result of successful coercion or if loose coercion is possible
+      #   3. return a score for recursively tallied count for fields that can be coerced
+      #
+      # @param target [Increase::Converter, Class]
+      # @param value [Object]
+      #
+      # @return [Object]
+      #
+      def try_strict_coerce(target, value)
+        case target
+        in Increase::Converter
+          target.try_strict_coerce(value)
+        in Class
+          case [target, value]
+          in [-> { _1 <= NilClass }, _]
+            [true, nil, value.nil? ? 1 : 0]
+          in [-> { _1 <= Integer }, Numeric]
+            [true, Integer(value), 1]
+          in [-> { _1 <= Float }, Numeric]
+            [true, Float(value), 1]
+          in [-> { _1 <= String }, Symbol]
+            [true, value.to_s, 1]
+          in [-> { _1 <= Date || _1 <= Time }, String]
+            Increase::Util.suppress(ArgumentError, Date::Error) do
+              return [true, target.parse(value), 1]
+            end
+            [false, false, 0]
+          in [_, ^target]
+            [true, value, 1]
+          else
+            [false, false, 0]
+          end
+        end
+      end
+    end
   end
 
   # @private
+  #
+  # @abstract
   #
   # When we don't know what to expect for the value.
   class Unknown
@@ -215,6 +223,8 @@ module Increase
 
   # @private
   #
+  # @abstract
+  #
   # Ruby has no Boolean class; this is something for models to refer to.
   class BooleanModel
     extend Increase::Converter
@@ -268,6 +278,8 @@ module Increase
   end
 
   # @private
+  #
+  # @abstract
   #
   # A value from among a specified list of options. OpenAPI enum values map to Ruby
   #   values in the SDK as follows:
@@ -352,7 +364,10 @@ module Increase
 
   # @private
   #
+  # @abstract
+  #
   class Union
+    extend Increase::Extern
     extend Increase::Converter
 
     # @private
@@ -363,14 +378,16 @@ module Increase
     #
     private_class_method def self.known_variants = (@known_variants ||= [])
 
-    # @private
-    #
-    # All of the specified variants for this union.
-    #
-    # @return [Array<Array(Symbol, Object)>]
-    #
-    def self.variants
-      @known_variants.map { |key, variant_fn| [key, variant_fn.call] }
+    class << self
+      # @private
+      #
+      # All of the specified variants for this union.
+      #
+      # @return [Array<Array(Symbol, Object)>]
+      #
+      protected def variants
+        @known_variants.map { |key, variant_fn| [key, variant_fn.call] }
+      end
     end
 
     # @private
@@ -386,15 +403,15 @@ module Increase
 
     # @private
     #
-    # @param key [Symbol, nil]
+    # @param key [Symbol, Hash{Symbol=>Object}, Proc, Increase::Converter, Class]
     #
     # @param spec [Hash{Symbol=>Object}, Proc, Increase::Converter, Class] .
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Increase::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Increase::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
@@ -550,6 +567,8 @@ module Increase
 
   # @private
   #
+  # @abstract
+  #
   # Array of items of a given type.
   class ArrayOf
     include Increase::Converter
@@ -653,21 +672,21 @@ module Increase
 
     # @private
     #
-    # @return [Class]
+    # @return [Increase::Converter, Class]
     #
     protected def item_type = @item_type_fn.call
 
     # @private
     #
-    # @param type_info [Object]
+    # @param type_info [Hash{Symbol=>Object}, Proc, Increase::Converter, Class]
     #
-    # @param spec [Hash{Symbol=>Object}, Proc, Increase::Converter, Class] .
+    # @param spec [Hash{Symbol=>Object}] .
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Increase::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Increase::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
@@ -677,6 +696,8 @@ module Increase
   end
 
   # @private
+  #
+  # @abstract
   #
   # Hash of items of a given type.
   class HashOf
@@ -791,21 +812,21 @@ module Increase
 
     # @private
     #
-    # @return [Class]
+    # @return [Increase::Converter, Class]
     #
     protected def item_type = @item_type_fn.call
 
     # @private
     #
-    # @param type_info [Object]
+    # @param type_info [Hash{Symbol=>Object}, Proc, Increase::Converter, Class]
     #
-    # @param spec [Hash{Symbol=>Object}, Proc, Increase::Converter, Class] .
+    # @param spec [Hash{Symbol=>Object}] .
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Increase::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Increase::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
@@ -816,7 +837,10 @@ module Increase
 
   # @private
   #
+  # @abstract
+  #
   class BaseModel
+    extend Increase::Extern
     extend Increase::Converter
 
     # @private
@@ -830,13 +854,15 @@ module Increase
       @known_fields ||= (self < Increase::BaseModel ? superclass.known_fields.dup : {})
     end
 
-    # @private
-    #
-    # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
-    #
-    def self.fields
-      known_fields.transform_values do |field|
-        {**field, type: field.fetch(:type_fn).call}
+    class << self
+      # @private
+      #
+      # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
+      #
+      def fields
+        known_fields.transform_values do |field|
+          {**field.except(:type_fn), type: field.fetch(:type_fn).call}
+        end
       end
     end
 
@@ -852,15 +878,15 @@ module Increase
     #
     # @param required [Boolean]
     #
-    # @param type_info [Proc, Increase::Converter, Class, Hash{Symbol=>Object}, nil]
+    # @param type_info [Hash{Symbol=>Object}, Proc, Increase::Converter, Class]
     #
-    # @param spec [Hash{Symbol=>Object}, Proc, Increase::Converter, Class] .
+    # @param spec [Hash{Symbol=>Object}] .
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Increase::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Increase::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
@@ -906,19 +932,19 @@ module Increase
     #
     # @param name_sym [Symbol]
     #
-    # @param type_info [Proc, Increase::Converter, Class, Hash{Symbol=>Object}, nil]
+    # @param type_info [Hash{Symbol=>Object}, Proc, Increase::Converter, Class]
     #
-    # @param spec [Hash{Symbol=>Object}, Proc, Increase::Converter, Class] .
+    # @param spec [Hash{Symbol=>Object}] .
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Increase::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Increase::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
-    def self.required(name_sym, type_info = nil, spec = {})
+    def self.required(name_sym, type_info, spec = {})
       add_field(name_sym, required: true, type_info: type_info, spec: spec)
     end
 
@@ -926,19 +952,19 @@ module Increase
     #
     # @param name_sym [Symbol]
     #
-    # @param type_info [Proc, Increase::Converter, Class, Hash{Symbol=>Object}, nil]
+    # @param type_info [Hash{Symbol=>Object}, Proc, Increase::Converter, Class]
     #
-    # @param spec [Hash{Symbol=>Object}, Proc, Increase::Converter, Class] .
+    # @param spec [Hash{Symbol=>Object}] .
     #
     #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
     #
-    #   @option spec [Proc, Increase::Converter, Class] :enum
+    #   @option spec [Proc] :enum
     #
-    #   @option spec [Proc, Increase::Converter, Class] :union
+    #   @option spec [Proc] :union
     #
     #   @option spec [Boolean] :"nil?"
     #
-    def self.optional(name_sym, type_info = nil, spec = {})
+    def self.optional(name_sym, type_info, spec = {})
       add_field(name_sym, required: false, type_info: type_info, spec: spec)
     end
 
@@ -1125,7 +1151,7 @@ module Increase
     # @return [Hash{Symbol=>Object}]
     #
     def deconstruct_keys(keys)
-      (keys || self.class.fields.keys).filter_map do |k|
+      (keys || self.class.known_fields.keys).filter_map do |k|
         unless self.class.known_fields.key?(k)
           next
         end

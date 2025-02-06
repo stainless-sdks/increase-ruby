@@ -13,7 +13,7 @@ class Increase::Test::Resources::Simulations::PhysicalCardsTest < Minitest::Test
   def test_advance_shipment_required_params
     response = @increase.simulations.physical_cards.advance_shipment(
       "physical_card_id",
-      shipment_status: "pending"
+      shipment_status: :pending
     )
 
     assert_pattern do

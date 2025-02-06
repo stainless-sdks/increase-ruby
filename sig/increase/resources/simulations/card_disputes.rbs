@@ -1,0 +1,22 @@
+module Increase
+  module Resources
+    class Simulations
+      class CardDisputes
+        def action:
+          (
+            String card_dispute_id,
+            Increase::Models::Simulations::CardDisputeActionParams
+            | Hash[Symbol, top] params
+          ) -> Increase::Models::CardDispute
+          | (
+            String card_dispute_id,
+            status: Increase::Models::Simulations::CardDisputeActionParams::status,
+            explanation: String,
+            request_options: Increase::request_opts
+          ) -> Increase::Models::CardDispute
+
+        def initialize: (client: Increase::Client) -> void
+      end
+    end
+  end
+end

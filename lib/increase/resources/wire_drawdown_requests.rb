@@ -41,7 +41,7 @@ module Increase
       #
       #   @option params [String] :recipient_address_line3 Line 3 of the drawdown request's recipient's address.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::WireDrawdownRequest]
       #
@@ -62,7 +62,7 @@ module Increase
       #
       # @param params [Increase::Models::WireDrawdownRequestRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::WireDrawdownRequest]
       #
@@ -91,7 +91,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::WireDrawdownRequestListParams::Status] :status Filter Wire Drawdown Requests for those with the specified status.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::WireDrawdownRequest>]
       #

@@ -1,0 +1,208 @@
+module Increase
+  module Models
+    type inbound_real_time_payments_transfer =
+      {
+        id: String,
+        account_id: String,
+        account_number_id: String,
+        amount: Integer,
+        confirmation: Increase::Models::InboundRealTimePaymentsTransfer::Confirmation?,
+        created_at: Time,
+        creditor_name: String,
+        currency: Increase::Models::InboundRealTimePaymentsTransfer::currency,
+        debtor_account_number: String,
+        debtor_name: String,
+        debtor_routing_number: String,
+        decline: Increase::Models::InboundRealTimePaymentsTransfer::Decline?,
+        remittance_information: String?,
+        status: Increase::Models::InboundRealTimePaymentsTransfer::status,
+        transaction_identification: String,
+        type: Increase::Models::InboundRealTimePaymentsTransfer::type_
+      }
+
+    class InboundRealTimePaymentsTransfer < Increase::BaseModel
+      attr_accessor id: String
+
+      attr_accessor account_id: String
+
+      attr_accessor account_number_id: String
+
+      attr_accessor amount: Integer
+
+      attr_accessor confirmation: Increase::Models::InboundRealTimePaymentsTransfer::Confirmation?
+
+      attr_accessor created_at: Time
+
+      attr_accessor creditor_name: String
+
+      attr_accessor currency: Increase::Models::InboundRealTimePaymentsTransfer::currency
+
+      attr_accessor debtor_account_number: String
+
+      attr_accessor debtor_name: String
+
+      attr_accessor debtor_routing_number: String
+
+      attr_accessor decline: Increase::Models::InboundRealTimePaymentsTransfer::Decline?
+
+      attr_accessor remittance_information: String?
+
+      attr_accessor status: Increase::Models::InboundRealTimePaymentsTransfer::status
+
+      attr_accessor transaction_identification: String
+
+      attr_accessor type: Increase::Models::InboundRealTimePaymentsTransfer::type_
+
+      def initialize:
+        (
+          id: String,
+          account_id: String,
+          account_number_id: String,
+          amount: Integer,
+          confirmation: Increase::Models::InboundRealTimePaymentsTransfer::Confirmation?,
+          created_at: Time,
+          creditor_name: String,
+          currency: Increase::Models::InboundRealTimePaymentsTransfer::currency,
+          debtor_account_number: String,
+          debtor_name: String,
+          debtor_routing_number: String,
+          decline: Increase::Models::InboundRealTimePaymentsTransfer::Decline?,
+          remittance_information: String?,
+          status: Increase::Models::InboundRealTimePaymentsTransfer::status,
+          transaction_identification: String,
+          type: Increase::Models::InboundRealTimePaymentsTransfer::type_
+        ) -> void
+        | (
+          ?Increase::Models::inbound_real_time_payments_transfer
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::inbound_real_time_payments_transfer
+
+      type confirmation = { confirmed_at: Time, transaction_id: String }
+
+      class Confirmation < Increase::BaseModel
+        attr_accessor confirmed_at: Time
+
+        attr_accessor transaction_id: String
+
+        def initialize:
+          (confirmed_at: Time, transaction_id: String) -> void
+          | (
+            ?Increase::Models::InboundRealTimePaymentsTransfer::confirmation
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::InboundRealTimePaymentsTransfer::confirmation
+      end
+
+      type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+
+      class Currency < Increase::Enum
+        # Canadian Dollar (CAD)
+        CAD: :CAD
+
+        # Swiss Franc (CHF)
+        CHF: :CHF
+
+        # Euro (EUR)
+        EUR: :EUR
+
+        # British Pound (GBP)
+        GBP: :GBP
+
+        # Japanese Yen (JPY)
+        JPY: :JPY
+
+        # US Dollar (USD)
+        USD: :USD
+
+        def self.values: -> Array[Increase::Models::InboundRealTimePaymentsTransfer::currency]
+      end
+
+      type decline =
+        {
+          declined_at: Time,
+          declined_transaction_id: String,
+          reason: Increase::Models::InboundRealTimePaymentsTransfer::Decline::reason
+        }
+
+      class Decline < Increase::BaseModel
+        attr_accessor declined_at: Time
+
+        attr_accessor declined_transaction_id: String
+
+        attr_accessor reason: Increase::Models::InboundRealTimePaymentsTransfer::Decline::reason
+
+        def initialize:
+          (
+            declined_at: Time,
+            declined_transaction_id: String,
+            reason: Increase::Models::InboundRealTimePaymentsTransfer::Decline::reason
+          ) -> void
+          | (
+            ?Increase::Models::InboundRealTimePaymentsTransfer::decline
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::InboundRealTimePaymentsTransfer::decline
+
+        type reason =
+          :account_number_canceled
+          | :account_number_disabled
+          | :account_restricted
+          | :group_locked
+          | :entity_not_active
+          | :real_time_payments_not_enabled
+
+        class Reason < Increase::Enum
+          # The account number is canceled.
+          ACCOUNT_NUMBER_CANCELED: :account_number_canceled
+
+          # The account number is disabled.
+          ACCOUNT_NUMBER_DISABLED: :account_number_disabled
+
+          # Your account is restricted.
+          ACCOUNT_RESTRICTED: :account_restricted
+
+          # Your account is inactive.
+          GROUP_LOCKED: :group_locked
+
+          # The account's entity is not active.
+          ENTITY_NOT_ACTIVE: :entity_not_active
+
+          # Your account is not enabled to receive Real-Time Payments transfers.
+          REAL_TIME_PAYMENTS_NOT_ENABLED: :real_time_payments_not_enabled
+
+          def self.values: -> Array[Increase::Models::InboundRealTimePaymentsTransfer::Decline::reason]
+        end
+      end
+
+      type status = :pending_confirming | :timed_out | :confirmed | :declined
+
+      class Status < Increase::Enum
+        # The transfer is pending confirmation.
+        PENDING_CONFIRMING: :pending_confirming
+
+        # The transfer was not responded to in time.
+        TIMED_OUT: :timed_out
+
+        # The transfer has been received successfully and is confirmed.
+        CONFIRMED: :confirmed
+
+        # The transfer has been declined.
+        DECLINED: :declined
+
+        def self.values: -> Array[Increase::Models::InboundRealTimePaymentsTransfer::status]
+      end
+
+      type type_ = :inbound_real_time_payments_transfer
+
+      class Type < Increase::Enum
+        INBOUND_REAL_TIME_PAYMENTS_TRANSFER: :inbound_real_time_payments_transfer
+
+        def self.values: -> Array[Increase::Models::InboundRealTimePaymentsTransfer::type_]
+      end
+    end
+  end
+end

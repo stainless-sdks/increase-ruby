@@ -245,6 +245,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason for the adjustment.
         #
         # @example
@@ -269,9 +271,16 @@ module Increase
           ADJUSTED_AMOUNT = :adjusted_amount
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
+      # @abstract
+      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
       #
       # @example
@@ -311,6 +320,11 @@ module Increase
         USD = :USD
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -352,6 +366,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason the deposit was returned.
         #
         # @example
@@ -386,9 +402,16 @@ module Increase
           ENDORSEMENT_IRREGULAR = :endorsement_irregular
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
+      # @abstract
+      #
       # Whether the details on the check match the recipient name of the check transfer.
       #   This is an optional feature, contact sales to enable.
       #
@@ -414,8 +437,15 @@ module Increase
         NOT_EVALUATED = :not_evaluated
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The status of the Inbound Check Deposit.
       #
       # @example
@@ -450,8 +480,15 @@ module Increase
         REQUIRES_ATTENTION = :requires_attention
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_check_deposit`.
       #
@@ -466,6 +503,11 @@ module Increase
         INBOUND_CHECK_DEPOSIT = :inbound_check_deposit
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

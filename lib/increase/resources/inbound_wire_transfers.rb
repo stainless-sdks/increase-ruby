@@ -9,7 +9,7 @@ module Increase
       #
       # @param params [Increase::Models::InboundWireTransferRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundWireTransfer]
       #
@@ -39,7 +39,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::InboundWireTransferListParams::Status] :status Filter Inbound Wire Transfers to those with the specified status.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::InboundWireTransfer>]
       #

@@ -44,6 +44,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The type of OAuth token.
       #
       # @example
@@ -57,8 +59,15 @@ module Increase
         BEARER = :bearer
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_token`.
       #
@@ -73,6 +82,11 @@ module Increase
         OAUTH_TOKEN = :oauth_token
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

@@ -9,7 +9,7 @@ module Increase
       #
       # @param params [Increase::Models::InboundMailItemRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundMailItem]
       #
@@ -35,7 +35,7 @@ module Increase
       #
       #   @option params [String] :lockbox_id Filter Inbound Mail Items to ones sent to the provided Lockbox.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::InboundMailItem>]
       #

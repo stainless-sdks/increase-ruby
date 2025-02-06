@@ -18,7 +18,7 @@ module Increase
       #   @option params [String] :shared_secret The key that will be used to sign webhooks. If no value is passed, a random
       #     string will be used as default.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::EventSubscription]
       #
@@ -39,7 +39,7 @@ module Increase
       #
       # @param params [Increase::Models::EventSubscriptionRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::EventSubscription]
       #
@@ -60,7 +60,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::EventSubscriptionUpdateParams::Status] :status The status to update the Event Subscription with.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::EventSubscription]
       #
@@ -89,7 +89,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::EventSubscription>]
       #

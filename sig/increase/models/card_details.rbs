@@ -1,0 +1,48 @@
+module Increase
+  module Models
+    type card_details =
+      {
+        card_id: String,
+        expiration_month: Integer,
+        expiration_year: Integer,
+        primary_account_number: String,
+        type: Increase::Models::CardDetails::type_,
+        verification_code: String
+      }
+
+    class CardDetails < Increase::BaseModel
+      attr_accessor card_id: String
+
+      attr_accessor expiration_month: Integer
+
+      attr_accessor expiration_year: Integer
+
+      attr_accessor primary_account_number: String
+
+      attr_accessor type: Increase::Models::CardDetails::type_
+
+      attr_accessor verification_code: String
+
+      def initialize:
+        (
+          card_id: String,
+          expiration_month: Integer,
+          expiration_year: Integer,
+          primary_account_number: String,
+          type: Increase::Models::CardDetails::type_,
+          verification_code: String
+        ) -> void
+        | (?Increase::Models::card_details | Increase::BaseModel data) -> void
+
+      def to_hash: -> Increase::Models::card_details
+
+      type type_ = :card_details
+
+      class Type < Increase::Enum
+        CARD_DETAILS: :card_details
+
+        def self.values: -> Array[Increase::Models::CardDetails::type_]
+      end
+    end
+  end
+end

@@ -412,6 +412,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The type of object that created this transfer.
         #
         # @example
@@ -436,6 +438,11 @@ module Increase
           USER = :user
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -485,6 +492,8 @@ module Increase
         end
       end
 
+      # @abstract
+      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For real-time payments transfers this is always equal to `USD`.
       #
@@ -525,6 +534,11 @@ module Increase
         USD = :USD
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -570,6 +584,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason the transfer was rejected as provided by the recipient bank or the
         #   Real-Time Payments network.
         #
@@ -655,9 +671,16 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
+      # @abstract
+      #
       # The lifecycle status of the transfer.
       #
       # @example
@@ -703,6 +726,11 @@ module Increase
         COMPLETE = :complete
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -738,6 +766,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `real_time_payments_transfer`.
       #
@@ -752,6 +782,11 @@ module Increase
         REAL_TIME_PAYMENTS_TRANSFER = :real_time_payments_transfer
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

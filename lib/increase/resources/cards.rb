@@ -22,7 +22,7 @@ module Increase
       #   @option params [String] :entity_id The Entity the card belongs to. You only need to supply this in rare situations
       #     when the card is not for the Account holder.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Card]
       #
@@ -43,7 +43,7 @@ module Increase
       #
       # @param params [Increase::Models::CardRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Card]
       #
@@ -75,7 +75,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::CardUpdateParams::Status] :status The status to update the Card with.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Card]
       #
@@ -108,7 +108,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Card>]
       #
@@ -130,7 +130,7 @@ module Increase
       #
       # @param params [Increase::Models::CardDetailsParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CardDetails]
       #

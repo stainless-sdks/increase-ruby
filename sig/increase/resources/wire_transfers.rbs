@@ -1,0 +1,77 @@
+module Increase
+  module Resources
+    class WireTransfers
+      def create:
+        (
+          Increase::Models::WireTransferCreateParams | Hash[Symbol, top] params
+        ) -> Increase::Models::WireTransfer
+        | (
+          account_id: String,
+          amount: Integer,
+          beneficiary_name: String,
+          message_to_recipient: String,
+          account_number: String,
+          beneficiary_address_line1: String,
+          beneficiary_address_line2: String,
+          beneficiary_address_line3: String,
+          external_account_id: String,
+          originator_address_line1: String,
+          originator_address_line2: String,
+          originator_address_line3: String,
+          originator_name: String,
+          require_approval: bool,
+          routing_number: String,
+          source_account_number_id: String,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::WireTransfer
+
+      def retrieve:
+        (
+          String wire_transfer_id,
+          ?Increase::Models::WireTransferRetrieveParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Models::WireTransfer
+        | (
+          String wire_transfer_id,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::WireTransfer
+
+      def list:
+        (
+          ?Increase::Models::WireTransferListParams | Hash[Symbol, top] params
+        ) -> Increase::Page[Increase::Models::WireTransfer]
+        | (
+          account_id: String,
+          created_at: Increase::Models::WireTransferListParams::CreatedAt,
+          cursor: String,
+          external_account_id: String,
+          idempotency_key: String,
+          limit: Integer,
+          request_options: Increase::request_opts
+        ) -> Increase::Page[Increase::Models::WireTransfer]
+
+      def approve:
+        (
+          String wire_transfer_id,
+          ?Increase::Models::WireTransferApproveParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Models::WireTransfer
+        | (
+          String wire_transfer_id,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::WireTransfer
+
+      def cancel:
+        (
+          String wire_transfer_id,
+          ?Increase::Models::WireTransferCancelParams | Hash[Symbol, top] params
+        ) -> Increase::Models::WireTransfer
+        | (
+          String wire_transfer_id,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::WireTransfer
+
+      def initialize: (client: Increase::Client) -> void
+    end
+  end
+end

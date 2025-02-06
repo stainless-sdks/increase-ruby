@@ -1,0 +1,61 @@
+module Increase
+  module Resources
+    class ExternalAccounts
+      def create:
+        (
+          Increase::Models::ExternalAccountCreateParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Models::ExternalAccount
+        | (
+          account_number: String,
+          description: String,
+          routing_number: String,
+          account_holder: Increase::Models::ExternalAccountCreateParams::account_holder,
+          funding: Increase::Models::ExternalAccountCreateParams::funding,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::ExternalAccount
+
+      def retrieve:
+        (
+          String external_account_id,
+          ?Increase::Models::ExternalAccountRetrieveParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Models::ExternalAccount
+        | (
+          String external_account_id,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::ExternalAccount
+
+      def update:
+        (
+          String external_account_id,
+          ?Increase::Models::ExternalAccountUpdateParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Models::ExternalAccount
+        | (
+          String external_account_id,
+          account_holder: Increase::Models::ExternalAccountUpdateParams::account_holder,
+          description: String,
+          funding: Increase::Models::ExternalAccountUpdateParams::funding,
+          status: Increase::Models::ExternalAccountUpdateParams::status,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::ExternalAccount
+
+      def list:
+        (
+          ?Increase::Models::ExternalAccountListParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Page[Increase::Models::ExternalAccount]
+        | (
+          cursor: String,
+          idempotency_key: String,
+          limit: Integer,
+          routing_number: String,
+          status: Increase::Models::ExternalAccountListParams::Status,
+          request_options: Increase::request_opts
+        ) -> Increase::Page[Increase::Models::ExternalAccount]
+
+      def initialize: (client: Increase::Client) -> void
+    end
+  end
+end

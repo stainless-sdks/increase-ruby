@@ -1,0 +1,22 @@
+module Increase
+  module Models
+    module Simulations
+      type inbound_funds_hold_release_params =
+        {  } & Increase::request_parameters
+
+      class InboundFundsHoldReleaseParams < Increase::BaseModel
+        extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
+        def initialize:
+          (request_options: Increase::request_opts) -> void
+          | (
+            ?Increase::Models::Simulations::inbound_funds_hold_release_params
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::Simulations::inbound_funds_hold_release_params
+      end
+    end
+  end
+end

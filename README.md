@@ -34,6 +34,7 @@ bundle update increase
 ## Usage
 
 ```ruby
+require "bundler/setup"
 require "increase"
 
 increase = Increase::Client.new(
@@ -60,7 +61,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 begin
   account = increase.accounts.create
 rescue Increase::Error => e
-  puts(e.code) # 400
+  puts(e.status) # 400
 end
 ```
 
@@ -100,7 +101,7 @@ increase.accounts.create(
   name: "New Account!",
   entity_id: "entity_n8y8tnk2p9339ti393yi",
   program_id: "program_i2v2os4mwza1oetokh9i",
-  max_retries: 5
+  request_options: {max_retries: 5}
 )
 ```
 
@@ -123,7 +124,7 @@ increase.accounts.create(
   name: "New Account!",
   entity_id: "entity_n8y8tnk2p9339ti393yi",
   program_id: "program_i2v2os4mwza1oetokh9i",
-  timeout: 5
+  request_options: {timeout: 5}
 )
 ```
 

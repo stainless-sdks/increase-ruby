@@ -1,0 +1,917 @@
+module Increase
+  module Models
+    type real_time_decision =
+      {
+        id: String,
+        card_authentication: Increase::Models::RealTimeDecision::CardAuthentication?,
+        card_authentication_challenge: Increase::Models::RealTimeDecision::CardAuthenticationChallenge?,
+        card_authorization: Increase::Models::RealTimeDecision::CardAuthorization?,
+        category: Increase::Models::RealTimeDecision::category,
+        created_at: Time,
+        digital_wallet_authentication: Increase::Models::RealTimeDecision::DigitalWalletAuthentication?,
+        digital_wallet_token: Increase::Models::RealTimeDecision::DigitalWalletToken?,
+        status: Increase::Models::RealTimeDecision::status,
+        timeout_at: Time,
+        type: Increase::Models::RealTimeDecision::type_
+      }
+
+    class RealTimeDecision < Increase::BaseModel
+      attr_accessor id: String
+
+      attr_accessor card_authentication: Increase::Models::RealTimeDecision::CardAuthentication?
+
+      attr_accessor card_authentication_challenge: Increase::Models::RealTimeDecision::CardAuthenticationChallenge?
+
+      attr_accessor card_authorization: Increase::Models::RealTimeDecision::CardAuthorization?
+
+      attr_accessor category: Increase::Models::RealTimeDecision::category
+
+      attr_accessor created_at: Time
+
+      attr_accessor digital_wallet_authentication: Increase::Models::RealTimeDecision::DigitalWalletAuthentication?
+
+      attr_accessor digital_wallet_token: Increase::Models::RealTimeDecision::DigitalWalletToken?
+
+      attr_accessor status: Increase::Models::RealTimeDecision::status
+
+      attr_accessor timeout_at: Time
+
+      attr_accessor type: Increase::Models::RealTimeDecision::type_
+
+      def initialize:
+        (
+          id: String,
+          card_authentication: Increase::Models::RealTimeDecision::CardAuthentication?,
+          card_authentication_challenge: Increase::Models::RealTimeDecision::CardAuthenticationChallenge?,
+          card_authorization: Increase::Models::RealTimeDecision::CardAuthorization?,
+          category: Increase::Models::RealTimeDecision::category,
+          created_at: Time,
+          digital_wallet_authentication: Increase::Models::RealTimeDecision::DigitalWalletAuthentication?,
+          digital_wallet_token: Increase::Models::RealTimeDecision::DigitalWalletToken?,
+          status: Increase::Models::RealTimeDecision::status,
+          timeout_at: Time,
+          type: Increase::Models::RealTimeDecision::type_
+        ) -> void
+        | (
+          ?Increase::Models::real_time_decision | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::real_time_decision
+
+      type card_authentication =
+        {
+          account_id: String,
+          card_id: String,
+          decision: Increase::Models::RealTimeDecision::CardAuthentication::decision?,
+          upcoming_card_payment_id: String
+        }
+
+      class CardAuthentication < Increase::BaseModel
+        attr_accessor account_id: String
+
+        attr_accessor card_id: String
+
+        attr_accessor decision: Increase::Models::RealTimeDecision::CardAuthentication::decision?
+
+        attr_accessor upcoming_card_payment_id: String
+
+        def initialize:
+          (
+            account_id: String,
+            card_id: String,
+            decision: Increase::Models::RealTimeDecision::CardAuthentication::decision?,
+            upcoming_card_payment_id: String
+          ) -> void
+          | (
+            ?Increase::Models::RealTimeDecision::card_authentication
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::RealTimeDecision::card_authentication
+
+        type decision = :approve | :challenge | :deny
+
+        class Decision < Increase::Enum
+          # Approve the authentication attempt without triggering a challenge.
+          APPROVE: :approve
+
+          # Request further validation before approving the authentication attempt.
+          CHALLENGE: :challenge
+
+          # Deny the authentication attempt.
+          DENY: :deny
+
+          def self.values: -> Array[Increase::Models::RealTimeDecision::CardAuthentication::decision]
+        end
+      end
+
+      type card_authentication_challenge =
+        {
+          account_id: String,
+          card_id: String,
+          card_payment_id: String,
+          one_time_code: String,
+          result: Increase::Models::RealTimeDecision::CardAuthenticationChallenge::result?
+        }
+
+      class CardAuthenticationChallenge < Increase::BaseModel
+        attr_accessor account_id: String
+
+        attr_accessor card_id: String
+
+        attr_accessor card_payment_id: String
+
+        attr_accessor one_time_code: String
+
+        attr_accessor result: Increase::Models::RealTimeDecision::CardAuthenticationChallenge::result?
+
+        def initialize:
+          (
+            account_id: String,
+            card_id: String,
+            card_payment_id: String,
+            one_time_code: String,
+            result: Increase::Models::RealTimeDecision::CardAuthenticationChallenge::result?
+          ) -> void
+          | (
+            ?Increase::Models::RealTimeDecision::card_authentication_challenge
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::RealTimeDecision::card_authentication_challenge
+
+        type result = :success | :failure
+
+        class Result < Increase::Enum
+          # Your application successfully delivered the one-time code to the cardholder.
+          SUCCESS: :success
+
+          # Your application was unable to deliver the one-time code to the cardholder.
+          FAILURE: :failure
+
+          def self.values: -> Array[Increase::Models::RealTimeDecision::CardAuthenticationChallenge::result]
+        end
+      end
+
+      type card_authorization =
+        {
+          account_id: String,
+          card_id: String,
+          decision: Increase::Models::RealTimeDecision::CardAuthorization::decision?,
+          digital_wallet_token_id: String?,
+          direction: Increase::Models::RealTimeDecision::CardAuthorization::direction,
+          merchant_acceptor_id: String,
+          merchant_category_code: String,
+          merchant_city: String?,
+          merchant_country: String,
+          merchant_descriptor: String,
+          merchant_postal_code: String?,
+          merchant_state: String?,
+          network_details: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails,
+          network_identifiers: Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers,
+          network_risk_score: Integer?,
+          physical_card_id: String?,
+          presentment_amount: Integer,
+          presentment_currency: String,
+          processing_category: Increase::Models::RealTimeDecision::CardAuthorization::processing_category,
+          request_details: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails,
+          settlement_amount: Integer,
+          settlement_currency: String,
+          terminal_id: String?,
+          upcoming_card_payment_id: String,
+          verification: Increase::Models::RealTimeDecision::CardAuthorization::Verification
+        }
+
+      class CardAuthorization < Increase::BaseModel
+        attr_accessor account_id: String
+
+        attr_accessor card_id: String
+
+        attr_accessor decision: Increase::Models::RealTimeDecision::CardAuthorization::decision?
+
+        attr_accessor digital_wallet_token_id: String?
+
+        attr_accessor direction: Increase::Models::RealTimeDecision::CardAuthorization::direction
+
+        attr_accessor merchant_acceptor_id: String
+
+        attr_accessor merchant_category_code: String
+
+        attr_accessor merchant_city: String?
+
+        attr_accessor merchant_country: String
+
+        attr_accessor merchant_descriptor: String
+
+        attr_accessor merchant_postal_code: String?
+
+        attr_accessor merchant_state: String?
+
+        attr_accessor network_details: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails
+
+        attr_accessor network_identifiers: Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers
+
+        attr_accessor network_risk_score: Integer?
+
+        attr_accessor physical_card_id: String?
+
+        attr_accessor presentment_amount: Integer
+
+        attr_accessor presentment_currency: String
+
+        attr_accessor processing_category: Increase::Models::RealTimeDecision::CardAuthorization::processing_category
+
+        attr_accessor request_details: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails
+
+        attr_accessor settlement_amount: Integer
+
+        attr_accessor settlement_currency: String
+
+        attr_accessor terminal_id: String?
+
+        attr_accessor upcoming_card_payment_id: String
+
+        attr_accessor verification: Increase::Models::RealTimeDecision::CardAuthorization::Verification
+
+        def initialize:
+          (
+            account_id: String,
+            card_id: String,
+            decision: Increase::Models::RealTimeDecision::CardAuthorization::decision?,
+            digital_wallet_token_id: String?,
+            direction: Increase::Models::RealTimeDecision::CardAuthorization::direction,
+            merchant_acceptor_id: String,
+            merchant_category_code: String,
+            merchant_city: String?,
+            merchant_country: String,
+            merchant_descriptor: String,
+            merchant_postal_code: String?,
+            merchant_state: String?,
+            network_details: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails,
+            network_identifiers: Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers,
+            network_risk_score: Integer?,
+            physical_card_id: String?,
+            presentment_amount: Integer,
+            presentment_currency: String,
+            processing_category: Increase::Models::RealTimeDecision::CardAuthorization::processing_category,
+            request_details: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails,
+            settlement_amount: Integer,
+            settlement_currency: String,
+            terminal_id: String?,
+            upcoming_card_payment_id: String,
+            verification: Increase::Models::RealTimeDecision::CardAuthorization::Verification
+          ) -> void
+          | (
+            ?Increase::Models::RealTimeDecision::card_authorization
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::RealTimeDecision::card_authorization
+
+        type decision = :approve | :decline
+
+        class Decision < Increase::Enum
+          # Approve the authorization.
+          APPROVE: :approve
+
+          # Decline the authorization.
+          DECLINE: :decline
+
+          def self.values: -> Array[Increase::Models::RealTimeDecision::CardAuthorization::decision]
+        end
+
+        type direction = :settlement | :refund
+
+        class Direction < Increase::Enum
+          # A regular card authorization where funds are debited from the cardholder.
+          SETTLEMENT: :settlement
+
+          # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+          REFUND: :refund
+
+          def self.values: -> Array[Increase::Models::RealTimeDecision::CardAuthorization::direction]
+        end
+
+        type network_details =
+          {
+            category: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::category,
+            visa: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa?
+          }
+
+        class NetworkDetails < Increase::BaseModel
+          attr_accessor category: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::category
+
+          attr_accessor visa: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa?
+
+          def initialize:
+            (
+              category: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::category,
+              visa: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa?
+            ) -> void
+            | (
+              ?Increase::Models::RealTimeDecision::CardAuthorization::network_details
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::RealTimeDecision::CardAuthorization::network_details
+
+          type category = :visa
+
+          class Category < Increase::Enum
+            # Visa
+            VISA: :visa
+
+            def self.values: -> Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::category]
+          end
+
+          type visa =
+            {
+              electronic_commerce_indicator: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator?,
+              point_of_service_entry_mode: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode?,
+              stand_in_processing_reason: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?
+            }
+
+          class Visa < Increase::BaseModel
+            attr_accessor electronic_commerce_indicator: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator?
+
+            attr_accessor point_of_service_entry_mode: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode?
+
+            attr_accessor stand_in_processing_reason: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?
+
+            def initialize:
+              (
+                electronic_commerce_indicator: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator?,
+                point_of_service_entry_mode: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode?,
+                stand_in_processing_reason: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?
+              ) -> void
+              | (
+                ?Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::visa
+                | Increase::BaseModel data
+              ) -> void
+
+            def to_hash: -> Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::visa
+
+            type electronic_commerce_indicator =
+              :mail_phone_order
+              | :recurring
+              | :installment
+              | :unknown_mail_phone_order
+              | :secure_electronic_commerce
+              | :non_authenticated_security_transaction_at_3ds_capable_merchant
+              | :non_authenticated_security_transaction
+              | :non_secure_transaction
+
+            class ElectronicCommerceIndicator < Increase::Enum
+              # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
+              MAIL_PHONE_ORDER: :mail_phone_order
+
+              # Recurring transaction: Payment indicator used to indicate a recurring transaction that originates from an acquirer in the US region.
+              RECURRING: :recurring
+
+              # Installment payment: Payment indicator used to indicate one purchase of goods or services that is billed to the account in multiple charges over a period of time agreed upon by the cardholder and merchant from transactions that originate from an acquirer in the US region.
+              INSTALLMENT: :installment
+
+              # Unknown classification: other mail order: Use to indicate that the type of mail/telephone order is unknown.
+              UNKNOWN_MAIL_PHONE_ORDER: :unknown_mail_phone_order
+
+              # Secure electronic commerce transaction: Use to indicate that the electronic commerce transaction has been authenticated using e.g., 3-D Secure
+              SECURE_ELECTRONIC_COMMERCE: :secure_electronic_commerce
+
+              # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
+              NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT: :non_authenticated_security_transaction_at_3ds_capable_merchant
+
+              # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
+              NON_AUTHENTICATED_SECURITY_TRANSACTION: :non_authenticated_security_transaction
+
+              # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
+              NON_SECURE_TRANSACTION: :non_secure_transaction
+
+              def self.values: -> Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator]
+            end
+
+            type point_of_service_entry_mode =
+              :unknown
+              | :manual
+              | :magnetic_stripe_no_cvv
+              | :optical_code
+              | :integrated_circuit_card
+              | :contactless
+              | :credential_on_file
+              | :magnetic_stripe
+              | :contactless_magnetic_stripe
+              | :integrated_circuit_card_no_cvv
+
+            class PointOfServiceEntryMode < Increase::Enum
+              # Unknown
+              UNKNOWN: :unknown
+
+              # Manual key entry
+              MANUAL: :manual
+
+              # Magnetic stripe read, without card verification value
+              MAGNETIC_STRIPE_NO_CVV: :magnetic_stripe_no_cvv
+
+              # Optical code
+              OPTICAL_CODE: :optical_code
+
+              # Contact chip card
+              INTEGRATED_CIRCUIT_CARD: :integrated_circuit_card
+
+              # Contactless read of chip card
+              CONTACTLESS: :contactless
+
+              # Transaction initiated using a credential that has previously been stored on file
+              CREDENTIAL_ON_FILE: :credential_on_file
+
+              # Magnetic stripe read
+              MAGNETIC_STRIPE: :magnetic_stripe
+
+              # Contactless read of magnetic stripe data
+              CONTACTLESS_MAGNETIC_STRIPE: :contactless_magnetic_stripe
+
+              # Contact chip card, without card verification value
+              INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
+
+              def self.values: -> Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode]
+            end
+
+            type stand_in_processing_reason =
+              :issuer_error
+              | :invalid_physical_card
+              | :invalid_cardholder_authentication_verification_value
+              | :internal_visa_error
+              | :merchant_transaction_advisory_service_authentication_required
+              | :payment_fraud_disruption_acquirer_block
+              | :other
+
+            class StandInProcessingReason < Increase::Enum
+              # Increase failed to process the authorization in a timely manner.
+              ISSUER_ERROR: :issuer_error
+
+              # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
+              INVALID_PHYSICAL_CARD: :invalid_physical_card
+
+              # The 3DS cardholder authentication verification value was invalid.
+              INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE: :invalid_cardholder_authentication_verification_value
+
+              # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
+              INTERNAL_VISA_ERROR: :internal_visa_error
+
+              # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
+              MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED: :merchant_transaction_advisory_service_authentication_required
+
+              # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
+              PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK: :payment_fraud_disruption_acquirer_block
+
+              # An unspecific reason for stand-in processing.
+              OTHER: :other
+
+              def self.values: -> Array[Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason]
+            end
+          end
+        end
+
+        type network_identifiers =
+          {
+            retrieval_reference_number: String?,
+            trace_number: String?,
+            transaction_id: String?
+          }
+
+        class NetworkIdentifiers < Increase::BaseModel
+          attr_accessor retrieval_reference_number: String?
+
+          attr_accessor trace_number: String?
+
+          attr_accessor transaction_id: String?
+
+          def initialize:
+            (
+              retrieval_reference_number: String?,
+              trace_number: String?,
+              transaction_id: String?
+            ) -> void
+            | (
+              ?Increase::Models::RealTimeDecision::CardAuthorization::network_identifiers
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::RealTimeDecision::CardAuthorization::network_identifiers
+        end
+
+        type processing_category =
+          :account_funding
+          | :automatic_fuel_dispenser
+          | :bill_payment
+          | :purchase
+          | :quasi_cash
+          | :refund
+
+        class ProcessingCategory < Increase::Enum
+          # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
+          ACCOUNT_FUNDING: :account_funding
+
+          # Automatic fuel dispenser authorizations occur when a card is used at a gas pump, prior to the actual transaction amount being known. They are followed by an advice message that updates the amount of the pending transaction.
+          AUTOMATIC_FUEL_DISPENSER: :automatic_fuel_dispenser
+
+          # A transaction used to pay a bill.
+          BILL_PAYMENT: :bill_payment
+
+          # A regular purchase.
+          PURCHASE: :purchase
+
+          # Quasi-cash transactions represent purchases of items which may be convertible to cash.
+          QUASI_CASH: :quasi_cash
+
+          # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
+          REFUND: :refund
+
+          def self.values: -> Array[Increase::Models::RealTimeDecision::CardAuthorization::processing_category]
+        end
+
+        type request_details =
+          {
+            category: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::category,
+            incremental_authorization: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization?,
+            initial_authorization: top?
+          }
+
+        class RequestDetails < Increase::BaseModel
+          attr_accessor category: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::category
+
+          attr_accessor incremental_authorization: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization?
+
+          attr_accessor initial_authorization: top?
+
+          def initialize:
+            (
+              category: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::category,
+              incremental_authorization: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization?,
+              initial_authorization: top?
+            ) -> void
+            | (
+              ?Increase::Models::RealTimeDecision::CardAuthorization::request_details
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::RealTimeDecision::CardAuthorization::request_details
+
+          type category = :initial_authorization | :incremental_authorization
+
+          class Category < Increase::Enum
+            # A regular, standalone authorization.
+            INITIAL_AUTHORIZATION: :initial_authorization
+
+            # An incremental request to increase the amount of an existing authorization.
+            INCREMENTAL_AUTHORIZATION: :incremental_authorization
+
+            def self.values: -> Array[Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::category]
+          end
+
+          type incremental_authorization =
+            { card_payment_id: String, original_card_authorization_id: String }
+
+          class IncrementalAuthorization < Increase::BaseModel
+            attr_accessor card_payment_id: String
+
+            attr_accessor original_card_authorization_id: String
+
+            def initialize:
+              (
+                card_payment_id: String,
+                original_card_authorization_id: String
+              ) -> void
+              | (
+                ?Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::incremental_authorization
+                | Increase::BaseModel data
+              ) -> void
+
+            def to_hash: -> Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::incremental_authorization
+          end
+        end
+
+        type verification =
+          {
+            card_verification_code: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode,
+            cardholder_address: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress
+          }
+
+        class Verification < Increase::BaseModel
+          attr_accessor card_verification_code: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode
+
+          attr_accessor cardholder_address: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress
+
+          def initialize:
+            (
+              card_verification_code: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode,
+              cardholder_address: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress
+            ) -> void
+            | (
+              ?Increase::Models::RealTimeDecision::CardAuthorization::verification
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::RealTimeDecision::CardAuthorization::verification
+
+          type card_verification_code =
+            {
+              result: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::result
+            }
+
+          class CardVerificationCode < Increase::BaseModel
+            attr_accessor result: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::result
+
+            def initialize:
+              (
+                result: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::result
+              ) -> void
+              | (
+                ?Increase::Models::RealTimeDecision::CardAuthorization::Verification::card_verification_code
+                | Increase::BaseModel data
+              ) -> void
+
+            def to_hash: -> Increase::Models::RealTimeDecision::CardAuthorization::Verification::card_verification_code
+
+            type result = :not_checked | :match | :no_match
+
+            class Result < Increase::Enum
+              # No card verification code was provided in the authorization request.
+              NOT_CHECKED: :not_checked
+
+              # The card verification code matched the one on file.
+              MATCH: :match
+
+              # The card verification code did not match the one on file.
+              NO_MATCH: :no_match
+
+              def self.values: -> Array[Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::result]
+            end
+          end
+
+          type cardholder_address =
+            {
+              :actual_line1 => String?,
+              actual_postal_code: String?,
+              :provided_line1 => String?,
+              provided_postal_code: String?,
+              result: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::result
+            }
+
+          class CardholderAddress < Increase::BaseModel
+            attr_accessor actual_line1: String?
+
+            attr_accessor actual_postal_code: String?
+
+            attr_accessor provided_line1: String?
+
+            attr_accessor provided_postal_code: String?
+
+            attr_accessor result: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::result
+
+            def initialize:
+              (
+                actual_line1: String?,
+                actual_postal_code: String?,
+                provided_line1: String?,
+                provided_postal_code: String?,
+                result: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::result
+              ) -> void
+              | (
+                ?Increase::Models::RealTimeDecision::CardAuthorization::Verification::cardholder_address
+                | Increase::BaseModel data
+              ) -> void
+
+            def to_hash: -> Increase::Models::RealTimeDecision::CardAuthorization::Verification::cardholder_address
+
+            type result =
+              :not_checked
+              | :postal_code_match_address_not_checked
+              | :postal_code_match_address_no_match
+              | :postal_code_no_match_address_match
+              | :match
+              | :no_match
+
+            class Result < Increase::Enum
+              # No adress was provided in the authorization request.
+              NOT_CHECKED: :not_checked
+
+              # Postal code matches, but the street address was not verified.
+              POSTAL_CODE_MATCH_ADDRESS_NOT_CHECKED: :postal_code_match_address_not_checked
+
+              # Postal code matches, but the street address does not match.
+              POSTAL_CODE_MATCH_ADDRESS_NO_MATCH: :postal_code_match_address_no_match
+
+              # Postal code does not match, but the street address matches.
+              POSTAL_CODE_NO_MATCH_ADDRESS_MATCH: :postal_code_no_match_address_match
+
+              # Postal code and street address match.
+              MATCH: :match
+
+              # Postal code and street address do not match.
+              NO_MATCH: :no_match
+
+              def self.values: -> Array[Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::result]
+            end
+          end
+        end
+      end
+
+      type category =
+        :card_authorization_requested
+        | :card_authentication_requested
+        | :card_authentication_challenge_requested
+        | :digital_wallet_token_requested
+        | :digital_wallet_authentication_requested
+
+      class Category < Increase::Enum
+        # A card is being authorized.
+        CARD_AUTHORIZATION_REQUESTED: :card_authorization_requested
+
+        # 3DS authentication is requested.
+        CARD_AUTHENTICATION_REQUESTED: :card_authentication_requested
+
+        # 3DS authentication challenge requires cardholder involvement.
+        CARD_AUTHENTICATION_CHALLENGE_REQUESTED: :card_authentication_challenge_requested
+
+        # A card is being loaded into a digital wallet.
+        DIGITAL_WALLET_TOKEN_REQUESTED: :digital_wallet_token_requested
+
+        # A card is being loaded into a digital wallet and requires cardholder authentication.
+        DIGITAL_WALLET_AUTHENTICATION_REQUESTED: :digital_wallet_authentication_requested
+
+        def self.values: -> Array[Increase::Models::RealTimeDecision::category]
+      end
+
+      type digital_wallet_authentication =
+        {
+          card_id: String,
+          channel: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::channel,
+          digital_wallet: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::digital_wallet,
+          email: String?,
+          one_time_passcode: String,
+          phone: String?,
+          result: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::result?
+        }
+
+      class DigitalWalletAuthentication < Increase::BaseModel
+        attr_accessor card_id: String
+
+        attr_accessor channel: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::channel
+
+        attr_accessor digital_wallet: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::digital_wallet
+
+        attr_accessor email: String?
+
+        attr_accessor one_time_passcode: String
+
+        attr_accessor phone: String?
+
+        attr_accessor result: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::result?
+
+        def initialize:
+          (
+            card_id: String,
+            channel: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::channel,
+            digital_wallet: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::digital_wallet,
+            email: String?,
+            one_time_passcode: String,
+            phone: String?,
+            result: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::result?
+          ) -> void
+          | (
+            ?Increase::Models::RealTimeDecision::digital_wallet_authentication
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::RealTimeDecision::digital_wallet_authentication
+
+        type channel = :sms | :email
+
+        class Channel < Increase::Enum
+          # Send one-time passcodes over SMS.
+          SMS: :sms
+
+          # Send one-time passcodes over email.
+          EMAIL: :email
+
+          def self.values: -> Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::channel]
+        end
+
+        type digital_wallet = :apple_pay | :google_pay | :samsung_pay | :unknown
+
+        class DigitalWallet < Increase::Enum
+          # Apple Pay
+          APPLE_PAY: :apple_pay
+
+          # Google Pay
+          GOOGLE_PAY: :google_pay
+
+          # Samsung Pay
+          SAMSUNG_PAY: :samsung_pay
+
+          # Unknown
+          UNKNOWN: :unknown
+
+          def self.values: -> Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::digital_wallet]
+        end
+
+        type result = :success | :failure
+
+        class Result < Increase::Enum
+          # Your application successfully delivered the one-time passcode to the cardholder.
+          SUCCESS: :success
+
+          # Your application failed to deliver the one-time passcode to the cardholder.
+          FAILURE: :failure
+
+          def self.values: -> Array[Increase::Models::RealTimeDecision::DigitalWalletAuthentication::result]
+        end
+      end
+
+      type digital_wallet_token =
+        {
+          card_id: String,
+          card_profile_id: String?,
+          decision: Increase::Models::RealTimeDecision::DigitalWalletToken::decision?,
+          digital_wallet: Increase::Models::RealTimeDecision::DigitalWalletToken::digital_wallet
+        }
+
+      class DigitalWalletToken < Increase::BaseModel
+        attr_accessor card_id: String
+
+        attr_accessor card_profile_id: String?
+
+        attr_accessor decision: Increase::Models::RealTimeDecision::DigitalWalletToken::decision?
+
+        attr_accessor digital_wallet: Increase::Models::RealTimeDecision::DigitalWalletToken::digital_wallet
+
+        def initialize:
+          (
+            card_id: String,
+            card_profile_id: String?,
+            decision: Increase::Models::RealTimeDecision::DigitalWalletToken::decision?,
+            digital_wallet: Increase::Models::RealTimeDecision::DigitalWalletToken::digital_wallet
+          ) -> void
+          | (
+            ?Increase::Models::RealTimeDecision::digital_wallet_token
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::RealTimeDecision::digital_wallet_token
+
+        type decision = :approve | :decline
+
+        class Decision < Increase::Enum
+          # Approve the provisioning request.
+          APPROVE: :approve
+
+          # Decline the provisioning request.
+          DECLINE: :decline
+
+          def self.values: -> Array[Increase::Models::RealTimeDecision::DigitalWalletToken::decision]
+        end
+
+        type digital_wallet = :apple_pay | :google_pay | :samsung_pay | :unknown
+
+        class DigitalWallet < Increase::Enum
+          # Apple Pay
+          APPLE_PAY: :apple_pay
+
+          # Google Pay
+          GOOGLE_PAY: :google_pay
+
+          # Samsung Pay
+          SAMSUNG_PAY: :samsung_pay
+
+          # Unknown
+          UNKNOWN: :unknown
+
+          def self.values: -> Array[Increase::Models::RealTimeDecision::DigitalWalletToken::digital_wallet]
+        end
+      end
+
+      type status = :pending | :responded | :timed_out
+
+      class Status < Increase::Enum
+        # The decision is pending action via real-time webhook.
+        PENDING: :pending
+
+        # Your webhook actioned the real-time decision.
+        RESPONDED: :responded
+
+        # Your webhook failed to respond to the authorization in time.
+        TIMED_OUT: :timed_out
+
+        def self.values: -> Array[Increase::Models::RealTimeDecision::status]
+      end
+
+      type type_ = :real_time_decision
+
+      class Type < Increase::Enum
+        REAL_TIME_DECISION: :real_time_decision
+
+        def self.values: -> Array[Increase::Models::RealTimeDecision::type_]
+      end
+    end
+  end
+end

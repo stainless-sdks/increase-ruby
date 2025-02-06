@@ -13,7 +13,7 @@ module Increase
       #
       #   @option params [String] :recipient_name The name of the recipient that will receive mail at this location.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Lockbox]
       #
@@ -34,7 +34,7 @@ module Increase
       #
       # @param params [Increase::Models::LockboxRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Lockbox]
       #
@@ -59,7 +59,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::LockboxUpdateParams::Status] :status This indicates if checks can be sent to the Lockbox.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Lockbox]
       #
@@ -92,7 +92,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Lockbox>]
       #

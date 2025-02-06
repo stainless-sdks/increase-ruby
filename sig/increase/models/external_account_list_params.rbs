@@ -1,0 +1,88 @@
+module Increase
+  module Models
+    type external_account_list_params =
+      {
+        cursor: String,
+        idempotency_key: String,
+        limit: Integer,
+        routing_number: String,
+        status: Increase::Models::ExternalAccountListParams::Status
+      }
+      & Increase::request_parameters
+
+    class ExternalAccountListParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> void
+
+      attr_reader idempotency_key: String?
+
+      def idempotency_key=: (String) -> void
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      attr_reader routing_number: String?
+
+      def routing_number=: (String) -> void
+
+      attr_reader status: Increase::Models::ExternalAccountListParams::Status?
+
+      def status=: (Increase::Models::ExternalAccountListParams::Status) -> void
+
+      def initialize:
+        (
+          cursor: String,
+          idempotency_key: String,
+          limit: Integer,
+          routing_number: String,
+          status: Increase::Models::ExternalAccountListParams::Status,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::external_account_list_params
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::external_account_list_params
+
+      type status =
+        { in_: Array[Increase::Models::ExternalAccountListParams::Status::in_] }
+
+      class Status < Increase::BaseModel
+        attr_reader in_: Array[Increase::Models::ExternalAccountListParams::Status::in_]?
+
+        def in_=: (
+          Array[Increase::Models::ExternalAccountListParams::Status::in_]
+        ) -> void
+
+        def initialize:
+          (
+            in_: Array[Increase::Models::ExternalAccountListParams::Status::in_]
+          ) -> void
+          | (
+            ?Increase::Models::ExternalAccountListParams::status
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::ExternalAccountListParams::status
+
+        type in_ = :active | :archived
+
+        class In < Increase::Enum
+          # The External Account is active.
+          ACTIVE: :active
+
+          # The External Account is archived and won't appear in the dashboard.
+          ARCHIVED: :archived
+
+          def self.values: -> Array[Increase::Models::ExternalAccountListParams::Status::in_]
+        end
+      end
+    end
+  end
+end

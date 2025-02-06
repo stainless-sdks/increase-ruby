@@ -17,7 +17,7 @@ module Increase
         #
         #   @option params [String] :explanation Why the dispute was rejected. Not required for accepting disputes.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CardDispute]
         #

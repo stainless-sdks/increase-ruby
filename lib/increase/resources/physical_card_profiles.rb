@@ -15,7 +15,7 @@ module Increase
       #
       #   @option params [String] :front_image_file_id The identifier of the File containing the physical card's front image.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCardProfile]
       #
@@ -36,7 +36,7 @@ module Increase
       #
       # @param params [Increase::Models::PhysicalCardProfileRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCardProfile]
       #
@@ -65,7 +65,7 @@ module Increase
       #
       #   @option params [Increase::Models::PhysicalCardProfileListParams::Status] :status
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::PhysicalCardProfile>]
       #
@@ -87,7 +87,7 @@ module Increase
       #
       # @param params [Increase::Models::PhysicalCardProfileArchiveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCardProfile]
       #
@@ -117,7 +117,7 @@ module Increase
       #   @option params [Increase::Models::PhysicalCardProfileCloneParams::FrontText] :front_text Text printed on the front of the card. Reach out to
       #     [support@increase.com](mailto:support@increase.com) for more information.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCardProfile]
       #

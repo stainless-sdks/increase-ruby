@@ -15,7 +15,7 @@ module Increase
         #
         #   @option params [String] :card_payment_id The identifier of the Card Payment to create a fuel_confirmation on.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CardPayment]
         #

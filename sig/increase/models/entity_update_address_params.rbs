@@ -1,0 +1,64 @@
+module Increase
+  module Models
+    type entity_update_address_params =
+      { address: Increase::Models::EntityUpdateAddressParams::Address }
+      & Increase::request_parameters
+
+    class EntityUpdateAddressParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      attr_accessor address: Increase::Models::EntityUpdateAddressParams::Address
+
+      def initialize:
+        (
+          address: Increase::Models::EntityUpdateAddressParams::Address,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::entity_update_address_params
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::entity_update_address_params
+
+      type address =
+        {
+          city: String,
+          :line1 => String,
+          state: String,
+          zip: String,
+          :line2 => String
+        }
+
+      class Address < Increase::BaseModel
+        attr_accessor city: String
+
+        attr_accessor line1: String
+
+        attr_accessor state: String
+
+        attr_accessor zip: String
+
+        attr_reader line2: String?
+
+        def line2=: (String) -> void
+
+        def initialize:
+          (
+            city: String,
+            line1: String,
+            state: String,
+            zip: String,
+            line2: String
+          ) -> void
+          | (
+            ?Increase::Models::EntityUpdateAddressParams::address
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::EntityUpdateAddressParams::address
+      end
+    end
+  end
+end

@@ -55,7 +55,7 @@ module Increase
         #   @option params [String] :originator_to_beneficiary_information_line4 Line 4 of the information conveyed from the originator of the message to the
         #     beneficiary.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::InboundWireDrawdownRequest]
         #

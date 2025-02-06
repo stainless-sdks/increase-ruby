@@ -183,6 +183,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # Filter Accounts for those with the specified status.
       #
       # @example
@@ -202,6 +204,11 @@ module Increase
         OPEN = :open
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

@@ -223,6 +223,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The status of the transfer.
       #
       # @example
@@ -252,8 +254,15 @@ module Increase
         REVERSED = :reversed
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_transfer`.
       #
@@ -268,6 +277,11 @@ module Increase
         INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

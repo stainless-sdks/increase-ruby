@@ -1,0 +1,60 @@
+# typed: strong
+
+module Increase
+  module Models
+    module Simulations
+      class CardDisputeActionParams < Increase::BaseModel
+        extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
+        sig { returns(Symbol) }
+        attr_accessor :status
+
+        sig { returns(T.nilable(String)) }
+        attr_reader :explanation
+
+        sig { params(explanation: String).void }
+        attr_writer :explanation
+
+        sig do
+          params(
+            status: Symbol,
+            explanation: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          ).void
+        end
+        def initialize(status:, explanation: nil, request_options: {})
+        end
+
+        sig do
+          override.returns({status: Symbol, explanation: String, request_options: Increase::RequestOptions})
+        end
+        def to_hash
+        end
+
+        class Status < Increase::Enum
+          abstract!
+
+          # Increase has requested more information related to the Card Dispute from you.
+          PENDING_USER_INFORMATION = :pending_user_information
+
+          # The Card Dispute has been accepted and your funds have been returned. The card dispute will eventually transition into `won` or `lost` depending on the outcome.
+          ACCEPTED = :accepted
+
+          # The Card Dispute has been rejected.
+          REJECTED = :rejected
+
+          # The Card Dispute has been lost and funds previously credited from the acceptance have been debited.
+          LOST = :lost
+
+          # The Card Dispute has been won and no further action can be taken.
+          WON = :won
+
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
+          end
+        end
+      end
+    end
+  end
+end

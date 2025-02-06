@@ -11,7 +11,7 @@ class Increase::Test::Resources::OAuthTokensTest < Minitest::Test
   end
 
   def test_create_required_params
-    response = @increase.oauth_tokens.create(grant_type: "authorization_code")
+    response = @increase.oauth_tokens.create(grant_type: :authorization_code)
 
     assert_pattern do
       response => Increase::Models::OAuthToken

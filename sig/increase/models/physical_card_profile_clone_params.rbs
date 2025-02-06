@@ -1,0 +1,75 @@
+module Increase
+  module Models
+    type physical_card_profile_clone_params =
+      {
+        carrier_image_file_id: String,
+        contact_phone: String,
+        description: String,
+        front_image_file_id: String,
+        front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText
+      }
+      & Increase::request_parameters
+
+    class PhysicalCardProfileCloneParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      attr_reader carrier_image_file_id: String?
+
+      def carrier_image_file_id=: (String) -> void
+
+      attr_reader contact_phone: String?
+
+      def contact_phone=: (String) -> void
+
+      attr_reader description: String?
+
+      def description=: (String) -> void
+
+      attr_reader front_image_file_id: String?
+
+      def front_image_file_id=: (String) -> void
+
+      attr_reader front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText?
+
+      def front_text=: (
+        Increase::Models::PhysicalCardProfileCloneParams::FrontText
+      ) -> void
+
+      def initialize:
+        (
+          carrier_image_file_id: String,
+          contact_phone: String,
+          description: String,
+          front_image_file_id: String,
+          front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::physical_card_profile_clone_params
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::physical_card_profile_clone_params
+
+      type front_text = { :line1 => String, :line2 => String }
+
+      class FrontText < Increase::BaseModel
+        attr_accessor line1: String
+
+        attr_reader line2: String?
+
+        def line2=: (String) -> void
+
+        def initialize:
+          (line1: String, line2: String) -> void
+          | (
+            ?Increase::Models::PhysicalCardProfileCloneParams::front_text
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::PhysicalCardProfileCloneParams::front_text
+      end
+    end
+  end
+end

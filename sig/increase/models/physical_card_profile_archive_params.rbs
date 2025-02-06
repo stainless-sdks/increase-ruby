@@ -1,0 +1,20 @@
+module Increase
+  module Models
+    type physical_card_profile_archive_params =
+      {  } & Increase::request_parameters
+
+    class PhysicalCardProfileArchiveParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      def initialize:
+        (request_options: Increase::request_opts) -> void
+        | (
+          ?Increase::Models::physical_card_profile_archive_params
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::physical_card_profile_archive_params
+    end
+  end
+end

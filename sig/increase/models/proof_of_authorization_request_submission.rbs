@@ -1,0 +1,117 @@
+module Increase
+  module Models
+    type proof_of_authorization_request_submission =
+      {
+        id: String,
+        authorization_terms: String,
+        authorized_at: Time,
+        authorizer_company: String?,
+        authorizer_email: String?,
+        authorizer_ip_address: String?,
+        authorizer_name: String?,
+        created_at: Time,
+        customer_has_been_offboarded: bool?,
+        idempotency_key: String?,
+        proof_of_authorization_request_id: String,
+        status: Increase::Models::ProofOfAuthorizationRequestSubmission::status,
+        type: Increase::Models::ProofOfAuthorizationRequestSubmission::type_,
+        updated_at: Time,
+        validated_account_ownership_via_credential: bool?,
+        validated_account_ownership_with_account_statement: bool?,
+        validated_account_ownership_with_microdeposit: bool?
+      }
+
+    class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
+      attr_accessor id: String
+
+      attr_accessor authorization_terms: String
+
+      attr_accessor authorized_at: Time
+
+      attr_accessor authorizer_company: String?
+
+      attr_accessor authorizer_email: String?
+
+      attr_accessor authorizer_ip_address: String?
+
+      attr_accessor authorizer_name: String?
+
+      attr_accessor created_at: Time
+
+      attr_accessor customer_has_been_offboarded: bool?
+
+      attr_accessor idempotency_key: String?
+
+      attr_accessor proof_of_authorization_request_id: String
+
+      attr_accessor status: Increase::Models::ProofOfAuthorizationRequestSubmission::status
+
+      attr_accessor type: Increase::Models::ProofOfAuthorizationRequestSubmission::type_
+
+      attr_accessor updated_at: Time
+
+      attr_accessor validated_account_ownership_via_credential: bool?
+
+      attr_accessor validated_account_ownership_with_account_statement: bool?
+
+      attr_accessor validated_account_ownership_with_microdeposit: bool?
+
+      def initialize:
+        (
+          id: String,
+          authorization_terms: String,
+          authorized_at: Time,
+          authorizer_company: String?,
+          authorizer_email: String?,
+          authorizer_ip_address: String?,
+          authorizer_name: String?,
+          created_at: Time,
+          customer_has_been_offboarded: bool?,
+          idempotency_key: String?,
+          proof_of_authorization_request_id: String,
+          status: Increase::Models::ProofOfAuthorizationRequestSubmission::status,
+          type: Increase::Models::ProofOfAuthorizationRequestSubmission::type_,
+          updated_at: Time,
+          validated_account_ownership_via_credential: bool?,
+          validated_account_ownership_with_account_statement: bool?,
+          validated_account_ownership_with_microdeposit: bool?
+        ) -> void
+        | (
+          ?Increase::Models::proof_of_authorization_request_submission
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::proof_of_authorization_request_submission
+
+      type status =
+        :pending_review | :rejected | :canceled | :pending_sending | :sent
+
+      class Status < Increase::Enum
+        # The proof of authorization request submission is pending review.
+        PENDING_REVIEW: :pending_review
+
+        # The proof of authorization request submission was rejected.
+        REJECTED: :rejected
+
+        # The proof of authorization request submission was canceled and replaced with another.
+        CANCELED: :canceled
+
+        # The proof of authorization request submission is pending sending.
+        PENDING_SENDING: :pending_sending
+
+        # The proof of authorization request submission was sent.
+        SENT: :sent
+
+        def self.values: -> Array[Increase::Models::ProofOfAuthorizationRequestSubmission::status]
+      end
+
+      type type_ = :proof_of_authorization_request_submission
+
+      class Type < Increase::Enum
+        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION: :proof_of_authorization_request_submission
+
+        def self.values: -> Array[Increase::Models::ProofOfAuthorizationRequestSubmission::type_]
+      end
+    end
+  end
+end

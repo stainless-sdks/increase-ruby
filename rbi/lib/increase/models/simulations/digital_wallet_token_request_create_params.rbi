@@ -1,0 +1,31 @@
+# typed: strong
+
+module Increase
+  module Models
+    module Simulations
+      class DigitalWalletTokenRequestCreateParams < Increase::BaseModel
+        extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
+        sig { returns(String) }
+        attr_accessor :card_id
+
+        sig do
+          params(
+            card_id: String,
+            request_options: T.any(
+              Increase::RequestOptions,
+              T::Hash[Symbol, T.anything]
+            )
+          ).void
+        end
+        def initialize(card_id:, request_options: {})
+        end
+
+        sig { override.returns({card_id: String, request_options: Increase::RequestOptions}) }
+        def to_hash
+        end
+      end
+    end
+  end
+end

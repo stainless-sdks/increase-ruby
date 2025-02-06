@@ -9,7 +9,7 @@ module Increase
       #
       # @param params [Increase::Models::FileCreateParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [String] :file The file contents. This should follow the specifications of
+      #   @option params [IO, StringIO] :file The file contents. This should follow the specifications of
       #     [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
       #     transfers for the multipart/form-data protocol.
       #
@@ -17,7 +17,7 @@ module Increase
       #
       #   @option params [String] :description The description you choose to give the File.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::File]
       #
@@ -39,7 +39,7 @@ module Increase
       #
       # @param params [Increase::Models::FileRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::File]
       #
@@ -70,7 +70,7 @@ module Increase
       #
       #   @option params [Increase::Models::FileListParams::Purpose] :purpose
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::File>]
       #

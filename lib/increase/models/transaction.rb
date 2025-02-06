@@ -118,6 +118,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
       #   Transaction's currency. This will match the currency on the Transaction's
       #   Account.
@@ -159,8 +161,15 @@ module Increase
         USD = :USD
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The type of the route this Transaction came through.
       #
       # @example
@@ -185,6 +194,11 @@ module Increase
         LOCKBOX = :lockbox
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -656,6 +670,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
           #
@@ -696,6 +712,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -867,6 +888,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Why the ACH Transfer was returned. This reason code is sent by the receiving
           #   bank back to Increase.
           #
@@ -1099,6 +1122,11 @@ module Increase
             UNTIMELY_RETURN = :untimely_return
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -1426,6 +1454,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
             # @example
@@ -1465,9 +1495,16 @@ module Increase
               USD = :USD
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
           #
@@ -1508,6 +1545,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -1554,6 +1596,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
             #
@@ -1594,6 +1638,11 @@ module Increase
               USD = :USD
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -1923,6 +1972,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # Additional charges (gas, late fee, etc.) being billed.
               #
               # @example
@@ -1962,8 +2013,15 @@ module Increase
                 PARKING_VIOLATION = :parking_violation
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
               #
@@ -1984,6 +2042,11 @@ module Increase
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
@@ -2154,6 +2217,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # Additional charges (phone, late check-out, etc.) being billed.
               #
               # @example
@@ -2196,8 +2261,15 @@ module Increase
                 LAUNDRY = :laundry
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
               #
@@ -2218,9 +2290,16 @@ module Increase
                 NO_SHOW = :no_show
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
+            # @abstract
+            #
             # The format of the purchase identifier.
             #
             # @example
@@ -2255,6 +2334,11 @@ module Increase
               INVOICE_NUMBER = :invoice_number
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @example
@@ -2354,7 +2438,7 @@ module Increase
               # @!attribute trip_legs
               #   Fields specific to each leg of the journey.
               #
-              #   @return [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>]
+              #   @return [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>, nil]
               required :trip_legs,
                        -> {
                          Increase::ArrayOf[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]
@@ -2375,7 +2459,7 @@ module Increase
               #   # @param ticket_number [String, nil]
               #   # @param travel_agency_code [String, nil]
               #   # @param travel_agency_name [String, nil]
-              #   # @param trip_legs [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>]
+              #   # @param trip_legs [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>, nil]
               #   #
               #   def initialize(
               #     ancillary:,
@@ -2469,6 +2553,8 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
+                # @abstract
+                #
                 # Indicates the reason for a credit to the cardholder.
                 #
                 # @example
@@ -2498,6 +2584,11 @@ module Increase
                   OTHER = :other
 
                   finalize!
+
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   #
+                  #   def self.values; end
                 end
 
                 # @example
@@ -2532,6 +2623,8 @@ module Increase
 
                   # def initialize: (Hash | Increase::BaseModel) -> void
 
+                  # @abstract
+                  #
                   # Category of the ancillary service.
                   #
                   # @example
@@ -2625,10 +2718,17 @@ module Increase
                     WIFI = :wifi
 
                     finalize!
+
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   #
+                    #   def self.values; end
                   end
                 end
               end
 
+              # @abstract
+              #
               # Indicates the reason for a credit to the cardholder.
               #
               # @example
@@ -2668,8 +2768,15 @@ module Increase
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Indicates whether this ticket is non-refundable.
               #
               # @example
@@ -2689,8 +2796,15 @@ module Increase
                 RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Indicates why a ticket was changed.
               #
               # @example
@@ -2715,6 +2829,11 @@ module Increase
                 NEW_TICKET = :new_ticket
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
               # @example
@@ -2790,6 +2909,8 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
+                # @abstract
+                #
                 # Indicates whether a stopover is allowed on this ticket.
                 #
                 # @example
@@ -2814,11 +2935,18 @@ module Increase
                   STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
 
                   finalize!
+
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   #
+                  #   def self.values; end
                 end
               end
             end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_refund`.
           #
@@ -2833,6 +2961,11 @@ module Increase
             CARD_REFUND = :card_refund
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -2894,6 +3027,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
           #
@@ -2934,6 +3069,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -3186,6 +3326,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
             # @example
@@ -3225,9 +3367,16 @@ module Increase
               USD = :USD
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
           #
@@ -3268,6 +3417,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -3312,6 +3466,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
             #
@@ -3352,6 +3508,11 @@ module Increase
               USD = :USD
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -3681,6 +3842,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # Additional charges (gas, late fee, etc.) being billed.
               #
               # @example
@@ -3720,8 +3883,15 @@ module Increase
                 PARKING_VIOLATION = :parking_violation
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
               #
@@ -3742,6 +3912,11 @@ module Increase
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
@@ -3912,6 +4087,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # Additional charges (phone, late check-out, etc.) being billed.
               #
               # @example
@@ -3954,8 +4131,15 @@ module Increase
                 LAUNDRY = :laundry
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
               #
@@ -3976,9 +4160,16 @@ module Increase
                 NO_SHOW = :no_show
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
+            # @abstract
+            #
             # The format of the purchase identifier.
             #
             # @example
@@ -4013,6 +4204,11 @@ module Increase
               INVOICE_NUMBER = :invoice_number
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @example
@@ -4112,7 +4308,7 @@ module Increase
               # @!attribute trip_legs
               #   Fields specific to each leg of the journey.
               #
-              #   @return [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>]
+              #   @return [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>, nil]
               required :trip_legs,
                        -> {
                          Increase::ArrayOf[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]
@@ -4133,7 +4329,7 @@ module Increase
               #   # @param ticket_number [String, nil]
               #   # @param travel_agency_code [String, nil]
               #   # @param travel_agency_name [String, nil]
-              #   # @param trip_legs [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>]
+              #   # @param trip_legs [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>, nil]
               #   #
               #   def initialize(
               #     ancillary:,
@@ -4227,6 +4423,8 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
+                # @abstract
+                #
                 # Indicates the reason for a credit to the cardholder.
                 #
                 # @example
@@ -4256,6 +4454,11 @@ module Increase
                   OTHER = :other
 
                   finalize!
+
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   #
+                  #   def self.values; end
                 end
 
                 # @example
@@ -4290,6 +4493,8 @@ module Increase
 
                   # def initialize: (Hash | Increase::BaseModel) -> void
 
+                  # @abstract
+                  #
                   # Category of the ancillary service.
                   #
                   # @example
@@ -4383,10 +4588,17 @@ module Increase
                     WIFI = :wifi
 
                     finalize!
+
+                    # @!parse
+                    #   # @return [Array<Symbol>]
+                    #   #
+                    #   def self.values; end
                   end
                 end
               end
 
+              # @abstract
+              #
               # Indicates the reason for a credit to the cardholder.
               #
               # @example
@@ -4426,8 +4638,15 @@ module Increase
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Indicates whether this ticket is non-refundable.
               #
               # @example
@@ -4447,8 +4666,15 @@ module Increase
                 RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Indicates why a ticket was changed.
               #
               # @example
@@ -4473,6 +4699,11 @@ module Increase
                 NEW_TICKET = :new_ticket
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
               # @example
@@ -4548,6 +4779,8 @@ module Increase
 
                 # def initialize: (Hash | Increase::BaseModel) -> void
 
+                # @abstract
+                #
                 # Indicates whether a stopover is allowed on this ticket.
                 #
                 # @example
@@ -4572,11 +4805,18 @@ module Increase
                   STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
 
                   finalize!
+
+                  # @!parse
+                  #   # @return [Array<Symbol>]
+                  #   #
+                  #   def self.values; end
                 end
               end
             end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `card_settlement`.
           #
@@ -4591,6 +4831,11 @@ module Increase
             CARD_SETTLEMENT = :card_settlement
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -4653,6 +4898,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
           #
@@ -4693,9 +4940,16 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
+        # @abstract
+        #
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
         #
@@ -4805,6 +5059,11 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -4898,6 +5157,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
           #
@@ -4938,6 +5199,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -5012,6 +5278,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
           #
@@ -5052,8 +5320,15 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # Why this check was returned by the bank holding the account it was drawn
           #   against.
           #
@@ -5154,6 +5429,11 @@ module Increase
             BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -5254,6 +5534,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `check_transfer_deposit`.
           #
@@ -5268,6 +5550,11 @@ module Increase
             CHECK_TRANSFER_DEPOSIT = :check_transfer_deposit
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -5321,6 +5608,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
           #
@@ -5361,6 +5650,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -5522,6 +5816,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The type of addendum.
             #
             # @example
@@ -5536,6 +5832,11 @@ module Increase
               FREEFORM = :freeform
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @example
@@ -5655,6 +5956,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The reason for the adjustment.
           #
           # @example
@@ -5679,6 +5982,11 @@ module Increase
             ADJUSTED_AMOUNT = :adjusted_amount
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -5822,6 +6130,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
           #   currency. This will always be "USD" for a Real-Time Payments transfer.
           #
@@ -5862,6 +6172,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -5980,6 +6295,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
           #   transfer.
@@ -6021,8 +6338,15 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # Why the transfer was declined.
           #
           # @example
@@ -6062,6 +6386,11 @@ module Increase
             REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -6504,6 +6833,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
           #
@@ -6544,6 +6875,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -6590,6 +6926,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
           #
@@ -6630,8 +6968,15 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # An Internal Source is a transaction between you and Increase. This describes the
           #   reason for the transaction.
           #
@@ -6699,6 +7044,11 @@ module Increase
             SAMPLE_FUNDS_RETURN = :sample_funds_return
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -6853,6 +7203,8 @@ module Increase
         end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `transaction`.
       #
@@ -6867,6 +7219,11 @@ module Increase
         TRANSACTION = :transaction
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

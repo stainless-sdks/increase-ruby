@@ -80,7 +80,7 @@ module Increase
         #     requests, this should be encoded as a comma-delimited string, such as
         #     `?in=one,two,three`.
         #
-        #   @return [Array<Symbol, Increase::Models::DocumentListParams::Category::In>]
+        #   @return [Array<Symbol, Increase::Models::DocumentListParams::Category::In>, nil]
         optional :in_,
                  -> { Increase::ArrayOf[enum: Increase::Models::DocumentListParams::Category::In] },
                  api_name: :in
@@ -96,6 +96,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case in
@@ -123,6 +125,11 @@ module Increase
           COMPANY_INFORMATION = :company_information
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 

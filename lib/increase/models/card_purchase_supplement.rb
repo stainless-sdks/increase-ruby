@@ -34,7 +34,7 @@ module Increase
       # @!attribute line_items
       #   Line item information, such as individual products purchased.
       #
-      #   @return [Array<Increase::Models::CardPurchaseSupplement::LineItem>]
+      #   @return [Array<Increase::Models::CardPurchaseSupplement::LineItem>, nil]
       required :line_items,
                -> { Increase::ArrayOf[Increase::Models::CardPurchaseSupplement::LineItem] },
                nil?: true
@@ -59,7 +59,7 @@ module Increase
       #   # @param id [String]
       #   # @param card_payment_id [String, nil]
       #   # @param invoice [Increase::Models::CardPurchaseSupplement::Invoice, nil]
-      #   # @param line_items [Array<Increase::Models::CardPurchaseSupplement::LineItem>]
+      #   # @param line_items [Array<Increase::Models::CardPurchaseSupplement::LineItem>, nil]
       #   # @param transaction_id [String]
       #   # @param type [Symbol, Increase::Models::CardPurchaseSupplement::Type]
       #   #
@@ -225,6 +225,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Indicates how the merchant applied the discount.
         #
         # @example
@@ -249,8 +251,15 @@ module Increase
           TAX_CALCULATED_ON_PRE_DISCOUNT_INVOICE_TOTAL = :tax_calculated_on_pre_discount_invoice_total
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # Indicates how the merchant applied taxes.
         #
         # @example
@@ -285,6 +294,11 @@ module Increase
           GROSS_PRICE_INVOICE_LEVEL = :gross_price_invoice_level
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -452,6 +466,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Indicates the type of line item.
         #
         # @example
@@ -476,8 +492,15 @@ module Increase
           PAYMENT = :payment
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # Indicates how the merchant applied the discount for this specific line item.
         #
         # @example
@@ -502,9 +525,16 @@ module Increase
           TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL = :tax_calculated_on_pre_discount_line_item_total
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `card_purchase_supplement`.
       #
@@ -519,6 +549,11 @@ module Increase
         CARD_PURCHASE_SUPPLEMENT = :card_purchase_supplement
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

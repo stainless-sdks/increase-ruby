@@ -61,6 +61,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # If the Group is allowed to create ACH debits.
       #
       # @example
@@ -80,8 +82,15 @@ module Increase
         ENABLED = :enabled
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # If the Group is activated or not.
       #
       # @example
@@ -101,8 +110,15 @@ module Increase
         ACTIVATED = :activated
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `group`.
       #
@@ -117,6 +133,11 @@ module Increase
         GROUP = :group
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

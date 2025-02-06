@@ -14,7 +14,7 @@ module Increase
         #
         #   @option params [Symbol, Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams::ShipmentStatus] :shipment_status The shipment status to move the Physical Card to.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::PhysicalCard]
         #

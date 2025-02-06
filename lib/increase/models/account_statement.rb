@@ -104,6 +104,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `account_statement`.
       #
@@ -118,6 +120,11 @@ module Increase
         ACCOUNT_STATEMENT = :account_statement
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

@@ -1,0 +1,19 @@
+module Increase
+  module Resources
+    class Simulations
+      class Programs
+        def create:
+          (
+            Increase::Models::Simulations::ProgramCreateParams
+            | Hash[Symbol, top] params
+          ) -> Increase::Models::Program
+          | (
+            name: String,
+            request_options: Increase::request_opts
+          ) -> Increase::Models::Program
+
+        def initialize: (client: Increase::Client) -> void
+      end
+    end
+  end
+end

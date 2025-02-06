@@ -1,0 +1,46 @@
+module Increase
+  module Models
+    type account_transfer_create_params =
+      {
+        account_id: String,
+        amount: Integer,
+        description: String,
+        destination_account_id: String,
+        require_approval: bool
+      }
+      & Increase::request_parameters
+
+    class AccountTransferCreateParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      attr_accessor account_id: String
+
+      attr_accessor amount: Integer
+
+      attr_accessor description: String
+
+      attr_accessor destination_account_id: String
+
+      attr_reader require_approval: bool?
+
+      def require_approval=: (bool) -> void
+
+      def initialize:
+        (
+          account_id: String,
+          amount: Integer,
+          description: String,
+          destination_account_id: String,
+          require_approval: bool,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::account_transfer_create_params
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::account_transfer_create_params
+    end
+  end
+end
