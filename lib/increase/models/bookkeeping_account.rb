@@ -78,6 +78,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The compliance category of the account.
       #
       # @example
@@ -97,8 +99,15 @@ module Increase
         CUSTOMER_BALANCE = :customer_balance
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_account`.
       #
@@ -113,6 +122,11 @@ module Increase
         BOOKKEEPING_ACCOUNT = :bookkeeping_account
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

@@ -11,12 +11,7 @@ class Increase::Test::Resources::FilesTest < Minitest::Test
   end
 
   def test_create_required_params
-    skip("skipped: multipart requests aren't supported right now")
-
-    response = @increase.files.create(
-      file: [StringIO.new("some file contents"), {filename: "file.txt"}],
-      purpose: "check_image_front"
-    )
+    response = @increase.files.create(file: StringIO.new("some file contents"), purpose: :check_image_front)
 
     assert_pattern do
       response => Increase::Models::File

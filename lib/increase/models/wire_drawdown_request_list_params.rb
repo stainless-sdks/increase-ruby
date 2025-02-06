@@ -62,6 +62,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # Filter Wire Drawdown Requests for those with the specified status.
       #
       # @example
@@ -91,6 +93,11 @@ module Increase
         REFUSED = :refused
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

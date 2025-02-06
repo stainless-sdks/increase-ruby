@@ -1,0 +1,46 @@
+module Increase
+  module Resources
+    class Exports
+      def create:
+        (
+          Increase::Models::ExportCreateParams | Hash[Symbol, top] params
+        ) -> Increase::Models::Export
+        | (
+          category: Increase::Models::ExportCreateParams::category,
+          account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
+          balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
+          bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
+          entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
+          transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
+          vendor_csv: top,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::Export
+
+      def retrieve:
+        (
+          String export_id,
+          ?Increase::Models::ExportRetrieveParams | Hash[Symbol, top] params
+        ) -> Increase::Models::Export
+        | (
+          String export_id,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::Export
+
+      def list:
+        (
+          ?Increase::Models::ExportListParams | Hash[Symbol, top] params
+        ) -> Increase::Page[Increase::Models::Export]
+        | (
+          category: Increase::Models::ExportListParams::Category,
+          created_at: Increase::Models::ExportListParams::CreatedAt,
+          cursor: String,
+          idempotency_key: String,
+          limit: Integer,
+          status: Increase::Models::ExportListParams::Status,
+          request_options: Increase::request_opts
+        ) -> Increase::Page[Increase::Models::Export]
+
+      def initialize: (client: Increase::Client) -> void
+    end
+  end
+end

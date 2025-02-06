@@ -177,6 +177,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether or not the authentication attempt was approved.
         #
         # @example
@@ -201,6 +203,11 @@ module Increase
           DENY = :deny
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -261,6 +268,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether or not the challenge was delivered to the cardholder.
         #
         # @example
@@ -280,6 +289,11 @@ module Increase
           FAILURE = :failure
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -532,6 +546,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether or not the authorization was approved.
         #
         # @example
@@ -551,8 +567,15 @@ module Increase
           DECLINE = :decline
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
         #
@@ -573,6 +596,11 @@ module Increase
           REFUND = :refund
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -610,6 +638,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The payment network used to process this card authorization.
           #
           # @example
@@ -624,6 +654,11 @@ module Increase
             VISA = :visa
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -680,6 +715,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # For electronic commerce transactions, this identifies the level of security used
             #   in obtaining the customer's payment credential. For mail or telephone order
             #   transactions, identifies the type of mail or telephone order.
@@ -727,8 +764,15 @@ module Increase
               NON_SECURE_TRANSACTION = :non_secure_transaction
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
+            # @abstract
+            #
             # The method used to enter the cardholder's primary account number and card
             #   expiration date.
             #
@@ -781,8 +825,15 @@ module Increase
               INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
+            # @abstract
+            #
             # Only present when `actioner: network`. Describes why a card authorization was
             #   approved or declined by Visa through stand-in processing.
             #
@@ -826,6 +877,11 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
         end
@@ -873,6 +929,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The processing category describes the intent behind the authorization, such as
         #   whether it was used for bill payments or an automatic fuel dispenser.
         #
@@ -913,6 +971,11 @@ module Increase
           REFUND = :refund
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -961,6 +1024,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The type of this request (e.g., an initial authorization or an incremental
           #   authorization).
           #
@@ -981,6 +1046,11 @@ module Increase
             INCREMENTAL_AUTHORIZATION = :incremental_authorization
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -1076,6 +1146,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The result of verifying the Card Verification Code.
             #
             # @example
@@ -1100,6 +1172,11 @@ module Increase
               NO_MATCH = :no_match
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -1162,6 +1239,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The address verification result returned to the card network.
             #
             # @example
@@ -1201,11 +1280,18 @@ module Increase
               NO_MATCH = :no_match
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
         end
       end
 
+      # @abstract
+      #
       # The category of the Real-Time Decision.
       #
       # @example
@@ -1240,6 +1326,11 @@ module Increase
         DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :digital_wallet_authentication_requested
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -1318,6 +1409,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The channel to send the card user their one-time passcode.
         #
         # @example
@@ -1337,8 +1430,15 @@ module Increase
           EMAIL = :email
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # The digital wallet app being used.
         #
         # @example
@@ -1368,8 +1468,15 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # Whether your application successfully delivered the one-time passcode.
         #
         # @example
@@ -1389,6 +1496,11 @@ module Increase
           FAILURE = :failure
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -1444,6 +1556,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether or not the provisioning request was approved. This will be null until
         #   the real time decision is responded to.
         #
@@ -1464,8 +1578,15 @@ module Increase
           DECLINE = :decline
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # The digital wallet app being used.
         #
         # @example
@@ -1495,9 +1616,16 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
+      # @abstract
+      #
       # The status of the Real-Time Decision.
       #
       # @example
@@ -1522,8 +1650,15 @@ module Increase
         TIMED_OUT = :timed_out
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `real_time_decision`.
       #
@@ -1538,6 +1673,11 @@ module Increase
         REAL_TIME_DECISION = :real_time_decision
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

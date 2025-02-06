@@ -13,7 +13,7 @@ class Increase::Test::Resources::Simulations::CardDisputesTest < Minitest::Test
   def test_action_required_params
     response = @increase.simulations.card_disputes.action(
       "card_dispute_id",
-      status: "pending_user_information"
+      status: :pending_user_information
     )
 
     assert_pattern do

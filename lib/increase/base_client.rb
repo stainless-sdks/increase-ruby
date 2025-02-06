@@ -3,13 +3,15 @@
 module Increase
   # @private
   #
+  # @abstract
+  #
   class BaseClient
     # from whatwg fetch spec
     MAX_REDIRECTS = 20
 
     # @private
     #
-    # @param req [RequestShape]
+    # @param req [Hash{Symbol=>Object}]
     #
     # @raise [ArgumentError]
     #
@@ -140,6 +142,11 @@ module Increase
         headers["x-stainless-retry-count"] = "0"
       end
 
+      timeout = opts.fetch(:timeout, @timeout).to_f.clamp((0..))
+      unless headers.key?("x-stainless-read-timeout") || timeout.zero?
+        headers["x-stainless-read-timeout"] = timeout.to_s
+      end
+
       headers.reject! { |_, v| v.to_s.empty? }
 
       body =
@@ -153,7 +160,6 @@ module Increase
       url = Increase::Util.join_parsed_uri(@base_url, {**req, path: path})
       headers, encoded = Increase::Util.encode_content(headers, body)
       max_retries = opts.fetch(:max_retries, @max_retries)
-      timeout = opts.fetch(:timeout, @timeout)
       {method: method, url: url, headers: headers, body: encoded, max_retries: max_retries, timeout: timeout}
     end
 
@@ -338,7 +344,7 @@ module Increase
           request: nil,
           response: response
         )
-      in 400.. | Increase::APIConnectionError
+      in (400..) | Increase::APIConnectionError
         delay = retry_delay(response, retry_count: retry_count)
         sleep(delay)
 

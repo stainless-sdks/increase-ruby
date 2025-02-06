@@ -89,6 +89,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
         #   will be declined if this is `allowed` but the Account Number is not active.
         #
@@ -109,6 +111,11 @@ module Increase
           BLOCKED = :blocked
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -135,6 +142,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # How Increase should process checks with this account number printed on them.
         #
         # @example
@@ -154,9 +163,16 @@ module Increase
           CHECK_TRANSFERS_ONLY = :check_transfers_only
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
+      # @abstract
+      #
       # This indicates if transfers can be made to the Account Number.
       #
       # @example
@@ -181,6 +197,11 @@ module Increase
         CANCELED = :canceled
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

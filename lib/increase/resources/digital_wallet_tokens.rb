@@ -9,7 +9,7 @@ module Increase
       #
       # @param params [Increase::Models::DigitalWalletTokenRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::DigitalWalletToken]
       #
@@ -35,7 +35,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::DigitalWalletToken>]
       #

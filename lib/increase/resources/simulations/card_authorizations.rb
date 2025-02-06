@@ -53,7 +53,7 @@ module Increase
         #   @option params [String] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card
         #     is transacting with.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::Simulations::CardAuthorizationCreateResponse]
         #

@@ -23,6 +23,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The shipment status to move the Physical Card to.
         #
         # @example
@@ -65,6 +67,11 @@ module Increase
           RETURNED = :returned
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

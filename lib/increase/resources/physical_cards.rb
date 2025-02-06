@@ -16,7 +16,7 @@ module Increase
       #   @option params [String] :physical_card_profile_id The physical card profile to use for this physical card. The latest default
       #     physical card profile will be used if not provided.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCard]
       #
@@ -37,7 +37,7 @@ module Increase
       #
       # @param params [Increase::Models::PhysicalCardRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCard]
       #
@@ -58,7 +58,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::PhysicalCardUpdateParams::Status] :status The status to update the Physical Card to.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCard]
       #
@@ -91,7 +91,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::PhysicalCard>]
       #

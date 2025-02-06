@@ -67,6 +67,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # This indicates if payments can be made with the Digital Wallet Token.
       #
       # @example
@@ -96,8 +98,15 @@ module Increase
         DEACTIVATED = :deactivated
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The digital wallet app being used.
       #
       # @example
@@ -127,8 +136,15 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `digital_wallet_token`.
       #
@@ -143,6 +159,11 @@ module Increase
         DIGITAL_WALLET_TOKEN = :digital_wallet_token
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

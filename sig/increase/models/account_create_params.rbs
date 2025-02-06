@@ -1,0 +1,45 @@
+module Increase
+  module Models
+    type account_create_params =
+      {
+        name: String,
+        entity_id: String,
+        informational_entity_id: String,
+        program_id: String
+      }
+      & Increase::request_parameters
+
+    class AccountCreateParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      attr_accessor name: String
+
+      attr_reader entity_id: String?
+
+      def entity_id=: (String) -> void
+
+      attr_reader informational_entity_id: String?
+
+      def informational_entity_id=: (String) -> void
+
+      attr_reader program_id: String?
+
+      def program_id=: (String) -> void
+
+      def initialize:
+        (
+          name: String,
+          entity_id: String,
+          informational_entity_id: String,
+          program_id: String,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::account_create_params | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::account_create_params
+    end
+  end
+end

@@ -29,7 +29,7 @@ module Increase
       #
       #   @option params [String] :authorizer_ip_address IP address of the authorizer.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       #
@@ -50,7 +50,7 @@ module Increase
       #
       # @param params [Increase::Models::ProofOfAuthorizationRequestSubmissionRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
       #
@@ -82,7 +82,7 @@ module Increase
       #
       #   @option params [String] :proof_of_authorization_request_id ID of the proof of authorization request.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequestSubmission>]
       #

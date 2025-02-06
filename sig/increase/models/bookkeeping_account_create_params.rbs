@@ -1,0 +1,60 @@
+module Increase
+  module Models
+    type bookkeeping_account_create_params =
+      {
+        name: String,
+        account_id: String,
+        compliance_category: Increase::Models::BookkeepingAccountCreateParams::compliance_category,
+        entity_id: String
+      }
+      & Increase::request_parameters
+
+    class BookkeepingAccountCreateParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      attr_accessor name: String
+
+      attr_reader account_id: String?
+
+      def account_id=: (String) -> void
+
+      attr_reader compliance_category: Increase::Models::BookkeepingAccountCreateParams::compliance_category?
+
+      def compliance_category=: (
+        Increase::Models::BookkeepingAccountCreateParams::compliance_category
+      ) -> void
+
+      attr_reader entity_id: String?
+
+      def entity_id=: (String) -> void
+
+      def initialize:
+        (
+          name: String,
+          account_id: String,
+          compliance_category: Increase::Models::BookkeepingAccountCreateParams::compliance_category,
+          entity_id: String,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::bookkeeping_account_create_params
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::bookkeeping_account_create_params
+
+      type compliance_category = :commingled_cash | :customer_balance
+
+      class ComplianceCategory < Increase::Enum
+        # A cash in an commingled Increase Account.
+        COMMINGLED_CASH: :commingled_cash
+
+        # A customer balance.
+        CUSTOMER_BALANCE: :customer_balance
+
+        def self.values: -> Array[Increase::Models::BookkeepingAccountCreateParams::compliance_category]
+      end
+    end
+  end
+end

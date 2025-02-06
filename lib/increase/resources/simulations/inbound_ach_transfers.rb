@@ -42,7 +42,7 @@ module Increase
         #
         #   @option params [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode] :standard_entry_class_code The standard entry class code for the transfer.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::InboundACHTransfer]
         #

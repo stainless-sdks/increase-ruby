@@ -170,6 +170,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # This indicates if mail can be sent to this address.
       #
       # @example
@@ -189,8 +191,15 @@ module Increase
         INACTIVE = :inactive
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `lockbox`.
       #
@@ -205,6 +214,11 @@ module Increase
         LOCKBOX = :lockbox
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

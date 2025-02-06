@@ -25,7 +25,7 @@ module Increase
         #
         #   @option params [String] :request_for_payment_id The identifier of a pending Request for Payment that this transfer will fulfill.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::InboundRealTimePaymentsTransfer]
         #

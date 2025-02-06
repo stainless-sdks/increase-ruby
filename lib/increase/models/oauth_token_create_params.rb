@@ -71,6 +71,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The credential you request in exchange for the code. In Production, this is
       #   always `authorization_code`. In Sandbox, you can pass either enum value.
       #
@@ -91,6 +93,11 @@ module Increase
         PRODUCTION_TOKEN = :production_token
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

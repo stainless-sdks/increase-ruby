@@ -169,6 +169,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # Status of the proof of authorization request submission.
       #
       # @example
@@ -203,8 +205,15 @@ module Increase
         SENT = :sent
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request_submission`.
       #
@@ -219,6 +228,11 @@ module Increase
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

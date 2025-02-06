@@ -1,0 +1,33 @@
+module Increase
+  module Resources
+    class DeclinedTransactions
+      def retrieve:
+        (
+          String declined_transaction_id,
+          ?Increase::Models::DeclinedTransactionRetrieveParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Models::DeclinedTransaction
+        | (
+          String declined_transaction_id,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::DeclinedTransaction
+
+      def list:
+        (
+          ?Increase::Models::DeclinedTransactionListParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Page[Increase::Models::DeclinedTransaction]
+        | (
+          account_id: String,
+          category: Increase::Models::DeclinedTransactionListParams::Category,
+          created_at: Increase::Models::DeclinedTransactionListParams::CreatedAt,
+          cursor: String,
+          limit: Integer,
+          route_id: String,
+          request_options: Increase::request_opts
+        ) -> Increase::Page[Increase::Models::DeclinedTransaction]
+
+      def initialize: (client: Increase::Client) -> void
+    end
+  end
+end

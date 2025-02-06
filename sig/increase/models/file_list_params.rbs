@@ -1,0 +1,214 @@
+module Increase
+  module Models
+    type file_list_params =
+      {
+        created_at: Increase::Models::FileListParams::CreatedAt,
+        cursor: String,
+        idempotency_key: String,
+        limit: Integer,
+        purpose: Increase::Models::FileListParams::Purpose
+      }
+      & Increase::request_parameters
+
+    class FileListParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      attr_reader created_at: Increase::Models::FileListParams::CreatedAt?
+
+      def created_at=: (Increase::Models::FileListParams::CreatedAt) -> void
+
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> void
+
+      attr_reader idempotency_key: String?
+
+      def idempotency_key=: (String) -> void
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      attr_reader purpose: Increase::Models::FileListParams::Purpose?
+
+      def purpose=: (Increase::Models::FileListParams::Purpose) -> void
+
+      def initialize:
+        (
+          created_at: Increase::Models::FileListParams::CreatedAt,
+          cursor: String,
+          idempotency_key: String,
+          limit: Integer,
+          purpose: Increase::Models::FileListParams::Purpose,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::file_list_params | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::file_list_params
+
+      type created_at =
+        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+
+      class CreatedAt < Increase::BaseModel
+        attr_reader after: Time?
+
+        def after=: (Time) -> void
+
+        attr_reader before: Time?
+
+        def before=: (Time) -> void
+
+        attr_reader on_or_after: Time?
+
+        def on_or_after=: (Time) -> void
+
+        attr_reader on_or_before: Time?
+
+        def on_or_before=: (Time) -> void
+
+        def initialize:
+          (
+            after: Time,
+            before: Time,
+            on_or_after: Time,
+            on_or_before: Time
+          ) -> void
+          | (
+            ?Increase::Models::FileListParams::created_at
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::FileListParams::created_at
+      end
+
+      type purpose =
+        { in_: Array[Increase::Models::FileListParams::Purpose::in_] }
+
+      class Purpose < Increase::BaseModel
+        attr_reader in_: Array[Increase::Models::FileListParams::Purpose::in_]?
+
+        def in_=: (
+          Array[Increase::Models::FileListParams::Purpose::in_]
+        ) -> void
+
+        def initialize:
+          (in_: Array[Increase::Models::FileListParams::Purpose::in_]) -> void
+          | (
+            ?Increase::Models::FileListParams::purpose
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::FileListParams::purpose
+
+        type in_ =
+          :check_image_front
+          | :check_image_back
+          | :processed_check_image_front
+          | :processed_check_image_back
+          | :mailed_check_image
+          | :check_voucher_image
+          | :check_attachment_image
+          | :inbound_mail_item
+          | :form_1099_int
+          | :form_1099_misc
+          | :form_ss_4
+          | :identity_document
+          | :increase_statement
+          | :other
+          | :trust_formation_document
+          | :digital_wallet_artwork
+          | :digital_wallet_app_icon
+          | :physical_card_front
+          | :physical_card_back
+          | :physical_card_carrier
+          | :document_request
+          | :entity_supplemental_document
+          | :export
+          | :unusual_activity_report_attachment
+          | :deposit_account_control_agreement
+
+        class In < Increase::Enum
+          # An image of the front of a check, used for check deposits.
+          CHECK_IMAGE_FRONT: :check_image_front
+
+          # An image of the back of a check, used for check deposits.
+          CHECK_IMAGE_BACK: :check_image_back
+
+          # An image of the front of a deposited check after processing by Increase and submission to the Federal Reserve.
+          PROCESSED_CHECK_IMAGE_FRONT: :processed_check_image_front
+
+          # An image of the back of a deposited check after processing by Increase and submission to the Federal Reserve.
+          PROCESSED_CHECK_IMAGE_BACK: :processed_check_image_back
+
+          # An image of a check that was mailed to a recipient.
+          MAILED_CHECK_IMAGE: :mailed_check_image
+
+          # An image to be printed on the bottom or voucher of a check that you've requested Increase print.
+          CHECK_VOUCHER_IMAGE: :check_voucher_image
+
+          # An image to be printed on an additional page and mailed with a check that you've requested Increase print.
+          CHECK_ATTACHMENT_IMAGE: :check_attachment_image
+
+          # A scanned mail item sent to Increase.
+          INBOUND_MAIL_ITEM: :inbound_mail_item
+
+          # IRS Form 1099-INT.
+          FORM_1099_INT: :form_1099_int
+
+          # IRS Form 1099-MISC.
+          FORM_1099_MISC: :form_1099_misc
+
+          # IRS Form SS-4.
+          FORM_SS_4: :form_ss_4
+
+          # An image of a government-issued ID.
+          IDENTITY_DOCUMENT: :identity_document
+
+          # A statement generated by Increase.
+          INCREASE_STATEMENT: :increase_statement
+
+          # A file purpose not covered by any of the other cases.
+          OTHER: :other
+
+          # A legal document forming a trust.
+          TRUST_FORMATION_DOCUMENT: :trust_formation_document
+
+          # A card image to be rendered inside digital wallet apps. This must be a 1536x969 pixel PNG.
+          DIGITAL_WALLET_ARTWORK: :digital_wallet_artwork
+
+          # An icon for you app to be rendered inside digital wallet apps. This must be a 100x100 pixel PNG.
+          DIGITAL_WALLET_APP_ICON: :digital_wallet_app_icon
+
+          # A card image to be printed on the front of a physical card. This must be a 2100x1340 pixel PNG with no other color but black.
+          PHYSICAL_CARD_FRONT: :physical_card_front
+
+          # The image to be printed on the back of a physical card.
+          PHYSICAL_CARD_BACK: :physical_card_back
+
+          # An image representing the entirety of the carrier used for a physical card. This must be a 2550x3300 pixel PNG with no other color but black.
+          PHYSICAL_CARD_CARRIER: :physical_card_carrier
+
+          # A document requested by Increase.
+          DOCUMENT_REQUEST: :document_request
+
+          # A supplemental document associated an an Entity.
+          ENTITY_SUPPLEMENTAL_DOCUMENT: :entity_supplemental_document
+
+          # The results of an Export you requested via the dashboard or API.
+          EXPORT: :export
+
+          # An attachment to an Unusual Activity Report.
+          UNUSUAL_ACTIVITY_REPORT_ATTACHMENT: :unusual_activity_report_attachment
+
+          # A document granting another entity access to the funds into your account.
+          DEPOSIT_ACCOUNT_CONTROL_AGREEMENT: :deposit_account_control_agreement
+
+          def self.values: -> Array[Increase::Models::FileListParams::Purpose::in_]
+        end
+      end
+    end
+  end
+end

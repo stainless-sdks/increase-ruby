@@ -1,0 +1,77 @@
+module Increase
+  module Models
+    type intrafi_account_enrollment =
+      {
+        id: String,
+        account_id: String,
+        idempotency_key: String?,
+        intrafi_id: String,
+        status: Increase::Models::IntrafiAccountEnrollment::status,
+        type: Increase::Models::IntrafiAccountEnrollment::type_
+      }
+
+    class IntrafiAccountEnrollment < Increase::BaseModel
+      attr_accessor id: String
+
+      attr_accessor account_id: String
+
+      attr_accessor idempotency_key: String?
+
+      attr_accessor intrafi_id: String
+
+      attr_accessor status: Increase::Models::IntrafiAccountEnrollment::status
+
+      attr_accessor type: Increase::Models::IntrafiAccountEnrollment::type_
+
+      def initialize:
+        (
+          id: String,
+          account_id: String,
+          idempotency_key: String?,
+          intrafi_id: String,
+          status: Increase::Models::IntrafiAccountEnrollment::status,
+          type: Increase::Models::IntrafiAccountEnrollment::type_
+        ) -> void
+        | (
+          ?Increase::Models::intrafi_account_enrollment
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::intrafi_account_enrollment
+
+      type status =
+        :pending_enrolling
+        | :enrolled
+        | :pending_unenrolling
+        | :unenrolled
+        | :requires_attention
+
+      class Status < Increase::Enum
+        # The account is being added to the IntraFi network.
+        PENDING_ENROLLING: :pending_enrolling
+
+        # The account has been enrolled with IntraFi.
+        ENROLLED: :enrolled
+
+        # The account is being unenrolled from IntraFi's deposit sweep.
+        PENDING_UNENROLLING: :pending_unenrolling
+
+        # The account was once enrolled, but is no longer enrolled at IntraFi.
+        UNENROLLED: :unenrolled
+
+        # Something unexpected happened with this account. Contact Increase support.
+        REQUIRES_ATTENTION: :requires_attention
+
+        def self.values: -> Array[Increase::Models::IntrafiAccountEnrollment::status]
+      end
+
+      type type_ = :intrafi_account_enrollment
+
+      class Type < Increase::Enum
+        INTRAFI_ACCOUNT_ENROLLMENT: :intrafi_account_enrollment
+
+        def self.values: -> Array[Increase::Models::IntrafiAccountEnrollment::type_]
+      end
+    end
+  end
+end

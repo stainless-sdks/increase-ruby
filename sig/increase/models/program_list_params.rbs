@@ -1,0 +1,31 @@
+module Increase
+  module Models
+    type program_list_params =
+      { cursor: String, limit: Integer } & Increase::request_parameters
+
+    class ProgramListParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> void
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      def initialize:
+        (
+          cursor: String,
+          limit: Integer,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::program_list_params | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::program_list_params
+    end
+  end
+end

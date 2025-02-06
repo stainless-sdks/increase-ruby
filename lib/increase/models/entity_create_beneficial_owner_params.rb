@@ -273,6 +273,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # A method that can be used to verify the individual's identity.
             #
             # @example
@@ -307,6 +309,11 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @example
@@ -469,6 +476,8 @@ module Increase
           end
         end
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case prong
@@ -486,6 +495,11 @@ module Increase
           CONTROL = :control
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

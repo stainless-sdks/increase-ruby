@@ -1,0 +1,116 @@
+module Increase
+  module Models
+    type physical_card_profile =
+      {
+        id: String,
+        back_image_file_id: String?,
+        carrier_image_file_id: String?,
+        contact_phone: String?,
+        created_at: Time,
+        creator: Increase::Models::PhysicalCardProfile::creator,
+        description: String,
+        front_image_file_id: String?,
+        idempotency_key: String?,
+        is_default: bool,
+        status: Increase::Models::PhysicalCardProfile::status,
+        type: Increase::Models::PhysicalCardProfile::type_
+      }
+
+    class PhysicalCardProfile < Increase::BaseModel
+      attr_accessor id: String
+
+      attr_accessor back_image_file_id: String?
+
+      attr_accessor carrier_image_file_id: String?
+
+      attr_accessor contact_phone: String?
+
+      attr_accessor created_at: Time
+
+      attr_accessor creator: Increase::Models::PhysicalCardProfile::creator
+
+      attr_accessor description: String
+
+      attr_accessor front_image_file_id: String?
+
+      attr_accessor idempotency_key: String?
+
+      attr_accessor is_default: bool
+
+      attr_accessor status: Increase::Models::PhysicalCardProfile::status
+
+      attr_accessor type: Increase::Models::PhysicalCardProfile::type_
+
+      def initialize:
+        (
+          id: String,
+          back_image_file_id: String?,
+          carrier_image_file_id: String?,
+          contact_phone: String?,
+          created_at: Time,
+          creator: Increase::Models::PhysicalCardProfile::creator,
+          description: String,
+          front_image_file_id: String?,
+          idempotency_key: String?,
+          is_default: bool,
+          status: Increase::Models::PhysicalCardProfile::status,
+          type: Increase::Models::PhysicalCardProfile::type_
+        ) -> void
+        | (
+          ?Increase::Models::physical_card_profile | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::physical_card_profile
+
+      type creator = :increase | :user
+
+      class Creator < Increase::Enum
+        # This Physical Card Profile was created by Increase.
+        INCREASE: :increase
+
+        # This Physical Card Profile was created by you.
+        USER: :user
+
+        def self.values: -> Array[Increase::Models::PhysicalCardProfile::creator]
+      end
+
+      type status =
+        :pending_creating
+        | :pending_reviewing
+        | :rejected
+        | :pending_submitting
+        | :active
+        | :archived
+
+      class Status < Increase::Enum
+        # The Card Profile has not yet been processed by Increase.
+        PENDING_CREATING: :pending_creating
+
+        # The card profile is awaiting review by Increase.
+        PENDING_REVIEWING: :pending_reviewing
+
+        # There is an issue with the Physical Card Profile preventing it from use.
+        REJECTED: :rejected
+
+        # The card profile is awaiting submission to the fulfillment provider.
+        PENDING_SUBMITTING: :pending_submitting
+
+        # The Physical Card Profile has been submitted to the fulfillment provider and is ready to use.
+        ACTIVE: :active
+
+        # The Physical Card Profile has been archived.
+        ARCHIVED: :archived
+
+        def self.values: -> Array[Increase::Models::PhysicalCardProfile::status]
+      end
+
+      type type_ = :physical_card_profile
+
+      class Type < Increase::Enum
+        PHYSICAL_CARD_PROFILE: :physical_card_profile
+
+        def self.values: -> Array[Increase::Models::PhysicalCardProfile::type_]
+      end
+    end
+  end
+end

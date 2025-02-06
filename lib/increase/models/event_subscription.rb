@@ -102,6 +102,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # If specified, this subscription will only receive webhooks for Events with the
       #   specified `category`.
       #
@@ -388,8 +390,15 @@ module Increase
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # This indicates if we'll send notifications to this subscription.
       #
       # @example
@@ -419,8 +428,15 @@ module Increase
         REQUIRES_ATTENTION = :requires_attention
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `event_subscription`.
       #
@@ -435,6 +451,11 @@ module Increase
         EVENT_SUBSCRIPTION = :event_subscription
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

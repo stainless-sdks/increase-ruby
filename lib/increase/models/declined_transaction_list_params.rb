@@ -101,7 +101,7 @@ module Increase
         #   Return results whose value is in the provided list. For GET requests, this
         #     should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         #
-        #   @return [Array<Symbol, Increase::Models::DeclinedTransactionListParams::Category::In>]
+        #   @return [Array<Symbol, Increase::Models::DeclinedTransactionListParams::Category::In>, nil]
         optional :in_,
                  -> {
                    Increase::ArrayOf[enum: Increase::Models::DeclinedTransactionListParams::Category::In]
@@ -119,6 +119,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case in
@@ -159,6 +161,11 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 

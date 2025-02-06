@@ -68,6 +68,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The category of the Event. We may add additional possible values for this enum
       #   over time; your application should be able to handle such additions gracefully.
       #
@@ -354,8 +356,15 @@ module Increase
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `event`.
       #
@@ -370,6 +379,11 @@ module Increase
         EVENT = :event
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

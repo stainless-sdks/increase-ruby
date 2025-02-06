@@ -90,7 +90,7 @@ module Increase
         #     requests, this should be encoded as a comma-delimited string, such as
         #     `?in=one,two,three`.
         #
-        #   @return [Array<Symbol, Increase::Models::EventListParams::Category::In>]
+        #   @return [Array<Symbol, Increase::Models::EventListParams::Category::In>, nil]
         optional :in_,
                  -> { Increase::ArrayOf[enum: Increase::Models::EventListParams::Category::In] },
                  api_name: :in
@@ -106,6 +106,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case in
@@ -389,6 +391,11 @@ module Increase
           WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 

@@ -1,0 +1,19 @@
+module Increase
+  module Models
+    type ach_transfer_cancel_params = {  } & Increase::request_parameters
+
+    class ACHTransferCancelParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      def initialize:
+        (request_options: Increase::request_opts) -> void
+        | (
+          ?Increase::Models::ach_transfer_cancel_params
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::ach_transfer_cancel_params
+    end
+  end
+end

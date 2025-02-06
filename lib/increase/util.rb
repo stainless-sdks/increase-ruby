@@ -12,6 +12,21 @@ module Increase
     #
     # @return [Boolean, Object]
     #
+    def self.primitive?(input)
+      case input
+      in true | false | Integer | Float | Symbol | String
+        true
+      else
+        false
+      end
+    end
+
+    # @private
+    #
+    # @param input [Object]
+    #
+    # @return [Boolean, Object]
+    #
     def self.coerce_boolean(input)
       case input.is_a?(String) ? input.downcase : input
       in Numeric
@@ -105,7 +120,7 @@ module Increase
     end
 
     # Use this to indicate that a value should be explicitly removed from a data
-    #   structure when using `SDK_RubyModuleName::Util.deep_merge`.
+    #   structure when using `Increase::Util.deep_merge`.
     #
     #   e.g. merging `{a: 1}` and `{a: OMIT}` should produce `{}`, where merging
     #   `{a: 1}` and `{}` would produce `{a: 1}`.
@@ -128,7 +143,7 @@ module Increase
       case values
       in [value, *values]
         values.reduce(value) do |acc, val|
-          _deep_merge(acc, val, concat: concat)
+          deep_merge_lr(acc, val, concat: concat)
         end
       else
         sentinel
@@ -143,7 +158,7 @@ module Increase
     #
     # @return [Object]
     #
-    private_class_method def self._deep_merge(lhs, rhs, concat: false)
+    private_class_method def self.deep_merge_lr(lhs, rhs, concat: false)
       rhs_cleaned =
         case rhs
         in Hash
@@ -157,7 +172,7 @@ module Increase
         lhs
           .reject { |key, _| rhs[key] == OMIT }
           .merge(rhs_cleaned) do |_, old_val, new_val|
-            _deep_merge(old_val, new_val, concat: concat)
+            deep_merge_lr(old_val, new_val, concat: concat)
           end
       in [Array, Array, true]
         lhs.concat(rhs_cleaned)
@@ -170,17 +185,17 @@ module Increase
     #
     # @param data [Hash{Symbol=>Object}, Array<Object>, Object]
     # @param pick [Symbol, Integer, Array<Symbol, Integer>, nil]
-    # @param default [Object, nil]
+    # @param sentinel [Object, nil]
     # @param blk [Proc, nil]
     #
     # @return [Object, nil]
     #
-    def self.dig(data, pick, default = nil, &blk)
+    def self.dig(data, pick, sentinel = nil, &blk)
       case [data, pick, blk]
       in [_, nil, nil]
         data
       in [Hash, Symbol, _] | [Array, Integer, _]
-        blk.nil? ? data.fetch(pick, default) : data.fetch(pick, &blk)
+        blk.nil? ? data.fetch(pick, sentinel) : data.fetch(pick, &blk)
       in [Hash | Array, Array, _]
         pick.reduce(data) do |acc, key|
           case acc
@@ -189,11 +204,11 @@ module Increase
           in Array if key.is_a?(Integer) && key < acc.length
             acc[key]
           else
-            return blk.nil? ? default : blk.call
+            return blk.nil? ? sentinel : blk.call
           end
         end
       in _
-        blk.nil? ? default : blk.call
+        blk.nil? ? sentinel : blk.call
       end
     end
 
@@ -240,13 +255,13 @@ module Increase
     #
     # @param parsed [Hash{Symbol=>String, Integer, nil}] .
     #
-    #   @option parsed [String] :scheme
+    #   @option parsed [String, nil] :scheme
     #
-    #   @option parsed [String] :host
+    #   @option parsed [String, nil] :host
     #
-    #   @option parsed [Integer] :port
+    #   @option parsed [Integer, nil] :port
     #
-    #   @option parsed [String] :path
+    #   @option parsed [String, nil] :path
     #
     #   @option parsed [Hash{String=>Array<String>}] :query
     #
@@ -260,25 +275,25 @@ module Increase
     #
     # @param lhs [Hash{Symbol=>String, Integer, nil}] .
     #
-    #   @option lhs [String] :scheme
+    #   @option lhs [String, nil] :scheme
     #
-    #   @option lhs [String] :host
+    #   @option lhs [String, nil] :host
     #
-    #   @option lhs [Integer] :port
+    #   @option lhs [Integer, nil] :port
     #
-    #   @option lhs [String] :path
+    #   @option lhs [String, nil] :path
     #
     #   @option lhs [Hash{String=>Array<String>}] :query
     #
     # @param rhs [Hash{Symbol=>String, Integer, nil}] .
     #
-    #   @option rhs [String] :scheme
+    #   @option rhs [String, nil] :scheme
     #
-    #   @option rhs [String] :host
+    #   @option rhs [String, nil] :host
     #
-    #   @option rhs [Integer] :port
+    #   @option rhs [Integer, nil] :port
     #
-    #   @option rhs [String] :path
+    #   @option rhs [String, nil] :path
     #
     #   @option rhs [Hash{String=>Array<String>}] :query
     #
@@ -345,9 +360,37 @@ module Increase
     # @return [Object]
     #
     def self.encode_content(headers, body)
-      case [headers["content-type"], body]
+      content_type = headers["content-type"]
+      case [content_type, body]
       in ["application/json", Hash | Array]
         [headers, JSON.fast_generate(body)]
+      in [%r{^multipart/form-data}, Hash | IO | StringIO]
+        boundary = SecureRandom.urlsafe_base64(60)
+        strio = StringIO.new.tap do |io|
+          case body
+          in Hash
+            body.each do |key, val|
+              case val
+              in Array if val.all? { primitive?(_1) }
+                val.each do |v|
+                  encode_multipart_formdata(io, boundary: boundary, key: key, val: v)
+                end
+              else
+                encode_multipart_formdata(io, boundary: boundary, key: key, val: val)
+              end
+            end
+          else
+            encode_multipart_formdata(io, boundary: boundary, key: nil, val: body)
+          end
+          io << "--#{boundary}--\r\n"
+          io.rewind
+        end
+        headers = {
+          **headers,
+          "content-type" => "#{content_type}; boundary=#{boundary}",
+          "transfer-encoding" => "chunked"
+        }
+        [headers, strio]
       else
         [headers, body]
       end
@@ -374,6 +417,42 @@ module Increase
         # TODO: parsing other response types
         response.body
       end
+    end
+
+    # @private
+    #
+    # @param io [StringIO]
+    # @param boundary [String]
+    # @param key [Symbol, String]
+    # @param val [Object]
+    #
+    private_class_method def self.encode_multipart_formdata(io, boundary:, key:, val:)
+      io << "--#{boundary}\r\n"
+      io << "Content-Disposition: form-data"
+      unless key.nil?
+        name = ERB::Util.url_encode(key.to_s)
+        io << "; name=\"#{name}\""
+      end
+      if val.is_a?(IO)
+        filename = ERB::Util.url_encode(File.basename(val.to_path))
+        io << "; filename=\"#{filename}\""
+      end
+      io << "\r\n"
+      case val
+      in IO | StringIO
+        io << "Content-Type: application/octet-stream\r\n\r\n"
+        IO.copy_stream(val, io)
+      in String
+        io << "Content-Type: application/octet-stream\r\n\r\n"
+        io << val.to_s
+      in true | false | Integer | Float | Symbol
+        io << "Content-Type: text/plain\r\n\r\n"
+        io << val.to_s
+      else
+        io << "Content-Type: application/json\r\n\r\n"
+        io << JSON.fast_generate(val)
+      end
+      io << "\r\n"
     end
   end
 

@@ -165,6 +165,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # If the notification is for a future credit or debit.
       #
       # @example
@@ -184,6 +186,11 @@ module Increase
         DEBIT = :debit
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -229,6 +236,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The required type of change that is being signaled by the receiving financial
         #   institution.
         #
@@ -308,6 +317,11 @@ module Increase
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -343,6 +357,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Why the Prenotification was returned.
         #
         # @example
@@ -574,9 +590,16 @@ module Increase
           UNTIMELY_RETURN = :untimely_return
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
+      # @abstract
+      #
       # The lifecycle status of the ACH Prenotification.
       #
       # @example
@@ -606,8 +629,15 @@ module Increase
         SUBMITTED = :submitted
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `ach_prenotification`.
       #
@@ -622,6 +652,11 @@ module Increase
         ACH_PRENOTIFICATION = :ach_prenotification
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

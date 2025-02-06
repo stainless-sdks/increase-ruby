@@ -65,6 +65,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # This routing number's support for ACH Transfers.
       #
       # @example
@@ -84,8 +86,15 @@ module Increase
         NOT_SUPPORTED = :not_supported
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # This routing number's support for Real-Time Payments Transfers.
       #
       # @example
@@ -105,8 +114,15 @@ module Increase
         NOT_SUPPORTED = :not_supported
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `routing_number`.
       #
@@ -121,8 +137,15 @@ module Increase
         ROUTING_NUMBER = :routing_number
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # This routing number's support for Wire Transfers.
       #
       # @example
@@ -142,6 +165,11 @@ module Increase
         NOT_SUPPORTED = :not_supported
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

@@ -52,6 +52,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `balance_lookup`.
       #
@@ -66,6 +68,11 @@ module Increase
         BALANCE_LOOKUP = :balance_lookup
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

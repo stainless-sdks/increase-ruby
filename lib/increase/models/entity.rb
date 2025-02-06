@@ -473,6 +473,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # A method that can be used to verify the individual's identity.
               #
               # @example
@@ -507,10 +509,17 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
           end
 
+          # @abstract
+          #
           # Why this person is considered a beneficial owner of the entity.
           #
           # @example
@@ -530,6 +539,11 @@ module Increase
             CONTROL = :control
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end
@@ -682,6 +696,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The category of the government authority.
         #
         # @example
@@ -696,6 +712,11 @@ module Increase
           MUNICIPALITY = :municipality
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -862,6 +883,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # A method that can be used to verify the individual's identity.
             #
             # @example
@@ -896,6 +919,11 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
         end
@@ -1037,6 +1065,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # A method that can be used to verify the individual's identity.
           #
           # @example
@@ -1071,10 +1101,17 @@ module Increase
             OTHER = :other
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end
 
+      # @abstract
+      #
       # The status of the entity.
       #
       # @example
@@ -1099,8 +1136,15 @@ module Increase
         DISABLED = :disabled
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The entity's legal structure.
       #
       # @example
@@ -1135,6 +1179,11 @@ module Increase
         GOVERNMENT_AUTHORITY = :government_authority
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -1168,6 +1217,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The vendor that was used to perform the verification.
         #
         # @example
@@ -1187,6 +1238,11 @@ module Increase
           MIDDESK = :middesk
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -1335,6 +1391,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # Whether the trust is `revocable` or `irrevocable`.
         #
         # @example
@@ -1354,6 +1412,11 @@ module Increase
           IRREVOCABLE = :irrevocable
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -1491,6 +1554,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # A method that can be used to verify the individual's identity.
             #
             # @example
@@ -1525,6 +1590,11 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
         end
@@ -1699,6 +1769,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # A method that can be used to verify the individual's identity.
               #
               # @example
@@ -1733,10 +1805,17 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
           end
 
+          # @abstract
+          #
           # The structure of the trustee. Will always be equal to `individual`.
           #
           # @example
@@ -1751,10 +1830,17 @@ module Increase
             INDIVIDUAL = :individual
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `entity`.
       #
@@ -1769,6 +1855,11 @@ module Increase
         ENTITY = :entity
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

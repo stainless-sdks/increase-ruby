@@ -178,6 +178,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For real-time payments transfers this is always equal to `USD`.
       #
@@ -218,6 +220,11 @@ module Increase
         USD = :USD
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -245,6 +252,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason the request for payment was refused as provided by the recipient bank
         #   or the customer.
         #
@@ -306,6 +315,11 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -334,6 +348,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason the request for payment was rejected as provided by the recipient
         #   bank or the Real-Time Payments network.
         #
@@ -419,9 +435,16 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
+      # @abstract
+      #
       # The lifecycle status of the request for payment.
       #
       # @example
@@ -461,6 +484,11 @@ module Increase
         FULFILLED = :fulfilled
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -487,6 +515,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `real_time_payments_request_for_payment`.
       #
@@ -501,6 +531,11 @@ module Increase
         REAL_TIME_PAYMENTS_REQUEST_FOR_PAYMENT = :real_time_payments_request_for_payment
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

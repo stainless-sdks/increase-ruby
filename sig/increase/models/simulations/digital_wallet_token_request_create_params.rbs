@@ -1,0 +1,24 @@
+module Increase
+  module Models
+    module Simulations
+      type digital_wallet_token_request_create_params =
+        { card_id: String } & Increase::request_parameters
+
+      class DigitalWalletTokenRequestCreateParams < Increase::BaseModel
+        extend Increase::RequestParameters::Converter
+        include Increase::RequestParameters
+
+        attr_accessor card_id: String
+
+        def initialize:
+          (card_id: String, request_options: Increase::request_opts) -> void
+          | (
+            ?Increase::Models::Simulations::digital_wallet_token_request_create_params
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::Simulations::digital_wallet_token_request_create_params
+      end
+    end
+  end
+end

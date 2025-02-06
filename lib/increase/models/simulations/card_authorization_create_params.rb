@@ -209,6 +209,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Forces a card decline with a specific reason. No real time decision will be
         #   sent.
         #
@@ -276,8 +278,15 @@ module Increase
           SUSPECTED_FRAUD = :suspected_fraud
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
         #
@@ -298,6 +307,11 @@ module Increase
           REFUND = :refund
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

@@ -42,7 +42,7 @@ class Increase::Test::Resources::InboundCheckDepositsTest < Minitest::Test
   def test_return__required_params
     response = @increase.inbound_check_deposits.return_(
       "inbound_check_deposit_id",
-      reason: "altered_or_fictitious"
+      reason: :altered_or_fictitious
     )
 
     assert_pattern do

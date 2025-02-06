@@ -11,7 +11,7 @@ class Increase::Test::Resources::ExportsTest < Minitest::Test
   end
 
   def test_create_required_params
-    response = @increase.exports.create(category: "account_statement_ofx")
+    response = @increase.exports.create(category: :account_statement_ofx)
 
     assert_pattern do
       response => Increase::Models::Export

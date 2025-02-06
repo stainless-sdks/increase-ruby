@@ -88,6 +88,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The category of the Export. We may add additional possible values for this enum
       #   over time; your application should be able to handle that gracefully.
       #
@@ -131,8 +133,15 @@ module Increase
         DASHBOARD_TABLE_CSV = :dashboard_table_csv
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The status of the Export.
       #
       # @example
@@ -157,8 +166,15 @@ module Increase
         FAILED = :failed
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `export`.
       #
@@ -173,6 +189,11 @@ module Increase
         EXPORT = :export
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

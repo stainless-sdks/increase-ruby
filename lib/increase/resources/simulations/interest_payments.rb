@@ -17,7 +17,7 @@ module Increase
         #
         #   @option params [Time] :period_start The start of the interest period. If not provided, defaults to the current time.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::Transaction]
         #

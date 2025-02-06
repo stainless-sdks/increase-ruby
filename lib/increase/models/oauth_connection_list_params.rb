@@ -71,7 +71,7 @@ module Increase
         #     `active` ones. For GET requests, this should be encoded as a comma-delimited
         #     string, such as `?in=one,two,three`.
         #
-        #   @return [Array<Symbol, Increase::Models::OAuthConnectionListParams::Status::In>]
+        #   @return [Array<Symbol, Increase::Models::OAuthConnectionListParams::Status::In>, nil]
         optional :in_,
                  -> { Increase::ArrayOf[enum: Increase::Models::OAuthConnectionListParams::Status::In] },
                  api_name: :in
@@ -87,6 +87,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # @example
         # ```ruby
         # case in
@@ -104,6 +106,11 @@ module Increase
           INACTIVE = :inactive
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

@@ -1,0 +1,79 @@
+module Increase
+  module Models
+    type program =
+      {
+        id: String,
+        bank: Increase::Models::Program::bank,
+        billing_account_id: String?,
+        created_at: Time,
+        default_digital_card_profile_id: String?,
+        interest_rate: String,
+        name: String,
+        type: Increase::Models::Program::type_,
+        updated_at: Time
+      }
+
+    class Program < Increase::BaseModel
+      attr_accessor id: String
+
+      attr_accessor bank: Increase::Models::Program::bank
+
+      attr_accessor billing_account_id: String?
+
+      attr_accessor created_at: Time
+
+      attr_accessor default_digital_card_profile_id: String?
+
+      attr_accessor interest_rate: String
+
+      attr_accessor name: String
+
+      attr_accessor type: Increase::Models::Program::type_
+
+      attr_accessor updated_at: Time
+
+      def initialize:
+        (
+          id: String,
+          bank: Increase::Models::Program::bank,
+          billing_account_id: String?,
+          created_at: Time,
+          default_digital_card_profile_id: String?,
+          interest_rate: String,
+          name: String,
+          type: Increase::Models::Program::type_,
+          updated_at: Time
+        ) -> void
+        | (?Increase::Models::program | Increase::BaseModel data) -> void
+
+      def to_hash: -> Increase::Models::program
+
+      type bank =
+        :blue_ridge_bank | :core_bank | :first_internet_bank | :grasshopper_bank
+
+      class Bank < Increase::Enum
+        # Blue Ridge Bank, N.A.
+        BLUE_RIDGE_BANK: :blue_ridge_bank
+
+        # Core Bank
+        CORE_BANK: :core_bank
+
+        # First Internet Bank of Indiana
+        FIRST_INTERNET_BANK: :first_internet_bank
+
+        # Grasshopper Bank
+        GRASSHOPPER_BANK: :grasshopper_bank
+
+        def self.values: -> Array[Increase::Models::Program::bank]
+      end
+
+      type type_ = :program
+
+      class Type < Increase::Enum
+        PROGRAM: :program
+
+        def self.values: -> Array[Increase::Models::Program::type_]
+      end
+    end
+  end
+end

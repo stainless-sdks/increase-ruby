@@ -104,6 +104,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The type of Export to create.
       #
       # @example
@@ -143,6 +145,11 @@ module Increase
         VENDOR_CSV = :vendor_csv
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -530,6 +537,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case in
@@ -552,6 +561,11 @@ module Increase
             DISABLED = :disabled
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end

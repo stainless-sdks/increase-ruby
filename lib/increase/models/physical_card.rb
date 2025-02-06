@@ -253,6 +253,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The shipping method.
         #
         # @example
@@ -277,8 +279,15 @@ module Increase
           FEDEX_2_DAY = :fedex_2_day
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # The status of this shipment.
         #
         # @example
@@ -321,6 +330,11 @@ module Increase
           RETURNED = :returned
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -373,6 +387,8 @@ module Increase
         end
       end
 
+      # @abstract
+      #
       # The status of the Physical Card.
       #
       # @example
@@ -397,8 +413,15 @@ module Increase
         CANCELED = :canceled
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card`.
       #
@@ -413,6 +436,11 @@ module Increase
         PHYSICAL_CARD = :physical_card
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

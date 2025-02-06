@@ -33,6 +33,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The status to move the dispute to.
         #
         # @example
@@ -67,6 +69,11 @@ module Increase
           WON = :won
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

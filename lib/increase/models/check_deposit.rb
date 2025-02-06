@@ -266,6 +266,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
         #
@@ -306,6 +308,11 @@ module Increase
           USD = :USD
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -374,6 +381,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
         #   currency.
         #
@@ -414,8 +423,15 @@ module Increase
           USD = :USD
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # Why the check deposit was rejected.
         #
         # @example
@@ -470,6 +486,11 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -539,6 +560,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
         #
@@ -579,8 +602,15 @@ module Increase
           USD = :USD
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # Why this check was returned by the bank holding the account it was drawn
         #   against.
         #
@@ -681,6 +711,11 @@ module Increase
           BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -838,6 +873,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
         #
@@ -878,8 +915,15 @@ module Increase
           USD = :USD
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # The status of the hold.
         #
         # @example
@@ -899,8 +943,15 @@ module Increase
           COMPLETE = :complete
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
         #
@@ -915,9 +966,16 @@ module Increase
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
+      # @abstract
+      #
       # The status of the Check Deposit.
       #
       # @example
@@ -947,8 +1005,15 @@ module Increase
         RETURNED = :returned
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `check_deposit`.
       #
@@ -963,6 +1028,11 @@ module Increase
         CHECK_DEPOSIT = :check_deposit
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

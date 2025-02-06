@@ -1,0 +1,1122 @@
+module Increase
+  module Models
+    type entity =
+      {
+        id: String,
+        corporation: Increase::Models::Entity::Corporation?,
+        created_at: Time,
+        description: String?,
+        details_confirmed_at: Time?,
+        government_authority: Increase::Models::Entity::GovernmentAuthority?,
+        idempotency_key: String?,
+        joint: Increase::Models::Entity::Joint?,
+        natural_person: Increase::Models::Entity::NaturalPerson?,
+        status: Increase::Models::Entity::status,
+        structure: Increase::Models::Entity::structure,
+        supplemental_documents: Array[Increase::Models::EntitySupplementalDocument],
+        third_party_verification: Increase::Models::Entity::ThirdPartyVerification?,
+        trust: Increase::Models::Entity::Trust?,
+        type: Increase::Models::Entity::type_
+      }
+
+    class Entity < Increase::BaseModel
+      attr_accessor id: String
+
+      attr_accessor corporation: Increase::Models::Entity::Corporation?
+
+      attr_accessor created_at: Time
+
+      attr_accessor description: String?
+
+      attr_accessor details_confirmed_at: Time?
+
+      attr_accessor government_authority: Increase::Models::Entity::GovernmentAuthority?
+
+      attr_accessor idempotency_key: String?
+
+      attr_accessor joint: Increase::Models::Entity::Joint?
+
+      attr_accessor natural_person: Increase::Models::Entity::NaturalPerson?
+
+      attr_accessor status: Increase::Models::Entity::status
+
+      attr_accessor structure: Increase::Models::Entity::structure
+
+      attr_accessor supplemental_documents: Array[Increase::Models::EntitySupplementalDocument]
+
+      attr_accessor third_party_verification: Increase::Models::Entity::ThirdPartyVerification?
+
+      attr_accessor trust: Increase::Models::Entity::Trust?
+
+      attr_accessor type: Increase::Models::Entity::type_
+
+      def initialize:
+        (
+          id: String,
+          corporation: Increase::Models::Entity::Corporation?,
+          created_at: Time,
+          description: String?,
+          details_confirmed_at: Time?,
+          government_authority: Increase::Models::Entity::GovernmentAuthority?,
+          idempotency_key: String?,
+          joint: Increase::Models::Entity::Joint?,
+          natural_person: Increase::Models::Entity::NaturalPerson?,
+          status: Increase::Models::Entity::status,
+          structure: Increase::Models::Entity::structure,
+          supplemental_documents: Array[Increase::Models::EntitySupplementalDocument],
+          third_party_verification: Increase::Models::Entity::ThirdPartyVerification?,
+          trust: Increase::Models::Entity::Trust?,
+          type: Increase::Models::Entity::type_
+        ) -> void
+        | (?Increase::Models::entity | Increase::BaseModel data) -> void
+
+      def to_hash: -> Increase::Models::entity
+
+      type corporation =
+        {
+          address: Increase::Models::Entity::Corporation::Address,
+          beneficial_owners: Array[Increase::Models::Entity::Corporation::BeneficialOwner],
+          incorporation_state: String?,
+          industry_code: String?,
+          name: String,
+          tax_identifier: String?,
+          website: String?
+        }
+
+      class Corporation < Increase::BaseModel
+        attr_accessor address: Increase::Models::Entity::Corporation::Address
+
+        attr_accessor beneficial_owners: Array[Increase::Models::Entity::Corporation::BeneficialOwner]
+
+        attr_accessor incorporation_state: String?
+
+        attr_accessor industry_code: String?
+
+        attr_accessor name: String
+
+        attr_accessor tax_identifier: String?
+
+        attr_accessor website: String?
+
+        def initialize:
+          (
+            address: Increase::Models::Entity::Corporation::Address,
+            beneficial_owners: Array[Increase::Models::Entity::Corporation::BeneficialOwner],
+            incorporation_state: String?,
+            industry_code: String?,
+            name: String,
+            tax_identifier: String?,
+            website: String?
+          ) -> void
+          | (
+            ?Increase::Models::Entity::corporation | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::Entity::corporation
+
+        type address =
+          {
+            city: String,
+            :line1 => String,
+            :line2 => String?,
+            state: String,
+            zip: String
+          }
+
+        class Address < Increase::BaseModel
+          attr_accessor city: String
+
+          attr_accessor line1: String
+
+          attr_accessor line2: String?
+
+          attr_accessor state: String
+
+          attr_accessor zip: String
+
+          def initialize:
+            (
+              city: String,
+              line1: String,
+              line2: String?,
+              state: String,
+              zip: String
+            ) -> void
+            | (
+              ?Increase::Models::Entity::Corporation::address
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::Entity::Corporation::address
+        end
+
+        type beneficial_owner =
+          {
+            beneficial_owner_id: String,
+            company_title: String?,
+            individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
+            prong: Increase::Models::Entity::Corporation::BeneficialOwner::prong
+          }
+
+        class BeneficialOwner < Increase::BaseModel
+          attr_accessor beneficial_owner_id: String
+
+          attr_accessor company_title: String?
+
+          attr_accessor individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual
+
+          attr_accessor prong: Increase::Models::Entity::Corporation::BeneficialOwner::prong
+
+          def initialize:
+            (
+              beneficial_owner_id: String,
+              company_title: String?,
+              individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
+              prong: Increase::Models::Entity::Corporation::BeneficialOwner::prong
+            ) -> void
+            | (
+              ?Increase::Models::Entity::Corporation::beneficial_owner
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::Entity::Corporation::beneficial_owner
+
+          type individual =
+            {
+              address: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
+              date_of_birth: Date,
+              identification: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
+              name: String
+            }
+
+          class Individual < Increase::BaseModel
+            attr_accessor address: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address
+
+            attr_accessor date_of_birth: Date
+
+            attr_accessor identification: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification
+
+            attr_accessor name: String
+
+            def initialize:
+              (
+                address: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
+                date_of_birth: Date,
+                identification: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
+                name: String
+              ) -> void
+              | (
+                ?Increase::Models::Entity::Corporation::BeneficialOwner::individual
+                | Increase::BaseModel data
+              ) -> void
+
+            def to_hash: -> Increase::Models::Entity::Corporation::BeneficialOwner::individual
+
+            type address =
+              {
+                city: String,
+                :line1 => String,
+                :line2 => String?,
+                state: String,
+                zip: String
+              }
+
+            class Address < Increase::BaseModel
+              attr_accessor city: String
+
+              attr_accessor line1: String
+
+              attr_accessor line2: String?
+
+              attr_accessor state: String
+
+              attr_accessor zip: String
+
+              def initialize:
+                (
+                  city: String,
+                  line1: String,
+                  line2: String?,
+                  state: String,
+                  zip: String
+                ) -> void
+                | (
+                  ?Increase::Models::Entity::Corporation::BeneficialOwner::Individual::address
+                  | Increase::BaseModel data
+                ) -> void
+
+              def to_hash: -> Increase::Models::Entity::Corporation::BeneficialOwner::Individual::address
+            end
+
+            type identification =
+              {
+                method_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::method_,
+                :number_last4 => String
+              }
+
+            class Identification < Increase::BaseModel
+              attr_accessor method_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::method_
+
+              attr_accessor number_last4: String
+
+              def initialize:
+                (
+                  method_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::method_,
+                  number_last4: String
+                ) -> void
+                | (
+                  ?Increase::Models::Entity::Corporation::BeneficialOwner::Individual::identification
+                  | Increase::BaseModel data
+                ) -> void
+
+              def to_hash: -> Increase::Models::Entity::Corporation::BeneficialOwner::Individual::identification
+
+              type method_ =
+                :social_security_number
+                | :individual_taxpayer_identification_number
+                | :passport
+                | :drivers_license
+                | :other
+
+              class Method < Increase::Enum
+                # A social security number.
+                SOCIAL_SECURITY_NUMBER: :social_security_number
+
+                # An individual taxpayer identification number (ITIN).
+                INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER: :individual_taxpayer_identification_number
+
+                # A passport number.
+                PASSPORT: :passport
+
+                # A driver's license number.
+                DRIVERS_LICENSE: :drivers_license
+
+                # Another identifying document.
+                OTHER: :other
+
+                def self.values: -> Array[Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::method_]
+              end
+            end
+          end
+
+          type prong = :ownership | :control
+
+          class Prong < Increase::Enum
+            # A person with 25% or greater direct or indirect ownership of the entity.
+            OWNERSHIP: :ownership
+
+            # A person who manages, directs, or has significant control of the entity.
+            CONTROL: :control
+
+            def self.values: -> Array[Increase::Models::Entity::Corporation::BeneficialOwner::prong]
+          end
+        end
+      end
+
+      type government_authority =
+        {
+          address: Increase::Models::Entity::GovernmentAuthority::Address,
+          authorized_persons: Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson],
+          category: Increase::Models::Entity::GovernmentAuthority::category,
+          name: String,
+          tax_identifier: String?,
+          website: String?
+        }
+
+      class GovernmentAuthority < Increase::BaseModel
+        attr_accessor address: Increase::Models::Entity::GovernmentAuthority::Address
+
+        attr_accessor authorized_persons: Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson]
+
+        attr_accessor category: Increase::Models::Entity::GovernmentAuthority::category
+
+        attr_accessor name: String
+
+        attr_accessor tax_identifier: String?
+
+        attr_accessor website: String?
+
+        def initialize:
+          (
+            address: Increase::Models::Entity::GovernmentAuthority::Address,
+            authorized_persons: Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson],
+            category: Increase::Models::Entity::GovernmentAuthority::category,
+            name: String,
+            tax_identifier: String?,
+            website: String?
+          ) -> void
+          | (
+            ?Increase::Models::Entity::government_authority
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::Entity::government_authority
+
+        type address =
+          {
+            city: String,
+            :line1 => String,
+            :line2 => String?,
+            state: String,
+            zip: String
+          }
+
+        class Address < Increase::BaseModel
+          attr_accessor city: String
+
+          attr_accessor line1: String
+
+          attr_accessor line2: String?
+
+          attr_accessor state: String
+
+          attr_accessor zip: String
+
+          def initialize:
+            (
+              city: String,
+              line1: String,
+              line2: String?,
+              state: String,
+              zip: String
+            ) -> void
+            | (
+              ?Increase::Models::Entity::GovernmentAuthority::address
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::Entity::GovernmentAuthority::address
+        end
+
+        type authorized_person = { authorized_person_id: String, name: String }
+
+        class AuthorizedPerson < Increase::BaseModel
+          attr_accessor authorized_person_id: String
+
+          attr_accessor name: String
+
+          def initialize:
+            (authorized_person_id: String, name: String) -> void
+            | (
+              ?Increase::Models::Entity::GovernmentAuthority::authorized_person
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::Entity::GovernmentAuthority::authorized_person
+        end
+
+        type category = :municipality
+
+        class Category < Increase::Enum
+          # The Public Entity is a Municipality.
+          MUNICIPALITY: :municipality
+
+          def self.values: -> Array[Increase::Models::Entity::GovernmentAuthority::category]
+        end
+      end
+
+      type joint =
+        {
+          individuals: Array[Increase::Models::Entity::Joint::Individual],
+          name: String
+        }
+
+      class Joint < Increase::BaseModel
+        attr_accessor individuals: Array[Increase::Models::Entity::Joint::Individual]
+
+        attr_accessor name: String
+
+        def initialize:
+          (
+            individuals: Array[Increase::Models::Entity::Joint::Individual],
+            name: String
+          ) -> void
+          | (
+            ?Increase::Models::Entity::joint | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::Entity::joint
+
+        type individual =
+          {
+            address: Increase::Models::Entity::Joint::Individual::Address,
+            date_of_birth: Date,
+            identification: Increase::Models::Entity::Joint::Individual::Identification,
+            name: String
+          }
+
+        class Individual < Increase::BaseModel
+          attr_accessor address: Increase::Models::Entity::Joint::Individual::Address
+
+          attr_accessor date_of_birth: Date
+
+          attr_accessor identification: Increase::Models::Entity::Joint::Individual::Identification
+
+          attr_accessor name: String
+
+          def initialize:
+            (
+              address: Increase::Models::Entity::Joint::Individual::Address,
+              date_of_birth: Date,
+              identification: Increase::Models::Entity::Joint::Individual::Identification,
+              name: String
+            ) -> void
+            | (
+              ?Increase::Models::Entity::Joint::individual
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::Entity::Joint::individual
+
+          type address =
+            {
+              city: String,
+              :line1 => String,
+              :line2 => String?,
+              state: String,
+              zip: String
+            }
+
+          class Address < Increase::BaseModel
+            attr_accessor city: String
+
+            attr_accessor line1: String
+
+            attr_accessor line2: String?
+
+            attr_accessor state: String
+
+            attr_accessor zip: String
+
+            def initialize:
+              (
+                city: String,
+                line1: String,
+                line2: String?,
+                state: String,
+                zip: String
+              ) -> void
+              | (
+                ?Increase::Models::Entity::Joint::Individual::address
+                | Increase::BaseModel data
+              ) -> void
+
+            def to_hash: -> Increase::Models::Entity::Joint::Individual::address
+          end
+
+          type identification =
+            {
+              method_: Increase::Models::Entity::Joint::Individual::Identification::method_,
+              :number_last4 => String
+            }
+
+          class Identification < Increase::BaseModel
+            attr_accessor method_: Increase::Models::Entity::Joint::Individual::Identification::method_
+
+            attr_accessor number_last4: String
+
+            def initialize:
+              (
+                method_: Increase::Models::Entity::Joint::Individual::Identification::method_,
+                number_last4: String
+              ) -> void
+              | (
+                ?Increase::Models::Entity::Joint::Individual::identification
+                | Increase::BaseModel data
+              ) -> void
+
+            def to_hash: -> Increase::Models::Entity::Joint::Individual::identification
+
+            type method_ =
+              :social_security_number
+              | :individual_taxpayer_identification_number
+              | :passport
+              | :drivers_license
+              | :other
+
+            class Method < Increase::Enum
+              # A social security number.
+              SOCIAL_SECURITY_NUMBER: :social_security_number
+
+              # An individual taxpayer identification number (ITIN).
+              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER: :individual_taxpayer_identification_number
+
+              # A passport number.
+              PASSPORT: :passport
+
+              # A driver's license number.
+              DRIVERS_LICENSE: :drivers_license
+
+              # Another identifying document.
+              OTHER: :other
+
+              def self.values: -> Array[Increase::Models::Entity::Joint::Individual::Identification::method_]
+            end
+          end
+        end
+      end
+
+      type natural_person =
+        {
+          address: Increase::Models::Entity::NaturalPerson::Address,
+          date_of_birth: Date,
+          identification: Increase::Models::Entity::NaturalPerson::Identification,
+          name: String
+        }
+
+      class NaturalPerson < Increase::BaseModel
+        attr_accessor address: Increase::Models::Entity::NaturalPerson::Address
+
+        attr_accessor date_of_birth: Date
+
+        attr_accessor identification: Increase::Models::Entity::NaturalPerson::Identification
+
+        attr_accessor name: String
+
+        def initialize:
+          (
+            address: Increase::Models::Entity::NaturalPerson::Address,
+            date_of_birth: Date,
+            identification: Increase::Models::Entity::NaturalPerson::Identification,
+            name: String
+          ) -> void
+          | (
+            ?Increase::Models::Entity::natural_person | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::Entity::natural_person
+
+        type address =
+          {
+            city: String,
+            :line1 => String,
+            :line2 => String?,
+            state: String,
+            zip: String
+          }
+
+        class Address < Increase::BaseModel
+          attr_accessor city: String
+
+          attr_accessor line1: String
+
+          attr_accessor line2: String?
+
+          attr_accessor state: String
+
+          attr_accessor zip: String
+
+          def initialize:
+            (
+              city: String,
+              line1: String,
+              line2: String?,
+              state: String,
+              zip: String
+            ) -> void
+            | (
+              ?Increase::Models::Entity::NaturalPerson::address
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::Entity::NaturalPerson::address
+        end
+
+        type identification =
+          {
+            method_: Increase::Models::Entity::NaturalPerson::Identification::method_,
+            :number_last4 => String
+          }
+
+        class Identification < Increase::BaseModel
+          attr_accessor method_: Increase::Models::Entity::NaturalPerson::Identification::method_
+
+          attr_accessor number_last4: String
+
+          def initialize:
+            (
+              method_: Increase::Models::Entity::NaturalPerson::Identification::method_,
+              number_last4: String
+            ) -> void
+            | (
+              ?Increase::Models::Entity::NaturalPerson::identification
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::Entity::NaturalPerson::identification
+
+          type method_ =
+            :social_security_number
+            | :individual_taxpayer_identification_number
+            | :passport
+            | :drivers_license
+            | :other
+
+          class Method < Increase::Enum
+            # A social security number.
+            SOCIAL_SECURITY_NUMBER: :social_security_number
+
+            # An individual taxpayer identification number (ITIN).
+            INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER: :individual_taxpayer_identification_number
+
+            # A passport number.
+            PASSPORT: :passport
+
+            # A driver's license number.
+            DRIVERS_LICENSE: :drivers_license
+
+            # Another identifying document.
+            OTHER: :other
+
+            def self.values: -> Array[Increase::Models::Entity::NaturalPerson::Identification::method_]
+          end
+        end
+      end
+
+      type status = :active | :archived | :disabled
+
+      class Status < Increase::Enum
+        # The entity is active.
+        ACTIVE: :active
+
+        # The entity is archived, and can no longer be used to create accounts.
+        ARCHIVED: :archived
+
+        # The entity is temporarily disabled and cannot be used for financial activity.
+        DISABLED: :disabled
+
+        def self.values: -> Array[Increase::Models::Entity::status]
+      end
+
+      type structure =
+        :corporation | :natural_person | :joint | :trust | :government_authority
+
+      class Structure < Increase::Enum
+        # A corporation.
+        CORPORATION: :corporation
+
+        # An individual person.
+        NATURAL_PERSON: :natural_person
+
+        # Multiple individual people.
+        JOINT: :joint
+
+        # A trust.
+        TRUST: :trust
+
+        # A government authority.
+        GOVERNMENT_AUTHORITY: :government_authority
+
+        def self.values: -> Array[Increase::Models::Entity::structure]
+      end
+
+      type third_party_verification =
+        {
+          reference: String,
+          vendor: Increase::Models::Entity::ThirdPartyVerification::vendor
+        }
+
+      class ThirdPartyVerification < Increase::BaseModel
+        attr_accessor reference: String
+
+        attr_accessor vendor: Increase::Models::Entity::ThirdPartyVerification::vendor
+
+        def initialize:
+          (
+            reference: String,
+            vendor: Increase::Models::Entity::ThirdPartyVerification::vendor
+          ) -> void
+          | (
+            ?Increase::Models::Entity::third_party_verification
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::Entity::third_party_verification
+
+        type vendor = :alloy | :middesk
+
+        class Vendor < Increase::Enum
+          # Alloy. See https://alloy.com for more information.
+          ALLOY: :alloy
+
+          # Middesk. See https://middesk.com for more information.
+          MIDDESK: :middesk
+
+          def self.values: -> Array[Increase::Models::Entity::ThirdPartyVerification::vendor]
+        end
+      end
+
+      type trust =
+        {
+          address: Increase::Models::Entity::Trust::Address,
+          category: Increase::Models::Entity::Trust::category,
+          formation_document_file_id: String?,
+          formation_state: String?,
+          grantor: Increase::Models::Entity::Trust::Grantor?,
+          name: String,
+          tax_identifier: String?,
+          trustees: Array[Increase::Models::Entity::Trust::Trustee]
+        }
+
+      class Trust < Increase::BaseModel
+        attr_accessor address: Increase::Models::Entity::Trust::Address
+
+        attr_accessor category: Increase::Models::Entity::Trust::category
+
+        attr_accessor formation_document_file_id: String?
+
+        attr_accessor formation_state: String?
+
+        attr_accessor grantor: Increase::Models::Entity::Trust::Grantor?
+
+        attr_accessor name: String
+
+        attr_accessor tax_identifier: String?
+
+        attr_accessor trustees: Array[Increase::Models::Entity::Trust::Trustee]
+
+        def initialize:
+          (
+            address: Increase::Models::Entity::Trust::Address,
+            category: Increase::Models::Entity::Trust::category,
+            formation_document_file_id: String?,
+            formation_state: String?,
+            grantor: Increase::Models::Entity::Trust::Grantor?,
+            name: String,
+            tax_identifier: String?,
+            trustees: Array[Increase::Models::Entity::Trust::Trustee]
+          ) -> void
+          | (
+            ?Increase::Models::Entity::trust | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::Entity::trust
+
+        type address =
+          {
+            city: String,
+            :line1 => String,
+            :line2 => String?,
+            state: String,
+            zip: String
+          }
+
+        class Address < Increase::BaseModel
+          attr_accessor city: String
+
+          attr_accessor line1: String
+
+          attr_accessor line2: String?
+
+          attr_accessor state: String
+
+          attr_accessor zip: String
+
+          def initialize:
+            (
+              city: String,
+              line1: String,
+              line2: String?,
+              state: String,
+              zip: String
+            ) -> void
+            | (
+              ?Increase::Models::Entity::Trust::address
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::Entity::Trust::address
+        end
+
+        type category = :revocable | :irrevocable
+
+        class Category < Increase::Enum
+          # The trust is revocable by the grantor.
+          REVOCABLE: :revocable
+
+          # The trust cannot be revoked.
+          IRREVOCABLE: :irrevocable
+
+          def self.values: -> Array[Increase::Models::Entity::Trust::category]
+        end
+
+        type grantor =
+          {
+            address: Increase::Models::Entity::Trust::Grantor::Address,
+            date_of_birth: Date,
+            identification: Increase::Models::Entity::Trust::Grantor::Identification,
+            name: String
+          }
+
+        class Grantor < Increase::BaseModel
+          attr_accessor address: Increase::Models::Entity::Trust::Grantor::Address
+
+          attr_accessor date_of_birth: Date
+
+          attr_accessor identification: Increase::Models::Entity::Trust::Grantor::Identification
+
+          attr_accessor name: String
+
+          def initialize:
+            (
+              address: Increase::Models::Entity::Trust::Grantor::Address,
+              date_of_birth: Date,
+              identification: Increase::Models::Entity::Trust::Grantor::Identification,
+              name: String
+            ) -> void
+            | (
+              ?Increase::Models::Entity::Trust::grantor
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::Entity::Trust::grantor
+
+          type address =
+            {
+              city: String,
+              :line1 => String,
+              :line2 => String?,
+              state: String,
+              zip: String
+            }
+
+          class Address < Increase::BaseModel
+            attr_accessor city: String
+
+            attr_accessor line1: String
+
+            attr_accessor line2: String?
+
+            attr_accessor state: String
+
+            attr_accessor zip: String
+
+            def initialize:
+              (
+                city: String,
+                line1: String,
+                line2: String?,
+                state: String,
+                zip: String
+              ) -> void
+              | (
+                ?Increase::Models::Entity::Trust::Grantor::address
+                | Increase::BaseModel data
+              ) -> void
+
+            def to_hash: -> Increase::Models::Entity::Trust::Grantor::address
+          end
+
+          type identification =
+            {
+              method_: Increase::Models::Entity::Trust::Grantor::Identification::method_,
+              :number_last4 => String
+            }
+
+          class Identification < Increase::BaseModel
+            attr_accessor method_: Increase::Models::Entity::Trust::Grantor::Identification::method_
+
+            attr_accessor number_last4: String
+
+            def initialize:
+              (
+                method_: Increase::Models::Entity::Trust::Grantor::Identification::method_,
+                number_last4: String
+              ) -> void
+              | (
+                ?Increase::Models::Entity::Trust::Grantor::identification
+                | Increase::BaseModel data
+              ) -> void
+
+            def to_hash: -> Increase::Models::Entity::Trust::Grantor::identification
+
+            type method_ =
+              :social_security_number
+              | :individual_taxpayer_identification_number
+              | :passport
+              | :drivers_license
+              | :other
+
+            class Method < Increase::Enum
+              # A social security number.
+              SOCIAL_SECURITY_NUMBER: :social_security_number
+
+              # An individual taxpayer identification number (ITIN).
+              INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER: :individual_taxpayer_identification_number
+
+              # A passport number.
+              PASSPORT: :passport
+
+              # A driver's license number.
+              DRIVERS_LICENSE: :drivers_license
+
+              # Another identifying document.
+              OTHER: :other
+
+              def self.values: -> Array[Increase::Models::Entity::Trust::Grantor::Identification::method_]
+            end
+          end
+        end
+
+        type trustee =
+          {
+            individual: Increase::Models::Entity::Trust::Trustee::Individual?,
+            structure: Increase::Models::Entity::Trust::Trustee::structure
+          }
+
+        class Trustee < Increase::BaseModel
+          attr_accessor individual: Increase::Models::Entity::Trust::Trustee::Individual?
+
+          attr_accessor structure: Increase::Models::Entity::Trust::Trustee::structure
+
+          def initialize:
+            (
+              individual: Increase::Models::Entity::Trust::Trustee::Individual?,
+              structure: Increase::Models::Entity::Trust::Trustee::structure
+            ) -> void
+            | (
+              ?Increase::Models::Entity::Trust::trustee
+              | Increase::BaseModel data
+            ) -> void
+
+          def to_hash: -> Increase::Models::Entity::Trust::trustee
+
+          type individual =
+            {
+              address: Increase::Models::Entity::Trust::Trustee::Individual::Address,
+              date_of_birth: Date,
+              identification: Increase::Models::Entity::Trust::Trustee::Individual::Identification,
+              name: String
+            }
+
+          class Individual < Increase::BaseModel
+            attr_accessor address: Increase::Models::Entity::Trust::Trustee::Individual::Address
+
+            attr_accessor date_of_birth: Date
+
+            attr_accessor identification: Increase::Models::Entity::Trust::Trustee::Individual::Identification
+
+            attr_accessor name: String
+
+            def initialize:
+              (
+                address: Increase::Models::Entity::Trust::Trustee::Individual::Address,
+                date_of_birth: Date,
+                identification: Increase::Models::Entity::Trust::Trustee::Individual::Identification,
+                name: String
+              ) -> void
+              | (
+                ?Increase::Models::Entity::Trust::Trustee::individual
+                | Increase::BaseModel data
+              ) -> void
+
+            def to_hash: -> Increase::Models::Entity::Trust::Trustee::individual
+
+            type address =
+              {
+                city: String,
+                :line1 => String,
+                :line2 => String?,
+                state: String,
+                zip: String
+              }
+
+            class Address < Increase::BaseModel
+              attr_accessor city: String
+
+              attr_accessor line1: String
+
+              attr_accessor line2: String?
+
+              attr_accessor state: String
+
+              attr_accessor zip: String
+
+              def initialize:
+                (
+                  city: String,
+                  line1: String,
+                  line2: String?,
+                  state: String,
+                  zip: String
+                ) -> void
+                | (
+                  ?Increase::Models::Entity::Trust::Trustee::Individual::address
+                  | Increase::BaseModel data
+                ) -> void
+
+              def to_hash: -> Increase::Models::Entity::Trust::Trustee::Individual::address
+            end
+
+            type identification =
+              {
+                method_: Increase::Models::Entity::Trust::Trustee::Individual::Identification::method_,
+                :number_last4 => String
+              }
+
+            class Identification < Increase::BaseModel
+              attr_accessor method_: Increase::Models::Entity::Trust::Trustee::Individual::Identification::method_
+
+              attr_accessor number_last4: String
+
+              def initialize:
+                (
+                  method_: Increase::Models::Entity::Trust::Trustee::Individual::Identification::method_,
+                  number_last4: String
+                ) -> void
+                | (
+                  ?Increase::Models::Entity::Trust::Trustee::Individual::identification
+                  | Increase::BaseModel data
+                ) -> void
+
+              def to_hash: -> Increase::Models::Entity::Trust::Trustee::Individual::identification
+
+              type method_ =
+                :social_security_number
+                | :individual_taxpayer_identification_number
+                | :passport
+                | :drivers_license
+                | :other
+
+              class Method < Increase::Enum
+                # A social security number.
+                SOCIAL_SECURITY_NUMBER: :social_security_number
+
+                # An individual taxpayer identification number (ITIN).
+                INDIVIDUAL_TAXPAYER_IDENTIFICATION_NUMBER: :individual_taxpayer_identification_number
+
+                # A passport number.
+                PASSPORT: :passport
+
+                # A driver's license number.
+                DRIVERS_LICENSE: :drivers_license
+
+                # Another identifying document.
+                OTHER: :other
+
+                def self.values: -> Array[Increase::Models::Entity::Trust::Trustee::Individual::Identification::method_]
+              end
+            end
+          end
+
+          type structure = :individual
+
+          class Structure < Increase::Enum
+            # The trustee is an individual.
+            INDIVIDUAL: :individual
+
+            def self.values: -> Array[Increase::Models::Entity::Trust::Trustee::structure]
+          end
+        end
+      end
+
+      type type_ = :entity
+
+      class Type < Increase::Enum
+        ENTITY: :entity
+
+        def self.values: -> Array[Increase::Models::Entity::type_]
+      end
+    end
+  end
+end

@@ -9,7 +9,7 @@ module Increase
       #
       # @param params [Increase::Models::PendingTransactionRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PendingTransaction]
       #
@@ -41,7 +41,7 @@ module Increase
       #
       #   @option params [Increase::Models::PendingTransactionListParams::Status] :status
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::PendingTransaction>]
       #

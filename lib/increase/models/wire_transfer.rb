@@ -409,6 +409,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The type of object that created this transfer.
         #
         # @example
@@ -433,6 +435,11 @@ module Increase
           USER = :user
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -482,6 +489,8 @@ module Increase
         end
       end
 
+      # @abstract
+      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For wire transfers this is always equal to `usd`.
       #
@@ -522,8 +531,15 @@ module Increase
         USD = :USD
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The transfer's network.
       #
       # @example
@@ -537,6 +553,11 @@ module Increase
         WIRE = :wire
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -705,6 +726,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # The lifecycle status of the transfer.
       #
       # @example
@@ -753,6 +776,11 @@ module Increase
         COMPLETE = :complete
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -787,6 +815,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `wire_transfer`.
       #
@@ -801,6 +831,11 @@ module Increase
         WIRE_TRANSFER = :wire_transfer
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

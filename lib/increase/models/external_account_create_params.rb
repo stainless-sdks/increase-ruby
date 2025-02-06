@@ -58,6 +58,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The type of entity that owns the External Account.
       #
       # @example
@@ -82,8 +84,15 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The type of the destination account. Defaults to `checking`.
       #
       # @example
@@ -108,6 +117,11 @@ module Increase
         OTHER = :other
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

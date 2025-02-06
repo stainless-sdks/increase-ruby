@@ -1,0 +1,20 @@
+module Increase
+  module Resources
+    class OAuthTokens
+      def create:
+        (
+          Increase::Models::OAuthTokenCreateParams | Hash[Symbol, top] params
+        ) -> Increase::Models::OAuthToken
+        | (
+          grant_type: Increase::Models::OAuthTokenCreateParams::grant_type,
+          client_id: String,
+          client_secret: String,
+          code: String,
+          production_token: String,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::OAuthToken
+
+      def initialize: (client: Increase::Client) -> void
+    end
+  end
+end

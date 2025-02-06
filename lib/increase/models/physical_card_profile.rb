@@ -129,6 +129,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The creator of this Physical Card Profile.
       #
       # @example
@@ -148,8 +150,15 @@ module Increase
         USER = :user
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The status of the Physical Card Profile.
       #
       # @example
@@ -189,8 +198,15 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card_profile`.
       #
@@ -205,6 +221,11 @@ module Increase
         PHYSICAL_CARD_PROFILE = :physical_card_profile
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

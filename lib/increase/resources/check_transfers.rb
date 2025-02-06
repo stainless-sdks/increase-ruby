@@ -26,7 +26,7 @@ module Increase
       #     `fulfillment_method` is equal to `third_party`. It must not be included if any
       #     other `fulfillment_method` is provided.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
       #
@@ -47,7 +47,7 @@ module Increase
       #
       # @param params [Increase::Models::CheckTransferRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
       #
@@ -78,7 +78,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::CheckTransfer>]
       #
@@ -100,7 +100,7 @@ module Increase
       #
       # @param params [Increase::Models::CheckTransferApproveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
       #
@@ -119,7 +119,7 @@ module Increase
       #
       # @param params [Increase::Models::CheckTransferCancelParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
       #
@@ -140,7 +140,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::CheckTransferStopPaymentParams::Reason] :reason The reason why this transfer should be stopped.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CheckTransfer]
       #

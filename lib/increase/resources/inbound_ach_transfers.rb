@@ -9,7 +9,7 @@ module Increase
       #
       # @param params [Increase::Models::InboundACHTransferRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
       #
@@ -39,7 +39,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::InboundACHTransferListParams::Status] :status Filter Inbound ACH Transfers to those with the specified status.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::InboundACHTransfer>]
       #
@@ -66,7 +66,7 @@ module Increase
       #
       #   @option params [String] :updated_routing_number The updated routing number to send in the notification of change.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
       #
@@ -91,7 +91,7 @@ module Increase
       #     return codes will be `payment_stopped` for debits and
       #     `credit_entry_refused_by_receiver` for credits.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
       #
@@ -116,7 +116,7 @@ module Increase
       #   @option params [Symbol, Increase::Models::InboundACHTransferTransferReturnParams::Reason] :reason The reason why this transfer will be returned. The most usual return codes are
       #     `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
       #

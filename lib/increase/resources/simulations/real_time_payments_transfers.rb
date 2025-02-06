@@ -15,7 +15,7 @@ module Increase
         #
         #   @option params [Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection] :rejection If set, the simulation will reject the transfer.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::RealTimePaymentsTransfer]
         #

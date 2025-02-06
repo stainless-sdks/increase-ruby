@@ -27,6 +27,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason why the Federal Reserve or destination bank returned this transfer.
         #   Defaults to `no_account`.
         #
@@ -259,6 +261,11 @@ module Increase
           UNTIMELY_RETURN = :untimely_return
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

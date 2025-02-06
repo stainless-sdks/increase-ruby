@@ -18,7 +18,7 @@ module Increase
       #
       #   @option params [Boolean] :require_approval Whether the transfer requires explicit approval via the dashboard or API.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountTransfer]
       #
@@ -39,7 +39,7 @@ module Increase
       #
       # @param params [Increase::Models::AccountTransferRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountTransfer]
       #
@@ -70,7 +70,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::AccountTransfer>]
       #
@@ -92,7 +92,7 @@ module Increase
       #
       # @param params [Increase::Models::AccountTransferApproveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountTransfer]
       #
@@ -111,7 +111,7 @@ module Increase
       #
       # @param params [Increase::Models::AccountTransferCancelParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountTransfer]
       #

@@ -150,6 +150,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The standard entry class code for the transfer.
         #
         # @example
@@ -219,6 +221,11 @@ module Increase
           INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

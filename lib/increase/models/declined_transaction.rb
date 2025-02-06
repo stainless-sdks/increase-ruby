@@ -118,6 +118,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
       #   Transaction's currency. This will match the currency on the Declined
       #   Transaction's Account.
@@ -159,8 +161,15 @@ module Increase
         USD = :USD
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The type of the route this Declined Transaction came through.
       #
       # @example
@@ -185,6 +194,11 @@ module Increase
         LOCKBOX = :lockbox
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -418,6 +432,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Why the ACH transfer was declined.
           #
           # @example
@@ -490,8 +506,15 @@ module Increase
             CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # A constant representing the object's type. For this resource it will always be
           #   `ach_decline`.
           #
@@ -506,6 +529,11 @@ module Increase
             ACH_DECLINE = :ach_decline
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -784,6 +812,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
           #
@@ -809,8 +839,15 @@ module Increase
             NETWORK = :network
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
           #
@@ -851,8 +888,15 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
           #
@@ -873,6 +917,11 @@ module Increase
             REFUND = :refund
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -910,6 +959,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # The payment network used to process this card authorization.
             #
             # @example
@@ -924,6 +975,11 @@ module Increase
               VISA = :visa
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @example
@@ -980,6 +1036,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
@@ -1027,8 +1085,15 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
               #
@@ -1081,8 +1146,15 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
+              # @abstract
+              #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
               #
@@ -1126,6 +1198,11 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
           end
@@ -1173,6 +1250,8 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @abstract
+          #
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
           #
@@ -1213,8 +1292,15 @@ module Increase
             REFUND = :refund
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # This is present if a specific decline reason was given in the real-time
           #   decision.
           #
@@ -1255,8 +1341,15 @@ module Increase
             OTHER = :other
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # Why the transaction was declined.
           #
           # @example
@@ -1323,6 +1416,11 @@ module Increase
             SUSPECTED_FRAUD = :suspected_fraud
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -1385,6 +1483,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The result of verifying the Card Verification Code.
               #
               # @example
@@ -1409,6 +1509,11 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
@@ -1471,6 +1576,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # The address verification result returned to the card network.
               #
               # @example
@@ -1510,11 +1617,18 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
           end
         end
 
+        # @abstract
+        #
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
         #
@@ -1558,6 +1672,11 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -1645,6 +1764,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Why the check was declined.
           #
           # @example
@@ -1717,6 +1838,11 @@ module Increase
             USER_INITIATED = :user_initiated
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -1787,6 +1913,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           #   currency.
           #
@@ -1827,8 +1955,15 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # Why the check deposit was rejected.
           #
           # @example
@@ -1883,6 +2018,11 @@ module Increase
             UNKNOWN = :unknown
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -2001,6 +2141,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
           #   transfer.
@@ -2042,8 +2184,15 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
+          # @abstract
+          #
           # Why the transfer was declined.
           #
           # @example
@@ -2083,6 +2232,11 @@ module Increase
             REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -2117,6 +2271,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # Why the wire transfer was declined.
           #
           # @example
@@ -2156,10 +2312,17 @@ module Increase
             TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `declined_transaction`.
       #
@@ -2174,6 +2337,11 @@ module Increase
         DECLINED_TRANSACTION = :declined_transaction
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

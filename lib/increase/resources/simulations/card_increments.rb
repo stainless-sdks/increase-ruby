@@ -18,7 +18,7 @@ module Increase
         #     decision event subscription, you can use this field to route events to any
         #     specified event subscription for testing purposes.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CardPayment]
         #

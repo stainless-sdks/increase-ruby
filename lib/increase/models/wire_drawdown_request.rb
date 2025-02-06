@@ -195,6 +195,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The lifecycle status of the drawdown request.
       #
       # @example
@@ -224,6 +226,11 @@ module Increase
         REFUSED = :refused
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -251,6 +258,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `wire_drawdown_request`.
       #
@@ -265,6 +274,11 @@ module Increase
         WIRE_DRAWDOWN_REQUEST = :wire_drawdown_request
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

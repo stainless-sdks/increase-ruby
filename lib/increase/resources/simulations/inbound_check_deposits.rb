@@ -19,7 +19,7 @@ module Increase
         #
         #   @option params [String] :check_number The check number on the check to be deposited.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::InboundCheckDeposit]
         #

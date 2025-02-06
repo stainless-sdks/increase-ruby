@@ -1,0 +1,16 @@
+module Increase
+  class Page[Elem]
+    include Increase::BasePage[Elem]
+
+    attr_accessor data: Array[Elem]
+
+    attr_accessor next_cursor: String?
+
+    def initialize: (
+      client: Increase::BaseClient,
+      req: Increase::BaseClient::request,
+      headers: Hash[String, String],
+      unwrapped: Hash[Symbol, top]
+    ) -> void
+  end
+end

@@ -15,7 +15,7 @@ module Increase
       #
       #   @option params [String] :entity_id The entity, if `compliance_category` is `customer_balance`.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingAccount]
       #
@@ -38,7 +38,7 @@ module Increase
       #
       #   @option params [String] :name The name you choose for the account.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingAccount]
       #
@@ -67,7 +67,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::BookkeepingAccount>]
       #
@@ -91,7 +91,7 @@ module Increase
       #
       #   @option params [Time] :at_time The moment to query the balance at. If not set, returns the current balances.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingBalanceLookup]
       #

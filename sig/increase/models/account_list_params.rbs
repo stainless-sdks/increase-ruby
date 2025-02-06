@@ -1,0 +1,118 @@
+module Increase
+  module Models
+    type account_list_params =
+      {
+        created_at: Increase::Models::AccountListParams::CreatedAt,
+        cursor: String,
+        entity_id: String,
+        idempotency_key: String,
+        informational_entity_id: String,
+        limit: Integer,
+        program_id: String,
+        status: Increase::Models::AccountListParams::status
+      }
+      & Increase::request_parameters
+
+    class AccountListParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      attr_reader created_at: Increase::Models::AccountListParams::CreatedAt?
+
+      def created_at=: (Increase::Models::AccountListParams::CreatedAt) -> void
+
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> void
+
+      attr_reader entity_id: String?
+
+      def entity_id=: (String) -> void
+
+      attr_reader idempotency_key: String?
+
+      def idempotency_key=: (String) -> void
+
+      attr_reader informational_entity_id: String?
+
+      def informational_entity_id=: (String) -> void
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> void
+
+      attr_reader program_id: String?
+
+      def program_id=: (String) -> void
+
+      attr_reader status: Increase::Models::AccountListParams::status?
+
+      def status=: (Increase::Models::AccountListParams::status) -> void
+
+      def initialize:
+        (
+          created_at: Increase::Models::AccountListParams::CreatedAt,
+          cursor: String,
+          entity_id: String,
+          idempotency_key: String,
+          informational_entity_id: String,
+          limit: Integer,
+          program_id: String,
+          status: Increase::Models::AccountListParams::status,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::account_list_params | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::account_list_params
+
+      type created_at =
+        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+
+      class CreatedAt < Increase::BaseModel
+        attr_reader after: Time?
+
+        def after=: (Time) -> void
+
+        attr_reader before: Time?
+
+        def before=: (Time) -> void
+
+        attr_reader on_or_after: Time?
+
+        def on_or_after=: (Time) -> void
+
+        attr_reader on_or_before: Time?
+
+        def on_or_before=: (Time) -> void
+
+        def initialize:
+          (
+            after: Time,
+            before: Time,
+            on_or_after: Time,
+            on_or_before: Time
+          ) -> void
+          | (
+            ?Increase::Models::AccountListParams::created_at
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::AccountListParams::created_at
+      end
+
+      type status = :closed | :open
+
+      class Status < Increase::Enum
+        # Closed Accounts on which no new activity can occur.
+        CLOSED: :closed
+
+        # Open Accounts that are ready to use.
+        OPEN: :open
+
+        def self.values: -> Array[Increase::Models::AccountListParams::status]
+      end
+    end
+  end
+end

@@ -1,0 +1,80 @@
+module Increase
+  module Resources
+    class DigitalCardProfiles
+      def create:
+        (
+          Increase::Models::DigitalCardProfileCreateParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Models::DigitalCardProfile
+        | (
+          app_icon_file_id: String,
+          background_image_file_id: String,
+          card_description: String,
+          description: String,
+          issuer_name: String,
+          contact_email: String,
+          contact_phone: String,
+          contact_website: String,
+          text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::DigitalCardProfile
+
+      def retrieve:
+        (
+          String digital_card_profile_id,
+          ?Increase::Models::DigitalCardProfileRetrieveParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Models::DigitalCardProfile
+        | (
+          String digital_card_profile_id,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::DigitalCardProfile
+
+      def list:
+        (
+          ?Increase::Models::DigitalCardProfileListParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Page[Increase::Models::DigitalCardProfile]
+        | (
+          cursor: String,
+          idempotency_key: String,
+          limit: Integer,
+          status: Increase::Models::DigitalCardProfileListParams::Status,
+          request_options: Increase::request_opts
+        ) -> Increase::Page[Increase::Models::DigitalCardProfile]
+
+      def archive:
+        (
+          String digital_card_profile_id,
+          ?Increase::Models::DigitalCardProfileArchiveParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Models::DigitalCardProfile
+        | (
+          String digital_card_profile_id,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::DigitalCardProfile
+
+      def clone_:
+        (
+          String digital_card_profile_id,
+          ?Increase::Models::DigitalCardProfileCloneParams
+          | Hash[Symbol, top] params
+        ) -> Increase::Models::DigitalCardProfile
+        | (
+          String digital_card_profile_id,
+          app_icon_file_id: String,
+          background_image_file_id: String,
+          card_description: String,
+          contact_email: String,
+          contact_phone: String,
+          contact_website: String,
+          description: String,
+          issuer_name: String,
+          text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
+          request_options: Increase::request_opts
+        ) -> Increase::Models::DigitalCardProfile
+
+      def initialize: (client: Increase::Client) -> void
+    end
+  end
+end

@@ -113,6 +113,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether the card authentication attempt should be approved or declined.
         #
         # @example
@@ -137,6 +139,11 @@ module Increase
           DENY = :deny
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -167,6 +174,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether the card authentication challenge was successfully delivered to the
         #   cardholder.
         #
@@ -187,6 +196,11 @@ module Increase
           FAILURE = :failure
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -228,6 +242,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether the card authorization should be approved or declined.
         #
         # @example
@@ -247,8 +263,15 @@ module Increase
           DECLINE = :decline
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # The reason the card authorization was declined. This translates to a specific
         #   decline code that is sent to the card network.
         #
@@ -289,6 +312,11 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -330,6 +358,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # Whether your application was able to deliver the one-time passcode.
         #
         # @example
@@ -349,6 +379,11 @@ module Increase
           FAILURE = :failure
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example

@@ -1,0 +1,208 @@
+# typed: strong
+
+module Increase
+  module Models
+    class FileListParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      sig { returns(T.nilable(Increase::Models::FileListParams::CreatedAt)) }
+      attr_reader :created_at
+
+      sig { params(created_at: Increase::Models::FileListParams::CreatedAt).void }
+      attr_writer :created_at
+
+      sig { returns(T.nilable(String)) }
+      attr_reader :cursor
+
+      sig { params(cursor: String).void }
+      attr_writer :cursor
+
+      sig { returns(T.nilable(String)) }
+      attr_reader :idempotency_key
+
+      sig { params(idempotency_key: String).void }
+      attr_writer :idempotency_key
+
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :limit
+
+      sig { params(limit: Integer).void }
+      attr_writer :limit
+
+      sig { returns(T.nilable(Increase::Models::FileListParams::Purpose)) }
+      attr_reader :purpose
+
+      sig { params(purpose: Increase::Models::FileListParams::Purpose).void }
+      attr_writer :purpose
+
+      sig do
+        params(
+          created_at: Increase::Models::FileListParams::CreatedAt,
+          cursor: String,
+          idempotency_key: String,
+          limit: Integer,
+          purpose: Increase::Models::FileListParams::Purpose,
+          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+        ).void
+      end
+      def initialize(
+        created_at: nil,
+        cursor: nil,
+        idempotency_key: nil,
+        limit: nil,
+        purpose: nil,
+        request_options: {}
+      )
+      end
+
+      sig do
+        override.returns(
+          {
+            created_at: Increase::Models::FileListParams::CreatedAt,
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            purpose: Increase::Models::FileListParams::Purpose,
+            request_options: Increase::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
+
+      class CreatedAt < Increase::BaseModel
+        sig { returns(T.nilable(Time)) }
+        attr_reader :after
+
+        sig { params(after: Time).void }
+        attr_writer :after
+
+        sig { returns(T.nilable(Time)) }
+        attr_reader :before
+
+        sig { params(before: Time).void }
+        attr_writer :before
+
+        sig { returns(T.nilable(Time)) }
+        attr_reader :on_or_after
+
+        sig { params(on_or_after: Time).void }
+        attr_writer :on_or_after
+
+        sig { returns(T.nilable(Time)) }
+        attr_reader :on_or_before
+
+        sig { params(on_or_before: Time).void }
+        attr_writer :on_or_before
+
+        sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).void }
+        def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+        end
+
+        sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
+        def to_hash
+        end
+      end
+
+      class Purpose < Increase::BaseModel
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        attr_reader :in_
+
+        sig { params(in_: T::Array[Symbol]).void }
+        attr_writer :in_
+
+        sig { params(in_: T::Array[Symbol]).void }
+        def initialize(in_: nil)
+        end
+
+        sig { override.returns({in_: T::Array[Symbol]}) }
+        def to_hash
+        end
+
+        class In < Increase::Enum
+          abstract!
+
+          # An image of the front of a check, used for check deposits.
+          CHECK_IMAGE_FRONT = :check_image_front
+
+          # An image of the back of a check, used for check deposits.
+          CHECK_IMAGE_BACK = :check_image_back
+
+          # An image of the front of a deposited check after processing by Increase and submission to the Federal Reserve.
+          PROCESSED_CHECK_IMAGE_FRONT = :processed_check_image_front
+
+          # An image of the back of a deposited check after processing by Increase and submission to the Federal Reserve.
+          PROCESSED_CHECK_IMAGE_BACK = :processed_check_image_back
+
+          # An image of a check that was mailed to a recipient.
+          MAILED_CHECK_IMAGE = :mailed_check_image
+
+          # An image to be printed on the bottom or voucher of a check that you've requested Increase print.
+          CHECK_VOUCHER_IMAGE = :check_voucher_image
+
+          # An image to be printed on an additional page and mailed with a check that you've requested Increase print.
+          CHECK_ATTACHMENT_IMAGE = :check_attachment_image
+
+          # A scanned mail item sent to Increase.
+          INBOUND_MAIL_ITEM = :inbound_mail_item
+
+          # IRS Form 1099-INT.
+          FORM_1099_INT = :form_1099_int
+
+          # IRS Form 1099-MISC.
+          FORM_1099_MISC = :form_1099_misc
+
+          # IRS Form SS-4.
+          FORM_SS_4 = :form_ss_4
+
+          # An image of a government-issued ID.
+          IDENTITY_DOCUMENT = :identity_document
+
+          # A statement generated by Increase.
+          INCREASE_STATEMENT = :increase_statement
+
+          # A file purpose not covered by any of the other cases.
+          OTHER = :other
+
+          # A legal document forming a trust.
+          TRUST_FORMATION_DOCUMENT = :trust_formation_document
+
+          # A card image to be rendered inside digital wallet apps. This must be a 1536x969 pixel PNG.
+          DIGITAL_WALLET_ARTWORK = :digital_wallet_artwork
+
+          # An icon for you app to be rendered inside digital wallet apps. This must be a 100x100 pixel PNG.
+          DIGITAL_WALLET_APP_ICON = :digital_wallet_app_icon
+
+          # A card image to be printed on the front of a physical card. This must be a 2100x1340 pixel PNG with no other color but black.
+          PHYSICAL_CARD_FRONT = :physical_card_front
+
+          # The image to be printed on the back of a physical card.
+          PHYSICAL_CARD_BACK = :physical_card_back
+
+          # An image representing the entirety of the carrier used for a physical card. This must be a 2550x3300 pixel PNG with no other color but black.
+          PHYSICAL_CARD_CARRIER = :physical_card_carrier
+
+          # A document requested by Increase.
+          DOCUMENT_REQUEST = :document_request
+
+          # A supplemental document associated an an Entity.
+          ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
+
+          # The results of an Export you requested via the dashboard or API.
+          EXPORT = :export
+
+          # An attachment to an Unusual Activity Report.
+          UNUSUAL_ACTIVITY_REPORT_ATTACHMENT = :unusual_activity_report_attachment
+
+          # A document granting another entity access to the funds into your account.
+          DEPOSIT_ACCOUNT_CONTROL_AGREEMENT = :deposit_account_control_agreement
+
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
+          end
+        end
+      end
+    end
+  end
+end

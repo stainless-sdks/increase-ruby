@@ -36,7 +36,7 @@ module Increase
       #   @option params [String] :ultimate_debtor_name The name of the ultimate sender of the transfer. Set this if the funds are being
       #     sent on behalf of someone who is not the account holder at Increase.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::RealTimePaymentsTransfer]
       #
@@ -57,7 +57,7 @@ module Increase
       #
       # @param params [Increase::Models::RealTimePaymentsTransferRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::RealTimePaymentsTransfer]
       #
@@ -91,7 +91,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::RealTimePaymentsTransfer>]
       #

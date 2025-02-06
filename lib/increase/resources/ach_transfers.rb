@@ -64,7 +64,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::ACHTransferCreateParams::TransactionTiming] :transaction_timing The timing of the transaction.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ACHTransfer]
       #
@@ -85,7 +85,7 @@ module Increase
       #
       # @param params [Increase::Models::ACHTransferRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ACHTransfer]
       #
@@ -118,7 +118,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::ACHTransfer>]
       #
@@ -140,7 +140,7 @@ module Increase
       #
       # @param params [Increase::Models::ACHTransferApproveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ACHTransfer]
       #
@@ -159,7 +159,7 @@ module Increase
       #
       # @param params [Increase::Models::ACHTransferCancelParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ACHTransfer]
       #

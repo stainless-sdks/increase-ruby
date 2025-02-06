@@ -33,7 +33,7 @@ module Increase
       #   @option params [Increase::Models::EntityCreateParams::Trust] :trust Details of the trust entity to create. Required if `structure` is equal to
       #     `trust`.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
       #
@@ -54,7 +54,7 @@ module Increase
       #
       # @param params [Increase::Models::EntityRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
       #
@@ -85,7 +85,7 @@ module Increase
       #
       #   @option params [Increase::Models::EntityListParams::Status] :status
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Entity>]
       #
@@ -108,7 +108,7 @@ module Increase
       #
       # @param params [Increase::Models::EntityArchiveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
       #
@@ -131,7 +131,7 @@ module Increase
       #   @option params [String] :beneficial_owner_id The identifying details of anyone controlling or owning 25% or more of the
       #     corporation.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
       #
@@ -157,7 +157,7 @@ module Increase
       #   @option params [Time] :confirmed_at When your user confirmed the Entity's details. If not provided, the current time
       #     will be used.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
       #
@@ -181,7 +181,7 @@ module Increase
       #   @option params [Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner] :beneficial_owner The identifying details of anyone controlling or owning 25% or more of the
       #     corporation.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
       #
@@ -205,7 +205,7 @@ module Increase
       #   @option params [Increase::Models::EntityUpdateAddressParams::Address] :address The entity's physical address. Mail receiving locations like PO Boxes and PMB's
       #     are disallowed.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
       #
@@ -233,7 +233,7 @@ module Increase
       #   @option params [String] :beneficial_owner_id The identifying details of anyone controlling or owning 25% or more of the
       #     corporation.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
       #
@@ -260,7 +260,7 @@ module Increase
       #     `Software Publishers`. A full list of classification codes is available
       #     [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
       #

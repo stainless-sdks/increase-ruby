@@ -103,33 +103,33 @@ module Increase
     # @return [Increase::APIStatusError]
     #
     def self.for(url:, status:, body:, request:, response:)
-      key = Increase::Util.dig(body, type)
+      key = Increase::Util.dig(body, :type)
       kwargs = {url: url, status: status, body: body, request: request, response: response}
 
       case [status, key]
-      in [400, "invalid_parameters_error"]
+      in [400, Increase::InvalidParametersError::TYPE]
         Increase::InvalidParametersError.new(**kwargs)
-      in [400, "malformed_request_error"]
+      in [400, Increase::MalformedRequestError::TYPE]
         Increase::MalformedRequestError.new(**kwargs)
-      in [401, "invalid_api_key_error"]
+      in [401, Increase::InvalidAPIKeyError::TYPE]
         Increase::InvalidAPIKeyError.new(**kwargs)
-      in [403, "environment_mismatch_error"]
+      in [403, Increase::EnvironmentMismatchError::TYPE]
         Increase::EnvironmentMismatchError.new(**kwargs)
-      in [403, "insufficient_permissions_error"]
+      in [403, Increase::InsufficientPermissionsError::TYPE]
         Increase::InsufficientPermissionsError.new(**kwargs)
-      in [403, "private_feature_error"]
+      in [403, Increase::PrivateFeatureError::TYPE]
         Increase::PrivateFeatureError.new(**kwargs)
-      in [404, "api_method_not_found_error"]
+      in [404, Increase::APIMethodNotFoundError::TYPE]
         Increase::APIMethodNotFoundError.new(**kwargs)
-      in [404, "object_not_found_error"]
+      in [404, Increase::ObjectNotFoundError::TYPE]
         Increase::ObjectNotFoundError.new(**kwargs)
-      in [409, "idempotency_key_already_used_error"]
+      in [409, Increase::IdempotencyKeyAlreadyUsedError::TYPE]
         Increase::IdempotencyKeyAlreadyUsedError.new(**kwargs)
-      in [409, "invalid_operation_error"]
+      in [409, Increase::InvalidOperationError::TYPE]
         Increase::InvalidOperationError.new(**kwargs)
-      in [429, "rate_limited_error"]
+      in [429, Increase::RateLimitedError::TYPE]
         Increase::RateLimitedError.new(**kwargs)
-      in [500, "internal_server_error"]
+      in [500, Increase::InternalServerError::TYPE]
         Increase::InternalServerError.new(**kwargs)
       in [400, _]
         Increase::BadRequestError.new(**kwargs)
@@ -207,72 +207,72 @@ module Increase
   class InvalidParametersError < Increase::APIStatusError
     HTTP_STATUS = 400
 
-    TYPE = invalid_parameters_error
+    TYPE = "invalid_parameters_error"
   end
 
   class MalformedRequestError < Increase::APIStatusError
     HTTP_STATUS = 400
 
-    TYPE = malformed_request_error
+    TYPE = "malformed_request_error"
   end
 
   class InvalidAPIKeyError < Increase::APIStatusError
     HTTP_STATUS = 401
 
-    TYPE = invalid_api_key_error
+    TYPE = "invalid_api_key_error"
   end
 
   class EnvironmentMismatchError < Increase::APIStatusError
     HTTP_STATUS = 403
 
-    TYPE = environment_mismatch_error
+    TYPE = "environment_mismatch_error"
   end
 
   class InsufficientPermissionsError < Increase::APIStatusError
     HTTP_STATUS = 403
 
-    TYPE = insufficient_permissions_error
+    TYPE = "insufficient_permissions_error"
   end
 
   class PrivateFeatureError < Increase::APIStatusError
     HTTP_STATUS = 403
 
-    TYPE = private_feature_error
+    TYPE = "private_feature_error"
   end
 
   class APIMethodNotFoundError < Increase::APIStatusError
     HTTP_STATUS = 404
 
-    TYPE = api_method_not_found_error
+    TYPE = "api_method_not_found_error"
   end
 
   class ObjectNotFoundError < Increase::APIStatusError
     HTTP_STATUS = 404
 
-    TYPE = object_not_found_error
+    TYPE = "object_not_found_error"
   end
 
   class IdempotencyKeyAlreadyUsedError < Increase::APIStatusError
     HTTP_STATUS = 409
 
-    TYPE = idempotency_key_already_used_error
+    TYPE = "idempotency_key_already_used_error"
   end
 
   class InvalidOperationError < Increase::APIStatusError
     HTTP_STATUS = 409
 
-    TYPE = invalid_operation_error
+    TYPE = "invalid_operation_error"
   end
 
   class RateLimitedError < Increase::APIStatusError
     HTTP_STATUS = 429
 
-    TYPE = rate_limited_error
+    TYPE = "rate_limited_error"
   end
 
   class InternalServerError < Increase::APIStatusError
     HTTP_STATUS = 500
 
-    TYPE = internal_server_error
+    TYPE = "internal_server_error"
   end
 end

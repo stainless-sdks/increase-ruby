@@ -16,7 +16,7 @@ module Increase
       #   @option params [Increase::Models::AccountNumberCreateParams::InboundChecks] :inbound_checks Options related to how this Account Number should handle inbound check
       #     withdrawals.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountNumber]
       #
@@ -37,7 +37,7 @@ module Increase
       #
       # @param params [Increase::Models::AccountNumberRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountNumber]
       #
@@ -65,7 +65,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::AccountNumberUpdateParams::Status] :status This indicates if transfers can be made to the Account Number.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountNumber]
       #
@@ -102,7 +102,7 @@ module Increase
       #
       #   @option params [Symbol, Increase::Models::AccountNumberListParams::Status] :status The status to retrieve Account Numbers for.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::AccountNumber>]
       #

@@ -15,7 +15,7 @@ module Increase
         #
         # @param params [Increase::Models::Simulations::ACHTransferAcknowledgeParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
         #
@@ -40,7 +40,7 @@ module Increase
         #
         #   @option params [String] :corrected_data The corrected data for the notification of change (e.g., a new routing number).
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
         #
@@ -66,7 +66,7 @@ module Increase
         #   @option params [Symbol, Increase::Models::Simulations::ACHTransferReturnParams::Reason] :reason The reason why the Federal Reserve or destination bank returned this transfer.
         #     Defaults to `no_account`.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
         #
@@ -90,7 +90,7 @@ module Increase
         #
         # @param params [Increase::Models::Simulations::ACHTransferSettleParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
         #
@@ -114,7 +114,7 @@ module Increase
         #
         # @param params [Increase::Models::Simulations::ACHTransferSubmitParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
         #

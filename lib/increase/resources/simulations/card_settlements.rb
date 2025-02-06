@@ -20,7 +20,7 @@ module Increase
         #   @option params [Integer] :amount The amount to be settled. This defaults to the amount of the Pending Transaction
         #     being settled.
         #
-        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+        #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::Transaction]
         #

@@ -156,6 +156,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # Filter Inbound Wire Transfers to those with the specified status.
       #
       # @example
@@ -185,6 +187,11 @@ module Increase
         REVERSED = :reversed
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

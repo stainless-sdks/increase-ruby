@@ -1,0 +1,34 @@
+module Increase
+  module Models
+    type card_dispute_create_params =
+      { disputed_transaction_id: String, explanation: String, amount: Integer }
+      & Increase::request_parameters
+
+    class CardDisputeCreateParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      attr_accessor disputed_transaction_id: String
+
+      attr_accessor explanation: String
+
+      attr_reader amount: Integer?
+
+      def amount=: (Integer) -> void
+
+      def initialize:
+        (
+          disputed_transaction_id: String,
+          explanation: String,
+          amount: Integer,
+          request_options: Increase::request_opts
+        ) -> void
+        | (
+          ?Increase::Models::card_dispute_create_params
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::card_dispute_create_params
+    end
+  end
+end

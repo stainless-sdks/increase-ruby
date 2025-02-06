@@ -14,7 +14,7 @@ module Increase
       #
       #   @option params [String] :transaction_id The identifier of the Transaction related to this entry set, if any.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingEntrySet]
       #
@@ -35,7 +35,7 @@ module Increase
       #
       # @param params [Increase::Models::BookkeepingEntrySetRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BookkeepingEntrySet]
       #
@@ -64,7 +64,7 @@ module Increase
       #
       #   @option params [String] :transaction_id Filter to the Bookkeeping Entry Set that maps to this Transaction.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::BookkeepingEntrySet>]
       #

@@ -95,6 +95,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # Whether Increase will print and mail the check or if you will do it yourself.
       #
       # @example
@@ -114,6 +116,11 @@ module Increase
         THIRD_PARTY = :third_party
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example

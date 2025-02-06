@@ -1,0 +1,19 @@
+module Increase
+  module Models
+    type external_account_retrieve_params = {  } & Increase::request_parameters
+
+    class ExternalAccountRetrieveParams < Increase::BaseModel
+      extend Increase::RequestParameters::Converter
+      include Increase::RequestParameters
+
+      def initialize:
+        (request_options: Increase::request_opts) -> void
+        | (
+          ?Increase::Models::external_account_retrieve_params
+          | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::external_account_retrieve_params
+    end
+  end
+end

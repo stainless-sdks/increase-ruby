@@ -76,6 +76,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # Whether the connection is active.
       #
       # @example
@@ -95,8 +97,15 @@ module Increase
         INACTIVE = :inactive
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_connection`.
       #
@@ -111,6 +120,11 @@ module Increase
         OAUTH_CONNECTION = :oauth_connection
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

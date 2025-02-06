@@ -9,7 +9,7 @@ module Increase
       #
       # @param params [Increase::Models::RealTimeDecisionRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::RealTimeDecision]
       #
@@ -43,7 +43,7 @@ module Increase
       #   @option params [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken] :digital_wallet_token If the Real-Time Decision relates to a digital wallet token provisioning
       #     attempt, this object contains your response to the attempt.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::RealTimeDecision]
       #

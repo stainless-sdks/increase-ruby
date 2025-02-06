@@ -306,6 +306,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The type of addenda to pass with the transfer.
         #
         # @example
@@ -325,6 +327,11 @@ module Increase
           PAYMENT_ORDER_REMITTANCE_ADVICE = :payment_order_remittance_advice
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -434,6 +441,8 @@ module Increase
         end
       end
 
+      # @abstract
+      #
       # The type of entity that owns the account to which the ACH Transfer is being
       #   sent.
       #
@@ -459,8 +468,15 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The type of the account to which the transfer will be sent.
       #
       # @example
@@ -480,6 +496,11 @@ module Increase
         SAVINGS = :savings
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -527,6 +548,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # A schedule by which Increase will choose an effective date for the transfer.
         #
         # @example
@@ -546,9 +569,16 @@ module Increase
           FUTURE_DATED = :future_dated
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
+      # @abstract
+      #
       # The Standard Entry Class (SEC) code to use for the transfer.
       #
       # @example
@@ -578,8 +608,15 @@ module Increase
         INTERNET_INITIATED = :internet_initiated
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The timing of the transaction.
       #
       # @example
@@ -599,6 +636,11 @@ module Increase
         ASYNCHRONOUS = :asynchronous
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

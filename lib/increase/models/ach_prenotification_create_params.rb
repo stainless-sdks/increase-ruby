@@ -168,6 +168,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # Whether the Prenotification is for a future debit or credit.
       #
       # @example
@@ -187,8 +189,15 @@ module Increase
         DEBIT = :debit
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
       #
       # @example
@@ -218,6 +227,11 @@ module Increase
         INTERNET_INITIATED = :internet_initiated
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

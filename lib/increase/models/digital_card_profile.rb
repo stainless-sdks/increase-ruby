@@ -144,6 +144,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The status of the Card Profile.
       #
       # @example
@@ -173,6 +175,11 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -214,6 +221,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `digital_card_profile`.
       #
@@ -228,6 +237,11 @@ module Increase
         DIGITAL_CARD_PROFILE = :digital_card_profile
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

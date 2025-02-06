@@ -23,7 +23,7 @@ module Increase
       #     available in Sandbox. Set `grant_type` to `production_token` to use this
       #     parameter.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::OAuthToken]
       #

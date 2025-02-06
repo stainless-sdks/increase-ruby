@@ -319,6 +319,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The type of addendum.
         #
         # @example
@@ -333,6 +335,11 @@ module Increase
           FREEFORM = :freeform
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -419,6 +426,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason for the transfer decline.
         #
         # @example
@@ -491,9 +500,16 @@ module Increase
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
+      # @abstract
+      #
       # The direction of the transfer.
       #
       # @example
@@ -513,8 +529,15 @@ module Increase
         DEBIT = :debit
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The settlement schedule the transfer is expected to follow.
       #
       # @example
@@ -534,6 +557,11 @@ module Increase
         FUTURE_DATED = :future_dated
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -860,6 +888,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # A description of how the foreign exchange rate was calculated.
         #
         # @example
@@ -884,8 +914,15 @@ module Increase
           FIXED_TO_FIXED = :fixed_to_fixed
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # An instruction of how to interpret the `foreign_exchange_reference` field for
         #   this Transaction.
         #
@@ -911,8 +948,15 @@ module Increase
           BLANK = :blank
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # The type of transfer. Set by the originator.
         #
         # @example
@@ -994,8 +1038,15 @@ module Increase
           INTERNET_INITIATED = :internet_initiated
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # An instruction of how to interpret the
         #   `originating_depository_financial_institution_id` field for this Transaction.
         #
@@ -1021,8 +1072,15 @@ module Increase
           IBAN = :iban
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
+        # @abstract
+        #
         # An instruction of how to interpret the
         #   `receiving_depository_financial_institution_id` field for this Transaction.
         #
@@ -1048,6 +1106,11 @@ module Increase
           IBAN = :iban
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -1083,6 +1146,8 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @abstract
+      #
       # The Standard Entry Class (SEC) code of the transfer.
       #
       # @example
@@ -1152,8 +1217,15 @@ module Increase
         INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The status of the transfer.
       #
       # @example
@@ -1183,6 +1255,11 @@ module Increase
         RETURNED = :returned
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -1223,6 +1300,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The reason for the transfer return.
         #
         # @example
@@ -1274,9 +1353,16 @@ module Increase
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
+      # @abstract
+      #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_ach_transfer`.
       #
@@ -1291,6 +1377,11 @@ module Increase
         INBOUND_ACH_TRANSFER = :inbound_ach_transfer
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

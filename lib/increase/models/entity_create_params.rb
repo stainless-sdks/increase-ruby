@@ -72,7 +72,7 @@ module Increase
       # @!attribute [r] supplemental_documents
       #   Additional documentation associated with the entity.
       #
-      #   @return [Array<Increase::Models::EntityCreateParams::SupplementalDocument>]
+      #   @return [Array<Increase::Models::EntityCreateParams::SupplementalDocument>, nil]
       optional :supplemental_documents,
                -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::SupplementalDocument] }
 
@@ -132,6 +132,8 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @abstract
+      #
       # The type of Entity to create.
       #
       # @example
@@ -166,6 +168,11 @@ module Increase
         GOVERNMENT_AUTHORITY = :government_authority
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -577,6 +584,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # A method that can be used to verify the individual's identity.
               #
               # @example
@@ -611,6 +620,11 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
               # @example
@@ -773,6 +787,8 @@ module Increase
             end
           end
 
+          # @abstract
+          #
           # @example
           # ```ruby
           # case prong
@@ -790,6 +806,11 @@ module Increase
             CONTROL = :control
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end
@@ -946,6 +967,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # The category of the government authority.
         #
         # @example
@@ -960,6 +983,11 @@ module Increase
           MUNICIPALITY = :municipality
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -1204,6 +1232,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # A method that can be used to verify the individual's identity.
             #
             # @example
@@ -1238,6 +1268,11 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @example
@@ -1603,6 +1638,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # A method that can be used to verify the individual's identity.
           #
           # @example
@@ -1637,6 +1674,11 @@ module Increase
             OTHER = :other
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -1851,6 +1893,8 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @abstract
+        #
         # The vendor that was used to perform the verification.
         #
         # @example
@@ -1870,6 +1914,11 @@ module Increase
           MIDDESK = :middesk
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -2044,6 +2093,8 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @abstract
+        #
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
         #   their own Employer Identification Number. Revocable trusts require information
         #   about the individual `grantor` who created the trust.
@@ -2065,6 +2116,11 @@ module Increase
           IRREVOCABLE = :irrevocable
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @example
@@ -2100,6 +2156,8 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @abstract
+          #
           # The structure of the trustee.
           #
           # @example
@@ -2114,6 +2172,11 @@ module Increase
             INDIVIDUAL = :individual
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @example
@@ -2321,6 +2384,8 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @abstract
+              #
               # A method that can be used to verify the individual's identity.
               #
               # @example
@@ -2355,6 +2420,11 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
               # @example
@@ -2725,6 +2795,8 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @abstract
+            #
             # A method that can be used to verify the individual's identity.
             #
             # @example
@@ -2759,6 +2831,11 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @example

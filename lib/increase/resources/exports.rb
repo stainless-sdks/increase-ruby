@@ -25,7 +25,7 @@ module Increase
       #
       #   @option params [Object] :vendor_csv Options for the created export. Required if `category` is equal to `vendor_csv`.
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Export]
       #
@@ -46,7 +46,7 @@ module Increase
       #
       # @param params [Increase::Models::ExportRetrieveParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Export]
       #
@@ -79,7 +79,7 @@ module Increase
       #
       #   @option params [Increase::Models::ExportListParams::Status] :status
       #
-      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Export>]
       #

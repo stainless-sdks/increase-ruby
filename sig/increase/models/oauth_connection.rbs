@@ -1,0 +1,66 @@
+module Increase
+  module Models
+    type oauth_connection =
+      {
+        id: String,
+        created_at: Time,
+        deleted_at: Time?,
+        group_id: String,
+        oauth_application_id: String,
+        status: Increase::Models::OAuthConnection::status,
+        type: Increase::Models::OAuthConnection::type_
+      }
+
+    class OAuthConnection < Increase::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor deleted_at: Time?
+
+      attr_accessor group_id: String
+
+      attr_accessor oauth_application_id: String
+
+      attr_accessor status: Increase::Models::OAuthConnection::status
+
+      attr_accessor type: Increase::Models::OAuthConnection::type_
+
+      def initialize:
+        (
+          id: String,
+          created_at: Time,
+          deleted_at: Time?,
+          group_id: String,
+          oauth_application_id: String,
+          status: Increase::Models::OAuthConnection::status,
+          type: Increase::Models::OAuthConnection::type_
+        ) -> void
+        | (
+          ?Increase::Models::oauth_connection | Increase::BaseModel data
+        ) -> void
+
+      def to_hash: -> Increase::Models::oauth_connection
+
+      type status = :active | :inactive
+
+      class Status < Increase::Enum
+        # The OAuth connection is active.
+        ACTIVE: :active
+
+        # The OAuth connection is permanently deactivated.
+        INACTIVE: :inactive
+
+        def self.values: -> Array[Increase::Models::OAuthConnection::status]
+      end
+
+      type type_ = :oauth_connection
+
+      class Type < Increase::Enum
+        OAUTH_CONNECTION: :oauth_connection
+
+        def self.values: -> Array[Increase::Models::OAuthConnection::type_]
+      end
+    end
+  end
+end
