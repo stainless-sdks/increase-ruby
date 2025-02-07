@@ -4,7 +4,7 @@ module Increase
       def retrieve:
         (
           String event_id,
-          ?Increase::Models::EventRetrieveParams | Hash[Symbol, top] params
+          ?Increase::Models::EventRetrieveParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Event
         | (
           String event_id,
@@ -13,7 +13,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::EventListParams | Hash[Symbol, top] params
+          ?Increase::Models::EventListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::Event]
         | (
           associated_object_id: String,

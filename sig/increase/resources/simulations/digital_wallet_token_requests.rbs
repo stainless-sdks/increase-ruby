@@ -5,7 +5,7 @@ module Increase
         def create:
           (
             Increase::Models::Simulations::DigitalWalletTokenRequestCreateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse
           | (
             card_id: String,

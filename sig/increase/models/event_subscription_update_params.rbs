@@ -38,7 +38,7 @@ module Increase
         # The subscription is permanently disabled and Events will not be delivered.
         DELETED: :deleted
 
-        def self.values: -> Array[Increase::Models::EventSubscriptionUpdateParams::status]
+        def self.values: -> ::Array[Increase::Models::EventSubscriptionUpdateParams::status]
       end
     end
   end

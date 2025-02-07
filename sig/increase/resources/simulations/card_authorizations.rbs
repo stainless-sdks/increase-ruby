@@ -5,7 +5,7 @@ module Increase
         def create:
           (
             Increase::Models::Simulations::CardAuthorizationCreateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::Simulations::CardAuthorizationCreateResponse
           | (
             amount: Integer,

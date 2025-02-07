@@ -4,7 +4,7 @@ module Increase
       def create:
         (
           Increase::Models::PhysicalCardProfileCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::PhysicalCardProfile
         | (
           carrier_image_file_id: String,
@@ -18,7 +18,7 @@ module Increase
         (
           String physical_card_profile_id,
           ?Increase::Models::PhysicalCardProfileRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::PhysicalCardProfile
         | (
           String physical_card_profile_id,
@@ -28,7 +28,7 @@ module Increase
       def list:
         (
           ?Increase::Models::PhysicalCardProfileListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::PhysicalCardProfile]
         | (
           cursor: String,
@@ -42,7 +42,7 @@ module Increase
         (
           String physical_card_profile_id,
           ?Increase::Models::PhysicalCardProfileArchiveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::PhysicalCardProfile
         | (
           String physical_card_profile_id,
@@ -53,7 +53,7 @@ module Increase
         (
           String physical_card_profile_id,
           ?Increase::Models::PhysicalCardProfileCloneParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::PhysicalCardProfile
         | (
           String physical_card_profile_id,

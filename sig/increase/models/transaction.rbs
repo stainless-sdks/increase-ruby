@@ -73,7 +73,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> Array[Increase::Models::Transaction::currency]
+        def self.values: -> ::Array[Increase::Models::Transaction::currency]
       end
 
       type route_type = :account_number | :card | :lockbox
@@ -88,7 +88,7 @@ module Increase
         # A Lockbox.
         LOCKBOX: :lockbox
 
-        def self.values: -> Array[Increase::Models::Transaction::route_type]
+        def self.values: -> ::Array[Increase::Models::Transaction::route_type]
       end
 
       type source =
@@ -285,7 +285,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::AccountTransferIntention::currency]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::AccountTransferIntention::currency]
           end
         end
 
@@ -662,7 +662,7 @@ module Increase
             # Code R68. A rare return reason. The return was sent too late.
             UNTIMELY_RETURN: :untimely_return
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::ACHTransferReturn::return_reason_code]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::ACHTransferReturn::return_reason_code]
           end
         end
 
@@ -857,7 +857,7 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::Cashback::currency]
+              def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::Cashback::currency]
             end
           end
 
@@ -882,7 +882,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::currency]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::currency]
           end
 
           type interchange =
@@ -933,7 +933,7 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::Interchange::currency]
+              def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::Interchange::currency]
             end
           end
 
@@ -1126,7 +1126,7 @@ module Increase
                 # Parking violation
                 PARKING_VIOLATION: :parking_violation
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::extra_charges]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::extra_charges]
               end
 
               type no_show_indicator =
@@ -1139,7 +1139,7 @@ module Increase
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE: :no_show_for_specialized_vehicle
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::no_show_indicator]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::no_show_indicator]
               end
             end
 
@@ -1253,7 +1253,7 @@ module Increase
                 # Laundry
                 LAUNDRY: :laundry
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::extra_charges]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::extra_charges]
               end
 
               type no_show_indicator = :not_applicable | :no_show
@@ -1265,7 +1265,7 @@ module Increase
                 # No show
                 NO_SHOW: :no_show
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::no_show_indicator]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::no_show_indicator]
               end
             end
 
@@ -1292,7 +1292,7 @@ module Increase
               # Invoice number
               INVOICE_NUMBER: :invoice_number
 
-              def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::purchase_identifier_format]
+              def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::purchase_identifier_format]
             end
 
             type travel =
@@ -1308,7 +1308,7 @@ module Increase
                 ticket_number: String?,
                 travel_agency_code: String?,
                 travel_agency_name: String?,
-                trip_legs: Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?
+                trip_legs: ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?
               }
 
             class Travel < Increase::BaseModel
@@ -1334,7 +1334,7 @@ module Increase
 
               attr_accessor travel_agency_name: String?
 
-              attr_accessor trip_legs: Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?
+              attr_accessor trip_legs: ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?
 
               def initialize:
                 (
@@ -1349,7 +1349,7 @@ module Increase
                   ticket_number: String?,
                   travel_agency_code: String?,
                   travel_agency_name: String?,
-                  trip_legs: Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?
+                  trip_legs: ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]?
                 ) -> void
                 | (
                   ?Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::travel
@@ -1363,7 +1363,7 @@ module Increase
                   connected_ticket_document_number: String?,
                   credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
                   passenger_name_or_description: String?,
-                  services: Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
+                  services: ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
                   ticket_document_number: String?
                 }
 
@@ -1374,7 +1374,7 @@ module Increase
 
                 attr_accessor passenger_name_or_description: String?
 
-                attr_accessor services: Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
+                attr_accessor services: ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
 
                 attr_accessor ticket_document_number: String?
 
@@ -1383,7 +1383,7 @@ module Increase
                     connected_ticket_document_number: String?,
                     credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
                     passenger_name_or_description: String?,
-                    services: Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
+                    services: ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
                     ticket_document_number: String?
                   ) -> void
                   | (
@@ -1412,7 +1412,7 @@ module Increase
                   # Other
                   OTHER: :other
 
-                  def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
+                  def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
                 end
 
                 type service =
@@ -1537,7 +1537,7 @@ module Increase
                     # Wi-fi
                     WIFI: :wifi
 
-                    def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category]
+                    def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category]
                   end
                 end
               end
@@ -1569,7 +1569,7 @@ module Increase
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET: :partial_refund_of_airline_ticket
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::credit_reason_indicator]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::credit_reason_indicator]
               end
 
               type restricted_ticket_indicator =
@@ -1582,7 +1582,7 @@ module Increase
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET: :restricted_non_refundable_ticket
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator]
               end
 
               type ticket_change_indicator =
@@ -1598,7 +1598,7 @@ module Increase
                 # New ticket
                 NEW_TICKET: :new_ticket
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::ticket_change_indicator]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::ticket_change_indicator]
               end
 
               type trip_leg =
@@ -1653,7 +1653,7 @@ module Increase
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED: :stop_over_not_allowed
 
-                  def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code]
+                  def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code]
                 end
               end
             end
@@ -1664,7 +1664,7 @@ module Increase
           class Type < Increase::Enum
             CARD_REFUND: :card_refund
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::CardRefund::type_]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRefund::type_]
           end
         end
 
@@ -1724,7 +1724,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::CardRevenuePayment::currency]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::CardRevenuePayment::currency]
           end
         end
 
@@ -1871,7 +1871,7 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::Cashback::currency]
+              def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::Cashback::currency]
             end
           end
 
@@ -1896,7 +1896,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::currency]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::currency]
           end
 
           type interchange =
@@ -1947,7 +1947,7 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::Interchange::currency]
+              def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::Interchange::currency]
             end
           end
 
@@ -2140,7 +2140,7 @@ module Increase
                 # Parking violation
                 PARKING_VIOLATION: :parking_violation
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::extra_charges]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::extra_charges]
               end
 
               type no_show_indicator =
@@ -2153,7 +2153,7 @@ module Increase
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE: :no_show_for_specialized_vehicle
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::no_show_indicator]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::no_show_indicator]
               end
             end
 
@@ -2267,7 +2267,7 @@ module Increase
                 # Laundry
                 LAUNDRY: :laundry
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::extra_charges]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::extra_charges]
               end
 
               type no_show_indicator = :not_applicable | :no_show
@@ -2279,7 +2279,7 @@ module Increase
                 # No show
                 NO_SHOW: :no_show
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::no_show_indicator]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::no_show_indicator]
               end
             end
 
@@ -2306,7 +2306,7 @@ module Increase
               # Invoice number
               INVOICE_NUMBER: :invoice_number
 
-              def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::purchase_identifier_format]
+              def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::purchase_identifier_format]
             end
 
             type travel =
@@ -2322,7 +2322,7 @@ module Increase
                 ticket_number: String?,
                 travel_agency_code: String?,
                 travel_agency_name: String?,
-                trip_legs: Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?
+                trip_legs: ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?
               }
 
             class Travel < Increase::BaseModel
@@ -2348,7 +2348,7 @@ module Increase
 
               attr_accessor travel_agency_name: String?
 
-              attr_accessor trip_legs: Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?
+              attr_accessor trip_legs: ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?
 
               def initialize:
                 (
@@ -2363,7 +2363,7 @@ module Increase
                   ticket_number: String?,
                   travel_agency_code: String?,
                   travel_agency_name: String?,
-                  trip_legs: Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?
+                  trip_legs: ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]?
                 ) -> void
                 | (
                   ?Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::travel
@@ -2377,7 +2377,7 @@ module Increase
                   connected_ticket_document_number: String?,
                   credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
                   passenger_name_or_description: String?,
-                  services: Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
+                  services: ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
                   ticket_document_number: String?
                 }
 
@@ -2388,7 +2388,7 @@ module Increase
 
                 attr_accessor passenger_name_or_description: String?
 
-                attr_accessor services: Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
+                attr_accessor services: ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
 
                 attr_accessor ticket_document_number: String?
 
@@ -2397,7 +2397,7 @@ module Increase
                     connected_ticket_document_number: String?,
                     credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
                     passenger_name_or_description: String?,
-                    services: Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
+                    services: ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
                     ticket_document_number: String?
                   ) -> void
                   | (
@@ -2426,7 +2426,7 @@ module Increase
                   # Other
                   OTHER: :other
 
-                  def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
+                  def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
                 end
 
                 type service =
@@ -2551,7 +2551,7 @@ module Increase
                     # Wi-fi
                     WIFI: :wifi
 
-                    def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category]
+                    def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category]
                   end
                 end
               end
@@ -2583,7 +2583,7 @@ module Increase
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET: :partial_refund_of_airline_ticket
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator]
               end
 
               type restricted_ticket_indicator =
@@ -2596,7 +2596,7 @@ module Increase
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET: :restricted_non_refundable_ticket
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator]
               end
 
               type ticket_change_indicator =
@@ -2612,7 +2612,7 @@ module Increase
                 # New ticket
                 NEW_TICKET: :new_ticket
 
-                def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator]
+                def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator]
               end
 
               type trip_leg =
@@ -2667,7 +2667,7 @@ module Increase
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED: :stop_over_not_allowed
 
-                  def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code]
+                  def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code]
                 end
               end
             end
@@ -2678,7 +2678,7 @@ module Increase
           class Type < Increase::Enum
             CARD_SETTLEMENT: :card_settlement
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::CardSettlement::type_]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::CardSettlement::type_]
           end
         end
 
@@ -2738,7 +2738,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::CashbackPayment::currency]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::CashbackPayment::currency]
           end
         end
 
@@ -2861,7 +2861,7 @@ module Increase
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self.values: -> Array[Increase::Models::Transaction::Source::category]
+          def self.values: -> ::Array[Increase::Models::Transaction::Source::category]
         end
 
         type check_deposit_acceptance =
@@ -2928,7 +2928,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::CheckDepositAcceptance::currency]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::CheckDepositAcceptance::currency]
           end
         end
 
@@ -2992,7 +2992,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::CheckDepositReturn::currency]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::CheckDepositReturn::currency]
           end
 
           type return_reason =
@@ -3102,7 +3102,7 @@ module Increase
             # The bank sold this account and no longer services this customer.
             BRANCH_OR_ACCOUNT_SOLD: :branch_or_account_sold
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::CheckDepositReturn::return_reason]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::CheckDepositReturn::return_reason]
           end
         end
 
@@ -3158,7 +3158,7 @@ module Increase
           class Type < Increase::Enum
             CHECK_TRANSFER_DEPOSIT: :check_transfer_deposit
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::CheckTransferDeposit::type_]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::CheckTransferDeposit::type_]
           end
         end
 
@@ -3214,7 +3214,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::FeePayment::currency]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::FeePayment::currency]
           end
         end
 
@@ -3306,20 +3306,20 @@ module Increase
               # Unstructured addendum.
               FREEFORM: :freeform
 
-              def self.values: -> Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::category]
+              def self.values: -> ::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::category]
             end
 
             type freeform =
               {
-                entries: Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
+                entries: ::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
               }
 
             class Freeform < Increase::BaseModel
-              attr_accessor entries: Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
+              attr_accessor entries: ::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
 
               def initialize:
                 (
-                  entries: Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
+                  entries: ::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
                 ) -> void
                 | (
                   ?Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::freeform
@@ -3401,7 +3401,7 @@ module Increase
             # The check was deposited with a different amount than what was written on the check.
             ADJUSTED_AMOUNT: :adjusted_amount
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::InboundCheckAdjustment::reason]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::InboundCheckAdjustment::reason]
           end
         end
 
@@ -3495,7 +3495,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::currency]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::currency]
           end
         end
 
@@ -3575,7 +3575,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::currency]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::currency]
           end
 
           type reason =
@@ -3605,7 +3605,7 @@ module Increase
             # Your account is not enabled to receive Real-Time Payments transfers.
             REAL_TIME_PAYMENTS_NOT_ENABLED: :real_time_payments_not_enabled
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::reason]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::reason]
           end
         end
 
@@ -3857,7 +3857,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::InterestPayment::currency]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::InterestPayment::currency]
           end
         end
 
@@ -3909,7 +3909,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::InternalSource::currency]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::InternalSource::currency]
           end
 
           type reason =
@@ -3975,7 +3975,7 @@ module Increase
             # Sample funds return
             SAMPLE_FUNDS_RETURN: :sample_funds_return
 
-            def self.values: -> Array[Increase::Models::Transaction::Source::InternalSource::reason]
+            def self.values: -> ::Array[Increase::Models::Transaction::Source::InternalSource::reason]
           end
         end
 
@@ -4072,7 +4072,7 @@ module Increase
       class Type < Increase::Enum
         TRANSACTION: :transaction
 
-        def self.values: -> Array[Increase::Models::Transaction::type_]
+        def self.values: -> ::Array[Increase::Models::Transaction::type_]
       end
     end
   end

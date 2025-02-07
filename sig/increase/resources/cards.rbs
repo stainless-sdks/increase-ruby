@@ -3,7 +3,7 @@ module Increase
     class Cards
       def create:
         (
-          Increase::Models::CardCreateParams | Hash[Symbol, top] params
+          Increase::Models::CardCreateParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Card
         | (
           account_id: String,
@@ -17,7 +17,7 @@ module Increase
       def retrieve:
         (
           String card_id,
-          ?Increase::Models::CardRetrieveParams | Hash[Symbol, top] params
+          ?Increase::Models::CardRetrieveParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Card
         | (
           String card_id,
@@ -27,7 +27,7 @@ module Increase
       def update:
         (
           String card_id,
-          ?Increase::Models::CardUpdateParams | Hash[Symbol, top] params
+          ?Increase::Models::CardUpdateParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Card
         | (
           String card_id,
@@ -41,7 +41,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::CardListParams | Hash[Symbol, top] params
+          ?Increase::Models::CardListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::Card]
         | (
           account_id: String,
@@ -55,7 +55,7 @@ module Increase
       def details:
         (
           String card_id,
-          ?Increase::Models::CardDetailsParams | Hash[Symbol, top] params
+          ?Increase::Models::CardDetailsParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::CardDetails
         | (
           String card_id,

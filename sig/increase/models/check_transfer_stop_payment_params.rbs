@@ -38,7 +38,7 @@ module Increase
         # The check was stopped for another reason.
         UNKNOWN: :unknown
 
-        def self.values: -> Array[Increase::Models::CheckTransferStopPaymentParams::reason]
+        def self.values: -> ::Array[Increase::Models::CheckTransferStopPaymentParams::reason]
       end
     end
   end

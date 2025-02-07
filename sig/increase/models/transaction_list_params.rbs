@@ -58,18 +58,18 @@ module Increase
       def to_hash: -> Increase::Models::transaction_list_params
 
       type category =
-        { in_: Array[Increase::Models::TransactionListParams::Category::in_] }
+        { in_: ::Array[Increase::Models::TransactionListParams::Category::in_] }
 
       class Category < Increase::BaseModel
-        attr_reader in_: Array[Increase::Models::TransactionListParams::Category::in_]?
+        attr_reader in_: ::Array[Increase::Models::TransactionListParams::Category::in_]?
 
         def in_=: (
-          Array[Increase::Models::TransactionListParams::Category::in_]
+          ::Array[Increase::Models::TransactionListParams::Category::in_]
         ) -> void
 
         def initialize:
           (
-            in_: Array[Increase::Models::TransactionListParams::Category::in_]
+            in_: ::Array[Increase::Models::TransactionListParams::Category::in_]
           ) -> void
           | (
             ?Increase::Models::TransactionListParams::category
@@ -197,7 +197,7 @@ module Increase
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self.values: -> Array[Increase::Models::TransactionListParams::Category::in_]
+          def self.values: -> ::Array[Increase::Models::TransactionListParams::Category::in_]
         end
       end
 

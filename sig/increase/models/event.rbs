@@ -391,7 +391,7 @@ module Increase
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED: :"wire_transfer.updated"
 
-        def self.values: -> Array[Increase::Models::Event::category]
+        def self.values: -> ::Array[Increase::Models::Event::category]
       end
 
       type type_ = :event
@@ -399,7 +399,7 @@ module Increase
       class Type < Increase::Enum
         EVENT: :event
 
-        def self.values: -> Array[Increase::Models::Event::type_]
+        def self.values: -> ::Array[Increase::Models::Event::type_]
       end
     end
   end

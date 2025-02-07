@@ -91,7 +91,7 @@ module Increase
           # Deny the authentication attempt.
           DENY: :deny
 
-          def self.values: -> Array[Increase::Models::RealTimeDecisionActionParams::CardAuthentication::decision]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthentication::decision]
         end
       end
 
@@ -123,7 +123,7 @@ module Increase
           # Your application was unable to deliver the one-time code to the cardholder.
           FAILURE: :failure
 
-          def self.values: -> Array[Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::result]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::result]
         end
       end
 
@@ -163,7 +163,7 @@ module Increase
           # Decline the authorization.
           DECLINE: :decline
 
-          def self.values: -> Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::decision]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::decision]
         end
 
         type decline_reason =
@@ -193,7 +193,7 @@ module Increase
           # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
           OTHER: :other
 
-          def self.values: -> Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::decline_reason]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecisionActionParams::CardAuthorization::decline_reason]
         end
       end
 
@@ -233,7 +233,7 @@ module Increase
           # Your application failed to deliver the one-time passcode to the cardholder.
           FAILURE: :failure
 
-          def self.values: -> Array[Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::result]
+          def self.values: -> ::Array[Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::result]
         end
 
         type success = { email: String, phone: String }

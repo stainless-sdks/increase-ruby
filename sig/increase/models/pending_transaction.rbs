@@ -83,7 +83,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> Array[Increase::Models::PendingTransaction::currency]
+        def self.values: -> ::Array[Increase::Models::PendingTransaction::currency]
       end
 
       type route_type = :account_number | :card | :lockbox
@@ -98,7 +98,7 @@ module Increase
         # A Lockbox.
         LOCKBOX: :lockbox
 
-        def self.values: -> Array[Increase::Models::PendingTransaction::route_type]
+        def self.values: -> ::Array[Increase::Models::PendingTransaction::route_type]
       end
 
       type source =
@@ -208,7 +208,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::PendingTransaction::Source::AccountTransferInstruction::currency]
+            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::AccountTransferInstruction::currency]
           end
         end
 
@@ -364,7 +364,7 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self.values: -> Array[Increase::Models::PendingTransaction::Source::CardAuthorization::actioner]
+            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::actioner]
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
@@ -388,7 +388,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::PendingTransaction::Source::CardAuthorization::currency]
+            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::currency]
           end
 
           type direction = :settlement | :refund
@@ -400,7 +400,7 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self.values: -> Array[Increase::Models::PendingTransaction::Source::CardAuthorization::direction]
+            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::direction]
           end
 
           type network_details =
@@ -432,7 +432,7 @@ module Increase
               # Visa
               VISA: :visa
 
-              def self.values: -> Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::category]
+              def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::category]
             end
 
             type visa =
@@ -497,7 +497,7 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION: :non_secure_transaction
 
-                def self.values: -> Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator]
+                def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator]
               end
 
               type point_of_service_entry_mode =
@@ -543,7 +543,7 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
 
-                def self.values: -> Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode]
+                def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode]
               end
 
               type stand_in_processing_reason =
@@ -577,7 +577,7 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER: :other
 
-                def self.values: -> Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason]
+                def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason]
               end
             end
           end
@@ -637,7 +637,7 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self.values: -> Array[Increase::Models::PendingTransaction::Source::CardAuthorization::processing_category]
+            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::processing_category]
           end
 
           type type_ = :card_authorization
@@ -645,7 +645,7 @@ module Increase
           class Type < Increase::Enum
             CARD_AUTHORIZATION: :card_authorization
 
-            def self.values: -> Array[Increase::Models::PendingTransaction::Source::CardAuthorization::type_]
+            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::type_]
           end
 
           type verification =
@@ -702,7 +702,7 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH: :no_match
 
-                def self.values: -> Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::result]
+                def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::result]
               end
             end
 
@@ -768,7 +768,7 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH: :no_match
 
-                def self.values: -> Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::result]
+                def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::result]
               end
             end
           end
@@ -817,7 +817,7 @@ module Increase
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self.values: -> Array[Increase::Models::PendingTransaction::Source::category]
+          def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::category]
         end
 
         type check_deposit_instruction =
@@ -876,7 +876,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::PendingTransaction::Source::CheckDepositInstruction::currency]
+            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CheckDepositInstruction::currency]
           end
         end
 
@@ -928,7 +928,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::PendingTransaction::Source::CheckTransferInstruction::currency]
+            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CheckTransferInstruction::currency]
           end
         end
 
@@ -1008,7 +1008,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::currency]
+            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::currency]
           end
 
           type status = :held | :complete
@@ -1020,7 +1020,7 @@ module Increase
             # Funds have been released.
             COMPLETE: :complete
 
-            def self.values: -> Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::status]
+            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::status]
           end
 
           type type_ = :inbound_funds_hold
@@ -1028,7 +1028,7 @@ module Increase
           class Type < Increase::Enum
             INBOUND_FUNDS_HOLD: :inbound_funds_hold
 
-            def self.values: -> Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::type_]
+            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::type_]
           end
         end
 
@@ -1112,7 +1112,7 @@ module Increase
         # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
         COMPLETE: :complete
 
-        def self.values: -> Array[Increase::Models::PendingTransaction::status]
+        def self.values: -> ::Array[Increase::Models::PendingTransaction::status]
       end
 
       type type_ = :pending_transaction
@@ -1120,7 +1120,7 @@ module Increase
       class Type < Increase::Enum
         PENDING_TRANSACTION: :pending_transaction
 
-        def self.values: -> Array[Increase::Models::PendingTransaction::type_]
+        def self.values: -> ::Array[Increase::Models::PendingTransaction::type_]
       end
     end
   end

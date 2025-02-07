@@ -180,20 +180,20 @@ module Increase
           # Structured ASC X12 820 remittance advice records. Please reach out to [support@increase.com](mailto:support@increase.com) for more information.
           PAYMENT_ORDER_REMITTANCE_ADVICE: :payment_order_remittance_advice
 
-          def self.values: -> Array[Increase::Models::ACHTransferCreateParams::Addenda::category]
+          def self.values: -> ::Array[Increase::Models::ACHTransferCreateParams::Addenda::category]
         end
 
         type freeform =
           {
-            entries: Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]
+            entries: ::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]
           }
 
         class Freeform < Increase::BaseModel
-          attr_accessor entries: Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]
+          attr_accessor entries: ::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]
 
           def initialize:
             (
-              entries: Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]
+              entries: ::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]
             ) -> void
             | (
               ?Increase::Models::ACHTransferCreateParams::Addenda::freeform
@@ -220,15 +220,15 @@ module Increase
 
         type payment_order_remittance_advice =
           {
-            invoices: Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+            invoices: ::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
           }
 
         class PaymentOrderRemittanceAdvice < Increase::BaseModel
-          attr_accessor invoices: Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+          attr_accessor invoices: ::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
 
           def initialize:
             (
-              invoices: Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+              invoices: ::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
             ) -> void
             | (
               ?Increase::Models::ACHTransferCreateParams::Addenda::payment_order_remittance_advice
@@ -268,7 +268,7 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN: :unknown
 
-        def self.values: -> Array[Increase::Models::ACHTransferCreateParams::destination_account_holder]
+        def self.values: -> ::Array[Increase::Models::ACHTransferCreateParams::destination_account_holder]
       end
 
       type funding = :checking | :savings
@@ -280,7 +280,7 @@ module Increase
         # A savings account.
         SAVINGS: :savings
 
-        def self.values: -> Array[Increase::Models::ACHTransferCreateParams::funding]
+        def self.values: -> ::Array[Increase::Models::ACHTransferCreateParams::funding]
       end
 
       type preferred_effective_date =
@@ -321,7 +321,7 @@ module Increase
           # The chosen effective date will be the business day following the ACH processing date on which the transfer is submitted. The transfer will be settled on that future day.
           FUTURE_DATED: :future_dated
 
-          def self.values: -> Array[Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule]
+          def self.values: -> ::Array[Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule]
         end
       end
 
@@ -344,7 +344,7 @@ module Increase
         # Internet Initiated (WEB).
         INTERNET_INITIATED: :internet_initiated
 
-        def self.values: -> Array[Increase::Models::ACHTransferCreateParams::standard_entry_class_code]
+        def self.values: -> ::Array[Increase::Models::ACHTransferCreateParams::standard_entry_class_code]
       end
 
       type transaction_timing = :synchronous | :asynchronous
@@ -356,7 +356,7 @@ module Increase
         # A Transaction will be created when the funds settle at the Federal Reserve.
         ASYNCHRONOUS: :asynchronous
 
-        def self.values: -> Array[Increase::Models::ACHTransferCreateParams::transaction_timing]
+        def self.values: -> ::Array[Increase::Models::ACHTransferCreateParams::transaction_timing]
       end
     end
   end

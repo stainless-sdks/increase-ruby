@@ -110,7 +110,7 @@ module Increase
         # The drawdown request has been refused by the recipient.
         REFUSED: :refused
 
-        def self.values: -> Array[Increase::Models::WireDrawdownRequest::status]
+        def self.values: -> ::Array[Increase::Models::WireDrawdownRequest::status]
       end
 
       type submission = { input_message_accountability_data: String }
@@ -133,7 +133,7 @@ module Increase
       class Type < Increase::Enum
         WIRE_DRAWDOWN_REQUEST: :wire_drawdown_request
 
-        def self.values: -> Array[Increase::Models::WireDrawdownRequest::type_]
+        def self.values: -> ::Array[Increase::Models::WireDrawdownRequest::type_]
       end
     end
   end

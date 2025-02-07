@@ -46,7 +46,7 @@ module Increase
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE: :inactive
 
-        def self.values: -> Array[Increase::Models::LockboxUpdateParams::status]
+        def self.values: -> ::Array[Increase::Models::LockboxUpdateParams::status]
       end
     end
   end

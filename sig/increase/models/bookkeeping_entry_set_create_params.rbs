@@ -2,7 +2,7 @@ module Increase
   module Models
     type bookkeeping_entry_set_create_params =
       {
-        entries: Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
+        entries: ::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
         date: Time,
         transaction_id: String
       }
@@ -12,7 +12,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      attr_accessor entries: Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]
+      attr_accessor entries: ::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]
 
       attr_reader date: Time?
 
@@ -24,7 +24,7 @@ module Increase
 
       def initialize:
         (
-          entries: Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
+          entries: ::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
           date: Time,
           transaction_id: String,
           request_options: Increase::request_opts

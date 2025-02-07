@@ -56,18 +56,18 @@ module Increase
       def to_hash: -> Increase::Models::export_list_params
 
       type category =
-        { in_: Array[Increase::Models::ExportListParams::Category::in_] }
+        { in_: ::Array[Increase::Models::ExportListParams::Category::in_] }
 
       class Category < Increase::BaseModel
-        attr_reader in_: Array[Increase::Models::ExportListParams::Category::in_]?
+        attr_reader in_: ::Array[Increase::Models::ExportListParams::Category::in_]?
 
         def in_=: (
-          Array[Increase::Models::ExportListParams::Category::in_]
+          ::Array[Increase::Models::ExportListParams::Category::in_]
         ) -> void
 
         def initialize:
           (
-            in_: Array[Increase::Models::ExportListParams::Category::in_]
+            in_: ::Array[Increase::Models::ExportListParams::Category::in_]
           ) -> void
           | (
             ?Increase::Models::ExportListParams::category
@@ -107,7 +107,7 @@ module Increase
           # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
           DASHBOARD_TABLE_CSV: :dashboard_table_csv
 
-          def self.values: -> Array[Increase::Models::ExportListParams::Category::in_]
+          def self.values: -> ::Array[Increase::Models::ExportListParams::Category::in_]
         end
       end
 
@@ -147,17 +147,19 @@ module Increase
       end
 
       type status =
-        { in_: Array[Increase::Models::ExportListParams::Status::in_] }
+        { in_: ::Array[Increase::Models::ExportListParams::Status::in_] }
 
       class Status < Increase::BaseModel
-        attr_reader in_: Array[Increase::Models::ExportListParams::Status::in_]?
+        attr_reader in_: ::Array[Increase::Models::ExportListParams::Status::in_]?
 
         def in_=: (
-          Array[Increase::Models::ExportListParams::Status::in_]
+          ::Array[Increase::Models::ExportListParams::Status::in_]
         ) -> void
 
         def initialize:
-          (in_: Array[Increase::Models::ExportListParams::Status::in_]) -> void
+          (
+            in_: ::Array[Increase::Models::ExportListParams::Status::in_]
+          ) -> void
           | (
             ?Increase::Models::ExportListParams::status
             | Increase::BaseModel data
@@ -177,7 +179,7 @@ module Increase
           # The export failed to generate. Increase will reach out to you to resolve the issue.
           FAILED: :failed
 
-          def self.values: -> Array[Increase::Models::ExportListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::ExportListParams::Status::in_]
         end
       end
     end

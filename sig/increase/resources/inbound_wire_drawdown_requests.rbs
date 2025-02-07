@@ -5,7 +5,7 @@ module Increase
         (
           String inbound_wire_drawdown_request_id,
           ?Increase::Models::InboundWireDrawdownRequestRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::InboundWireDrawdownRequest
         | (
           String inbound_wire_drawdown_request_id,
@@ -15,7 +15,7 @@ module Increase
       def list:
         (
           ?Increase::Models::InboundWireDrawdownRequestListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::InboundWireDrawdownRequest]
         | (
           cursor: String,

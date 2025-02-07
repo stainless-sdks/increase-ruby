@@ -4,7 +4,7 @@ module Increase
       def create:
         (
           Increase::Models::WireDrawdownRequestCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::WireDrawdownRequest
         | (
           account_number_id: String,
@@ -27,7 +27,7 @@ module Increase
         (
           String wire_drawdown_request_id,
           ?Increase::Models::WireDrawdownRequestRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::WireDrawdownRequest
         | (
           String wire_drawdown_request_id,
@@ -37,7 +37,7 @@ module Increase
       def list:
         (
           ?Increase::Models::WireDrawdownRequestListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::WireDrawdownRequest]
         | (
           cursor: String,

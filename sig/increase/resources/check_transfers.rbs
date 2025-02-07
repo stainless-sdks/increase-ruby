@@ -3,7 +3,8 @@ module Increase
     class CheckTransfers
       def create:
         (
-          Increase::Models::CheckTransferCreateParams | Hash[Symbol, top] params
+          Increase::Models::CheckTransferCreateParams
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::CheckTransfer
         | (
           account_id: String,
@@ -20,7 +21,7 @@ module Increase
         (
           String check_transfer_id,
           ?Increase::Models::CheckTransferRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::CheckTransfer
         | (
           String check_transfer_id,
@@ -29,7 +30,8 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::CheckTransferListParams | Hash[Symbol, top] params
+          ?Increase::Models::CheckTransferListParams
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::CheckTransfer]
         | (
           account_id: String,
@@ -44,7 +46,7 @@ module Increase
         (
           String check_transfer_id,
           ?Increase::Models::CheckTransferApproveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::CheckTransfer
         | (
           String check_transfer_id,
@@ -55,7 +57,7 @@ module Increase
         (
           String check_transfer_id,
           ?Increase::Models::CheckTransferCancelParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::CheckTransfer
         | (
           String check_transfer_id,
@@ -66,7 +68,7 @@ module Increase
         (
           String check_transfer_id,
           ?Increase::Models::CheckTransferStopPaymentParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::CheckTransfer
         | (
           String check_transfer_id,

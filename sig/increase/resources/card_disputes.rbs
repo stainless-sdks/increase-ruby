@@ -3,7 +3,7 @@ module Increase
     class CardDisputes
       def create:
         (
-          Increase::Models::CardDisputeCreateParams | Hash[Symbol, top] params
+          Increase::Models::CardDisputeCreateParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::CardDispute
         | (
           disputed_transaction_id: String,
@@ -16,7 +16,7 @@ module Increase
         (
           String card_dispute_id,
           ?Increase::Models::CardDisputeRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::CardDispute
         | (
           String card_dispute_id,
@@ -25,7 +25,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::CardDisputeListParams | Hash[Symbol, top] params
+          ?Increase::Models::CardDisputeListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::CardDispute]
         | (
           created_at: Increase::Models::CardDisputeListParams::CreatedAt,

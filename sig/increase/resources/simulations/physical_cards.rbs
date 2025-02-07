@@ -6,7 +6,7 @@ module Increase
           (
             String physical_card_id,
             Increase::Models::Simulations::PhysicalCardAdvanceShipmentParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::PhysicalCard
           | (
             String physical_card_id,

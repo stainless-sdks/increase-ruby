@@ -100,7 +100,7 @@ module Increase
         # An attachment to an Unusual Activity Report.
         UNUSUAL_ACTIVITY_REPORT_ATTACHMENT: :unusual_activity_report_attachment
 
-        def self.values: -> Array[Increase::Models::FileCreateParams::purpose]
+        def self.values: -> ::Array[Increase::Models::FileCreateParams::purpose]
       end
     end
   end

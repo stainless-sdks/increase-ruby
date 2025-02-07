@@ -62,7 +62,7 @@ module Increase
         # The exclusion has been removed from the IntraFi network.
         ARCHIVED: :archived
 
-        def self.values: -> Array[Increase::Models::IntrafiExclusion::status]
+        def self.values: -> ::Array[Increase::Models::IntrafiExclusion::status]
       end
 
       type type_ = :intrafi_exclusion
@@ -70,7 +70,7 @@ module Increase
       class Type < Increase::Enum
         INTRAFI_EXCLUSION: :intrafi_exclusion
 
-        def self.values: -> Array[Increase::Models::IntrafiExclusion::type_]
+        def self.values: -> ::Array[Increase::Models::IntrafiExclusion::type_]
       end
     end
   end

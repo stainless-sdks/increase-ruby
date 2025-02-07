@@ -5,7 +5,7 @@ module Increase
         def create:
           (
             Increase::Models::Simulations::InboundCheckDepositCreateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::InboundCheckDeposit
           | (
             account_number_id: String,

@@ -27,14 +27,14 @@ module Increase
       type beneficial_owner =
         {
           individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-          prongs: Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong],
+          prongs: ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong],
           company_title: String
         }
 
       class BeneficialOwner < Increase::BaseModel
         attr_accessor individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual
 
-        attr_accessor prongs: Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong]
+        attr_accessor prongs: ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong]
 
         attr_reader company_title: String?
 
@@ -43,7 +43,7 @@ module Increase
         def initialize:
           (
             individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-            prongs: Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong],
+            prongs: ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong],
             company_title: String
           ) -> void
           | (
@@ -198,7 +198,7 @@ module Increase
               # Another identifying document.
               OTHER: :other
 
-              def self.values: -> Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_]
+              def self.values: -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_]
             end
 
             type drivers_license =
@@ -310,7 +310,7 @@ module Increase
           # A person who manages, directs, or has significant control of the entity.
           CONTROL: :control
 
-          def self.values: -> Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong]
+          def self.values: -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong]
         end
       end
     end

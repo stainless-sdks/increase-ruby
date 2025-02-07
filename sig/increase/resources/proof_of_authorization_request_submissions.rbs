@@ -4,7 +4,7 @@ module Increase
       def create:
         (
           Increase::Models::ProofOfAuthorizationRequestSubmissionCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::ProofOfAuthorizationRequestSubmission
         | (
           authorization_terms: String,
@@ -25,7 +25,7 @@ module Increase
         (
           String proof_of_authorization_request_submission_id,
           ?Increase::Models::ProofOfAuthorizationRequestSubmissionRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::ProofOfAuthorizationRequestSubmission
         | (
           String proof_of_authorization_request_submission_id,
@@ -35,7 +35,7 @@ module Increase
       def list:
         (
           ?Increase::Models::ProofOfAuthorizationRequestSubmissionListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::ProofOfAuthorizationRequestSubmission]
         | (
           cursor: String,

@@ -5,7 +5,7 @@ module Increase
         (
           String digital_wallet_token_id,
           ?Increase::Models::DigitalWalletTokenRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::DigitalWalletToken
         | (
           String digital_wallet_token_id,
@@ -15,7 +15,7 @@ module Increase
       def list:
         (
           ?Increase::Models::DigitalWalletTokenListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::DigitalWalletToken]
         | (
           card_id: String,

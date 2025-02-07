@@ -33,7 +33,7 @@ module Increase
         class Type < Increase::Enum
           INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT: :inbound_card_authorization_simulation_result
 
-          def self.values: -> Array[Increase::Models::Simulations::CardAuthorizationCreateResponse::type_]
+          def self.values: -> ::Array[Increase::Models::Simulations::CardAuthorizationCreateResponse::type_]
         end
       end
     end

@@ -111,7 +111,7 @@ module Increase
         # Open Accounts that are ready to use.
         OPEN: :open
 
-        def self.values: -> Array[Increase::Models::AccountListParams::status]
+        def self.values: -> ::Array[Increase::Models::AccountListParams::status]
       end
     end
   end

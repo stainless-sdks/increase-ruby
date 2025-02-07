@@ -6,7 +6,7 @@ module Increase
           (
             String check_transfer_id,
             ?Increase::Models::Simulations::CheckTransferMailParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::CheckTransfer
           | (
             String check_transfer_id,

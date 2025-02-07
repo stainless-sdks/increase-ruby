@@ -62,19 +62,19 @@ module Increase
 
       type category =
         {
-          in_: Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
+          in_: ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
         }
 
       class Category < Increase::BaseModel
-        attr_reader in_: Array[Increase::Models::DeclinedTransactionListParams::Category::in_]?
+        attr_reader in_: ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]?
 
         def in_=: (
-          Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
+          ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
         ) -> void
 
         def initialize:
           (
-            in_: Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
+            in_: ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
           ) -> void
           | (
             ?Increase::Models::DeclinedTransactionListParams::category
@@ -114,7 +114,7 @@ module Increase
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self.values: -> Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
+          def self.values: -> ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
         end
       end
 

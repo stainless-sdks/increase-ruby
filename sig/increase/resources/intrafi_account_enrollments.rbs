@@ -4,7 +4,7 @@ module Increase
       def create:
         (
           Increase::Models::IntrafiAccountEnrollmentCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::IntrafiAccountEnrollment
         | (
           account_id: String,
@@ -16,7 +16,7 @@ module Increase
         (
           String intrafi_account_enrollment_id,
           ?Increase::Models::IntrafiAccountEnrollmentRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::IntrafiAccountEnrollment
         | (
           String intrafi_account_enrollment_id,
@@ -26,7 +26,7 @@ module Increase
       def list:
         (
           ?Increase::Models::IntrafiAccountEnrollmentListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::IntrafiAccountEnrollment]
         | (
           account_id: String,
@@ -41,7 +41,7 @@ module Increase
         (
           String intrafi_account_enrollment_id,
           ?Increase::Models::IntrafiAccountEnrollmentUnenrollParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::IntrafiAccountEnrollment
         | (
           String intrafi_account_enrollment_id,

@@ -40,7 +40,7 @@ module Increase
       class Type < Increase::Enum
         ENTITY_SUPPLEMENTAL_DOCUMENT: :entity_supplemental_document
 
-        def self.values: -> Array[Increase::Models::EntitySupplementalDocument::type_]
+        def self.values: -> ::Array[Increase::Models::EntitySupplementalDocument::type_]
       end
     end
   end

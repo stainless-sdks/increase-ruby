@@ -5,7 +5,7 @@ module Increase
         (
           String bookkeeping_entry_id,
           ?Increase::Models::BookkeepingEntryRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::BookkeepingEntry
         | (
           String bookkeeping_entry_id,
@@ -15,7 +15,7 @@ module Increase
       def list:
         (
           ?Increase::Models::BookkeepingEntryListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::BookkeepingEntry]
         | (
           account_id: String,

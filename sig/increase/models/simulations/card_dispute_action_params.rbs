@@ -50,7 +50,7 @@ module Increase
           # The Card Dispute has been won and no further action can be taken.
           WON: :won
 
-          def self.values: -> Array[Increase::Models::Simulations::CardDisputeActionParams::status]
+          def self.values: -> ::Array[Increase::Models::Simulations::CardDisputeActionParams::status]
         end
       end
     end

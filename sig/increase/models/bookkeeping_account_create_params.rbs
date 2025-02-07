@@ -53,7 +53,7 @@ module Increase
         # A customer balance.
         CUSTOMER_BALANCE: :customer_balance
 
-        def self.values: -> Array[Increase::Models::BookkeepingAccountCreateParams::compliance_category]
+        def self.values: -> ::Array[Increase::Models::BookkeepingAccountCreateParams::compliance_category]
       end
     end
   end

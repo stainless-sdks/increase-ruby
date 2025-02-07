@@ -134,7 +134,7 @@ module Increase
         # The card is permanently canceled.
         CANCELED: :canceled
 
-        def self.values: -> Array[Increase::Models::Card::status]
+        def self.values: -> ::Array[Increase::Models::Card::status]
       end
 
       type type_ = :card
@@ -142,7 +142,7 @@ module Increase
       class Type < Increase::Enum
         CARD: :card
 
-        def self.values: -> Array[Increase::Models::Card::type_]
+        def self.values: -> ::Array[Increase::Models::Card::type_]
       end
     end
   end

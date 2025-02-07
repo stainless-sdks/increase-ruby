@@ -5,7 +5,7 @@ module Increase
         (
           String account_id,
           ?Increase::Models::IntrafiBalanceRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::IntrafiBalance
         | (
           String account_id,

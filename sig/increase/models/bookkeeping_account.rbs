@@ -51,7 +51,7 @@ module Increase
         # A customer balance.
         CUSTOMER_BALANCE: :customer_balance
 
-        def self.values: -> Array[Increase::Models::BookkeepingAccount::compliance_category]
+        def self.values: -> ::Array[Increase::Models::BookkeepingAccount::compliance_category]
       end
 
       type type_ = :bookkeeping_account
@@ -59,7 +59,7 @@ module Increase
       class Type < Increase::Enum
         BOOKKEEPING_ACCOUNT: :bookkeeping_account
 
-        def self.values: -> Array[Increase::Models::BookkeepingAccount::type_]
+        def self.values: -> ::Array[Increase::Models::BookkeepingAccount::type_]
       end
     end
   end

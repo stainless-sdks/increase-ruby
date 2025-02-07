@@ -5,7 +5,7 @@ module Increase
         (
           String inbound_check_deposit_id,
           ?Increase::Models::InboundCheckDepositRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::InboundCheckDeposit
         | (
           String inbound_check_deposit_id,
@@ -15,7 +15,7 @@ module Increase
       def list:
         (
           ?Increase::Models::InboundCheckDepositListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::InboundCheckDeposit]
         | (
           account_id: String,
@@ -30,7 +30,7 @@ module Increase
         (
           String inbound_check_deposit_id,
           ?Increase::Models::InboundCheckDepositDeclineParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::InboundCheckDeposit
         | (
           String inbound_check_deposit_id,
@@ -41,7 +41,7 @@ module Increase
         (
           String inbound_check_deposit_id,
           Increase::Models::InboundCheckDepositReturnParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::InboundCheckDeposit
         | (
           String inbound_check_deposit_id,

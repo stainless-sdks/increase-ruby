@@ -112,7 +112,7 @@ module Increase
       class Type < Increase::Enum
         INBOUND_WIRE_DRAWDOWN_REQUEST: :inbound_wire_drawdown_request
 
-        def self.values: -> Array[Increase::Models::InboundWireDrawdownRequest::type_]
+        def self.values: -> ::Array[Increase::Models::InboundWireDrawdownRequest::type_]
       end
     end
   end

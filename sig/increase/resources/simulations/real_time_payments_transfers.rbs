@@ -6,7 +6,7 @@ module Increase
           (
             String real_time_payments_transfer_id,
             ?Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::RealTimePaymentsTransfer
           | (
             String real_time_payments_transfer_id,

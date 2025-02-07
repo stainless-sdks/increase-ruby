@@ -34,7 +34,7 @@ module Increase
         # The physical card is permanently canceled.
         CANCELED: :canceled
 
-        def self.values: -> Array[Increase::Models::PhysicalCardUpdateParams::status]
+        def self.values: -> ::Array[Increase::Models::PhysicalCardUpdateParams::status]
       end
     end
   end

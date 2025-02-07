@@ -104,7 +104,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> Array[Increase::Models::RealTimePaymentsRequestForPayment::currency]
+        def self.values: -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::currency]
       end
 
       type refusal =
@@ -181,7 +181,7 @@ module Increase
           # Some other error or issue has occurred.
           OTHER: :other
 
-          def self.values: -> Array[Increase::Models::RealTimePaymentsRequestForPayment::Refusal::refusal_reason_code]
+          def self.values: -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::Refusal::refusal_reason_code]
         end
       end
 
@@ -291,7 +291,7 @@ module Increase
           # Some other error or issue has occurred.
           OTHER: :other
 
-          def self.values: -> Array[Increase::Models::RealTimePaymentsRequestForPayment::Rejection::reject_reason_code]
+          def self.values: -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::Rejection::reject_reason_code]
         end
       end
 
@@ -322,7 +322,7 @@ module Increase
         # The request for payment was fulfilled by the receiver.
         FULFILLED: :fulfilled
 
-        def self.values: -> Array[Increase::Models::RealTimePaymentsRequestForPayment::status]
+        def self.values: -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::status]
       end
 
       type submission = { payment_information_identification: String }
@@ -345,7 +345,7 @@ module Increase
       class Type < Increase::Enum
         REAL_TIME_PAYMENTS_REQUEST_FOR_PAYMENT: :real_time_payments_request_for_payment
 
-        def self.values: -> Array[Increase::Models::RealTimePaymentsRequestForPayment::type_]
+        def self.values: -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::type_]
       end
     end
   end

@@ -85,17 +85,19 @@ module Increase
       end
 
       type status =
-        { in_: Array[Increase::Models::EntityListParams::Status::in_] }
+        { in_: ::Array[Increase::Models::EntityListParams::Status::in_] }
 
       class Status < Increase::BaseModel
-        attr_reader in_: Array[Increase::Models::EntityListParams::Status::in_]?
+        attr_reader in_: ::Array[Increase::Models::EntityListParams::Status::in_]?
 
         def in_=: (
-          Array[Increase::Models::EntityListParams::Status::in_]
+          ::Array[Increase::Models::EntityListParams::Status::in_]
         ) -> void
 
         def initialize:
-          (in_: Array[Increase::Models::EntityListParams::Status::in_]) -> void
+          (
+            in_: ::Array[Increase::Models::EntityListParams::Status::in_]
+          ) -> void
           | (
             ?Increase::Models::EntityListParams::status
             | Increase::BaseModel data
@@ -115,7 +117,7 @@ module Increase
           # The entity is temporarily disabled and cannot be used for financial activity.
           DISABLED: :disabled
 
-          def self.values: -> Array[Increase::Models::EntityListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::EntityListParams::Status::in_]
         end
       end
     end

@@ -4,7 +4,7 @@ module Increase
       def create:
         (
           Increase::Models::SupplementalDocumentCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::EntitySupplementalDocument
         | (
           entity_id: String,
@@ -15,7 +15,7 @@ module Increase
       def list:
         (
           Increase::Models::SupplementalDocumentListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::EntitySupplementalDocument]
         | (
           entity_id: String,

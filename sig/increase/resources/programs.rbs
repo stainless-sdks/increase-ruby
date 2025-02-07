@@ -4,7 +4,7 @@ module Increase
       def retrieve:
         (
           String program_id,
-          ?Increase::Models::ProgramRetrieveParams | Hash[Symbol, top] params
+          ?Increase::Models::ProgramRetrieveParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Program
         | (
           String program_id,
@@ -13,7 +13,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::ProgramListParams | Hash[Symbol, top] params
+          ?Increase::Models::ProgramListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::Program]
         | (
           cursor: String,

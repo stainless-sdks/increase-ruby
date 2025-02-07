@@ -5,7 +5,7 @@ module Increase
         def create:
           (
             Increase::Models::Simulations::CardRefundCreateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::Transaction
           | (
             transaction_id: String,

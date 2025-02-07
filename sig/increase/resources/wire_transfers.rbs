@@ -3,7 +3,8 @@ module Increase
     class WireTransfers
       def create:
         (
-          Increase::Models::WireTransferCreateParams | Hash[Symbol, top] params
+          Increase::Models::WireTransferCreateParams
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::WireTransfer
         | (
           account_id: String,
@@ -29,7 +30,7 @@ module Increase
         (
           String wire_transfer_id,
           ?Increase::Models::WireTransferRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::WireTransfer
         | (
           String wire_transfer_id,
@@ -38,7 +39,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::WireTransferListParams | Hash[Symbol, top] params
+          ?Increase::Models::WireTransferListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::WireTransfer]
         | (
           account_id: String,
@@ -54,7 +55,7 @@ module Increase
         (
           String wire_transfer_id,
           ?Increase::Models::WireTransferApproveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::WireTransfer
         | (
           String wire_transfer_id,
@@ -64,7 +65,8 @@ module Increase
       def cancel:
         (
           String wire_transfer_id,
-          ?Increase::Models::WireTransferCancelParams | Hash[Symbol, top] params
+          ?Increase::Models::WireTransferCancelParams
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::WireTransfer
         | (
           String wire_transfer_id,

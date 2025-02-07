@@ -4,7 +4,7 @@ module Increase
       def create:
         (
           Increase::Models::ExternalAccountCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::ExternalAccount
         | (
           account_number: String,
@@ -19,7 +19,7 @@ module Increase
         (
           String external_account_id,
           ?Increase::Models::ExternalAccountRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::ExternalAccount
         | (
           String external_account_id,
@@ -30,7 +30,7 @@ module Increase
         (
           String external_account_id,
           ?Increase::Models::ExternalAccountUpdateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::ExternalAccount
         | (
           String external_account_id,
@@ -44,7 +44,7 @@ module Increase
       def list:
         (
           ?Increase::Models::ExternalAccountListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::ExternalAccount]
         | (
           cursor: String,

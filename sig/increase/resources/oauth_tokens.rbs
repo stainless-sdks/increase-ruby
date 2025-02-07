@@ -3,7 +3,7 @@ module Increase
     class OAuthTokens
       def create:
         (
-          Increase::Models::OAuthTokenCreateParams | Hash[Symbol, top] params
+          Increase::Models::OAuthTokenCreateParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::OAuthToken
         | (
           grant_type: Increase::Models::OAuthTokenCreateParams::grant_type,

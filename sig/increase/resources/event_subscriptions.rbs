@@ -4,7 +4,7 @@ module Increase
       def create:
         (
           Increase::Models::EventSubscriptionCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::EventSubscription
         | (
           url: String,
@@ -18,7 +18,7 @@ module Increase
         (
           String event_subscription_id,
           ?Increase::Models::EventSubscriptionRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::EventSubscription
         | (
           String event_subscription_id,
@@ -29,7 +29,7 @@ module Increase
         (
           String event_subscription_id,
           ?Increase::Models::EventSubscriptionUpdateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::EventSubscription
         | (
           String event_subscription_id,
@@ -40,7 +40,7 @@ module Increase
       def list:
         (
           ?Increase::Models::EventSubscriptionListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::EventSubscription]
         | (
           cursor: String,

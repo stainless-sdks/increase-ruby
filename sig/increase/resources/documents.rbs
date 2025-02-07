@@ -4,7 +4,7 @@ module Increase
       def retrieve:
         (
           String document_id,
-          ?Increase::Models::DocumentRetrieveParams | Hash[Symbol, top] params
+          ?Increase::Models::DocumentRetrieveParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Document
         | (
           String document_id,
@@ -13,7 +13,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::DocumentListParams | Hash[Symbol, top] params
+          ?Increase::Models::DocumentListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::Document]
         | (
           category: Increase::Models::DocumentListParams::Category,

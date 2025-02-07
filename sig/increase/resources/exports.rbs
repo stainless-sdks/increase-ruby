@@ -3,7 +3,7 @@ module Increase
     class Exports
       def create:
         (
-          Increase::Models::ExportCreateParams | Hash[Symbol, top] params
+          Increase::Models::ExportCreateParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Export
         | (
           category: Increase::Models::ExportCreateParams::category,
@@ -19,7 +19,7 @@ module Increase
       def retrieve:
         (
           String export_id,
-          ?Increase::Models::ExportRetrieveParams | Hash[Symbol, top] params
+          ?Increase::Models::ExportRetrieveParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Export
         | (
           String export_id,
@@ -28,7 +28,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::ExportListParams | Hash[Symbol, top] params
+          ?Increase::Models::ExportListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::Export]
         | (
           category: Increase::Models::ExportListParams::Category,

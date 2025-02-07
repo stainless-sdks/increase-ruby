@@ -6,7 +6,7 @@ module Increase
           (
             String account_transfer_id,
             ?Increase::Models::Simulations::AccountTransferCompleteParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::AccountTransfer
           | (
             String account_transfer_id,
