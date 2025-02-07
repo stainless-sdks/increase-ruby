@@ -11,7 +11,7 @@ class Increase::Test::Resources::OAuthConnectionsTest < Minitest::Test
   end
 
   def test_retrieve
-    response = @increase.oauth_connections.retrieve("oauth_connection_id")
+    response = @increase.oauth_connections.retrieve("x")
 
     assert_pattern do
       response => Increase::Models::OAuthConnection
