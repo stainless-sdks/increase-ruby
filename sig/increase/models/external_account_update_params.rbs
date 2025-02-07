@@ -59,7 +59,7 @@ module Increase
         # The External Account is owned by an individual.
         INDIVIDUAL: :individual
 
-        def self.values: -> Array[Increase::Models::ExternalAccountUpdateParams::account_holder]
+        def self.values: -> ::Array[Increase::Models::ExternalAccountUpdateParams::account_holder]
       end
 
       type funding = :checking | :savings | :other
@@ -74,7 +74,7 @@ module Increase
         # A different type of account.
         OTHER: :other
 
-        def self.values: -> Array[Increase::Models::ExternalAccountUpdateParams::funding]
+        def self.values: -> ::Array[Increase::Models::ExternalAccountUpdateParams::funding]
       end
 
       type status = :active | :archived
@@ -86,7 +86,7 @@ module Increase
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED: :archived
 
-        def self.values: -> Array[Increase::Models::ExternalAccountUpdateParams::status]
+        def self.values: -> ::Array[Increase::Models::ExternalAccountUpdateParams::status]
       end
     end
   end

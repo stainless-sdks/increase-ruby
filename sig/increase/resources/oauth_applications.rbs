@@ -5,7 +5,7 @@ module Increase
         (
           String oauth_application_id,
           ?Increase::Models::OAuthApplicationRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::OAuthApplication
         | (
           String oauth_application_id,
@@ -15,7 +15,7 @@ module Increase
       def list:
         (
           ?Increase::Models::OAuthApplicationListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::OAuthApplication]
         | (
           created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,

@@ -67,7 +67,7 @@ module Increase
         # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
         CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED: :corporate_customer_advised_not_authorized
 
-        def self.values: -> Array[Increase::Models::InboundACHTransferTransferReturnParams::reason]
+        def self.values: -> ::Array[Increase::Models::InboundACHTransferTransferReturnParams::reason]
       end
     end
   end

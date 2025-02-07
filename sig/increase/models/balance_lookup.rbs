@@ -33,7 +33,7 @@ module Increase
       class Type < Increase::Enum
         BALANCE_LOOKUP: :balance_lookup
 
-        def self.values: -> Array[Increase::Models::BalanceLookup::type_]
+        def self.values: -> ::Array[Increase::Models::BalanceLookup::type_]
       end
     end
   end

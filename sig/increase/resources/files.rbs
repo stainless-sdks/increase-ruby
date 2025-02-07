@@ -3,7 +3,7 @@ module Increase
     class Files
       def create:
         (
-          Increase::Models::FileCreateParams | Hash[Symbol, top] params
+          Increase::Models::FileCreateParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::File
         | (
           file: IO | StringIO,
@@ -15,7 +15,7 @@ module Increase
       def retrieve:
         (
           String file_id,
-          ?Increase::Models::FileRetrieveParams | Hash[Symbol, top] params
+          ?Increase::Models::FileRetrieveParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::File
         | (
           String file_id,
@@ -24,7 +24,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::FileListParams | Hash[Symbol, top] params
+          ?Increase::Models::FileListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::File]
         | (
           created_at: Increase::Models::FileListParams::CreatedAt,

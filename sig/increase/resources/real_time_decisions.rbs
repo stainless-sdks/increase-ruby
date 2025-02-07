@@ -5,7 +5,7 @@ module Increase
         (
           String real_time_decision_id,
           ?Increase::Models::RealTimeDecisionRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::RealTimeDecision
         | (
           String real_time_decision_id,
@@ -16,7 +16,7 @@ module Increase
         (
           String real_time_decision_id,
           ?Increase::Models::RealTimeDecisionActionParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::RealTimeDecision
         | (
           String real_time_decision_id,

@@ -5,7 +5,7 @@ module Increase
         (
           String transaction_id,
           ?Increase::Models::TransactionRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::Transaction
         | (
           String transaction_id,
@@ -14,7 +14,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::TransactionListParams | Hash[Symbol, top] params
+          ?Increase::Models::TransactionListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::Transaction]
         | (
           account_id: String,

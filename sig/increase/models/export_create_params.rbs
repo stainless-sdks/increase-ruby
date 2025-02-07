@@ -94,7 +94,7 @@ module Increase
         # Export a CSV of vendors added to the third-party risk management dashboard.
         VENDOR_CSV: :vendor_csv
 
-        def self.values: -> Array[Increase::Models::ExportCreateParams::category]
+        def self.values: -> ::Array[Increase::Models::ExportCreateParams::category]
       end
 
       type account_statement_ofx =
@@ -319,15 +319,15 @@ module Increase
 
         type status =
           {
-            in_: Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
+            in_: ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
           }
 
         class Status < Increase::BaseModel
-          attr_accessor in_: Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
+          attr_accessor in_: ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
 
           def initialize:
             (
-              in_: Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
+              in_: ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
             ) -> void
             | (
               ?Increase::Models::ExportCreateParams::EntityCsv::status
@@ -348,7 +348,7 @@ module Increase
             # The entity is temporarily disabled and cannot be used for financial activity.
             DISABLED: :disabled
 
-            def self.values: -> Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
+            def self.values: -> ::Array[Increase::Models::ExportCreateParams::EntityCsv::Status::in_]
           end
         end
       end

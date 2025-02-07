@@ -3,7 +3,7 @@ module Increase
     class Groups
       def retrieve:
         (
-          ?Increase::Models::GroupRetrieveParams | Hash[Symbol, top] params
+          ?Increase::Models::GroupRetrieveParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Group
         | (request_options: Increase::request_opts) -> Increase::Models::Group
 

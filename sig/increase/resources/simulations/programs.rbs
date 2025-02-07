@@ -5,7 +5,7 @@ module Increase
         def create:
           (
             Increase::Models::Simulations::ProgramCreateParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::Program
           | (
             name: String,

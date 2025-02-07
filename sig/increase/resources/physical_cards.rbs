@@ -3,7 +3,8 @@ module Increase
     class PhysicalCards
       def create:
         (
-          Increase::Models::PhysicalCardCreateParams | Hash[Symbol, top] params
+          Increase::Models::PhysicalCardCreateParams
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::PhysicalCard
         | (
           card_id: String,
@@ -17,7 +18,7 @@ module Increase
         (
           String physical_card_id,
           ?Increase::Models::PhysicalCardRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::PhysicalCard
         | (
           String physical_card_id,
@@ -27,7 +28,8 @@ module Increase
       def update:
         (
           String physical_card_id,
-          Increase::Models::PhysicalCardUpdateParams | Hash[Symbol, top] params
+          Increase::Models::PhysicalCardUpdateParams
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::PhysicalCard
         | (
           String physical_card_id,
@@ -37,7 +39,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::PhysicalCardListParams | Hash[Symbol, top] params
+          ?Increase::Models::PhysicalCardListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::PhysicalCard]
         | (
           card_id: String,

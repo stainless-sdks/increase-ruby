@@ -399,7 +399,7 @@ module Increase
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED: :"wire_transfer.updated"
 
-        def self.values: -> Array[Increase::Models::EventSubscriptionCreateParams::selected_event_category]
+        def self.values: -> ::Array[Increase::Models::EventSubscriptionCreateParams::selected_event_category]
       end
     end
   end

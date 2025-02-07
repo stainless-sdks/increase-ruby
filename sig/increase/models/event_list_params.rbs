@@ -50,17 +50,19 @@ module Increase
       def to_hash: -> Increase::Models::event_list_params
 
       type category =
-        { in_: Array[Increase::Models::EventListParams::Category::in_] }
+        { in_: ::Array[Increase::Models::EventListParams::Category::in_] }
 
       class Category < Increase::BaseModel
-        attr_reader in_: Array[Increase::Models::EventListParams::Category::in_]?
+        attr_reader in_: ::Array[Increase::Models::EventListParams::Category::in_]?
 
         def in_=: (
-          Array[Increase::Models::EventListParams::Category::in_]
+          ::Array[Increase::Models::EventListParams::Category::in_]
         ) -> void
 
         def initialize:
-          (in_: Array[Increase::Models::EventListParams::Category::in_]) -> void
+          (
+            in_: ::Array[Increase::Models::EventListParams::Category::in_]
+          ) -> void
           | (
             ?Increase::Models::EventListParams::category
             | Increase::BaseModel data
@@ -423,7 +425,7 @@ module Increase
           # Occurs whenever a Wire Transfer is updated.
           WIRE_TRANSFER_UPDATED: :"wire_transfer.updated"
 
-          def self.values: -> Array[Increase::Models::EventListParams::Category::in_]
+          def self.values: -> ::Array[Increase::Models::EventListParams::Category::in_]
         end
       end
 

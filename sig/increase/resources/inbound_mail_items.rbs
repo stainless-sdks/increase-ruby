@@ -5,7 +5,7 @@ module Increase
         (
           String inbound_mail_item_id,
           ?Increase::Models::InboundMailItemRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::InboundMailItem
         | (
           String inbound_mail_item_id,
@@ -15,7 +15,7 @@ module Increase
       def list:
         (
           ?Increase::Models::InboundMailItemListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::InboundMailItem]
         | (
           created_at: Increase::Models::InboundMailItemListParams::CreatedAt,

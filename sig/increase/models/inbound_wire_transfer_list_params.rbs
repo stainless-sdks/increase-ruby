@@ -110,7 +110,7 @@ module Increase
         # The Inbound Wire Transfer was reversed.
         REVERSED: :reversed
 
-        def self.values: -> Array[Increase::Models::InboundWireTransferListParams::status]
+        def self.values: -> ::Array[Increase::Models::InboundWireTransferListParams::status]
       end
     end
   end

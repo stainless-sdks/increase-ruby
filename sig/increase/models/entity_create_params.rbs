@@ -8,7 +8,7 @@ module Increase
         government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,
         joint: Increase::Models::EntityCreateParams::Joint,
         natural_person: Increase::Models::EntityCreateParams::NaturalPerson,
-        supplemental_documents: Array[Increase::Models::EntityCreateParams::SupplementalDocument],
+        supplemental_documents: ::Array[Increase::Models::EntityCreateParams::SupplementalDocument],
         third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
         trust: Increase::Models::EntityCreateParams::Trust
       }
@@ -46,10 +46,10 @@ module Increase
         Increase::Models::EntityCreateParams::NaturalPerson
       ) -> void
 
-      attr_reader supplemental_documents: Array[Increase::Models::EntityCreateParams::SupplementalDocument]?
+      attr_reader supplemental_documents: ::Array[Increase::Models::EntityCreateParams::SupplementalDocument]?
 
       def supplemental_documents=: (
-        Array[Increase::Models::EntityCreateParams::SupplementalDocument]
+        ::Array[Increase::Models::EntityCreateParams::SupplementalDocument]
       ) -> void
 
       attr_reader third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification?
@@ -70,7 +70,7 @@ module Increase
           government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,
           joint: Increase::Models::EntityCreateParams::Joint,
           natural_person: Increase::Models::EntityCreateParams::NaturalPerson,
-          supplemental_documents: Array[Increase::Models::EntityCreateParams::SupplementalDocument],
+          supplemental_documents: ::Array[Increase::Models::EntityCreateParams::SupplementalDocument],
           third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
           trust: Increase::Models::EntityCreateParams::Trust,
           request_options: Increase::request_opts
@@ -100,13 +100,13 @@ module Increase
         # A government authority.
         GOVERNMENT_AUTHORITY: :government_authority
 
-        def self.values: -> Array[Increase::Models::EntityCreateParams::structure]
+        def self.values: -> ::Array[Increase::Models::EntityCreateParams::structure]
       end
 
       type corporation =
         {
           address: Increase::Models::EntityCreateParams::Corporation::Address,
-          beneficial_owners: Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner],
+          beneficial_owners: ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner],
           name: String,
           tax_identifier: String,
           incorporation_state: String,
@@ -117,7 +117,7 @@ module Increase
       class Corporation < Increase::BaseModel
         attr_accessor address: Increase::Models::EntityCreateParams::Corporation::Address
 
-        attr_accessor beneficial_owners: Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner]
+        attr_accessor beneficial_owners: ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner]
 
         attr_accessor name: String
 
@@ -138,7 +138,7 @@ module Increase
         def initialize:
           (
             address: Increase::Models::EntityCreateParams::Corporation::Address,
-            beneficial_owners: Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner],
+            beneficial_owners: ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner],
             name: String,
             tax_identifier: String,
             incorporation_state: String,
@@ -193,14 +193,14 @@ module Increase
         type beneficial_owner =
           {
             individual: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
-            prongs: Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong],
+            prongs: ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong],
             company_title: String
           }
 
         class BeneficialOwner < Increase::BaseModel
           attr_accessor individual: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual
 
-          attr_accessor prongs: Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong]
+          attr_accessor prongs: ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong]
 
           attr_reader company_title: String?
 
@@ -209,7 +209,7 @@ module Increase
           def initialize:
             (
               individual: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
-              prongs: Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong],
+              prongs: ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong],
               company_title: String
             ) -> void
             | (
@@ -364,7 +364,7 @@ module Increase
                 # Another identifying document.
                 OTHER: :other
 
-                def self.values: -> Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::method_]
+                def self.values: -> ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::method_]
               end
 
               type drivers_license =
@@ -476,7 +476,7 @@ module Increase
             # A person who manages, directs, or has significant control of the entity.
             CONTROL: :control
 
-            def self.values: -> Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong]
+            def self.values: -> ::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::prong]
           end
         end
       end
@@ -484,7 +484,7 @@ module Increase
       type government_authority =
         {
           address: Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
-          authorized_persons: Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson],
+          authorized_persons: ::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson],
           category: Increase::Models::EntityCreateParams::GovernmentAuthority::category,
           name: String,
           tax_identifier: String,
@@ -494,7 +494,7 @@ module Increase
       class GovernmentAuthority < Increase::BaseModel
         attr_accessor address: Increase::Models::EntityCreateParams::GovernmentAuthority::Address
 
-        attr_accessor authorized_persons: Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson]
+        attr_accessor authorized_persons: ::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson]
 
         attr_accessor category: Increase::Models::EntityCreateParams::GovernmentAuthority::category
 
@@ -509,7 +509,7 @@ module Increase
         def initialize:
           (
             address: Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
-            authorized_persons: Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson],
+            authorized_persons: ::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson],
             category: Increase::Models::EntityCreateParams::GovernmentAuthority::category,
             name: String,
             tax_identifier: String,
@@ -581,18 +581,18 @@ module Increase
           # The Public Entity is a Municipality.
           MUNICIPALITY: :municipality
 
-          def self.values: -> Array[Increase::Models::EntityCreateParams::GovernmentAuthority::category]
+          def self.values: -> ::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::category]
         end
       end
 
       type joint =
         {
-          individuals: Array[Increase::Models::EntityCreateParams::Joint::Individual],
+          individuals: ::Array[Increase::Models::EntityCreateParams::Joint::Individual],
           name: String
         }
 
       class Joint < Increase::BaseModel
-        attr_accessor individuals: Array[Increase::Models::EntityCreateParams::Joint::Individual]
+        attr_accessor individuals: ::Array[Increase::Models::EntityCreateParams::Joint::Individual]
 
         attr_reader name: String?
 
@@ -600,7 +600,7 @@ module Increase
 
         def initialize:
           (
-            individuals: Array[Increase::Models::EntityCreateParams::Joint::Individual],
+            individuals: ::Array[Increase::Models::EntityCreateParams::Joint::Individual],
             name: String
           ) -> void
           | (
@@ -755,7 +755,7 @@ module Increase
               # Another identifying document.
               OTHER: :other
 
-              def self.values: -> Array[Increase::Models::EntityCreateParams::Joint::Individual::Identification::method_]
+              def self.values: -> ::Array[Increase::Models::EntityCreateParams::Joint::Individual::Identification::method_]
             end
 
             type drivers_license =
@@ -1004,7 +1004,7 @@ module Increase
             # Another identifying document.
             OTHER: :other
 
-            def self.values: -> Array[Increase::Models::EntityCreateParams::NaturalPerson::Identification::method_]
+            def self.values: -> ::Array[Increase::Models::EntityCreateParams::NaturalPerson::Identification::method_]
           end
 
           type drivers_license =
@@ -1150,7 +1150,7 @@ module Increase
           # Middesk. See https://middesk.com for more information.
           MIDDESK: :middesk
 
-          def self.values: -> Array[Increase::Models::EntityCreateParams::ThirdPartyVerification::vendor]
+          def self.values: -> ::Array[Increase::Models::EntityCreateParams::ThirdPartyVerification::vendor]
         end
       end
 
@@ -1159,7 +1159,7 @@ module Increase
           address: Increase::Models::EntityCreateParams::Trust::Address,
           category: Increase::Models::EntityCreateParams::Trust::category,
           name: String,
-          trustees: Array[Increase::Models::EntityCreateParams::Trust::Trustee],
+          trustees: ::Array[Increase::Models::EntityCreateParams::Trust::Trustee],
           formation_document_file_id: String,
           formation_state: String,
           grantor: Increase::Models::EntityCreateParams::Trust::Grantor,
@@ -1173,7 +1173,7 @@ module Increase
 
         attr_accessor name: String
 
-        attr_accessor trustees: Array[Increase::Models::EntityCreateParams::Trust::Trustee]
+        attr_accessor trustees: ::Array[Increase::Models::EntityCreateParams::Trust::Trustee]
 
         attr_reader formation_document_file_id: String?
 
@@ -1198,7 +1198,7 @@ module Increase
             address: Increase::Models::EntityCreateParams::Trust::Address,
             category: Increase::Models::EntityCreateParams::Trust::category,
             name: String,
-            trustees: Array[Increase::Models::EntityCreateParams::Trust::Trustee],
+            trustees: ::Array[Increase::Models::EntityCreateParams::Trust::Trustee],
             formation_document_file_id: String,
             formation_state: String,
             grantor: Increase::Models::EntityCreateParams::Trust::Grantor,
@@ -1258,7 +1258,7 @@ module Increase
           # The trust cannot be revoked.
           IRREVOCABLE: :irrevocable
 
-          def self.values: -> Array[Increase::Models::EntityCreateParams::Trust::category]
+          def self.values: -> ::Array[Increase::Models::EntityCreateParams::Trust::category]
         end
 
         type trustee =
@@ -1294,7 +1294,7 @@ module Increase
             # The trustee is an individual.
             INDIVIDUAL: :individual
 
-            def self.values: -> Array[Increase::Models::EntityCreateParams::Trust::Trustee::structure]
+            def self.values: -> ::Array[Increase::Models::EntityCreateParams::Trust::Trustee::structure]
           end
 
           type individual =
@@ -1442,7 +1442,7 @@ module Increase
                 # Another identifying document.
                 OTHER: :other
 
-                def self.values: -> Array[Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::method_]
+                def self.values: -> ::Array[Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::method_]
               end
 
               type drivers_license =
@@ -1691,7 +1691,7 @@ module Increase
               # Another identifying document.
               OTHER: :other
 
-              def self.values: -> Array[Increase::Models::EntityCreateParams::Trust::Grantor::Identification::method_]
+              def self.values: -> ::Array[Increase::Models::EntityCreateParams::Trust::Grantor::Identification::method_]
             end
 
             type drivers_license =

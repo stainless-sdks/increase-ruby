@@ -5,7 +5,7 @@ module Increase
         (
           String oauth_connection_id,
           ?Increase::Models::OAuthConnectionRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::OAuthConnection
         | (
           String oauth_connection_id,
@@ -15,7 +15,7 @@ module Increase
       def list:
         (
           ?Increase::Models::OAuthConnectionListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::OAuthConnection]
         | (
           cursor: String,

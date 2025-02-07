@@ -4,7 +4,7 @@ module Increase
       def create:
         (
           Increase::Models::DigitalCardProfileCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::DigitalCardProfile
         | (
           app_icon_file_id: String,
@@ -23,7 +23,7 @@ module Increase
         (
           String digital_card_profile_id,
           ?Increase::Models::DigitalCardProfileRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::DigitalCardProfile
         | (
           String digital_card_profile_id,
@@ -33,7 +33,7 @@ module Increase
       def list:
         (
           ?Increase::Models::DigitalCardProfileListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::DigitalCardProfile]
         | (
           cursor: String,
@@ -47,7 +47,7 @@ module Increase
         (
           String digital_card_profile_id,
           ?Increase::Models::DigitalCardProfileArchiveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::DigitalCardProfile
         | (
           String digital_card_profile_id,
@@ -58,7 +58,7 @@ module Increase
         (
           String digital_card_profile_id,
           ?Increase::Models::DigitalCardProfileCloneParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::DigitalCardProfile
         | (
           String digital_card_profile_id,

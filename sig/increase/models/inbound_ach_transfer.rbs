@@ -168,20 +168,20 @@ module Increase
           # Unstructured addendum.
           FREEFORM: :freeform
 
-          def self.values: -> Array[Increase::Models::InboundACHTransfer::Addenda::category]
+          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::Addenda::category]
         end
 
         type freeform =
           {
-            entries: Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]
+            entries: ::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]
           }
 
         class Freeform < Increase::BaseModel
-          attr_accessor entries: Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]
+          attr_accessor entries: ::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]
 
           def initialize:
             (
-              entries: Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]
+              entries: ::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]
             ) -> void
             | (
               ?Increase::Models::InboundACHTransfer::Addenda::freeform
@@ -305,7 +305,7 @@ module Increase
           # The corporate customer no longer authorizes this transaction.
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED: :corporate_customer_advised_not_authorized
 
-          def self.values: -> Array[Increase::Models::InboundACHTransfer::Decline::reason]
+          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::Decline::reason]
         end
       end
 
@@ -318,7 +318,7 @@ module Increase
         # Debit
         DEBIT: :debit
 
-        def self.values: -> Array[Increase::Models::InboundACHTransfer::direction]
+        def self.values: -> ::Array[Increase::Models::InboundACHTransfer::direction]
       end
 
       type expected_settlement_schedule = :same_day | :future_dated
@@ -330,7 +330,7 @@ module Increase
         # The transfer is expected to settle on a future date.
         FUTURE_DATED: :future_dated
 
-        def self.values: -> Array[Increase::Models::InboundACHTransfer::expected_settlement_schedule]
+        def self.values: -> ::Array[Increase::Models::InboundACHTransfer::expected_settlement_schedule]
       end
 
       type international_addenda =
@@ -493,7 +493,7 @@ module Increase
           # The amount was originated and settled as a fixed amount in USD. There is no foreign exchange conversion.
           FIXED_TO_FIXED: :fixed_to_fixed
 
-          def self.values: -> Array[Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_indicator]
+          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_indicator]
         end
 
         type foreign_exchange_reference_indicator =
@@ -509,7 +509,7 @@ module Increase
           # There is no foreign exchange for this transfer, so the `foreign_exchange_reference` field is blank.
           BLANK: :blank
 
-          def self.values: -> Array[Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_reference_indicator]
+          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_reference_indicator]
         end
 
         type international_transaction_type_code =
@@ -595,7 +595,7 @@ module Increase
           # Sent as `WEB` in the Nacha file.
           INTERNET_INITIATED: :internet_initiated
 
-          def self.values: -> Array[Increase::Models::InboundACHTransfer::InternationalAddenda::international_transaction_type_code]
+          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::international_transaction_type_code]
         end
 
         type originating_depository_financial_institution_id_qualifier =
@@ -611,7 +611,7 @@ module Increase
           # An International Bank Account Number.
           IBAN: :iban
 
-          def self.values: -> Array[Increase::Models::InboundACHTransfer::InternationalAddenda::originating_depository_financial_institution_id_qualifier]
+          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::originating_depository_financial_institution_id_qualifier]
         end
 
         type receiving_depository_financial_institution_id_qualifier =
@@ -627,7 +627,7 @@ module Increase
           # An International Bank Account Number.
           IBAN: :iban
 
-          def self.values: -> Array[Increase::Models::InboundACHTransfer::InternationalAddenda::receiving_depository_financial_institution_id_qualifier]
+          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::receiving_depository_financial_institution_id_qualifier]
         end
       end
 
@@ -719,7 +719,7 @@ module Increase
         # International ACH Transaction (IAT).
         INTERNATIONAL_ACH_TRANSACTION: :international_ach_transaction
 
-        def self.values: -> Array[Increase::Models::InboundACHTransfer::standard_entry_class_code]
+        def self.values: -> ::Array[Increase::Models::InboundACHTransfer::standard_entry_class_code]
       end
 
       type status = :pending | :declined | :accepted | :returned
@@ -737,7 +737,7 @@ module Increase
         # The Inbound ACH Transfer has been returned.
         RETURNED: :returned
 
-        def self.values: -> Array[Increase::Models::InboundACHTransfer::status]
+        def self.values: -> ::Array[Increase::Models::InboundACHTransfer::status]
       end
 
       type transfer_return =
@@ -810,7 +810,7 @@ module Increase
           # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED: :corporate_customer_advised_not_authorized
 
-          def self.values: -> Array[Increase::Models::InboundACHTransfer::TransferReturn::reason]
+          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::TransferReturn::reason]
         end
       end
 
@@ -819,7 +819,7 @@ module Increase
       class Type < Increase::Enum
         INBOUND_ACH_TRANSFER: :inbound_ach_transfer
 
-        def self.values: -> Array[Increase::Models::InboundACHTransfer::type_]
+        def self.values: -> ::Array[Increase::Models::InboundACHTransfer::type_]
       end
     end
   end

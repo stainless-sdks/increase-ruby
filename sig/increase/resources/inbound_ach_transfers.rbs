@@ -5,7 +5,7 @@ module Increase
         (
           String inbound_ach_transfer_id,
           ?Increase::Models::InboundACHTransferRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::InboundACHTransfer
         | (
           String inbound_ach_transfer_id,
@@ -15,7 +15,7 @@ module Increase
       def list:
         (
           ?Increase::Models::InboundACHTransferListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::InboundACHTransfer]
         | (
           account_id: String,
@@ -31,7 +31,7 @@ module Increase
         (
           String inbound_ach_transfer_id,
           ?Increase::Models::InboundACHTransferCreateNotificationOfChangeParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::InboundACHTransfer
         | (
           String inbound_ach_transfer_id,
@@ -44,7 +44,7 @@ module Increase
         (
           String inbound_ach_transfer_id,
           ?Increase::Models::InboundACHTransferDeclineParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::InboundACHTransfer
         | (
           String inbound_ach_transfer_id,
@@ -56,7 +56,7 @@ module Increase
         (
           String inbound_ach_transfer_id,
           Increase::Models::InboundACHTransferTransferReturnParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::InboundACHTransfer
         | (
           String inbound_ach_transfer_id,

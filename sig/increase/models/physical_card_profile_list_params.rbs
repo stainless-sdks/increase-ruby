@@ -48,19 +48,19 @@ module Increase
 
       type status =
         {
-          in_: Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
+          in_: ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
         }
 
       class Status < Increase::BaseModel
-        attr_reader in_: Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]?
+        attr_reader in_: ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]?
 
         def in_=: (
-          Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
+          ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
         ) -> void
 
         def initialize:
           (
-            in_: Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
+            in_: ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
           ) -> void
           | (
             ?Increase::Models::PhysicalCardProfileListParams::status
@@ -96,7 +96,7 @@ module Increase
           # The Physical Card Profile has been archived.
           ARCHIVED: :archived
 
-          def self.values: -> Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
         end
       end
     end

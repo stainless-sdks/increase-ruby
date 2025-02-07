@@ -67,7 +67,7 @@ module Increase
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY: :third_party
 
-        def self.values: -> Array[Increase::Models::CheckTransferCreateParams::fulfillment_method]
+        def self.values: -> ::Array[Increase::Models::CheckTransferCreateParams::fulfillment_method]
       end
 
       type physical_check =

@@ -3,7 +3,7 @@ module Increase
     class Entities
       def create:
         (
-          Increase::Models::EntityCreateParams | Hash[Symbol, top] params
+          Increase::Models::EntityCreateParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Entity
         | (
           structure: Increase::Models::EntityCreateParams::structure,
@@ -12,7 +12,7 @@ module Increase
           government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,
           joint: Increase::Models::EntityCreateParams::Joint,
           natural_person: Increase::Models::EntityCreateParams::NaturalPerson,
-          supplemental_documents: Array[Increase::Models::EntityCreateParams::SupplementalDocument],
+          supplemental_documents: ::Array[Increase::Models::EntityCreateParams::SupplementalDocument],
           third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
           trust: Increase::Models::EntityCreateParams::Trust,
           request_options: Increase::request_opts
@@ -21,7 +21,7 @@ module Increase
       def retrieve:
         (
           String entity_id,
-          ?Increase::Models::EntityRetrieveParams | Hash[Symbol, top] params
+          ?Increase::Models::EntityRetrieveParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Entity
         | (
           String entity_id,
@@ -30,7 +30,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::EntityListParams | Hash[Symbol, top] params
+          ?Increase::Models::EntityListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::Entity]
         | (
           created_at: Increase::Models::EntityListParams::CreatedAt,
@@ -44,7 +44,7 @@ module Increase
       def archive:
         (
           String entity_id,
-          ?Increase::Models::EntityArchiveParams | Hash[Symbol, top] params
+          ?Increase::Models::EntityArchiveParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Entity
         | (
           String entity_id,
@@ -55,7 +55,7 @@ module Increase
         (
           String entity_id,
           Increase::Models::EntityArchiveBeneficialOwnerParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::Entity
         | (
           String entity_id,
@@ -66,7 +66,7 @@ module Increase
       def confirm:
         (
           String entity_id,
-          ?Increase::Models::EntityConfirmParams | Hash[Symbol, top] params
+          ?Increase::Models::EntityConfirmParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Entity
         | (
           String entity_id,
@@ -78,7 +78,7 @@ module Increase
         (
           String entity_id,
           Increase::Models::EntityCreateBeneficialOwnerParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::Entity
         | (
           String entity_id,
@@ -89,7 +89,8 @@ module Increase
       def update_address:
         (
           String entity_id,
-          Increase::Models::EntityUpdateAddressParams | Hash[Symbol, top] params
+          Increase::Models::EntityUpdateAddressParams
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::Entity
         | (
           String entity_id,
@@ -101,7 +102,7 @@ module Increase
         (
           String entity_id,
           Increase::Models::EntityUpdateBeneficialOwnerAddressParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::Entity
         | (
           String entity_id,
@@ -114,7 +115,7 @@ module Increase
         (
           String entity_id,
           Increase::Models::EntityUpdateIndustryCodeParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::Entity
         | (
           String entity_id,

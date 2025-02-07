@@ -51,7 +51,7 @@ module Increase
         # The OAuth connection is permanently deactivated.
         INACTIVE: :inactive
 
-        def self.values: -> Array[Increase::Models::OAuthConnection::status]
+        def self.values: -> ::Array[Increase::Models::OAuthConnection::status]
       end
 
       type type_ = :oauth_connection
@@ -59,7 +59,7 @@ module Increase
       class Type < Increase::Enum
         OAUTH_CONNECTION: :oauth_connection
 
-        def self.values: -> Array[Increase::Models::OAuthConnection::type_]
+        def self.values: -> ::Array[Increase::Models::OAuthConnection::type_]
       end
     end
   end

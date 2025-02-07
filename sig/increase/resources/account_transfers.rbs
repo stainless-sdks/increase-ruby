@@ -4,7 +4,7 @@ module Increase
       def create:
         (
           Increase::Models::AccountTransferCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::AccountTransfer
         | (
           account_id: String,
@@ -19,7 +19,7 @@ module Increase
         (
           String account_transfer_id,
           ?Increase::Models::AccountTransferRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::AccountTransfer
         | (
           String account_transfer_id,
@@ -29,7 +29,7 @@ module Increase
       def list:
         (
           ?Increase::Models::AccountTransferListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::AccountTransfer]
         | (
           account_id: String,
@@ -44,7 +44,7 @@ module Increase
         (
           String account_transfer_id,
           ?Increase::Models::AccountTransferApproveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::AccountTransfer
         | (
           String account_transfer_id,
@@ -55,7 +55,7 @@ module Increase
         (
           String account_transfer_id,
           ?Increase::Models::AccountTransferCancelParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::AccountTransfer
         | (
           String account_transfer_id,

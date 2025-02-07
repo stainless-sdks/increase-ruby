@@ -3,7 +3,7 @@ module Increase
     class Accounts
       def create:
         (
-          Increase::Models::AccountCreateParams | Hash[Symbol, top] params
+          Increase::Models::AccountCreateParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Account
         | (
           name: String,
@@ -16,7 +16,7 @@ module Increase
       def retrieve:
         (
           String account_id,
-          ?Increase::Models::AccountRetrieveParams | Hash[Symbol, top] params
+          ?Increase::Models::AccountRetrieveParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Account
         | (
           String account_id,
@@ -26,7 +26,7 @@ module Increase
       def update:
         (
           String account_id,
-          ?Increase::Models::AccountUpdateParams | Hash[Symbol, top] params
+          ?Increase::Models::AccountUpdateParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Account
         | (
           String account_id,
@@ -36,7 +36,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::AccountListParams | Hash[Symbol, top] params
+          ?Increase::Models::AccountListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::Account]
         | (
           created_at: Increase::Models::AccountListParams::CreatedAt,
@@ -53,7 +53,7 @@ module Increase
       def balance:
         (
           String account_id,
-          ?Increase::Models::AccountBalanceParams | Hash[Symbol, top] params
+          ?Increase::Models::AccountBalanceParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::BalanceLookup
         | (
           String account_id,
@@ -64,7 +64,7 @@ module Increase
       def close:
         (
           String account_id,
-          ?Increase::Models::AccountCloseParams | Hash[Symbol, top] params
+          ?Increase::Models::AccountCloseParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Account
         | (
           String account_id,

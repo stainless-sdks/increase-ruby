@@ -59,7 +59,7 @@ module Increase
         # The Lockbox or its associated Account is not active.
         LOCKBOX_NOT_ACTIVE: :lockbox_not_active
 
-        def self.values: -> Array[Increase::Models::InboundMailItem::rejection_reason]
+        def self.values: -> ::Array[Increase::Models::InboundMailItem::rejection_reason]
       end
 
       type status = :pending | :processed | :rejected
@@ -74,7 +74,7 @@ module Increase
         # The mail item has been rejected.
         REJECTED: :rejected
 
-        def self.values: -> Array[Increase::Models::InboundMailItem::status]
+        def self.values: -> ::Array[Increase::Models::InboundMailItem::status]
       end
 
       type type_ = :inbound_mail_item
@@ -82,7 +82,7 @@ module Increase
       class Type < Increase::Enum
         INBOUND_MAIL_ITEM: :inbound_mail_item
 
-        def self.values: -> Array[Increase::Models::InboundMailItem::type_]
+        def self.values: -> ::Array[Increase::Models::InboundMailItem::type_]
       end
     end
   end

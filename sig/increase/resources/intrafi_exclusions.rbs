@@ -4,7 +4,7 @@ module Increase
       def create:
         (
           Increase::Models::IntrafiExclusionCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::IntrafiExclusion
         | (
           bank_name: String,
@@ -16,7 +16,7 @@ module Increase
         (
           String intrafi_exclusion_id,
           ?Increase::Models::IntrafiExclusionRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::IntrafiExclusion
         | (
           String intrafi_exclusion_id,
@@ -26,7 +26,7 @@ module Increase
       def list:
         (
           ?Increase::Models::IntrafiExclusionListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::IntrafiExclusion]
         | (
           cursor: String,
@@ -40,7 +40,7 @@ module Increase
         (
           String intrafi_exclusion_id,
           ?Increase::Models::IntrafiExclusionArchiveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::IntrafiExclusion
         | (
           String intrafi_exclusion_id,

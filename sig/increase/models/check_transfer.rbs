@@ -196,7 +196,7 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER: :user
 
-          def self.values: -> Array[Increase::Models::CheckTransfer::CreatedBy::category]
+          def self.values: -> ::Array[Increase::Models::CheckTransfer::CreatedBy::category]
         end
 
         type oauth_application = { name: String }
@@ -251,7 +251,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> Array[Increase::Models::CheckTransfer::currency]
+        def self.values: -> ::Array[Increase::Models::CheckTransfer::currency]
       end
 
       type fulfillment_method = :physical_check | :third_party
@@ -263,7 +263,7 @@ module Increase
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY: :third_party
 
-        def self.values: -> Array[Increase::Models::CheckTransfer::fulfillment_method]
+        def self.values: -> ::Array[Increase::Models::CheckTransfer::fulfillment_method]
       end
 
       type mailing =
@@ -294,7 +294,7 @@ module Increase
           return_address: Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress?,
           shipping_method: Increase::Models::CheckTransfer::PhysicalCheck::shipping_method?,
           signature_text: String?,
-          tracking_updates: Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
+          tracking_updates: ::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
         }
 
       class PhysicalCheck < Increase::BaseModel
@@ -312,7 +312,7 @@ module Increase
 
         attr_accessor signature_text: String?
 
-        attr_accessor tracking_updates: Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
+        attr_accessor tracking_updates: ::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
 
         def initialize:
           (
@@ -323,7 +323,7 @@ module Increase
             return_address: Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress?,
             shipping_method: Increase::Models::CheckTransfer::PhysicalCheck::shipping_method?,
             signature_text: String?,
-            tracking_updates: Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
+            tracking_updates: ::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
           ) -> void
           | (
             ?Increase::Models::CheckTransfer::physical_check
@@ -421,7 +421,7 @@ module Increase
           # FedEx Overnight
           FEDEX_OVERNIGHT: :fedex_overnight
 
-          def self.values: -> Array[Increase::Models::CheckTransfer::PhysicalCheck::shipping_method]
+          def self.values: -> ::Array[Increase::Models::CheckTransfer::PhysicalCheck::shipping_method]
         end
 
         type tracking_update =
@@ -470,7 +470,7 @@ module Increase
             # Delivery failed and the check was returned to sender.
             RETURNED_TO_SENDER: :returned_to_sender
 
-            def self.values: -> Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category]
+            def self.values: -> ::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::category]
           end
         end
       end
@@ -518,7 +518,7 @@ module Increase
         # The transfer has been returned.
         RETURNED: :returned
 
-        def self.values: -> Array[Increase::Models::CheckTransfer::status]
+        def self.values: -> ::Array[Increase::Models::CheckTransfer::status]
       end
 
       type stop_payment_request =
@@ -571,7 +571,7 @@ module Increase
           # The check was stopped for another reason.
           UNKNOWN: :unknown
 
-          def self.values: -> Array[Increase::Models::CheckTransfer::StopPaymentRequest::reason]
+          def self.values: -> ::Array[Increase::Models::CheckTransfer::StopPaymentRequest::reason]
         end
 
         type type_ = :check_transfer_stop_payment_request
@@ -579,7 +579,7 @@ module Increase
         class Type < Increase::Enum
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST: :check_transfer_stop_payment_request
 
-          def self.values: -> Array[Increase::Models::CheckTransfer::StopPaymentRequest::type_]
+          def self.values: -> ::Array[Increase::Models::CheckTransfer::StopPaymentRequest::type_]
         end
       end
 
@@ -618,7 +618,7 @@ module Increase
       class Type < Increase::Enum
         CHECK_TRANSFER: :check_transfer
 
-        def self.values: -> Array[Increase::Models::CheckTransfer::type_]
+        def self.values: -> ::Array[Increase::Models::CheckTransfer::type_]
       end
     end
   end

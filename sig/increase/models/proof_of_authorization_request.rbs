@@ -3,7 +3,7 @@ module Increase
     type proof_of_authorization_request =
       {
         id: String,
-        ach_transfers: Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
+        ach_transfers: ::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
         created_at: Time,
         due_on: Time,
         type: Increase::Models::ProofOfAuthorizationRequest::type_,
@@ -13,7 +13,7 @@ module Increase
     class ProofOfAuthorizationRequest < Increase::BaseModel
       attr_accessor id: String
 
-      attr_accessor ach_transfers: Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer]
+      attr_accessor ach_transfers: ::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer]
 
       attr_accessor created_at: Time
 
@@ -26,7 +26,7 @@ module Increase
       def initialize:
         (
           id: String,
-          ach_transfers: Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
+          ach_transfers: ::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
           created_at: Time,
           due_on: Time,
           type: Increase::Models::ProofOfAuthorizationRequest::type_,
@@ -59,7 +59,7 @@ module Increase
       class Type < Increase::Enum
         PROOF_OF_AUTHORIZATION_REQUEST: :proof_of_authorization_request
 
-        def self.values: -> Array[Increase::Models::ProofOfAuthorizationRequest::type_]
+        def self.values: -> ::Array[Increase::Models::ProofOfAuthorizationRequest::type_]
       end
     end
   end

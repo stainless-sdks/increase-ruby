@@ -70,19 +70,19 @@ module Increase
 
       type category =
         {
-          in_: Array[Increase::Models::PendingTransactionListParams::Category::in_]
+          in_: ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
         }
 
       class Category < Increase::BaseModel
-        attr_reader in_: Array[Increase::Models::PendingTransactionListParams::Category::in_]?
+        attr_reader in_: ::Array[Increase::Models::PendingTransactionListParams::Category::in_]?
 
         def in_=: (
-          Array[Increase::Models::PendingTransactionListParams::Category::in_]
+          ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
         ) -> void
 
         def initialize:
           (
-            in_: Array[Increase::Models::PendingTransactionListParams::Category::in_]
+            in_: ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
           ) -> void
           | (
             ?Increase::Models::PendingTransactionListParams::category
@@ -134,7 +134,7 @@ module Increase
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self.values: -> Array[Increase::Models::PendingTransactionListParams::Category::in_]
+          def self.values: -> ::Array[Increase::Models::PendingTransactionListParams::Category::in_]
         end
       end
 
@@ -175,19 +175,19 @@ module Increase
 
       type status =
         {
-          in_: Array[Increase::Models::PendingTransactionListParams::Status::in_]
+          in_: ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
         }
 
       class Status < Increase::BaseModel
-        attr_reader in_: Array[Increase::Models::PendingTransactionListParams::Status::in_]?
+        attr_reader in_: ::Array[Increase::Models::PendingTransactionListParams::Status::in_]?
 
         def in_=: (
-          Array[Increase::Models::PendingTransactionListParams::Status::in_]
+          ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
         ) -> void
 
         def initialize:
           (
-            in_: Array[Increase::Models::PendingTransactionListParams::Status::in_]
+            in_: ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
           ) -> void
           | (
             ?Increase::Models::PendingTransactionListParams::status
@@ -205,7 +205,7 @@ module Increase
           # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
           COMPLETE: :complete
 
-          def self.values: -> Array[Increase::Models::PendingTransactionListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::PendingTransactionListParams::Status::in_]
         end
       end
     end

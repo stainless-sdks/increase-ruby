@@ -3,7 +3,8 @@ module Increase
     class AccountNumbers
       def create:
         (
-          Increase::Models::AccountNumberCreateParams | Hash[Symbol, top] params
+          Increase::Models::AccountNumberCreateParams
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::AccountNumber
         | (
           account_id: String,
@@ -17,7 +18,7 @@ module Increase
         (
           String account_number_id,
           ?Increase::Models::AccountNumberRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::AccountNumber
         | (
           String account_number_id,
@@ -28,7 +29,7 @@ module Increase
         (
           String account_number_id,
           ?Increase::Models::AccountNumberUpdateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::AccountNumber
         | (
           String account_number_id,
@@ -41,7 +42,8 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::AccountNumberListParams | Hash[Symbol, top] params
+          ?Increase::Models::AccountNumberListParams
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::AccountNumber]
         | (
           account_id: String,

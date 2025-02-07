@@ -5,7 +5,7 @@ module Increase
         (
           String card_purchase_supplement_id,
           ?Increase::Models::CardPurchaseSupplementRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::CardPurchaseSupplement
         | (
           String card_purchase_supplement_id,
@@ -15,7 +15,7 @@ module Increase
       def list:
         (
           ?Increase::Models::CardPurchaseSupplementListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::CardPurchaseSupplement]
         | (
           card_payment_id: String,

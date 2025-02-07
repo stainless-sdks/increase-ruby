@@ -54,19 +54,19 @@ module Increase
 
       type status =
         {
-          in_: Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]
+          in_: ::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]
         }
 
       class Status < Increase::BaseModel
-        attr_reader in_: Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]?
+        attr_reader in_: ::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]?
 
         def in_=: (
-          Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]
+          ::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]
         ) -> void
 
         def initialize:
           (
-            in_: Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]
+            in_: ::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]
           ) -> void
           | (
             ?Increase::Models::IntrafiAccountEnrollmentListParams::status
@@ -98,7 +98,7 @@ module Increase
           # Something unexpected happened with this account. Contact Increase support.
           REQUIRES_ATTENTION: :requires_attention
 
-          def self.values: -> Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::IntrafiAccountEnrollmentListParams::Status::in_]
         end
       end
     end

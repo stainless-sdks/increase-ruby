@@ -152,7 +152,7 @@ module Increase
           # International ACH Transaction (IAT).
           INTERNATIONAL_ACH_TRANSACTION: :international_ach_transaction
 
-          def self.values: -> Array[Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code]
+          def self.values: -> ::Array[Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code]
         end
       end
     end

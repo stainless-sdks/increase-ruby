@@ -151,7 +151,7 @@ module Increase
           # FedEx 2-day.
           FEDEX_2_DAY: :fedex_2_day
 
-          def self.values: -> Array[Increase::Models::PhysicalCard::Shipment::method_]
+          def self.values: -> ::Array[Increase::Models::PhysicalCard::Shipment::method_]
         end
 
         type status =
@@ -185,7 +185,7 @@ module Increase
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED: :returned
 
-          def self.values: -> Array[Increase::Models::PhysicalCard::Shipment::status]
+          def self.values: -> ::Array[Increase::Models::PhysicalCard::Shipment::status]
         end
 
         type tracking =
@@ -233,7 +233,7 @@ module Increase
         # The physical card is permanently canceled.
         CANCELED: :canceled
 
-        def self.values: -> Array[Increase::Models::PhysicalCard::status]
+        def self.values: -> ::Array[Increase::Models::PhysicalCard::status]
       end
 
       type type_ = :physical_card
@@ -241,7 +241,7 @@ module Increase
       class Type < Increase::Enum
         PHYSICAL_CARD: :physical_card
 
-        def self.values: -> Array[Increase::Models::PhysicalCard::type_]
+        def self.values: -> ::Array[Increase::Models::PhysicalCard::type_]
       end
     end
   end

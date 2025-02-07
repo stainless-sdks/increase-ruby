@@ -6,7 +6,7 @@ module Increase
           (
             String ach_transfer_id,
             ?Increase::Models::Simulations::ACHTransferAcknowledgeParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::ACHTransfer
           | (
             String ach_transfer_id,
@@ -17,7 +17,7 @@ module Increase
           (
             String ach_transfer_id,
             Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::ACHTransfer
           | (
             String ach_transfer_id,
@@ -30,7 +30,7 @@ module Increase
           (
             String ach_transfer_id,
             ?Increase::Models::Simulations::ACHTransferReturnParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::ACHTransfer
           | (
             String ach_transfer_id,
@@ -42,7 +42,7 @@ module Increase
           (
             String ach_transfer_id,
             ?Increase::Models::Simulations::ACHTransferSettleParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::ACHTransfer
           | (
             String ach_transfer_id,
@@ -53,7 +53,7 @@ module Increase
           (
             String ach_transfer_id,
             ?Increase::Models::Simulations::ACHTransferSubmitParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::ACHTransfer
           | (
             String ach_transfer_id,

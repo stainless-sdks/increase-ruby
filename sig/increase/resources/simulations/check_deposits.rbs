@@ -6,7 +6,7 @@ module Increase
           (
             String check_deposit_id,
             ?Increase::Models::Simulations::CheckDepositRejectParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::CheckDeposit
           | (
             String check_deposit_id,
@@ -17,7 +17,7 @@ module Increase
           (
             String check_deposit_id,
             ?Increase::Models::Simulations::CheckDepositReturnParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::CheckDeposit
           | (
             String check_deposit_id,
@@ -28,7 +28,7 @@ module Increase
           (
             String check_deposit_id,
             ?Increase::Models::Simulations::CheckDepositSubmitParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::CheckDeposit
           | (
             String check_deposit_id,

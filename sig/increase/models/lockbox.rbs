@@ -96,7 +96,7 @@ module Increase
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE: :inactive
 
-        def self.values: -> Array[Increase::Models::Lockbox::status]
+        def self.values: -> ::Array[Increase::Models::Lockbox::status]
       end
 
       type type_ = :lockbox
@@ -104,7 +104,7 @@ module Increase
       class Type < Increase::Enum
         LOCKBOX: :lockbox
 
-        def self.values: -> Array[Increase::Models::Lockbox::type_]
+        def self.values: -> ::Array[Increase::Models::Lockbox::type_]
       end
     end
   end

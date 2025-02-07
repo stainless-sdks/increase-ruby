@@ -3,7 +3,7 @@ module Increase
     class ACHTransfers
       def create:
         (
-          Increase::Models::ACHTransferCreateParams | Hash[Symbol, top] params
+          Increase::Models::ACHTransferCreateParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::ACHTransfer
         | (
           account_id: String,
@@ -32,7 +32,7 @@ module Increase
         (
           String ach_transfer_id,
           ?Increase::Models::ACHTransferRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::ACHTransfer
         | (
           String ach_transfer_id,
@@ -41,7 +41,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::ACHTransferListParams | Hash[Symbol, top] params
+          ?Increase::Models::ACHTransferListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::ACHTransfer]
         | (
           account_id: String,
@@ -56,7 +56,8 @@ module Increase
       def approve:
         (
           String ach_transfer_id,
-          ?Increase::Models::ACHTransferApproveParams | Hash[Symbol, top] params
+          ?Increase::Models::ACHTransferApproveParams
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::ACHTransfer
         | (
           String ach_transfer_id,
@@ -66,7 +67,8 @@ module Increase
       def cancel:
         (
           String ach_transfer_id,
-          ?Increase::Models::ACHTransferCancelParams | Hash[Symbol, top] params
+          ?Increase::Models::ACHTransferCancelParams
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::ACHTransfer
         | (
           String ach_transfer_id,

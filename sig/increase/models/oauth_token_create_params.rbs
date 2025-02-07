@@ -57,7 +57,7 @@ module Increase
         # An OAuth production token.
         PRODUCTION_TOKEN: :production_token
 
-        def self.values: -> Array[Increase::Models::OAuthTokenCreateParams::grant_type]
+        def self.values: -> ::Array[Increase::Models::OAuthTokenCreateParams::grant_type]
       end
     end
   end

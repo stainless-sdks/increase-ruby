@@ -3,7 +3,8 @@ module Increase
     class CheckDeposits
       def create:
         (
-          Increase::Models::CheckDepositCreateParams | Hash[Symbol, top] params
+          Increase::Models::CheckDepositCreateParams
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::CheckDeposit
         | (
           account_id: String,
@@ -18,7 +19,7 @@ module Increase
         (
           String check_deposit_id,
           ?Increase::Models::CheckDepositRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::CheckDeposit
         | (
           String check_deposit_id,
@@ -27,7 +28,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::CheckDepositListParams | Hash[Symbol, top] params
+          ?Increase::Models::CheckDepositListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::CheckDeposit]
         | (
           account_id: String,

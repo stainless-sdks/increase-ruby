@@ -4,7 +4,7 @@ module Increase
       def create:
         (
           Increase::Models::BookkeepingAccountCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::BookkeepingAccount
         | (
           name: String,
@@ -18,7 +18,7 @@ module Increase
         (
           String bookkeeping_account_id,
           Increase::Models::BookkeepingAccountUpdateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::BookkeepingAccount
         | (
           String bookkeeping_account_id,
@@ -29,7 +29,7 @@ module Increase
       def list:
         (
           ?Increase::Models::BookkeepingAccountListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::BookkeepingAccount]
         | (
           cursor: String,
@@ -42,7 +42,7 @@ module Increase
         (
           String bookkeeping_account_id,
           ?Increase::Models::BookkeepingAccountBalanceParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::BookkeepingBalanceLookup
         | (
           String bookkeeping_account_id,

@@ -85,17 +85,17 @@ module Increase
       end
 
       type purpose =
-        { in_: Array[Increase::Models::FileListParams::Purpose::in_] }
+        { in_: ::Array[Increase::Models::FileListParams::Purpose::in_] }
 
       class Purpose < Increase::BaseModel
-        attr_reader in_: Array[Increase::Models::FileListParams::Purpose::in_]?
+        attr_reader in_: ::Array[Increase::Models::FileListParams::Purpose::in_]?
 
         def in_=: (
-          Array[Increase::Models::FileListParams::Purpose::in_]
+          ::Array[Increase::Models::FileListParams::Purpose::in_]
         ) -> void
 
         def initialize:
-          (in_: Array[Increase::Models::FileListParams::Purpose::in_]) -> void
+          (in_: ::Array[Increase::Models::FileListParams::Purpose::in_]) -> void
           | (
             ?Increase::Models::FileListParams::purpose
             | Increase::BaseModel data
@@ -206,7 +206,7 @@ module Increase
           # A document granting another entity access to the funds into your account.
           DEPOSIT_ACCOUNT_CONTROL_AGREEMENT: :deposit_account_control_agreement
 
-          def self.values: -> Array[Increase::Models::FileListParams::Purpose::in_]
+          def self.values: -> ::Array[Increase::Models::FileListParams::Purpose::in_]
         end
       end
     end

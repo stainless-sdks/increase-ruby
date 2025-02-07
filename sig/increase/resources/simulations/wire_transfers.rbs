@@ -6,7 +6,7 @@ module Increase
           (
             String wire_transfer_id,
             ?Increase::Models::Simulations::WireTransferReverseParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::WireTransfer
           | (
             String wire_transfer_id,
@@ -17,7 +17,7 @@ module Increase
           (
             String wire_transfer_id,
             ?Increase::Models::Simulations::WireTransferSubmitParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::WireTransfer
           | (
             String wire_transfer_id,

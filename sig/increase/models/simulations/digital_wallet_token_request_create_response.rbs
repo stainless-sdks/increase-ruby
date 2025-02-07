@@ -47,7 +47,7 @@ module Increase
           # Your webhook declined the token provisioning attempt.
           WEBHOOK_DECLINED: :webhook_declined
 
-          def self.values: -> Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::decline_reason]
+          def self.values: -> ::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::decline_reason]
         end
 
         type type_ = :inbound_digital_wallet_token_request_simulation_result
@@ -55,7 +55,7 @@ module Increase
         class Type < Increase::Enum
           INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT: :inbound_digital_wallet_token_request_simulation_result
 
-          def self.values: -> Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::type_]
+          def self.values: -> ::Array[Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::type_]
         end
       end
     end

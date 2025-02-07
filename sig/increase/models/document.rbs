@@ -55,7 +55,7 @@ module Increase
         # Company information, such a policies or procedures, typically submitted during our due diligence process.
         COMPANY_INFORMATION: :company_information
 
-        def self.values: -> Array[Increase::Models::Document::category]
+        def self.values: -> ::Array[Increase::Models::Document::category]
       end
 
       type type_ = :document
@@ -63,7 +63,7 @@ module Increase
       class Type < Increase::Enum
         DOCUMENT: :document
 
-        def self.values: -> Array[Increase::Models::Document::type_]
+        def self.values: -> ::Array[Increase::Models::Document::type_]
       end
     end
   end

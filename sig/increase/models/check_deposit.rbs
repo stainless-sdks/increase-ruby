@@ -148,7 +148,7 @@ module Increase
           # US Dollar (USD)
           USD: :USD
 
-          def self.values: -> Array[Increase::Models::CheckDeposit::DepositAcceptance::currency]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::DepositAcceptance::currency]
         end
       end
 
@@ -212,7 +212,7 @@ module Increase
           # US Dollar (USD)
           USD: :USD
 
-          def self.values: -> Array[Increase::Models::CheckDeposit::DepositRejection::currency]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::DepositRejection::currency]
         end
 
         type reason =
@@ -262,7 +262,7 @@ module Increase
           # The check was rejected for an unknown reason.
           UNKNOWN: :unknown
 
-          def self.values: -> Array[Increase::Models::CheckDeposit::DepositRejection::reason]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::DepositRejection::reason]
         end
       end
 
@@ -326,7 +326,7 @@ module Increase
           # US Dollar (USD)
           USD: :USD
 
-          def self.values: -> Array[Increase::Models::CheckDeposit::DepositReturn::currency]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::DepositReturn::currency]
         end
 
         type return_reason =
@@ -436,7 +436,7 @@ module Increase
           # The bank sold this account and no longer services this customer.
           BRANCH_OR_ACCOUNT_SOLD: :branch_or_account_sold
 
-          def self.values: -> Array[Increase::Models::CheckDeposit::DepositReturn::return_reason]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::DepositReturn::return_reason]
         end
       end
 
@@ -540,7 +540,7 @@ module Increase
           # US Dollar (USD)
           USD: :USD
 
-          def self.values: -> Array[Increase::Models::CheckDeposit::InboundFundsHold::currency]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::InboundFundsHold::currency]
         end
 
         type status = :held | :complete
@@ -552,7 +552,7 @@ module Increase
           # Funds have been released.
           COMPLETE: :complete
 
-          def self.values: -> Array[Increase::Models::CheckDeposit::InboundFundsHold::status]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::InboundFundsHold::status]
         end
 
         type type_ = :inbound_funds_hold
@@ -560,7 +560,7 @@ module Increase
         class Type < Increase::Enum
           INBOUND_FUNDS_HOLD: :inbound_funds_hold
 
-          def self.values: -> Array[Increase::Models::CheckDeposit::InboundFundsHold::type_]
+          def self.values: -> ::Array[Increase::Models::CheckDeposit::InboundFundsHold::type_]
         end
       end
 
@@ -579,7 +579,7 @@ module Increase
         # The Check Deposit has been returned.
         RETURNED: :returned
 
-        def self.values: -> Array[Increase::Models::CheckDeposit::status]
+        def self.values: -> ::Array[Increase::Models::CheckDeposit::status]
       end
 
       type type_ = :check_deposit
@@ -587,7 +587,7 @@ module Increase
       class Type < Increase::Enum
         CHECK_DEPOSIT: :check_deposit
 
-        def self.values: -> Array[Increase::Models::CheckDeposit::type_]
+        def self.values: -> ::Array[Increase::Models::CheckDeposit::type_]
       end
     end
   end

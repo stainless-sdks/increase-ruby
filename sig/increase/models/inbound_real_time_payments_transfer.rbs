@@ -117,7 +117,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> Array[Increase::Models::InboundRealTimePaymentsTransfer::currency]
+        def self.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::currency]
       end
 
       type decline =
@@ -174,7 +174,7 @@ module Increase
           # Your account is not enabled to receive Real-Time Payments transfers.
           REAL_TIME_PAYMENTS_NOT_ENABLED: :real_time_payments_not_enabled
 
-          def self.values: -> Array[Increase::Models::InboundRealTimePaymentsTransfer::Decline::reason]
+          def self.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::Decline::reason]
         end
       end
 
@@ -193,7 +193,7 @@ module Increase
         # The transfer has been declined.
         DECLINED: :declined
 
-        def self.values: -> Array[Increase::Models::InboundRealTimePaymentsTransfer::status]
+        def self.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::status]
       end
 
       type type_ = :inbound_real_time_payments_transfer
@@ -201,7 +201,7 @@ module Increase
       class Type < Increase::Enum
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER: :inbound_real_time_payments_transfer
 
-        def self.values: -> Array[Increase::Models::InboundRealTimePaymentsTransfer::type_]
+        def self.values: -> ::Array[Increase::Models::InboundRealTimePaymentsTransfer::type_]
       end
     end
   end

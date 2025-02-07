@@ -7,7 +7,7 @@ module Increase
         card_id: String,
         created_at: Time,
         digital_wallet_token_id: String?,
-        elements: Array[Increase::Models::CardPayment::Element],
+        elements: ::Array[Increase::Models::CardPayment::Element],
         physical_card_id: String?,
         state: Increase::Models::CardPayment::State,
         type: Increase::Models::CardPayment::type_
@@ -24,7 +24,7 @@ module Increase
 
       attr_accessor digital_wallet_token_id: String?
 
-      attr_accessor elements: Array[Increase::Models::CardPayment::Element]
+      attr_accessor elements: ::Array[Increase::Models::CardPayment::Element]
 
       attr_accessor physical_card_id: String?
 
@@ -39,7 +39,7 @@ module Increase
           card_id: String,
           created_at: Time,
           digital_wallet_token_id: String?,
-          elements: Array[Increase::Models::CardPayment::Element],
+          elements: ::Array[Increase::Models::CardPayment::Element],
           physical_card_id: String?,
           state: Increase::Models::CardPayment::State,
           type: Increase::Models::CardPayment::type_
@@ -206,12 +206,12 @@ module Increase
             # The authentication attempt is not for a payment.
             NON_PAYMENT_AUTHENTICATION: :non_payment_authentication
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthentication::category]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::category]
           end
 
           type challenge =
             {
-              attempts: Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt],
+              attempts: ::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt],
               created_at: Time,
               one_time_code: String,
               verification_method: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::verification_method,
@@ -219,7 +219,7 @@ module Increase
             }
 
           class Challenge < Increase::BaseModel
-            attr_accessor attempts: Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt]
+            attr_accessor attempts: ::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt]
 
             attr_accessor created_at: Time
 
@@ -231,7 +231,7 @@ module Increase
 
             def initialize:
               (
-                attempts: Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt],
+                attempts: ::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt],
                 created_at: Time,
                 one_time_code: String,
                 verification_method: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::verification_method,
@@ -276,7 +276,7 @@ module Increase
                 # The attempt was unsuccessful.
                 FAILED: :failed
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::outcome]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::outcome]
               end
             end
 
@@ -292,7 +292,7 @@ module Increase
               # The one-time code was not successfully delievered.
               NONE_AVAILABLE: :none_available
 
-              def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::verification_method]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::verification_method]
             end
           end
 
@@ -323,7 +323,7 @@ module Increase
             # The webhook timed out.
             WEBHOOK_TIMED_OUT: :webhook_timed_out
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthentication::deny_reason]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::deny_reason]
           end
 
           type device_channel = :app | :browser | :three_ds_requestor_initiated
@@ -338,7 +338,7 @@ module Increase
             # The authentication attempt was initiated by the 3DS Requestor.
             THREE_DS_REQUESTOR_INITIATED: :three_ds_requestor_initiated
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthentication::device_channel]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::device_channel]
           end
 
           type status =
@@ -380,7 +380,7 @@ module Increase
             # The authentication attempt exceeded the attempt threshold.
             EXCEEDED_ATTEMPT_THRESHOLD: :exceeded_attempt_threshold
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthentication::status]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::status]
           end
 
           type type_ = :card_authentication
@@ -388,7 +388,7 @@ module Increase
           class Type < Increase::Enum
             CARD_AUTHENTICATION: :card_authentication
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthentication::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthentication::type_]
           end
         end
 
@@ -527,7 +527,7 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorization::actioner]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::actioner]
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
@@ -551,7 +551,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorization::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::currency]
           end
 
           type direction = :settlement | :refund
@@ -563,7 +563,7 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorization::direction]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::direction]
           end
 
           type network_details =
@@ -595,7 +595,7 @@ module Increase
               # Visa
               VISA: :visa
 
-              def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::category]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::category]
             end
 
             type visa =
@@ -660,7 +660,7 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION: :non_secure_transaction
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator]
               end
 
               type point_of_service_entry_mode =
@@ -706,7 +706,7 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode]
               end
 
               type stand_in_processing_reason =
@@ -740,7 +740,7 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER: :other
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason]
               end
             end
           end
@@ -800,7 +800,7 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorization::processing_category]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::processing_category]
           end
 
           type type_ = :card_authorization
@@ -808,7 +808,7 @@ module Increase
           class Type < Increase::Enum
             CARD_AUTHORIZATION: :card_authorization
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorization::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::type_]
           end
 
           type verification =
@@ -865,7 +865,7 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH: :no_match
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::result]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::result]
               end
             end
 
@@ -931,7 +931,7 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH: :no_match
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::result]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::result]
               end
             end
           end
@@ -997,7 +997,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::currency]
           end
 
           type network = :visa
@@ -1006,7 +1006,7 @@ module Increase
             # Visa
             VISA: :visa
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::network]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::network]
           end
 
           type type_ = :card_authorization_expiration
@@ -1014,7 +1014,7 @@ module Increase
           class Type < Increase::Enum
             CARD_AUTHORIZATION_EXPIRATION: :card_authorization_expiration
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardAuthorizationExpiration::type_]
           end
         end
 
@@ -1153,7 +1153,7 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardDecline::actioner]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::actioner]
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
@@ -1177,7 +1177,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardDecline::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::currency]
           end
 
           type direction = :settlement | :refund
@@ -1189,7 +1189,7 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardDecline::direction]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::direction]
           end
 
           type network_details =
@@ -1221,7 +1221,7 @@ module Increase
               # Visa
               VISA: :visa
 
-              def self.values: -> Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::category]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::category]
             end
 
             type visa =
@@ -1286,7 +1286,7 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION: :non_secure_transaction
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator]
               end
 
               type point_of_service_entry_mode =
@@ -1332,7 +1332,7 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode]
               end
 
               type stand_in_processing_reason =
@@ -1366,7 +1366,7 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER: :other
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::stand_in_processing_reason]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::stand_in_processing_reason]
               end
             end
           end
@@ -1426,7 +1426,7 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardDecline::processing_category]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::processing_category]
           end
 
           type real_time_decision_reason =
@@ -1456,7 +1456,7 @@ module Increase
             # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
             OTHER: :other
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardDecline::real_time_decision_reason]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::real_time_decision_reason]
           end
 
           type reason =
@@ -1522,7 +1522,7 @@ module Increase
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
             SUSPECTED_FRAUD: :suspected_fraud
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardDecline::reason]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::reason]
           end
 
           type verification =
@@ -1579,7 +1579,7 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH: :no_match
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::result]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::result]
               end
             end
 
@@ -1645,7 +1645,7 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH: :no_match
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::result]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::result]
               end
             end
           end
@@ -1719,7 +1719,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::currency]
           end
 
           type network = :visa
@@ -1728,7 +1728,7 @@ module Increase
             # Visa
             VISA: :visa
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::network]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::network]
           end
 
           type network_identifiers =
@@ -1764,7 +1764,7 @@ module Increase
           class Type < Increase::Enum
             CARD_FUEL_CONFIRMATION: :card_fuel_confirmation
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardFuelConfirmation::type_]
           end
         end
 
@@ -1843,7 +1843,7 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardIncrement::actioner]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardIncrement::actioner]
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
@@ -1867,7 +1867,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardIncrement::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardIncrement::currency]
           end
 
           type network = :visa
@@ -1876,7 +1876,7 @@ module Increase
             # Visa
             VISA: :visa
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardIncrement::network]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardIncrement::network]
           end
 
           type network_identifiers =
@@ -1912,7 +1912,7 @@ module Increase
           class Type < Increase::Enum
             CARD_INCREMENT: :card_increment
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardIncrement::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardIncrement::type_]
           end
         end
 
@@ -2051,7 +2051,7 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::Cashback::currency]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::Cashback::currency]
             end
           end
 
@@ -2076,7 +2076,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::currency]
           end
 
           type interchange =
@@ -2127,7 +2127,7 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::Interchange::currency]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::Interchange::currency]
             end
           end
 
@@ -2320,7 +2320,7 @@ module Increase
                 # Parking violation
                 PARKING_VIOLATION: :parking_violation
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::extra_charges]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::extra_charges]
               end
 
               type no_show_indicator =
@@ -2333,7 +2333,7 @@ module Increase
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE: :no_show_for_specialized_vehicle
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::no_show_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental::no_show_indicator]
               end
             end
 
@@ -2447,7 +2447,7 @@ module Increase
                 # Laundry
                 LAUNDRY: :laundry
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::extra_charges]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::extra_charges]
               end
 
               type no_show_indicator = :not_applicable | :no_show
@@ -2459,7 +2459,7 @@ module Increase
                 # No show
                 NO_SHOW: :no_show
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::no_show_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::no_show_indicator]
               end
             end
 
@@ -2486,7 +2486,7 @@ module Increase
               # Invoice number
               INVOICE_NUMBER: :invoice_number
 
-              def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::purchase_identifier_format]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::purchase_identifier_format]
             end
 
             type travel =
@@ -2502,7 +2502,7 @@ module Increase
                 ticket_number: String?,
                 travel_agency_code: String?,
                 travel_agency_name: String?,
-                trip_legs: Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg]?
+                trip_legs: ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg]?
               }
 
             class Travel < Increase::BaseModel
@@ -2528,7 +2528,7 @@ module Increase
 
               attr_accessor travel_agency_name: String?
 
-              attr_accessor trip_legs: Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg]?
+              attr_accessor trip_legs: ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg]?
 
               def initialize:
                 (
@@ -2543,7 +2543,7 @@ module Increase
                   ticket_number: String?,
                   travel_agency_code: String?,
                   travel_agency_name: String?,
-                  trip_legs: Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg]?
+                  trip_legs: ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg]?
                 ) -> void
                 | (
                   ?Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::travel
@@ -2557,7 +2557,7 @@ module Increase
                   connected_ticket_document_number: String?,
                   credit_reason_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
                   passenger_name_or_description: String?,
-                  services: Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
+                  services: ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
                   ticket_document_number: String?
                 }
 
@@ -2568,7 +2568,7 @@ module Increase
 
                 attr_accessor passenger_name_or_description: String?
 
-                attr_accessor services: Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
+                attr_accessor services: ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
 
                 attr_accessor ticket_document_number: String?
 
@@ -2577,7 +2577,7 @@ module Increase
                     connected_ticket_document_number: String?,
                     credit_reason_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
                     passenger_name_or_description: String?,
-                    services: Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
+                    services: ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
                     ticket_document_number: String?
                   ) -> void
                   | (
@@ -2606,7 +2606,7 @@ module Increase
                   # Other
                   OTHER: :other
 
-                  def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
+                  def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
                 end
 
                 type service =
@@ -2731,7 +2731,7 @@ module Increase
                     # Wi-fi
                     WIFI: :wifi
 
-                    def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category]
+                    def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::category]
                   end
                 end
               end
@@ -2763,7 +2763,7 @@ module Increase
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET: :partial_refund_of_airline_ticket
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::credit_reason_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::credit_reason_indicator]
               end
 
               type restricted_ticket_indicator =
@@ -2776,7 +2776,7 @@ module Increase
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET: :restricted_non_refundable_ticket
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::restricted_ticket_indicator]
               end
 
               type ticket_change_indicator =
@@ -2792,7 +2792,7 @@ module Increase
                 # New ticket
                 NEW_TICKET: :new_ticket
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::ticket_change_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::ticket_change_indicator]
               end
 
               type trip_leg =
@@ -2847,7 +2847,7 @@ module Increase
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED: :stop_over_not_allowed
 
-                  def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code]
+                  def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg::stop_over_code]
                 end
               end
             end
@@ -2858,7 +2858,7 @@ module Increase
           class Type < Increase::Enum
             CARD_REFUND: :card_refund
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardRefund::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardRefund::type_]
           end
         end
 
@@ -2970,7 +2970,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardReversal::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardReversal::currency]
           end
 
           type network = :visa
@@ -2979,7 +2979,7 @@ module Increase
             # Visa
             VISA: :visa
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardReversal::network]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardReversal::network]
           end
 
           type network_identifiers =
@@ -3029,7 +3029,7 @@ module Increase
             # The Card Reversal was a partial reversal, for any reason.
             PARTIAL_REVERSAL: :partial_reversal
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardReversal::reversal_reason]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardReversal::reversal_reason]
           end
 
           type type_ = :card_reversal
@@ -3037,7 +3037,7 @@ module Increase
           class Type < Increase::Enum
             CARD_REVERSAL: :card_reversal
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardReversal::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardReversal::type_]
           end
         end
 
@@ -3184,7 +3184,7 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::Cashback::currency]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::Cashback::currency]
             end
           end
 
@@ -3209,7 +3209,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::currency]
           end
 
           type interchange =
@@ -3260,7 +3260,7 @@ module Increase
               # US Dollar (USD)
               USD: :USD
 
-              def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::Interchange::currency]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::Interchange::currency]
             end
           end
 
@@ -3453,7 +3453,7 @@ module Increase
                 # Parking violation
                 PARKING_VIOLATION: :parking_violation
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::extra_charges]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::extra_charges]
               end
 
               type no_show_indicator =
@@ -3466,7 +3466,7 @@ module Increase
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE: :no_show_for_specialized_vehicle
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::no_show_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental::no_show_indicator]
               end
             end
 
@@ -3580,7 +3580,7 @@ module Increase
                 # Laundry
                 LAUNDRY: :laundry
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::extra_charges]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::extra_charges]
               end
 
               type no_show_indicator = :not_applicable | :no_show
@@ -3592,7 +3592,7 @@ module Increase
                 # No show
                 NO_SHOW: :no_show
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::no_show_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::no_show_indicator]
               end
             end
 
@@ -3619,7 +3619,7 @@ module Increase
               # Invoice number
               INVOICE_NUMBER: :invoice_number
 
-              def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::purchase_identifier_format]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::purchase_identifier_format]
             end
 
             type travel =
@@ -3635,7 +3635,7 @@ module Increase
                 ticket_number: String?,
                 travel_agency_code: String?,
                 travel_agency_name: String?,
-                trip_legs: Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]?
+                trip_legs: ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]?
               }
 
             class Travel < Increase::BaseModel
@@ -3661,7 +3661,7 @@ module Increase
 
               attr_accessor travel_agency_name: String?
 
-              attr_accessor trip_legs: Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]?
+              attr_accessor trip_legs: ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]?
 
               def initialize:
                 (
@@ -3676,7 +3676,7 @@ module Increase
                   ticket_number: String?,
                   travel_agency_code: String?,
                   travel_agency_name: String?,
-                  trip_legs: Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]?
+                  trip_legs: ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]?
                 ) -> void
                 | (
                   ?Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::travel
@@ -3690,7 +3690,7 @@ module Increase
                   connected_ticket_document_number: String?,
                   credit_reason_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
                   passenger_name_or_description: String?,
-                  services: Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
+                  services: ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
                   ticket_document_number: String?
                 }
 
@@ -3701,7 +3701,7 @@ module Increase
 
                 attr_accessor passenger_name_or_description: String?
 
-                attr_accessor services: Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
+                attr_accessor services: ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
 
                 attr_accessor ticket_document_number: String?
 
@@ -3710,7 +3710,7 @@ module Increase
                     connected_ticket_document_number: String?,
                     credit_reason_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator?,
                     passenger_name_or_description: String?,
-                    services: Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
+                    services: ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
                     ticket_document_number: String?
                   ) -> void
                   | (
@@ -3739,7 +3739,7 @@ module Increase
                   # Other
                   OTHER: :other
 
-                  def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
+                  def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::credit_reason_indicator]
                 end
 
                 type service =
@@ -3864,7 +3864,7 @@ module Increase
                     # Wi-fi
                     WIFI: :wifi
 
-                    def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category]
+                    def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::category]
                   end
                 end
               end
@@ -3896,7 +3896,7 @@ module Increase
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET: :partial_refund_of_airline_ticket
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::credit_reason_indicator]
               end
 
               type restricted_ticket_indicator =
@@ -3909,7 +3909,7 @@ module Increase
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET: :restricted_non_refundable_ticket
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::restricted_ticket_indicator]
               end
 
               type ticket_change_indicator =
@@ -3925,7 +3925,7 @@ module Increase
                 # New ticket
                 NEW_TICKET: :new_ticket
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::ticket_change_indicator]
               end
 
               type trip_leg =
@@ -3980,7 +3980,7 @@ module Increase
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED: :stop_over_not_allowed
 
-                  def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code]
+                  def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg::stop_over_code]
                 end
               end
             end
@@ -3991,7 +3991,7 @@ module Increase
           class Type < Increase::Enum
             CARD_SETTLEMENT: :card_settlement
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardSettlement::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardSettlement::type_]
           end
         end
 
@@ -4102,7 +4102,7 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardValidation::actioner]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::actioner]
           end
 
           type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
@@ -4126,7 +4126,7 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardValidation::currency]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::currency]
           end
 
           type network_details =
@@ -4158,7 +4158,7 @@ module Increase
               # Visa
               VISA: :visa
 
-              def self.values: -> Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::category]
+              def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::category]
             end
 
             type visa =
@@ -4223,7 +4223,7 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION: :non_secure_transaction
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::electronic_commerce_indicator]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::electronic_commerce_indicator]
               end
 
               type point_of_service_entry_mode =
@@ -4269,7 +4269,7 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::point_of_service_entry_mode]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::point_of_service_entry_mode]
               end
 
               type stand_in_processing_reason =
@@ -4303,7 +4303,7 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER: :other
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::stand_in_processing_reason]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::stand_in_processing_reason]
               end
             end
           end
@@ -4341,7 +4341,7 @@ module Increase
           class Type < Increase::Enum
             CARD_VALIDATION: :card_validation
 
-            def self.values: -> Array[Increase::Models::CardPayment::Element::CardValidation::type_]
+            def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::type_]
           end
 
           type verification =
@@ -4398,7 +4398,7 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH: :no_match
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::result]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::result]
               end
             end
 
@@ -4464,7 +4464,7 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH: :no_match
 
-                def self.values: -> Array[Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::result]
+                def self.values: -> ::Array[Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::result]
               end
             end
           end
@@ -4517,7 +4517,7 @@ module Increase
           # Unknown card payment element.
           OTHER: :other
 
-          def self.values: -> Array[Increase::Models::CardPayment::Element::category]
+          def self.values: -> ::Array[Increase::Models::CardPayment::Element::category]
         end
       end
 
@@ -4561,7 +4561,7 @@ module Increase
       class Type < Increase::Enum
         CARD_PAYMENT: :card_payment
 
-        def self.values: -> Array[Increase::Models::CardPayment::type_]
+        def self.values: -> ::Array[Increase::Models::CardPayment::type_]
       end
     end
   end

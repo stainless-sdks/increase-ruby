@@ -45,18 +45,20 @@ module Increase
       def to_hash: -> Increase::Models::oauth_connection_list_params
 
       type status =
-        { in_: Array[Increase::Models::OAuthConnectionListParams::Status::in_] }
+        {
+          in_: ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
+        }
 
       class Status < Increase::BaseModel
-        attr_reader in_: Array[Increase::Models::OAuthConnectionListParams::Status::in_]?
+        attr_reader in_: ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]?
 
         def in_=: (
-          Array[Increase::Models::OAuthConnectionListParams::Status::in_]
+          ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
         ) -> void
 
         def initialize:
           (
-            in_: Array[Increase::Models::OAuthConnectionListParams::Status::in_]
+            in_: ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
           ) -> void
           | (
             ?Increase::Models::OAuthConnectionListParams::status
@@ -74,7 +76,7 @@ module Increase
           # The OAuth connection is permanently deactivated.
           INACTIVE: :inactive
 
-          def self.values: -> Array[Increase::Models::OAuthConnectionListParams::Status::in_]
+          def self.values: -> ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
         end
       end
     end

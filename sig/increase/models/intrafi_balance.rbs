@@ -3,7 +3,7 @@ module Increase
     type intrafi_balance =
       {
         id: String,
-        balances: Array[Increase::Models::IntrafiBalance::Balance],
+        balances: ::Array[Increase::Models::IntrafiBalance::Balance],
         currency: Increase::Models::IntrafiBalance::currency,
         effective_date: Date,
         total_balance: Integer,
@@ -13,7 +13,7 @@ module Increase
     class IntrafiBalance < Increase::BaseModel
       attr_accessor id: String
 
-      attr_accessor balances: Array[Increase::Models::IntrafiBalance::Balance]
+      attr_accessor balances: ::Array[Increase::Models::IntrafiBalance::Balance]
 
       attr_accessor currency: Increase::Models::IntrafiBalance::currency
 
@@ -26,7 +26,7 @@ module Increase
       def initialize:
         (
           id: String,
-          balances: Array[Increase::Models::IntrafiBalance::Balance],
+          balances: ::Array[Increase::Models::IntrafiBalance::Balance],
           currency: Increase::Models::IntrafiBalance::currency,
           effective_date: Date,
           total_balance: Integer,
@@ -112,7 +112,7 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> Array[Increase::Models::IntrafiBalance::currency]
+        def self.values: -> ::Array[Increase::Models::IntrafiBalance::currency]
       end
 
       type type_ = :intrafi_balance
@@ -120,7 +120,7 @@ module Increase
       class Type < Increase::Enum
         INTRAFI_BALANCE: :intrafi_balance
 
-        def self.values: -> Array[Increase::Models::IntrafiBalance::type_]
+        def self.values: -> ::Array[Increase::Models::IntrafiBalance::type_]
       end
     end
   end

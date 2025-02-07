@@ -4,7 +4,7 @@ module Increase
       def create:
         (
           Increase::Models::RealTimePaymentsTransferCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::RealTimePaymentsTransfer
         | (
           amount: Integer,
@@ -25,7 +25,7 @@ module Increase
         (
           String real_time_payments_transfer_id,
           ?Increase::Models::RealTimePaymentsTransferRetrieveParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Models::RealTimePaymentsTransfer
         | (
           String real_time_payments_transfer_id,
@@ -35,7 +35,7 @@ module Increase
       def list:
         (
           ?Increase::Models::RealTimePaymentsTransferListParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::RealTimePaymentsTransfer]
         | (
           account_id: String,

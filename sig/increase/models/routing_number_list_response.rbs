@@ -48,7 +48,7 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED: :not_supported
 
-        def self.values: -> Array[Increase::Models::RoutingNumberListResponse::ach_transfers]
+        def self.values: -> ::Array[Increase::Models::RoutingNumberListResponse::ach_transfers]
       end
 
       type real_time_payments_transfers = :supported | :not_supported
@@ -60,7 +60,7 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED: :not_supported
 
-        def self.values: -> Array[Increase::Models::RoutingNumberListResponse::real_time_payments_transfers]
+        def self.values: -> ::Array[Increase::Models::RoutingNumberListResponse::real_time_payments_transfers]
       end
 
       type type_ = :routing_number
@@ -68,7 +68,7 @@ module Increase
       class Type < Increase::Enum
         ROUTING_NUMBER: :routing_number
 
-        def self.values: -> Array[Increase::Models::RoutingNumberListResponse::type_]
+        def self.values: -> ::Array[Increase::Models::RoutingNumberListResponse::type_]
       end
 
       type wire_transfers = :supported | :not_supported
@@ -80,7 +80,7 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED: :not_supported
 
-        def self.values: -> Array[Increase::Models::RoutingNumberListResponse::wire_transfers]
+        def self.values: -> ::Array[Increase::Models::RoutingNumberListResponse::wire_transfers]
       end
     end
   end

@@ -3,7 +3,7 @@ module Increase
     class RoutingNumbers
       def list:
         (
-          Increase::Models::RoutingNumberListParams | Hash[Symbol, top] params
+          Increase::Models::RoutingNumberListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::RoutingNumberListResponse]
         | (
           routing_number: String,

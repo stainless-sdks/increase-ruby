@@ -3,7 +3,7 @@ module Increase
     class Lockboxes
       def create:
         (
-          Increase::Models::LockboxCreateParams | Hash[Symbol, top] params
+          Increase::Models::LockboxCreateParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Lockbox
         | (
           account_id: String,
@@ -15,7 +15,7 @@ module Increase
       def retrieve:
         (
           String lockbox_id,
-          ?Increase::Models::LockboxRetrieveParams | Hash[Symbol, top] params
+          ?Increase::Models::LockboxRetrieveParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Lockbox
         | (
           String lockbox_id,
@@ -25,7 +25,7 @@ module Increase
       def update:
         (
           String lockbox_id,
-          ?Increase::Models::LockboxUpdateParams | Hash[Symbol, top] params
+          ?Increase::Models::LockboxUpdateParams | ::Hash[Symbol, top] params
         ) -> Increase::Models::Lockbox
         | (
           String lockbox_id,
@@ -37,7 +37,7 @@ module Increase
 
       def list:
         (
-          ?Increase::Models::LockboxListParams | Hash[Symbol, top] params
+          ?Increase::Models::LockboxListParams | ::Hash[Symbol, top] params
         ) -> Increase::Page[Increase::Models::Lockbox]
         | (
           account_id: String,

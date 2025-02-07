@@ -6,7 +6,7 @@ module Increase
           (
             String card_dispute_id,
             Increase::Models::Simulations::CardDisputeActionParams
-            | Hash[Symbol, top] params
+            | ::Hash[Symbol, top] params
           ) -> Increase::Models::CardDispute
           | (
             String card_dispute_id,
