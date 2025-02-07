@@ -8,8 +8,8 @@ module Increase
     #   id: String,
     #   account_number_id: String,
     #   amount: Integer,
+    #   created_at: Time,
     #   currency: String,
-    #   fulfillment_inbound_wire_transfer_id: String,
     #   **_
     # }
     # ```
@@ -32,6 +32,13 @@ module Increase
       #
       #   @return [Integer]
       required :amount, Integer
+
+      # @!attribute created_at
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the wire drawdown request was created.
+      #
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute currency
       #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
@@ -149,6 +156,7 @@ module Increase
       #   # @param id [String]
       #   # @param account_number_id [String]
       #   # @param amount [Integer]
+      #   # @param created_at [Time]
       #   # @param currency [String]
       #   # @param fulfillment_inbound_wire_transfer_id [String, nil]
       #   # @param idempotency_key [String, nil]
@@ -171,6 +179,7 @@ module Increase
       #     id:,
       #     account_number_id:,
       #     amount:,
+      #     created_at:,
       #     currency:,
       #     fulfillment_inbound_wire_transfer_id:,
       #     idempotency_key:,

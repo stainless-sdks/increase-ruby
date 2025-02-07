@@ -4,6 +4,7 @@ module Increase
       {
         id: String,
         bank_name: String,
+        created_at: Time,
         entity_id: String,
         excluded_at: Time?,
         fdic_certificate_number: String?,
@@ -17,6 +18,8 @@ module Increase
       attr_accessor id: String
 
       attr_accessor bank_name: String
+
+      attr_accessor created_at: Time
 
       attr_accessor entity_id: String
 
@@ -36,6 +39,7 @@ module Increase
         (
           id: String,
           bank_name: String,
+          created_at: Time,
           entity_id: String,
           excluded_at: Time?,
           fdic_certificate_number: String?,

@@ -11,6 +11,7 @@ module Increase
         :beneficiary_address_line3 => String?,
         beneficiary_name: String?,
         beneficiary_reference: String?,
+        created_at: Time,
         description: String,
         input_message_accountability_data: String?,
         :originator_address_line1 => String?,
@@ -46,6 +47,8 @@ module Increase
       attr_accessor beneficiary_name: String?
 
       attr_accessor beneficiary_reference: String?
+
+      attr_accessor created_at: Time
 
       attr_accessor description: String
 
@@ -88,6 +91,7 @@ module Increase
           beneficiary_address_line3: String?,
           beneficiary_name: String?,
           beneficiary_reference: String?,
+          created_at: Time,
           description: String,
           input_message_accountability_data: String?,
           originator_address_line1: String?,

@@ -7,9 +7,9 @@ module Increase
     # intrafi_exclusion => {
     #   id: String,
     #   bank_name: String,
+    #   created_at: Time,
     #   entity_id: String,
     #   excluded_at: Time,
-    #   fdic_certificate_number: String,
     #   **_
     # }
     # ```
@@ -25,6 +25,13 @@ module Increase
       #
       #   @return [String]
       required :bank_name, String
+
+      # @!attribute created_at
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the exclusion was created.
+      #
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute entity_id
       #   The entity for which this institution is excluded.
@@ -80,6 +87,7 @@ module Increase
       #   #
       #   # @param id [String]
       #   # @param bank_name [String]
+      #   # @param created_at [Time]
       #   # @param entity_id [String]
       #   # @param excluded_at [Time, nil]
       #   # @param fdic_certificate_number [String, nil]
@@ -91,6 +99,7 @@ module Increase
       #   def initialize(
       #     id:,
       #     bank_name:,
+      #     created_at:,
       #     entity_id:,
       #     excluded_at:,
       #     fdic_certificate_number:,

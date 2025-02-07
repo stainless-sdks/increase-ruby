@@ -30,6 +30,9 @@ module Increase
       sig { returns(T.nilable(String)) }
       attr_accessor :beneficiary_reference
 
+      sig { returns(Time) }
+      attr_accessor :created_at
+
       sig { returns(String) }
       attr_accessor :description
 
@@ -86,6 +89,7 @@ module Increase
           beneficiary_address_line3: T.nilable(String),
           beneficiary_name: T.nilable(String),
           beneficiary_reference: T.nilable(String),
+          created_at: Time,
           description: String,
           input_message_accountability_data: T.nilable(String),
           originator_address_line1: T.nilable(String),
@@ -113,6 +117,7 @@ module Increase
         beneficiary_address_line3:,
         beneficiary_name:,
         beneficiary_reference:,
+        created_at:,
         description:,
         input_message_accountability_data:,
         originator_address_line1:,
@@ -143,6 +148,7 @@ module Increase
             beneficiary_address_line3: T.nilable(String),
             beneficiary_name: T.nilable(String),
             beneficiary_reference: T.nilable(String),
+            created_at: Time,
             description: String,
             input_message_accountability_data: T.nilable(String),
             originator_address_line1: T.nilable(String),

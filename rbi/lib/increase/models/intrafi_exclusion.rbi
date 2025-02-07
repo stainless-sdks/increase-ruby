@@ -9,6 +9,9 @@ module Increase
       sig { returns(String) }
       attr_accessor :bank_name
 
+      sig { returns(Time) }
+      attr_accessor :created_at
+
       sig { returns(String) }
       attr_accessor :entity_id
 
@@ -34,6 +37,7 @@ module Increase
         params(
           id: String,
           bank_name: String,
+          created_at: Time,
           entity_id: String,
           excluded_at: T.nilable(Time),
           fdic_certificate_number: T.nilable(String),
@@ -46,6 +50,7 @@ module Increase
       def initialize(
         id:,
         bank_name:,
+        created_at:,
         entity_id:,
         excluded_at:,
         fdic_certificate_number:,
@@ -61,6 +66,7 @@ module Increase
           {
             id: String,
             bank_name: String,
+            created_at: Time,
             entity_id: String,
             excluded_at: T.nilable(Time),
             fdic_certificate_number: T.nilable(String),
