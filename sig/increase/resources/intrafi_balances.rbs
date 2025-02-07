@@ -1,10 +1,10 @@
 module Increase
   module Resources
     class IntrafiBalances
-      def retrieve:
+      def intrafi_balance:
         (
           String account_id,
-          ?Increase::Models::IntrafiBalanceRetrieveParams
+          ?Increase::Models::IntrafiBalanceIntrafiBalanceParams
           | ::Hash[Symbol, top] params
         ) -> Increase::Models::IntrafiBalance
         | (

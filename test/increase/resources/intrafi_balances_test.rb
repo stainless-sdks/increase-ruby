@@ -10,8 +10,8 @@ class Increase::Test::Resources::IntrafiBalancesTest < Minitest::Test
     )
   end
 
-  def test_retrieve
-    response = @increase.intrafi_balances.retrieve("account_id")
+  def test_intrafi_balance
+    response = @increase.intrafi_balances.intrafi_balance("account_id")
 
     assert_pattern do
       response => Increase::Models::IntrafiBalance

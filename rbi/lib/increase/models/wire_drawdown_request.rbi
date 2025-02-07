@@ -12,6 +12,9 @@ module Increase
       sig { returns(Integer) }
       attr_accessor :amount
 
+      sig { returns(Time) }
+      attr_accessor :created_at
+
       sig { returns(String) }
       attr_accessor :currency
 
@@ -68,6 +71,7 @@ module Increase
           id: String,
           account_number_id: String,
           amount: Integer,
+          created_at: Time,
           currency: String,
           fulfillment_inbound_wire_transfer_id: T.nilable(String),
           idempotency_key: T.nilable(String),
@@ -91,6 +95,7 @@ module Increase
         id:,
         account_number_id:,
         amount:,
+        created_at:,
         currency:,
         fulfillment_inbound_wire_transfer_id:,
         idempotency_key:,
@@ -117,6 +122,7 @@ module Increase
             id: String,
             account_number_id: String,
             amount: Integer,
+            created_at: Time,
             currency: String,
             fulfillment_inbound_wire_transfer_id: T.nilable(String),
             idempotency_key: T.nilable(String),

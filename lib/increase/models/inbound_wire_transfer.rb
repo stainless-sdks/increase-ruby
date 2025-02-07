@@ -68,6 +68,13 @@ module Increase
       #   @return [String, nil]
       required :beneficiary_reference, String, nil?: true
 
+      # @!attribute created_at
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the inbound wire transfer was created.
+      #
+      #   @return [Time]
+      required :created_at, Time
+
       # @!attribute description
       #   An Increase-constructed description of the transfer.
       #
@@ -175,6 +182,7 @@ module Increase
       #   # @param beneficiary_address_line3 [String, nil]
       #   # @param beneficiary_name [String, nil]
       #   # @param beneficiary_reference [String, nil]
+      #   # @param created_at [Time]
       #   # @param description [String]
       #   # @param input_message_accountability_data [String, nil]
       #   # @param originator_address_line1 [String, nil]
@@ -201,6 +209,7 @@ module Increase
       #     beneficiary_address_line3:,
       #     beneficiary_name:,
       #     beneficiary_reference:,
+      #     created_at:,
       #     description:,
       #     input_message_accountability_data:,
       #     originator_address_line1:,

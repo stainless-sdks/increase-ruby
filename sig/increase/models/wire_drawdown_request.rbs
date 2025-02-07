@@ -5,6 +5,7 @@ module Increase
         id: String,
         account_number_id: String,
         amount: Integer,
+        created_at: Time,
         currency: String,
         fulfillment_inbound_wire_transfer_id: String?,
         idempotency_key: String?,
@@ -30,6 +31,8 @@ module Increase
       attr_accessor account_number_id: String
 
       attr_accessor amount: Integer
+
+      attr_accessor created_at: Time
 
       attr_accessor currency: String
 
@@ -70,6 +73,7 @@ module Increase
           id: String,
           account_number_id: String,
           amount: Integer,
+          created_at: Time,
           currency: String,
           fulfillment_inbound_wire_transfer_id: String?,
           idempotency_key: String?,

@@ -7,9 +7,10 @@ module Increase
     # intrafi_account_enrollment => {
     #   id: String,
     #   account_id: String,
+    #   created_at: Time,
     #   idempotency_key: String,
     #   intrafi_id: String,
-    #   status: Increase::Models::IntrafiAccountEnrollment::Status
+    #   **_
     # }
     # ```
     class IntrafiAccountEnrollment < Increase::BaseModel
@@ -24,6 +25,13 @@ module Increase
       #
       #   @return [String]
       required :account_id, String
+
+      # @!attribute created_at
+      #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #     the enrollment was created.
+      #
+      #   @return [Time]
+      required :created_at, Time
 
       # @!attribute idempotency_key
       #   The idempotency key you chose for this object. This value is unique across
@@ -65,12 +73,13 @@ module Increase
       #   #
       #   # @param id [String]
       #   # @param account_id [String]
+      #   # @param created_at [Time]
       #   # @param idempotency_key [String, nil]
       #   # @param intrafi_id [String]
       #   # @param status [Symbol, Increase::Models::IntrafiAccountEnrollment::Status]
       #   # @param type [Symbol, Increase::Models::IntrafiAccountEnrollment::Type]
       #   #
-      #   def initialize(id:, account_id:, idempotency_key:, intrafi_id:, status:, type:, **) = super
+      #   def initialize(id:, account_id:, created_at:, idempotency_key:, intrafi_id:, status:, type:, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 

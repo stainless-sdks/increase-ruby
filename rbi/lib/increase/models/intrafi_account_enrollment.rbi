@@ -9,6 +9,9 @@ module Increase
       sig { returns(String) }
       attr_accessor :account_id
 
+      sig { returns(Time) }
+      attr_accessor :created_at
+
       sig { returns(T.nilable(String)) }
       attr_accessor :idempotency_key
 
@@ -25,13 +28,14 @@ module Increase
         params(
           id: String,
           account_id: String,
+          created_at: Time,
           idempotency_key: T.nilable(String),
           intrafi_id: String,
           status: Symbol,
           type: Symbol
         ).void
       end
-      def initialize(id:, account_id:, idempotency_key:, intrafi_id:, status:, type:)
+      def initialize(id:, account_id:, created_at:, idempotency_key:, intrafi_id:, status:, type:)
       end
 
       sig do
@@ -39,6 +43,7 @@ module Increase
           {
             id: String,
             account_id: String,
+            created_at: Time,
             idempotency_key: T.nilable(String),
             intrafi_id: String,
             status: Symbol,
