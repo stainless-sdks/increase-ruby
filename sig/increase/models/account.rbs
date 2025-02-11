@@ -72,13 +72,9 @@ module Increase
 
       def to_hash: -> Increase::Models::account
 
-      type bank =
-        :blue_ridge_bank | :core_bank | :first_internet_bank | :grasshopper_bank
+      type bank = :core_bank | :first_internet_bank | :grasshopper_bank
 
       class Bank < Increase::Enum
-        # Blue Ridge Bank, N.A.
-        BLUE_RIDGE_BANK: :blue_ridge_bank
-
         # Core Bank
         CORE_BANK: :core_bank
 
