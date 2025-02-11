@@ -44,13 +44,13 @@ module Increase
       model = req.fetch(:model)
 
       case unwrapped
-      in {data: data} if data.is_a?(Array) || data.nil?
-        @data = data&.map { |row| model.coerce(row) }
+      in {data: Array | nil => data}
+        @data = data&.map { model.coerce(_1) }
       else
       end
 
       case unwrapped
-      in {next_cursor: next_cursor} if next_cursor.is_a?(String) || next_cursor.is_nil?
+      in {next_cursor: String | nil => next_cursor}
         @next_cursor = next_cursor
       else
       end
@@ -82,7 +82,7 @@ module Increase
       end
       page = self
       loop do
-        page.data&.each { |row| blk.call(row) }
+        page.data&.each { blk.call(_1) }
         break unless page.next_page?
         page = page.next_page
       end
