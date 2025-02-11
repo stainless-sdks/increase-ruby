@@ -113,8 +113,6 @@ module Increase
       # @example
       # ```ruby
       # case bank
-      # in :blue_ridge_bank
-      #   # ...
       # in :core_bank
       #   # ...
       # in :first_internet_bank
@@ -124,9 +122,6 @@ module Increase
       # end
       # ```
       class Bank < Increase::Enum
-        # Blue Ridge Bank, N.A.
-        BLUE_RIDGE_BANK = :blue_ridge_bank
-
         # Core Bank
         CORE_BANK = :core_bank
 

@@ -113,9 +113,6 @@ module Increase
       class Bank < Increase::Enum
         abstract!
 
-        # Blue Ridge Bank, N.A.
-        BLUE_RIDGE_BANK = :blue_ridge_bank
-
         # Core Bank
         CORE_BANK = :core_bank
 
