@@ -82,6 +82,16 @@ module Increase
         sig { params(merchant_state: String).void }
         attr_writer :merchant_state
 
+        sig do
+          returns(T.nilable(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails))
+        end
+        attr_reader :network_details
+
+        sig do
+          params(network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails).void
+        end
+        attr_writer :network_details
+
         sig { returns(T.nilable(String)) }
         attr_reader :physical_card_id
 
@@ -109,6 +119,7 @@ module Increase
             merchant_country: String,
             merchant_descriptor: String,
             merchant_state: String,
+            network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
             physical_card_id: String,
             terminal_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
@@ -128,6 +139,7 @@ module Increase
           merchant_country: nil,
           merchant_descriptor: nil,
           merchant_state: nil,
+          network_details: nil,
           physical_card_id: nil,
           terminal_id: nil,
           request_options: {}
@@ -150,6 +162,7 @@ module Increase
               merchant_country: String,
               merchant_descriptor: String,
               merchant_state: String,
+              network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
               physical_card_id: String,
               terminal_id: String,
               request_options: Increase::RequestOptions
@@ -223,6 +236,68 @@ module Increase
 
           sig { override.returns(T::Array[Symbol]) }
           def self.values
+          end
+        end
+
+        class NetworkDetails < Increase::BaseModel
+          sig { returns(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa) }
+          attr_accessor :visa
+
+          sig do
+            params(visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa).void
+          end
+          def initialize(visa:)
+          end
+
+          sig do
+            override.returns({visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa})
+          end
+          def to_hash
+          end
+
+          class Visa < Increase::BaseModel
+            sig { returns(T.nilable(Symbol)) }
+            attr_reader :stand_in_processing_reason
+
+            sig { params(stand_in_processing_reason: Symbol).void }
+            attr_writer :stand_in_processing_reason
+
+            sig { params(stand_in_processing_reason: Symbol).void }
+            def initialize(stand_in_processing_reason: nil)
+            end
+
+            sig { override.returns({stand_in_processing_reason: Symbol}) }
+            def to_hash
+            end
+
+            class StandInProcessingReason < Increase::Enum
+              abstract!
+
+              # Increase failed to process the authorization in a timely manner.
+              ISSUER_ERROR = :issuer_error
+
+              # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
+              INVALID_PHYSICAL_CARD = :invalid_physical_card
+
+              # The 3DS cardholder authentication verification value was invalid.
+              INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
+
+              # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
+              INTERNAL_VISA_ERROR = :internal_visa_error
+
+              # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
+              MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
+
+              # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
+              PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
+
+              # An unspecific reason for stand-in processing.
+              OTHER = :other
+
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
+              end
+            end
           end
         end
       end

@@ -19,6 +19,7 @@ module Increase
             merchant_country: String,
             merchant_descriptor: String,
             merchant_state: String,
+            network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
             physical_card_id: String,
             terminal_id: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
@@ -38,6 +39,7 @@ module Increase
           merchant_country: nil,
           merchant_descriptor: nil,
           merchant_state: nil,
+          network_details: nil,
           physical_card_id: nil,
           terminal_id: nil,
           request_options: {}
