@@ -9,7 +9,7 @@
 require_relative "../../lib/increase"
 require_relative "test_namespaces"
 
-require "minitest"
+require "minitest/autorun"
 require "minitest/focus"
 require "minitest/hooks/test"
 
