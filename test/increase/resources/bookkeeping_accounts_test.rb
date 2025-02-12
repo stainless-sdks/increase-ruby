@@ -37,6 +37,11 @@ class Increase::Test::Resources::BookkeepingAccountsTest < Minitest::Test
     assert_pattern do
       page => Increase::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Increase::Models::BookkeepingAccount
+    end
   end
 
   def test_balance
