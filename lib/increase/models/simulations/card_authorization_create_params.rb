@@ -146,6 +146,17 @@ module Increase
         #   # @return [String]
         #   attr_writer :merchant_state
 
+        # @!attribute [r] network_details
+        #   Fields specific to a given card network.
+        #
+        #   @return [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails, nil]
+        optional :network_details,
+                 -> { Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails }
+
+        # @!parse
+        #   # @return [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails]
+        #   attr_writer :network_details
+
         # @!attribute [r] physical_card_id
         #   The identifier of the Physical Card to be authorized.
         #
@@ -181,6 +192,7 @@ module Increase
         #   # @param merchant_country [String]
         #   # @param merchant_descriptor [String]
         #   # @param merchant_state [String]
+        #   # @param network_details [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails]
         #   # @param physical_card_id [String]
         #   # @param terminal_id [String]
         #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
@@ -199,6 +211,7 @@ module Increase
         #     merchant_country: nil,
         #     merchant_descriptor: nil,
         #     merchant_state: nil,
+        #     network_details: nil,
         #     physical_card_id: nil,
         #     terminal_id: nil,
         #     request_options: {},
@@ -312,6 +325,113 @@ module Increase
           #   # @return [Array<Symbol>]
           #   #
           #   def self.values; end
+        end
+
+        # @example
+        # ```ruby
+        # network_details => {
+        #   visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
+        # }
+        # ```
+        class NetworkDetails < Increase::BaseModel
+          # @!attribute visa
+          #   Fields specific to the Visa network.
+          #
+          #   @return [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa]
+          required :visa,
+                   -> {
+                     Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
+                   }
+
+          # @!parse
+          #   # Fields specific to a given card network.
+          #   #
+          #   # @param visa [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa]
+          #   #
+          #   def initialize(visa:, **) = super
+
+          # def initialize: (Hash | Increase::BaseModel) -> void
+
+          # @example
+          # ```ruby
+          # visa => {
+          #   stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason
+          # }
+          # ```
+          class Visa < Increase::BaseModel
+            # @!attribute [r] stand_in_processing_reason
+            #   The reason code for the stand-in processing.
+            #
+            #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason, nil]
+            optional :stand_in_processing_reason,
+                     enum: -> {
+                       Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason
+                     }
+
+            # @!parse
+            #   # @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason]
+            #   attr_writer :stand_in_processing_reason
+
+            # @!parse
+            #   # Fields specific to the Visa network.
+            #   #
+            #   # @param stand_in_processing_reason [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason]
+            #   #
+            #   def initialize(stand_in_processing_reason: nil, **) = super
+
+            # def initialize: (Hash | Increase::BaseModel) -> void
+
+            # @abstract
+            #
+            # The reason code for the stand-in processing.
+            #
+            # @example
+            # ```ruby
+            # case stand_in_processing_reason
+            # in :issuer_error
+            #   # ...
+            # in :invalid_physical_card
+            #   # ...
+            # in :invalid_cardholder_authentication_verification_value
+            #   # ...
+            # in :internal_visa_error
+            #   # ...
+            # in :merchant_transaction_advisory_service_authentication_required
+            #   # ...
+            # in ...
+            #   #...
+            # end
+            # ```
+            class StandInProcessingReason < Increase::Enum
+              # Increase failed to process the authorization in a timely manner.
+              ISSUER_ERROR = :issuer_error
+
+              # The physical card read had an invalid CVV, dCVV, or authorization request cryptogram.
+              INVALID_PHYSICAL_CARD = :invalid_physical_card
+
+              # The 3DS cardholder authentication verification value was invalid.
+              INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = :invalid_cardholder_authentication_verification_value
+
+              # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
+              INTERNAL_VISA_ERROR = :internal_visa_error
+
+              # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
+              MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = :merchant_transaction_advisory_service_authentication_required
+
+              # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
+              PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = :payment_fraud_disruption_acquirer_block
+
+              # An unspecific reason for stand-in processing.
+              OTHER = :other
+
+              finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
+            end
+          end
         end
       end
     end

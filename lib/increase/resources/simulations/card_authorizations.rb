@@ -48,6 +48,8 @@ module Increase
         #
         #   @option params [String] :merchant_state The state the merchant resides in.
         #
+        #   @option params [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails] :network_details Fields specific to a given card network.
+        #
         #   @option params [String] :physical_card_id The identifier of the Physical Card to be authorized.
         #
         #   @option params [String] :terminal_id The terminal identifier (commonly abbreviated as TID) of the terminal the card

@@ -21,6 +21,7 @@ module Increase
             merchant_country: String,
             merchant_descriptor: String,
             merchant_state: String,
+            network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
             physical_card_id: String,
             terminal_id: String,
             request_options: Increase::request_opts
