@@ -29,6 +29,11 @@ class Increase::Test::Resources::InboundACHTransfersTest < Minitest::Test
     assert_pattern do
       page => Increase::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Increase::Models::InboundACHTransfer
+    end
   end
 
   def test_create_notification_of_change

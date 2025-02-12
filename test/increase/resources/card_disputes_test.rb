@@ -40,5 +40,10 @@ class Increase::Test::Resources::CardDisputesTest < Minitest::Test
     assert_pattern do
       page => Increase::Page
     end
+
+    row = response.to_enum.first
+    assert_pattern do
+      row => Increase::Models::CardDispute
+    end
   end
 end
