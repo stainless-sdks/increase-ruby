@@ -7,7 +7,14 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner) }
-      attr_accessor :beneficial_owner
+      def beneficial_owner
+      end
+
+      sig do
+        params(_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner).returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner)
+      end
+      def beneficial_owner=(_)
+      end
 
       sig do
         params(
@@ -31,16 +38,30 @@ module Increase
 
       class BeneficialOwner < Increase::BaseModel
         sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual) }
-        attr_accessor :individual
+        def individual
+        end
+
+        sig do
+          params(_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual).returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual)
+        end
+        def individual=(_)
+        end
 
         sig { returns(T::Array[Symbol]) }
-        attr_accessor :prongs
+        def prongs
+        end
+
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def prongs=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :company_title
+        def company_title
+        end
 
-        sig { params(company_title: String).void }
-        attr_writer :company_title
+        sig { params(_: String).returns(String) }
+        def company_title=(_)
+        end
 
         sig do
           params(
@@ -66,24 +87,52 @@ module Increase
           sig do
             returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address)
           end
-          attr_accessor :address
+          def address
+          end
+
+          sig do
+            params(_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address).returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address)
+          end
+          def address=(_)
+          end
 
           sig { returns(Date) }
-          attr_accessor :date_of_birth
+          def date_of_birth
+          end
+
+          sig { params(_: Date).returns(Date) }
+          def date_of_birth=(_)
+          end
 
           sig do
             returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification)
           end
-          attr_accessor :identification
+          def identification
+          end
+
+          sig do
+            params(
+              _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification
+            ).returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification)
+          end
+          def identification=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { returns(T.nilable(T::Boolean)) }
-          attr_reader :confirmed_no_us_tax_id
+          def confirmed_no_us_tax_id
+          end
 
-          sig { params(confirmed_no_us_tax_id: T::Boolean).void }
-          attr_writer :confirmed_no_us_tax_id
+          sig { params(_: T::Boolean).returns(T::Boolean) }
+          def confirmed_no_us_tax_id=(_)
+          end
 
           sig do
             params(
@@ -109,22 +158,44 @@ module Increase
 
           class Address < Increase::BaseModel
             sig { returns(String) }
-            attr_accessor :city
+            def city
+            end
+
+            sig { params(_: String).returns(String) }
+            def city=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :line1
+            def line1
+            end
+
+            sig { params(_: String).returns(String) }
+            def line1=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :state
+            def state
+            end
+
+            sig { params(_: String).returns(String) }
+            def state=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :zip
+            def zip
+            end
+
+            sig { params(_: String).returns(String) }
+            def zip=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_reader :line2
+            def line2
+            end
 
-            sig { params(line2: String).void }
-            attr_writer :line2
+            sig { params(_: String).returns(String) }
+            def line2=(_)
+            end
 
             sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
             def initialize(city:, line1:, state:, zip:, line2: nil)
@@ -137,46 +208,62 @@ module Increase
 
           class Identification < Increase::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :method_
+            def method_
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def method_=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :number
+            def number
+            end
+
+            sig { params(_: String).returns(String) }
+            def number=(_)
+            end
 
             sig do
               returns(T.nilable(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense))
             end
-            attr_reader :drivers_license
+            def drivers_license
+            end
 
             sig do
               params(
-                drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense
-              ).void
+                _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense
+              ).returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense)
             end
-            attr_writer :drivers_license
+            def drivers_license=(_)
+            end
 
             sig do
               returns(T.nilable(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other))
             end
-            attr_reader :other
+            def other
+            end
 
             sig do
               params(
-                other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other
-              ).void
+                _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other
+              ).returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other)
             end
-            attr_writer :other
+            def other=(_)
+            end
 
             sig do
               returns(T.nilable(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport))
             end
-            attr_reader :passport
+            def passport
+            end
 
             sig do
               params(
-                passport: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
-              ).void
+                _: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
+              ).returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport)
             end
-            attr_writer :passport
+            def passport=(_)
+            end
 
             sig do
               params(
@@ -229,19 +316,36 @@ module Increase
 
             class DriversLicense < Increase::BaseModel
               sig { returns(Date) }
-              attr_accessor :expiration_date
+              def expiration_date
+              end
+
+              sig { params(_: Date).returns(Date) }
+              def expiration_date=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :file_id
+              def file_id
+              end
+
+              sig { params(_: String).returns(String) }
+              def file_id=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :state
+              def state
+              end
+
+              sig { params(_: String).returns(String) }
+              def state=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_reader :back_file_id
+              def back_file_id
+              end
 
-              sig { params(back_file_id: String).void }
-              attr_writer :back_file_id
+              sig { params(_: String).returns(String) }
+              def back_file_id=(_)
+              end
 
               sig { params(expiration_date: Date, file_id: String, state: String, back_file_id: String).void }
               def initialize(expiration_date:, file_id:, state:, back_file_id: nil)
@@ -263,25 +367,44 @@ module Increase
 
             class Other < Increase::BaseModel
               sig { returns(String) }
-              attr_accessor :country
+              def country
+              end
+
+              sig { params(_: String).returns(String) }
+              def country=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :description
+              def description
+              end
+
+              sig { params(_: String).returns(String) }
+              def description=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :file_id
+              def file_id
+              end
+
+              sig { params(_: String).returns(String) }
+              def file_id=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_reader :back_file_id
+              def back_file_id
+              end
 
-              sig { params(back_file_id: String).void }
-              attr_writer :back_file_id
+              sig { params(_: String).returns(String) }
+              def back_file_id=(_)
+              end
 
               sig { returns(T.nilable(Date)) }
-              attr_reader :expiration_date
+              def expiration_date
+              end
 
-              sig { params(expiration_date: Date).void }
-              attr_writer :expiration_date
+              sig { params(_: Date).returns(Date) }
+              def expiration_date=(_)
+              end
 
               sig do
                 params(
@@ -312,13 +435,28 @@ module Increase
 
             class Passport < Increase::BaseModel
               sig { returns(String) }
-              attr_accessor :country
+              def country
+              end
+
+              sig { params(_: String).returns(String) }
+              def country=(_)
+              end
 
               sig { returns(Date) }
-              attr_accessor :expiration_date
+              def expiration_date
+              end
+
+              sig { params(_: Date).returns(Date) }
+              def expiration_date=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :file_id
+              def file_id
+              end
+
+              sig { params(_: String).returns(String) }
+              def file_id=(_)
+              end
 
               sig { params(country: String, expiration_date: Date, file_id: String).void }
               def initialize(country:, expiration_date:, file_id:)

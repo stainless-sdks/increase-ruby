@@ -4,22 +4,54 @@ module Increase
   module Models
     class ProofOfAuthorizationRequest < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer]) }
-      attr_accessor :ach_transfers
+      def ach_transfers
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer]).returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer])
+      end
+      def ach_transfers=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :due_on
+      def due_on
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def due_on=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :updated_at
+      def updated_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def updated_at=(_)
+      end
 
       sig do
         params(
@@ -51,7 +83,12 @@ module Increase
 
       class ACHTransfer < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { params(id: String).void }
         def initialize(id:)

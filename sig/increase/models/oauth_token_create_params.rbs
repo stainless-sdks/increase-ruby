@@ -18,19 +18,19 @@ module Increase
 
       attr_reader client_id: String?
 
-      def client_id=: (String) -> void
+      def client_id=: (String) -> String
 
       attr_reader client_secret: String?
 
-      def client_secret=: (String) -> void
+      def client_secret=: (String) -> String
 
       attr_reader code: String?
 
-      def code=: (String) -> void
+      def code=: (String) -> String
 
       attr_reader production_token: String?
 
-      def production_token=: (String) -> void
+      def production_token=: (String) -> String
 
       def initialize:
         (

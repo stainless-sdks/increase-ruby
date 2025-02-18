@@ -4,22 +4,56 @@ module Increase
   module Models
     class CardPurchaseSupplement < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :card_payment_id
+      def card_payment_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def card_payment_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice)) }
-      attr_accessor :invoice
+      def invoice
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice)).returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice))
+      end
+      def invoice=(_)
+      end
 
       sig { returns(T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem])) }
-      attr_accessor :line_items
+      def line_items
+      end
+
+      sig do
+        params(_: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem])).returns(T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]))
+      end
+      def line_items=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :transaction_id
+      def transaction_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def transaction_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -51,52 +85,132 @@ module Increase
 
       class Invoice < Increase::BaseModel
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :discount_amount
+        def discount_amount
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def discount_amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :discount_currency
+        def discount_currency
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def discount_currency=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_accessor :discount_treatment_code
+        def discount_treatment_code
+        end
+
+        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        def discount_treatment_code=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :duty_tax_amount
+        def duty_tax_amount
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def duty_tax_amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :duty_tax_currency
+        def duty_tax_currency
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def duty_tax_currency=(_)
+        end
 
         sig { returns(T.nilable(Date)) }
-        attr_accessor :order_date
+        def order_date
+        end
+
+        sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+        def order_date=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :shipping_amount
+        def shipping_amount
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def shipping_amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :shipping_currency
+        def shipping_currency
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def shipping_currency=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :shipping_destination_country_code
+        def shipping_destination_country_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def shipping_destination_country_code=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :shipping_destination_postal_code
+        def shipping_destination_postal_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def shipping_destination_postal_code=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :shipping_source_postal_code
+        def shipping_source_postal_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def shipping_source_postal_code=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :shipping_tax_amount
+        def shipping_tax_amount
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def shipping_tax_amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :shipping_tax_currency
+        def shipping_tax_currency
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def shipping_tax_currency=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :shipping_tax_rate
+        def shipping_tax_rate
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def shipping_tax_rate=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_accessor :tax_treatments
+        def tax_treatments
+        end
+
+        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        def tax_treatments=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :unique_value_added_tax_invoice_reference
+        def unique_value_added_tax_invoice_reference
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def unique_value_added_tax_invoice_reference=(_)
+        end
 
         sig do
           params(
@@ -211,55 +325,140 @@ module Increase
 
       class LineItem < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_accessor :detail_indicator
+        def detail_indicator
+        end
+
+        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        def detail_indicator=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :discount_amount
+        def discount_amount
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def discount_amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :discount_currency
+        def discount_currency
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def discount_currency=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_accessor :discount_treatment_code
+        def discount_treatment_code
+        end
+
+        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        def discount_treatment_code=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :item_commodity_code
+        def item_commodity_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def item_commodity_code=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :item_descriptor
+        def item_descriptor
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def item_descriptor=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :item_quantity
+        def item_quantity
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def item_quantity=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :product_code
+        def product_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def product_code=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :sales_tax_amount
+        def sales_tax_amount
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def sales_tax_amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :sales_tax_currency
+        def sales_tax_currency
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def sales_tax_currency=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :sales_tax_rate
+        def sales_tax_rate
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def sales_tax_rate=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_accessor :total_amount
+        def total_amount
+        end
+
+        sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+        def total_amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :total_amount_currency
+        def total_amount_currency
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def total_amount_currency=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :unit_cost
+        def unit_cost
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def unit_cost=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :unit_cost_currency
+        def unit_cost_currency
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def unit_cost_currency=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :unit_of_measure_code
+        def unit_of_measure_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def unit_of_measure_code=(_)
+        end
 
         sig do
           params(

@@ -5,13 +5,28 @@ module Increase
     module Simulations
       class DigitalWalletTokenRequestCreateResponse < Increase::BaseModel
         sig { returns(T.nilable(Symbol)) }
-        attr_accessor :decline_reason
+        def decline_reason
+        end
+
+        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        def decline_reason=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :digital_wallet_token_id
+        def digital_wallet_token_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def digital_wallet_token_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig do
           params(

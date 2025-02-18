@@ -7,22 +7,28 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
+      def account_id
+      end
 
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig do
         params(

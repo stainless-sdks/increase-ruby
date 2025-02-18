@@ -4,37 +4,96 @@ module Increase
   module Models
     class AccountNumber < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_number
+      def account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_number=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(Increase::Models::AccountNumber::InboundACH) }
-      attr_accessor :inbound_ach
+      def inbound_ach
+      end
+
+      sig do
+        params(_: Increase::Models::AccountNumber::InboundACH).returns(Increase::Models::AccountNumber::InboundACH)
+      end
+      def inbound_ach=(_)
+      end
 
       sig { returns(Increase::Models::AccountNumber::InboundChecks) }
-      attr_accessor :inbound_checks
+      def inbound_checks
+      end
+
+      sig do
+        params(_: Increase::Models::AccountNumber::InboundChecks).returns(Increase::Models::AccountNumber::InboundChecks)
+      end
+      def inbound_checks=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :routing_number
+      def routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def routing_number=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -88,7 +147,12 @@ module Increase
 
       class InboundACH < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :debit_status
+        def debit_status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def debit_status=(_)
+        end
 
         sig { params(debit_status: Symbol).void }
         def initialize(debit_status:)
@@ -115,7 +179,12 @@ module Increase
 
       class InboundChecks < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :status
+        def status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def status=(_)
+        end
 
         sig { params(status: Symbol).void }
         def initialize(status:)

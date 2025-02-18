@@ -12,11 +12,11 @@ module Increase
 
       attr_reader cursor: String?
 
-      def cursor=: (String) -> void
+      def cursor=: (String) -> String
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       def initialize:
         (
