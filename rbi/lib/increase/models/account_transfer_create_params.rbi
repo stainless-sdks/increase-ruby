@@ -7,22 +7,44 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :destination_account_id
+      def destination_account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def destination_account_id=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :require_approval
+      def require_approval
+      end
 
-      sig { params(require_approval: T::Boolean).void }
-      attr_writer :require_approval
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def require_approval=(_)
+      end
 
       sig do
         params(

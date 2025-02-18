@@ -16,25 +16,25 @@ module Increase
 
       attr_reader carrier_image_file_id: String?
 
-      def carrier_image_file_id=: (String) -> void
+      def carrier_image_file_id=: (String) -> String
 
       attr_reader contact_phone: String?
 
-      def contact_phone=: (String) -> void
+      def contact_phone=: (String) -> String
 
       attr_reader description: String?
 
-      def description=: (String) -> void
+      def description=: (String) -> String
 
       attr_reader front_image_file_id: String?
 
-      def front_image_file_id=: (String) -> void
+      def front_image_file_id=: (String) -> String
 
       attr_reader front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText?
 
       def front_text=: (
         Increase::Models::PhysicalCardProfileCloneParams::FrontText
-      ) -> void
+      ) -> Increase::Models::PhysicalCardProfileCloneParams::FrontText
 
       def initialize:
         (
@@ -59,7 +59,7 @@ module Increase
 
         attr_reader line2: String?
 
-        def line2=: (String) -> void
+        def line2=: (String) -> String
 
         def initialize:
           (line1: String, line2: String) -> void

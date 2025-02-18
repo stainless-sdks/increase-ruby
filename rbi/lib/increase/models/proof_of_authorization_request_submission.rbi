@@ -4,55 +4,140 @@ module Increase
   module Models
     class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :authorization_terms
+      def authorization_terms
+      end
+
+      sig { params(_: String).returns(String) }
+      def authorization_terms=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :authorized_at
+      def authorized_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def authorized_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :authorizer_company
+      def authorizer_company
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def authorizer_company=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :authorizer_email
+      def authorizer_email
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def authorizer_email=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :authorizer_ip_address
+      def authorizer_ip_address
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def authorizer_ip_address=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :authorizer_name
+      def authorizer_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def authorizer_name=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :customer_has_been_offboarded
+      def customer_has_been_offboarded
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def customer_has_been_offboarded=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :proof_of_authorization_request_id
+      def proof_of_authorization_request_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def proof_of_authorization_request_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :updated_at
+      def updated_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def updated_at=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :validated_account_ownership_via_credential
+      def validated_account_ownership_via_credential
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def validated_account_ownership_via_credential=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :validated_account_ownership_with_account_statement
+      def validated_account_ownership_with_account_statement
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def validated_account_ownership_with_account_statement=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_accessor :validated_account_ownership_with_microdeposit
+      def validated_account_ownership_with_microdeposit
+      end
+
+      sig { params(_: T.nilable(T::Boolean)).returns(T.nilable(T::Boolean)) }
+      def validated_account_ownership_with_microdeposit=(_)
+      end
 
       sig do
         params(

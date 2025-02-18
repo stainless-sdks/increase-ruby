@@ -7,40 +7,56 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
+      def account_id
+      end
 
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::DeclinedTransactionListParams::Category)) }
-      attr_reader :category
+      def category
+      end
 
-      sig { params(category: Increase::Models::DeclinedTransactionListParams::Category).void }
-      attr_writer :category
+      sig do
+        params(_: Increase::Models::DeclinedTransactionListParams::Category).returns(Increase::Models::DeclinedTransactionListParams::Category)
+      end
+      def category=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::DeclinedTransactionListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
-      sig { params(created_at: Increase::Models::DeclinedTransactionListParams::CreatedAt).void }
-      attr_writer :created_at
+      sig do
+        params(_: Increase::Models::DeclinedTransactionListParams::CreatedAt).returns(Increase::Models::DeclinedTransactionListParams::CreatedAt)
+      end
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :route_id
+      def route_id
+      end
 
-      sig { params(route_id: String).void }
-      attr_writer :route_id
+      sig { params(_: String).returns(String) }
+      def route_id=(_)
+      end
 
       sig do
         params(
@@ -82,10 +98,12 @@ module Increase
 
       class Category < Increase::BaseModel
         sig { returns(T.nilable(T::Array[Symbol])) }
-        attr_reader :in_
+        def in_
+        end
 
-        sig { params(in_: T::Array[Symbol]).void }
-        attr_writer :in_
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
 
         sig { params(in_: T::Array[Symbol]).void }
         def initialize(in_: nil)
@@ -127,28 +145,36 @@ module Increase
 
       class CreatedAt < Increase::BaseModel
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
-
-        sig { returns(T.nilable(Time)) }
-        attr_reader :before
-
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def before
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_after
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
+
+        sig { returns(T.nilable(Time)) }
+        def on_or_before
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).void }
         def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)

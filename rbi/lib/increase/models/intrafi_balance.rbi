@@ -4,22 +4,54 @@ module Increase
   module Models
     class IntrafiBalance < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T::Array[Increase::Models::IntrafiBalance::Balance]) }
-      attr_accessor :balances
+      def balances
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::IntrafiBalance::Balance]).returns(T::Array[Increase::Models::IntrafiBalance::Balance])
+      end
+      def balances=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def currency=(_)
+      end
 
       sig { returns(Date) }
-      attr_accessor :effective_date
+      def effective_date
+      end
+
+      sig { params(_: Date).returns(Date) }
+      def effective_date=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :total_balance
+      def total_balance
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def total_balance=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -51,19 +83,46 @@ module Increase
 
       class Balance < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :balance
+        def balance
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def balance=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :bank
+        def bank
+        end
+
+        sig { params(_: String).returns(String) }
+        def bank=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation)) }
-        attr_accessor :bank_location
+        def bank_location
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation)).returns(T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation))
+        end
+        def bank_location=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :fdic_certificate_number
+        def fdic_certificate_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def fdic_certificate_number=(_)
+        end
 
         sig do
           params(
@@ -93,10 +152,20 @@ module Increase
 
         class BankLocation < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           sig { params(city: String, state: String).void }
           def initialize(city:, state:)

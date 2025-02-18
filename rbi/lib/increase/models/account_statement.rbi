@@ -4,31 +4,76 @@ module Increase
   module Models
     class AccountStatement < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :ending_balance
+      def ending_balance
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def ending_balance=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :file_id
+      def file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def file_id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :starting_balance
+      def starting_balance
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def starting_balance=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :statement_period_end
+      def statement_period_end
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def statement_period_end=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :statement_period_start
+      def statement_period_start
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def statement_period_start=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(

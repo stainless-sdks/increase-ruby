@@ -8,16 +8,28 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :card_payment_id
+        def card_payment_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def card_payment_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :event_subscription_id
+        def event_subscription_id
+        end
 
-        sig { params(event_subscription_id: String).void }
-        attr_writer :event_subscription_id
+        sig { params(_: String).returns(String) }
+        def event_subscription_id=(_)
+        end
 
         sig do
           params(

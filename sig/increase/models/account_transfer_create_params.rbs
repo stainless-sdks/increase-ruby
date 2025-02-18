@@ -24,7 +24,7 @@ module Increase
 
       attr_reader require_approval: bool?
 
-      def require_approval=: (bool) -> void
+      def require_approval=: (bool) -> bool
 
       def initialize:
         (

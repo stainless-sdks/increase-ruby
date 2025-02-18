@@ -7,48 +7,54 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::CardAuthentication)) }
-      attr_reader :card_authentication
+      def card_authentication
+      end
 
       sig do
-        params(card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication).void
+        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthentication).returns(Increase::Models::RealTimeDecisionActionParams::CardAuthentication)
       end
-      attr_writer :card_authentication
+      def card_authentication=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge)) }
-      attr_reader :card_authentication_challenge
+      def card_authentication_challenge
+      end
 
       sig do
-        params(
-          card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge
-        ).void
+        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge).returns(Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge)
       end
-      attr_writer :card_authentication_challenge
+      def card_authentication_challenge=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::CardAuthorization)) }
-      attr_reader :card_authorization
+      def card_authorization
+      end
 
       sig do
-        params(card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization).void
+        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthorization).returns(Increase::Models::RealTimeDecisionActionParams::CardAuthorization)
       end
-      attr_writer :card_authorization
+      def card_authorization=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication)) }
-      attr_reader :digital_wallet_authentication
+      def digital_wallet_authentication
+      end
 
       sig do
-        params(
-          digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication
-        ).void
+        params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication).returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication)
       end
-      attr_writer :digital_wallet_authentication
+      def digital_wallet_authentication=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken)) }
-      attr_reader :digital_wallet_token
+      def digital_wallet_token
+      end
 
       sig do
-        params(digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken).void
+        params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken).returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken)
       end
-      attr_writer :digital_wallet_token
+      def digital_wallet_token=(_)
+      end
 
       sig do
         params(
@@ -87,7 +93,12 @@ module Increase
 
       class CardAuthentication < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :decision
+        def decision
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def decision=(_)
+        end
 
         sig { params(decision: Symbol).void }
         def initialize(decision:)
@@ -117,7 +128,12 @@ module Increase
 
       class CardAuthenticationChallenge < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :result
+        def result
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def result=(_)
+        end
 
         sig { params(result: Symbol).void }
         def initialize(result:)
@@ -144,13 +160,20 @@ module Increase
 
       class CardAuthorization < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :decision
+        def decision
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def decision=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :decline_reason
+        def decline_reason
+        end
 
-        sig { params(decline_reason: Symbol).void }
-        attr_writer :decline_reason
+        sig { params(_: Symbol).returns(Symbol) }
+        def decline_reason=(_)
+        end
 
         sig { params(decision: Symbol, decline_reason: Symbol).void }
         def initialize(decision:, decline_reason: nil)
@@ -203,17 +226,24 @@ module Increase
 
       class DigitalWalletAuthentication < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :result
+        def result
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def result=(_)
+        end
 
         sig do
           returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success))
         end
-        attr_reader :success
+        def success
+        end
 
         sig do
-          params(success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success).void
+          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success).returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success)
         end
-        attr_writer :success
+        def success=(_)
+        end
 
         sig do
           params(
@@ -251,16 +281,20 @@ module Increase
 
         class Success < Increase::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_reader :email
+          def email
+          end
 
-          sig { params(email: String).void }
-          attr_writer :email
+          sig { params(_: String).returns(String) }
+          def email=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :phone
+          def phone
+          end
 
-          sig { params(phone: String).void }
-          attr_writer :phone
+          sig { params(_: String).returns(String) }
+          def phone=(_)
+          end
 
           sig { params(email: String, phone: String).void }
           def initialize(email: nil, phone: nil)
@@ -276,22 +310,26 @@ module Increase
         sig do
           returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval))
         end
-        attr_reader :approval
+        def approval
+        end
 
         sig do
-          params(approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval).void
+          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval).returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval)
         end
-        attr_writer :approval
+        def approval=(_)
+        end
 
         sig do
           returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline))
         end
-        attr_reader :decline
+        def decline
+        end
 
         sig do
-          params(decline: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline).void
+          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline).returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline)
         end
-        attr_writer :decline
+        def decline=(_)
+        end
 
         sig do
           params(
@@ -315,16 +353,20 @@ module Increase
 
         class Approval < Increase::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_reader :email
+          def email
+          end
 
-          sig { params(email: String).void }
-          attr_writer :email
+          sig { params(_: String).returns(String) }
+          def email=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :phone
+          def phone
+          end
 
-          sig { params(phone: String).void }
-          attr_writer :phone
+          sig { params(_: String).returns(String) }
+          def phone=(_)
+          end
 
           sig { params(email: String, phone: String).void }
           def initialize(email: nil, phone: nil)
@@ -337,10 +379,12 @@ module Increase
 
         class Decline < Increase::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_reader :reason
+          def reason
+          end
 
-          sig { params(reason: String).void }
-          attr_writer :reason
+          sig { params(_: String).returns(String) }
+          def reason=(_)
+          end
 
           sig { params(reason: String).void }
           def initialize(reason: nil)

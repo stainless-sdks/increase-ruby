@@ -4,31 +4,80 @@ module Increase
   module Models
     class PhysicalCard < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :card_id
+      def card_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def card_id=(_)
+      end
 
       sig { returns(Increase::Models::PhysicalCard::Cardholder) }
-      attr_accessor :cardholder
+      def cardholder
+      end
+
+      sig do
+        params(_: Increase::Models::PhysicalCard::Cardholder).returns(Increase::Models::PhysicalCard::Cardholder)
+      end
+      def cardholder=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :physical_card_profile_id
+      def physical_card_profile_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def physical_card_profile_id=(_)
+      end
 
       sig { returns(Increase::Models::PhysicalCard::Shipment) }
-      attr_accessor :shipment
+      def shipment
+      end
+
+      sig do
+        params(_: Increase::Models::PhysicalCard::Shipment).returns(Increase::Models::PhysicalCard::Shipment)
+      end
+      def shipment=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -76,10 +125,20 @@ module Increase
 
       class Cardholder < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :first_name
+        def first_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def first_name=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :last_name
+        def last_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def last_name=(_)
+        end
 
         sig { params(first_name: String, last_name: String).void }
         def initialize(first_name:, last_name:)
@@ -92,16 +151,40 @@ module Increase
 
       class Shipment < Increase::BaseModel
         sig { returns(Increase::Models::PhysicalCard::Shipment::Address) }
-        attr_accessor :address
+        def address
+        end
+
+        sig do
+          params(_: Increase::Models::PhysicalCard::Shipment::Address).returns(Increase::Models::PhysicalCard::Shipment::Address)
+        end
+        def address=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :method_
+        def method_
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def method_=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :status
+        def status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def status=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)) }
-        attr_accessor :tracking
+        def tracking
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)).returns(T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking))
+        end
+        def tracking=(_)
+        end
 
         sig do
           params(
@@ -129,25 +212,60 @@ module Increase
 
         class Address < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: String).returns(String) }
+          def line1=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :line2
+          def line2
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line2=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :line3
+          def line3
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line3=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :postal_code
+          def postal_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def postal_code=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           sig do
             params(
@@ -228,16 +346,36 @@ module Increase
 
         class Tracking < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :number
+          def number
+          end
+
+          sig { params(_: String).returns(String) }
+          def number=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :return_number
+          def return_number
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def return_number=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :return_reason
+          def return_reason
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def return_reason=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :shipped_at
+          def shipped_at
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def shipped_at=(_)
+          end
 
           sig do
             params(

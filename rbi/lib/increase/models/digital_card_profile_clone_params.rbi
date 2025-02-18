@@ -7,58 +7,78 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :app_icon_file_id
+      def app_icon_file_id
+      end
 
-      sig { params(app_icon_file_id: String).void }
-      attr_writer :app_icon_file_id
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :background_image_file_id
-
-      sig { params(background_image_file_id: String).void }
-      attr_writer :background_image_file_id
+      sig { params(_: String).returns(String) }
+      def app_icon_file_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :card_description
+      def background_image_file_id
+      end
 
-      sig { params(card_description: String).void }
-      attr_writer :card_description
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :contact_email
-
-      sig { params(contact_email: String).void }
-      attr_writer :contact_email
+      sig { params(_: String).returns(String) }
+      def background_image_file_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :contact_phone
+      def card_description
+      end
 
-      sig { params(contact_phone: String).void }
-      attr_writer :contact_phone
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :contact_website
-
-      sig { params(contact_website: String).void }
-      attr_writer :contact_website
+      sig { params(_: String).returns(String) }
+      def card_description=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :description
+      def contact_email
+      end
 
-      sig { params(description: String).void }
-      attr_writer :description
+      sig { params(_: String).returns(String) }
+      def contact_email=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :issuer_name
+      def contact_phone
+      end
 
-      sig { params(issuer_name: String).void }
-      attr_writer :issuer_name
+      sig { params(_: String).returns(String) }
+      def contact_phone=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def contact_website
+      end
+
+      sig { params(_: String).returns(String) }
+      def contact_website=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def issuer_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def issuer_name=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::DigitalCardProfileCloneParams::TextColor)) }
-      attr_reader :text_color
+      def text_color
+      end
 
-      sig { params(text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor).void }
-      attr_writer :text_color
+      sig do
+        params(_: Increase::Models::DigitalCardProfileCloneParams::TextColor).returns(Increase::Models::DigitalCardProfileCloneParams::TextColor)
+      end
+      def text_color=(_)
+      end
 
       sig do
         params(
@@ -109,13 +129,28 @@ module Increase
 
       class TextColor < Increase::BaseModel
         sig { returns(Integer) }
-        attr_accessor :blue
+        def blue
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def blue=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :green
+        def green
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def green=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :red
+        def red
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def red=(_)
+        end
 
         sig { params(blue: Integer, green: Integer, red: Integer).void }
         def initialize(blue:, green:, red:)
