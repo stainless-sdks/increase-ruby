@@ -12,7 +12,7 @@ module Increase
 
       def reason=: (
         Increase::Models::CheckTransferStopPaymentParams::reason
-      ) -> void
+      ) -> Increase::Models::CheckTransferStopPaymentParams::reason
 
       def initialize:
         (

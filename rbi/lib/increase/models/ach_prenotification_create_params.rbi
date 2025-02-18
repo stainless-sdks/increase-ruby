@@ -7,73 +7,108 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_number
+      def account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_number=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :routing_number
+      def routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def routing_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :addendum
+      def addendum
+      end
 
-      sig { params(addendum: String).void }
-      attr_writer :addendum
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :company_descriptive_date
-
-      sig { params(company_descriptive_date: String).void }
-      attr_writer :company_descriptive_date
+      sig { params(_: String).returns(String) }
+      def addendum=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :company_discretionary_data
+      def company_descriptive_date
+      end
 
-      sig { params(company_discretionary_data: String).void }
-      attr_writer :company_discretionary_data
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :company_entry_description
-
-      sig { params(company_entry_description: String).void }
-      attr_writer :company_entry_description
+      sig { params(_: String).returns(String) }
+      def company_descriptive_date=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :company_name
+      def company_discretionary_data
+      end
 
-      sig { params(company_name: String).void }
-      attr_writer :company_name
+      sig { params(_: String).returns(String) }
+      def company_discretionary_data=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def company_entry_description
+      end
+
+      sig { params(_: String).returns(String) }
+      def company_entry_description=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def company_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def company_name=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :credit_debit_indicator
+      def credit_debit_indicator
+      end
 
-      sig { params(credit_debit_indicator: Symbol).void }
-      attr_writer :credit_debit_indicator
+      sig { params(_: Symbol).returns(Symbol) }
+      def credit_debit_indicator=(_)
+      end
 
       sig { returns(T.nilable(Date)) }
-      attr_reader :effective_date
+      def effective_date
+      end
 
-      sig { params(effective_date: Date).void }
-      attr_writer :effective_date
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :individual_id
-
-      sig { params(individual_id: String).void }
-      attr_writer :individual_id
+      sig { params(_: Date).returns(Date) }
+      def effective_date=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :individual_name
+      def individual_id
+      end
 
-      sig { params(individual_name: String).void }
-      attr_writer :individual_name
+      sig { params(_: String).returns(String) }
+      def individual_id=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def individual_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def individual_name=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :standard_entry_class_code
+      def standard_entry_class_code
+      end
 
-      sig { params(standard_entry_class_code: Symbol).void }
-      attr_writer :standard_entry_class_code
+      sig { params(_: Symbol).returns(Symbol) }
+      def standard_entry_class_code=(_)
+      end
 
       sig do
         params(

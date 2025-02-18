@@ -4,13 +4,28 @@ module Increase
   module Models
     class OAuthToken < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :access_token
+      def access_token
+      end
+
+      sig { params(_: String).returns(String) }
+      def access_token=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :token_type
+      def token_type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def token_type=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { params(access_token: String, token_type: Symbol, type: Symbol).void }
       def initialize(access_token:, token_type:, type:)

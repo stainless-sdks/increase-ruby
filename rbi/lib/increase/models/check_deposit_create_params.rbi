@@ -7,22 +7,44 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :back_image_file_id
+      def back_image_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def back_image_file_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :front_image_file_id
+      def front_image_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def front_image_file_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :description
+      def description
+      end
 
-      sig { params(description: String).void }
-      attr_writer :description
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig do
         params(

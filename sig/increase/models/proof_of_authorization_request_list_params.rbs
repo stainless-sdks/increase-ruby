@@ -16,15 +16,15 @@ module Increase
 
       def created_at=: (
         Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt
-      ) -> void
+      ) -> Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt
 
       attr_reader cursor: String?
 
-      def cursor=: (String) -> void
+      def cursor=: (String) -> String
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       def initialize:
         (
@@ -46,19 +46,19 @@ module Increase
       class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
 
-        def after=: (Time) -> void
+        def after=: (Time) -> Time
 
         attr_reader before: Time?
 
-        def before=: (Time) -> void
+        def before=: (Time) -> Time
 
         attr_reader on_or_after: Time?
 
-        def on_or_after=: (Time) -> void
+        def on_or_after=: (Time) -> Time
 
         attr_reader on_or_before: Time?
 
-        def on_or_before=: (Time) -> void
+        def on_or_before=: (Time) -> Time
 
         def initialize:
           (

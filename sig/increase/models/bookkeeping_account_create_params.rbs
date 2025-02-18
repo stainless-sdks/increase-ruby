@@ -17,17 +17,17 @@ module Increase
 
       attr_reader account_id: String?
 
-      def account_id=: (String) -> void
+      def account_id=: (String) -> String
 
       attr_reader compliance_category: Increase::Models::BookkeepingAccountCreateParams::compliance_category?
 
       def compliance_category=: (
         Increase::Models::BookkeepingAccountCreateParams::compliance_category
-      ) -> void
+      ) -> Increase::Models::BookkeepingAccountCreateParams::compliance_category
 
       attr_reader entity_id: String?
 
-      def entity_id=: (String) -> void
+      def entity_id=: (String) -> String
 
       def initialize:
         (

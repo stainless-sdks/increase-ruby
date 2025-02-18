@@ -4,49 +4,124 @@ module Increase
   module Models
     class Account < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :bank
+      def bank
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def bank=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :closed_at
+      def closed_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def closed_at=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def currency=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :entity_id
+      def entity_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def entity_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :informational_entity_id
+      def informational_entity_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def informational_entity_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :interest_accrued
+      def interest_accrued
+      end
+
+      sig { params(_: String).returns(String) }
+      def interest_accrued=(_)
+      end
 
       sig { returns(T.nilable(Date)) }
-      attr_accessor :interest_accrued_at
+      def interest_accrued_at
+      end
+
+      sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+      def interest_accrued_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :interest_rate
+      def interest_rate
+      end
+
+      sig { params(_: String).returns(String) }
+      def interest_rate=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :program_id
+      def program_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def program_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(

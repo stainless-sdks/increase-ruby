@@ -7,34 +7,46 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :carrier_image_file_id
+      def carrier_image_file_id
+      end
 
-      sig { params(carrier_image_file_id: String).void }
-      attr_writer :carrier_image_file_id
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :contact_phone
-
-      sig { params(contact_phone: String).void }
-      attr_writer :contact_phone
+      sig { params(_: String).returns(String) }
+      def carrier_image_file_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :description
+      def contact_phone
+      end
 
-      sig { params(description: String).void }
-      attr_writer :description
+      sig { params(_: String).returns(String) }
+      def contact_phone=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :front_image_file_id
+      def description
+      end
 
-      sig { params(front_image_file_id: String).void }
-      attr_writer :front_image_file_id
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def front_image_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def front_image_file_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::PhysicalCardProfileCloneParams::FrontText)) }
-      attr_reader :front_text
+      def front_text
+      end
 
-      sig { params(front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText).void }
-      attr_writer :front_text
+      sig do
+        params(_: Increase::Models::PhysicalCardProfileCloneParams::FrontText).returns(Increase::Models::PhysicalCardProfileCloneParams::FrontText)
+      end
+      def front_text=(_)
+      end
 
       sig do
         params(
@@ -73,13 +85,20 @@ module Increase
 
       class FrontText < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :line1
+        def line1
+        end
+
+        sig { params(_: String).returns(String) }
+        def line1=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :line2
+        def line2
+        end
 
-        sig { params(line2: String).void }
-        attr_writer :line2
+        sig { params(_: String).returns(String) }
+        def line2=(_)
+        end
 
         sig { params(line1: String, line2: String).void }
         def initialize(line1:, line2: nil)

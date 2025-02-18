@@ -7,19 +7,30 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]) }
-      attr_accessor :entries
+      def entries
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]).returns(T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry])
+      end
+      def entries=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :date
+      def date
+      end
 
-      sig { params(date: Time).void }
-      attr_writer :date
+      sig { params(_: Time).returns(Time) }
+      def date=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :transaction_id
+      def transaction_id
+      end
 
-      sig { params(transaction_id: String).void }
-      attr_writer :transaction_id
+      sig { params(_: String).returns(String) }
+      def transaction_id=(_)
+      end
 
       sig do
         params(
@@ -47,10 +58,20 @@ module Increase
 
       class Entry < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :account_id
+        def account_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_id=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { params(account_id: String, amount: Integer).void }
         def initialize(account_id:, amount:)
