@@ -8,7 +8,8 @@ module Increase
           params(
             wire_transfer_id: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::WireTransfer)
+          )
+            .returns(Increase::Models::WireTransfer)
         end
         def reverse(wire_transfer_id, request_options: {})
         end
@@ -17,7 +18,8 @@ module Increase
           params(
             wire_transfer_id: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::WireTransfer)
+          )
+            .returns(Increase::Models::WireTransfer)
         end
         def submit(wire_transfer_id, request_options: {})
         end

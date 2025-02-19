@@ -95,7 +95,8 @@ module Increase
           mime_type: String,
           purpose: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -112,20 +113,21 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            created_at: Time,
-            description: T.nilable(String),
-            direction: Symbol,
-            download_url: T.nilable(String),
-            filename: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            mime_type: String,
-            purpose: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              created_at: Time,
+              description: T.nilable(String),
+              direction: Symbol,
+              download_url: T.nilable(String),
+              filename: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              mime_type: String,
+              purpose: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

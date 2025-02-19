@@ -68,23 +68,25 @@ module Increase
           oauth_application_id: String,
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            created_at: Time,
-            deleted_at: T.nilable(Time),
-            group_id: String,
-            oauth_application_id: String,
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              created_at: Time,
+              deleted_at: T.nilable(Time),
+              group_id: String,
+              oauth_application_id: String,
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

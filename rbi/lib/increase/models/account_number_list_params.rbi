@@ -27,7 +27,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountNumberListParams::CreatedAt).returns(Increase::Models::AccountNumberListParams::CreatedAt)
+        params(_: Increase::Models::AccountNumberListParams::CreatedAt)
+          .returns(Increase::Models::AccountNumberListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -74,7 +75,8 @@ module Increase
           limit: Integer,
           status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id: nil,
@@ -89,18 +91,19 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            ach_debit_status: Symbol,
-            created_at: Increase::Models::AccountNumberListParams::CreatedAt,
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            status: Symbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              ach_debit_status: Symbol,
+              created_at: Increase::Models::AccountNumberListParams::CreatedAt,
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              status: Symbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

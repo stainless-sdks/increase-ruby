@@ -54,7 +54,8 @@ module Increase
           code: String,
           production_token: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         grant_type:,
@@ -67,16 +68,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            grant_type: Symbol,
-            client_id: String,
-            client_secret: String,
-            code: String,
-            production_token: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              grant_type: Symbol,
+              client_id: String,
+              client_secret: String,
+              code: String,
+              production_token: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

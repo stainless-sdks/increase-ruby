@@ -30,6 +30,7 @@ module Increase
     # @return [String, nil]
     attr_accessor :next_cursor
 
+    # rubocop:disable Lint/UnusedMethodArgument
     # @private
     #
     # @param client [Increase::BaseClient]
@@ -54,6 +55,7 @@ module Increase
       else
       end
     end
+    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
     #
@@ -66,7 +68,7 @@ module Increase
     #
     def next_page
       unless next_page?
-        raise "No more pages available; please check #next_page? before calling #next_page"
+        raise RuntimeError.new("No more pages available; please check #next_page? before calling #next_page")
       end
 
       req = Increase::Util.deep_merge(@req, {query: {cursor: next_cursor}})

@@ -86,7 +86,8 @@ module Increase
           name: String,
           type: Symbol,
           updated_at: Time
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -102,19 +103,20 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            bank: Symbol,
-            billing_account_id: T.nilable(String),
-            created_at: Time,
-            default_digital_card_profile_id: T.nilable(String),
-            interest_rate: String,
-            name: String,
-            type: Symbol,
-            updated_at: Time
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              bank: Symbol,
+              billing_account_id: T.nilable(String),
+              created_at: Time,
+              default_digital_card_profile_id: T.nilable(String),
+              interest_rate: String,
+              name: String,
+              type: Symbol,
+              updated_at: Time
+            }
+          )
       end
       def to_hash
       end

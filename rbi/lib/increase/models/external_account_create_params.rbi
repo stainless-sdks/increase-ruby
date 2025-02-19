@@ -54,7 +54,8 @@ module Increase
           account_holder: Symbol,
           funding: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_number:,
@@ -67,16 +68,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_number: String,
-            description: String,
-            routing_number: String,
-            account_holder: Symbol,
-            funding: Symbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_number: String,
+              description: String,
+              routing_number: String,
+              account_holder: Symbol,
+              funding: Symbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

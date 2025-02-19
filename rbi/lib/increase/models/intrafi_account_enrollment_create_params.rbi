@@ -27,7 +27,8 @@ module Increase
           account_id: String,
           email_address: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(account_id:, email_address:, request_options: {})
       end

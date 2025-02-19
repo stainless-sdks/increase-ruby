@@ -16,7 +16,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundACHTransfer::Acceptance)).returns(T.nilable(Increase::Models::InboundACHTransfer::Acceptance))
+        params(_: T.nilable(Increase::Models::InboundACHTransfer::Acceptance))
+          .returns(T.nilable(Increase::Models::InboundACHTransfer::Acceptance))
       end
       def acceptance=(_)
       end
@@ -42,7 +43,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundACHTransfer::Addenda)).returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda))
+        params(_: T.nilable(Increase::Models::InboundACHTransfer::Addenda))
+          .returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda))
       end
       def addenda=(_)
       end
@@ -76,7 +78,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundACHTransfer::Decline)).returns(T.nilable(Increase::Models::InboundACHTransfer::Decline))
+        params(_: T.nilable(Increase::Models::InboundACHTransfer::Decline))
+          .returns(T.nilable(Increase::Models::InboundACHTransfer::Decline))
       end
       def decline=(_)
       end
@@ -110,7 +113,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda)).returns(T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda))
+        params(_: T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda))
+          .returns(T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda))
       end
       def international_addenda=(_)
       end
@@ -120,7 +124,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange)).returns(T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange))
+        params(_: T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange))
+          .returns(T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange))
       end
       def notification_of_change=(_)
       end
@@ -218,7 +223,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundACHTransfer::TransferReturn)).returns(T.nilable(Increase::Models::InboundACHTransfer::TransferReturn))
+        params(_: T.nilable(Increase::Models::InboundACHTransfer::TransferReturn))
+          .returns(T.nilable(Increase::Models::InboundACHTransfer::TransferReturn))
       end
       def transfer_return=(_)
       end
@@ -260,7 +266,8 @@ module Increase
           trace_number: String,
           transfer_return: T.nilable(Increase::Models::InboundACHTransfer::TransferReturn),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -294,37 +301,38 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            acceptance: T.nilable(Increase::Models::InboundACHTransfer::Acceptance),
-            account_id: String,
-            account_number_id: String,
-            addenda: T.nilable(Increase::Models::InboundACHTransfer::Addenda),
-            amount: Integer,
-            automatically_resolves_at: Time,
-            created_at: Time,
-            decline: T.nilable(Increase::Models::InboundACHTransfer::Decline),
-            direction: Symbol,
-            effective_date: Date,
-            expected_settlement_schedule: Symbol,
-            international_addenda: T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda),
-            notification_of_change: T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange),
-            originator_company_descriptive_date: T.nilable(String),
-            originator_company_discretionary_data: T.nilable(String),
-            originator_company_entry_description: String,
-            originator_company_id: String,
-            originator_company_name: String,
-            originator_routing_number: String,
-            receiver_id_number: T.nilable(String),
-            receiver_name: T.nilable(String),
-            standard_entry_class_code: Symbol,
-            status: Symbol,
-            trace_number: String,
-            transfer_return: T.nilable(Increase::Models::InboundACHTransfer::TransferReturn),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              acceptance: T.nilable(Increase::Models::InboundACHTransfer::Acceptance),
+              account_id: String,
+              account_number_id: String,
+              addenda: T.nilable(Increase::Models::InboundACHTransfer::Addenda),
+              amount: Integer,
+              automatically_resolves_at: Time,
+              created_at: Time,
+              decline: T.nilable(Increase::Models::InboundACHTransfer::Decline),
+              direction: Symbol,
+              effective_date: Date,
+              expected_settlement_schedule: Symbol,
+              international_addenda: T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda),
+              notification_of_change: T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange),
+              originator_company_descriptive_date: T.nilable(String),
+              originator_company_discretionary_data: T.nilable(String),
+              originator_company_entry_description: String,
+              originator_company_id: String,
+              originator_company_name: String,
+              originator_routing_number: String,
+              receiver_id_number: T.nilable(String),
+              receiver_name: T.nilable(String),
+              standard_entry_class_code: Symbol,
+              status: Symbol,
+              trace_number: String,
+              transfer_return: T.nilable(Increase::Models::InboundACHTransfer::TransferReturn),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -369,27 +377,21 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)).returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform))
+          params(_: T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform))
+            .returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform))
         end
         def freeform=(_)
         end
 
         sig do
-          params(
-            category: Symbol,
-            freeform: T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)
-          ).void
+          params(category: Symbol, freeform: T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)).void
         end
         def initialize(category:, freeform:)
         end
 
         sig do
-          override.returns(
-            {
-              category: Symbol,
-              freeform: T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)
-            }
-          )
+          override
+            .returns({category: Symbol, freeform: T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)})
         end
         def to_hash
         end
@@ -411,20 +413,17 @@ module Increase
           end
 
           sig do
-            params(_: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]).returns(T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry])
+            params(_: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry])
+              .returns(T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry])
           end
           def entries=(_)
           end
 
-          sig do
-            params(entries: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]).void
-          end
+          sig { params(entries: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]).void }
           def initialize(entries:)
           end
 
-          sig do
-            override.returns({entries: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]})
-          end
+          sig { override.returns({entries: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]}) }
           def to_hash
           end
 
@@ -869,7 +868,8 @@ module Increase
             receiving_depository_financial_institution_id: String,
             receiving_depository_financial_institution_id_qualifier: Symbol,
             receiving_depository_financial_institution_name: String
-          ).void
+          )
+            .void
         end
         def initialize(
           destination_country_code:,
@@ -909,43 +909,44 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              destination_country_code: String,
-              destination_currency_code: String,
-              foreign_exchange_indicator: Symbol,
-              foreign_exchange_reference: T.nilable(String),
-              foreign_exchange_reference_indicator: Symbol,
-              foreign_payment_amount: Integer,
-              foreign_trace_number: T.nilable(String),
-              international_transaction_type_code: Symbol,
-              originating_currency_code: String,
-              originating_depository_financial_institution_branch_country: String,
-              originating_depository_financial_institution_id: String,
-              originating_depository_financial_institution_id_qualifier: Symbol,
-              originating_depository_financial_institution_name: String,
-              originator_city: String,
-              originator_country: String,
-              originator_identification: String,
-              originator_name: String,
-              originator_postal_code: T.nilable(String),
-              originator_state_or_province: T.nilable(String),
-              originator_street_address: String,
-              payment_related_information: T.nilable(String),
-              payment_related_information2: T.nilable(String),
-              receiver_city: String,
-              receiver_country: String,
-              receiver_identification_number: T.nilable(String),
-              receiver_postal_code: T.nilable(String),
-              receiver_state_or_province: T.nilable(String),
-              receiver_street_address: String,
-              receiving_company_or_individual_name: String,
-              receiving_depository_financial_institution_country: String,
-              receiving_depository_financial_institution_id: String,
-              receiving_depository_financial_institution_id_qualifier: Symbol,
-              receiving_depository_financial_institution_name: String
-            }
-          )
+          override
+            .returns(
+              {
+                destination_country_code: String,
+                destination_currency_code: String,
+                foreign_exchange_indicator: Symbol,
+                foreign_exchange_reference: T.nilable(String),
+                foreign_exchange_reference_indicator: Symbol,
+                foreign_payment_amount: Integer,
+                foreign_trace_number: T.nilable(String),
+                international_transaction_type_code: Symbol,
+                originating_currency_code: String,
+                originating_depository_financial_institution_branch_country: String,
+                originating_depository_financial_institution_id: String,
+                originating_depository_financial_institution_id_qualifier: Symbol,
+                originating_depository_financial_institution_name: String,
+                originator_city: String,
+                originator_country: String,
+                originator_identification: String,
+                originator_name: String,
+                originator_postal_code: T.nilable(String),
+                originator_state_or_province: T.nilable(String),
+                originator_street_address: String,
+                payment_related_information: T.nilable(String),
+                payment_related_information2: T.nilable(String),
+                receiver_city: String,
+                receiver_country: String,
+                receiver_identification_number: T.nilable(String),
+                receiver_postal_code: T.nilable(String),
+                receiver_state_or_province: T.nilable(String),
+                receiver_street_address: String,
+                receiving_company_or_individual_name: String,
+                receiving_depository_financial_institution_country: String,
+                receiving_depository_financial_institution_id: String,
+                receiving_depository_financial_institution_id_qualifier: Symbol,
+                receiving_depository_financial_institution_name: String
+              }
+            )
         end
         def to_hash
         end

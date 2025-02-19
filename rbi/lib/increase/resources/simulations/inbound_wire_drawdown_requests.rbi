@@ -27,7 +27,8 @@ module Increase
             originator_to_beneficiary_information_line3: String,
             originator_to_beneficiary_information_line4: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::InboundWireDrawdownRequest)
+          )
+            .returns(Increase::Models::InboundWireDrawdownRequest)
         end
         def create(
           amount:,

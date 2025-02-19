@@ -32,7 +32,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Acknowledgement)).returns(T.nilable(Increase::Models::ACHTransfer::Acknowledgement))
+        params(_: T.nilable(Increase::Models::ACHTransfer::Acknowledgement))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Acknowledgement))
       end
       def acknowledgement=(_)
       end
@@ -42,7 +43,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Addenda)).returns(T.nilable(Increase::Models::ACHTransfer::Addenda))
+        params(_: T.nilable(Increase::Models::ACHTransfer::Addenda))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Addenda))
       end
       def addenda=(_)
       end
@@ -60,7 +62,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Approval)).returns(T.nilable(Increase::Models::ACHTransfer::Approval))
+        params(_: T.nilable(Increase::Models::ACHTransfer::Approval))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Approval))
       end
       def approval=(_)
       end
@@ -70,7 +73,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Cancellation)).returns(T.nilable(Increase::Models::ACHTransfer::Cancellation))
+        params(_: T.nilable(Increase::Models::ACHTransfer::Cancellation))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Cancellation))
       end
       def cancellation=(_)
       end
@@ -120,7 +124,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy)).returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy))
+        params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy))
+          .returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy))
       end
       def created_by=(_)
       end
@@ -170,7 +175,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold)).returns(T.nilable(Increase::Models::ACHTransfer::InboundFundsHold))
+        params(_: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold))
+          .returns(T.nilable(Increase::Models::ACHTransfer::InboundFundsHold))
       end
       def inbound_funds_hold=(_)
       end
@@ -204,7 +210,8 @@ module Increase
       end
 
       sig do
-        params(_: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange]).returns(T::Array[Increase::Models::ACHTransfer::NotificationsOfChange])
+        params(_: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange])
+          .returns(T::Array[Increase::Models::ACHTransfer::NotificationsOfChange])
       end
       def notifications_of_change=(_)
       end
@@ -222,7 +229,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ACHTransfer::PreferredEffectiveDate).returns(Increase::Models::ACHTransfer::PreferredEffectiveDate)
+        params(_: Increase::Models::ACHTransfer::PreferredEffectiveDate)
+          .returns(Increase::Models::ACHTransfer::PreferredEffectiveDate)
       end
       def preferred_effective_date=(_)
       end
@@ -232,7 +240,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Return)).returns(T.nilable(Increase::Models::ACHTransfer::Return))
+        params(_: T.nilable(Increase::Models::ACHTransfer::Return))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Return))
       end
       def return_=(_)
       end
@@ -250,7 +259,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Settlement)).returns(T.nilable(Increase::Models::ACHTransfer::Settlement))
+        params(_: T.nilable(Increase::Models::ACHTransfer::Settlement))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Settlement))
       end
       def settlement=(_)
       end
@@ -284,7 +294,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHTransfer::Submission)).returns(T.nilable(Increase::Models::ACHTransfer::Submission))
+        params(_: T.nilable(Increase::Models::ACHTransfer::Submission))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Submission))
       end
       def submission=(_)
       end
@@ -342,7 +353,8 @@ module Increase
           submission: T.nilable(Increase::Models::ACHTransfer::Submission),
           transaction_id: T.nilable(String),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -384,45 +396,46 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            account_number: String,
-            acknowledgement: T.nilable(Increase::Models::ACHTransfer::Acknowledgement),
-            addenda: T.nilable(Increase::Models::ACHTransfer::Addenda),
-            amount: Integer,
-            approval: T.nilable(Increase::Models::ACHTransfer::Approval),
-            cancellation: T.nilable(Increase::Models::ACHTransfer::Cancellation),
-            company_descriptive_date: T.nilable(String),
-            company_discretionary_data: T.nilable(String),
-            company_entry_description: T.nilable(String),
-            company_name: T.nilable(String),
-            created_at: Time,
-            created_by: T.nilable(Increase::Models::ACHTransfer::CreatedBy),
-            currency: Symbol,
-            destination_account_holder: Symbol,
-            external_account_id: T.nilable(String),
-            funding: Symbol,
-            idempotency_key: T.nilable(String),
-            inbound_funds_hold: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold),
-            individual_id: T.nilable(String),
-            individual_name: T.nilable(String),
-            network: Symbol,
-            notifications_of_change: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange],
-            pending_transaction_id: T.nilable(String),
-            preferred_effective_date: Increase::Models::ACHTransfer::PreferredEffectiveDate,
-            return_: T.nilable(Increase::Models::ACHTransfer::Return),
-            routing_number: String,
-            settlement: T.nilable(Increase::Models::ACHTransfer::Settlement),
-            standard_entry_class_code: Symbol,
-            statement_descriptor: String,
-            status: Symbol,
-            submission: T.nilable(Increase::Models::ACHTransfer::Submission),
-            transaction_id: T.nilable(String),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              account_number: String,
+              acknowledgement: T.nilable(Increase::Models::ACHTransfer::Acknowledgement),
+              addenda: T.nilable(Increase::Models::ACHTransfer::Addenda),
+              amount: Integer,
+              approval: T.nilable(Increase::Models::ACHTransfer::Approval),
+              cancellation: T.nilable(Increase::Models::ACHTransfer::Cancellation),
+              company_descriptive_date: T.nilable(String),
+              company_discretionary_data: T.nilable(String),
+              company_entry_description: T.nilable(String),
+              company_name: T.nilable(String),
+              created_at: Time,
+              created_by: T.nilable(Increase::Models::ACHTransfer::CreatedBy),
+              currency: Symbol,
+              destination_account_holder: Symbol,
+              external_account_id: T.nilable(String),
+              funding: Symbol,
+              idempotency_key: T.nilable(String),
+              inbound_funds_hold: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold),
+              individual_id: T.nilable(String),
+              individual_name: T.nilable(String),
+              network: Symbol,
+              notifications_of_change: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange],
+              pending_transaction_id: T.nilable(String),
+              preferred_effective_date: Increase::Models::ACHTransfer::PreferredEffectiveDate,
+              return_: T.nilable(Increase::Models::ACHTransfer::Return),
+              routing_number: String,
+              settlement: T.nilable(Increase::Models::ACHTransfer::Settlement),
+              standard_entry_class_code: Symbol,
+              statement_descriptor: String,
+              status: Symbol,
+              submission: T.nilable(Increase::Models::ACHTransfer::Submission),
+              transaction_id: T.nilable(String),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -459,7 +472,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform)).returns(T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform))
+          params(_: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform))
+            .returns(T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform))
         end
         def freeform=(_)
         end
@@ -469,7 +483,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)).returns(T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice))
+          params(_: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice))
+            .returns(T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice))
         end
         def payment_order_remittance_advice=(_)
         end
@@ -479,19 +494,21 @@ module Increase
             category: Symbol,
             freeform: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform),
             payment_order_remittance_advice: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)
-          ).void
+          )
+            .void
         end
         def initialize(category:, freeform:, payment_order_remittance_advice:)
         end
 
         sig do
-          override.returns(
-            {
-              category: Symbol,
-              freeform: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform),
-              payment_order_remittance_advice: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)
-            }
-          )
+          override
+            .returns(
+              {
+                category: Symbol,
+                freeform: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform),
+                payment_order_remittance_advice: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)
+              }
+            )
         end
         def to_hash
         end
@@ -519,7 +536,8 @@ module Increase
           end
 
           sig do
-            params(_: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry]).returns(T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry])
+            params(_: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry])
+              .returns(T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry])
           end
           def entries=(_)
           end
@@ -528,9 +546,7 @@ module Increase
           def initialize(entries:)
           end
 
-          sig do
-            override.returns({entries: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry]})
-          end
+          sig { override.returns({entries: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry]}) }
           def to_hash
           end
 
@@ -554,26 +570,29 @@ module Increase
         end
 
         class PaymentOrderRemittanceAdvice < Increase::BaseModel
-          sig do
-            returns(T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice])
-          end
+          sig { returns(T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]) }
           def invoices
           end
 
           sig do
-            params(_: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]).returns(T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice])
+            params(_: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice])
+              .returns(T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice])
           end
           def invoices=(_)
           end
 
           sig do
-            params(invoices: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]).void
+            params(invoices: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice])
+              .void
           end
           def initialize(invoices:)
           end
 
           sig do
-            override.returns({invoices: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]})
+            override
+              .returns(
+                {invoices: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]}
+              )
           end
           def to_hash
           end
@@ -664,7 +683,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey)).returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey))
+          params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey))
+            .returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey))
         end
         def api_key=(_)
         end
@@ -682,7 +702,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication)).returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication))
+          params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication))
+            .returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication))
         end
         def oauth_application=(_)
         end
@@ -692,7 +713,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)).returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::User))
+          params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User))
+            .returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::User))
         end
         def user=(_)
         end
@@ -703,20 +725,22 @@ module Increase
             category: Symbol,
             oauth_application: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)
-          ).void
+          )
+            .void
         end
         def initialize(api_key:, category:, oauth_application:, user:)
         end
 
         sig do
-          override.returns(
-            {
-              api_key: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey),
-              category: Symbol,
-              oauth_application: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication),
-              user: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)
-            }
-          )
+          override
+            .returns(
+              {
+                api_key: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey),
+                category: Symbol,
+                oauth_application: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication),
+                user: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)
+              }
+            )
         end
         def to_hash
         end
@@ -943,7 +967,8 @@ module Increase
             released_at: T.nilable(Time),
             status: Symbol,
             type: Symbol
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -960,20 +985,21 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              amount: Integer,
-              automatically_releases_at: Time,
-              created_at: Time,
-              currency: Symbol,
-              held_transaction_id: T.nilable(String),
-              pending_transaction_id: T.nilable(String),
-              released_at: T.nilable(Time),
-              status: Symbol,
-              type: Symbol
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                amount: Integer,
+                automatically_releases_at: Time,
+                created_at: Time,
+                currency: Symbol,
+                held_transaction_id: T.nilable(String),
+                pending_transaction_id: T.nilable(String),
+                released_at: T.nilable(Time),
+                status: Symbol,
+                type: Symbol
+              }
+            )
         end
         def to_hash
         end
@@ -1238,7 +1264,8 @@ module Increase
             trace_number: String,
             transaction_id: String,
             transfer_id: String
-          ).void
+          )
+            .void
         end
         def initialize(
           created_at:,
@@ -1251,16 +1278,17 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              created_at: Time,
-              raw_return_reason_code: String,
-              return_reason_code: Symbol,
-              trace_number: String,
-              transaction_id: String,
-              transfer_id: String
-            }
-          )
+          override
+            .returns(
+              {
+                created_at: Time,
+                raw_return_reason_code: String,
+                return_reason_code: Symbol,
+                trace_number: String,
+                transaction_id: String,
+                transfer_id: String
+              }
+            )
         end
         def to_hash
         end
@@ -1605,7 +1633,8 @@ module Increase
             expected_settlement_schedule: Symbol,
             submitted_at: Time,
             trace_number: String
-          ).void
+          )
+            .void
         end
         def initialize(
           effective_date:,
@@ -1617,15 +1646,16 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              effective_date: Date,
-              expected_funds_settlement_at: Time,
-              expected_settlement_schedule: Symbol,
-              submitted_at: Time,
-              trace_number: String
-            }
-          )
+          override
+            .returns(
+              {
+                effective_date: Date,
+                expected_funds_settlement_at: Time,
+                expected_settlement_schedule: Symbol,
+                submitted_at: Time,
+                trace_number: String
+              }
+            )
         end
         def to_hash
         end

@@ -71,10 +71,7 @@ module Increase
         #     will be declined if this is `allowed` but the Account Number is not active.
         #
         #   @return [Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus, nil]
-        optional :debit_status,
-                 enum: -> {
-                   Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus
-                 }
+        optional :debit_status, enum: -> { Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus }
 
         # @!parse
         #   # @return [Symbol, Increase::Models::AccountNumberUpdateParams::InboundACH::DebitStatus]

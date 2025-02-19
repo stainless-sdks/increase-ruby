@@ -7,7 +7,8 @@ module Increase
         params(
           inbound_ach_transfer_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::InboundACHTransfer)
+        )
+          .returns(Increase::Models::InboundACHTransfer)
       end
       def retrieve(inbound_ach_transfer_id, request_options: {})
       end
@@ -21,7 +22,8 @@ module Increase
           limit: Integer,
           status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::InboundACHTransfer])
+        )
+          .returns(Increase::Page[Increase::Models::InboundACHTransfer])
       end
       def list(
         account_id: nil,
@@ -40,7 +42,8 @@ module Increase
           updated_account_number: String,
           updated_routing_number: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::InboundACHTransfer)
+        )
+          .returns(Increase::Models::InboundACHTransfer)
       end
       def create_notification_of_change(
         inbound_ach_transfer_id,
@@ -55,7 +58,8 @@ module Increase
           inbound_ach_transfer_id: String,
           reason: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::InboundACHTransfer)
+        )
+          .returns(Increase::Models::InboundACHTransfer)
       end
       def decline(inbound_ach_transfer_id, reason: nil, request_options: {})
       end
@@ -65,7 +69,8 @@ module Increase
           inbound_ach_transfer_id: String,
           reason: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::InboundACHTransfer)
+        )
+          .returns(Increase::Models::InboundACHTransfer)
       end
       def transfer_return(inbound_ach_transfer_id, reason:, request_options: {})
       end

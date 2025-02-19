@@ -43,7 +43,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck).returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck)
+        params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck)
+          .returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck)
       end
       def physical_check=(_)
       end
@@ -61,7 +62,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CheckTransferCreateParams::ThirdParty).returns(Increase::Models::CheckTransferCreateParams::ThirdParty)
+        params(_: Increase::Models::CheckTransferCreateParams::ThirdParty)
+          .returns(Increase::Models::CheckTransferCreateParams::ThirdParty)
       end
       def third_party=(_)
       end
@@ -76,7 +78,8 @@ module Increase
           require_approval: T::Boolean,
           third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id:,
@@ -91,18 +94,19 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            amount: Integer,
-            fulfillment_method: Symbol,
-            source_account_number_id: String,
-            physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
-            require_approval: T::Boolean,
-            third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              amount: Integer,
+              fulfillment_method: Symbol,
+              source_account_number_id: String,
+              physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
+              require_approval: T::Boolean,
+              third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -127,7 +131,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress).returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress)
+          params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress)
+            .returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress)
         end
         def mailing_address=(_)
         end
@@ -161,7 +166,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress).returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)
+          params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)
+            .returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)
         end
         def return_address=(_)
         end
@@ -182,7 +188,8 @@ module Increase
             note: String,
             return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
             signature_text: String
-          ).void
+          )
+            .void
         end
         def initialize(
           mailing_address:,
@@ -195,11 +202,17 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress, memo: String, recipient_name: String, note: String, return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, signature_text: String
-            }
-          )
+          override
+            .returns(
+              {
+                mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+                memo: String,
+                recipient_name: String,
+                note: String,
+                return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+                signature_text: String
+              }
+            )
         end
         def to_hash
         end
@@ -267,16 +280,15 @@ module Increase
           end
 
           sig do
-            override.returns(
-              {
-                city: String,
-                line1: String,
-                postal_code: String,
-                state: String,
-                line2: String,
-                name: String
-              }
-            )
+            override
+              .returns({
+                         city: String,
+                         line1: String,
+                         postal_code: String,
+                         state: String,
+                         line2: String,
+                         name: String
+                       })
           end
           def to_hash
           end
@@ -345,16 +357,15 @@ module Increase
           end
 
           sig do
-            override.returns(
-              {
-                city: String,
-                line1: String,
-                name: String,
-                postal_code: String,
-                state: String,
-                line2: String
-              }
-            )
+            override
+              .returns({
+                         city: String,
+                         line1: String,
+                         name: String,
+                         postal_code: String,
+                         state: String,
+                         line2: String
+                       })
           end
           def to_hash
           end

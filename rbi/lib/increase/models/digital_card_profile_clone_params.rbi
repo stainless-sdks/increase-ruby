@@ -75,7 +75,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::DigitalCardProfileCloneParams::TextColor).returns(Increase::Models::DigitalCardProfileCloneParams::TextColor)
+        params(_: Increase::Models::DigitalCardProfileCloneParams::TextColor)
+          .returns(Increase::Models::DigitalCardProfileCloneParams::TextColor)
       end
       def text_color=(_)
       end
@@ -92,7 +93,8 @@ module Increase
           issuer_name: String,
           text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         app_icon_file_id: nil,
@@ -109,20 +111,21 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            app_icon_file_id: String,
-            background_image_file_id: String,
-            card_description: String,
-            contact_email: String,
-            contact_phone: String,
-            contact_website: String,
-            description: String,
-            issuer_name: String,
-            text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              app_icon_file_id: String,
+              background_image_file_id: String,
+              card_description: String,
+              contact_email: String,
+              contact_phone: String,
+              contact_website: String,
+              description: String,
+              issuer_name: String,
+              text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

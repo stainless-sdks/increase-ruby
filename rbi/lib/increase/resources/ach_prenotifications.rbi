@@ -19,7 +19,8 @@ module Increase
           individual_name: String,
           standard_entry_class_code: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::ACHPrenotification)
+        )
+          .returns(Increase::Models::ACHPrenotification)
       end
       def create(
         account_id:,
@@ -43,7 +44,8 @@ module Increase
         params(
           ach_prenotification_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::ACHPrenotification)
+        )
+          .returns(Increase::Models::ACHPrenotification)
       end
       def retrieve(ach_prenotification_id, request_options: {})
       end
@@ -55,7 +57,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::ACHPrenotification])
+        )
+          .returns(Increase::Page[Increase::Models::ACHPrenotification])
       end
       def list(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
       end

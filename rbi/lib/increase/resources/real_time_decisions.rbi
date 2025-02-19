@@ -7,7 +7,8 @@ module Increase
         params(
           real_time_decision_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::RealTimeDecision)
+        )
+          .returns(Increase::Models::RealTimeDecision)
       end
       def retrieve(real_time_decision_id, request_options: {})
       end
@@ -21,7 +22,8 @@ module Increase
           digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
           digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::RealTimeDecision)
+        )
+          .returns(Increase::Models::RealTimeDecision)
       end
       def action(
         real_time_decision_id,

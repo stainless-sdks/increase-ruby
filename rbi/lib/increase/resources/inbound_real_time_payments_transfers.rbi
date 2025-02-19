@@ -7,7 +7,8 @@ module Increase
         params(
           inbound_real_time_payments_transfer_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::InboundRealTimePaymentsTransfer)
+        )
+          .returns(Increase::Models::InboundRealTimePaymentsTransfer)
       end
       def retrieve(inbound_real_time_payments_transfer_id, request_options: {})
       end
@@ -20,7 +21,8 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::InboundRealTimePaymentsTransfer])
+        )
+          .returns(Increase::Page[Increase::Models::InboundRealTimePaymentsTransfer])
       end
       def list(
         account_id: nil,

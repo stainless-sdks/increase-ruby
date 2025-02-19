@@ -7,7 +7,8 @@ module Increase
         params(
           digital_wallet_token_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::DigitalWalletToken)
+        )
+          .returns(Increase::Models::DigitalWalletToken)
       end
       def retrieve(digital_wallet_token_id, request_options: {})
       end
@@ -19,7 +20,8 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::DigitalWalletToken])
+        )
+          .returns(Increase::Page[Increase::Models::DigitalWalletToken])
       end
       def list(card_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
       end

@@ -27,7 +27,8 @@ module Increase
           entity_id: String,
           file_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(entity_id:, file_id:, request_options: {})
       end

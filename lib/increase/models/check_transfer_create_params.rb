@@ -23,10 +23,7 @@ module Increase
       #   Whether Increase will print and mail the check or if you will do it yourself.
       #
       #   @return [Symbol, Increase::Models::CheckTransferCreateParams::FulfillmentMethod]
-      required :fulfillment_method,
-               enum: -> {
-                 Increase::Models::CheckTransferCreateParams::FulfillmentMethod
-               }
+      required :fulfillment_method, enum: -> { Increase::Models::CheckTransferCreateParams::FulfillmentMethod }
 
       # @!attribute source_account_number_id
       #   The identifier of the Account Number from which to send the transfer and print
@@ -169,10 +166,7 @@ module Increase
         #     them.
         #
         #   @return [Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, nil]
-        optional :return_address,
-                 -> {
-                   Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
-                 }
+        optional :return_address, -> { Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress }
 
         # @!parse
         #   # @return [Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress]

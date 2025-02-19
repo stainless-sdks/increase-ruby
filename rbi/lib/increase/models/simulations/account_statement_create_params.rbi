@@ -18,8 +18,12 @@ module Increase
         sig do
           params(
             account_id: String,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+            request_options: T.any(
+              Increase::RequestOptions,
+              T::Hash[Symbol, T.anything]
+            )
+          )
+            .void
         end
         def initialize(account_id:, request_options: {})
         end

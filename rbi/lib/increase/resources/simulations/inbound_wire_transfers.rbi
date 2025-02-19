@@ -24,7 +24,8 @@ module Increase
             originator_to_beneficiary_information_line4: String,
             sender_reference: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::InboundWireTransfer)
+          )
+            .returns(Increase::Models::InboundWireTransfer)
         end
         def create(
           account_number_id:,

@@ -108,7 +108,8 @@ module Increase
           authorizer_company: String,
           authorizer_ip_address: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         authorization_terms:,
@@ -127,22 +128,23 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            authorization_terms: String,
-            authorized_at: Time,
-            authorizer_email: String,
-            authorizer_name: String,
-            customer_has_been_offboarded: T::Boolean,
-            proof_of_authorization_request_id: String,
-            validated_account_ownership_via_credential: T::Boolean,
-            validated_account_ownership_with_account_statement: T::Boolean,
-            validated_account_ownership_with_microdeposit: T::Boolean,
-            authorizer_company: String,
-            authorizer_ip_address: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              authorization_terms: String,
+              authorized_at: Time,
+              authorizer_email: String,
+              authorizer_name: String,
+              customer_has_been_offboarded: T::Boolean,
+              proof_of_authorization_request_id: String,
+              validated_account_ownership_via_credential: T::Boolean,
+              validated_account_ownership_with_account_statement: T::Boolean,
+              validated_account_ownership_with_microdeposit: T::Boolean,
+              authorizer_company: String,
+              authorizer_ip_address: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
