@@ -45,21 +45,23 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            entity_id: String,
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              entity_id: String,
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

@@ -68,23 +68,25 @@ module Increase
           idempotency_key: T.nilable(String),
           name: String,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: T.nilable(String),
-            compliance_category: T.nilable(Symbol),
-            entity_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            name: String,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: T.nilable(String),
+              compliance_category: T.nilable(Symbol),
+              entity_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              name: String,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

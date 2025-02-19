@@ -19,7 +19,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityCreateParams::Corporation).returns(Increase::Models::EntityCreateParams::Corporation)
+        params(_: Increase::Models::EntityCreateParams::Corporation)
+          .returns(Increase::Models::EntityCreateParams::Corporation)
       end
       def corporation=(_)
       end
@@ -37,7 +38,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityCreateParams::GovernmentAuthority).returns(Increase::Models::EntityCreateParams::GovernmentAuthority)
+        params(_: Increase::Models::EntityCreateParams::GovernmentAuthority)
+          .returns(Increase::Models::EntityCreateParams::GovernmentAuthority)
       end
       def government_authority=(_)
       end
@@ -57,7 +59,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityCreateParams::NaturalPerson).returns(Increase::Models::EntityCreateParams::NaturalPerson)
+        params(_: Increase::Models::EntityCreateParams::NaturalPerson)
+          .returns(Increase::Models::EntityCreateParams::NaturalPerson)
       end
       def natural_person=(_)
       end
@@ -67,7 +70,8 @@ module Increase
       end
 
       sig do
-        params(_: T::Array[Increase::Models::EntityCreateParams::SupplementalDocument]).returns(T::Array[Increase::Models::EntityCreateParams::SupplementalDocument])
+        params(_: T::Array[Increase::Models::EntityCreateParams::SupplementalDocument])
+          .returns(T::Array[Increase::Models::EntityCreateParams::SupplementalDocument])
       end
       def supplemental_documents=(_)
       end
@@ -77,7 +81,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityCreateParams::ThirdPartyVerification).returns(Increase::Models::EntityCreateParams::ThirdPartyVerification)
+        params(_: Increase::Models::EntityCreateParams::ThirdPartyVerification)
+          .returns(Increase::Models::EntityCreateParams::ThirdPartyVerification)
       end
       def third_party_verification=(_)
       end
@@ -104,7 +109,8 @@ module Increase
           third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
           trust: Increase::Models::EntityCreateParams::Trust,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         structure:,
@@ -121,20 +127,21 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            structure: Symbol,
-            corporation: Increase::Models::EntityCreateParams::Corporation,
-            description: String,
-            government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,
-            joint: Increase::Models::EntityCreateParams::Joint,
-            natural_person: Increase::Models::EntityCreateParams::NaturalPerson,
-            supplemental_documents: T::Array[Increase::Models::EntityCreateParams::SupplementalDocument],
-            third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
-            trust: Increase::Models::EntityCreateParams::Trust,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              structure: Symbol,
+              corporation: Increase::Models::EntityCreateParams::Corporation,
+              description: String,
+              government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,
+              joint: Increase::Models::EntityCreateParams::Joint,
+              natural_person: Increase::Models::EntityCreateParams::NaturalPerson,
+              supplemental_documents: T::Array[Increase::Models::EntityCreateParams::SupplementalDocument],
+              third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
+              trust: Increase::Models::EntityCreateParams::Trust,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -168,7 +175,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateParams::Corporation::Address).returns(Increase::Models::EntityCreateParams::Corporation::Address)
+          params(_: Increase::Models::EntityCreateParams::Corporation::Address)
+            .returns(Increase::Models::EntityCreateParams::Corporation::Address)
         end
         def address=(_)
         end
@@ -178,7 +186,8 @@ module Increase
         end
 
         sig do
-          params(_: T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner]).returns(T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner])
+          params(_: T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner])
+            .returns(T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner])
         end
         def beneficial_owners=(_)
         end
@@ -232,7 +241,8 @@ module Increase
             incorporation_state: String,
             industry_code: String,
             website: String
-          ).void
+          )
+            .void
         end
         def initialize(
           address:,
@@ -246,17 +256,18 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              address: Increase::Models::EntityCreateParams::Corporation::Address,
-              beneficial_owners: T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner],
-              name: String,
-              tax_identifier: String,
-              incorporation_state: String,
-              industry_code: String,
-              website: String
-            }
-          )
+          override
+            .returns(
+              {
+                address: Increase::Models::EntityCreateParams::Corporation::Address,
+                beneficial_owners: T::Array[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner],
+                name: String,
+                tax_identifier: String,
+                incorporation_state: String,
+                industry_code: String,
+                website: String
+              }
+            )
         end
         def to_hash
         end
@@ -317,7 +328,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual).returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual)
+            params(_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual)
+              .returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual)
           end
           def individual=(_)
           end
@@ -343,30 +355,33 @@ module Increase
               individual: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
               prongs: T::Array[Symbol],
               company_title: String
-            ).void
+            )
+              .void
           end
           def initialize(individual:, prongs:, company_title: nil)
           end
 
           sig do
-            override.returns(
-              {
-                individual: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual, prongs: T::Array[Symbol], company_title: String
-              }
-            )
+            override
+              .returns(
+                {
+                  individual: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
+                  prongs: T::Array[Symbol],
+                  company_title: String
+                }
+              )
           end
           def to_hash
           end
 
           class Individual < Increase::BaseModel
-            sig do
-              returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address)
-            end
+            sig { returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address) }
             def address
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address).returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address)
+              params(_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address)
+                .returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address)
             end
             def address=(_)
             end
@@ -379,14 +394,13 @@ module Increase
             def date_of_birth=(_)
             end
 
-            sig do
-              returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification)
-            end
+            sig { returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification) }
             def identification
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification).returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification)
+              params(_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification)
+                .returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification)
             end
             def identification=(_)
             end
@@ -414,17 +428,23 @@ module Increase
                 identification: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
                 name: String,
                 confirmed_no_us_tax_id: T::Boolean
-              ).void
+              )
+                .void
             end
             def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
             end
 
             sig do
-              override.returns(
-                {
-                  address: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address, date_of_birth: Date, identification: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification, name: String, confirmed_no_us_tax_id: T::Boolean
-                }
-              )
+              override
+                .returns(
+                  {
+                    address: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address,
+                    date_of_birth: Date,
+                    identification: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
+                    name: String,
+                    confirmed_no_us_tax_id: T::Boolean
+                  }
+                )
             end
             def to_hash
             end
@@ -499,7 +519,11 @@ module Increase
               end
 
               sig do
-                returns(T.nilable(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense))
+                returns(
+                  T.nilable(
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense
+                  )
+                )
               end
               def drivers_license
               end
@@ -507,13 +531,20 @@ module Increase
               sig do
                 params(
                   _: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense
-                ).returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense)
+                )
+                  .returns(
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense
+                  )
               end
               def drivers_license=(_)
               end
 
               sig do
-                returns(T.nilable(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other))
+                returns(
+                  T.nilable(
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other
+                  )
+                )
               end
               def other
               end
@@ -521,13 +552,20 @@ module Increase
               sig do
                 params(
                   _: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other
-                ).returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other)
+                )
+                  .returns(
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other
+                  )
               end
               def other=(_)
               end
 
               sig do
-                returns(T.nilable(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport))
+                returns(
+                  T.nilable(
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
+                  )
+                )
               end
               def passport
               end
@@ -535,7 +573,10 @@ module Increase
               sig do
                 params(
                   _: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
-                ).returns(Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport)
+                )
+                  .returns(
+                    Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
+                  )
               end
               def passport=(_)
               end
@@ -547,21 +588,23 @@ module Increase
                   drivers_license: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
                   other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
                   passport: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
-                ).void
+                )
+                  .void
               end
               def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
               end
 
               sig do
-                override.returns(
-                  {
-                    method_: Symbol,
-                    number: String,
-                    drivers_license: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
-                    other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
-                    passport: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
-                  }
-                )
+                override
+                  .returns(
+                    {
+                      method_: Symbol,
+                      number: String,
+                      drivers_license: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
+                      other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
+                      passport: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
+                    }
+                  )
               end
               def to_hash
               end
@@ -690,21 +733,23 @@ module Increase
                     file_id: String,
                     back_file_id: String,
                     expiration_date: Date
-                  ).void
+                  )
+                    .void
                 end
                 def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
                 end
 
                 sig do
-                  override.returns(
-                    {
-                      country: String,
-                      description: String,
-                      file_id: String,
-                      back_file_id: String,
-                      expiration_date: Date
-                    }
-                  )
+                  override
+                    .returns(
+                      {
+                        country: String,
+                        description: String,
+                        file_id: String,
+                        back_file_id: String,
+                        expiration_date: Date
+                      }
+                    )
                 end
                 def to_hash
                 end
@@ -768,7 +813,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateParams::GovernmentAuthority::Address).returns(Increase::Models::EntityCreateParams::GovernmentAuthority::Address)
+          params(_: Increase::Models::EntityCreateParams::GovernmentAuthority::Address)
+            .returns(Increase::Models::EntityCreateParams::GovernmentAuthority::Address)
         end
         def address=(_)
         end
@@ -778,7 +824,8 @@ module Increase
         end
 
         sig do
-          params(_: T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson]).returns(T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson])
+          params(_: T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson])
+            .returns(T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson])
         end
         def authorized_persons=(_)
         end
@@ -823,22 +870,24 @@ module Increase
             name: String,
             tax_identifier: String,
             website: String
-          ).void
+          )
+            .void
         end
         def initialize(address:, authorized_persons:, category:, name:, tax_identifier:, website: nil)
         end
 
         sig do
-          override.returns(
-            {
-              address: Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
-              authorized_persons: T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson],
-              category: Symbol,
-              name: String,
-              tax_identifier: String,
-              website: String
-            }
-          )
+          override
+            .returns(
+              {
+                address: Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
+                authorized_persons: T::Array[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson],
+                category: Symbol,
+                name: String,
+                tax_identifier: String,
+                website: String
+              }
+            )
         end
         def to_hash
         end
@@ -929,7 +978,8 @@ module Increase
         end
 
         sig do
-          params(_: T::Array[Increase::Models::EntityCreateParams::Joint::Individual]).returns(T::Array[Increase::Models::EntityCreateParams::Joint::Individual])
+          params(_: T::Array[Increase::Models::EntityCreateParams::Joint::Individual])
+            .returns(T::Array[Increase::Models::EntityCreateParams::Joint::Individual])
         end
         def individuals=(_)
         end
@@ -942,22 +992,13 @@ module Increase
         def name=(_)
         end
 
-        sig do
-          params(
-            individuals: T::Array[Increase::Models::EntityCreateParams::Joint::Individual],
-            name: String
-          ).void
-        end
+        sig { params(individuals: T::Array[Increase::Models::EntityCreateParams::Joint::Individual], name: String).void }
         def initialize(individuals:, name: nil)
         end
 
         sig do
-          override.returns(
-            {
-              individuals: T::Array[Increase::Models::EntityCreateParams::Joint::Individual],
-              name: String
-            }
-          )
+          override
+            .returns({individuals: T::Array[Increase::Models::EntityCreateParams::Joint::Individual], name: String})
         end
         def to_hash
         end
@@ -968,7 +1009,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::Joint::Individual::Address).returns(Increase::Models::EntityCreateParams::Joint::Individual::Address)
+            params(_: Increase::Models::EntityCreateParams::Joint::Individual::Address)
+              .returns(Increase::Models::EntityCreateParams::Joint::Individual::Address)
           end
           def address=(_)
           end
@@ -986,7 +1028,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification).returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification)
+            params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification)
+              .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification)
           end
           def identification=(_)
           end
@@ -1014,21 +1057,23 @@ module Increase
               identification: Increase::Models::EntityCreateParams::Joint::Individual::Identification,
               name: String,
               confirmed_no_us_tax_id: T::Boolean
-            ).void
+            )
+              .void
           end
           def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
           end
 
           sig do
-            override.returns(
-              {
-                address: Increase::Models::EntityCreateParams::Joint::Individual::Address,
-                date_of_birth: Date,
-                identification: Increase::Models::EntityCreateParams::Joint::Individual::Identification,
-                name: String,
-                confirmed_no_us_tax_id: T::Boolean
-              }
-            )
+            override
+              .returns(
+                {
+                  address: Increase::Models::EntityCreateParams::Joint::Individual::Address,
+                  date_of_birth: Date,
+                  identification: Increase::Models::EntityCreateParams::Joint::Individual::Identification,
+                  name: String,
+                  confirmed_no_us_tax_id: T::Boolean
+                }
+              )
           end
           def to_hash
           end
@@ -1101,37 +1146,38 @@ module Increase
             end
 
             sig do
-              returns(T.nilable(Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense))
+              returns(
+                T.nilable(Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense)
+              )
             end
             def drivers_license
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense).returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense)
+              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense)
+                .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense)
             end
             def drivers_license=(_)
             end
 
-            sig do
-              returns(T.nilable(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other))
-            end
+            sig { returns(T.nilable(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other)) }
             def other
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other).returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other)
+              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other)
+                .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other)
             end
             def other=(_)
             end
 
-            sig do
-              returns(T.nilable(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport))
-            end
+            sig { returns(T.nilable(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport)) }
             def passport
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport).returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport)
+              params(_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport)
+                .returns(Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport)
             end
             def passport=(_)
             end
@@ -1143,21 +1189,23 @@ module Increase
                 drivers_license: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
                 other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
                 passport: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
-              ).void
+              )
+                .void
             end
             def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
             end
 
             sig do
-              override.returns(
-                {
-                  method_: Symbol,
-                  number: String,
-                  drivers_license: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
-                  other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
-                  passport: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
-                }
-              )
+              override
+                .returns(
+                  {
+                    method_: Symbol,
+                    number: String,
+                    drivers_license: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
+                    other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
+                    passport: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
+                  }
+                )
             end
             def to_hash
             end
@@ -1284,21 +1332,23 @@ module Increase
                   file_id: String,
                   back_file_id: String,
                   expiration_date: Date
-                ).void
+                )
+                  .void
               end
               def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
               end
 
               sig do
-                override.returns(
-                  {
-                    country: String,
-                    description: String,
-                    file_id: String,
-                    back_file_id: String,
-                    expiration_date: Date
-                  }
-                )
+                override
+                  .returns(
+                    {
+                      country: String,
+                      description: String,
+                      file_id: String,
+                      back_file_id: String,
+                      expiration_date: Date
+                    }
+                  )
               end
               def to_hash
               end
@@ -1347,7 +1397,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateParams::NaturalPerson::Address).returns(Increase::Models::EntityCreateParams::NaturalPerson::Address)
+          params(_: Increase::Models::EntityCreateParams::NaturalPerson::Address)
+            .returns(Increase::Models::EntityCreateParams::NaturalPerson::Address)
         end
         def address=(_)
         end
@@ -1365,7 +1416,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification).returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification)
+          params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification)
+            .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification)
         end
         def identification=(_)
         end
@@ -1393,21 +1445,23 @@ module Increase
             identification: Increase::Models::EntityCreateParams::NaturalPerson::Identification,
             name: String,
             confirmed_no_us_tax_id: T::Boolean
-          ).void
+          )
+            .void
         end
         def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
         end
 
         sig do
-          override.returns(
-            {
-              address: Increase::Models::EntityCreateParams::NaturalPerson::Address,
-              date_of_birth: Date,
-              identification: Increase::Models::EntityCreateParams::NaturalPerson::Identification,
-              name: String,
-              confirmed_no_us_tax_id: T::Boolean
-            }
-          )
+          override
+            .returns(
+              {
+                address: Increase::Models::EntityCreateParams::NaturalPerson::Address,
+                date_of_birth: Date,
+                identification: Increase::Models::EntityCreateParams::NaturalPerson::Identification,
+                name: String,
+                confirmed_no_us_tax_id: T::Boolean
+              }
+            )
         end
         def to_hash
         end
@@ -1479,38 +1533,35 @@ module Increase
           def number=(_)
           end
 
-          sig do
-            returns(T.nilable(Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense))
-          end
+          sig { returns(T.nilable(Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense)) }
           def drivers_license
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense).returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense)
+            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense)
+              .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense)
           end
           def drivers_license=(_)
           end
 
-          sig do
-            returns(T.nilable(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other))
-          end
+          sig { returns(T.nilable(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other)) }
           def other
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other).returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other)
+            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other)
+              .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other)
           end
           def other=(_)
           end
 
-          sig do
-            returns(T.nilable(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport))
-          end
+          sig { returns(T.nilable(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport)) }
           def passport
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport).returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport)
+            params(_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport)
+              .returns(Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport)
           end
           def passport=(_)
           end
@@ -1522,21 +1573,23 @@ module Increase
               drivers_license: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
               other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
               passport: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
-            ).void
+            )
+              .void
           end
           def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
           end
 
           sig do
-            override.returns(
-              {
-                method_: Symbol,
-                number: String,
-                drivers_license: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
-                other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
-                passport: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
-              }
-            )
+            override
+              .returns(
+                {
+                  method_: Symbol,
+                  number: String,
+                  drivers_license: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
+                  other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
+                  passport: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
+                }
+              )
           end
           def to_hash
           end
@@ -1656,21 +1709,23 @@ module Increase
                 file_id: String,
                 back_file_id: String,
                 expiration_date: Date
-              ).void
+              )
+                .void
             end
             def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
             end
 
             sig do
-              override.returns(
-                {
-                  country: String,
-                  description: String,
-                  file_id: String,
-                  back_file_id: String,
-                  expiration_date: Date
-                }
-              )
+              override
+                .returns(
+                  {
+                    country: String,
+                    description: String,
+                    file_id: String,
+                    back_file_id: String,
+                    expiration_date: Date
+                  }
+                )
             end
             def to_hash
             end
@@ -1776,7 +1831,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateParams::Trust::Address).returns(Increase::Models::EntityCreateParams::Trust::Address)
+          params(_: Increase::Models::EntityCreateParams::Trust::Address)
+            .returns(Increase::Models::EntityCreateParams::Trust::Address)
         end
         def address=(_)
         end
@@ -1802,7 +1858,8 @@ module Increase
         end
 
         sig do
-          params(_: T::Array[Increase::Models::EntityCreateParams::Trust::Trustee]).returns(T::Array[Increase::Models::EntityCreateParams::Trust::Trustee])
+          params(_: T::Array[Increase::Models::EntityCreateParams::Trust::Trustee])
+            .returns(T::Array[Increase::Models::EntityCreateParams::Trust::Trustee])
         end
         def trustees=(_)
         end
@@ -1828,7 +1885,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::EntityCreateParams::Trust::Grantor).returns(Increase::Models::EntityCreateParams::Trust::Grantor)
+          params(_: Increase::Models::EntityCreateParams::Trust::Grantor)
+            .returns(Increase::Models::EntityCreateParams::Trust::Grantor)
         end
         def grantor=(_)
         end
@@ -1851,7 +1909,8 @@ module Increase
             formation_state: String,
             grantor: Increase::Models::EntityCreateParams::Trust::Grantor,
             tax_identifier: String
-          ).void
+          )
+            .void
         end
         def initialize(
           address:,
@@ -1866,18 +1925,19 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              address: Increase::Models::EntityCreateParams::Trust::Address,
-              category: Symbol,
-              name: String,
-              trustees: T::Array[Increase::Models::EntityCreateParams::Trust::Trustee],
-              formation_document_file_id: String,
-              formation_state: String,
-              grantor: Increase::Models::EntityCreateParams::Trust::Grantor,
-              tax_identifier: String
-            }
-          )
+          override
+            .returns(
+              {
+                address: Increase::Models::EntityCreateParams::Trust::Address,
+                category: Symbol,
+                name: String,
+                trustees: T::Array[Increase::Models::EntityCreateParams::Trust::Trustee],
+                formation_document_file_id: String,
+                formation_state: String,
+                grantor: Increase::Models::EntityCreateParams::Trust::Grantor,
+                tax_identifier: String
+              }
+            )
         end
         def to_hash
         end
@@ -1960,27 +2020,22 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual).returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual)
+            params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual)
+              .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual)
           end
           def individual=(_)
           end
 
           sig do
-            params(
-              structure: Symbol,
-              individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual
-            ).void
+            params(structure: Symbol, individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual)
+              .void
           end
           def initialize(structure:, individual: nil)
           end
 
           sig do
-            override.returns(
-              {
-                structure: Symbol,
-                individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual
-              }
-            )
+            override
+              .returns({structure: Symbol, individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual})
           end
           def to_hash
           end
@@ -2002,7 +2057,8 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address).returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address)
+              params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address)
+                .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address)
             end
             def address=(_)
             end
@@ -2020,7 +2076,8 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification).returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification)
+              params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification)
+                .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification)
             end
             def identification=(_)
             end
@@ -2048,21 +2105,23 @@ module Increase
                 identification: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
                 name: String,
                 confirmed_no_us_tax_id: T::Boolean
-              ).void
+              )
+                .void
             end
             def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
             end
 
             sig do
-              override.returns(
-                {
-                  address: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address,
-                  date_of_birth: Date,
-                  identification: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
-                  name: String,
-                  confirmed_no_us_tax_id: T::Boolean
-                }
-              )
+              override
+                .returns(
+                  {
+                    address: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address,
+                    date_of_birth: Date,
+                    identification: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
+                    name: String,
+                    confirmed_no_us_tax_id: T::Boolean
+                  }
+                )
             end
             def to_hash
             end
@@ -2137,7 +2196,11 @@ module Increase
               end
 
               sig do
-                returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense))
+                returns(
+                  T.nilable(
+                    Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense
+                  )
+                )
               end
               def drivers_license
               end
@@ -2145,31 +2208,38 @@ module Increase
               sig do
                 params(
                   _: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense
-                ).returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense)
+                )
+                  .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense)
               end
               def drivers_license=(_)
               end
 
               sig do
-                returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other))
+                returns(
+                  T.nilable(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other)
+                )
               end
               def other
               end
 
               sig do
-                params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other).returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other)
+                params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other)
+                  .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other)
               end
               def other=(_)
               end
 
               sig do
-                returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport))
+                returns(
+                  T.nilable(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport)
+                )
               end
               def passport
               end
 
               sig do
-                params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport).returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport)
+                params(_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport)
+                  .returns(Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport)
               end
               def passport=(_)
               end
@@ -2181,21 +2251,23 @@ module Increase
                   drivers_license: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
                   other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
                   passport: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
-                ).void
+                )
+                  .void
               end
               def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
               end
 
               sig do
-                override.returns(
-                  {
-                    method_: Symbol,
-                    number: String,
-                    drivers_license: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
-                    other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
-                    passport: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
-                  }
-                )
+                override
+                  .returns(
+                    {
+                      method_: Symbol,
+                      number: String,
+                      drivers_license: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
+                      other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
+                      passport: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
+                    }
+                  )
               end
               def to_hash
               end
@@ -2324,21 +2396,23 @@ module Increase
                     file_id: String,
                     back_file_id: String,
                     expiration_date: Date
-                  ).void
+                  )
+                    .void
                 end
                 def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
                 end
 
                 sig do
-                  override.returns(
-                    {
-                      country: String,
-                      description: String,
-                      file_id: String,
-                      back_file_id: String,
-                      expiration_date: Date
-                    }
-                  )
+                  override
+                    .returns(
+                      {
+                        country: String,
+                        description: String,
+                        file_id: String,
+                        back_file_id: String,
+                        expiration_date: Date
+                      }
+                    )
                 end
                 def to_hash
                 end
@@ -2387,7 +2461,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Address).returns(Increase::Models::EntityCreateParams::Trust::Grantor::Address)
+            params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Address)
+              .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Address)
           end
           def address=(_)
           end
@@ -2405,7 +2480,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification).returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification)
+            params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification)
+              .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification)
           end
           def identification=(_)
           end
@@ -2433,21 +2509,23 @@ module Increase
               identification: Increase::Models::EntityCreateParams::Trust::Grantor::Identification,
               name: String,
               confirmed_no_us_tax_id: T::Boolean
-            ).void
+            )
+              .void
           end
           def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
           end
 
           sig do
-            override.returns(
-              {
-                address: Increase::Models::EntityCreateParams::Trust::Grantor::Address,
-                date_of_birth: Date,
-                identification: Increase::Models::EntityCreateParams::Trust::Grantor::Identification,
-                name: String,
-                confirmed_no_us_tax_id: T::Boolean
-              }
-            )
+            override
+              .returns(
+                {
+                  address: Increase::Models::EntityCreateParams::Trust::Grantor::Address,
+                  date_of_birth: Date,
+                  identification: Increase::Models::EntityCreateParams::Trust::Grantor::Identification,
+                  name: String,
+                  confirmed_no_us_tax_id: T::Boolean
+                }
+              )
           end
           def to_hash
           end
@@ -2519,38 +2597,35 @@ module Increase
             def number=(_)
             end
 
-            sig do
-              returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense))
-            end
+            sig { returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense)) }
             def drivers_license
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense).returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense)
+              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense)
+                .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense)
             end
             def drivers_license=(_)
             end
 
-            sig do
-              returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other))
-            end
+            sig { returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other)) }
             def other
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other).returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other)
+              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other)
+                .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other)
             end
             def other=(_)
             end
 
-            sig do
-              returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport))
-            end
+            sig { returns(T.nilable(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport)) }
             def passport
             end
 
             sig do
-              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport).returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport)
+              params(_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport)
+                .returns(Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport)
             end
             def passport=(_)
             end
@@ -2562,21 +2637,23 @@ module Increase
                 drivers_license: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
                 other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
                 passport: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
-              ).void
+              )
+                .void
             end
             def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
             end
 
             sig do
-              override.returns(
-                {
-                  method_: Symbol,
-                  number: String,
-                  drivers_license: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
-                  other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
-                  passport: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
-                }
-              )
+              override
+                .returns(
+                  {
+                    method_: Symbol,
+                    number: String,
+                    drivers_license: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
+                    other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
+                    passport: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
+                  }
+                )
             end
             def to_hash
             end
@@ -2703,21 +2780,23 @@ module Increase
                   file_id: String,
                   back_file_id: String,
                   expiration_date: Date
-                ).void
+                )
+                  .void
               end
               def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
               end
 
               sig do
-                override.returns(
-                  {
-                    country: String,
-                    description: String,
-                    file_id: String,
-                    back_file_id: String,
-                    expiration_date: Date
-                  }
-                )
+                override
+                  .returns(
+                    {
+                      country: String,
+                      description: String,
+                      file_id: String,
+                      back_file_id: String,
+                      expiration_date: Date
+                    }
+                  )
               end
               def to_hash
               end

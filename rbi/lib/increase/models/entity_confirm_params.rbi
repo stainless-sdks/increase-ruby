@@ -18,7 +18,8 @@ module Increase
         params(
           confirmed_at: Time,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(confirmed_at: nil, request_options: {})
       end

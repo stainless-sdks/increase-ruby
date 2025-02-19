@@ -45,7 +45,8 @@ module Increase
           limit: Integer,
           proof_of_authorization_request_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         cursor: nil,
@@ -57,15 +58,16 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            proof_of_authorization_request_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              proof_of_authorization_request_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

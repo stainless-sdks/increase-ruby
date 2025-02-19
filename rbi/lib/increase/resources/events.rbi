@@ -7,7 +7,8 @@ module Increase
         params(
           event_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Event)
+        )
+          .returns(Increase::Models::Event)
       end
       def retrieve(event_id, request_options: {})
       end
@@ -20,7 +21,8 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::Event])
+        )
+          .returns(Increase::Page[Increase::Models::Event])
       end
       def list(
         associated_object_id: nil,

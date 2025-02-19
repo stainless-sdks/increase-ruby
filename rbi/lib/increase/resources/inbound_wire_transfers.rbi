@@ -7,7 +7,8 @@ module Increase
         params(
           inbound_wire_transfer_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::InboundWireTransfer)
+        )
+          .returns(Increase::Models::InboundWireTransfer)
       end
       def retrieve(inbound_wire_transfer_id, request_options: {})
       end
@@ -21,7 +22,8 @@ module Increase
           limit: Integer,
           status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::InboundWireTransfer])
+        )
+          .returns(Increase::Page[Increase::Models::InboundWireTransfer])
       end
       def list(
         account_id: nil,

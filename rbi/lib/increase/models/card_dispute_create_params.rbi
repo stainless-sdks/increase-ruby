@@ -36,20 +36,22 @@ module Increase
           explanation: String,
           amount: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(disputed_transaction_id:, explanation:, amount: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            disputed_transaction_id: String,
-            explanation: String,
-            amount: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              disputed_transaction_id: String,
+              explanation: String,
+              amount: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

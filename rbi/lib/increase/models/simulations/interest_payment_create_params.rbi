@@ -46,21 +46,23 @@ module Increase
             period_end: Time,
             period_start: Time,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(account_id:, amount:, period_end: nil, period_start: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              account_id: String,
-              amount: Integer,
-              period_end: Time,
-              period_start: Time,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                account_id: String,
+                amount: Integer,
+                period_end: Time,
+                period_start: Time,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end

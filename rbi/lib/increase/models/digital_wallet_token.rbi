@@ -59,22 +59,24 @@ module Increase
           status: Symbol,
           token_requestor: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, card_id:, created_at:, status:, token_requestor:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            card_id: String,
-            created_at: Time,
-            status: Symbol,
-            token_requestor: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              card_id: String,
+              created_at: Time,
+              status: Symbol,
+              token_requestor: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

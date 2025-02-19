@@ -10,7 +10,8 @@ module Increase
             pending_transaction_id: String,
             amount: Integer,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::Transaction)
+          )
+            .returns(Increase::Models::Transaction)
         end
         def create(card_id:, pending_transaction_id:, amount: nil, request_options: {})
         end

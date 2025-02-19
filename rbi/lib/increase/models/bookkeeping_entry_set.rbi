@@ -32,7 +32,8 @@ module Increase
       end
 
       sig do
-        params(_: T::Array[Increase::Models::BookkeepingEntrySet::Entry]).returns(T::Array[Increase::Models::BookkeepingEntrySet::Entry])
+        params(_: T::Array[Increase::Models::BookkeepingEntrySet::Entry])
+          .returns(T::Array[Increase::Models::BookkeepingEntrySet::Entry])
       end
       def entries=(_)
       end
@@ -70,23 +71,25 @@ module Increase
           idempotency_key: T.nilable(String),
           transaction_id: T.nilable(String),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            created_at: Time,
-            date: Time,
-            entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
-            idempotency_key: T.nilable(String),
-            transaction_id: T.nilable(String),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              created_at: Time,
+              date: Time,
+              entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
+              idempotency_key: T.nilable(String),
+              transaction_id: T.nilable(String),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

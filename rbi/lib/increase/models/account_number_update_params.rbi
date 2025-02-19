@@ -11,7 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountNumberUpdateParams::InboundACH).returns(Increase::Models::AccountNumberUpdateParams::InboundACH)
+        params(_: Increase::Models::AccountNumberUpdateParams::InboundACH)
+          .returns(Increase::Models::AccountNumberUpdateParams::InboundACH)
       end
       def inbound_ach=(_)
       end
@@ -21,7 +22,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountNumberUpdateParams::InboundChecks).returns(Increase::Models::AccountNumberUpdateParams::InboundChecks)
+        params(_: Increase::Models::AccountNumberUpdateParams::InboundChecks)
+          .returns(Increase::Models::AccountNumberUpdateParams::InboundChecks)
       end
       def inbound_checks=(_)
       end
@@ -49,21 +51,23 @@ module Increase
           name: String,
           status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(inbound_ach: nil, inbound_checks: nil, name: nil, status: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH,
-            inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
-            name: String,
-            status: Symbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH,
+              inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
+              name: String,
+              status: Symbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

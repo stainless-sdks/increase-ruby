@@ -35,7 +35,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::DigitalCardProfileListParams::Status).returns(Increase::Models::DigitalCardProfileListParams::Status)
+        params(_: Increase::Models::DigitalCardProfileListParams::Status)
+          .returns(Increase::Models::DigitalCardProfileListParams::Status)
       end
       def status=(_)
       end
@@ -47,21 +48,23 @@ module Increase
           limit: Integer,
           status: Increase::Models::DigitalCardProfileListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            status: Increase::Models::DigitalCardProfileListParams::Status,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              status: Increase::Models::DigitalCardProfileListParams::Status,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

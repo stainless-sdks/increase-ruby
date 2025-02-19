@@ -111,14 +111,13 @@ module Increase
         def merchant_state=(_)
         end
 
-        sig do
-          returns(T.nilable(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails))
-        end
+        sig { returns(T.nilable(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails)) }
         def network_details
         end
 
         sig do
-          params(_: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails).returns(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails)
+          params(_: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails)
+            .returns(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails)
         end
         def network_details=(_)
         end
@@ -158,7 +157,8 @@ module Increase
             physical_card_id: String,
             terminal_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           amount:,
@@ -182,27 +182,28 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              authenticated_card_payment_id: String,
-              card_id: String,
-              decline_reason: Symbol,
-              digital_wallet_token_id: String,
-              direction: Symbol,
-              event_subscription_id: String,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String,
-              merchant_country: String,
-              merchant_descriptor: String,
-              merchant_state: String,
-              network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-              physical_card_id: String,
-              terminal_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                authenticated_card_payment_id: String,
+                card_id: String,
+                decline_reason: Symbol,
+                digital_wallet_token_id: String,
+                direction: Symbol,
+                event_subscription_id: String,
+                merchant_acceptor_id: String,
+                merchant_category_code: String,
+                merchant_city: String,
+                merchant_country: String,
+                merchant_descriptor: String,
+                merchant_state: String,
+                network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+                physical_card_id: String,
+                terminal_id: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end
@@ -280,19 +281,19 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa).returns(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa)
+            params(_: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa)
+              .returns(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa)
           end
           def visa=(_)
           end
 
-          sig do
-            params(visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa).void
-          end
+          sig { params(visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa).void }
           def initialize(visa:)
           end
 
           sig do
-            override.returns({visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa})
+            override
+              .returns({visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa})
           end
           def to_hash
           end

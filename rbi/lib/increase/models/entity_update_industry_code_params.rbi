@@ -18,7 +18,8 @@ module Increase
         params(
           industry_code: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(industry_code:, request_options: {})
       end

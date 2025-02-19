@@ -23,7 +23,8 @@ module Increase
             physical_card_id: String,
             terminal_id: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::Simulations::CardAuthorizationCreateResponse)
+          )
+            .returns(Increase::Models::Simulations::CardAuthorizationCreateResponse)
         end
         def create(
           amount:,

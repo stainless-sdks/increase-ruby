@@ -68,23 +68,25 @@ module Increase
           intrafi_id: String,
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, account_id:, created_at:, idempotency_key:, intrafi_id:, status:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            created_at: Time,
-            idempotency_key: T.nilable(String),
-            intrafi_id: String,
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              created_at: Time,
+              idempotency_key: T.nilable(String),
+              intrafi_id: String,
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

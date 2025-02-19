@@ -104,7 +104,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::DigitalCardProfile::TextColor).returns(Increase::Models::DigitalCardProfile::TextColor)
+        params(_: Increase::Models::DigitalCardProfile::TextColor)
+          .returns(Increase::Models::DigitalCardProfile::TextColor)
       end
       def text_color=(_)
       end
@@ -133,7 +134,8 @@ module Increase
           status: Symbol,
           text_color: Increase::Models::DigitalCardProfile::TextColor,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -154,24 +156,25 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            app_icon_file_id: String,
-            background_image_file_id: String,
-            card_description: String,
-            contact_email: T.nilable(String),
-            contact_phone: T.nilable(String),
-            contact_website: T.nilable(String),
-            created_at: Time,
-            description: String,
-            idempotency_key: T.nilable(String),
-            issuer_name: String,
-            status: Symbol,
-            text_color: Increase::Models::DigitalCardProfile::TextColor,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              app_icon_file_id: String,
+              background_image_file_id: String,
+              card_description: String,
+              contact_email: T.nilable(String),
+              contact_phone: T.nilable(String),
+              contact_website: T.nilable(String),
+              created_at: Time,
+              description: String,
+              idempotency_key: T.nilable(String),
+              issuer_name: String,
+              status: Symbol,
+              text_color: Increase::Models::DigitalCardProfile::TextColor,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

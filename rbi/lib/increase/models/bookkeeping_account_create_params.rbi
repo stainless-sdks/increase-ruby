@@ -45,21 +45,23 @@ module Increase
           compliance_category: Symbol,
           entity_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            name: String,
-            account_id: String,
-            compliance_category: Symbol,
-            entity_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              name: String,
+              account_id: String,
+              compliance_category: Symbol,
+              entity_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

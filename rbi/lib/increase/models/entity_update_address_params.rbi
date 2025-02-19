@@ -11,7 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityUpdateAddressParams::Address).returns(Increase::Models::EntityUpdateAddressParams::Address)
+        params(_: Increase::Models::EntityUpdateAddressParams::Address)
+          .returns(Increase::Models::EntityUpdateAddressParams::Address)
       end
       def address=(_)
       end
@@ -20,18 +21,17 @@ module Increase
         params(
           address: Increase::Models::EntityUpdateAddressParams::Address,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(address:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            address: Increase::Models::EntityUpdateAddressParams::Address,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {address: Increase::Models::EntityUpdateAddressParams::Address, request_options: Increase::RequestOptions}
+          )
       end
       def to_hash
       end

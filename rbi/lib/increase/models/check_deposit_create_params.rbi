@@ -54,7 +54,8 @@ module Increase
           front_image_file_id: String,
           description: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id:,
@@ -67,16 +68,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            amount: Integer,
-            back_image_file_id: String,
-            front_image_file_id: String,
-            description: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              amount: Integer,
+              back_image_file_id: String,
+              front_image_file_id: String,
+              description: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
