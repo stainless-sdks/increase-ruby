@@ -7,46 +7,63 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
+      def account_id
+      end
 
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :ach_debit_status
+      def ach_debit_status
+      end
 
-      sig { params(ach_debit_status: Symbol).void }
-      attr_writer :ach_debit_status
+      sig { params(_: Symbol).returns(Symbol) }
+      def ach_debit_status=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::AccountNumberListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
-      sig { params(created_at: Increase::Models::AccountNumberListParams::CreatedAt).void }
-      attr_writer :created_at
+      sig do
+        params(_: Increase::Models::AccountNumberListParams::CreatedAt)
+          .returns(Increase::Models::AccountNumberListParams::CreatedAt)
+      end
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :idempotency_key
+      def idempotency_key
+      end
 
-      sig { params(idempotency_key: String).void }
-      attr_writer :idempotency_key
+      sig { params(_: String).returns(String) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: Symbol).void }
-      attr_writer :status
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig do
         params(
@@ -58,7 +75,8 @@ module Increase
           limit: Integer,
           status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id: nil,
@@ -73,18 +91,19 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            ach_debit_status: Symbol,
-            created_at: Increase::Models::AccountNumberListParams::CreatedAt,
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            status: Symbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              ach_debit_status: Symbol,
+              created_at: Increase::Models::AccountNumberListParams::CreatedAt,
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              status: Symbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -105,28 +124,36 @@ module Increase
 
       class CreatedAt < Increase::BaseModel
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
-
-        sig { returns(T.nilable(Time)) }
-        attr_reader :before
-
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def before
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_after
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
+
+        sig { returns(T.nilable(Time)) }
+        def on_or_before
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).void }
         def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)

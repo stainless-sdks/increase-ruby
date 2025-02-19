@@ -42,11 +42,7 @@ module Increase
       #   If your transfer is confirmed, this will contain details of the confirmation.
       #
       #   @return [Increase::Models::InboundRealTimePaymentsTransfer::Confirmation, nil]
-      required :confirmation,
-               -> {
-                 Increase::Models::InboundRealTimePaymentsTransfer::Confirmation
-               },
-               nil?: true
+      required :confirmation, -> { Increase::Models::InboundRealTimePaymentsTransfer::Confirmation }, nil?: true
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which

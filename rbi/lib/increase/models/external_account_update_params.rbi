@@ -7,28 +7,36 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :account_holder
+      def account_holder
+      end
 
-      sig { params(account_holder: Symbol).void }
-      attr_writer :account_holder
+      sig { params(_: Symbol).returns(Symbol) }
+      def account_holder=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :description
+      def description
+      end
 
-      sig { params(description: String).void }
-      attr_writer :description
-
-      sig { returns(T.nilable(Symbol)) }
-      attr_reader :funding
-
-      sig { params(funding: Symbol).void }
-      attr_writer :funding
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :status
+      def funding
+      end
 
-      sig { params(status: Symbol).void }
-      attr_writer :status
+      sig { params(_: Symbol).returns(Symbol) }
+      def funding=(_)
+      end
+
+      sig { returns(T.nilable(Symbol)) }
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig do
         params(
@@ -37,21 +45,23 @@ module Increase
           funding: Symbol,
           status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            account_holder: Symbol,
-            description: String,
-            funding: Symbol,
-            status: Symbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_holder: Symbol,
+              description: String,
+              funding: Symbol,
+              status: Symbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

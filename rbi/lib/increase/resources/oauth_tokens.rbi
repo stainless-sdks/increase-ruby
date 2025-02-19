@@ -11,7 +11,8 @@ module Increase
           code: String,
           production_token: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::OAuthToken)
+        )
+          .returns(Increase::Models::OAuthToken)
       end
       def create(
         grant_type:,

@@ -7,28 +7,36 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :entity_id
-
-      sig { params(entity_id: String).void }
-      attr_writer :entity_id
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :idempotency_key
+      def entity_id
+      end
 
-      sig { params(idempotency_key: String).void }
-      attr_writer :idempotency_key
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def idempotency_key
+      end
+
+      sig { params(_: String).returns(String) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig do
         params(
@@ -37,21 +45,23 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(cursor: nil, entity_id: nil, idempotency_key: nil, limit: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            cursor: String,
-            entity_id: String,
-            idempotency_key: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              cursor: String,
+              entity_id: String,
+              idempotency_key: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

@@ -18,19 +18,19 @@ Minitest::TestTask.create do |t|
 end
 
 RuboCop::RakeTask.new(:rubocop) do |t|
-  t.options = %w[--fail-level E --autocorrect]
+  t.options = %w[--fail-level E]
   if ENV.key?("CI")
     t.options += %w[--format github]
   end
 end
 
-multitask(:format_rb) do
+multitask(:ruboformat) do
   find = %w[find ./lib ./test ./rbi -type f -and ( -name *.rb -or -name *.rbi ) -print0]
   fmt = xargs + %w[rubocop --fail-level F --autocorrect --format simple --]
   sh("#{find.shelljoin} | #{fmt.shelljoin}")
 end
 
-multitask(:format_rbs) do
+multitask(:syntax_tree) do
   find = %w[find ./sig -type f -name *.rbs -print0]
   inplace = /darwin|bsd/ =~ RUBY_PLATFORM ? %w[-i''] : %w[-i]
   uuid = SecureRandom.uuid
@@ -63,7 +63,7 @@ multitask(:format_rbs) do
   sh("#{find.shelljoin} | #{pst.shelljoin}")
 end
 
-multitask(format: [:format_rb, :format_rbs])
+multitask(format: [:ruboformat, :syntax_tree])
 
 multitask(:steep) do
   sh(*%w[steep check])
@@ -71,6 +71,10 @@ end
 
 multitask(:sorbet) do
   sh(*%w[srb typecheck -- .], chdir: "./rbi")
+end
+
+file("sorbet/tapioca") do
+  sh(*%w[tapioca init])
 end
 
 multitask(typecheck: [:steep, :sorbet])

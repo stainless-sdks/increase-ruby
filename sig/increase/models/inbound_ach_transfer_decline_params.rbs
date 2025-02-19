@@ -12,7 +12,7 @@ module Increase
 
       def reason=: (
         Increase::Models::InboundACHTransferDeclineParams::reason
-      ) -> void
+      ) -> Increase::Models::InboundACHTransferDeclineParams::reason
 
       def initialize:
         (

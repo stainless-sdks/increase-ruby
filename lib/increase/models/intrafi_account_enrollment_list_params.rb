@@ -86,9 +86,7 @@ module Increase
         #
         #   @return [Array<Symbol, Increase::Models::IntrafiAccountEnrollmentListParams::Status::In>, nil]
         optional :in_,
-                 -> {
-                   Increase::ArrayOf[enum: Increase::Models::IntrafiAccountEnrollmentListParams::Status::In]
-                 },
+                 -> { Increase::ArrayOf[enum: Increase::Models::IntrafiAccountEnrollmentListParams::Status::In] },
                  api_name: :in
 
         # @!parse

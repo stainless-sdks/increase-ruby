@@ -7,7 +7,8 @@ module Increase
         params(
           document_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Document)
+        )
+          .returns(Increase::Models::Document)
       end
       def retrieve(document_id, request_options: {})
       end
@@ -20,7 +21,8 @@ module Increase
           entity_id: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::Document])
+        )
+          .returns(Increase::Page[Increase::Models::Document])
       end
       def list(category: nil, created_at: nil, cursor: nil, entity_id: nil, limit: nil, request_options: {})
       end

@@ -4,13 +4,28 @@ module Increase
   module Models
     class BookkeepingBalanceLookup < Increase::BaseModel
       sig { returns(Integer) }
-      attr_accessor :balance
+      def balance
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def balance=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :bookkeeping_account_id
+      def bookkeeping_account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def bookkeeping_account_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { params(balance: Integer, bookkeeping_account_id: String, type: Symbol).void }
       def initialize(balance:, bookkeeping_account_id:, type:)

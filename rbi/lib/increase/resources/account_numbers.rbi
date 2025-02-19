@@ -10,7 +10,8 @@ module Increase
           inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
           inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::AccountNumber)
+        )
+          .returns(Increase::Models::AccountNumber)
       end
       def create(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {})
       end
@@ -19,7 +20,8 @@ module Increase
         params(
           account_number_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::AccountNumber)
+        )
+          .returns(Increase::Models::AccountNumber)
       end
       def retrieve(account_number_id, request_options: {})
       end
@@ -32,7 +34,8 @@ module Increase
           name: String,
           status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::AccountNumber)
+        )
+          .returns(Increase::Models::AccountNumber)
       end
       def update(
         account_number_id,
@@ -54,7 +57,8 @@ module Increase
           limit: Integer,
           status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::AccountNumber])
+        )
+          .returns(Increase::Page[Increase::Models::AccountNumber])
       end
       def list(
         account_id: nil,

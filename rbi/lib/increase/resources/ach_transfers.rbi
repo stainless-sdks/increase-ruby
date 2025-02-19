@@ -25,7 +25,8 @@ module Increase
           standard_entry_class_code: Symbol,
           transaction_timing: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::ACHTransfer)
+        )
+          .returns(Increase::Models::ACHTransfer)
       end
       def create(
         account_id:,
@@ -55,7 +56,8 @@ module Increase
         params(
           ach_transfer_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::ACHTransfer)
+        )
+          .returns(Increase::Models::ACHTransfer)
       end
       def retrieve(ach_transfer_id, request_options: {})
       end
@@ -69,7 +71,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::ACHTransfer])
+        )
+          .returns(Increase::Page[Increase::Models::ACHTransfer])
       end
       def list(
         account_id: nil,
@@ -86,7 +89,8 @@ module Increase
         params(
           ach_transfer_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::ACHTransfer)
+        )
+          .returns(Increase::Models::ACHTransfer)
       end
       def approve(ach_transfer_id, request_options: {})
       end
@@ -95,7 +99,8 @@ module Increase
         params(
           ach_transfer_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::ACHTransfer)
+        )
+          .returns(Increase::Models::ACHTransfer)
       end
       def cancel(ach_transfer_id, request_options: {})
       end

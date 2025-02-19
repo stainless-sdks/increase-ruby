@@ -21,13 +21,13 @@ module Increase
 
       def inbound_ach=: (
         Increase::Models::AccountNumberCreateParams::InboundACH
-      ) -> void
+      ) -> Increase::Models::AccountNumberCreateParams::InboundACH
 
       attr_reader inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks?
 
       def inbound_checks=: (
         Increase::Models::AccountNumberCreateParams::InboundChecks
-      ) -> void
+      ) -> Increase::Models::AccountNumberCreateParams::InboundChecks
 
       def initialize:
         (

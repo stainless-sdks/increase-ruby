@@ -8,13 +8,22 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :account_id
+        def account_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_id=(_)
+        end
 
         sig do
           params(
             account_id: String,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+            request_options: T.any(
+              Increase::RequestOptions,
+              T::Hash[Symbol, T.anything]
+            )
+          )
+            .void
         end
         def initialize(account_id:, request_options: {})
         end

@@ -10,7 +10,8 @@ module Increase
           shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
           physical_card_profile_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::PhysicalCard)
+        )
+          .returns(Increase::Models::PhysicalCard)
       end
       def create(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {})
       end
@@ -19,7 +20,8 @@ module Increase
         params(
           physical_card_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::PhysicalCard)
+        )
+          .returns(Increase::Models::PhysicalCard)
       end
       def retrieve(physical_card_id, request_options: {})
       end
@@ -29,7 +31,8 @@ module Increase
           physical_card_id: String,
           status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::PhysicalCard)
+        )
+          .returns(Increase::Models::PhysicalCard)
       end
       def update(physical_card_id, status:, request_options: {})
       end
@@ -42,7 +45,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::PhysicalCard])
+        )
+          .returns(Increase::Page[Increase::Models::PhysicalCard])
       end
       def list(
         card_id: nil,

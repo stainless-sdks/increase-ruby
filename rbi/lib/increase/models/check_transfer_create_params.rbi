@@ -7,34 +7,66 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :fulfillment_method
+      def fulfillment_method
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def fulfillment_method=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :source_account_number_id
+      def source_account_number_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def source_account_number_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck)) }
-      attr_reader :physical_check
+      def physical_check
+      end
 
-      sig { params(physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck).void }
-      attr_writer :physical_check
+      sig do
+        params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck)
+          .returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck)
+      end
+      def physical_check=(_)
+      end
 
       sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :require_approval
+      def require_approval
+      end
 
-      sig { params(require_approval: T::Boolean).void }
-      attr_writer :require_approval
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def require_approval=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::ThirdParty)) }
-      attr_reader :third_party
+      def third_party
+      end
 
-      sig { params(third_party: Increase::Models::CheckTransferCreateParams::ThirdParty).void }
-      attr_writer :third_party
+      sig do
+        params(_: Increase::Models::CheckTransferCreateParams::ThirdParty)
+          .returns(Increase::Models::CheckTransferCreateParams::ThirdParty)
+      end
+      def third_party=(_)
+      end
 
       sig do
         params(
@@ -46,7 +78,8 @@ module Increase
           require_approval: T::Boolean,
           third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id:,
@@ -61,18 +94,19 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            amount: Integer,
-            fulfillment_method: Symbol,
-            source_account_number_id: String,
-            physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
-            require_approval: T::Boolean,
-            third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              amount: Integer,
+              fulfillment_method: Symbol,
+              source_account_number_id: String,
+              physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
+              require_approval: T::Boolean,
+              third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -93,33 +127,58 @@ module Increase
 
       class PhysicalCheck < Increase::BaseModel
         sig { returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress) }
-        attr_accessor :mailing_address
-
-        sig { returns(String) }
-        attr_accessor :memo
-
-        sig { returns(String) }
-        attr_accessor :recipient_name
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :note
-
-        sig { params(note: String).void }
-        attr_writer :note
-
-        sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)) }
-        attr_reader :return_address
+        def mailing_address
+        end
 
         sig do
-          params(return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress).void
+          params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress)
+            .returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress)
         end
-        attr_writer :return_address
+        def mailing_address=(_)
+        end
+
+        sig { returns(String) }
+        def memo
+        end
+
+        sig { params(_: String).returns(String) }
+        def memo=(_)
+        end
+
+        sig { returns(String) }
+        def recipient_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def recipient_name=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :signature_text
+        def note
+        end
 
-        sig { params(signature_text: String).void }
-        attr_writer :signature_text
+        sig { params(_: String).returns(String) }
+        def note=(_)
+        end
+
+        sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)) }
+        def return_address
+        end
+
+        sig do
+          params(_: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)
+            .returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)
+        end
+        def return_address=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def signature_text
+        end
+
+        sig { params(_: String).returns(String) }
+        def signature_text=(_)
+        end
 
         sig do
           params(
@@ -129,7 +188,8 @@ module Increase
             note: String,
             return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
             signature_text: String
-          ).void
+          )
+            .void
         end
         def initialize(
           mailing_address:,
@@ -142,39 +202,69 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress, memo: String, recipient_name: String, note: String, return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, signature_text: String
-            }
-          )
+          override
+            .returns(
+              {
+                mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+                memo: String,
+                recipient_name: String,
+                note: String,
+                return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+                signature_text: String
+              }
+            )
         end
         def to_hash
         end
 
         class MailingAddress < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: String).returns(String) }
+          def line1=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :postal_code
+          def postal_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def postal_code=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :line2
+          def line2
+          end
 
-          sig { params(line2: String).void }
-          attr_writer :line2
+          sig { params(_: String).returns(String) }
+          def line2=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :name
+          def name
+          end
 
-          sig { params(name: String).void }
-          attr_writer :name
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig do
             params(
@@ -190,16 +280,15 @@ module Increase
           end
 
           sig do
-            override.returns(
-              {
-                city: String,
-                line1: String,
-                postal_code: String,
-                state: String,
-                line2: String,
-                name: String
-              }
-            )
+            override
+              .returns({
+                         city: String,
+                         line1: String,
+                         postal_code: String,
+                         state: String,
+                         line2: String,
+                         name: String
+                       })
           end
           def to_hash
           end
@@ -207,25 +296,52 @@ module Increase
 
         class ReturnAddress < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: String).returns(String) }
+          def line1=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :postal_code
+          def postal_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def postal_code=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :line2
+          def line2
+          end
 
-          sig { params(line2: String).void }
-          attr_writer :line2
+          sig { params(_: String).returns(String) }
+          def line2=(_)
+          end
 
           sig do
             params(
@@ -241,16 +357,15 @@ module Increase
           end
 
           sig do
-            override.returns(
-              {
-                city: String,
-                line1: String,
-                name: String,
-                postal_code: String,
-                state: String,
-                line2: String
-              }
-            )
+            override
+              .returns({
+                         city: String,
+                         line1: String,
+                         name: String,
+                         postal_code: String,
+                         state: String,
+                         line2: String
+                       })
           end
           def to_hash
           end
@@ -259,10 +374,12 @@ module Increase
 
       class ThirdParty < Increase::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_reader :check_number
+        def check_number
+        end
 
-        sig { params(check_number: String).void }
-        attr_writer :check_number
+        sig { params(_: String).returns(String) }
+        def check_number=(_)
+        end
 
         sig { params(check_number: String).void }
         def initialize(check_number: nil)

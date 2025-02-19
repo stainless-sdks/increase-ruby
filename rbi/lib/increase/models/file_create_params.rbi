@@ -7,16 +7,28 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.any(IO, StringIO)) }
-      attr_accessor :file
+      def file
+      end
+
+      sig { params(_: T.any(IO, StringIO)).returns(T.any(IO, StringIO)) }
+      def file=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :purpose
+      def purpose
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def purpose=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :description
+      def description
+      end
 
-      sig { params(description: String).void }
-      attr_writer :description
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig do
         params(
@@ -24,20 +36,22 @@ module Increase
           purpose: Symbol,
           description: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(file:, purpose:, description: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            file: T.any(IO, StringIO),
-            purpose: Symbol,
-            description: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              file: T.any(IO, StringIO),
+              purpose: Symbol,
+              description: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

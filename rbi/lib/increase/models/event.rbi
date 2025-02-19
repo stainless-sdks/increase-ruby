@@ -4,22 +4,52 @@ module Increase
   module Models
     class Event < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :associated_object_id
+      def associated_object_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def associated_object_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :associated_object_type
+      def associated_object_type
+      end
+
+      sig { params(_: String).returns(String) }
+      def associated_object_type=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :category
+      def category
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def category=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -29,22 +59,24 @@ module Increase
           category: Symbol,
           created_at: Time,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            associated_object_id: String,
-            associated_object_type: String,
-            category: Symbol,
-            created_at: Time,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              associated_object_id: String,
+              associated_object_type: String,
+              category: Symbol,
+              created_at: Time,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

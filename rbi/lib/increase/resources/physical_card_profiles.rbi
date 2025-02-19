@@ -10,7 +10,8 @@ module Increase
           description: String,
           front_image_file_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::PhysicalCardProfile)
+        )
+          .returns(Increase::Models::PhysicalCardProfile)
       end
       def create(
         carrier_image_file_id:,
@@ -25,7 +26,8 @@ module Increase
         params(
           physical_card_profile_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::PhysicalCardProfile)
+        )
+          .returns(Increase::Models::PhysicalCardProfile)
       end
       def retrieve(physical_card_profile_id, request_options: {})
       end
@@ -37,7 +39,8 @@ module Increase
           limit: Integer,
           status: Increase::Models::PhysicalCardProfileListParams::Status,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::PhysicalCardProfile])
+        )
+          .returns(Increase::Page[Increase::Models::PhysicalCardProfile])
       end
       def list(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       end
@@ -46,7 +49,8 @@ module Increase
         params(
           physical_card_profile_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::PhysicalCardProfile)
+        )
+          .returns(Increase::Models::PhysicalCardProfile)
       end
       def archive(physical_card_profile_id, request_options: {})
       end
@@ -60,7 +64,8 @@ module Increase
           front_image_file_id: String,
           front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::PhysicalCardProfile)
+        )
+          .returns(Increase::Models::PhysicalCardProfile)
       end
       def clone_(
         physical_card_profile_id,

@@ -8,22 +8,36 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :account_id
+        def account_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_id=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :period_end
+        def period_end
+        end
 
-        sig { params(period_end: Time).void }
-        attr_writer :period_end
+        sig { params(_: Time).returns(Time) }
+        def period_end=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :period_start
+        def period_start
+        end
 
-        sig { params(period_start: Time).void }
-        attr_writer :period_start
+        sig { params(_: Time).returns(Time) }
+        def period_start=(_)
+        end
 
         sig do
           params(
@@ -32,21 +46,23 @@ module Increase
             period_end: Time,
             period_start: Time,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(account_id:, amount:, period_end: nil, period_start: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              account_id: String,
-              amount: Integer,
-              period_end: Time,
-              period_start: Time,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                account_id: String,
+                amount: Integer,
+                period_end: Time,
+                period_start: Time,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end

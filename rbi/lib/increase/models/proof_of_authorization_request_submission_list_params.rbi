@@ -7,28 +7,36 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :idempotency_key
+      def idempotency_key
+      end
 
-      sig { params(idempotency_key: String).void }
-      attr_writer :idempotency_key
+      sig { params(_: String).returns(String) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :proof_of_authorization_request_id
+      def proof_of_authorization_request_id
+      end
 
-      sig { params(proof_of_authorization_request_id: String).void }
-      attr_writer :proof_of_authorization_request_id
+      sig { params(_: String).returns(String) }
+      def proof_of_authorization_request_id=(_)
+      end
 
       sig do
         params(
@@ -37,7 +45,8 @@ module Increase
           limit: Integer,
           proof_of_authorization_request_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         cursor: nil,
@@ -49,15 +58,16 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            proof_of_authorization_request_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              proof_of_authorization_request_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

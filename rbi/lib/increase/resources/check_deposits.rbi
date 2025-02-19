@@ -11,7 +11,8 @@ module Increase
           front_image_file_id: String,
           description: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::CheckDeposit)
+        )
+          .returns(Increase::Models::CheckDeposit)
       end
       def create(
         account_id:,
@@ -27,7 +28,8 @@ module Increase
         params(
           check_deposit_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::CheckDeposit)
+        )
+          .returns(Increase::Models::CheckDeposit)
       end
       def retrieve(check_deposit_id, request_options: {})
       end
@@ -40,7 +42,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::CheckDeposit])
+        )
+          .returns(Increase::Page[Increase::Models::CheckDeposit])
       end
       def list(
         account_id: nil,

@@ -8,7 +8,8 @@ module Increase
           params(
             transaction_id: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::Transaction)
+          )
+            .returns(Increase::Models::Transaction)
         end
         def create(transaction_id:, request_options: {})
         end

@@ -20,41 +20,41 @@ module Increase
 
       attr_reader app_icon_file_id: String?
 
-      def app_icon_file_id=: (String) -> void
+      def app_icon_file_id=: (String) -> String
 
       attr_reader background_image_file_id: String?
 
-      def background_image_file_id=: (String) -> void
+      def background_image_file_id=: (String) -> String
 
       attr_reader card_description: String?
 
-      def card_description=: (String) -> void
+      def card_description=: (String) -> String
 
       attr_reader contact_email: String?
 
-      def contact_email=: (String) -> void
+      def contact_email=: (String) -> String
 
       attr_reader contact_phone: String?
 
-      def contact_phone=: (String) -> void
+      def contact_phone=: (String) -> String
 
       attr_reader contact_website: String?
 
-      def contact_website=: (String) -> void
+      def contact_website=: (String) -> String
 
       attr_reader description: String?
 
-      def description=: (String) -> void
+      def description=: (String) -> String
 
       attr_reader issuer_name: String?
 
-      def issuer_name=: (String) -> void
+      def issuer_name=: (String) -> String
 
       attr_reader text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor?
 
       def text_color=: (
         Increase::Models::DigitalCardProfileCloneParams::TextColor
-      ) -> void
+      ) -> Increase::Models::DigitalCardProfileCloneParams::TextColor
 
       def initialize:
         (
