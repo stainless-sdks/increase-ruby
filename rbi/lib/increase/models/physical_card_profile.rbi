@@ -4,40 +4,100 @@ module Increase
   module Models
     class PhysicalCardProfile < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :back_image_file_id
+      def back_image_file_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def back_image_file_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :carrier_image_file_id
+      def carrier_image_file_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def carrier_image_file_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :contact_phone
+      def contact_phone
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def contact_phone=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :creator
+      def creator
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def creator=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :front_image_file_id
+      def front_image_file_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def front_image_file_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T::Boolean) }
-      attr_accessor :is_default
+      def is_default
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def is_default=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(

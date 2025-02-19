@@ -28,17 +28,17 @@ module Increase
 
       def physical_check=: (
         Increase::Models::CheckTransferCreateParams::PhysicalCheck
-      ) -> void
+      ) -> Increase::Models::CheckTransferCreateParams::PhysicalCheck
 
       attr_reader require_approval: bool?
 
-      def require_approval=: (bool) -> void
+      def require_approval=: (bool) -> bool
 
       attr_reader third_party: Increase::Models::CheckTransferCreateParams::ThirdParty?
 
       def third_party=: (
         Increase::Models::CheckTransferCreateParams::ThirdParty
-      ) -> void
+      ) -> Increase::Models::CheckTransferCreateParams::ThirdParty
 
       def initialize:
         (
@@ -89,17 +89,17 @@ module Increase
 
         attr_reader note: String?
 
-        def note=: (String) -> void
+        def note=: (String) -> String
 
         attr_reader return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress?
 
         def return_address=: (
           Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
-        ) -> void
+        ) -> Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
 
         attr_reader signature_text: String?
 
-        def signature_text=: (String) -> void
+        def signature_text=: (String) -> String
 
         def initialize:
           (
@@ -138,11 +138,11 @@ module Increase
 
           attr_reader line2: String?
 
-          def line2=: (String) -> void
+          def line2=: (String) -> String
 
           attr_reader name: String?
 
-          def name=: (String) -> void
+          def name=: (String) -> String
 
           def initialize:
             (
@@ -184,7 +184,7 @@ module Increase
 
           attr_reader line2: String?
 
-          def line2=: (String) -> void
+          def line2=: (String) -> String
 
           def initialize:
             (
@@ -209,7 +209,7 @@ module Increase
       class ThirdParty < Increase::BaseModel
         attr_reader check_number: String?
 
-        def check_number=: (String) -> void
+        def check_number=: (String) -> String
 
         def initialize:
           (check_number: String) -> void

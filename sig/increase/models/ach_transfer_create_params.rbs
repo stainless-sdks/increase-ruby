@@ -36,75 +36,79 @@ module Increase
 
       attr_reader account_number: String?
 
-      def account_number=: (String) -> void
+      def account_number=: (String) -> String
 
       attr_reader addenda: Increase::Models::ACHTransferCreateParams::Addenda?
 
-      def addenda=: (Increase::Models::ACHTransferCreateParams::Addenda) -> void
+      def addenda=: (
+        Increase::Models::ACHTransferCreateParams::Addenda
+      ) -> Increase::Models::ACHTransferCreateParams::Addenda
 
       attr_reader company_descriptive_date: String?
 
-      def company_descriptive_date=: (String) -> void
+      def company_descriptive_date=: (String) -> String
 
       attr_reader company_discretionary_data: String?
 
-      def company_discretionary_data=: (String) -> void
+      def company_discretionary_data=: (String) -> String
 
       attr_reader company_entry_description: String?
 
-      def company_entry_description=: (String) -> void
+      def company_entry_description=: (String) -> String
 
       attr_reader company_name: String?
 
-      def company_name=: (String) -> void
+      def company_name=: (String) -> String
 
       attr_reader destination_account_holder: Increase::Models::ACHTransferCreateParams::destination_account_holder?
 
       def destination_account_holder=: (
         Increase::Models::ACHTransferCreateParams::destination_account_holder
-      ) -> void
+      ) -> Increase::Models::ACHTransferCreateParams::destination_account_holder
 
       attr_reader external_account_id: String?
 
-      def external_account_id=: (String) -> void
+      def external_account_id=: (String) -> String
 
       attr_reader funding: Increase::Models::ACHTransferCreateParams::funding?
 
-      def funding=: (Increase::Models::ACHTransferCreateParams::funding) -> void
+      def funding=: (
+        Increase::Models::ACHTransferCreateParams::funding
+      ) -> Increase::Models::ACHTransferCreateParams::funding
 
       attr_reader individual_id: String?
 
-      def individual_id=: (String) -> void
+      def individual_id=: (String) -> String
 
       attr_reader individual_name: String?
 
-      def individual_name=: (String) -> void
+      def individual_name=: (String) -> String
 
       attr_reader preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate?
 
       def preferred_effective_date=: (
         Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate
-      ) -> void
+      ) -> Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate
 
       attr_reader require_approval: bool?
 
-      def require_approval=: (bool) -> void
+      def require_approval=: (bool) -> bool
 
       attr_reader routing_number: String?
 
-      def routing_number=: (String) -> void
+      def routing_number=: (String) -> String
 
       attr_reader standard_entry_class_code: Increase::Models::ACHTransferCreateParams::standard_entry_class_code?
 
       def standard_entry_class_code=: (
         Increase::Models::ACHTransferCreateParams::standard_entry_class_code
-      ) -> void
+      ) -> Increase::Models::ACHTransferCreateParams::standard_entry_class_code
 
       attr_reader transaction_timing: Increase::Models::ACHTransferCreateParams::transaction_timing?
 
       def transaction_timing=: (
         Increase::Models::ACHTransferCreateParams::transaction_timing
-      ) -> void
+      ) -> Increase::Models::ACHTransferCreateParams::transaction_timing
 
       def initialize:
         (
@@ -150,13 +154,13 @@ module Increase
 
         def freeform=: (
           Increase::Models::ACHTransferCreateParams::Addenda::Freeform
-        ) -> void
+        ) -> Increase::Models::ACHTransferCreateParams::Addenda::Freeform
 
         attr_reader payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice?
 
         def payment_order_remittance_advice=: (
           Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
-        ) -> void
+        ) -> Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
 
         def initialize:
           (
@@ -292,13 +296,13 @@ module Increase
       class PreferredEffectiveDate < Increase::BaseModel
         attr_reader date: Date?
 
-        def date=: (Date) -> void
+        def date=: (Date) -> Date
 
         attr_reader settlement_schedule: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule?
 
         def settlement_schedule=: (
           Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
-        ) -> void
+        ) -> Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::settlement_schedule
 
         def initialize:
           (

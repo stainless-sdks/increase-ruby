@@ -4,34 +4,84 @@ module Increase
   module Models
     class File < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def description=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :direction
+      def direction
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def direction=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :download_url
+      def download_url
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def download_url=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :filename
+      def filename
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def filename=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :mime_type
+      def mime_type
+      end
+
+      sig { params(_: String).returns(String) }
+      def mime_type=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :purpose
+      def purpose
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def purpose=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(

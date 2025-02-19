@@ -7,10 +7,20 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :entity_id
+      def entity_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :file_id
+      def file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def file_id=(_)
+      end
 
       sig do
         params(

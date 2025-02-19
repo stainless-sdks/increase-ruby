@@ -4,73 +4,188 @@ module Increase
   module Models
     class InboundWireDrawdownRequest < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :beneficiary_account_number
+      def beneficiary_account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def beneficiary_account_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_address_line1
+      def beneficiary_address_line1
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_address_line1=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_address_line2
+      def beneficiary_address_line2
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_address_line2=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_address_line3
+      def beneficiary_address_line3
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_address_line3=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_name
+      def beneficiary_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_name=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :beneficiary_routing_number
+      def beneficiary_routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def beneficiary_routing_number=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: String).returns(String) }
+      def currency=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :message_to_recipient
+      def message_to_recipient
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def message_to_recipient=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :originator_account_number
+      def originator_account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def originator_account_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_address_line1
+      def originator_address_line1
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_address_line1=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_address_line2
+      def originator_address_line2
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_address_line2=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_address_line3
+      def originator_address_line3
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_address_line3=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_name
+      def originator_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_name=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :originator_routing_number
+      def originator_routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def originator_routing_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information_line1
+      def originator_to_beneficiary_information_line1
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information_line1=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information_line2
+      def originator_to_beneficiary_information_line2
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information_line2=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information_line3
+      def originator_to_beneficiary_information_line3
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information_line3=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information_line4
+      def originator_to_beneficiary_information_line4
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information_line4=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :recipient_account_number_id
+      def recipient_account_number_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def recipient_account_number_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(

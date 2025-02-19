@@ -12,7 +12,7 @@ module Increase
 
       def status=: (
         Increase::Models::EventSubscriptionUpdateParams::status
-      ) -> void
+      ) -> Increase::Models::EventSubscriptionUpdateParams::status
 
       def initialize:
         (

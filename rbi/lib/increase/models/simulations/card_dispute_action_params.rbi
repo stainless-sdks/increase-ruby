@@ -8,13 +8,20 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(Symbol) }
-        attr_accessor :status
+        def status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def status=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :explanation
+        def explanation
+        end
 
-        sig { params(explanation: String).void }
-        attr_writer :explanation
+        sig { params(_: String).returns(String) }
+        def explanation=(_)
+        end
 
         sig do
           params(

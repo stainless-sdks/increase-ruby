@@ -10,12 +10,14 @@ module Increase
         sig do
           returns(T.nilable(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection))
         end
-        attr_reader :rejection
+        def rejection
+        end
 
         sig do
-          params(rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection).void
+          params(_: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection).returns(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)
         end
-        attr_writer :rejection
+        def rejection=(_)
+        end
 
         sig do
           params(
@@ -38,7 +40,12 @@ module Increase
 
         class Rejection < Increase::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :reject_reason_code
+          def reject_reason_code
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def reject_reason_code=(_)
+          end
 
           sig { params(reject_reason_code: Symbol).void }
           def initialize(reject_reason_code:)

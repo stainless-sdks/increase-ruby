@@ -7,22 +7,28 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :idempotency_key
+      def idempotency_key
+      end
 
-      sig { params(idempotency_key: String).void }
-      attr_writer :idempotency_key
+      sig { params(_: String).returns(String) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig do
         params(

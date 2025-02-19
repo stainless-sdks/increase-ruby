@@ -40,11 +40,11 @@ module Increase
 
       attr_reader authorizer_company: String?
 
-      def authorizer_company=: (String) -> void
+      def authorizer_company=: (String) -> String
 
       attr_reader authorizer_ip_address: String?
 
-      def authorizer_ip_address=: (String) -> void
+      def authorizer_ip_address=: (String) -> String
 
       def initialize:
         (

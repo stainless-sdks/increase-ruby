@@ -7,52 +7,70 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::AccountListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
-      sig { params(created_at: Increase::Models::AccountListParams::CreatedAt).void }
-      attr_writer :created_at
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :cursor
-
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig do
+        params(_: Increase::Models::AccountListParams::CreatedAt).returns(Increase::Models::AccountListParams::CreatedAt)
+      end
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :entity_id
+      def cursor
+      end
 
-      sig { params(entity_id: String).void }
-      attr_writer :entity_id
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :idempotency_key
-
-      sig { params(idempotency_key: String).void }
-      attr_writer :idempotency_key
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :informational_entity_id
+      def entity_id
+      end
 
-      sig { params(informational_entity_id: String).void }
-      attr_writer :informational_entity_id
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def idempotency_key
+      end
+
+      sig { params(_: String).returns(String) }
+      def idempotency_key=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def informational_entity_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def informational_entity_id=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :program_id
+      def program_id
+      end
 
-      sig { params(program_id: String).void }
-      attr_writer :program_id
+      sig { params(_: String).returns(String) }
+      def program_id=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: Symbol).void }
-      attr_writer :status
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig do
         params(
@@ -100,28 +118,36 @@ module Increase
 
       class CreatedAt < Increase::BaseModel
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
-
-        sig { returns(T.nilable(Time)) }
-        attr_reader :before
-
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def before
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_after
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
+
+        sig { returns(T.nilable(Time)) }
+        def on_or_before
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).void }
         def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
