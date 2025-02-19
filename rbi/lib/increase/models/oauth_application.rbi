@@ -4,25 +4,60 @@ module Increase
   module Models
     class OAuthApplication < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :client_id
+      def client_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def client_id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :deleted_at
+      def deleted_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def deleted_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def name=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(

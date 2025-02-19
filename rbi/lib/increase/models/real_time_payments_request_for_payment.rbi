@@ -4,55 +4,146 @@ module Increase
   module Models
     class RealTimePaymentsRequestForPayment < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def currency=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :debtor_name
+      def debtor_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def debtor_name=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :destination_account_number_id
+      def destination_account_number_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def destination_account_number_id=(_)
+      end
 
       sig { returns(Date) }
-      attr_accessor :expires_at
+      def expires_at
+      end
+
+      sig { params(_: Date).returns(Date) }
+      def expires_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :fulfillment_transaction_id
+      def fulfillment_transaction_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def fulfillment_transaction_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Refusal)) }
-      attr_accessor :refusal
+      def refusal
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Refusal)).returns(T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Refusal))
+      end
+      def refusal=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Rejection)) }
-      attr_accessor :rejection
+      def rejection
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Rejection)).returns(T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Rejection))
+      end
+      def rejection=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :remittance_information
+      def remittance_information
+      end
+
+      sig { params(_: String).returns(String) }
+      def remittance_information=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :source_account_number
+      def source_account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def source_account_number=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :source_routing_number
+      def source_routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def source_routing_number=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Submission)) }
-      attr_accessor :submission
+      def submission
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Submission)).returns(T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Submission))
+      end
+      def submission=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -150,7 +241,12 @@ module Increase
 
       class Refusal < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :refusal_reason_code
+        def refusal_reason_code
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def refusal_reason_code=(_)
+        end
 
         sig { params(refusal_reason_code: Symbol).void }
         def initialize(refusal_reason_code:)
@@ -210,7 +306,12 @@ module Increase
 
       class Rejection < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :reject_reason_code
+        def reject_reason_code
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def reject_reason_code=(_)
+        end
 
         sig { params(reject_reason_code: Symbol).void }
         def initialize(reject_reason_code:)
@@ -320,7 +421,12 @@ module Increase
 
       class Submission < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :payment_information_identification
+        def payment_information_identification
+        end
+
+        sig { params(_: String).returns(String) }
+        def payment_information_identification=(_)
+        end
 
         sig { params(payment_information_identification: String).void }
         def initialize(payment_information_identification:)

@@ -8,22 +8,36 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :account_id
+        def account_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_id=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :period_end
+        def period_end
+        end
 
-        sig { params(period_end: Time).void }
-        attr_writer :period_end
+        sig { params(_: Time).returns(Time) }
+        def period_end=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :period_start
+        def period_start
+        end
 
-        sig { params(period_start: Time).void }
-        attr_writer :period_start
+        sig { params(_: Time).returns(Time) }
+        def period_start=(_)
+        end
 
         sig do
           params(

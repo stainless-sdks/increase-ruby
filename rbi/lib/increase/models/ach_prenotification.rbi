@@ -4,52 +4,136 @@ module Increase
   module Models
     class ACHPrenotification < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_number
+      def account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :addendum
+      def addendum
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def addendum=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :company_descriptive_date
+      def company_descriptive_date
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def company_descriptive_date=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :company_discretionary_data
+      def company_discretionary_data
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def company_discretionary_data=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :company_entry_description
+      def company_entry_description
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def company_entry_description=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :company_name
+      def company_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def company_name=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_accessor :credit_debit_indicator
+      def credit_debit_indicator
+      end
+
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      def credit_debit_indicator=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :effective_date
+      def effective_date
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def effective_date=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange]) }
-      attr_accessor :notifications_of_change
+      def notifications_of_change
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange]).returns(T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange])
+      end
+      def notifications_of_change=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn)) }
-      attr_accessor :prenotification_return
+      def prenotification_return
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn)).returns(T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn))
+      end
+      def prenotification_return=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :routing_number
+      def routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def routing_number=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -132,13 +216,28 @@ module Increase
 
       class NotificationsOfChange < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :change_code
+        def change_code
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def change_code=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :corrected_data
+        def corrected_data
+        end
+
+        sig { params(_: String).returns(String) }
+        def corrected_data=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         sig { params(change_code: Symbol, corrected_data: String, created_at: Time).void }
         def initialize(change_code:, corrected_data:, created_at:)
@@ -216,10 +315,20 @@ module Increase
 
       class PrenotificationReturn < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :return_reason_code
+        def return_reason_code
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def return_reason_code=(_)
+        end
 
         sig { params(created_at: Time, return_reason_code: Symbol).void }
         def initialize(created_at:, return_reason_code:)

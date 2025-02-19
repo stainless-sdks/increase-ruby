@@ -5,34 +5,84 @@ module Increase
     module Simulations
       class InboundFundsHoldReleaseResponse < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :automatically_releases_at
+        def automatically_releases_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def automatically_releases_at=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :currency
+        def currency
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def currency=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :held_transaction_id
+        def held_transaction_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def held_transaction_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :pending_transaction_id
+        def pending_transaction_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def pending_transaction_id=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :released_at
+        def released_at
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def released_at=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :status
+        def status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def status=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig do
           params(

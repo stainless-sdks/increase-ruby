@@ -7,31 +7,44 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(Symbol) }
-      attr_accessor :grant_type
+      def grant_type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def grant_type=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :client_id
+      def client_id
+      end
 
-      sig { params(client_id: String).void }
-      attr_writer :client_id
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :client_secret
-
-      sig { params(client_secret: String).void }
-      attr_writer :client_secret
+      sig { params(_: String).returns(String) }
+      def client_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :code
+      def client_secret
+      end
 
-      sig { params(code: String).void }
-      attr_writer :code
+      sig { params(_: String).returns(String) }
+      def client_secret=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :production_token
+      def code
+      end
 
-      sig { params(production_token: String).void }
-      attr_writer :production_token
+      sig { params(_: String).returns(String) }
+      def code=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def production_token
+      end
+
+      sig { params(_: String).returns(String) }
+      def production_token=(_)
+      end
 
       sig do
         params(

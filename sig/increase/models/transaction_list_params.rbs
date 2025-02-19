@@ -17,29 +17,31 @@ module Increase
 
       attr_reader account_id: String?
 
-      def account_id=: (String) -> void
+      def account_id=: (String) -> String
 
       attr_reader category: Increase::Models::TransactionListParams::Category?
 
-      def category=: (Increase::Models::TransactionListParams::Category) -> void
+      def category=: (
+        Increase::Models::TransactionListParams::Category
+      ) -> Increase::Models::TransactionListParams::Category
 
       attr_reader created_at: Increase::Models::TransactionListParams::CreatedAt?
 
       def created_at=: (
         Increase::Models::TransactionListParams::CreatedAt
-      ) -> void
+      ) -> Increase::Models::TransactionListParams::CreatedAt
 
       attr_reader cursor: String?
 
-      def cursor=: (String) -> void
+      def cursor=: (String) -> String
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       attr_reader route_id: String?
 
-      def route_id=: (String) -> void
+      def route_id=: (String) -> String
 
       def initialize:
         (
@@ -65,7 +67,7 @@ module Increase
 
         def in_=: (
           ::Array[Increase::Models::TransactionListParams::Category::in_]
-        ) -> void
+        ) -> ::Array[Increase::Models::TransactionListParams::Category::in_]
 
         def initialize:
           (
@@ -207,19 +209,19 @@ module Increase
       class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
 
-        def after=: (Time) -> void
+        def after=: (Time) -> Time
 
         attr_reader before: Time?
 
-        def before=: (Time) -> void
+        def before=: (Time) -> Time
 
         attr_reader on_or_after: Time?
 
-        def on_or_after=: (Time) -> void
+        def on_or_after=: (Time) -> Time
 
         attr_reader on_or_before: Time?
 
-        def on_or_before=: (Time) -> void
+        def on_or_before=: (Time) -> Time
 
         def initialize:
           (

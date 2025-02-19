@@ -4,64 +4,168 @@ module Increase
   module Models
     class InboundCheckDeposit < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :accepted_at
+      def accepted_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def accepted_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :account_number_id
+      def account_number_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def account_number_id=(_)
+      end
 
       sig { returns(T::Array[Increase::Models::InboundCheckDeposit::Adjustment]) }
-      attr_accessor :adjustments
+      def adjustments
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::InboundCheckDeposit::Adjustment]).returns(T::Array[Increase::Models::InboundCheckDeposit::Adjustment])
+      end
+      def adjustments=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :back_image_file_id
+      def back_image_file_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def back_image_file_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :bank_of_first_deposit_routing_number
+      def bank_of_first_deposit_routing_number
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def bank_of_first_deposit_routing_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :check_number
+      def check_number
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def check_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :check_transfer_id
+      def check_transfer_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def check_transfer_id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def currency=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :declined_at
+      def declined_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def declined_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :declined_transaction_id
+      def declined_transaction_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def declined_transaction_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::InboundCheckDeposit::DepositReturn)) }
-      attr_accessor :deposit_return
+      def deposit_return
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::InboundCheckDeposit::DepositReturn)).returns(T.nilable(Increase::Models::InboundCheckDeposit::DepositReturn))
+      end
+      def deposit_return=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :front_image_file_id
+      def front_image_file_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def front_image_file_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :payee_name_analysis
+      def payee_name_analysis
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def payee_name_analysis=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :transaction_id
+      def transaction_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def transaction_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -142,16 +246,36 @@ module Increase
 
       class Adjustment < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :adjusted_at
+        def adjusted_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def adjusted_at=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :reason
+        def reason
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def reason=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :transaction_id
+        def transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def transaction_id=(_)
+        end
 
         sig { params(adjusted_at: Time, amount: Integer, reason: Symbol, transaction_id: String).void }
         def initialize(adjusted_at:, amount:, reason:, transaction_id:)
@@ -210,13 +334,28 @@ module Increase
 
       class DepositReturn < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :reason
+        def reason
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def reason=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :returned_at
+        def returned_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def returned_at=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :transaction_id
+        def transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def transaction_id=(_)
+        end
 
         sig { params(reason: Symbol, returned_at: Time, transaction_id: String).void }
         def initialize(reason:, returned_at:, transaction_id:)

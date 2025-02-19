@@ -4,25 +4,62 @@ module Increase
   module Models
     class BookkeepingEntrySet < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :date
+      def date
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def date=(_)
+      end
 
       sig { returns(T::Array[Increase::Models::BookkeepingEntrySet::Entry]) }
-      attr_accessor :entries
+      def entries
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::BookkeepingEntrySet::Entry]).returns(T::Array[Increase::Models::BookkeepingEntrySet::Entry])
+      end
+      def entries=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :transaction_id
+      def transaction_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def transaction_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -56,13 +93,28 @@ module Increase
 
       class Entry < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :account_id
+        def account_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_id=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { params(id: String, account_id: String, amount: Integer).void }
         def initialize(id:, account_id:, amount:)

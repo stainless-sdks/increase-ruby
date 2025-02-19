@@ -7,28 +7,40 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundACH)) }
-      attr_reader :inbound_ach
+      def inbound_ach
+      end
 
-      sig { params(inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH).void }
-      attr_writer :inbound_ach
+      sig do
+        params(_: Increase::Models::AccountNumberUpdateParams::InboundACH).returns(Increase::Models::AccountNumberUpdateParams::InboundACH)
+      end
+      def inbound_ach=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::AccountNumberUpdateParams::InboundChecks)) }
-      attr_reader :inbound_checks
+      def inbound_checks
+      end
 
-      sig { params(inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks).void }
-      attr_writer :inbound_checks
+      sig do
+        params(_: Increase::Models::AccountNumberUpdateParams::InboundChecks).returns(Increase::Models::AccountNumberUpdateParams::InboundChecks)
+      end
+      def inbound_checks=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :name
+      def name
+      end
 
-      sig { params(name: String).void }
-      attr_writer :name
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: Symbol).void }
-      attr_writer :status
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig do
         params(
@@ -58,10 +70,12 @@ module Increase
 
       class InboundACH < Increase::BaseModel
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :debit_status
+        def debit_status
+        end
 
-        sig { params(debit_status: Symbol).void }
-        attr_writer :debit_status
+        sig { params(_: Symbol).returns(Symbol) }
+        def debit_status=(_)
+        end
 
         sig { params(debit_status: Symbol).void }
         def initialize(debit_status: nil)
@@ -88,7 +102,12 @@ module Increase
 
       class InboundChecks < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :status
+        def status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def status=(_)
+        end
 
         sig { params(status: Symbol).void }
         def initialize(status:)
