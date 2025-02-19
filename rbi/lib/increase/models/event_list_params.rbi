@@ -29,7 +29,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EventListParams::CreatedAt).returns(Increase::Models::EventListParams::CreatedAt)
+        params(_: Increase::Models::EventListParams::CreatedAt)
+          .returns(Increase::Models::EventListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -58,7 +59,8 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         associated_object_id: nil,
@@ -71,16 +73,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            associated_object_id: String,
-            category: Increase::Models::EventListParams::Category,
-            created_at: Increase::Models::EventListParams::CreatedAt,
-            cursor: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              associated_object_id: String,
+              category: Increase::Models::EventListParams::Category,
+              created_at: Increase::Models::EventListParams::CreatedAt,
+              cursor: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

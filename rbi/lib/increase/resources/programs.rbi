@@ -7,7 +7,8 @@ module Increase
         params(
           program_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Program)
+        )
+          .returns(Increase::Models::Program)
       end
       def retrieve(program_id, request_options: {})
       end
@@ -17,7 +18,8 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::Program])
+        )
+          .returns(Increase::Page[Increase::Models::Program])
       end
       def list(cursor: nil, limit: nil, request_options: {})
       end

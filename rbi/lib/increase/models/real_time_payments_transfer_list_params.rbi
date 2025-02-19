@@ -19,7 +19,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::RealTimePaymentsTransferListParams::CreatedAt).returns(Increase::Models::RealTimePaymentsTransferListParams::CreatedAt)
+        params(_: Increase::Models::RealTimePaymentsTransferListParams::CreatedAt)
+          .returns(Increase::Models::RealTimePaymentsTransferListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -65,7 +66,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id: nil,
@@ -79,17 +81,18 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            created_at: Increase::Models::RealTimePaymentsTransferListParams::CreatedAt,
-            cursor: String,
-            external_account_id: String,
-            idempotency_key: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              created_at: Increase::Models::RealTimePaymentsTransferListParams::CreatedAt,
+              cursor: String,
+              external_account_id: String,
+              idempotency_key: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

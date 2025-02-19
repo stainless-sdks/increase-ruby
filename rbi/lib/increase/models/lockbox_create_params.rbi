@@ -36,20 +36,22 @@ module Increase
           description: String,
           recipient_name: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(account_id:, description: nil, recipient_name: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            description: String,
-            recipient_name: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              description: String,
+              recipient_name: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

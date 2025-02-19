@@ -19,7 +19,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PhysicalCardListParams::CreatedAt).returns(Increase::Models::PhysicalCardListParams::CreatedAt)
+        params(_: Increase::Models::PhysicalCardListParams::CreatedAt)
+          .returns(Increase::Models::PhysicalCardListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -56,7 +57,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         card_id: nil,
@@ -69,16 +71,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            card_id: String,
-            created_at: Increase::Models::PhysicalCardListParams::CreatedAt,
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              card_id: String,
+              created_at: Increase::Models::PhysicalCardListParams::CreatedAt,
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

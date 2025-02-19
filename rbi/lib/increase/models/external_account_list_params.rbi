@@ -43,7 +43,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExternalAccountListParams::Status).returns(Increase::Models::ExternalAccountListParams::Status)
+        params(_: Increase::Models::ExternalAccountListParams::Status)
+          .returns(Increase::Models::ExternalAccountListParams::Status)
       end
       def status=(_)
       end
@@ -56,7 +57,8 @@ module Increase
           routing_number: String,
           status: Increase::Models::ExternalAccountListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         cursor: nil,
@@ -69,16 +71,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            routing_number: String,
-            status: Increase::Models::ExternalAccountListParams::Status,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              routing_number: String,
+              status: Increase::Models::ExternalAccountListParams::Status,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

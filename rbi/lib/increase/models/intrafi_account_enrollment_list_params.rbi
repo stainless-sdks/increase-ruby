@@ -43,7 +43,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::IntrafiAccountEnrollmentListParams::Status).returns(Increase::Models::IntrafiAccountEnrollmentListParams::Status)
+        params(_: Increase::Models::IntrafiAccountEnrollmentListParams::Status)
+          .returns(Increase::Models::IntrafiAccountEnrollmentListParams::Status)
       end
       def status=(_)
       end
@@ -56,7 +57,8 @@ module Increase
           limit: Integer,
           status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id: nil,
@@ -69,16 +71,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

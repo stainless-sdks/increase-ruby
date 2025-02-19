@@ -23,9 +23,7 @@ module Increase
       def billing_address
       end
 
-      sig do
-        params(_: Increase::Models::Card::BillingAddress).returns(Increase::Models::Card::BillingAddress)
-      end
+      sig { params(_: Increase::Models::Card::BillingAddress).returns(Increase::Models::Card::BillingAddress) }
       def billing_address=(_)
       end
 
@@ -50,7 +48,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::Card::DigitalWallet)).returns(T.nilable(Increase::Models::Card::DigitalWallet))
+        params(_: T.nilable(Increase::Models::Card::DigitalWallet))
+          .returns(T.nilable(Increase::Models::Card::DigitalWallet))
       end
       def digital_wallet=(_)
       end
@@ -126,7 +125,8 @@ module Increase
           last4: String,
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -146,23 +146,24 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            billing_address: Increase::Models::Card::BillingAddress,
-            created_at: Time,
-            description: T.nilable(String),
-            digital_wallet: T.nilable(Increase::Models::Card::DigitalWallet),
-            entity_id: T.nilable(String),
-            expiration_month: Integer,
-            expiration_year: Integer,
-            idempotency_key: T.nilable(String),
-            last4: String,
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              billing_address: Increase::Models::Card::BillingAddress,
+              created_at: Time,
+              description: T.nilable(String),
+              digital_wallet: T.nilable(Increase::Models::Card::DigitalWallet),
+              entity_id: T.nilable(String),
+              expiration_month: Integer,
+              expiration_year: Integer,
+              idempotency_key: T.nilable(String),
+              last4: String,
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -215,21 +216,23 @@ module Increase
             line2: T.nilable(String),
             postal_code: T.nilable(String),
             state: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(city:, line1:, line2:, postal_code:, state:)
         end
 
         sig do
-          override.returns(
-            {
-              city: T.nilable(String),
-              line1: T.nilable(String),
-              line2: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                city: T.nilable(String),
+                line1: T.nilable(String),
+                line2: T.nilable(String),
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -271,13 +274,12 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              digital_card_profile_id: T.nilable(String),
-              email: T.nilable(String),
-              phone: T.nilable(String)
-            }
-          )
+          override
+            .returns({
+                       digital_card_profile_id: T.nilable(String),
+                       email: T.nilable(String),
+                       phone: T.nilable(String)
+                     })
         end
         def to_hash
         end

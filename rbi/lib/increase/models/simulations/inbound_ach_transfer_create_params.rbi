@@ -109,7 +109,8 @@ module Increase
             resolve_at: Time,
             standard_entry_class_code: Symbol,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           account_number_id:,
@@ -128,22 +129,23 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              account_number_id: String,
-              amount: Integer,
-              company_descriptive_date: String,
-              company_discretionary_data: String,
-              company_entry_description: String,
-              company_id: String,
-              company_name: String,
-              receiver_id_number: String,
-              receiver_name: String,
-              resolve_at: Time,
-              standard_entry_class_code: Symbol,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                account_number_id: String,
+                amount: Integer,
+                company_descriptive_date: String,
+                company_discretionary_data: String,
+                company_entry_description: String,
+                company_id: String,
+                company_name: String,
+                receiver_id_number: String,
+                receiver_name: String,
+                resolve_at: Time,
+                standard_entry_class_code: Symbol,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end

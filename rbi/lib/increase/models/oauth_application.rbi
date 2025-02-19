@@ -68,23 +68,25 @@ module Increase
           name: T.nilable(String),
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, client_id:, created_at:, deleted_at:, name:, status:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            client_id: String,
-            created_at: Time,
-            deleted_at: T.nilable(Time),
-            name: T.nilable(String),
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              client_id: String,
+              created_at: Time,
+              deleted_at: T.nilable(Time),
+              name: T.nilable(String),
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

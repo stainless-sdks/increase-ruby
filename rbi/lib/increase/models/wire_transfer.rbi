@@ -40,7 +40,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::WireTransfer::Approval)).returns(T.nilable(Increase::Models::WireTransfer::Approval))
+        params(_: T.nilable(Increase::Models::WireTransfer::Approval))
+          .returns(T.nilable(Increase::Models::WireTransfer::Approval))
       end
       def approval=(_)
       end
@@ -82,7 +83,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::WireTransfer::Cancellation)).returns(T.nilable(Increase::Models::WireTransfer::Cancellation))
+        params(_: T.nilable(Increase::Models::WireTransfer::Cancellation))
+          .returns(T.nilable(Increase::Models::WireTransfer::Cancellation))
       end
       def cancellation=(_)
       end
@@ -100,7 +102,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::WireTransfer::CreatedBy)).returns(T.nilable(Increase::Models::WireTransfer::CreatedBy))
+        params(_: T.nilable(Increase::Models::WireTransfer::CreatedBy))
+          .returns(T.nilable(Increase::Models::WireTransfer::CreatedBy))
       end
       def created_by=(_)
       end
@@ -190,7 +193,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::WireTransfer::Reversal)).returns(T.nilable(Increase::Models::WireTransfer::Reversal))
+        params(_: T.nilable(Increase::Models::WireTransfer::Reversal))
+          .returns(T.nilable(Increase::Models::WireTransfer::Reversal))
       end
       def reversal=(_)
       end
@@ -224,7 +228,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::WireTransfer::Submission)).returns(T.nilable(Increase::Models::WireTransfer::Submission))
+        params(_: T.nilable(Increase::Models::WireTransfer::Submission))
+          .returns(T.nilable(Increase::Models::WireTransfer::Submission))
       end
       def submission=(_)
       end
@@ -276,7 +281,8 @@ module Increase
           submission: T.nilable(Increase::Models::WireTransfer::Submission),
           transaction_id: T.nilable(String),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -312,39 +318,40 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            account_number: String,
-            amount: Integer,
-            approval: T.nilable(Increase::Models::WireTransfer::Approval),
-            beneficiary_address_line1: T.nilable(String),
-            beneficiary_address_line2: T.nilable(String),
-            beneficiary_address_line3: T.nilable(String),
-            beneficiary_name: T.nilable(String),
-            cancellation: T.nilable(Increase::Models::WireTransfer::Cancellation),
-            created_at: Time,
-            created_by: T.nilable(Increase::Models::WireTransfer::CreatedBy),
-            currency: Symbol,
-            external_account_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            message_to_recipient: T.nilable(String),
-            network: Symbol,
-            originator_address_line1: T.nilable(String),
-            originator_address_line2: T.nilable(String),
-            originator_address_line3: T.nilable(String),
-            originator_name: T.nilable(String),
-            pending_transaction_id: T.nilable(String),
-            reversal: T.nilable(Increase::Models::WireTransfer::Reversal),
-            routing_number: String,
-            source_account_number_id: T.nilable(String),
-            status: Symbol,
-            submission: T.nilable(Increase::Models::WireTransfer::Submission),
-            transaction_id: T.nilable(String),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              account_number: String,
+              amount: Integer,
+              approval: T.nilable(Increase::Models::WireTransfer::Approval),
+              beneficiary_address_line1: T.nilable(String),
+              beneficiary_address_line2: T.nilable(String),
+              beneficiary_address_line3: T.nilable(String),
+              beneficiary_name: T.nilable(String),
+              cancellation: T.nilable(Increase::Models::WireTransfer::Cancellation),
+              created_at: Time,
+              created_by: T.nilable(Increase::Models::WireTransfer::CreatedBy),
+              currency: Symbol,
+              external_account_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              message_to_recipient: T.nilable(String),
+              network: Symbol,
+              originator_address_line1: T.nilable(String),
+              originator_address_line2: T.nilable(String),
+              originator_address_line3: T.nilable(String),
+              originator_name: T.nilable(String),
+              pending_transaction_id: T.nilable(String),
+              reversal: T.nilable(Increase::Models::WireTransfer::Reversal),
+              routing_number: String,
+              source_account_number_id: T.nilable(String),
+              status: Symbol,
+              submission: T.nilable(Increase::Models::WireTransfer::Submission),
+              transaction_id: T.nilable(String),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -407,7 +414,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey)).returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey))
+          params(_: T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey))
+            .returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey))
         end
         def api_key=(_)
         end
@@ -425,7 +433,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication)).returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication))
+          params(_: T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication))
+            .returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication))
         end
         def oauth_application=(_)
         end
@@ -435,7 +444,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::WireTransfer::CreatedBy::User)).returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::User))
+          params(_: T.nilable(Increase::Models::WireTransfer::CreatedBy::User))
+            .returns(T.nilable(Increase::Models::WireTransfer::CreatedBy::User))
         end
         def user=(_)
         end
@@ -446,20 +456,22 @@ module Increase
             category: Symbol,
             oauth_application: T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::WireTransfer::CreatedBy::User)
-          ).void
+          )
+            .void
         end
         def initialize(api_key:, category:, oauth_application:, user:)
         end
 
         sig do
-          override.returns(
-            {
-              api_key: T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey),
-              category: Symbol,
-              oauth_application: T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication),
-              user: T.nilable(Increase::Models::WireTransfer::CreatedBy::User)
-            }
-          )
+          override
+            .returns(
+              {
+                api_key: T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey),
+                category: Symbol,
+                oauth_application: T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication),
+                user: T.nilable(Increase::Models::WireTransfer::CreatedBy::User)
+              }
+            )
         end
         def to_hash
         end
@@ -728,7 +740,8 @@ module Increase
             sender_reference: T.nilable(String),
             transaction_id: String,
             wire_transfer_id: String
-          ).void
+          )
+            .void
         end
         def initialize(
           amount:,
@@ -752,27 +765,28 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              created_at: Time,
-              description: String,
-              financial_institution_to_financial_institution_information: T.nilable(String),
-              input_cycle_date: Date,
-              input_message_accountability_data: String,
-              input_sequence_number: String,
-              input_source: String,
-              originator_routing_number: T.nilable(String),
-              previous_message_input_cycle_date: Date,
-              previous_message_input_message_accountability_data: String,
-              previous_message_input_sequence_number: String,
-              previous_message_input_source: String,
-              receiver_financial_institution_information: T.nilable(String),
-              sender_reference: T.nilable(String),
-              transaction_id: String,
-              wire_transfer_id: String
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                created_at: Time,
+                description: String,
+                financial_institution_to_financial_institution_information: T.nilable(String),
+                input_cycle_date: Date,
+                input_message_accountability_data: String,
+                input_sequence_number: String,
+                input_source: String,
+                originator_routing_number: T.nilable(String),
+                previous_message_input_cycle_date: Date,
+                previous_message_input_message_accountability_data: String,
+                previous_message_input_sequence_number: String,
+                previous_message_input_source: String,
+                receiver_financial_institution_information: T.nilable(String),
+                sender_reference: T.nilable(String),
+                transaction_id: String,
+                wire_transfer_id: String
+              }
+            )
         end
         def to_hash
         end

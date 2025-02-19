@@ -16,7 +16,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CardDispute::Acceptance)).returns(T.nilable(Increase::Models::CardDispute::Acceptance))
+        params(_: T.nilable(Increase::Models::CardDispute::Acceptance))
+          .returns(T.nilable(Increase::Models::CardDispute::Acceptance))
       end
       def acceptance=(_)
       end
@@ -66,7 +67,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CardDispute::Loss)).returns(T.nilable(Increase::Models::CardDispute::Loss))
+        params(_: T.nilable(Increase::Models::CardDispute::Loss))
+          .returns(T.nilable(Increase::Models::CardDispute::Loss))
       end
       def loss=(_)
       end
@@ -76,7 +78,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CardDispute::Rejection)).returns(T.nilable(Increase::Models::CardDispute::Rejection))
+        params(_: T.nilable(Increase::Models::CardDispute::Rejection))
+          .returns(T.nilable(Increase::Models::CardDispute::Rejection))
       end
       def rejection=(_)
       end
@@ -102,7 +105,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CardDispute::Win)).returns(T.nilable(Increase::Models::CardDispute::Win))
+        params(_: T.nilable(Increase::Models::CardDispute::Win))
+          .returns(T.nilable(Increase::Models::CardDispute::Win))
       end
       def win=(_)
       end
@@ -121,7 +125,8 @@ module Increase
           status: Symbol,
           type: Symbol,
           win: T.nilable(Increase::Models::CardDispute::Win)
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -140,22 +145,23 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            acceptance: T.nilable(Increase::Models::CardDispute::Acceptance),
-            amount: T.nilable(Integer),
-            created_at: Time,
-            disputed_transaction_id: String,
-            explanation: String,
-            idempotency_key: T.nilable(String),
-            loss: T.nilable(Increase::Models::CardDispute::Loss),
-            rejection: T.nilable(Increase::Models::CardDispute::Rejection),
-            status: Symbol,
-            type: Symbol,
-            win: T.nilable(Increase::Models::CardDispute::Win)
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              acceptance: T.nilable(Increase::Models::CardDispute::Acceptance),
+              amount: T.nilable(Integer),
+              created_at: Time,
+              disputed_transaction_id: String,
+              explanation: String,
+              idempotency_key: T.nilable(String),
+              loss: T.nilable(Increase::Models::CardDispute::Loss),
+              rejection: T.nilable(Increase::Models::CardDispute::Rejection),
+              status: Symbol,
+              type: Symbol,
+              win: T.nilable(Increase::Models::CardDispute::Win)
+            }
+          )
       end
       def to_hash
       end

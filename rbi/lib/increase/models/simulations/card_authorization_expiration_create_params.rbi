@@ -19,7 +19,8 @@ module Increase
           params(
             card_payment_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(card_payment_id:, request_options: {})
         end
