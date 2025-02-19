@@ -17,23 +17,23 @@ module Increase
 
       def account_holder=: (
         Increase::Models::ExternalAccountUpdateParams::account_holder
-      ) -> void
+      ) -> Increase::Models::ExternalAccountUpdateParams::account_holder
 
       attr_reader description: String?
 
-      def description=: (String) -> void
+      def description=: (String) -> String
 
       attr_reader funding: Increase::Models::ExternalAccountUpdateParams::funding?
 
       def funding=: (
         Increase::Models::ExternalAccountUpdateParams::funding
-      ) -> void
+      ) -> Increase::Models::ExternalAccountUpdateParams::funding
 
       attr_reader status: Increase::Models::ExternalAccountUpdateParams::status?
 
       def status=: (
         Increase::Models::ExternalAccountUpdateParams::status
-      ) -> void
+      ) -> Increase::Models::ExternalAccountUpdateParams::status
 
       def initialize:
         (

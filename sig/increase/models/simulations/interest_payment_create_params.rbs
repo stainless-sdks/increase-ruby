@@ -20,11 +20,11 @@ module Increase
 
         attr_reader period_end: Time?
 
-        def period_end=: (Time) -> void
+        def period_end=: (Time) -> Time
 
         attr_reader period_start: Time?
 
-        def period_start=: (Time) -> void
+        def period_start=: (Time) -> Time
 
         def initialize:
           (

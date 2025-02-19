@@ -7,34 +7,49 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :associated_object_id
+      def associated_object_id
+      end
 
-      sig { params(associated_object_id: String).void }
-      attr_writer :associated_object_id
+      sig { params(_: String).returns(String) }
+      def associated_object_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::EventListParams::Category)) }
-      attr_reader :category
+      def category
+      end
 
-      sig { params(category: Increase::Models::EventListParams::Category).void }
-      attr_writer :category
+      sig do
+        params(_: Increase::Models::EventListParams::Category).returns(Increase::Models::EventListParams::Category)
+      end
+      def category=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::EventListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
-      sig { params(created_at: Increase::Models::EventListParams::CreatedAt).void }
-      attr_writer :created_at
+      sig do
+        params(_: Increase::Models::EventListParams::CreatedAt)
+          .returns(Increase::Models::EventListParams::CreatedAt)
+      end
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig do
         params(
@@ -44,7 +59,8 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         associated_object_id: nil,
@@ -57,26 +73,29 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            associated_object_id: String,
-            category: Increase::Models::EventListParams::Category,
-            created_at: Increase::Models::EventListParams::CreatedAt,
-            cursor: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              associated_object_id: String,
+              category: Increase::Models::EventListParams::Category,
+              created_at: Increase::Models::EventListParams::CreatedAt,
+              cursor: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
 
       class Category < Increase::BaseModel
         sig { returns(T.nilable(T::Array[Symbol])) }
-        attr_reader :in_
+        def in_
+        end
 
-        sig { params(in_: T::Array[Symbol]).void }
-        attr_writer :in_
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
 
         sig { params(in_: T::Array[Symbol]).void }
         def initialize(in_: nil)
@@ -361,28 +380,36 @@ module Increase
 
       class CreatedAt < Increase::BaseModel
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
-
-        sig { returns(T.nilable(Time)) }
-        attr_reader :before
-
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def before
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_after
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
+
+        sig { returns(T.nilable(Time)) }
+        def on_or_before
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).void }
         def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)

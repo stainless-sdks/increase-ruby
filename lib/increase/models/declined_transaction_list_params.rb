@@ -103,9 +103,7 @@ module Increase
         #
         #   @return [Array<Symbol, Increase::Models::DeclinedTransactionListParams::Category::In>, nil]
         optional :in_,
-                 -> {
-                   Increase::ArrayOf[enum: Increase::Models::DeclinedTransactionListParams::Category::In]
-                 },
+                 -> { Increase::ArrayOf[enum: Increase::Models::DeclinedTransactionListParams::Category::In] },
                  api_name: :in
 
         # @!parse

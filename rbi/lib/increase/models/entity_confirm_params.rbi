@@ -7,16 +7,19 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :confirmed_at
+      def confirmed_at
+      end
 
-      sig { params(confirmed_at: Time).void }
-      attr_writer :confirmed_at
+      sig { params(_: Time).returns(Time) }
+      def confirmed_at=(_)
+      end
 
       sig do
         params(
           confirmed_at: Time,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(confirmed_at: nil, request_options: {})
       end

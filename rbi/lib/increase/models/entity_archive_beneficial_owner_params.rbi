@@ -7,13 +7,19 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :beneficial_owner_id
+      def beneficial_owner_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def beneficial_owner_id=(_)
+      end
 
       sig do
         params(
           beneficial_owner_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(beneficial_owner_id:, request_options: {})
       end

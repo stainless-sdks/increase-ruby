@@ -4,52 +4,138 @@ module Increase
   module Models
     class InboundRealTimePaymentsTransfer < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_number_id
+      def account_number_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_number_id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation)) }
-      attr_accessor :confirmation
+      def confirmation
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation))
+          .returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation))
+      end
+      def confirmation=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :creditor_name
+      def creditor_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def creditor_name=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def currency=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :debtor_account_number
+      def debtor_account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def debtor_account_number=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :debtor_name
+      def debtor_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def debtor_name=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :debtor_routing_number
+      def debtor_routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def debtor_routing_number=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline)) }
-      attr_accessor :decline
+      def decline
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline))
+          .returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline))
+      end
+      def decline=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :remittance_information
+      def remittance_information
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def remittance_information=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :transaction_identification
+      def transaction_identification
+      end
+
+      sig { params(_: String).returns(String) }
+      def transaction_identification=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -69,7 +155,8 @@ module Increase
           status: Symbol,
           transaction_identification: String,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -92,36 +179,47 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            account_number_id: String,
-            amount: Integer,
-            confirmation: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation),
-            created_at: Time,
-            creditor_name: String,
-            currency: Symbol,
-            debtor_account_number: String,
-            debtor_name: String,
-            debtor_routing_number: String,
-            decline: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline),
-            remittance_information: T.nilable(String),
-            status: Symbol,
-            transaction_identification: String,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              account_number_id: String,
+              amount: Integer,
+              confirmation: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation),
+              created_at: Time,
+              creditor_name: String,
+              currency: Symbol,
+              debtor_account_number: String,
+              debtor_name: String,
+              debtor_routing_number: String,
+              decline: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline),
+              remittance_information: T.nilable(String),
+              status: Symbol,
+              transaction_identification: String,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
 
       class Confirmation < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :confirmed_at
+        def confirmed_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def confirmed_at=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :transaction_id
+        def transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def transaction_id=(_)
+        end
 
         sig { params(confirmed_at: Time, transaction_id: String).void }
         def initialize(confirmed_at:, transaction_id:)
@@ -160,13 +258,28 @@ module Increase
 
       class Decline < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :declined_at
+        def declined_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def declined_at=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :declined_transaction_id
+        def declined_transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def declined_transaction_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :reason
+        def reason
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def reason=(_)
+        end
 
         sig { params(declined_at: Time, declined_transaction_id: String, reason: Symbol).void }
         def initialize(declined_at:, declined_transaction_id:, reason:)

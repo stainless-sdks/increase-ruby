@@ -8,13 +8,19 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :card_payment_id
+        def card_payment_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def card_payment_id=(_)
+        end
 
         sig do
           params(
             card_payment_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(card_payment_id:, request_options: {})
         end

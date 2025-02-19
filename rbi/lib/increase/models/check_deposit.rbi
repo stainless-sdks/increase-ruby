@@ -4,58 +4,163 @@ module Increase
   module Models
     class CheckDeposit < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :back_image_file_id
+      def back_image_file_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def back_image_file_id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositAcceptance)) }
-      attr_accessor :deposit_acceptance
+      def deposit_acceptance
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckDeposit::DepositAcceptance))
+          .returns(T.nilable(Increase::Models::CheckDeposit::DepositAcceptance))
+      end
+      def deposit_acceptance=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositRejection)) }
-      attr_accessor :deposit_rejection
+      def deposit_rejection
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckDeposit::DepositRejection))
+          .returns(T.nilable(Increase::Models::CheckDeposit::DepositRejection))
+      end
+      def deposit_rejection=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositReturn)) }
-      attr_accessor :deposit_return
+      def deposit_return
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckDeposit::DepositReturn))
+          .returns(T.nilable(Increase::Models::CheckDeposit::DepositReturn))
+      end
+      def deposit_return=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositSubmission)) }
-      attr_accessor :deposit_submission
+      def deposit_submission
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckDeposit::DepositSubmission))
+          .returns(T.nilable(Increase::Models::CheckDeposit::DepositSubmission))
+      end
+      def deposit_submission=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def description=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :front_image_file_id
+      def front_image_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def front_image_file_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckDeposit::InboundFundsHold)) }
-      attr_accessor :inbound_funds_hold
+      def inbound_funds_hold
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckDeposit::InboundFundsHold))
+          .returns(T.nilable(Increase::Models::CheckDeposit::InboundFundsHold))
+      end
+      def inbound_funds_hold=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :inbound_mail_item_id
+      def inbound_mail_item_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def inbound_mail_item_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :lockbox_id
+      def lockbox_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def lockbox_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :transaction_id
+      def transaction_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def transaction_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -77,7 +182,8 @@ module Increase
           status: Symbol,
           transaction_id: T.nilable(String),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -102,53 +208,89 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            amount: Integer,
-            back_image_file_id: T.nilable(String),
-            created_at: Time,
-            deposit_acceptance: T.nilable(Increase::Models::CheckDeposit::DepositAcceptance),
-            deposit_rejection: T.nilable(Increase::Models::CheckDeposit::DepositRejection),
-            deposit_return: T.nilable(Increase::Models::CheckDeposit::DepositReturn),
-            deposit_submission: T.nilable(Increase::Models::CheckDeposit::DepositSubmission),
-            description: T.nilable(String),
-            front_image_file_id: String,
-            idempotency_key: T.nilable(String),
-            inbound_funds_hold: T.nilable(Increase::Models::CheckDeposit::InboundFundsHold),
-            inbound_mail_item_id: T.nilable(String),
-            lockbox_id: T.nilable(String),
-            status: Symbol,
-            transaction_id: T.nilable(String),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              amount: Integer,
+              back_image_file_id: T.nilable(String),
+              created_at: Time,
+              deposit_acceptance: T.nilable(Increase::Models::CheckDeposit::DepositAcceptance),
+              deposit_rejection: T.nilable(Increase::Models::CheckDeposit::DepositRejection),
+              deposit_return: T.nilable(Increase::Models::CheckDeposit::DepositReturn),
+              deposit_submission: T.nilable(Increase::Models::CheckDeposit::DepositSubmission),
+              description: T.nilable(String),
+              front_image_file_id: String,
+              idempotency_key: T.nilable(String),
+              inbound_funds_hold: T.nilable(Increase::Models::CheckDeposit::InboundFundsHold),
+              inbound_mail_item_id: T.nilable(String),
+              lockbox_id: T.nilable(String),
+              status: Symbol,
+              transaction_id: T.nilable(String),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
 
       class DepositAcceptance < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :account_number
+        def account_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_number=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :auxiliary_on_us
+        def auxiliary_on_us
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def auxiliary_on_us=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :check_deposit_id
+        def check_deposit_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def check_deposit_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :currency
+        def currency
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def currency=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :routing_number
+        def routing_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def routing_number=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :serial_number
+        def serial_number
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def serial_number=(_)
+        end
 
         sig do
           params(
@@ -159,7 +301,8 @@ module Increase
             currency: Symbol,
             routing_number: String,
             serial_number: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(
           account_number:,
@@ -173,17 +316,18 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              account_number: String,
-              amount: Integer,
-              auxiliary_on_us: T.nilable(String),
-              check_deposit_id: String,
-              currency: Symbol,
-              routing_number: String,
-              serial_number: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                account_number: String,
+                amount: Integer,
+                auxiliary_on_us: T.nilable(String),
+                check_deposit_id: String,
+                currency: Symbol,
+                routing_number: String,
+                serial_number: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -217,22 +361,52 @@ module Increase
 
       class DepositRejection < Increase::BaseModel
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :check_deposit_id
+        def check_deposit_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def check_deposit_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :currency
+        def currency
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def currency=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :declined_transaction_id
+        def declined_transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def declined_transaction_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :reason
+        def reason
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def reason=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :rejected_at
+        def rejected_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def rejected_at=(_)
+        end
 
         sig do
           params(
@@ -242,22 +416,24 @@ module Increase
             declined_transaction_id: String,
             reason: Symbol,
             rejected_at: Time
-          ).void
+          )
+            .void
         end
         def initialize(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:)
         end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              check_deposit_id: String,
-              currency: Symbol,
-              declined_transaction_id: String,
-              reason: Symbol,
-              rejected_at: Time
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                check_deposit_id: String,
+                currency: Symbol,
+                declined_transaction_id: String,
+                reason: Symbol,
+                rejected_at: Time
+              }
+            )
         end
         def to_hash
         end
@@ -332,22 +508,52 @@ module Increase
 
       class DepositReturn < Increase::BaseModel
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :check_deposit_id
+        def check_deposit_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def check_deposit_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :currency
+        def currency
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def currency=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :return_reason
+        def return_reason
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def return_reason=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :returned_at
+        def returned_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def returned_at=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :transaction_id
+        def transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def transaction_id=(_)
+        end
 
         sig do
           params(
@@ -357,22 +563,24 @@ module Increase
             return_reason: Symbol,
             returned_at: Time,
             transaction_id: String
-          ).void
+          )
+            .void
         end
         def initialize(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:)
         end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              check_deposit_id: String,
-              currency: Symbol,
-              return_reason: Symbol,
-              returned_at: Time,
-              transaction_id: String
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                check_deposit_id: String,
+                currency: Symbol,
+                return_reason: Symbol,
+                returned_at: Time,
+                transaction_id: String
+              }
+            )
         end
         def to_hash
         end
@@ -492,13 +700,28 @@ module Increase
 
       class DepositSubmission < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :back_file_id
+        def back_file_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def back_file_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :front_file_id
+        def front_file_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def front_file_id=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :submitted_at
+        def submitted_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def submitted_at=(_)
+        end
 
         sig { params(back_file_id: String, front_file_id: String, submitted_at: Time).void }
         def initialize(back_file_id:, front_file_id:, submitted_at:)
@@ -511,34 +734,84 @@ module Increase
 
       class InboundFundsHold < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :automatically_releases_at
+        def automatically_releases_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def automatically_releases_at=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :currency
+        def currency
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def currency=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :held_transaction_id
+        def held_transaction_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def held_transaction_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :pending_transaction_id
+        def pending_transaction_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def pending_transaction_id=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :released_at
+        def released_at
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def released_at=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :status
+        def status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def status=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig do
           params(
@@ -552,7 +825,8 @@ module Increase
             released_at: T.nilable(Time),
             status: Symbol,
             type: Symbol
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -569,20 +843,21 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              amount: Integer,
-              automatically_releases_at: Time,
-              created_at: Time,
-              currency: Symbol,
-              held_transaction_id: T.nilable(String),
-              pending_transaction_id: T.nilable(String),
-              released_at: T.nilable(Time),
-              status: Symbol,
-              type: Symbol
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                amount: Integer,
+                automatically_releases_at: Time,
+                created_at: Time,
+                currency: Symbol,
+                held_transaction_id: T.nilable(String),
+                pending_transaction_id: T.nilable(String),
+                released_at: T.nilable(Time),
+                status: Symbol,
+                type: Symbol
+              }
+            )
         end
         def to_hash
         end

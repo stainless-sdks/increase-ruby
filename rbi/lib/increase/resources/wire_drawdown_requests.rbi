@@ -19,7 +19,8 @@ module Increase
           recipient_address_line2: String,
           recipient_address_line3: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::WireDrawdownRequest)
+        )
+          .returns(Increase::Models::WireDrawdownRequest)
       end
       def create(
         account_number_id:,
@@ -43,7 +44,8 @@ module Increase
         params(
           wire_drawdown_request_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::WireDrawdownRequest)
+        )
+          .returns(Increase::Models::WireDrawdownRequest)
       end
       def retrieve(wire_drawdown_request_id, request_options: {})
       end
@@ -55,7 +57,8 @@ module Increase
           limit: Integer,
           status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::WireDrawdownRequest])
+        )
+          .returns(Increase::Page[Increase::Models::WireDrawdownRequest])
       end
       def list(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       end

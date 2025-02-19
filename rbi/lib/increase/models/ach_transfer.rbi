@@ -4,109 +4,317 @@ module Increase
   module Models
     class ACHTransfer < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_number
+      def account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_number=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Acknowledgement)) }
-      attr_accessor :acknowledgement
+      def acknowledgement
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::ACHTransfer::Acknowledgement))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Acknowledgement))
+      end
+      def acknowledgement=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Addenda)) }
-      attr_accessor :addenda
+      def addenda
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::ACHTransfer::Addenda))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Addenda))
+      end
+      def addenda=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Approval)) }
-      attr_accessor :approval
+      def approval
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::ACHTransfer::Approval))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Approval))
+      end
+      def approval=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Cancellation)) }
-      attr_accessor :cancellation
+      def cancellation
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::ACHTransfer::Cancellation))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Cancellation))
+      end
+      def cancellation=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :company_descriptive_date
+      def company_descriptive_date
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def company_descriptive_date=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :company_discretionary_data
+      def company_discretionary_data
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def company_discretionary_data=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :company_entry_description
+      def company_entry_description
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def company_entry_description=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :company_name
+      def company_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def company_name=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy)) }
-      attr_accessor :created_by
+      def created_by
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy))
+          .returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy))
+      end
+      def created_by=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def currency=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :destination_account_holder
+      def destination_account_holder
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def destination_account_holder=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :external_account_id
+      def external_account_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def external_account_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :funding
+      def funding
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def funding=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ACHTransfer::InboundFundsHold)) }
-      attr_accessor :inbound_funds_hold
+      def inbound_funds_hold
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold))
+          .returns(T.nilable(Increase::Models::ACHTransfer::InboundFundsHold))
+      end
+      def inbound_funds_hold=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :individual_id
+      def individual_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def individual_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :individual_name
+      def individual_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def individual_name=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :network
+      def network
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def network=(_)
+      end
 
       sig { returns(T::Array[Increase::Models::ACHTransfer::NotificationsOfChange]) }
-      attr_accessor :notifications_of_change
+      def notifications_of_change
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange])
+          .returns(T::Array[Increase::Models::ACHTransfer::NotificationsOfChange])
+      end
+      def notifications_of_change=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :pending_transaction_id
+      def pending_transaction_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def pending_transaction_id=(_)
+      end
 
       sig { returns(Increase::Models::ACHTransfer::PreferredEffectiveDate) }
-      attr_accessor :preferred_effective_date
+      def preferred_effective_date
+      end
+
+      sig do
+        params(_: Increase::Models::ACHTransfer::PreferredEffectiveDate)
+          .returns(Increase::Models::ACHTransfer::PreferredEffectiveDate)
+      end
+      def preferred_effective_date=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Return)) }
-      attr_accessor :return_
+      def return_
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::ACHTransfer::Return))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Return))
+      end
+      def return_=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :routing_number
+      def routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def routing_number=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Settlement)) }
-      attr_accessor :settlement
+      def settlement
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::ACHTransfer::Settlement))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Settlement))
+      end
+      def settlement=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :standard_entry_class_code
+      def standard_entry_class_code
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def standard_entry_class_code=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :statement_descriptor
+      def statement_descriptor
+      end
+
+      sig { params(_: String).returns(String) }
+      def statement_descriptor=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ACHTransfer::Submission)) }
-      attr_accessor :submission
+      def submission
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::ACHTransfer::Submission))
+          .returns(T.nilable(Increase::Models::ACHTransfer::Submission))
+      end
+      def submission=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :transaction_id
+      def transaction_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def transaction_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -145,7 +353,8 @@ module Increase
           submission: T.nilable(Increase::Models::ACHTransfer::Submission),
           transaction_id: T.nilable(String),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -187,52 +396,58 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            account_number: String,
-            acknowledgement: T.nilable(Increase::Models::ACHTransfer::Acknowledgement),
-            addenda: T.nilable(Increase::Models::ACHTransfer::Addenda),
-            amount: Integer,
-            approval: T.nilable(Increase::Models::ACHTransfer::Approval),
-            cancellation: T.nilable(Increase::Models::ACHTransfer::Cancellation),
-            company_descriptive_date: T.nilable(String),
-            company_discretionary_data: T.nilable(String),
-            company_entry_description: T.nilable(String),
-            company_name: T.nilable(String),
-            created_at: Time,
-            created_by: T.nilable(Increase::Models::ACHTransfer::CreatedBy),
-            currency: Symbol,
-            destination_account_holder: Symbol,
-            external_account_id: T.nilable(String),
-            funding: Symbol,
-            idempotency_key: T.nilable(String),
-            inbound_funds_hold: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold),
-            individual_id: T.nilable(String),
-            individual_name: T.nilable(String),
-            network: Symbol,
-            notifications_of_change: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange],
-            pending_transaction_id: T.nilable(String),
-            preferred_effective_date: Increase::Models::ACHTransfer::PreferredEffectiveDate,
-            return_: T.nilable(Increase::Models::ACHTransfer::Return),
-            routing_number: String,
-            settlement: T.nilable(Increase::Models::ACHTransfer::Settlement),
-            standard_entry_class_code: Symbol,
-            statement_descriptor: String,
-            status: Symbol,
-            submission: T.nilable(Increase::Models::ACHTransfer::Submission),
-            transaction_id: T.nilable(String),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              account_number: String,
+              acknowledgement: T.nilable(Increase::Models::ACHTransfer::Acknowledgement),
+              addenda: T.nilable(Increase::Models::ACHTransfer::Addenda),
+              amount: Integer,
+              approval: T.nilable(Increase::Models::ACHTransfer::Approval),
+              cancellation: T.nilable(Increase::Models::ACHTransfer::Cancellation),
+              company_descriptive_date: T.nilable(String),
+              company_discretionary_data: T.nilable(String),
+              company_entry_description: T.nilable(String),
+              company_name: T.nilable(String),
+              created_at: Time,
+              created_by: T.nilable(Increase::Models::ACHTransfer::CreatedBy),
+              currency: Symbol,
+              destination_account_holder: Symbol,
+              external_account_id: T.nilable(String),
+              funding: Symbol,
+              idempotency_key: T.nilable(String),
+              inbound_funds_hold: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold),
+              individual_id: T.nilable(String),
+              individual_name: T.nilable(String),
+              network: Symbol,
+              notifications_of_change: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange],
+              pending_transaction_id: T.nilable(String),
+              preferred_effective_date: Increase::Models::ACHTransfer::PreferredEffectiveDate,
+              return_: T.nilable(Increase::Models::ACHTransfer::Return),
+              routing_number: String,
+              settlement: T.nilable(Increase::Models::ACHTransfer::Settlement),
+              standard_entry_class_code: Symbol,
+              statement_descriptor: String,
+              status: Symbol,
+              submission: T.nilable(Increase::Models::ACHTransfer::Submission),
+              transaction_id: T.nilable(String),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
 
       class Acknowledgement < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :acknowledged_at
+        def acknowledged_at
+        end
+
+        sig { params(_: String).returns(String) }
+        def acknowledged_at=(_)
+        end
 
         sig { params(acknowledged_at: String).void }
         def initialize(acknowledged_at:)
@@ -245,32 +460,55 @@ module Increase
 
       class Addenda < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :category
+        def category
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def category=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform)) }
-        attr_accessor :freeform
+        def freeform
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform))
+            .returns(T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform))
+        end
+        def freeform=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)) }
-        attr_accessor :payment_order_remittance_advice
+        def payment_order_remittance_advice
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice))
+            .returns(T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice))
+        end
+        def payment_order_remittance_advice=(_)
+        end
 
         sig do
           params(
             category: Symbol,
             freeform: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform),
             payment_order_remittance_advice: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)
-          ).void
+          )
+            .void
         end
         def initialize(category:, freeform:, payment_order_remittance_advice:)
         end
 
         sig do
-          override.returns(
-            {
-              category: Symbol,
-              freeform: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform),
-              payment_order_remittance_advice: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)
-            }
-          )
+          override
+            .returns(
+              {
+                category: Symbol,
+                freeform: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform),
+                payment_order_remittance_advice: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)
+              }
+            )
         end
         def to_hash
         end
@@ -294,21 +532,32 @@ module Increase
 
         class Freeform < Increase::BaseModel
           sig { returns(T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry]) }
-          attr_accessor :entries
+          def entries
+          end
+
+          sig do
+            params(_: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry])
+              .returns(T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry])
+          end
+          def entries=(_)
+          end
 
           sig { params(entries: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry]).void }
           def initialize(entries:)
           end
 
-          sig do
-            override.returns({entries: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry]})
-          end
+          sig { override.returns({entries: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry]}) }
           def to_hash
           end
 
           class Entry < Increase::BaseModel
             sig { returns(String) }
-            attr_accessor :payment_related_information
+            def payment_related_information
+            end
+
+            sig { params(_: String).returns(String) }
+            def payment_related_information=(_)
+            end
 
             sig { params(payment_related_information: String).void }
             def initialize(payment_related_information:)
@@ -321,29 +570,49 @@ module Increase
         end
 
         class PaymentOrderRemittanceAdvice < Increase::BaseModel
-          sig do
-            returns(T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice])
+          sig { returns(T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]) }
+          def invoices
           end
-          attr_accessor :invoices
 
           sig do
-            params(invoices: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]).void
+            params(_: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice])
+              .returns(T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice])
+          end
+          def invoices=(_)
+          end
+
+          sig do
+            params(invoices: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice])
+              .void
           end
           def initialize(invoices:)
           end
 
           sig do
-            override.returns({invoices: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]})
+            override
+              .returns(
+                {invoices: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]}
+              )
           end
           def to_hash
           end
 
           class Invoice < Increase::BaseModel
             sig { returns(String) }
-            attr_accessor :invoice_number
+            def invoice_number
+            end
+
+            sig { params(_: String).returns(String) }
+            def invoice_number=(_)
+            end
 
             sig { returns(Integer) }
-            attr_accessor :paid_amount
+            def paid_amount
+            end
+
+            sig { params(_: Integer).returns(Integer) }
+            def paid_amount=(_)
+            end
 
             sig { params(invoice_number: String, paid_amount: Integer).void }
             def initialize(invoice_number:, paid_amount:)
@@ -358,10 +627,20 @@ module Increase
 
       class Approval < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :approved_at
+        def approved_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def approved_at=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :approved_by
+        def approved_by
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def approved_by=(_)
+        end
 
         sig { params(approved_at: Time, approved_by: T.nilable(String)).void }
         def initialize(approved_at:, approved_by:)
@@ -374,10 +653,20 @@ module Increase
 
       class Cancellation < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :canceled_at
+        def canceled_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def canceled_at=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :canceled_by
+        def canceled_by
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def canceled_by=(_)
+        end
 
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).void }
         def initialize(canceled_at:, canceled_by:)
@@ -390,16 +679,45 @@ module Increase
 
       class CreatedBy < Increase::BaseModel
         sig { returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey)) }
-        attr_accessor :api_key
+        def api_key
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey))
+            .returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey))
+        end
+        def api_key=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :category
+        def category
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def category=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication)) }
-        attr_accessor :oauth_application
+        def oauth_application
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication))
+            .returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication))
+        end
+        def oauth_application=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)) }
-        attr_accessor :user
+        def user
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User))
+            .returns(T.nilable(Increase::Models::ACHTransfer::CreatedBy::User))
+        end
+        def user=(_)
+        end
 
         sig do
           params(
@@ -407,27 +725,34 @@ module Increase
             category: Symbol,
             oauth_application: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)
-          ).void
+          )
+            .void
         end
         def initialize(api_key:, category:, oauth_application:, user:)
         end
 
         sig do
-          override.returns(
-            {
-              api_key: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey),
-              category: Symbol,
-              oauth_application: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication),
-              user: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)
-            }
-          )
+          override
+            .returns(
+              {
+                api_key: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey),
+                category: Symbol,
+                oauth_application: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication),
+                user: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)
+              }
+            )
         end
         def to_hash
         end
 
         class APIKey < Increase::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_accessor :description
+          def description
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def description=(_)
+          end
 
           sig { params(description: T.nilable(String)).void }
           def initialize(description:)
@@ -457,7 +782,12 @@ module Increase
 
         class OAuthApplication < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { params(name: String).void }
           def initialize(name:)
@@ -470,7 +800,12 @@ module Increase
 
         class User < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :email
+          def email
+          end
+
+          sig { params(_: String).returns(String) }
+          def email=(_)
+          end
 
           sig { params(email: String).void }
           def initialize(email:)
@@ -541,34 +876,84 @@ module Increase
 
       class InboundFundsHold < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :id
+        def id
+        end
+
+        sig { params(_: String).returns(String) }
+        def id=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :automatically_releases_at
+        def automatically_releases_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def automatically_releases_at=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :currency
+        def currency
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def currency=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :held_transaction_id
+        def held_transaction_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def held_transaction_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :pending_transaction_id
+        def pending_transaction_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def pending_transaction_id=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :released_at
+        def released_at
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def released_at=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :status
+        def status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def status=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig do
           params(
@@ -582,7 +967,8 @@ module Increase
             released_at: T.nilable(Time),
             status: Symbol,
             type: Symbol
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -599,20 +985,21 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              amount: Integer,
-              automatically_releases_at: Time,
-              created_at: Time,
-              currency: Symbol,
-              held_transaction_id: T.nilable(String),
-              pending_transaction_id: T.nilable(String),
-              released_at: T.nilable(Time),
-              status: Symbol,
-              type: Symbol
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                amount: Integer,
+                automatically_releases_at: Time,
+                created_at: Time,
+                currency: Symbol,
+                held_transaction_id: T.nilable(String),
+                pending_transaction_id: T.nilable(String),
+                released_at: T.nilable(Time),
+                status: Symbol,
+                type: Symbol
+              }
+            )
         end
         def to_hash
         end
@@ -680,13 +1067,28 @@ module Increase
 
       class NotificationsOfChange < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :change_code
+        def change_code
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def change_code=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :corrected_data
+        def corrected_data
+        end
+
+        sig { params(_: String).returns(String) }
+        def corrected_data=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         sig { params(change_code: Symbol, corrected_data: String, created_at: Time).void }
         def initialize(change_code:, corrected_data:, created_at:)
@@ -764,10 +1166,20 @@ module Increase
 
       class PreferredEffectiveDate < Increase::BaseModel
         sig { returns(T.nilable(Date)) }
-        attr_accessor :date
+        def date
+        end
+
+        sig { params(_: T.nilable(Date)).returns(T.nilable(Date)) }
+        def date=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_accessor :settlement_schedule
+        def settlement_schedule
+        end
+
+        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        def settlement_schedule=(_)
+        end
 
         sig { params(date: T.nilable(Date), settlement_schedule: T.nilable(Symbol)).void }
         def initialize(date:, settlement_schedule:)
@@ -797,22 +1209,52 @@ module Increase
 
       class Return < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :created_at
+        def created_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def created_at=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :raw_return_reason_code
+        def raw_return_reason_code
+        end
+
+        sig { params(_: String).returns(String) }
+        def raw_return_reason_code=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :return_reason_code
+        def return_reason_code
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def return_reason_code=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :trace_number
+        def trace_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def trace_number=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :transaction_id
+        def transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def transaction_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :transfer_id
+        def transfer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def transfer_id=(_)
+        end
 
         sig do
           params(
@@ -822,7 +1264,8 @@ module Increase
             trace_number: String,
             transaction_id: String,
             transfer_id: String
-          ).void
+          )
+            .void
         end
         def initialize(
           created_at:,
@@ -835,16 +1278,17 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              created_at: Time,
-              raw_return_reason_code: String,
-              return_reason_code: Symbol,
-              trace_number: String,
-              transaction_id: String,
-              transfer_id: String
-            }
-          )
+          override
+            .returns(
+              {
+                created_at: Time,
+                raw_return_reason_code: String,
+                return_reason_code: Symbol,
+                trace_number: String,
+                transaction_id: String,
+                transfer_id: String
+              }
+            )
         end
         def to_hash
         end
@@ -1070,7 +1514,12 @@ module Increase
 
       class Settlement < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :settled_at
+        def settled_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def settled_at=(_)
+        end
 
         sig { params(settled_at: Time).void }
         def initialize(settled_at:)
@@ -1138,19 +1587,44 @@ module Increase
 
       class Submission < Increase::BaseModel
         sig { returns(Date) }
-        attr_accessor :effective_date
+        def effective_date
+        end
+
+        sig { params(_: Date).returns(Date) }
+        def effective_date=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :expected_funds_settlement_at
+        def expected_funds_settlement_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def expected_funds_settlement_at=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :expected_settlement_schedule
+        def expected_settlement_schedule
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def expected_settlement_schedule=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :submitted_at
+        def submitted_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def submitted_at=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :trace_number
+        def trace_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def trace_number=(_)
+        end
 
         sig do
           params(
@@ -1159,7 +1633,8 @@ module Increase
             expected_settlement_schedule: Symbol,
             submitted_at: Time,
             trace_number: String
-          ).void
+          )
+            .void
         end
         def initialize(
           effective_date:,
@@ -1171,15 +1646,16 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              effective_date: Date,
-              expected_funds_settlement_at: Time,
-              expected_settlement_schedule: Symbol,
-              submitted_at: Time,
-              trace_number: String
-            }
-          )
+          override
+            .returns(
+              {
+                effective_date: Date,
+                expected_funds_settlement_at: Time,
+                expected_settlement_schedule: Symbol,
+                submitted_at: Time,
+                trace_number: String
+              }
+            )
         end
         def to_hash
         end

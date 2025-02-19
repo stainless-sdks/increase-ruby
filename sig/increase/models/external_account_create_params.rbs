@@ -24,13 +24,13 @@ module Increase
 
       def account_holder=: (
         Increase::Models::ExternalAccountCreateParams::account_holder
-      ) -> void
+      ) -> Increase::Models::ExternalAccountCreateParams::account_holder
 
       attr_reader funding: Increase::Models::ExternalAccountCreateParams::funding?
 
       def funding=: (
         Increase::Models::ExternalAccountCreateParams::funding
-      ) -> void
+      ) -> Increase::Models::ExternalAccountCreateParams::funding
 
       def initialize:
         (

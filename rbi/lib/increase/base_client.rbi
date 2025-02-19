@@ -35,10 +35,13 @@ module Increase
     def self.validate!(req)
     end
 
-    # @private
-    #
     sig { returns(T.anything) }
-    attr_accessor :requester
+    def requester
+    end
+
+    sig { params(_: T.anything).returns(T.anything) }
+    def requester=(_)
+    end
 
     sig do
       params(
@@ -49,7 +52,8 @@ module Increase
         max_retry_delay: Float,
         headers: T::Hash[String, T.nilable(String)],
         idempotency_header: T.nilable(String)
-      ).void
+      )
+        .void
     end
     def initialize(
       base_url:,
@@ -71,10 +75,8 @@ module Increase
     end
 
     sig do
-      params(
-        req: Increase::BaseClient::RequestShape,
-        opts: T::Hash[Symbol, T.anything]
-      ).returns(Increase::BaseClient::NormalizedRequestShape)
+      params(req: Increase::BaseClient::RequestShape, opts: T::Hash[Symbol, T.anything])
+        .returns(Increase::BaseClient::NormalizedRequestShape)
     end
     private def build_request(req, opts)
     end
@@ -88,11 +90,8 @@ module Increase
     end
 
     sig do
-      params(
-        request: Increase::BaseClient::NormalizedRequestShape,
-        status: Integer,
-        location_header: String
-      ).returns(Increase::BaseClient::NormalizedRequestShape)
+      params(request: Increase::BaseClient::NormalizedRequestShape, status: Integer, location_header: String)
+        .returns(Increase::BaseClient::NormalizedRequestShape)
     end
     private def follow_redirect(request, status:, location_header:)
     end
@@ -103,7 +102,8 @@ module Increase
         redirect_count: Integer,
         retry_count: Integer,
         send_retry_header: T::Boolean
-      ).returns(Net::HTTPResponse)
+      )
+        .returns(Net::HTTPResponse)
     end
     private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
     end
@@ -123,7 +123,8 @@ module Increase
         page: T.nilable(T::Class[Increase::BaseModel]),
         model: T.nilable(Increase::Converter::Input),
         options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-      ).returns(T.anything)
+      )
+        .returns(T.anything)
     end
     def request(
       method,

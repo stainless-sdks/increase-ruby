@@ -8,16 +8,28 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :card_id
+        def card_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def card_id=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :pending_transaction_id
+        def pending_transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def pending_transaction_id=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_reader :amount
+        def amount
+        end
 
-        sig { params(amount: Integer).void }
-        attr_writer :amount
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig do
           params(
@@ -25,20 +37,22 @@ module Increase
             pending_transaction_id: String,
             amount: Integer,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(card_id:, pending_transaction_id:, amount: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              card_id: String,
-              pending_transaction_id: String,
-              amount: Integer,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                card_id: String,
+                pending_transaction_id: String,
+                amount: Integer,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end

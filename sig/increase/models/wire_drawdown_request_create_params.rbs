@@ -36,31 +36,31 @@ module Increase
 
       attr_reader originator_address_line1: String?
 
-      def originator_address_line1=: (String) -> void
+      def originator_address_line1=: (String) -> String
 
       attr_reader originator_address_line2: String?
 
-      def originator_address_line2=: (String) -> void
+      def originator_address_line2=: (String) -> String
 
       attr_reader originator_address_line3: String?
 
-      def originator_address_line3=: (String) -> void
+      def originator_address_line3=: (String) -> String
 
       attr_reader originator_name: String?
 
-      def originator_name=: (String) -> void
+      def originator_name=: (String) -> String
 
       attr_reader recipient_address_line1: String?
 
-      def recipient_address_line1=: (String) -> void
+      def recipient_address_line1=: (String) -> String
 
       attr_reader recipient_address_line2: String?
 
-      def recipient_address_line2=: (String) -> void
+      def recipient_address_line2=: (String) -> String
 
       attr_reader recipient_address_line3: String?
 
-      def recipient_address_line3=: (String) -> void
+      def recipient_address_line3=: (String) -> String
 
       def initialize:
         (

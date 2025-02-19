@@ -9,7 +9,7 @@ module Increase
 
       attr_reader at_time: Time?
 
-      def at_time=: (Time) -> void
+      def at_time=: (Time) -> Time
 
       def initialize:
         (at_time: Time, request_options: Increase::request_opts) -> void

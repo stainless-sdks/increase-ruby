@@ -21,7 +21,7 @@ module Increase
 
       attr_reader physical_card_profile_id: String?
 
-      def physical_card_profile_id=: (String) -> void
+      def physical_card_profile_id=: (String) -> String
 
       def initialize:
         (
@@ -103,15 +103,15 @@ module Increase
 
           attr_reader line2: String?
 
-          def line2=: (String) -> void
+          def line2=: (String) -> String
 
           attr_reader line3: String?
 
-          def line3=: (String) -> void
+          def line3=: (String) -> String
 
           attr_reader phone_number: String?
 
-          def phone_number=: (String) -> void
+          def phone_number=: (String) -> String
 
           def initialize:
             (

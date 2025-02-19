@@ -22,33 +22,35 @@ module Increase
 
       def account_statement_ofx=: (
         Increase::Models::ExportCreateParams::AccountStatementOfx
-      ) -> void
+      ) -> Increase::Models::ExportCreateParams::AccountStatementOfx
 
       attr_reader balance_csv: Increase::Models::ExportCreateParams::BalanceCsv?
 
       def balance_csv=: (
         Increase::Models::ExportCreateParams::BalanceCsv
-      ) -> void
+      ) -> Increase::Models::ExportCreateParams::BalanceCsv
 
       attr_reader bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv?
 
       def bookkeeping_account_balance_csv=: (
         Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv
-      ) -> void
+      ) -> Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv
 
       attr_reader entity_csv: Increase::Models::ExportCreateParams::EntityCsv?
 
-      def entity_csv=: (Increase::Models::ExportCreateParams::EntityCsv) -> void
+      def entity_csv=: (
+        Increase::Models::ExportCreateParams::EntityCsv
+      ) -> Increase::Models::ExportCreateParams::EntityCsv
 
       attr_reader transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv?
 
       def transaction_csv=: (
         Increase::Models::ExportCreateParams::TransactionCsv
-      ) -> void
+      ) -> Increase::Models::ExportCreateParams::TransactionCsv
 
       attr_reader vendor_csv: top?
 
-      def vendor_csv=: (top) -> void
+      def vendor_csv=: (top) -> top
 
       def initialize:
         (
@@ -110,7 +112,7 @@ module Increase
 
         def created_at=: (
           Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
-        ) -> void
+        ) -> Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
 
         def initialize:
           (
@@ -130,19 +132,19 @@ module Increase
         class CreatedAt < Increase::BaseModel
           attr_reader after: Time?
 
-          def after=: (Time) -> void
+          def after=: (Time) -> Time
 
           attr_reader before: Time?
 
-          def before=: (Time) -> void
+          def before=: (Time) -> Time
 
           attr_reader on_or_after: Time?
 
-          def on_or_after=: (Time) -> void
+          def on_or_after=: (Time) -> Time
 
           attr_reader on_or_before: Time?
 
-          def on_or_before=: (Time) -> void
+          def on_or_before=: (Time) -> Time
 
           def initialize:
             (
@@ -170,17 +172,17 @@ module Increase
       class BalanceCsv < Increase::BaseModel
         attr_reader account_id: String?
 
-        def account_id=: (String) -> void
+        def account_id=: (String) -> String
 
         attr_reader created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt?
 
         def created_at=: (
           Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt
-        ) -> void
+        ) -> Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt
 
         attr_reader program_id: String?
 
-        def program_id=: (String) -> void
+        def program_id=: (String) -> String
 
         def initialize:
           (
@@ -201,19 +203,19 @@ module Increase
         class CreatedAt < Increase::BaseModel
           attr_reader after: Time?
 
-          def after=: (Time) -> void
+          def after=: (Time) -> Time
 
           attr_reader before: Time?
 
-          def before=: (Time) -> void
+          def before=: (Time) -> Time
 
           attr_reader on_or_after: Time?
 
-          def on_or_after=: (Time) -> void
+          def on_or_after=: (Time) -> Time
 
           attr_reader on_or_before: Time?
 
-          def on_or_before=: (Time) -> void
+          def on_or_before=: (Time) -> Time
 
           def initialize:
             (
@@ -240,13 +242,13 @@ module Increase
       class BookkeepingAccountBalanceCsv < Increase::BaseModel
         attr_reader bookkeeping_account_id: String?
 
-        def bookkeeping_account_id=: (String) -> void
+        def bookkeeping_account_id=: (String) -> String
 
         attr_reader created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt?
 
         def created_at=: (
           Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
-        ) -> void
+        ) -> Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
 
         def initialize:
           (
@@ -266,19 +268,19 @@ module Increase
         class CreatedAt < Increase::BaseModel
           attr_reader after: Time?
 
-          def after=: (Time) -> void
+          def after=: (Time) -> Time
 
           attr_reader before: Time?
 
-          def before=: (Time) -> void
+          def before=: (Time) -> Time
 
           attr_reader on_or_after: Time?
 
-          def on_or_after=: (Time) -> void
+          def on_or_after=: (Time) -> Time
 
           attr_reader on_or_before: Time?
 
-          def on_or_before=: (Time) -> void
+          def on_or_before=: (Time) -> Time
 
           def initialize:
             (
@@ -304,7 +306,7 @@ module Increase
 
         def status=: (
           Increase::Models::ExportCreateParams::EntityCsv::Status
-        ) -> void
+        ) -> Increase::Models::ExportCreateParams::EntityCsv::Status
 
         def initialize:
           (
@@ -363,17 +365,17 @@ module Increase
       class TransactionCsv < Increase::BaseModel
         attr_reader account_id: String?
 
-        def account_id=: (String) -> void
+        def account_id=: (String) -> String
 
         attr_reader created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt?
 
         def created_at=: (
           Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt
-        ) -> void
+        ) -> Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt
 
         attr_reader program_id: String?
 
-        def program_id=: (String) -> void
+        def program_id=: (String) -> String
 
         def initialize:
           (
@@ -394,19 +396,19 @@ module Increase
         class CreatedAt < Increase::BaseModel
           attr_reader after: Time?
 
-          def after=: (Time) -> void
+          def after=: (Time) -> Time
 
           attr_reader before: Time?
 
-          def before=: (Time) -> void
+          def before=: (Time) -> Time
 
           attr_reader on_or_after: Time?
 
-          def on_or_after=: (Time) -> void
+          def on_or_after=: (Time) -> Time
 
           attr_reader on_or_before: Time?
 
-          def on_or_before=: (Time) -> void
+          def on_or_before=: (Time) -> Time
 
           def initialize:
             (
