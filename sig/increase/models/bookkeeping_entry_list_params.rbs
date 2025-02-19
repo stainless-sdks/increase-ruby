@@ -10,15 +10,15 @@ module Increase
 
       attr_reader account_id: String?
 
-      def account_id=: (String) -> void
+      def account_id=: (String) -> String
 
       attr_reader cursor: String?
 
-      def cursor=: (String) -> void
+      def cursor=: (String) -> String
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       def initialize:
         (

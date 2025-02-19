@@ -20,21 +20,21 @@ module Increase
 
       def billing_address=: (
         Increase::Models::CardCreateParams::BillingAddress
-      ) -> void
+      ) -> Increase::Models::CardCreateParams::BillingAddress
 
       attr_reader description: String?
 
-      def description=: (String) -> void
+      def description=: (String) -> String
 
       attr_reader digital_wallet: Increase::Models::CardCreateParams::DigitalWallet?
 
       def digital_wallet=: (
         Increase::Models::CardCreateParams::DigitalWallet
-      ) -> void
+      ) -> Increase::Models::CardCreateParams::DigitalWallet
 
       attr_reader entity_id: String?
 
-      def entity_id=: (String) -> void
+      def entity_id=: (String) -> String
 
       def initialize:
         (
@@ -71,7 +71,7 @@ module Increase
 
         attr_reader line2: String?
 
-        def line2=: (String) -> void
+        def line2=: (String) -> String
 
         def initialize:
           (
@@ -95,15 +95,15 @@ module Increase
       class DigitalWallet < Increase::BaseModel
         attr_reader digital_card_profile_id: String?
 
-        def digital_card_profile_id=: (String) -> void
+        def digital_card_profile_id=: (String) -> String
 
         attr_reader email: String?
 
-        def email=: (String) -> void
+        def email=: (String) -> String
 
         attr_reader phone: String?
 
-        def phone=: (String) -> void
+        def phone=: (String) -> String
 
         def initialize:
           (

@@ -8,7 +8,12 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(Symbol) }
-        attr_accessor :shipment_status
+        def shipment_status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def shipment_status=(_)
+        end
 
         sig do
           params(

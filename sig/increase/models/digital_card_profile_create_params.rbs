@@ -30,21 +30,21 @@ module Increase
 
       attr_reader contact_email: String?
 
-      def contact_email=: (String) -> void
+      def contact_email=: (String) -> String
 
       attr_reader contact_phone: String?
 
-      def contact_phone=: (String) -> void
+      def contact_phone=: (String) -> String
 
       attr_reader contact_website: String?
 
-      def contact_website=: (String) -> void
+      def contact_website=: (String) -> String
 
       attr_reader text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor?
 
       def text_color=: (
         Increase::Models::DigitalCardProfileCreateParams::TextColor
-      ) -> void
+      ) -> Increase::Models::DigitalCardProfileCreateParams::TextColor
 
       def initialize:
         (

@@ -4,25 +4,60 @@ module Increase
   module Models
     class BookkeepingAccount < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def account_id=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_accessor :compliance_category
+      def compliance_category
+      end
+
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      def compliance_category=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :entity_id
+      def entity_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def entity_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(

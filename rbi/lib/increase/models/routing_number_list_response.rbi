@@ -4,22 +4,52 @@ module Increase
   module Models
     class RoutingNumberListResponse < Increase::BaseModel
       sig { returns(Symbol) }
-      attr_accessor :ach_transfers
+      def ach_transfers
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def ach_transfers=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :real_time_payments_transfers
+      def real_time_payments_transfers
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def real_time_payments_transfers=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :routing_number
+      def routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def routing_number=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :wire_transfers
+      def wire_transfers
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def wire_transfers=(_)
+      end
 
       sig do
         params(

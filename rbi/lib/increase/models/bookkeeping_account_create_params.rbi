@@ -7,25 +7,36 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
+      def account_id
+      end
 
-      sig { params(account_id: String).void }
-      attr_writer :account_id
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :compliance_category
+      def compliance_category
+      end
 
-      sig { params(compliance_category: Symbol).void }
-      attr_writer :compliance_category
+      sig { params(_: Symbol).returns(Symbol) }
+      def compliance_category=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :entity_id
+      def entity_id
+      end
 
-      sig { params(entity_id: String).void }
-      attr_writer :entity_id
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       sig do
         params(

@@ -7,64 +7,108 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :account_number_id
+      def account_number_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_number_id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :message_to_recipient
+      def message_to_recipient
+      end
+
+      sig { params(_: String).returns(String) }
+      def message_to_recipient=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :recipient_account_number
+      def recipient_account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def recipient_account_number=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :recipient_name
+      def recipient_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def recipient_name=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :recipient_routing_number
+      def recipient_routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def recipient_routing_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :originator_address_line1
+      def originator_address_line1
+      end
 
-      sig { params(originator_address_line1: String).void }
-      attr_writer :originator_address_line1
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :originator_address_line2
-
-      sig { params(originator_address_line2: String).void }
-      attr_writer :originator_address_line2
+      sig { params(_: String).returns(String) }
+      def originator_address_line1=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :originator_address_line3
+      def originator_address_line2
+      end
 
-      sig { params(originator_address_line3: String).void }
-      attr_writer :originator_address_line3
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :originator_name
-
-      sig { params(originator_name: String).void }
-      attr_writer :originator_name
+      sig { params(_: String).returns(String) }
+      def originator_address_line2=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :recipient_address_line1
+      def originator_address_line3
+      end
 
-      sig { params(recipient_address_line1: String).void }
-      attr_writer :recipient_address_line1
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :recipient_address_line2
-
-      sig { params(recipient_address_line2: String).void }
-      attr_writer :recipient_address_line2
+      sig { params(_: String).returns(String) }
+      def originator_address_line3=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :recipient_address_line3
+      def originator_name
+      end
 
-      sig { params(recipient_address_line3: String).void }
-      attr_writer :recipient_address_line3
+      sig { params(_: String).returns(String) }
+      def originator_name=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def recipient_address_line1
+      end
+
+      sig { params(_: String).returns(String) }
+      def recipient_address_line1=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def recipient_address_line2
+      end
+
+      sig { params(_: String).returns(String) }
+      def recipient_address_line2=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def recipient_address_line3
+      end
+
+      sig { params(_: String).returns(String) }
+      def recipient_address_line3=(_)
+      end
 
       sig do
         params(

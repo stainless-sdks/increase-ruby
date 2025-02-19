@@ -3,7 +3,8 @@
 module Increase
   class Error < StandardError
     sig { returns(T.nilable(StandardError)) }
-    attr_reader :cause
+    def cause
+    end
   end
 
   class ConversionError < Increase::Error
@@ -11,13 +12,16 @@ module Increase
 
   class APIError < Increase::Error
     sig { returns(URI::Generic) }
-    attr_reader :url
+    def url
+    end
 
     sig { returns(T.nilable(Integer)) }
-    attr_reader :status
+    def status
+    end
 
     sig { returns(T.nilable(T.anything)) }
-    attr_reader :body
+    def body
+    end
 
     sig do
       params(
@@ -35,10 +39,12 @@ module Increase
 
   class APIConnectionError < Increase::APIError
     sig { void }
-    attr_reader :status
+    def status
+    end
 
     sig { void }
-    attr_reader :body
+    def body
+    end
 
     sig do
       params(
@@ -83,7 +89,8 @@ module Increase
     end
 
     sig { returns(Integer) }
-    attr_reader :status
+    def status
+    end
 
     sig do
       params(
@@ -127,74 +134,74 @@ module Increase
     HTTP_STATUS = 429
   end
 
-  class InvalidParametersError < Increase::APIStatusError
+  class InvalidParametersError < Increase::BadRequestError
     HTTP_STATUS = 400
 
     TYPE = "invalid_parameters_error"
   end
 
-  class MalformedRequestError < Increase::APIStatusError
+  class MalformedRequestError < Increase::BadRequestError
     HTTP_STATUS = 400
 
     TYPE = "malformed_request_error"
   end
 
-  class InvalidAPIKeyError < Increase::APIStatusError
+  class InvalidAPIKeyError < Increase::AuthenticationError
     HTTP_STATUS = 401
 
     TYPE = "invalid_api_key_error"
   end
 
-  class EnvironmentMismatchError < Increase::APIStatusError
+  class EnvironmentMismatchError < Increase::PermissionDeniedError
     HTTP_STATUS = 403
 
     TYPE = "environment_mismatch_error"
   end
 
-  class InsufficientPermissionsError < Increase::APIStatusError
+  class InsufficientPermissionsError < Increase::PermissionDeniedError
     HTTP_STATUS = 403
 
     TYPE = "insufficient_permissions_error"
   end
 
-  class PrivateFeatureError < Increase::APIStatusError
+  class PrivateFeatureError < Increase::PermissionDeniedError
     HTTP_STATUS = 403
 
     TYPE = "private_feature_error"
   end
 
-  class APIMethodNotFoundError < Increase::APIStatusError
+  class APIMethodNotFoundError < Increase::NotFoundError
     HTTP_STATUS = 404
 
     TYPE = "api_method_not_found_error"
   end
 
-  class ObjectNotFoundError < Increase::APIStatusError
+  class ObjectNotFoundError < Increase::NotFoundError
     HTTP_STATUS = 404
 
     TYPE = "object_not_found_error"
   end
 
-  class IdempotencyKeyAlreadyUsedError < Increase::APIStatusError
+  class IdempotencyKeyAlreadyUsedError < Increase::ConflictError
     HTTP_STATUS = 409
 
     TYPE = "idempotency_key_already_used_error"
   end
 
-  class InvalidOperationError < Increase::APIStatusError
+  class InvalidOperationError < Increase::ConflictError
     HTTP_STATUS = 409
 
     TYPE = "invalid_operation_error"
   end
 
-  class RateLimitedError < Increase::APIStatusError
+  class RateLimitedError < Increase::RateLimitError
     HTTP_STATUS = 429
 
     TYPE = "rate_limited_error"
   end
 
   class InternalServerError < Increase::APIStatusError
-    HTTP_STATUS = 500
+    HTTP_STATUS = T.let((500..), T::Range[Integer])
 
     TYPE = "internal_server_error"
   end

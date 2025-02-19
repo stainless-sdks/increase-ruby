@@ -4,43 +4,112 @@ module Increase
   module Models
     class Card < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(Increase::Models::Card::BillingAddress) }
-      attr_accessor :billing_address
+      def billing_address
+      end
+
+      sig do
+        params(_: Increase::Models::Card::BillingAddress).returns(Increase::Models::Card::BillingAddress)
+      end
+      def billing_address=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def description=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::Card::DigitalWallet)) }
-      attr_accessor :digital_wallet
+      def digital_wallet
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::Card::DigitalWallet)).returns(T.nilable(Increase::Models::Card::DigitalWallet))
+      end
+      def digital_wallet=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :entity_id
+      def entity_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def entity_id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :expiration_month
+      def expiration_month
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def expiration_month=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :expiration_year
+      def expiration_year
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def expiration_year=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :last4
+      def last4
+      end
+
+      sig { params(_: String).returns(String) }
+      def last4=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -100,19 +169,44 @@ module Increase
 
       class BillingAddress < Increase::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :city
+        def city
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def city=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :line1
+        def line1
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def line1=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :line2
+        def line2
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def line2=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :postal_code
+        def postal_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def postal_code=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :state
+        def state
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def state=(_)
+        end
 
         sig do
           params(
@@ -143,13 +237,28 @@ module Increase
 
       class DigitalWallet < Increase::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :digital_card_profile_id
+        def digital_card_profile_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def digital_card_profile_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :email
+        def email
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def email=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :phone
+        def phone
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def phone=(_)
+        end
 
         sig do
           params(

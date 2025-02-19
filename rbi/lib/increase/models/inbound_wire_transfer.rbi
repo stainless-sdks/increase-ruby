@@ -4,79 +4,204 @@ module Increase
   module Models
     class InboundWireTransfer < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_number_id
+      def account_number_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_number_id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_address_line1
+      def beneficiary_address_line1
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_address_line1=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_address_line2
+      def beneficiary_address_line2
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_address_line2=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_address_line3
+      def beneficiary_address_line3
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_address_line3=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_name
+      def beneficiary_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_name=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :beneficiary_reference
+      def beneficiary_reference
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def beneficiary_reference=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :input_message_accountability_data
+      def input_message_accountability_data
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def input_message_accountability_data=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_address_line1
+      def originator_address_line1
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_address_line1=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_address_line2
+      def originator_address_line2
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_address_line2=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_address_line3
+      def originator_address_line3
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_address_line3=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_name
+      def originator_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_name=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_routing_number
+      def originator_routing_number
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_routing_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information
+      def originator_to_beneficiary_information
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information_line1
+      def originator_to_beneficiary_information_line1
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information_line1=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information_line2
+      def originator_to_beneficiary_information_line2
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information_line2=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information_line3
+      def originator_to_beneficiary_information_line3
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information_line3=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :originator_to_beneficiary_information_line4
+      def originator_to_beneficiary_information_line4
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def originator_to_beneficiary_information_line4=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :sender_reference
+      def sender_reference
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def sender_reference=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(

@@ -7,25 +7,36 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :url
+      def url
+      end
+
+      sig { params(_: String).returns(String) }
+      def url=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :oauth_connection_id
+      def oauth_connection_id
+      end
 
-      sig { params(oauth_connection_id: String).void }
-      attr_writer :oauth_connection_id
+      sig { params(_: String).returns(String) }
+      def oauth_connection_id=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :selected_event_category
+      def selected_event_category
+      end
 
-      sig { params(selected_event_category: Symbol).void }
-      attr_writer :selected_event_category
+      sig { params(_: Symbol).returns(Symbol) }
+      def selected_event_category=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :shared_secret
+      def shared_secret
+      end
 
-      sig { params(shared_secret: String).void }
-      attr_writer :shared_secret
+      sig { params(_: String).returns(String) }
+      def shared_secret=(_)
+      end
 
       sig do
         params(

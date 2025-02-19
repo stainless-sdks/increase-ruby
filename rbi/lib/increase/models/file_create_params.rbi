@@ -7,16 +7,28 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.any(IO, StringIO)) }
-      attr_accessor :file
+      def file
+      end
+
+      sig { params(_: T.any(IO, StringIO)).returns(T.any(IO, StringIO)) }
+      def file=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :purpose
+      def purpose
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def purpose=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :description
+      def description
+      end
 
-      sig { params(description: String).void }
-      attr_writer :description
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig do
         params(

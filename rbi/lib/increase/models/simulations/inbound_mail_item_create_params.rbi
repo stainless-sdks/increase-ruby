@@ -8,16 +8,28 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :lockbox_id
+        def lockbox_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def lockbox_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :contents_file_id
+        def contents_file_id
+        end
 
-        sig { params(contents_file_id: String).void }
-        attr_writer :contents_file_id
+        sig { params(_: String).returns(String) }
+        def contents_file_id=(_)
+        end
 
         sig do
           params(

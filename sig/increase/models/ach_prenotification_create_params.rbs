@@ -30,47 +30,47 @@ module Increase
 
       attr_reader addendum: String?
 
-      def addendum=: (String) -> void
+      def addendum=: (String) -> String
 
       attr_reader company_descriptive_date: String?
 
-      def company_descriptive_date=: (String) -> void
+      def company_descriptive_date=: (String) -> String
 
       attr_reader company_discretionary_data: String?
 
-      def company_discretionary_data=: (String) -> void
+      def company_discretionary_data=: (String) -> String
 
       attr_reader company_entry_description: String?
 
-      def company_entry_description=: (String) -> void
+      def company_entry_description=: (String) -> String
 
       attr_reader company_name: String?
 
-      def company_name=: (String) -> void
+      def company_name=: (String) -> String
 
       attr_reader credit_debit_indicator: Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator?
 
       def credit_debit_indicator=: (
         Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator
-      ) -> void
+      ) -> Increase::Models::ACHPrenotificationCreateParams::credit_debit_indicator
 
       attr_reader effective_date: Date?
 
-      def effective_date=: (Date) -> void
+      def effective_date=: (Date) -> Date
 
       attr_reader individual_id: String?
 
-      def individual_id=: (String) -> void
+      def individual_id=: (String) -> String
 
       attr_reader individual_name: String?
 
-      def individual_name=: (String) -> void
+      def individual_name=: (String) -> String
 
       attr_reader standard_entry_class_code: Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code?
 
       def standard_entry_class_code=: (
         Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code
-      ) -> void
+      ) -> Increase::Models::ACHPrenotificationCreateParams::standard_entry_class_code
 
       def initialize:
         (
