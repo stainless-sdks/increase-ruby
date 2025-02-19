@@ -7,17 +7,28 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :bank_name
+      def bank_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def bank_name=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :entity_id
+      def entity_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       sig do
         params(
           bank_name: String,
           entity_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(bank_name:, entity_id:, request_options: {})
       end

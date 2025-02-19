@@ -15,7 +15,7 @@ module Increase
 
         attr_reader amount: Integer?
 
-        def amount=: (Integer) -> void
+        def amount=: (Integer) -> Integer
 
         def initialize:
           (

@@ -10,7 +10,8 @@ module Increase
             amount: Integer,
             check_number: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::InboundCheckDeposit)
+          )
+            .returns(Increase::Models::InboundCheckDeposit)
         end
         def create(account_number_id:, amount:, check_number:, request_options: {})
         end

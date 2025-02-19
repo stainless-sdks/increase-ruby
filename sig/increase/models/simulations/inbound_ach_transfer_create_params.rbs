@@ -27,41 +27,41 @@ module Increase
 
         attr_reader company_descriptive_date: String?
 
-        def company_descriptive_date=: (String) -> void
+        def company_descriptive_date=: (String) -> String
 
         attr_reader company_discretionary_data: String?
 
-        def company_discretionary_data=: (String) -> void
+        def company_discretionary_data=: (String) -> String
 
         attr_reader company_entry_description: String?
 
-        def company_entry_description=: (String) -> void
+        def company_entry_description=: (String) -> String
 
         attr_reader company_id: String?
 
-        def company_id=: (String) -> void
+        def company_id=: (String) -> String
 
         attr_reader company_name: String?
 
-        def company_name=: (String) -> void
+        def company_name=: (String) -> String
 
         attr_reader receiver_id_number: String?
 
-        def receiver_id_number=: (String) -> void
+        def receiver_id_number=: (String) -> String
 
         attr_reader receiver_name: String?
 
-        def receiver_name=: (String) -> void
+        def receiver_name=: (String) -> String
 
         attr_reader resolve_at: Time?
 
-        def resolve_at=: (Time) -> void
+        def resolve_at=: (Time) -> Time
 
         attr_reader standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code?
 
         def standard_entry_class_code=: (
           Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code
-        ) -> void
+        ) -> Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code
 
         def initialize:
           (

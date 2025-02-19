@@ -7,46 +7,75 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(Increase::Models::EntityUpdateAddressParams::Address) }
-      attr_accessor :address
+      def address
+      end
+
+      sig do
+        params(_: Increase::Models::EntityUpdateAddressParams::Address)
+          .returns(Increase::Models::EntityUpdateAddressParams::Address)
+      end
+      def address=(_)
+      end
 
       sig do
         params(
           address: Increase::Models::EntityUpdateAddressParams::Address,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(address:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            address: Increase::Models::EntityUpdateAddressParams::Address,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {address: Increase::Models::EntityUpdateAddressParams::Address, request_options: Increase::RequestOptions}
+          )
       end
       def to_hash
       end
 
       class Address < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :city
+        def city
+        end
+
+        sig { params(_: String).returns(String) }
+        def city=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :line1
+        def line1
+        end
+
+        sig { params(_: String).returns(String) }
+        def line1=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :state
+        def state
+        end
+
+        sig { params(_: String).returns(String) }
+        def state=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :zip
+        def zip
+        end
+
+        sig { params(_: String).returns(String) }
+        def zip=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :line2
+        def line2
+        end
 
-        sig { params(line2: String).void }
-        attr_writer :line2
+        sig { params(_: String).returns(String) }
+        def line2=(_)
+        end
 
         sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
         def initialize(city:, line1:, state:, zip:, line2: nil)

@@ -4,37 +4,92 @@ module Increase
   module Models
     class ExternalAccount < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :account_holder
+      def account_holder
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def account_holder=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_number
+      def account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_number=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :funding
+      def funding
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def funding=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :routing_number
+      def routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def routing_number=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :verification_status
+      def verification_status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def verification_status=(_)
+      end
 
       sig do
         params(
@@ -49,7 +104,8 @@ module Increase
           status: Symbol,
           type: Symbol,
           verification_status: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -67,21 +123,22 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_holder: Symbol,
-            account_number: String,
-            created_at: Time,
-            description: String,
-            funding: Symbol,
-            idempotency_key: T.nilable(String),
-            routing_number: String,
-            status: Symbol,
-            type: Symbol,
-            verification_status: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_holder: Symbol,
+              account_number: String,
+              created_at: Time,
+              description: String,
+              funding: Symbol,
+              idempotency_key: T.nilable(String),
+              routing_number: String,
+              status: Symbol,
+              type: Symbol,
+              verification_status: Symbol
+            }
+          )
       end
       def to_hash
       end

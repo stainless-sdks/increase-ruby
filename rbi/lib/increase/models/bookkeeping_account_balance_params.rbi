@@ -7,10 +7,12 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(Time)) }
-      attr_reader :at_time
+      def at_time
+      end
 
-      sig { params(at_time: Time).void }
-      attr_writer :at_time
+      sig { params(_: Time).returns(Time) }
+      def at_time=(_)
+      end
 
       sig do
         params(

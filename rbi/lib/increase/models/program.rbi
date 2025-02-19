@@ -4,31 +4,76 @@ module Increase
   module Models
     class Program < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :bank
+      def bank
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def bank=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :billing_account_id
+      def billing_account_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def billing_account_id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :default_digital_card_profile_id
+      def default_digital_card_profile_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def default_digital_card_profile_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :interest_rate
+      def interest_rate
+      end
+
+      sig { params(_: String).returns(String) }
+      def interest_rate=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :updated_at
+      def updated_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def updated_at=(_)
+      end
 
       sig do
         params(
@@ -41,7 +86,8 @@ module Increase
           name: String,
           type: Symbol,
           updated_at: Time
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -57,19 +103,20 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            bank: Symbol,
-            billing_account_id: T.nilable(String),
-            created_at: Time,
-            default_digital_card_profile_id: T.nilable(String),
-            interest_rate: String,
-            name: String,
-            type: Symbol,
-            updated_at: Time
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              bank: Symbol,
+              billing_account_id: T.nilable(String),
+              created_at: Time,
+              default_digital_card_profile_id: T.nilable(String),
+              interest_rate: String,
+              name: String,
+              type: Symbol,
+              updated_at: Time
+            }
+          )
       end
       def to_hash
       end

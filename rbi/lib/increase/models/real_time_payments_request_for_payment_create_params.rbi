@@ -7,25 +7,63 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor) }
-      attr_accessor :debtor
+      def debtor
+      end
+
+      sig do
+        params(_: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor)
+          .returns(Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor)
+      end
+      def debtor=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :destination_account_number_id
+      def destination_account_number_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def destination_account_number_id=(_)
+      end
 
       sig { returns(Date) }
-      attr_accessor :expires_at
+      def expires_at
+      end
+
+      sig { params(_: Date).returns(Date) }
+      def expires_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :remittance_information
+      def remittance_information
+      end
+
+      sig { params(_: String).returns(String) }
+      def remittance_information=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :source_account_number
+      def source_account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def source_account_number=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :source_routing_number
+      def source_routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def source_routing_number=(_)
+      end
 
       sig do
         params(
@@ -37,7 +75,8 @@ module Increase
           source_account_number: String,
           source_routing_number: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         amount:,
@@ -52,70 +91,94 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            amount: Integer,
-            debtor: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor,
-            destination_account_number_id: String,
-            expires_at: Date,
-            remittance_information: String,
-            source_account_number: String,
-            source_routing_number: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              amount: Integer,
+              debtor: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor,
+              destination_account_number_id: String,
+              expires_at: Date,
+              remittance_information: String,
+              source_account_number: String,
+              source_routing_number: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
 
       class Debtor < Increase::BaseModel
         sig { returns(Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address) }
-        attr_accessor :address
+        def address
+        end
+
+        sig do
+          params(_: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address)
+            .returns(Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address)
+        end
+        def address=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig do
           params(
             address: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address,
             name: String
-          ).void
+          )
+            .void
         end
         def initialize(address:, name:)
         end
 
         sig do
-          override.returns(
-            {
-              address: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address,
-              name: String
-            }
-          )
+          override
+            .returns(
+              {address: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address, name: String}
+            )
         end
         def to_hash
         end
 
         class Address < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :country
+          def country
+          end
+
+          sig { params(_: String).returns(String) }
+          def country=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :city
+          def city
+          end
 
-          sig { params(city: String).void }
-          attr_writer :city
-
-          sig { returns(T.nilable(String)) }
-          attr_reader :post_code
-
-          sig { params(post_code: String).void }
-          attr_writer :post_code
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_reader :street_name
+          def post_code
+          end
 
-          sig { params(street_name: String).void }
-          attr_writer :street_name
+          sig { params(_: String).returns(String) }
+          def post_code=(_)
+          end
+
+          sig { returns(T.nilable(String)) }
+          def street_name
+          end
+
+          sig { params(_: String).returns(String) }
+          def street_name=(_)
+          end
 
           sig { params(country: String, city: String, post_code: String, street_name: String).void }
           def initialize(country:, city: nil, post_code: nil, street_name: nil)

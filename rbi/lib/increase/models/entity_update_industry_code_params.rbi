@@ -7,13 +7,19 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :industry_code
+      def industry_code
+      end
+
+      sig { params(_: String).returns(String) }
+      def industry_code=(_)
+      end
 
       sig do
         params(
           industry_code: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(industry_code:, request_options: {})
       end

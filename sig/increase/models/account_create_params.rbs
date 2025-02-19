@@ -17,15 +17,15 @@ module Increase
 
       attr_reader entity_id: String?
 
-      def entity_id=: (String) -> void
+      def entity_id=: (String) -> String
 
       attr_reader informational_entity_id: String?
 
-      def informational_entity_id=: (String) -> void
+      def informational_entity_id=: (String) -> String
 
       attr_reader program_id: String?
 
-      def program_id=: (String) -> void
+      def program_id=: (String) -> String
 
       def initialize:
         (

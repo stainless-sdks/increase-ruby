@@ -5,32 +5,55 @@ module Increase
     module Simulations
       class CardAuthorizationCreateResponse < Increase::BaseModel
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction)) }
-        attr_accessor :declined_transaction
+        def declined_transaction
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::DeclinedTransaction))
+            .returns(T.nilable(Increase::Models::DeclinedTransaction))
+        end
+        def declined_transaction=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::PendingTransaction)) }
-        attr_accessor :pending_transaction
+        def pending_transaction
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::PendingTransaction))
+            .returns(T.nilable(Increase::Models::PendingTransaction))
+        end
+        def pending_transaction=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig do
           params(
             declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
             pending_transaction: T.nilable(Increase::Models::PendingTransaction),
             type: Symbol
-          ).void
+          )
+            .void
         end
         def initialize(declined_transaction:, pending_transaction:, type:)
         end
 
         sig do
-          override.returns(
-            {
-              declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
-              pending_transaction: T.nilable(Increase::Models::PendingTransaction),
-              type: Symbol
-            }
-          )
+          override
+            .returns(
+              {
+                declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
+                pending_transaction: T.nilable(Increase::Models::PendingTransaction),
+                type: Symbol
+              }
+            )
         end
         def to_hash
         end

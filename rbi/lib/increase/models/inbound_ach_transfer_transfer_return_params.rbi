@@ -7,7 +7,12 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(Symbol) }
-      attr_accessor :reason
+      def reason
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def reason=(_)
+      end
 
       sig do
         params(

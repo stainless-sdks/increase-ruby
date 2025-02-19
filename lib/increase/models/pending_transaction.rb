@@ -390,9 +390,7 @@ module Increase
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency]
           required :currency,
-                   enum: -> {
-                     Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency
-                   }
+                   enum: -> { Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency }
 
           # @!attribute transfer_id
           #   The identifier of the Account Transfer that led to this Pending Transaction.
@@ -517,10 +515,7 @@ module Increase
           #     stand-in processing, or the user through a real-time decision.
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner]
-          required :actioner,
-                   enum: -> {
-                     Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner
-                   }
+          required :actioner, enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner }
 
           # @!attribute amount
           #   The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -540,10 +535,7 @@ module Increase
           #     transaction's currency.
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Currency]
-          required :currency,
-                   enum: -> {
-                     Increase::Models::PendingTransaction::Source::CardAuthorization::Currency
-                   }
+          required :currency, enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Currency }
 
           # @!attribute digital_wallet_token_id
           #   If the authorization was made via a Digital Wallet Token (such as an Apple Pay
@@ -665,9 +657,7 @@ module Increase
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory]
           required :processing_category,
-                   enum: -> {
-                     Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory
-                   }
+                   enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::ProcessingCategory }
 
           # @!attribute real_time_decision_id
           #   The identifier of the Real-Time Decision sent to approve or decline this
@@ -891,18 +881,14 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category]
             required :category,
-                     enum: -> {
-                       Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category
-                     }
+                     enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category }
 
             # @!attribute visa
             #   Fields specific to the `visa` network.
             #
             #   @return [Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa, nil]
             required :visa,
-                     -> {
-                       Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa
-                     },
+                     -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa },
                      nil?: true
 
             # @!parse
@@ -954,9 +940,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
               required :electronic_commerce_indicator,
-                       enum: -> {
-                         Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
-                       },
+                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator },
                        nil?: true
 
               # @!attribute point_of_service_entry_mode
@@ -965,9 +949,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
               required :point_of_service_entry_mode,
-                       enum: -> {
-                         Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
-                       },
+                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode },
                        nil?: true
 
               # @!attribute stand_in_processing_reason
@@ -976,9 +958,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil]
               required :stand_in_processing_reason,
-                       enum: -> {
-                         Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason
-                       },
+                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason },
                        nil?: true
 
               # @!parse
@@ -1324,9 +1304,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result]
               required :result,
-                       enum: -> {
-                         Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result
-                       }
+                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result }
 
               # @!parse
               #   # Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -1413,9 +1391,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result]
               required :result,
-                       enum: -> {
-                         Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result
-                       }
+                       enum: -> { Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result }
 
               # @!parse
               #   # Cardholder address provided in the authorization request and the address on file
@@ -1579,9 +1555,7 @@ module Increase
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency]
           required :currency,
-                   enum: -> {
-                     Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency
-                   }
+                   enum: -> { Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency }
 
           # @!attribute front_image_file_id
           #   The identifier of the File containing the image of the front of the check that
@@ -1675,9 +1649,7 @@ module Increase
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency]
           required :currency,
-                   enum: -> {
-                     Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency
-                   }
+                   enum: -> { Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency }
 
           # @!attribute transfer_id
           #   The identifier of the Check Transfer that led to this Pending Transaction.
@@ -1791,10 +1763,7 @@ module Increase
           #     currency.
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency]
-          required :currency,
-                   enum: -> {
-                     Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency
-                   }
+          required :currency, enum: -> { Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency }
 
           # @!attribute held_transaction_id
           #   The ID of the Transaction for which funds were held.
@@ -1818,10 +1787,7 @@ module Increase
           #   The status of the hold.
           #
           #   @return [Symbol, Increase::Models::PendingTransaction::Source::InboundFundsHold::Status]
-          required :status,
-                   enum: -> {
-                     Increase::Models::PendingTransaction::Source::InboundFundsHold::Status
-                   }
+          required :status, enum: -> { Increase::Models::PendingTransaction::Source::InboundFundsHold::Status }
 
           # @!attribute type
           #   A constant representing the object's type. For this resource it will always be

@@ -4,22 +4,52 @@ module Increase
   module Models
     class DigitalWalletToken < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :card_id
+      def card_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def card_id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :token_requestor
+      def token_requestor
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def token_requestor=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -29,22 +59,24 @@ module Increase
           status: Symbol,
           token_requestor: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, card_id:, created_at:, status:, token_requestor:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            card_id: String,
-            created_at: Time,
-            status: Symbol,
-            token_requestor: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              card_id: String,
+              created_at: Time,
+              status: Symbol,
+              token_requestor: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
