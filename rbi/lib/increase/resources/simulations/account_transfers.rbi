@@ -8,7 +8,8 @@ module Increase
           params(
             account_transfer_id: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::AccountTransfer)
+          )
+            .returns(Increase::Models::AccountTransfer)
         end
         def complete(account_transfer_id, request_options: {})
         end

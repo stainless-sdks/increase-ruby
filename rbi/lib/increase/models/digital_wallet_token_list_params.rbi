@@ -19,7 +19,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::DigitalWalletTokenListParams::CreatedAt).returns(Increase::Models::DigitalWalletTokenListParams::CreatedAt)
+        params(_: Increase::Models::DigitalWalletTokenListParams::CreatedAt)
+          .returns(Increase::Models::DigitalWalletTokenListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -47,21 +48,23 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(card_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            card_id: String,
-            created_at: Increase::Models::DigitalWalletTokenListParams::CreatedAt,
-            cursor: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              card_id: String,
+              created_at: Increase::Models::DigitalWalletTokenListParams::CreatedAt,
+              cursor: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

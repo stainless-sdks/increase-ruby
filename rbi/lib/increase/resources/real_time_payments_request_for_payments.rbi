@@ -13,7 +13,8 @@ module Increase
           source_account_number: String,
           source_routing_number: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::RealTimePaymentsRequestForPayment)
+        )
+          .returns(Increase::Models::RealTimePaymentsRequestForPayment)
       end
       def create(
         amount:,
@@ -31,7 +32,8 @@ module Increase
         params(
           request_for_payment_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::RealTimePaymentsRequestForPayment)
+        )
+          .returns(Increase::Models::RealTimePaymentsRequestForPayment)
       end
       def retrieve(request_for_payment_id, request_options: {})
       end
@@ -44,7 +46,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::RealTimePaymentsRequestForPayment])
+        )
+          .returns(Increase::Page[Increase::Models::RealTimePaymentsRequestForPayment])
       end
       def list(
         account_id: nil,

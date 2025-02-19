@@ -11,7 +11,8 @@ module Increase
           account_holder: Symbol,
           funding: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::ExternalAccount)
+        )
+          .returns(Increase::Models::ExternalAccount)
       end
       def create(
         account_number:,
@@ -27,7 +28,8 @@ module Increase
         params(
           external_account_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::ExternalAccount)
+        )
+          .returns(Increase::Models::ExternalAccount)
       end
       def retrieve(external_account_id, request_options: {})
       end
@@ -40,7 +42,8 @@ module Increase
           funding: Symbol,
           status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::ExternalAccount)
+        )
+          .returns(Increase::Models::ExternalAccount)
       end
       def update(
         external_account_id,
@@ -60,7 +63,8 @@ module Increase
           routing_number: String,
           status: Increase::Models::ExternalAccountListParams::Status,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::ExternalAccount])
+        )
+          .returns(Increase::Page[Increase::Models::ExternalAccount])
       end
       def list(
         cursor: nil,

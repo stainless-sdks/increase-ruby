@@ -27,7 +27,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountNumberCreateParams::InboundACH).returns(Increase::Models::AccountNumberCreateParams::InboundACH)
+        params(_: Increase::Models::AccountNumberCreateParams::InboundACH)
+          .returns(Increase::Models::AccountNumberCreateParams::InboundACH)
       end
       def inbound_ach=(_)
       end
@@ -37,7 +38,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountNumberCreateParams::InboundChecks).returns(Increase::Models::AccountNumberCreateParams::InboundChecks)
+        params(_: Increase::Models::AccountNumberCreateParams::InboundChecks)
+          .returns(Increase::Models::AccountNumberCreateParams::InboundChecks)
       end
       def inbound_checks=(_)
       end
@@ -49,21 +51,23 @@ module Increase
           inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
           inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            name: String,
-            inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
-            inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              name: String,
+              inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
+              inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

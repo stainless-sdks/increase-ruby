@@ -59,7 +59,8 @@ module Increase
           routing_number: String,
           type: Symbol,
           wire_transfers: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         ach_transfers:,
@@ -72,16 +73,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            ach_transfers: Symbol,
-            name: String,
-            real_time_payments_transfers: Symbol,
-            routing_number: String,
-            type: Symbol,
-            wire_transfers: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              ach_transfers: Symbol,
+              name: String,
+              real_time_payments_transfers: Symbol,
+              routing_number: String,
+              type: Symbol,
+              wire_transfers: Symbol
+            }
+          )
       end
       def to_hash
       end

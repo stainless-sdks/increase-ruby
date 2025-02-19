@@ -9,7 +9,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::DeclinedTransaction)).returns(T.nilable(Increase::Models::DeclinedTransaction))
+          params(_: T.nilable(Increase::Models::DeclinedTransaction))
+            .returns(T.nilable(Increase::Models::DeclinedTransaction))
         end
         def declined_transaction=(_)
         end
@@ -19,7 +20,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PendingTransaction)).returns(T.nilable(Increase::Models::PendingTransaction))
+          params(_: T.nilable(Increase::Models::PendingTransaction))
+            .returns(T.nilable(Increase::Models::PendingTransaction))
         end
         def pending_transaction=(_)
         end
@@ -37,19 +39,21 @@ module Increase
             declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
             pending_transaction: T.nilable(Increase::Models::PendingTransaction),
             type: Symbol
-          ).void
+          )
+            .void
         end
         def initialize(declined_transaction:, pending_transaction:, type:)
         end
 
         sig do
-          override.returns(
-            {
-              declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
-              pending_transaction: T.nilable(Increase::Models::PendingTransaction),
-              type: Symbol
-            }
-          )
+          override
+            .returns(
+              {
+                declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
+                pending_transaction: T.nilable(Increase::Models::PendingTransaction),
+                type: Symbol
+              }
+            )
         end
         def to_hash
         end

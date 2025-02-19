@@ -9,7 +9,8 @@ module Increase
           description: String,
           recipient_name: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Lockbox)
+        )
+          .returns(Increase::Models::Lockbox)
       end
       def create(account_id:, description: nil, recipient_name: nil, request_options: {})
       end
@@ -18,7 +19,8 @@ module Increase
         params(
           lockbox_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Lockbox)
+        )
+          .returns(Increase::Models::Lockbox)
       end
       def retrieve(lockbox_id, request_options: {})
       end
@@ -30,7 +32,8 @@ module Increase
           recipient_name: String,
           status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Lockbox)
+        )
+          .returns(Increase::Models::Lockbox)
       end
       def update(lockbox_id, description: nil, recipient_name: nil, status: nil, request_options: {})
       end
@@ -43,7 +46,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::Lockbox])
+        )
+          .returns(Increase::Page[Increase::Models::Lockbox])
       end
       def list(
         account_id: nil,

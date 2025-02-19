@@ -96,7 +96,8 @@ module Increase
       end
 
       sig do
-        params(_: T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange]).returns(T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange])
+        params(_: T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange])
+          .returns(T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange])
       end
       def notifications_of_change=(_)
       end
@@ -106,7 +107,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn)).returns(T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn))
+        params(_: T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn))
+          .returns(T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn))
       end
       def prenotification_return=(_)
       end
@@ -153,7 +155,8 @@ module Increase
           routing_number: String,
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -176,26 +179,27 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_number: String,
-            addendum: T.nilable(String),
-            company_descriptive_date: T.nilable(String),
-            company_discretionary_data: T.nilable(String),
-            company_entry_description: T.nilable(String),
-            company_name: T.nilable(String),
-            created_at: Time,
-            credit_debit_indicator: T.nilable(Symbol),
-            effective_date: T.nilable(Time),
-            idempotency_key: T.nilable(String),
-            notifications_of_change: T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
-            prenotification_return: T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn),
-            routing_number: String,
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_number: String,
+              addendum: T.nilable(String),
+              company_descriptive_date: T.nilable(String),
+              company_discretionary_data: T.nilable(String),
+              company_entry_description: T.nilable(String),
+              company_name: T.nilable(String),
+              created_at: Time,
+              credit_debit_indicator: T.nilable(Symbol),
+              effective_date: T.nilable(Time),
+              idempotency_key: T.nilable(String),
+              notifications_of_change: T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
+              prenotification_return: T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn),
+              routing_number: String,
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

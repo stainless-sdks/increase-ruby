@@ -86,7 +86,8 @@ module Increase
           recipient_name: T.nilable(String),
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -102,19 +103,20 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            address: Increase::Models::Lockbox::Address,
-            created_at: Time,
-            description: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            recipient_name: T.nilable(String),
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              address: Increase::Models::Lockbox::Address,
+              created_at: Time,
+              description: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              recipient_name: T.nilable(String),
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -176,22 +178,24 @@ module Increase
             postal_code: String,
             recipient: T.nilable(String),
             state: String
-          ).void
+          )
+            .void
         end
         def initialize(city:, line1:, line2:, postal_code:, recipient:, state:)
         end
 
         sig do
-          override.returns(
-            {
-              city: String,
-              line1: String,
-              line2: String,
-              postal_code: String,
-              recipient: T.nilable(String),
-              state: String
-            }
-          )
+          override
+            .returns(
+              {
+                city: String,
+                line1: String,
+                line2: String,
+                postal_code: String,
+                recipient: T.nilable(String),
+                state: String
+              }
+            )
         end
         def to_hash
         end

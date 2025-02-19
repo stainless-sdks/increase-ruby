@@ -18,7 +18,8 @@ module Increase
         params(
           beneficial_owner_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(beneficial_owner_id:, request_options: {})
       end

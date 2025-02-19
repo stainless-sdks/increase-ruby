@@ -160,7 +160,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::WireDrawdownRequest::Submission)).returns(T.nilable(Increase::Models::WireDrawdownRequest::Submission))
+        params(_: T.nilable(Increase::Models::WireDrawdownRequest::Submission))
+          .returns(T.nilable(Increase::Models::WireDrawdownRequest::Submission))
       end
       def submission=(_)
       end
@@ -196,7 +197,8 @@ module Increase
           status: Symbol,
           submission: T.nilable(Increase::Models::WireDrawdownRequest::Submission),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -224,31 +226,32 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_number_id: String,
-            amount: Integer,
-            created_at: Time,
-            currency: String,
-            fulfillment_inbound_wire_transfer_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            message_to_recipient: String,
-            originator_address_line1: T.nilable(String),
-            originator_address_line2: T.nilable(String),
-            originator_address_line3: T.nilable(String),
-            originator_name: T.nilable(String),
-            recipient_account_number: String,
-            recipient_address_line1: T.nilable(String),
-            recipient_address_line2: T.nilable(String),
-            recipient_address_line3: T.nilable(String),
-            recipient_name: T.nilable(String),
-            recipient_routing_number: String,
-            status: Symbol,
-            submission: T.nilable(Increase::Models::WireDrawdownRequest::Submission),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_number_id: String,
+              amount: Integer,
+              created_at: Time,
+              currency: String,
+              fulfillment_inbound_wire_transfer_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              message_to_recipient: String,
+              originator_address_line1: T.nilable(String),
+              originator_address_line2: T.nilable(String),
+              originator_address_line3: T.nilable(String),
+              originator_name: T.nilable(String),
+              recipient_account_number: String,
+              recipient_address_line1: T.nilable(String),
+              recipient_address_line2: T.nilable(String),
+              recipient_address_line3: T.nilable(String),
+              recipient_name: T.nilable(String),
+              recipient_routing_number: String,
+              status: Symbol,
+              submission: T.nilable(Increase::Models::WireDrawdownRequest::Submission),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

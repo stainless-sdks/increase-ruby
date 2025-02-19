@@ -28,7 +28,8 @@ module Increase
             change_code: Symbol,
             corrected_data: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(change_code:, corrected_data:, request_options: {})
         end

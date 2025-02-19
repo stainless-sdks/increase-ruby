@@ -45,7 +45,8 @@ module Increase
           selected_event_category: Symbol,
           shared_secret: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         url:,
@@ -57,15 +58,16 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            url: String,
-            oauth_connection_id: String,
-            selected_event_category: Symbol,
-            shared_secret: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              url: String,
+              oauth_connection_id: String,
+              selected_event_category: Symbol,
+              shared_secret: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

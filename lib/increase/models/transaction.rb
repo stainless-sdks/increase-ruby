@@ -255,11 +255,7 @@ module Increase
         #     later.
         #
         #   @return [Increase::Models::Transaction::Source::ACHTransferReturn, nil]
-        required :ach_transfer_return,
-                 -> {
-                   Increase::Models::Transaction::Source::ACHTransferReturn
-                 },
-                 nil?: true
+        required :ach_transfer_return, -> { Increase::Models::Transaction::Source::ACHTransferReturn }, nil?: true
 
         # @!attribute card_dispute_acceptance
         #   A Card Dispute Acceptance object. This field will be present in the JSON
@@ -624,10 +620,7 @@ module Increase
           #     account currency.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::AccountTransferIntention::Currency]
-          required :currency,
-                   enum: -> {
-                     Increase::Models::Transaction::Source::AccountTransferIntention::Currency
-                   }
+          required :currency, enum: -> { Increase::Models::Transaction::Source::AccountTransferIntention::Currency }
 
           # @!attribute description
           #   The description you chose to give the transfer.
@@ -1273,11 +1266,7 @@ module Increase
           #   Interchange assessed as a part of this transaciton.
           #
           #   @return [Increase::Models::Transaction::Source::CardRefund::Interchange, nil]
-          required :interchange,
-                   -> {
-                     Increase::Models::Transaction::Source::CardRefund::Interchange
-                   },
-                   nil?: true
+          required :interchange, -> { Increase::Models::Transaction::Source::CardRefund::Interchange }, nil?: true
 
           # @!attribute merchant_acceptor_id
           #   The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -1438,10 +1427,7 @@ module Increase
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
             #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::Cashback::Currency]
-            required :currency,
-                     enum: -> {
-                       Increase::Models::Transaction::Source::CardRefund::Cashback::Currency
-                     }
+            required :currency, enum: -> { Increase::Models::Transaction::Source::CardRefund::Cashback::Currency }
 
             # @!parse
             #   # Cashback debited for this transaction, if eligible. Cashback is paid out in
@@ -1580,10 +1566,7 @@ module Increase
             #     reimbursement.
             #
             #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::Interchange::Currency]
-            required :currency,
-                     enum: -> {
-                       Increase::Models::Transaction::Source::CardRefund::Interchange::Currency
-                     }
+            required :currency, enum: -> { Increase::Models::Transaction::Source::CardRefund::Interchange::Currency }
 
             # @!parse
             #   # Interchange assessed as a part of this transaciton.
@@ -1758,9 +1741,7 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat, nil]
             required :purchase_identifier_format,
-                     enum: -> {
-                       Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat
-                     },
+                     enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::PurchaseIdentifierFormat },
                      nil?: true
 
             # @!attribute travel
@@ -1853,9 +1834,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges, nil]
               required :extra_charges,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::ExtraCharges },
                        nil?: true
 
               # @!attribute fuel_charges_amount
@@ -1890,9 +1869,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator, nil]
               required :no_show_indicator,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental::NoShowIndicator },
                        nil?: true
 
               # @!attribute one_way_drop_off_charges_amount
@@ -2086,9 +2063,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges, nil]
               required :extra_charges,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges },
                        nil?: true
 
               # @!attribute folio_cash_advances_amount
@@ -2123,9 +2098,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator, nil]
               required :no_show_indicator,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::NoShowIndicator },
                        nil?: true
 
               # @!attribute prepaid_expenses_amount
@@ -2358,9 +2331,7 @@ module Increase
               #
               #   @return [Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary, nil]
               required :ancillary,
-                       -> {
-                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary
-                       },
+                       -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary },
                        nil?: true
 
               # @!attribute computerized_reservation_system
@@ -2374,9 +2345,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator, nil]
               required :credit_reason_indicator,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator },
                        nil?: true
 
               # @!attribute departure_date
@@ -2402,9 +2371,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator, nil]
               required :restricted_ticket_indicator,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::RestrictedTicketIndicator },
                        nil?: true
 
               # @!attribute ticket_change_indicator
@@ -2412,9 +2379,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator, nil]
               required :ticket_change_indicator,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TicketChangeIndicator },
                        nil?: true
 
               # @!attribute ticket_number
@@ -2440,9 +2405,7 @@ module Increase
               #
               #   @return [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg>, nil]
               required :trip_legs,
-                       -> {
-                         Increase::ArrayOf[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg]
-                       },
+                       -> { Increase::ArrayOf[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg] },
                        nil?: true
 
               # @!parse
@@ -2505,9 +2468,7 @@ module Increase
                 #
                 #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil]
                 required :credit_reason_indicator,
-                         enum: -> {
-                           Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
-                         },
+                         enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator },
                          nil?: true
 
                 # @!attribute passenger_name_or_description
@@ -2521,9 +2482,7 @@ module Increase
                 #
                 #   @return [Array<Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service>]
                 required :services,
-                         -> {
-                           Increase::ArrayOf[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
-                         }
+                         -> { Increase::ArrayOf[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service] }
 
                 # @!attribute ticket_document_number
                 #   Ticket document number.
@@ -2604,9 +2563,7 @@ module Increase
                   #
                   #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category, nil]
                   required :category,
-                           enum: -> {
-                             Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category
-                           },
+                           enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category },
                            nil?: true
 
                   # @!attribute sub_category
@@ -2882,9 +2839,7 @@ module Increase
                 #
                 #   @return [Symbol, Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode, nil]
                 required :stop_over_code,
-                         enum: -> {
-                           Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode
-                         },
+                         enum: -> { Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg::StopOverCode },
                          nil?: true
 
                 # @!parse
@@ -3120,11 +3075,7 @@ module Increase
           #     aggregate, monthly.
           #
           #   @return [Increase::Models::Transaction::Source::CardSettlement::Cashback, nil]
-          required :cashback,
-                   -> {
-                     Increase::Models::Transaction::Source::CardSettlement::Cashback
-                   },
-                   nil?: true
+          required :cashback, -> { Increase::Models::Transaction::Source::CardSettlement::Cashback }, nil?: true
 
           # @!attribute currency
           #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -3310,10 +3261,7 @@ module Increase
             #   The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             #
             #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency]
-            required :currency,
-                     enum: -> {
-                       Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency
-                     }
+            required :currency, enum: -> { Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency }
 
             # @!parse
             #   # Cashback earned on this transaction, if eligible. Cashback is paid out in
@@ -3628,9 +3576,7 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat, nil]
             required :purchase_identifier_format,
-                     enum: -> {
-                       Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat
-                     },
+                     enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::PurchaseIdentifierFormat },
                      nil?: true
 
             # @!attribute travel
@@ -3723,9 +3669,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges, nil]
               required :extra_charges,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::ExtraCharges },
                        nil?: true
 
               # @!attribute fuel_charges_amount
@@ -3760,9 +3704,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator, nil]
               required :no_show_indicator,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental::NoShowIndicator },
                        nil?: true
 
               # @!attribute one_way_drop_off_charges_amount
@@ -3956,9 +3898,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges, nil]
               required :extra_charges,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges },
                        nil?: true
 
               # @!attribute folio_cash_advances_amount
@@ -3993,9 +3933,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator, nil]
               required :no_show_indicator,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::NoShowIndicator },
                        nil?: true
 
               # @!attribute prepaid_expenses_amount
@@ -4228,9 +4166,7 @@ module Increase
               #
               #   @return [Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary, nil]
               required :ancillary,
-                       -> {
-                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary
-                       },
+                       -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary },
                        nil?: true
 
               # @!attribute computerized_reservation_system
@@ -4244,9 +4180,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator, nil]
               required :credit_reason_indicator,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator },
                        nil?: true
 
               # @!attribute departure_date
@@ -4272,9 +4206,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator, nil]
               required :restricted_ticket_indicator,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::RestrictedTicketIndicator },
                        nil?: true
 
               # @!attribute ticket_change_indicator
@@ -4282,9 +4214,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator, nil]
               required :ticket_change_indicator,
-                       enum: -> {
-                         Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator
-                       },
+                       enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TicketChangeIndicator },
                        nil?: true
 
               # @!attribute ticket_number
@@ -4310,9 +4240,7 @@ module Increase
               #
               #   @return [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg>, nil]
               required :trip_legs,
-                       -> {
-                         Increase::ArrayOf[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]
-                       },
+                       -> { Increase::ArrayOf[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg] },
                        nil?: true
 
               # @!parse
@@ -4375,9 +4303,7 @@ module Increase
                 #
                 #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator, nil]
                 required :credit_reason_indicator,
-                         enum: -> {
-                           Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator
-                         },
+                         enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator },
                          nil?: true
 
                 # @!attribute passenger_name_or_description
@@ -4391,9 +4317,7 @@ module Increase
                 #
                 #   @return [Array<Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service>]
                 required :services,
-                         -> {
-                           Increase::ArrayOf[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
-                         }
+                         -> { Increase::ArrayOf[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service] }
 
                 # @!attribute ticket_document_number
                 #   Ticket document number.
@@ -4474,9 +4398,7 @@ module Increase
                   #
                   #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category, nil]
                   required :category,
-                           enum: -> {
-                             Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category
-                           },
+                           enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category },
                            nil?: true
 
                   # @!attribute sub_category
@@ -4752,9 +4674,7 @@ module Increase
                 #
                 #   @return [Symbol, Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode, nil]
                 required :stop_over_code,
-                         enum: -> {
-                           Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode
-                         },
+                         enum: -> { Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg::StopOverCode },
                          nil?: true
 
                 # @!parse
@@ -5109,10 +5029,7 @@ module Increase
           #     transaction's currency.
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency]
-          required :currency,
-                   enum: -> {
-                     Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency
-                   }
+          required :currency, enum: -> { Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency }
 
           # @!attribute routing_number
           #   The routing number printed on the check.
@@ -5674,11 +5591,7 @@ module Increase
           #   Additional information sent from the originator.
           #
           #   @return [Increase::Models::Transaction::Source::InboundACHTransfer::Addenda, nil]
-          required :addenda,
-                   -> {
-                     Increase::Models::Transaction::Source::InboundACHTransfer::Addenda
-                   },
-                   nil?: true
+          required :addenda, -> { Increase::Models::Transaction::Source::InboundACHTransfer::Addenda }, nil?: true
 
           # @!attribute amount
           #   The transfer amount in USD cents.
@@ -5851,9 +5764,7 @@ module Increase
               #
               #   @return [Array<Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry>]
               required :entries,
-                       -> {
-                         Increase::ArrayOf[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
-                       }
+                       -> { Increase::ArrayOf[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry] }
 
               # @!parse
               #   # Unstructured `payment_related_information` passed through by the originator.
@@ -6056,9 +5967,7 @@ module Increase
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency]
           required :currency,
-                   enum: -> {
-                     Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency
-                   }
+                   enum: -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency }
 
           # @!attribute debtor_account_number
           #   The account number of the account that sent the transfer.
@@ -6212,9 +6121,7 @@ module Increase
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency]
           required :currency,
-                   enum: -> {
-                     Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency
-                   }
+                   enum: -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency }
 
           # @!attribute debtor_account_number
           #   The account number of the account that sent the transfer.
@@ -6239,9 +6146,7 @@ module Increase
           #
           #   @return [Symbol, Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason]
           required :reason,
-                   enum: -> {
-                     Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason
-                   }
+                   enum: -> { Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Reason }
 
           # @!attribute remittance_information
           #   Additional information included with the transfer.

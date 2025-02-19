@@ -37,20 +37,22 @@ module Increase
             lockbox_id: String,
             contents_file_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(amount:, lockbox_id:, contents_file_id: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              lockbox_id: String,
-              contents_file_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                lockbox_id: String,
+                contents_file_id: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end

@@ -11,7 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::DocumentListParams::Category).returns(Increase::Models::DocumentListParams::Category)
+        params(_: Increase::Models::DocumentListParams::Category)
+          .returns(Increase::Models::DocumentListParams::Category)
       end
       def category=(_)
       end
@@ -21,7 +22,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::DocumentListParams::CreatedAt).returns(Increase::Models::DocumentListParams::CreatedAt)
+        params(_: Increase::Models::DocumentListParams::CreatedAt)
+          .returns(Increase::Models::DocumentListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -58,7 +60,8 @@ module Increase
           entity_id: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         category: nil,
@@ -71,16 +74,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            category: Increase::Models::DocumentListParams::Category,
-            created_at: Increase::Models::DocumentListParams::CreatedAt,
-            cursor: String,
-            entity_id: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              category: Increase::Models::DocumentListParams::Category,
+              created_at: Increase::Models::DocumentListParams::CreatedAt,
+              cursor: String,
+              entity_id: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

@@ -8,7 +8,8 @@ module Increase
           params(
             check_transfer_id: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::CheckTransfer)
+          )
+            .returns(Increase::Models::CheckTransfer)
         end
         def mail(check_transfer_id, request_options: {})
         end

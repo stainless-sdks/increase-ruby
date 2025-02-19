@@ -86,7 +86,8 @@ module Increase
           statement_period_end: Time,
           statement_period_start: Time,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -102,19 +103,20 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            created_at: Time,
-            ending_balance: Integer,
-            file_id: String,
-            starting_balance: Integer,
-            statement_period_end: Time,
-            statement_period_start: Time,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              created_at: Time,
+              ending_balance: Integer,
+              file_id: String,
+              starting_balance: Integer,
+              statement_period_end: Time,
+              statement_period_start: Time,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

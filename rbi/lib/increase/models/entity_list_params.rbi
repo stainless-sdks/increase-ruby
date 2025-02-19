@@ -11,7 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityListParams::CreatedAt).returns(Increase::Models::EntityListParams::CreatedAt)
+        params(_: Increase::Models::EntityListParams::CreatedAt)
+          .returns(Increase::Models::EntityListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -44,9 +45,7 @@ module Increase
       def status
       end
 
-      sig do
-        params(_: Increase::Models::EntityListParams::Status).returns(Increase::Models::EntityListParams::Status)
-      end
+      sig { params(_: Increase::Models::EntityListParams::Status).returns(Increase::Models::EntityListParams::Status) }
       def status=(_)
       end
 
@@ -58,7 +57,8 @@ module Increase
           limit: Integer,
           status: Increase::Models::EntityListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         created_at: nil,
@@ -71,16 +71,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            created_at: Increase::Models::EntityListParams::CreatedAt,
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            status: Increase::Models::EntityListParams::Status,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              created_at: Increase::Models::EntityListParams::CreatedAt,
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              status: Increase::Models::EntityListParams::Status,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

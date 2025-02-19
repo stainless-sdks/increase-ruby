@@ -16,7 +16,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::Entity::Corporation)).returns(T.nilable(Increase::Models::Entity::Corporation))
+        params(_: T.nilable(Increase::Models::Entity::Corporation))
+          .returns(T.nilable(Increase::Models::Entity::Corporation))
       end
       def corporation=(_)
       end
@@ -50,7 +51,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::Entity::GovernmentAuthority)).returns(T.nilable(Increase::Models::Entity::GovernmentAuthority))
+        params(_: T.nilable(Increase::Models::Entity::GovernmentAuthority))
+          .returns(T.nilable(Increase::Models::Entity::GovernmentAuthority))
       end
       def government_authority=(_)
       end
@@ -67,9 +69,7 @@ module Increase
       def joint
       end
 
-      sig do
-        params(_: T.nilable(Increase::Models::Entity::Joint)).returns(T.nilable(Increase::Models::Entity::Joint))
-      end
+      sig { params(_: T.nilable(Increase::Models::Entity::Joint)).returns(T.nilable(Increase::Models::Entity::Joint)) }
       def joint=(_)
       end
 
@@ -78,7 +78,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::Entity::NaturalPerson)).returns(T.nilable(Increase::Models::Entity::NaturalPerson))
+        params(_: T.nilable(Increase::Models::Entity::NaturalPerson))
+          .returns(T.nilable(Increase::Models::Entity::NaturalPerson))
       end
       def natural_person=(_)
       end
@@ -104,7 +105,8 @@ module Increase
       end
 
       sig do
-        params(_: T::Array[Increase::Models::EntitySupplementalDocument]).returns(T::Array[Increase::Models::EntitySupplementalDocument])
+        params(_: T::Array[Increase::Models::EntitySupplementalDocument])
+          .returns(T::Array[Increase::Models::EntitySupplementalDocument])
       end
       def supplemental_documents=(_)
       end
@@ -114,7 +116,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::Entity::ThirdPartyVerification)).returns(T.nilable(Increase::Models::Entity::ThirdPartyVerification))
+        params(_: T.nilable(Increase::Models::Entity::ThirdPartyVerification))
+          .returns(T.nilable(Increase::Models::Entity::ThirdPartyVerification))
       end
       def third_party_verification=(_)
       end
@@ -123,9 +126,7 @@ module Increase
       def trust
       end
 
-      sig do
-        params(_: T.nilable(Increase::Models::Entity::Trust)).returns(T.nilable(Increase::Models::Entity::Trust))
-      end
+      sig { params(_: T.nilable(Increase::Models::Entity::Trust)).returns(T.nilable(Increase::Models::Entity::Trust)) }
       def trust=(_)
       end
 
@@ -154,7 +155,8 @@ module Increase
           third_party_verification: T.nilable(Increase::Models::Entity::ThirdPartyVerification),
           trust: T.nilable(Increase::Models::Entity::Trust),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -176,25 +178,26 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            corporation: T.nilable(Increase::Models::Entity::Corporation),
-            created_at: Time,
-            description: T.nilable(String),
-            details_confirmed_at: T.nilable(Time),
-            government_authority: T.nilable(Increase::Models::Entity::GovernmentAuthority),
-            idempotency_key: T.nilable(String),
-            joint: T.nilable(Increase::Models::Entity::Joint),
-            natural_person: T.nilable(Increase::Models::Entity::NaturalPerson),
-            status: Symbol,
-            structure: Symbol,
-            supplemental_documents: T::Array[Increase::Models::EntitySupplementalDocument],
-            third_party_verification: T.nilable(Increase::Models::Entity::ThirdPartyVerification),
-            trust: T.nilable(Increase::Models::Entity::Trust),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              corporation: T.nilable(Increase::Models::Entity::Corporation),
+              created_at: Time,
+              description: T.nilable(String),
+              details_confirmed_at: T.nilable(Time),
+              government_authority: T.nilable(Increase::Models::Entity::GovernmentAuthority),
+              idempotency_key: T.nilable(String),
+              joint: T.nilable(Increase::Models::Entity::Joint),
+              natural_person: T.nilable(Increase::Models::Entity::NaturalPerson),
+              status: Symbol,
+              structure: Symbol,
+              supplemental_documents: T::Array[Increase::Models::EntitySupplementalDocument],
+              third_party_verification: T.nilable(Increase::Models::Entity::ThirdPartyVerification),
+              trust: T.nilable(Increase::Models::Entity::Trust),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -205,7 +208,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::Entity::Corporation::Address).returns(Increase::Models::Entity::Corporation::Address)
+          params(_: Increase::Models::Entity::Corporation::Address)
+            .returns(Increase::Models::Entity::Corporation::Address)
         end
         def address=(_)
         end
@@ -215,7 +219,8 @@ module Increase
         end
 
         sig do
-          params(_: T::Array[Increase::Models::Entity::Corporation::BeneficialOwner]).returns(T::Array[Increase::Models::Entity::Corporation::BeneficialOwner])
+          params(_: T::Array[Increase::Models::Entity::Corporation::BeneficialOwner])
+            .returns(T::Array[Increase::Models::Entity::Corporation::BeneficialOwner])
         end
         def beneficial_owners=(_)
         end
@@ -269,7 +274,8 @@ module Increase
             name: String,
             tax_identifier: T.nilable(String),
             website: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(
           address:,
@@ -283,17 +289,18 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              address: Increase::Models::Entity::Corporation::Address,
-              beneficial_owners: T::Array[Increase::Models::Entity::Corporation::BeneficialOwner],
-              incorporation_state: T.nilable(String),
-              industry_code: T.nilable(String),
-              name: String,
-              tax_identifier: T.nilable(String),
-              website: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                address: Increase::Models::Entity::Corporation::Address,
+                beneficial_owners: T::Array[Increase::Models::Entity::Corporation::BeneficialOwner],
+                incorporation_state: T.nilable(String),
+                industry_code: T.nilable(String),
+                name: String,
+                tax_identifier: T.nilable(String),
+                website: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -382,7 +389,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual).returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual)
+            params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual)
+              .returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual)
           end
           def individual=(_)
           end
@@ -401,20 +409,22 @@ module Increase
               company_title: T.nilable(String),
               individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
               prong: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(beneficial_owner_id:, company_title:, individual:, prong:)
           end
 
           sig do
-            override.returns(
-              {
-                beneficial_owner_id: String,
-                company_title: T.nilable(String),
-                individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
-                prong: Symbol
-              }
-            )
+            override
+              .returns(
+                {
+                  beneficial_owner_id: String,
+                  company_title: T.nilable(String),
+                  individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
+                  prong: Symbol
+                }
+              )
           end
           def to_hash
           end
@@ -425,7 +435,8 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address).returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address)
+              params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address)
+                .returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address)
             end
             def address=(_)
             end
@@ -438,14 +449,13 @@ module Increase
             def date_of_birth=(_)
             end
 
-            sig do
-              returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification)
-            end
+            sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification) }
             def identification
             end
 
             sig do
-              params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification).returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification)
+              params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification)
+                .returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification)
             end
             def identification=(_)
             end
@@ -464,20 +474,22 @@ module Increase
                 date_of_birth: Date,
                 identification: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
                 name: String
-              ).void
+              )
+                .void
             end
             def initialize(address:, date_of_birth:, identification:, name:)
             end
 
             sig do
-              override.returns(
-                {
-                  address: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
-                  date_of_birth: Date,
-                  identification: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
-                  name: String
-                }
-              )
+              override
+                .returns(
+                  {
+                    address: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
+                    date_of_birth: Date,
+                    identification: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
+                    name: String
+                  }
+                )
             end
             def to_hash
             end
@@ -616,7 +628,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::Entity::GovernmentAuthority::Address).returns(Increase::Models::Entity::GovernmentAuthority::Address)
+          params(_: Increase::Models::Entity::GovernmentAuthority::Address)
+            .returns(Increase::Models::Entity::GovernmentAuthority::Address)
         end
         def address=(_)
         end
@@ -626,7 +639,8 @@ module Increase
         end
 
         sig do
-          params(_: T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson]).returns(T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson])
+          params(_: T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson])
+            .returns(T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson])
         end
         def authorized_persons=(_)
         end
@@ -671,22 +685,24 @@ module Increase
             name: String,
             tax_identifier: T.nilable(String),
             website: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(address:, authorized_persons:, category:, name:, tax_identifier:, website:)
         end
 
         sig do
-          override.returns(
-            {
-              address: Increase::Models::Entity::GovernmentAuthority::Address,
-              authorized_persons: T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson],
-              category: Symbol,
-              name: String,
-              tax_identifier: T.nilable(String),
-              website: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                address: Increase::Models::Entity::GovernmentAuthority::Address,
+                authorized_persons: T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson],
+                category: Symbol,
+                name: String,
+                tax_identifier: T.nilable(String),
+                website: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -797,7 +813,8 @@ module Increase
         end
 
         sig do
-          params(_: T::Array[Increase::Models::Entity::Joint::Individual]).returns(T::Array[Increase::Models::Entity::Joint::Individual])
+          params(_: T::Array[Increase::Models::Entity::Joint::Individual])
+            .returns(T::Array[Increase::Models::Entity::Joint::Individual])
         end
         def individuals=(_)
         end
@@ -814,9 +831,7 @@ module Increase
         def initialize(individuals:, name:)
         end
 
-        sig do
-          override.returns({individuals: T::Array[Increase::Models::Entity::Joint::Individual], name: String})
-        end
+        sig { override.returns({individuals: T::Array[Increase::Models::Entity::Joint::Individual], name: String}) }
         def to_hash
         end
 
@@ -826,7 +841,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Entity::Joint::Individual::Address).returns(Increase::Models::Entity::Joint::Individual::Address)
+            params(_: Increase::Models::Entity::Joint::Individual::Address)
+              .returns(Increase::Models::Entity::Joint::Individual::Address)
           end
           def address=(_)
           end
@@ -844,7 +860,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Entity::Joint::Individual::Identification).returns(Increase::Models::Entity::Joint::Individual::Identification)
+            params(_: Increase::Models::Entity::Joint::Individual::Identification)
+              .returns(Increase::Models::Entity::Joint::Individual::Identification)
           end
           def identification=(_)
           end
@@ -863,20 +880,22 @@ module Increase
               date_of_birth: Date,
               identification: Increase::Models::Entity::Joint::Individual::Identification,
               name: String
-            ).void
+            )
+              .void
           end
           def initialize(address:, date_of_birth:, identification:, name:)
           end
 
           sig do
-            override.returns(
-              {
-                address: Increase::Models::Entity::Joint::Individual::Address,
-                date_of_birth: Date,
-                identification: Increase::Models::Entity::Joint::Individual::Identification,
-                name: String
-              }
-            )
+            override
+              .returns(
+                {
+                  address: Increase::Models::Entity::Joint::Individual::Address,
+                  date_of_birth: Date,
+                  identification: Increase::Models::Entity::Joint::Individual::Identification,
+                  name: String
+                }
+              )
           end
           def to_hash
           end
@@ -1000,7 +1019,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::Entity::NaturalPerson::Address).returns(Increase::Models::Entity::NaturalPerson::Address)
+          params(_: Increase::Models::Entity::NaturalPerson::Address)
+            .returns(Increase::Models::Entity::NaturalPerson::Address)
         end
         def address=(_)
         end
@@ -1018,7 +1038,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::Entity::NaturalPerson::Identification).returns(Increase::Models::Entity::NaturalPerson::Identification)
+          params(_: Increase::Models::Entity::NaturalPerson::Identification)
+            .returns(Increase::Models::Entity::NaturalPerson::Identification)
         end
         def identification=(_)
         end
@@ -1037,20 +1058,22 @@ module Increase
             date_of_birth: Date,
             identification: Increase::Models::Entity::NaturalPerson::Identification,
             name: String
-          ).void
+          )
+            .void
         end
         def initialize(address:, date_of_birth:, identification:, name:)
         end
 
         sig do
-          override.returns(
-            {
-              address: Increase::Models::Entity::NaturalPerson::Address,
-              date_of_birth: Date,
-              identification: Increase::Models::Entity::NaturalPerson::Identification,
-              name: String
-            }
-          )
+          override
+            .returns(
+              {
+                address: Increase::Models::Entity::NaturalPerson::Address,
+                date_of_birth: Date,
+                identification: Increase::Models::Entity::NaturalPerson::Identification,
+                name: String
+              }
+            )
         end
         def to_hash
         end
@@ -1252,9 +1275,7 @@ module Increase
         def address
         end
 
-        sig do
-          params(_: Increase::Models::Entity::Trust::Address).returns(Increase::Models::Entity::Trust::Address)
-        end
+        sig { params(_: Increase::Models::Entity::Trust::Address).returns(Increase::Models::Entity::Trust::Address) }
         def address=(_)
         end
 
@@ -1287,7 +1308,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::Entity::Trust::Grantor)).returns(T.nilable(Increase::Models::Entity::Trust::Grantor))
+          params(_: T.nilable(Increase::Models::Entity::Trust::Grantor))
+            .returns(T.nilable(Increase::Models::Entity::Trust::Grantor))
         end
         def grantor=(_)
         end
@@ -1313,7 +1335,8 @@ module Increase
         end
 
         sig do
-          params(_: T::Array[Increase::Models::Entity::Trust::Trustee]).returns(T::Array[Increase::Models::Entity::Trust::Trustee])
+          params(_: T::Array[Increase::Models::Entity::Trust::Trustee])
+            .returns(T::Array[Increase::Models::Entity::Trust::Trustee])
         end
         def trustees=(_)
         end
@@ -1328,7 +1351,8 @@ module Increase
             name: String,
             tax_identifier: T.nilable(String),
             trustees: T::Array[Increase::Models::Entity::Trust::Trustee]
-          ).void
+          )
+            .void
         end
         def initialize(
           address:,
@@ -1343,18 +1367,19 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              address: Increase::Models::Entity::Trust::Address,
-              category: Symbol,
-              formation_document_file_id: T.nilable(String),
-              formation_state: T.nilable(String),
-              grantor: T.nilable(Increase::Models::Entity::Trust::Grantor),
-              name: String,
-              tax_identifier: T.nilable(String),
-              trustees: T::Array[Increase::Models::Entity::Trust::Trustee]
-            }
-          )
+          override
+            .returns(
+              {
+                address: Increase::Models::Entity::Trust::Address,
+                category: Symbol,
+                formation_document_file_id: T.nilable(String),
+                formation_state: T.nilable(String),
+                grantor: T.nilable(Increase::Models::Entity::Trust::Grantor),
+                name: String,
+                tax_identifier: T.nilable(String),
+                trustees: T::Array[Increase::Models::Entity::Trust::Trustee]
+              }
+            )
         end
         def to_hash
         end
@@ -1441,7 +1466,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Entity::Trust::Grantor::Address).returns(Increase::Models::Entity::Trust::Grantor::Address)
+            params(_: Increase::Models::Entity::Trust::Grantor::Address)
+              .returns(Increase::Models::Entity::Trust::Grantor::Address)
           end
           def address=(_)
           end
@@ -1459,7 +1485,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::Entity::Trust::Grantor::Identification).returns(Increase::Models::Entity::Trust::Grantor::Identification)
+            params(_: Increase::Models::Entity::Trust::Grantor::Identification)
+              .returns(Increase::Models::Entity::Trust::Grantor::Identification)
           end
           def identification=(_)
           end
@@ -1478,20 +1505,22 @@ module Increase
               date_of_birth: Date,
               identification: Increase::Models::Entity::Trust::Grantor::Identification,
               name: String
-            ).void
+            )
+              .void
           end
           def initialize(address:, date_of_birth:, identification:, name:)
           end
 
           sig do
-            override.returns(
-              {
-                address: Increase::Models::Entity::Trust::Grantor::Address,
-                date_of_birth: Date,
-                identification: Increase::Models::Entity::Trust::Grantor::Identification,
-                name: String
-              }
-            )
+            override
+              .returns(
+                {
+                  address: Increase::Models::Entity::Trust::Grantor::Address,
+                  date_of_birth: Date,
+                  identification: Increase::Models::Entity::Trust::Grantor::Identification,
+                  name: String
+                }
+              )
           end
           def to_hash
           end
@@ -1614,7 +1643,8 @@ module Increase
           end
 
           sig do
-            params(_: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual)).returns(T.nilable(Increase::Models::Entity::Trust::Trustee::Individual))
+            params(_: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual))
+              .returns(T.nilable(Increase::Models::Entity::Trust::Trustee::Individual))
           end
           def individual=(_)
           end
@@ -1628,21 +1658,14 @@ module Increase
           end
 
           sig do
-            params(
-              individual: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual),
-              structure: Symbol
-            ).void
+            params(individual: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual), structure: Symbol).void
           end
           def initialize(individual:, structure:)
           end
 
           sig do
-            override.returns(
-              {
-                individual: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual),
-                structure: Symbol
-              }
-            )
+            override
+              .returns({individual: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual), structure: Symbol})
           end
           def to_hash
           end
@@ -1653,7 +1676,8 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::Entity::Trust::Trustee::Individual::Address).returns(Increase::Models::Entity::Trust::Trustee::Individual::Address)
+              params(_: Increase::Models::Entity::Trust::Trustee::Individual::Address)
+                .returns(Increase::Models::Entity::Trust::Trustee::Individual::Address)
             end
             def address=(_)
             end
@@ -1671,7 +1695,8 @@ module Increase
             end
 
             sig do
-              params(_: Increase::Models::Entity::Trust::Trustee::Individual::Identification).returns(Increase::Models::Entity::Trust::Trustee::Individual::Identification)
+              params(_: Increase::Models::Entity::Trust::Trustee::Individual::Identification)
+                .returns(Increase::Models::Entity::Trust::Trustee::Individual::Identification)
             end
             def identification=(_)
             end
@@ -1690,20 +1715,22 @@ module Increase
                 date_of_birth: Date,
                 identification: Increase::Models::Entity::Trust::Trustee::Individual::Identification,
                 name: String
-              ).void
+              )
+                .void
             end
             def initialize(address:, date_of_birth:, identification:, name:)
             end
 
             sig do
-              override.returns(
-                {
-                  address: Increase::Models::Entity::Trust::Trustee::Individual::Address,
-                  date_of_birth: Date,
-                  identification: Increase::Models::Entity::Trust::Trustee::Individual::Identification,
-                  name: String
-                }
-              )
+              override
+                .returns(
+                  {
+                    address: Increase::Models::Entity::Trust::Trustee::Individual::Address,
+                    date_of_birth: Date,
+                    identification: Increase::Models::Entity::Trust::Trustee::Individual::Identification,
+                    name: String
+                  }
+                )
             end
             def to_hash
             end

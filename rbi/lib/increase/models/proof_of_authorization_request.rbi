@@ -16,7 +16,8 @@ module Increase
       end
 
       sig do
-        params(_: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer]).returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer])
+        params(_: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer])
+          .returns(T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer])
       end
       def ach_transfers=(_)
       end
@@ -61,22 +62,24 @@ module Increase
           due_on: Time,
           type: Symbol,
           updated_at: Time
-        ).void
+        )
+          .void
       end
       def initialize(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            ach_transfers: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
-            created_at: Time,
-            due_on: Time,
-            type: Symbol,
-            updated_at: Time
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              ach_transfers: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
+              created_at: Time,
+              due_on: Time,
+              type: Symbol,
+              updated_at: Time
+            }
+          )
       end
       def to_hash
       end

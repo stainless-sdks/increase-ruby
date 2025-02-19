@@ -7,7 +7,8 @@ module Increase
         params(
           account_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::IntrafiBalance)
+        )
+          .returns(Increase::Models::IntrafiBalance)
       end
       def intrafi_balance(account_id, request_options: {})
       end

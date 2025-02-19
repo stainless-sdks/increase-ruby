@@ -24,7 +24,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement)).returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement))
+        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement))
       end
       def acknowledgement=(_)
       end
@@ -42,7 +43,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval)).returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval))
+        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval))
       end
       def approval=(_)
       end
@@ -52,7 +54,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation)).returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation))
+        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation))
       end
       def cancellation=(_)
       end
@@ -70,7 +73,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy)).returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy))
+        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy))
       end
       def created_by=(_)
       end
@@ -144,7 +148,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection)).returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection))
+        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection))
       end
       def rejection=(_)
       end
@@ -178,7 +183,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission)).returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission))
+        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission))
       end
       def submission=(_)
       end
@@ -242,7 +248,8 @@ module Increase
           type: Symbol,
           ultimate_creditor_name: T.nilable(String),
           ultimate_debtor_name: T.nilable(String)
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -274,35 +281,36 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            acknowledgement: T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement),
-            amount: Integer,
-            approval: T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval),
-            cancellation: T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation),
-            created_at: Time,
-            created_by: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy),
-            creditor_name: String,
-            currency: Symbol,
-            debtor_name: T.nilable(String),
-            destination_account_number: String,
-            destination_routing_number: String,
-            external_account_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            pending_transaction_id: T.nilable(String),
-            rejection: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection),
-            remittance_information: String,
-            source_account_number_id: String,
-            status: Symbol,
-            submission: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission),
-            transaction_id: T.nilable(String),
-            type: Symbol,
-            ultimate_creditor_name: T.nilable(String),
-            ultimate_debtor_name: T.nilable(String)
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              acknowledgement: T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement),
+              amount: Integer,
+              approval: T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval),
+              cancellation: T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation),
+              created_at: Time,
+              created_by: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy),
+              creditor_name: String,
+              currency: Symbol,
+              debtor_name: T.nilable(String),
+              destination_account_number: String,
+              destination_routing_number: String,
+              external_account_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              pending_transaction_id: T.nilable(String),
+              rejection: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection),
+              remittance_information: String,
+              source_account_number_id: String,
+              status: Symbol,
+              submission: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission),
+              transaction_id: T.nilable(String),
+              type: Symbol,
+              ultimate_creditor_name: T.nilable(String),
+              ultimate_debtor_name: T.nilable(String)
+            }
+          )
       end
       def to_hash
       end
@@ -383,7 +391,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey)).returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey))
+          params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey))
+            .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey))
         end
         def api_key=(_)
         end
@@ -401,7 +410,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication)).returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication))
+          params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication))
+            .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication))
         end
         def oauth_application=(_)
         end
@@ -411,7 +421,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)).returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User))
+          params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User))
+            .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User))
         end
         def user=(_)
         end
@@ -422,20 +433,22 @@ module Increase
             category: Symbol,
             oauth_application: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)
-          ).void
+          )
+            .void
         end
         def initialize(api_key:, category:, oauth_application:, user:)
         end
 
         sig do
-          override.returns(
-            {
-              api_key: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey),
-              category: Symbol,
-              oauth_application: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication),
-              user: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)
-            }
-          )
+          override
+            .returns(
+              {
+                api_key: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey),
+                category: Symbol,
+                oauth_application: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication),
+                user: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)
+              }
+            )
         end
         def to_hash
         end
@@ -568,19 +581,21 @@ module Increase
             reject_reason_additional_information: T.nilable(String),
             reject_reason_code: Symbol,
             rejected_at: T.nilable(Time)
-          ).void
+          )
+            .void
         end
         def initialize(reject_reason_additional_information:, reject_reason_code:, rejected_at:)
         end
 
         sig do
-          override.returns(
-            {
-              reject_reason_additional_information: T.nilable(String),
-              reject_reason_code: Symbol,
-              rejected_at: T.nilable(Time)
-            }
-          )
+          override
+            .returns(
+              {
+                reject_reason_additional_information: T.nilable(String),
+                reject_reason_code: Symbol,
+                rejected_at: T.nilable(Time)
+              }
+            )
         end
         def to_hash
         end
