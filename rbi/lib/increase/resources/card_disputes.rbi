@@ -9,7 +9,8 @@ module Increase
           explanation: String,
           amount: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::CardDispute)
+        )
+          .returns(Increase::Models::CardDispute)
       end
       def create(disputed_transaction_id:, explanation:, amount: nil, request_options: {})
       end
@@ -18,7 +19,8 @@ module Increase
         params(
           card_dispute_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::CardDispute)
+        )
+          .returns(Increase::Models::CardDispute)
       end
       def retrieve(card_dispute_id, request_options: {})
       end
@@ -31,7 +33,8 @@ module Increase
           limit: Integer,
           status: Increase::Models::CardDisputeListParams::Status,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::CardDispute])
+        )
+          .returns(Increase::Page[Increase::Models::CardDispute])
       end
       def list(
         created_at: nil,

@@ -44,9 +44,7 @@ module Increase
       def purpose
       end
 
-      sig do
-        params(_: Increase::Models::FileListParams::Purpose).returns(Increase::Models::FileListParams::Purpose)
-      end
+      sig { params(_: Increase::Models::FileListParams::Purpose).returns(Increase::Models::FileListParams::Purpose) }
       def purpose=(_)
       end
 
@@ -58,7 +56,8 @@ module Increase
           limit: Integer,
           purpose: Increase::Models::FileListParams::Purpose,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         created_at: nil,
@@ -71,16 +70,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            created_at: Increase::Models::FileListParams::CreatedAt,
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            purpose: Increase::Models::FileListParams::Purpose,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              created_at: Increase::Models::FileListParams::CreatedAt,
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              purpose: Increase::Models::FileListParams::Purpose,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

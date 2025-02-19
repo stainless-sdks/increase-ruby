@@ -58,7 +58,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountNumber::InboundChecks).returns(Increase::Models::AccountNumber::InboundChecks)
+        params(_: Increase::Models::AccountNumber::InboundChecks)
+          .returns(Increase::Models::AccountNumber::InboundChecks)
       end
       def inbound_checks=(_)
       end
@@ -108,7 +109,8 @@ module Increase
           routing_number: String,
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -126,21 +128,22 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            account_number: String,
-            created_at: Time,
-            idempotency_key: T.nilable(String),
-            inbound_ach: Increase::Models::AccountNumber::InboundACH,
-            inbound_checks: Increase::Models::AccountNumber::InboundChecks,
-            name: String,
-            routing_number: String,
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              account_number: String,
+              created_at: Time,
+              idempotency_key: T.nilable(String),
+              inbound_ach: Increase::Models::AccountNumber::InboundACH,
+              inbound_checks: Increase::Models::AccountNumber::InboundChecks,
+              name: String,
+              routing_number: String,
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

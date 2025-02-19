@@ -359,9 +359,7 @@ module Increase
           #
           #   @return [Array<Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong>]
           required :prongs,
-                   -> {
-                     Increase::ArrayOf[enum: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong]
-                   }
+                   -> { Increase::ArrayOf[enum: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong] }
 
           # @!attribute [r] company_title
           #   This person's role or title within the entity.
@@ -523,9 +521,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method]
               required :method_,
-                       enum: -> {
-                         Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method
-                       },
+                       enum: -> { Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method },
                        api_name: :method
 
               # @!attribute number
@@ -838,9 +834,7 @@ module Increase
         #
         #   @return [Array<Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson>]
         required :authorized_persons,
-                 -> {
-                   Increase::ArrayOf[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson]
-                 }
+                 -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson] }
 
         # @!attribute category
         #   The category of the government authority.
@@ -1003,10 +997,7 @@ module Increase
         #   The two individuals that share control of the entity.
         #
         #   @return [Array<Increase::Models::EntityCreateParams::Joint::Individual>]
-        required :individuals,
-                 -> {
-                   Increase::ArrayOf[Increase::Models::EntityCreateParams::Joint::Individual]
-                 }
+        required :individuals, -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::Joint::Individual] }
 
         # @!attribute [r] name
         #   The name of the joint entity.
@@ -1057,10 +1048,7 @@ module Increase
           #   A means of verifying the person's identity.
           #
           #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification]
-          required :identification,
-                   -> {
-                     Increase::Models::EntityCreateParams::Joint::Individual::Identification
-                   }
+          required :identification, -> { Increase::Models::EntityCreateParams::Joint::Individual::Identification }
 
           # @!attribute name
           #   The person's legal name.
@@ -1169,9 +1157,7 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method]
             required :method_,
-                     enum: -> {
-                       Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method
-                     },
+                     enum: -> { Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method },
                      api_name: :method
 
             # @!attribute number
@@ -1198,10 +1184,7 @@ module Increase
             #     equal to `other`.
             #
             #   @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other, nil]
-            optional :other,
-                     -> {
-                       Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other
-                     }
+            optional :other, -> { Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other }
 
             # @!parse
             #   # @return [Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other]
@@ -1616,10 +1599,7 @@ module Increase
           #     equal to `passport`.
           #
           #   @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport, nil]
-          optional :passport,
-                   -> {
-                     Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
-                   }
+          optional :passport, -> { Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport }
 
           # @!parse
           #   # @return [Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport]
@@ -2195,10 +2175,7 @@ module Increase
             #     PMB's are disallowed.
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address]
-            required :address,
-                     -> {
-                       Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address
-                     }
+            required :address, -> { Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address }
 
             # @!attribute date_of_birth
             #   The person's date of birth in YYYY-MM-DD format.
@@ -2323,9 +2300,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method]
               required :method_,
-                       enum: -> {
-                         Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method
-                       },
+                       enum: -> { Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method },
                        api_name: :method
 
               # @!attribute number
@@ -2616,10 +2591,7 @@ module Increase
           #   A means of verifying the person's identity.
           #
           #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification]
-          required :identification,
-                   -> {
-                     Increase::Models::EntityCreateParams::Trust::Grantor::Identification
-                   }
+          required :identification, -> { Increase::Models::EntityCreateParams::Trust::Grantor::Identification }
 
           # @!attribute name
           #   The person's legal name.
@@ -2730,9 +2702,7 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method]
             required :method_,
-                     enum: -> {
-                       Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method
-                     },
+                     enum: -> { Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method },
                      api_name: :method
 
             # @!attribute number
@@ -2759,10 +2729,7 @@ module Increase
             #     equal to `other`.
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other, nil]
-            optional :other,
-                     -> {
-                       Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other
-                     }
+            optional :other, -> { Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other }
 
             # @!parse
             #   # @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other]
@@ -2773,10 +2740,7 @@ module Increase
             #     equal to `passport`.
             #
             #   @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport, nil]
-            optional :passport,
-                     -> {
-                       Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
-                     }
+            optional :passport, -> { Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport }
 
             # @!parse
             #   # @return [Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport]

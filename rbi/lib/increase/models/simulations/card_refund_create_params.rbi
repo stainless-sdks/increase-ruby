@@ -19,7 +19,8 @@ module Increase
           params(
             transaction_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(transaction_id:, request_options: {})
         end

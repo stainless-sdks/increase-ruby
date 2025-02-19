@@ -11,7 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CardDisputeListParams::CreatedAt).returns(Increase::Models::CardDisputeListParams::CreatedAt)
+        params(_: Increase::Models::CardDisputeListParams::CreatedAt)
+          .returns(Increase::Models::CardDisputeListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -45,7 +46,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CardDisputeListParams::Status).returns(Increase::Models::CardDisputeListParams::Status)
+        params(_: Increase::Models::CardDisputeListParams::Status)
+          .returns(Increase::Models::CardDisputeListParams::Status)
       end
       def status=(_)
       end
@@ -58,7 +60,8 @@ module Increase
           limit: Integer,
           status: Increase::Models::CardDisputeListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         created_at: nil,
@@ -71,16 +74,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            created_at: Increase::Models::CardDisputeListParams::CreatedAt,
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            status: Increase::Models::CardDisputeListParams::Status,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              created_at: Increase::Models::CardDisputeListParams::CreatedAt,
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              status: Increase::Models::CardDisputeListParams::Status,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

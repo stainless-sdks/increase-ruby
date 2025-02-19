@@ -59,22 +59,24 @@ module Increase
           category: Symbol,
           created_at: Time,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            associated_object_id: String,
-            associated_object_type: String,
-            category: Symbol,
-            created_at: Time,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              associated_object_id: String,
+              associated_object_type: String,
+              category: Symbol,
+              created_at: Time,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

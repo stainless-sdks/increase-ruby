@@ -77,7 +77,8 @@ module Increase
           idempotency_key: T.nilable(String),
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -92,18 +93,19 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            category: Symbol,
-            created_at: Time,
-            file_download_url: T.nilable(String),
-            file_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              category: Symbol,
+              created_at: Time,
+              file_download_url: T.nilable(String),
+              file_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

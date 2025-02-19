@@ -11,7 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address).returns(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address)
+        params(_: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address)
+          .returns(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address)
       end
       def address=(_)
       end
@@ -29,19 +30,21 @@ module Increase
           address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
           beneficial_owner_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(address:, beneficial_owner_id:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
-            beneficial_owner_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
+              beneficial_owner_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

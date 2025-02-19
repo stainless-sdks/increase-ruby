@@ -605,11 +605,7 @@ module Increase
         #   The return address to be printed on the check.
         #
         #   @return [Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress, nil]
-        required :return_address,
-                 -> {
-                   Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress
-                 },
-                 nil?: true
+        required :return_address, -> { Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress }, nil?: true
 
         # @!attribute shipping_method
         #   The shipping method for the check.
@@ -827,10 +823,7 @@ module Increase
           #   The type of tracking event.
           #
           #   @return [Symbol, Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category]
-          required :category,
-                   enum: -> {
-                     Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category
-                   }
+          required :category, enum: -> { Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category }
 
           # @!attribute created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which

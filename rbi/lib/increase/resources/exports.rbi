@@ -13,7 +13,8 @@ module Increase
           transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
           vendor_csv: T.anything,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Export)
+        )
+          .returns(Increase::Models::Export)
       end
       def create(
         category:,
@@ -31,7 +32,8 @@ module Increase
         params(
           export_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Export)
+        )
+          .returns(Increase::Models::Export)
       end
       def retrieve(export_id, request_options: {})
       end
@@ -45,7 +47,8 @@ module Increase
           limit: Integer,
           status: Increase::Models::ExportListParams::Status,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::Export])
+        )
+          .returns(Increase::Page[Increase::Models::Export])
       end
       def list(
         category: nil,

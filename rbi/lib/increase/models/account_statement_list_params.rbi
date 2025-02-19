@@ -35,7 +35,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::AccountStatementListParams::StatementPeriodStart).returns(Increase::Models::AccountStatementListParams::StatementPeriodStart)
+        params(_: Increase::Models::AccountStatementListParams::StatementPeriodStart)
+          .returns(Increase::Models::AccountStatementListParams::StatementPeriodStart)
       end
       def statement_period_start=(_)
       end
@@ -47,7 +48,8 @@ module Increase
           limit: Integer,
           statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id: nil,
@@ -59,15 +61,16 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            cursor: String,
-            limit: Integer,
-            statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              cursor: String,
+              limit: Integer,
+              statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

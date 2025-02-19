@@ -32,7 +32,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::AccountTransfer::Approval)).returns(T.nilable(Increase::Models::AccountTransfer::Approval))
+        params(_: T.nilable(Increase::Models::AccountTransfer::Approval))
+          .returns(T.nilable(Increase::Models::AccountTransfer::Approval))
       end
       def approval=(_)
       end
@@ -42,7 +43,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::AccountTransfer::Cancellation)).returns(T.nilable(Increase::Models::AccountTransfer::Cancellation))
+        params(_: T.nilable(Increase::Models::AccountTransfer::Cancellation))
+          .returns(T.nilable(Increase::Models::AccountTransfer::Cancellation))
       end
       def cancellation=(_)
       end
@@ -60,7 +62,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy)).returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy))
+        params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy))
+          .returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy))
       end
       def created_by=(_)
       end
@@ -164,7 +167,8 @@ module Increase
           status: Symbol,
           transaction_id: T.nilable(String),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -188,27 +192,28 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            amount: Integer,
-            approval: T.nilable(Increase::Models::AccountTransfer::Approval),
-            cancellation: T.nilable(Increase::Models::AccountTransfer::Cancellation),
-            created_at: Time,
-            created_by: T.nilable(Increase::Models::AccountTransfer::CreatedBy),
-            currency: Symbol,
-            description: String,
-            destination_account_id: String,
-            destination_transaction_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            network: Symbol,
-            pending_transaction_id: T.nilable(String),
-            status: Symbol,
-            transaction_id: T.nilable(String),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              amount: Integer,
+              approval: T.nilable(Increase::Models::AccountTransfer::Approval),
+              cancellation: T.nilable(Increase::Models::AccountTransfer::Cancellation),
+              created_at: Time,
+              created_by: T.nilable(Increase::Models::AccountTransfer::CreatedBy),
+              currency: Symbol,
+              description: String,
+              destination_account_id: String,
+              destination_transaction_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              network: Symbol,
+              pending_transaction_id: T.nilable(String),
+              status: Symbol,
+              transaction_id: T.nilable(String),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -271,7 +276,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey)).returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey))
+          params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey))
+            .returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey))
         end
         def api_key=(_)
         end
@@ -289,7 +295,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication)).returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication))
+          params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication))
+            .returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication))
         end
         def oauth_application=(_)
         end
@@ -299,7 +306,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy::User)).returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::User))
+          params(_: T.nilable(Increase::Models::AccountTransfer::CreatedBy::User))
+            .returns(T.nilable(Increase::Models::AccountTransfer::CreatedBy::User))
         end
         def user=(_)
         end
@@ -310,20 +318,22 @@ module Increase
             category: Symbol,
             oauth_application: T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::AccountTransfer::CreatedBy::User)
-          ).void
+          )
+            .void
         end
         def initialize(api_key:, category:, oauth_application:, user:)
         end
 
         sig do
-          override.returns(
-            {
-              api_key: T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey),
-              category: Symbol,
-              oauth_application: T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication),
-              user: T.nilable(Increase::Models::AccountTransfer::CreatedBy::User)
-            }
-          )
+          override
+            .returns(
+              {
+                api_key: T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey),
+                category: Symbol,
+                oauth_application: T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication),
+                user: T.nilable(Increase::Models::AccountTransfer::CreatedBy::User)
+              }
+            )
         end
         def to_hash
         end

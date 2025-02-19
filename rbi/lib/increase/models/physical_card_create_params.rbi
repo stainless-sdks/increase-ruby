@@ -19,7 +19,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PhysicalCardCreateParams::Cardholder).returns(Increase::Models::PhysicalCardCreateParams::Cardholder)
+        params(_: Increase::Models::PhysicalCardCreateParams::Cardholder)
+          .returns(Increase::Models::PhysicalCardCreateParams::Cardholder)
       end
       def cardholder=(_)
       end
@@ -29,7 +30,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PhysicalCardCreateParams::Shipment).returns(Increase::Models::PhysicalCardCreateParams::Shipment)
+        params(_: Increase::Models::PhysicalCardCreateParams::Shipment)
+          .returns(Increase::Models::PhysicalCardCreateParams::Shipment)
       end
       def shipment=(_)
       end
@@ -49,21 +51,23 @@ module Increase
           shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
           physical_card_profile_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            card_id: String,
-            cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,
-            shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
-            physical_card_profile_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              card_id: String,
+              cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,
+              shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
+              physical_card_profile_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -100,7 +104,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::PhysicalCardCreateParams::Shipment::Address).returns(Increase::Models::PhysicalCardCreateParams::Shipment::Address)
+          params(_: Increase::Models::PhysicalCardCreateParams::Shipment::Address)
+            .returns(Increase::Models::PhysicalCardCreateParams::Shipment::Address)
         end
         def address=(_)
         end
@@ -113,19 +118,12 @@ module Increase
         def method_=(_)
         end
 
-        sig do
-          params(address: Increase::Models::PhysicalCardCreateParams::Shipment::Address, method_: Symbol).void
-        end
+        sig { params(address: Increase::Models::PhysicalCardCreateParams::Shipment::Address, method_: Symbol).void }
         def initialize(address:, method_:)
         end
 
         sig do
-          override.returns(
-            {
-              address: Increase::Models::PhysicalCardCreateParams::Shipment::Address,
-              method_: Symbol
-            }
-          )
+          override.returns({address: Increase::Models::PhysicalCardCreateParams::Shipment::Address, method_: Symbol})
         end
         def to_hash
         end
@@ -205,7 +203,8 @@ module Increase
               line2: String,
               line3: String,
               phone_number: String
-            ).void
+            )
+              .void
           end
           def initialize(
             city:,
@@ -220,18 +219,19 @@ module Increase
           end
 
           sig do
-            override.returns(
-              {
-                city: String,
-                line1: String,
-                name: String,
-                postal_code: String,
-                state: String,
-                line2: String,
-                line3: String,
-                phone_number: String
-              }
-            )
+            override
+              .returns(
+                {
+                  city: String,
+                  line1: String,
+                  name: String,
+                  postal_code: String,
+                  state: String,
+                  line2: String,
+                  line3: String,
+                  phone_number: String
+                }
+              )
           end
           def to_hash
           end

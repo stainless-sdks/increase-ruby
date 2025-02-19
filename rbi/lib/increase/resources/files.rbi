@@ -9,7 +9,8 @@ module Increase
           purpose: Symbol,
           description: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::File)
+        )
+          .returns(Increase::Models::File)
       end
       def create(file:, purpose:, description: nil, request_options: {})
       end
@@ -18,7 +19,8 @@ module Increase
         params(
           file_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::File)
+        )
+          .returns(Increase::Models::File)
       end
       def retrieve(file_id, request_options: {})
       end
@@ -31,7 +33,8 @@ module Increase
           limit: Integer,
           purpose: Increase::Models::FileListParams::Purpose,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::File])
+        )
+          .returns(Increase::Page[Increase::Models::File])
       end
       def list(
         created_at: nil,

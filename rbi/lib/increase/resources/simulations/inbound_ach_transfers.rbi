@@ -18,7 +18,8 @@ module Increase
             resolve_at: Time,
             standard_entry_class_code: Symbol,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::InboundACHTransfer)
+          )
+            .returns(Increase::Models::InboundACHTransfer)
         end
         def create(
           account_number_id:,

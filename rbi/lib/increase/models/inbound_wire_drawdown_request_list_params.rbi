@@ -27,7 +27,8 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(cursor: nil, limit: nil, request_options: {})
       end

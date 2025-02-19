@@ -158,7 +158,8 @@ module Increase
           validated_account_ownership_via_credential: T.nilable(T::Boolean),
           validated_account_ownership_with_account_statement: T.nilable(T::Boolean),
           validated_account_ownership_with_microdeposit: T.nilable(T::Boolean)
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -182,27 +183,28 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            authorization_terms: String,
-            authorized_at: Time,
-            authorizer_company: T.nilable(String),
-            authorizer_email: T.nilable(String),
-            authorizer_ip_address: T.nilable(String),
-            authorizer_name: T.nilable(String),
-            created_at: Time,
-            customer_has_been_offboarded: T.nilable(T::Boolean),
-            idempotency_key: T.nilable(String),
-            proof_of_authorization_request_id: String,
-            status: Symbol,
-            type: Symbol,
-            updated_at: Time,
-            validated_account_ownership_via_credential: T.nilable(T::Boolean),
-            validated_account_ownership_with_account_statement: T.nilable(T::Boolean),
-            validated_account_ownership_with_microdeposit: T.nilable(T::Boolean)
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              authorization_terms: String,
+              authorized_at: Time,
+              authorizer_company: T.nilable(String),
+              authorizer_email: T.nilable(String),
+              authorizer_ip_address: T.nilable(String),
+              authorizer_name: T.nilable(String),
+              created_at: Time,
+              customer_has_been_offboarded: T.nilable(T::Boolean),
+              idempotency_key: T.nilable(String),
+              proof_of_authorization_request_id: String,
+              status: Symbol,
+              type: Symbol,
+              updated_at: Time,
+              validated_account_ownership_via_credential: T.nilable(T::Boolean),
+              validated_account_ownership_with_account_statement: T.nilable(T::Boolean),
+              validated_account_ownership_with_microdeposit: T.nilable(T::Boolean)
+            }
+          )
       end
       def to_hash
       end

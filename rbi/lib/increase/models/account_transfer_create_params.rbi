@@ -54,7 +54,8 @@ module Increase
           destination_account_id: String,
           require_approval: T::Boolean,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id:,
@@ -67,16 +68,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            amount: Integer,
-            description: String,
-            destination_account_id: String,
-            require_approval: T::Boolean,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              amount: Integer,
+              description: String,
+              destination_account_id: String,
+              require_approval: T::Boolean,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

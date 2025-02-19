@@ -45,7 +45,8 @@ module Increase
           description: String,
           front_image_file_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         carrier_image_file_id:,
@@ -57,15 +58,16 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            carrier_image_file_id: String,
-            contact_phone: String,
-            description: String,
-            front_image_file_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              carrier_image_file_id: String,
+              contact_phone: String,
+              description: String,
+              front_image_file_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

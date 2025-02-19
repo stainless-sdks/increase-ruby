@@ -10,7 +10,8 @@ module Increase
           informational_entity_id: String,
           program_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Account)
+        )
+          .returns(Increase::Models::Account)
       end
       def create(name:, entity_id: nil, informational_entity_id: nil, program_id: nil, request_options: {})
       end
@@ -19,7 +20,8 @@ module Increase
         params(
           account_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Account)
+        )
+          .returns(Increase::Models::Account)
       end
       def retrieve(account_id, request_options: {})
       end
@@ -29,7 +31,8 @@ module Increase
           account_id: String,
           name: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Account)
+        )
+          .returns(Increase::Models::Account)
       end
       def update(account_id, name: nil, request_options: {})
       end
@@ -45,7 +48,8 @@ module Increase
           program_id: String,
           status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::Account])
+        )
+          .returns(Increase::Page[Increase::Models::Account])
       end
       def list(
         created_at: nil,
@@ -65,7 +69,8 @@ module Increase
           account_id: String,
           at_time: Time,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::BalanceLookup)
+        )
+          .returns(Increase::Models::BalanceLookup)
       end
       def balance(account_id, at_time: nil, request_options: {})
       end
@@ -74,7 +79,8 @@ module Increase
         params(
           account_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Account)
+        )
+          .returns(Increase::Models::Account)
       end
       def close(account_id, request_options: {})
       end

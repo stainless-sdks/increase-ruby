@@ -104,7 +104,8 @@ module Increase
           status: Symbol,
           type: Symbol,
           verification_status: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -122,21 +123,22 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_holder: Symbol,
-            account_number: String,
-            created_at: Time,
-            description: String,
-            funding: Symbol,
-            idempotency_key: T.nilable(String),
-            routing_number: String,
-            status: Symbol,
-            type: Symbol,
-            verification_status: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_holder: Symbol,
+              account_number: String,
+              created_at: Time,
+              description: String,
+              funding: Symbol,
+              idempotency_key: T.nilable(String),
+              routing_number: String,
+              status: Symbol,
+              type: Symbol,
+              verification_status: Symbol
+            }
+          )
       end
       def to_hash
       end

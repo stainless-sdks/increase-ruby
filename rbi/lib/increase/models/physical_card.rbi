@@ -23,9 +23,7 @@ module Increase
       def cardholder
       end
 
-      sig do
-        params(_: Increase::Models::PhysicalCard::Cardholder).returns(Increase::Models::PhysicalCard::Cardholder)
-      end
+      sig { params(_: Increase::Models::PhysicalCard::Cardholder).returns(Increase::Models::PhysicalCard::Cardholder) }
       def cardholder=(_)
       end
 
@@ -57,9 +55,7 @@ module Increase
       def shipment
       end
 
-      sig do
-        params(_: Increase::Models::PhysicalCard::Shipment).returns(Increase::Models::PhysicalCard::Shipment)
-      end
+      sig { params(_: Increase::Models::PhysicalCard::Shipment).returns(Increase::Models::PhysicalCard::Shipment) }
       def shipment=(_)
       end
 
@@ -90,7 +86,8 @@ module Increase
           shipment: Increase::Models::PhysicalCard::Shipment,
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -106,19 +103,20 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            card_id: String,
-            cardholder: Increase::Models::PhysicalCard::Cardholder,
-            created_at: Time,
-            idempotency_key: T.nilable(String),
-            physical_card_profile_id: T.nilable(String),
-            shipment: Increase::Models::PhysicalCard::Shipment,
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              card_id: String,
+              cardholder: Increase::Models::PhysicalCard::Cardholder,
+              created_at: Time,
+              idempotency_key: T.nilable(String),
+              physical_card_profile_id: T.nilable(String),
+              shipment: Increase::Models::PhysicalCard::Shipment,
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -155,7 +153,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::PhysicalCard::Shipment::Address).returns(Increase::Models::PhysicalCard::Shipment::Address)
+          params(_: Increase::Models::PhysicalCard::Shipment::Address)
+            .returns(Increase::Models::PhysicalCard::Shipment::Address)
         end
         def address=(_)
         end
@@ -181,7 +180,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)).returns(T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking))
+          params(_: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking))
+            .returns(T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking))
         end
         def tracking=(_)
         end
@@ -192,20 +192,22 @@ module Increase
             method_: Symbol,
             status: Symbol,
             tracking: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)
-          ).void
+          )
+            .void
         end
         def initialize(address:, method_:, status:, tracking:)
         end
 
         sig do
-          override.returns(
-            {
-              address: Increase::Models::PhysicalCard::Shipment::Address,
-              method_: Symbol,
-              status: Symbol,
-              tracking: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)
-            }
-          )
+          override
+            .returns(
+              {
+                address: Increase::Models::PhysicalCard::Shipment::Address,
+                method_: Symbol,
+                status: Symbol,
+                tracking: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)
+              }
+            )
         end
         def to_hash
         end
@@ -276,23 +278,25 @@ module Increase
               name: String,
               postal_code: String,
               state: String
-            ).void
+            )
+              .void
           end
           def initialize(city:, line1:, line2:, line3:, name:, postal_code:, state:)
           end
 
           sig do
-            override.returns(
-              {
-                city: String,
-                line1: String,
-                line2: T.nilable(String),
-                line3: T.nilable(String),
-                name: String,
-                postal_code: String,
-                state: String
-              }
-            )
+            override
+              .returns(
+                {
+                  city: String,
+                  line1: String,
+                  line2: T.nilable(String),
+                  line3: T.nilable(String),
+                  name: String,
+                  postal_code: String,
+                  state: String
+                }
+              )
           end
           def to_hash
           end
@@ -383,20 +387,22 @@ module Increase
               return_number: T.nilable(String),
               return_reason: T.nilable(String),
               shipped_at: Time
-            ).void
+            )
+              .void
           end
           def initialize(number:, return_number:, return_reason:, shipped_at:)
           end
 
           sig do
-            override.returns(
-              {
-                number: String,
-                return_number: T.nilable(String),
-                return_reason: T.nilable(String),
-                shipped_at: Time
-              }
-            )
+            override
+              .returns(
+                {
+                  number: String,
+                  return_number: T.nilable(String),
+                  return_reason: T.nilable(String),
+                  shipped_at: Time
+                }
+              )
           end
           def to_hash
           end

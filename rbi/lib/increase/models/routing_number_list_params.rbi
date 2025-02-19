@@ -36,20 +36,22 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(routing_number:, cursor: nil, limit: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            routing_number: String,
-            cursor: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              routing_number: String,
+              cursor: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

@@ -80,7 +80,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Refusal)).returns(T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Refusal))
+        params(_: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Refusal))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Refusal))
       end
       def refusal=(_)
       end
@@ -90,7 +91,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Rejection)).returns(T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Rejection))
+        params(_: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Rejection))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Rejection))
       end
       def rejection=(_)
       end
@@ -132,7 +134,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Submission)).returns(T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Submission))
+        params(_: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Submission))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Submission))
       end
       def submission=(_)
       end
@@ -164,7 +167,8 @@ module Increase
           status: Symbol,
           submission: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Submission),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -188,27 +192,28 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            amount: Integer,
-            created_at: Time,
-            currency: Symbol,
-            debtor_name: String,
-            destination_account_number_id: String,
-            expires_at: Date,
-            fulfillment_transaction_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            refusal: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Refusal),
-            rejection: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Rejection),
-            remittance_information: String,
-            source_account_number: String,
-            source_routing_number: String,
-            status: Symbol,
-            submission: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Submission),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              amount: Integer,
+              created_at: Time,
+              currency: Symbol,
+              debtor_name: String,
+              destination_account_number_id: String,
+              expires_at: Date,
+              fulfillment_transaction_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              refusal: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Refusal),
+              rejection: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Rejection),
+              remittance_information: String,
+              source_account_number: String,
+              source_routing_number: String,
+              status: Symbol,
+              submission: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Submission),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

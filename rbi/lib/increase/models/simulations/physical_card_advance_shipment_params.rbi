@@ -19,7 +19,8 @@ module Increase
           params(
             shipment_status: Symbol,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(shipment_status:, request_options: {})
         end

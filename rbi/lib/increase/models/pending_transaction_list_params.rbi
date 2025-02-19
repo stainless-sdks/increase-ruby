@@ -19,7 +19,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PendingTransactionListParams::Category).returns(Increase::Models::PendingTransactionListParams::Category)
+        params(_: Increase::Models::PendingTransactionListParams::Category)
+          .returns(Increase::Models::PendingTransactionListParams::Category)
       end
       def category=(_)
       end
@@ -29,7 +30,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PendingTransactionListParams::CreatedAt).returns(Increase::Models::PendingTransactionListParams::CreatedAt)
+        params(_: Increase::Models::PendingTransactionListParams::CreatedAt)
+          .returns(Increase::Models::PendingTransactionListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -63,7 +65,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PendingTransactionListParams::Status).returns(Increase::Models::PendingTransactionListParams::Status)
+        params(_: Increase::Models::PendingTransactionListParams::Status)
+          .returns(Increase::Models::PendingTransactionListParams::Status)
       end
       def status=(_)
       end
@@ -78,7 +81,8 @@ module Increase
           route_id: String,
           status: Increase::Models::PendingTransactionListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id: nil,
@@ -93,18 +97,19 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            category: Increase::Models::PendingTransactionListParams::Category,
-            created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
-            cursor: String,
-            limit: Integer,
-            route_id: String,
-            status: Increase::Models::PendingTransactionListParams::Status,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              category: Increase::Models::PendingTransactionListParams::Category,
+              created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
+              cursor: String,
+              limit: Integer,
+              route_id: String,
+              status: Increase::Models::PendingTransactionListParams::Status,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
