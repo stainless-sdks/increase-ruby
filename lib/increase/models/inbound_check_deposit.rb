@@ -258,6 +258,8 @@ module Increase
         #   # ...
         # in :adjusted_amount
         #   # ...
+        # in :non_conforming_item
+        #   # ...
         # end
         # ```
         class Reason < Increase::Enum
@@ -269,6 +271,9 @@ module Increase
 
           # The check was deposited with a different amount than what was written on the check.
           ADJUSTED_AMOUNT = :adjusted_amount
+
+          # The recipient was not able to process the check. This usually happens for e.g., low quality images.
+          NON_CONFORMING_ITEM = :non_conforming_item
 
           finalize!
 
