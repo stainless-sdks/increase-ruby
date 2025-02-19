@@ -113,7 +113,8 @@ module Increase
           is_default: T::Boolean,
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -132,22 +133,23 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            back_image_file_id: T.nilable(String),
-            carrier_image_file_id: T.nilable(String),
-            contact_phone: T.nilable(String),
-            created_at: Time,
-            creator: Symbol,
-            description: String,
-            front_image_file_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            is_default: T::Boolean,
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              back_image_file_id: T.nilable(String),
+              carrier_image_file_id: T.nilable(String),
+              contact_phone: T.nilable(String),
+              created_at: Time,
+              creator: Symbol,
+              description: String,
+              front_image_file_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              is_default: T::Boolean,
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

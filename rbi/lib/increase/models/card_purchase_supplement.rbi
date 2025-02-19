@@ -24,7 +24,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice)).returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice))
+        params(_: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice))
+          .returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice))
       end
       def invoice=(_)
       end
@@ -34,7 +35,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem])).returns(T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]))
+        params(_: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]))
+          .returns(T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]))
       end
       def line_items=(_)
       end
@@ -63,22 +65,24 @@ module Increase
           line_items: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]),
           transaction_id: String,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, card_payment_id:, invoice:, line_items:, transaction_id:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            card_payment_id: T.nilable(String),
-            invoice: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice),
-            line_items: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]),
-            transaction_id: String,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              card_payment_id: T.nilable(String),
+              invoice: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice),
+              line_items: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]),
+              transaction_id: String,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -230,7 +234,8 @@ module Increase
             shipping_tax_rate: T.nilable(String),
             tax_treatments: T.nilable(Symbol),
             unique_value_added_tax_invoice_reference: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(
           discount_amount:,
@@ -253,26 +258,27 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              discount_amount: T.nilable(Integer),
-              discount_currency: T.nilable(String),
-              discount_treatment_code: T.nilable(Symbol),
-              duty_tax_amount: T.nilable(Integer),
-              duty_tax_currency: T.nilable(String),
-              order_date: T.nilable(Date),
-              shipping_amount: T.nilable(Integer),
-              shipping_currency: T.nilable(String),
-              shipping_destination_country_code: T.nilable(String),
-              shipping_destination_postal_code: T.nilable(String),
-              shipping_source_postal_code: T.nilable(String),
-              shipping_tax_amount: T.nilable(Integer),
-              shipping_tax_currency: T.nilable(String),
-              shipping_tax_rate: T.nilable(String),
-              tax_treatments: T.nilable(Symbol),
-              unique_value_added_tax_invoice_reference: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                discount_amount: T.nilable(Integer),
+                discount_currency: T.nilable(String),
+                discount_treatment_code: T.nilable(Symbol),
+                duty_tax_amount: T.nilable(Integer),
+                duty_tax_currency: T.nilable(String),
+                order_date: T.nilable(Date),
+                shipping_amount: T.nilable(Integer),
+                shipping_currency: T.nilable(String),
+                shipping_destination_country_code: T.nilable(String),
+                shipping_destination_postal_code: T.nilable(String),
+                shipping_source_postal_code: T.nilable(String),
+                shipping_tax_amount: T.nilable(Integer),
+                shipping_tax_currency: T.nilable(String),
+                shipping_tax_rate: T.nilable(String),
+                tax_treatments: T.nilable(Symbol),
+                unique_value_added_tax_invoice_reference: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -479,7 +485,8 @@ module Increase
             unit_cost: T.nilable(String),
             unit_cost_currency: T.nilable(String),
             unit_of_measure_code: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -503,27 +510,28 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              detail_indicator: T.nilable(Symbol),
-              discount_amount: T.nilable(Integer),
-              discount_currency: T.nilable(String),
-              discount_treatment_code: T.nilable(Symbol),
-              item_commodity_code: T.nilable(String),
-              item_descriptor: T.nilable(String),
-              item_quantity: T.nilable(String),
-              product_code: T.nilable(String),
-              sales_tax_amount: T.nilable(Integer),
-              sales_tax_currency: T.nilable(String),
-              sales_tax_rate: T.nilable(String),
-              total_amount: T.nilable(Integer),
-              total_amount_currency: T.nilable(String),
-              unit_cost: T.nilable(String),
-              unit_cost_currency: T.nilable(String),
-              unit_of_measure_code: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                detail_indicator: T.nilable(Symbol),
+                discount_amount: T.nilable(Integer),
+                discount_currency: T.nilable(String),
+                discount_treatment_code: T.nilable(Symbol),
+                item_commodity_code: T.nilable(String),
+                item_descriptor: T.nilable(String),
+                item_quantity: T.nilable(String),
+                product_code: T.nilable(String),
+                sales_tax_amount: T.nilable(Integer),
+                sales_tax_currency: T.nilable(String),
+                sales_tax_rate: T.nilable(String),
+                total_amount: T.nilable(Integer),
+                total_amount_currency: T.nilable(String),
+                unit_cost: T.nilable(String),
+                unit_cost_currency: T.nilable(String),
+                unit_of_measure_code: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end

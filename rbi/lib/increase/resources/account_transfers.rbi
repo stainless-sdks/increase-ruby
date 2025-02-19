@@ -11,7 +11,8 @@ module Increase
           destination_account_id: String,
           require_approval: T::Boolean,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::AccountTransfer)
+        )
+          .returns(Increase::Models::AccountTransfer)
       end
       def create(
         account_id:,
@@ -27,7 +28,8 @@ module Increase
         params(
           account_transfer_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::AccountTransfer)
+        )
+          .returns(Increase::Models::AccountTransfer)
       end
       def retrieve(account_transfer_id, request_options: {})
       end
@@ -40,7 +42,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::AccountTransfer])
+        )
+          .returns(Increase::Page[Increase::Models::AccountTransfer])
       end
       def list(
         account_id: nil,
@@ -56,7 +59,8 @@ module Increase
         params(
           account_transfer_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::AccountTransfer)
+        )
+          .returns(Increase::Models::AccountTransfer)
       end
       def approve(account_transfer_id, request_options: {})
       end
@@ -65,7 +69,8 @@ module Increase
         params(
           account_transfer_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::AccountTransfer)
+        )
+          .returns(Increase::Models::AccountTransfer)
       end
       def cancel(account_transfer_id, request_options: {})
       end

@@ -35,7 +35,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::OAuthConnectionListParams::Status).returns(Increase::Models::OAuthConnectionListParams::Status)
+        params(_: Increase::Models::OAuthConnectionListParams::Status)
+          .returns(Increase::Models::OAuthConnectionListParams::Status)
       end
       def status=(_)
       end
@@ -47,21 +48,23 @@ module Increase
           oauth_application_id: String,
           status: Increase::Models::OAuthConnectionListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            cursor: String,
-            limit: Integer,
-            oauth_application_id: String,
-            status: Increase::Models::OAuthConnectionListParams::Status,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              cursor: String,
+              limit: Integer,
+              oauth_application_id: String,
+              status: Increase::Models::OAuthConnectionListParams::Status,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

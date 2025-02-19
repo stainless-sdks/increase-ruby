@@ -37,20 +37,22 @@ module Increase
             card_payment_id: String,
             event_subscription_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(amount:, card_payment_id:, event_subscription_id: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              card_payment_id: String,
-              event_subscription_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                card_payment_id: String,
+                event_subscription_id: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end

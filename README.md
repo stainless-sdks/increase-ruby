@@ -1,6 +1,6 @@
 # Increase Ruby API library
 
-The Increase Ruby library provides convenient access to the Increase REST API from any Ruby 3.0+
+The Increase Ruby library provides convenient access to the Increase REST API from any Ruby 3.0.0+
 application.
 
 ## Documentation

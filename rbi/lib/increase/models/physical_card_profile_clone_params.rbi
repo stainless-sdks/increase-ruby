@@ -43,7 +43,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::PhysicalCardProfileCloneParams::FrontText).returns(Increase::Models::PhysicalCardProfileCloneParams::FrontText)
+        params(_: Increase::Models::PhysicalCardProfileCloneParams::FrontText)
+          .returns(Increase::Models::PhysicalCardProfileCloneParams::FrontText)
       end
       def front_text=(_)
       end
@@ -56,7 +57,8 @@ module Increase
           front_image_file_id: String,
           front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         carrier_image_file_id: nil,
@@ -69,16 +71,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            carrier_image_file_id: String,
-            contact_phone: String,
-            description: String,
-            front_image_file_id: String,
-            front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              carrier_image_file_id: String,
+              contact_phone: String,
+              description: String,
+              front_image_file_id: String,
+              front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

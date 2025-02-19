@@ -230,7 +230,8 @@ module Increase
           sender_reference: T.nilable(String),
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -262,35 +263,36 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            account_number_id: String,
-            amount: Integer,
-            beneficiary_address_line1: T.nilable(String),
-            beneficiary_address_line2: T.nilable(String),
-            beneficiary_address_line3: T.nilable(String),
-            beneficiary_name: T.nilable(String),
-            beneficiary_reference: T.nilable(String),
-            created_at: Time,
-            description: String,
-            input_message_accountability_data: T.nilable(String),
-            originator_address_line1: T.nilable(String),
-            originator_address_line2: T.nilable(String),
-            originator_address_line3: T.nilable(String),
-            originator_name: T.nilable(String),
-            originator_routing_number: T.nilable(String),
-            originator_to_beneficiary_information: T.nilable(String),
-            originator_to_beneficiary_information_line1: T.nilable(String),
-            originator_to_beneficiary_information_line2: T.nilable(String),
-            originator_to_beneficiary_information_line3: T.nilable(String),
-            originator_to_beneficiary_information_line4: T.nilable(String),
-            sender_reference: T.nilable(String),
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              account_number_id: String,
+              amount: Integer,
+              beneficiary_address_line1: T.nilable(String),
+              beneficiary_address_line2: T.nilable(String),
+              beneficiary_address_line3: T.nilable(String),
+              beneficiary_name: T.nilable(String),
+              beneficiary_reference: T.nilable(String),
+              created_at: Time,
+              description: String,
+              input_message_accountability_data: T.nilable(String),
+              originator_address_line1: T.nilable(String),
+              originator_address_line2: T.nilable(String),
+              originator_address_line3: T.nilable(String),
+              originator_name: T.nilable(String),
+              originator_routing_number: T.nilable(String),
+              originator_to_beneficiary_information: T.nilable(String),
+              originator_to_beneficiary_information_line1: T.nilable(String),
+              originator_to_beneficiary_information_line2: T.nilable(String),
+              originator_to_beneficiary_information_line3: T.nilable(String),
+              originator_to_beneficiary_information_line4: T.nilable(String),
+              sender_reference: T.nilable(String),
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

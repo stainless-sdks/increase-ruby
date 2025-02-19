@@ -77,7 +77,8 @@ module Increase
           rejection_reason: T.nilable(Symbol),
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -92,18 +93,19 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            created_at: Time,
-            file_id: String,
-            lockbox_id: T.nilable(String),
-            recipient_name: T.nilable(String),
-            rejection_reason: T.nilable(Symbol),
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              created_at: Time,
+              file_id: String,
+              lockbox_id: T.nilable(String),
+              recipient_name: T.nilable(String),
+              rejection_reason: T.nilable(Symbol),
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

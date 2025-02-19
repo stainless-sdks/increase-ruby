@@ -7,14 +7,13 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
-        sig do
-          returns(T.nilable(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection))
-        end
+        sig { returns(T.nilable(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)) }
         def rejection
         end
 
         sig do
-          params(_: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection).returns(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)
+          params(_: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)
+            .returns(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)
         end
         def rejection=(_)
         end
@@ -23,17 +22,20 @@ module Increase
           params(
             rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(rejection: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection, request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end

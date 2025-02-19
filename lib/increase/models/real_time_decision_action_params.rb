@@ -58,10 +58,7 @@ module Increase
       #     attempt, this object contains your response to the attempt.
       #
       #   @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, nil]
-      optional :digital_wallet_token,
-               -> {
-                 Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken
-               }
+      optional :digital_wallet_token, -> { Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken }
 
       # @!parse
       #   # @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken]
@@ -160,9 +157,7 @@ module Increase
         #
         #   @return [Symbol, Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result]
         required :result,
-                 enum: -> {
-                   Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result
-                 }
+                 enum: -> { Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result }
 
         # @!parse
         #   # If the Real-Time Decision relates to 3DS card authentication challenge delivery,
@@ -333,9 +328,7 @@ module Increase
         #
         #   @return [Symbol, Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result]
         required :result,
-                 enum: -> {
-                   Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result
-                 }
+                 enum: -> { Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result }
 
         # @!attribute [r] success
         #
@@ -438,10 +431,7 @@ module Increase
         #     about the digital wallet token that will be generated.
         #
         #   @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval, nil]
-        optional :approval,
-                 -> {
-                   Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval
-                 }
+        optional :approval, -> { Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval }
 
         # @!parse
         #   # @return [Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval]

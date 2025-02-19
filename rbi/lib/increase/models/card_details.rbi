@@ -59,7 +59,8 @@ module Increase
           primary_account_number: String,
           type: Symbol,
           verification_code: String
-        ).void
+        )
+          .void
       end
       def initialize(
         card_id:,
@@ -72,16 +73,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            card_id: String,
-            expiration_month: Integer,
-            expiration_year: Integer,
-            primary_account_number: String,
-            type: Symbol,
-            verification_code: String
-          }
-        )
+        override
+          .returns(
+            {
+              card_id: String,
+              expiration_month: Integer,
+              expiration_year: Integer,
+              primary_account_number: String,
+              type: Symbol,
+              verification_code: String
+            }
+          )
       end
       def to_hash
       end

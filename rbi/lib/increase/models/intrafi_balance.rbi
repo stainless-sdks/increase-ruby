@@ -16,7 +16,8 @@ module Increase
       end
 
       sig do
-        params(_: T::Array[Increase::Models::IntrafiBalance::Balance]).returns(T::Array[Increase::Models::IntrafiBalance::Balance])
+        params(_: T::Array[Increase::Models::IntrafiBalance::Balance])
+          .returns(T::Array[Increase::Models::IntrafiBalance::Balance])
       end
       def balances=(_)
       end
@@ -61,22 +62,24 @@ module Increase
           effective_date: Date,
           total_balance: Integer,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, balances:, currency:, effective_date:, total_balance:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            balances: T::Array[Increase::Models::IntrafiBalance::Balance],
-            currency: Symbol,
-            effective_date: Date,
-            total_balance: Integer,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              balances: T::Array[Increase::Models::IntrafiBalance::Balance],
+              currency: Symbol,
+              effective_date: Date,
+              total_balance: Integer,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -111,7 +114,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation)).returns(T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation))
+          params(_: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation))
+            .returns(T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation))
         end
         def bank_location=(_)
         end
@@ -131,21 +135,23 @@ module Increase
             bank: String,
             bank_location: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation),
             fdic_certificate_number: String
-          ).void
+          )
+            .void
         end
         def initialize(id:, balance:, bank:, bank_location:, fdic_certificate_number:)
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              balance: Integer,
-              bank: String,
-              bank_location: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation),
-              fdic_certificate_number: String
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                balance: Integer,
+                bank: String,
+                bank_location: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation),
+                fdic_certificate_number: String
+              }
+            )
         end
         def to_hash
         end

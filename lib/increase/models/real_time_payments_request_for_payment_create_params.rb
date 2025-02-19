@@ -89,10 +89,7 @@ module Increase
         #   Address of the debtor.
         #
         #   @return [Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address]
-        required :address,
-                 -> {
-                   Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address
-                 }
+        required :address, -> { Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address }
 
         # @!attribute name
         #   The name of the debtor.

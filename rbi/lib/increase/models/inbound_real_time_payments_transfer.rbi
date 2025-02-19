@@ -40,7 +40,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation)).returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation))
+        params(_: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation))
+          .returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation))
       end
       def confirmation=(_)
       end
@@ -98,7 +99,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline)).returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline))
+        params(_: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline))
+          .returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline))
       end
       def decline=(_)
       end
@@ -153,7 +155,8 @@ module Increase
           status: Symbol,
           transaction_identification: String,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -176,26 +179,27 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            account_number_id: String,
-            amount: Integer,
-            confirmation: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation),
-            created_at: Time,
-            creditor_name: String,
-            currency: Symbol,
-            debtor_account_number: String,
-            debtor_name: String,
-            debtor_routing_number: String,
-            decline: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline),
-            remittance_information: T.nilable(String),
-            status: Symbol,
-            transaction_identification: String,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              account_number_id: String,
+              amount: Integer,
+              confirmation: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation),
+              created_at: Time,
+              creditor_name: String,
+              currency: Symbol,
+              debtor_account_number: String,
+              debtor_name: String,
+              debtor_routing_number: String,
+              decline: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline),
+              remittance_information: T.nilable(String),
+              status: Symbol,
+              transaction_identification: String,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

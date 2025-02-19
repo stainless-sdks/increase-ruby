@@ -129,7 +129,7 @@ module Increase
         Increase::InvalidOperationError.new(**kwargs)
       in [429, Increase::RateLimitedError::TYPE]
         Increase::RateLimitedError.new(**kwargs)
-      in [500, Increase::InternalServerError::TYPE]
+      in [(500..), Increase::InternalServerError::TYPE]
         Increase::InternalServerError.new(**kwargs)
       in [400, _]
         Increase::BadRequestError.new(**kwargs)
@@ -204,74 +204,74 @@ module Increase
     HTTP_STATUS = 429
   end
 
-  class InvalidParametersError < Increase::APIStatusError
-    HTTP_STATUS = 400
+  class InvalidParametersError < Increase::BadRequestError
+    HTTP_STATUS = Increase::BadRequestError::HTTP_STATUS
 
     TYPE = "invalid_parameters_error"
   end
 
-  class MalformedRequestError < Increase::APIStatusError
-    HTTP_STATUS = 400
+  class MalformedRequestError < Increase::BadRequestError
+    HTTP_STATUS = Increase::BadRequestError::HTTP_STATUS
 
     TYPE = "malformed_request_error"
   end
 
-  class InvalidAPIKeyError < Increase::APIStatusError
-    HTTP_STATUS = 401
+  class InvalidAPIKeyError < Increase::AuthenticationError
+    HTTP_STATUS = Increase::AuthenticationError::HTTP_STATUS
 
     TYPE = "invalid_api_key_error"
   end
 
-  class EnvironmentMismatchError < Increase::APIStatusError
-    HTTP_STATUS = 403
+  class EnvironmentMismatchError < Increase::PermissionDeniedError
+    HTTP_STATUS = Increase::PermissionDeniedError::HTTP_STATUS
 
     TYPE = "environment_mismatch_error"
   end
 
-  class InsufficientPermissionsError < Increase::APIStatusError
-    HTTP_STATUS = 403
+  class InsufficientPermissionsError < Increase::PermissionDeniedError
+    HTTP_STATUS = Increase::PermissionDeniedError::HTTP_STATUS
 
     TYPE = "insufficient_permissions_error"
   end
 
-  class PrivateFeatureError < Increase::APIStatusError
-    HTTP_STATUS = 403
+  class PrivateFeatureError < Increase::PermissionDeniedError
+    HTTP_STATUS = Increase::PermissionDeniedError::HTTP_STATUS
 
     TYPE = "private_feature_error"
   end
 
-  class APIMethodNotFoundError < Increase::APIStatusError
-    HTTP_STATUS = 404
+  class APIMethodNotFoundError < Increase::NotFoundError
+    HTTP_STATUS = Increase::NotFoundError::HTTP_STATUS
 
     TYPE = "api_method_not_found_error"
   end
 
-  class ObjectNotFoundError < Increase::APIStatusError
-    HTTP_STATUS = 404
+  class ObjectNotFoundError < Increase::NotFoundError
+    HTTP_STATUS = Increase::NotFoundError::HTTP_STATUS
 
     TYPE = "object_not_found_error"
   end
 
-  class IdempotencyKeyAlreadyUsedError < Increase::APIStatusError
-    HTTP_STATUS = 409
+  class IdempotencyKeyAlreadyUsedError < Increase::ConflictError
+    HTTP_STATUS = Increase::ConflictError::HTTP_STATUS
 
     TYPE = "idempotency_key_already_used_error"
   end
 
-  class InvalidOperationError < Increase::APIStatusError
-    HTTP_STATUS = 409
+  class InvalidOperationError < Increase::ConflictError
+    HTTP_STATUS = Increase::ConflictError::HTTP_STATUS
 
     TYPE = "invalid_operation_error"
   end
 
-  class RateLimitedError < Increase::APIStatusError
-    HTTP_STATUS = 429
+  class RateLimitedError < Increase::RateLimitError
+    HTTP_STATUS = Increase::RateLimitError::HTTP_STATUS
 
     TYPE = "rate_limited_error"
   end
 
   class InternalServerError < Increase::APIStatusError
-    HTTP_STATUS = 500
+    HTTP_STATUS = (500..)
 
     TYPE = "internal_server_error"
   end

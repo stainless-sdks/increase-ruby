@@ -59,22 +59,24 @@ module Increase
           entity_id: T.nilable(String),
           file_id: String,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, category:, created_at:, entity_id:, file_id:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            category: Symbol,
-            created_at: Time,
-            entity_id: T.nilable(String),
-            file_id: String,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              category: Symbol,
+              created_at: Time,
+              entity_id: T.nilable(String),
+              file_id: String,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

@@ -40,7 +40,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::Approval)).returns(T.nilable(Increase::Models::CheckTransfer::Approval))
+        params(_: T.nilable(Increase::Models::CheckTransfer::Approval))
+          .returns(T.nilable(Increase::Models::CheckTransfer::Approval))
       end
       def approval=(_)
       end
@@ -58,7 +59,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::Cancellation)).returns(T.nilable(Increase::Models::CheckTransfer::Cancellation))
+        params(_: T.nilable(Increase::Models::CheckTransfer::Cancellation))
+          .returns(T.nilable(Increase::Models::CheckTransfer::Cancellation))
       end
       def cancellation=(_)
       end
@@ -84,7 +86,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy)).returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy))
+        params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy))
+          .returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy))
       end
       def created_by=(_)
       end
@@ -118,7 +121,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::Mailing)).returns(T.nilable(Increase::Models::CheckTransfer::Mailing))
+        params(_: T.nilable(Increase::Models::CheckTransfer::Mailing))
+          .returns(T.nilable(Increase::Models::CheckTransfer::Mailing))
       end
       def mailing=(_)
       end
@@ -136,7 +140,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck)).returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck))
+        params(_: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck))
+          .returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck))
       end
       def physical_check=(_)
       end
@@ -170,7 +175,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest)).returns(T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest))
+        params(_: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest))
+          .returns(T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest))
       end
       def stop_payment_request=(_)
       end
@@ -180,7 +186,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::Submission)).returns(T.nilable(Increase::Models::CheckTransfer::Submission))
+        params(_: T.nilable(Increase::Models::CheckTransfer::Submission))
+          .returns(T.nilable(Increase::Models::CheckTransfer::Submission))
       end
       def submission=(_)
       end
@@ -190,7 +197,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckTransfer::ThirdParty)).returns(T.nilable(Increase::Models::CheckTransfer::ThirdParty))
+        params(_: T.nilable(Increase::Models::CheckTransfer::ThirdParty))
+          .returns(T.nilable(Increase::Models::CheckTransfer::ThirdParty))
       end
       def third_party=(_)
       end
@@ -228,7 +236,8 @@ module Increase
           submission: T.nilable(Increase::Models::CheckTransfer::Submission),
           third_party: T.nilable(Increase::Models::CheckTransfer::ThirdParty),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -258,33 +267,34 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            account_number: String,
-            amount: Integer,
-            approval: T.nilable(Increase::Models::CheckTransfer::Approval),
-            approved_inbound_check_deposit_id: T.nilable(String),
-            cancellation: T.nilable(Increase::Models::CheckTransfer::Cancellation),
-            check_number: String,
-            created_at: Time,
-            created_by: T.nilable(Increase::Models::CheckTransfer::CreatedBy),
-            currency: Symbol,
-            fulfillment_method: Symbol,
-            idempotency_key: T.nilable(String),
-            mailing: T.nilable(Increase::Models::CheckTransfer::Mailing),
-            pending_transaction_id: T.nilable(String),
-            physical_check: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck),
-            routing_number: String,
-            source_account_number_id: T.nilable(String),
-            status: Symbol,
-            stop_payment_request: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest),
-            submission: T.nilable(Increase::Models::CheckTransfer::Submission),
-            third_party: T.nilable(Increase::Models::CheckTransfer::ThirdParty),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              account_number: String,
+              amount: Integer,
+              approval: T.nilable(Increase::Models::CheckTransfer::Approval),
+              approved_inbound_check_deposit_id: T.nilable(String),
+              cancellation: T.nilable(Increase::Models::CheckTransfer::Cancellation),
+              check_number: String,
+              created_at: Time,
+              created_by: T.nilable(Increase::Models::CheckTransfer::CreatedBy),
+              currency: Symbol,
+              fulfillment_method: Symbol,
+              idempotency_key: T.nilable(String),
+              mailing: T.nilable(Increase::Models::CheckTransfer::Mailing),
+              pending_transaction_id: T.nilable(String),
+              physical_check: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck),
+              routing_number: String,
+              source_account_number_id: T.nilable(String),
+              status: Symbol,
+              stop_payment_request: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest),
+              submission: T.nilable(Increase::Models::CheckTransfer::Submission),
+              third_party: T.nilable(Increase::Models::CheckTransfer::ThirdParty),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -347,7 +357,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey)).returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey))
+          params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey))
+            .returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey))
         end
         def api_key=(_)
         end
@@ -365,7 +376,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication)).returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication))
+          params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication))
+            .returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication))
         end
         def oauth_application=(_)
         end
@@ -375,7 +387,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)).returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::User))
+          params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User))
+            .returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::User))
         end
         def user=(_)
         end
@@ -386,20 +399,22 @@ module Increase
             category: Symbol,
             oauth_application: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)
-          ).void
+          )
+            .void
         end
         def initialize(api_key:, category:, oauth_application:, user:)
         end
 
         sig do
-          override.returns(
-            {
-              api_key: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey),
-              category: Symbol,
-              oauth_application: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication),
-              user: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)
-            }
-          )
+          override
+            .returns(
+              {
+                api_key: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey),
+                category: Symbol,
+                oauth_application: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication),
+                user: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)
+              }
+            )
         end
         def to_hash
         end
@@ -558,7 +573,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress).returns(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress)
+          params(_: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress)
+            .returns(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress)
         end
         def mailing_address=(_)
         end
@@ -592,7 +608,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress)).returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress))
+          params(_: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress))
+            .returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress))
         end
         def return_address=(_)
         end
@@ -618,7 +635,8 @@ module Increase
         end
 
         sig do
-          params(_: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]).returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate])
+          params(_: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate])
+            .returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate])
         end
         def tracking_updates=(_)
         end
@@ -633,7 +651,8 @@ module Increase
             shipping_method: T.nilable(Symbol),
             signature_text: T.nilable(String),
             tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
-          ).void
+          )
+            .void
         end
         def initialize(
           mailing_address:,
@@ -648,18 +667,19 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              mailing_address: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress,
-              memo: T.nilable(String),
-              note: T.nilable(String),
-              recipient_name: String,
-              return_address: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress),
-              shipping_method: T.nilable(Symbol),
-              signature_text: T.nilable(String),
-              tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
-            }
-          )
+          override
+            .returns(
+              {
+                mailing_address: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress,
+                memo: T.nilable(String),
+                note: T.nilable(String),
+                recipient_name: String,
+                return_address: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress),
+                shipping_method: T.nilable(Symbol),
+                signature_text: T.nilable(String),
+                tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
+              }
+            )
         end
         def to_hash
         end
@@ -721,22 +741,24 @@ module Increase
               name: T.nilable(String),
               postal_code: T.nilable(String),
               state: T.nilable(String)
-            ).void
+            )
+              .void
           end
           def initialize(city:, line1:, line2:, name:, postal_code:, state:)
           end
 
           sig do
-            override.returns(
-              {
-                city: T.nilable(String),
-                line1: T.nilable(String),
-                line2: T.nilable(String),
-                name: T.nilable(String),
-                postal_code: T.nilable(String),
-                state: T.nilable(String)
-              }
-            )
+            override
+              .returns(
+                {
+                  city: T.nilable(String),
+                  line1: T.nilable(String),
+                  line2: T.nilable(String),
+                  name: T.nilable(String),
+                  postal_code: T.nilable(String),
+                  state: T.nilable(String)
+                }
+              )
           end
           def to_hash
           end
@@ -799,22 +821,24 @@ module Increase
               name: T.nilable(String),
               postal_code: T.nilable(String),
               state: T.nilable(String)
-            ).void
+            )
+              .void
           end
           def initialize(city:, line1:, line2:, name:, postal_code:, state:)
           end
 
           sig do
-            override.returns(
-              {
-                city: T.nilable(String),
-                line1: T.nilable(String),
-                line2: T.nilable(String),
-                name: T.nilable(String),
-                postal_code: T.nilable(String),
-                state: T.nilable(String)
-              }
-            )
+            override
+              .returns(
+                {
+                  city: T.nilable(String),
+                  line1: T.nilable(String),
+                  line2: T.nilable(String),
+                  name: T.nilable(String),
+                  postal_code: T.nilable(String),
+                  state: T.nilable(String)
+                }
+              )
           end
           def to_hash
           end

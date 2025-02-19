@@ -75,7 +75,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::DigitalCardProfileCreateParams::TextColor).returns(Increase::Models::DigitalCardProfileCreateParams::TextColor)
+        params(_: Increase::Models::DigitalCardProfileCreateParams::TextColor)
+          .returns(Increase::Models::DigitalCardProfileCreateParams::TextColor)
       end
       def text_color=(_)
       end
@@ -92,7 +93,8 @@ module Increase
           contact_website: String,
           text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         app_icon_file_id:,
@@ -109,20 +111,21 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            app_icon_file_id: String,
-            background_image_file_id: String,
-            card_description: String,
-            description: String,
-            issuer_name: String,
-            contact_email: String,
-            contact_phone: String,
-            contact_website: String,
-            text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              app_icon_file_id: String,
+              background_image_file_id: String,
+              card_description: String,
+              description: String,
+              issuer_name: String,
+              contact_email: String,
+              contact_phone: String,
+              contact_website: String,
+              text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

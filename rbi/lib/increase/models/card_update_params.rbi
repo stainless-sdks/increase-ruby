@@ -11,7 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CardUpdateParams::BillingAddress).returns(Increase::Models::CardUpdateParams::BillingAddress)
+        params(_: Increase::Models::CardUpdateParams::BillingAddress)
+          .returns(Increase::Models::CardUpdateParams::BillingAddress)
       end
       def billing_address=(_)
       end
@@ -29,7 +30,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::CardUpdateParams::DigitalWallet).returns(Increase::Models::CardUpdateParams::DigitalWallet)
+        params(_: Increase::Models::CardUpdateParams::DigitalWallet)
+          .returns(Increase::Models::CardUpdateParams::DigitalWallet)
       end
       def digital_wallet=(_)
       end
@@ -58,7 +60,8 @@ module Increase
           entity_id: String,
           status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         billing_address: nil,
@@ -71,16 +74,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            billing_address: Increase::Models::CardUpdateParams::BillingAddress,
-            description: String,
-            digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
-            entity_id: String,
-            status: Symbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              billing_address: Increase::Models::CardUpdateParams::BillingAddress,
+              description: String,
+              digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
+              entity_id: String,
+              status: Symbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

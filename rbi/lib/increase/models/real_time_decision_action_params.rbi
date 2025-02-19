@@ -11,7 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthentication).returns(Increase::Models::RealTimeDecisionActionParams::CardAuthentication)
+        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthentication)
+          .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthentication)
       end
       def card_authentication=(_)
       end
@@ -21,7 +22,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge).returns(Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge)
+        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge)
+          .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge)
       end
       def card_authentication_challenge=(_)
       end
@@ -31,7 +33,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthorization).returns(Increase::Models::RealTimeDecisionActionParams::CardAuthorization)
+        params(_: Increase::Models::RealTimeDecisionActionParams::CardAuthorization)
+          .returns(Increase::Models::RealTimeDecisionActionParams::CardAuthorization)
       end
       def card_authorization=(_)
       end
@@ -41,7 +44,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication).returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication)
+        params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication)
+          .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication)
       end
       def digital_wallet_authentication=(_)
       end
@@ -51,7 +55,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken).returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken)
+        params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken)
+          .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken)
       end
       def digital_wallet_token=(_)
       end
@@ -64,7 +69,8 @@ module Increase
           digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
           digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         card_authentication: nil,
@@ -77,16 +83,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
-            card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-            card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
-            digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-            digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
+              card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
+              card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
+              digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
+              digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -233,14 +240,13 @@ module Increase
         def result=(_)
         end
 
-        sig do
-          returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success))
-        end
+        sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success)) }
         def success
         end
 
         sig do
-          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success).returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success)
+          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success)
+            .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success)
         end
         def success=(_)
         end
@@ -249,18 +255,20 @@ module Increase
           params(
             result: Symbol,
             success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
-          ).void
+          )
+            .void
         end
         def initialize(result:, success: nil)
         end
 
         sig do
-          override.returns(
-            {
-              result: Symbol,
-              success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
-            }
-          )
+          override
+            .returns(
+              {
+                result: Symbol,
+                success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
+              }
+            )
         end
         def to_hash
         end
@@ -307,26 +315,24 @@ module Increase
       end
 
       class DigitalWalletToken < Increase::BaseModel
-        sig do
-          returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval))
-        end
+        sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval)) }
         def approval
         end
 
         sig do
-          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval).returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval)
+          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval)
+            .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval)
         end
         def approval=(_)
         end
 
-        sig do
-          returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline))
-        end
+        sig { returns(T.nilable(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline)) }
         def decline
         end
 
         sig do
-          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline).returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline)
+          params(_: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline)
+            .returns(Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline)
         end
         def decline=(_)
         end
@@ -335,18 +341,20 @@ module Increase
           params(
             approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
             decline: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
-          ).void
+          )
+            .void
         end
         def initialize(approval: nil, decline: nil)
         end
 
         sig do
-          override.returns(
-            {
-              approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
-              decline: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
-            }
-          )
+          override
+            .returns(
+              {
+                approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
+                decline: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
+              }
+            )
         end
         def to_hash
         end
