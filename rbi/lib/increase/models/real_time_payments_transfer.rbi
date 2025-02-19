@@ -4,79 +4,222 @@ module Increase
   module Models
     class RealTimePaymentsTransfer < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement)) }
-      attr_accessor :acknowledgement
+      def acknowledgement
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement))
+      end
+      def acknowledgement=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval)) }
-      attr_accessor :approval
+      def approval
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval))
+      end
+      def approval=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation)) }
-      attr_accessor :cancellation
+      def cancellation
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation))
+      end
+      def cancellation=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy)) }
-      attr_accessor :created_by
+      def created_by
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy))
+      end
+      def created_by=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :creditor_name
+      def creditor_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def creditor_name=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def currency=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :debtor_name
+      def debtor_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def debtor_name=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :destination_account_number
+      def destination_account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def destination_account_number=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :destination_routing_number
+      def destination_routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def destination_routing_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :external_account_id
+      def external_account_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def external_account_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :pending_transaction_id
+      def pending_transaction_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def pending_transaction_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection)) }
-      attr_accessor :rejection
+      def rejection
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection))
+      end
+      def rejection=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :remittance_information
+      def remittance_information
+      end
+
+      sig { params(_: String).returns(String) }
+      def remittance_information=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :source_account_number_id
+      def source_account_number_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def source_account_number_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission)) }
-      attr_accessor :submission
+      def submission
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission))
+          .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission))
+      end
+      def submission=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :transaction_id
+      def transaction_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def transaction_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :ultimate_creditor_name
+      def ultimate_creditor_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def ultimate_creditor_name=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :ultimate_debtor_name
+      def ultimate_debtor_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def ultimate_debtor_name=(_)
+      end
 
       sig do
         params(
@@ -105,7 +248,8 @@ module Increase
           type: Symbol,
           ultimate_creditor_name: T.nilable(String),
           ultimate_debtor_name: T.nilable(String)
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -137,42 +281,48 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            acknowledgement: T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement),
-            amount: Integer,
-            approval: T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval),
-            cancellation: T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation),
-            created_at: Time,
-            created_by: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy),
-            creditor_name: String,
-            currency: Symbol,
-            debtor_name: T.nilable(String),
-            destination_account_number: String,
-            destination_routing_number: String,
-            external_account_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            pending_transaction_id: T.nilable(String),
-            rejection: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection),
-            remittance_information: String,
-            source_account_number_id: String,
-            status: Symbol,
-            submission: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission),
-            transaction_id: T.nilable(String),
-            type: Symbol,
-            ultimate_creditor_name: T.nilable(String),
-            ultimate_debtor_name: T.nilable(String)
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              acknowledgement: T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement),
+              amount: Integer,
+              approval: T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval),
+              cancellation: T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation),
+              created_at: Time,
+              created_by: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy),
+              creditor_name: String,
+              currency: Symbol,
+              debtor_name: T.nilable(String),
+              destination_account_number: String,
+              destination_routing_number: String,
+              external_account_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              pending_transaction_id: T.nilable(String),
+              rejection: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection),
+              remittance_information: String,
+              source_account_number_id: String,
+              status: Symbol,
+              submission: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission),
+              transaction_id: T.nilable(String),
+              type: Symbol,
+              ultimate_creditor_name: T.nilable(String),
+              ultimate_debtor_name: T.nilable(String)
+            }
+          )
       end
       def to_hash
       end
 
       class Acknowledgement < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :acknowledged_at
+        def acknowledged_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def acknowledged_at=(_)
+        end
 
         sig { params(acknowledged_at: Time).void }
         def initialize(acknowledged_at:)
@@ -185,10 +335,20 @@ module Increase
 
       class Approval < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :approved_at
+        def approved_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def approved_at=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :approved_by
+        def approved_by
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def approved_by=(_)
+        end
 
         sig { params(approved_at: Time, approved_by: T.nilable(String)).void }
         def initialize(approved_at:, approved_by:)
@@ -201,10 +361,20 @@ module Increase
 
       class Cancellation < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :canceled_at
+        def canceled_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def canceled_at=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :canceled_by
+        def canceled_by
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def canceled_by=(_)
+        end
 
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).void }
         def initialize(canceled_at:, canceled_by:)
@@ -217,16 +387,45 @@ module Increase
 
       class CreatedBy < Increase::BaseModel
         sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey)) }
-        attr_accessor :api_key
+        def api_key
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey))
+            .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey))
+        end
+        def api_key=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :category
+        def category
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def category=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication)) }
-        attr_accessor :oauth_application
+        def oauth_application
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication))
+            .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication))
+        end
+        def oauth_application=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)) }
-        attr_accessor :user
+        def user
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User))
+            .returns(T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User))
+        end
+        def user=(_)
+        end
 
         sig do
           params(
@@ -234,27 +433,34 @@ module Increase
             category: Symbol,
             oauth_application: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)
-          ).void
+          )
+            .void
         end
         def initialize(api_key:, category:, oauth_application:, user:)
         end
 
         sig do
-          override.returns(
-            {
-              api_key: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey),
-              category: Symbol,
-              oauth_application: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication),
-              user: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)
-            }
-          )
+          override
+            .returns(
+              {
+                api_key: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey),
+                category: Symbol,
+                oauth_application: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication),
+                user: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)
+              }
+            )
         end
         def to_hash
         end
 
         class APIKey < Increase::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_accessor :description
+          def description
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def description=(_)
+          end
 
           sig { params(description: T.nilable(String)).void }
           def initialize(description:)
@@ -284,7 +490,12 @@ module Increase
 
         class OAuthApplication < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { params(name: String).void }
           def initialize(name:)
@@ -297,7 +508,12 @@ module Increase
 
         class User < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :email
+          def email
+          end
+
+          sig { params(_: String).returns(String) }
+          def email=(_)
+          end
 
           sig { params(email: String).void }
           def initialize(email:)
@@ -337,32 +553,49 @@ module Increase
 
       class Rejection < Increase::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :reject_reason_additional_information
+        def reject_reason_additional_information
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def reject_reason_additional_information=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :reject_reason_code
+        def reject_reason_code
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def reject_reason_code=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_accessor :rejected_at
+        def rejected_at
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def rejected_at=(_)
+        end
 
         sig do
           params(
             reject_reason_additional_information: T.nilable(String),
             reject_reason_code: Symbol,
             rejected_at: T.nilable(Time)
-          ).void
+          )
+            .void
         end
         def initialize(reject_reason_additional_information:, reject_reason_code:, rejected_at:)
         end
 
         sig do
-          override.returns(
-            {
-              reject_reason_additional_information: T.nilable(String),
-              reject_reason_code: Symbol,
-              rejected_at: T.nilable(Time)
-            }
-          )
+          override
+            .returns(
+              {
+                reject_reason_additional_information: T.nilable(String),
+                reject_reason_code: Symbol,
+                rejected_at: T.nilable(Time)
+              }
+            )
         end
         def to_hash
         end
@@ -473,10 +706,20 @@ module Increase
 
       class Submission < Increase::BaseModel
         sig { returns(T.nilable(Time)) }
-        attr_accessor :submitted_at
+        def submitted_at
+        end
+
+        sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+        def submitted_at=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :transaction_identification
+        def transaction_identification
+        end
+
+        sig { params(_: String).returns(String) }
+        def transaction_identification=(_)
+        end
 
         sig { params(submitted_at: T.nilable(Time), transaction_identification: String).void }
         def initialize(submitted_at:, transaction_identification:)

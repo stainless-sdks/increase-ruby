@@ -4,22 +4,52 @@ module Increase
   module Models
     class CardDetails < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :card_id
+      def card_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def card_id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :expiration_month
+      def expiration_month
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def expiration_month=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :expiration_year
+      def expiration_year
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def expiration_year=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :primary_account_number
+      def primary_account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def primary_account_number=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :verification_code
+      def verification_code
+      end
+
+      sig { params(_: String).returns(String) }
+      def verification_code=(_)
+      end
 
       sig do
         params(
@@ -29,7 +59,8 @@ module Increase
           primary_account_number: String,
           type: Symbol,
           verification_code: String
-        ).void
+        )
+          .void
       end
       def initialize(
         card_id:,
@@ -42,16 +73,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            card_id: String,
-            expiration_month: Integer,
-            expiration_year: Integer,
-            primary_account_number: String,
-            type: Symbol,
-            verification_code: String
-          }
-        )
+        override
+          .returns(
+            {
+              card_id: String,
+              expiration_month: Integer,
+              expiration_year: Integer,
+              primary_account_number: String,
+              type: Symbol,
+              verification_code: String
+            }
+          )
       end
       def to_hash
       end

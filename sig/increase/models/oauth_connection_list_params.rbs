@@ -15,19 +15,21 @@ module Increase
 
       attr_reader cursor: String?
 
-      def cursor=: (String) -> void
+      def cursor=: (String) -> String
 
       attr_reader limit: Integer?
 
-      def limit=: (Integer) -> void
+      def limit=: (Integer) -> Integer
 
       attr_reader oauth_application_id: String?
 
-      def oauth_application_id=: (String) -> void
+      def oauth_application_id=: (String) -> String
 
       attr_reader status: Increase::Models::OAuthConnectionListParams::Status?
 
-      def status=: (Increase::Models::OAuthConnectionListParams::Status) -> void
+      def status=: (
+        Increase::Models::OAuthConnectionListParams::Status
+      ) -> Increase::Models::OAuthConnectionListParams::Status
 
       def initialize:
         (
@@ -54,7 +56,7 @@ module Increase
 
         def in_=: (
           ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
-        ) -> void
+        ) -> ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
 
         def initialize:
           (

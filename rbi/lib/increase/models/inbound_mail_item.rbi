@@ -4,28 +4,68 @@ module Increase
   module Models
     class InboundMailItem < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :file_id
+      def file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def file_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :lockbox_id
+      def lockbox_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def lockbox_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :recipient_name
+      def recipient_name
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def recipient_name=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_accessor :rejection_reason
+      def rejection_reason
+      end
+
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      def rejection_reason=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -37,7 +77,8 @@ module Increase
           rejection_reason: T.nilable(Symbol),
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -52,18 +93,19 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            created_at: Time,
-            file_id: String,
-            lockbox_id: T.nilable(String),
-            recipient_name: T.nilable(String),
-            rejection_reason: T.nilable(Symbol),
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              created_at: Time,
+              file_id: String,
+              lockbox_id: T.nilable(String),
+              recipient_name: T.nilable(String),
+              rejection_reason: T.nilable(Symbol),
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

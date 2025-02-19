@@ -62,10 +62,7 @@ module Increase
         #     cardholder to the merchant or from the merchant to the cardholder.
         #
         #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction, nil]
-        optional :direction,
-                 enum: -> {
-                   Increase::Models::Simulations::CardAuthorizationCreateParams::Direction
-                 }
+        optional :direction, enum: -> { Increase::Models::Simulations::CardAuthorizationCreateParams::Direction }
 
         # @!parse
         #   # @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::Direction]
@@ -338,10 +335,7 @@ module Increase
           #   Fields specific to the Visa network.
           #
           #   @return [Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa]
-          required :visa,
-                   -> {
-                     Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
-                   }
+          required :visa, -> { Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa }
 
           # @!parse
           #   # Fields specific to a given card network.
@@ -364,9 +358,7 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason, nil]
             optional :stand_in_processing_reason,
-                     enum: -> {
-                       Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason
-                     }
+                     enum: -> { Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason }
 
             # @!parse
             #   # @return [Symbol, Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason]

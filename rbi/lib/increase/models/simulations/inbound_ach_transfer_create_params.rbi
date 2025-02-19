@@ -8,64 +8,92 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :account_number_id
+        def account_number_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_number_id=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :company_descriptive_date
+        def company_descriptive_date
+        end
 
-        sig { params(company_descriptive_date: String).void }
-        attr_writer :company_descriptive_date
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :company_discretionary_data
-
-        sig { params(company_discretionary_data: String).void }
-        attr_writer :company_discretionary_data
+        sig { params(_: String).returns(String) }
+        def company_descriptive_date=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :company_entry_description
+        def company_discretionary_data
+        end
 
-        sig { params(company_entry_description: String).void }
-        attr_writer :company_entry_description
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :company_id
-
-        sig { params(company_id: String).void }
-        attr_writer :company_id
+        sig { params(_: String).returns(String) }
+        def company_discretionary_data=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :company_name
+        def company_entry_description
+        end
 
-        sig { params(company_name: String).void }
-        attr_writer :company_name
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :receiver_id_number
-
-        sig { params(receiver_id_number: String).void }
-        attr_writer :receiver_id_number
+        sig { params(_: String).returns(String) }
+        def company_entry_description=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :receiver_name
+        def company_id
+        end
 
-        sig { params(receiver_name: String).void }
-        attr_writer :receiver_name
+        sig { params(_: String).returns(String) }
+        def company_id=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def company_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def company_name=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def receiver_id_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def receiver_id_number=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def receiver_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def receiver_name=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :resolve_at
+        def resolve_at
+        end
 
-        sig { params(resolve_at: Time).void }
-        attr_writer :resolve_at
+        sig { params(_: Time).returns(Time) }
+        def resolve_at=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :standard_entry_class_code
+        def standard_entry_class_code
+        end
 
-        sig { params(standard_entry_class_code: Symbol).void }
-        attr_writer :standard_entry_class_code
+        sig { params(_: Symbol).returns(Symbol) }
+        def standard_entry_class_code=(_)
+        end
 
         sig do
           params(
@@ -81,7 +109,8 @@ module Increase
             resolve_at: Time,
             standard_entry_class_code: Symbol,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           account_number_id:,
@@ -100,22 +129,23 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              account_number_id: String,
-              amount: Integer,
-              company_descriptive_date: String,
-              company_discretionary_data: String,
-              company_entry_description: String,
-              company_id: String,
-              company_name: String,
-              receiver_id_number: String,
-              receiver_name: String,
-              resolve_at: Time,
-              standard_entry_class_code: Symbol,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                account_number_id: String,
+                amount: Integer,
+                company_descriptive_date: String,
+                company_discretionary_data: String,
+                company_entry_description: String,
+                company_id: String,
+                company_name: String,
+                receiver_id_number: String,
+                receiver_name: String,
+                resolve_at: Time,
+                standard_entry_class_code: Symbol,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end

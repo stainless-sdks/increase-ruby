@@ -48,51 +48,51 @@ module Increase
 
         attr_reader beneficiary_address_line1: String?
 
-        def beneficiary_address_line1=: (String) -> void
+        def beneficiary_address_line1=: (String) -> String
 
         attr_reader beneficiary_address_line2: String?
 
-        def beneficiary_address_line2=: (String) -> void
+        def beneficiary_address_line2=: (String) -> String
 
         attr_reader beneficiary_address_line3: String?
 
-        def beneficiary_address_line3=: (String) -> void
+        def beneficiary_address_line3=: (String) -> String
 
         attr_reader beneficiary_name: String?
 
-        def beneficiary_name=: (String) -> void
+        def beneficiary_name=: (String) -> String
 
         attr_reader originator_address_line1: String?
 
-        def originator_address_line1=: (String) -> void
+        def originator_address_line1=: (String) -> String
 
         attr_reader originator_address_line2: String?
 
-        def originator_address_line2=: (String) -> void
+        def originator_address_line2=: (String) -> String
 
         attr_reader originator_address_line3: String?
 
-        def originator_address_line3=: (String) -> void
+        def originator_address_line3=: (String) -> String
 
         attr_reader originator_name: String?
 
-        def originator_name=: (String) -> void
+        def originator_name=: (String) -> String
 
         attr_reader originator_to_beneficiary_information_line1: String?
 
-        def originator_to_beneficiary_information_line1=: (String) -> void
+        def originator_to_beneficiary_information_line1=: (String) -> String
 
         attr_reader originator_to_beneficiary_information_line2: String?
 
-        def originator_to_beneficiary_information_line2=: (String) -> void
+        def originator_to_beneficiary_information_line2=: (String) -> String
 
         attr_reader originator_to_beneficiary_information_line3: String?
 
-        def originator_to_beneficiary_information_line3=: (String) -> void
+        def originator_to_beneficiary_information_line3=: (String) -> String
 
         attr_reader originator_to_beneficiary_information_line4: String?
 
-        def originator_to_beneficiary_information_line4=: (String) -> void
+        def originator_to_beneficiary_information_line4=: (String) -> String
 
         def initialize:
           (

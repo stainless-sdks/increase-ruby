@@ -7,111 +7,162 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :statement_descriptor
+      def statement_descriptor
+      end
+
+      sig { params(_: String).returns(String) }
+      def statement_descriptor=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :account_number
+      def account_number
+      end
 
-      sig { params(account_number: String).void }
-      attr_writer :account_number
+      sig { params(_: String).returns(String) }
+      def account_number=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda)) }
-      attr_reader :addenda
-
-      sig { params(addenda: Increase::Models::ACHTransferCreateParams::Addenda).void }
-      attr_writer :addenda
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :company_descriptive_date
-
-      sig { params(company_descriptive_date: String).void }
-      attr_writer :company_descriptive_date
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :company_discretionary_data
-
-      sig { params(company_discretionary_data: String).void }
-      attr_writer :company_discretionary_data
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :company_entry_description
-
-      sig { params(company_entry_description: String).void }
-      attr_writer :company_entry_description
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :company_name
-
-      sig { params(company_name: String).void }
-      attr_writer :company_name
-
-      sig { returns(T.nilable(Symbol)) }
-      attr_reader :destination_account_holder
-
-      sig { params(destination_account_holder: Symbol).void }
-      attr_writer :destination_account_holder
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :external_account_id
-
-      sig { params(external_account_id: String).void }
-      attr_writer :external_account_id
-
-      sig { returns(T.nilable(Symbol)) }
-      attr_reader :funding
-
-      sig { params(funding: Symbol).void }
-      attr_writer :funding
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :individual_id
-
-      sig { params(individual_id: String).void }
-      attr_writer :individual_id
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :individual_name
-
-      sig { params(individual_name: String).void }
-      attr_writer :individual_name
-
-      sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate)) }
-      attr_reader :preferred_effective_date
+      def addenda
+      end
 
       sig do
-        params(preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate).void
+        params(_: Increase::Models::ACHTransferCreateParams::Addenda)
+          .returns(Increase::Models::ACHTransferCreateParams::Addenda)
       end
-      attr_writer :preferred_effective_date
-
-      sig { returns(T.nilable(T::Boolean)) }
-      attr_reader :require_approval
-
-      sig { params(require_approval: T::Boolean).void }
-      attr_writer :require_approval
+      def addenda=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :routing_number
+      def company_descriptive_date
+      end
 
-      sig { params(routing_number: String).void }
-      attr_writer :routing_number
+      sig { params(_: String).returns(String) }
+      def company_descriptive_date=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def company_discretionary_data
+      end
+
+      sig { params(_: String).returns(String) }
+      def company_discretionary_data=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def company_entry_description
+      end
+
+      sig { params(_: String).returns(String) }
+      def company_entry_description=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def company_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def company_name=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :standard_entry_class_code
+      def destination_account_holder
+      end
 
-      sig { params(standard_entry_class_code: Symbol).void }
-      attr_writer :standard_entry_class_code
+      sig { params(_: Symbol).returns(Symbol) }
+      def destination_account_holder=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def external_account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def external_account_id=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :transaction_timing
+      def funding
+      end
 
-      sig { params(transaction_timing: Symbol).void }
-      attr_writer :transaction_timing
+      sig { params(_: Symbol).returns(Symbol) }
+      def funding=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def individual_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def individual_id=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def individual_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def individual_name=(_)
+      end
+
+      sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate)) }
+      def preferred_effective_date
+      end
+
+      sig do
+        params(_: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate)
+          .returns(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate)
+      end
+      def preferred_effective_date=(_)
+      end
+
+      sig { returns(T.nilable(T::Boolean)) }
+      def require_approval
+      end
+
+      sig { params(_: T::Boolean).returns(T::Boolean) }
+      def require_approval=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def routing_number=(_)
+      end
+
+      sig { returns(T.nilable(Symbol)) }
+      def standard_entry_class_code
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def standard_entry_class_code=(_)
+      end
+
+      sig { returns(T.nilable(Symbol)) }
+      def transaction_timing
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def transaction_timing=(_)
+      end
 
       sig do
         params(
@@ -135,7 +186,8 @@ module Increase
           standard_entry_class_code: Symbol,
           transaction_timing: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id:,
@@ -162,74 +214,86 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            amount: Integer,
-            statement_descriptor: String,
-            account_number: String,
-            addenda: Increase::Models::ACHTransferCreateParams::Addenda,
-            company_descriptive_date: String,
-            company_discretionary_data: String,
-            company_entry_description: String,
-            company_name: String,
-            destination_account_holder: Symbol,
-            external_account_id: String,
-            funding: Symbol,
-            individual_id: String,
-            individual_name: String,
-            preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
-            require_approval: T::Boolean,
-            routing_number: String,
-            standard_entry_class_code: Symbol,
-            transaction_timing: Symbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              amount: Integer,
+              statement_descriptor: String,
+              account_number: String,
+              addenda: Increase::Models::ACHTransferCreateParams::Addenda,
+              company_descriptive_date: String,
+              company_discretionary_data: String,
+              company_entry_description: String,
+              company_name: String,
+              destination_account_holder: Symbol,
+              external_account_id: String,
+              funding: Symbol,
+              individual_id: String,
+              individual_name: String,
+              preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
+              require_approval: T::Boolean,
+              routing_number: String,
+              standard_entry_class_code: Symbol,
+              transaction_timing: Symbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
 
       class Addenda < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :category
+        def category
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def category=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda::Freeform)) }
-        attr_reader :freeform
-
-        sig { params(freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform).void }
-        attr_writer :freeform
+        def freeform
+        end
 
         sig do
-          returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice))
+          params(_: Increase::Models::ACHTransferCreateParams::Addenda::Freeform)
+            .returns(Increase::Models::ACHTransferCreateParams::Addenda::Freeform)
         end
-        attr_reader :payment_order_remittance_advice
+        def freeform=(_)
+        end
+
+        sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice)) }
+        def payment_order_remittance_advice
+        end
 
         sig do
-          params(
-            payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
-          ).void
+          params(_: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice)
+            .returns(Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice)
         end
-        attr_writer :payment_order_remittance_advice
+        def payment_order_remittance_advice=(_)
+        end
 
         sig do
           params(
             category: Symbol,
             freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
             payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
-          ).void
+          )
+            .void
         end
         def initialize(category:, freeform: nil, payment_order_remittance_advice: nil)
         end
 
         sig do
-          override.returns(
-            {
-              category: Symbol,
-              freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
-              payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
-            }
-          )
+          override
+            .returns(
+              {
+                category: Symbol,
+                freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
+                payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
+              }
+            )
         end
         def to_hash
         end
@@ -250,23 +314,32 @@ module Increase
 
         class Freeform < Increase::BaseModel
           sig { returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]) }
-          attr_accessor :entries
+          def entries
+          end
 
           sig do
-            params(entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]).void
+            params(_: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry])
+              .returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry])
           end
+          def entries=(_)
+          end
+
+          sig { params(entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]).void }
           def initialize(entries:)
           end
 
-          sig do
-            override.returns({entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]})
-          end
+          sig { override.returns({entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]}) }
           def to_hash
           end
 
           class Entry < Increase::BaseModel
             sig { returns(String) }
-            attr_accessor :payment_related_information
+            def payment_related_information
+            end
+
+            sig { params(_: String).returns(String) }
+            def payment_related_information=(_)
+            end
 
             sig { params(payment_related_information: String).void }
             def initialize(payment_related_information:)
@@ -280,30 +353,60 @@ module Increase
 
         class PaymentOrderRemittanceAdvice < Increase::BaseModel
           sig do
-            returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice])
+            returns(
+              T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+            )
           end
-          attr_accessor :invoices
+          def invoices
+          end
+
+          sig do
+            params(
+              _: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+            )
+              .returns(
+                T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+              )
+          end
+          def invoices=(_)
+          end
 
           sig do
             params(
               invoices: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-            ).void
+            )
+              .void
           end
           def initialize(invoices:)
           end
 
           sig do
-            override.returns({invoices: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]})
+            override
+              .returns(
+                {
+                  invoices: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+                }
+              )
           end
           def to_hash
           end
 
           class Invoice < Increase::BaseModel
             sig { returns(String) }
-            attr_accessor :invoice_number
+            def invoice_number
+            end
+
+            sig { params(_: String).returns(String) }
+            def invoice_number=(_)
+            end
 
             sig { returns(Integer) }
-            attr_accessor :paid_amount
+            def paid_amount
+            end
+
+            sig { params(_: Integer).returns(Integer) }
+            def paid_amount=(_)
+            end
 
             sig { params(invoice_number: String, paid_amount: Integer).void }
             def initialize(invoice_number:, paid_amount:)
@@ -349,16 +452,20 @@ module Increase
 
       class PreferredEffectiveDate < Increase::BaseModel
         sig { returns(T.nilable(Date)) }
-        attr_reader :date
+        def date
+        end
 
-        sig { params(date: Date).void }
-        attr_writer :date
+        sig { params(_: Date).returns(Date) }
+        def date=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :settlement_schedule
+        def settlement_schedule
+        end
 
-        sig { params(settlement_schedule: Symbol).void }
-        attr_writer :settlement_schedule
+        sig { params(_: Symbol).returns(Symbol) }
+        def settlement_schedule=(_)
+        end
 
         sig { params(date: Date, settlement_schedule: Symbol).void }
         def initialize(date: nil, settlement_schedule: nil)

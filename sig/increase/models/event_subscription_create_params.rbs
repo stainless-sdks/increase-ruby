@@ -17,17 +17,17 @@ module Increase
 
       attr_reader oauth_connection_id: String?
 
-      def oauth_connection_id=: (String) -> void
+      def oauth_connection_id=: (String) -> String
 
       attr_reader selected_event_category: Increase::Models::EventSubscriptionCreateParams::selected_event_category?
 
       def selected_event_category=: (
         Increase::Models::EventSubscriptionCreateParams::selected_event_category
-      ) -> void
+      ) -> Increase::Models::EventSubscriptionCreateParams::selected_event_category
 
       attr_reader shared_secret: String?
 
-      def shared_secret=: (String) -> void
+      def shared_secret=: (String) -> String
 
       def initialize:
         (

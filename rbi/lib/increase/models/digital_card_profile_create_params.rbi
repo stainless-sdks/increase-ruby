@@ -7,43 +7,79 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :app_icon_file_id
+      def app_icon_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def app_icon_file_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :background_image_file_id
+      def background_image_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def background_image_file_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :card_description
+      def card_description
+      end
+
+      sig { params(_: String).returns(String) }
+      def card_description=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :issuer_name
+      def issuer_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def issuer_name=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :contact_email
+      def contact_email
+      end
 
-      sig { params(contact_email: String).void }
-      attr_writer :contact_email
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :contact_phone
-
-      sig { params(contact_phone: String).void }
-      attr_writer :contact_phone
+      sig { params(_: String).returns(String) }
+      def contact_email=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :contact_website
+      def contact_phone
+      end
 
-      sig { params(contact_website: String).void }
-      attr_writer :contact_website
+      sig { params(_: String).returns(String) }
+      def contact_phone=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def contact_website
+      end
+
+      sig { params(_: String).returns(String) }
+      def contact_website=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::DigitalCardProfileCreateParams::TextColor)) }
-      attr_reader :text_color
+      def text_color
+      end
 
-      sig { params(text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor).void }
-      attr_writer :text_color
+      sig do
+        params(_: Increase::Models::DigitalCardProfileCreateParams::TextColor)
+          .returns(Increase::Models::DigitalCardProfileCreateParams::TextColor)
+      end
+      def text_color=(_)
+      end
 
       sig do
         params(
@@ -57,7 +93,8 @@ module Increase
           contact_website: String,
           text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         app_icon_file_id:,
@@ -74,33 +111,49 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            app_icon_file_id: String,
-            background_image_file_id: String,
-            card_description: String,
-            description: String,
-            issuer_name: String,
-            contact_email: String,
-            contact_phone: String,
-            contact_website: String,
-            text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              app_icon_file_id: String,
+              background_image_file_id: String,
+              card_description: String,
+              description: String,
+              issuer_name: String,
+              contact_email: String,
+              contact_phone: String,
+              contact_website: String,
+              text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
 
       class TextColor < Increase::BaseModel
         sig { returns(Integer) }
-        attr_accessor :blue
+        def blue
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def blue=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :green
+        def green
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def green=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :red
+        def red
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def red=(_)
+        end
 
         sig { params(blue: Integer, green: Integer, red: Integer).void }
         def initialize(blue:, green:, red:)

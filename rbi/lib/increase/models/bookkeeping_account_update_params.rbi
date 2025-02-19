@@ -7,7 +7,12 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig do
         params(

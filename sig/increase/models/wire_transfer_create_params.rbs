@@ -35,51 +35,51 @@ module Increase
 
       attr_reader account_number: String?
 
-      def account_number=: (String) -> void
+      def account_number=: (String) -> String
 
       attr_reader beneficiary_address_line1: String?
 
-      def beneficiary_address_line1=: (String) -> void
+      def beneficiary_address_line1=: (String) -> String
 
       attr_reader beneficiary_address_line2: String?
 
-      def beneficiary_address_line2=: (String) -> void
+      def beneficiary_address_line2=: (String) -> String
 
       attr_reader beneficiary_address_line3: String?
 
-      def beneficiary_address_line3=: (String) -> void
+      def beneficiary_address_line3=: (String) -> String
 
       attr_reader external_account_id: String?
 
-      def external_account_id=: (String) -> void
+      def external_account_id=: (String) -> String
 
       attr_reader originator_address_line1: String?
 
-      def originator_address_line1=: (String) -> void
+      def originator_address_line1=: (String) -> String
 
       attr_reader originator_address_line2: String?
 
-      def originator_address_line2=: (String) -> void
+      def originator_address_line2=: (String) -> String
 
       attr_reader originator_address_line3: String?
 
-      def originator_address_line3=: (String) -> void
+      def originator_address_line3=: (String) -> String
 
       attr_reader originator_name: String?
 
-      def originator_name=: (String) -> void
+      def originator_name=: (String) -> String
 
       attr_reader require_approval: bool?
 
-      def require_approval=: (bool) -> void
+      def require_approval=: (bool) -> bool
 
       attr_reader routing_number: String?
 
-      def routing_number=: (String) -> void
+      def routing_number=: (String) -> String
 
       attr_reader source_account_number_id: String?
 
-      def source_account_number_id=: (String) -> void
+      def source_account_number_id=: (String) -> String
 
       def initialize:
         (

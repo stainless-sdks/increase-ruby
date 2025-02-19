@@ -31,11 +31,7 @@ module Increase
       #     supplemental details.
       #
       #   @return [Increase::Models::RealTimePaymentsTransfer::Acknowledgement, nil]
-      required :acknowledgement,
-               -> {
-                 Increase::Models::RealTimePaymentsTransfer::Acknowledgement
-               },
-               nil?: true
+      required :acknowledgement, -> { Increase::Models::RealTimePaymentsTransfer::Acknowledgement }, nil?: true
 
       # @!attribute amount
       #   The transfer amount in USD cents.

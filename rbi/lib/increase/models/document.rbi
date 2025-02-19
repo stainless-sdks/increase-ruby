@@ -4,22 +4,52 @@ module Increase
   module Models
     class Document < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :category
+      def category
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def category=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :entity_id
+      def entity_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def entity_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :file_id
+      def file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def file_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -29,22 +59,24 @@ module Increase
           entity_id: T.nilable(String),
           file_id: String,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, category:, created_at:, entity_id:, file_id:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            category: Symbol,
-            created_at: Time,
-            entity_id: T.nilable(String),
-            file_id: String,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              category: Symbol,
+              created_at: Time,
+              entity_id: T.nilable(String),
+              file_id: String,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

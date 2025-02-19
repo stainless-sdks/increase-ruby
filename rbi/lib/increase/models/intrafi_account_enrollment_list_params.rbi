@@ -7,34 +7,47 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :account_id
+      def account_id
+      end
 
-      sig { params(account_id: String).void }
-      attr_writer :account_id
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :cursor
-
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :idempotency_key
+      def cursor
+      end
 
-      sig { params(idempotency_key: String).void }
-      attr_writer :idempotency_key
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def idempotency_key
+      end
+
+      sig { params(_: String).returns(String) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::IntrafiAccountEnrollmentListParams::Status)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: Increase::Models::IntrafiAccountEnrollmentListParams::Status).void }
-      attr_writer :status
+      sig do
+        params(_: Increase::Models::IntrafiAccountEnrollmentListParams::Status)
+          .returns(Increase::Models::IntrafiAccountEnrollmentListParams::Status)
+      end
+      def status=(_)
+      end
 
       sig do
         params(
@@ -44,7 +57,8 @@ module Increase
           limit: Integer,
           status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id: nil,
@@ -57,26 +71,29 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
 
       class Status < Increase::BaseModel
         sig { returns(T.nilable(T::Array[Symbol])) }
-        attr_reader :in_
+        def in_
+        end
 
-        sig { params(in_: T::Array[Symbol]).void }
-        attr_writer :in_
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
 
         sig { params(in_: T::Array[Symbol]).void }
         def initialize(in_: nil)
