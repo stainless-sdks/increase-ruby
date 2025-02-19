@@ -25,18 +25,16 @@ module Increase
 
         sig do
           params(
-            status: Symbol,
-            explanation: String,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+              status: Symbol,
+              explanation: String,
+              request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            )
             .void
         end
         def initialize(status:, explanation: nil, request_options: {})
         end
 
-        sig do
-          override.returns({status: Symbol, explanation: String, request_options: Increase::RequestOptions})
-        end
+        sig { override.returns({status: Symbol, explanation: String, request_options: Increase::RequestOptions}) }
         def to_hash
         end
 

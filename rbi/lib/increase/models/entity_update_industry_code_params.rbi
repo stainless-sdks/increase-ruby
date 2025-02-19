@@ -16,9 +16,9 @@ module Increase
 
       sig do
         params(
-          industry_code: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            industry_code: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(industry_code:, request_options: {})

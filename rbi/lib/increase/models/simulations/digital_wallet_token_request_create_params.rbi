@@ -16,13 +16,7 @@ module Increase
         end
 
         sig do
-          params(
-            card_id: String,
-            request_options: T.any(
-              Increase::RequestOptions,
-              T::Hash[Symbol, T.anything]
-            )
-          ).void
+          params(card_id: String, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])).void
         end
         def initialize(card_id:, request_options: {})
         end

@@ -6,9 +6,9 @@ module Increase
       class CheckDeposits
         sig do
           params(
-            check_deposit_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              check_deposit_id: String,
+              request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Increase::Models::CheckDeposit)
         end
         def reject(check_deposit_id, request_options: {})
@@ -16,9 +16,9 @@ module Increase
 
         sig do
           params(
-            check_deposit_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              check_deposit_id: String,
+              request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Increase::Models::CheckDeposit)
         end
         def return_(check_deposit_id, request_options: {})
@@ -26,9 +26,9 @@ module Increase
 
         sig do
           params(
-            check_deposit_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              check_deposit_id: String,
+              request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Increase::Models::CheckDeposit)
         end
         def submit(check_deposit_id, request_options: {})

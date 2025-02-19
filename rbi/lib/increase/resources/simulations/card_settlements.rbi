@@ -6,11 +6,11 @@ module Increase
       class CardSettlements
         sig do
           params(
-            card_id: String,
-            pending_transaction_id: String,
-            amount: Integer,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              card_id: String,
+              pending_transaction_id: String,
+              amount: Integer,
+              request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Increase::Models::Transaction)
         end
         def create(card_id:, pending_transaction_id:, amount: nil, request_options: {})

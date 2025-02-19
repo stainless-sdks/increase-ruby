@@ -27,10 +27,10 @@ module Increase
 
       sig do
         params(
-          address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
-          beneficial_owner_id: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
+            beneficial_owner_id: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(address:, beneficial_owner_id:, request_options: {})

@@ -1,22 +1,21 @@
 module Increase
   module Models
-    type digital_card_profile =
-      {
-        id: String,
-        app_icon_file_id: String,
-        background_image_file_id: String,
-        card_description: String,
-        contact_email: String?,
-        contact_phone: String?,
-        contact_website: String?,
-        created_at: Time,
-        description: String,
-        idempotency_key: String?,
-        issuer_name: String,
-        status: Increase::Models::DigitalCardProfile::status,
-        text_color: Increase::Models::DigitalCardProfile::TextColor,
-        type: Increase::Models::DigitalCardProfile::type_
-      }
+    type digital_card_profile = {
+      id: String,
+      app_icon_file_id: String,
+      background_image_file_id: String,
+      card_description: String,
+      contact_email: String?,
+      contact_phone: String?,
+      contact_website: String?,
+      created_at: Time,
+      description: String,
+      idempotency_key: String?,
+      issuer_name: String,
+      status: Increase::Models::DigitalCardProfile::status,
+      text_color: Increase::Models::DigitalCardProfile::TextColor,
+      type: Increase::Models::DigitalCardProfile::type_
+    }
 
     class DigitalCardProfile < Increase::BaseModel
       attr_accessor id: String
@@ -47,30 +46,12 @@ module Increase
 
       attr_accessor type: Increase::Models::DigitalCardProfile::type_
 
-      def initialize:
-        (
-          id: String,
-          app_icon_file_id: String,
-          background_image_file_id: String,
-          card_description: String,
-          contact_email: String?,
-          contact_phone: String?,
-          contact_website: String?,
-          created_at: Time,
-          description: String,
-          idempotency_key: String?,
-          issuer_name: String,
-          status: Increase::Models::DigitalCardProfile::status,
-          text_color: Increase::Models::DigitalCardProfile::TextColor,
-          type: Increase::Models::DigitalCardProfile::type_
-        ) -> void
-        | (
-          ?Increase::Models::digital_card_profile | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, app_icon_file_id: String, background_image_file_id: String, card_description: String, contact_email: String?, contact_phone: String?, contact_website: String?, created_at: Time, description: String, idempotency_key: String?, issuer_name: String, status: Increase::Models::DigitalCardProfile::status, text_color: Increase::Models::DigitalCardProfile::TextColor, type: Increase::Models::DigitalCardProfile::type_) -> void
+                    | (?(Increase::Models::digital_card_profile | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::digital_card_profile
+      def to_hash: () -> Increase::Models::digital_card_profile
 
-      type status = :pending | :rejected | :active | :archived
+      type status = (:pending | :rejected | :active | :archived)
 
       class Status < Increase::Enum
         # The Card Profile is awaiting review from Increase and/or processing by card networks.
@@ -85,10 +66,10 @@ module Increase
         # The Card Profile is no longer in use.
         ARCHIVED: :archived
 
-        def self.values: -> ::Array[Increase::Models::DigitalCardProfile::status]
+        def self.values: () -> ::Array[Increase::Models::DigitalCardProfile::status]
       end
 
-      type text_color = { blue: Integer, green: Integer, red: Integer }
+      type text_color = {blue: Integer, green: Integer, red: Integer}
 
       class TextColor < Increase::BaseModel
         attr_accessor blue: Integer
@@ -97,14 +78,10 @@ module Increase
 
         attr_accessor red: Integer
 
-        def initialize:
-          (blue: Integer, green: Integer, red: Integer) -> void
-          | (
-            ?Increase::Models::DigitalCardProfile::text_color
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (blue: Integer, green: Integer, red: Integer) -> void
+                      | (?(Increase::Models::DigitalCardProfile::text_color | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::DigitalCardProfile::text_color
+        def to_hash: () -> Increase::Models::DigitalCardProfile::text_color
       end
 
       type type_ = :digital_card_profile
@@ -112,7 +89,7 @@ module Increase
       class Type < Increase::Enum
         DIGITAL_CARD_PROFILE: :digital_card_profile
 
-        def self.values: -> ::Array[Increase::Models::DigitalCardProfile::type_]
+        def self.values: () -> ::Array[Increase::Models::DigitalCardProfile::type_]
       end
     end
   end

@@ -43,12 +43,12 @@ module Increase
 
       sig do
         params(
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::PhysicalCardProfileListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            status: Increase::Models::PhysicalCardProfileListParams::Status,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})

@@ -6,11 +6,6 @@ module Increase
 
     attr_accessor next_cursor: String?
 
-    def initialize: (
-      client: Increase::BaseClient,
-      req: Increase::BaseClient::request,
-      headers: ::Hash[String, String],
-      unwrapped: ::Hash[Symbol, top]
-    ) -> void
+    def initialize: (client: Increase::BaseClient, req: Increase::BaseClient::request, headers: ::Hash[String, String], unwrapped: ::Hash[Symbol, top]) -> void
   end
 end

@@ -75,16 +75,16 @@ module Increase
 
       sig do
         params(
-          created_at: Increase::Models::AccountListParams::CreatedAt,
-          cursor: String,
-          entity_id: String,
-          idempotency_key: String,
-          informational_entity_id: String,
-          limit: Integer,
-          program_id: String,
-          status: Symbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            created_at: Increase::Models::AccountListParams::CreatedAt,
+            cursor: String,
+            entity_id: String,
+            idempotency_key: String,
+            informational_entity_id: String,
+            limit: Integer,
+            program_id: String,
+            status: Symbol,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(

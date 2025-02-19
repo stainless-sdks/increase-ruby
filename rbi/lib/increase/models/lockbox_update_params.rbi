@@ -32,11 +32,11 @@ module Increase
 
       sig do
         params(
-          description: String,
-          recipient_name: String,
-          status: Symbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            description: String,
+            recipient_name: String,
+            status: Symbol,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(description: nil, recipient_name: nil, status: nil, request_options: {})
@@ -45,12 +45,7 @@ module Increase
       sig do
         override
           .returns(
-            {
-              description: String,
-              recipient_name: String,
-              status: Symbol,
-              request_options: Increase::RequestOptions
-            }
+            {description: String, recipient_name: String, status: Symbol, request_options: Increase::RequestOptions}
           )
       end
       def to_hash

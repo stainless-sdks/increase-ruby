@@ -59,14 +59,14 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          account_number_id: String,
-          created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          status: Symbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_id: String,
+            account_number_id: String,
+            created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
+            cursor: String,
+            limit: Integer,
+            status: Symbol,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(

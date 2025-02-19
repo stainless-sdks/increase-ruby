@@ -77,16 +77,16 @@ module Increase
 
       sig do
         params(
-          id: String,
-          card_id: String,
-          cardholder: Increase::Models::PhysicalCard::Cardholder,
-          created_at: Time,
-          idempotency_key: T.nilable(String),
-          physical_card_profile_id: T.nilable(String),
-          shipment: Increase::Models::PhysicalCard::Shipment,
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            card_id: String,
+            cardholder: Increase::Models::PhysicalCard::Cardholder,
+            created_at: Time,
+            idempotency_key: T.nilable(String),
+            physical_card_profile_id: T.nilable(String),
+            shipment: Increase::Models::PhysicalCard::Shipment,
+            status: Symbol,
+            type: Symbol
+          )
           .void
       end
       def initialize(
@@ -188,11 +188,11 @@ module Increase
 
         sig do
           params(
-            address: Increase::Models::PhysicalCard::Shipment::Address,
-            method_: Symbol,
-            status: Symbol,
-            tracking: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)
-          )
+              address: Increase::Models::PhysicalCard::Shipment::Address,
+              method_: Symbol,
+              status: Symbol,
+              tracking: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)
+            )
             .void
         end
         def initialize(address:, method_:, status:, tracking:)
@@ -271,14 +271,14 @@ module Increase
 
           sig do
             params(
-              city: String,
-              line1: String,
-              line2: T.nilable(String),
-              line3: T.nilable(String),
-              name: String,
-              postal_code: String,
-              state: String
-            )
+                city: String,
+                line1: String,
+                line2: T.nilable(String),
+                line3: T.nilable(String),
+                name: String,
+                postal_code: String,
+                state: String
+              )
               .void
           end
           def initialize(city:, line1:, line2:, line3:, name:, postal_code:, state:)
@@ -383,11 +383,11 @@ module Increase
 
           sig do
             params(
-              number: String,
-              return_number: T.nilable(String),
-              return_reason: T.nilable(String),
-              shipped_at: Time
-            )
+                number: String,
+                return_number: T.nilable(String),
+                return_reason: T.nilable(String),
+                shipped_at: Time
+              )
               .void
           end
           def initialize(number:, return_number:, return_reason:, shipped_at:)
@@ -396,12 +396,7 @@ module Increase
           sig do
             override
               .returns(
-                {
-                  number: String,
-                  return_number: T.nilable(String),
-                  return_reason: T.nilable(String),
-                  shipped_at: Time
-                }
+                {number: String, return_number: T.nilable(String), return_reason: T.nilable(String), shipped_at: Time}
               )
           end
           def to_hash

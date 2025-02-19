@@ -79,15 +79,15 @@ module Increase
 
       sig do
         params(
-          category: Symbol,
-          account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
-          balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
-          bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
-          entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
-          transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
-          vendor_csv: T.anything,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            category: Symbol,
+            account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
+            balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
+            bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
+            entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
+            transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
+            vendor_csv: T.anything,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(
@@ -168,9 +168,9 @@ module Increase
 
         sig do
           params(
-            account_id: String,
-            created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
-          )
+              account_id: String,
+              created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
+            )
             .void
         end
         def initialize(account_id:, created_at: nil)
@@ -258,10 +258,10 @@ module Increase
 
         sig do
           params(
-            account_id: String,
-            created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
-            program_id: String
-          )
+              account_id: String,
+              created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
+              program_id: String
+            )
             .void
         end
         def initialize(account_id: nil, created_at: nil, program_id: nil)
@@ -345,9 +345,9 @@ module Increase
 
         sig do
           params(
-            bookkeeping_account_id: String,
-            created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
-          )
+              bookkeeping_account_id: String,
+              created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
+            )
             .void
         end
         def initialize(bookkeeping_account_id: nil, created_at: nil)
@@ -494,10 +494,10 @@ module Increase
 
         sig do
           params(
-            account_id: String,
-            created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
-            program_id: String
-          )
+              account_id: String,
+              created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
+              program_id: String
+            )
             .void
         end
         def initialize(account_id: nil, created_at: nil, program_id: nil)

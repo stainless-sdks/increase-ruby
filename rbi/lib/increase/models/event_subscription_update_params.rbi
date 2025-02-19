@@ -14,15 +14,7 @@ module Increase
       def status=(_)
       end
 
-      sig do
-        params(
-          status: Symbol,
-          request_options: T.any(
-            Increase::RequestOptions,
-            T::Hash[Symbol, T.anything]
-          )
-        ).void
-      end
+      sig { params(status: Symbol, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])).void }
       def initialize(status: nil, request_options: {})
       end
 

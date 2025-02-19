@@ -62,14 +62,14 @@ module Increase
 
       sig do
         params(
-          category: Increase::Models::ExportListParams::Category,
-          created_at: Increase::Models::ExportListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::ExportListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            category: Increase::Models::ExportListParams::Category,
+            created_at: Increase::Models::ExportListParams::CreatedAt,
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            status: Increase::Models::ExportListParams::Status,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(

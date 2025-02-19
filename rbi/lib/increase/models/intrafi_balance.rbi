@@ -56,13 +56,13 @@ module Increase
 
       sig do
         params(
-          id: String,
-          balances: T::Array[Increase::Models::IntrafiBalance::Balance],
-          currency: Symbol,
-          effective_date: Date,
-          total_balance: Integer,
-          type: Symbol
-        )
+            id: String,
+            balances: T::Array[Increase::Models::IntrafiBalance::Balance],
+            currency: Symbol,
+            effective_date: Date,
+            total_balance: Integer,
+            type: Symbol
+          )
           .void
       end
       def initialize(id:, balances:, currency:, effective_date:, total_balance:, type:)
@@ -130,12 +130,12 @@ module Increase
 
         sig do
           params(
-            id: String,
-            balance: Integer,
-            bank: String,
-            bank_location: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation),
-            fdic_certificate_number: String
-          )
+              id: String,
+              balance: Integer,
+              bank: String,
+              bank_location: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation),
+              fdic_certificate_number: String
+            )
             .void
         end
         def initialize(id:, balance:, bank:, bank_location:, fdic_certificate_number:)

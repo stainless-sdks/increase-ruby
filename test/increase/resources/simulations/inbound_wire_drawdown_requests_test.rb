@@ -12,7 +12,7 @@ class Increase::Test::Resources::Simulations::InboundWireDrawdownRequestsTest < 
 
   def test_create_required_params
     response = @increase.simulations.inbound_wire_drawdown_requests.create(
-      amount: 10_000,
+      amount: 10000,
       beneficiary_account_number: "987654321",
       beneficiary_routing_number: "101050001",
       currency: "USD",

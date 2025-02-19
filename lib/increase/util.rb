@@ -115,8 +115,8 @@ module Increase
     #
     def self.suppress(*exceptions, sentinel: nil, &blk)
       blk.call
-    rescue *exceptions
-      sentinel
+      rescue *exceptions
+        sentinel
     end
 
     # Use this to indicate that a value should be explicitly removed from a data

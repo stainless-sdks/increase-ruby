@@ -5,9 +5,9 @@ module Increase
     class Documents
       sig do
         params(
-          document_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            document_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::Document)
       end
       def retrieve(document_id, request_options: {})
@@ -15,13 +15,13 @@ module Increase
 
       sig do
         params(
-          category: Increase::Models::DocumentListParams::Category,
-          created_at: Increase::Models::DocumentListParams::CreatedAt,
-          cursor: String,
-          entity_id: String,
-          limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            category: Increase::Models::DocumentListParams::Category,
+            created_at: Increase::Models::DocumentListParams::CreatedAt,
+            cursor: String,
+            entity_id: String,
+            limit: Integer,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Page[Increase::Models::Document])
       end
       def list(category: nil, created_at: nil, cursor: nil, entity_id: nil, limit: nil, request_options: {})

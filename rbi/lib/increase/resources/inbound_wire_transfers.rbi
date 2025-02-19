@@ -5,9 +5,9 @@ module Increase
     class InboundWireTransfers
       sig do
         params(
-          inbound_wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            inbound_wire_transfer_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::InboundWireTransfer)
       end
       def retrieve(inbound_wire_transfer_id, request_options: {})
@@ -15,14 +15,14 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          account_number_id: String,
-          created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          status: Symbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            account_id: String,
+            account_number_id: String,
+            created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
+            cursor: String,
+            limit: Integer,
+            status: Symbol,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Page[Increase::Models::InboundWireTransfer])
       end
       def list(

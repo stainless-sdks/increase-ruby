@@ -113,19 +113,19 @@ module Increase
 
       sig do
         params(
-          id: String,
-          acceptance: T.nilable(Increase::Models::CardDispute::Acceptance),
-          amount: T.nilable(Integer),
-          created_at: Time,
-          disputed_transaction_id: String,
-          explanation: String,
-          idempotency_key: T.nilable(String),
-          loss: T.nilable(Increase::Models::CardDispute::Loss),
-          rejection: T.nilable(Increase::Models::CardDispute::Rejection),
-          status: Symbol,
-          type: Symbol,
-          win: T.nilable(Increase::Models::CardDispute::Win)
-        )
+            id: String,
+            acceptance: T.nilable(Increase::Models::CardDispute::Acceptance),
+            amount: T.nilable(Integer),
+            created_at: Time,
+            disputed_transaction_id: String,
+            explanation: String,
+            idempotency_key: T.nilable(String),
+            loss: T.nilable(Increase::Models::CardDispute::Loss),
+            rejection: T.nilable(Increase::Models::CardDispute::Rejection),
+            status: Symbol,
+            type: Symbol,
+            win: T.nilable(Increase::Models::CardDispute::Win)
+          )
           .void
       end
       def initialize(
@@ -233,22 +233,11 @@ module Increase
         def transaction_id=(_)
         end
 
-        sig do
-          params(card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String).void
-        end
+        sig { params(card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String).void }
         def initialize(card_dispute_id:, explanation:, lost_at:, transaction_id:)
         end
 
-        sig do
-          override.returns(
-            {
-              card_dispute_id: String,
-              explanation: String,
-              lost_at: Time,
-              transaction_id: String
-            }
-          )
-        end
+        sig { override.returns({card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String}) }
         def to_hash
         end
       end

@@ -24,16 +24,16 @@ module Increase
 
     sig do
       params(
-        spec: T.any(
-          {
-            const: T.nilable(T.any(NilClass, T::Boolean, Integer, Float, Symbol)),
-            enum: T.nilable(T.proc.returns(Increase::Converter::Input)),
-            union: T.nilable(T.proc.returns(Increase::Converter::Input))
-          },
-          T.proc.returns(Increase::Converter::Input),
-          Increase::Converter::Input
+          spec: T.any(
+            {
+              const: T.nilable(T.any(NilClass, T::Boolean, Integer, Float, Symbol)),
+              enum: T.nilable(T.proc.returns(Increase::Converter::Input)),
+              union: T.nilable(T.proc.returns(Increase::Converter::Input))
+            },
+            T.proc.returns(Increase::Converter::Input),
+            Increase::Converter::Input
+          )
         )
-      )
         .returns(T.proc.returns(T.anything).void)
     end
     def self.type_info(spec)
@@ -170,18 +170,14 @@ module Increase
 
     sig do
       params(
-        key: T.any(
-          Symbol,
-          T::Hash[Symbol, T.anything],
-          T.proc.returns(Increase::Converter::Input),
-          Increase::Converter::Input
-        ),
-        spec: T.any(
-          T::Hash[Symbol, T.anything],
-          T.proc.returns(Increase::Converter::Input),
-          Increase::Converter::Input
+          key: T.any(
+            Symbol,
+            T::Hash[Symbol, T.anything],
+            T.proc.returns(Increase::Converter::Input),
+            Increase::Converter::Input
+          ),
+          spec: T.any(T::Hash[Symbol, T.anything], T.proc.returns(Increase::Converter::Input), Increase::Converter::Input)
         )
-      )
         .void
     end
     private_class_method def self.variant(key, spec = nil)
@@ -259,13 +255,9 @@ module Increase
 
     sig do
       params(
-        type_info: T.any(
-          T::Hash[Symbol, T.anything],
-          T.proc.returns(Increase::Converter::Input),
-          Increase::Converter::Input
-        ),
-        spec: T::Hash[Symbol, T.anything]
-      )
+          type_info: T.any(T::Hash[Symbol, T.anything], T.proc.returns(Increase::Converter::Input), Increase::Converter::Input),
+          spec: T::Hash[Symbol, T.anything]
+        )
         .void
     end
     def initialize(type_info, spec = {})
@@ -315,13 +307,9 @@ module Increase
 
     sig do
       params(
-        type_info: T.any(
-          T::Hash[Symbol, T.anything],
-          T.proc.returns(Increase::Converter::Input),
-          Increase::Converter::Input
-        ),
-        spec: T::Hash[Symbol, T.anything]
-      )
+          type_info: T.any(T::Hash[Symbol, T.anything], T.proc.returns(Increase::Converter::Input), Increase::Converter::Input),
+          spec: T::Hash[Symbol, T.anything]
+        )
         .void
     end
     def initialize(type_info, spec = {})
@@ -338,22 +326,13 @@ module Increase
 
     sig do
       returns(
-        T::Hash[Symbol,
-                T.all(
-                  Increase::BaseModel::KnownFieldShape,
-                  {type_fn: T.proc.returns(Increase::Converter::Input)}
-                )]
-      )
+          T::Hash[Symbol, T.all(Increase::BaseModel::KnownFieldShape, {type_fn: T.proc.returns(Increase::Converter::Input)})]
+        )
     end
     def self.known_fields
     end
 
-    sig do
-      returns(
-        T::Hash[Symbol,
-                T.all(Increase::BaseModel::KnownFieldShape, {type: Increase::Converter::Input})]
-      )
-    end
+    sig { returns(T::Hash[Symbol, T.all(Increase::BaseModel::KnownFieldShape, {type: Increase::Converter::Input})]) }
     def self.fields
     end
 
@@ -363,21 +342,21 @@ module Increase
 
     sig do
       params(
-        name_sym: Symbol,
-        required: T::Boolean,
-        type_info: T.any(
-          {
-            const: T.nilable(T.any(NilClass, T::Boolean, Integer, Float, Symbol)),
-            enum: T.nilable(T.proc.returns(Increase::Converter::Input)),
-            union: T.nilable(T.proc.returns(Increase::Converter::Input)),
-            api_name: Symbol,
-            nil?: T::Boolean
-          },
-          T.proc.returns(Increase::Converter::Input),
-          Increase::Converter::Input
-        ),
-        spec: T::Hash[Symbol, T.anything]
-      )
+          name_sym: Symbol,
+          required: T::Boolean,
+          type_info: T.any(
+            {
+              const: T.nilable(T.any(NilClass, T::Boolean, Integer, Float, Symbol)),
+              enum: T.nilable(T.proc.returns(Increase::Converter::Input)),
+              union: T.nilable(T.proc.returns(Increase::Converter::Input)),
+              api_name: Symbol,
+              "nil?": T::Boolean
+            },
+            T.proc.returns(Increase::Converter::Input),
+            Increase::Converter::Input
+          ),
+          spec: T::Hash[Symbol, T.anything]
+        )
         .void
     end
     private_class_method def self.add_field(name_sym, required:, type_info:, spec:)
@@ -385,14 +364,10 @@ module Increase
 
     sig do
       params(
-        name_sym: Symbol,
-        type_info: T.any(
-          T::Hash[Symbol, T.anything],
-          T.proc.returns(Increase::Converter::Input),
-          Increase::Converter::Input
-        ),
-        spec: T::Hash[Symbol, T.anything]
-      )
+          name_sym: Symbol,
+          type_info: T.any(T::Hash[Symbol, T.anything], T.proc.returns(Increase::Converter::Input), Increase::Converter::Input),
+          spec: T::Hash[Symbol, T.anything]
+        )
         .void
     end
     def self.required(name_sym, type_info, spec = {})
@@ -400,14 +375,10 @@ module Increase
 
     sig do
       params(
-        name_sym: Symbol,
-        type_info: T.any(
-          T::Hash[Symbol, T.anything],
-          T.proc.returns(Increase::Converter::Input),
-          Increase::Converter::Input
-        ),
-        spec: T::Hash[Symbol, T.anything]
-      )
+          name_sym: Symbol,
+          type_info: T.any(T::Hash[Symbol, T.anything], T.proc.returns(Increase::Converter::Input), Increase::Converter::Input),
+          spec: T::Hash[Symbol, T.anything]
+        )
         .void
     end
     def self.optional(name_sym, type_info, spec = {})

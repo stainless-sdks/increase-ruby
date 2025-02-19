@@ -1,25 +1,24 @@
 module Increase
   module Models
-    type real_time_payments_request_for_payment =
-      {
-        id: String,
-        amount: Integer,
-        created_at: Time,
-        currency: Increase::Models::RealTimePaymentsRequestForPayment::currency,
-        debtor_name: String,
-        destination_account_number_id: String,
-        expires_at: Date,
-        fulfillment_transaction_id: String?,
-        idempotency_key: String?,
-        refusal: Increase::Models::RealTimePaymentsRequestForPayment::Refusal?,
-        rejection: Increase::Models::RealTimePaymentsRequestForPayment::Rejection?,
-        remittance_information: String,
-        source_account_number: String,
-        source_routing_number: String,
-        status: Increase::Models::RealTimePaymentsRequestForPayment::status,
-        submission: Increase::Models::RealTimePaymentsRequestForPayment::Submission?,
-        type: Increase::Models::RealTimePaymentsRequestForPayment::type_
-      }
+    type real_time_payments_request_for_payment = {
+      id: String,
+      amount: Integer,
+      created_at: Time,
+      currency: Increase::Models::RealTimePaymentsRequestForPayment::currency,
+      debtor_name: String,
+      destination_account_number_id: String,
+      expires_at: Date,
+      fulfillment_transaction_id: String?,
+      idempotency_key: String?,
+      refusal: Increase::Models::RealTimePaymentsRequestForPayment::Refusal?,
+      rejection: Increase::Models::RealTimePaymentsRequestForPayment::Rejection?,
+      remittance_information: String,
+      source_account_number: String,
+      source_routing_number: String,
+      status: Increase::Models::RealTimePaymentsRequestForPayment::status,
+      submission: Increase::Models::RealTimePaymentsRequestForPayment::Submission?,
+      type: Increase::Models::RealTimePaymentsRequestForPayment::type_
+    }
 
     class RealTimePaymentsRequestForPayment < Increase::BaseModel
       attr_accessor id: String
@@ -56,34 +55,12 @@ module Increase
 
       attr_accessor type: Increase::Models::RealTimePaymentsRequestForPayment::type_
 
-      def initialize:
-        (
-          id: String,
-          amount: Integer,
-          created_at: Time,
-          currency: Increase::Models::RealTimePaymentsRequestForPayment::currency,
-          debtor_name: String,
-          destination_account_number_id: String,
-          expires_at: Date,
-          fulfillment_transaction_id: String?,
-          idempotency_key: String?,
-          refusal: Increase::Models::RealTimePaymentsRequestForPayment::Refusal?,
-          rejection: Increase::Models::RealTimePaymentsRequestForPayment::Rejection?,
-          remittance_information: String,
-          source_account_number: String,
-          source_routing_number: String,
-          status: Increase::Models::RealTimePaymentsRequestForPayment::status,
-          submission: Increase::Models::RealTimePaymentsRequestForPayment::Submission?,
-          type: Increase::Models::RealTimePaymentsRequestForPayment::type_
-        ) -> void
-        | (
-          ?Increase::Models::real_time_payments_request_for_payment
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, amount: Integer, created_at: Time, currency: Increase::Models::RealTimePaymentsRequestForPayment::currency, debtor_name: String, destination_account_number_id: String, expires_at: Date, fulfillment_transaction_id: String?, idempotency_key: String?, refusal: Increase::Models::RealTimePaymentsRequestForPayment::Refusal?, rejection: Increase::Models::RealTimePaymentsRequestForPayment::Rejection?, remittance_information: String, source_account_number: String, source_routing_number: String, status: Increase::Models::RealTimePaymentsRequestForPayment::status, submission: Increase::Models::RealTimePaymentsRequestForPayment::Submission?, type: Increase::Models::RealTimePaymentsRequestForPayment::type_) -> void
+                    | (?(Increase::Models::real_time_payments_request_for_payment | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::real_time_payments_request_for_payment
+      def to_hash: () -> Increase::Models::real_time_payments_request_for_payment
 
-      type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+      type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
@@ -104,42 +81,20 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::currency]
+        def self.values: () -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::currency]
       end
 
-      type refusal =
-        {
-          refusal_reason_code: Increase::Models::RealTimePaymentsRequestForPayment::Refusal::refusal_reason_code
-        }
+      type refusal = {refusal_reason_code: Increase::Models::RealTimePaymentsRequestForPayment::Refusal::refusal_reason_code}
 
       class Refusal < Increase::BaseModel
         attr_accessor refusal_reason_code: Increase::Models::RealTimePaymentsRequestForPayment::Refusal::refusal_reason_code
 
-        def initialize:
-          (
-            refusal_reason_code: Increase::Models::RealTimePaymentsRequestForPayment::Refusal::refusal_reason_code
-          ) -> void
-          | (
-            ?Increase::Models::RealTimePaymentsRequestForPayment::refusal
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (refusal_reason_code: Increase::Models::RealTimePaymentsRequestForPayment::Refusal::refusal_reason_code) -> void
+                      | (?(Increase::Models::RealTimePaymentsRequestForPayment::refusal | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::RealTimePaymentsRequestForPayment::refusal
+        def to_hash: () -> Increase::Models::RealTimePaymentsRequestForPayment::refusal
 
-        type refusal_reason_code =
-          :account_blocked
-          | :transaction_forbidden
-          | :transaction_type_not_supported
-          | :unexpected_amount
-          | :amount_exceeds_bank_limits
-          | :invalid_debtor_address
-          | :invalid_creditor_address
-          | :creditor_identifier_incorrect
-          | :requested_by_customer
-          | :order_rejected
-          | :end_customer_deceased
-          | :customer_has_opted_out
-          | :other
+        type refusal_reason_code = (:account_blocked | :transaction_forbidden | :transaction_type_not_supported | :unexpected_amount | :amount_exceeds_bank_limits | :invalid_debtor_address | :invalid_creditor_address | :creditor_identifier_incorrect | :requested_by_customer | :order_rejected | :end_customer_deceased | :customer_has_opted_out | :other)
 
         class RefusalReasonCode < Increase::Enum
           # The destination account is currently blocked from receiving transactions. Corresponds to the Real-Time Payments reason code `AC06`.
@@ -181,51 +136,21 @@ module Increase
           # Some other error or issue has occurred.
           OTHER: :other
 
-          def self.values: -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::Refusal::refusal_reason_code]
+          def self.values: () -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::Refusal::refusal_reason_code]
         end
       end
 
-      type rejection =
-        {
-          reject_reason_code: Increase::Models::RealTimePaymentsRequestForPayment::Rejection::reject_reason_code
-        }
+      type rejection = {reject_reason_code: Increase::Models::RealTimePaymentsRequestForPayment::Rejection::reject_reason_code}
 
       class Rejection < Increase::BaseModel
         attr_accessor reject_reason_code: Increase::Models::RealTimePaymentsRequestForPayment::Rejection::reject_reason_code
 
-        def initialize:
-          (
-            reject_reason_code: Increase::Models::RealTimePaymentsRequestForPayment::Rejection::reject_reason_code
-          ) -> void
-          | (
-            ?Increase::Models::RealTimePaymentsRequestForPayment::rejection
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (reject_reason_code: Increase::Models::RealTimePaymentsRequestForPayment::Rejection::reject_reason_code) -> void
+                      | (?(Increase::Models::RealTimePaymentsRequestForPayment::rejection | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::RealTimePaymentsRequestForPayment::rejection
+        def to_hash: () -> Increase::Models::RealTimePaymentsRequestForPayment::rejection
 
-        type reject_reason_code =
-          :account_closed
-          | :account_blocked
-          | :invalid_creditor_account_type
-          | :invalid_creditor_account_number
-          | :invalid_creditor_financial_institution_identifier
-          | :end_customer_deceased
-          | :narrative
-          | :transaction_forbidden
-          | :transaction_type_not_supported
-          | :unexpected_amount
-          | :amount_exceeds_bank_limits
-          | :invalid_creditor_address
-          | :unknown_end_customer
-          | :invalid_debtor_address
-          | :timeout
-          | :unsupported_message_for_recipient
-          | :recipient_connection_not_available
-          | :real_time_payments_suspended
-          | :instructed_agent_signed_off
-          | :processing_error
-          | :other
+        type reject_reason_code = (:account_closed | :account_blocked | :invalid_creditor_account_type | :invalid_creditor_account_number | :invalid_creditor_financial_institution_identifier | :end_customer_deceased | :narrative | :transaction_forbidden | :transaction_type_not_supported | :unexpected_amount | :amount_exceeds_bank_limits | :invalid_creditor_address | :unknown_end_customer | :invalid_debtor_address | :timeout | :unsupported_message_for_recipient | :recipient_connection_not_available | :real_time_payments_suspended | :instructed_agent_signed_off | :processing_error | :other)
 
         class RejectReasonCode < Increase::Enum
           # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
@@ -291,17 +216,11 @@ module Increase
           # Some other error or issue has occurred.
           OTHER: :other
 
-          def self.values: -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::Rejection::reject_reason_code]
+          def self.values: () -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::Rejection::reject_reason_code]
         end
       end
 
-      type status =
-        :pending_submission
-        | :pending_response
-        | :rejected
-        | :accepted
-        | :refused
-        | :fulfilled
+      type status = (:pending_submission | :pending_response | :rejected | :accepted | :refused | :fulfilled)
 
       class Status < Increase::Enum
         # The request for payment is queued to be submitted to Real-Time Payments.
@@ -322,22 +241,18 @@ module Increase
         # The request for payment was fulfilled by the receiver.
         FULFILLED: :fulfilled
 
-        def self.values: -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::status]
+        def self.values: () -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::status]
       end
 
-      type submission = { payment_information_identification: String }
+      type submission = {payment_information_identification: String}
 
       class Submission < Increase::BaseModel
         attr_accessor payment_information_identification: String
 
-        def initialize:
-          (payment_information_identification: String) -> void
-          | (
-            ?Increase::Models::RealTimePaymentsRequestForPayment::submission
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (payment_information_identification: String) -> void
+                      | (?(Increase::Models::RealTimePaymentsRequestForPayment::submission | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::RealTimePaymentsRequestForPayment::submission
+        def to_hash: () -> Increase::Models::RealTimePaymentsRequestForPayment::submission
       end
 
       type type_ = :real_time_payments_request_for_payment
@@ -345,7 +260,7 @@ module Increase
       class Type < Increase::Enum
         REAL_TIME_PAYMENTS_REQUEST_FOR_PAYMENT: :real_time_payments_request_for_payment
 
-        def self.values: -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::type_]
+        def self.values: () -> ::Array[Increase::Models::RealTimePaymentsRequestForPayment::type_]
       end
     end
   end

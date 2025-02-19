@@ -13,55 +13,21 @@ module Increase
 
     attr_reader body: top?
 
-    def initialize: (
-      url: URI::Generic,
-      status: Integer?,
-      body: Object?,
-      request: nil,
-      response: nil,
-      message: String?
-    ) -> void
+    def initialize: (url: URI::Generic, status: Integer?, body: Object?, request: nil, response: nil, message: String?) -> void
   end
 
   class APIConnectionError < Increase::APIError
-    def initialize: (
-      url: URI::Generic,
-      status: nil,
-      body: nil,
-      request: nil,
-      response: nil,
-      message: String?
-    ) -> void
+    def initialize: (url: URI::Generic, status: nil, body: nil, request: nil, response: nil, message: String?) -> void
   end
 
   class APITimeoutError < Increase::APIConnectionError
-    def initialize: (
-      url: URI::Generic,
-      status: nil,
-      body: nil,
-      request: nil,
-      response: nil,
-      message: String?
-    ) -> void
+    def initialize: (url: URI::Generic, status: nil, body: nil, request: nil, response: nil, message: String?) -> void
   end
 
   class APIStatusError < Increase::APIError
-    def self.for: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil
-    ) -> instance
+    def self.for: (url: URI::Generic, status: Integer, body: Object?, request: nil, response: nil) -> instance
 
-    def initialize: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      message: String?
-    ) -> void
+    def initialize: (url: URI::Generic, status: Integer, body: Object?, request: nil, response: nil, message: String?) -> void
   end
 
   class BadRequestError < Increase::APIStatusError

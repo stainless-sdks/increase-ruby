@@ -1,17 +1,16 @@
 module Increase
   module Models
-    type program =
-      {
-        id: String,
-        bank: Increase::Models::Program::bank,
-        billing_account_id: String?,
-        created_at: Time,
-        default_digital_card_profile_id: String?,
-        interest_rate: String,
-        name: String,
-        type: Increase::Models::Program::type_,
-        updated_at: Time
-      }
+    type program = {
+      id: String,
+      bank: Increase::Models::Program::bank,
+      billing_account_id: String?,
+      created_at: Time,
+      default_digital_card_profile_id: String?,
+      interest_rate: String,
+      name: String,
+      type: Increase::Models::Program::type_,
+      updated_at: Time
+    }
 
     class Program < Increase::BaseModel
       attr_accessor id: String
@@ -32,23 +31,12 @@ module Increase
 
       attr_accessor updated_at: Time
 
-      def initialize:
-        (
-          id: String,
-          bank: Increase::Models::Program::bank,
-          billing_account_id: String?,
-          created_at: Time,
-          default_digital_card_profile_id: String?,
-          interest_rate: String,
-          name: String,
-          type: Increase::Models::Program::type_,
-          updated_at: Time
-        ) -> void
-        | (?Increase::Models::program | Increase::BaseModel data) -> void
+      def initialize: (id: String, bank: Increase::Models::Program::bank, billing_account_id: String?, created_at: Time, default_digital_card_profile_id: String?, interest_rate: String, name: String, type: Increase::Models::Program::type_, updated_at: Time) -> void
+                    | (?(Increase::Models::program | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::program
+      def to_hash: () -> Increase::Models::program
 
-      type bank = :core_bank | :first_internet_bank | :grasshopper_bank
+      type bank = (:core_bank | :first_internet_bank | :grasshopper_bank)
 
       class Bank < Increase::Enum
         # Core Bank
@@ -60,7 +48,7 @@ module Increase
         # Grasshopper Bank
         GRASSHOPPER_BANK: :grasshopper_bank
 
-        def self.values: -> ::Array[Increase::Models::Program::bank]
+        def self.values: () -> ::Array[Increase::Models::Program::bank]
       end
 
       type type_ = :program
@@ -68,7 +56,7 @@ module Increase
       class Type < Increase::Enum
         PROGRAM: :program
 
-        def self.values: -> ::Array[Increase::Models::Program::type_]
+        def self.values: () -> ::Array[Increase::Models::Program::type_]
       end
     end
   end

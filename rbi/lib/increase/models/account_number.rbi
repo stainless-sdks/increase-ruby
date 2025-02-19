@@ -98,18 +98,18 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          account_number: String,
-          created_at: Time,
-          idempotency_key: T.nilable(String),
-          inbound_ach: Increase::Models::AccountNumber::InboundACH,
-          inbound_checks: Increase::Models::AccountNumber::InboundChecks,
-          name: String,
-          routing_number: String,
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            account_number: String,
+            created_at: Time,
+            idempotency_key: T.nilable(String),
+            inbound_ach: Increase::Models::AccountNumber::InboundACH,
+            inbound_checks: Increase::Models::AccountNumber::InboundChecks,
+            name: String,
+            routing_number: String,
+            status: Symbol,
+            type: Symbol
+          )
           .void
       end
       def initialize(

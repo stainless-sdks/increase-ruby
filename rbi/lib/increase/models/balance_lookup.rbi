@@ -35,22 +35,11 @@ module Increase
       def type=(_)
       end
 
-      sig do
-        params(account_id: String, available_balance: Integer, current_balance: Integer, type: Symbol).void
-      end
+      sig { params(account_id: String, available_balance: Integer, current_balance: Integer, type: Symbol).void }
       def initialize(account_id:, available_balance:, current_balance:, type:)
       end
 
-      sig do
-        override.returns(
-          {
-            account_id: String,
-            available_balance: Integer,
-            current_balance: Integer,
-            type: Symbol
-          }
-        )
-      end
+      sig { override.returns({account_id: String, available_balance: Integer, current_balance: Integer, type: Symbol}) }
       def to_hash
       end
 

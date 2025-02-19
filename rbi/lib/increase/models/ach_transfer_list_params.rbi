@@ -59,14 +59,14 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          created_at: Increase::Models::ACHTransferListParams::CreatedAt,
-          cursor: String,
-          external_account_id: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_id: String,
+            created_at: Increase::Models::ACHTransferListParams::CreatedAt,
+            cursor: String,
+            external_account_id: String,
+            idempotency_key: String,
+            limit: Integer,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(

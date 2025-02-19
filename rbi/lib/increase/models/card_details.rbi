@@ -53,23 +53,16 @@ module Increase
 
       sig do
         params(
-          card_id: String,
-          expiration_month: Integer,
-          expiration_year: Integer,
-          primary_account_number: String,
-          type: Symbol,
-          verification_code: String
-        )
+            card_id: String,
+            expiration_month: Integer,
+            expiration_year: Integer,
+            primary_account_number: String,
+            type: Symbol,
+            verification_code: String
+          )
           .void
       end
-      def initialize(
-        card_id:,
-        expiration_month:,
-        expiration_year:,
-        primary_account_number:,
-        type:,
-        verification_code:
-      )
+      def initialize(card_id:, expiration_month:, expiration_year:, primary_account_number:, type:, verification_code:)
       end
 
       sig do

@@ -6,9 +6,9 @@ module Increase
       class WireTransfers
         sig do
           params(
-            wire_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              wire_transfer_id: String,
+              request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Increase::Models::WireTransfer)
         end
         def reverse(wire_transfer_id, request_options: {})
@@ -16,9 +16,9 @@ module Increase
 
         sig do
           params(
-            wire_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              wire_transfer_id: String,
+              request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Increase::Models::WireTransfer)
         end
         def submit(wire_transfer_id, request_options: {})

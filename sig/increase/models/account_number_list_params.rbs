@@ -1,16 +1,14 @@
 module Increase
   module Models
-    type account_number_list_params =
-      {
-        account_id: String,
-        ach_debit_status: Increase::Models::AccountNumberListParams::ach_debit_status,
-        created_at: Increase::Models::AccountNumberListParams::CreatedAt,
-        cursor: String,
-        idempotency_key: String,
-        limit: Integer,
-        status: Increase::Models::AccountNumberListParams::status
-      }
-      & Increase::request_parameters
+    type account_number_list_params = ({
+      account_id: String,
+      ach_debit_status: Increase::Models::AccountNumberListParams::ach_debit_status,
+      created_at: Increase::Models::AccountNumberListParams::CreatedAt,
+      cursor: String,
+      idempotency_key: String,
+      limit: Integer,
+      status: Increase::Models::AccountNumberListParams::status
+    } & Increase::request_parameters)
 
     class AccountNumberListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -22,15 +20,11 @@ module Increase
 
       attr_reader ach_debit_status: Increase::Models::AccountNumberListParams::ach_debit_status?
 
-      def ach_debit_status=: (
-        Increase::Models::AccountNumberListParams::ach_debit_status
-      ) -> Increase::Models::AccountNumberListParams::ach_debit_status
+      def ach_debit_status=: (Increase::Models::AccountNumberListParams::ach_debit_status) -> Increase::Models::AccountNumberListParams::ach_debit_status
 
       attr_reader created_at: Increase::Models::AccountNumberListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::Models::AccountNumberListParams::CreatedAt
-      ) -> Increase::Models::AccountNumberListParams::CreatedAt
+      def created_at=: (Increase::Models::AccountNumberListParams::CreatedAt) -> Increase::Models::AccountNumberListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -46,29 +40,14 @@ module Increase
 
       attr_reader status: Increase::Models::AccountNumberListParams::status?
 
-      def status=: (
-        Increase::Models::AccountNumberListParams::status
-      ) -> Increase::Models::AccountNumberListParams::status
+      def status=: (Increase::Models::AccountNumberListParams::status) -> Increase::Models::AccountNumberListParams::status
 
-      def initialize:
-        (
-          account_id: String,
-          ach_debit_status: Increase::Models::AccountNumberListParams::ach_debit_status,
-          created_at: Increase::Models::AccountNumberListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::AccountNumberListParams::status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::account_number_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (account_id: String, ach_debit_status: Increase::Models::AccountNumberListParams::ach_debit_status, created_at: Increase::Models::AccountNumberListParams::CreatedAt, cursor: String, idempotency_key: String, limit: Integer, status: Increase::Models::AccountNumberListParams::status, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::account_number_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::account_number_list_params
+      def to_hash: () -> Increase::Models::account_number_list_params
 
-      type ach_debit_status = :allowed | :blocked
+      type ach_debit_status = (:allowed | :blocked)
 
       class ACHDebitStatus < Increase::Enum
         # ACH Debits are allowed.
@@ -77,11 +56,10 @@ module Increase
         # ACH Debits are blocked.
         BLOCKED: :blocked
 
-        def self.values: -> ::Array[Increase::Models::AccountNumberListParams::ach_debit_status]
+        def self.values: () -> ::Array[Increase::Models::AccountNumberListParams::ach_debit_status]
       end
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
       class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
@@ -100,22 +78,13 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::AccountNumberListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (after: Time, before: Time, on_or_after: Time, on_or_before: Time) -> void
+                      | (?(Increase::Models::AccountNumberListParams::created_at | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::AccountNumberListParams::created_at
+        def to_hash: () -> Increase::Models::AccountNumberListParams::created_at
       end
 
-      type status = :active | :disabled | :canceled
+      type status = (:active | :disabled | :canceled)
 
       class Status < Increase::Enum
         # The account number is active.
@@ -127,7 +96,7 @@ module Increase
         # The account number is permanently disabled.
         CANCELED: :canceled
 
-        def self.values: -> ::Array[Increase::Models::AccountNumberListParams::status]
+        def self.values: () -> ::Array[Increase::Models::AccountNumberListParams::status]
       end
     end
   end

@@ -127,13 +127,13 @@ module Increase
       path = Increase::Util.interpolate_path(uninterpolated_path)
 
       query = Increase::Util.deep_merge(
+
         req[:query].to_h,
         opts[:extra_query].to_h
       )
 
       headers = Increase::Util.normalized_headers(
-        @headers,
-        auth_headers,
+        @headers,auth_headers,
         req[:headers].to_h,
         opts[:extra_headers].to_h
       )

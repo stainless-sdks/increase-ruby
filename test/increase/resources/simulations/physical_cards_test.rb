@@ -11,10 +11,7 @@ class Increase::Test::Resources::Simulations::PhysicalCardsTest < Minitest::Test
   end
 
   def test_advance_shipment_required_params
-    response = @increase.simulations.physical_cards.advance_shipment(
-      "physical_card_id",
-      shipment_status: :pending
-    )
+    response = @increase.simulations.physical_cards.advance_shipment("physical_card_id", shipment_status: :pending)
 
     assert_pattern do
       response => Increase::Models::PhysicalCard

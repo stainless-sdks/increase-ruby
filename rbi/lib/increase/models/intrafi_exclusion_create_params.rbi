@@ -24,18 +24,16 @@ module Increase
 
       sig do
         params(
-          bank_name: String,
-          entity_id: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            bank_name: String,
+            entity_id: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(bank_name:, entity_id:, request_options: {})
       end
 
-      sig do
-        override.returns({bank_name: String, entity_id: String, request_options: Increase::RequestOptions})
-      end
+      sig { override.returns({bank_name: String, entity_id: String, request_options: Increase::RequestOptions}) }
       def to_hash
       end
     end

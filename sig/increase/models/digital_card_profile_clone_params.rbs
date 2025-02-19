@@ -1,18 +1,16 @@
 module Increase
   module Models
-    type digital_card_profile_clone_params =
-      {
-        app_icon_file_id: String,
-        background_image_file_id: String,
-        card_description: String,
-        contact_email: String,
-        contact_phone: String,
-        contact_website: String,
-        description: String,
-        issuer_name: String,
-        text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor
-      }
-      & Increase::request_parameters
+    type digital_card_profile_clone_params = ({
+      app_icon_file_id: String,
+      background_image_file_id: String,
+      card_description: String,
+      contact_email: String,
+      contact_phone: String,
+      contact_website: String,
+      description: String,
+      issuer_name: String,
+      text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor
+    } & Increase::request_parameters)
 
     class DigitalCardProfileCloneParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -52,31 +50,14 @@ module Increase
 
       attr_reader text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor?
 
-      def text_color=: (
-        Increase::Models::DigitalCardProfileCloneParams::TextColor
-      ) -> Increase::Models::DigitalCardProfileCloneParams::TextColor
+      def text_color=: (Increase::Models::DigitalCardProfileCloneParams::TextColor) -> Increase::Models::DigitalCardProfileCloneParams::TextColor
 
-      def initialize:
-        (
-          app_icon_file_id: String,
-          background_image_file_id: String,
-          card_description: String,
-          contact_email: String,
-          contact_phone: String,
-          contact_website: String,
-          description: String,
-          issuer_name: String,
-          text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::digital_card_profile_clone_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (app_icon_file_id: String, background_image_file_id: String, card_description: String, contact_email: String, contact_phone: String, contact_website: String, description: String, issuer_name: String, text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::digital_card_profile_clone_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::digital_card_profile_clone_params
+      def to_hash: () -> Increase::Models::digital_card_profile_clone_params
 
-      type text_color = { blue: Integer, green: Integer, red: Integer }
+      type text_color = {blue: Integer, green: Integer, red: Integer}
 
       class TextColor < Increase::BaseModel
         attr_accessor blue: Integer
@@ -85,14 +66,10 @@ module Increase
 
         attr_accessor red: Integer
 
-        def initialize:
-          (blue: Integer, green: Integer, red: Integer) -> void
-          | (
-            ?Increase::Models::DigitalCardProfileCloneParams::text_color
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (blue: Integer, green: Integer, red: Integer) -> void
+                      | (?(Increase::Models::DigitalCardProfileCloneParams::text_color | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::DigitalCardProfileCloneParams::text_color
+        def to_hash: () -> Increase::Models::DigitalCardProfileCloneParams::text_color
       end
     end
   end

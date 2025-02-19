@@ -101,19 +101,19 @@ module Increase
 
       sig do
         params(
-          id: String,
-          back_image_file_id: T.nilable(String),
-          carrier_image_file_id: T.nilable(String),
-          contact_phone: T.nilable(String),
-          created_at: Time,
-          creator: Symbol,
-          description: String,
-          front_image_file_id: T.nilable(String),
-          idempotency_key: T.nilable(String),
-          is_default: T::Boolean,
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            back_image_file_id: T.nilable(String),
+            carrier_image_file_id: T.nilable(String),
+            contact_phone: T.nilable(String),
+            created_at: Time,
+            creator: Symbol,
+            description: String,
+            front_image_file_id: T.nilable(String),
+            idempotency_key: T.nilable(String),
+            is_default: T::Boolean,
+            status: Symbol,
+            type: Symbol
+          )
           .void
       end
       def initialize(

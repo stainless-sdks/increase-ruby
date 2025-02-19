@@ -61,14 +61,14 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          created_at: Time,
-          idempotency_key: T.nilable(String),
-          intrafi_id: String,
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            created_at: Time,
+            idempotency_key: T.nilable(String),
+            intrafi_id: String,
+            status: Symbol,
+            type: Symbol
+          )
           .void
       end
       def initialize(id:, account_id:, created_at:, idempotency_key:, intrafi_id:, status:, type:)

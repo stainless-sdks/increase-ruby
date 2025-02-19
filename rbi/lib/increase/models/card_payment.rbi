@@ -80,16 +80,16 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          card_id: String,
-          created_at: Time,
-          digital_wallet_token_id: T.nilable(String),
-          elements: T::Array[Increase::Models::CardPayment::Element],
-          physical_card_id: T.nilable(String),
-          state: Increase::Models::CardPayment::State,
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            card_id: String,
+            created_at: Time,
+            digital_wallet_token_id: T.nilable(String),
+            elements: T::Array[Increase::Models::CardPayment::Element],
+            physical_card_id: T.nilable(String),
+            state: Increase::Models::CardPayment::State,
+            type: Symbol
+          )
           .void
       end
       def initialize(
@@ -261,20 +261,20 @@ module Increase
 
         sig do
           params(
-            card_authentication: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication),
-            card_authorization: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization),
-            card_authorization_expiration: T.nilable(Increase::Models::CardPayment::Element::CardAuthorizationExpiration),
-            card_decline: T.nilable(Increase::Models::CardPayment::Element::CardDecline),
-            card_fuel_confirmation: T.nilable(Increase::Models::CardPayment::Element::CardFuelConfirmation),
-            card_increment: T.nilable(Increase::Models::CardPayment::Element::CardIncrement),
-            card_refund: T.nilable(Increase::Models::CardPayment::Element::CardRefund),
-            card_reversal: T.nilable(Increase::Models::CardPayment::Element::CardReversal),
-            card_settlement: T.nilable(Increase::Models::CardPayment::Element::CardSettlement),
-            card_validation: T.nilable(Increase::Models::CardPayment::Element::CardValidation),
-            category: Symbol,
-            created_at: Time,
-            other: T.nilable(T.anything)
-          )
+              card_authentication: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication),
+              card_authorization: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization),
+              card_authorization_expiration: T.nilable(Increase::Models::CardPayment::Element::CardAuthorizationExpiration),
+              card_decline: T.nilable(Increase::Models::CardPayment::Element::CardDecline),
+              card_fuel_confirmation: T.nilable(Increase::Models::CardPayment::Element::CardFuelConfirmation),
+              card_increment: T.nilable(Increase::Models::CardPayment::Element::CardIncrement),
+              card_refund: T.nilable(Increase::Models::CardPayment::Element::CardRefund),
+              card_reversal: T.nilable(Increase::Models::CardPayment::Element::CardReversal),
+              card_settlement: T.nilable(Increase::Models::CardPayment::Element::CardSettlement),
+              card_validation: T.nilable(Increase::Models::CardPayment::Element::CardValidation),
+              category: Symbol,
+              created_at: Time,
+              other: T.nilable(T.anything)
+            )
             .void
         end
         def initialize(
@@ -459,24 +459,24 @@ module Increase
 
           sig do
             params(
-              id: String,
-              card_id: String,
-              card_payment_id: String,
-              category: T.nilable(Symbol),
-              challenge: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Challenge),
-              created_at: Time,
-              deny_reason: T.nilable(Symbol),
-              device_channel: T.nilable(Symbol),
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_country: String,
-              merchant_name: String,
-              purchase_amount: T.nilable(Integer),
-              purchase_currency: T.nilable(String),
-              real_time_decision_id: T.nilable(String),
-              status: Symbol,
-              type: Symbol
-            )
+                id: String,
+                card_id: String,
+                card_payment_id: String,
+                category: T.nilable(Symbol),
+                challenge: T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Challenge),
+                created_at: Time,
+                deny_reason: T.nilable(Symbol),
+                device_channel: T.nilable(Symbol),
+                merchant_acceptor_id: String,
+                merchant_category_code: String,
+                merchant_country: String,
+                merchant_name: String,
+                purchase_amount: T.nilable(Integer),
+                purchase_currency: T.nilable(String),
+                real_time_decision_id: T.nilable(String),
+                status: Symbol,
+                type: Symbol
+              )
               .void
           end
           def initialize(
@@ -587,12 +587,12 @@ module Increase
 
             sig do
               params(
-                attempts: T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt],
-                created_at: Time,
-                one_time_code: String,
-                verification_method: Symbol,
-                verification_value: T.nilable(String)
-              )
+                  attempts: T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt],
+                  created_at: Time,
+                  one_time_code: String,
+                  verification_method: Symbol,
+                  verification_value: T.nilable(String)
+                )
                 .void
             end
             def initialize(attempts:, created_at:, one_time_code:, verification_method:, verification_value:)
@@ -988,34 +988,34 @@ module Increase
 
           sig do
             params(
-              id: String,
-              actioner: Symbol,
-              amount: Integer,
-              card_payment_id: String,
-              currency: Symbol,
-              digital_wallet_token_id: T.nilable(String),
-              direction: Symbol,
-              expires_at: Time,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: T.nilable(String),
-              merchant_country: String,
-              merchant_descriptor: String,
-              merchant_postal_code: T.nilable(String),
-              merchant_state: T.nilable(String),
-              network_details: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails,
-              network_identifiers: Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
-              network_risk_score: T.nilable(Integer),
-              pending_transaction_id: T.nilable(String),
-              physical_card_id: T.nilable(String),
-              presentment_amount: Integer,
-              presentment_currency: String,
-              processing_category: Symbol,
-              real_time_decision_id: T.nilable(String),
-              terminal_id: T.nilable(String),
-              type: Symbol,
-              verification: Increase::Models::CardPayment::Element::CardAuthorization::Verification
-            )
+                id: String,
+                actioner: Symbol,
+                amount: Integer,
+                card_payment_id: String,
+                currency: Symbol,
+                digital_wallet_token_id: T.nilable(String),
+                direction: Symbol,
+                expires_at: Time,
+                merchant_acceptor_id: String,
+                merchant_category_code: String,
+                merchant_city: T.nilable(String),
+                merchant_country: String,
+                merchant_descriptor: String,
+                merchant_postal_code: T.nilable(String),
+                merchant_state: T.nilable(String),
+                network_details: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails,
+                network_identifiers: Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers,
+                network_risk_score: T.nilable(Integer),
+                pending_transaction_id: T.nilable(String),
+                physical_card_id: T.nilable(String),
+                presentment_amount: Integer,
+                presentment_currency: String,
+                processing_category: Symbol,
+                real_time_decision_id: T.nilable(String),
+                terminal_id: T.nilable(String),
+                type: Symbol,
+                verification: Increase::Models::CardPayment::Element::CardAuthorization::Verification
+              )
               .void
           end
           def initialize(
@@ -1165,9 +1165,9 @@ module Increase
 
             sig do
               params(
-                category: Symbol,
-                visa: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa)
-              )
+                  category: Symbol,
+                  visa: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa)
+                )
                 .void
             end
             def initialize(category:, visa:)
@@ -1223,17 +1223,13 @@ module Increase
 
               sig do
                 params(
-                  electronic_commerce_indicator: T.nilable(Symbol),
-                  point_of_service_entry_mode: T.nilable(Symbol),
-                  stand_in_processing_reason: T.nilable(Symbol)
-                )
+                    electronic_commerce_indicator: T.nilable(Symbol),
+                    point_of_service_entry_mode: T.nilable(Symbol),
+                    stand_in_processing_reason: T.nilable(Symbol)
+                  )
                   .void
               end
-              def initialize(
-                electronic_commerce_indicator:,
-                point_of_service_entry_mode:,
-                stand_in_processing_reason:
-              )
+              def initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
               end
 
               sig do
@@ -1268,15 +1264,10 @@ module Increase
                 SECURE_ELECTRONIC_COMMERCE = T.let(:secure_electronic_commerce, T.nilable(Symbol))
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = T.let(
-                  :non_authenticated_security_transaction_at_3ds_capable_merchant, T.nilable(Symbol)
-                )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = T.let(:non_authenticated_security_transaction_at_3ds_capable_merchant, T.nilable(Symbol))
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION = T.let(
-                  :non_authenticated_security_transaction,
-                  T.nilable(Symbol)
-                )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = T.let(:non_authenticated_security_transaction, T.nilable(Symbol))
 
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
@@ -1334,23 +1325,16 @@ module Increase
                 INVALID_PHYSICAL_CARD = T.let(:invalid_physical_card, T.nilable(Symbol))
 
                 # The 3DS cardholder authentication verification value was invalid.
-                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = T.let(
-                  :invalid_cardholder_authentication_verification_value, T.nilable(Symbol)
-                )
+                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = T.let(:invalid_cardholder_authentication_verification_value, T.nilable(Symbol))
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
                 INTERNAL_VISA_ERROR = T.let(:internal_visa_error, T.nilable(Symbol))
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = T.let(
-                  :merchant_transaction_advisory_service_authentication_required, T.nilable(Symbol)
-                )
+                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = T.let(:merchant_transaction_advisory_service_authentication_required, T.nilable(Symbol))
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
-                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = T.let(
-                  :payment_fraud_disruption_acquirer_block,
-                  T.nilable(Symbol)
-                )
+                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = T.let(:payment_fraud_disruption_acquirer_block, T.nilable(Symbol))
 
                 # An unspecific reason for stand-in processing.
                 OTHER = T.let(:other, T.nilable(Symbol))
@@ -1389,10 +1373,10 @@ module Increase
 
             sig do
               params(
-                retrieval_reference_number: T.nilable(String),
-                trace_number: T.nilable(String),
-                transaction_id: T.nilable(String)
-              )
+                  retrieval_reference_number: T.nilable(String),
+                  trace_number: T.nilable(String),
+                  transaction_id: T.nilable(String)
+                )
                 .void
             end
             def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
@@ -1473,9 +1457,9 @@ module Increase
 
             sig do
               params(
-                card_verification_code: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
-                cardholder_address: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
-              )
+                  card_verification_code: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
+                  cardholder_address: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
+                )
                 .void
             end
             def initialize(card_verification_code:, cardholder_address:)
@@ -1571,21 +1555,15 @@ module Increase
 
               sig do
                 params(
-                  actual_line1: T.nilable(String),
-                  actual_postal_code: T.nilable(String),
-                  provided_line1: T.nilable(String),
-                  provided_postal_code: T.nilable(String),
-                  result: Symbol
-                )
+                    actual_line1: T.nilable(String),
+                    actual_postal_code: T.nilable(String),
+                    provided_line1: T.nilable(String),
+                    provided_postal_code: T.nilable(String),
+                    result: Symbol
+                  )
                   .void
               end
-              def initialize(
-                actual_line1:,
-                actual_postal_code:,
-                provided_line1:,
-                provided_postal_code:,
-                result:
-              )
+              def initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
               end
 
               sig do
@@ -1683,13 +1661,13 @@ module Increase
 
           sig do
             params(
-              id: String,
-              card_authorization_id: String,
-              currency: Symbol,
-              expired_amount: Integer,
-              network: Symbol,
-              type: Symbol
-            )
+                id: String,
+                card_authorization_id: String,
+                currency: Symbol,
+                expired_amount: Integer,
+                network: Symbol,
+                type: Symbol
+              )
               .void
           end
           def initialize(id:, card_authorization_id:, currency:, expired_amount:, network:, type:)
@@ -1698,14 +1676,7 @@ module Increase
           sig do
             override
               .returns(
-                {
-                  id: String,
-                  card_authorization_id: String,
-                  currency: Symbol,
-                  expired_amount: Integer,
-                  network: Symbol,
-                  type: Symbol
-                }
+                {id: String, card_authorization_id: String, currency: Symbol, expired_amount: Integer, network: Symbol, type: Symbol}
               )
           end
           def to_hash
@@ -1987,34 +1958,34 @@ module Increase
 
           sig do
             params(
-              id: String,
-              actioner: Symbol,
-              amount: Integer,
-              card_payment_id: String,
-              currency: Symbol,
-              declined_transaction_id: String,
-              digital_wallet_token_id: T.nilable(String),
-              direction: Symbol,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: T.nilable(String),
-              merchant_country: String,
-              merchant_descriptor: String,
-              merchant_postal_code: T.nilable(String),
-              merchant_state: T.nilable(String),
-              network_details: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails,
-              network_identifiers: Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers,
-              network_risk_score: T.nilable(Integer),
-              physical_card_id: T.nilable(String),
-              presentment_amount: Integer,
-              presentment_currency: String,
-              processing_category: Symbol,
-              real_time_decision_id: T.nilable(String),
-              real_time_decision_reason: T.nilable(Symbol),
-              reason: Symbol,
-              terminal_id: T.nilable(String),
-              verification: Increase::Models::CardPayment::Element::CardDecline::Verification
-            )
+                id: String,
+                actioner: Symbol,
+                amount: Integer,
+                card_payment_id: String,
+                currency: Symbol,
+                declined_transaction_id: String,
+                digital_wallet_token_id: T.nilable(String),
+                direction: Symbol,
+                merchant_acceptor_id: String,
+                merchant_category_code: String,
+                merchant_city: T.nilable(String),
+                merchant_country: String,
+                merchant_descriptor: String,
+                merchant_postal_code: T.nilable(String),
+                merchant_state: T.nilable(String),
+                network_details: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails,
+                network_identifiers: Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers,
+                network_risk_score: T.nilable(Integer),
+                physical_card_id: T.nilable(String),
+                presentment_amount: Integer,
+                presentment_currency: String,
+                processing_category: Symbol,
+                real_time_decision_id: T.nilable(String),
+                real_time_decision_reason: T.nilable(Symbol),
+                reason: Symbol,
+                terminal_id: T.nilable(String),
+                verification: Increase::Models::CardPayment::Element::CardDecline::Verification
+              )
               .void
           end
           def initialize(
@@ -2164,9 +2135,9 @@ module Increase
 
             sig do
               params(
-                category: Symbol,
-                visa: T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa)
-              )
+                  category: Symbol,
+                  visa: T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa)
+                )
                 .void
             end
             def initialize(category:, visa:)
@@ -2219,17 +2190,13 @@ module Increase
 
               sig do
                 params(
-                  electronic_commerce_indicator: T.nilable(Symbol),
-                  point_of_service_entry_mode: T.nilable(Symbol),
-                  stand_in_processing_reason: T.nilable(Symbol)
-                )
+                    electronic_commerce_indicator: T.nilable(Symbol),
+                    point_of_service_entry_mode: T.nilable(Symbol),
+                    stand_in_processing_reason: T.nilable(Symbol)
+                  )
                   .void
               end
-              def initialize(
-                electronic_commerce_indicator:,
-                point_of_service_entry_mode:,
-                stand_in_processing_reason:
-              )
+              def initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
               end
 
               sig do
@@ -2264,15 +2231,10 @@ module Increase
                 SECURE_ELECTRONIC_COMMERCE = T.let(:secure_electronic_commerce, T.nilable(Symbol))
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = T.let(
-                  :non_authenticated_security_transaction_at_3ds_capable_merchant, T.nilable(Symbol)
-                )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = T.let(:non_authenticated_security_transaction_at_3ds_capable_merchant, T.nilable(Symbol))
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION = T.let(
-                  :non_authenticated_security_transaction,
-                  T.nilable(Symbol)
-                )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = T.let(:non_authenticated_security_transaction, T.nilable(Symbol))
 
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
@@ -2330,23 +2292,16 @@ module Increase
                 INVALID_PHYSICAL_CARD = T.let(:invalid_physical_card, T.nilable(Symbol))
 
                 # The 3DS cardholder authentication verification value was invalid.
-                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = T.let(
-                  :invalid_cardholder_authentication_verification_value, T.nilable(Symbol)
-                )
+                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = T.let(:invalid_cardholder_authentication_verification_value, T.nilable(Symbol))
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
                 INTERNAL_VISA_ERROR = T.let(:internal_visa_error, T.nilable(Symbol))
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = T.let(
-                  :merchant_transaction_advisory_service_authentication_required, T.nilable(Symbol)
-                )
+                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = T.let(:merchant_transaction_advisory_service_authentication_required, T.nilable(Symbol))
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
-                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = T.let(
-                  :payment_fraud_disruption_acquirer_block,
-                  T.nilable(Symbol)
-                )
+                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = T.let(:payment_fraud_disruption_acquirer_block, T.nilable(Symbol))
 
                 # An unspecific reason for stand-in processing.
                 OTHER = T.let(:other, T.nilable(Symbol))
@@ -2385,10 +2340,10 @@ module Increase
 
             sig do
               params(
-                retrieval_reference_number: T.nilable(String),
-                trace_number: T.nilable(String),
-                transaction_id: T.nilable(String)
-              )
+                  retrieval_reference_number: T.nilable(String),
+                  trace_number: T.nilable(String),
+                  transaction_id: T.nilable(String)
+                )
                 .void
             end
             def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
@@ -2538,9 +2493,9 @@ module Increase
 
             sig do
               params(
-                card_verification_code: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
-                cardholder_address: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress
-              )
+                  card_verification_code: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
+                  cardholder_address: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress
+                )
                 .void
             end
             def initialize(card_verification_code:, cardholder_address:)
@@ -2636,21 +2591,15 @@ module Increase
 
               sig do
                 params(
-                  actual_line1: T.nilable(String),
-                  actual_postal_code: T.nilable(String),
-                  provided_line1: T.nilable(String),
-                  provided_postal_code: T.nilable(String),
-                  result: Symbol
-                )
+                    actual_line1: T.nilable(String),
+                    actual_postal_code: T.nilable(String),
+                    provided_line1: T.nilable(String),
+                    provided_postal_code: T.nilable(String),
+                    result: Symbol
+                  )
                   .void
               end
-              def initialize(
-                actual_line1:,
-                actual_postal_code:,
-                provided_line1:,
-                provided_postal_code:,
-                result:
-              )
+              def initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
               end
 
               sig do
@@ -2767,15 +2716,15 @@ module Increase
 
           sig do
             params(
-              id: String,
-              card_authorization_id: String,
-              currency: Symbol,
-              network: Symbol,
-              network_identifiers: Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
-              pending_transaction_id: T.nilable(String),
-              type: Symbol,
-              updated_authorization_amount: Integer
-            )
+                id: String,
+                card_authorization_id: String,
+                currency: Symbol,
+                network: Symbol,
+                network_identifiers: Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
+                pending_transaction_id: T.nilable(String),
+                type: Symbol,
+                updated_authorization_amount: Integer
+              )
               .void
           end
           def initialize(
@@ -2872,10 +2821,10 @@ module Increase
 
             sig do
               params(
-                retrieval_reference_number: T.nilable(String),
-                trace_number: T.nilable(String),
-                transaction_id: T.nilable(String)
-              )
+                  retrieval_reference_number: T.nilable(String),
+                  trace_number: T.nilable(String),
+                  transaction_id: T.nilable(String)
+                )
                 .void
             end
             def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
@@ -3008,19 +2957,19 @@ module Increase
 
           sig do
             params(
-              id: String,
-              actioner: Symbol,
-              amount: Integer,
-              card_authorization_id: String,
-              currency: Symbol,
-              network: Symbol,
-              network_identifiers: Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers,
-              network_risk_score: T.nilable(Integer),
-              pending_transaction_id: T.nilable(String),
-              real_time_decision_id: T.nilable(String),
-              type: Symbol,
-              updated_authorization_amount: Integer
-            )
+                id: String,
+                actioner: Symbol,
+                amount: Integer,
+                card_authorization_id: String,
+                currency: Symbol,
+                network: Symbol,
+                network_identifiers: Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers,
+                network_risk_score: T.nilable(Integer),
+                pending_transaction_id: T.nilable(String),
+                real_time_decision_id: T.nilable(String),
+                type: Symbol,
+                updated_authorization_amount: Integer
+              )
               .void
           end
           def initialize(
@@ -3142,10 +3091,10 @@ module Increase
 
             sig do
               params(
-                retrieval_reference_number: T.nilable(String),
-                trace_number: T.nilable(String),
-                transaction_id: T.nilable(String)
-              )
+                  retrieval_reference_number: T.nilable(String),
+                  trace_number: T.nilable(String),
+                  transaction_id: T.nilable(String)
+                )
                 .void
             end
             def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
@@ -3343,26 +3292,26 @@ module Increase
 
           sig do
             params(
-              id: String,
-              amount: Integer,
-              card_payment_id: String,
-              cashback: T.nilable(Increase::Models::CardPayment::Element::CardRefund::Cashback),
-              currency: Symbol,
-              interchange: T.nilable(Increase::Models::CardPayment::Element::CardRefund::Interchange),
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String,
-              merchant_country: String,
-              merchant_name: String,
-              merchant_postal_code: T.nilable(String),
-              merchant_state: T.nilable(String),
-              network_identifiers: Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers,
-              presentment_amount: Integer,
-              presentment_currency: String,
-              purchase_details: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails),
-              transaction_id: String,
-              type: Symbol
-            )
+                id: String,
+                amount: Integer,
+                card_payment_id: String,
+                cashback: T.nilable(Increase::Models::CardPayment::Element::CardRefund::Cashback),
+                currency: Symbol,
+                interchange: T.nilable(Increase::Models::CardPayment::Element::CardRefund::Interchange),
+                merchant_acceptor_id: String,
+                merchant_category_code: String,
+                merchant_city: String,
+                merchant_country: String,
+                merchant_name: String,
+                merchant_postal_code: T.nilable(String),
+                merchant_state: T.nilable(String),
+                network_identifiers: Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers,
+                presentment_amount: Integer,
+                presentment_currency: String,
+                purchase_details: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails),
+                transaction_id: String,
+                type: Symbol
+              )
               .void
           end
           def initialize(
@@ -3581,11 +3530,7 @@ module Increase
             end
 
             sig do
-              params(
-                acquirer_business_id: String,
-                acquirer_reference_number: String,
-                transaction_id: T.nilable(String)
-              )
+              params(acquirer_business_id: String, acquirer_reference_number: String, transaction_id: T.nilable(String))
                 .void
             end
             def initialize(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
@@ -3594,11 +3539,7 @@ module Increase
             sig do
               override
                 .returns(
-                  {
-                    acquirer_business_id: String,
-                    acquirer_reference_number: String,
-                    transaction_id: T.nilable(String)
-                  }
+                  {acquirer_business_id: String, acquirer_reference_number: String, transaction_id: T.nilable(String)}
                 )
             end
             def to_hash
@@ -3697,17 +3638,17 @@ module Increase
 
             sig do
               params(
-                car_rental: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental),
-                customer_reference_identifier: T.nilable(String),
-                local_tax_amount: T.nilable(Integer),
-                local_tax_currency: T.nilable(String),
-                lodging: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging),
-                national_tax_amount: T.nilable(Integer),
-                national_tax_currency: T.nilable(String),
-                purchase_identifier: T.nilable(String),
-                purchase_identifier_format: T.nilable(Symbol),
-                travel: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel)
-              )
+                  car_rental: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental),
+                  customer_reference_identifier: T.nilable(String),
+                  local_tax_amount: T.nilable(Integer),
+                  local_tax_currency: T.nilable(String),
+                  lodging: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging),
+                  national_tax_amount: T.nilable(Integer),
+                  national_tax_currency: T.nilable(String),
+                  purchase_identifier: T.nilable(String),
+                  purchase_identifier_format: T.nilable(Symbol),
+                  travel: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel)
+                )
                 .void
             end
             def initialize(
@@ -3875,23 +3816,23 @@ module Increase
 
               sig do
                 params(
-                  car_class_code: T.nilable(String),
-                  checkout_date: T.nilable(Date),
-                  daily_rental_rate_amount: T.nilable(Integer),
-                  daily_rental_rate_currency: T.nilable(String),
-                  days_rented: T.nilable(Integer),
-                  extra_charges: T.nilable(Symbol),
-                  fuel_charges_amount: T.nilable(Integer),
-                  fuel_charges_currency: T.nilable(String),
-                  insurance_charges_amount: T.nilable(Integer),
-                  insurance_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(Symbol),
-                  one_way_drop_off_charges_amount: T.nilable(Integer),
-                  one_way_drop_off_charges_currency: T.nilable(String),
-                  renter_name: T.nilable(String),
-                  weekly_rental_rate_amount: T.nilable(Integer),
-                  weekly_rental_rate_currency: T.nilable(String)
-                )
+                    car_class_code: T.nilable(String),
+                    checkout_date: T.nilable(Date),
+                    daily_rental_rate_amount: T.nilable(Integer),
+                    daily_rental_rate_currency: T.nilable(String),
+                    days_rented: T.nilable(Integer),
+                    extra_charges: T.nilable(Symbol),
+                    fuel_charges_amount: T.nilable(Integer),
+                    fuel_charges_currency: T.nilable(String),
+                    insurance_charges_amount: T.nilable(Integer),
+                    insurance_charges_currency: T.nilable(String),
+                    no_show_indicator: T.nilable(Symbol),
+                    one_way_drop_off_charges_amount: T.nilable(Integer),
+                    one_way_drop_off_charges_currency: T.nilable(String),
+                    renter_name: T.nilable(String),
+                    weekly_rental_rate_amount: T.nilable(Integer),
+                    weekly_rental_rate_currency: T.nilable(String)
+                  )
                   .void
               end
               def initialize(
@@ -4112,23 +4053,23 @@ module Increase
 
               sig do
                 params(
-                  check_in_date: T.nilable(Date),
-                  daily_room_rate_amount: T.nilable(Integer),
-                  daily_room_rate_currency: T.nilable(String),
-                  extra_charges: T.nilable(Symbol),
-                  folio_cash_advances_amount: T.nilable(Integer),
-                  folio_cash_advances_currency: T.nilable(String),
-                  food_beverage_charges_amount: T.nilable(Integer),
-                  food_beverage_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(Symbol),
-                  prepaid_expenses_amount: T.nilable(Integer),
-                  prepaid_expenses_currency: T.nilable(String),
-                  room_nights: T.nilable(Integer),
-                  total_room_tax_amount: T.nilable(Integer),
-                  total_room_tax_currency: T.nilable(String),
-                  total_tax_amount: T.nilable(Integer),
-                  total_tax_currency: T.nilable(String)
-                )
+                    check_in_date: T.nilable(Date),
+                    daily_room_rate_amount: T.nilable(Integer),
+                    daily_room_rate_currency: T.nilable(String),
+                    extra_charges: T.nilable(Symbol),
+                    folio_cash_advances_amount: T.nilable(Integer),
+                    folio_cash_advances_currency: T.nilable(String),
+                    food_beverage_charges_amount: T.nilable(Integer),
+                    food_beverage_charges_currency: T.nilable(String),
+                    no_show_indicator: T.nilable(Symbol),
+                    prepaid_expenses_amount: T.nilable(Integer),
+                    prepaid_expenses_currency: T.nilable(String),
+                    room_nights: T.nilable(Integer),
+                    total_room_tax_amount: T.nilable(Integer),
+                    total_room_tax_currency: T.nilable(String),
+                    total_tax_amount: T.nilable(Integer),
+                    total_tax_currency: T.nilable(String)
+                  )
                   .void
               end
               def initialize(
@@ -4251,8 +4192,8 @@ module Increase
 
               sig do
                 params(
-                  _: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary)
-                )
+                    _: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary)
+                  )
                   .returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary))
               end
               def ancillary=(_)
@@ -4340,16 +4281,16 @@ module Increase
 
               sig do
                 returns(
-                  T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
-                )
+                    T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
+                  )
               end
               def trip_legs
               end
 
               sig do
                 params(
-                  _: T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
-                )
+                    _: T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
+                  )
                   .returns(
                     T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
                   )
@@ -4359,19 +4300,19 @@ module Increase
 
               sig do
                 params(
-                  ancillary: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary),
-                  computerized_reservation_system: T.nilable(String),
-                  credit_reason_indicator: T.nilable(Symbol),
-                  departure_date: T.nilable(Date),
-                  origination_city_airport_code: T.nilable(String),
-                  passenger_name: T.nilable(String),
-                  restricted_ticket_indicator: T.nilable(Symbol),
-                  ticket_change_indicator: T.nilable(Symbol),
-                  ticket_number: T.nilable(String),
-                  travel_agency_code: T.nilable(String),
-                  travel_agency_name: T.nilable(String),
-                  trip_legs: T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
-                )
+                    ancillary: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary),
+                    computerized_reservation_system: T.nilable(String),
+                    credit_reason_indicator: T.nilable(Symbol),
+                    departure_date: T.nilable(Date),
+                    origination_city_airport_code: T.nilable(String),
+                    passenger_name: T.nilable(String),
+                    restricted_ticket_indicator: T.nilable(Symbol),
+                    ticket_change_indicator: T.nilable(Symbol),
+                    ticket_number: T.nilable(String),
+                    travel_agency_code: T.nilable(String),
+                    travel_agency_name: T.nilable(String),
+                    trip_legs: T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
+                  )
                   .void
               end
               def initialize(
@@ -4439,16 +4380,16 @@ module Increase
 
                 sig do
                   returns(
-                    T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
-                  )
+                      T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
+                    )
                 end
                 def services
                 end
 
                 sig do
                   params(
-                    _: T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
-                  )
+                      _: T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
+                    )
                     .returns(
                       T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
                     )
@@ -4466,12 +4407,12 @@ module Increase
 
                 sig do
                   params(
-                    connected_ticket_document_number: T.nilable(String),
-                    credit_reason_indicator: T.nilable(Symbol),
-                    passenger_name_or_description: T.nilable(String),
-                    services: T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
-                    ticket_document_number: T.nilable(String)
-                  )
+                      connected_ticket_document_number: T.nilable(String),
+                      credit_reason_indicator: T.nilable(Symbol),
+                      passenger_name_or_description: T.nilable(String),
+                      services: T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
+                      ticket_document_number: T.nilable(String)
+                    )
                     .void
                 end
                 def initialize(
@@ -4505,14 +4446,10 @@ module Increase
                   NO_CREDIT = T.let(:no_credit, T.nilable(Symbol))
 
                   # Passenger transport ancillary purchase cancellation
-                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                    :passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                  )
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
-                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                  )
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                   # Other
                   OTHER = T.let(:other, T.nilable(Symbol))
@@ -4636,14 +4573,10 @@ module Increase
                 NO_CREDIT = T.let(:no_credit, T.nilable(Symbol))
 
                 # Passenger transport ancillary purchase cancellation
-                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                  :passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                )
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
-                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                )
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                 # Airline ticket cancellation
                 AIRLINE_TICKET_CANCELLATION = T.let(:airline_ticket_cancellation, T.nilable(Symbol))
@@ -4741,13 +4674,13 @@ module Increase
 
                 sig do
                   params(
-                    carrier_code: T.nilable(String),
-                    destination_city_airport_code: T.nilable(String),
-                    fare_basis_code: T.nilable(String),
-                    flight_number: T.nilable(String),
-                    service_class: T.nilable(String),
-                    stop_over_code: T.nilable(Symbol)
-                  )
+                      carrier_code: T.nilable(String),
+                      destination_city_airport_code: T.nilable(String),
+                      fare_basis_code: T.nilable(String),
+                      flight_number: T.nilable(String),
+                      service_class: T.nilable(String),
+                      stop_over_code: T.nilable(Symbol)
+                    )
                     .void
                 end
                 def initialize(
@@ -4957,25 +4890,25 @@ module Increase
 
           sig do
             params(
-              id: String,
-              card_authorization_id: String,
-              currency: Symbol,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: T.nilable(String),
-              merchant_country: T.nilable(String),
-              merchant_descriptor: String,
-              merchant_postal_code: T.nilable(String),
-              merchant_state: T.nilable(String),
-              network: Symbol,
-              network_identifiers: Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers,
-              pending_transaction_id: T.nilable(String),
-              reversal_amount: Integer,
-              reversal_reason: T.nilable(Symbol),
-              terminal_id: T.nilable(String),
-              type: Symbol,
-              updated_authorization_amount: Integer
-            )
+                id: String,
+                card_authorization_id: String,
+                currency: Symbol,
+                merchant_acceptor_id: String,
+                merchant_category_code: String,
+                merchant_city: T.nilable(String),
+                merchant_country: T.nilable(String),
+                merchant_descriptor: String,
+                merchant_postal_code: T.nilable(String),
+                merchant_state: T.nilable(String),
+                network: Symbol,
+                network_identifiers: Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers,
+                pending_transaction_id: T.nilable(String),
+                reversal_amount: Integer,
+                reversal_reason: T.nilable(Symbol),
+                terminal_id: T.nilable(String),
+                type: Symbol,
+                updated_authorization_amount: Integer
+              )
               .void
           end
           def initialize(
@@ -5092,10 +5025,10 @@ module Increase
 
             sig do
               params(
-                retrieval_reference_number: T.nilable(String),
-                trace_number: T.nilable(String),
-                transaction_id: T.nilable(String)
-              )
+                  retrieval_reference_number: T.nilable(String),
+                  trace_number: T.nilable(String),
+                  transaction_id: T.nilable(String)
+                )
                 .void
             end
             def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
@@ -5329,28 +5262,28 @@ module Increase
 
           sig do
             params(
-              id: String,
-              amount: Integer,
-              card_authorization: T.nilable(String),
-              card_payment_id: String,
-              cashback: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Cashback),
-              currency: Symbol,
-              interchange: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Interchange),
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String,
-              merchant_country: String,
-              merchant_name: String,
-              merchant_postal_code: T.nilable(String),
-              merchant_state: T.nilable(String),
-              network_identifiers: Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers,
-              pending_transaction_id: T.nilable(String),
-              presentment_amount: Integer,
-              presentment_currency: String,
-              purchase_details: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails),
-              transaction_id: String,
-              type: Symbol
-            )
+                id: String,
+                amount: Integer,
+                card_authorization: T.nilable(String),
+                card_payment_id: String,
+                cashback: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Cashback),
+                currency: Symbol,
+                interchange: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Interchange),
+                merchant_acceptor_id: String,
+                merchant_category_code: String,
+                merchant_city: String,
+                merchant_country: String,
+                merchant_name: String,
+                merchant_postal_code: T.nilable(String),
+                merchant_state: T.nilable(String),
+                network_identifiers: Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers,
+                pending_transaction_id: T.nilable(String),
+                presentment_amount: Integer,
+                presentment_currency: String,
+                purchase_details: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails),
+                transaction_id: String,
+                type: Symbol
+              )
               .void
           end
           def initialize(
@@ -5573,11 +5506,7 @@ module Increase
             end
 
             sig do
-              params(
-                acquirer_business_id: String,
-                acquirer_reference_number: String,
-                transaction_id: T.nilable(String)
-              )
+              params(acquirer_business_id: String, acquirer_reference_number: String, transaction_id: T.nilable(String))
                 .void
             end
             def initialize(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
@@ -5586,11 +5515,7 @@ module Increase
             sig do
               override
                 .returns(
-                  {
-                    acquirer_business_id: String,
-                    acquirer_reference_number: String,
-                    transaction_id: T.nilable(String)
-                  }
+                  {acquirer_business_id: String, acquirer_reference_number: String, transaction_id: T.nilable(String)}
                 )
             end
             def to_hash
@@ -5689,17 +5614,17 @@ module Increase
 
             sig do
               params(
-                car_rental: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental),
-                customer_reference_identifier: T.nilable(String),
-                local_tax_amount: T.nilable(Integer),
-                local_tax_currency: T.nilable(String),
-                lodging: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging),
-                national_tax_amount: T.nilable(Integer),
-                national_tax_currency: T.nilable(String),
-                purchase_identifier: T.nilable(String),
-                purchase_identifier_format: T.nilable(Symbol),
-                travel: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel)
-              )
+                  car_rental: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental),
+                  customer_reference_identifier: T.nilable(String),
+                  local_tax_amount: T.nilable(Integer),
+                  local_tax_currency: T.nilable(String),
+                  lodging: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging),
+                  national_tax_amount: T.nilable(Integer),
+                  national_tax_currency: T.nilable(String),
+                  purchase_identifier: T.nilable(String),
+                  purchase_identifier_format: T.nilable(Symbol),
+                  travel: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel)
+                )
                 .void
             end
             def initialize(
@@ -5867,23 +5792,23 @@ module Increase
 
               sig do
                 params(
-                  car_class_code: T.nilable(String),
-                  checkout_date: T.nilable(Date),
-                  daily_rental_rate_amount: T.nilable(Integer),
-                  daily_rental_rate_currency: T.nilable(String),
-                  days_rented: T.nilable(Integer),
-                  extra_charges: T.nilable(Symbol),
-                  fuel_charges_amount: T.nilable(Integer),
-                  fuel_charges_currency: T.nilable(String),
-                  insurance_charges_amount: T.nilable(Integer),
-                  insurance_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(Symbol),
-                  one_way_drop_off_charges_amount: T.nilable(Integer),
-                  one_way_drop_off_charges_currency: T.nilable(String),
-                  renter_name: T.nilable(String),
-                  weekly_rental_rate_amount: T.nilable(Integer),
-                  weekly_rental_rate_currency: T.nilable(String)
-                )
+                    car_class_code: T.nilable(String),
+                    checkout_date: T.nilable(Date),
+                    daily_rental_rate_amount: T.nilable(Integer),
+                    daily_rental_rate_currency: T.nilable(String),
+                    days_rented: T.nilable(Integer),
+                    extra_charges: T.nilable(Symbol),
+                    fuel_charges_amount: T.nilable(Integer),
+                    fuel_charges_currency: T.nilable(String),
+                    insurance_charges_amount: T.nilable(Integer),
+                    insurance_charges_currency: T.nilable(String),
+                    no_show_indicator: T.nilable(Symbol),
+                    one_way_drop_off_charges_amount: T.nilable(Integer),
+                    one_way_drop_off_charges_currency: T.nilable(String),
+                    renter_name: T.nilable(String),
+                    weekly_rental_rate_amount: T.nilable(Integer),
+                    weekly_rental_rate_currency: T.nilable(String)
+                  )
                   .void
               end
               def initialize(
@@ -6104,23 +6029,23 @@ module Increase
 
               sig do
                 params(
-                  check_in_date: T.nilable(Date),
-                  daily_room_rate_amount: T.nilable(Integer),
-                  daily_room_rate_currency: T.nilable(String),
-                  extra_charges: T.nilable(Symbol),
-                  folio_cash_advances_amount: T.nilable(Integer),
-                  folio_cash_advances_currency: T.nilable(String),
-                  food_beverage_charges_amount: T.nilable(Integer),
-                  food_beverage_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(Symbol),
-                  prepaid_expenses_amount: T.nilable(Integer),
-                  prepaid_expenses_currency: T.nilable(String),
-                  room_nights: T.nilable(Integer),
-                  total_room_tax_amount: T.nilable(Integer),
-                  total_room_tax_currency: T.nilable(String),
-                  total_tax_amount: T.nilable(Integer),
-                  total_tax_currency: T.nilable(String)
-                )
+                    check_in_date: T.nilable(Date),
+                    daily_room_rate_amount: T.nilable(Integer),
+                    daily_room_rate_currency: T.nilable(String),
+                    extra_charges: T.nilable(Symbol),
+                    folio_cash_advances_amount: T.nilable(Integer),
+                    folio_cash_advances_currency: T.nilable(String),
+                    food_beverage_charges_amount: T.nilable(Integer),
+                    food_beverage_charges_currency: T.nilable(String),
+                    no_show_indicator: T.nilable(Symbol),
+                    prepaid_expenses_amount: T.nilable(Integer),
+                    prepaid_expenses_currency: T.nilable(String),
+                    room_nights: T.nilable(Integer),
+                    total_room_tax_amount: T.nilable(Integer),
+                    total_room_tax_currency: T.nilable(String),
+                    total_tax_amount: T.nilable(Integer),
+                    total_tax_currency: T.nilable(String)
+                  )
                   .void
               end
               def initialize(
@@ -6239,16 +6164,16 @@ module Increase
             class Travel < Increase::BaseModel
               sig do
                 returns(
-                  T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary)
-                )
+                    T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary)
+                  )
               end
               def ancillary
               end
 
               sig do
                 params(
-                  _: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary)
-                )
+                    _: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary)
+                  )
                   .returns(
                     T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary)
                   )
@@ -6338,20 +6263,20 @@ module Increase
 
               sig do
                 returns(
-                  T.nilable(
-                    T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    T.nilable(
+                      T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    )
                   )
-                )
               end
               def trip_legs
               end
 
               sig do
                 params(
-                  _: T.nilable(
-                    T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    _: T.nilable(
+                      T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    )
                   )
-                )
                   .returns(
                     T.nilable(
                       T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
@@ -6363,21 +6288,21 @@ module Increase
 
               sig do
                 params(
-                  ancillary: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary),
-                  computerized_reservation_system: T.nilable(String),
-                  credit_reason_indicator: T.nilable(Symbol),
-                  departure_date: T.nilable(Date),
-                  origination_city_airport_code: T.nilable(String),
-                  passenger_name: T.nilable(String),
-                  restricted_ticket_indicator: T.nilable(Symbol),
-                  ticket_change_indicator: T.nilable(Symbol),
-                  ticket_number: T.nilable(String),
-                  travel_agency_code: T.nilable(String),
-                  travel_agency_name: T.nilable(String),
-                  trip_legs: T.nilable(
-                    T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    ancillary: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary),
+                    computerized_reservation_system: T.nilable(String),
+                    credit_reason_indicator: T.nilable(Symbol),
+                    departure_date: T.nilable(Date),
+                    origination_city_airport_code: T.nilable(String),
+                    passenger_name: T.nilable(String),
+                    restricted_ticket_indicator: T.nilable(Symbol),
+                    ticket_change_indicator: T.nilable(Symbol),
+                    ticket_number: T.nilable(String),
+                    travel_agency_code: T.nilable(String),
+                    travel_agency_name: T.nilable(String),
+                    trip_legs: T.nilable(
+                      T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    )
                   )
-                )
                   .void
               end
               def initialize(
@@ -6447,16 +6372,16 @@ module Increase
 
                 sig do
                   returns(
-                    T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
-                  )
+                      T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
+                    )
                 end
                 def services
                 end
 
                 sig do
                   params(
-                    _: T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
-                  )
+                      _: T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
+                    )
                     .returns(
                       T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
                     )
@@ -6474,12 +6399,12 @@ module Increase
 
                 sig do
                   params(
-                    connected_ticket_document_number: T.nilable(String),
-                    credit_reason_indicator: T.nilable(Symbol),
-                    passenger_name_or_description: T.nilable(String),
-                    services: T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
-                    ticket_document_number: T.nilable(String)
-                  )
+                      connected_ticket_document_number: T.nilable(String),
+                      credit_reason_indicator: T.nilable(Symbol),
+                      passenger_name_or_description: T.nilable(String),
+                      services: T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
+                      ticket_document_number: T.nilable(String)
+                    )
                     .void
                 end
                 def initialize(
@@ -6513,14 +6438,10 @@ module Increase
                   NO_CREDIT = T.let(:no_credit, T.nilable(Symbol))
 
                   # Passenger transport ancillary purchase cancellation
-                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                    :passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                  )
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
-                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                  )
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                   # Other
                   OTHER = T.let(:other, T.nilable(Symbol))
@@ -6644,14 +6565,10 @@ module Increase
                 NO_CREDIT = T.let(:no_credit, T.nilable(Symbol))
 
                 # Passenger transport ancillary purchase cancellation
-                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                  :passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                )
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
-                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                )
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                 # Airline ticket cancellation
                 AIRLINE_TICKET_CANCELLATION = T.let(:airline_ticket_cancellation, T.nilable(Symbol))
@@ -6749,13 +6666,13 @@ module Increase
 
                 sig do
                   params(
-                    carrier_code: T.nilable(String),
-                    destination_city_airport_code: T.nilable(String),
-                    fare_basis_code: T.nilable(String),
-                    flight_number: T.nilable(String),
-                    service_class: T.nilable(String),
-                    stop_over_code: T.nilable(Symbol)
-                  )
+                      carrier_code: T.nilable(String),
+                      destination_city_airport_code: T.nilable(String),
+                      fare_basis_code: T.nilable(String),
+                      flight_number: T.nilable(String),
+                      service_class: T.nilable(String),
+                      stop_over_code: T.nilable(Symbol)
+                    )
                     .void
                 end
                 def initialize(
@@ -6987,27 +6904,27 @@ module Increase
 
           sig do
             params(
-              id: String,
-              actioner: Symbol,
-              card_payment_id: String,
-              currency: Symbol,
-              digital_wallet_token_id: T.nilable(String),
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: T.nilable(String),
-              merchant_country: String,
-              merchant_descriptor: String,
-              merchant_postal_code: T.nilable(String),
-              merchant_state: T.nilable(String),
-              network_details: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails,
-              network_identifiers: Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers,
-              network_risk_score: T.nilable(Integer),
-              physical_card_id: T.nilable(String),
-              real_time_decision_id: T.nilable(String),
-              terminal_id: T.nilable(String),
-              type: Symbol,
-              verification: Increase::Models::CardPayment::Element::CardValidation::Verification
-            )
+                id: String,
+                actioner: Symbol,
+                card_payment_id: String,
+                currency: Symbol,
+                digital_wallet_token_id: T.nilable(String),
+                merchant_acceptor_id: String,
+                merchant_category_code: String,
+                merchant_city: T.nilable(String),
+                merchant_country: String,
+                merchant_descriptor: String,
+                merchant_postal_code: T.nilable(String),
+                merchant_state: T.nilable(String),
+                network_details: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails,
+                network_identifiers: Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers,
+                network_risk_score: T.nilable(Integer),
+                physical_card_id: T.nilable(String),
+                real_time_decision_id: T.nilable(String),
+                terminal_id: T.nilable(String),
+                type: Symbol,
+                verification: Increase::Models::CardPayment::Element::CardValidation::Verification
+              )
               .void
           end
           def initialize(
@@ -7129,9 +7046,9 @@ module Increase
 
             sig do
               params(
-                category: Symbol,
-                visa: T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa)
-              )
+                  category: Symbol,
+                  visa: T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa)
+                )
                 .void
             end
             def initialize(category:, visa:)
@@ -7187,17 +7104,13 @@ module Increase
 
               sig do
                 params(
-                  electronic_commerce_indicator: T.nilable(Symbol),
-                  point_of_service_entry_mode: T.nilable(Symbol),
-                  stand_in_processing_reason: T.nilable(Symbol)
-                )
+                    electronic_commerce_indicator: T.nilable(Symbol),
+                    point_of_service_entry_mode: T.nilable(Symbol),
+                    stand_in_processing_reason: T.nilable(Symbol)
+                  )
                   .void
               end
-              def initialize(
-                electronic_commerce_indicator:,
-                point_of_service_entry_mode:,
-                stand_in_processing_reason:
-              )
+              def initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
               end
 
               sig do
@@ -7232,15 +7145,10 @@ module Increase
                 SECURE_ELECTRONIC_COMMERCE = T.let(:secure_electronic_commerce, T.nilable(Symbol))
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = T.let(
-                  :non_authenticated_security_transaction_at_3ds_capable_merchant, T.nilable(Symbol)
-                )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = T.let(:non_authenticated_security_transaction_at_3ds_capable_merchant, T.nilable(Symbol))
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION = T.let(
-                  :non_authenticated_security_transaction,
-                  T.nilable(Symbol)
-                )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = T.let(:non_authenticated_security_transaction, T.nilable(Symbol))
 
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
@@ -7298,23 +7206,16 @@ module Increase
                 INVALID_PHYSICAL_CARD = T.let(:invalid_physical_card, T.nilable(Symbol))
 
                 # The 3DS cardholder authentication verification value was invalid.
-                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = T.let(
-                  :invalid_cardholder_authentication_verification_value, T.nilable(Symbol)
-                )
+                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = T.let(:invalid_cardholder_authentication_verification_value, T.nilable(Symbol))
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
                 INTERNAL_VISA_ERROR = T.let(:internal_visa_error, T.nilable(Symbol))
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = T.let(
-                  :merchant_transaction_advisory_service_authentication_required, T.nilable(Symbol)
-                )
+                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = T.let(:merchant_transaction_advisory_service_authentication_required, T.nilable(Symbol))
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
-                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = T.let(
-                  :payment_fraud_disruption_acquirer_block,
-                  T.nilable(Symbol)
-                )
+                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = T.let(:payment_fraud_disruption_acquirer_block, T.nilable(Symbol))
 
                 # An unspecific reason for stand-in processing.
                 OTHER = T.let(:other, T.nilable(Symbol))
@@ -7353,10 +7254,10 @@ module Increase
 
             sig do
               params(
-                retrieval_reference_number: T.nilable(String),
-                trace_number: T.nilable(String),
-                transaction_id: T.nilable(String)
-              )
+                  retrieval_reference_number: T.nilable(String),
+                  trace_number: T.nilable(String),
+                  transaction_id: T.nilable(String)
+                )
                 .void
             end
             def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
@@ -7411,9 +7312,9 @@ module Increase
 
             sig do
               params(
-                card_verification_code: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
-                cardholder_address: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress
-              )
+                  card_verification_code: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
+                  cardholder_address: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress
+                )
                 .void
             end
             def initialize(card_verification_code:, cardholder_address:)
@@ -7509,21 +7410,15 @@ module Increase
 
               sig do
                 params(
-                  actual_line1: T.nilable(String),
-                  actual_postal_code: T.nilable(String),
-                  provided_line1: T.nilable(String),
-                  provided_postal_code: T.nilable(String),
-                  result: Symbol
-                )
+                    actual_line1: T.nilable(String),
+                    actual_postal_code: T.nilable(String),
+                    provided_line1: T.nilable(String),
+                    provided_postal_code: T.nilable(String),
+                    result: Symbol
+                  )
                   .void
               end
-              def initialize(
-                actual_line1:,
-                actual_postal_code:,
-                provided_line1:,
-                provided_postal_code:,
-                result:
-              )
+              def initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
               end
 
               sig do
@@ -7655,21 +7550,15 @@ module Increase
 
         sig do
           params(
-            authorized_amount: Integer,
-            fuel_confirmed_amount: Integer,
-            incremented_amount: Integer,
-            reversed_amount: Integer,
-            settled_amount: Integer
-          )
+              authorized_amount: Integer,
+              fuel_confirmed_amount: Integer,
+              incremented_amount: Integer,
+              reversed_amount: Integer,
+              settled_amount: Integer
+            )
             .void
         end
-        def initialize(
-          authorized_amount:,
-          fuel_confirmed_amount:,
-          incremented_amount:,
-          reversed_amount:,
-          settled_amount:
-        )
+        def initialize(authorized_amount:, fuel_confirmed_amount:, incremented_amount:, reversed_amount:, settled_amount:)
         end
 
         sig do

@@ -53,23 +53,16 @@ module Increase
 
       sig do
         params(
-          associated_object_id: String,
-          category: Increase::Models::EventListParams::Category,
-          created_at: Increase::Models::EventListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            associated_object_id: String,
+            category: Increase::Models::EventListParams::Category,
+            created_at: Increase::Models::EventListParams::CreatedAt,
+            cursor: String,
+            limit: Integer,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
-      def initialize(
-        associated_object_id: nil,
-        category: nil,
-        created_at: nil,
-        cursor: nil,
-        limit: nil,
-        request_options: {}
-      )
+      def initialize(associated_object_id: nil, category: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
       end
 
       sig do

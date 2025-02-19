@@ -15,10 +15,7 @@ module Increase
       end
 
       sig do
-        params(
-          confirmed_at: Time,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+        params(confirmed_at: Time, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
           .void
       end
       def initialize(confirmed_at: nil, request_options: {})

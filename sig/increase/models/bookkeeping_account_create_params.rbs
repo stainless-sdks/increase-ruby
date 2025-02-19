@@ -1,13 +1,11 @@
 module Increase
   module Models
-    type bookkeeping_account_create_params =
-      {
-        name: String,
-        account_id: String,
-        compliance_category: Increase::Models::BookkeepingAccountCreateParams::compliance_category,
-        entity_id: String
-      }
-      & Increase::request_parameters
+    type bookkeeping_account_create_params = ({
+      name: String,
+      account_id: String,
+      compliance_category: Increase::Models::BookkeepingAccountCreateParams::compliance_category,
+      entity_id: String
+    } & Increase::request_parameters)
 
     class BookkeepingAccountCreateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -21,30 +19,18 @@ module Increase
 
       attr_reader compliance_category: Increase::Models::BookkeepingAccountCreateParams::compliance_category?
 
-      def compliance_category=: (
-        Increase::Models::BookkeepingAccountCreateParams::compliance_category
-      ) -> Increase::Models::BookkeepingAccountCreateParams::compliance_category
+      def compliance_category=: (Increase::Models::BookkeepingAccountCreateParams::compliance_category) -> Increase::Models::BookkeepingAccountCreateParams::compliance_category
 
       attr_reader entity_id: String?
 
       def entity_id=: (String) -> String
 
-      def initialize:
-        (
-          name: String,
-          account_id: String,
-          compliance_category: Increase::Models::BookkeepingAccountCreateParams::compliance_category,
-          entity_id: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::bookkeeping_account_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (name: String, account_id: String, compliance_category: Increase::Models::BookkeepingAccountCreateParams::compliance_category, entity_id: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::bookkeeping_account_create_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::bookkeeping_account_create_params
+      def to_hash: () -> Increase::Models::bookkeeping_account_create_params
 
-      type compliance_category = :commingled_cash | :customer_balance
+      type compliance_category = (:commingled_cash | :customer_balance)
 
       class ComplianceCategory < Increase::Enum
         # A cash in an commingled Increase Account.
@@ -53,7 +39,7 @@ module Increase
         # A customer balance.
         CUSTOMER_BALANCE: :customer_balance
 
-        def self.values: -> ::Array[Increase::Models::BookkeepingAccountCreateParams::compliance_category]
+        def self.values: () -> ::Array[Increase::Models::BookkeepingAccountCreateParams::compliance_category]
       end
     end
   end

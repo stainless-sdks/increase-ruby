@@ -28,10 +28,10 @@ module Increase
 
     sig do
       params(
-        exceptions: T::Array[Exception],
-        sentinel: T.nilable(T.anything),
-        blk: T.nilable(T.proc.returns(T.anything))
-      )
+          exceptions: T::Array[Exception],
+          sentinel: T.nilable(T.anything),
+          blk: T.nilable(T.proc.returns(T.anything))
+        )
         .returns(T.nilable(T.anything))
     end
     def self.suppress(*exceptions, sentinel: nil, &blk)
@@ -48,11 +48,11 @@ module Increase
 
     sig do
       params(
-        data: T.any(T::Hash[Symbol, T.anything], T::Array[T.anything], T.anything),
-        pick: T.nilable(T.any(Symbol, Integer, T::Array[T.any(Symbol, Integer)])),
-        sentinel: T.nilable(T.anything),
-        blk: T.nilable(T.proc.returns(T.anything))
-      )
+          data: T.any(T::Hash[Symbol, T.anything], T::Array[T.anything], T.anything),
+          pick: T.nilable(T.any(Symbol, Integer, T::Array[T.any(Symbol, Integer)])),
+          sentinel: T.nilable(T.anything),
+          blk: T.nilable(T.proc.returns(T.anything))
+        )
         .returns(T.nilable(T.anything))
     end
     def self.dig(data, pick, sentinel = nil, &blk)
@@ -84,9 +84,7 @@ module Increase
     def self.unparse_uri(parsed)
     end
 
-    sig do
-      params(lhs: Increase::Util::ParsedUriShape, rhs: Increase::Util::ParsedUriShape).returns(URI::Generic)
-    end
+    sig { params(lhs: Increase::Util::ParsedUriShape, rhs: Increase::Util::ParsedUriShape).returns(URI::Generic) }
     def self.join_parsed_uri(lhs, rhs)
     end
 

@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type intrafi_account_enrollment_create_params =
-      { account_id: String, email_address: String }
-      & Increase::request_parameters
+    type intrafi_account_enrollment_create_params = ({account_id: String, email_address: String} & Increase::request_parameters)
 
     class IntrafiAccountEnrollmentCreateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -12,18 +10,10 @@ module Increase
 
       attr_accessor email_address: String
 
-      def initialize:
-        (
-          account_id: String,
-          email_address: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::intrafi_account_enrollment_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (account_id: String, email_address: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::intrafi_account_enrollment_create_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::intrafi_account_enrollment_create_params
+      def to_hash: () -> Increase::Models::intrafi_account_enrollment_create_params
     end
   end
 end

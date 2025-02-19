@@ -43,12 +43,12 @@ module Increase
 
       sig do
         params(
-          cursor: String,
-          limit: Integer,
-          oauth_application_id: String,
-          status: Increase::Models::OAuthConnectionListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            cursor: String,
+            limit: Integer,
+            oauth_application_id: String,
+            status: Increase::Models::OAuthConnectionListParams::Status,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, request_options: {})

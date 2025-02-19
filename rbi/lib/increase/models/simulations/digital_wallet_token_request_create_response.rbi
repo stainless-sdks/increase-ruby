@@ -28,23 +28,13 @@ module Increase
         def type=(_)
         end
 
-        sig do
-          params(
-            decline_reason: T.nilable(Symbol),
-            digital_wallet_token_id: T.nilable(String),
-            type: Symbol
-          ).void
-        end
+        sig { params(decline_reason: T.nilable(Symbol), digital_wallet_token_id: T.nilable(String), type: Symbol).void }
         def initialize(decline_reason:, digital_wallet_token_id:, type:)
         end
 
         sig do
           override
-            .returns({
-                       decline_reason: T.nilable(Symbol),
-                       digital_wallet_token_id: T.nilable(String),
-                       type: Symbol
-                     })
+            .returns({decline_reason: T.nilable(Symbol), digital_wallet_token_id: T.nilable(String), type: Symbol})
         end
         def to_hash
         end

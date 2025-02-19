@@ -5,17 +5,17 @@ module Increase
     class DigitalCardProfiles
       sig do
         params(
-          app_icon_file_id: String,
-          background_image_file_id: String,
-          card_description: String,
-          description: String,
-          issuer_name: String,
-          contact_email: String,
-          contact_phone: String,
-          contact_website: String,
-          text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            app_icon_file_id: String,
+            background_image_file_id: String,
+            card_description: String,
+            description: String,
+            issuer_name: String,
+            contact_email: String,
+            contact_phone: String,
+            contact_website: String,
+            text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::DigitalCardProfile)
       end
       def create(
@@ -34,9 +34,9 @@ module Increase
 
       sig do
         params(
-          digital_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            digital_card_profile_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::DigitalCardProfile)
       end
       def retrieve(digital_card_profile_id, request_options: {})
@@ -44,12 +44,12 @@ module Increase
 
       sig do
         params(
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::DigitalCardProfileListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            status: Increase::Models::DigitalCardProfileListParams::Status,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Page[Increase::Models::DigitalCardProfile])
       end
       def list(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
@@ -57,9 +57,9 @@ module Increase
 
       sig do
         params(
-          digital_card_profile_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            digital_card_profile_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::DigitalCardProfile)
       end
       def archive(digital_card_profile_id, request_options: {})
@@ -67,18 +67,18 @@ module Increase
 
       sig do
         params(
-          digital_card_profile_id: String,
-          app_icon_file_id: String,
-          background_image_file_id: String,
-          card_description: String,
-          contact_email: String,
-          contact_phone: String,
-          contact_website: String,
-          description: String,
-          issuer_name: String,
-          text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            digital_card_profile_id: String,
+            app_icon_file_id: String,
+            background_image_file_id: String,
+            card_description: String,
+            contact_email: String,
+            contact_phone: String,
+            contact_website: String,
+            description: String,
+            issuer_name: String,
+            text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::DigitalCardProfile)
       end
       def clone_(

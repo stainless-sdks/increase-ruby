@@ -53,23 +53,16 @@ module Increase
 
       sig do
         params(
-          ach_transfers: Symbol,
-          name: String,
-          real_time_payments_transfers: Symbol,
-          routing_number: String,
-          type: Symbol,
-          wire_transfers: Symbol
-        )
+            ach_transfers: Symbol,
+            name: String,
+            real_time_payments_transfers: Symbol,
+            routing_number: String,
+            type: Symbol,
+            wire_transfers: Symbol
+          )
           .void
       end
-      def initialize(
-        ach_transfers:,
-        name:,
-        real_time_payments_transfers:,
-        routing_number:,
-        type:,
-        wire_transfers:
-      )
+      def initialize(ach_transfers:, name:, real_time_payments_transfers:, routing_number:, type:, wire_transfers:)
       end
 
       sig do

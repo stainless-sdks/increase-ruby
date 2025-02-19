@@ -1,14 +1,13 @@
 module Increase
   module Models
-    type routing_number_list_response =
-      {
-        ach_transfers: Increase::Models::RoutingNumberListResponse::ach_transfers,
-        name: String,
-        real_time_payments_transfers: Increase::Models::RoutingNumberListResponse::real_time_payments_transfers,
-        routing_number: String,
-        type: Increase::Models::RoutingNumberListResponse::type_,
-        wire_transfers: Increase::Models::RoutingNumberListResponse::wire_transfers
-      }
+    type routing_number_list_response = {
+      ach_transfers: Increase::Models::RoutingNumberListResponse::ach_transfers,
+      name: String,
+      real_time_payments_transfers: Increase::Models::RoutingNumberListResponse::real_time_payments_transfers,
+      routing_number: String,
+      type: Increase::Models::RoutingNumberListResponse::type_,
+      wire_transfers: Increase::Models::RoutingNumberListResponse::wire_transfers
+    }
 
     class RoutingNumberListResponse < Increase::BaseModel
       attr_accessor ach_transfers: Increase::Models::RoutingNumberListResponse::ach_transfers
@@ -23,23 +22,12 @@ module Increase
 
       attr_accessor wire_transfers: Increase::Models::RoutingNumberListResponse::wire_transfers
 
-      def initialize:
-        (
-          ach_transfers: Increase::Models::RoutingNumberListResponse::ach_transfers,
-          name: String,
-          real_time_payments_transfers: Increase::Models::RoutingNumberListResponse::real_time_payments_transfers,
-          routing_number: String,
-          type: Increase::Models::RoutingNumberListResponse::type_,
-          wire_transfers: Increase::Models::RoutingNumberListResponse::wire_transfers
-        ) -> void
-        | (
-          ?Increase::Models::routing_number_list_response
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (ach_transfers: Increase::Models::RoutingNumberListResponse::ach_transfers, name: String, real_time_payments_transfers: Increase::Models::RoutingNumberListResponse::real_time_payments_transfers, routing_number: String, type: Increase::Models::RoutingNumberListResponse::type_, wire_transfers: Increase::Models::RoutingNumberListResponse::wire_transfers) -> void
+                    | (?(Increase::Models::routing_number_list_response | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::routing_number_list_response
+      def to_hash: () -> Increase::Models::routing_number_list_response
 
-      type ach_transfers = :supported | :not_supported
+      type ach_transfers = (:supported | :not_supported)
 
       class ACHTransfers < Increase::Enum
         # The routing number can receive this transfer type.
@@ -48,10 +36,10 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED: :not_supported
 
-        def self.values: -> ::Array[Increase::Models::RoutingNumberListResponse::ach_transfers]
+        def self.values: () -> ::Array[Increase::Models::RoutingNumberListResponse::ach_transfers]
       end
 
-      type real_time_payments_transfers = :supported | :not_supported
+      type real_time_payments_transfers = (:supported | :not_supported)
 
       class RealTimePaymentsTransfers < Increase::Enum
         # The routing number can receive this transfer type.
@@ -60,7 +48,7 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED: :not_supported
 
-        def self.values: -> ::Array[Increase::Models::RoutingNumberListResponse::real_time_payments_transfers]
+        def self.values: () -> ::Array[Increase::Models::RoutingNumberListResponse::real_time_payments_transfers]
       end
 
       type type_ = :routing_number
@@ -68,10 +56,10 @@ module Increase
       class Type < Increase::Enum
         ROUTING_NUMBER: :routing_number
 
-        def self.values: -> ::Array[Increase::Models::RoutingNumberListResponse::type_]
+        def self.values: () -> ::Array[Increase::Models::RoutingNumberListResponse::type_]
       end
 
-      type wire_transfers = :supported | :not_supported
+      type wire_transfers = (:supported | :not_supported)
 
       class WireTransfers < Increase::Enum
         # The routing number can receive this transfer type.
@@ -80,7 +68,7 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED: :not_supported
 
-        def self.values: -> ::Array[Increase::Models::RoutingNumberListResponse::wire_transfers]
+        def self.values: () -> ::Array[Increase::Models::RoutingNumberListResponse::wire_transfers]
       end
     end
   end

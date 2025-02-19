@@ -69,27 +69,18 @@ module Increase
 
       sig do
         params(
-          id: String,
-          created_at: Time,
-          file_id: String,
-          lockbox_id: T.nilable(String),
-          recipient_name: T.nilable(String),
-          rejection_reason: T.nilable(Symbol),
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            created_at: Time,
+            file_id: String,
+            lockbox_id: T.nilable(String),
+            recipient_name: T.nilable(String),
+            rejection_reason: T.nilable(Symbol),
+            status: Symbol,
+            type: Symbol
+          )
           .void
       end
-      def initialize(
-        id:,
-        created_at:,
-        file_id:,
-        lockbox_id:,
-        recipient_name:,
-        rejection_reason:,
-        status:,
-        type:
-      )
+      def initialize(id:, created_at:, file_id:, lockbox_id:, recipient_name:, rejection_reason:, status:, type:)
       end
 
       sig do

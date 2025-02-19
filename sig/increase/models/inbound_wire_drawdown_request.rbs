@@ -1,31 +1,30 @@
 module Increase
   module Models
-    type inbound_wire_drawdown_request =
-      {
-        id: String,
-        amount: Integer,
-        beneficiary_account_number: String,
-        :beneficiary_address_line1 => String?,
-        :beneficiary_address_line2 => String?,
-        :beneficiary_address_line3 => String?,
-        beneficiary_name: String?,
-        beneficiary_routing_number: String,
-        created_at: Time,
-        currency: String,
-        message_to_recipient: String?,
-        originator_account_number: String,
-        :originator_address_line1 => String?,
-        :originator_address_line2 => String?,
-        :originator_address_line3 => String?,
-        originator_name: String?,
-        originator_routing_number: String,
-        :originator_to_beneficiary_information_line1 => String?,
-        :originator_to_beneficiary_information_line2 => String?,
-        :originator_to_beneficiary_information_line3 => String?,
-        :originator_to_beneficiary_information_line4 => String?,
-        recipient_account_number_id: String,
-        type: Increase::Models::InboundWireDrawdownRequest::type_
-      }
+    type inbound_wire_drawdown_request = {
+      id: String,
+      amount: Integer,
+      beneficiary_account_number: String,
+      beneficiary_address_line1: String?,
+      beneficiary_address_line2: String?,
+      beneficiary_address_line3: String?,
+      beneficiary_name: String?,
+      beneficiary_routing_number: String,
+      created_at: Time,
+      currency: String,
+      message_to_recipient: String?,
+      originator_account_number: String,
+      originator_address_line1: String?,
+      originator_address_line2: String?,
+      originator_address_line3: String?,
+      originator_name: String?,
+      originator_routing_number: String,
+      originator_to_beneficiary_information_line1: String?,
+      originator_to_beneficiary_information_line2: String?,
+      originator_to_beneficiary_information_line3: String?,
+      originator_to_beneficiary_information_line4: String?,
+      recipient_account_number_id: String,
+      type: Increase::Models::InboundWireDrawdownRequest::type_
+    }
 
     class InboundWireDrawdownRequest < Increase::BaseModel
       attr_accessor id: String
@@ -74,45 +73,17 @@ module Increase
 
       attr_accessor type: Increase::Models::InboundWireDrawdownRequest::type_
 
-      def initialize:
-        (
-          id: String,
-          amount: Integer,
-          beneficiary_account_number: String,
-          beneficiary_address_line1: String?,
-          beneficiary_address_line2: String?,
-          beneficiary_address_line3: String?,
-          beneficiary_name: String?,
-          beneficiary_routing_number: String,
-          created_at: Time,
-          currency: String,
-          message_to_recipient: String?,
-          originator_account_number: String,
-          originator_address_line1: String?,
-          originator_address_line2: String?,
-          originator_address_line3: String?,
-          originator_name: String?,
-          originator_routing_number: String,
-          originator_to_beneficiary_information_line1: String?,
-          originator_to_beneficiary_information_line2: String?,
-          originator_to_beneficiary_information_line3: String?,
-          originator_to_beneficiary_information_line4: String?,
-          recipient_account_number_id: String,
-          type: Increase::Models::InboundWireDrawdownRequest::type_
-        ) -> void
-        | (
-          ?Increase::Models::inbound_wire_drawdown_request
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, amount: Integer, beneficiary_account_number: String, beneficiary_address_line1: String?, beneficiary_address_line2: String?, beneficiary_address_line3: String?, beneficiary_name: String?, beneficiary_routing_number: String, created_at: Time, currency: String, message_to_recipient: String?, originator_account_number: String, originator_address_line1: String?, originator_address_line2: String?, originator_address_line3: String?, originator_name: String?, originator_routing_number: String, originator_to_beneficiary_information_line1: String?, originator_to_beneficiary_information_line2: String?, originator_to_beneficiary_information_line3: String?, originator_to_beneficiary_information_line4: String?, recipient_account_number_id: String, type: Increase::Models::InboundWireDrawdownRequest::type_) -> void
+                    | (?(Increase::Models::inbound_wire_drawdown_request | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::inbound_wire_drawdown_request
+      def to_hash: () -> Increase::Models::inbound_wire_drawdown_request
 
       type type_ = :inbound_wire_drawdown_request
 
       class Type < Increase::Enum
         INBOUND_WIRE_DRAWDOWN_REQUEST: :inbound_wire_drawdown_request
 
-        def self.values: -> ::Array[Increase::Models::InboundWireDrawdownRequest::type_]
+        def self.values: () -> ::Array[Increase::Models::InboundWireDrawdownRequest::type_]
       end
     end
   end

@@ -35,11 +35,11 @@ module Increase
 
       sig do
         params(
-          entries: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
-          date: Time,
-          transaction_id: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            entries: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
+            date: Time,
+            transaction_id: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(entries:, date: nil, transaction_id: nil, request_options: {})

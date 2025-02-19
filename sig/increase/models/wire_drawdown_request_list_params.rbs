@@ -1,13 +1,11 @@
 module Increase
   module Models
-    type wire_drawdown_request_list_params =
-      {
-        cursor: String,
-        idempotency_key: String,
-        limit: Integer,
-        status: Increase::Models::WireDrawdownRequestListParams::status
-      }
-      & Increase::request_parameters
+    type wire_drawdown_request_list_params = ({
+      cursor: String,
+      idempotency_key: String,
+      limit: Integer,
+      status: Increase::Models::WireDrawdownRequestListParams::status
+    } & Increase::request_parameters)
 
     class WireDrawdownRequestListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -27,27 +25,14 @@ module Increase
 
       attr_reader status: Increase::Models::WireDrawdownRequestListParams::status?
 
-      def status=: (
-        Increase::Models::WireDrawdownRequestListParams::status
-      ) -> Increase::Models::WireDrawdownRequestListParams::status
+      def status=: (Increase::Models::WireDrawdownRequestListParams::status) -> Increase::Models::WireDrawdownRequestListParams::status
 
-      def initialize:
-        (
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::WireDrawdownRequestListParams::status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::wire_drawdown_request_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (cursor: String, idempotency_key: String, limit: Integer, status: Increase::Models::WireDrawdownRequestListParams::status, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::wire_drawdown_request_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::wire_drawdown_request_list_params
+      def to_hash: () -> Increase::Models::wire_drawdown_request_list_params
 
-      type status =
-        :pending_submission | :pending_response | :fulfilled | :refused
+      type status = (:pending_submission | :pending_response | :fulfilled | :refused)
 
       class Status < Increase::Enum
         # The drawdown request is queued to be submitted to Fedwire.
@@ -62,7 +47,7 @@ module Increase
         # The drawdown request has been refused by the recipient.
         REFUSED: :refused
 
-        def self.values: -> ::Array[Increase::Models::WireDrawdownRequestListParams::status]
+        def self.values: () -> ::Array[Increase::Models::WireDrawdownRequestListParams::status]
       end
     end
   end

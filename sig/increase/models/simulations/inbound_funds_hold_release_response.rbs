@@ -1,19 +1,18 @@
 module Increase
   module Models
     module Simulations
-      type inbound_funds_hold_release_response =
-        {
-          id: String,
-          amount: Integer,
-          automatically_releases_at: Time,
-          created_at: Time,
-          currency: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::currency,
-          held_transaction_id: String?,
-          pending_transaction_id: String?,
-          released_at: Time?,
-          status: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::status,
-          type: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_
-        }
+      type inbound_funds_hold_release_response = {
+        id: String,
+        amount: Integer,
+        automatically_releases_at: Time,
+        created_at: Time,
+        currency: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::currency,
+        held_transaction_id: String?,
+        pending_transaction_id: String?,
+        released_at: Time?,
+        status: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::status,
+        type: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_
+      }
 
       class InboundFundsHoldReleaseResponse < Increase::BaseModel
         attr_accessor id: String
@@ -36,27 +35,12 @@ module Increase
 
         attr_accessor type: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_
 
-        def initialize:
-          (
-            id: String,
-            amount: Integer,
-            automatically_releases_at: Time,
-            created_at: Time,
-            currency: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::currency,
-            held_transaction_id: String?,
-            pending_transaction_id: String?,
-            released_at: Time?,
-            status: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::status,
-            type: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_
-          ) -> void
-          | (
-            ?Increase::Models::Simulations::inbound_funds_hold_release_response
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (id: String, amount: Integer, automatically_releases_at: Time, created_at: Time, currency: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::currency, held_transaction_id: String?, pending_transaction_id: String?, released_at: Time?, status: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::status, type: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_) -> void
+                      | (?(Increase::Models::Simulations::inbound_funds_hold_release_response | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::Simulations::inbound_funds_hold_release_response
+        def to_hash: () -> Increase::Models::Simulations::inbound_funds_hold_release_response
 
-        type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+        type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
         class Currency < Increase::Enum
           # Canadian Dollar (CAD)
@@ -77,10 +61,10 @@ module Increase
           # US Dollar (USD)
           USD: :USD
 
-          def self.values: -> ::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::currency]
+          def self.values: () -> ::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::currency]
         end
 
-        type status = :held | :complete
+        type status = (:held | :complete)
 
         class Status < Increase::Enum
           # Funds are still being held.
@@ -89,7 +73,7 @@ module Increase
           # Funds have been released.
           COMPLETE: :complete
 
-          def self.values: -> ::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::status]
+          def self.values: () -> ::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::status]
         end
 
         type type_ = :inbound_funds_hold
@@ -97,7 +81,7 @@ module Increase
         class Type < Increase::Enum
           INBOUND_FUNDS_HOLD: :inbound_funds_hold
 
-          def self.values: -> ::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_]
+          def self.values: () -> ::Array[Increase::Models::Simulations::InboundFundsHoldReleaseResponse::type_]
         end
       end
     end

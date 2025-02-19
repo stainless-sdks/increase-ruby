@@ -19,9 +19,9 @@ module Increase
 
       sig do
         params(
-          address: Increase::Models::EntityUpdateAddressParams::Address,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            address: Increase::Models::EntityUpdateAddressParams::Address,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(address:, request_options: {})

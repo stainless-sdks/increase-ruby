@@ -70,15 +70,15 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          amount: Integer,
-          fulfillment_method: Symbol,
-          source_account_number_id: String,
-          physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
-          require_approval: T::Boolean,
-          third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_id: String,
+            amount: Integer,
+            fulfillment_method: Symbol,
+            source_account_number_id: String,
+            physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
+            require_approval: T::Boolean,
+            third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(
@@ -182,23 +182,16 @@ module Increase
 
         sig do
           params(
-            mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
-            memo: String,
-            recipient_name: String,
-            note: String,
-            return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
-            signature_text: String
-          )
+              mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+              memo: String,
+              recipient_name: String,
+              note: String,
+              return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+              signature_text: String
+            )
             .void
         end
-        def initialize(
-          mailing_address:,
-          memo:,
-          recipient_name:,
-          note: nil,
-          return_address: nil,
-          signature_text: nil
-        )
+        def initialize(mailing_address:, memo:, recipient_name:, note: nil, return_address: nil, signature_text: nil)
         end
 
         sig do
@@ -266,29 +259,13 @@ module Increase
           def name=(_)
           end
 
-          sig do
-            params(
-              city: String,
-              line1: String,
-              postal_code: String,
-              state: String,
-              line2: String,
-              name: String
-            ).void
-          end
+          sig { params(city: String, line1: String, postal_code: String, state: String, line2: String, name: String).void }
           def initialize(city:, line1:, postal_code:, state:, line2: nil, name: nil)
           end
 
           sig do
             override
-              .returns({
-                         city: String,
-                         line1: String,
-                         postal_code: String,
-                         state: String,
-                         line2: String,
-                         name: String
-                       })
+              .returns({city: String, line1: String, postal_code: String, state: String, line2: String, name: String})
           end
           def to_hash
           end
@@ -343,29 +320,13 @@ module Increase
           def line2=(_)
           end
 
-          sig do
-            params(
-              city: String,
-              line1: String,
-              name: String,
-              postal_code: String,
-              state: String,
-              line2: String
-            ).void
-          end
+          sig { params(city: String, line1: String, name: String, postal_code: String, state: String, line2: String).void }
           def initialize(city:, line1:, name:, postal_code:, state:, line2: nil)
           end
 
           sig do
             override
-              .returns({
-                         city: String,
-                         line1: String,
-                         name: String,
-                         postal_code: String,
-                         state: String,
-                         line2: String
-                       })
+              .returns({city: String, line1: String, name: String, postal_code: String, state: String, line2: String})
           end
           def to_hash
           end

@@ -1,18 +1,17 @@
 module Increase
   module Models
-    type intrafi_exclusion =
-      {
-        id: String,
-        bank_name: String,
-        created_at: Time,
-        entity_id: String,
-        excluded_at: Time?,
-        fdic_certificate_number: String?,
-        idempotency_key: String?,
-        status: Increase::Models::IntrafiExclusion::status,
-        submitted_at: Time?,
-        type: Increase::Models::IntrafiExclusion::type_
-      }
+    type intrafi_exclusion = {
+      id: String,
+      bank_name: String,
+      created_at: Time,
+      entity_id: String,
+      excluded_at: Time?,
+      fdic_certificate_number: String?,
+      idempotency_key: String?,
+      status: Increase::Models::IntrafiExclusion::status,
+      submitted_at: Time?,
+      type: Increase::Models::IntrafiExclusion::type_
+    }
 
     class IntrafiExclusion < Increase::BaseModel
       attr_accessor id: String
@@ -35,26 +34,12 @@ module Increase
 
       attr_accessor type: Increase::Models::IntrafiExclusion::type_
 
-      def initialize:
-        (
-          id: String,
-          bank_name: String,
-          created_at: Time,
-          entity_id: String,
-          excluded_at: Time?,
-          fdic_certificate_number: String?,
-          idempotency_key: String?,
-          status: Increase::Models::IntrafiExclusion::status,
-          submitted_at: Time?,
-          type: Increase::Models::IntrafiExclusion::type_
-        ) -> void
-        | (
-          ?Increase::Models::intrafi_exclusion | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, bank_name: String, created_at: Time, entity_id: String, excluded_at: Time?, fdic_certificate_number: String?, idempotency_key: String?, status: Increase::Models::IntrafiExclusion::status, submitted_at: Time?, type: Increase::Models::IntrafiExclusion::type_) -> void
+                    | (?(Increase::Models::intrafi_exclusion | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::intrafi_exclusion
+      def to_hash: () -> Increase::Models::intrafi_exclusion
 
-      type status = :pending | :completed | :archived
+      type status = (:pending | :completed | :archived)
 
       class Status < Increase::Enum
         # The exclusion is being added to the IntraFi network.
@@ -66,7 +51,7 @@ module Increase
         # The exclusion has been removed from the IntraFi network.
         ARCHIVED: :archived
 
-        def self.values: -> ::Array[Increase::Models::IntrafiExclusion::status]
+        def self.values: () -> ::Array[Increase::Models::IntrafiExclusion::status]
       end
 
       type type_ = :intrafi_exclusion
@@ -74,7 +59,7 @@ module Increase
       class Type < Increase::Enum
         INTRAFI_EXCLUSION: :intrafi_exclusion
 
-        def self.values: -> ::Array[Increase::Models::IntrafiExclusion::type_]
+        def self.values: () -> ::Array[Increase::Models::IntrafiExclusion::type_]
       end
     end
   end

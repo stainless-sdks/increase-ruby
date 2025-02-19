@@ -2,15 +2,8 @@ module Increase
   module Resources
     class Simulations
       class CardAuthorizationExpirations
-        def create:
-          (
-            Increase::Models::Simulations::CardAuthorizationExpirationCreateParams
-            | ::Hash[Symbol, top] params
-          ) -> Increase::Models::CardPayment
-          | (
-            card_payment_id: String,
-            request_options: Increase::request_opts
-          ) -> Increase::Models::CardPayment
+        def create: ((Increase::Models::Simulations::CardAuthorizationExpirationCreateParams | ::Hash[Symbol, top]) params) -> Increase::Models::CardPayment
+                  | (card_payment_id: String, request_options: Increase::request_opts) -> Increase::Models::CardPayment
 
         def initialize: (client: Increase::Client) -> void
       end

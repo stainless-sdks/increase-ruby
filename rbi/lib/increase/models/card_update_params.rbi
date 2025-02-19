@@ -54,13 +54,13 @@ module Increase
 
       sig do
         params(
-          billing_address: Increase::Models::CardUpdateParams::BillingAddress,
-          description: String,
-          digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
-          entity_id: String,
-          status: Symbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            billing_address: Increase::Models::CardUpdateParams::BillingAddress,
+            description: String,
+            digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
+            entity_id: String,
+            status: Symbol,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(
@@ -134,9 +134,7 @@ module Increase
         def initialize(city:, line1:, postal_code:, state:, line2: nil)
         end
 
-        sig do
-          override.returns({city: String, line1: String, postal_code: String, state: String, line2: String})
-        end
+        sig { override.returns({city: String, line1: String, postal_code: String, state: String, line2: String}) }
         def to_hash
         end
       end

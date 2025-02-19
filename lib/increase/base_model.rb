@@ -35,133 +35,133 @@ module Increase
     # rubocop:enable Lint/UnusedMethodArgument
 
     class << self
-      # @private
-      #
-      # @param spec [Hash{Symbol=>Object}, Proc, Increase::Converter, Class] .
-      #
-      #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
-      #
-      #   @option spec [Proc] :enum
-      #
-      #   @option spec [Proc] :union
-      #
-      #   @option spec [Boolean] :"nil?"
-      #
-      # @return [Proc]
-      #
-      def type_info(spec)
-        case spec
-        in Hash
-          type_info(spec.slice(:const, :enum, :union).first&.last)
-        in Proc
-          spec
-        in Increase::Converter | Class
-          -> { spec }
-        in true | false
-          -> { Increase::BooleanModel }
-        in NilClass | true | false | Symbol | Integer | Float
-          -> { spec.class }
-        end
+    # @private
+    #
+    # @param spec [Hash{Symbol=>Object}, Proc, Increase::Converter, Class] .
+    #
+    #   @option spec [NilClass, TrueClass, FalseClass, Integer, Float, Symbol] :const
+    #
+    #   @option spec [Proc] :enum
+    #
+    #   @option spec [Proc] :union
+    #
+    #   @option spec [Boolean] :"nil?"
+    #
+    # @return [Proc]
+    #
+    def type_info(spec)
+      case spec
+      in Hash
+        type_info(spec.slice(:const, :enum, :union).first&.last)
+      in Proc
+        spec
+      in Increase::Converter | Class
+        -> { spec }
+      in true | false
+        -> { Increase::BooleanModel }
+      in NilClass | true | false | Symbol | Integer | Float
+        -> { spec.class }
       end
+    end
 
-      # @private
-      #
-      # Based on `target`, transform `value` into `target`, to the extent possible:
-      #
-      #   1. if the given `value` conforms to `target` already, return the given `value`
-      #   2. if it's possible and safe to convert the given `value` to `target`, then the
-      #      converted value
-      #   3. otherwise, the given `value` unaltered
-      #
-      # @param target [Increase::Converter, Class]
-      # @param value [Object]
-      #
-      # @return [Object]
-      #
-      def coerce(target, value)
+    # @private
+    #
+    # Based on `target`, transform `value` into `target`, to the extent possible:
+    #
+    #   1. if the given `value` conforms to `target` already, return the given `value`
+    #   2. if it's possible and safe to convert the given `value` to `target`, then the
+    #      converted value
+    #   3. otherwise, the given `value` unaltered
+    #
+    # @param target [Increase::Converter, Class]
+    # @param value [Object]
+    #
+    # @return [Object]
+    #
+    def coerce(target, value)
+      case target
+      in Increase::Converter
+        target.coerce(value)
+      in Class
         case target
-        in Increase::Converter
-          target.coerce(value)
-        in Class
-          case target
-          in -> { _1 <= NilClass }
-            nil
-          in -> { _1 <= Integer }
-            value.is_a?(Numeric) ? Integer(value) : value
-          in -> { _1 <= Float }
-            value.is_a?(Numeric) ? Float(value) : value
-          in -> { _1 <= Symbol }
-            value.is_a?(String) ? value.to_sym : value
-          in -> { _1 <= String }
-            value.is_a?(Symbol) ? value.to_s : value
-          in -> { _1 <= Date || _1 <= Time }
-            value.is_a?(String) ? target.parse(value) : value
-          in -> { _1 <= IO }
-            value.is_a?(String) ? StringIO.new(value) : value
-          else
-            value
-          end
-        end
-      end
-
-      # @private
-      #
-      # @param target [Increase::Converter, Class]
-      # @param value [Object]
-      #
-      # @return [Object]
-      #
-      def dump(target, value)
-        case target
-        in Increase::Converter
-          target.dump(value)
+        in -> { _1 <= NilClass }
+          nil
+        in -> { _1 <= Integer }
+          value.is_a?(Numeric) ? Integer(value) : value
+        in -> { _1 <= Float }
+          value.is_a?(Numeric) ? Float(value) : value
+        in -> { _1 <= Symbol }
+          value.is_a?(String) ? value.to_sym : value
+        in -> { _1 <= String }
+          value.is_a?(Symbol) ? value.to_s : value
+        in -> { _1 <= Date || _1 <= Time }
+          value.is_a?(String) ? target.parse(value) : value
+        in -> { _1 <= IO }
+          value.is_a?(String) ? StringIO.new(value) : value
         else
           value
         end
       end
+    end
 
-      # @private
-      #
-      # The underlying algorithm for computing maximal compatibility is subject to
-      #   future improvements.
-      #
-      #   Similar to `#.coerce`, used to determine the best union variant to decode into.
-      #
-      #   1. determine if strict-ish coercion is possible
-      #   2. return either result of successful coercion or if loose coercion is possible
-      #   3. return a score for recursively tallied count for fields that can be coerced
-      #
-      # @param target [Increase::Converter, Class]
-      # @param value [Object]
-      #
-      # @return [Object]
-      #
-      def try_strict_coerce(target, value)
-        case target
-        in Increase::Converter
-          target.try_strict_coerce(value)
-        in Class
-          case [target, value]
-          in [-> { _1 <= NilClass }, _]
-            [true, nil, value.nil? ? 1 : 0]
-          in [-> { _1 <= Integer }, Numeric]
-            [true, Integer(value), 1]
-          in [-> { _1 <= Float }, Numeric]
-            [true, Float(value), 1]
-          in [-> { _1 <= String }, Symbol]
-            [true, value.to_s, 1]
-          in [-> { _1 <= Date || _1 <= Time }, String]
-            Increase::Util.suppress(ArgumentError, Date::Error) do
-              return [true, target.parse(value), 1]
-            end
-            [false, false, 0]
-          in [_, ^target]
-            [true, value, 1]
-          else
-            [false, false, 0]
+    # @private
+    #
+    # @param target [Increase::Converter, Class]
+    # @param value [Object]
+    #
+    # @return [Object]
+    #
+    def dump(target, value)
+      case target
+      in Increase::Converter
+        target.dump(value)
+      else
+        value
+      end
+    end
+
+    # @private
+    #
+    # The underlying algorithm for computing maximal compatibility is subject to
+    #   future improvements.
+    #
+    #   Similar to `#.coerce`, used to determine the best union variant to decode into.
+    #
+    #   1. determine if strict-ish coercion is possible
+    #   2. return either result of successful coercion or if loose coercion is possible
+    #   3. return a score for recursively tallied count for fields that can be coerced
+    #
+    # @param target [Increase::Converter, Class]
+    # @param value [Object]
+    #
+    # @return [Object]
+    #
+    def try_strict_coerce(target, value)
+      case target
+      in Increase::Converter
+        target.try_strict_coerce(value)
+      in Class
+        case [target, value]
+        in [-> { _1 <= NilClass }, _]
+          [true, nil, value.nil? ? 1 : 0]
+        in [-> { _1 <= Integer }, Numeric]
+          [true, Integer(value), 1]
+        in [-> { _1 <= Float }, Numeric]
+          [true, Float(value), 1]
+        in [-> { _1 <= String }, Symbol]
+          [true, value.to_s, 1]
+        in [-> { _1 <= Date || _1 <= Time }, String]
+          Increase::Util.suppress(ArgumentError, Date::Error) do
+            return [true, target.parse(value), 1]
           end
+          [false, false, 0]
+        in [_, ^target]
+          [true, value, 1]
+        else
+          [false, false, 0]
         end
       end
+    end
     end
   end
 
@@ -187,7 +187,7 @@ module Increase
     #
     # @return [Boolean]
     #
-    def self.==(other) = other.is_a?(Class) && other <= Increase::Unknown
+    def self.==(other) = (other.is_a?(Class) && other <= Increase::Unknown)
 
     # @!parse
     #   # @private
@@ -241,7 +241,7 @@ module Increase
     #
     # @return [Boolean]
     #
-    def self.==(other) = other.is_a?(Class) && other <= Increase::BooleanModel
+    def self.==(other) = (other.is_a?(Class) && other <= Increase::BooleanModel)
 
     # @!parse
     #   # @private
@@ -319,7 +319,7 @@ module Increase
     # @return [Boolean]
     #
     def self.==(other)
-      other.is_a?(Class) && other <= Increase::Enum && other.values.to_set == values.to_set
+      (other.is_a?(Class) && other <= Increase::Enum && other.values.to_set == values.to_set)
     end
 
     # @private
@@ -379,15 +379,15 @@ module Increase
     private_class_method def self.known_variants = (@known_variants ||= [])
 
     class << self
-      # @private
-      #
-      # All of the specified variants for this union.
-      #
-      # @return [Array<Array(Symbol, Object)>]
-      #
-      protected def variants
-        @known_variants.map { |key, variant_fn| [key, variant_fn.call] }
-      end
+    # @private
+    #
+    # All of the specified variants for this union.
+    #
+    # @return [Array<Array(Symbol, Object)>]
+    #
+    protected def variants
+      @known_variants.map { |key, variant_fn| [key, variant_fn.call] }
+    end
     end
 
     # @private
@@ -855,15 +855,15 @@ module Increase
     end
 
     class << self
-      # @private
-      #
-      # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
-      #
-      def fields
-        known_fields.transform_values do |field|
-          {**field.except(:type_fn), type: field.fetch(:type_fn).call}
-        end
+    # @private
+    #
+    # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
+    #
+    def fields
+      known_fields.transform_values do |field|
+        {**field.except(:type_fn), type: field.fetch(:type_fn).call}
       end
+    end
     end
 
     # @private
@@ -977,9 +977,9 @@ module Increase
     #
     private_class_method def self.request_only(&blk)
       @mode = :dump
-      blk.call
-    ensure
-      @mode = nil
+        blk.call
+      ensure
+        @mode = nil
     end
 
     # @private
@@ -990,9 +990,9 @@ module Increase
     #
     private_class_method def self.response_only(&blk)
       @mode = :coerce
-      blk.call
-    ensure
-      @mode = nil
+        blk.call
+      ensure
+        @mode = nil
     end
 
     # @param other [Object]

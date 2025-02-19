@@ -51,23 +51,16 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          check_transfer_id: String,
-          created_at: Increase::Models::InboundCheckDepositListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_id: String,
+            check_transfer_id: String,
+            created_at: Increase::Models::InboundCheckDepositListParams::CreatedAt,
+            cursor: String,
+            limit: Integer,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
-      def initialize(
-        account_id: nil,
-        check_transfer_id: nil,
-        created_at: nil,
-        cursor: nil,
-        limit: nil,
-        request_options: {}
-      )
+      def initialize(account_id: nil, check_transfer_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
       end
 
       sig do

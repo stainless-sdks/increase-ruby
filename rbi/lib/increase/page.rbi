@@ -24,11 +24,11 @@ module Increase
 
     sig do
       params(
-        client: Increase::BaseClient,
-        req: Increase::BaseClient::RequestShape,
-        headers: T::Hash[String, String],
-        unwrapped: T::Hash[Symbol, T.anything]
-      )
+          client: Increase::BaseClient,
+          req: Increase::BaseClient::RequestShape,
+          headers: T::Hash[String, String],
+          unwrapped: T::Hash[Symbol, T.anything]
+        )
         .void
     end
     def initialize(client:, req:, headers:, unwrapped:)

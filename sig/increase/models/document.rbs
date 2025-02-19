@@ -1,14 +1,13 @@
 module Increase
   module Models
-    type document =
-      {
-        id: String,
-        category: Increase::Models::Document::category,
-        created_at: Time,
-        entity_id: String?,
-        file_id: String,
-        type: Increase::Models::Document::type_
-      }
+    type document = {
+      id: String,
+      category: Increase::Models::Document::category,
+      created_at: Time,
+      entity_id: String?,
+      file_id: String,
+      type: Increase::Models::Document::type_
+    }
 
     class Document < Increase::BaseModel
       attr_accessor id: String
@@ -23,24 +22,12 @@ module Increase
 
       attr_accessor type: Increase::Models::Document::type_
 
-      def initialize:
-        (
-          id: String,
-          category: Increase::Models::Document::category,
-          created_at: Time,
-          entity_id: String?,
-          file_id: String,
-          type: Increase::Models::Document::type_
-        ) -> void
-        | (?Increase::Models::document | Increase::BaseModel data) -> void
+      def initialize: (id: String, category: Increase::Models::Document::category, created_at: Time, entity_id: String?, file_id: String, type: Increase::Models::Document::type_) -> void
+                    | (?(Increase::Models::document | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::document
+      def to_hash: () -> Increase::Models::document
 
-      type category =
-        :form_1099_int
-        | :form_1099_misc
-        | :proof_of_authorization
-        | :company_information
+      type category = (:form_1099_int | :form_1099_misc | :proof_of_authorization | :company_information)
 
       class Category < Increase::Enum
         # Internal Revenue Service Form 1099-INT.
@@ -55,7 +42,7 @@ module Increase
         # Company information, such a policies or procedures, typically submitted during our due diligence process.
         COMPANY_INFORMATION: :company_information
 
-        def self.values: -> ::Array[Increase::Models::Document::category]
+        def self.values: () -> ::Array[Increase::Models::Document::category]
       end
 
       type type_ = :document
@@ -63,7 +50,7 @@ module Increase
       class Type < Increase::Enum
         DOCUMENT: :document
 
-        def self.values: -> ::Array[Increase::Models::Document::type_]
+        def self.values: () -> ::Array[Increase::Models::Document::type_]
       end
     end
   end

@@ -15,13 +15,7 @@ class Increase::Test::Resources::PhysicalCardsTest < Minitest::Test
       card_id: "card_oubs0hwk5rn6knuecxg2",
       cardholder: {first_name: "Ian", last_name: "Crease"},
       shipment: {
-        address: {
-          city: "New York",
-          line1: "33 Liberty Street",
-          name: "Ian Crease",
-          postal_code: "10045",
-          state: "NY"
-        },
+        address: {city: "New York", line1: "33 Liberty Street", name: "Ian Crease", postal_code: "10045", state: "NY"},
         method: :usps
       }
     )

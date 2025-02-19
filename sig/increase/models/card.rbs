@@ -1,21 +1,20 @@
 module Increase
   module Models
-    type card =
-      {
-        id: String,
-        account_id: String,
-        billing_address: Increase::Models::Card::BillingAddress,
-        created_at: Time,
-        description: String?,
-        digital_wallet: Increase::Models::Card::DigitalWallet?,
-        entity_id: String?,
-        expiration_month: Integer,
-        expiration_year: Integer,
-        idempotency_key: String?,
-        :last4 => String,
-        status: Increase::Models::Card::status,
-        type: Increase::Models::Card::type_
-      }
+    type card = {
+      id: String,
+      account_id: String,
+      billing_address: Increase::Models::Card::BillingAddress,
+      created_at: Time,
+      description: String?,
+      digital_wallet: Increase::Models::Card::DigitalWallet?,
+      entity_id: String?,
+      expiration_month: Integer,
+      expiration_year: Integer,
+      idempotency_key: String?,
+      last4: String,
+      status: Increase::Models::Card::status,
+      type: Increase::Models::Card::type_
+    }
 
     class Card < Increase::BaseModel
       attr_accessor id: String
@@ -44,34 +43,12 @@ module Increase
 
       attr_accessor type: Increase::Models::Card::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          billing_address: Increase::Models::Card::BillingAddress,
-          created_at: Time,
-          description: String?,
-          digital_wallet: Increase::Models::Card::DigitalWallet?,
-          entity_id: String?,
-          expiration_month: Integer,
-          expiration_year: Integer,
-          idempotency_key: String?,
-          last4: String,
-          status: Increase::Models::Card::status,
-          type: Increase::Models::Card::type_
-        ) -> void
-        | (?Increase::Models::card | Increase::BaseModel data) -> void
+      def initialize: (id: String, account_id: String, billing_address: Increase::Models::Card::BillingAddress, created_at: Time, description: String?, digital_wallet: Increase::Models::Card::DigitalWallet?, entity_id: String?, expiration_month: Integer, expiration_year: Integer, idempotency_key: String?, last4: String, status: Increase::Models::Card::status, type: Increase::Models::Card::type_) -> void
+                    | (?(Increase::Models::card | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::card
+      def to_hash: () -> Increase::Models::card
 
-      type billing_address =
-        {
-          city: String?,
-          :line1 => String?,
-          :line2 => String?,
-          postal_code: String?,
-          state: String?
-        }
+      type billing_address = {city: String?, line1: String?, line2: String?, postal_code: String?, state: String?}
 
       class BillingAddress < Increase::BaseModel
         attr_accessor city: String?
@@ -84,23 +61,13 @@ module Increase
 
         attr_accessor state: String?
 
-        def initialize:
-          (
-            city: String?,
-            line1: String?,
-            line2: String?,
-            postal_code: String?,
-            state: String?
-          ) -> void
-          | (
-            ?Increase::Models::Card::billing_address | Increase::BaseModel data
-          ) -> void
+        def initialize: (city: String?, line1: String?, line2: String?, postal_code: String?, state: String?) -> void
+                      | (?(Increase::Models::Card::billing_address | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::Card::billing_address
+        def to_hash: () -> Increase::Models::Card::billing_address
       end
 
-      type digital_wallet =
-        { digital_card_profile_id: String?, email: String?, phone: String? }
+      type digital_wallet = {digital_card_profile_id: String?, email: String?, phone: String?}
 
       class DigitalWallet < Increase::BaseModel
         attr_accessor digital_card_profile_id: String?
@@ -109,20 +76,13 @@ module Increase
 
         attr_accessor phone: String?
 
-        def initialize:
-          (
-            digital_card_profile_id: String?,
-            email: String?,
-            phone: String?
-          ) -> void
-          | (
-            ?Increase::Models::Card::digital_wallet | Increase::BaseModel data
-          ) -> void
+        def initialize: (digital_card_profile_id: String?, email: String?, phone: String?) -> void
+                      | (?(Increase::Models::Card::digital_wallet | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::Card::digital_wallet
+        def to_hash: () -> Increase::Models::Card::digital_wallet
       end
 
-      type status = :active | :disabled | :canceled
+      type status = (:active | :disabled | :canceled)
 
       class Status < Increase::Enum
         # The card is active.
@@ -134,7 +94,7 @@ module Increase
         # The card is permanently canceled.
         CANCELED: :canceled
 
-        def self.values: -> ::Array[Increase::Models::Card::status]
+        def self.values: () -> ::Array[Increase::Models::Card::status]
       end
 
       type type_ = :card
@@ -142,7 +102,7 @@ module Increase
       class Type < Increase::Enum
         CARD: :card
 
-        def self.values: -> ::Array[Increase::Models::Card::type_]
+        def self.values: () -> ::Array[Increase::Models::Card::type_]
       end
     end
   end
