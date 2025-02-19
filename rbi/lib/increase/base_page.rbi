@@ -27,7 +27,7 @@ module Increase
     sig do
       params(
         client: Increase::BaseClient,
-        req: Increase::BaseClient::RequestShape,
+        req: Increase::BaseClient::RequestComponentsShape,
         headers: T::Hash[String, String],
         unwrapped: T.anything
       )
