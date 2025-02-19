@@ -43,12 +43,12 @@ module Increase
 
       sig do
         params(
-          created_at: Increase::Models::InboundMailItemListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          lockbox_id: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            created_at: Increase::Models::InboundMailItemListParams::CreatedAt,
+            cursor: String,
+            limit: Integer,
+            lockbox_id: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(created_at: nil, cursor: nil, limit: nil, lockbox_id: nil, request_options: {})

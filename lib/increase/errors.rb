@@ -57,16 +57,7 @@ module Increase
     # @param response [nil]
     # @param message [String, nil]
     #
-    def initialize(
-      url:,
-      status: nil,
-      body: nil,
-      request: nil,
-      response: nil,
-      message: "Connection error."
-    )
-      super
-    end
+    def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.") = super
   end
 
   class APITimeoutError < Increase::APIConnectionError
@@ -79,16 +70,7 @@ module Increase
     # @param response [nil]
     # @param message [String, nil]
     #
-    def initialize(
-      url:,
-      status: nil,
-      body: nil,
-      request: nil,
-      response: nil,
-      message: "Request timed out."
-    )
-      super
-    end
+    def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.") = super
   end
 
   class APIStatusError < Increase::APIError

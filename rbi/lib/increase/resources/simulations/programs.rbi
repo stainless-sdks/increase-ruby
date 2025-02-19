@@ -6,9 +6,9 @@ module Increase
       class Programs
         sig do
           params(
-            name: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              name: String,
+              request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Increase::Models::Program)
         end
         def create(name:, request_options: {})

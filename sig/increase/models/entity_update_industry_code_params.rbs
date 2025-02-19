@@ -1,7 +1,6 @@
 module Increase
   module Models
-    type entity_update_industry_code_params =
-      { industry_code: String } & Increase::request_parameters
+    type entity_update_industry_code_params = ({industry_code: String} & Increase::request_parameters)
 
     class EntityUpdateIndustryCodeParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -9,14 +8,10 @@ module Increase
 
       attr_accessor industry_code: String
 
-      def initialize:
-        (industry_code: String, request_options: Increase::request_opts) -> void
-        | (
-          ?Increase::Models::entity_update_industry_code_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (industry_code: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::entity_update_industry_code_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::entity_update_industry_code_params
+      def to_hash: () -> Increase::Models::entity_update_industry_code_params
     end
   end
 end

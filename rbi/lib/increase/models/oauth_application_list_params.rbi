@@ -46,12 +46,12 @@ module Increase
 
       sig do
         params(
-          created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          status: Increase::Models::OAuthApplicationListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
+            cursor: String,
+            limit: Integer,
+            status: Increase::Models::OAuthApplicationListParams::Status,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(created_at: nil, cursor: nil, limit: nil, status: nil, request_options: {})

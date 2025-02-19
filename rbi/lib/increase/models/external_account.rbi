@@ -93,18 +93,18 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_holder: Symbol,
-          account_number: String,
-          created_at: Time,
-          description: String,
-          funding: Symbol,
-          idempotency_key: T.nilable(String),
-          routing_number: String,
-          status: Symbol,
-          type: Symbol,
-          verification_status: Symbol
-        )
+            id: String,
+            account_holder: Symbol,
+            account_number: String,
+            created_at: Time,
+            description: String,
+            funding: Symbol,
+            idempotency_key: T.nilable(String),
+            routing_number: String,
+            status: Symbol,
+            type: Symbol,
+            verification_status: Symbol
+          )
           .void
       end
       def initialize(

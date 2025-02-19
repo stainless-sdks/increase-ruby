@@ -1,10 +1,6 @@
 module Increase
   module Models
-    type entity_create_beneficial_owner_params =
-      {
-        beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner
-      }
-      & Increase::request_parameters
+    type entity_create_beneficial_owner_params = ({beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner} & Increase::request_parameters)
 
     class EntityCreateBeneficialOwnerParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -12,24 +8,16 @@ module Increase
 
       attr_accessor beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner
 
-      def initialize:
-        (
-          beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::entity_create_beneficial_owner_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::entity_create_beneficial_owner_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::entity_create_beneficial_owner_params
+      def to_hash: () -> Increase::Models::entity_create_beneficial_owner_params
 
-      type beneficial_owner =
-        {
-          individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-          prongs: ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong],
-          company_title: String
-        }
+      type beneficial_owner = {
+        individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
+        prongs: ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong],
+        company_title: String
+      }
 
       class BeneficialOwner < Increase::BaseModel
         attr_accessor individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual
@@ -40,27 +28,18 @@ module Increase
 
         def company_title=: (String) -> String
 
-        def initialize:
-          (
-            individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
-            prongs: ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong],
-            company_title: String
-          ) -> void
-          | (
-            ?Increase::Models::EntityCreateBeneficialOwnerParams::beneficial_owner
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual, prongs: ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong], company_title: String) -> void
+                      | (?(Increase::Models::EntityCreateBeneficialOwnerParams::beneficial_owner | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::EntityCreateBeneficialOwnerParams::beneficial_owner
+        def to_hash: () -> Increase::Models::EntityCreateBeneficialOwnerParams::beneficial_owner
 
-        type individual =
-          {
-            address: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
-            date_of_birth: Date,
-            identification: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
-            name: String,
-            confirmed_no_us_tax_id: bool
-          }
+        type individual = {
+          address: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
+          date_of_birth: Date,
+          identification: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
+          name: String,
+          confirmed_no_us_tax_id: bool
+        }
 
         class Individual < Increase::BaseModel
           attr_accessor address: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address
@@ -75,29 +54,12 @@ module Increase
 
           def confirmed_no_us_tax_id=: (bool) -> bool
 
-          def initialize:
-            (
-              address: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
-              date_of_birth: Date,
-              identification: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification,
-              name: String,
-              confirmed_no_us_tax_id: bool
-            ) -> void
-            | (
-              ?Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::individual
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (address: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address, date_of_birth: Date, identification: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification, name: String, confirmed_no_us_tax_id: bool) -> void
+                        | (?(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::individual | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::individual
+          def to_hash: () -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::individual
 
-          type address =
-            {
-              city: String,
-              :line1 => String,
-              state: String,
-              zip: String,
-              :line2 => String
-            }
+          type address = {city: String, line1: String, state: String, zip: String, line2: String}
 
           class Address < Increase::BaseModel
             attr_accessor city: String
@@ -112,30 +74,19 @@ module Increase
 
             def line2=: (String) -> String
 
-            def initialize:
-              (
-                city: String,
-                line1: String,
-                state: String,
-                zip: String,
-                line2: String
-              ) -> void
-              | (
-                ?Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::address
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (city: String, line1: String, state: String, zip: String, line2: String) -> void
+                          | (?(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::address | Increase::BaseModel) data) -> void
 
-            def to_hash: -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::address
+            def to_hash: () -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::address
           end
 
-          type identification =
-            {
-              method_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_,
-              number: String,
-              drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
-              other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
-              passport: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
-            }
+          type identification = {
+            method_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_,
+            number: String,
+            drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
+            other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
+            passport: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
+          }
 
           class Identification < Increase::BaseModel
             attr_accessor method_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_
@@ -144,43 +95,22 @@ module Increase
 
             attr_reader drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense?
 
-            def drivers_license=: (
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense
-            ) -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense
+            def drivers_license=: (Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense) -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense
 
             attr_reader other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other?
 
-            def other=: (
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other
-            ) -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other
+            def other=: (Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other) -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other
 
             attr_reader passport: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport?
 
-            def passport=: (
-              Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
-            ) -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
+            def passport=: (Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport) -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
 
-            def initialize:
-              (
-                method_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_,
-                number: String,
-                drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense,
-                other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
-                passport: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
-              ) -> void
-              | (
-                ?Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::identification
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (method_: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_, number: String, drivers_license: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::DriversLicense, other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other, passport: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport) -> void
+                          | (?(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::identification | Increase::BaseModel) data) -> void
 
-            def to_hash: -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::identification
+            def to_hash: () -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::identification
 
-            type method_ =
-              :social_security_number
-              | :individual_taxpayer_identification_number
-              | :passport
-              | :drivers_license
-              | :other
+            type method_ = (:social_security_number | :individual_taxpayer_identification_number | :passport | :drivers_license | :other)
 
             class Method < Increase::Enum
               # A social security number.
@@ -198,16 +128,10 @@ module Increase
               # Another identifying document.
               OTHER: :other
 
-              def self.values: -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_]
+              def self.values: () -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::method_]
             end
 
-            type drivers_license =
-              {
-                expiration_date: Date,
-                file_id: String,
-                state: String,
-                back_file_id: String
-              }
+            type drivers_license = {expiration_date: Date, file_id: String, state: String, back_file_id: String}
 
             class DriversLicense < Increase::BaseModel
               attr_accessor expiration_date: Date
@@ -220,29 +144,13 @@ module Increase
 
               def back_file_id=: (String) -> String
 
-              def initialize:
-                (
-                  expiration_date: Date,
-                  file_id: String,
-                  state: String,
-                  back_file_id: String
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::drivers_license
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (expiration_date: Date, file_id: String, state: String, back_file_id: String) -> void
+                            | (?(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::drivers_license | Increase::BaseModel) data) -> void
 
-              def to_hash: -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::drivers_license
+              def to_hash: () -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::drivers_license
             end
 
-            type other =
-              {
-                country: String,
-                description: String,
-                file_id: String,
-                back_file_id: String,
-                expiration_date: Date
-              }
+            type other = {country: String, description: String, file_id: String, back_file_id: String, expiration_date: Date}
 
             class Other < Increase::BaseModel
               attr_accessor country: String
@@ -259,24 +167,13 @@ module Increase
 
               def expiration_date=: (Date) -> Date
 
-              def initialize:
-                (
-                  country: String,
-                  description: String,
-                  file_id: String,
-                  back_file_id: String,
-                  expiration_date: Date
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::other
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (country: String, description: String, file_id: String, back_file_id: String, expiration_date: Date) -> void
+                            | (?(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::other | Increase::BaseModel) data) -> void
 
-              def to_hash: -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::other
+              def to_hash: () -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::other
             end
 
-            type passport =
-              { country: String, expiration_date: Date, file_id: String }
+            type passport = {country: String, expiration_date: Date, file_id: String}
 
             class Passport < Increase::BaseModel
               attr_accessor country: String
@@ -285,23 +182,15 @@ module Increase
 
               attr_accessor file_id: String
 
-              def initialize:
-                (
-                  country: String,
-                  expiration_date: Date,
-                  file_id: String
-                ) -> void
-                | (
-                  ?Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::passport
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (country: String, expiration_date: Date, file_id: String) -> void
+                            | (?(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::passport | Increase::BaseModel) data) -> void
 
-              def to_hash: -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::passport
+              def to_hash: () -> Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::passport
             end
           end
         end
 
-        type prong = :ownership | :control
+        type prong = (:ownership | :control)
 
         class Prong < Increase::Enum
           # A person with 25% or greater direct or indirect ownership of the entity.
@@ -310,7 +199,7 @@ module Increase
           # A person who manages, directs, or has significant control of the entity.
           CONTROL: :control
 
-          def self.values: -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong]
+          def self.values: () -> ::Array[Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::prong]
         end
       end
     end

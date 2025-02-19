@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type card_dispute_create_params =
-      { disputed_transaction_id: String, explanation: String, amount: Integer }
-      & Increase::request_parameters
+    type card_dispute_create_params = ({disputed_transaction_id: String, explanation: String, amount: Integer} & Increase::request_parameters)
 
     class CardDisputeCreateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -16,19 +14,10 @@ module Increase
 
       def amount=: (Integer) -> Integer
 
-      def initialize:
-        (
-          disputed_transaction_id: String,
-          explanation: String,
-          amount: Integer,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::card_dispute_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (disputed_transaction_id: String, explanation: String, amount: Integer, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::card_dispute_create_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::card_dispute_create_params
+      def to_hash: () -> Increase::Models::card_dispute_create_params
     end
   end
 end

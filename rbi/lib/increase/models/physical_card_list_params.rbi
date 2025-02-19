@@ -51,23 +51,16 @@ module Increase
 
       sig do
         params(
-          card_id: String,
-          created_at: Increase::Models::PhysicalCardListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            card_id: String,
+            created_at: Increase::Models::PhysicalCardListParams::CreatedAt,
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
-      def initialize(
-        card_id: nil,
-        created_at: nil,
-        cursor: nil,
-        idempotency_key: nil,
-        limit: nil,
-        request_options: {}
-      )
+      def initialize(card_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
       end
 
       sig do

@@ -1,14 +1,12 @@
 module Increase
   module Models
-    type event_list_params =
-      {
-        associated_object_id: String,
-        category: Increase::Models::EventListParams::Category,
-        created_at: Increase::Models::EventListParams::CreatedAt,
-        cursor: String,
-        limit: Integer
-      }
-      & Increase::request_parameters
+    type event_list_params = ({
+      associated_object_id: String,
+      category: Increase::Models::EventListParams::Category,
+      created_at: Increase::Models::EventListParams::CreatedAt,
+      cursor: String,
+      limit: Integer
+    } & Increase::request_parameters)
 
     class EventListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -20,15 +18,11 @@ module Increase
 
       attr_reader category: Increase::Models::EventListParams::Category?
 
-      def category=: (
-        Increase::Models::EventListParams::Category
-      ) -> Increase::Models::EventListParams::Category
+      def category=: (Increase::Models::EventListParams::Category) -> Increase::Models::EventListParams::Category
 
       attr_reader created_at: Increase::Models::EventListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::Models::EventListParams::CreatedAt
-      ) -> Increase::Models::EventListParams::CreatedAt
+      def created_at=: (Increase::Models::EventListParams::CreatedAt) -> Increase::Models::EventListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -38,131 +32,24 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize:
-        (
-          associated_object_id: String,
-          category: Increase::Models::EventListParams::Category,
-          created_at: Increase::Models::EventListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::event_list_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (associated_object_id: String, category: Increase::Models::EventListParams::Category, created_at: Increase::Models::EventListParams::CreatedAt, cursor: String, limit: Integer, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::event_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::event_list_params
+      def to_hash: () -> Increase::Models::event_list_params
 
-      type category =
-        { in_: ::Array[Increase::Models::EventListParams::Category::in_] }
+      type category = {in_: ::Array[Increase::Models::EventListParams::Category::in_]}
 
       class Category < Increase::BaseModel
         attr_reader in_: ::Array[Increase::Models::EventListParams::Category::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::EventListParams::Category::in_]
-        ) -> ::Array[Increase::Models::EventListParams::Category::in_]
+        def in_=: (::Array[Increase::Models::EventListParams::Category::in_]) -> ::Array[Increase::Models::EventListParams::Category::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::EventListParams::Category::in_]
-          ) -> void
-          | (
-            ?Increase::Models::EventListParams::category
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (in_: ::Array[Increase::Models::EventListParams::Category::in_]) -> void
+                      | (?(Increase::Models::EventListParams::category | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::EventListParams::category
+        def to_hash: () -> Increase::Models::EventListParams::category
 
-        type in_ =
-          :"account.created"
-          | :"account.updated"
-          | :"account_number.created"
-          | :"account_number.updated"
-          | :"account_statement.created"
-          | :"account_transfer.created"
-          | :"account_transfer.updated"
-          | :"ach_prenotification.created"
-          | :"ach_prenotification.updated"
-          | :"ach_transfer.created"
-          | :"ach_transfer.updated"
-          | :"bookkeeping_account.created"
-          | :"bookkeeping_account.updated"
-          | :"bookkeeping_entry_set.updated"
-          | :"card.created"
-          | :"card.updated"
-          | :"card_payment.created"
-          | :"card_payment.updated"
-          | :"card_profile.created"
-          | :"card_profile.updated"
-          | :"card_dispute.created"
-          | :"card_dispute.updated"
-          | :"check_deposit.created"
-          | :"check_deposit.updated"
-          | :"check_transfer.created"
-          | :"check_transfer.updated"
-          | :"declined_transaction.created"
-          | :"digital_card_profile.created"
-          | :"digital_card_profile.updated"
-          | :"digital_wallet_token.created"
-          | :"digital_wallet_token.updated"
-          | :"document.created"
-          | :"entity.created"
-          | :"entity.updated"
-          | :"event_subscription.created"
-          | :"event_subscription.updated"
-          | :"export.created"
-          | :"export.updated"
-          | :"external_account.created"
-          | :"external_account.updated"
-          | :"file.created"
-          | :"group.updated"
-          | :"group.heartbeat"
-          | :"inbound_ach_transfer.created"
-          | :"inbound_ach_transfer.updated"
-          | :"inbound_ach_transfer_return.created"
-          | :"inbound_ach_transfer_return.updated"
-          | :"inbound_check_deposit.created"
-          | :"inbound_check_deposit.updated"
-          | :"inbound_mail_item.created"
-          | :"inbound_mail_item.updated"
-          | :"inbound_real_time_payments_transfer.created"
-          | :"inbound_real_time_payments_transfer.updated"
-          | :"inbound_wire_drawdown_request.created"
-          | :"inbound_wire_transfer.created"
-          | :"inbound_wire_transfer.updated"
-          | :"intrafi_account_enrollment.created"
-          | :"intrafi_account_enrollment.updated"
-          | :"intrafi_exclusion.created"
-          | :"intrafi_exclusion.updated"
-          | :"lockbox.created"
-          | :"lockbox.updated"
-          | :"oauth_connection.created"
-          | :"oauth_connection.deactivated"
-          | :"pending_transaction.created"
-          | :"pending_transaction.updated"
-          | :"physical_card.created"
-          | :"physical_card.updated"
-          | :"physical_card_profile.created"
-          | :"physical_card_profile.updated"
-          | :"proof_of_authorization_request.created"
-          | :"proof_of_authorization_request.updated"
-          | :"proof_of_authorization_request_submission.created"
-          | :"proof_of_authorization_request_submission.updated"
-          | :"real_time_decision.card_authorization_requested"
-          | :"real_time_decision.digital_wallet_token_requested"
-          | :"real_time_decision.digital_wallet_authentication_requested"
-          | :"real_time_decision.card_authentication_requested"
-          | :"real_time_decision.card_authentication_challenge_requested"
-          | :"real_time_payments_transfer.created"
-          | :"real_time_payments_transfer.updated"
-          | :"real_time_payments_request_for_payment.created"
-          | :"real_time_payments_request_for_payment.updated"
-          | :"transaction.created"
-          | :"wire_drawdown_request.created"
-          | :"wire_drawdown_request.updated"
-          | :"wire_transfer.created"
-          | :"wire_transfer.updated"
+        type in_ = (:"account.created" | :"account.updated" | :"account_number.created" | :"account_number.updated" | :"account_statement.created" | :"account_transfer.created" | :"account_transfer.updated" | :"ach_prenotification.created" | :"ach_prenotification.updated" | :"ach_transfer.created" | :"ach_transfer.updated" | :"bookkeeping_account.created" | :"bookkeeping_account.updated" | :"bookkeeping_entry_set.updated" | :"card.created" | :"card.updated" | :"card_payment.created" | :"card_payment.updated" | :"card_profile.created" | :"card_profile.updated" | :"card_dispute.created" | :"card_dispute.updated" | :"check_deposit.created" | :"check_deposit.updated" | :"check_transfer.created" | :"check_transfer.updated" | :"declined_transaction.created" | :"digital_card_profile.created" | :"digital_card_profile.updated" | :"digital_wallet_token.created" | :"digital_wallet_token.updated" | :"document.created" | :"entity.created" | :"entity.updated" | :"event_subscription.created" | :"event_subscription.updated" | :"export.created" | :"export.updated" | :"external_account.created" | :"external_account.updated" | :"file.created" | :"group.updated" | :"group.heartbeat" | :"inbound_ach_transfer.created" | :"inbound_ach_transfer.updated" | :"inbound_ach_transfer_return.created" | :"inbound_ach_transfer_return.updated" | :"inbound_check_deposit.created" | :"inbound_check_deposit.updated" | :"inbound_mail_item.created" | :"inbound_mail_item.updated" | :"inbound_real_time_payments_transfer.created" | :"inbound_real_time_payments_transfer.updated" | :"inbound_wire_drawdown_request.created" | :"inbound_wire_transfer.created" | :"inbound_wire_transfer.updated" | :"intrafi_account_enrollment.created" | :"intrafi_account_enrollment.updated" | :"intrafi_exclusion.created" | :"intrafi_exclusion.updated" | :"lockbox.created" | :"lockbox.updated" | :"oauth_connection.created" | :"oauth_connection.deactivated" | :"pending_transaction.created" | :"pending_transaction.updated" | :"physical_card.created" | :"physical_card.updated" | :"physical_card_profile.created" | :"physical_card_profile.updated" | :"proof_of_authorization_request.created" | :"proof_of_authorization_request.updated" | :"proof_of_authorization_request_submission.created" | :"proof_of_authorization_request_submission.updated" | :"real_time_decision.card_authorization_requested" | :"real_time_decision.digital_wallet_token_requested" | :"real_time_decision.digital_wallet_authentication_requested" | :"real_time_decision.card_authentication_requested" | :"real_time_decision.card_authentication_challenge_requested" | :"real_time_payments_transfer.created" | :"real_time_payments_transfer.updated" | :"real_time_payments_request_for_payment.created" | :"real_time_payments_request_for_payment.updated" | :"transaction.created" | :"wire_drawdown_request.created" | :"wire_drawdown_request.updated" | :"wire_transfer.created" | :"wire_transfer.updated")
 
         class In < Increase::Enum
           # Occurs whenever an Account is created.
@@ -429,12 +316,11 @@ module Increase
           # Occurs whenever a Wire Transfer is updated.
           WIRE_TRANSFER_UPDATED: :"wire_transfer.updated"
 
-          def self.values: -> ::Array[Increase::Models::EventListParams::Category::in_]
+          def self.values: () -> ::Array[Increase::Models::EventListParams::Category::in_]
         end
       end
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
       class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
@@ -453,19 +339,10 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::EventListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (after: Time, before: Time, on_or_after: Time, on_or_before: Time) -> void
+                      | (?(Increase::Models::EventListParams::created_at | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::EventListParams::created_at
+        def to_hash: () -> Increase::Models::EventListParams::created_at
       end
     end
   end

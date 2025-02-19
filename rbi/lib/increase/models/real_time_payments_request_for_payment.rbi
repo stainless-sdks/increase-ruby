@@ -150,24 +150,24 @@ module Increase
 
       sig do
         params(
-          id: String,
-          amount: Integer,
-          created_at: Time,
-          currency: Symbol,
-          debtor_name: String,
-          destination_account_number_id: String,
-          expires_at: Date,
-          fulfillment_transaction_id: T.nilable(String),
-          idempotency_key: T.nilable(String),
-          refusal: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Refusal),
-          rejection: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Rejection),
-          remittance_information: String,
-          source_account_number: String,
-          source_routing_number: String,
-          status: Symbol,
-          submission: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Submission),
-          type: Symbol
-        )
+            id: String,
+            amount: Integer,
+            created_at: Time,
+            currency: Symbol,
+            debtor_name: String,
+            destination_account_number_id: String,
+            expires_at: Date,
+            fulfillment_transaction_id: T.nilable(String),
+            idempotency_key: T.nilable(String),
+            refusal: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Refusal),
+            rejection: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Rejection),
+            remittance_information: String,
+            source_account_number: String,
+            source_routing_number: String,
+            status: Symbol,
+            submission: T.nilable(Increase::Models::RealTimePaymentsRequestForPayment::Submission),
+            type: Symbol
+          )
           .void
       end
       def initialize(

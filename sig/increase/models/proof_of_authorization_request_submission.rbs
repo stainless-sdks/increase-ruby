@@ -1,25 +1,24 @@
 module Increase
   module Models
-    type proof_of_authorization_request_submission =
-      {
-        id: String,
-        authorization_terms: String,
-        authorized_at: Time,
-        authorizer_company: String?,
-        authorizer_email: String?,
-        authorizer_ip_address: String?,
-        authorizer_name: String?,
-        created_at: Time,
-        customer_has_been_offboarded: bool?,
-        idempotency_key: String?,
-        proof_of_authorization_request_id: String,
-        status: Increase::Models::ProofOfAuthorizationRequestSubmission::status,
-        type: Increase::Models::ProofOfAuthorizationRequestSubmission::type_,
-        updated_at: Time,
-        validated_account_ownership_via_credential: bool?,
-        validated_account_ownership_with_account_statement: bool?,
-        validated_account_ownership_with_microdeposit: bool?
-      }
+    type proof_of_authorization_request_submission = {
+      id: String,
+      authorization_terms: String,
+      authorized_at: Time,
+      authorizer_company: String?,
+      authorizer_email: String?,
+      authorizer_ip_address: String?,
+      authorizer_name: String?,
+      created_at: Time,
+      customer_has_been_offboarded: bool?,
+      idempotency_key: String?,
+      proof_of_authorization_request_id: String,
+      status: Increase::Models::ProofOfAuthorizationRequestSubmission::status,
+      type: Increase::Models::ProofOfAuthorizationRequestSubmission::type_,
+      updated_at: Time,
+      validated_account_ownership_via_credential: bool?,
+      validated_account_ownership_with_account_statement: bool?,
+      validated_account_ownership_with_microdeposit: bool?
+    }
 
     class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
       attr_accessor id: String
@@ -56,35 +55,12 @@ module Increase
 
       attr_accessor validated_account_ownership_with_microdeposit: bool?
 
-      def initialize:
-        (
-          id: String,
-          authorization_terms: String,
-          authorized_at: Time,
-          authorizer_company: String?,
-          authorizer_email: String?,
-          authorizer_ip_address: String?,
-          authorizer_name: String?,
-          created_at: Time,
-          customer_has_been_offboarded: bool?,
-          idempotency_key: String?,
-          proof_of_authorization_request_id: String,
-          status: Increase::Models::ProofOfAuthorizationRequestSubmission::status,
-          type: Increase::Models::ProofOfAuthorizationRequestSubmission::type_,
-          updated_at: Time,
-          validated_account_ownership_via_credential: bool?,
-          validated_account_ownership_with_account_statement: bool?,
-          validated_account_ownership_with_microdeposit: bool?
-        ) -> void
-        | (
-          ?Increase::Models::proof_of_authorization_request_submission
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, authorization_terms: String, authorized_at: Time, authorizer_company: String?, authorizer_email: String?, authorizer_ip_address: String?, authorizer_name: String?, created_at: Time, customer_has_been_offboarded: bool?, idempotency_key: String?, proof_of_authorization_request_id: String, status: Increase::Models::ProofOfAuthorizationRequestSubmission::status, type: Increase::Models::ProofOfAuthorizationRequestSubmission::type_, updated_at: Time, validated_account_ownership_via_credential: bool?, validated_account_ownership_with_account_statement: bool?, validated_account_ownership_with_microdeposit: bool?) -> void
+                    | (?(Increase::Models::proof_of_authorization_request_submission | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::proof_of_authorization_request_submission
+      def to_hash: () -> Increase::Models::proof_of_authorization_request_submission
 
-      type status =
-        :pending_review | :rejected | :canceled | :pending_sending | :sent
+      type status = (:pending_review | :rejected | :canceled | :pending_sending | :sent)
 
       class Status < Increase::Enum
         # The proof of authorization request submission is pending review.
@@ -102,7 +78,7 @@ module Increase
         # The proof of authorization request submission was sent.
         SENT: :sent
 
-        def self.values: -> ::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::status]
+        def self.values: () -> ::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::status]
       end
 
       type type_ = :proof_of_authorization_request_submission
@@ -110,7 +86,7 @@ module Increase
       class Type < Increase::Enum
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION: :proof_of_authorization_request_submission
 
-        def self.values: -> ::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::type_]
+        def self.values: () -> ::Array[Increase::Models::ProofOfAuthorizationRequestSubmission::type_]
       end
     end
   end

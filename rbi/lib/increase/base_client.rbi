@@ -45,14 +45,14 @@ module Increase
 
     sig do
       params(
-        base_url: String,
-        timeout: Float,
-        max_retries: Integer,
-        initial_retry_delay: Float,
-        max_retry_delay: Float,
-        headers: T::Hash[String, T.nilable(String)],
-        idempotency_header: T.nilable(String)
-      )
+          base_url: String,
+          timeout: Float,
+          max_retries: Integer,
+          initial_retry_delay: Float,
+          max_retry_delay: Float,
+          headers: T::Hash[String, T.nilable(String)],
+          idempotency_header: T.nilable(String)
+        )
         .void
     end
     def initialize(
@@ -98,11 +98,11 @@ module Increase
 
     sig do
       params(
-        request: Increase::BaseClient::NormalizedRequestShape,
-        redirect_count: Integer,
-        retry_count: Integer,
-        send_retry_header: T::Boolean
-      )
+          request: Increase::BaseClient::NormalizedRequestShape,
+          redirect_count: Integer,
+          retry_count: Integer,
+          send_retry_header: T::Boolean
+        )
         .returns(Net::HTTPResponse)
     end
     private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
@@ -114,16 +114,16 @@ module Increase
 
     sig do
       params(
-        method: Symbol,
-        path: T.any(String, T::Array[String]),
-        query: T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]),
-        headers: T.nilable(T::Hash[String, T.nilable(String)]),
-        body: T.nilable(T.anything),
-        unwrap: T.nilable(Symbol),
-        page: T.nilable(T::Class[Increase::BaseModel]),
-        model: T.nilable(Increase::Converter::Input),
-        options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-      )
+          method: Symbol,
+          path: T.any(String, T::Array[String]),
+          query: T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]),
+          headers: T.nilable(T::Hash[String, T.nilable(String)]),
+          body: T.nilable(T.anything),
+          unwrap: T.nilable(Symbol),
+          page: T.nilable(T::Class[Increase::BaseModel]),
+          model: T.nilable(Increase::Converter::Input),
+          options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+        )
         .returns(T.anything)
     end
     def request(

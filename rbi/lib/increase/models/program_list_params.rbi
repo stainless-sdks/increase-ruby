@@ -24,10 +24,10 @@ module Increase
 
       sig do
         params(
-          cursor: String,
-          limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            cursor: String,
+            limit: Integer,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(cursor: nil, limit: nil, request_options: {})

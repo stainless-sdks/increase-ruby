@@ -15,15 +15,7 @@ module Increase
         def name=(_)
         end
 
-        sig do
-          params(
-            name: String,
-            request_options: T.any(
-              Increase::RequestOptions,
-              T::Hash[Symbol, T.anything]
-            )
-          ).void
-        end
+        sig { params(name: String, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])).void }
         def initialize(name:, request_options: {})
         end
 

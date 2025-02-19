@@ -1,11 +1,10 @@
 module Increase
   module Models
-    type oauth_token =
-      {
-        access_token: String,
-        token_type: Increase::Models::OAuthToken::token_type,
-        type: Increase::Models::OAuthToken::type_
-      }
+    type oauth_token = {
+      access_token: String,
+      token_type: Increase::Models::OAuthToken::token_type,
+      type: Increase::Models::OAuthToken::type_
+    }
 
     class OAuthToken < Increase::BaseModel
       attr_accessor access_token: String
@@ -14,22 +13,17 @@ module Increase
 
       attr_accessor type: Increase::Models::OAuthToken::type_
 
-      def initialize:
-        (
-          access_token: String,
-          token_type: Increase::Models::OAuthToken::token_type,
-          type: Increase::Models::OAuthToken::type_
-        ) -> void
-        | (?Increase::Models::oauth_token | Increase::BaseModel data) -> void
+      def initialize: (access_token: String, token_type: Increase::Models::OAuthToken::token_type, type: Increase::Models::OAuthToken::type_) -> void
+                    | (?(Increase::Models::oauth_token | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::oauth_token
+      def to_hash: () -> Increase::Models::oauth_token
 
       type token_type = :bearer
 
       class TokenType < Increase::Enum
         BEARER: :bearer
 
-        def self.values: -> ::Array[Increase::Models::OAuthToken::token_type]
+        def self.values: () -> ::Array[Increase::Models::OAuthToken::token_type]
       end
 
       type type_ = :oauth_token
@@ -37,7 +31,7 @@ module Increase
       class Type < Increase::Enum
         OAUTH_TOKEN: :oauth_token
 
-        def self.values: -> ::Array[Increase::Models::OAuthToken::type_]
+        def self.values: () -> ::Array[Increase::Models::OAuthToken::type_]
       end
     end
   end

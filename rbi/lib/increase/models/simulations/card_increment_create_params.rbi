@@ -33,11 +33,11 @@ module Increase
 
         sig do
           params(
-            amount: Integer,
-            card_payment_id: String,
-            event_subscription_id: String,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+              amount: Integer,
+              card_payment_id: String,
+              event_subscription_id: String,
+              request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            )
             .void
         end
         def initialize(amount:, card_payment_id:, event_subscription_id: nil, request_options: {})

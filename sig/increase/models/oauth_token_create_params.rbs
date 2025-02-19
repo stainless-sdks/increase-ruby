@@ -1,14 +1,12 @@
 module Increase
   module Models
-    type oauth_token_create_params =
-      {
-        grant_type: Increase::Models::OAuthTokenCreateParams::grant_type,
-        client_id: String,
-        client_secret: String,
-        code: String,
-        production_token: String
-      }
-      & Increase::request_parameters
+    type oauth_token_create_params = ({
+      grant_type: Increase::Models::OAuthTokenCreateParams::grant_type,
+      client_id: String,
+      client_secret: String,
+      code: String,
+      production_token: String
+    } & Increase::request_parameters)
 
     class OAuthTokenCreateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -32,23 +30,12 @@ module Increase
 
       def production_token=: (String) -> String
 
-      def initialize:
-        (
-          grant_type: Increase::Models::OAuthTokenCreateParams::grant_type,
-          client_id: String,
-          client_secret: String,
-          code: String,
-          production_token: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::oauth_token_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (grant_type: Increase::Models::OAuthTokenCreateParams::grant_type, client_id: String, client_secret: String, code: String, production_token: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::oauth_token_create_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::oauth_token_create_params
+      def to_hash: () -> Increase::Models::oauth_token_create_params
 
-      type grant_type = :authorization_code | :production_token
+      type grant_type = (:authorization_code | :production_token)
 
       class GrantType < Increase::Enum
         # An OAuth authorization code.
@@ -57,7 +44,7 @@ module Increase
         # An OAuth production token.
         PRODUCTION_TOKEN: :production_token
 
-        def self.values: -> ::Array[Increase::Models::OAuthTokenCreateParams::grant_type]
+        def self.values: () -> ::Array[Increase::Models::OAuthTokenCreateParams::grant_type]
       end
     end
   end

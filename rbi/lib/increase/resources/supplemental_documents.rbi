@@ -5,10 +5,10 @@ module Increase
     class SupplementalDocuments
       sig do
         params(
-          entity_id: String,
-          file_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            entity_id: String,
+            file_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::EntitySupplementalDocument)
       end
       def create(entity_id:, file_id:, request_options: {})
@@ -16,12 +16,12 @@ module Increase
 
       sig do
         params(
-          entity_id: String,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            entity_id: String,
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Page[Increase::Models::EntitySupplementalDocument])
       end
       def list(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})

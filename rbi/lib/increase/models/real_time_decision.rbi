@@ -108,18 +108,18 @@ module Increase
 
       sig do
         params(
-          id: String,
-          card_authentication: T.nilable(Increase::Models::RealTimeDecision::CardAuthentication),
-          card_authentication_challenge: T.nilable(Increase::Models::RealTimeDecision::CardAuthenticationChallenge),
-          card_authorization: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization),
-          category: Symbol,
-          created_at: Time,
-          digital_wallet_authentication: T.nilable(Increase::Models::RealTimeDecision::DigitalWalletAuthentication),
-          digital_wallet_token: T.nilable(Increase::Models::RealTimeDecision::DigitalWalletToken),
-          status: Symbol,
-          timeout_at: Time,
-          type: Symbol
-        )
+            id: String,
+            card_authentication: T.nilable(Increase::Models::RealTimeDecision::CardAuthentication),
+            card_authentication_challenge: T.nilable(Increase::Models::RealTimeDecision::CardAuthenticationChallenge),
+            card_authorization: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization),
+            category: Symbol,
+            created_at: Time,
+            digital_wallet_authentication: T.nilable(Increase::Models::RealTimeDecision::DigitalWalletAuthentication),
+            digital_wallet_token: T.nilable(Increase::Models::RealTimeDecision::DigitalWalletToken),
+            status: Symbol,
+            timeout_at: Time,
+            type: Symbol
+          )
           .void
       end
       def initialize(
@@ -192,12 +192,7 @@ module Increase
         end
 
         sig do
-          params(
-            account_id: String,
-            card_id: String,
-            decision: T.nilable(Symbol),
-            upcoming_card_payment_id: String
-          )
+          params(account_id: String, card_id: String, decision: T.nilable(Symbol), upcoming_card_payment_id: String)
             .void
         end
         def initialize(account_id:, card_id:, decision:, upcoming_card_payment_id:)
@@ -206,12 +201,7 @@ module Increase
         sig do
           override
             .returns(
-              {
-                account_id: String,
-                card_id: String,
-                decision: T.nilable(Symbol),
-                upcoming_card_payment_id: String
-              }
+              {account_id: String, card_id: String, decision: T.nilable(Symbol), upcoming_card_payment_id: String}
             )
         end
         def to_hash
@@ -278,12 +268,12 @@ module Increase
 
         sig do
           params(
-            account_id: String,
-            card_id: String,
-            card_payment_id: String,
-            one_time_code: String,
-            result: T.nilable(Symbol)
-          )
+              account_id: String,
+              card_id: String,
+              card_payment_id: String,
+              one_time_code: String,
+              result: T.nilable(Symbol)
+            )
             .void
         end
         def initialize(account_id:, card_id:, card_payment_id:, one_time_code:, result:)
@@ -292,13 +282,7 @@ module Increase
         sig do
           override
             .returns(
-              {
-                account_id: String,
-                card_id: String,
-                card_payment_id: String,
-                one_time_code: String,
-                result: T.nilable(Symbol)
-              }
+              {account_id: String, card_id: String, card_payment_id: String, one_time_code: String, result: T.nilable(Symbol)}
             )
         end
         def to_hash
@@ -534,32 +518,32 @@ module Increase
 
         sig do
           params(
-            account_id: String,
-            card_id: String,
-            decision: T.nilable(Symbol),
-            digital_wallet_token_id: T.nilable(String),
-            direction: Symbol,
-            merchant_acceptor_id: String,
-            merchant_category_code: String,
-            merchant_city: T.nilable(String),
-            merchant_country: String,
-            merchant_descriptor: String,
-            merchant_postal_code: T.nilable(String),
-            merchant_state: T.nilable(String),
-            network_details: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails,
-            network_identifiers: Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers,
-            network_risk_score: T.nilable(Integer),
-            physical_card_id: T.nilable(String),
-            presentment_amount: Integer,
-            presentment_currency: String,
-            processing_category: Symbol,
-            request_details: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails,
-            settlement_amount: Integer,
-            settlement_currency: String,
-            terminal_id: T.nilable(String),
-            upcoming_card_payment_id: String,
-            verification: Increase::Models::RealTimeDecision::CardAuthorization::Verification
-          )
+              account_id: String,
+              card_id: String,
+              decision: T.nilable(Symbol),
+              digital_wallet_token_id: T.nilable(String),
+              direction: Symbol,
+              merchant_acceptor_id: String,
+              merchant_category_code: String,
+              merchant_city: T.nilable(String),
+              merchant_country: String,
+              merchant_descriptor: String,
+              merchant_postal_code: T.nilable(String),
+              merchant_state: T.nilable(String),
+              network_details: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails,
+              network_identifiers: Increase::Models::RealTimeDecision::CardAuthorization::NetworkIdentifiers,
+              network_risk_score: T.nilable(Integer),
+              physical_card_id: T.nilable(String),
+              presentment_amount: Integer,
+              presentment_currency: String,
+              processing_category: Symbol,
+              request_details: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails,
+              settlement_amount: Integer,
+              settlement_currency: String,
+              terminal_id: T.nilable(String),
+              upcoming_card_payment_id: String,
+              verification: Increase::Models::RealTimeDecision::CardAuthorization::Verification
+            )
             .void
         end
         def initialize(
@@ -676,9 +660,9 @@ module Increase
 
           sig do
             params(
-              category: Symbol,
-              visa: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa)
-            )
+                category: Symbol,
+                visa: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa)
+              )
               .void
           end
           def initialize(category:, visa:)
@@ -734,17 +718,13 @@ module Increase
 
             sig do
               params(
-                electronic_commerce_indicator: T.nilable(Symbol),
-                point_of_service_entry_mode: T.nilable(Symbol),
-                stand_in_processing_reason: T.nilable(Symbol)
-              )
+                  electronic_commerce_indicator: T.nilable(Symbol),
+                  point_of_service_entry_mode: T.nilable(Symbol),
+                  stand_in_processing_reason: T.nilable(Symbol)
+                )
                 .void
             end
-            def initialize(
-              electronic_commerce_indicator:,
-              point_of_service_entry_mode:,
-              stand_in_processing_reason:
-            )
+            def initialize(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
             end
 
             sig do
@@ -779,15 +759,10 @@ module Increase
               SECURE_ELECTRONIC_COMMERCE = T.let(:secure_electronic_commerce, T.nilable(Symbol))
 
               # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
-              NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = T.let(
-                :non_authenticated_security_transaction_at_3ds_capable_merchant, T.nilable(Symbol)
-              )
+              NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = T.let(:non_authenticated_security_transaction_at_3ds_capable_merchant, T.nilable(Symbol))
 
               # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
-              NON_AUTHENTICATED_SECURITY_TRANSACTION = T.let(
-                :non_authenticated_security_transaction,
-                T.nilable(Symbol)
-              )
+              NON_AUTHENTICATED_SECURITY_TRANSACTION = T.let(:non_authenticated_security_transaction, T.nilable(Symbol))
 
               # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
               NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
@@ -845,23 +820,16 @@ module Increase
               INVALID_PHYSICAL_CARD = T.let(:invalid_physical_card, T.nilable(Symbol))
 
               # The 3DS cardholder authentication verification value was invalid.
-              INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = T.let(
-                :invalid_cardholder_authentication_verification_value, T.nilable(Symbol)
-              )
+              INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = T.let(:invalid_cardholder_authentication_verification_value, T.nilable(Symbol))
 
               # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
               INTERNAL_VISA_ERROR = T.let(:internal_visa_error, T.nilable(Symbol))
 
               # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-              MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = T.let(
-                :merchant_transaction_advisory_service_authentication_required, T.nilable(Symbol)
-              )
+              MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = T.let(:merchant_transaction_advisory_service_authentication_required, T.nilable(Symbol))
 
               # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
-              PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = T.let(
-                :payment_fraud_disruption_acquirer_block,
-                T.nilable(Symbol)
-              )
+              PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = T.let(:payment_fraud_disruption_acquirer_block, T.nilable(Symbol))
 
               # An unspecific reason for stand-in processing.
               OTHER = T.let(:other, T.nilable(Symbol))
@@ -900,10 +868,10 @@ module Increase
 
           sig do
             params(
-              retrieval_reference_number: T.nilable(String),
-              trace_number: T.nilable(String),
-              transaction_id: T.nilable(String)
-            )
+                retrieval_reference_number: T.nilable(String),
+                trace_number: T.nilable(String),
+                transaction_id: T.nilable(String)
+              )
               .void
           end
           def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
@@ -960,16 +928,16 @@ module Increase
 
           sig do
             returns(
-              T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization)
-            )
+                T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization)
+              )
           end
           def incremental_authorization
           end
 
           sig do
             params(
-              _: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization)
-            )
+                _: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization)
+              )
               .returns(
                 T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization)
               )
@@ -987,10 +955,10 @@ module Increase
 
           sig do
             params(
-              category: Symbol,
-              incremental_authorization: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization),
-              initial_authorization: T.nilable(T.anything)
-            )
+                category: Symbol,
+                incremental_authorization: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization),
+                initial_authorization: T.nilable(T.anything)
+              )
               .void
           end
           def initialize(category:, incremental_authorization:, initial_authorization:)
@@ -1075,9 +1043,9 @@ module Increase
 
           sig do
             params(
-              card_verification_code: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode,
-              cardholder_address: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress
-            )
+                card_verification_code: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode,
+                cardholder_address: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress
+              )
               .void
           end
           def initialize(card_verification_code:, cardholder_address:)
@@ -1173,21 +1141,15 @@ module Increase
 
             sig do
               params(
-                actual_line1: T.nilable(String),
-                actual_postal_code: T.nilable(String),
-                provided_line1: T.nilable(String),
-                provided_postal_code: T.nilable(String),
-                result: Symbol
-              )
+                  actual_line1: T.nilable(String),
+                  actual_postal_code: T.nilable(String),
+                  provided_line1: T.nilable(String),
+                  provided_postal_code: T.nilable(String),
+                  result: Symbol
+                )
                 .void
             end
-            def initialize(
-              actual_line1:,
-              actual_postal_code:,
-              provided_line1:,
-              provided_postal_code:,
-              result:
-            )
+            def initialize(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
             end
 
             sig do
@@ -1316,14 +1278,14 @@ module Increase
 
         sig do
           params(
-            card_id: String,
-            channel: Symbol,
-            digital_wallet: Symbol,
-            email: T.nilable(String),
-            one_time_passcode: String,
-            phone: T.nilable(String),
-            result: T.nilable(Symbol)
-          )
+              card_id: String,
+              channel: Symbol,
+              digital_wallet: Symbol,
+              email: T.nilable(String),
+              one_time_passcode: String,
+              phone: T.nilable(String),
+              result: T.nilable(Symbol)
+            )
             .void
         end
         def initialize(card_id:, channel:, digital_wallet:, email:, one_time_passcode:, phone:, result:)
@@ -1430,11 +1392,11 @@ module Increase
 
         sig do
           params(
-            card_id: String,
-            card_profile_id: T.nilable(String),
-            decision: T.nilable(Symbol),
-            digital_wallet: Symbol
-          )
+              card_id: String,
+              card_profile_id: T.nilable(String),
+              decision: T.nilable(Symbol),
+              digital_wallet: Symbol
+            )
             .void
         end
         def initialize(card_id:, card_profile_id:, decision:, digital_wallet:)
@@ -1443,12 +1405,7 @@ module Increase
         sig do
           override
             .returns(
-              {
-                card_id: String,
-                card_profile_id: T.nilable(String),
-                decision: T.nilable(Symbol),
-                digital_wallet: Symbol
-              }
+              {card_id: String, card_profile_id: T.nilable(String), decision: T.nilable(Symbol), digital_wallet: Symbol}
             )
         end
         def to_hash

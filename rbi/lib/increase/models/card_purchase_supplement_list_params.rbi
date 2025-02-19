@@ -43,12 +43,12 @@ module Increase
 
       sig do
         params(
-          card_payment_id: String,
-          created_at: Increase::Models::CardPurchaseSupplementListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            card_payment_id: String,
+            created_at: Increase::Models::CardPurchaseSupplementListParams::CreatedAt,
+            cursor: String,
+            limit: Integer,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(card_payment_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})

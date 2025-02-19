@@ -77,16 +77,16 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          created_at: Time,
-          ending_balance: Integer,
-          file_id: String,
-          starting_balance: Integer,
-          statement_period_end: Time,
-          statement_period_start: Time,
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            created_at: Time,
+            ending_balance: Integer,
+            file_id: String,
+            starting_balance: Integer,
+            statement_period_end: Time,
+            statement_period_start: Time,
+            type: Symbol
+          )
           .void
       end
       def initialize(

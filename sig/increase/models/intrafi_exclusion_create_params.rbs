@@ -1,7 +1,6 @@
 module Increase
   module Models
-    type intrafi_exclusion_create_params =
-      { bank_name: String, entity_id: String } & Increase::request_parameters
+    type intrafi_exclusion_create_params = ({bank_name: String, entity_id: String} & Increase::request_parameters)
 
     class IntrafiExclusionCreateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -11,18 +10,10 @@ module Increase
 
       attr_accessor entity_id: String
 
-      def initialize:
-        (
-          bank_name: String,
-          entity_id: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::intrafi_exclusion_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (bank_name: String, entity_id: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::intrafi_exclusion_create_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::intrafi_exclusion_create_params
+      def to_hash: () -> Increase::Models::intrafi_exclusion_create_params
     end
   end
 end

@@ -1,21 +1,19 @@
 module Increase
   module Models
     module Simulations
-      type inbound_ach_transfer_create_params =
-        {
-          account_number_id: String,
-          amount: Integer,
-          company_descriptive_date: String,
-          company_discretionary_data: String,
-          company_entry_description: String,
-          company_id: String,
-          company_name: String,
-          receiver_id_number: String,
-          receiver_name: String,
-          resolve_at: Time,
-          standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code
-        }
-        & Increase::request_parameters
+      type inbound_ach_transfer_create_params = ({
+        account_number_id: String,
+        amount: Integer,
+        company_descriptive_date: String,
+        company_discretionary_data: String,
+        company_entry_description: String,
+        company_id: String,
+        company_name: String,
+        receiver_id_number: String,
+        receiver_name: String,
+        resolve_at: Time,
+        standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code
+      } & Increase::request_parameters)
 
       class InboundACHTransferCreateParams < Increase::BaseModel
         extend Increase::RequestParameters::Converter
@@ -59,49 +57,14 @@ module Increase
 
         attr_reader standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code?
 
-        def standard_entry_class_code=: (
-          Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code
-        ) -> Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code
+        def standard_entry_class_code=: (Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code) -> Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code
 
-        def initialize:
-          (
-            account_number_id: String,
-            amount: Integer,
-            company_descriptive_date: String,
-            company_discretionary_data: String,
-            company_entry_description: String,
-            company_id: String,
-            company_name: String,
-            receiver_id_number: String,
-            receiver_name: String,
-            resolve_at: Time,
-            standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code,
-            request_options: Increase::request_opts
-          ) -> void
-          | (
-            ?Increase::Models::Simulations::inbound_ach_transfer_create_params
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (account_number_id: String, amount: Integer, company_descriptive_date: String, company_discretionary_data: String, company_entry_description: String, company_id: String, company_name: String, receiver_id_number: String, receiver_name: String, resolve_at: Time, standard_entry_class_code: Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code, request_options: Increase::request_opts) -> void
+                      | (?(Increase::Models::Simulations::inbound_ach_transfer_create_params | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::Simulations::inbound_ach_transfer_create_params
+        def to_hash: () -> Increase::Models::Simulations::inbound_ach_transfer_create_params
 
-        type standard_entry_class_code =
-          :corporate_credit_or_debit
-          | :corporate_trade_exchange
-          | :prearranged_payments_and_deposit
-          | :internet_initiated
-          | :point_of_sale
-          | :telephone_initiated
-          | :customer_initiated
-          | :accounts_receivable
-          | :machine_transfer
-          | :shared_network_transaction
-          | :represented_check
-          | :back_office_conversion
-          | :point_of_purchase
-          | :check_truncation
-          | :destroyed_check
-          | :international_ach_transaction
+        type standard_entry_class_code = (:corporate_credit_or_debit | :corporate_trade_exchange | :prearranged_payments_and_deposit | :internet_initiated | :point_of_sale | :telephone_initiated | :customer_initiated | :accounts_receivable | :machine_transfer | :shared_network_transaction | :represented_check | :back_office_conversion | :point_of_purchase | :check_truncation | :destroyed_check | :international_ach_transaction)
 
         class StandardEntryClassCode < Increase::Enum
           # Corporate Credit and Debit (CCD).
@@ -152,7 +115,7 @@ module Increase
           # International ACH Transaction (IAT).
           INTERNATIONAL_ACH_TRANSACTION: :international_ach_transaction
 
-          def self.values: -> ::Array[Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code]
+          def self.values: () -> ::Array[Increase::Models::Simulations::InboundACHTransferCreateParams::standard_entry_class_code]
         end
       end
     end

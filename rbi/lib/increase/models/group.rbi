@@ -44,13 +44,7 @@ module Increase
       end
 
       sig do
-        params(
-          id: String,
-          ach_debit_status: Symbol,
-          activation_status: Symbol,
-          created_at: Time,
-          type: Symbol
-        )
+        params(id: String, ach_debit_status: Symbol, activation_status: Symbol, created_at: Time, type: Symbol)
           .void
       end
       def initialize(id:, ach_debit_status:, activation_status:, created_at:, type:)
@@ -58,13 +52,7 @@ module Increase
 
       sig do
         override
-          .returns({
-                     id: String,
-                     ach_debit_status: Symbol,
-                     activation_status: Symbol,
-                     created_at: Time,
-                     type: Symbol
-                   })
+          .returns({id: String, ach_debit_status: Symbol, activation_status: Symbol, created_at: Time, type: Symbol})
       end
       def to_hash
       end

@@ -11,10 +11,7 @@ class Increase::Test::Resources::Simulations::InterestPaymentsTest < Minitest::T
   end
 
   def test_create_required_params
-    response = @increase.simulations.interest_payments.create(
-      account_id: "account_in71c4amph0vgo2qllky",
-      amount: 1000
-    )
+    response = @increase.simulations.interest_payments.create(account_id: "account_in71c4amph0vgo2qllky", amount: 1000)
 
     assert_pattern do
       response => Increase::Models::Transaction

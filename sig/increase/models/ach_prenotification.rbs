@@ -1,24 +1,23 @@
 module Increase
   module Models
-    type ach_prenotification =
-      {
-        id: String,
-        account_number: String,
-        addendum: String?,
-        company_descriptive_date: String?,
-        company_discretionary_data: String?,
-        company_entry_description: String?,
-        company_name: String?,
-        created_at: Time,
-        credit_debit_indicator: Increase::Models::ACHPrenotification::credit_debit_indicator?,
-        effective_date: Time?,
-        idempotency_key: String?,
-        notifications_of_change: ::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
-        prenotification_return: Increase::Models::ACHPrenotification::PrenotificationReturn?,
-        routing_number: String,
-        status: Increase::Models::ACHPrenotification::status,
-        type: Increase::Models::ACHPrenotification::type_
-      }
+    type ach_prenotification = {
+      id: String,
+      account_number: String,
+      addendum: String?,
+      company_descriptive_date: String?,
+      company_discretionary_data: String?,
+      company_entry_description: String?,
+      company_name: String?,
+      created_at: Time,
+      credit_debit_indicator: Increase::Models::ACHPrenotification::credit_debit_indicator?,
+      effective_date: Time?,
+      idempotency_key: String?,
+      notifications_of_change: ::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
+      prenotification_return: Increase::Models::ACHPrenotification::PrenotificationReturn?,
+      routing_number: String,
+      status: Increase::Models::ACHPrenotification::status,
+      type: Increase::Models::ACHPrenotification::type_
+    }
 
     class ACHPrenotification < Increase::BaseModel
       attr_accessor id: String
@@ -53,32 +52,12 @@ module Increase
 
       attr_accessor type: Increase::Models::ACHPrenotification::type_
 
-      def initialize:
-        (
-          id: String,
-          account_number: String,
-          addendum: String?,
-          company_descriptive_date: String?,
-          company_discretionary_data: String?,
-          company_entry_description: String?,
-          company_name: String?,
-          created_at: Time,
-          credit_debit_indicator: Increase::Models::ACHPrenotification::credit_debit_indicator?,
-          effective_date: Time?,
-          idempotency_key: String?,
-          notifications_of_change: ::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
-          prenotification_return: Increase::Models::ACHPrenotification::PrenotificationReturn?,
-          routing_number: String,
-          status: Increase::Models::ACHPrenotification::status,
-          type: Increase::Models::ACHPrenotification::type_
-        ) -> void
-        | (
-          ?Increase::Models::ach_prenotification | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, account_number: String, addendum: String?, company_descriptive_date: String?, company_discretionary_data: String?, company_entry_description: String?, company_name: String?, created_at: Time, credit_debit_indicator: Increase::Models::ACHPrenotification::credit_debit_indicator?, effective_date: Time?, idempotency_key: String?, notifications_of_change: ::Array[Increase::Models::ACHPrenotification::NotificationsOfChange], prenotification_return: Increase::Models::ACHPrenotification::PrenotificationReturn?, routing_number: String, status: Increase::Models::ACHPrenotification::status, type: Increase::Models::ACHPrenotification::type_) -> void
+                    | (?(Increase::Models::ach_prenotification | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::ach_prenotification
+      def to_hash: () -> Increase::Models::ach_prenotification
 
-      type credit_debit_indicator = :credit | :debit
+      type credit_debit_indicator = (:credit | :debit)
 
       class CreditDebitIndicator < Increase::Enum
         # The Prenotification is for an anticipated credit.
@@ -87,15 +66,14 @@ module Increase
         # The Prenotification is for an anticipated debit.
         DEBIT: :debit
 
-        def self.values: -> ::Array[Increase::Models::ACHPrenotification::credit_debit_indicator]
+        def self.values: () -> ::Array[Increase::Models::ACHPrenotification::credit_debit_indicator]
       end
 
-      type notifications_of_change =
-        {
-          change_code: Increase::Models::ACHPrenotification::NotificationsOfChange::change_code,
-          corrected_data: String,
-          created_at: Time
-        }
+      type notifications_of_change = {
+        change_code: Increase::Models::ACHPrenotification::NotificationsOfChange::change_code,
+        corrected_data: String,
+        created_at: Time
+      }
 
       class NotificationsOfChange < Increase::BaseModel
         attr_accessor change_code: Increase::Models::ACHPrenotification::NotificationsOfChange::change_code
@@ -104,39 +82,12 @@ module Increase
 
         attr_accessor created_at: Time
 
-        def initialize:
-          (
-            change_code: Increase::Models::ACHPrenotification::NotificationsOfChange::change_code,
-            corrected_data: String,
-            created_at: Time
-          ) -> void
-          | (
-            ?Increase::Models::ACHPrenotification::notifications_of_change
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (change_code: Increase::Models::ACHPrenotification::NotificationsOfChange::change_code, corrected_data: String, created_at: Time) -> void
+                      | (?(Increase::Models::ACHPrenotification::notifications_of_change | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::ACHPrenotification::notifications_of_change
+        def to_hash: () -> Increase::Models::ACHPrenotification::notifications_of_change
 
-        type change_code =
-          :incorrect_account_number
-          | :incorrect_routing_number
-          | :incorrect_routing_number_and_account_number
-          | :incorrect_transaction_code
-          | :incorrect_account_number_and_transaction_code
-          | :incorrect_routing_number_account_number_and_transaction_code
-          | :incorrect_receiving_depository_financial_institution_identification
-          | :incorrect_individual_identification_number
-          | :addenda_format_error
-          | :incorrect_standard_entry_class_code_for_outbound_international_payment
-          | :misrouted_notification_of_change
-          | :incorrect_trace_number
-          | :incorrect_company_identification_number
-          | :incorrect_identification_number
-          | :incorrectly_formatted_corrected_data
-          | :incorrect_discretionary_data
-          | :routing_number_not_from_original_entry_detail_record
-          | :depository_financial_institution_account_number_not_from_original_entry_detail_record
-          | :incorrect_transaction_code_by_originating_depository_financial_institution
+        type change_code = (:incorrect_account_number | :incorrect_routing_number | :incorrect_routing_number_and_account_number | :incorrect_transaction_code | :incorrect_account_number_and_transaction_code | :incorrect_routing_number_account_number_and_transaction_code | :incorrect_receiving_depository_financial_institution_identification | :incorrect_individual_identification_number | :addenda_format_error | :incorrect_standard_entry_class_code_for_outbound_international_payment | :misrouted_notification_of_change | :incorrect_trace_number | :incorrect_company_identification_number | :incorrect_identification_number | :incorrectly_formatted_corrected_data | :incorrect_discretionary_data | :routing_number_not_from_original_entry_detail_record | :depository_financial_institution_account_number_not_from_original_entry_detail_record | :incorrect_transaction_code_by_originating_depository_financial_institution)
 
         class ChangeCode < Increase::Enum
           # The account number was incorrect.
@@ -196,104 +147,26 @@ module Increase
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION: :incorrect_transaction_code_by_originating_depository_financial_institution
 
-          def self.values: -> ::Array[Increase::Models::ACHPrenotification::NotificationsOfChange::change_code]
+          def self.values: () -> ::Array[Increase::Models::ACHPrenotification::NotificationsOfChange::change_code]
         end
       end
 
-      type prenotification_return =
-        {
-          created_at: Time,
-          return_reason_code: Increase::Models::ACHPrenotification::PrenotificationReturn::return_reason_code
-        }
+      type prenotification_return = {
+        created_at: Time,
+        return_reason_code: Increase::Models::ACHPrenotification::PrenotificationReturn::return_reason_code
+      }
 
       class PrenotificationReturn < Increase::BaseModel
         attr_accessor created_at: Time
 
         attr_accessor return_reason_code: Increase::Models::ACHPrenotification::PrenotificationReturn::return_reason_code
 
-        def initialize:
-          (
-            created_at: Time,
-            return_reason_code: Increase::Models::ACHPrenotification::PrenotificationReturn::return_reason_code
-          ) -> void
-          | (
-            ?Increase::Models::ACHPrenotification::prenotification_return
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (created_at: Time, return_reason_code: Increase::Models::ACHPrenotification::PrenotificationReturn::return_reason_code) -> void
+                      | (?(Increase::Models::ACHPrenotification::prenotification_return | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::ACHPrenotification::prenotification_return
+        def to_hash: () -> Increase::Models::ACHPrenotification::prenotification_return
 
-        type return_reason_code =
-          :insufficient_fund
-          | :no_account
-          | :account_closed
-          | :invalid_account_number_structure
-          | :account_frozen_entry_returned_per_ofac_instruction
-          | :credit_entry_refused_by_receiver
-          | :unauthorized_debit_to_consumer_account_using_corporate_sec_code
-          | :corporate_customer_advised_not_authorized
-          | :payment_stopped
-          | :non_transaction_account
-          | :uncollected_funds
-          | :routing_number_check_digit_error
-          | :customer_advised_unauthorized_improper_ineligible_or_incomplete
-          | :amount_field_error
-          | :authorization_revoked_by_customer
-          | :invalid_ach_routing_number
-          | :file_record_edit_criteria
-          | :enr_invalid_individual_name
-          | :returned_per_odfi_request
-          | :limited_participation_dfi
-          | :incorrectly_coded_outbound_international_payment
-          | :account_sold_to_another_dfi
-          | :addenda_error
-          | :beneficiary_or_account_holder_deceased
-          | :customer_advised_not_within_authorization_terms
-          | :corrected_return
-          | :duplicate_entry
-          | :duplicate_return
-          | :enr_duplicate_enrollment
-          | :enr_invalid_dfi_account_number
-          | :enr_invalid_individual_id_number
-          | :enr_invalid_representative_payee_indicator
-          | :enr_invalid_transaction_code
-          | :enr_return_of_enr_entry
-          | :enr_routing_number_check_digit_error
-          | :entry_not_processed_by_gateway
-          | :field_error
-          | :foreign_receiving_dfi_unable_to_settle
-          | :iat_entry_coding_error
-          | :improper_effective_entry_date
-          | :improper_source_document_source_document_presented
-          | :invalid_company_id
-          | :invalid_foreign_receiving_dfi_identification
-          | :invalid_individual_id_number
-          | :item_and_rck_entry_presented_for_payment
-          | :item_related_to_rck_entry_is_ineligible
-          | :mandatory_field_error
-          | :misrouted_dishonored_return
-          | :misrouted_return
-          | :no_errors_found
-          | :non_acceptance_of_r62_dishonored_return
-          | :non_participant_in_iat_program
-          | :permissible_return_entry
-          | :permissible_return_entry_not_accepted
-          | :rdfi_non_settlement
-          | :rdfi_participant_in_check_truncation_program
-          | :representative_payee_deceased_or_unable_to_continue_in_that_capacity
-          | :return_not_a_duplicate
-          | :return_of_erroneous_or_reversing_debit
-          | :return_of_improper_credit_entry
-          | :return_of_improper_debit_entry
-          | :return_of_xck_entry
-          | :source_document_presented_for_payment
-          | :state_law_affecting_rck_acceptance
-          | :stop_payment_on_item_related_to_rck_entry
-          | :stop_payment_on_source_document
-          | :timely_original_return
-          | :trace_number_error
-          | :untimely_dishonored_return
-          | :untimely_return
+        type return_reason_code = (:insufficient_fund | :no_account | :account_closed | :invalid_account_number_structure | :account_frozen_entry_returned_per_ofac_instruction | :credit_entry_refused_by_receiver | :unauthorized_debit_to_consumer_account_using_corporate_sec_code | :corporate_customer_advised_not_authorized | :payment_stopped | :non_transaction_account | :uncollected_funds | :routing_number_check_digit_error | :customer_advised_unauthorized_improper_ineligible_or_incomplete | :amount_field_error | :authorization_revoked_by_customer | :invalid_ach_routing_number | :file_record_edit_criteria | :enr_invalid_individual_name | :returned_per_odfi_request | :limited_participation_dfi | :incorrectly_coded_outbound_international_payment | :account_sold_to_another_dfi | :addenda_error | :beneficiary_or_account_holder_deceased | :customer_advised_not_within_authorization_terms | :corrected_return | :duplicate_entry | :duplicate_return | :enr_duplicate_enrollment | :enr_invalid_dfi_account_number | :enr_invalid_individual_id_number | :enr_invalid_representative_payee_indicator | :enr_invalid_transaction_code | :enr_return_of_enr_entry | :enr_routing_number_check_digit_error | :entry_not_processed_by_gateway | :field_error | :foreign_receiving_dfi_unable_to_settle | :iat_entry_coding_error | :improper_effective_entry_date | :improper_source_document_source_document_presented | :invalid_company_id | :invalid_foreign_receiving_dfi_identification | :invalid_individual_id_number | :item_and_rck_entry_presented_for_payment | :item_related_to_rck_entry_is_ineligible | :mandatory_field_error | :misrouted_dishonored_return | :misrouted_return | :no_errors_found | :non_acceptance_of_r62_dishonored_return | :non_participant_in_iat_program | :permissible_return_entry | :permissible_return_entry_not_accepted | :rdfi_non_settlement | :rdfi_participant_in_check_truncation_program | :representative_payee_deceased_or_unable_to_continue_in_that_capacity | :return_not_a_duplicate | :return_of_erroneous_or_reversing_debit | :return_of_improper_credit_entry | :return_of_improper_debit_entry | :return_of_xck_entry | :source_document_presented_for_payment | :state_law_affecting_rck_acceptance | :stop_payment_on_item_related_to_rck_entry | :stop_payment_on_source_document | :timely_original_return | :trace_number_error | :untimely_dishonored_return | :untimely_return)
 
         class ReturnReasonCode < Increase::Enum
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
@@ -506,12 +379,11 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN: :untimely_return
 
-          def self.values: -> ::Array[Increase::Models::ACHPrenotification::PrenotificationReturn::return_reason_code]
+          def self.values: () -> ::Array[Increase::Models::ACHPrenotification::PrenotificationReturn::return_reason_code]
         end
       end
 
-      type status =
-        :pending_submitting | :requires_attention | :returned | :submitted
+      type status = (:pending_submitting | :requires_attention | :returned | :submitted)
 
       class Status < Increase::Enum
         # The Prenotification is pending submission.
@@ -526,7 +398,7 @@ module Increase
         # The Prenotification is complete.
         SUBMITTED: :submitted
 
-        def self.values: -> ::Array[Increase::Models::ACHPrenotification::status]
+        def self.values: () -> ::Array[Increase::Models::ACHPrenotification::status]
       end
 
       type type_ = :ach_prenotification
@@ -534,7 +406,7 @@ module Increase
       class Type < Increase::Enum
         ACH_PRENOTIFICATION: :ach_prenotification
 
-        def self.values: -> ::Array[Increase::Models::ACHPrenotification::type_]
+        def self.values: () -> ::Array[Increase::Models::ACHPrenotification::type_]
       end
     end
   end

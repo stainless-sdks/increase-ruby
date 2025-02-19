@@ -1,19 +1,15 @@
 module Increase
   module Models
-    type check_deposit_retrieve_params = {  } & Increase::request_parameters
+    type check_deposit_retrieve_params = ({} & Increase::request_parameters)
 
     class CheckDepositRetrieveParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      def initialize:
-        (request_options: Increase::request_opts) -> void
-        | (
-          ?Increase::Models::check_deposit_retrieve_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::check_deposit_retrieve_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::check_deposit_retrieve_params
+      def to_hash: () -> Increase::Models::check_deposit_retrieve_params
     end
   end
 end

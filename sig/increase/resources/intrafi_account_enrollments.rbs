@@ -1,52 +1,17 @@
 module Increase
   module Resources
     class IntrafiAccountEnrollments
-      def create:
-        (
-          Increase::Models::IntrafiAccountEnrollmentCreateParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::IntrafiAccountEnrollment
-        | (
-          account_id: String,
-          email_address: String,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::IntrafiAccountEnrollment
+      def create: ((Increase::Models::IntrafiAccountEnrollmentCreateParams | ::Hash[Symbol, top]) params) -> Increase::Models::IntrafiAccountEnrollment
+                | (account_id: String, email_address: String, request_options: Increase::request_opts) -> Increase::Models::IntrafiAccountEnrollment
 
-      def retrieve:
-        (
-          String intrafi_account_enrollment_id,
-          ?Increase::Models::IntrafiAccountEnrollmentRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::IntrafiAccountEnrollment
-        | (
-          String intrafi_account_enrollment_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::IntrafiAccountEnrollment
+      def retrieve: (String intrafi_account_enrollment_id, ?(Increase::Models::IntrafiAccountEnrollmentRetrieveParams | ::Hash[Symbol, top]) params) -> Increase::Models::IntrafiAccountEnrollment
+                  | (String intrafi_account_enrollment_id, request_options: Increase::request_opts) -> Increase::Models::IntrafiAccountEnrollment
 
-      def list:
-        (
-          ?Increase::Models::IntrafiAccountEnrollmentListParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::IntrafiAccountEnrollment]
-        | (
-          account_id: String,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
-          request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::IntrafiAccountEnrollment]
+      def list: (?(Increase::Models::IntrafiAccountEnrollmentListParams | ::Hash[Symbol, top]) params) -> Increase::Page[Increase::Models::IntrafiAccountEnrollment]
+              | (account_id: String, cursor: String, idempotency_key: String, limit: Integer, status: Increase::Models::IntrafiAccountEnrollmentListParams::Status, request_options: Increase::request_opts) -> Increase::Page[Increase::Models::IntrafiAccountEnrollment]
 
-      def unenroll:
-        (
-          String intrafi_account_enrollment_id,
-          ?Increase::Models::IntrafiAccountEnrollmentUnenrollParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::IntrafiAccountEnrollment
-        | (
-          String intrafi_account_enrollment_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::IntrafiAccountEnrollment
+      def unenroll: (String intrafi_account_enrollment_id, ?(Increase::Models::IntrafiAccountEnrollmentUnenrollParams | ::Hash[Symbol, top]) params) -> Increase::Models::IntrafiAccountEnrollment
+                  | (String intrafi_account_enrollment_id, request_options: Increase::request_opts) -> Increase::Models::IntrafiAccountEnrollment
 
       def initialize: (client: Increase::Client) -> void
     end

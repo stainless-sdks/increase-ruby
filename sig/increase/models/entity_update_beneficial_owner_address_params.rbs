@@ -1,11 +1,6 @@
 module Increase
   module Models
-    type entity_update_beneficial_owner_address_params =
-      {
-        address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
-        beneficial_owner_id: String
-      }
-      & Increase::request_parameters
+    type entity_update_beneficial_owner_address_params = ({address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, beneficial_owner_id: String} & Increase::request_parameters)
 
     class EntityUpdateBeneficialOwnerAddressParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -15,27 +10,12 @@ module Increase
 
       attr_accessor beneficial_owner_id: String
 
-      def initialize:
-        (
-          address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
-          beneficial_owner_id: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::entity_update_beneficial_owner_address_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, beneficial_owner_id: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::entity_update_beneficial_owner_address_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::entity_update_beneficial_owner_address_params
+      def to_hash: () -> Increase::Models::entity_update_beneficial_owner_address_params
 
-      type address =
-        {
-          city: String,
-          :line1 => String,
-          state: String,
-          zip: String,
-          :line2 => String
-        }
+      type address = {city: String, line1: String, state: String, zip: String, line2: String}
 
       class Address < Increase::BaseModel
         attr_accessor city: String
@@ -50,20 +30,10 @@ module Increase
 
         def line2=: (String) -> String
 
-        def initialize:
-          (
-            city: String,
-            line1: String,
-            state: String,
-            zip: String,
-            line2: String
-          ) -> void
-          | (
-            ?Increase::Models::EntityUpdateBeneficialOwnerAddressParams::address
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (city: String, line1: String, state: String, zip: String, line2: String) -> void
+                      | (?(Increase::Models::EntityUpdateBeneficialOwnerAddressParams::address | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::EntityUpdateBeneficialOwnerAddressParams::address
+        def to_hash: () -> Increase::Models::EntityUpdateBeneficialOwnerAddressParams::address
       end
     end
   end

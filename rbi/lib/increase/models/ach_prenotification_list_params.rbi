@@ -43,12 +43,12 @@ module Increase
 
       sig do
         params(
-          created_at: Increase::Models::ACHPrenotificationListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            created_at: Increase::Models::ACHPrenotificationListParams::CreatedAt,
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})

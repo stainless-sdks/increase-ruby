@@ -51,23 +51,16 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_id: String,
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            status: Increase::Models::IntrafiAccountEnrollmentListParams::Status,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
-      def initialize(
-        account_id: nil,
-        cursor: nil,
-        idempotency_key: nil,
-        limit: nil,
-        status: nil,
-        request_options: {}
-      )
+      def initialize(account_id: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       end
 
       sig do

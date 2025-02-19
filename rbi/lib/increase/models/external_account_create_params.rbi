@@ -48,23 +48,16 @@ module Increase
 
       sig do
         params(
-          account_number: String,
-          description: String,
-          routing_number: String,
-          account_holder: Symbol,
-          funding: Symbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_number: String,
+            description: String,
+            routing_number: String,
+            account_holder: Symbol,
+            funding: Symbol,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
-      def initialize(
-        account_number:,
-        description:,
-        routing_number:,
-        account_holder: nil,
-        funding: nil,
-        request_options: {}
-      )
+      def initialize(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {})
       end
 
       sig do

@@ -166,27 +166,27 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          amount: Integer,
-          statement_descriptor: String,
-          account_number: String,
-          addenda: Increase::Models::ACHTransferCreateParams::Addenda,
-          company_descriptive_date: String,
-          company_discretionary_data: String,
-          company_entry_description: String,
-          company_name: String,
-          destination_account_holder: Symbol,
-          external_account_id: String,
-          funding: Symbol,
-          individual_id: String,
-          individual_name: String,
-          preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
-          require_approval: T::Boolean,
-          routing_number: String,
-          standard_entry_class_code: Symbol,
-          transaction_timing: Symbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_id: String,
+            amount: Integer,
+            statement_descriptor: String,
+            account_number: String,
+            addenda: Increase::Models::ACHTransferCreateParams::Addenda,
+            company_descriptive_date: String,
+            company_discretionary_data: String,
+            company_entry_description: String,
+            company_name: String,
+            destination_account_holder: Symbol,
+            external_account_id: String,
+            funding: Symbol,
+            individual_id: String,
+            individual_name: String,
+            preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
+            require_approval: T::Boolean,
+            routing_number: String,
+            standard_entry_class_code: Symbol,
+            transaction_timing: Symbol,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(
@@ -276,10 +276,10 @@ module Increase
 
         sig do
           params(
-            category: Symbol,
-            freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
-            payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
-          )
+              category: Symbol,
+              freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
+              payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
+            )
             .void
         end
         def initialize(category:, freeform: nil, payment_order_remittance_advice: nil)
@@ -354,16 +354,16 @@ module Increase
         class PaymentOrderRemittanceAdvice < Increase::BaseModel
           sig do
             returns(
-              T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-            )
+                T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+              )
           end
           def invoices
           end
 
           sig do
             params(
-              _: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-            )
+                _: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+              )
               .returns(
                 T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
               )
@@ -373,8 +373,8 @@ module Increase
 
           sig do
             params(
-              invoices: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-            )
+                invoices: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+              )
               .void
           end
           def initialize(invoices:)

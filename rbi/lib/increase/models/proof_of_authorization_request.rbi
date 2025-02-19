@@ -56,13 +56,13 @@ module Increase
 
       sig do
         params(
-          id: String,
-          ach_transfers: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
-          created_at: Time,
-          due_on: Time,
-          type: Symbol,
-          updated_at: Time
-        )
+            id: String,
+            ach_transfers: T::Array[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer],
+            created_at: Time,
+            due_on: Time,
+            type: Symbol,
+            updated_at: Time
+          )
           .void
       end
       def initialize(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:)

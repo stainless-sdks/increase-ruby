@@ -67,15 +67,15 @@ module Increase
 
       sig do
         params(
-          amount: Integer,
-          debtor: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor,
-          destination_account_number_id: String,
-          expires_at: Date,
-          remittance_information: String,
-          source_account_number: String,
-          source_routing_number: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            amount: Integer,
+            debtor: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor,
+            destination_account_number_id: String,
+            expires_at: Date,
+            remittance_information: String,
+            source_account_number: String,
+            source_routing_number: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(
@@ -130,9 +130,9 @@ module Increase
 
         sig do
           params(
-            address: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address,
-            name: String
-          )
+              address: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address,
+              name: String
+            )
             .void
         end
         def initialize(address:, name:)

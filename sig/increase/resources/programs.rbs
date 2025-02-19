@@ -1,25 +1,11 @@
 module Increase
   module Resources
     class Programs
-      def retrieve:
-        (
-          String program_id,
-          ?Increase::Models::ProgramRetrieveParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Program
-        | (
-          String program_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::Program
+      def retrieve: (String program_id, ?(Increase::Models::ProgramRetrieveParams | ::Hash[Symbol, top]) params) -> Increase::Models::Program
+                  | (String program_id, request_options: Increase::request_opts) -> Increase::Models::Program
 
-      def list:
-        (
-          ?Increase::Models::ProgramListParams | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::Program]
-        | (
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::Program]
+      def list: (?(Increase::Models::ProgramListParams | ::Hash[Symbol, top]) params) -> Increase::Page[Increase::Models::Program]
+              | (cursor: String, limit: Integer, request_options: Increase::request_opts) -> Increase::Page[Increase::Models::Program]
 
       def initialize: (client: Increase::Client) -> void
     end

@@ -50,23 +50,16 @@ module Increase
 
       sig do
         params(
-          created_at: Increase::Models::FileListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          purpose: Increase::Models::FileListParams::Purpose,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            created_at: Increase::Models::FileListParams::CreatedAt,
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            purpose: Increase::Models::FileListParams::Purpose,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
-      def initialize(
-        created_at: nil,
-        cursor: nil,
-        idempotency_key: nil,
-        limit: nil,
-        purpose: nil,
-        request_options: {}
-      )
+      def initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, purpose: nil, request_options: {})
       end
 
       sig do

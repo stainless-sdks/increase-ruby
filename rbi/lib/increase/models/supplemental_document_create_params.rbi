@@ -24,18 +24,16 @@ module Increase
 
       sig do
         params(
-          entity_id: String,
-          file_id: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            entity_id: String,
+            file_id: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(entity_id:, file_id:, request_options: {})
       end
 
-      sig do
-        override.returns({entity_id: String, file_id: String, request_options: Increase::RequestOptions})
-      end
+      sig { override.returns({entity_id: String, file_id: String, request_options: Increase::RequestOptions}) }
       def to_hash
       end
     end

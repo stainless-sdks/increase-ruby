@@ -45,12 +45,12 @@ module Increase
 
       sig do
         params(
-          created_at: Time,
-          entity_id: String,
-          file_id: String,
-          idempotency_key: T.nilable(String),
-          type: Symbol
-        )
+            created_at: Time,
+            entity_id: String,
+            file_id: String,
+            idempotency_key: T.nilable(String),
+            type: Symbol
+          )
           .void
       end
       def initialize(created_at:, entity_id:, file_id:, idempotency_key:, type:)
@@ -59,13 +59,7 @@ module Increase
       sig do
         override
           .returns(
-            {
-              created_at: Time,
-              entity_id: String,
-              file_id: String,
-              idempotency_key: T.nilable(String),
-              type: Symbol
-            }
+            {created_at: Time, entity_id: String, file_id: String, idempotency_key: T.nilable(String), type: Symbol}
           )
       end
       def to_hash

@@ -13,8 +13,8 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Minitest::Test
   def test_create_required_params
     response = @increase.bookkeeping_entry_sets.create(
       entries: [
-        {account_id: "bookkeeping_account_9husfpw68pzmve9dvvc7", amount: 100},
-        {account_id: "bookkeeping_account_t2obldz1rcu15zr54umg", amount: -100}
+      {account_id: "bookkeeping_account_9husfpw68pzmve9dvvc7", amount: 100},
+      {account_id: "bookkeeping_account_t2obldz1rcu15zr54umg", amount: -100}
       ]
     )
 

@@ -1,35 +1,34 @@
 module Increase
   module Models
-    type inbound_ach_transfer =
-      {
-        id: String,
-        acceptance: Increase::Models::InboundACHTransfer::Acceptance?,
-        account_id: String,
-        account_number_id: String,
-        addenda: Increase::Models::InboundACHTransfer::Addenda?,
-        amount: Integer,
-        automatically_resolves_at: Time,
-        created_at: Time,
-        decline: Increase::Models::InboundACHTransfer::Decline?,
-        direction: Increase::Models::InboundACHTransfer::direction,
-        effective_date: Date,
-        expected_settlement_schedule: Increase::Models::InboundACHTransfer::expected_settlement_schedule,
-        international_addenda: Increase::Models::InboundACHTransfer::InternationalAddenda?,
-        notification_of_change: Increase::Models::InboundACHTransfer::NotificationOfChange?,
-        originator_company_descriptive_date: String?,
-        originator_company_discretionary_data: String?,
-        originator_company_entry_description: String,
-        originator_company_id: String,
-        originator_company_name: String,
-        originator_routing_number: String,
-        receiver_id_number: String?,
-        receiver_name: String?,
-        standard_entry_class_code: Increase::Models::InboundACHTransfer::standard_entry_class_code,
-        status: Increase::Models::InboundACHTransfer::status,
-        trace_number: String,
-        transfer_return: Increase::Models::InboundACHTransfer::TransferReturn?,
-        type: Increase::Models::InboundACHTransfer::type_
-      }
+    type inbound_ach_transfer = {
+      id: String,
+      acceptance: Increase::Models::InboundACHTransfer::Acceptance?,
+      account_id: String,
+      account_number_id: String,
+      addenda: Increase::Models::InboundACHTransfer::Addenda?,
+      amount: Integer,
+      automatically_resolves_at: Time,
+      created_at: Time,
+      decline: Increase::Models::InboundACHTransfer::Decline?,
+      direction: Increase::Models::InboundACHTransfer::direction,
+      effective_date: Date,
+      expected_settlement_schedule: Increase::Models::InboundACHTransfer::expected_settlement_schedule,
+      international_addenda: Increase::Models::InboundACHTransfer::InternationalAddenda?,
+      notification_of_change: Increase::Models::InboundACHTransfer::NotificationOfChange?,
+      originator_company_descriptive_date: String?,
+      originator_company_discretionary_data: String?,
+      originator_company_entry_description: String,
+      originator_company_id: String,
+      originator_company_name: String,
+      originator_routing_number: String,
+      receiver_id_number: String?,
+      receiver_name: String?,
+      standard_entry_class_code: Increase::Models::InboundACHTransfer::standard_entry_class_code,
+      status: Increase::Models::InboundACHTransfer::status,
+      trace_number: String,
+      transfer_return: Increase::Models::InboundACHTransfer::TransferReturn?,
+      type: Increase::Models::InboundACHTransfer::type_
+    }
 
     class InboundACHTransfer < Increase::BaseModel
       attr_accessor id: String
@@ -86,81 +85,38 @@ module Increase
 
       attr_accessor type: Increase::Models::InboundACHTransfer::type_
 
-      def initialize:
-        (
-          id: String,
-          acceptance: Increase::Models::InboundACHTransfer::Acceptance?,
-          account_id: String,
-          account_number_id: String,
-          addenda: Increase::Models::InboundACHTransfer::Addenda?,
-          amount: Integer,
-          automatically_resolves_at: Time,
-          created_at: Time,
-          decline: Increase::Models::InboundACHTransfer::Decline?,
-          direction: Increase::Models::InboundACHTransfer::direction,
-          effective_date: Date,
-          expected_settlement_schedule: Increase::Models::InboundACHTransfer::expected_settlement_schedule,
-          international_addenda: Increase::Models::InboundACHTransfer::InternationalAddenda?,
-          notification_of_change: Increase::Models::InboundACHTransfer::NotificationOfChange?,
-          originator_company_descriptive_date: String?,
-          originator_company_discretionary_data: String?,
-          originator_company_entry_description: String,
-          originator_company_id: String,
-          originator_company_name: String,
-          originator_routing_number: String,
-          receiver_id_number: String?,
-          receiver_name: String?,
-          standard_entry_class_code: Increase::Models::InboundACHTransfer::standard_entry_class_code,
-          status: Increase::Models::InboundACHTransfer::status,
-          trace_number: String,
-          transfer_return: Increase::Models::InboundACHTransfer::TransferReturn?,
-          type: Increase::Models::InboundACHTransfer::type_
-        ) -> void
-        | (
-          ?Increase::Models::inbound_ach_transfer | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, acceptance: Increase::Models::InboundACHTransfer::Acceptance?, account_id: String, account_number_id: String, addenda: Increase::Models::InboundACHTransfer::Addenda?, amount: Integer, automatically_resolves_at: Time, created_at: Time, decline: Increase::Models::InboundACHTransfer::Decline?, direction: Increase::Models::InboundACHTransfer::direction, effective_date: Date, expected_settlement_schedule: Increase::Models::InboundACHTransfer::expected_settlement_schedule, international_addenda: Increase::Models::InboundACHTransfer::InternationalAddenda?, notification_of_change: Increase::Models::InboundACHTransfer::NotificationOfChange?, originator_company_descriptive_date: String?, originator_company_discretionary_data: String?, originator_company_entry_description: String, originator_company_id: String, originator_company_name: String, originator_routing_number: String, receiver_id_number: String?, receiver_name: String?, standard_entry_class_code: Increase::Models::InboundACHTransfer::standard_entry_class_code, status: Increase::Models::InboundACHTransfer::status, trace_number: String, transfer_return: Increase::Models::InboundACHTransfer::TransferReturn?, type: Increase::Models::InboundACHTransfer::type_) -> void
+                    | (?(Increase::Models::inbound_ach_transfer | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::inbound_ach_transfer
+      def to_hash: () -> Increase::Models::inbound_ach_transfer
 
-      type acceptance = { accepted_at: Time, transaction_id: String }
+      type acceptance = {accepted_at: Time, transaction_id: String}
 
       class Acceptance < Increase::BaseModel
         attr_accessor accepted_at: Time
 
         attr_accessor transaction_id: String
 
-        def initialize:
-          (accepted_at: Time, transaction_id: String) -> void
-          | (
-            ?Increase::Models::InboundACHTransfer::acceptance
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (accepted_at: Time, transaction_id: String) -> void
+                      | (?(Increase::Models::InboundACHTransfer::acceptance | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::InboundACHTransfer::acceptance
+        def to_hash: () -> Increase::Models::InboundACHTransfer::acceptance
       end
 
-      type addenda =
-        {
-          category: Increase::Models::InboundACHTransfer::Addenda::category,
-          freeform: Increase::Models::InboundACHTransfer::Addenda::Freeform?
-        }
+      type addenda = {
+        category: Increase::Models::InboundACHTransfer::Addenda::category,
+        freeform: Increase::Models::InboundACHTransfer::Addenda::Freeform?
+      }
 
       class Addenda < Increase::BaseModel
         attr_accessor category: Increase::Models::InboundACHTransfer::Addenda::category
 
         attr_accessor freeform: Increase::Models::InboundACHTransfer::Addenda::Freeform?
 
-        def initialize:
-          (
-            category: Increase::Models::InboundACHTransfer::Addenda::category,
-            freeform: Increase::Models::InboundACHTransfer::Addenda::Freeform?
-          ) -> void
-          | (
-            ?Increase::Models::InboundACHTransfer::addenda
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (category: Increase::Models::InboundACHTransfer::Addenda::category, freeform: Increase::Models::InboundACHTransfer::Addenda::Freeform?) -> void
+                      | (?(Increase::Models::InboundACHTransfer::addenda | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::InboundACHTransfer::addenda
+        def to_hash: () -> Increase::Models::InboundACHTransfer::addenda
 
         type category = :freeform
 
@@ -168,51 +124,37 @@ module Increase
           # Unstructured addendum.
           FREEFORM: :freeform
 
-          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::Addenda::category]
+          def self.values: () -> ::Array[Increase::Models::InboundACHTransfer::Addenda::category]
         end
 
-        type freeform =
-          {
-            entries: ::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]
-          }
+        type freeform = {entries: ::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]}
 
         class Freeform < Increase::BaseModel
           attr_accessor entries: ::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]
 
-          def initialize:
-            (
-              entries: ::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]
-            ) -> void
-            | (
-              ?Increase::Models::InboundACHTransfer::Addenda::freeform
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (entries: ::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]) -> void
+                        | (?(Increase::Models::InboundACHTransfer::Addenda::freeform | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::InboundACHTransfer::Addenda::freeform
+          def to_hash: () -> Increase::Models::InboundACHTransfer::Addenda::freeform
 
-          type entry = { payment_related_information: String }
+          type entry = {payment_related_information: String}
 
           class Entry < Increase::BaseModel
             attr_accessor payment_related_information: String
 
-            def initialize:
-              (payment_related_information: String) -> void
-              | (
-                ?Increase::Models::InboundACHTransfer::Addenda::Freeform::entry
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (payment_related_information: String) -> void
+                          | (?(Increase::Models::InboundACHTransfer::Addenda::Freeform::entry | Increase::BaseModel) data) -> void
 
-            def to_hash: -> Increase::Models::InboundACHTransfer::Addenda::Freeform::entry
+            def to_hash: () -> Increase::Models::InboundACHTransfer::Addenda::Freeform::entry
           end
         end
       end
 
-      type decline =
-        {
-          declined_at: Time,
-          declined_transaction_id: String,
-          reason: Increase::Models::InboundACHTransfer::Decline::reason
-        }
+      type decline = {
+        declined_at: Time,
+        declined_transaction_id: String,
+        reason: Increase::Models::InboundACHTransfer::Decline::reason
+      }
 
       class Decline < Increase::BaseModel
         attr_accessor declined_at: Time
@@ -221,37 +163,12 @@ module Increase
 
         attr_accessor reason: Increase::Models::InboundACHTransfer::Decline::reason
 
-        def initialize:
-          (
-            declined_at: Time,
-            declined_transaction_id: String,
-            reason: Increase::Models::InboundACHTransfer::Decline::reason
-          ) -> void
-          | (
-            ?Increase::Models::InboundACHTransfer::decline
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (declined_at: Time, declined_transaction_id: String, reason: Increase::Models::InboundACHTransfer::Decline::reason) -> void
+                      | (?(Increase::Models::InboundACHTransfer::decline | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::InboundACHTransfer::decline
+        def to_hash: () -> Increase::Models::InboundACHTransfer::decline
 
-        type reason =
-          :ach_route_canceled
-          | :ach_route_disabled
-          | :breaches_limit
-          | :entity_not_active
-          | :group_locked
-          | :transaction_not_allowed
-          | :user_initiated
-          | :insufficient_funds
-          | :returned_per_odfi_request
-          | :authorization_revoked_by_customer
-          | :payment_stopped
-          | :customer_advised_unauthorized_improper_ineligible_or_incomplete
-          | :representative_payee_deceased_or_unable_to_continue_in_that_capacity
-          | :beneficiary_or_account_holder_deceased
-          | :credit_entry_refused_by_receiver
-          | :duplicate_entry
-          | :corporate_customer_advised_not_authorized
+        type reason = (:ach_route_canceled | :ach_route_disabled | :breaches_limit | :entity_not_active | :group_locked | :transaction_not_allowed | :user_initiated | :insufficient_funds | :returned_per_odfi_request | :authorization_revoked_by_customer | :payment_stopped | :customer_advised_unauthorized_improper_ineligible_or_incomplete | :representative_payee_deceased_or_unable_to_continue_in_that_capacity | :beneficiary_or_account_holder_deceased | :credit_entry_refused_by_receiver | :duplicate_entry | :corporate_customer_advised_not_authorized)
 
         class Reason < Increase::Enum
           # The account number is canceled.
@@ -305,11 +222,11 @@ module Increase
           # The corporate customer no longer authorizes this transaction.
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED: :corporate_customer_advised_not_authorized
 
-          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::Decline::reason]
+          def self.values: () -> ::Array[Increase::Models::InboundACHTransfer::Decline::reason]
         end
       end
 
-      type direction = :credit | :debit
+      type direction = (:credit | :debit)
 
       class Direction < Increase::Enum
         # Credit
@@ -318,10 +235,10 @@ module Increase
         # Debit
         DEBIT: :debit
 
-        def self.values: -> ::Array[Increase::Models::InboundACHTransfer::direction]
+        def self.values: () -> ::Array[Increase::Models::InboundACHTransfer::direction]
       end
 
-      type expected_settlement_schedule = :same_day | :future_dated
+      type expected_settlement_schedule = (:same_day | :future_dated)
 
       class ExpectedSettlementSchedule < Increase::Enum
         # The transfer is expected to settle same-day.
@@ -330,45 +247,44 @@ module Increase
         # The transfer is expected to settle on a future date.
         FUTURE_DATED: :future_dated
 
-        def self.values: -> ::Array[Increase::Models::InboundACHTransfer::expected_settlement_schedule]
+        def self.values: () -> ::Array[Increase::Models::InboundACHTransfer::expected_settlement_schedule]
       end
 
-      type international_addenda =
-        {
-          destination_country_code: String,
-          destination_currency_code: String,
-          foreign_exchange_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_indicator,
-          foreign_exchange_reference: String?,
-          foreign_exchange_reference_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_reference_indicator,
-          foreign_payment_amount: Integer,
-          foreign_trace_number: String?,
-          international_transaction_type_code: Increase::Models::InboundACHTransfer::InternationalAddenda::international_transaction_type_code,
-          originating_currency_code: String,
-          originating_depository_financial_institution_branch_country: String,
-          originating_depository_financial_institution_id: String,
-          originating_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::originating_depository_financial_institution_id_qualifier,
-          originating_depository_financial_institution_name: String,
-          originator_city: String,
-          originator_country: String,
-          originator_identification: String,
-          originator_name: String,
-          originator_postal_code: String?,
-          originator_state_or_province: String?,
-          originator_street_address: String,
-          payment_related_information: String?,
-          :payment_related_information2 => String?,
-          receiver_city: String,
-          receiver_country: String,
-          receiver_identification_number: String?,
-          receiver_postal_code: String?,
-          receiver_state_or_province: String?,
-          receiver_street_address: String,
-          receiving_company_or_individual_name: String,
-          receiving_depository_financial_institution_country: String,
-          receiving_depository_financial_institution_id: String,
-          receiving_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::receiving_depository_financial_institution_id_qualifier,
-          receiving_depository_financial_institution_name: String
-        }
+      type international_addenda = {
+        destination_country_code: String,
+        destination_currency_code: String,
+        foreign_exchange_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_indicator,
+        foreign_exchange_reference: String?,
+        foreign_exchange_reference_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_reference_indicator,
+        foreign_payment_amount: Integer,
+        foreign_trace_number: String?,
+        international_transaction_type_code: Increase::Models::InboundACHTransfer::InternationalAddenda::international_transaction_type_code,
+        originating_currency_code: String,
+        originating_depository_financial_institution_branch_country: String,
+        originating_depository_financial_institution_id: String,
+        originating_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::originating_depository_financial_institution_id_qualifier,
+        originating_depository_financial_institution_name: String,
+        originator_city: String,
+        originator_country: String,
+        originator_identification: String,
+        originator_name: String,
+        originator_postal_code: String?,
+        originator_state_or_province: String?,
+        originator_street_address: String,
+        payment_related_information: String?,
+        payment_related_information2: String?,
+        receiver_city: String,
+        receiver_country: String,
+        receiver_identification_number: String?,
+        receiver_postal_code: String?,
+        receiver_state_or_province: String?,
+        receiver_street_address: String,
+        receiving_company_or_individual_name: String,
+        receiving_depository_financial_institution_country: String,
+        receiving_depository_financial_institution_id: String,
+        receiving_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::receiving_depository_financial_institution_id_qualifier,
+        receiving_depository_financial_institution_name: String
+      }
 
       class InternationalAddenda < Increase::BaseModel
         attr_accessor destination_country_code: String
@@ -437,51 +353,12 @@ module Increase
 
         attr_accessor receiving_depository_financial_institution_name: String
 
-        def initialize:
-          (
-            destination_country_code: String,
-            destination_currency_code: String,
-            foreign_exchange_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_indicator,
-            foreign_exchange_reference: String?,
-            foreign_exchange_reference_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_reference_indicator,
-            foreign_payment_amount: Integer,
-            foreign_trace_number: String?,
-            international_transaction_type_code: Increase::Models::InboundACHTransfer::InternationalAddenda::international_transaction_type_code,
-            originating_currency_code: String,
-            originating_depository_financial_institution_branch_country: String,
-            originating_depository_financial_institution_id: String,
-            originating_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::originating_depository_financial_institution_id_qualifier,
-            originating_depository_financial_institution_name: String,
-            originator_city: String,
-            originator_country: String,
-            originator_identification: String,
-            originator_name: String,
-            originator_postal_code: String?,
-            originator_state_or_province: String?,
-            originator_street_address: String,
-            payment_related_information: String?,
-            payment_related_information2: String?,
-            receiver_city: String,
-            receiver_country: String,
-            receiver_identification_number: String?,
-            receiver_postal_code: String?,
-            receiver_state_or_province: String?,
-            receiver_street_address: String,
-            receiving_company_or_individual_name: String,
-            receiving_depository_financial_institution_country: String,
-            receiving_depository_financial_institution_id: String,
-            receiving_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::receiving_depository_financial_institution_id_qualifier,
-            receiving_depository_financial_institution_name: String
-          ) -> void
-          | (
-            ?Increase::Models::InboundACHTransfer::international_addenda
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (destination_country_code: String, destination_currency_code: String, foreign_exchange_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_indicator, foreign_exchange_reference: String?, foreign_exchange_reference_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_reference_indicator, foreign_payment_amount: Integer, foreign_trace_number: String?, international_transaction_type_code: Increase::Models::InboundACHTransfer::InternationalAddenda::international_transaction_type_code, originating_currency_code: String, originating_depository_financial_institution_branch_country: String, originating_depository_financial_institution_id: String, originating_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::originating_depository_financial_institution_id_qualifier, originating_depository_financial_institution_name: String, originator_city: String, originator_country: String, originator_identification: String, originator_name: String, originator_postal_code: String?, originator_state_or_province: String?, originator_street_address: String, payment_related_information: String?, payment_related_information2: String?, receiver_city: String, receiver_country: String, receiver_identification_number: String?, receiver_postal_code: String?, receiver_state_or_province: String?, receiver_street_address: String, receiving_company_or_individual_name: String, receiving_depository_financial_institution_country: String, receiving_depository_financial_institution_id: String, receiving_depository_financial_institution_id_qualifier: Increase::Models::InboundACHTransfer::InternationalAddenda::receiving_depository_financial_institution_id_qualifier, receiving_depository_financial_institution_name: String) -> void
+                      | (?(Increase::Models::InboundACHTransfer::international_addenda | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::InboundACHTransfer::international_addenda
+        def to_hash: () -> Increase::Models::InboundACHTransfer::international_addenda
 
-        type foreign_exchange_indicator =
-          :fixed_to_variable | :variable_to_fixed | :fixed_to_fixed
+        type foreign_exchange_indicator = (:fixed_to_variable | :variable_to_fixed | :fixed_to_fixed)
 
         class ForeignExchangeIndicator < Increase::Enum
           # The originator chose an amount in their own currency. The settled amount in USD was converted using the exchange rate.
@@ -493,11 +370,10 @@ module Increase
           # The amount was originated and settled as a fixed amount in USD. There is no foreign exchange conversion.
           FIXED_TO_FIXED: :fixed_to_fixed
 
-          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_indicator]
+          def self.values: () -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_indicator]
         end
 
-        type foreign_exchange_reference_indicator =
-          :foreign_exchange_rate | :foreign_exchange_reference_number | :blank
+        type foreign_exchange_reference_indicator = (:foreign_exchange_rate | :foreign_exchange_reference_number | :blank)
 
         class ForeignExchangeReferenceIndicator < Increase::Enum
           # The ACH file contains a foreign exchange rate.
@@ -509,30 +385,10 @@ module Increase
           # There is no foreign exchange for this transfer, so the `foreign_exchange_reference` field is blank.
           BLANK: :blank
 
-          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_reference_indicator]
+          def self.values: () -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::foreign_exchange_reference_indicator]
         end
 
-        type international_transaction_type_code =
-          :annuity
-          | :business_or_commercial
-          | :deposit
-          | :loan
-          | :miscellaneous
-          | :mortgage
-          | :pension
-          | :remittance
-          | :rent_or_lease
-          | :salary_or_payroll
-          | :tax
-          | :accounts_receivable
-          | :back_office_conversion
-          | :machine_transfer
-          | :point_of_purchase
-          | :point_of_sale
-          | :represented_check
-          | :shared_network_transaction
-          | :telphone_initiated
-          | :internet_initiated
+        type international_transaction_type_code = (:annuity | :business_or_commercial | :deposit | :loan | :miscellaneous | :mortgage | :pension | :remittance | :rent_or_lease | :salary_or_payroll | :tax | :accounts_receivable | :back_office_conversion | :machine_transfer | :point_of_purchase | :point_of_sale | :represented_check | :shared_network_transaction | :telphone_initiated | :internet_initiated)
 
         class InternationalTransactionTypeCode < Increase::Enum
           # Sent as `ANN` in the Nacha file.
@@ -595,11 +451,10 @@ module Increase
           # Sent as `WEB` in the Nacha file.
           INTERNET_INITIATED: :internet_initiated
 
-          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::international_transaction_type_code]
+          def self.values: () -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::international_transaction_type_code]
         end
 
-        type originating_depository_financial_institution_id_qualifier =
-          :national_clearing_system_number | :bic_code | :iban
+        type originating_depository_financial_institution_id_qualifier = (:national_clearing_system_number | :bic_code | :iban)
 
         class OriginatingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
           # A domestic clearing system number. In the US, for example, this is the American Banking Association (ABA) routing number.
@@ -611,11 +466,12 @@ module Increase
           # An International Bank Account Number.
           IBAN: :iban
 
-          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::originating_depository_financial_institution_id_qualifier]
+          def self.values: () -> ::Array[
+          Increase::Models::InboundACHTransfer::InternationalAddenda::originating_depository_financial_institution_id_qualifier
+          ]
         end
 
-        type receiving_depository_financial_institution_id_qualifier =
-          :national_clearing_system_number | :bic_code | :iban
+        type receiving_depository_financial_institution_id_qualifier = (:national_clearing_system_number | :bic_code | :iban)
 
         class ReceivingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
           # A domestic clearing system number. In the US, for example, this is the American Banking Association (ABA) routing number.
@@ -627,48 +483,26 @@ module Increase
           # An International Bank Account Number.
           IBAN: :iban
 
-          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::InternationalAddenda::receiving_depository_financial_institution_id_qualifier]
+          def self.values: () -> ::Array[
+          Increase::Models::InboundACHTransfer::InternationalAddenda::receiving_depository_financial_institution_id_qualifier
+          ]
         end
       end
 
-      type notification_of_change =
-        { updated_account_number: String?, updated_routing_number: String? }
+      type notification_of_change = {updated_account_number: String?, updated_routing_number: String?}
 
       class NotificationOfChange < Increase::BaseModel
         attr_accessor updated_account_number: String?
 
         attr_accessor updated_routing_number: String?
 
-        def initialize:
-          (
-            updated_account_number: String?,
-            updated_routing_number: String?
-          ) -> void
-          | (
-            ?Increase::Models::InboundACHTransfer::notification_of_change
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (updated_account_number: String?, updated_routing_number: String?) -> void
+                      | (?(Increase::Models::InboundACHTransfer::notification_of_change | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::InboundACHTransfer::notification_of_change
+        def to_hash: () -> Increase::Models::InboundACHTransfer::notification_of_change
       end
 
-      type standard_entry_class_code =
-        :corporate_credit_or_debit
-        | :corporate_trade_exchange
-        | :prearranged_payments_and_deposit
-        | :internet_initiated
-        | :point_of_sale
-        | :telephone_initiated
-        | :customer_initiated
-        | :accounts_receivable
-        | :machine_transfer
-        | :shared_network_transaction
-        | :represented_check
-        | :back_office_conversion
-        | :point_of_purchase
-        | :check_truncation
-        | :destroyed_check
-        | :international_ach_transaction
+      type standard_entry_class_code = (:corporate_credit_or_debit | :corporate_trade_exchange | :prearranged_payments_and_deposit | :internet_initiated | :point_of_sale | :telephone_initiated | :customer_initiated | :accounts_receivable | :machine_transfer | :shared_network_transaction | :represented_check | :back_office_conversion | :point_of_purchase | :check_truncation | :destroyed_check | :international_ach_transaction)
 
       class StandardEntryClassCode < Increase::Enum
         # Corporate Credit and Debit (CCD).
@@ -719,10 +553,10 @@ module Increase
         # International ACH Transaction (IAT).
         INTERNATIONAL_ACH_TRANSACTION: :international_ach_transaction
 
-        def self.values: -> ::Array[Increase::Models::InboundACHTransfer::standard_entry_class_code]
+        def self.values: () -> ::Array[Increase::Models::InboundACHTransfer::standard_entry_class_code]
       end
 
-      type status = :pending | :declined | :accepted | :returned
+      type status = (:pending | :declined | :accepted | :returned)
 
       class Status < Increase::Enum
         # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
@@ -737,15 +571,14 @@ module Increase
         # The Inbound ACH Transfer has been returned.
         RETURNED: :returned
 
-        def self.values: -> ::Array[Increase::Models::InboundACHTransfer::status]
+        def self.values: () -> ::Array[Increase::Models::InboundACHTransfer::status]
       end
 
-      type transfer_return =
-        {
-          reason: Increase::Models::InboundACHTransfer::TransferReturn::reason,
-          returned_at: Time,
-          transaction_id: String
-        }
+      type transfer_return = {
+        reason: Increase::Models::InboundACHTransfer::TransferReturn::reason,
+        returned_at: Time,
+        transaction_id: String
+      }
 
       class TransferReturn < Increase::BaseModel
         attr_accessor reason: Increase::Models::InboundACHTransfer::TransferReturn::reason
@@ -754,30 +587,12 @@ module Increase
 
         attr_accessor transaction_id: String
 
-        def initialize:
-          (
-            reason: Increase::Models::InboundACHTransfer::TransferReturn::reason,
-            returned_at: Time,
-            transaction_id: String
-          ) -> void
-          | (
-            ?Increase::Models::InboundACHTransfer::transfer_return
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (reason: Increase::Models::InboundACHTransfer::TransferReturn::reason, returned_at: Time, transaction_id: String) -> void
+                      | (?(Increase::Models::InboundACHTransfer::transfer_return | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::InboundACHTransfer::transfer_return
+        def to_hash: () -> Increase::Models::InboundACHTransfer::transfer_return
 
-        type reason =
-          :insufficient_funds
-          | :returned_per_odfi_request
-          | :authorization_revoked_by_customer
-          | :payment_stopped
-          | :customer_advised_unauthorized_improper_ineligible_or_incomplete
-          | :representative_payee_deceased_or_unable_to_continue_in_that_capacity
-          | :beneficiary_or_account_holder_deceased
-          | :credit_entry_refused_by_receiver
-          | :duplicate_entry
-          | :corporate_customer_advised_not_authorized
+        type reason = (:insufficient_funds | :returned_per_odfi_request | :authorization_revoked_by_customer | :payment_stopped | :customer_advised_unauthorized_improper_ineligible_or_incomplete | :representative_payee_deceased_or_unable_to_continue_in_that_capacity | :beneficiary_or_account_holder_deceased | :credit_entry_refused_by_receiver | :duplicate_entry | :corporate_customer_advised_not_authorized)
 
         class Reason < Increase::Enum
           # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
@@ -810,7 +625,7 @@ module Increase
           # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED: :corporate_customer_advised_not_authorized
 
-          def self.values: -> ::Array[Increase::Models::InboundACHTransfer::TransferReturn::reason]
+          def self.values: () -> ::Array[Increase::Models::InboundACHTransfer::TransferReturn::reason]
         end
       end
 
@@ -819,7 +634,7 @@ module Increase
       class Type < Increase::Enum
         INBOUND_ACH_TRANSFER: :inbound_ach_transfer
 
-        def self.values: -> ::Array[Increase::Models::InboundACHTransfer::type_]
+        def self.values: () -> ::Array[Increase::Models::InboundACHTransfer::type_]
       end
     end
   end

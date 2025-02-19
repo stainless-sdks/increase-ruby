@@ -1,16 +1,14 @@
 module Increase
   module Models
-    type check_transfer_create_params =
-      {
-        account_id: String,
-        amount: Integer,
-        fulfillment_method: Increase::Models::CheckTransferCreateParams::fulfillment_method,
-        source_account_number_id: String,
-        physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
-        require_approval: bool,
-        third_party: Increase::Models::CheckTransferCreateParams::ThirdParty
-      }
-      & Increase::request_parameters
+    type check_transfer_create_params = ({
+      account_id: String,
+      amount: Integer,
+      fulfillment_method: Increase::Models::CheckTransferCreateParams::fulfillment_method,
+      source_account_number_id: String,
+      physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
+      require_approval: bool,
+      third_party: Increase::Models::CheckTransferCreateParams::ThirdParty
+    } & Increase::request_parameters)
 
     class CheckTransferCreateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -26,9 +24,7 @@ module Increase
 
       attr_reader physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck?
 
-      def physical_check=: (
-        Increase::Models::CheckTransferCreateParams::PhysicalCheck
-      ) -> Increase::Models::CheckTransferCreateParams::PhysicalCheck
+      def physical_check=: (Increase::Models::CheckTransferCreateParams::PhysicalCheck) -> Increase::Models::CheckTransferCreateParams::PhysicalCheck
 
       attr_reader require_approval: bool?
 
@@ -36,29 +32,14 @@ module Increase
 
       attr_reader third_party: Increase::Models::CheckTransferCreateParams::ThirdParty?
 
-      def third_party=: (
-        Increase::Models::CheckTransferCreateParams::ThirdParty
-      ) -> Increase::Models::CheckTransferCreateParams::ThirdParty
+      def third_party=: (Increase::Models::CheckTransferCreateParams::ThirdParty) -> Increase::Models::CheckTransferCreateParams::ThirdParty
 
-      def initialize:
-        (
-          account_id: String,
-          amount: Integer,
-          fulfillment_method: Increase::Models::CheckTransferCreateParams::fulfillment_method,
-          source_account_number_id: String,
-          physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
-          require_approval: bool,
-          third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::check_transfer_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (account_id: String, amount: Integer, fulfillment_method: Increase::Models::CheckTransferCreateParams::fulfillment_method, source_account_number_id: String, physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck, require_approval: bool, third_party: Increase::Models::CheckTransferCreateParams::ThirdParty, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::check_transfer_create_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::check_transfer_create_params
+      def to_hash: () -> Increase::Models::check_transfer_create_params
 
-      type fulfillment_method = :physical_check | :third_party
+      type fulfillment_method = (:physical_check | :third_party)
 
       class FulfillmentMethod < Increase::Enum
         # Increase will print and mail a physical check.
@@ -67,18 +48,17 @@ module Increase
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY: :third_party
 
-        def self.values: -> ::Array[Increase::Models::CheckTransferCreateParams::fulfillment_method]
+        def self.values: () -> ::Array[Increase::Models::CheckTransferCreateParams::fulfillment_method]
       end
 
-      type physical_check =
-        {
-          mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
-          memo: String,
-          recipient_name: String,
-          note: String,
-          return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
-          signature_text: String
-        }
+      type physical_check = {
+        mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+        memo: String,
+        recipient_name: String,
+        note: String,
+        return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+        signature_text: String
+      }
 
       class PhysicalCheck < Increase::BaseModel
         attr_accessor mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress
@@ -93,39 +73,18 @@ module Increase
 
         attr_reader return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress?
 
-        def return_address=: (
-          Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
-        ) -> Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
+        def return_address=: (Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress) -> Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
 
         attr_reader signature_text: String?
 
         def signature_text=: (String) -> String
 
-        def initialize:
-          (
-            mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
-            memo: String,
-            recipient_name: String,
-            note: String,
-            return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
-            signature_text: String
-          ) -> void
-          | (
-            ?Increase::Models::CheckTransferCreateParams::physical_check
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress, memo: String, recipient_name: String, note: String, return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress, signature_text: String) -> void
+                      | (?(Increase::Models::CheckTransferCreateParams::physical_check | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::CheckTransferCreateParams::physical_check
+        def to_hash: () -> Increase::Models::CheckTransferCreateParams::physical_check
 
-        type mailing_address =
-          {
-            city: String,
-            :line1 => String,
-            postal_code: String,
-            state: String,
-            :line2 => String,
-            name: String
-          }
+        type mailing_address = {city: String, line1: String, postal_code: String, state: String, line2: String, name: String}
 
         class MailingAddress < Increase::BaseModel
           attr_accessor city: String
@@ -144,32 +103,13 @@ module Increase
 
           def name=: (String) -> String
 
-          def initialize:
-            (
-              city: String,
-              line1: String,
-              postal_code: String,
-              state: String,
-              line2: String,
-              name: String
-            ) -> void
-            | (
-              ?Increase::Models::CheckTransferCreateParams::PhysicalCheck::mailing_address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (city: String, line1: String, postal_code: String, state: String, line2: String, name: String) -> void
+                        | (?(Increase::Models::CheckTransferCreateParams::PhysicalCheck::mailing_address | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::CheckTransferCreateParams::PhysicalCheck::mailing_address
+          def to_hash: () -> Increase::Models::CheckTransferCreateParams::PhysicalCheck::mailing_address
         end
 
-        type return_address =
-          {
-            city: String,
-            :line1 => String,
-            name: String,
-            postal_code: String,
-            state: String,
-            :line2 => String
-          }
+        type return_address = {city: String, line1: String, name: String, postal_code: String, state: String, line2: String}
 
         class ReturnAddress < Increase::BaseModel
           attr_accessor city: String
@@ -186,39 +126,24 @@ module Increase
 
           def line2=: (String) -> String
 
-          def initialize:
-            (
-              city: String,
-              line1: String,
-              name: String,
-              postal_code: String,
-              state: String,
-              line2: String
-            ) -> void
-            | (
-              ?Increase::Models::CheckTransferCreateParams::PhysicalCheck::return_address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (city: String, line1: String, name: String, postal_code: String, state: String, line2: String) -> void
+                        | (?(Increase::Models::CheckTransferCreateParams::PhysicalCheck::return_address | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::CheckTransferCreateParams::PhysicalCheck::return_address
+          def to_hash: () -> Increase::Models::CheckTransferCreateParams::PhysicalCheck::return_address
         end
       end
 
-      type third_party = { check_number: String }
+      type third_party = {check_number: String}
 
       class ThirdParty < Increase::BaseModel
         attr_reader check_number: String?
 
         def check_number=: (String) -> String
 
-        def initialize:
-          (check_number: String) -> void
-          | (
-            ?Increase::Models::CheckTransferCreateParams::third_party
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (check_number: String) -> void
+                      | (?(Increase::Models::CheckTransferCreateParams::third_party | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::CheckTransferCreateParams::third_party
+        def to_hash: () -> Increase::Models::CheckTransferCreateParams::third_party
       end
     end
   end

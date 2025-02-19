@@ -64,14 +64,14 @@ module Increase
 
       sig do
         params(
-          id: String,
-          created_at: Time,
-          date: Time,
-          entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
-          idempotency_key: T.nilable(String),
-          transaction_id: T.nilable(String),
-          type: Symbol
-        )
+            id: String,
+            created_at: Time,
+            date: Time,
+            entries: T::Array[Increase::Models::BookkeepingEntrySet::Entry],
+            idempotency_key: T.nilable(String),
+            transaction_id: T.nilable(String),
+            type: Symbol
+          )
           .void
       end
       def initialize(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:)

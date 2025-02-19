@@ -1,20 +1,15 @@
 module Increase
   module Models
-    type pending_transaction_retrieve_params =
-      {  } & Increase::request_parameters
+    type pending_transaction_retrieve_params = ({} & Increase::request_parameters)
 
     class PendingTransactionRetrieveParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      def initialize:
-        (request_options: Increase::request_opts) -> void
-        | (
-          ?Increase::Models::pending_transaction_retrieve_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::pending_transaction_retrieve_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::pending_transaction_retrieve_params
+      def to_hash: () -> Increase::Models::pending_transaction_retrieve_params
     end
   end
 end

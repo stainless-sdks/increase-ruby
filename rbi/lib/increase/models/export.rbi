@@ -69,27 +69,18 @@ module Increase
 
       sig do
         params(
-          id: String,
-          category: Symbol,
-          created_at: Time,
-          file_download_url: T.nilable(String),
-          file_id: T.nilable(String),
-          idempotency_key: T.nilable(String),
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            category: Symbol,
+            created_at: Time,
+            file_download_url: T.nilable(String),
+            file_id: T.nilable(String),
+            idempotency_key: T.nilable(String),
+            status: Symbol,
+            type: Symbol
+          )
           .void
       end
-      def initialize(
-        id:,
-        category:,
-        created_at:,
-        file_download_url:,
-        file_id:,
-        idempotency_key:,
-        status:,
-        type:
-      )
+      def initialize(id:, category:, created_at:, file_download_url:, file_id:, idempotency_key:, status:, type:)
       end
 
       sig do

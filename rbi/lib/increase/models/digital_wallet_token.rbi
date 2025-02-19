@@ -53,13 +53,13 @@ module Increase
 
       sig do
         params(
-          id: String,
-          card_id: String,
-          created_at: Time,
-          status: Symbol,
-          token_requestor: Symbol,
-          type: Symbol
-        )
+            id: String,
+            card_id: String,
+            created_at: Time,
+            status: Symbol,
+            token_requestor: Symbol,
+            type: Symbol
+          )
           .void
       end
       def initialize(id:, card_id:, created_at:, status:, token_requestor:, type:)
@@ -68,14 +68,7 @@ module Increase
       sig do
         override
           .returns(
-            {
-              id: String,
-              card_id: String,
-              created_at: Time,
-              status: Symbol,
-              token_requestor: Symbol,
-              type: Symbol
-            }
+            {id: String, card_id: String, created_at: Time, status: Symbol, token_requestor: Symbol, type: Symbol}
           )
       end
       def to_hash

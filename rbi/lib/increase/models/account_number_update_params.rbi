@@ -46,12 +46,12 @@ module Increase
 
       sig do
         params(
-          inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH,
-          inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
-          name: String,
-          status: Symbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            inbound_ach: Increase::Models::AccountNumberUpdateParams::InboundACH,
+            inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks,
+            name: String,
+            status: Symbol,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(inbound_ach: nil, inbound_checks: nil, name: nil, status: nil, request_options: {})

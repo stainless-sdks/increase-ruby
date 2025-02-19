@@ -6,9 +6,9 @@ module Increase
       class AccountStatements
         sig do
           params(
-            account_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              account_id: String,
+              request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Increase::Models::AccountStatement)
         end
         def create(account_id:, request_options: {})

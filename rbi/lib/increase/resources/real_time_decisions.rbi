@@ -5,9 +5,9 @@ module Increase
     class RealTimeDecisions
       sig do
         params(
-          real_time_decision_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            real_time_decision_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::RealTimeDecision)
       end
       def retrieve(real_time_decision_id, request_options: {})
@@ -15,14 +15,14 @@ module Increase
 
       sig do
         params(
-          real_time_decision_id: String,
-          card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
-          card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-          card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
-          digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-          digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            real_time_decision_id: String,
+            card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
+            card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
+            card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
+            digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
+            digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::RealTimeDecision)
       end
       def action(

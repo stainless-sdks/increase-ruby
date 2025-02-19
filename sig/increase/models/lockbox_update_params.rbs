@@ -1,12 +1,6 @@
 module Increase
   module Models
-    type lockbox_update_params =
-      {
-        description: String,
-        recipient_name: String,
-        status: Increase::Models::LockboxUpdateParams::status
-      }
-      & Increase::request_parameters
+    type lockbox_update_params = ({description: String, recipient_name: String, status: Increase::Models::LockboxUpdateParams::status} & Increase::request_parameters)
 
     class LockboxUpdateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -22,24 +16,14 @@ module Increase
 
       attr_reader status: Increase::Models::LockboxUpdateParams::status?
 
-      def status=: (
-        Increase::Models::LockboxUpdateParams::status
-      ) -> Increase::Models::LockboxUpdateParams::status
+      def status=: (Increase::Models::LockboxUpdateParams::status) -> Increase::Models::LockboxUpdateParams::status
 
-      def initialize:
-        (
-          description: String,
-          recipient_name: String,
-          status: Increase::Models::LockboxUpdateParams::status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::lockbox_update_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (description: String, recipient_name: String, status: Increase::Models::LockboxUpdateParams::status, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::lockbox_update_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::lockbox_update_params
+      def to_hash: () -> Increase::Models::lockbox_update_params
 
-      type status = :active | :inactive
+      type status = (:active | :inactive)
 
       class Status < Increase::Enum
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
@@ -48,7 +32,7 @@ module Increase
         # This Lockbox is inactive. Checks mailed to it will not be deposited.
         INACTIVE: :inactive
 
-        def self.values: -> ::Array[Increase::Models::LockboxUpdateParams::status]
+        def self.values: () -> ::Array[Increase::Models::LockboxUpdateParams::status]
       end
     end
   end

@@ -15,15 +15,7 @@ module Increase
         def reason=(_)
         end
 
-        sig do
-          params(
-            reason: Symbol,
-            request_options: T.any(
-              Increase::RequestOptions,
-              T::Hash[Symbol, T.anything]
-            )
-          ).void
-        end
+        sig { params(reason: Symbol, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])).void }
         def initialize(reason: nil, request_options: {})
         end
 

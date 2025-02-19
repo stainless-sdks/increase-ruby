@@ -112,20 +112,20 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          billing_address: Increase::Models::Card::BillingAddress,
-          created_at: Time,
-          description: T.nilable(String),
-          digital_wallet: T.nilable(Increase::Models::Card::DigitalWallet),
-          entity_id: T.nilable(String),
-          expiration_month: Integer,
-          expiration_year: Integer,
-          idempotency_key: T.nilable(String),
-          last4: String,
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            billing_address: Increase::Models::Card::BillingAddress,
+            created_at: Time,
+            description: T.nilable(String),
+            digital_wallet: T.nilable(Increase::Models::Card::DigitalWallet),
+            entity_id: T.nilable(String),
+            expiration_month: Integer,
+            expiration_year: Integer,
+            idempotency_key: T.nilable(String),
+            last4: String,
+            status: Symbol,
+            type: Symbol
+          )
           .void
       end
       def initialize(
@@ -211,12 +211,12 @@ module Increase
 
         sig do
           params(
-            city: T.nilable(String),
-            line1: T.nilable(String),
-            line2: T.nilable(String),
-            postal_code: T.nilable(String),
-            state: T.nilable(String)
-          )
+              city: T.nilable(String),
+              line1: T.nilable(String),
+              line2: T.nilable(String),
+              postal_code: T.nilable(String),
+              state: T.nilable(String)
+            )
             .void
         end
         def initialize(city:, line1:, line2:, postal_code:, state:)
@@ -264,22 +264,14 @@ module Increase
         end
 
         sig do
-          params(
-            digital_card_profile_id: T.nilable(String),
-            email: T.nilable(String),
-            phone: T.nilable(String)
-          ).void
+          params(digital_card_profile_id: T.nilable(String), email: T.nilable(String), phone: T.nilable(String)).void
         end
         def initialize(digital_card_profile_id:, email:, phone:)
         end
 
         sig do
           override
-            .returns({
-                       digital_card_profile_id: T.nilable(String),
-                       email: T.nilable(String),
-                       phone: T.nilable(String)
-                     })
+            .returns({digital_card_profile_id: T.nilable(String), email: T.nilable(String), phone: T.nilable(String)})
         end
         def to_hash
         end

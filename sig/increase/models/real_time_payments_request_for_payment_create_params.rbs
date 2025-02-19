@@ -1,16 +1,14 @@
 module Increase
   module Models
-    type real_time_payments_request_for_payment_create_params =
-      {
-        amount: Integer,
-        debtor: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor,
-        destination_account_number_id: String,
-        expires_at: Date,
-        remittance_information: String,
-        source_account_number: String,
-        source_routing_number: String
-      }
-      & Increase::request_parameters
+    type real_time_payments_request_for_payment_create_params = ({
+      amount: Integer,
+      debtor: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor,
+      destination_account_number_id: String,
+      expires_at: Date,
+      remittance_information: String,
+      source_account_number: String,
+      source_routing_number: String
+    } & Increase::request_parameters)
 
     class RealTimePaymentsRequestForPaymentCreateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -30,54 +28,24 @@ module Increase
 
       attr_accessor source_routing_number: String
 
-      def initialize:
-        (
-          amount: Integer,
-          debtor: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor,
-          destination_account_number_id: String,
-          expires_at: Date,
-          remittance_information: String,
-          source_account_number: String,
-          source_routing_number: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::real_time_payments_request_for_payment_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (amount: Integer, debtor: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor, destination_account_number_id: String, expires_at: Date, remittance_information: String, source_account_number: String, source_routing_number: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::real_time_payments_request_for_payment_create_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::real_time_payments_request_for_payment_create_params
+      def to_hash: () -> Increase::Models::real_time_payments_request_for_payment_create_params
 
-      type debtor =
-        {
-          address: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address,
-          name: String
-        }
+      type debtor = {address: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address, name: String}
 
       class Debtor < Increase::BaseModel
         attr_accessor address: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address
 
         attr_accessor name: String
 
-        def initialize:
-          (
-            address: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address,
-            name: String
-          ) -> void
-          | (
-            ?Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::debtor
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (address: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address, name: String) -> void
+                      | (?(Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::debtor | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::debtor
+        def to_hash: () -> Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::debtor
 
-        type address =
-          {
-            country: String,
-            city: String,
-            post_code: String,
-            street_name: String
-          }
+        type address = {country: String, city: String, post_code: String, street_name: String}
 
         class Address < Increase::BaseModel
           attr_accessor country: String
@@ -94,19 +62,10 @@ module Increase
 
           def street_name=: (String) -> String
 
-          def initialize:
-            (
-              country: String,
-              city: String,
-              post_code: String,
-              street_name: String
-            ) -> void
-            | (
-              ?Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (country: String, city: String, post_code: String, street_name: String) -> void
+                        | (?(Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::address | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::address
+          def to_hash: () -> Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::address
         end
       end
     end

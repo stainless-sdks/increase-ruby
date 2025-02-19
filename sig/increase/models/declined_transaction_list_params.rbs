@@ -1,15 +1,13 @@
 module Increase
   module Models
-    type declined_transaction_list_params =
-      {
-        account_id: String,
-        category: Increase::Models::DeclinedTransactionListParams::Category,
-        created_at: Increase::Models::DeclinedTransactionListParams::CreatedAt,
-        cursor: String,
-        limit: Integer,
-        route_id: String
-      }
-      & Increase::request_parameters
+    type declined_transaction_list_params = ({
+      account_id: String,
+      category: Increase::Models::DeclinedTransactionListParams::Category,
+      created_at: Increase::Models::DeclinedTransactionListParams::CreatedAt,
+      cursor: String,
+      limit: Integer,
+      route_id: String
+    } & Increase::request_parameters)
 
     class DeclinedTransactionListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -21,15 +19,11 @@ module Increase
 
       attr_reader category: Increase::Models::DeclinedTransactionListParams::Category?
 
-      def category=: (
-        Increase::Models::DeclinedTransactionListParams::Category
-      ) -> Increase::Models::DeclinedTransactionListParams::Category
+      def category=: (Increase::Models::DeclinedTransactionListParams::Category) -> Increase::Models::DeclinedTransactionListParams::Category
 
       attr_reader created_at: Increase::Models::DeclinedTransactionListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::Models::DeclinedTransactionListParams::CreatedAt
-      ) -> Increase::Models::DeclinedTransactionListParams::CreatedAt
+      def created_at=: (Increase::Models::DeclinedTransactionListParams::CreatedAt) -> Increase::Models::DeclinedTransactionListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -43,54 +37,24 @@ module Increase
 
       def route_id=: (String) -> String
 
-      def initialize:
-        (
-          account_id: String,
-          category: Increase::Models::DeclinedTransactionListParams::Category,
-          created_at: Increase::Models::DeclinedTransactionListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          route_id: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::declined_transaction_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (account_id: String, category: Increase::Models::DeclinedTransactionListParams::Category, created_at: Increase::Models::DeclinedTransactionListParams::CreatedAt, cursor: String, limit: Integer, route_id: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::declined_transaction_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::declined_transaction_list_params
+      def to_hash: () -> Increase::Models::declined_transaction_list_params
 
-      type category =
-        {
-          in_: ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
-        }
+      type category = {in_: ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]}
 
       class Category < Increase::BaseModel
         attr_reader in_: ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
-        ) -> ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
+        def in_=: (::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]) -> ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
-          ) -> void
-          | (
-            ?Increase::Models::DeclinedTransactionListParams::category
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (in_: ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]) -> void
+                      | (?(Increase::Models::DeclinedTransactionListParams::category | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::DeclinedTransactionListParams::category
+        def to_hash: () -> Increase::Models::DeclinedTransactionListParams::category
 
-        type in_ =
-          :ach_decline
-          | :card_decline
-          | :check_decline
-          | :inbound_real_time_payments_transfer_decline
-          | :wire_decline
-          | :check_deposit_rejection
-          | :other
+        type in_ = (:ach_decline | :card_decline | :check_decline | :inbound_real_time_payments_transfer_decline | :wire_decline | :check_deposit_rejection | :other)
 
         class In < Increase::Enum
           # ACH Decline: details will be under the `ach_decline` object.
@@ -114,12 +78,11 @@ module Increase
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self.values: -> ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
+          def self.values: () -> ::Array[Increase::Models::DeclinedTransactionListParams::Category::in_]
         end
       end
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
       class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
@@ -138,19 +101,10 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::DeclinedTransactionListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (after: Time, before: Time, on_or_after: Time, on_or_before: Time) -> void
+                      | (?(Increase::Models::DeclinedTransactionListParams::created_at | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::DeclinedTransactionListParams::created_at
+        def to_hash: () -> Increase::Models::DeclinedTransactionListParams::created_at
       end
     end
   end

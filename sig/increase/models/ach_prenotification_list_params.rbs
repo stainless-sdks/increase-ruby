@@ -1,13 +1,11 @@
 module Increase
   module Models
-    type ach_prenotification_list_params =
-      {
-        created_at: Increase::Models::ACHPrenotificationListParams::CreatedAt,
-        cursor: String,
-        idempotency_key: String,
-        limit: Integer
-      }
-      & Increase::request_parameters
+    type ach_prenotification_list_params = ({
+      created_at: Increase::Models::ACHPrenotificationListParams::CreatedAt,
+      cursor: String,
+      idempotency_key: String,
+      limit: Integer
+    } & Increase::request_parameters)
 
     class ACHPrenotificationListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -15,9 +13,7 @@ module Increase
 
       attr_reader created_at: Increase::Models::ACHPrenotificationListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::Models::ACHPrenotificationListParams::CreatedAt
-      ) -> Increase::Models::ACHPrenotificationListParams::CreatedAt
+      def created_at=: (Increase::Models::ACHPrenotificationListParams::CreatedAt) -> Increase::Models::ACHPrenotificationListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -31,23 +27,12 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize:
-        (
-          created_at: Increase::Models::ACHPrenotificationListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::ach_prenotification_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (created_at: Increase::Models::ACHPrenotificationListParams::CreatedAt, cursor: String, idempotency_key: String, limit: Integer, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::ach_prenotification_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::ach_prenotification_list_params
+      def to_hash: () -> Increase::Models::ach_prenotification_list_params
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
       class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
@@ -66,19 +51,10 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::ACHPrenotificationListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (after: Time, before: Time, on_or_after: Time, on_or_before: Time) -> void
+                      | (?(Increase::Models::ACHPrenotificationListParams::created_at | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::ACHPrenotificationListParams::created_at
+        def to_hash: () -> Increase::Models::ACHPrenotificationListParams::created_at
       end
     end
   end

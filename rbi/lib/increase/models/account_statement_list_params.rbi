@@ -43,21 +43,15 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          cursor: String,
-          limit: Integer,
-          statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_id: String,
+            cursor: String,
+            limit: Integer,
+            statement_period_start: Increase::Models::AccountStatementListParams::StatementPeriodStart,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
-      def initialize(
-        account_id: nil,
-        cursor: nil,
-        limit: nil,
-        statement_period_start: nil,
-        request_options: {}
-      )
+      def initialize(account_id: nil, cursor: nil, limit: nil, statement_period_start: nil, request_options: {})
       end
 
       sig do

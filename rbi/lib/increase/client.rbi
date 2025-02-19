@@ -241,15 +241,15 @@ module Increase
 
     sig do
       params(
-        environment: NilClass,
-        base_url: T.nilable(String),
-        api_key: T.nilable(String),
-        max_retries: Integer,
-        timeout: Float,
-        initial_retry_delay: Float,
-        max_retry_delay: Float,
-        idempotency_header: String
-      )
+          environment: NilClass,
+          base_url: T.nilable(String),
+          api_key: T.nilable(String),
+          max_retries: Integer,
+          timeout: Float,
+          initial_retry_delay: Float,
+          max_retry_delay: Float,
+          idempotency_header: String
+        )
         .void
     end
     def initialize(

@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type event_subscription_update_params =
-      { status: Increase::Models::EventSubscriptionUpdateParams::status }
-      & Increase::request_parameters
+    type event_subscription_update_params = ({status: Increase::Models::EventSubscriptionUpdateParams::status} & Increase::request_parameters)
 
     class EventSubscriptionUpdateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -10,23 +8,14 @@ module Increase
 
       attr_reader status: Increase::Models::EventSubscriptionUpdateParams::status?
 
-      def status=: (
-        Increase::Models::EventSubscriptionUpdateParams::status
-      ) -> Increase::Models::EventSubscriptionUpdateParams::status
+      def status=: (Increase::Models::EventSubscriptionUpdateParams::status) -> Increase::Models::EventSubscriptionUpdateParams::status
 
-      def initialize:
-        (
-          status: Increase::Models::EventSubscriptionUpdateParams::status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::event_subscription_update_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (status: Increase::Models::EventSubscriptionUpdateParams::status, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::event_subscription_update_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::event_subscription_update_params
+      def to_hash: () -> Increase::Models::event_subscription_update_params
 
-      type status = :active | :disabled | :deleted
+      type status = (:active | :disabled | :deleted)
 
       class Status < Increase::Enum
         # The subscription is active and Events will be delivered normally.
@@ -38,7 +27,7 @@ module Increase
         # The subscription is permanently disabled and Events will not be delivered.
         DELETED: :deleted
 
-        def self.values: -> ::Array[Increase::Models::EventSubscriptionUpdateParams::status]
+        def self.values: () -> ::Array[Increase::Models::EventSubscriptionUpdateParams::status]
       end
     end
   end

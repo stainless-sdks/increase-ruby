@@ -139,23 +139,23 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_number: String,
-          addendum: T.nilable(String),
-          company_descriptive_date: T.nilable(String),
-          company_discretionary_data: T.nilable(String),
-          company_entry_description: T.nilable(String),
-          company_name: T.nilable(String),
-          created_at: Time,
-          credit_debit_indicator: T.nilable(Symbol),
-          effective_date: T.nilable(Time),
-          idempotency_key: T.nilable(String),
-          notifications_of_change: T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
-          prenotification_return: T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn),
-          routing_number: String,
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            account_number: String,
+            addendum: T.nilable(String),
+            company_descriptive_date: T.nilable(String),
+            company_discretionary_data: T.nilable(String),
+            company_entry_description: T.nilable(String),
+            company_name: T.nilable(String),
+            created_at: Time,
+            credit_debit_indicator: T.nilable(Symbol),
+            effective_date: T.nilable(Time),
+            idempotency_key: T.nilable(String),
+            notifications_of_change: T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
+            prenotification_return: T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn),
+            routing_number: String,
+            status: Symbol,
+            type: Symbol
+          )
           .void
       end
       def initialize(

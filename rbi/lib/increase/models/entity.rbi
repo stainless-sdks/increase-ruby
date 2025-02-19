@@ -140,22 +140,22 @@ module Increase
 
       sig do
         params(
-          id: String,
-          corporation: T.nilable(Increase::Models::Entity::Corporation),
-          created_at: Time,
-          description: T.nilable(String),
-          details_confirmed_at: T.nilable(Time),
-          government_authority: T.nilable(Increase::Models::Entity::GovernmentAuthority),
-          idempotency_key: T.nilable(String),
-          joint: T.nilable(Increase::Models::Entity::Joint),
-          natural_person: T.nilable(Increase::Models::Entity::NaturalPerson),
-          status: Symbol,
-          structure: Symbol,
-          supplemental_documents: T::Array[Increase::Models::EntitySupplementalDocument],
-          third_party_verification: T.nilable(Increase::Models::Entity::ThirdPartyVerification),
-          trust: T.nilable(Increase::Models::Entity::Trust),
-          type: Symbol
-        )
+            id: String,
+            corporation: T.nilable(Increase::Models::Entity::Corporation),
+            created_at: Time,
+            description: T.nilable(String),
+            details_confirmed_at: T.nilable(Time),
+            government_authority: T.nilable(Increase::Models::Entity::GovernmentAuthority),
+            idempotency_key: T.nilable(String),
+            joint: T.nilable(Increase::Models::Entity::Joint),
+            natural_person: T.nilable(Increase::Models::Entity::NaturalPerson),
+            status: Symbol,
+            structure: Symbol,
+            supplemental_documents: T::Array[Increase::Models::EntitySupplementalDocument],
+            third_party_verification: T.nilable(Increase::Models::Entity::ThirdPartyVerification),
+            trust: T.nilable(Increase::Models::Entity::Trust),
+            type: Symbol
+          )
           .void
       end
       def initialize(
@@ -267,25 +267,17 @@ module Increase
 
         sig do
           params(
-            address: Increase::Models::Entity::Corporation::Address,
-            beneficial_owners: T::Array[Increase::Models::Entity::Corporation::BeneficialOwner],
-            incorporation_state: T.nilable(String),
-            industry_code: T.nilable(String),
-            name: String,
-            tax_identifier: T.nilable(String),
-            website: T.nilable(String)
-          )
+              address: Increase::Models::Entity::Corporation::Address,
+              beneficial_owners: T::Array[Increase::Models::Entity::Corporation::BeneficialOwner],
+              incorporation_state: T.nilable(String),
+              industry_code: T.nilable(String),
+              name: String,
+              tax_identifier: T.nilable(String),
+              website: T.nilable(String)
+            )
             .void
         end
-        def initialize(
-          address:,
-          beneficial_owners:,
-          incorporation_state:,
-          industry_code:,
-          name:,
-          tax_identifier:,
-          website:
-        )
+        def initialize(address:, beneficial_owners:, incorporation_state:, industry_code:, name:, tax_identifier:, website:)
         end
 
         sig do
@@ -346,23 +338,11 @@ module Increase
           def zip=(_)
           end
 
-          sig do
-            params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
-          end
+          sig { params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void }
           def initialize(city:, line1:, line2:, state:, zip:)
           end
 
-          sig do
-            override.returns(
-              {
-                city: String,
-                line1: String,
-                line2: T.nilable(String),
-                state: String,
-                zip: String
-              }
-            )
-          end
+          sig { override.returns({city: String, line1: String, line2: T.nilable(String), state: String, zip: String}) }
           def to_hash
           end
         end
@@ -405,11 +385,11 @@ module Increase
 
           sig do
             params(
-              beneficial_owner_id: String,
-              company_title: T.nilable(String),
-              individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
-              prong: Symbol
-            )
+                beneficial_owner_id: String,
+                company_title: T.nilable(String),
+                individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
+                prong: Symbol
+              )
               .void
           end
           def initialize(beneficial_owner_id:, company_title:, individual:, prong:)
@@ -470,11 +450,11 @@ module Increase
 
             sig do
               params(
-                address: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
-                date_of_birth: Date,
-                identification: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
-                name: String
-              )
+                  address: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
+                  date_of_birth: Date,
+                  identification: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
+                  name: String
+                )
                 .void
             end
             def initialize(address:, date_of_birth:, identification:, name:)
@@ -535,23 +515,11 @@ module Increase
               def zip=(_)
               end
 
-              sig do
-                params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
-              end
+              sig { params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void }
               def initialize(city:, line1:, line2:, state:, zip:)
               end
 
-              sig do
-                override.returns(
-                  {
-                    city: String,
-                    line1: String,
-                    line2: T.nilable(String),
-                    state: String,
-                    zip: String
-                  }
-                )
-              end
+              sig { override.returns({city: String, line1: String, line2: T.nilable(String), state: String, zip: String}) }
               def to_hash
               end
             end
@@ -679,13 +647,13 @@ module Increase
 
         sig do
           params(
-            address: Increase::Models::Entity::GovernmentAuthority::Address,
-            authorized_persons: T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson],
-            category: Symbol,
-            name: String,
-            tax_identifier: T.nilable(String),
-            website: T.nilable(String)
-          )
+              address: Increase::Models::Entity::GovernmentAuthority::Address,
+              authorized_persons: T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson],
+              category: Symbol,
+              name: String,
+              tax_identifier: T.nilable(String),
+              website: T.nilable(String)
+            )
             .void
         end
         def initialize(address:, authorized_persons:, category:, name:, tax_identifier:, website:)
@@ -748,23 +716,11 @@ module Increase
           def zip=(_)
           end
 
-          sig do
-            params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
-          end
+          sig { params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void }
           def initialize(city:, line1:, line2:, state:, zip:)
           end
 
-          sig do
-            override.returns(
-              {
-                city: String,
-                line1: String,
-                line2: T.nilable(String),
-                state: String,
-                zip: String
-              }
-            )
-          end
+          sig { override.returns({city: String, line1: String, line2: T.nilable(String), state: String, zip: String}) }
           def to_hash
           end
         end
@@ -876,11 +832,11 @@ module Increase
 
           sig do
             params(
-              address: Increase::Models::Entity::Joint::Individual::Address,
-              date_of_birth: Date,
-              identification: Increase::Models::Entity::Joint::Individual::Identification,
-              name: String
-            )
+                address: Increase::Models::Entity::Joint::Individual::Address,
+                date_of_birth: Date,
+                identification: Increase::Models::Entity::Joint::Individual::Identification,
+                name: String
+              )
               .void
           end
           def initialize(address:, date_of_birth:, identification:, name:)
@@ -941,23 +897,11 @@ module Increase
             def zip=(_)
             end
 
-            sig do
-              params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
-            end
+            sig { params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void }
             def initialize(city:, line1:, line2:, state:, zip:)
             end
 
-            sig do
-              override.returns(
-                {
-                  city: String,
-                  line1: String,
-                  line2: T.nilable(String),
-                  state: String,
-                  zip: String
-                }
-              )
-            end
+            sig { override.returns({city: String, line1: String, line2: T.nilable(String), state: String, zip: String}) }
             def to_hash
             end
           end
@@ -1054,11 +998,11 @@ module Increase
 
         sig do
           params(
-            address: Increase::Models::Entity::NaturalPerson::Address,
-            date_of_birth: Date,
-            identification: Increase::Models::Entity::NaturalPerson::Identification,
-            name: String
-          )
+              address: Increase::Models::Entity::NaturalPerson::Address,
+              date_of_birth: Date,
+              identification: Increase::Models::Entity::NaturalPerson::Identification,
+              name: String
+            )
             .void
         end
         def initialize(address:, date_of_birth:, identification:, name:)
@@ -1119,23 +1063,11 @@ module Increase
           def zip=(_)
           end
 
-          sig do
-            params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
-          end
+          sig { params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void }
           def initialize(city:, line1:, line2:, state:, zip:)
           end
 
-          sig do
-            override.returns(
-              {
-                city: String,
-                line1: String,
-                line2: T.nilable(String),
-                state: String,
-                zip: String
-              }
-            )
-          end
+          sig { override.returns({city: String, line1: String, line2: T.nilable(String), state: String, zip: String}) }
           def to_hash
           end
         end
@@ -1343,15 +1275,15 @@ module Increase
 
         sig do
           params(
-            address: Increase::Models::Entity::Trust::Address,
-            category: Symbol,
-            formation_document_file_id: T.nilable(String),
-            formation_state: T.nilable(String),
-            grantor: T.nilable(Increase::Models::Entity::Trust::Grantor),
-            name: String,
-            tax_identifier: T.nilable(String),
-            trustees: T::Array[Increase::Models::Entity::Trust::Trustee]
-          )
+              address: Increase::Models::Entity::Trust::Address,
+              category: Symbol,
+              formation_document_file_id: T.nilable(String),
+              formation_state: T.nilable(String),
+              grantor: T.nilable(Increase::Models::Entity::Trust::Grantor),
+              name: String,
+              tax_identifier: T.nilable(String),
+              trustees: T::Array[Increase::Models::Entity::Trust::Trustee]
+            )
             .void
         end
         def initialize(
@@ -1425,23 +1357,11 @@ module Increase
           def zip=(_)
           end
 
-          sig do
-            params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
-          end
+          sig { params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void }
           def initialize(city:, line1:, line2:, state:, zip:)
           end
 
-          sig do
-            override.returns(
-              {
-                city: String,
-                line1: String,
-                line2: T.nilable(String),
-                state: String,
-                zip: String
-              }
-            )
-          end
+          sig { override.returns({city: String, line1: String, line2: T.nilable(String), state: String, zip: String}) }
           def to_hash
           end
         end
@@ -1501,11 +1421,11 @@ module Increase
 
           sig do
             params(
-              address: Increase::Models::Entity::Trust::Grantor::Address,
-              date_of_birth: Date,
-              identification: Increase::Models::Entity::Trust::Grantor::Identification,
-              name: String
-            )
+                address: Increase::Models::Entity::Trust::Grantor::Address,
+                date_of_birth: Date,
+                identification: Increase::Models::Entity::Trust::Grantor::Identification,
+                name: String
+              )
               .void
           end
           def initialize(address:, date_of_birth:, identification:, name:)
@@ -1566,23 +1486,11 @@ module Increase
             def zip=(_)
             end
 
-            sig do
-              params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
-            end
+            sig { params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void }
             def initialize(city:, line1:, line2:, state:, zip:)
             end
 
-            sig do
-              override.returns(
-                {
-                  city: String,
-                  line1: String,
-                  line2: T.nilable(String),
-                  state: String,
-                  zip: String
-                }
-              )
-            end
+            sig { override.returns({city: String, line1: String, line2: T.nilable(String), state: String, zip: String}) }
             def to_hash
             end
           end
@@ -1711,11 +1619,11 @@ module Increase
 
             sig do
               params(
-                address: Increase::Models::Entity::Trust::Trustee::Individual::Address,
-                date_of_birth: Date,
-                identification: Increase::Models::Entity::Trust::Trustee::Individual::Identification,
-                name: String
-              )
+                  address: Increase::Models::Entity::Trust::Trustee::Individual::Address,
+                  date_of_birth: Date,
+                  identification: Increase::Models::Entity::Trust::Trustee::Individual::Identification,
+                  name: String
+                )
                 .void
             end
             def initialize(address:, date_of_birth:, identification:, name:)
@@ -1776,23 +1684,11 @@ module Increase
               def zip=(_)
               end
 
-              sig do
-                params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
-              end
+              sig { params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void }
               def initialize(city:, line1:, line2:, state:, zip:)
               end
 
-              sig do
-                override.returns(
-                  {
-                    city: String,
-                    line1: String,
-                    line2: T.nilable(String),
-                    state: String,
-                    zip: String
-                  }
-                )
-              end
+              sig { override.returns({city: String, line1: String, line2: T.nilable(String), state: String, zip: String}) }
               def to_hash
               end
             end

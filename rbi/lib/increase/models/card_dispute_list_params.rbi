@@ -54,23 +54,16 @@ module Increase
 
       sig do
         params(
-          created_at: Increase::Models::CardDisputeListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::CardDisputeListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            created_at: Increase::Models::CardDisputeListParams::CreatedAt,
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            status: Increase::Models::CardDisputeListParams::Status,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
-      def initialize(
-        created_at: nil,
-        cursor: nil,
-        idempotency_key: nil,
-        limit: nil,
-        status: nil,
-        request_options: {}
-      )
+      def initialize(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       end
 
       sig do

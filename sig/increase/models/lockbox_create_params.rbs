@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type lockbox_create_params =
-      { account_id: String, description: String, recipient_name: String }
-      & Increase::request_parameters
+    type lockbox_create_params = ({account_id: String, description: String, recipient_name: String} & Increase::request_parameters)
 
     class LockboxCreateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -18,18 +16,10 @@ module Increase
 
       def recipient_name=: (String) -> String
 
-      def initialize:
-        (
-          account_id: String,
-          description: String,
-          recipient_name: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::lockbox_create_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (account_id: String, description: String, recipient_name: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::lockbox_create_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::lockbox_create_params
+      def to_hash: () -> Increase::Models::lockbox_create_params
     end
   end
 end

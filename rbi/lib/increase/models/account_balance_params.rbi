@@ -14,15 +14,7 @@ module Increase
       def at_time=(_)
       end
 
-      sig do
-        params(
-          at_time: Time,
-          request_options: T.any(
-            Increase::RequestOptions,
-            T::Hash[Symbol, T.anything]
-          )
-        ).void
-      end
+      sig { params(at_time: Time, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])).void }
       def initialize(at_time: nil, request_options: {})
       end
 

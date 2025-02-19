@@ -1,13 +1,11 @@
 module Increase
   module Models
-    type physical_card_profile_list_params =
-      {
-        cursor: String,
-        idempotency_key: String,
-        limit: Integer,
-        status: Increase::Models::PhysicalCardProfileListParams::Status
-      }
-      & Increase::request_parameters
+    type physical_card_profile_list_params = ({
+      cursor: String,
+      idempotency_key: String,
+      limit: Integer,
+      status: Increase::Models::PhysicalCardProfileListParams::Status
+    } & Increase::request_parameters)
 
     class PhysicalCardProfileListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -27,55 +25,26 @@ module Increase
 
       attr_reader status: Increase::Models::PhysicalCardProfileListParams::Status?
 
-      def status=: (
-        Increase::Models::PhysicalCardProfileListParams::Status
-      ) -> Increase::Models::PhysicalCardProfileListParams::Status
+      def status=: (Increase::Models::PhysicalCardProfileListParams::Status) -> Increase::Models::PhysicalCardProfileListParams::Status
 
-      def initialize:
-        (
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::PhysicalCardProfileListParams::Status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::physical_card_profile_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (cursor: String, idempotency_key: String, limit: Integer, status: Increase::Models::PhysicalCardProfileListParams::Status, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::physical_card_profile_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::physical_card_profile_list_params
+      def to_hash: () -> Increase::Models::physical_card_profile_list_params
 
-      type status =
-        {
-          in_: ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
-        }
+      type status = {in_: ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]}
 
       class Status < Increase::BaseModel
         attr_reader in_: ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
-        ) -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
+        def in_=: (::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]) -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
-          ) -> void
-          | (
-            ?Increase::Models::PhysicalCardProfileListParams::status
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (in_: ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]) -> void
+                      | (?(Increase::Models::PhysicalCardProfileListParams::status | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::PhysicalCardProfileListParams::status
+        def to_hash: () -> Increase::Models::PhysicalCardProfileListParams::status
 
-        type in_ =
-          :pending_creating
-          | :pending_reviewing
-          | :rejected
-          | :pending_submitting
-          | :active
-          | :archived
+        type in_ = (:pending_creating | :pending_reviewing | :rejected | :pending_submitting | :active | :archived)
 
         class In < Increase::Enum
           # The Card Profile has not yet been processed by Increase.
@@ -96,7 +65,7 @@ module Increase
           # The Physical Card Profile has been archived.
           ARCHIVED: :archived
 
-          def self.values: -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
+          def self.values: () -> ::Array[Increase::Models::PhysicalCardProfileListParams::Status::in_]
         end
       end
     end

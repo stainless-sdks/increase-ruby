@@ -5,9 +5,9 @@ module Increase
     class DigitalWalletTokens
       sig do
         params(
-          digital_wallet_token_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            digital_wallet_token_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::DigitalWalletToken)
       end
       def retrieve(digital_wallet_token_id, request_options: {})
@@ -15,12 +15,12 @@ module Increase
 
       sig do
         params(
-          card_id: String,
-          created_at: Increase::Models::DigitalWalletTokenListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            card_id: String,
+            created_at: Increase::Models::DigitalWalletTokenListParams::CreatedAt,
+            cursor: String,
+            limit: Integer,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Page[Increase::Models::DigitalWalletToken])
       end
       def list(card_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})

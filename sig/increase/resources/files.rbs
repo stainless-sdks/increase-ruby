@@ -1,39 +1,14 @@
 module Increase
   module Resources
     class Files
-      def create:
-        (
-          Increase::Models::FileCreateParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::File
-        | (
-          file: IO | StringIO,
-          purpose: Increase::Models::FileCreateParams::purpose,
-          description: String,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::File
+      def create: ((Increase::Models::FileCreateParams | ::Hash[Symbol, top]) params) -> Increase::Models::File
+                | (file: (IO | StringIO), purpose: Increase::Models::FileCreateParams::purpose, description: String, request_options: Increase::request_opts) -> Increase::Models::File
 
-      def retrieve:
-        (
-          String file_id,
-          ?Increase::Models::FileRetrieveParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::File
-        | (
-          String file_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::File
+      def retrieve: (String file_id, ?(Increase::Models::FileRetrieveParams | ::Hash[Symbol, top]) params) -> Increase::Models::File
+                  | (String file_id, request_options: Increase::request_opts) -> Increase::Models::File
 
-      def list:
-        (
-          ?Increase::Models::FileListParams | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::File]
-        | (
-          created_at: Increase::Models::FileListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          purpose: Increase::Models::FileListParams::Purpose,
-          request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::File]
+      def list: (?(Increase::Models::FileListParams | ::Hash[Symbol, top]) params) -> Increase::Page[Increase::Models::File]
+              | (created_at: Increase::Models::FileListParams::CreatedAt, cursor: String, idempotency_key: String, limit: Integer, purpose: Increase::Models::FileListParams::Purpose, request_options: Increase::request_opts) -> Increase::Page[Increase::Models::File]
 
       def initialize: (client: Increase::Client) -> void
     end

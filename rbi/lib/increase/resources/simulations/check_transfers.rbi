@@ -6,9 +6,9 @@ module Increase
       class CheckTransfers
         sig do
           params(
-            check_transfer_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              check_transfer_id: String,
+              request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Increase::Models::CheckTransfer)
         end
         def mail(check_transfer_id, request_options: {})

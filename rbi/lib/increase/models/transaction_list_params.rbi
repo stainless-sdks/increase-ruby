@@ -62,14 +62,14 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          category: Increase::Models::TransactionListParams::Category,
-          created_at: Increase::Models::TransactionListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          route_id: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_id: String,
+            category: Increase::Models::TransactionListParams::Category,
+            created_at: Increase::Models::TransactionListParams::CreatedAt,
+            cursor: String,
+            limit: Integer,
+            route_id: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .void
       end
       def initialize(

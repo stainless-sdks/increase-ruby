@@ -77,29 +77,19 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          address: Increase::Models::Lockbox::Address,
-          created_at: Time,
-          description: T.nilable(String),
-          idempotency_key: T.nilable(String),
-          recipient_name: T.nilable(String),
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            address: Increase::Models::Lockbox::Address,
+            created_at: Time,
+            description: T.nilable(String),
+            idempotency_key: T.nilable(String),
+            recipient_name: T.nilable(String),
+            status: Symbol,
+            type: Symbol
+          )
           .void
       end
-      def initialize(
-        id:,
-        account_id:,
-        address:,
-        created_at:,
-        description:,
-        idempotency_key:,
-        recipient_name:,
-        status:,
-        type:
-      )
+      def initialize(id:, account_id:, address:, created_at:, description:, idempotency_key:, recipient_name:, status:, type:)
       end
 
       sig do
@@ -172,13 +162,13 @@ module Increase
 
         sig do
           params(
-            city: String,
-            line1: String,
-            line2: String,
-            postal_code: String,
-            recipient: T.nilable(String),
-            state: String
-          )
+              city: String,
+              line1: String,
+              line2: String,
+              postal_code: String,
+              recipient: T.nilable(String),
+              state: String
+            )
             .void
         end
         def initialize(city:, line1:, line2:, postal_code:, recipient:, state:)
@@ -187,14 +177,7 @@ module Increase
         sig do
           override
             .returns(
-              {
-                city: String,
-                line1: String,
-                line2: String,
-                postal_code: String,
-                recipient: T.nilable(String),
-                state: String
-              }
+              {city: String, line1: String, line2: String, postal_code: String, recipient: T.nilable(String), state: String}
             )
         end
         def to_hash

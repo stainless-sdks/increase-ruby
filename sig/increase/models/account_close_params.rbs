@@ -1,18 +1,15 @@
 module Increase
   module Models
-    type account_close_params = {  } & Increase::request_parameters
+    type account_close_params = ({} & Increase::request_parameters)
 
     class AccountCloseParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      def initialize:
-        (request_options: Increase::request_opts) -> void
-        | (
-          ?Increase::Models::account_close_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::account_close_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::account_close_params
+      def to_hash: () -> Increase::Models::account_close_params
     end
   end
 end

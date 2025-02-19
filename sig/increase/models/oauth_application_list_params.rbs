@@ -1,13 +1,11 @@
 module Increase
   module Models
-    type oauth_application_list_params =
-      {
-        created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
-        cursor: String,
-        limit: Integer,
-        status: Increase::Models::OAuthApplicationListParams::Status
-      }
-      & Increase::request_parameters
+    type oauth_application_list_params = ({
+      created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
+      cursor: String,
+      limit: Integer,
+      status: Increase::Models::OAuthApplicationListParams::Status
+    } & Increase::request_parameters)
 
     class OAuthApplicationListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -15,9 +13,7 @@ module Increase
 
       attr_reader created_at: Increase::Models::OAuthApplicationListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::Models::OAuthApplicationListParams::CreatedAt
-      ) -> Increase::Models::OAuthApplicationListParams::CreatedAt
+      def created_at=: (Increase::Models::OAuthApplicationListParams::CreatedAt) -> Increase::Models::OAuthApplicationListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -29,27 +25,14 @@ module Increase
 
       attr_reader status: Increase::Models::OAuthApplicationListParams::Status?
 
-      def status=: (
-        Increase::Models::OAuthApplicationListParams::Status
-      ) -> Increase::Models::OAuthApplicationListParams::Status
+      def status=: (Increase::Models::OAuthApplicationListParams::Status) -> Increase::Models::OAuthApplicationListParams::Status
 
-      def initialize:
-        (
-          created_at: Increase::Models::OAuthApplicationListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          status: Increase::Models::OAuthApplicationListParams::Status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::oauth_application_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (created_at: Increase::Models::OAuthApplicationListParams::CreatedAt, cursor: String, limit: Integer, status: Increase::Models::OAuthApplicationListParams::Status, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::oauth_application_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::oauth_application_list_params
+      def to_hash: () -> Increase::Models::oauth_application_list_params
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {after: Time, before: Time, on_or_after: Time, on_or_before: Time}
 
       class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
@@ -68,45 +51,25 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::OAuthApplicationListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (after: Time, before: Time, on_or_after: Time, on_or_before: Time) -> void
+                      | (?(Increase::Models::OAuthApplicationListParams::created_at | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::OAuthApplicationListParams::created_at
+        def to_hash: () -> Increase::Models::OAuthApplicationListParams::created_at
       end
 
-      type status =
-        {
-          in_: ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
-        }
+      type status = {in_: ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]}
 
       class Status < Increase::BaseModel
         attr_reader in_: ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
-        ) -> ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
+        def in_=: (::Array[Increase::Models::OAuthApplicationListParams::Status::in_]) -> ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
-          ) -> void
-          | (
-            ?Increase::Models::OAuthApplicationListParams::status
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (in_: ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]) -> void
+                      | (?(Increase::Models::OAuthApplicationListParams::status | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::OAuthApplicationListParams::status
+        def to_hash: () -> Increase::Models::OAuthApplicationListParams::status
 
-        type in_ = :active | :deleted
+        type in_ = (:active | :deleted)
 
         class In < Increase::Enum
           # The application is active and can be used by your users.
@@ -115,7 +78,7 @@ module Increase
           # The application is deleted.
           DELETED: :deleted
 
-          def self.values: -> ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
+          def self.values: () -> ::Array[Increase::Models::OAuthApplicationListParams::Status::in_]
         end
       end
     end

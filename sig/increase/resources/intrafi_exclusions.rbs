@@ -1,51 +1,17 @@
 module Increase
   module Resources
     class IntrafiExclusions
-      def create:
-        (
-          Increase::Models::IntrafiExclusionCreateParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::IntrafiExclusion
-        | (
-          bank_name: String,
-          entity_id: String,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::IntrafiExclusion
+      def create: ((Increase::Models::IntrafiExclusionCreateParams | ::Hash[Symbol, top]) params) -> Increase::Models::IntrafiExclusion
+                | (bank_name: String, entity_id: String, request_options: Increase::request_opts) -> Increase::Models::IntrafiExclusion
 
-      def retrieve:
-        (
-          String intrafi_exclusion_id,
-          ?Increase::Models::IntrafiExclusionRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::IntrafiExclusion
-        | (
-          String intrafi_exclusion_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::IntrafiExclusion
+      def retrieve: (String intrafi_exclusion_id, ?(Increase::Models::IntrafiExclusionRetrieveParams | ::Hash[Symbol, top]) params) -> Increase::Models::IntrafiExclusion
+                  | (String intrafi_exclusion_id, request_options: Increase::request_opts) -> Increase::Models::IntrafiExclusion
 
-      def list:
-        (
-          ?Increase::Models::IntrafiExclusionListParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::IntrafiExclusion]
-        | (
-          cursor: String,
-          entity_id: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::IntrafiExclusion]
+      def list: (?(Increase::Models::IntrafiExclusionListParams | ::Hash[Symbol, top]) params) -> Increase::Page[Increase::Models::IntrafiExclusion]
+              | (cursor: String, entity_id: String, idempotency_key: String, limit: Integer, request_options: Increase::request_opts) -> Increase::Page[Increase::Models::IntrafiExclusion]
 
-      def archive:
-        (
-          String intrafi_exclusion_id,
-          ?Increase::Models::IntrafiExclusionArchiveParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::IntrafiExclusion
-        | (
-          String intrafi_exclusion_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::IntrafiExclusion
+      def archive: (String intrafi_exclusion_id, ?(Increase::Models::IntrafiExclusionArchiveParams | ::Hash[Symbol, top]) params) -> Increase::Models::IntrafiExclusion
+                 | (String intrafi_exclusion_id, request_options: Increase::request_opts) -> Increase::Models::IntrafiExclusion
 
       def initialize: (client: Increase::Client) -> void
     end

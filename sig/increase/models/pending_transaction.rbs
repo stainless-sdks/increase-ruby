@@ -1,20 +1,19 @@
 module Increase
   module Models
-    type pending_transaction =
-      {
-        id: String,
-        account_id: String,
-        amount: Integer,
-        completed_at: Time?,
-        created_at: Time,
-        currency: Increase::Models::PendingTransaction::currency,
-        description: String,
-        route_id: String?,
-        route_type: Increase::Models::PendingTransaction::route_type?,
-        source: Increase::Models::PendingTransaction::Source,
-        status: Increase::Models::PendingTransaction::status,
-        type: Increase::Models::PendingTransaction::type_
-      }
+    type pending_transaction = {
+      id: String,
+      account_id: String,
+      amount: Integer,
+      completed_at: Time?,
+      created_at: Time,
+      currency: Increase::Models::PendingTransaction::currency,
+      description: String,
+      route_id: String?,
+      route_type: Increase::Models::PendingTransaction::route_type?,
+      source: Increase::Models::PendingTransaction::Source,
+      status: Increase::Models::PendingTransaction::status,
+      type: Increase::Models::PendingTransaction::type_
+    }
 
     class PendingTransaction < Increase::BaseModel
       attr_accessor id: String
@@ -41,28 +40,12 @@ module Increase
 
       attr_accessor type: Increase::Models::PendingTransaction::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          amount: Integer,
-          completed_at: Time?,
-          created_at: Time,
-          currency: Increase::Models::PendingTransaction::currency,
-          description: String,
-          route_id: String?,
-          route_type: Increase::Models::PendingTransaction::route_type?,
-          source: Increase::Models::PendingTransaction::Source,
-          status: Increase::Models::PendingTransaction::status,
-          type: Increase::Models::PendingTransaction::type_
-        ) -> void
-        | (
-          ?Increase::Models::pending_transaction | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, account_id: String, amount: Integer, completed_at: Time?, created_at: Time, currency: Increase::Models::PendingTransaction::currency, description: String, route_id: String?, route_type: Increase::Models::PendingTransaction::route_type?, source: Increase::Models::PendingTransaction::Source, status: Increase::Models::PendingTransaction::status, type: Increase::Models::PendingTransaction::type_) -> void
+                    | (?(Increase::Models::pending_transaction | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::pending_transaction
+      def to_hash: () -> Increase::Models::pending_transaction
 
-      type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+      type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
@@ -83,10 +66,10 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> ::Array[Increase::Models::PendingTransaction::currency]
+        def self.values: () -> ::Array[Increase::Models::PendingTransaction::currency]
       end
 
-      type route_type = :account_number | :card | :lockbox
+      type route_type = (:account_number | :card | :lockbox)
 
       class RouteType < Increase::Enum
         # An Account Number.
@@ -98,23 +81,22 @@ module Increase
         # A Lockbox.
         LOCKBOX: :lockbox
 
-        def self.values: -> ::Array[Increase::Models::PendingTransaction::route_type]
+        def self.values: () -> ::Array[Increase::Models::PendingTransaction::route_type]
       end
 
-      type source =
-        {
-          account_transfer_instruction: Increase::Models::PendingTransaction::Source::AccountTransferInstruction?,
-          ach_transfer_instruction: Increase::Models::PendingTransaction::Source::ACHTransferInstruction?,
-          card_authorization: Increase::Models::PendingTransaction::Source::CardAuthorization?,
-          category: Increase::Models::PendingTransaction::Source::category,
-          check_deposit_instruction: Increase::Models::PendingTransaction::Source::CheckDepositInstruction?,
-          check_transfer_instruction: Increase::Models::PendingTransaction::Source::CheckTransferInstruction?,
-          inbound_funds_hold: Increase::Models::PendingTransaction::Source::InboundFundsHold?,
-          inbound_wire_transfer_reversal: Increase::Models::PendingTransaction::Source::InboundWireTransferReversal?,
-          other: top?,
-          real_time_payments_transfer_instruction: Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction?,
-          wire_transfer_instruction: Increase::Models::PendingTransaction::Source::WireTransferInstruction?
-        }
+      type source = {
+        account_transfer_instruction: Increase::Models::PendingTransaction::Source::AccountTransferInstruction?,
+        ach_transfer_instruction: Increase::Models::PendingTransaction::Source::ACHTransferInstruction?,
+        card_authorization: Increase::Models::PendingTransaction::Source::CardAuthorization?,
+        category: Increase::Models::PendingTransaction::Source::category,
+        check_deposit_instruction: Increase::Models::PendingTransaction::Source::CheckDepositInstruction?,
+        check_transfer_instruction: Increase::Models::PendingTransaction::Source::CheckTransferInstruction?,
+        inbound_funds_hold: Increase::Models::PendingTransaction::Source::InboundFundsHold?,
+        inbound_wire_transfer_reversal: Increase::Models::PendingTransaction::Source::InboundWireTransferReversal?,
+        other: top?,
+        real_time_payments_transfer_instruction: Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction?,
+        wire_transfer_instruction: Increase::Models::PendingTransaction::Source::WireTransferInstruction?
+      }
 
       class Source < Increase::BaseModel
         attr_accessor account_transfer_instruction: Increase::Models::PendingTransaction::Source::AccountTransferInstruction?
@@ -139,33 +121,16 @@ module Increase
 
         attr_accessor wire_transfer_instruction: Increase::Models::PendingTransaction::Source::WireTransferInstruction?
 
-        def initialize:
-          (
-            account_transfer_instruction: Increase::Models::PendingTransaction::Source::AccountTransferInstruction?,
-            ach_transfer_instruction: Increase::Models::PendingTransaction::Source::ACHTransferInstruction?,
-            card_authorization: Increase::Models::PendingTransaction::Source::CardAuthorization?,
-            category: Increase::Models::PendingTransaction::Source::category,
-            check_deposit_instruction: Increase::Models::PendingTransaction::Source::CheckDepositInstruction?,
-            check_transfer_instruction: Increase::Models::PendingTransaction::Source::CheckTransferInstruction?,
-            inbound_funds_hold: Increase::Models::PendingTransaction::Source::InboundFundsHold?,
-            inbound_wire_transfer_reversal: Increase::Models::PendingTransaction::Source::InboundWireTransferReversal?,
-            other: top?,
-            real_time_payments_transfer_instruction: Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction?,
-            wire_transfer_instruction: Increase::Models::PendingTransaction::Source::WireTransferInstruction?
-          ) -> void
-          | (
-            ?Increase::Models::PendingTransaction::source
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (account_transfer_instruction: Increase::Models::PendingTransaction::Source::AccountTransferInstruction?, ach_transfer_instruction: Increase::Models::PendingTransaction::Source::ACHTransferInstruction?, card_authorization: Increase::Models::PendingTransaction::Source::CardAuthorization?, category: Increase::Models::PendingTransaction::Source::category, check_deposit_instruction: Increase::Models::PendingTransaction::Source::CheckDepositInstruction?, check_transfer_instruction: Increase::Models::PendingTransaction::Source::CheckTransferInstruction?, inbound_funds_hold: Increase::Models::PendingTransaction::Source::InboundFundsHold?, inbound_wire_transfer_reversal: Increase::Models::PendingTransaction::Source::InboundWireTransferReversal?, other: top?, real_time_payments_transfer_instruction: Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction?, wire_transfer_instruction: Increase::Models::PendingTransaction::Source::WireTransferInstruction?) -> void
+                      | (?(Increase::Models::PendingTransaction::source | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::PendingTransaction::source
+        def to_hash: () -> Increase::Models::PendingTransaction::source
 
-        type account_transfer_instruction =
-          {
-            amount: Integer,
-            currency: Increase::Models::PendingTransaction::Source::AccountTransferInstruction::currency,
-            transfer_id: String
-          }
+        type account_transfer_instruction = {
+          amount: Integer,
+          currency: Increase::Models::PendingTransaction::Source::AccountTransferInstruction::currency,
+          transfer_id: String
+        }
 
         class AccountTransferInstruction < Increase::BaseModel
           attr_accessor amount: Integer
@@ -174,20 +139,12 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize:
-            (
-              amount: Integer,
-              currency: Increase::Models::PendingTransaction::Source::AccountTransferInstruction::currency,
-              transfer_id: String
-            ) -> void
-            | (
-              ?Increase::Models::PendingTransaction::Source::account_transfer_instruction
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (amount: Integer, currency: Increase::Models::PendingTransaction::Source::AccountTransferInstruction::currency, transfer_id: String) -> void
+                        | (?(Increase::Models::PendingTransaction::Source::account_transfer_instruction | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::PendingTransaction::Source::account_transfer_instruction
+          def to_hash: () -> Increase::Models::PendingTransaction::Source::account_transfer_instruction
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
@@ -208,57 +165,52 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::AccountTransferInstruction::currency]
+            def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::AccountTransferInstruction::currency]
           end
         end
 
-        type ach_transfer_instruction = { amount: Integer, transfer_id: String }
+        type ach_transfer_instruction = {amount: Integer, transfer_id: String}
 
         class ACHTransferInstruction < Increase::BaseModel
           attr_accessor amount: Integer
 
           attr_accessor transfer_id: String
 
-          def initialize:
-            (amount: Integer, transfer_id: String) -> void
-            | (
-              ?Increase::Models::PendingTransaction::Source::ach_transfer_instruction
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (amount: Integer, transfer_id: String) -> void
+                        | (?(Increase::Models::PendingTransaction::Source::ach_transfer_instruction | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::PendingTransaction::Source::ach_transfer_instruction
+          def to_hash: () -> Increase::Models::PendingTransaction::Source::ach_transfer_instruction
         end
 
-        type card_authorization =
-          {
-            id: String,
-            actioner: Increase::Models::PendingTransaction::Source::CardAuthorization::actioner,
-            amount: Integer,
-            card_payment_id: String,
-            currency: Increase::Models::PendingTransaction::Source::CardAuthorization::currency,
-            digital_wallet_token_id: String?,
-            direction: Increase::Models::PendingTransaction::Source::CardAuthorization::direction,
-            expires_at: Time,
-            merchant_acceptor_id: String,
-            merchant_category_code: String,
-            merchant_city: String?,
-            merchant_country: String,
-            merchant_descriptor: String,
-            merchant_postal_code: String?,
-            merchant_state: String?,
-            network_details: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails,
-            network_identifiers: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
-            network_risk_score: Integer?,
-            pending_transaction_id: String?,
-            physical_card_id: String?,
-            presentment_amount: Integer,
-            presentment_currency: String,
-            processing_category: Increase::Models::PendingTransaction::Source::CardAuthorization::processing_category,
-            real_time_decision_id: String?,
-            terminal_id: String?,
-            type: Increase::Models::PendingTransaction::Source::CardAuthorization::type_,
-            verification: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification
-          }
+        type card_authorization = {
+          id: String,
+          actioner: Increase::Models::PendingTransaction::Source::CardAuthorization::actioner,
+          amount: Integer,
+          card_payment_id: String,
+          currency: Increase::Models::PendingTransaction::Source::CardAuthorization::currency,
+          digital_wallet_token_id: String?,
+          direction: Increase::Models::PendingTransaction::Source::CardAuthorization::direction,
+          expires_at: Time,
+          merchant_acceptor_id: String,
+          merchant_category_code: String,
+          merchant_city: String?,
+          merchant_country: String,
+          merchant_descriptor: String,
+          merchant_postal_code: String?,
+          merchant_state: String?,
+          network_details: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails,
+          network_identifiers: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
+          network_risk_score: Integer?,
+          pending_transaction_id: String?,
+          physical_card_id: String?,
+          presentment_amount: Integer,
+          presentment_currency: String,
+          processing_category: Increase::Models::PendingTransaction::Source::CardAuthorization::processing_category,
+          real_time_decision_id: String?,
+          terminal_id: String?,
+          type: Increase::Models::PendingTransaction::Source::CardAuthorization::type_,
+          verification: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification
+        }
 
         class CardAuthorization < Increase::BaseModel
           attr_accessor id: String
@@ -315,44 +267,12 @@ module Increase
 
           attr_accessor verification: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification
 
-          def initialize:
-            (
-              id: String,
-              actioner: Increase::Models::PendingTransaction::Source::CardAuthorization::actioner,
-              amount: Integer,
-              card_payment_id: String,
-              currency: Increase::Models::PendingTransaction::Source::CardAuthorization::currency,
-              digital_wallet_token_id: String?,
-              direction: Increase::Models::PendingTransaction::Source::CardAuthorization::direction,
-              expires_at: Time,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String?,
-              merchant_country: String,
-              merchant_descriptor: String,
-              merchant_postal_code: String?,
-              merchant_state: String?,
-              network_details: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails,
-              network_identifiers: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers,
-              network_risk_score: Integer?,
-              pending_transaction_id: String?,
-              physical_card_id: String?,
-              presentment_amount: Integer,
-              presentment_currency: String,
-              processing_category: Increase::Models::PendingTransaction::Source::CardAuthorization::processing_category,
-              real_time_decision_id: String?,
-              terminal_id: String?,
-              type: Increase::Models::PendingTransaction::Source::CardAuthorization::type_,
-              verification: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification
-            ) -> void
-            | (
-              ?Increase::Models::PendingTransaction::Source::card_authorization
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (id: String, actioner: Increase::Models::PendingTransaction::Source::CardAuthorization::actioner, amount: Integer, card_payment_id: String, currency: Increase::Models::PendingTransaction::Source::CardAuthorization::currency, digital_wallet_token_id: String?, direction: Increase::Models::PendingTransaction::Source::CardAuthorization::direction, expires_at: Time, merchant_acceptor_id: String, merchant_category_code: String, merchant_city: String?, merchant_country: String, merchant_descriptor: String, merchant_postal_code: String?, merchant_state: String?, network_details: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails, network_identifiers: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkIdentifiers, network_risk_score: Integer?, pending_transaction_id: String?, physical_card_id: String?, presentment_amount: Integer, presentment_currency: String, processing_category: Increase::Models::PendingTransaction::Source::CardAuthorization::processing_category, real_time_decision_id: String?, terminal_id: String?, type: Increase::Models::PendingTransaction::Source::CardAuthorization::type_, verification: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification) -> void
+                        | (?(Increase::Models::PendingTransaction::Source::card_authorization | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::PendingTransaction::Source::card_authorization
+          def to_hash: () -> Increase::Models::PendingTransaction::Source::card_authorization
 
-          type actioner = :user | :increase | :network
+          type actioner = (:user | :increase | :network)
 
           class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
@@ -364,10 +284,10 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::actioner]
+            def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::actioner]
           end
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
@@ -388,10 +308,10 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::currency]
+            def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::currency]
           end
 
-          type direction = :settlement | :refund
+          type direction = (:settlement | :refund)
 
           class Direction < Increase::Enum
             # A regular card authorization where funds are debited from the cardholder.
@@ -400,31 +320,23 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::direction]
+            def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::direction]
           end
 
-          type network_details =
-            {
-              category: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::category,
-              visa: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa?
-            }
+          type network_details = {
+            category: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::category,
+            visa: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa?
+          }
 
           class NetworkDetails < Increase::BaseModel
             attr_accessor category: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::category
 
             attr_accessor visa: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa?
 
-            def initialize:
-              (
-                category: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::category,
-                visa: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa?
-              ) -> void
-              | (
-                ?Increase::Models::PendingTransaction::Source::CardAuthorization::network_details
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (category: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::category, visa: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa?) -> void
+                          | (?(Increase::Models::PendingTransaction::Source::CardAuthorization::network_details | Increase::BaseModel) data) -> void
 
-            def to_hash: -> Increase::Models::PendingTransaction::Source::CardAuthorization::network_details
+            def to_hash: () -> Increase::Models::PendingTransaction::Source::CardAuthorization::network_details
 
             type category = :visa
 
@@ -432,15 +344,14 @@ module Increase
               # Visa
               VISA: :visa
 
-              def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::category]
+              def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::category]
             end
 
-            type visa =
-              {
-                electronic_commerce_indicator: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator?,
-                point_of_service_entry_mode: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode?,
-                stand_in_processing_reason: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?
-              }
+            type visa = {
+              electronic_commerce_indicator: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator?,
+              point_of_service_entry_mode: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode?,
+              stand_in_processing_reason: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?
+            }
 
             class Visa < Increase::BaseModel
               attr_accessor electronic_commerce_indicator: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator?
@@ -449,28 +360,12 @@ module Increase
 
               attr_accessor stand_in_processing_reason: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?
 
-              def initialize:
-                (
-                  electronic_commerce_indicator: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator?,
-                  point_of_service_entry_mode: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode?,
-                  stand_in_processing_reason: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?
-                ) -> void
-                | (
-                  ?Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::visa
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (electronic_commerce_indicator: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator?, point_of_service_entry_mode: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode?, stand_in_processing_reason: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason?) -> void
+                            | (?(Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::visa | Increase::BaseModel) data) -> void
 
-              def to_hash: -> Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::visa
+              def to_hash: () -> Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::visa
 
-              type electronic_commerce_indicator =
-                :mail_phone_order
-                | :recurring
-                | :installment
-                | :unknown_mail_phone_order
-                | :secure_electronic_commerce
-                | :non_authenticated_security_transaction_at_3ds_capable_merchant
-                | :non_authenticated_security_transaction
-                | :non_secure_transaction
+              type electronic_commerce_indicator = (:mail_phone_order | :recurring | :installment | :unknown_mail_phone_order | :secure_electronic_commerce | :non_authenticated_security_transaction_at_3ds_capable_merchant | :non_authenticated_security_transaction | :non_secure_transaction)
 
               class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
@@ -497,20 +392,12 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION: :non_secure_transaction
 
-                def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator]
+                def self.values: () -> ::Array[
+                Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::electronic_commerce_indicator
+                ]
               end
 
-              type point_of_service_entry_mode =
-                :unknown
-                | :manual
-                | :magnetic_stripe_no_cvv
-                | :optical_code
-                | :integrated_circuit_card
-                | :contactless
-                | :credential_on_file
-                | :magnetic_stripe
-                | :contactless_magnetic_stripe
-                | :integrated_circuit_card_no_cvv
+              type point_of_service_entry_mode = (:unknown | :manual | :magnetic_stripe_no_cvv | :optical_code | :integrated_circuit_card | :contactless | :credential_on_file | :magnetic_stripe | :contactless_magnetic_stripe | :integrated_circuit_card_no_cvv)
 
               class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
@@ -543,17 +430,12 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
 
-                def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode]
+                def self.values: () -> ::Array[
+                Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::point_of_service_entry_mode
+                ]
               end
 
-              type stand_in_processing_reason =
-                :issuer_error
-                | :invalid_physical_card
-                | :invalid_cardholder_authentication_verification_value
-                | :internal_visa_error
-                | :merchant_transaction_advisory_service_authentication_required
-                | :payment_fraud_disruption_acquirer_block
-                | :other
+              type stand_in_processing_reason = (:issuer_error | :invalid_physical_card | :invalid_cardholder_authentication_verification_value | :internal_visa_error | :merchant_transaction_advisory_service_authentication_required | :payment_fraud_disruption_acquirer_block | :other)
 
               class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
@@ -577,17 +459,14 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER: :other
 
-                def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason]
+                def self.values: () -> ::Array[
+                Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::stand_in_processing_reason
+                ]
               end
             end
           end
 
-          type network_identifiers =
-            {
-              retrieval_reference_number: String?,
-              trace_number: String?,
-              transaction_id: String?
-            }
+          type network_identifiers = {retrieval_reference_number: String?, trace_number: String?, transaction_id: String?}
 
           class NetworkIdentifiers < Increase::BaseModel
             attr_accessor retrieval_reference_number: String?
@@ -596,27 +475,13 @@ module Increase
 
             attr_accessor transaction_id: String?
 
-            def initialize:
-              (
-                retrieval_reference_number: String?,
-                trace_number: String?,
-                transaction_id: String?
-              ) -> void
-              | (
-                ?Increase::Models::PendingTransaction::Source::CardAuthorization::network_identifiers
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (retrieval_reference_number: String?, trace_number: String?, transaction_id: String?) -> void
+                          | (?(Increase::Models::PendingTransaction::Source::CardAuthorization::network_identifiers | Increase::BaseModel) data) -> void
 
-            def to_hash: -> Increase::Models::PendingTransaction::Source::CardAuthorization::network_identifiers
+            def to_hash: () -> Increase::Models::PendingTransaction::Source::CardAuthorization::network_identifiers
           end
 
-          type processing_category =
-            :account_funding
-            | :automatic_fuel_dispenser
-            | :bill_payment
-            | :purchase
-            | :quasi_cash
-            | :refund
+          type processing_category = (:account_funding | :automatic_fuel_dispenser | :bill_payment | :purchase | :quasi_cash | :refund)
 
           class ProcessingCategory < Increase::Enum
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
@@ -637,7 +502,7 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::processing_category]
+            def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::processing_category]
           end
 
           type type_ = :card_authorization
@@ -645,52 +510,37 @@ module Increase
           class Type < Increase::Enum
             CARD_AUTHORIZATION: :card_authorization
 
-            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::type_]
+            def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::type_]
           end
 
-          type verification =
-            {
-              card_verification_code: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
-              cardholder_address: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
-            }
+          type verification = {
+            card_verification_code: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
+            cardholder_address: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
+          }
 
           class Verification < Increase::BaseModel
             attr_accessor card_verification_code: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode
 
             attr_accessor cardholder_address: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
 
-            def initialize:
-              (
-                card_verification_code: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
-                cardholder_address: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
-              ) -> void
-              | (
-                ?Increase::Models::PendingTransaction::Source::CardAuthorization::verification
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (card_verification_code: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode, cardholder_address: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress) -> void
+                          | (?(Increase::Models::PendingTransaction::Source::CardAuthorization::verification | Increase::BaseModel) data) -> void
 
-            def to_hash: -> Increase::Models::PendingTransaction::Source::CardAuthorization::verification
+            def to_hash: () -> Increase::Models::PendingTransaction::Source::CardAuthorization::verification
 
-            type card_verification_code =
-              {
-                result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::result
-              }
+            type card_verification_code = {
+              result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::result
+            }
 
             class CardVerificationCode < Increase::BaseModel
               attr_accessor result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::result
 
-              def initialize:
-                (
-                  result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::result
-                ) -> void
-                | (
-                  ?Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::card_verification_code
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::result) -> void
+                            | (?(Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::card_verification_code | Increase::BaseModel) data) -> void
 
-              def to_hash: -> Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::card_verification_code
+              def to_hash: () -> Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::card_verification_code
 
-              type result = :not_checked | :match | :no_match
+              type result = (:not_checked | :match | :no_match)
 
               class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
@@ -702,18 +552,19 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH: :no_match
 
-                def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::result]
+                def self.values: () -> ::Array[
+                Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::result
+                ]
               end
             end
 
-            type cardholder_address =
-              {
-                :actual_line1 => String?,
-                actual_postal_code: String?,
-                :provided_line1 => String?,
-                provided_postal_code: String?,
-                result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::result
-              }
+            type cardholder_address = {
+              actual_line1: String?,
+              actual_postal_code: String?,
+              provided_line1: String?,
+              provided_postal_code: String?,
+              result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::result
+            }
 
             class CardholderAddress < Increase::BaseModel
               attr_accessor actual_line1: String?
@@ -726,28 +577,12 @@ module Increase
 
               attr_accessor result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::result
 
-              def initialize:
-                (
-                  actual_line1: String?,
-                  actual_postal_code: String?,
-                  provided_line1: String?,
-                  provided_postal_code: String?,
-                  result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::result
-                ) -> void
-                | (
-                  ?Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::cardholder_address
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (actual_line1: String?, actual_postal_code: String?, provided_line1: String?, provided_postal_code: String?, result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::result) -> void
+                            | (?(Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::cardholder_address | Increase::BaseModel) data) -> void
 
-              def to_hash: -> Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::cardholder_address
+              def to_hash: () -> Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::cardholder_address
 
-              type result =
-                :not_checked
-                | :postal_code_match_address_not_checked
-                | :postal_code_match_address_no_match
-                | :postal_code_no_match_address_match
-                | :match
-                | :no_match
+              type result = (:not_checked | :postal_code_match_address_not_checked | :postal_code_match_address_no_match | :postal_code_no_match_address_match | :match | :no_match)
 
               class Result < Increase::Enum
                 # No adress was provided in the authorization request.
@@ -768,23 +603,13 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH: :no_match
 
-                def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::result]
+                def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::result]
               end
             end
           end
         end
 
-        type category =
-          :account_transfer_instruction
-          | :ach_transfer_instruction
-          | :card_authorization
-          | :check_deposit_instruction
-          | :check_transfer_instruction
-          | :inbound_funds_hold
-          | :real_time_payments_transfer_instruction
-          | :wire_transfer_instruction
-          | :inbound_wire_transfer_reversal
-          | :other
+        type category = (:account_transfer_instruction | :ach_transfer_instruction | :card_authorization | :check_deposit_instruction | :check_transfer_instruction | :inbound_funds_hold | :real_time_payments_transfer_instruction | :wire_transfer_instruction | :inbound_wire_transfer_reversal | :other)
 
         class Category < Increase::Enum
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
@@ -817,17 +642,16 @@ module Increase
           # The Pending Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::category]
+          def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::category]
         end
 
-        type check_deposit_instruction =
-          {
-            amount: Integer,
-            back_image_file_id: String?,
-            check_deposit_id: String?,
-            currency: Increase::Models::PendingTransaction::Source::CheckDepositInstruction::currency,
-            front_image_file_id: String
-          }
+        type check_deposit_instruction = {
+          amount: Integer,
+          back_image_file_id: String?,
+          check_deposit_id: String?,
+          currency: Increase::Models::PendingTransaction::Source::CheckDepositInstruction::currency,
+          front_image_file_id: String
+        }
 
         class CheckDepositInstruction < Increase::BaseModel
           attr_accessor amount: Integer
@@ -840,22 +664,12 @@ module Increase
 
           attr_accessor front_image_file_id: String
 
-          def initialize:
-            (
-              amount: Integer,
-              back_image_file_id: String?,
-              check_deposit_id: String?,
-              currency: Increase::Models::PendingTransaction::Source::CheckDepositInstruction::currency,
-              front_image_file_id: String
-            ) -> void
-            | (
-              ?Increase::Models::PendingTransaction::Source::check_deposit_instruction
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (amount: Integer, back_image_file_id: String?, check_deposit_id: String?, currency: Increase::Models::PendingTransaction::Source::CheckDepositInstruction::currency, front_image_file_id: String) -> void
+                        | (?(Increase::Models::PendingTransaction::Source::check_deposit_instruction | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::PendingTransaction::Source::check_deposit_instruction
+          def to_hash: () -> Increase::Models::PendingTransaction::Source::check_deposit_instruction
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
@@ -876,16 +690,15 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CheckDepositInstruction::currency]
+            def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::CheckDepositInstruction::currency]
           end
         end
 
-        type check_transfer_instruction =
-          {
-            amount: Integer,
-            currency: Increase::Models::PendingTransaction::Source::CheckTransferInstruction::currency,
-            transfer_id: String
-          }
+        type check_transfer_instruction = {
+          amount: Integer,
+          currency: Increase::Models::PendingTransaction::Source::CheckTransferInstruction::currency,
+          transfer_id: String
+        }
 
         class CheckTransferInstruction < Increase::BaseModel
           attr_accessor amount: Integer
@@ -894,20 +707,12 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize:
-            (
-              amount: Integer,
-              currency: Increase::Models::PendingTransaction::Source::CheckTransferInstruction::currency,
-              transfer_id: String
-            ) -> void
-            | (
-              ?Increase::Models::PendingTransaction::Source::check_transfer_instruction
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (amount: Integer, currency: Increase::Models::PendingTransaction::Source::CheckTransferInstruction::currency, transfer_id: String) -> void
+                        | (?(Increase::Models::PendingTransaction::Source::check_transfer_instruction | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::PendingTransaction::Source::check_transfer_instruction
+          def to_hash: () -> Increase::Models::PendingTransaction::Source::check_transfer_instruction
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
@@ -928,23 +733,22 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::CheckTransferInstruction::currency]
+            def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::CheckTransferInstruction::currency]
           end
         end
 
-        type inbound_funds_hold =
-          {
-            id: String,
-            amount: Integer,
-            automatically_releases_at: Time,
-            created_at: Time,
-            currency: Increase::Models::PendingTransaction::Source::InboundFundsHold::currency,
-            held_transaction_id: String?,
-            pending_transaction_id: String?,
-            released_at: Time?,
-            status: Increase::Models::PendingTransaction::Source::InboundFundsHold::status,
-            type: Increase::Models::PendingTransaction::Source::InboundFundsHold::type_
-          }
+        type inbound_funds_hold = {
+          id: String,
+          amount: Integer,
+          automatically_releases_at: Time,
+          created_at: Time,
+          currency: Increase::Models::PendingTransaction::Source::InboundFundsHold::currency,
+          held_transaction_id: String?,
+          pending_transaction_id: String?,
+          released_at: Time?,
+          status: Increase::Models::PendingTransaction::Source::InboundFundsHold::status,
+          type: Increase::Models::PendingTransaction::Source::InboundFundsHold::type_
+        }
 
         class InboundFundsHold < Increase::BaseModel
           attr_accessor id: String
@@ -967,27 +771,12 @@ module Increase
 
           attr_accessor type: Increase::Models::PendingTransaction::Source::InboundFundsHold::type_
 
-          def initialize:
-            (
-              id: String,
-              amount: Integer,
-              automatically_releases_at: Time,
-              created_at: Time,
-              currency: Increase::Models::PendingTransaction::Source::InboundFundsHold::currency,
-              held_transaction_id: String?,
-              pending_transaction_id: String?,
-              released_at: Time?,
-              status: Increase::Models::PendingTransaction::Source::InboundFundsHold::status,
-              type: Increase::Models::PendingTransaction::Source::InboundFundsHold::type_
-            ) -> void
-            | (
-              ?Increase::Models::PendingTransaction::Source::inbound_funds_hold
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (id: String, amount: Integer, automatically_releases_at: Time, created_at: Time, currency: Increase::Models::PendingTransaction::Source::InboundFundsHold::currency, held_transaction_id: String?, pending_transaction_id: String?, released_at: Time?, status: Increase::Models::PendingTransaction::Source::InboundFundsHold::status, type: Increase::Models::PendingTransaction::Source::InboundFundsHold::type_) -> void
+                        | (?(Increase::Models::PendingTransaction::Source::inbound_funds_hold | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::PendingTransaction::Source::inbound_funds_hold
+          def to_hash: () -> Increase::Models::PendingTransaction::Source::inbound_funds_hold
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
@@ -1008,10 +797,10 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::currency]
+            def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::currency]
           end
 
-          type status = :held | :complete
+          type status = (:held | :complete)
 
           class Status < Increase::Enum
             # Funds are still being held.
@@ -1020,7 +809,7 @@ module Increase
             # Funds have been released.
             COMPLETE: :complete
 
-            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::status]
+            def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::status]
           end
 
           type type_ = :inbound_funds_hold
@@ -1028,52 +817,35 @@ module Increase
           class Type < Increase::Enum
             INBOUND_FUNDS_HOLD: :inbound_funds_hold
 
-            def self.values: -> ::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::type_]
+            def self.values: () -> ::Array[Increase::Models::PendingTransaction::Source::InboundFundsHold::type_]
           end
         end
 
-        type inbound_wire_transfer_reversal =
-          { inbound_wire_transfer_id: String }
+        type inbound_wire_transfer_reversal = {inbound_wire_transfer_id: String}
 
         class InboundWireTransferReversal < Increase::BaseModel
           attr_accessor inbound_wire_transfer_id: String
 
-          def initialize:
-            (inbound_wire_transfer_id: String) -> void
-            | (
-              ?Increase::Models::PendingTransaction::Source::inbound_wire_transfer_reversal
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (inbound_wire_transfer_id: String) -> void
+                        | (?(Increase::Models::PendingTransaction::Source::inbound_wire_transfer_reversal | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::PendingTransaction::Source::inbound_wire_transfer_reversal
+          def to_hash: () -> Increase::Models::PendingTransaction::Source::inbound_wire_transfer_reversal
         end
 
-        type real_time_payments_transfer_instruction =
-          { amount: Integer, transfer_id: String }
+        type real_time_payments_transfer_instruction = {amount: Integer, transfer_id: String}
 
         class RealTimePaymentsTransferInstruction < Increase::BaseModel
           attr_accessor amount: Integer
 
           attr_accessor transfer_id: String
 
-          def initialize:
-            (amount: Integer, transfer_id: String) -> void
-            | (
-              ?Increase::Models::PendingTransaction::Source::real_time_payments_transfer_instruction
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (amount: Integer, transfer_id: String) -> void
+                        | (?(Increase::Models::PendingTransaction::Source::real_time_payments_transfer_instruction | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::PendingTransaction::Source::real_time_payments_transfer_instruction
+          def to_hash: () -> Increase::Models::PendingTransaction::Source::real_time_payments_transfer_instruction
         end
 
-        type wire_transfer_instruction =
-          {
-            account_number: String,
-            amount: Integer,
-            message_to_recipient: String,
-            routing_number: String,
-            transfer_id: String
-          }
+        type wire_transfer_instruction = {account_number: String, amount: Integer, message_to_recipient: String, routing_number: String, transfer_id: String}
 
         class WireTransferInstruction < Increase::BaseModel
           attr_accessor account_number: String
@@ -1086,24 +858,14 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize:
-            (
-              account_number: String,
-              amount: Integer,
-              message_to_recipient: String,
-              routing_number: String,
-              transfer_id: String
-            ) -> void
-            | (
-              ?Increase::Models::PendingTransaction::Source::wire_transfer_instruction
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (account_number: String, amount: Integer, message_to_recipient: String, routing_number: String, transfer_id: String) -> void
+                        | (?(Increase::Models::PendingTransaction::Source::wire_transfer_instruction | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::PendingTransaction::Source::wire_transfer_instruction
+          def to_hash: () -> Increase::Models::PendingTransaction::Source::wire_transfer_instruction
         end
       end
 
-      type status = :pending | :complete
+      type status = (:pending | :complete)
 
       class Status < Increase::Enum
         # The Pending Transaction is still awaiting confirmation.
@@ -1112,7 +874,7 @@ module Increase
         # The Pending Transaction is confirmed. An associated Transaction exists for this object. The Pending Transaction will no longer count against your balance and can generally be hidden from UIs, etc.
         COMPLETE: :complete
 
-        def self.values: -> ::Array[Increase::Models::PendingTransaction::status]
+        def self.values: () -> ::Array[Increase::Models::PendingTransaction::status]
       end
 
       type type_ = :pending_transaction
@@ -1120,7 +882,7 @@ module Increase
       class Type < Increase::Enum
         PENDING_TRANSACTION: :pending_transaction
 
-        def self.values: -> ::Array[Increase::Models::PendingTransaction::type_]
+        def self.values: () -> ::Array[Increase::Models::PendingTransaction::type_]
       end
     end
   end
