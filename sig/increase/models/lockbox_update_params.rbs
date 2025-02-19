@@ -14,15 +14,17 @@ module Increase
 
       attr_reader description: String?
 
-      def description=: (String) -> void
+      def description=: (String) -> String
 
       attr_reader recipient_name: String?
 
-      def recipient_name=: (String) -> void
+      def recipient_name=: (String) -> String
 
       attr_reader status: Increase::Models::LockboxUpdateParams::status?
 
-      def status=: (Increase::Models::LockboxUpdateParams::status) -> void
+      def status=: (
+        Increase::Models::LockboxUpdateParams::status
+      ) -> Increase::Models::LockboxUpdateParams::status
 
       def initialize:
         (

@@ -47,10 +47,7 @@ module Increase
         #     currency.
         #
         #   @return [Symbol, Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency]
-        required :currency,
-                 enum: -> {
-                   Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency
-                 }
+        required :currency, enum: -> { Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency }
 
         # @!attribute held_transaction_id
         #   The ID of the Transaction for which funds were held.

@@ -7,25 +7,36 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :entity_id
+      def entity_id
+      end
 
-      sig { params(entity_id: String).void }
-      attr_writer :entity_id
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :informational_entity_id
-
-      sig { params(informational_entity_id: String).void }
-      attr_writer :informational_entity_id
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :program_id
+      def informational_entity_id
+      end
 
-      sig { params(program_id: String).void }
-      attr_writer :program_id
+      sig { params(_: String).returns(String) }
+      def informational_entity_id=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def program_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def program_id=(_)
+      end
 
       sig do
         params(
@@ -34,7 +45,8 @@ module Increase
           informational_entity_id: String,
           program_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         name:,
@@ -46,15 +58,16 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            name: String,
-            entity_id: String,
-            informational_entity_id: String,
-            program_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              name: String,
+              entity_id: String,
+              informational_entity_id: String,
+              program_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

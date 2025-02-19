@@ -23,23 +23,23 @@ module Increase
 
         attr_reader debtor_account_number: String?
 
-        def debtor_account_number=: (String) -> void
+        def debtor_account_number=: (String) -> String
 
         attr_reader debtor_name: String?
 
-        def debtor_name=: (String) -> void
+        def debtor_name=: (String) -> String
 
         attr_reader debtor_routing_number: String?
 
-        def debtor_routing_number=: (String) -> void
+        def debtor_routing_number=: (String) -> String
 
         attr_reader remittance_information: String?
 
-        def remittance_information=: (String) -> void
+        def remittance_information=: (String) -> String
 
         attr_reader request_for_payment_id: String?
 
-        def request_for_payment_id=: (String) -> void
+        def request_for_payment_id=: (String) -> String
 
         def initialize:
           (

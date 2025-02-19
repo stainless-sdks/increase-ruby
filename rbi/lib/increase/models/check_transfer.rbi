@@ -4,73 +4,212 @@ module Increase
   module Models
     class CheckTransfer < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_number
+      def account_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_number=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Approval)) }
-      attr_accessor :approval
+      def approval
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckTransfer::Approval))
+          .returns(T.nilable(Increase::Models::CheckTransfer::Approval))
+      end
+      def approval=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :approved_inbound_check_deposit_id
+      def approved_inbound_check_deposit_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def approved_inbound_check_deposit_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Cancellation)) }
-      attr_accessor :cancellation
+      def cancellation
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckTransfer::Cancellation))
+          .returns(T.nilable(Increase::Models::CheckTransfer::Cancellation))
+      end
+      def cancellation=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :check_number
+      def check_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def check_number=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy)) }
-      attr_accessor :created_by
+      def created_by
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy))
+          .returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy))
+      end
+      def created_by=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def currency=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :fulfillment_method
+      def fulfillment_method
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def fulfillment_method=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Mailing)) }
-      attr_accessor :mailing
+      def mailing
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckTransfer::Mailing))
+          .returns(T.nilable(Increase::Models::CheckTransfer::Mailing))
+      end
+      def mailing=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :pending_transaction_id
+      def pending_transaction_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def pending_transaction_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck)) }
-      attr_accessor :physical_check
+      def physical_check
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck))
+          .returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck))
+      end
+      def physical_check=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :routing_number
+      def routing_number
+      end
+
+      sig { params(_: String).returns(String) }
+      def routing_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :source_account_number_id
+      def source_account_number_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def source_account_number_id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest)) }
-      attr_accessor :stop_payment_request
+      def stop_payment_request
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest))
+          .returns(T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest))
+      end
+      def stop_payment_request=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckTransfer::Submission)) }
-      attr_accessor :submission
+      def submission
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckTransfer::Submission))
+          .returns(T.nilable(Increase::Models::CheckTransfer::Submission))
+      end
+      def submission=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CheckTransfer::ThirdParty)) }
-      attr_accessor :third_party
+      def third_party
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::CheckTransfer::ThirdParty))
+          .returns(T.nilable(Increase::Models::CheckTransfer::ThirdParty))
+      end
+      def third_party=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -97,7 +236,8 @@ module Increase
           submission: T.nilable(Increase::Models::CheckTransfer::Submission),
           third_party: T.nilable(Increase::Models::CheckTransfer::ThirdParty),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -127,43 +267,54 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            account_number: String,
-            amount: Integer,
-            approval: T.nilable(Increase::Models::CheckTransfer::Approval),
-            approved_inbound_check_deposit_id: T.nilable(String),
-            cancellation: T.nilable(Increase::Models::CheckTransfer::Cancellation),
-            check_number: String,
-            created_at: Time,
-            created_by: T.nilable(Increase::Models::CheckTransfer::CreatedBy),
-            currency: Symbol,
-            fulfillment_method: Symbol,
-            idempotency_key: T.nilable(String),
-            mailing: T.nilable(Increase::Models::CheckTransfer::Mailing),
-            pending_transaction_id: T.nilable(String),
-            physical_check: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck),
-            routing_number: String,
-            source_account_number_id: T.nilable(String),
-            status: Symbol,
-            stop_payment_request: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest),
-            submission: T.nilable(Increase::Models::CheckTransfer::Submission),
-            third_party: T.nilable(Increase::Models::CheckTransfer::ThirdParty),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              account_number: String,
+              amount: Integer,
+              approval: T.nilable(Increase::Models::CheckTransfer::Approval),
+              approved_inbound_check_deposit_id: T.nilable(String),
+              cancellation: T.nilable(Increase::Models::CheckTransfer::Cancellation),
+              check_number: String,
+              created_at: Time,
+              created_by: T.nilable(Increase::Models::CheckTransfer::CreatedBy),
+              currency: Symbol,
+              fulfillment_method: Symbol,
+              idempotency_key: T.nilable(String),
+              mailing: T.nilable(Increase::Models::CheckTransfer::Mailing),
+              pending_transaction_id: T.nilable(String),
+              physical_check: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck),
+              routing_number: String,
+              source_account_number_id: T.nilable(String),
+              status: Symbol,
+              stop_payment_request: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest),
+              submission: T.nilable(Increase::Models::CheckTransfer::Submission),
+              third_party: T.nilable(Increase::Models::CheckTransfer::ThirdParty),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
 
       class Approval < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :approved_at
+        def approved_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def approved_at=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :approved_by
+        def approved_by
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def approved_by=(_)
+        end
 
         sig { params(approved_at: Time, approved_by: T.nilable(String)).void }
         def initialize(approved_at:, approved_by:)
@@ -176,10 +327,20 @@ module Increase
 
       class Cancellation < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :canceled_at
+        def canceled_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def canceled_at=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :canceled_by
+        def canceled_by
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def canceled_by=(_)
+        end
 
         sig { params(canceled_at: Time, canceled_by: T.nilable(String)).void }
         def initialize(canceled_at:, canceled_by:)
@@ -192,16 +353,45 @@ module Increase
 
       class CreatedBy < Increase::BaseModel
         sig { returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey)) }
-        attr_accessor :api_key
+        def api_key
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey))
+            .returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey))
+        end
+        def api_key=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :category
+        def category
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def category=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication)) }
-        attr_accessor :oauth_application
+        def oauth_application
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication))
+            .returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication))
+        end
+        def oauth_application=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)) }
-        attr_accessor :user
+        def user
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User))
+            .returns(T.nilable(Increase::Models::CheckTransfer::CreatedBy::User))
+        end
+        def user=(_)
+        end
 
         sig do
           params(
@@ -209,27 +399,34 @@ module Increase
             category: Symbol,
             oauth_application: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)
-          ).void
+          )
+            .void
         end
         def initialize(api_key:, category:, oauth_application:, user:)
         end
 
         sig do
-          override.returns(
-            {
-              api_key: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey),
-              category: Symbol,
-              oauth_application: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication),
-              user: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)
-            }
-          )
+          override
+            .returns(
+              {
+                api_key: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey),
+                category: Symbol,
+                oauth_application: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication),
+                user: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)
+              }
+            )
         end
         def to_hash
         end
 
         class APIKey < Increase::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_accessor :description
+          def description
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def description=(_)
+          end
 
           sig { params(description: T.nilable(String)).void }
           def initialize(description:)
@@ -259,7 +456,12 @@ module Increase
 
         class OAuthApplication < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { params(name: String).void }
           def initialize(name:)
@@ -272,7 +474,12 @@ module Increase
 
         class User < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :email
+          def email
+          end
+
+          sig { params(_: String).returns(String) }
+          def email=(_)
+          end
 
           sig { params(email: String).void }
           def initialize(email:)
@@ -326,13 +533,28 @@ module Increase
 
       class Mailing < Increase::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :image_id
+        def image_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def image_id=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :mailed_at
+        def mailed_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def mailed_at=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :tracking_number
+        def tracking_number
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def tracking_number=(_)
+        end
 
         sig { params(image_id: T.nilable(String), mailed_at: Time, tracking_number: T.nilable(String)).void }
         def initialize(image_id:, mailed_at:, tracking_number:)
@@ -347,28 +569,77 @@ module Increase
 
       class PhysicalCheck < Increase::BaseModel
         sig { returns(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress) }
-        attr_accessor :mailing_address
+        def mailing_address
+        end
+
+        sig do
+          params(_: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress)
+            .returns(Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress)
+        end
+        def mailing_address=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :memo
+        def memo
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def memo=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :note
+        def note
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def note=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :recipient_name
+        def recipient_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def recipient_name=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress)) }
-        attr_accessor :return_address
+        def return_address
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress))
+            .returns(T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress))
+        end
+        def return_address=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_accessor :shipping_method
+        def shipping_method
+        end
+
+        sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+        def shipping_method=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :signature_text
+        def signature_text
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def signature_text=(_)
+        end
 
         sig { returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]) }
-        attr_accessor :tracking_updates
+        def tracking_updates
+        end
+
+        sig do
+          params(_: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate])
+            .returns(T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate])
+        end
+        def tracking_updates=(_)
+        end
 
         sig do
           params(
@@ -380,7 +651,8 @@ module Increase
             shipping_method: T.nilable(Symbol),
             signature_text: T.nilable(String),
             tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
-          ).void
+          )
+            .void
         end
         def initialize(
           mailing_address:,
@@ -395,40 +667,71 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              mailing_address: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress,
-              memo: T.nilable(String),
-              note: T.nilable(String),
-              recipient_name: String,
-              return_address: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress),
-              shipping_method: T.nilable(Symbol),
-              signature_text: T.nilable(String),
-              tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
-            }
-          )
+          override
+            .returns(
+              {
+                mailing_address: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress,
+                memo: T.nilable(String),
+                note: T.nilable(String),
+                recipient_name: String,
+                return_address: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress),
+                shipping_method: T.nilable(Symbol),
+                signature_text: T.nilable(String),
+                tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
+              }
+            )
         end
         def to_hash
         end
 
         class MailingAddress < Increase::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def city=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line1=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :line2
+          def line2
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line2=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def name=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :postal_code
+          def postal_code
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def postal_code=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def state=(_)
+          end
 
           sig do
             params(
@@ -438,22 +741,24 @@ module Increase
               name: T.nilable(String),
               postal_code: T.nilable(String),
               state: T.nilable(String)
-            ).void
+            )
+              .void
           end
           def initialize(city:, line1:, line2:, name:, postal_code:, state:)
           end
 
           sig do
-            override.returns(
-              {
-                city: T.nilable(String),
-                line1: T.nilable(String),
-                line2: T.nilable(String),
-                name: T.nilable(String),
-                postal_code: T.nilable(String),
-                state: T.nilable(String)
-              }
-            )
+            override
+              .returns(
+                {
+                  city: T.nilable(String),
+                  line1: T.nilable(String),
+                  line2: T.nilable(String),
+                  name: T.nilable(String),
+                  postal_code: T.nilable(String),
+                  state: T.nilable(String)
+                }
+              )
           end
           def to_hash
           end
@@ -461,22 +766,52 @@ module Increase
 
         class ReturnAddress < Increase::BaseModel
           sig { returns(T.nilable(String)) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def city=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line1=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :line2
+          def line2
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line2=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def name=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :postal_code
+          def postal_code
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def postal_code=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def state=(_)
+          end
 
           sig do
             params(
@@ -486,22 +821,24 @@ module Increase
               name: T.nilable(String),
               postal_code: T.nilable(String),
               state: T.nilable(String)
-            ).void
+            )
+              .void
           end
           def initialize(city:, line1:, line2:, name:, postal_code:, state:)
           end
 
           sig do
-            override.returns(
-              {
-                city: T.nilable(String),
-                line1: T.nilable(String),
-                line2: T.nilable(String),
-                name: T.nilable(String),
-                postal_code: T.nilable(String),
-                state: T.nilable(String)
-              }
-            )
+            override
+              .returns(
+                {
+                  city: T.nilable(String),
+                  line1: T.nilable(String),
+                  line2: T.nilable(String),
+                  name: T.nilable(String),
+                  postal_code: T.nilable(String),
+                  state: T.nilable(String)
+                }
+              )
           end
           def to_hash
           end
@@ -523,13 +860,28 @@ module Increase
 
         class TrackingUpdate < Increase::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :category
+          def category
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def category=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :created_at
+          def created_at
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def created_at=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :postal_code
+          def postal_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def postal_code=(_)
+          end
 
           sig { params(category: Symbol, created_at: Time, postal_code: String).void }
           def initialize(category:, created_at:, postal_code:)
@@ -601,16 +953,36 @@ module Increase
 
       class StopPaymentRequest < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :reason
+        def reason
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def reason=(_)
+        end
 
         sig { returns(Time) }
-        attr_accessor :requested_at
+        def requested_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def requested_at=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :transfer_id
+        def transfer_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def transfer_id=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig { params(reason: Symbol, requested_at: Time, transfer_id: String, type: Symbol).void }
         def initialize(reason:, requested_at:, transfer_id:, type:)
@@ -653,7 +1025,12 @@ module Increase
 
       class Submission < Increase::BaseModel
         sig { returns(Time) }
-        attr_accessor :submitted_at
+        def submitted_at
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def submitted_at=(_)
+        end
 
         sig { params(submitted_at: Time).void }
         def initialize(submitted_at:)
@@ -666,7 +1043,12 @@ module Increase
 
       class ThirdParty < Increase::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_accessor :check_number
+        def check_number
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def check_number=(_)
+        end
 
         sig { params(check_number: T.nilable(String)).void }
         def initialize(check_number:)

@@ -8,16 +8,28 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :card_payment_id
+        def card_payment_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def card_payment_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :event_subscription_id
+        def event_subscription_id
+        end
 
-        sig { params(event_subscription_id: String).void }
-        attr_writer :event_subscription_id
+        sig { params(_: String).returns(String) }
+        def event_subscription_id=(_)
+        end
 
         sig do
           params(
@@ -25,20 +37,22 @@ module Increase
             card_payment_id: String,
             event_subscription_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(amount:, card_payment_id:, event_subscription_id: nil, request_options: {})
         end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              card_payment_id: String,
-              event_subscription_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                card_payment_id: String,
+                event_subscription_id: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end

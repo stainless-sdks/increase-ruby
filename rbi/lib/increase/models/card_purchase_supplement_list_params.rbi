@@ -7,28 +7,39 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :card_payment_id
+      def card_payment_id
+      end
 
-      sig { params(card_payment_id: String).void }
-      attr_writer :card_payment_id
+      sig { params(_: String).returns(String) }
+      def card_payment_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CardPurchaseSupplementListParams::CreatedAt)) }
-      attr_reader :created_at
+      def created_at
+      end
 
-      sig { params(created_at: Increase::Models::CardPurchaseSupplementListParams::CreatedAt).void }
-      attr_writer :created_at
+      sig do
+        params(_: Increase::Models::CardPurchaseSupplementListParams::CreatedAt)
+          .returns(Increase::Models::CardPurchaseSupplementListParams::CreatedAt)
+      end
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :cursor
+      def cursor
+      end
 
-      sig { params(cursor: String).void }
-      attr_writer :cursor
+      sig { params(_: String).returns(String) }
+      def cursor=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :limit
+      def limit
+      end
 
-      sig { params(limit: Integer).void }
-      attr_writer :limit
+      sig { params(_: Integer).returns(Integer) }
+      def limit=(_)
+      end
 
       sig do
         params(
@@ -37,49 +48,59 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(card_payment_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            card_payment_id: String,
-            created_at: Increase::Models::CardPurchaseSupplementListParams::CreatedAt,
-            cursor: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              card_payment_id: String,
+              created_at: Increase::Models::CardPurchaseSupplementListParams::CreatedAt,
+              cursor: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
 
       class CreatedAt < Increase::BaseModel
         sig { returns(T.nilable(Time)) }
-        attr_reader :after
+        def after
+        end
 
-        sig { params(after: Time).void }
-        attr_writer :after
-
-        sig { returns(T.nilable(Time)) }
-        attr_reader :before
-
-        sig { params(before: Time).void }
-        attr_writer :before
+        sig { params(_: Time).returns(Time) }
+        def after=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_after
+        def before
+        end
 
-        sig { params(on_or_after: Time).void }
-        attr_writer :on_or_after
+        sig { params(_: Time).returns(Time) }
+        def before=(_)
+        end
 
         sig { returns(T.nilable(Time)) }
-        attr_reader :on_or_before
+        def on_or_after
+        end
 
-        sig { params(on_or_before: Time).void }
-        attr_writer :on_or_before
+        sig { params(_: Time).returns(Time) }
+        def on_or_after=(_)
+        end
+
+        sig { returns(T.nilable(Time)) }
+        def on_or_before
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def on_or_before=(_)
+        end
 
         sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).void }
         def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)

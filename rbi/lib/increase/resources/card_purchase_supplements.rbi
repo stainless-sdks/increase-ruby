@@ -7,7 +7,8 @@ module Increase
         params(
           card_purchase_supplement_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::CardPurchaseSupplement)
+        )
+          .returns(Increase::Models::CardPurchaseSupplement)
       end
       def retrieve(card_purchase_supplement_id, request_options: {})
       end
@@ -19,7 +20,8 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::CardPurchaseSupplement])
+        )
+          .returns(Increase::Page[Increase::Models::CardPurchaseSupplement])
       end
       def list(card_payment_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
       end

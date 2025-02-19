@@ -4,34 +4,84 @@ module Increase
   module Models
     class IntrafiExclusion < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :bank_name
+      def bank_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def bank_name=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :entity_id
+      def entity_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :excluded_at
+      def excluded_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def excluded_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :fdic_certificate_number
+      def fdic_certificate_number
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def fdic_certificate_number=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :submitted_at
+      def submitted_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def submitted_at=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -45,7 +95,8 @@ module Increase
           status: Symbol,
           submitted_at: T.nilable(Time),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -62,20 +113,21 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            bank_name: String,
-            created_at: Time,
-            entity_id: String,
-            excluded_at: T.nilable(Time),
-            fdic_certificate_number: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            status: Symbol,
-            submitted_at: T.nilable(Time),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              bank_name: String,
+              created_at: Time,
+              entity_id: String,
+              excluded_at: T.nilable(Time),
+              fdic_certificate_number: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              status: Symbol,
+              submitted_at: T.nilable(Time),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

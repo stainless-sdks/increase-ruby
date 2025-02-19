@@ -30,69 +30,69 @@ module Increase
 
         attr_reader authenticated_card_payment_id: String?
 
-        def authenticated_card_payment_id=: (String) -> void
+        def authenticated_card_payment_id=: (String) -> String
 
         attr_reader card_id: String?
 
-        def card_id=: (String) -> void
+        def card_id=: (String) -> String
 
         attr_reader decline_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason?
 
         def decline_reason=: (
           Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason
-        ) -> void
+        ) -> Increase::Models::Simulations::CardAuthorizationCreateParams::decline_reason
 
         attr_reader digital_wallet_token_id: String?
 
-        def digital_wallet_token_id=: (String) -> void
+        def digital_wallet_token_id=: (String) -> String
 
         attr_reader direction: Increase::Models::Simulations::CardAuthorizationCreateParams::direction?
 
         def direction=: (
           Increase::Models::Simulations::CardAuthorizationCreateParams::direction
-        ) -> void
+        ) -> Increase::Models::Simulations::CardAuthorizationCreateParams::direction
 
         attr_reader event_subscription_id: String?
 
-        def event_subscription_id=: (String) -> void
+        def event_subscription_id=: (String) -> String
 
         attr_reader merchant_acceptor_id: String?
 
-        def merchant_acceptor_id=: (String) -> void
+        def merchant_acceptor_id=: (String) -> String
 
         attr_reader merchant_category_code: String?
 
-        def merchant_category_code=: (String) -> void
+        def merchant_category_code=: (String) -> String
 
         attr_reader merchant_city: String?
 
-        def merchant_city=: (String) -> void
+        def merchant_city=: (String) -> String
 
         attr_reader merchant_country: String?
 
-        def merchant_country=: (String) -> void
+        def merchant_country=: (String) -> String
 
         attr_reader merchant_descriptor: String?
 
-        def merchant_descriptor=: (String) -> void
+        def merchant_descriptor=: (String) -> String
 
         attr_reader merchant_state: String?
 
-        def merchant_state=: (String) -> void
+        def merchant_state=: (String) -> String
 
         attr_reader network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails?
 
         def network_details=: (
           Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails
-        ) -> void
+        ) -> Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails
 
         attr_reader physical_card_id: String?
 
-        def physical_card_id=: (String) -> void
+        def physical_card_id=: (String) -> String
 
         attr_reader terminal_id: String?
 
-        def terminal_id=: (String) -> void
+        def terminal_id=: (String) -> String
 
         def initialize:
           (
@@ -228,7 +228,7 @@ module Increase
 
             def stand_in_processing_reason=: (
               Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
-            ) -> void
+            ) -> Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::stand_in_processing_reason
 
             def initialize:
               (

@@ -7,16 +7,36 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :carrier_image_file_id
+      def carrier_image_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def carrier_image_file_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :contact_phone
+      def contact_phone
+      end
+
+      sig { params(_: String).returns(String) }
+      def contact_phone=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :front_image_file_id
+      def front_image_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def front_image_file_id=(_)
+      end
 
       sig do
         params(
@@ -25,7 +45,8 @@ module Increase
           description: String,
           front_image_file_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         carrier_image_file_id:,
@@ -37,15 +58,16 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            carrier_image_file_id: String,
-            contact_phone: String,
-            description: String,
-            front_image_file_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              carrier_image_file_id: String,
+              contact_phone: String,
+              description: String,
+              front_image_file_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
