@@ -50,21 +50,23 @@ module Increase
           file_id: String,
           idempotency_key: T.nilable(String),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(created_at:, entity_id:, file_id:, idempotency_key:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            created_at: Time,
-            entity_id: String,
-            file_id: String,
-            idempotency_key: T.nilable(String),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              created_at: Time,
+              entity_id: String,
+              file_id: String,
+              idempotency_key: T.nilable(String),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

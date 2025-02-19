@@ -27,7 +27,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::InboundWireTransferListParams::CreatedAt).returns(Increase::Models::InboundWireTransferListParams::CreatedAt)
+        params(_: Increase::Models::InboundWireTransferListParams::CreatedAt)
+          .returns(Increase::Models::InboundWireTransferListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -65,7 +66,8 @@ module Increase
           limit: Integer,
           status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id: nil,
@@ -79,17 +81,18 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            account_number_id: String,
-            created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
-            cursor: String,
-            limit: Integer,
-            status: Symbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              account_number_id: String,
+              created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
+              cursor: String,
+              limit: Integer,
+              status: Symbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

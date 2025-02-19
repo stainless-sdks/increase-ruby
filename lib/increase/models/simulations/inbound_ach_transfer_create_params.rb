@@ -108,9 +108,7 @@ module Increase
         #
         #   @return [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode, nil]
         optional :standard_entry_class_code,
-                 enum: -> {
-                   Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode
-                 }
+                 enum: -> { Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode }
 
         # @!parse
         #   # @return [Symbol, Increase::Models::Simulations::InboundACHTransferCreateParams::StandardEntryClassCode]

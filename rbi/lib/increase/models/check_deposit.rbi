@@ -48,7 +48,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckDeposit::DepositAcceptance)).returns(T.nilable(Increase::Models::CheckDeposit::DepositAcceptance))
+        params(_: T.nilable(Increase::Models::CheckDeposit::DepositAcceptance))
+          .returns(T.nilable(Increase::Models::CheckDeposit::DepositAcceptance))
       end
       def deposit_acceptance=(_)
       end
@@ -58,7 +59,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckDeposit::DepositRejection)).returns(T.nilable(Increase::Models::CheckDeposit::DepositRejection))
+        params(_: T.nilable(Increase::Models::CheckDeposit::DepositRejection))
+          .returns(T.nilable(Increase::Models::CheckDeposit::DepositRejection))
       end
       def deposit_rejection=(_)
       end
@@ -68,7 +70,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckDeposit::DepositReturn)).returns(T.nilable(Increase::Models::CheckDeposit::DepositReturn))
+        params(_: T.nilable(Increase::Models::CheckDeposit::DepositReturn))
+          .returns(T.nilable(Increase::Models::CheckDeposit::DepositReturn))
       end
       def deposit_return=(_)
       end
@@ -78,7 +81,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckDeposit::DepositSubmission)).returns(T.nilable(Increase::Models::CheckDeposit::DepositSubmission))
+        params(_: T.nilable(Increase::Models::CheckDeposit::DepositSubmission))
+          .returns(T.nilable(Increase::Models::CheckDeposit::DepositSubmission))
       end
       def deposit_submission=(_)
       end
@@ -112,7 +116,8 @@ module Increase
       end
 
       sig do
-        params(_: T.nilable(Increase::Models::CheckDeposit::InboundFundsHold)).returns(T.nilable(Increase::Models::CheckDeposit::InboundFundsHold))
+        params(_: T.nilable(Increase::Models::CheckDeposit::InboundFundsHold))
+          .returns(T.nilable(Increase::Models::CheckDeposit::InboundFundsHold))
       end
       def inbound_funds_hold=(_)
       end
@@ -177,7 +182,8 @@ module Increase
           status: Symbol,
           transaction_id: T.nilable(String),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -202,28 +208,29 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            amount: Integer,
-            back_image_file_id: T.nilable(String),
-            created_at: Time,
-            deposit_acceptance: T.nilable(Increase::Models::CheckDeposit::DepositAcceptance),
-            deposit_rejection: T.nilable(Increase::Models::CheckDeposit::DepositRejection),
-            deposit_return: T.nilable(Increase::Models::CheckDeposit::DepositReturn),
-            deposit_submission: T.nilable(Increase::Models::CheckDeposit::DepositSubmission),
-            description: T.nilable(String),
-            front_image_file_id: String,
-            idempotency_key: T.nilable(String),
-            inbound_funds_hold: T.nilable(Increase::Models::CheckDeposit::InboundFundsHold),
-            inbound_mail_item_id: T.nilable(String),
-            lockbox_id: T.nilable(String),
-            status: Symbol,
-            transaction_id: T.nilable(String),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              amount: Integer,
+              back_image_file_id: T.nilable(String),
+              created_at: Time,
+              deposit_acceptance: T.nilable(Increase::Models::CheckDeposit::DepositAcceptance),
+              deposit_rejection: T.nilable(Increase::Models::CheckDeposit::DepositRejection),
+              deposit_return: T.nilable(Increase::Models::CheckDeposit::DepositReturn),
+              deposit_submission: T.nilable(Increase::Models::CheckDeposit::DepositSubmission),
+              description: T.nilable(String),
+              front_image_file_id: String,
+              idempotency_key: T.nilable(String),
+              inbound_funds_hold: T.nilable(Increase::Models::CheckDeposit::InboundFundsHold),
+              inbound_mail_item_id: T.nilable(String),
+              lockbox_id: T.nilable(String),
+              status: Symbol,
+              transaction_id: T.nilable(String),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -294,7 +301,8 @@ module Increase
             currency: Symbol,
             routing_number: String,
             serial_number: T.nilable(String)
-          ).void
+          )
+            .void
         end
         def initialize(
           account_number:,
@@ -308,17 +316,18 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              account_number: String,
-              amount: Integer,
-              auxiliary_on_us: T.nilable(String),
-              check_deposit_id: String,
-              currency: Symbol,
-              routing_number: String,
-              serial_number: T.nilable(String)
-            }
-          )
+          override
+            .returns(
+              {
+                account_number: String,
+                amount: Integer,
+                auxiliary_on_us: T.nilable(String),
+                check_deposit_id: String,
+                currency: Symbol,
+                routing_number: String,
+                serial_number: T.nilable(String)
+              }
+            )
         end
         def to_hash
         end
@@ -407,22 +416,24 @@ module Increase
             declined_transaction_id: String,
             reason: Symbol,
             rejected_at: Time
-          ).void
+          )
+            .void
         end
         def initialize(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:)
         end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              check_deposit_id: String,
-              currency: Symbol,
-              declined_transaction_id: String,
-              reason: Symbol,
-              rejected_at: Time
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                check_deposit_id: String,
+                currency: Symbol,
+                declined_transaction_id: String,
+                reason: Symbol,
+                rejected_at: Time
+              }
+            )
         end
         def to_hash
         end
@@ -552,22 +563,24 @@ module Increase
             return_reason: Symbol,
             returned_at: Time,
             transaction_id: String
-          ).void
+          )
+            .void
         end
         def initialize(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:)
         end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              check_deposit_id: String,
-              currency: Symbol,
-              return_reason: Symbol,
-              returned_at: Time,
-              transaction_id: String
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                check_deposit_id: String,
+                currency: Symbol,
+                return_reason: Symbol,
+                returned_at: Time,
+                transaction_id: String
+              }
+            )
         end
         def to_hash
         end
@@ -812,7 +825,8 @@ module Increase
             released_at: T.nilable(Time),
             status: Symbol,
             type: Symbol
-          ).void
+          )
+            .void
         end
         def initialize(
           id:,
@@ -829,20 +843,21 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              id: String,
-              amount: Integer,
-              automatically_releases_at: Time,
-              created_at: Time,
-              currency: Symbol,
-              held_transaction_id: T.nilable(String),
-              pending_transaction_id: T.nilable(String),
-              released_at: T.nilable(Time),
-              status: Symbol,
-              type: Symbol
-            }
-          )
+          override
+            .returns(
+              {
+                id: String,
+                amount: Integer,
+                automatically_releases_at: Time,
+                created_at: Time,
+                currency: Symbol,
+                held_transaction_id: T.nilable(String),
+                pending_transaction_id: T.nilable(String),
+                released_at: T.nilable(Time),
+                status: Symbol,
+                type: Symbol
+              }
+            )
         end
         def to_hash
         end

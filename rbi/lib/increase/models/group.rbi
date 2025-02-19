@@ -50,21 +50,21 @@ module Increase
           activation_status: Symbol,
           created_at: Time,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, ach_debit_status:, activation_status:, created_at:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            ach_debit_status: Symbol,
-            activation_status: Symbol,
-            created_at: Time,
-            type: Symbol
-          }
-        )
+        override
+          .returns({
+                     id: String,
+                     ach_debit_status: Symbol,
+                     activation_status: Symbol,
+                     created_at: Time,
+                     type: Symbol
+                   })
       end
       def to_hash
       end

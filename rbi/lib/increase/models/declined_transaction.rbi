@@ -72,7 +72,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::DeclinedTransaction::Source).returns(Increase::Models::DeclinedTransaction::Source)
+        params(_: Increase::Models::DeclinedTransaction::Source)
+          .returns(Increase::Models::DeclinedTransaction::Source)
       end
       def source=(_)
       end
@@ -97,7 +98,8 @@ module Increase
           route_type: T.nilable(Symbol),
           source: Increase::Models::DeclinedTransaction::Source,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -114,20 +116,21 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            account_id: String,
-            amount: Integer,
-            created_at: Time,
-            currency: Symbol,
-            description: String,
-            route_id: T.nilable(String),
-            route_type: T.nilable(Symbol),
-            source: Increase::Models::DeclinedTransaction::Source,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              account_id: String,
+              amount: Integer,
+              created_at: Time,
+              currency: Symbol,
+              description: String,
+              route_id: T.nilable(String),
+              route_type: T.nilable(Symbol),
+              source: Increase::Models::DeclinedTransaction::Source,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end
@@ -181,7 +184,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline)).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline))
+          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline))
+            .returns(T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline))
         end
         def ach_decline=(_)
         end
@@ -191,7 +195,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline)).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline))
+          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline))
+            .returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline))
         end
         def card_decline=(_)
         end
@@ -209,7 +214,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline)).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline))
+          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline))
+            .returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline))
         end
         def check_decline=(_)
         end
@@ -219,21 +225,21 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection)).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection))
+          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection))
+            .returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection))
         end
         def check_deposit_rejection=(_)
         end
 
-        sig do
-          returns(T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline))
-        end
+        sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline)) }
         def inbound_real_time_payments_transfer_decline
         end
 
         sig do
           params(
             _: T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline)
-          ).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline))
+          )
+            .returns(T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline))
         end
         def inbound_real_time_payments_transfer_decline=(_)
         end
@@ -251,7 +257,8 @@ module Increase
         end
 
         sig do
-          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline)).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline))
+          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline))
+            .returns(T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline))
         end
         def wire_decline=(_)
         end
@@ -266,7 +273,8 @@ module Increase
             inbound_real_time_payments_transfer_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline),
             other: T.nilable(T.anything),
             wire_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline)
-          ).void
+          )
+            .void
         end
         def initialize(
           ach_decline:,
@@ -281,18 +289,19 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              ach_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline),
-              card_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline),
-              category: Symbol,
-              check_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline),
-              check_deposit_rejection: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection),
-              inbound_real_time_payments_transfer_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline),
-              other: T.nilable(T.anything),
-              wire_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline)
-            }
-          )
+          override
+            .returns(
+              {
+                ach_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline),
+                card_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline),
+                category: Symbol,
+                check_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline),
+                check_deposit_rejection: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection),
+                inbound_real_time_payments_transfer_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline),
+                other: T.nilable(T.anything),
+                wire_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline)
+              }
+            )
         end
         def to_hash
         end
@@ -408,7 +417,8 @@ module Increase
               receiver_name: T.nilable(String),
               trace_number: String,
               type: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(
             id:,
@@ -427,22 +437,23 @@ module Increase
           end
 
           sig do
-            override.returns(
-              {
-                id: String,
-                amount: Integer,
-                inbound_ach_transfer_id: String,
-                originator_company_descriptive_date: T.nilable(String),
-                originator_company_discretionary_data: T.nilable(String),
-                originator_company_id: String,
-                originator_company_name: String,
-                reason: Symbol,
-                receiver_id_number: T.nilable(String),
-                receiver_name: T.nilable(String),
-                trace_number: String,
-                type: Symbol
-              }
-            )
+            override
+              .returns(
+                {
+                  id: String,
+                  amount: Integer,
+                  inbound_ach_transfer_id: String,
+                  originator_company_descriptive_date: T.nilable(String),
+                  originator_company_discretionary_data: T.nilable(String),
+                  originator_company_id: String,
+                  originator_company_name: String,
+                  reason: Symbol,
+                  receiver_id_number: T.nilable(String),
+                  receiver_name: T.nilable(String),
+                  trace_number: String,
+                  type: Symbol
+                }
+              )
           end
           def to_hash
           end
@@ -643,7 +654,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails).returns(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails)
+            params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails)
+              .returns(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails)
           end
           def network_details=(_)
           end
@@ -653,7 +665,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers).returns(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers)
+            params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers)
+              .returns(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers)
           end
           def network_identifiers=(_)
           end
@@ -735,7 +748,8 @@ module Increase
           end
 
           sig do
-            params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification).returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification)
+            params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification)
+              .returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification)
           end
           def verification=(_)
           end
@@ -769,7 +783,8 @@ module Increase
               reason: Symbol,
               terminal_id: T.nilable(String),
               verification: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
-            ).void
+            )
+              .void
           end
           def initialize(
             id:,
@@ -803,37 +818,38 @@ module Increase
           end
 
           sig do
-            override.returns(
-              {
-                id: String,
-                actioner: Symbol,
-                amount: Integer,
-                card_payment_id: String,
-                currency: Symbol,
-                declined_transaction_id: String,
-                digital_wallet_token_id: T.nilable(String),
-                direction: Symbol,
-                merchant_acceptor_id: String,
-                merchant_category_code: String,
-                merchant_city: T.nilable(String),
-                merchant_country: String,
-                merchant_descriptor: String,
-                merchant_postal_code: T.nilable(String),
-                merchant_state: T.nilable(String),
-                network_details: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails,
-                network_identifiers: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
-                network_risk_score: T.nilable(Integer),
-                physical_card_id: T.nilable(String),
-                presentment_amount: Integer,
-                presentment_currency: String,
-                processing_category: Symbol,
-                real_time_decision_id: T.nilable(String),
-                real_time_decision_reason: T.nilable(Symbol),
-                reason: Symbol,
-                terminal_id: T.nilable(String),
-                verification: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
-              }
-            )
+            override
+              .returns(
+                {
+                  id: String,
+                  actioner: Symbol,
+                  amount: Integer,
+                  card_payment_id: String,
+                  currency: Symbol,
+                  declined_transaction_id: String,
+                  digital_wallet_token_id: T.nilable(String),
+                  direction: Symbol,
+                  merchant_acceptor_id: String,
+                  merchant_category_code: String,
+                  merchant_city: T.nilable(String),
+                  merchant_country: String,
+                  merchant_descriptor: String,
+                  merchant_postal_code: T.nilable(String),
+                  merchant_state: T.nilable(String),
+                  network_details: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails,
+                  network_identifiers: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
+                  network_risk_score: T.nilable(Integer),
+                  physical_card_id: T.nilable(String),
+                  presentment_amount: Integer,
+                  presentment_currency: String,
+                  processing_category: Symbol,
+                  real_time_decision_id: T.nilable(String),
+                  real_time_decision_reason: T.nilable(Symbol),
+                  reason: Symbol,
+                  terminal_id: T.nilable(String),
+                  verification: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
+                }
+              )
           end
           def to_hash
           end
@@ -904,14 +920,13 @@ module Increase
             def category=(_)
             end
 
-            sig do
-              returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa))
-            end
+            sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa)) }
             def visa
             end
 
             sig do
-              params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa)).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa))
+              params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa))
+                .returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa))
             end
             def visa=(_)
             end
@@ -920,18 +935,20 @@ module Increase
               params(
                 category: Symbol,
                 visa: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa)
-              ).void
+              )
+                .void
             end
             def initialize(category:, visa:)
             end
 
             sig do
-              override.returns(
-                {
-                  category: Symbol,
-                  visa: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa)
-                }
-              )
+              override
+                .returns(
+                  {
+                    category: Symbol,
+                    visa: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa)
+                  }
+                )
             end
             def to_hash
             end
@@ -977,7 +994,8 @@ module Increase
                   electronic_commerce_indicator: T.nilable(Symbol),
                   point_of_service_entry_mode: T.nilable(Symbol),
                   stand_in_processing_reason: T.nilable(Symbol)
-                ).void
+                )
+                  .void
               end
               def initialize(
                 electronic_commerce_indicator:,
@@ -987,13 +1005,14 @@ module Increase
               end
 
               sig do
-                override.returns(
-                  {
-                    electronic_commerce_indicator: T.nilable(Symbol),
-                    point_of_service_entry_mode: T.nilable(Symbol),
-                    stand_in_processing_reason: T.nilable(Symbol)
-                  }
-                )
+                override
+                  .returns(
+                    {
+                      electronic_commerce_indicator: T.nilable(Symbol),
+                      point_of_service_entry_mode: T.nilable(Symbol),
+                      stand_in_processing_reason: T.nilable(Symbol)
+                    }
+                  )
               end
               def to_hash
               end
@@ -1141,19 +1160,21 @@ module Increase
                 retrieval_reference_number: T.nilable(String),
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
-              ).void
+              )
+                .void
             end
             def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
-              override.returns(
-                {
-                  retrieval_reference_number: T.nilable(String),
-                  trace_number: T.nilable(String),
-                  transaction_id: T.nilable(String)
-                }
-              )
+              override
+                .returns(
+                  {
+                    retrieval_reference_number: T.nilable(String),
+                    trace_number: T.nilable(String),
+                    transaction_id: T.nilable(String)
+                  }
+                )
             end
             def to_hash
             end
@@ -1265,26 +1286,24 @@ module Increase
           end
 
           class Verification < Increase::BaseModel
-            sig do
-              returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode)
-            end
+            sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode) }
             def card_verification_code
             end
 
             sig do
-              params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode).returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode)
+              params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode)
+                .returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode)
             end
             def card_verification_code=(_)
             end
 
-            sig do
-              returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress)
-            end
+            sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress) }
             def cardholder_address
             end
 
             sig do
-              params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress).returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress)
+              params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress)
+                .returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress)
             end
             def cardholder_address=(_)
             end
@@ -1293,17 +1312,20 @@ module Increase
               params(
                 card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
                 cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
-              ).void
+              )
+                .void
             end
             def initialize(card_verification_code:, cardholder_address:)
             end
 
             sig do
-              override.returns(
-                {
-                  card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode, cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
-                }
-              )
+              override
+                .returns(
+                  {
+                    card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
+                    cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
+                  }
+                )
             end
             def to_hash
             end
@@ -1391,7 +1413,8 @@ module Increase
                   provided_line1: T.nilable(String),
                   provided_postal_code: T.nilable(String),
                   result: Symbol
-                ).void
+                )
+                  .void
               end
               def initialize(
                 actual_line1:,
@@ -1403,15 +1426,16 @@ module Increase
               end
 
               sig do
-                override.returns(
-                  {
-                    actual_line1: T.nilable(String),
-                    actual_postal_code: T.nilable(String),
-                    provided_line1: T.nilable(String),
-                    provided_postal_code: T.nilable(String),
-                    result: Symbol
-                  }
-                )
+                override
+                  .returns(
+                    {
+                      actual_line1: T.nilable(String),
+                      actual_postal_code: T.nilable(String),
+                      provided_line1: T.nilable(String),
+                      provided_postal_code: T.nilable(String),
+                      result: Symbol
+                    }
+                  )
               end
               def to_hash
               end
@@ -1540,7 +1564,8 @@ module Increase
               front_image_file_id: T.nilable(String),
               inbound_check_deposit_id: T.nilable(String),
               reason: Symbol
-            ).void
+            )
+              .void
           end
           def initialize(
             amount:,
@@ -1554,17 +1579,18 @@ module Increase
           end
 
           sig do
-            override.returns(
-              {
-                amount: Integer,
-                auxiliary_on_us: T.nilable(String),
-                back_image_file_id: T.nilable(String),
-                check_transfer_id: T.nilable(String),
-                front_image_file_id: T.nilable(String),
-                inbound_check_deposit_id: T.nilable(String),
-                reason: Symbol
-              }
-            )
+            override
+              .returns(
+                {
+                  amount: Integer,
+                  auxiliary_on_us: T.nilable(String),
+                  back_image_file_id: T.nilable(String),
+                  check_transfer_id: T.nilable(String),
+                  front_image_file_id: T.nilable(String),
+                  inbound_check_deposit_id: T.nilable(String),
+                  reason: Symbol
+                }
+              )
           end
           def to_hash
           end
@@ -1686,7 +1712,8 @@ module Increase
               declined_transaction_id: String,
               reason: Symbol,
               rejected_at: Time
-            ).void
+            )
+              .void
           end
           def initialize(
             amount:,
@@ -1699,16 +1726,17 @@ module Increase
           end
 
           sig do
-            override.returns(
-              {
-                amount: Integer,
-                check_deposit_id: String,
-                currency: Symbol,
-                declined_transaction_id: String,
-                reason: Symbol,
-                rejected_at: Time
-              }
-            )
+            override
+              .returns(
+                {
+                  amount: Integer,
+                  check_deposit_id: String,
+                  currency: Symbol,
+                  declined_transaction_id: String,
+                  reason: Symbol,
+                  rejected_at: Time
+                }
+              )
           end
           def to_hash
           end
@@ -1874,7 +1902,8 @@ module Increase
               remittance_information: T.nilable(String),
               transaction_identification: String,
               transfer_id: String
-            ).void
+            )
+              .void
           end
           def initialize(
             amount:,
@@ -1891,20 +1920,21 @@ module Increase
           end
 
           sig do
-            override.returns(
-              {
-                amount: Integer,
-                creditor_name: String,
-                currency: Symbol,
-                debtor_account_number: String,
-                debtor_name: String,
-                debtor_routing_number: String,
-                reason: Symbol,
-                remittance_information: T.nilable(String),
-                transaction_identification: String,
-                transfer_id: String
-              }
-            )
+            override
+              .returns(
+                {
+                  amount: Integer,
+                  creditor_name: String,
+                  currency: Symbol,
+                  debtor_account_number: String,
+                  debtor_name: String,
+                  debtor_routing_number: String,
+                  reason: Symbol,
+                  remittance_information: T.nilable(String),
+                  transaction_identification: String,
+                  transfer_id: String
+                }
+              )
           end
           def to_hash
           end

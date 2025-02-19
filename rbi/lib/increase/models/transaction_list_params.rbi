@@ -19,7 +19,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::TransactionListParams::Category).returns(Increase::Models::TransactionListParams::Category)
+        params(_: Increase::Models::TransactionListParams::Category)
+          .returns(Increase::Models::TransactionListParams::Category)
       end
       def category=(_)
       end
@@ -29,7 +30,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::TransactionListParams::CreatedAt).returns(Increase::Models::TransactionListParams::CreatedAt)
+        params(_: Increase::Models::TransactionListParams::CreatedAt)
+          .returns(Increase::Models::TransactionListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -67,7 +69,8 @@ module Increase
           limit: Integer,
           route_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id: nil,
@@ -81,17 +84,18 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            category: Increase::Models::TransactionListParams::Category,
-            created_at: Increase::Models::TransactionListParams::CreatedAt,
-            cursor: String,
-            limit: Integer,
-            route_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              category: Increase::Models::TransactionListParams::Category,
+              created_at: Increase::Models::TransactionListParams::CreatedAt,
+              cursor: String,
+              limit: Integer,
+              route_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

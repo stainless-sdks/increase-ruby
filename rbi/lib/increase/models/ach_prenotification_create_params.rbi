@@ -126,7 +126,8 @@ module Increase
           individual_name: String,
           standard_entry_class_code: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id:,
@@ -147,24 +148,25 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            account_number: String,
-            routing_number: String,
-            addendum: String,
-            company_descriptive_date: String,
-            company_discretionary_data: String,
-            company_entry_description: String,
-            company_name: String,
-            credit_debit_indicator: Symbol,
-            effective_date: Date,
-            individual_id: String,
-            individual_name: String,
-            standard_entry_class_code: Symbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              account_number: String,
+              routing_number: String,
+              addendum: String,
+              company_descriptive_date: String,
+              company_discretionary_data: String,
+              company_entry_description: String,
+              company_name: String,
+              credit_debit_indicator: Symbol,
+              effective_date: Date,
+              individual_id: String,
+              individual_name: String,
+              standard_entry_class_code: Symbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

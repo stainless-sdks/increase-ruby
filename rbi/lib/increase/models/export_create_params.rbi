@@ -19,7 +19,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportCreateParams::AccountStatementOfx).returns(Increase::Models::ExportCreateParams::AccountStatementOfx)
+        params(_: Increase::Models::ExportCreateParams::AccountStatementOfx)
+          .returns(Increase::Models::ExportCreateParams::AccountStatementOfx)
       end
       def account_statement_ofx=(_)
       end
@@ -29,7 +30,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportCreateParams::BalanceCsv).returns(Increase::Models::ExportCreateParams::BalanceCsv)
+        params(_: Increase::Models::ExportCreateParams::BalanceCsv)
+          .returns(Increase::Models::ExportCreateParams::BalanceCsv)
       end
       def balance_csv=(_)
       end
@@ -39,7 +41,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv).returns(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)
+        params(_: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)
+          .returns(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)
       end
       def bookkeeping_account_balance_csv=(_)
       end
@@ -49,7 +52,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportCreateParams::EntityCsv).returns(Increase::Models::ExportCreateParams::EntityCsv)
+        params(_: Increase::Models::ExportCreateParams::EntityCsv)
+          .returns(Increase::Models::ExportCreateParams::EntityCsv)
       end
       def entity_csv=(_)
       end
@@ -59,7 +63,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportCreateParams::TransactionCsv).returns(Increase::Models::ExportCreateParams::TransactionCsv)
+        params(_: Increase::Models::ExportCreateParams::TransactionCsv)
+          .returns(Increase::Models::ExportCreateParams::TransactionCsv)
       end
       def transaction_csv=(_)
       end
@@ -82,7 +87,8 @@ module Increase
           transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
           vendor_csv: T.anything,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         category:,
@@ -97,18 +103,19 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            category: Symbol,
-            account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
-            balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
-            bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
-            entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
-            transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
-            vendor_csv: T.anything,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              category: Symbol,
+              account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
+              balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
+              bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
+              entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
+              transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
+              vendor_csv: T.anything,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -153,7 +160,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt).returns(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt)
+          params(_: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt)
+            .returns(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt)
         end
         def created_at=(_)
         end
@@ -162,18 +170,17 @@ module Increase
           params(
             account_id: String,
             created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
-          ).void
+          )
+            .void
         end
         def initialize(account_id:, created_at: nil)
         end
 
         sig do
-          override.returns(
-            {
-              account_id: String,
-              created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
-            }
-          )
+          override
+            .returns(
+              {account_id: String, created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt}
+            )
         end
         def to_hash
         end
@@ -235,7 +242,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt).returns(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt)
+          params(_: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt)
+            .returns(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt)
         end
         def created_at=(_)
         end
@@ -253,19 +261,21 @@ module Increase
             account_id: String,
             created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
             program_id: String
-          ).void
+          )
+            .void
         end
         def initialize(account_id: nil, created_at: nil, program_id: nil)
         end
 
         sig do
-          override.returns(
-            {
-              account_id: String,
-              created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
-              program_id: String
-            }
-          )
+          override
+            .returns(
+              {
+                account_id: String,
+                created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
+                program_id: String
+              }
+            )
         end
         def to_hash
         end
@@ -322,14 +332,13 @@ module Increase
         def bookkeeping_account_id=(_)
         end
 
-        sig do
-          returns(T.nilable(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt))
-        end
+        sig { returns(T.nilable(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt)) }
         def created_at
         end
 
         sig do
-          params(_: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt).returns(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt)
+          params(_: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt)
+            .returns(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt)
         end
         def created_at=(_)
         end
@@ -338,18 +347,20 @@ module Increase
           params(
             bookkeeping_account_id: String,
             created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
-          ).void
+          )
+            .void
         end
         def initialize(bookkeeping_account_id: nil, created_at: nil)
         end
 
         sig do
-          override.returns(
-            {
-              bookkeeping_account_id: String,
-              created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
-            }
-          )
+          override
+            .returns(
+              {
+                bookkeeping_account_id: String,
+                created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
+              }
+            )
         end
         def to_hash
         end
@@ -403,7 +414,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::ExportCreateParams::EntityCsv::Status).returns(Increase::Models::ExportCreateParams::EntityCsv::Status)
+          params(_: Increase::Models::ExportCreateParams::EntityCsv::Status)
+            .returns(Increase::Models::ExportCreateParams::EntityCsv::Status)
         end
         def status=(_)
         end
@@ -466,7 +478,8 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt).returns(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt)
+          params(_: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt)
+            .returns(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt)
         end
         def created_at=(_)
         end
@@ -484,19 +497,21 @@ module Increase
             account_id: String,
             created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
             program_id: String
-          ).void
+          )
+            .void
         end
         def initialize(account_id: nil, created_at: nil, program_id: nil)
         end
 
         sig do
-          override.returns(
-            {
-              account_id: String,
-              created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
-              program_id: String
-            }
-          )
+          override
+            .returns(
+              {
+                account_id: String,
+                created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
+                program_id: String
+              }
+            )
         end
         def to_hash
         end

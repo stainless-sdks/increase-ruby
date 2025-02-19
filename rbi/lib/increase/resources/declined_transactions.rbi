@@ -7,7 +7,8 @@ module Increase
         params(
           declined_transaction_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::DeclinedTransaction)
+        )
+          .returns(Increase::Models::DeclinedTransaction)
       end
       def retrieve(declined_transaction_id, request_options: {})
       end
@@ -21,7 +22,8 @@ module Increase
           limit: Integer,
           route_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::DeclinedTransaction])
+        )
+          .returns(Increase::Page[Increase::Models::DeclinedTransaction])
       end
       def list(
         account_id: nil,

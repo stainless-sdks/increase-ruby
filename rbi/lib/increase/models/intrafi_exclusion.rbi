@@ -95,7 +95,8 @@ module Increase
           status: Symbol,
           submitted_at: T.nilable(Time),
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -112,20 +113,21 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            bank_name: String,
-            created_at: Time,
-            entity_id: String,
-            excluded_at: T.nilable(Time),
-            fdic_certificate_number: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            status: Symbol,
-            submitted_at: T.nilable(Time),
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              bank_name: String,
+              created_at: Time,
+              entity_id: String,
+              excluded_at: T.nilable(Time),
+              fdic_certificate_number: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              status: Symbol,
+              submitted_at: T.nilable(Time),
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

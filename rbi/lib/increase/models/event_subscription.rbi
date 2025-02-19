@@ -77,7 +77,8 @@ module Increase
           status: Symbol,
           type: Symbol,
           url: String
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -92,18 +93,19 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            created_at: Time,
-            idempotency_key: T.nilable(String),
-            oauth_connection_id: T.nilable(String),
-            selected_event_category: T.nilable(Symbol),
-            status: Symbol,
-            type: Symbol,
-            url: String
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              created_at: Time,
+              idempotency_key: T.nilable(String),
+              oauth_connection_id: T.nilable(String),
+              selected_event_category: T.nilable(Symbol),
+              status: Symbol,
+              type: Symbol,
+              url: String
+            }
+          )
       end
       def to_hash
       end

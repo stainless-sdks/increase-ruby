@@ -140,7 +140,8 @@ module Increase
           program_id: String,
           status: Symbol,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -162,25 +163,26 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            bank: Symbol,
-            closed_at: T.nilable(Time),
-            created_at: Time,
-            currency: Symbol,
-            entity_id: T.nilable(String),
-            idempotency_key: T.nilable(String),
-            informational_entity_id: T.nilable(String),
-            interest_accrued: String,
-            interest_accrued_at: T.nilable(Date),
-            interest_rate: String,
-            name: String,
-            program_id: String,
-            status: Symbol,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              bank: Symbol,
+              closed_at: T.nilable(Time),
+              created_at: Time,
+              currency: Symbol,
+              entity_id: T.nilable(String),
+              idempotency_key: T.nilable(String),
+              informational_entity_id: T.nilable(String),
+              interest_accrued: String,
+              interest_accrued_at: T.nilable(Date),
+              interest_rate: String,
+              name: String,
+              program_id: String,
+              status: Symbol,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

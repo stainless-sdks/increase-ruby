@@ -14,7 +14,8 @@ module Increase
             remittance_information: String,
             request_for_payment_id: String,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::InboundRealTimePaymentsTransfer)
+          )
+            .returns(Increase::Models::InboundRealTimePaymentsTransfer)
         end
         def create(
           account_number_id:,

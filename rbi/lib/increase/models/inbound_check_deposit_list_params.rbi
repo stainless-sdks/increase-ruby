@@ -27,7 +27,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::InboundCheckDepositListParams::CreatedAt).returns(Increase::Models::InboundCheckDepositListParams::CreatedAt)
+        params(_: Increase::Models::InboundCheckDepositListParams::CreatedAt)
+          .returns(Increase::Models::InboundCheckDepositListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -56,7 +57,8 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id: nil,
@@ -69,16 +71,17 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            check_transfer_id: String,
-            created_at: Increase::Models::InboundCheckDepositListParams::CreatedAt,
-            cursor: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              check_transfer_id: String,
+              created_at: Increase::Models::InboundCheckDepositListParams::CreatedAt,
+              cursor: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

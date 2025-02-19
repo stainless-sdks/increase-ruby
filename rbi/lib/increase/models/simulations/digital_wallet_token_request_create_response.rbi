@@ -39,13 +39,12 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              decline_reason: T.nilable(Symbol),
-              digital_wallet_token_id: T.nilable(String),
-              type: Symbol
-            }
-          )
+          override
+            .returns({
+                       decline_reason: T.nilable(Symbol),
+                       digital_wallet_token_id: T.nilable(String),
+                       type: Symbol
+                     })
         end
         def to_hash
         end

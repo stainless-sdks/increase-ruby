@@ -43,7 +43,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ACHTransferCreateParams::Addenda).returns(Increase::Models::ACHTransferCreateParams::Addenda)
+        params(_: Increase::Models::ACHTransferCreateParams::Addenda)
+          .returns(Increase::Models::ACHTransferCreateParams::Addenda)
       end
       def addenda=(_)
       end
@@ -125,7 +126,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate).returns(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate)
+        params(_: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate)
+          .returns(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate)
       end
       def preferred_effective_date=(_)
       end
@@ -184,7 +186,8 @@ module Increase
           standard_entry_class_code: Symbol,
           transaction_timing: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id:,
@@ -211,30 +214,31 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            amount: Integer,
-            statement_descriptor: String,
-            account_number: String,
-            addenda: Increase::Models::ACHTransferCreateParams::Addenda,
-            company_descriptive_date: String,
-            company_discretionary_data: String,
-            company_entry_description: String,
-            company_name: String,
-            destination_account_holder: Symbol,
-            external_account_id: String,
-            funding: Symbol,
-            individual_id: String,
-            individual_name: String,
-            preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
-            require_approval: T::Boolean,
-            routing_number: String,
-            standard_entry_class_code: Symbol,
-            transaction_timing: Symbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              amount: Integer,
+              statement_descriptor: String,
+              account_number: String,
+              addenda: Increase::Models::ACHTransferCreateParams::Addenda,
+              company_descriptive_date: String,
+              company_discretionary_data: String,
+              company_entry_description: String,
+              company_name: String,
+              destination_account_holder: Symbol,
+              external_account_id: String,
+              funding: Symbol,
+              individual_id: String,
+              individual_name: String,
+              preferred_effective_date: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate,
+              require_approval: T::Boolean,
+              routing_number: String,
+              standard_entry_class_code: Symbol,
+              transaction_timing: Symbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -253,19 +257,19 @@ module Increase
         end
 
         sig do
-          params(_: Increase::Models::ACHTransferCreateParams::Addenda::Freeform).returns(Increase::Models::ACHTransferCreateParams::Addenda::Freeform)
+          params(_: Increase::Models::ACHTransferCreateParams::Addenda::Freeform)
+            .returns(Increase::Models::ACHTransferCreateParams::Addenda::Freeform)
         end
         def freeform=(_)
         end
 
-        sig do
-          returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice))
-        end
+        sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice)) }
         def payment_order_remittance_advice
         end
 
         sig do
-          params(_: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice).returns(Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice)
+          params(_: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice)
+            .returns(Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice)
         end
         def payment_order_remittance_advice=(_)
         end
@@ -275,19 +279,21 @@ module Increase
             category: Symbol,
             freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
             payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
-          ).void
+          )
+            .void
         end
         def initialize(category:, freeform: nil, payment_order_remittance_advice: nil)
         end
 
         sig do
-          override.returns(
-            {
-              category: Symbol,
-              freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
-              payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
-            }
-          )
+          override
+            .returns(
+              {
+                category: Symbol,
+                freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
+                payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
+              }
+            )
         end
         def to_hash
         end
@@ -312,20 +318,17 @@ module Increase
           end
 
           sig do
-            params(_: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]).returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry])
+            params(_: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry])
+              .returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry])
           end
           def entries=(_)
           end
 
-          sig do
-            params(entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]).void
-          end
+          sig { params(entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]).void }
           def initialize(entries:)
           end
 
-          sig do
-            override.returns({entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]})
-          end
+          sig { override.returns({entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]}) }
           def to_hash
           end
 
@@ -350,7 +353,9 @@ module Increase
 
         class PaymentOrderRemittanceAdvice < Increase::BaseModel
           sig do
-            returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice])
+            returns(
+              T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+            )
           end
           def invoices
           end
@@ -358,7 +363,10 @@ module Increase
           sig do
             params(
               _: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-            ).returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice])
+            )
+              .returns(
+                T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+              )
           end
           def invoices=(_)
           end
@@ -366,13 +374,19 @@ module Increase
           sig do
             params(
               invoices: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-            ).void
+            )
+              .void
           end
           def initialize(invoices:)
           end
 
           sig do
-            override.returns({invoices: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]})
+            override
+              .returns(
+                {
+                  invoices: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
+                }
+              )
           end
           def to_hash
           end

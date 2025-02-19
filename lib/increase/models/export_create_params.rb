@@ -396,10 +396,7 @@ module Increase
         #   Filter results by time range on the `created_at` attribute.
         #
         #   @return [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt, nil]
-        optional :created_at,
-                 -> {
-                   Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
-                 }
+        optional :created_at, -> { Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt }
 
         # @!parse
         #   # @return [Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt]
@@ -523,9 +520,7 @@ module Increase
           #
           #   @return [Array<Symbol, Increase::Models::ExportCreateParams::EntityCsv::Status::In>]
           required :in_,
-                   -> {
-                     Increase::ArrayOf[enum: Increase::Models::ExportCreateParams::EntityCsv::Status::In]
-                   },
+                   -> { Increase::ArrayOf[enum: Increase::Models::ExportCreateParams::EntityCsv::Status::In] },
                    api_name: :in
 
           # @!parse

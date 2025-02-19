@@ -11,7 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]).returns(T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry])
+        params(_: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry])
+          .returns(T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry])
       end
       def entries=(_)
       end
@@ -38,20 +39,22 @@ module Increase
           date: Time,
           transaction_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(entries:, date: nil, transaction_id: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            entries: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
-            date: Time,
-            transaction_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              entries: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
+              date: Time,
+              transaction_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

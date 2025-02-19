@@ -28,7 +28,8 @@ module Increase
             status: Symbol,
             explanation: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(status:, explanation: nil, request_options: {})
         end

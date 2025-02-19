@@ -117,10 +117,7 @@ module Increase
       #     sent.
       #
       #   @return [Symbol, Increase::Models::ACHTransfer::DestinationAccountHolder]
-      required :destination_account_holder,
-               enum: -> {
-                 Increase::Models::ACHTransfer::DestinationAccountHolder
-               }
+      required :destination_account_holder, enum: -> { Increase::Models::ACHTransfer::DestinationAccountHolder }
 
       # @!attribute external_account_id
       #   The identifier of the External Account the transfer was made to, if any.
@@ -495,9 +492,7 @@ module Increase
           #
           #   @return [Array<Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice>]
           required :invoices,
-                   -> {
-                     Increase::ArrayOf[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-                   }
+                   -> { Increase::ArrayOf[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice] }
 
           # @!parse
           #   # Structured ASC X12 820 remittance advice records. Please reach out to
@@ -635,11 +630,7 @@ module Increase
         #   If present, details about the OAuth Application that created the transfer.
         #
         #   @return [Increase::Models::ACHTransfer::CreatedBy::OAuthApplication, nil]
-        required :oauth_application,
-                 -> {
-                   Increase::Models::ACHTransfer::CreatedBy::OAuthApplication
-                 },
-                 nil?: true
+        required :oauth_application, -> { Increase::Models::ACHTransfer::CreatedBy::OAuthApplication }, nil?: true
 
         # @!attribute user
         #   If present, details about the User that created the transfer.

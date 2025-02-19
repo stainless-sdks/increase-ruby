@@ -348,9 +348,7 @@ module Increase
           #
           #   @return [Array<Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry>]
           required :entries,
-                   -> {
-                     Increase::ArrayOf[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]
-                   }
+                   -> { Increase::ArrayOf[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry] }
 
           # @!parse
           #   # Unstructured `payment_related_information` passed through with the transfer.
@@ -395,9 +393,7 @@ module Increase
           #
           #   @return [Array<Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice>]
           required :invoices,
-                   -> {
-                     Increase::ArrayOf[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
-                   }
+                   -> { Increase::ArrayOf[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice] }
 
           # @!parse
           #   # Structured ASC X12 820 remittance advice records. Please reach out to
@@ -527,9 +523,7 @@ module Increase
         #
         #   @return [Symbol, Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule, nil]
         optional :settlement_schedule,
-                 enum: -> {
-                   Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule
-                 }
+                 enum: -> { Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule }
 
         # @!parse
         #   # @return [Symbol, Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule]

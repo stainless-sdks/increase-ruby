@@ -13,7 +13,8 @@ module Increase
           require_approval: T::Boolean,
           third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::CheckTransfer)
+        )
+          .returns(Increase::Models::CheckTransfer)
       end
       def create(
         account_id:,
@@ -31,7 +32,8 @@ module Increase
         params(
           check_transfer_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::CheckTransfer)
+        )
+          .returns(Increase::Models::CheckTransfer)
       end
       def retrieve(check_transfer_id, request_options: {})
       end
@@ -44,7 +46,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::CheckTransfer])
+        )
+          .returns(Increase::Page[Increase::Models::CheckTransfer])
       end
       def list(
         account_id: nil,
@@ -60,7 +63,8 @@ module Increase
         params(
           check_transfer_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::CheckTransfer)
+        )
+          .returns(Increase::Models::CheckTransfer)
       end
       def approve(check_transfer_id, request_options: {})
       end
@@ -69,7 +73,8 @@ module Increase
         params(
           check_transfer_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::CheckTransfer)
+        )
+          .returns(Increase::Models::CheckTransfer)
       end
       def cancel(check_transfer_id, request_options: {})
       end
@@ -79,7 +84,8 @@ module Increase
           check_transfer_id: String,
           reason: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::CheckTransfer)
+        )
+          .returns(Increase::Models::CheckTransfer)
       end
       def stop_payment(check_transfer_id, reason: nil, request_options: {})
       end

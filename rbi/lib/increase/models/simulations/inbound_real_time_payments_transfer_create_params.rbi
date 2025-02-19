@@ -73,7 +73,8 @@ module Increase
             remittance_information: String,
             request_for_payment_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           account_number_id:,
@@ -88,18 +89,19 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              account_number_id: String,
-              amount: Integer,
-              debtor_account_number: String,
-              debtor_name: String,
-              debtor_routing_number: String,
-              remittance_information: String,
-              request_for_payment_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                account_number_id: String,
+                amount: Integer,
+                debtor_account_number: String,
+                debtor_name: String,
+                debtor_routing_number: String,
+                remittance_information: String,
+                request_for_payment_id: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end

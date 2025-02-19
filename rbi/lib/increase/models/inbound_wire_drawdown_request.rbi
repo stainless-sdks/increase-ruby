@@ -212,7 +212,8 @@ module Increase
           originator_to_beneficiary_information_line4: T.nilable(String),
           recipient_account_number_id: String,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -242,33 +243,34 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            amount: Integer,
-            beneficiary_account_number: String,
-            beneficiary_address_line1: T.nilable(String),
-            beneficiary_address_line2: T.nilable(String),
-            beneficiary_address_line3: T.nilable(String),
-            beneficiary_name: T.nilable(String),
-            beneficiary_routing_number: String,
-            created_at: Time,
-            currency: String,
-            message_to_recipient: T.nilable(String),
-            originator_account_number: String,
-            originator_address_line1: T.nilable(String),
-            originator_address_line2: T.nilable(String),
-            originator_address_line3: T.nilable(String),
-            originator_name: T.nilable(String),
-            originator_routing_number: String,
-            originator_to_beneficiary_information_line1: T.nilable(String),
-            originator_to_beneficiary_information_line2: T.nilable(String),
-            originator_to_beneficiary_information_line3: T.nilable(String),
-            originator_to_beneficiary_information_line4: T.nilable(String),
-            recipient_account_number_id: String,
-            type: Symbol
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              amount: Integer,
+              beneficiary_account_number: String,
+              beneficiary_address_line1: T.nilable(String),
+              beneficiary_address_line2: T.nilable(String),
+              beneficiary_address_line3: T.nilable(String),
+              beneficiary_name: T.nilable(String),
+              beneficiary_routing_number: String,
+              created_at: Time,
+              currency: String,
+              message_to_recipient: T.nilable(String),
+              originator_account_number: String,
+              originator_address_line1: T.nilable(String),
+              originator_address_line2: T.nilable(String),
+              originator_address_line3: T.nilable(String),
+              originator_name: T.nilable(String),
+              originator_routing_number: String,
+              originator_to_beneficiary_information_line1: T.nilable(String),
+              originator_to_beneficiary_information_line2: T.nilable(String),
+              originator_to_beneficiary_information_line3: T.nilable(String),
+              originator_to_beneficiary_information_line4: T.nilable(String),
+              recipient_account_number_id: String,
+              type: Symbol
+            }
+          )
       end
       def to_hash
       end

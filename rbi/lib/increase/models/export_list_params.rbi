@@ -11,7 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportListParams::Category).returns(Increase::Models::ExportListParams::Category)
+        params(_: Increase::Models::ExportListParams::Category)
+          .returns(Increase::Models::ExportListParams::Category)
       end
       def category=(_)
       end
@@ -21,7 +22,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ExportListParams::CreatedAt).returns(Increase::Models::ExportListParams::CreatedAt)
+        params(_: Increase::Models::ExportListParams::CreatedAt)
+          .returns(Increase::Models::ExportListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -54,9 +56,7 @@ module Increase
       def status
       end
 
-      sig do
-        params(_: Increase::Models::ExportListParams::Status).returns(Increase::Models::ExportListParams::Status)
-      end
+      sig { params(_: Increase::Models::ExportListParams::Status).returns(Increase::Models::ExportListParams::Status) }
       def status=(_)
       end
 
@@ -69,7 +69,8 @@ module Increase
           limit: Integer,
           status: Increase::Models::ExportListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         category: nil,
@@ -83,17 +84,18 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            category: Increase::Models::ExportListParams::Category,
-            created_at: Increase::Models::ExportListParams::CreatedAt,
-            cursor: String,
-            idempotency_key: String,
-            limit: Integer,
-            status: Increase::Models::ExportListParams::Status,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              category: Increase::Models::ExportListParams::Category,
+              created_at: Increase::Models::ExportListParams::CreatedAt,
+              cursor: String,
+              idempotency_key: String,
+              limit: Integer,
+              status: Increase::Models::ExportListParams::Status,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

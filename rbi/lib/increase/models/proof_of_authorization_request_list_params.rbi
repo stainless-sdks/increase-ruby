@@ -11,7 +11,8 @@ module Increase
       end
 
       sig do
-        params(_: Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt).returns(Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt)
+        params(_: Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt)
+          .returns(Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt)
       end
       def created_at=(_)
       end
@@ -38,20 +39,22 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(created_at: nil, cursor: nil, limit: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            created_at: Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt,
-            cursor: String,
-            limit: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              created_at: Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt,
+              cursor: String,
+              limit: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

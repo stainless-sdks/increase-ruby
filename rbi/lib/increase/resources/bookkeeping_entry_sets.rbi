@@ -9,7 +9,8 @@ module Increase
           date: Time,
           transaction_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::BookkeepingEntrySet)
+        )
+          .returns(Increase::Models::BookkeepingEntrySet)
       end
       def create(entries:, date: nil, transaction_id: nil, request_options: {})
       end
@@ -18,7 +19,8 @@ module Increase
         params(
           bookkeeping_entry_set_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::BookkeepingEntrySet)
+        )
+          .returns(Increase::Models::BookkeepingEntrySet)
       end
       def retrieve(bookkeeping_entry_set_id, request_options: {})
       end
@@ -30,7 +32,8 @@ module Increase
           limit: Integer,
           transaction_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::BookkeepingEntrySet])
+        )
+          .returns(Increase::Page[Increase::Models::BookkeepingEntrySet])
       end
       def list(cursor: nil, idempotency_key: nil, limit: nil, transaction_id: nil, request_options: {})
       end

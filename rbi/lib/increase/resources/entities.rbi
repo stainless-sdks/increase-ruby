@@ -15,7 +15,8 @@ module Increase
           third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
           trust: Increase::Models::EntityCreateParams::Trust,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Entity)
+        )
+          .returns(Increase::Models::Entity)
       end
       def create(
         structure:,
@@ -35,7 +36,8 @@ module Increase
         params(
           entity_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Entity)
+        )
+          .returns(Increase::Models::Entity)
       end
       def retrieve(entity_id, request_options: {})
       end
@@ -48,7 +50,8 @@ module Increase
           limit: Integer,
           status: Increase::Models::EntityListParams::Status,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::Entity])
+        )
+          .returns(Increase::Page[Increase::Models::Entity])
       end
       def list(
         created_at: nil,
@@ -64,7 +67,8 @@ module Increase
         params(
           entity_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Entity)
+        )
+          .returns(Increase::Models::Entity)
       end
       def archive(entity_id, request_options: {})
       end
@@ -74,7 +78,8 @@ module Increase
           entity_id: String,
           beneficial_owner_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Entity)
+        )
+          .returns(Increase::Models::Entity)
       end
       def archive_beneficial_owner(entity_id, beneficial_owner_id:, request_options: {})
       end
@@ -84,7 +89,8 @@ module Increase
           entity_id: String,
           confirmed_at: Time,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Entity)
+        )
+          .returns(Increase::Models::Entity)
       end
       def confirm(entity_id, confirmed_at: nil, request_options: {})
       end
@@ -94,7 +100,8 @@ module Increase
           entity_id: String,
           beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Entity)
+        )
+          .returns(Increase::Models::Entity)
       end
       def create_beneficial_owner(entity_id, beneficial_owner:, request_options: {})
       end
@@ -104,7 +111,8 @@ module Increase
           entity_id: String,
           address: Increase::Models::EntityUpdateAddressParams::Address,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Entity)
+        )
+          .returns(Increase::Models::Entity)
       end
       def update_address(entity_id, address:, request_options: {})
       end
@@ -115,7 +123,8 @@ module Increase
           address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
           beneficial_owner_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Entity)
+        )
+          .returns(Increase::Models::Entity)
       end
       def update_beneficial_owner_address(entity_id, address:, beneficial_owner_id:, request_options: {})
       end
@@ -125,7 +134,8 @@ module Increase
           entity_id: String,
           industry_code: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Entity)
+        )
+          .returns(Increase::Models::Entity)
       end
       def update_industry_code(entity_id, industry_code:, request_options: {})
       end
