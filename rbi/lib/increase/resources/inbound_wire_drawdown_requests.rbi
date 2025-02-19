@@ -7,7 +7,8 @@ module Increase
         params(
           inbound_wire_drawdown_request_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::InboundWireDrawdownRequest)
+        )
+          .returns(Increase::Models::InboundWireDrawdownRequest)
       end
       def retrieve(inbound_wire_drawdown_request_id, request_options: {})
       end
@@ -17,7 +18,8 @@ module Increase
           cursor: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::InboundWireDrawdownRequest])
+        )
+          .returns(Increase::Page[Increase::Models::InboundWireDrawdownRequest])
       end
       def list(cursor: nil, limit: nil, request_options: {})
       end

@@ -17,21 +17,23 @@ module Increase
 
       def inbound_ach=: (
         Increase::Models::AccountNumberUpdateParams::InboundACH
-      ) -> void
+      ) -> Increase::Models::AccountNumberUpdateParams::InboundACH
 
       attr_reader inbound_checks: Increase::Models::AccountNumberUpdateParams::InboundChecks?
 
       def inbound_checks=: (
         Increase::Models::AccountNumberUpdateParams::InboundChecks
-      ) -> void
+      ) -> Increase::Models::AccountNumberUpdateParams::InboundChecks
 
       attr_reader name: String?
 
-      def name=: (String) -> void
+      def name=: (String) -> String
 
       attr_reader status: Increase::Models::AccountNumberUpdateParams::status?
 
-      def status=: (Increase::Models::AccountNumberUpdateParams::status) -> void
+      def status=: (
+        Increase::Models::AccountNumberUpdateParams::status
+      ) -> Increase::Models::AccountNumberUpdateParams::status
 
       def initialize:
         (
@@ -58,7 +60,7 @@ module Increase
 
         def debit_status=: (
           Increase::Models::AccountNumberUpdateParams::InboundACH::debit_status
-        ) -> void
+        ) -> Increase::Models::AccountNumberUpdateParams::InboundACH::debit_status
 
         def initialize:
           (

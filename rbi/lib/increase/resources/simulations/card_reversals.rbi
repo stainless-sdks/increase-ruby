@@ -9,7 +9,8 @@ module Increase
             card_payment_id: String,
             amount: Integer,
             request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          ).returns(Increase::Models::CardPayment)
+          )
+            .returns(Increase::Models::CardPayment)
         end
         def create(card_payment_id:, amount: nil, request_options: {})
         end

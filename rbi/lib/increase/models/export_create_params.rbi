@@ -7,47 +7,75 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(Symbol) }
-      attr_accessor :category
+      def category
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def category=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::AccountStatementOfx)) }
-      attr_reader :account_statement_ofx
-
-      sig { params(account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx).void }
-      attr_writer :account_statement_ofx
-
-      sig { returns(T.nilable(Increase::Models::ExportCreateParams::BalanceCsv)) }
-      attr_reader :balance_csv
-
-      sig { params(balance_csv: Increase::Models::ExportCreateParams::BalanceCsv).void }
-      attr_writer :balance_csv
-
-      sig { returns(T.nilable(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)) }
-      attr_reader :bookkeeping_account_balance_csv
+      def account_statement_ofx
+      end
 
       sig do
-        params(
-          bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv
-        ).void
+        params(_: Increase::Models::ExportCreateParams::AccountStatementOfx)
+          .returns(Increase::Models::ExportCreateParams::AccountStatementOfx)
       end
-      attr_writer :bookkeeping_account_balance_csv
+      def account_statement_ofx=(_)
+      end
+
+      sig { returns(T.nilable(Increase::Models::ExportCreateParams::BalanceCsv)) }
+      def balance_csv
+      end
+
+      sig do
+        params(_: Increase::Models::ExportCreateParams::BalanceCsv)
+          .returns(Increase::Models::ExportCreateParams::BalanceCsv)
+      end
+      def balance_csv=(_)
+      end
+
+      sig { returns(T.nilable(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)) }
+      def bookkeeping_account_balance_csv
+      end
+
+      sig do
+        params(_: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)
+          .returns(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv)
+      end
+      def bookkeeping_account_balance_csv=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::EntityCsv)) }
-      attr_reader :entity_csv
+      def entity_csv
+      end
 
-      sig { params(entity_csv: Increase::Models::ExportCreateParams::EntityCsv).void }
-      attr_writer :entity_csv
+      sig do
+        params(_: Increase::Models::ExportCreateParams::EntityCsv)
+          .returns(Increase::Models::ExportCreateParams::EntityCsv)
+      end
+      def entity_csv=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::ExportCreateParams::TransactionCsv)) }
-      attr_reader :transaction_csv
+      def transaction_csv
+      end
 
-      sig { params(transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv).void }
-      attr_writer :transaction_csv
+      sig do
+        params(_: Increase::Models::ExportCreateParams::TransactionCsv)
+          .returns(Increase::Models::ExportCreateParams::TransactionCsv)
+      end
+      def transaction_csv=(_)
+      end
 
       sig { returns(T.nilable(T.anything)) }
-      attr_reader :vendor_csv
+      def vendor_csv
+      end
 
-      sig { params(vendor_csv: T.anything).void }
-      attr_writer :vendor_csv
+      sig { params(_: T.anything).returns(T.anything) }
+      def vendor_csv=(_)
+      end
 
       sig do
         params(
@@ -59,7 +87,8 @@ module Increase
           transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
           vendor_csv: T.anything,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         category:,
@@ -74,18 +103,19 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            category: Symbol,
-            account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
-            balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
-            bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
-            entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
-            transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
-            vendor_csv: T.anything,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              category: Symbol,
+              account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
+              balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
+              bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
+              entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
+              transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
+              vendor_csv: T.anything,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -118,58 +148,75 @@ module Increase
 
       class AccountStatementOfx < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :account_id
+        def account_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_id=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt)) }
-        attr_reader :created_at
+        def created_at
+        end
 
-        sig { params(created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt).void }
-        attr_writer :created_at
+        sig do
+          params(_: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt)
+            .returns(Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt)
+        end
+        def created_at=(_)
+        end
 
         sig do
           params(
             account_id: String,
             created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
-          ).void
+          )
+            .void
         end
         def initialize(account_id:, created_at: nil)
         end
 
         sig do
-          override.returns(
-            {
-              account_id: String,
-              created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
-            }
-          )
+          override
+            .returns(
+              {account_id: String, created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt}
+            )
         end
         def to_hash
         end
 
         class CreatedAt < Increase::BaseModel
           sig { returns(T.nilable(Time)) }
-          attr_reader :after
+          def after
+          end
 
-          sig { params(after: Time).void }
-          attr_writer :after
-
-          sig { returns(T.nilable(Time)) }
-          attr_reader :before
-
-          sig { params(before: Time).void }
-          attr_writer :before
+          sig { params(_: Time).returns(Time) }
+          def after=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :on_or_after
+          def before
+          end
 
-          sig { params(on_or_after: Time).void }
-          attr_writer :on_or_after
+          sig { params(_: Time).returns(Time) }
+          def before=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :on_or_before
+          def on_or_after
+          end
 
-          sig { params(on_or_before: Time).void }
-          attr_writer :on_or_before
+          sig { params(_: Time).returns(Time) }
+          def on_or_after=(_)
+          end
+
+          sig { returns(T.nilable(Time)) }
+          def on_or_before
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def on_or_before=(_)
+          end
 
           sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).void }
           def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
@@ -183,69 +230,88 @@ module Increase
 
       class BalanceCsv < Increase::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_reader :account_id
+        def account_id
+        end
 
-        sig { params(account_id: String).void }
-        attr_writer :account_id
+        sig { params(_: String).returns(String) }
+        def account_id=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt)) }
-        attr_reader :created_at
+        def created_at
+        end
 
-        sig { params(created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt).void }
-        attr_writer :created_at
+        sig do
+          params(_: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt)
+            .returns(Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt)
+        end
+        def created_at=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :program_id
+        def program_id
+        end
 
-        sig { params(program_id: String).void }
-        attr_writer :program_id
+        sig { params(_: String).returns(String) }
+        def program_id=(_)
+        end
 
         sig do
           params(
             account_id: String,
             created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
             program_id: String
-          ).void
+          )
+            .void
         end
         def initialize(account_id: nil, created_at: nil, program_id: nil)
         end
 
         sig do
-          override.returns(
-            {
-              account_id: String,
-              created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
-              program_id: String
-            }
-          )
+          override
+            .returns(
+              {
+                account_id: String,
+                created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
+                program_id: String
+              }
+            )
         end
         def to_hash
         end
 
         class CreatedAt < Increase::BaseModel
           sig { returns(T.nilable(Time)) }
-          attr_reader :after
+          def after
+          end
 
-          sig { params(after: Time).void }
-          attr_writer :after
-
-          sig { returns(T.nilable(Time)) }
-          attr_reader :before
-
-          sig { params(before: Time).void }
-          attr_writer :before
+          sig { params(_: Time).returns(Time) }
+          def after=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :on_or_after
+          def before
+          end
 
-          sig { params(on_or_after: Time).void }
-          attr_writer :on_or_after
+          sig { params(_: Time).returns(Time) }
+          def before=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :on_or_before
+          def on_or_after
+          end
 
-          sig { params(on_or_before: Time).void }
-          attr_writer :on_or_before
+          sig { params(_: Time).returns(Time) }
+          def on_or_after=(_)
+          end
+
+          sig { returns(T.nilable(Time)) }
+          def on_or_before
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def on_or_before=(_)
+          end
 
           sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).void }
           def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
@@ -259,65 +325,78 @@ module Increase
 
       class BookkeepingAccountBalanceCsv < Increase::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_reader :bookkeeping_account_id
+        def bookkeeping_account_id
+        end
 
-        sig { params(bookkeeping_account_id: String).void }
-        attr_writer :bookkeeping_account_id
+        sig { params(_: String).returns(String) }
+        def bookkeeping_account_id=(_)
+        end
+
+        sig { returns(T.nilable(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt)) }
+        def created_at
+        end
 
         sig do
-          returns(T.nilable(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt))
+          params(_: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt)
+            .returns(Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt)
         end
-        attr_reader :created_at
-
-        sig do
-          params(created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt).void
+        def created_at=(_)
         end
-        attr_writer :created_at
 
         sig do
           params(
             bookkeeping_account_id: String,
             created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
-          ).void
+          )
+            .void
         end
         def initialize(bookkeeping_account_id: nil, created_at: nil)
         end
 
         sig do
-          override.returns(
-            {
-              bookkeeping_account_id: String,
-              created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
-            }
-          )
+          override
+            .returns(
+              {
+                bookkeeping_account_id: String,
+                created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
+              }
+            )
         end
         def to_hash
         end
 
         class CreatedAt < Increase::BaseModel
           sig { returns(T.nilable(Time)) }
-          attr_reader :after
+          def after
+          end
 
-          sig { params(after: Time).void }
-          attr_writer :after
-
-          sig { returns(T.nilable(Time)) }
-          attr_reader :before
-
-          sig { params(before: Time).void }
-          attr_writer :before
+          sig { params(_: Time).returns(Time) }
+          def after=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :on_or_after
+          def before
+          end
 
-          sig { params(on_or_after: Time).void }
-          attr_writer :on_or_after
+          sig { params(_: Time).returns(Time) }
+          def before=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :on_or_before
+          def on_or_after
+          end
 
-          sig { params(on_or_before: Time).void }
-          attr_writer :on_or_before
+          sig { params(_: Time).returns(Time) }
+          def on_or_after=(_)
+          end
+
+          sig { returns(T.nilable(Time)) }
+          def on_or_before
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def on_or_before=(_)
+          end
 
           sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).void }
           def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
@@ -331,10 +410,15 @@ module Increase
 
       class EntityCsv < Increase::BaseModel
         sig { returns(T.nilable(Increase::Models::ExportCreateParams::EntityCsv::Status)) }
-        attr_reader :status
+        def status
+        end
 
-        sig { params(status: Increase::Models::ExportCreateParams::EntityCsv::Status).void }
-        attr_writer :status
+        sig do
+          params(_: Increase::Models::ExportCreateParams::EntityCsv::Status)
+            .returns(Increase::Models::ExportCreateParams::EntityCsv::Status)
+        end
+        def status=(_)
+        end
 
         sig { params(status: Increase::Models::ExportCreateParams::EntityCsv::Status).void }
         def initialize(status: nil)
@@ -346,7 +430,12 @@ module Increase
 
         class Status < Increase::BaseModel
           sig { returns(T::Array[Symbol]) }
-          attr_accessor :in_
+          def in_
+          end
+
+          sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+          def in_=(_)
+          end
 
           sig { params(in_: T::Array[Symbol]).void }
           def initialize(in_:)
@@ -377,69 +466,88 @@ module Increase
 
       class TransactionCsv < Increase::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_reader :account_id
+        def account_id
+        end
 
-        sig { params(account_id: String).void }
-        attr_writer :account_id
+        sig { params(_: String).returns(String) }
+        def account_id=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt)) }
-        attr_reader :created_at
+        def created_at
+        end
 
-        sig { params(created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt).void }
-        attr_writer :created_at
+        sig do
+          params(_: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt)
+            .returns(Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt)
+        end
+        def created_at=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :program_id
+        def program_id
+        end
 
-        sig { params(program_id: String).void }
-        attr_writer :program_id
+        sig { params(_: String).returns(String) }
+        def program_id=(_)
+        end
 
         sig do
           params(
             account_id: String,
             created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
             program_id: String
-          ).void
+          )
+            .void
         end
         def initialize(account_id: nil, created_at: nil, program_id: nil)
         end
 
         sig do
-          override.returns(
-            {
-              account_id: String,
-              created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
-              program_id: String
-            }
-          )
+          override
+            .returns(
+              {
+                account_id: String,
+                created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
+                program_id: String
+              }
+            )
         end
         def to_hash
         end
 
         class CreatedAt < Increase::BaseModel
           sig { returns(T.nilable(Time)) }
-          attr_reader :after
+          def after
+          end
 
-          sig { params(after: Time).void }
-          attr_writer :after
-
-          sig { returns(T.nilable(Time)) }
-          attr_reader :before
-
-          sig { params(before: Time).void }
-          attr_writer :before
+          sig { params(_: Time).returns(Time) }
+          def after=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :on_or_after
+          def before
+          end
 
-          sig { params(on_or_after: Time).void }
-          attr_writer :on_or_after
+          sig { params(_: Time).returns(Time) }
+          def before=(_)
+          end
 
           sig { returns(T.nilable(Time)) }
-          attr_reader :on_or_before
+          def on_or_after
+          end
 
-          sig { params(on_or_before: Time).void }
-          attr_writer :on_or_before
+          sig { params(_: Time).returns(Time) }
+          def on_or_after=(_)
+          end
+
+          sig { returns(T.nilable(Time)) }
+          def on_or_before
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def on_or_before=(_)
+          end
 
           sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).void }
           def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)

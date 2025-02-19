@@ -84,15 +84,15 @@ module Increase
 
           attr_reader city: String?
 
-          def city=: (String) -> void
+          def city=: (String) -> String
 
           attr_reader post_code: String?
 
-          def post_code=: (String) -> void
+          def post_code=: (String) -> String
 
           attr_reader street_name: String?
 
-          def street_name=: (String) -> void
+          def street_name=: (String) -> String
 
           def initialize:
             (

@@ -10,11 +10,11 @@ module Increase
 
       attr_reader updated_account_number: String?
 
-      def updated_account_number=: (String) -> void
+      def updated_account_number=: (String) -> String
 
       attr_reader updated_routing_number: String?
 
-      def updated_routing_number=: (String) -> void
+      def updated_routing_number=: (String) -> String
 
       def initialize:
         (

@@ -346,10 +346,7 @@ module Increase
             #   The person's address.
             #
             #   @return [Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address]
-            required :address,
-                     -> {
-                       Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address
-                     }
+            required :address, -> { Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address }
 
             # @!attribute date_of_birth
             #   The person's date of birth in YYYY-MM-DD format.
@@ -451,9 +448,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method]
               required :method_,
-                       enum: -> {
-                         Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method
-                       },
+                       enum: -> { Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method },
                        api_name: :method
 
               # @!attribute number_last4
@@ -1654,10 +1649,7 @@ module Increase
             #   A means of verifying the person's identity.
             #
             #   @return [Increase::Models::Entity::Trust::Trustee::Individual::Identification]
-            required :identification,
-                     -> {
-                       Increase::Models::Entity::Trust::Trustee::Individual::Identification
-                     }
+            required :identification, -> { Increase::Models::Entity::Trust::Trustee::Individual::Identification }
 
             # @!attribute name
             #   The person's legal name.
@@ -1747,9 +1739,7 @@ module Increase
               #
               #   @return [Symbol, Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method]
               required :method_,
-                       enum: -> {
-                         Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method
-                       },
+                       enum: -> { Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method },
                        api_name: :method
 
               # @!attribute number_last4

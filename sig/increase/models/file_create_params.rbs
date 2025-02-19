@@ -18,7 +18,7 @@ module Increase
 
       attr_reader description: String?
 
-      def description=: (String) -> void
+      def description=: (String) -> String
 
       def initialize:
         (

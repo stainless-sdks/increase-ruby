@@ -7,31 +7,50 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CardCreateParams::BillingAddress)) }
-      attr_reader :billing_address
+      def billing_address
+      end
 
-      sig { params(billing_address: Increase::Models::CardCreateParams::BillingAddress).void }
-      attr_writer :billing_address
+      sig do
+        params(_: Increase::Models::CardCreateParams::BillingAddress)
+          .returns(Increase::Models::CardCreateParams::BillingAddress)
+      end
+      def billing_address=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :description
+      def description
+      end
 
-      sig { params(description: String).void }
-      attr_writer :description
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::CardCreateParams::DigitalWallet)) }
-      attr_reader :digital_wallet
+      def digital_wallet
+      end
 
-      sig { params(digital_wallet: Increase::Models::CardCreateParams::DigitalWallet).void }
-      attr_writer :digital_wallet
+      sig do
+        params(_: Increase::Models::CardCreateParams::DigitalWallet)
+          .returns(Increase::Models::CardCreateParams::DigitalWallet)
+      end
+      def digital_wallet=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :entity_id
+      def entity_id
+      end
 
-      sig { params(entity_id: String).void }
-      attr_writer :entity_id
+      sig { params(_: String).returns(String) }
+      def entity_id=(_)
+      end
 
       sig do
         params(
@@ -41,7 +60,8 @@ module Increase
           digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
           entity_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         account_id:,
@@ -54,38 +74,61 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            billing_address: Increase::Models::CardCreateParams::BillingAddress,
-            description: String,
-            digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
-            entity_id: String,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              billing_address: Increase::Models::CardCreateParams::BillingAddress,
+              description: String,
+              digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
+              entity_id: String,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
 
       class BillingAddress < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :city
+        def city
+        end
+
+        sig { params(_: String).returns(String) }
+        def city=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :line1
+        def line1
+        end
+
+        sig { params(_: String).returns(String) }
+        def line1=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :postal_code
+        def postal_code
+        end
+
+        sig { params(_: String).returns(String) }
+        def postal_code=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :state
+        def state
+        end
+
+        sig { params(_: String).returns(String) }
+        def state=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :line2
+        def line2
+        end
 
-        sig { params(line2: String).void }
-        attr_writer :line2
+        sig { params(_: String).returns(String) }
+        def line2=(_)
+        end
 
         sig { params(city: String, line1: String, postal_code: String, state: String, line2: String).void }
         def initialize(city:, line1:, postal_code:, state:, line2: nil)
@@ -100,22 +143,28 @@ module Increase
 
       class DigitalWallet < Increase::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_reader :digital_card_profile_id
+        def digital_card_profile_id
+        end
 
-        sig { params(digital_card_profile_id: String).void }
-        attr_writer :digital_card_profile_id
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :email
-
-        sig { params(email: String).void }
-        attr_writer :email
+        sig { params(_: String).returns(String) }
+        def digital_card_profile_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :phone
+        def email
+        end
 
-        sig { params(phone: String).void }
-        attr_writer :phone
+        sig { params(_: String).returns(String) }
+        def email=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def phone
+        end
+
+        sig { params(_: String).returns(String) }
+        def phone=(_)
+        end
 
         sig { params(digital_card_profile_id: String, email: String, phone: String).void }
         def initialize(digital_card_profile_id: nil, email: nil, phone: nil)

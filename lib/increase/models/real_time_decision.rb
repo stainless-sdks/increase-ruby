@@ -65,11 +65,7 @@ module Increase
       #   Fields related to a digital wallet token provisioning attempt.
       #
       #   @return [Increase::Models::RealTimeDecision::DigitalWalletToken, nil]
-      required :digital_wallet_token,
-               -> {
-                 Increase::Models::RealTimeDecision::DigitalWalletToken
-               },
-               nil?: true
+      required :digital_wallet_token, -> { Increase::Models::RealTimeDecision::DigitalWalletToken }, nil?: true
 
       # @!attribute status
       #   The status of the Real-Time Decision.
@@ -392,10 +388,7 @@ module Increase
         #   Fields specific to the `network`.
         #
         #   @return [Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails]
-        required :network_details,
-                 -> {
-                   Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails
-                 }
+        required :network_details, -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails }
 
         # @!attribute network_identifiers
         #   Network-specific identifiers for a specific request or transaction.
@@ -445,10 +438,7 @@ module Increase
         #   Fields specific to the type of request, such as an incremental authorization.
         #
         #   @return [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails]
-        required :request_details,
-                 -> {
-                   Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails
-                 }
+        required :request_details, -> { Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails }
 
         # @!attribute settlement_amount
         #   The amount of the attempted authorization in the currency it will be settled in.
@@ -616,9 +606,7 @@ module Increase
           #
           #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category]
           required :category,
-                   enum: -> {
-                     Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category
-                   }
+                   enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category }
 
           # @!attribute visa
           #   Fields specific to the `visa` network.
@@ -677,9 +665,7 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator, nil]
             required :electronic_commerce_indicator,
-                     enum: -> {
-                       Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator
-                     },
+                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator },
                      nil?: true
 
             # @!attribute point_of_service_entry_mode
@@ -688,9 +674,7 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode, nil]
             required :point_of_service_entry_mode,
-                     enum: -> {
-                       Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode
-                     },
+                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode },
                      nil?: true
 
             # @!attribute stand_in_processing_reason
@@ -699,9 +683,7 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason, nil]
             required :stand_in_processing_reason,
-                     enum: -> {
-                       Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason
-                     },
+                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason },
                      nil?: true
 
             # @!parse
@@ -993,18 +975,14 @@ module Increase
           #
           #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category]
           required :category,
-                   enum: -> {
-                     Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category
-                   }
+                   enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category }
 
           # @!attribute incremental_authorization
           #   Fields specific to the category `incremental_authorization`.
           #
           #   @return [Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization, nil]
           required :incremental_authorization,
-                   -> {
-                     Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization
-                   },
+                   -> { Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization },
                    nil?: true
 
           # @!attribute initial_authorization
@@ -1132,9 +1110,7 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result]
             required :result,
-                     enum: -> {
-                       Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result
-                     }
+                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result }
 
             # @!parse
             #   # Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -1221,9 +1197,7 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result]
             required :result,
-                     enum: -> {
-                       Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result
-                     }
+                     enum: -> { Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result }
 
             # @!parse
             #   # Cardholder address provided in the authorization request and the address on file
@@ -1355,10 +1329,7 @@ module Increase
         #   The channel to send the card user their one-time passcode.
         #
         #   @return [Symbol, Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel]
-        required :channel,
-                 enum: -> {
-                   Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel
-                 }
+        required :channel, enum: -> { Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel }
 
         # @!attribute digital_wallet
         #   The digital wallet app being used.

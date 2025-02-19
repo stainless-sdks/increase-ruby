@@ -7,16 +7,28 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :disputed_transaction_id
+      def disputed_transaction_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def disputed_transaction_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :explanation
+      def explanation
+      end
+
+      sig { params(_: String).returns(String) }
+      def explanation=(_)
+      end
 
       sig { returns(T.nilable(Integer)) }
-      attr_reader :amount
+      def amount
+      end
 
-      sig { params(amount: Integer).void }
-      attr_writer :amount
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig do
         params(
@@ -24,20 +36,22 @@ module Increase
           explanation: String,
           amount: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(disputed_transaction_id:, explanation:, amount: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            disputed_transaction_id: String,
-            explanation: String,
-            amount: Integer,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              disputed_transaction_id: String,
+              explanation: String,
+              amount: Integer,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

@@ -15,7 +15,7 @@ module Increase
 
         attr_reader contents_file_id: String?
 
-        def contents_file_id=: (String) -> void
+        def contents_file_id=: (String) -> String
 
         def initialize:
           (

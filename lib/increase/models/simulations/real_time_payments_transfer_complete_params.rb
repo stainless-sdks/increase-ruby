@@ -39,9 +39,7 @@ module Increase
           #
           #   @return [Symbol, Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode]
           required :reject_reason_code,
-                   enum: -> {
-                     Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode
-                   }
+                   enum: -> { Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection::RejectReasonCode }
 
           # @!parse
           #   # If set, the simulation will reject the transfer.

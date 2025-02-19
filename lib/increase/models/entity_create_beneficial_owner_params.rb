@@ -45,9 +45,7 @@ module Increase
         #
         #   @return [Array<Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong>]
         required :prongs,
-                 -> {
-                   Increase::ArrayOf[enum: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong]
-                 }
+                 -> { Increase::ArrayOf[enum: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Prong] }
 
         # @!attribute [r] company_title
         #   This person's role or title within the entity.
@@ -212,9 +210,7 @@ module Increase
             #
             #   @return [Symbol, Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method]
             required :method_,
-                     enum: -> {
-                       Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method
-                     },
+                     enum: -> { Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Method },
                      api_name: :method
 
             # @!attribute number
