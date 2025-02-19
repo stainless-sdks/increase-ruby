@@ -8,40 +8,60 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :account_number_id
+        def account_number_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def account_number_id=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :debtor_account_number
+        def debtor_account_number
+        end
 
-        sig { params(debtor_account_number: String).void }
-        attr_writer :debtor_account_number
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :debtor_name
-
-        sig { params(debtor_name: String).void }
-        attr_writer :debtor_name
+        sig { params(_: String).returns(String) }
+        def debtor_account_number=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :debtor_routing_number
+        def debtor_name
+        end
 
-        sig { params(debtor_routing_number: String).void }
-        attr_writer :debtor_routing_number
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :remittance_information
-
-        sig { params(remittance_information: String).void }
-        attr_writer :remittance_information
+        sig { params(_: String).returns(String) }
+        def debtor_name=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :request_for_payment_id
+        def debtor_routing_number
+        end
 
-        sig { params(request_for_payment_id: String).void }
-        attr_writer :request_for_payment_id
+        sig { params(_: String).returns(String) }
+        def debtor_routing_number=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def remittance_information
+        end
+
+        sig { params(_: String).returns(String) }
+        def remittance_information=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def request_for_payment_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def request_for_payment_id=(_)
+        end
 
         sig do
           params(
@@ -53,7 +73,8 @@ module Increase
             remittance_information: String,
             request_for_payment_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           account_number_id:,
@@ -68,18 +89,19 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              account_number_id: String,
-              amount: Integer,
-              debtor_account_number: String,
-              debtor_name: String,
-              debtor_routing_number: String,
-              remittance_information: String,
-              request_for_payment_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                account_number_id: String,
+                amount: Integer,
+                debtor_account_number: String,
+                debtor_name: String,
+                debtor_routing_number: String,
+                remittance_information: String,
+                request_for_payment_id: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end

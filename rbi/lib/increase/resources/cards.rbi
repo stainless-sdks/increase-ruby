@@ -11,7 +11,8 @@ module Increase
           digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
           entity_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Card)
+        )
+          .returns(Increase::Models::Card)
       end
       def create(
         account_id:,
@@ -27,7 +28,8 @@ module Increase
         params(
           card_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Card)
+        )
+          .returns(Increase::Models::Card)
       end
       def retrieve(card_id, request_options: {})
       end
@@ -41,7 +43,8 @@ module Increase
           entity_id: String,
           status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::Card)
+        )
+          .returns(Increase::Models::Card)
       end
       def update(
         card_id,
@@ -62,7 +65,8 @@ module Increase
           idempotency_key: String,
           limit: Integer,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Page[Increase::Models::Card])
+        )
+          .returns(Increase::Page[Increase::Models::Card])
       end
       def list(
         account_id: nil,
@@ -78,7 +82,8 @@ module Increase
         params(
           card_id: String,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(Increase::Models::CardDetails)
+        )
+          .returns(Increase::Models::CardDetails)
       end
       def details(card_id, request_options: {})
       end

@@ -19,7 +19,7 @@ module Increase
 
         attr_reader event_subscription_id: String?
 
-        def event_subscription_id=: (String) -> void
+        def event_subscription_id=: (String) -> String
 
         def initialize:
           (

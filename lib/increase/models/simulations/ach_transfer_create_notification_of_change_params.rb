@@ -13,9 +13,7 @@ module Increase
         #
         #   @return [Symbol, Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode]
         required :change_code,
-                 enum: -> {
-                   Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode
-                 }
+                 enum: -> { Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams::ChangeCode }
 
         # @!attribute corrected_data
         #   The corrected data for the notification of change (e.g., a new routing number).

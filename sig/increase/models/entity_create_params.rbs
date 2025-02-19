@@ -24,43 +24,47 @@ module Increase
 
       def corporation=: (
         Increase::Models::EntityCreateParams::Corporation
-      ) -> void
+      ) -> Increase::Models::EntityCreateParams::Corporation
 
       attr_reader description: String?
 
-      def description=: (String) -> void
+      def description=: (String) -> String
 
       attr_reader government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority?
 
       def government_authority=: (
         Increase::Models::EntityCreateParams::GovernmentAuthority
-      ) -> void
+      ) -> Increase::Models::EntityCreateParams::GovernmentAuthority
 
       attr_reader joint: Increase::Models::EntityCreateParams::Joint?
 
-      def joint=: (Increase::Models::EntityCreateParams::Joint) -> void
+      def joint=: (
+        Increase::Models::EntityCreateParams::Joint
+      ) -> Increase::Models::EntityCreateParams::Joint
 
       attr_reader natural_person: Increase::Models::EntityCreateParams::NaturalPerson?
 
       def natural_person=: (
         Increase::Models::EntityCreateParams::NaturalPerson
-      ) -> void
+      ) -> Increase::Models::EntityCreateParams::NaturalPerson
 
       attr_reader supplemental_documents: ::Array[Increase::Models::EntityCreateParams::SupplementalDocument]?
 
       def supplemental_documents=: (
         ::Array[Increase::Models::EntityCreateParams::SupplementalDocument]
-      ) -> void
+      ) -> ::Array[Increase::Models::EntityCreateParams::SupplementalDocument]
 
       attr_reader third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification?
 
       def third_party_verification=: (
         Increase::Models::EntityCreateParams::ThirdPartyVerification
-      ) -> void
+      ) -> Increase::Models::EntityCreateParams::ThirdPartyVerification
 
       attr_reader trust: Increase::Models::EntityCreateParams::Trust?
 
-      def trust=: (Increase::Models::EntityCreateParams::Trust) -> void
+      def trust=: (
+        Increase::Models::EntityCreateParams::Trust
+      ) -> Increase::Models::EntityCreateParams::Trust
 
       def initialize:
         (
@@ -125,15 +129,15 @@ module Increase
 
         attr_reader incorporation_state: String?
 
-        def incorporation_state=: (String) -> void
+        def incorporation_state=: (String) -> String
 
         attr_reader industry_code: String?
 
-        def industry_code=: (String) -> void
+        def industry_code=: (String) -> String
 
         attr_reader website: String?
 
-        def website=: (String) -> void
+        def website=: (String) -> String
 
         def initialize:
           (
@@ -172,7 +176,7 @@ module Increase
 
           attr_reader line2: String?
 
-          def line2=: (String) -> void
+          def line2=: (String) -> String
 
           def initialize:
             (
@@ -204,7 +208,7 @@ module Increase
 
           attr_reader company_title: String?
 
-          def company_title=: (String) -> void
+          def company_title=: (String) -> String
 
           def initialize:
             (
@@ -239,7 +243,7 @@ module Increase
 
             attr_reader confirmed_no_us_tax_id: bool?
 
-            def confirmed_no_us_tax_id=: (bool) -> void
+            def confirmed_no_us_tax_id=: (bool) -> bool
 
             def initialize:
               (
@@ -276,7 +280,7 @@ module Increase
 
               attr_reader line2: String?
 
-              def line2=: (String) -> void
+              def line2=: (String) -> String
 
               def initialize:
                 (
@@ -312,19 +316,19 @@ module Increase
 
               def drivers_license=: (
                 Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense
-              ) -> void
+              ) -> Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense
 
               attr_reader other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other?
 
               def other=: (
                 Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other
-              ) -> void
+              ) -> Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other
 
               attr_reader passport: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport?
 
               def passport=: (
                 Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
-              ) -> void
+              ) -> Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
 
               def initialize:
                 (
@@ -384,7 +388,7 @@ module Increase
 
                 attr_reader back_file_id: String?
 
-                def back_file_id=: (String) -> void
+                def back_file_id=: (String) -> String
 
                 def initialize:
                   (
@@ -419,11 +423,11 @@ module Increase
 
                 attr_reader back_file_id: String?
 
-                def back_file_id=: (String) -> void
+                def back_file_id=: (String) -> String
 
                 attr_reader expiration_date: Date?
 
-                def expiration_date=: (Date) -> void
+                def expiration_date=: (Date) -> Date
 
                 def initialize:
                   (
@@ -504,7 +508,7 @@ module Increase
 
         attr_reader website: String?
 
-        def website=: (String) -> void
+        def website=: (String) -> String
 
         def initialize:
           (
@@ -542,7 +546,7 @@ module Increase
 
           attr_reader line2: String?
 
-          def line2=: (String) -> void
+          def line2=: (String) -> String
 
           def initialize:
             (
@@ -596,7 +600,7 @@ module Increase
 
         attr_reader name: String?
 
-        def name=: (String) -> void
+        def name=: (String) -> String
 
         def initialize:
           (
@@ -630,7 +634,7 @@ module Increase
 
           attr_reader confirmed_no_us_tax_id: bool?
 
-          def confirmed_no_us_tax_id=: (bool) -> void
+          def confirmed_no_us_tax_id=: (bool) -> bool
 
           def initialize:
             (
@@ -667,7 +671,7 @@ module Increase
 
             attr_reader line2: String?
 
-            def line2=: (String) -> void
+            def line2=: (String) -> String
 
             def initialize:
               (
@@ -703,19 +707,19 @@ module Increase
 
             def drivers_license=: (
               Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense
-            ) -> void
+            ) -> Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense
 
             attr_reader other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other?
 
             def other=: (
               Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other
-            ) -> void
+            ) -> Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other
 
             attr_reader passport: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport?
 
             def passport=: (
               Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
-            ) -> void
+            ) -> Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
 
             def initialize:
               (
@@ -775,7 +779,7 @@ module Increase
 
               attr_reader back_file_id: String?
 
-              def back_file_id=: (String) -> void
+              def back_file_id=: (String) -> String
 
               def initialize:
                 (
@@ -810,11 +814,11 @@ module Increase
 
               attr_reader back_file_id: String?
 
-              def back_file_id=: (String) -> void
+              def back_file_id=: (String) -> String
 
               attr_reader expiration_date: Date?
 
-              def expiration_date=: (Date) -> void
+              def expiration_date=: (Date) -> Date
 
               def initialize:
                 (
@@ -879,7 +883,7 @@ module Increase
 
         attr_reader confirmed_no_us_tax_id: bool?
 
-        def confirmed_no_us_tax_id=: (bool) -> void
+        def confirmed_no_us_tax_id=: (bool) -> bool
 
         def initialize:
           (
@@ -916,7 +920,7 @@ module Increase
 
           attr_reader line2: String?
 
-          def line2=: (String) -> void
+          def line2=: (String) -> String
 
           def initialize:
             (
@@ -952,19 +956,19 @@ module Increase
 
           def drivers_license=: (
             Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense
-          ) -> void
+          ) -> Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense
 
           attr_reader other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other?
 
           def other=: (
             Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other
-          ) -> void
+          ) -> Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other
 
           attr_reader passport: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport?
 
           def passport=: (
             Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
-          ) -> void
+          ) -> Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
 
           def initialize:
             (
@@ -1024,7 +1028,7 @@ module Increase
 
             attr_reader back_file_id: String?
 
-            def back_file_id=: (String) -> void
+            def back_file_id=: (String) -> String
 
             def initialize:
               (
@@ -1059,11 +1063,11 @@ module Increase
 
             attr_reader back_file_id: String?
 
-            def back_file_id=: (String) -> void
+            def back_file_id=: (String) -> String
 
             attr_reader expiration_date: Date?
 
-            def expiration_date=: (Date) -> void
+            def expiration_date=: (Date) -> Date
 
             def initialize:
               (
@@ -1177,21 +1181,21 @@ module Increase
 
         attr_reader formation_document_file_id: String?
 
-        def formation_document_file_id=: (String) -> void
+        def formation_document_file_id=: (String) -> String
 
         attr_reader formation_state: String?
 
-        def formation_state=: (String) -> void
+        def formation_state=: (String) -> String
 
         attr_reader grantor: Increase::Models::EntityCreateParams::Trust::Grantor?
 
         def grantor=: (
           Increase::Models::EntityCreateParams::Trust::Grantor
-        ) -> void
+        ) -> Increase::Models::EntityCreateParams::Trust::Grantor
 
         attr_reader tax_identifier: String?
 
-        def tax_identifier=: (String) -> void
+        def tax_identifier=: (String) -> String
 
         def initialize:
           (
@@ -1231,7 +1235,7 @@ module Increase
 
           attr_reader line2: String?
 
-          def line2=: (String) -> void
+          def line2=: (String) -> String
 
           def initialize:
             (
@@ -1274,7 +1278,7 @@ module Increase
 
           def individual=: (
             Increase::Models::EntityCreateParams::Trust::Trustee::Individual
-          ) -> void
+          ) -> Increase::Models::EntityCreateParams::Trust::Trustee::Individual
 
           def initialize:
             (
@@ -1317,7 +1321,7 @@ module Increase
 
             attr_reader confirmed_no_us_tax_id: bool?
 
-            def confirmed_no_us_tax_id=: (bool) -> void
+            def confirmed_no_us_tax_id=: (bool) -> bool
 
             def initialize:
               (
@@ -1354,7 +1358,7 @@ module Increase
 
               attr_reader line2: String?
 
-              def line2=: (String) -> void
+              def line2=: (String) -> String
 
               def initialize:
                 (
@@ -1390,19 +1394,19 @@ module Increase
 
               def drivers_license=: (
                 Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense
-              ) -> void
+              ) -> Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense
 
               attr_reader other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other?
 
               def other=: (
                 Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other
-              ) -> void
+              ) -> Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other
 
               attr_reader passport: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport?
 
               def passport=: (
                 Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
-              ) -> void
+              ) -> Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
 
               def initialize:
                 (
@@ -1462,7 +1466,7 @@ module Increase
 
                 attr_reader back_file_id: String?
 
-                def back_file_id=: (String) -> void
+                def back_file_id=: (String) -> String
 
                 def initialize:
                   (
@@ -1497,11 +1501,11 @@ module Increase
 
                 attr_reader back_file_id: String?
 
-                def back_file_id=: (String) -> void
+                def back_file_id=: (String) -> String
 
                 attr_reader expiration_date: Date?
 
-                def expiration_date=: (Date) -> void
+                def expiration_date=: (Date) -> Date
 
                 def initialize:
                   (
@@ -1566,7 +1570,7 @@ module Increase
 
           attr_reader confirmed_no_us_tax_id: bool?
 
-          def confirmed_no_us_tax_id=: (bool) -> void
+          def confirmed_no_us_tax_id=: (bool) -> bool
 
           def initialize:
             (
@@ -1603,7 +1607,7 @@ module Increase
 
             attr_reader line2: String?
 
-            def line2=: (String) -> void
+            def line2=: (String) -> String
 
             def initialize:
               (
@@ -1639,19 +1643,19 @@ module Increase
 
             def drivers_license=: (
               Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense
-            ) -> void
+            ) -> Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense
 
             attr_reader other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other?
 
             def other=: (
               Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other
-            ) -> void
+            ) -> Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other
 
             attr_reader passport: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport?
 
             def passport=: (
               Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
-            ) -> void
+            ) -> Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
 
             def initialize:
               (
@@ -1711,7 +1715,7 @@ module Increase
 
               attr_reader back_file_id: String?
 
-              def back_file_id=: (String) -> void
+              def back_file_id=: (String) -> String
 
               def initialize:
                 (
@@ -1746,11 +1750,11 @@ module Increase
 
               attr_reader back_file_id: String?
 
-              def back_file_id=: (String) -> void
+              def back_file_id=: (String) -> String
 
               attr_reader expiration_date: Date?
 
-              def expiration_date=: (Date) -> void
+              def expiration_date=: (Date) -> Date
 
               def initialize:
                 (

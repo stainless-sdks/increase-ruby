@@ -18,9 +18,7 @@ module Increase
         #
         #   @return [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason, nil]
         required :decline_reason,
-                 enum: -> {
-                   Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason
-                 },
+                 enum: -> { Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason },
                  nil?: true
 
         # @!attribute digital_wallet_token_id
@@ -35,10 +33,7 @@ module Increase
         #     `inbound_digital_wallet_token_request_simulation_result`.
         #
         #   @return [Symbol, Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type]
-        required :type,
-                 enum: -> {
-                   Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type
-                 }
+        required :type, enum: -> { Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type }
 
         # @!parse
         #   # The results of a Digital Wallet Token simulation.

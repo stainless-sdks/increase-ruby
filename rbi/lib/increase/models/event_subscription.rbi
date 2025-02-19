@@ -4,28 +4,68 @@ module Increase
   module Models
     class EventSubscription < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :oauth_connection_id
+      def oauth_connection_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def oauth_connection_id=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_accessor :selected_event_category
+      def selected_event_category
+      end
+
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      def selected_event_category=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :url
+      def url
+      end
+
+      sig { params(_: String).returns(String) }
+      def url=(_)
+      end
 
       sig do
         params(
@@ -37,7 +77,8 @@ module Increase
           status: Symbol,
           type: Symbol,
           url: String
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -52,18 +93,19 @@ module Increase
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            created_at: Time,
-            idempotency_key: T.nilable(String),
-            oauth_connection_id: T.nilable(String),
-            selected_event_category: T.nilable(Symbol),
-            status: Symbol,
-            type: Symbol,
-            url: String
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              created_at: Time,
+              idempotency_key: T.nilable(String),
+              oauth_connection_id: T.nilable(String),
+              selected_event_category: T.nilable(Symbol),
+              status: Symbol,
+              type: Symbol,
+              url: String
+            }
+          )
       end
       def to_hash
       end

@@ -64,10 +64,7 @@ module Increase
         #     you do not specify this field, the default is `allowed`.
         #
         #   @return [Symbol, Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus]
-        required :debit_status,
-                 enum: -> {
-                   Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus
-                 }
+        required :debit_status, enum: -> { Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus }
 
         # @!parse
         #   # Options related to how this Account Number should handle inbound ACH transfers.

@@ -8,17 +8,28 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(Symbol) }
-        attr_accessor :change_code
+        def change_code
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def change_code=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :corrected_data
+        def corrected_data
+        end
+
+        sig { params(_: String).returns(String) }
+        def corrected_data=(_)
+        end
 
         sig do
           params(
             change_code: Symbol,
             corrected_data: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(change_code:, corrected_data:, request_options: {})
         end

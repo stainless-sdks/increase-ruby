@@ -7,22 +7,42 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :name
+      def name
+      end
+
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::AccountNumberCreateParams::InboundACH)) }
-      attr_reader :inbound_ach
+      def inbound_ach
+      end
 
-      sig { params(inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH).void }
-      attr_writer :inbound_ach
+      sig do
+        params(_: Increase::Models::AccountNumberCreateParams::InboundACH)
+          .returns(Increase::Models::AccountNumberCreateParams::InboundACH)
+      end
+      def inbound_ach=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::AccountNumberCreateParams::InboundChecks)) }
-      attr_reader :inbound_checks
+      def inbound_checks
+      end
 
-      sig { params(inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks).void }
-      attr_writer :inbound_checks
+      sig do
+        params(_: Increase::Models::AccountNumberCreateParams::InboundChecks)
+          .returns(Increase::Models::AccountNumberCreateParams::InboundChecks)
+      end
+      def inbound_checks=(_)
+      end
 
       sig do
         params(
@@ -31,28 +51,35 @@ module Increase
           inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
           inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            account_id: String,
-            name: String,
-            inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
-            inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              account_id: String,
+              name: String,
+              inbound_ach: Increase::Models::AccountNumberCreateParams::InboundACH,
+              inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end
 
       class InboundACH < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :debit_status
+        def debit_status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def debit_status=(_)
+        end
 
         sig { params(debit_status: Symbol).void }
         def initialize(debit_status:)
@@ -79,7 +106,12 @@ module Increase
 
       class InboundChecks < Increase::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :status
+        def status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def status=(_)
+        end
 
         sig { params(status: Symbol).void }
         def initialize(status:)

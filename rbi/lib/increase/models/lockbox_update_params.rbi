@@ -7,22 +7,28 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :description
+      def description
+      end
 
-      sig { params(description: String).void }
-      attr_writer :description
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :recipient_name
+      def recipient_name
+      end
 
-      sig { params(recipient_name: String).void }
-      attr_writer :recipient_name
+      sig { params(_: String).returns(String) }
+      def recipient_name=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_reader :status
+      def status
+      end
 
-      sig { params(status: Symbol).void }
-      attr_writer :status
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig do
         params(
@@ -30,20 +36,22 @@ module Increase
           recipient_name: String,
           status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(description: nil, recipient_name: nil, status: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            description: String,
-            recipient_name: String,
-            status: Symbol,
-            request_options: Increase::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              description: String,
+              recipient_name: String,
+              status: Symbol,
+              request_options: Increase::RequestOptions
+            }
+          )
       end
       def to_hash
       end

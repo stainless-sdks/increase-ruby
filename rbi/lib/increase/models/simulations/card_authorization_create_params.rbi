@@ -8,101 +8,135 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :authenticated_card_payment_id
+        def authenticated_card_payment_id
+        end
 
-        sig { params(authenticated_card_payment_id: String).void }
-        attr_writer :authenticated_card_payment_id
+        sig { params(_: String).returns(String) }
+        def authenticated_card_payment_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :card_id
+        def card_id
+        end
 
-        sig { params(card_id: String).void }
-        attr_writer :card_id
+        sig { params(_: String).returns(String) }
+        def card_id=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :decline_reason
+        def decline_reason
+        end
 
-        sig { params(decline_reason: Symbol).void }
-        attr_writer :decline_reason
+        sig { params(_: Symbol).returns(Symbol) }
+        def decline_reason=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :digital_wallet_token_id
+        def digital_wallet_token_id
+        end
 
-        sig { params(digital_wallet_token_id: String).void }
-        attr_writer :digital_wallet_token_id
+        sig { params(_: String).returns(String) }
+        def digital_wallet_token_id=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :direction
+        def direction
+        end
 
-        sig { params(direction: Symbol).void }
-        attr_writer :direction
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :event_subscription_id
-
-        sig { params(event_subscription_id: String).void }
-        attr_writer :event_subscription_id
+        sig { params(_: Symbol).returns(Symbol) }
+        def direction=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :merchant_acceptor_id
+        def event_subscription_id
+        end
 
-        sig { params(merchant_acceptor_id: String).void }
-        attr_writer :merchant_acceptor_id
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :merchant_category_code
-
-        sig { params(merchant_category_code: String).void }
-        attr_writer :merchant_category_code
+        sig { params(_: String).returns(String) }
+        def event_subscription_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :merchant_city
+        def merchant_acceptor_id
+        end
 
-        sig { params(merchant_city: String).void }
-        attr_writer :merchant_city
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :merchant_country
-
-        sig { params(merchant_country: String).void }
-        attr_writer :merchant_country
+        sig { params(_: String).returns(String) }
+        def merchant_acceptor_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :merchant_descriptor
+        def merchant_category_code
+        end
 
-        sig { params(merchant_descriptor: String).void }
-        attr_writer :merchant_descriptor
+        sig { params(_: String).returns(String) }
+        def merchant_category_code=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :merchant_state
+        def merchant_city
+        end
 
-        sig { params(merchant_state: String).void }
-        attr_writer :merchant_state
+        sig { params(_: String).returns(String) }
+        def merchant_city=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def merchant_country
+        end
+
+        sig { params(_: String).returns(String) }
+        def merchant_country=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def merchant_descriptor
+        end
+
+        sig { params(_: String).returns(String) }
+        def merchant_descriptor=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def merchant_state
+        end
+
+        sig { params(_: String).returns(String) }
+        def merchant_state=(_)
+        end
+
+        sig { returns(T.nilable(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails)) }
+        def network_details
+        end
 
         sig do
-          returns(T.nilable(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails))
+          params(_: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails)
+            .returns(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails)
         end
-        attr_reader :network_details
-
-        sig do
-          params(network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails).void
+        def network_details=(_)
         end
-        attr_writer :network_details
 
         sig { returns(T.nilable(String)) }
-        attr_reader :physical_card_id
+        def physical_card_id
+        end
 
-        sig { params(physical_card_id: String).void }
-        attr_writer :physical_card_id
+        sig { params(_: String).returns(String) }
+        def physical_card_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :terminal_id
+        def terminal_id
+        end
 
-        sig { params(terminal_id: String).void }
-        attr_writer :terminal_id
+        sig { params(_: String).returns(String) }
+        def terminal_id=(_)
+        end
 
         sig do
           params(
@@ -123,7 +157,8 @@ module Increase
             physical_card_id: String,
             terminal_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           amount:,
@@ -147,27 +182,28 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              authenticated_card_payment_id: String,
-              card_id: String,
-              decline_reason: Symbol,
-              digital_wallet_token_id: String,
-              direction: Symbol,
-              event_subscription_id: String,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String,
-              merchant_country: String,
-              merchant_descriptor: String,
-              merchant_state: String,
-              network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-              physical_card_id: String,
-              terminal_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                authenticated_card_payment_id: String,
+                card_id: String,
+                decline_reason: Symbol,
+                digital_wallet_token_id: String,
+                direction: Symbol,
+                event_subscription_id: String,
+                merchant_acceptor_id: String,
+                merchant_category_code: String,
+                merchant_city: String,
+                merchant_country: String,
+                merchant_descriptor: String,
+                merchant_state: String,
+                network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+                physical_card_id: String,
+                terminal_id: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end
@@ -241,26 +277,35 @@ module Increase
 
         class NetworkDetails < Increase::BaseModel
           sig { returns(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa) }
-          attr_accessor :visa
+          def visa
+          end
 
           sig do
-            params(visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa).void
+            params(_: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa)
+              .returns(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa)
           end
+          def visa=(_)
+          end
+
+          sig { params(visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa).void }
           def initialize(visa:)
           end
 
           sig do
-            override.returns({visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa})
+            override
+              .returns({visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa})
           end
           def to_hash
           end
 
           class Visa < Increase::BaseModel
             sig { returns(T.nilable(Symbol)) }
-            attr_reader :stand_in_processing_reason
+            def stand_in_processing_reason
+            end
 
-            sig { params(stand_in_processing_reason: Symbol).void }
-            attr_writer :stand_in_processing_reason
+            sig { params(_: Symbol).returns(Symbol) }
+            def stand_in_processing_reason=(_)
+            end
 
             sig { params(stand_in_processing_reason: Symbol).void }
             def initialize(stand_in_processing_reason: nil)

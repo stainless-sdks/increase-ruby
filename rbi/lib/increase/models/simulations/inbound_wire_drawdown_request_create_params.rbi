@@ -8,100 +8,164 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(Integer) }
-        attr_accessor :amount
+        def amount
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def amount=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :beneficiary_account_number
+        def beneficiary_account_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def beneficiary_account_number=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :beneficiary_routing_number
+        def beneficiary_routing_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def beneficiary_routing_number=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :currency
+        def currency
+        end
+
+        sig { params(_: String).returns(String) }
+        def currency=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :message_to_recipient
+        def message_to_recipient
+        end
+
+        sig { params(_: String).returns(String) }
+        def message_to_recipient=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :originator_account_number
+        def originator_account_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def originator_account_number=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :originator_routing_number
+        def originator_routing_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def originator_routing_number=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :recipient_account_number_id
+        def recipient_account_number_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def recipient_account_number_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :beneficiary_address_line1
+        def beneficiary_address_line1
+        end
 
-        sig { params(beneficiary_address_line1: String).void }
-        attr_writer :beneficiary_address_line1
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :beneficiary_address_line2
-
-        sig { params(beneficiary_address_line2: String).void }
-        attr_writer :beneficiary_address_line2
+        sig { params(_: String).returns(String) }
+        def beneficiary_address_line1=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :beneficiary_address_line3
+        def beneficiary_address_line2
+        end
 
-        sig { params(beneficiary_address_line3: String).void }
-        attr_writer :beneficiary_address_line3
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :beneficiary_name
-
-        sig { params(beneficiary_name: String).void }
-        attr_writer :beneficiary_name
+        sig { params(_: String).returns(String) }
+        def beneficiary_address_line2=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_address_line1
+        def beneficiary_address_line3
+        end
 
-        sig { params(originator_address_line1: String).void }
-        attr_writer :originator_address_line1
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :originator_address_line2
-
-        sig { params(originator_address_line2: String).void }
-        attr_writer :originator_address_line2
+        sig { params(_: String).returns(String) }
+        def beneficiary_address_line3=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_address_line3
+        def beneficiary_name
+        end
 
-        sig { params(originator_address_line3: String).void }
-        attr_writer :originator_address_line3
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :originator_name
-
-        sig { params(originator_name: String).void }
-        attr_writer :originator_name
+        sig { params(_: String).returns(String) }
+        def beneficiary_name=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_to_beneficiary_information_line1
+        def originator_address_line1
+        end
 
-        sig { params(originator_to_beneficiary_information_line1: String).void }
-        attr_writer :originator_to_beneficiary_information_line1
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :originator_to_beneficiary_information_line2
-
-        sig { params(originator_to_beneficiary_information_line2: String).void }
-        attr_writer :originator_to_beneficiary_information_line2
+        sig { params(_: String).returns(String) }
+        def originator_address_line1=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_to_beneficiary_information_line3
+        def originator_address_line2
+        end
 
-        sig { params(originator_to_beneficiary_information_line3: String).void }
-        attr_writer :originator_to_beneficiary_information_line3
+        sig { params(_: String).returns(String) }
+        def originator_address_line2=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :originator_to_beneficiary_information_line4
+        def originator_address_line3
+        end
 
-        sig { params(originator_to_beneficiary_information_line4: String).void }
-        attr_writer :originator_to_beneficiary_information_line4
+        sig { params(_: String).returns(String) }
+        def originator_address_line3=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def originator_name
+        end
+
+        sig { params(_: String).returns(String) }
+        def originator_name=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def originator_to_beneficiary_information_line1
+        end
+
+        sig { params(_: String).returns(String) }
+        def originator_to_beneficiary_information_line1=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def originator_to_beneficiary_information_line2
+        end
+
+        sig { params(_: String).returns(String) }
+        def originator_to_beneficiary_information_line2=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def originator_to_beneficiary_information_line3
+        end
+
+        sig { params(_: String).returns(String) }
+        def originator_to_beneficiary_information_line3=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def originator_to_beneficiary_information_line4
+        end
+
+        sig { params(_: String).returns(String) }
+        def originator_to_beneficiary_information_line4=(_)
+        end
 
         sig do
           params(
@@ -126,7 +190,8 @@ module Increase
             originator_to_beneficiary_information_line3: String,
             originator_to_beneficiary_information_line4: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          ).void
+          )
+            .void
         end
         def initialize(
           amount:,
@@ -154,31 +219,32 @@ module Increase
         end
 
         sig do
-          override.returns(
-            {
-              amount: Integer,
-              beneficiary_account_number: String,
-              beneficiary_routing_number: String,
-              currency: String,
-              message_to_recipient: String,
-              originator_account_number: String,
-              originator_routing_number: String,
-              recipient_account_number_id: String,
-              beneficiary_address_line1: String,
-              beneficiary_address_line2: String,
-              beneficiary_address_line3: String,
-              beneficiary_name: String,
-              originator_address_line1: String,
-              originator_address_line2: String,
-              originator_address_line3: String,
-              originator_name: String,
-              originator_to_beneficiary_information_line1: String,
-              originator_to_beneficiary_information_line2: String,
-              originator_to_beneficiary_information_line3: String,
-              originator_to_beneficiary_information_line4: String,
-              request_options: Increase::RequestOptions
-            }
-          )
+          override
+            .returns(
+              {
+                amount: Integer,
+                beneficiary_account_number: String,
+                beneficiary_routing_number: String,
+                currency: String,
+                message_to_recipient: String,
+                originator_account_number: String,
+                originator_routing_number: String,
+                recipient_account_number_id: String,
+                beneficiary_address_line1: String,
+                beneficiary_address_line2: String,
+                beneficiary_address_line3: String,
+                beneficiary_name: String,
+                originator_address_line1: String,
+                originator_address_line2: String,
+                originator_address_line3: String,
+                originator_name: String,
+                originator_to_beneficiary_information_line1: String,
+                originator_to_beneficiary_information_line2: String,
+                originator_to_beneficiary_information_line3: String,
+                originator_to_beneficiary_information_line4: String,
+                request_options: Increase::RequestOptions
+              }
+            )
         end
         def to_hash
         end

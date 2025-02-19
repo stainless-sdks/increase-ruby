@@ -4,19 +4,44 @@ module Increase
   module Models
     class Group < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :ach_debit_status
+      def ach_debit_status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def ach_debit_status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :activation_status
+      def activation_status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def activation_status=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -25,21 +50,21 @@ module Increase
           activation_status: Symbol,
           created_at: Time,
           type: Symbol
-        ).void
+        )
+          .void
       end
       def initialize(id:, ach_debit_status:, activation_status:, created_at:, type:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            ach_debit_status: Symbol,
-            activation_status: Symbol,
-            created_at: Time,
-            type: Symbol
-          }
-        )
+        override
+          .returns({
+                     id: String,
+                     ach_debit_status: Symbol,
+                     activation_status: Symbol,
+                     created_at: Time,
+                     type: Symbol
+                   })
       end
       def to_hash
       end
