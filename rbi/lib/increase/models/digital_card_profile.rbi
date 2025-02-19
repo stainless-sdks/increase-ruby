@@ -4,46 +4,118 @@ module Increase
   module Models
     class DigitalCardProfile < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :app_icon_file_id
+      def app_icon_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def app_icon_file_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :background_image_file_id
+      def background_image_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def background_image_file_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :card_description
+      def card_description
+      end
+
+      sig { params(_: String).returns(String) }
+      def card_description=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :contact_email
+      def contact_email
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def contact_email=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :contact_phone
+      def contact_phone
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def contact_phone=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :contact_website
+      def contact_website
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def contact_website=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :issuer_name
+      def issuer_name
+      end
+
+      sig { params(_: String).returns(String) }
+      def issuer_name=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Increase::Models::DigitalCardProfile::TextColor) }
-      attr_accessor :text_color
+      def text_color
+      end
+
+      sig do
+        params(_: Increase::Models::DigitalCardProfile::TextColor).returns(Increase::Models::DigitalCardProfile::TextColor)
+      end
+      def text_color=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -126,13 +198,28 @@ module Increase
 
       class TextColor < Increase::BaseModel
         sig { returns(Integer) }
-        attr_accessor :blue
+        def blue
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def blue=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :green
+        def green
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def green=(_)
+        end
 
         sig { returns(Integer) }
-        attr_accessor :red
+        def red
+        end
+
+        sig { params(_: Integer).returns(Integer) }
+        def red=(_)
+        end
 
         sig { params(blue: Integer, green: Integer, red: Integer).void }
         def initialize(blue:, green:, red:)

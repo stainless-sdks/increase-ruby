@@ -7,10 +7,12 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(T.nilable(String)) }
-      attr_reader :name
+      def name
+      end
 
-      sig { params(name: String).void }
-      attr_writer :name
+      sig { params(_: String).returns(String) }
+      def name=(_)
+      end
 
       sig do
         params(

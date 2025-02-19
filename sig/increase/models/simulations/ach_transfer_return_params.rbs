@@ -15,7 +15,7 @@ module Increase
 
         def reason=: (
           Increase::Models::Simulations::ACHTransferReturnParams::reason
-        ) -> void
+        ) -> Increase::Models::Simulations::ACHTransferReturnParams::reason
 
         def initialize:
           (

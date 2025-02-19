@@ -4,34 +4,86 @@ module Increase
   module Models
     class DeclinedTransaction < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :account_id
+      def account_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def account_id=(_)
+      end
 
       sig { returns(Integer) }
-      attr_accessor :amount
+      def amount
+      end
+
+      sig { params(_: Integer).returns(Integer) }
+      def amount=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :currency
+      def currency
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def currency=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :route_id
+      def route_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def route_id=(_)
+      end
 
       sig { returns(T.nilable(Symbol)) }
-      attr_accessor :route_type
+      def route_type
+      end
+
+      sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+      def route_type=(_)
+      end
 
       sig { returns(Increase::Models::DeclinedTransaction::Source) }
-      attr_accessor :source
+      def source
+      end
+
+      sig do
+        params(_: Increase::Models::DeclinedTransaction::Source).returns(Increase::Models::DeclinedTransaction::Source)
+      end
+      def source=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -125,30 +177,84 @@ module Increase
 
       class Source < Increase::BaseModel
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline)) }
-        attr_accessor :ach_decline
+        def ach_decline
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline)).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline))
+        end
+        def ach_decline=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline)) }
-        attr_accessor :card_decline
+        def card_decline
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline)).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline))
+        end
+        def card_decline=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :category
+        def category
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def category=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline)) }
-        attr_accessor :check_decline
+        def check_decline
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline)).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline))
+        end
+        def check_decline=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection)) }
-        attr_accessor :check_deposit_rejection
+        def check_deposit_rejection
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection)).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection))
+        end
+        def check_deposit_rejection=(_)
+        end
 
         sig do
           returns(T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline))
         end
-        attr_accessor :inbound_real_time_payments_transfer_decline
+        def inbound_real_time_payments_transfer_decline
+        end
+
+        sig do
+          params(
+            _: T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline)
+          ).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline))
+        end
+        def inbound_real_time_payments_transfer_decline=(_)
+        end
 
         sig { returns(T.nilable(T.anything)) }
-        attr_accessor :other
+        def other
+        end
+
+        sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
+        def other=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline)) }
-        attr_accessor :wire_decline
+        def wire_decline
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline)).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline))
+        end
+        def wire_decline=(_)
+        end
 
         sig do
           params(
@@ -193,40 +299,100 @@ module Increase
 
         class ACHDecline < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { returns(Integer) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :inbound_ach_transfer_id
+          def inbound_ach_transfer_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def inbound_ach_transfer_id=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :originator_company_descriptive_date
+          def originator_company_descriptive_date
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def originator_company_descriptive_date=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :originator_company_discretionary_data
+          def originator_company_discretionary_data
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def originator_company_discretionary_data=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :originator_company_id
+          def originator_company_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def originator_company_id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :originator_company_name
+          def originator_company_name
+          end
+
+          sig { params(_: String).returns(String) }
+          def originator_company_name=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def reason=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :receiver_id_number
+          def receiver_id_number
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def receiver_id_number=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :receiver_name
+          def receiver_name
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def receiver_name=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :trace_number
+          def trace_number
+          end
+
+          sig { params(_: String).returns(String) }
+          def trace_number=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :type
+          def type
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def type=(_)
+          end
 
           sig do
             params(
@@ -353,85 +519,226 @@ module Increase
 
         class CardDecline < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :id
+          def id
+          end
+
+          sig { params(_: String).returns(String) }
+          def id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :actioner
+          def actioner
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def actioner=(_)
+          end
 
           sig { returns(Integer) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :card_payment_id
+          def card_payment_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def card_payment_id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :currency
+          def currency
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def currency=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :declined_transaction_id
+          def declined_transaction_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def declined_transaction_id=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :digital_wallet_token_id
+          def digital_wallet_token_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def digital_wallet_token_id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :direction
+          def direction
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def direction=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :merchant_acceptor_id
+          def merchant_acceptor_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_acceptor_id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :merchant_category_code
+          def merchant_category_code
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_category_code=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_city
+          def merchant_city
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_city=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :merchant_country
+          def merchant_country
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_country=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :merchant_descriptor
+          def merchant_descriptor
+          end
+
+          sig { params(_: String).returns(String) }
+          def merchant_descriptor=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_postal_code
+          def merchant_postal_code
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_postal_code=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :merchant_state
+          def merchant_state
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def merchant_state=(_)
+          end
 
           sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails) }
-          attr_accessor :network_details
+          def network_details
+          end
+
+          sig do
+            params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails).returns(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails)
+          end
+          def network_details=(_)
+          end
 
           sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers) }
-          attr_accessor :network_identifiers
+          def network_identifiers
+          end
+
+          sig do
+            params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers).returns(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers)
+          end
+          def network_identifiers=(_)
+          end
 
           sig { returns(T.nilable(Integer)) }
-          attr_accessor :network_risk_score
+          def network_risk_score
+          end
+
+          sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+          def network_risk_score=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :physical_card_id
+          def physical_card_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def physical_card_id=(_)
+          end
 
           sig { returns(Integer) }
-          attr_accessor :presentment_amount
+          def presentment_amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def presentment_amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :presentment_currency
+          def presentment_currency
+          end
+
+          sig { params(_: String).returns(String) }
+          def presentment_currency=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :processing_category
+          def processing_category
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def processing_category=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :real_time_decision_id
+          def real_time_decision_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def real_time_decision_id=(_)
+          end
 
           sig { returns(T.nilable(Symbol)) }
-          attr_accessor :real_time_decision_reason
+          def real_time_decision_reason
+          end
+
+          sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+          def real_time_decision_reason=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def reason=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :terminal_id
+          def terminal_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def terminal_id=(_)
+          end
 
           sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification) }
-          attr_accessor :verification
+          def verification
+          end
+
+          sig do
+            params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification).returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification)
+          end
+          def verification=(_)
+          end
 
           sig do
             params(
@@ -590,12 +897,24 @@ module Increase
 
           class NetworkDetails < Increase::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :category
+            def category
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def category=(_)
+            end
 
             sig do
               returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa))
             end
-            attr_accessor :visa
+            def visa
+            end
+
+            sig do
+              params(_: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa)).returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa))
+            end
+            def visa=(_)
+            end
 
             sig do
               params(
@@ -630,13 +949,28 @@ module Increase
 
             class Visa < Increase::BaseModel
               sig { returns(T.nilable(Symbol)) }
-              attr_accessor :electronic_commerce_indicator
+              def electronic_commerce_indicator
+              end
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def electronic_commerce_indicator=(_)
+              end
 
               sig { returns(T.nilable(Symbol)) }
-              attr_accessor :point_of_service_entry_mode
+              def point_of_service_entry_mode
+              end
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def point_of_service_entry_mode=(_)
+              end
 
               sig { returns(T.nilable(Symbol)) }
-              attr_accessor :stand_in_processing_reason
+              def stand_in_processing_reason
+              end
+
+              sig { params(_: T.nilable(Symbol)).returns(T.nilable(Symbol)) }
+              def stand_in_processing_reason=(_)
+              end
 
               sig do
                 params(
@@ -779,13 +1113,28 @@ module Increase
 
           class NetworkIdentifiers < Increase::BaseModel
             sig { returns(T.nilable(String)) }
-            attr_accessor :retrieval_reference_number
+            def retrieval_reference_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def retrieval_reference_number=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :trace_number
+            def trace_number
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def trace_number=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :transaction_id
+            def transaction_id
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def transaction_id=(_)
+            end
 
             sig do
               params(
@@ -919,12 +1268,26 @@ module Increase
             sig do
               returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode)
             end
-            attr_accessor :card_verification_code
+            def card_verification_code
+            end
+
+            sig do
+              params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode).returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode)
+            end
+            def card_verification_code=(_)
+            end
 
             sig do
               returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress)
             end
-            attr_accessor :cardholder_address
+            def cardholder_address
+            end
+
+            sig do
+              params(_: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress).returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress)
+            end
+            def cardholder_address=(_)
+            end
 
             sig do
               params(
@@ -947,7 +1310,12 @@ module Increase
 
             class CardVerificationCode < Increase::BaseModel
               sig { returns(Symbol) }
-              attr_accessor :result
+              def result
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def result=(_)
+              end
 
               sig { params(result: Symbol).void }
               def initialize(result:)
@@ -977,19 +1345,44 @@ module Increase
 
             class CardholderAddress < Increase::BaseModel
               sig { returns(T.nilable(String)) }
-              attr_accessor :actual_line1
+              def actual_line1
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def actual_line1=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :actual_postal_code
+              def actual_postal_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def actual_postal_code=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :provided_line1
+              def provided_line1
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def provided_line1=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :provided_postal_code
+              def provided_postal_code
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def provided_postal_code=(_)
+              end
 
               sig { returns(Symbol) }
-              attr_accessor :result
+              def result
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def result=(_)
+              end
 
               sig do
                 params(
@@ -1083,25 +1476,60 @@ module Increase
 
         class CheckDecline < Increase::BaseModel
           sig { returns(Integer) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def amount=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :auxiliary_on_us
+          def auxiliary_on_us
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def auxiliary_on_us=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :back_image_file_id
+          def back_image_file_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def back_image_file_id=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :check_transfer_id
+          def check_transfer_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def check_transfer_id=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :front_image_file_id
+          def front_image_file_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def front_image_file_id=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :inbound_check_deposit_id
+          def inbound_check_deposit_id
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def inbound_check_deposit_id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def reason=(_)
+          end
 
           sig do
             params(
@@ -1203,22 +1631,52 @@ module Increase
 
         class CheckDepositRejection < Increase::BaseModel
           sig { returns(Integer) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :check_deposit_id
+          def check_deposit_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def check_deposit_id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :currency
+          def currency
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def currency=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :declined_transaction_id
+          def declined_transaction_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def declined_transaction_id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def reason=(_)
+          end
 
           sig { returns(Time) }
-          attr_accessor :rejected_at
+          def rejected_at
+          end
+
+          sig { params(_: Time).returns(Time) }
+          def rejected_at=(_)
+          end
 
           sig do
             params(
@@ -1325,34 +1783,84 @@ module Increase
 
         class InboundRealTimePaymentsTransferDecline < Increase::BaseModel
           sig { returns(Integer) }
-          attr_accessor :amount
+          def amount
+          end
+
+          sig { params(_: Integer).returns(Integer) }
+          def amount=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :creditor_name
+          def creditor_name
+          end
+
+          sig { params(_: String).returns(String) }
+          def creditor_name=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :currency
+          def currency
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def currency=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :debtor_account_number
+          def debtor_account_number
+          end
+
+          sig { params(_: String).returns(String) }
+          def debtor_account_number=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :debtor_name
+          def debtor_name
+          end
+
+          sig { params(_: String).returns(String) }
+          def debtor_name=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :debtor_routing_number
+          def debtor_routing_number
+          end
+
+          sig { params(_: String).returns(String) }
+          def debtor_routing_number=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def reason=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :remittance_information
+          def remittance_information
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def remittance_information=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :transaction_identification
+          def transaction_identification
+          end
+
+          sig { params(_: String).returns(String) }
+          def transaction_identification=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :transfer_id
+          def transfer_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def transfer_id=(_)
+          end
 
           sig do
             params(
@@ -1456,10 +1964,20 @@ module Increase
 
         class WireDecline < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :inbound_wire_transfer_id
+          def inbound_wire_transfer_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def inbound_wire_transfer_id=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :reason
+          def reason
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def reason=(_)
+          end
 
           sig { params(inbound_wire_transfer_id: String, reason: Symbol).void }
           def initialize(inbound_wire_transfer_id:, reason:)

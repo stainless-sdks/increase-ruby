@@ -8,7 +8,12 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(String) }
-        attr_accessor :transaction_id
+        def transaction_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def transaction_id=(_)
+        end
 
         sig do
           params(

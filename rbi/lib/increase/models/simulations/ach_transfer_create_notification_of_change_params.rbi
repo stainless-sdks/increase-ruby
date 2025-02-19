@@ -8,10 +8,20 @@ module Increase
         include Increase::RequestParameters
 
         sig { returns(Symbol) }
-        attr_accessor :change_code
+        def change_code
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def change_code=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :corrected_data
+        def corrected_data
+        end
+
+        sig { params(_: String).returns(String) }
+        def corrected_data=(_)
+        end
 
         sig do
           params(

@@ -16,11 +16,11 @@ module Increase
 
       attr_reader date: Time?
 
-      def date=: (Time) -> void
+      def date=: (Time) -> Time
 
       attr_reader transaction_id: String?
 
-      def transaction_id=: (String) -> void
+      def transaction_id=: (String) -> String
 
       def initialize:
         (

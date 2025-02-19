@@ -15,7 +15,7 @@ module Increase
 
         def rejection=: (
           Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection
-        ) -> void
+        ) -> Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection
 
         def initialize:
           (

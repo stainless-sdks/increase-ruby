@@ -4,49 +4,138 @@ module Increase
   module Models
     class Entity < Increase::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::Entity::Corporation)) }
-      attr_accessor :corporation
+      def corporation
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::Entity::Corporation)).returns(T.nilable(Increase::Models::Entity::Corporation))
+      end
+      def corporation=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def description=(_)
+      end
 
       sig { returns(T.nilable(Time)) }
-      attr_accessor :details_confirmed_at
+      def details_confirmed_at
+      end
+
+      sig { params(_: T.nilable(Time)).returns(T.nilable(Time)) }
+      def details_confirmed_at=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::Entity::GovernmentAuthority)) }
-      attr_accessor :government_authority
+      def government_authority
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::Entity::GovernmentAuthority)).returns(T.nilable(Increase::Models::Entity::GovernmentAuthority))
+      end
+      def government_authority=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_accessor :idempotency_key
+      def idempotency_key
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def idempotency_key=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::Entity::Joint)) }
-      attr_accessor :joint
+      def joint
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::Entity::Joint)).returns(T.nilable(Increase::Models::Entity::Joint))
+      end
+      def joint=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::Entity::NaturalPerson)) }
-      attr_accessor :natural_person
+      def natural_person
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::Entity::NaturalPerson)).returns(T.nilable(Increase::Models::Entity::NaturalPerson))
+      end
+      def natural_person=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :structure
+      def structure
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def structure=(_)
+      end
 
       sig { returns(T::Array[Increase::Models::EntitySupplementalDocument]) }
-      attr_accessor :supplemental_documents
+      def supplemental_documents
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::EntitySupplementalDocument]).returns(T::Array[Increase::Models::EntitySupplementalDocument])
+      end
+      def supplemental_documents=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::Entity::ThirdPartyVerification)) }
-      attr_accessor :third_party_verification
+      def third_party_verification
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::Entity::ThirdPartyVerification)).returns(T.nilable(Increase::Models::Entity::ThirdPartyVerification))
+      end
+      def third_party_verification=(_)
+      end
 
       sig { returns(T.nilable(Increase::Models::Entity::Trust)) }
-      attr_accessor :trust
+      def trust
+      end
+
+      sig do
+        params(_: T.nilable(Increase::Models::Entity::Trust)).returns(T.nilable(Increase::Models::Entity::Trust))
+      end
+      def trust=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :type
+      def type
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def type=(_)
+      end
 
       sig do
         params(
@@ -112,25 +201,64 @@ module Increase
 
       class Corporation < Increase::BaseModel
         sig { returns(Increase::Models::Entity::Corporation::Address) }
-        attr_accessor :address
+        def address
+        end
+
+        sig do
+          params(_: Increase::Models::Entity::Corporation::Address).returns(Increase::Models::Entity::Corporation::Address)
+        end
+        def address=(_)
+        end
 
         sig { returns(T::Array[Increase::Models::Entity::Corporation::BeneficialOwner]) }
-        attr_accessor :beneficial_owners
+        def beneficial_owners
+        end
+
+        sig do
+          params(_: T::Array[Increase::Models::Entity::Corporation::BeneficialOwner]).returns(T::Array[Increase::Models::Entity::Corporation::BeneficialOwner])
+        end
+        def beneficial_owners=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :incorporation_state
+        def incorporation_state
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def incorporation_state=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :industry_code
+        def industry_code
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def industry_code=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :tax_identifier
+        def tax_identifier
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def tax_identifier=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :website
+        def website
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def website=(_)
+        end
 
         sig do
           params(
@@ -172,19 +300,44 @@ module Increase
 
         class Address < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: String).returns(String) }
+          def line1=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :line2
+          def line2
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line2=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :zip
+          def zip
+          end
+
+          sig { params(_: String).returns(String) }
+          def zip=(_)
+          end
 
           sig do
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
@@ -209,16 +362,38 @@ module Increase
 
         class BeneficialOwner < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :beneficial_owner_id
+          def beneficial_owner_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def beneficial_owner_id=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :company_title
+          def company_title
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def company_title=(_)
+          end
 
           sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual) }
-          attr_accessor :individual
+          def individual
+          end
+
+          sig do
+            params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual).returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual)
+          end
+          def individual=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :prong
+          def prong
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def prong=(_)
+          end
 
           sig do
             params(
@@ -246,18 +421,42 @@ module Increase
 
           class Individual < Increase::BaseModel
             sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address) }
-            attr_accessor :address
+            def address
+            end
+
+            sig do
+              params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address).returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address)
+            end
+            def address=(_)
+            end
 
             sig { returns(Date) }
-            attr_accessor :date_of_birth
+            def date_of_birth
+            end
+
+            sig { params(_: Date).returns(Date) }
+            def date_of_birth=(_)
+            end
 
             sig do
               returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification)
             end
-            attr_accessor :identification
+            def identification
+            end
+
+            sig do
+              params(_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification).returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification)
+            end
+            def identification=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig do
               params(
@@ -285,19 +484,44 @@ module Increase
 
             class Address < Increase::BaseModel
               sig { returns(String) }
-              attr_accessor :city
+              def city
+              end
+
+              sig { params(_: String).returns(String) }
+              def city=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :line1
+              def line1
+              end
+
+              sig { params(_: String).returns(String) }
+              def line1=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :line2
+              def line2
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def line2=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :state
+              def state
+              end
+
+              sig { params(_: String).returns(String) }
+              def state=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :zip
+              def zip
+              end
+
+              sig { params(_: String).returns(String) }
+              def zip=(_)
+              end
 
               sig do
                 params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
@@ -322,10 +546,20 @@ module Increase
 
             class Identification < Increase::BaseModel
               sig { returns(Symbol) }
-              attr_accessor :method_
+              def method_
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def method_=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :number_last4
+              def number_last4
+              end
+
+              sig { params(_: String).returns(String) }
+              def number_last4=(_)
+              end
 
               sig { params(method_: Symbol, number_last4: String).void }
               def initialize(method_:, number_last4:)
@@ -378,22 +612,56 @@ module Increase
 
       class GovernmentAuthority < Increase::BaseModel
         sig { returns(Increase::Models::Entity::GovernmentAuthority::Address) }
-        attr_accessor :address
+        def address
+        end
+
+        sig do
+          params(_: Increase::Models::Entity::GovernmentAuthority::Address).returns(Increase::Models::Entity::GovernmentAuthority::Address)
+        end
+        def address=(_)
+        end
 
         sig { returns(T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson]) }
-        attr_accessor :authorized_persons
+        def authorized_persons
+        end
+
+        sig do
+          params(_: T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson]).returns(T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson])
+        end
+        def authorized_persons=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :category
+        def category
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def category=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :tax_identifier
+        def tax_identifier
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def tax_identifier=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :website
+        def website
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def website=(_)
+        end
 
         sig do
           params(
@@ -425,19 +693,44 @@ module Increase
 
         class Address < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: String).returns(String) }
+          def line1=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :line2
+          def line2
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line2=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :zip
+          def zip
+          end
+
+          sig { params(_: String).returns(String) }
+          def zip=(_)
+          end
 
           sig do
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
@@ -462,10 +755,20 @@ module Increase
 
         class AuthorizedPerson < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :authorized_person_id
+          def authorized_person_id
+          end
+
+          sig { params(_: String).returns(String) }
+          def authorized_person_id=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig { params(authorized_person_id: String, name: String).void }
           def initialize(authorized_person_id:, name:)
@@ -490,10 +793,22 @@ module Increase
 
       class Joint < Increase::BaseModel
         sig { returns(T::Array[Increase::Models::Entity::Joint::Individual]) }
-        attr_accessor :individuals
+        def individuals
+        end
+
+        sig do
+          params(_: T::Array[Increase::Models::Entity::Joint::Individual]).returns(T::Array[Increase::Models::Entity::Joint::Individual])
+        end
+        def individuals=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { params(individuals: T::Array[Increase::Models::Entity::Joint::Individual], name: String).void }
         def initialize(individuals:, name:)
@@ -507,16 +822,40 @@ module Increase
 
         class Individual < Increase::BaseModel
           sig { returns(Increase::Models::Entity::Joint::Individual::Address) }
-          attr_accessor :address
+          def address
+          end
+
+          sig do
+            params(_: Increase::Models::Entity::Joint::Individual::Address).returns(Increase::Models::Entity::Joint::Individual::Address)
+          end
+          def address=(_)
+          end
 
           sig { returns(Date) }
-          attr_accessor :date_of_birth
+          def date_of_birth
+          end
+
+          sig { params(_: Date).returns(Date) }
+          def date_of_birth=(_)
+          end
 
           sig { returns(Increase::Models::Entity::Joint::Individual::Identification) }
-          attr_accessor :identification
+          def identification
+          end
+
+          sig do
+            params(_: Increase::Models::Entity::Joint::Individual::Identification).returns(Increase::Models::Entity::Joint::Individual::Identification)
+          end
+          def identification=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig do
             params(
@@ -544,19 +883,44 @@ module Increase
 
           class Address < Increase::BaseModel
             sig { returns(String) }
-            attr_accessor :city
+            def city
+            end
+
+            sig { params(_: String).returns(String) }
+            def city=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :line1
+            def line1
+            end
+
+            sig { params(_: String).returns(String) }
+            def line1=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :line2
+            def line2
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def line2=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :state
+            def state
+            end
+
+            sig { params(_: String).returns(String) }
+            def state=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :zip
+            def zip
+            end
+
+            sig { params(_: String).returns(String) }
+            def zip=(_)
+            end
 
             sig do
               params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
@@ -581,10 +945,20 @@ module Increase
 
           class Identification < Increase::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :method_
+            def method_
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def method_=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :number_last4
+            def number_last4
+            end
+
+            sig { params(_: String).returns(String) }
+            def number_last4=(_)
+            end
 
             sig { params(method_: Symbol, number_last4: String).void }
             def initialize(method_:, number_last4:)
@@ -622,16 +996,40 @@ module Increase
 
       class NaturalPerson < Increase::BaseModel
         sig { returns(Increase::Models::Entity::NaturalPerson::Address) }
-        attr_accessor :address
+        def address
+        end
+
+        sig do
+          params(_: Increase::Models::Entity::NaturalPerson::Address).returns(Increase::Models::Entity::NaturalPerson::Address)
+        end
+        def address=(_)
+        end
 
         sig { returns(Date) }
-        attr_accessor :date_of_birth
+        def date_of_birth
+        end
+
+        sig { params(_: Date).returns(Date) }
+        def date_of_birth=(_)
+        end
 
         sig { returns(Increase::Models::Entity::NaturalPerson::Identification) }
-        attr_accessor :identification
+        def identification
+        end
+
+        sig do
+          params(_: Increase::Models::Entity::NaturalPerson::Identification).returns(Increase::Models::Entity::NaturalPerson::Identification)
+        end
+        def identification=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig do
           params(
@@ -659,19 +1057,44 @@ module Increase
 
         class Address < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: String).returns(String) }
+          def line1=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :line2
+          def line2
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line2=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :zip
+          def zip
+          end
+
+          sig { params(_: String).returns(String) }
+          def zip=(_)
+          end
 
           sig do
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
@@ -696,10 +1119,20 @@ module Increase
 
         class Identification < Increase::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :method_
+          def method_
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def method_=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :number_last4
+          def number_last4
+          end
+
+          sig { params(_: String).returns(String) }
+          def number_last4=(_)
+          end
 
           sig { params(method_: Symbol, number_last4: String).void }
           def initialize(method_:, number_last4:)
@@ -776,10 +1209,20 @@ module Increase
 
       class ThirdPartyVerification < Increase::BaseModel
         sig { returns(String) }
-        attr_accessor :reference
+        def reference
+        end
+
+        sig { params(_: String).returns(String) }
+        def reference=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :vendor
+        def vendor
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def vendor=(_)
+        end
 
         sig { params(reference: String, vendor: Symbol).void }
         def initialize(reference:, vendor:)
@@ -806,28 +1249,74 @@ module Increase
 
       class Trust < Increase::BaseModel
         sig { returns(Increase::Models::Entity::Trust::Address) }
-        attr_accessor :address
+        def address
+        end
+
+        sig do
+          params(_: Increase::Models::Entity::Trust::Address).returns(Increase::Models::Entity::Trust::Address)
+        end
+        def address=(_)
+        end
 
         sig { returns(Symbol) }
-        attr_accessor :category
+        def category
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def category=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :formation_document_file_id
+        def formation_document_file_id
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def formation_document_file_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :formation_state
+        def formation_state
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def formation_state=(_)
+        end
 
         sig { returns(T.nilable(Increase::Models::Entity::Trust::Grantor)) }
-        attr_accessor :grantor
+        def grantor
+        end
+
+        sig do
+          params(_: T.nilable(Increase::Models::Entity::Trust::Grantor)).returns(T.nilable(Increase::Models::Entity::Trust::Grantor))
+        end
+        def grantor=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :name
+        def name
+        end
+
+        sig { params(_: String).returns(String) }
+        def name=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_accessor :tax_identifier
+        def tax_identifier
+        end
+
+        sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+        def tax_identifier=(_)
+        end
 
         sig { returns(T::Array[Increase::Models::Entity::Trust::Trustee]) }
-        attr_accessor :trustees
+        def trustees
+        end
+
+        sig do
+          params(_: T::Array[Increase::Models::Entity::Trust::Trustee]).returns(T::Array[Increase::Models::Entity::Trust::Trustee])
+        end
+        def trustees=(_)
+        end
 
         sig do
           params(
@@ -872,19 +1361,44 @@ module Increase
 
         class Address < Increase::BaseModel
           sig { returns(String) }
-          attr_accessor :city
+          def city
+          end
+
+          sig { params(_: String).returns(String) }
+          def city=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :line1
+          def line1
+          end
+
+          sig { params(_: String).returns(String) }
+          def line1=(_)
+          end
 
           sig { returns(T.nilable(String)) }
-          attr_accessor :line2
+          def line2
+          end
+
+          sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+          def line2=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :state
+          def state
+          end
+
+          sig { params(_: String).returns(String) }
+          def state=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :zip
+          def zip
+          end
+
+          sig { params(_: String).returns(String) }
+          def zip=(_)
+          end
 
           sig do
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
@@ -923,16 +1437,40 @@ module Increase
 
         class Grantor < Increase::BaseModel
           sig { returns(Increase::Models::Entity::Trust::Grantor::Address) }
-          attr_accessor :address
+          def address
+          end
+
+          sig do
+            params(_: Increase::Models::Entity::Trust::Grantor::Address).returns(Increase::Models::Entity::Trust::Grantor::Address)
+          end
+          def address=(_)
+          end
 
           sig { returns(Date) }
-          attr_accessor :date_of_birth
+          def date_of_birth
+          end
+
+          sig { params(_: Date).returns(Date) }
+          def date_of_birth=(_)
+          end
 
           sig { returns(Increase::Models::Entity::Trust::Grantor::Identification) }
-          attr_accessor :identification
+          def identification
+          end
+
+          sig do
+            params(_: Increase::Models::Entity::Trust::Grantor::Identification).returns(Increase::Models::Entity::Trust::Grantor::Identification)
+          end
+          def identification=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :name
+          def name
+          end
+
+          sig { params(_: String).returns(String) }
+          def name=(_)
+          end
 
           sig do
             params(
@@ -960,19 +1498,44 @@ module Increase
 
           class Address < Increase::BaseModel
             sig { returns(String) }
-            attr_accessor :city
+            def city
+            end
+
+            sig { params(_: String).returns(String) }
+            def city=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :line1
+            def line1
+            end
+
+            sig { params(_: String).returns(String) }
+            def line1=(_)
+            end
 
             sig { returns(T.nilable(String)) }
-            attr_accessor :line2
+            def line2
+            end
+
+            sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+            def line2=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :state
+            def state
+            end
+
+            sig { params(_: String).returns(String) }
+            def state=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :zip
+            def zip
+            end
+
+            sig { params(_: String).returns(String) }
+            def zip=(_)
+            end
 
             sig do
               params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
@@ -997,10 +1560,20 @@ module Increase
 
           class Identification < Increase::BaseModel
             sig { returns(Symbol) }
-            attr_accessor :method_
+            def method_
+            end
+
+            sig { params(_: Symbol).returns(Symbol) }
+            def method_=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :number_last4
+            def number_last4
+            end
+
+            sig { params(_: String).returns(String) }
+            def number_last4=(_)
+            end
 
             sig { params(method_: Symbol, number_last4: String).void }
             def initialize(method_:, number_last4:)
@@ -1037,10 +1610,22 @@ module Increase
 
         class Trustee < Increase::BaseModel
           sig { returns(T.nilable(Increase::Models::Entity::Trust::Trustee::Individual)) }
-          attr_accessor :individual
+          def individual
+          end
+
+          sig do
+            params(_: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual)).returns(T.nilable(Increase::Models::Entity::Trust::Trustee::Individual))
+          end
+          def individual=(_)
+          end
 
           sig { returns(Symbol) }
-          attr_accessor :structure
+          def structure
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def structure=(_)
+          end
 
           sig do
             params(
@@ -1064,16 +1649,40 @@ module Increase
 
           class Individual < Increase::BaseModel
             sig { returns(Increase::Models::Entity::Trust::Trustee::Individual::Address) }
-            attr_accessor :address
+            def address
+            end
+
+            sig do
+              params(_: Increase::Models::Entity::Trust::Trustee::Individual::Address).returns(Increase::Models::Entity::Trust::Trustee::Individual::Address)
+            end
+            def address=(_)
+            end
 
             sig { returns(Date) }
-            attr_accessor :date_of_birth
+            def date_of_birth
+            end
+
+            sig { params(_: Date).returns(Date) }
+            def date_of_birth=(_)
+            end
 
             sig { returns(Increase::Models::Entity::Trust::Trustee::Individual::Identification) }
-            attr_accessor :identification
+            def identification
+            end
+
+            sig do
+              params(_: Increase::Models::Entity::Trust::Trustee::Individual::Identification).returns(Increase::Models::Entity::Trust::Trustee::Individual::Identification)
+            end
+            def identification=(_)
+            end
 
             sig { returns(String) }
-            attr_accessor :name
+            def name
+            end
+
+            sig { params(_: String).returns(String) }
+            def name=(_)
+            end
 
             sig do
               params(
@@ -1101,19 +1710,44 @@ module Increase
 
             class Address < Increase::BaseModel
               sig { returns(String) }
-              attr_accessor :city
+              def city
+              end
+
+              sig { params(_: String).returns(String) }
+              def city=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :line1
+              def line1
+              end
+
+              sig { params(_: String).returns(String) }
+              def line1=(_)
+              end
 
               sig { returns(T.nilable(String)) }
-              attr_accessor :line2
+              def line2
+              end
+
+              sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+              def line2=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :state
+              def state
+              end
+
+              sig { params(_: String).returns(String) }
+              def state=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :zip
+              def zip
+              end
+
+              sig { params(_: String).returns(String) }
+              def zip=(_)
+              end
 
               sig do
                 params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
@@ -1138,10 +1772,20 @@ module Increase
 
             class Identification < Increase::BaseModel
               sig { returns(Symbol) }
-              attr_accessor :method_
+              def method_
+              end
+
+              sig { params(_: Symbol).returns(Symbol) }
+              def method_=(_)
+              end
 
               sig { returns(String) }
-              attr_accessor :number_last4
+              def number_last4
+              end
+
+              sig { params(_: String).returns(String) }
+              def number_last4=(_)
+              end
 
               sig { params(method_: Symbol, number_last4: String).void }
               def initialize(method_:, number_last4:)

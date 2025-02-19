@@ -7,10 +7,20 @@ module Increase
     Elem = type_member
 
     sig { returns(T::Array[Elem]) }
-    attr_accessor :data
+    def data
+    end
+
+    sig { params(_: T::Array[Elem]).returns(T::Array[Elem]) }
+    def data=(_)
+    end
 
     sig { returns(T.nilable(String)) }
-    attr_accessor :next_cursor
+    def next_cursor
+    end
+
+    sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+    def next_cursor=(_)
+    end
 
     sig do
       params(

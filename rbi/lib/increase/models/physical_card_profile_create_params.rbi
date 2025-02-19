@@ -7,16 +7,36 @@ module Increase
       include Increase::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :carrier_image_file_id
+      def carrier_image_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def carrier_image_file_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :contact_phone
+      def contact_phone
+      end
+
+      sig { params(_: String).returns(String) }
+      def contact_phone=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :description
+      def description
+      end
+
+      sig { params(_: String).returns(String) }
+      def description=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :front_image_file_id
+      def front_image_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def front_image_file_id=(_)
+      end
 
       sig do
         params(
