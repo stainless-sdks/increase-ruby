@@ -107,12 +107,6 @@ module Increase
 
     # @private
     #
-    # @return [Float]
-    #
-    def self.monotonic_secs = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-
-    # @private
-    #
     # @param exceptions [Array<Exception>]
     # @param sentinel [Object, nil]
     # @param blk [Proc, nil]
@@ -390,11 +384,6 @@ module Increase
           "transfer-encoding" => "chunked"
         }
         [headers, strio]
-      in [_, StringIO]
-        [headers, body.string]
-      in [_, IO]
-        headers = {**headers, "transfer-encoding" => "chunked"}
-        [headers, body]
       else
         [headers, body]
       end
@@ -402,28 +391,24 @@ module Increase
 
     # @private
     #
-    # @param headers [Hash{String=>String}, Net::HTTPHeader]
-    # @param stream [Enumerable]
+    # @param response [Net::HTTPResponse]
     # @param suppress_error [Boolean]
     #
     # @raise [JSON::ParserError]
     # @return [Object]
     #
-    def self.decode_content(headers, stream:, suppress_error: false)
-      case headers["content-type"]
-      in %r{^application/json}
-        json = stream.to_a.join("")
+    def self.decode_content(response, suppress_error: false)
+      case response.content_type
+      in "application/json"
         begin
-          JSON.parse(json, symbolize_names: true)
+          JSON.parse(response.body, symbolize_names: true)
         rescue JSON::ParserError => e
           raise e unless suppress_error
-          json
+          response.body
         end
-      in %r{^text/}
-        stream.to_a.join("")
       else
         # TODO: parsing other response types
-        StringIO.new(stream.to_a.join(""))
+        response.body
       end
     end
 
