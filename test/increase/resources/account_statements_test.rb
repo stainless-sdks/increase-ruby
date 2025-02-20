@@ -16,6 +16,20 @@ class Increase::Test::Resources::AccountStatementsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::AccountStatement
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_id: String,
+        created_at: Time,
+        ending_balance: Integer,
+        file_id: String,
+        starting_balance: Integer,
+        statement_period_end: Time,
+        statement_period_start: Time,
+        type: Increase::Models::AccountStatement::Type
+      }
+    end
   end
 
   def test_list
@@ -33,6 +47,20 @@ class Increase::Test::Resources::AccountStatementsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::AccountStatement
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        account_id: String,
+        created_at: Time,
+        ending_balance: Integer,
+        file_id: String,
+        starting_balance: Integer,
+        statement_period_end: Time,
+        statement_period_start: Time,
+        type: Increase::Models::AccountStatement::Type
+      }
     end
   end
 end

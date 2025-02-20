@@ -16,6 +16,17 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::DigitalWalletToken
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        card_id: String,
+        created_at: Time,
+        status: Increase::Models::DigitalWalletToken::Status,
+        token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor,
+        type: Increase::Models::DigitalWalletToken::Type
+      }
+    end
   end
 
   def test_list
@@ -33,6 +44,17 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::DigitalWalletToken
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        card_id: String,
+        created_at: Time,
+        status: Increase::Models::DigitalWalletToken::Status,
+        token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor,
+        type: Increase::Models::DigitalWalletToken::Type
+      }
     end
   end
 end

@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # intrafi_account_enrollment => {
-    #   id: String,
-    #   account_id: String,
-    #   created_at: Time,
-    #   idempotency_key: String,
-    #   intrafi_id: String,
-    #   **_
-    # }
-    # ```
     class IntrafiAccountEnrollment < Increase::BaseModel
       # @!attribute id
       #   The identifier of this enrollment at IntraFi.

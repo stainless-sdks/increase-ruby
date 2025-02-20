@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # event_subscription => {
-    #   id: String,
-    #   created_at: Time,
-    #   idempotency_key: String,
-    #   oauth_connection_id: String,
-    #   selected_event_category: Increase::Models::EventSubscription::SelectedEventCategory,
-    #   **_
-    # }
-    # ```
     class EventSubscription < Increase::BaseModel
       # @!attribute id
       #   The event subscription identifier.

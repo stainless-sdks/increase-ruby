@@ -92,12 +92,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # category => {
-      #   in_: -> { Increase::ArrayOf[enum: Increase::Models::ExportListParams::Category::In] === _1 }
-      # }
-      # ```
       class Category < Increase::BaseModel
         # @!attribute [r] in_
         #   Filter Exports for those with the specified category or categories. For GET
@@ -170,15 +164,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # created_at => {
-      #   after: Time,
-      #   before: Time,
-      #   on_or_after: Time,
-      #   on_or_before: Time
-      # }
-      # ```
       class CreatedAt < Increase::BaseModel
         # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -235,12 +220,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # status => {
-      #   in_: -> { Increase::ArrayOf[enum: Increase::Models::ExportListParams::Status::In] === _1 }
-      # }
-      # ```
       class Status < Increase::BaseModel
         # @!attribute [r] in_
         #   Filter Exports for those with the specified status or statuses. For GET

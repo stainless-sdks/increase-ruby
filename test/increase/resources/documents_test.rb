@@ -16,6 +16,17 @@ class Increase::Test::Resources::DocumentsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Document
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        category: Increase::Models::Document::Category,
+        created_at: Time,
+        entity_id: String | nil,
+        file_id: String,
+        type: Increase::Models::Document::Type
+      }
+    end
   end
 
   def test_list
@@ -33,6 +44,17 @@ class Increase::Test::Resources::DocumentsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::Document
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        category: Increase::Models::Document::Category,
+        created_at: Time,
+        entity_id: String | nil,
+        file_id: String,
+        type: Increase::Models::Document::Type
+      }
     end
   end
 end

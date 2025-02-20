@@ -2,16 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # entity_supplemental_document => {
-    #   created_at: Time,
-    #   entity_id: String,
-    #   file_id: String,
-    #   idempotency_key: String,
-    #   type: Increase::Models::EntitySupplementalDocument::Type
-    # }
-    # ```
     class EntitySupplementalDocument < Increase::BaseModel
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the

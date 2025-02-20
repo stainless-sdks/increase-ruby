@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # program => {
-    #   id: String,
-    #   bank: Increase::Models::Program::Bank,
-    #   billing_account_id: String,
-    #   created_at: Time,
-    #   default_digital_card_profile_id: String,
-    #   **_
-    # }
-    # ```
     class Program < Increase::BaseModel
       # @!attribute id
       #   The Program identifier.

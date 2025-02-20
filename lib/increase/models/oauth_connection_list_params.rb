@@ -59,12 +59,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # status => {
-      #   in_: -> { Increase::ArrayOf[enum: Increase::Models::OAuthConnectionListParams::Status::In] === _1 }
-      # }
-      # ```
       class Status < Increase::BaseModel
         # @!attribute [r] in_
         #   Filter to OAuth Connections by their status. By default, return only the

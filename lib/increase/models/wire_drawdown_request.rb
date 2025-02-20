@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # wire_drawdown_request => {
-    #   id: String,
-    #   account_number_id: String,
-    #   amount: Integer,
-    #   created_at: Time,
-    #   currency: String,
-    #   **_
-    # }
-    # ```
     class WireDrawdownRequest < Increase::BaseModel
       # @!attribute id
       #   The Wire drawdown request identifier.
@@ -242,12 +231,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # submission => {
-      #   input_message_accountability_data: String
-      # }
-      # ```
       class Submission < Increase::BaseModel
         # @!attribute input_message_accountability_data
         #   The input message accountability data (IMAD) uniquely identifying the submission

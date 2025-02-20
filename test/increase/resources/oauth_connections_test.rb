@@ -16,6 +16,18 @@ class Increase::Test::Resources::OAuthConnectionsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::OAuthConnection
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        deleted_at: Time | nil,
+        group_id: String,
+        oauth_application_id: String,
+        status: Increase::Models::OAuthConnection::Status,
+        type: Increase::Models::OAuthConnection::Type
+      }
+    end
   end
 
   def test_list
@@ -33,6 +45,18 @@ class Increase::Test::Resources::OAuthConnectionsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::OAuthConnection
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        created_at: Time,
+        deleted_at: Time | nil,
+        group_id: String,
+        oauth_application_id: String,
+        status: Increase::Models::OAuthConnection::Status,
+        type: Increase::Models::OAuthConnection::Type
+      }
     end
   end
 end

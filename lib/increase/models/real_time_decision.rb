@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # real_time_decision => {
-    #   id: String,
-    #   card_authentication: Increase::Models::RealTimeDecision::CardAuthentication,
-    #   card_authentication_challenge: Increase::Models::RealTimeDecision::CardAuthenticationChallenge,
-    #   card_authorization: Increase::Models::RealTimeDecision::CardAuthorization,
-    #   category: Increase::Models::RealTimeDecision::Category,
-    #   **_
-    # }
-    # ```
     class RealTimeDecision < Increase::BaseModel
       # @!attribute id
       #   The Real-Time Decision identifier.
@@ -124,15 +113,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # card_authentication => {
-      #   account_id: String,
-      #   card_id: String,
-      #   decision: Increase::Models::RealTimeDecision::CardAuthentication::Decision,
-      #   upcoming_card_payment_id: String
-      # }
-      # ```
       class CardAuthentication < Increase::BaseModel
         # @!attribute account_id
         #   The identifier of the Account the card belongs to.
@@ -207,16 +187,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # card_authentication_challenge => {
-      #   account_id: String,
-      #   card_id: String,
-      #   card_payment_id: String,
-      #   one_time_code: String,
-      #   result: Increase::Models::RealTimeDecision::CardAuthenticationChallenge::Result
-      # }
-      # ```
       class CardAuthenticationChallenge < Increase::BaseModel
         # @!attribute account_id
         #   The identifier of the Account the card belongs to.
@@ -293,17 +263,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # card_authorization => {
-      #   account_id: String,
-      #   card_id: String,
-      #   decision: Increase::Models::RealTimeDecision::CardAuthorization::Decision,
-      #   digital_wallet_token_id: String,
-      #   direction: Increase::Models::RealTimeDecision::CardAuthorization::Direction,
-      #   **_
-      # }
-      # ```
       class CardAuthorization < Increase::BaseModel
         # @!attribute account_id
         #   The identifier of the Account the authorization will debit.
@@ -593,13 +552,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # network_details => {
-        #   category: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Category,
-        #   visa: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa
-        # }
-        # ```
         class NetworkDetails < Increase::BaseModel
           # @!attribute category
           #   The payment network used to process this card authorization.
@@ -649,14 +601,6 @@ module Increase
             #   def self.values; end
           end
 
-          # @example
-          # ```ruby
-          # visa => {
-          #   electronic_commerce_indicator: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator,
-          #   point_of_service_entry_mode: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode,
-          #   stand_in_processing_reason: Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason
-          # }
-          # ```
           class Visa < Increase::BaseModel
             # @!attribute electronic_commerce_indicator
             #   For electronic commerce transactions, this identifies the level of security used
@@ -868,14 +812,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # network_identifiers => {
-        #   retrieval_reference_number: String,
-        #   trace_number: String,
-        #   transaction_id: String
-        # }
-        # ```
         class NetworkIdentifiers < Increase::BaseModel
           # @!attribute retrieval_reference_number
           #   A life-cycle identifier used across e.g., an authorization and a reversal.
@@ -960,14 +896,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # request_details => {
-        #   category: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::Category,
-        #   incremental_authorization: Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization,
-        #   initial_authorization: Increase::Unknown
-        # }
-        # ```
         class RequestDetails < Increase::BaseModel
           # @!attribute category
           #   The type of this request (e.g., an initial authorization or an incremental
@@ -1031,13 +959,6 @@ module Increase
             #   def self.values; end
           end
 
-          # @example
-          # ```ruby
-          # incremental_authorization => {
-          #   card_payment_id: String,
-          #   original_card_authorization_id: String
-          # }
-          # ```
           class IncrementalAuthorization < Increase::BaseModel
             # @!attribute card_payment_id
             #   The card payment for this authorization and increment.
@@ -1064,13 +985,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # verification => {
-        #   card_verification_code: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode,
-        #   cardholder_address: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress
-        # }
-        # ```
         class Verification < Increase::BaseModel
           # @!attribute card_verification_code
           #   Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -1098,12 +1012,6 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # card_verification_code => {
-          #   result: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode::Result
-          # }
-          # ```
           class CardVerificationCode < Increase::BaseModel
             # @!attribute result
             #   The result of verifying the Card Verification Code.
@@ -1156,16 +1064,6 @@ module Increase
             end
           end
 
-          # @example
-          # ```ruby
-          # cardholder_address => {
-          #   actual_line1: String,
-          #   actual_postal_code: String,
-          #   provided_line1: String,
-          #   provided_postal_code: String,
-          #   result: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress::Result
-          # }
-          # ```
           class CardholderAddress < Increase::BaseModel
             # @!attribute actual_line1
             #   Line 1 of the address on file for the cardholder.
@@ -1307,17 +1205,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # digital_wallet_authentication => {
-      #   card_id: String,
-      #   channel: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::Channel,
-      #   digital_wallet: Increase::Models::RealTimeDecision::DigitalWalletAuthentication::DigitalWallet,
-      #   email: String,
-      #   one_time_passcode: String,
-      #   **_
-      # }
-      # ```
       class DigitalWalletAuthentication < Increase::BaseModel
         # @!attribute card_id
         #   The identifier of the Card that is being tokenized.
@@ -1475,15 +1362,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # digital_wallet_token => {
-      #   card_id: String,
-      #   card_profile_id: String,
-      #   decision: Increase::Models::RealTimeDecision::DigitalWalletToken::Decision,
-      #   digital_wallet: Increase::Models::RealTimeDecision::DigitalWalletToken::DigitalWallet
-      # }
-      # ```
       class DigitalWalletToken < Increase::BaseModel
         # @!attribute card_id
         #   The identifier of the Card that is being tokenized.

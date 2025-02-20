@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # physical_card_profile => {
-    #   id: String,
-    #   back_image_file_id: String,
-    #   carrier_image_file_id: String,
-    #   contact_phone: String,
-    #   created_at: Time,
-    #   **_
-    # }
-    # ```
     class PhysicalCardProfile < Increase::BaseModel
       # @!attribute id
       #   The Card Profile identifier.

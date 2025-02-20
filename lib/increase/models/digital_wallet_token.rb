@@ -2,16 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # digital_wallet_token => {
-    #   id: String,
-    #   card_id: String,
-    #   created_at: Time,
-    #   status: Increase::Models::DigitalWalletToken::Status,
-    #   token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor
-    # }
-    # ```
     class DigitalWalletToken < Increase::BaseModel
       # @!attribute id
       #   The Digital Wallet Token identifier.

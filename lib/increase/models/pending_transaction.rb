@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # pending_transaction => {
-    #   id: String,
-    #   account_id: String,
-    #   amount: Integer,
-    #   completed_at: Time,
-    #   created_at: Time,
-    #   **_
-    # }
-    # ```
     class PendingTransaction < Increase::BaseModel
       # @!attribute id
       #   The Pending Transaction identifier.
@@ -218,17 +207,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # source => {
-      #   account_transfer_instruction: Increase::Models::PendingTransaction::Source::AccountTransferInstruction,
-      #   ach_transfer_instruction: Increase::Models::PendingTransaction::Source::ACHTransferInstruction,
-      #   card_authorization: Increase::Models::PendingTransaction::Source::CardAuthorization,
-      #   category: Increase::Models::PendingTransaction::Source::Category,
-      #   check_deposit_instruction: Increase::Models::PendingTransaction::Source::CheckDepositInstruction,
-      #   **_
-      # }
-      # ```
       class Source < Increase::BaseModel
         # @!attribute account_transfer_instruction
         #   An Account Transfer Instruction object. This field will be present in the JSON
@@ -368,14 +346,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # account_transfer_instruction => {
-        #   amount: Integer,
-        #   currency: Increase::Models::PendingTransaction::Source::AccountTransferInstruction::Currency,
-        #   transfer_id: String
-        # }
-        # ```
         class AccountTransferInstruction < Increase::BaseModel
           # @!attribute amount
           #   The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -460,13 +430,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # ach_transfer_instruction => {
-        #   amount: Integer,
-        #   transfer_id: String
-        # }
-        # ```
         class ACHTransferInstruction < Increase::BaseModel
           # @!attribute amount
           #   The pending amount in USD cents.
@@ -492,17 +455,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # card_authorization => {
-        #   id: String,
-        #   actioner: Increase::Models::PendingTransaction::Source::CardAuthorization::Actioner,
-        #   amount: Integer,
-        #   card_payment_id: String,
-        #   currency: Increase::Models::PendingTransaction::Source::CardAuthorization::Currency,
-        #   **_
-        # }
-        # ```
         class CardAuthorization < Increase::BaseModel
           # @!attribute id
           #   The Card Authorization identifier.
@@ -868,13 +820,6 @@ module Increase
             #   def self.values; end
           end
 
-          # @example
-          # ```ruby
-          # network_details => {
-          #   category: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Category,
-          #   visa: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa
-          # }
-          # ```
           class NetworkDetails < Increase::BaseModel
             # @!attribute category
             #   The payment network used to process this card authorization.
@@ -924,14 +869,6 @@ module Increase
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # visa => {
-            #   electronic_commerce_indicator: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator,
-            #   point_of_service_entry_mode: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode,
-            #   stand_in_processing_reason: Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason
-            # }
-            # ```
             class Visa < Increase::BaseModel
               # @!attribute electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used
@@ -1143,14 +1080,6 @@ module Increase
             end
           end
 
-          # @example
-          # ```ruby
-          # network_identifiers => {
-          #   retrieval_reference_number: String,
-          #   trace_number: String,
-          #   transaction_id: String
-          # }
-          # ```
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal.
@@ -1258,13 +1187,6 @@ module Increase
             #   def self.values; end
           end
 
-          # @example
-          # ```ruby
-          # verification => {
-          #   card_verification_code: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
-          #   cardholder_address: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
-          # }
-          # ```
           class Verification < Increase::BaseModel
             # @!attribute card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -1292,12 +1214,6 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # card_verification_code => {
-            #   result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode::Result
-            # }
-            # ```
             class CardVerificationCode < Increase::BaseModel
               # @!attribute result
               #   The result of verifying the Card Verification Code.
@@ -1350,16 +1266,6 @@ module Increase
               end
             end
 
-            # @example
-            # ```ruby
-            # cardholder_address => {
-            #   actual_line1: String,
-            #   actual_postal_code: String,
-            #   provided_line1: String,
-            #   provided_postal_code: String,
-            #   result: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress::Result
-            # }
-            # ```
             class CardholderAddress < Increase::BaseModel
               # @!attribute actual_line1
               #   Line 1 of the address on file for the cardholder.
@@ -1519,16 +1425,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # check_deposit_instruction => {
-        #   amount: Integer,
-        #   back_image_file_id: String,
-        #   check_deposit_id: String,
-        #   currency: Increase::Models::PendingTransaction::Source::CheckDepositInstruction::Currency,
-        #   front_image_file_id: String
-        # }
-        # ```
         class CheckDepositInstruction < Increase::BaseModel
           # @!attribute amount
           #   The pending amount in USD cents.
@@ -1628,14 +1524,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # check_transfer_instruction => {
-        #   amount: Integer,
-        #   currency: Increase::Models::PendingTransaction::Source::CheckTransferInstruction::Currency,
-        #   transfer_id: String
-        # }
-        # ```
         class CheckTransferInstruction < Increase::BaseModel
           # @!attribute amount
           #   The transfer amount in USD cents.
@@ -1719,17 +1607,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # inbound_funds_hold => {
-        #   id: String,
-        #   amount: Integer,
-        #   automatically_releases_at: Time,
-        #   created_at: Time,
-        #   currency: Increase::Models::PendingTransaction::Source::InboundFundsHold::Currency,
-        #   **_
-        # }
-        # ```
         class InboundFundsHold < Increase::BaseModel
           # @!attribute id
           #   The Inbound Funds Hold identifier.
@@ -1932,12 +1809,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # inbound_wire_transfer_reversal => {
-        #   inbound_wire_transfer_id: String
-        # }
-        # ```
         class InboundWireTransferReversal < Increase::BaseModel
           # @!attribute inbound_wire_transfer_id
           #   The ID of the Inbound Wire Transfer that is being reversed.
@@ -1958,13 +1829,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # real_time_payments_transfer_instruction => {
-        #   amount: Integer,
-        #   transfer_id: String
-        # }
-        # ```
         class RealTimePaymentsTransferInstruction < Increase::BaseModel
           # @!attribute amount
           #   The transfer amount in USD cents.
@@ -1992,16 +1856,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # wire_transfer_instruction => {
-        #   account_number: String,
-        #   amount: Integer,
-        #   message_to_recipient: String,
-        #   routing_number: String,
-        #   transfer_id: String
-        # }
-        # ```
         class WireTransferInstruction < Increase::BaseModel
           # @!attribute account_number
           #   The account number for the destination account.

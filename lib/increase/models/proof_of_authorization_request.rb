@@ -2,16 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # proof_of_authorization_request => {
-    #   id: String,
-    #   ach_transfers: -> { Increase::ArrayOf[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer] === _1 },
-    #   created_at: Time,
-    #   due_on: Time,
-    #   type: Increase::Models::ProofOfAuthorizationRequest::Type
-    # }
-    # ```
     class ProofOfAuthorizationRequest < Increase::BaseModel
       # @!attribute id
       #   The Proof of Authorization Request identifier.
@@ -65,12 +55,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # ach_transfer => {
-      #   id: String
-      # }
-      # ```
       class ACHTransfer < Increase::BaseModel
         # @!attribute id
         #   The ACH Transfer identifier.

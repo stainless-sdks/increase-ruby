@@ -16,6 +16,17 @@ class Increase::Test::Resources::BookkeepingEntriesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::BookkeepingEntry
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_id: String,
+        amount: Integer,
+        created_at: Time,
+        entry_set_id: String,
+        type: Increase::Models::BookkeepingEntry::Type
+      }
+    end
   end
 
   def test_list
@@ -33,6 +44,17 @@ class Increase::Test::Resources::BookkeepingEntriesTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::BookkeepingEntry
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        account_id: String,
+        amount: Integer,
+        created_at: Time,
+        entry_set_id: String,
+        type: Increase::Models::BookkeepingEntry::Type
+      }
     end
   end
 end

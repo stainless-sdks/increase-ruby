@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # ach_prenotification => {
-    #   id: String,
-    #   account_number: String,
-    #   addendum: String,
-    #   company_descriptive_date: String,
-    #   company_discretionary_data: String,
-    #   **_
-    # }
-    # ```
     class ACHPrenotification < Increase::BaseModel
       # @!attribute id
       #   The ACH Prenotification's identifier.
@@ -193,14 +182,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # notifications_of_change => {
-      #   change_code: Increase::Models::ACHPrenotification::NotificationsOfChange::ChangeCode,
-      #   corrected_data: String,
-      #   created_at: Time
-      # }
-      # ```
       class NotificationsOfChange < Increase::BaseModel
         # @!attribute change_code
         #   The required type of change that is being signaled by the receiving financial
@@ -325,13 +306,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # prenotification_return => {
-      #   created_at: Time,
-      #   return_reason_code: Increase::Models::ACHPrenotification::PrenotificationReturn::ReturnReasonCode
-      # }
-      # ```
       class PrenotificationReturn < Increase::BaseModel
         # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which

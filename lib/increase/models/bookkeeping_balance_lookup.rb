@@ -2,14 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # bookkeeping_balance_lookup => {
-    #   balance: Integer,
-    #   bookkeeping_account_id: String,
-    #   type: Increase::Models::BookkeepingBalanceLookup::Type
-    # }
-    # ```
     class BookkeepingBalanceLookup < Increase::BaseModel
       # @!attribute balance
       #   The Bookkeeping Account's current balance, representing the sum of all

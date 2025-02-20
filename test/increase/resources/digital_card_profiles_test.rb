@@ -22,6 +22,25 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::DigitalCardProfile
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        app_icon_file_id: String,
+        background_image_file_id: String,
+        card_description: String,
+        contact_email: String | nil,
+        contact_phone: String | nil,
+        contact_website: String | nil,
+        created_at: Time,
+        description: String,
+        idempotency_key: String | nil,
+        issuer_name: String,
+        status: Increase::Models::DigitalCardProfile::Status,
+        text_color: Increase::Models::DigitalCardProfile::TextColor,
+        type: Increase::Models::DigitalCardProfile::Type
+      }
+    end
   end
 
   def test_retrieve
@@ -29,6 +48,25 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::DigitalCardProfile
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        app_icon_file_id: String,
+        background_image_file_id: String,
+        card_description: String,
+        contact_email: String | nil,
+        contact_phone: String | nil,
+        contact_website: String | nil,
+        created_at: Time,
+        description: String,
+        idempotency_key: String | nil,
+        issuer_name: String,
+        status: Increase::Models::DigitalCardProfile::Status,
+        text_color: Increase::Models::DigitalCardProfile::TextColor,
+        type: Increase::Models::DigitalCardProfile::Type
+      }
     end
   end
 
@@ -48,6 +86,25 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Minitest::Test
     assert_pattern do
       row => Increase::Models::DigitalCardProfile
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        app_icon_file_id: String,
+        background_image_file_id: String,
+        card_description: String,
+        contact_email: String | nil,
+        contact_phone: String | nil,
+        contact_website: String | nil,
+        created_at: Time,
+        description: String,
+        idempotency_key: String | nil,
+        issuer_name: String,
+        status: Increase::Models::DigitalCardProfile::Status,
+        text_color: Increase::Models::DigitalCardProfile::TextColor,
+        type: Increase::Models::DigitalCardProfile::Type
+      }
+    end
   end
 
   def test_archive
@@ -56,6 +113,25 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::DigitalCardProfile
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        app_icon_file_id: String,
+        background_image_file_id: String,
+        card_description: String,
+        contact_email: String | nil,
+        contact_phone: String | nil,
+        contact_website: String | nil,
+        created_at: Time,
+        description: String,
+        idempotency_key: String | nil,
+        issuer_name: String,
+        status: Increase::Models::DigitalCardProfile::Status,
+        text_color: Increase::Models::DigitalCardProfile::TextColor,
+        type: Increase::Models::DigitalCardProfile::Type
+      }
+    end
   end
 
   def test_clone_
@@ -63,6 +139,25 @@ class Increase::Test::Resources::DigitalCardProfilesTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::DigitalCardProfile
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        app_icon_file_id: String,
+        background_image_file_id: String,
+        card_description: String,
+        contact_email: String | nil,
+        contact_phone: String | nil,
+        contact_website: String | nil,
+        created_at: Time,
+        description: String,
+        idempotency_key: String | nil,
+        issuer_name: String,
+        status: Increase::Models::DigitalCardProfile::Status,
+        text_color: Increase::Models::DigitalCardProfile::TextColor,
+        type: Increase::Models::DigitalCardProfile::Type
+      }
     end
   end
 end

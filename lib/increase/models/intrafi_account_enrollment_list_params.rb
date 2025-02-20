@@ -72,12 +72,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # status => {
-      #   in_: -> { Increase::ArrayOf[enum: Increase::Models::IntrafiAccountEnrollmentListParams::Status::In] === _1 }
-      # }
-      # ```
       class Status < Increase::BaseModel
         # @!attribute [r] in_
         #   Filter IntraFi Account Enrollments for those with the specified status or

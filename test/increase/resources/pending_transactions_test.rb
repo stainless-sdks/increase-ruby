@@ -16,6 +16,23 @@ class Increase::Test::Resources::PendingTransactionsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::PendingTransaction
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_id: String,
+        amount: Integer,
+        completed_at: Time | nil,
+        created_at: Time,
+        currency: Increase::Models::PendingTransaction::Currency,
+        description: String,
+        route_id: String | nil,
+        route_type: Increase::Models::PendingTransaction::RouteType | nil,
+        source: Increase::Models::PendingTransaction::Source,
+        status: Increase::Models::PendingTransaction::Status,
+        type: Increase::Models::PendingTransaction::Type
+      }
+    end
   end
 
   def test_list
@@ -33,6 +50,23 @@ class Increase::Test::Resources::PendingTransactionsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::PendingTransaction
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        account_id: String,
+        amount: Integer,
+        completed_at: Time | nil,
+        created_at: Time,
+        currency: Increase::Models::PendingTransaction::Currency,
+        description: String,
+        route_id: String | nil,
+        route_type: Increase::Models::PendingTransaction::RouteType | nil,
+        source: Increase::Models::PendingTransaction::Source,
+        status: Increase::Models::PendingTransaction::Status,
+        type: Increase::Models::PendingTransaction::Type
+      }
     end
   end
 end

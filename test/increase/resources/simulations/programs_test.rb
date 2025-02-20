@@ -16,5 +16,19 @@ class Increase::Test::Resources::Simulations::ProgramsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Program
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        bank: Increase::Models::Program::Bank,
+        billing_account_id: String | nil,
+        created_at: Time,
+        default_digital_card_profile_id: String | nil,
+        interest_rate: String,
+        name: String,
+        type: Increase::Models::Program::Type,
+        updated_at: Time
+      }
+    end
   end
 end

@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # real_time_payments_transfer => {
-    #   id: String,
-    #   account_id: String,
-    #   acknowledgement: Increase::Models::RealTimePaymentsTransfer::Acknowledgement,
-    #   amount: Integer,
-    #   approval: Increase::Models::RealTimePaymentsTransfer::Approval,
-    #   **_
-    # }
-    # ```
     class RealTimePaymentsTransfer < Increase::BaseModel
       # @!attribute id
       #   The Real-Time Payments Transfer's identifier.
@@ -245,12 +234,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # acknowledgement => {
-      #   acknowledged_at: Time
-      # }
-      # ```
       class Acknowledgement < Increase::BaseModel
         # @!attribute acknowledged_at
         #   When the transfer was acknowledged.
@@ -269,13 +252,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # approval => {
-      #   approved_at: Time,
-      #   approved_by: String
-      # }
-      # ```
       class Approval < Increase::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -303,13 +279,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # cancellation => {
-      #   canceled_at: Time,
-      #   canceled_by: String
-      # }
-      # ```
       class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -337,15 +306,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # created_by => {
-      #   api_key: Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey,
-      #   category: Increase::Models::RealTimePaymentsTransfer::CreatedBy::Category,
-      #   oauth_application: Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication,
-      #   user: Increase::Models::RealTimePaymentsTransfer::CreatedBy::User
-      # }
-      # ```
       class CreatedBy < Increase::BaseModel
         # @!attribute api_key
         #   If present, details about the API key that created the transfer.
@@ -385,12 +345,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # api_key => {
-        #   description: String
-        # }
-        # ```
         class APIKey < Increase::BaseModel
           # @!attribute description
           #   The description set for the API key when it was created.
@@ -441,12 +395,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # oauth_application => {
-        #   name: String
-        # }
-        # ```
         class OAuthApplication < Increase::BaseModel
           # @!attribute name
           #   The name of the OAuth Application.
@@ -464,12 +412,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # user => {
-        #   email: String
-        # }
-        # ```
         class User < Increase::BaseModel
           # @!attribute email
           #   The email address of the User.
@@ -537,14 +479,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # rejection => {
-      #   reject_reason_additional_information: String,
-      #   reject_reason_code: Increase::Models::RealTimePaymentsTransfer::Rejection::RejectReasonCode,
-      #   rejected_at: Time
-      # }
-      # ```
       class Rejection < Increase::BaseModel
         # @!attribute reject_reason_additional_information
         #   Additional information about the rejection provided by the recipient bank when
@@ -729,13 +663,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # submission => {
-      #   submitted_at: Time,
-      #   transaction_identification: String
-      # }
-      # ```
       class Submission < Increase::BaseModel
         # @!attribute submitted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which

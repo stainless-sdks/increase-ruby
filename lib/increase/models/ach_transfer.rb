@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # ach_transfer => {
-    #   id: String,
-    #   account_id: String,
-    #   account_number: String,
-    #   acknowledgement: Increase::Models::ACHTransfer::Acknowledgement,
-    #   addenda: Increase::Models::ACHTransfer::Addenda,
-    #   **_
-    # }
-    # ```
     class ACHTransfer < Increase::BaseModel
       # @!attribute id
       #   The ACH transfer's identifier.
@@ -334,12 +323,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # acknowledgement => {
-      #   acknowledged_at: String
-      # }
-      # ```
       class Acknowledgement < Increase::BaseModel
         # @!attribute acknowledged_at
         #   When the Federal Reserve acknowledged the submitted file containing this
@@ -360,14 +343,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # addenda => {
-      #   category: Increase::Models::ACHTransfer::Addenda::Category,
-      #   freeform: Increase::Models::ACHTransfer::Addenda::Freeform,
-      #   payment_order_remittance_advice: Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice
-      # }
-      # ```
       class Addenda < Increase::BaseModel
         # @!attribute category
         #   The type of the resource. We may add additional possible values for this enum
@@ -436,12 +411,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # freeform => {
-        #   entries: -> { Increase::ArrayOf[Increase::Models::ACHTransfer::Addenda::Freeform::Entry] === _1 }
-        # }
-        # ```
         class Freeform < Increase::BaseModel
           # @!attribute entries
           #   Each entry represents an addendum sent with the transfer.
@@ -458,12 +427,6 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # entry => {
-          #   payment_related_information: String
-          # }
-          # ```
           class Entry < Increase::BaseModel
             # @!attribute payment_related_information
             #   The payment related information passed in the addendum.
@@ -480,12 +443,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # payment_order_remittance_advice => {
-        #   invoices: -> { Increase::ArrayOf[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice] === _1 }
-        # }
-        # ```
         class PaymentOrderRemittanceAdvice < Increase::BaseModel
           # @!attribute invoices
           #   ASC X12 RMR records for this specific transfer.
@@ -504,13 +461,6 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # invoice => {
-          #   invoice_number: String,
-          #   paid_amount: Integer
-          # }
-          # ```
           class Invoice < Increase::BaseModel
             # @!attribute invoice_number
             #   The invoice number for this reference, determined in advance with the receiver.
@@ -536,13 +486,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # approval => {
-      #   approved_at: Time,
-      #   approved_by: String
-      # }
-      # ```
       class Approval < Increase::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -570,13 +513,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # cancellation => {
-      #   canceled_at: Time,
-      #   canceled_by: String
-      # }
-      # ```
       class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -604,15 +540,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # created_by => {
-      #   api_key: Increase::Models::ACHTransfer::CreatedBy::APIKey,
-      #   category: Increase::Models::ACHTransfer::CreatedBy::Category,
-      #   oauth_application: Increase::Models::ACHTransfer::CreatedBy::OAuthApplication,
-      #   user: Increase::Models::ACHTransfer::CreatedBy::User
-      # }
-      # ```
       class CreatedBy < Increase::BaseModel
         # @!attribute api_key
         #   If present, details about the API key that created the transfer.
@@ -650,12 +577,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # api_key => {
-        #   description: String
-        # }
-        # ```
         class APIKey < Increase::BaseModel
           # @!attribute description
           #   The description set for the API key when it was created.
@@ -706,12 +627,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # oauth_application => {
-        #   name: String
-        # }
-        # ```
         class OAuthApplication < Increase::BaseModel
           # @!attribute name
           #   The name of the OAuth Application.
@@ -729,12 +644,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # user => {
-        #   email: String
-        # }
-        # ```
         class User < Increase::BaseModel
           # @!attribute email
           #   The email address of the User.
@@ -864,17 +773,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # inbound_funds_hold => {
-      #   id: String,
-      #   amount: Integer,
-      #   automatically_releases_at: Time,
-      #   created_at: Time,
-      #   currency: Increase::Models::ACHTransfer::InboundFundsHold::Currency,
-      #   **_
-      # }
-      # ```
       class InboundFundsHold < Increase::BaseModel
         # @!attribute id
         #   The Inbound Funds Hold identifier.
@@ -1097,14 +995,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # notifications_of_change => {
-      #   change_code: Increase::Models::ACHTransfer::NotificationsOfChange::ChangeCode,
-      #   corrected_data: String,
-      #   created_at: Time
-      # }
-      # ```
       class NotificationsOfChange < Increase::BaseModel
         # @!attribute change_code
         #   The required type of change that is being signaled by the receiving financial
@@ -1228,13 +1118,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # preferred_effective_date => {
-      #   date: Date,
-      #   settlement_schedule: Increase::Models::ACHTransfer::PreferredEffectiveDate::SettlementSchedule
-      # }
-      # ```
       class PreferredEffectiveDate < Increase::BaseModel
         # @!attribute date
         #   A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
@@ -1296,16 +1179,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # return => {
-      #   created_at: Time,
-      #   raw_return_reason_code: String,
-      #   return_reason_code: Increase::Models::ACHTransfer::Return::ReturnReasonCode,
-      #   trace_number: String,
-      #   transaction_id: String
-      # }
-      # ```
       class Return < Increase::BaseModel
         # @!attribute created_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -1614,12 +1487,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # settlement => {
-      #   settled_at: Time
-      # }
-      # ```
       class Settlement < Increase::BaseModel
         # @!attribute settled_at
         #   When the funds for this transfer have settled at the destination bank at the
@@ -1734,16 +1601,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # submission => {
-      #   effective_date: Date,
-      #   expected_funds_settlement_at: Time,
-      #   expected_settlement_schedule: Increase::Models::ACHTransfer::Submission::ExpectedSettlementSchedule,
-      #   submitted_at: Time,
-      #   trace_number: String
-      # }
-      # ```
       class Submission < Increase::BaseModel
         # @!attribute effective_date
         #   The ACH transfer's effective date as sent to the Federal Reserve. If a specific

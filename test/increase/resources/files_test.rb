@@ -16,6 +16,21 @@ class Increase::Test::Resources::FilesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::File
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        description: String | nil,
+        direction: Increase::Models::File::Direction,
+        download_url: String | nil,
+        filename: String | nil,
+        idempotency_key: String | nil,
+        mime_type: String,
+        purpose: Increase::Models::File::Purpose,
+        type: Increase::Models::File::Type
+      }
+    end
   end
 
   def test_retrieve
@@ -23,6 +38,21 @@ class Increase::Test::Resources::FilesTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::File
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        description: String | nil,
+        direction: Increase::Models::File::Direction,
+        download_url: String | nil,
+        filename: String | nil,
+        idempotency_key: String | nil,
+        mime_type: String,
+        purpose: Increase::Models::File::Purpose,
+        type: Increase::Models::File::Type
+      }
     end
   end
 
@@ -41,6 +71,21 @@ class Increase::Test::Resources::FilesTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::File
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        created_at: Time,
+        description: String | nil,
+        direction: Increase::Models::File::Direction,
+        download_url: String | nil,
+        filename: String | nil,
+        idempotency_key: String | nil,
+        mime_type: String,
+        purpose: Increase::Models::File::Purpose,
+        type: Increase::Models::File::Type
+      }
     end
   end
 end

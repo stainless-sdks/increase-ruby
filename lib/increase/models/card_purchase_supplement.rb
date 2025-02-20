@@ -2,16 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # card_purchase_supplement => {
-    #   id: String,
-    #   card_payment_id: String,
-    #   invoice: Increase::Models::CardPurchaseSupplement::Invoice,
-    #   line_items: -> { Increase::ArrayOf[Increase::Models::CardPurchaseSupplement::LineItem] === _1 },
-    #   transaction_id: String
-    # }
-    # ```
     class CardPurchaseSupplement < Increase::BaseModel
       # @!attribute id
       #   The Card Purchase Supplement identifier.
@@ -67,17 +57,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # invoice => {
-      #   discount_amount: Integer,
-      #   discount_currency: String,
-      #   discount_treatment_code: Increase::Models::CardPurchaseSupplement::Invoice::DiscountTreatmentCode,
-      #   duty_tax_amount: Integer,
-      #   duty_tax_currency: String,
-      #   **_
-      # }
-      # ```
       class Invoice < Increase::BaseModel
         # @!attribute discount_amount
         #   Discount given to cardholder.
@@ -302,17 +281,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # line_item => {
-      #   id: String,
-      #   detail_indicator: Increase::Models::CardPurchaseSupplement::LineItem::DetailIndicator,
-      #   discount_amount: Integer,
-      #   discount_currency: String,
-      #   discount_treatment_code: Increase::Models::CardPurchaseSupplement::LineItem::DiscountTreatmentCode,
-      #   **_
-      # }
-      # ```
       class LineItem < Increase::BaseModel
         # @!attribute id
         #   The Card Purchase Supplement Line Item identifier.

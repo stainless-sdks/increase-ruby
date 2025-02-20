@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # file => {
-    #   id: String,
-    #   created_at: Time,
-    #   description: String,
-    #   direction: Increase::Models::File::Direction,
-    #   download_url: String,
-    #   **_
-    # }
-    # ```
     class File < Increase::BaseModel
       # @!attribute id
       #   The File's identifier.

@@ -16,5 +16,16 @@ class Increase::Test::Resources::Simulations::DocumentsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Document
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        category: Increase::Models::Document::Category,
+        created_at: Time,
+        entity_id: String | nil,
+        file_id: String,
+        type: Increase::Models::Document::Type
+      }
+    end
   end
 end

@@ -120,16 +120,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # physical_check => {
-      #   mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
-      #   memo: String,
-      #   recipient_name: String,
-      #   note: String,
-      #   return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress
-      # }
-      # ```
       class PhysicalCheck < Increase::BaseModel
         # @!attribute mailing_address
         #   Details for where Increase will mail the check.
@@ -199,16 +189,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # mailing_address => {
-        #   city: String,
-        #   line1: String,
-        #   postal_code: String,
-        #   state: String,
-        #   line2: String
-        # }
-        # ```
         class MailingAddress < Increase::BaseModel
           # @!attribute city
           #   The city component of the check's destination address.
@@ -270,16 +250,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # return_address => {
-        #   city: String,
-        #   line1: String,
-        #   name: String,
-        #   postal_code: String,
-        #   state: String
-        # }
-        # ```
         class ReturnAddress < Increase::BaseModel
           # @!attribute city
           #   The city of the return address.
@@ -339,12 +309,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # third_party => {
-      #   check_number: String
-      # }
-      # ```
       class ThirdParty < Increase::BaseModel
         # @!attribute [r] check_number
         #   The check number you will print on the check. This should not contain leading

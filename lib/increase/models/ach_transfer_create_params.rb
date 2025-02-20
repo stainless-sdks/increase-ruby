@@ -257,14 +257,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # addenda => {
-      #   category: Increase::Models::ACHTransferCreateParams::Addenda::Category,
-      #   freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
-      #   payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
-      # }
-      # ```
       class Addenda < Increase::BaseModel
         # @!attribute category
         #   The type of addenda to pass with the transfer.
@@ -334,12 +326,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # freeform => {
-        #   entries: -> { Increase::ArrayOf[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry] === _1 }
-        # }
-        # ```
         class Freeform < Increase::BaseModel
           # @!attribute entries
           #   Each entry represents an addendum sent with the transfer. Please reach out to
@@ -359,12 +345,6 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # entry => {
-          #   payment_related_information: String
-          # }
-          # ```
           class Entry < Increase::BaseModel
             # @!attribute payment_related_information
             #   The payment related information passed in the addendum.
@@ -381,12 +361,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # payment_order_remittance_advice => {
-        #   invoices: -> { Increase::ArrayOf[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice] === _1 }
-        # }
-        # ```
         class PaymentOrderRemittanceAdvice < Increase::BaseModel
           # @!attribute invoices
           #   ASC X12 RMR records for this specific transfer.
@@ -405,13 +379,6 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # invoice => {
-          #   invoice_number: String,
-          #   paid_amount: Integer
-          # }
-          # ```
           class Invoice < Increase::BaseModel
             # @!attribute invoice_number
             #   The invoice number for this reference, determined in advance with the receiver.
@@ -499,13 +466,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # preferred_effective_date => {
-      #   date: Date,
-      #   settlement_schedule: Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate::SettlementSchedule
-      # }
-      # ```
       class PreferredEffectiveDate < Increase::BaseModel
         # @!attribute [r] date
         #   A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
