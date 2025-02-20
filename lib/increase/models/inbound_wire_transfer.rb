@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # inbound_wire_transfer => {
-    #   id: String,
-    #   account_id: String,
-    #   account_number_id: String,
-    #   amount: Integer,
-    #   beneficiary_address_line1: String,
-    #   **_
-    # }
-    # ```
     class InboundWireTransfer < Increase::BaseModel
       # @!attribute id
       #   The inbound wire transfer's identifier.

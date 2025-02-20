@@ -3,14 +3,6 @@
 module Increase
   module Models
     module Simulations
-      # @example
-      # ```ruby
-      # digital_wallet_token_request_create_response => {
-      #   decline_reason: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason,
-      #   digital_wallet_token_id: String,
-      #   type: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type
-      # }
-      # ```
       class DigitalWalletTokenRequestCreateResponse < Increase::BaseModel
         # @!attribute decline_reason
         #   If the simulated tokenization attempt was declined, this field contains details

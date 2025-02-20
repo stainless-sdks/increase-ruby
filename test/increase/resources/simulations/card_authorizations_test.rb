@@ -16,5 +16,13 @@ class Increase::Test::Resources::Simulations::CardAuthorizationsTest < Minitest:
     assert_pattern do
       response => Increase::Models::Simulations::CardAuthorizationCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        declined_transaction: Increase::Models::DeclinedTransaction | nil,
+        pending_transaction: Increase::Models::PendingTransaction | nil,
+        type: Increase::Models::Simulations::CardAuthorizationCreateResponse::Type
+      }
+    end
   end
 end

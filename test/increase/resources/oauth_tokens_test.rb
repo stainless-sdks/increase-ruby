@@ -16,5 +16,13 @@ class Increase::Test::Resources::OAuthTokensTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::OAuthToken
     end
+
+    assert_pattern do
+      response => {
+        access_token: String,
+        token_type: Increase::Models::OAuthToken::TokenType,
+        type: Increase::Models::OAuthToken::Type
+      }
+    end
   end
 end

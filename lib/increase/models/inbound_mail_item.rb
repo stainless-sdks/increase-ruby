@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # inbound_mail_item => {
-    #   id: String,
-    #   created_at: Time,
-    #   file_id: String,
-    #   lockbox_id: String,
-    #   recipient_name: String,
-    #   **_
-    # }
-    # ```
     class InboundMailItem < Increase::BaseModel
       # @!attribute id
       #   The Inbound Mail Item identifier.

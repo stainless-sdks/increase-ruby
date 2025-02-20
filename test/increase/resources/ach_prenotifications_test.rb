@@ -20,6 +20,27 @@ class Increase::Test::Resources::ACHPrenotificationsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::ACHPrenotification
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_number: String,
+        addendum: String | nil,
+        company_descriptive_date: String | nil,
+        company_discretionary_data: String | nil,
+        company_entry_description: String | nil,
+        company_name: String | nil,
+        created_at: Time,
+        credit_debit_indicator: Increase::Models::ACHPrenotification::CreditDebitIndicator | nil,
+        effective_date: Time | nil,
+        idempotency_key: String | nil,
+        notifications_of_change: ^(Increase::ArrayOf[Increase::Models::ACHPrenotification::NotificationsOfChange]),
+        prenotification_return: Increase::Models::ACHPrenotification::PrenotificationReturn | nil,
+        routing_number: String,
+        status: Increase::Models::ACHPrenotification::Status,
+        type: Increase::Models::ACHPrenotification::Type
+      }
+    end
   end
 
   def test_retrieve
@@ -27,6 +48,27 @@ class Increase::Test::Resources::ACHPrenotificationsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::ACHPrenotification
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_number: String,
+        addendum: String | nil,
+        company_descriptive_date: String | nil,
+        company_discretionary_data: String | nil,
+        company_entry_description: String | nil,
+        company_name: String | nil,
+        created_at: Time,
+        credit_debit_indicator: Increase::Models::ACHPrenotification::CreditDebitIndicator | nil,
+        effective_date: Time | nil,
+        idempotency_key: String | nil,
+        notifications_of_change: ^(Increase::ArrayOf[Increase::Models::ACHPrenotification::NotificationsOfChange]),
+        prenotification_return: Increase::Models::ACHPrenotification::PrenotificationReturn | nil,
+        routing_number: String,
+        status: Increase::Models::ACHPrenotification::Status,
+        type: Increase::Models::ACHPrenotification::Type
+      }
     end
   end
 
@@ -45,6 +87,27 @@ class Increase::Test::Resources::ACHPrenotificationsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::ACHPrenotification
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        account_number: String,
+        addendum: String | nil,
+        company_descriptive_date: String | nil,
+        company_discretionary_data: String | nil,
+        company_entry_description: String | nil,
+        company_name: String | nil,
+        created_at: Time,
+        credit_debit_indicator: Increase::Models::ACHPrenotification::CreditDebitIndicator | nil,
+        effective_date: Time | nil,
+        idempotency_key: String | nil,
+        notifications_of_change: ^(Increase::ArrayOf[Increase::Models::ACHPrenotification::NotificationsOfChange]),
+        prenotification_return: Increase::Models::ACHPrenotification::PrenotificationReturn | nil,
+        routing_number: String,
+        status: Increase::Models::ACHPrenotification::Status,
+        type: Increase::Models::ACHPrenotification::Type
+      }
     end
   end
 end

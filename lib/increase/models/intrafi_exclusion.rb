@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # intrafi_exclusion => {
-    #   id: String,
-    #   bank_name: String,
-    #   created_at: Time,
-    #   entity_id: String,
-    #   excluded_at: Time,
-    #   **_
-    # }
-    # ```
     class IntrafiExclusion < Increase::BaseModel
       # @!attribute id
       #   The identifier of this exclusion request.

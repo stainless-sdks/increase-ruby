@@ -107,14 +107,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # text_color => {
-      #   blue: Integer,
-      #   green: Integer,
-      #   red: Integer
-      # }
-      # ```
       class TextColor < Increase::BaseModel
         # @!attribute blue
         #   The value of the blue channel in the RGB color.

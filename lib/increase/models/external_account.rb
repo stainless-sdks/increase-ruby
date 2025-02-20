@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # external_account => {
-    #   id: String,
-    #   account_holder: Increase::Models::ExternalAccount::AccountHolder,
-    #   account_number: String,
-    #   created_at: Time,
-    #   description: String,
-    #   **_
-    # }
-    # ```
     class ExternalAccount < Increase::BaseModel
       # @!attribute id
       #   The External Account's identifier.

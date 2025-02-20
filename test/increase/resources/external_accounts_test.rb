@@ -20,6 +20,22 @@ class Increase::Test::Resources::ExternalAccountsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::ExternalAccount
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_holder: Increase::Models::ExternalAccount::AccountHolder,
+        account_number: String,
+        created_at: Time,
+        description: String,
+        funding: Increase::Models::ExternalAccount::Funding,
+        idempotency_key: String | nil,
+        routing_number: String,
+        status: Increase::Models::ExternalAccount::Status,
+        type: Increase::Models::ExternalAccount::Type,
+        verification_status: Increase::Models::ExternalAccount::VerificationStatus
+      }
+    end
   end
 
   def test_retrieve
@@ -28,6 +44,22 @@ class Increase::Test::Resources::ExternalAccountsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::ExternalAccount
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_holder: Increase::Models::ExternalAccount::AccountHolder,
+        account_number: String,
+        created_at: Time,
+        description: String,
+        funding: Increase::Models::ExternalAccount::Funding,
+        idempotency_key: String | nil,
+        routing_number: String,
+        status: Increase::Models::ExternalAccount::Status,
+        type: Increase::Models::ExternalAccount::Type,
+        verification_status: Increase::Models::ExternalAccount::VerificationStatus
+      }
+    end
   end
 
   def test_update
@@ -35,6 +67,22 @@ class Increase::Test::Resources::ExternalAccountsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::ExternalAccount
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_holder: Increase::Models::ExternalAccount::AccountHolder,
+        account_number: String,
+        created_at: Time,
+        description: String,
+        funding: Increase::Models::ExternalAccount::Funding,
+        idempotency_key: String | nil,
+        routing_number: String,
+        status: Increase::Models::ExternalAccount::Status,
+        type: Increase::Models::ExternalAccount::Type,
+        verification_status: Increase::Models::ExternalAccount::VerificationStatus
+      }
     end
   end
 
@@ -53,6 +101,22 @@ class Increase::Test::Resources::ExternalAccountsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::ExternalAccount
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        account_holder: Increase::Models::ExternalAccount::AccountHolder,
+        account_number: String,
+        created_at: Time,
+        description: String,
+        funding: Increase::Models::ExternalAccount::Funding,
+        idempotency_key: String | nil,
+        routing_number: String,
+        status: Increase::Models::ExternalAccount::Status,
+        type: Increase::Models::ExternalAccount::Type,
+        verification_status: Increase::Models::ExternalAccount::VerificationStatus
+      }
     end
   end
 end

@@ -16,5 +16,13 @@ class Increase::Test::Resources::Simulations::DigitalWalletTokenRequestsTest < M
     assert_pattern do
       response => Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse
     end
+
+    assert_pattern do
+      response => {
+        decline_reason: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::DeclineReason | nil,
+        digital_wallet_token_id: String | nil,
+        type: Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse::Type
+      }
+    end
   end
 end

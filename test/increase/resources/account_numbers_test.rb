@@ -19,6 +19,22 @@ class Increase::Test::Resources::AccountNumbersTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::AccountNumber
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_id: String,
+        account_number: String,
+        created_at: Time,
+        idempotency_key: String | nil,
+        inbound_ach: Increase::Models::AccountNumber::InboundACH,
+        inbound_checks: Increase::Models::AccountNumber::InboundChecks,
+        name: String,
+        routing_number: String,
+        status: Increase::Models::AccountNumber::Status,
+        type: Increase::Models::AccountNumber::Type
+      }
+    end
   end
 
   def test_retrieve
@@ -27,6 +43,22 @@ class Increase::Test::Resources::AccountNumbersTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::AccountNumber
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_id: String,
+        account_number: String,
+        created_at: Time,
+        idempotency_key: String | nil,
+        inbound_ach: Increase::Models::AccountNumber::InboundACH,
+        inbound_checks: Increase::Models::AccountNumber::InboundChecks,
+        name: String,
+        routing_number: String,
+        status: Increase::Models::AccountNumber::Status,
+        type: Increase::Models::AccountNumber::Type
+      }
+    end
   end
 
   def test_update
@@ -34,6 +66,22 @@ class Increase::Test::Resources::AccountNumbersTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::AccountNumber
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_id: String,
+        account_number: String,
+        created_at: Time,
+        idempotency_key: String | nil,
+        inbound_ach: Increase::Models::AccountNumber::InboundACH,
+        inbound_checks: Increase::Models::AccountNumber::InboundChecks,
+        name: String,
+        routing_number: String,
+        status: Increase::Models::AccountNumber::Status,
+        type: Increase::Models::AccountNumber::Type
+      }
     end
   end
 
@@ -52,6 +100,22 @@ class Increase::Test::Resources::AccountNumbersTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::AccountNumber
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        account_id: String,
+        account_number: String,
+        created_at: Time,
+        idempotency_key: String | nil,
+        inbound_ach: Increase::Models::AccountNumber::InboundACH,
+        inbound_checks: Increase::Models::AccountNumber::InboundChecks,
+        name: String,
+        routing_number: String,
+        status: Increase::Models::AccountNumber::Status,
+        type: Increase::Models::AccountNumber::Type
+      }
     end
   end
 end

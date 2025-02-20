@@ -3,14 +3,6 @@
 module Increase
   module Models
     module Simulations
-      # @example
-      # ```ruby
-      # card_authorization_create_response => {
-      #   declined_transaction: Increase::Models::DeclinedTransaction,
-      #   pending_transaction: Increase::Models::PendingTransaction,
-      #   type: Increase::Models::Simulations::CardAuthorizationCreateResponse::Type
-      # }
-      # ```
       class CardAuthorizationCreateResponse < Increase::BaseModel
         # @!attribute declined_transaction
         #   If the authorization attempt fails, this will contain the resulting

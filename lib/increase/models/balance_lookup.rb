@@ -2,15 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # balance_lookup => {
-    #   account_id: String,
-    #   available_balance: Integer,
-    #   current_balance: Integer,
-    #   type: Increase::Models::BalanceLookup::Type
-    # }
-    # ```
     class BalanceLookup < Increase::BaseModel
       # @!attribute account_id
       #   The identifier for the account for which the balance was queried.

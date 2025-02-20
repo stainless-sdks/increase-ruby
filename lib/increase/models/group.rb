@@ -2,16 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # group => {
-    #   id: String,
-    #   ach_debit_status: Increase::Models::Group::ACHDebitStatus,
-    #   activation_status: Increase::Models::Group::ActivationStatus,
-    #   created_at: Time,
-    #   type: Increase::Models::Group::Type
-    # }
-    # ```
     class Group < Increase::BaseModel
       # @!attribute id
       #   The Group identifier.

@@ -16,6 +16,17 @@ class Increase::Test::Resources::EventsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Event
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        associated_object_id: String,
+        associated_object_type: String,
+        category: Increase::Models::Event::Category,
+        created_at: Time,
+        type: Increase::Models::Event::Type
+      }
+    end
   end
 
   def test_list
@@ -33,6 +44,17 @@ class Increase::Test::Resources::EventsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::Event
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        associated_object_id: String,
+        associated_object_type: String,
+        category: Increase::Models::Event::Category,
+        created_at: Time,
+        type: Increase::Models::Event::Type
+      }
     end
   end
 end

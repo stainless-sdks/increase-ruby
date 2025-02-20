@@ -16,6 +16,20 @@ class Increase::Test::Resources::CardPaymentsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::CardPayment
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_id: String,
+        card_id: String,
+        created_at: Time,
+        digital_wallet_token_id: String | nil,
+        elements: ^(Increase::ArrayOf[Increase::Models::CardPayment::Element]),
+        physical_card_id: String | nil,
+        state: Increase::Models::CardPayment::State,
+        type: Increase::Models::CardPayment::Type
+      }
+    end
   end
 
   def test_list
@@ -33,6 +47,20 @@ class Increase::Test::Resources::CardPaymentsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::CardPayment
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        account_id: String,
+        card_id: String,
+        created_at: Time,
+        digital_wallet_token_id: String | nil,
+        elements: ^(Increase::ArrayOf[Increase::Models::CardPayment::Element]),
+        physical_card_id: String | nil,
+        state: Increase::Models::CardPayment::State,
+        type: Increase::Models::CardPayment::Type
+      }
     end
   end
 end

@@ -82,16 +82,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # billing_address => {
-      #   city: String,
-      #   line1: String,
-      #   postal_code: String,
-      #   state: String,
-      #   line2: String
-      # }
-      # ```
       class BillingAddress < Increase::BaseModel
         # @!attribute city
         #   The city of the billing address.
@@ -141,14 +131,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # digital_wallet => {
-      #   digital_card_profile_id: String,
-      #   email: String,
-      #   phone: String
-      # }
-      # ```
       class DigitalWallet < Increase::BaseModel
         # @!attribute [r] digital_card_profile_id
         #   The digital card profile assigned to this digital card.

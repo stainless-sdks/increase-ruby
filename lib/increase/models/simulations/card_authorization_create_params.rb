@@ -324,12 +324,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # network_details => {
-        #   visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa
-        # }
-        # ```
         class NetworkDetails < Increase::BaseModel
           # @!attribute visa
           #   Fields specific to the Visa network.
@@ -346,12 +340,6 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # visa => {
-          #   stand_in_processing_reason: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa::StandInProcessingReason
-          # }
-          # ```
           class Visa < Increase::BaseModel
             # @!attribute [r] stand_in_processing_reason
             #   The reason code for the stand-in processing.

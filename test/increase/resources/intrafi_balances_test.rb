@@ -16,5 +16,16 @@ class Increase::Test::Resources::IntrafiBalancesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::IntrafiBalance
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        balances: ^(Increase::ArrayOf[Increase::Models::IntrafiBalance::Balance]),
+        currency: Increase::Models::IntrafiBalance::Currency,
+        effective_date: Date,
+        total_balance: Integer,
+        type: Increase::Models::IntrafiBalance::Type
+      }
+    end
   end
 end

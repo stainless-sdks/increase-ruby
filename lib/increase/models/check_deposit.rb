@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # check_deposit => {
-    #   id: String,
-    #   account_id: String,
-    #   amount: Integer,
-    #   back_image_file_id: String,
-    #   created_at: Time,
-    #   **_
-    # }
-    # ```
     class CheckDeposit < Increase::BaseModel
       # @!attribute id
       #   The deposit's identifier.
@@ -181,17 +170,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # deposit_acceptance => {
-      #   account_number: String,
-      #   amount: Integer,
-      #   auxiliary_on_us: String,
-      #   check_deposit_id: String,
-      #   currency: Increase::Models::CheckDeposit::DepositAcceptance::Currency,
-      #   **_
-      # }
-      # ```
       class DepositAcceptance < Increase::BaseModel
         # @!attribute account_number
         #   The account number printed on the check.
@@ -316,16 +294,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # deposit_rejection => {
-      #   amount: Integer,
-      #   check_deposit_id: String,
-      #   currency: Increase::Models::CheckDeposit::DepositRejection::Currency,
-      #   declined_transaction_id: String,
-      #   reason: Increase::Models::CheckDeposit::DepositRejection::Reason
-      # }
-      # ```
       class DepositRejection < Increase::BaseModel
         # @!attribute amount
         #   The rejected amount in the minor unit of check's currency. For dollars, for
@@ -494,16 +462,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # deposit_return => {
-      #   amount: Integer,
-      #   check_deposit_id: String,
-      #   currency: Increase::Models::CheckDeposit::DepositReturn::Currency,
-      #   return_reason: Increase::Models::CheckDeposit::DepositReturn::ReturnReason,
-      #   returned_at: Time
-      # }
-      # ```
       class DepositReturn < Increase::BaseModel
         # @!attribute amount
         #   The returned amount in USD cents.
@@ -719,14 +677,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # deposit_submission => {
-      #   back_file_id: String,
-      #   front_file_id: String,
-      #   submitted_at: Time
-      # }
-      # ```
       class DepositSubmission < Increase::BaseModel
         # @!attribute back_file_id
         #   The ID for the File containing the check back image that was submitted to the
@@ -763,17 +713,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # inbound_funds_hold => {
-      #   id: String,
-      #   amount: Integer,
-      #   automatically_releases_at: Time,
-      #   created_at: Time,
-      #   currency: Increase::Models::CheckDeposit::InboundFundsHold::Currency,
-      #   **_
-      # }
-      # ```
       class InboundFundsHold < Increase::BaseModel
         # @!attribute id
         #   The Inbound Funds Hold identifier.

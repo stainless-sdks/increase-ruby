@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # real_time_payments_request_for_payment => {
-    #   id: String,
-    #   amount: Integer,
-    #   created_at: Time,
-    #   currency: Increase::Models::RealTimePaymentsRequestForPayment::Currency,
-    #   debtor_name: String,
-    #   **_
-    # }
-    # ```
     class RealTimePaymentsRequestForPayment < Increase::BaseModel
       # @!attribute id
       #   The Real-Time Payments Request for Payment's identifier.
@@ -227,12 +216,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # refusal => {
-      #   refusal_reason_code: Increase::Models::RealTimePaymentsRequestForPayment::Refusal::RefusalReasonCode
-      # }
-      # ```
       class Refusal < Increase::BaseModel
         # @!attribute refusal_reason_code
         #   The reason the request for payment was refused as provided by the recipient bank
@@ -323,12 +306,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # rejection => {
-      #   reject_reason_code: Increase::Models::RealTimePaymentsRequestForPayment::Rejection::RejectReasonCode
-      # }
-      # ```
       class Rejection < Increase::BaseModel
         # @!attribute reject_reason_code
         #   The reason the request for payment was rejected as provided by the recipient
@@ -491,12 +468,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # submission => {
-      #   payment_information_identification: String
-      # }
-      # ```
       class Submission < Increase::BaseModel
         # @!attribute payment_information_identification
         #   The Real-Time Payments payment information identification of the request.

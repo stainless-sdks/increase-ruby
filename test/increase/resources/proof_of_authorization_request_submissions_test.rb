@@ -26,6 +26,28 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < Mi
     assert_pattern do
       response => Increase::Models::ProofOfAuthorizationRequestSubmission
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        authorization_terms: String,
+        authorized_at: Time,
+        authorizer_company: String | nil,
+        authorizer_email: String | nil,
+        authorizer_ip_address: String | nil,
+        authorizer_name: String | nil,
+        created_at: Time,
+        customer_has_been_offboarded: Increase::BooleanModel | nil,
+        idempotency_key: String | nil,
+        proof_of_authorization_request_id: String,
+        status: Increase::Models::ProofOfAuthorizationRequestSubmission::Status,
+        type: Increase::Models::ProofOfAuthorizationRequestSubmission::Type,
+        updated_at: Time,
+        validated_account_ownership_via_credential: Increase::BooleanModel | nil,
+        validated_account_ownership_with_account_statement: Increase::BooleanModel | nil,
+        validated_account_ownership_with_microdeposit: Increase::BooleanModel | nil
+      }
+    end
   end
 
   def test_retrieve
@@ -35,6 +57,28 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < Mi
 
     assert_pattern do
       response => Increase::Models::ProofOfAuthorizationRequestSubmission
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        authorization_terms: String,
+        authorized_at: Time,
+        authorizer_company: String | nil,
+        authorizer_email: String | nil,
+        authorizer_ip_address: String | nil,
+        authorizer_name: String | nil,
+        created_at: Time,
+        customer_has_been_offboarded: Increase::BooleanModel | nil,
+        idempotency_key: String | nil,
+        proof_of_authorization_request_id: String,
+        status: Increase::Models::ProofOfAuthorizationRequestSubmission::Status,
+        type: Increase::Models::ProofOfAuthorizationRequestSubmission::Type,
+        updated_at: Time,
+        validated_account_ownership_via_credential: Increase::BooleanModel | nil,
+        validated_account_ownership_with_account_statement: Increase::BooleanModel | nil,
+        validated_account_ownership_with_microdeposit: Increase::BooleanModel | nil
+      }
     end
   end
 
@@ -53,6 +97,28 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < Mi
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::ProofOfAuthorizationRequestSubmission
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        authorization_terms: String,
+        authorized_at: Time,
+        authorizer_company: String | nil,
+        authorizer_email: String | nil,
+        authorizer_ip_address: String | nil,
+        authorizer_name: String | nil,
+        created_at: Time,
+        customer_has_been_offboarded: Increase::BooleanModel | nil,
+        idempotency_key: String | nil,
+        proof_of_authorization_request_id: String,
+        status: Increase::Models::ProofOfAuthorizationRequestSubmission::Status,
+        type: Increase::Models::ProofOfAuthorizationRequestSubmission::Type,
+        updated_at: Time,
+        validated_account_ownership_via_credential: Increase::BooleanModel | nil,
+        validated_account_ownership_with_account_statement: Increase::BooleanModel | nil,
+        validated_account_ownership_with_microdeposit: Increase::BooleanModel | nil
+      }
     end
   end
 end

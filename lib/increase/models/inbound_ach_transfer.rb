@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # inbound_ach_transfer => {
-    #   id: String,
-    #   acceptance: Increase::Models::InboundACHTransfer::Acceptance,
-    #   account_id: String,
-    #   account_number_id: String,
-    #   addenda: Increase::Models::InboundACHTransfer::Addenda,
-    #   **_
-    # }
-    # ```
     class InboundACHTransfer < Increase::BaseModel
       # @!attribute id
       #   The inbound ACH transfer's identifier.
@@ -258,13 +247,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # acceptance => {
-      #   accepted_at: Time,
-      #   transaction_id: String
-      # }
-      # ```
       class Acceptance < Increase::BaseModel
         # @!attribute accepted_at
         #   The time at which the transfer was accepted.
@@ -289,13 +271,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # addenda => {
-      #   category: Increase::Models::InboundACHTransfer::Addenda::Category,
-      #   freeform: Increase::Models::InboundACHTransfer::Addenda::Freeform
-      # }
-      # ```
       class Addenda < Increase::BaseModel
         # @!attribute category
         #   The type of addendum.
@@ -342,12 +317,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # freeform => {
-        #   entries: -> { Increase::ArrayOf[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry] === _1 }
-        # }
-        # ```
         class Freeform < Increase::BaseModel
           # @!attribute entries
           #   Each entry represents an addendum received from the originator.
@@ -365,12 +334,6 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # entry => {
-          #   payment_related_information: String
-          # }
-          # ```
           class Entry < Increase::BaseModel
             # @!attribute payment_related_information
             #   The payment related information passed in the addendum.
@@ -388,14 +351,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # decline => {
-      #   declined_at: Time,
-      #   declined_transaction_id: String,
-      #   reason: Increase::Models::InboundACHTransfer::Decline::Reason
-      # }
-      # ```
       class Decline < Increase::BaseModel
         # @!attribute declined_at
         #   The time at which the transfer was declined.
@@ -564,17 +519,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # international_addenda => {
-      #   destination_country_code: String,
-      #   destination_currency_code: String,
-      #   foreign_exchange_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeIndicator,
-      #   foreign_exchange_reference: String,
-      #   foreign_exchange_reference_indicator: Increase::Models::InboundACHTransfer::InternationalAddenda::ForeignExchangeReferenceIndicator,
-      #   **_
-      # }
-      # ```
       class InternationalAddenda < Increase::BaseModel
         # @!attribute destination_country_code
         #   The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
@@ -1104,13 +1048,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # notification_of_change => {
-      #   updated_account_number: String,
-      #   updated_routing_number: String
-      # }
-      # ```
       class NotificationOfChange < Increase::BaseModel
         # @!attribute updated_account_number
         #   The new account number provided in the notification of change.
@@ -1252,14 +1189,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # transfer_return => {
-      #   reason: Increase::Models::InboundACHTransfer::TransferReturn::Reason,
-      #   returned_at: Time,
-      #   transaction_id: String
-      # }
-      # ```
       class TransferReturn < Increase::BaseModel
         # @!attribute reason
         #   The reason for the transfer return.

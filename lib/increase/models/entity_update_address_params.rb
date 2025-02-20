@@ -22,16 +22,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # address => {
-      #   city: String,
-      #   line1: String,
-      #   state: String,
-      #   zip: String,
-      #   line2: String
-      # }
-      # ```
       class Address < Increase::BaseModel
         # @!attribute city
         #   The city of the address.

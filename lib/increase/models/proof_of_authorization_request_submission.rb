@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # proof_of_authorization_request_submission => {
-    #   id: String,
-    #   authorization_terms: String,
-    #   authorized_at: Time,
-    #   authorizer_company: String,
-    #   authorizer_email: String,
-    #   **_
-    # }
-    # ```
     class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
       # @!attribute id
       #   The Proof of Authorization Request Submission identifier.

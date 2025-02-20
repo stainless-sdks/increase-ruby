@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # declined_transaction => {
-    #   id: String,
-    #   account_id: String,
-    #   amount: Integer,
-    #   created_at: Time,
-    #   currency: Increase::Models::DeclinedTransaction::Currency,
-    #   **_
-    # }
-    # ```
     class DeclinedTransaction < Increase::BaseModel
       # @!attribute id
       #   The Declined Transaction identifier.
@@ -201,17 +190,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # source => {
-      #   ach_decline: Increase::Models::DeclinedTransaction::Source::ACHDecline,
-      #   card_decline: Increase::Models::DeclinedTransaction::Source::CardDecline,
-      #   category: Increase::Models::DeclinedTransaction::Source::Category,
-      #   check_decline: Increase::Models::DeclinedTransaction::Source::CheckDecline,
-      #   check_deposit_rejection: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection,
-      #   **_
-      # }
-      # ```
       class Source < Increase::BaseModel
         # @!attribute ach_decline
         #   An ACH Decline object. This field will be present in the JSON response if and
@@ -306,17 +284,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # ach_decline => {
-        #   id: String,
-        #   amount: Integer,
-        #   inbound_ach_transfer_id: String,
-        #   originator_company_descriptive_date: String,
-        #   originator_company_discretionary_data: String,
-        #   **_
-        # }
-        # ```
         class ACHDecline < Increase::BaseModel
           # @!attribute id
           #   The ACH Decline's identifier.
@@ -533,17 +500,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # card_decline => {
-        #   id: String,
-        #   actioner: Increase::Models::DeclinedTransaction::Source::CardDecline::Actioner,
-        #   amount: Integer,
-        #   card_payment_id: String,
-        #   currency: Increase::Models::DeclinedTransaction::Source::CardDecline::Currency,
-        #   **_
-        # }
-        # ```
         class CardDecline < Increase::BaseModel
           # @!attribute id
           #   The Card Decline identifier.
@@ -906,13 +862,6 @@ module Increase
             #   def self.values; end
           end
 
-          # @example
-          # ```ruby
-          # network_details => {
-          #   category: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Category,
-          #   visa: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa
-          # }
-          # ```
           class NetworkDetails < Increase::BaseModel
             # @!attribute category
             #   The payment network used to process this card authorization.
@@ -962,14 +911,6 @@ module Increase
               #   def self.values; end
             end
 
-            # @example
-            # ```ruby
-            # visa => {
-            #   electronic_commerce_indicator: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator,
-            #   point_of_service_entry_mode: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode,
-            #   stand_in_processing_reason: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::StandInProcessingReason
-            # }
-            # ```
             class Visa < Increase::BaseModel
               # @!attribute electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used
@@ -1181,14 +1122,6 @@ module Increase
             end
           end
 
-          # @example
-          # ```ruby
-          # network_identifiers => {
-          #   retrieval_reference_number: String,
-          #   trace_number: String,
-          #   transaction_id: String
-          # }
-          # ```
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal.
@@ -1397,13 +1330,6 @@ module Increase
             #   def self.values; end
           end
 
-          # @example
-          # ```ruby
-          # verification => {
-          #   card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
-          #   cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
-          # }
-          # ```
           class Verification < Increase::BaseModel
             # @!attribute card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -1431,12 +1357,6 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # card_verification_code => {
-            #   result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::Result
-            # }
-            # ```
             class CardVerificationCode < Increase::BaseModel
               # @!attribute result
               #   The result of verifying the Card Verification Code.
@@ -1489,16 +1409,6 @@ module Increase
               end
             end
 
-            # @example
-            # ```ruby
-            # cardholder_address => {
-            #   actual_line1: String,
-            #   actual_postal_code: String,
-            #   provided_line1: String,
-            #   provided_postal_code: String,
-            #   result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::Result
-            # }
-            # ```
             class CardholderAddress < Increase::BaseModel
               # @!attribute actual_line1
               #   Line 1 of the address on file for the cardholder.
@@ -1649,17 +1559,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # check_decline => {
-        #   amount: Integer,
-        #   auxiliary_on_us: String,
-        #   back_image_file_id: String,
-        #   check_transfer_id: String,
-        #   front_image_file_id: String,
-        #   **_
-        # }
-        # ```
         class CheckDecline < Increase::BaseModel
           # @!attribute amount
           #   The declined amount in USD cents.
@@ -1816,16 +1715,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # check_deposit_rejection => {
-        #   amount: Integer,
-        #   check_deposit_id: String,
-        #   currency: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Currency,
-        #   declined_transaction_id: String,
-        #   reason: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::Reason
-        # }
-        # ```
         class CheckDepositRejection < Increase::BaseModel
           # @!attribute amount
           #   The rejected amount in the minor unit of check's currency. For dollars, for
@@ -1996,17 +1885,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # inbound_real_time_payments_transfer_decline => {
-        #   amount: Integer,
-        #   creditor_name: String,
-        #   currency: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::Currency,
-        #   debtor_account_number: String,
-        #   debtor_name: String,
-        #   **_
-        # }
-        # ```
         class InboundRealTimePaymentsTransferDecline < Increase::BaseModel
           # @!attribute amount
           #   The declined amount in the minor unit of the destination account currency. For
@@ -2206,13 +2084,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # wire_decline => {
-        #   inbound_wire_transfer_id: String,
-        #   reason: Increase::Models::DeclinedTransaction::Source::WireDecline::Reason
-        # }
-        # ```
         class WireDecline < Increase::BaseModel
           # @!attribute inbound_wire_transfer_id
           #   The identifier of the Inbound Wire Transfer that was declined.

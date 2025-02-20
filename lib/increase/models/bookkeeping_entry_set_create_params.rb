@@ -44,13 +44,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # entry => {
-      #   account_id: String,
-      #   amount: Integer
-      # }
-      # ```
       class Entry < Increase::BaseModel
         # @!attribute account_id
         #   The identifier for the Bookkeeping Account impacted by this entry.

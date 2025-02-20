@@ -19,6 +19,21 @@ class Increase::Test::Resources::IntrafiExclusionsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::IntrafiExclusion
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        bank_name: String,
+        created_at: Time,
+        entity_id: String,
+        excluded_at: Time | nil,
+        fdic_certificate_number: String | nil,
+        idempotency_key: String | nil,
+        status: Increase::Models::IntrafiExclusion::Status,
+        submitted_at: Time | nil,
+        type: Increase::Models::IntrafiExclusion::Type
+      }
+    end
   end
 
   def test_retrieve
@@ -26,6 +41,21 @@ class Increase::Test::Resources::IntrafiExclusionsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::IntrafiExclusion
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        bank_name: String,
+        created_at: Time,
+        entity_id: String,
+        excluded_at: Time | nil,
+        fdic_certificate_number: String | nil,
+        idempotency_key: String | nil,
+        status: Increase::Models::IntrafiExclusion::Status,
+        submitted_at: Time | nil,
+        type: Increase::Models::IntrafiExclusion::Type
+      }
     end
   end
 
@@ -45,6 +75,21 @@ class Increase::Test::Resources::IntrafiExclusionsTest < Minitest::Test
     assert_pattern do
       row => Increase::Models::IntrafiExclusion
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        bank_name: String,
+        created_at: Time,
+        entity_id: String,
+        excluded_at: Time | nil,
+        fdic_certificate_number: String | nil,
+        idempotency_key: String | nil,
+        status: Increase::Models::IntrafiExclusion::Status,
+        submitted_at: Time | nil,
+        type: Increase::Models::IntrafiExclusion::Type
+      }
+    end
   end
 
   def test_archive
@@ -52,6 +97,21 @@ class Increase::Test::Resources::IntrafiExclusionsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::IntrafiExclusion
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        bank_name: String,
+        created_at: Time,
+        entity_id: String,
+        excluded_at: Time | nil,
+        fdic_certificate_number: String | nil,
+        idempotency_key: String | nil,
+        status: Increase::Models::IntrafiExclusion::Status,
+        submitted_at: Time | nil,
+        type: Increase::Models::IntrafiExclusion::Type
+      }
     end
   end
 end

@@ -26,5 +26,16 @@ class Increase::Test::Resources::RoutingNumbersTest < Minitest::Test
     assert_pattern do
       row => Increase::Models::RoutingNumberListResponse
     end
+
+    assert_pattern do
+      row => {
+        ach_transfers: Increase::Models::RoutingNumberListResponse::ACHTransfers,
+        name: String,
+        real_time_payments_transfers: Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers,
+        routing_number: String,
+        type: Increase::Models::RoutingNumberListResponse::Type,
+        wire_transfers: Increase::Models::RoutingNumberListResponse::WireTransfers
+      }
+    end
   end
 end
