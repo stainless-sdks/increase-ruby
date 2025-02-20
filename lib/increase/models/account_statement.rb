@@ -2,6 +2,17 @@
 
 module Increase
   module Models
+    # @example
+    # ```ruby
+    # account_statement => {
+    #   id: String,
+    #   account_id: String,
+    #   created_at: Time,
+    #   ending_balance: Integer,
+    #   file_id: String,
+    #   **_
+    # }
+    # ```
     class AccountStatement < Increase::BaseModel
       # @!attribute id
       #   The Account Statement identifier.

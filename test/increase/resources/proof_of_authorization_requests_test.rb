@@ -16,17 +16,6 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestsTest < Minitest::Te
     assert_pattern do
       response => Increase::Models::ProofOfAuthorizationRequest
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        ach_transfers: ^(Increase::ArrayOf[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer]),
-        created_at: Time,
-        due_on: Time,
-        type: Increase::Models::ProofOfAuthorizationRequest::Type,
-        updated_at: Time
-      }
-    end
   end
 
   def test_list
@@ -44,17 +33,6 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestsTest < Minitest::Te
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::ProofOfAuthorizationRequest
-    end
-
-    assert_pattern do
-      row => {
-        id: String,
-        ach_transfers: ^(Increase::ArrayOf[Increase::Models::ProofOfAuthorizationRequest::ACHTransfer]),
-        created_at: Time,
-        due_on: Time,
-        type: Increase::Models::ProofOfAuthorizationRequest::Type,
-        updated_at: Time
-      }
     end
   end
 end

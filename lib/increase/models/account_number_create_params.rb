@@ -51,6 +51,12 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @example
+      # ```ruby
+      # inbound_ach => {
+      #   debit_status: Increase::Models::AccountNumberCreateParams::InboundACH::DebitStatus
+      # }
+      # ```
       class InboundACH < Increase::BaseModel
         # @!attribute debit_status
         #   Whether ACH debits are allowed against this Account Number. Note that ACH debits
@@ -100,6 +106,12 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # inbound_checks => {
+      #   status: Increase::Models::AccountNumberCreateParams::InboundChecks::Status
+      # }
+      # ```
       class InboundChecks < Increase::BaseModel
         # @!attribute status
         #   How Increase should process checks with this account number printed on them. If

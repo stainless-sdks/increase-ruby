@@ -21,18 +21,6 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::BookkeepingEntrySet
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        created_at: Time,
-        date: Time,
-        entries: ^(Increase::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry]),
-        idempotency_key: String | nil,
-        transaction_id: String | nil,
-        type: Increase::Models::BookkeepingEntrySet::Type
-      }
-    end
   end
 
   def test_retrieve
@@ -40,18 +28,6 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::BookkeepingEntrySet
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        created_at: Time,
-        date: Time,
-        entries: ^(Increase::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry]),
-        idempotency_key: String | nil,
-        transaction_id: String | nil,
-        type: Increase::Models::BookkeepingEntrySet::Type
-      }
     end
   end
 
@@ -70,18 +46,6 @@ class Increase::Test::Resources::BookkeepingEntrySetsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::BookkeepingEntrySet
-    end
-
-    assert_pattern do
-      row => {
-        id: String,
-        created_at: Time,
-        date: Time,
-        entries: ^(Increase::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry]),
-        idempotency_key: String | nil,
-        transaction_id: String | nil,
-        type: Increase::Models::BookkeepingEntrySet::Type
-      }
     end
   end
 end

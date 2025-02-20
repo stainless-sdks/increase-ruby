@@ -2,6 +2,17 @@
 
 module Increase
   module Models
+    # @example
+    # ```ruby
+    # bookkeeping_entry_set => {
+    #   id: String,
+    #   created_at: Time,
+    #   date: Time,
+    #   entries: -> { Increase::ArrayOf[Increase::Models::BookkeepingEntrySet::Entry] === _1 },
+    #   idempotency_key: String,
+    #   **_
+    # }
+    # ```
     class BookkeepingEntrySet < Increase::BaseModel
       # @!attribute id
       #   The entry set identifier.
@@ -66,6 +77,14 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @example
+      # ```ruby
+      # entry => {
+      #   id: String,
+      #   account_id: String,
+      #   amount: Integer
+      # }
+      # ```
       class Entry < Increase::BaseModel
         # @!attribute id
         #   The entry identifier.

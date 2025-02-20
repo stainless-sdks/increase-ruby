@@ -71,6 +71,15 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @example
+      # ```ruby
+      # created_at => {
+      #   after: Time,
+      #   before: Time,
+      #   on_or_after: Time,
+      #   on_or_before: Time
+      # }
+      # ```
       class CreatedAt < Increase::BaseModel
         # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -127,6 +136,12 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      # ```ruby
+      # purpose => {
+      #   in_: -> { Increase::ArrayOf[enum: Increase::Models::FileListParams::Purpose::In] === _1 }
+      # }
+      # ```
       class Purpose < Increase::BaseModel
         # @!attribute [r] in_
         #   Filter Files for those with the specified purpose or purposes. For GET requests,

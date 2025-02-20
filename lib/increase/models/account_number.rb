@@ -2,6 +2,17 @@
 
 module Increase
   module Models
+    # @example
+    # ```ruby
+    # account_number => {
+    #   id: String,
+    #   account_id: String,
+    #   account_number: String,
+    #   created_at: Time,
+    #   idempotency_key: String,
+    #   **_
+    # }
+    # ```
     class AccountNumber < Increase::BaseModel
       # @!attribute id
       #   The Account Number identifier.
@@ -112,6 +123,12 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @example
+      # ```ruby
+      # inbound_ach => {
+      #   debit_status: Increase::Models::AccountNumber::InboundACH::DebitStatus
+      # }
+      # ```
       class InboundACH < Increase::BaseModel
         # @!attribute debit_status
         #   Whether ACH debits are allowed against this Account Number. Note that they will
@@ -159,6 +176,12 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # inbound_checks => {
+      #   status: Increase::Models::AccountNumber::InboundChecks::Status
+      # }
+      # ```
       class InboundChecks < Increase::BaseModel
         # @!attribute status
         #   How Increase should process checks with this account number printed on them.

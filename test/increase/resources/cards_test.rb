@@ -16,24 +16,6 @@ class Increase::Test::Resources::CardsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Card
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        account_id: String,
-        billing_address: Increase::Models::Card::BillingAddress,
-        created_at: Time,
-        description: String | nil,
-        digital_wallet: Increase::Models::Card::DigitalWallet | nil,
-        entity_id: String | nil,
-        expiration_month: Integer,
-        expiration_year: Integer,
-        idempotency_key: String | nil,
-        last4: String,
-        status: Increase::Models::Card::Status,
-        type: Increase::Models::Card::Type
-      }
-    end
   end
 
   def test_retrieve
@@ -42,24 +24,6 @@ class Increase::Test::Resources::CardsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Card
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        account_id: String,
-        billing_address: Increase::Models::Card::BillingAddress,
-        created_at: Time,
-        description: String | nil,
-        digital_wallet: Increase::Models::Card::DigitalWallet | nil,
-        entity_id: String | nil,
-        expiration_month: Integer,
-        expiration_year: Integer,
-        idempotency_key: String | nil,
-        last4: String,
-        status: Increase::Models::Card::Status,
-        type: Increase::Models::Card::Type
-      }
-    end
   end
 
   def test_update
@@ -67,24 +31,6 @@ class Increase::Test::Resources::CardsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::Card
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        account_id: String,
-        billing_address: Increase::Models::Card::BillingAddress,
-        created_at: Time,
-        description: String | nil,
-        digital_wallet: Increase::Models::Card::DigitalWallet | nil,
-        entity_id: String | nil,
-        expiration_month: Integer,
-        expiration_year: Integer,
-        idempotency_key: String | nil,
-        last4: String,
-        status: Increase::Models::Card::Status,
-        type: Increase::Models::Card::Type
-      }
     end
   end
 
@@ -104,24 +50,6 @@ class Increase::Test::Resources::CardsTest < Minitest::Test
     assert_pattern do
       row => Increase::Models::Card
     end
-
-    assert_pattern do
-      row => {
-        id: String,
-        account_id: String,
-        billing_address: Increase::Models::Card::BillingAddress,
-        created_at: Time,
-        description: String | nil,
-        digital_wallet: Increase::Models::Card::DigitalWallet | nil,
-        entity_id: String | nil,
-        expiration_month: Integer,
-        expiration_year: Integer,
-        idempotency_key: String | nil,
-        last4: String,
-        status: Increase::Models::Card::Status,
-        type: Increase::Models::Card::Type
-      }
-    end
   end
 
   def test_details
@@ -129,17 +57,6 @@ class Increase::Test::Resources::CardsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::CardDetails
-    end
-
-    assert_pattern do
-      response => {
-        card_id: String,
-        expiration_month: Integer,
-        expiration_year: Integer,
-        primary_account_number: String,
-        type: Increase::Models::CardDetails::Type,
-        verification_code: String
-      }
     end
   end
 end

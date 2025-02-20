@@ -2,6 +2,17 @@
 
 module Increase
   module Models
+    # @example
+    # ```ruby
+    # oauth_application => {
+    #   id: String,
+    #   client_id: String,
+    #   created_at: Time,
+    #   deleted_at: Time,
+    #   name: String,
+    #   **_
+    # }
+    # ```
     class OAuthApplication < Increase::BaseModel
       # @!attribute id
       #   The OAuth Application's identifier.

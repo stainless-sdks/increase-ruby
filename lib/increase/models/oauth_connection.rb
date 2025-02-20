@@ -2,6 +2,17 @@
 
 module Increase
   module Models
+    # @example
+    # ```ruby
+    # oauth_connection => {
+    #   id: String,
+    #   created_at: Time,
+    #   deleted_at: Time,
+    #   group_id: String,
+    #   oauth_application_id: String,
+    #   **_
+    # }
+    # ```
     class OAuthConnection < Increase::BaseModel
       # @!attribute id
       #   The OAuth Connection's identifier.

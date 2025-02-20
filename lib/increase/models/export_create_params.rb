@@ -152,6 +152,13 @@ module Increase
         #   def self.values; end
       end
 
+      # @example
+      # ```ruby
+      # account_statement_ofx => {
+      #   account_id: String,
+      #   created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
+      # }
+      # ```
       class AccountStatementOfx < Increase::BaseModel
         # @!attribute account_id
         #   The Account to create a statement for.
@@ -180,6 +187,15 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # created_at => {
+        #   after: Time,
+        #   before: Time,
+        #   on_or_after: Time,
+        #   on_or_before: Time
+        # }
+        # ```
         class CreatedAt < Increase::BaseModel
           # @!attribute [r] after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -239,6 +255,14 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # balance_csv => {
+      #   account_id: String,
+      #   created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
+      #   program_id: String
+      # }
+      # ```
       class BalanceCsv < Increase::BaseModel
         # @!attribute [r] account_id
         #   Filter exported Transactions to the specified Account.
@@ -282,6 +306,15 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # created_at => {
+        #   after: Time,
+        #   before: Time,
+        #   on_or_after: Time,
+        #   on_or_before: Time
+        # }
+        # ```
         class CreatedAt < Increase::BaseModel
           # @!attribute [r] after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -341,6 +374,13 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # bookkeeping_account_balance_csv => {
+      #   bookkeeping_account_id: String,
+      #   created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
+      # }
+      # ```
       class BookkeepingAccountBalanceCsv < Increase::BaseModel
         # @!attribute [r] bookkeeping_account_id
         #   Filter exported Transactions to the specified Bookkeeping Account.
@@ -373,6 +413,15 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # created_at => {
+        #   after: Time,
+        #   before: Time,
+        #   on_or_after: Time,
+        #   on_or_before: Time
+        # }
+        # ```
         class CreatedAt < Increase::BaseModel
           # @!attribute [r] after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -432,6 +481,12 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # entity_csv => {
+      #   status: Increase::Models::ExportCreateParams::EntityCsv::Status
+      # }
+      # ```
       class EntityCsv < Increase::BaseModel
         # @!attribute [r] status
         #   Entity statuses to filter by.
@@ -452,6 +507,12 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # status => {
+        #   in_: -> { Increase::ArrayOf[enum: Increase::Models::ExportCreateParams::EntityCsv::Status::In] === _1 }
+        # }
+        # ```
         class Status < Increase::BaseModel
           # @!attribute in_
           #   Entity statuses to filter by. For GET requests, this should be encoded as a
@@ -504,6 +565,14 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # transaction_csv => {
+      #   account_id: String,
+      #   created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
+      #   program_id: String
+      # }
+      # ```
       class TransactionCsv < Increase::BaseModel
         # @!attribute [r] account_id
         #   Filter exported Transactions to the specified Account.
@@ -547,6 +616,15 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # created_at => {
+        #   after: Time,
+        #   before: Time,
+        #   on_or_after: Time,
+        #   on_or_before: Time
+        # }
+        # ```
         class CreatedAt < Increase::BaseModel
           # @!attribute [r] after
           #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)

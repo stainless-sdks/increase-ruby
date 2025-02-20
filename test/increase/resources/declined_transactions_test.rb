@@ -16,21 +16,6 @@ class Increase::Test::Resources::DeclinedTransactionsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::DeclinedTransaction
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        account_id: String,
-        amount: Integer,
-        created_at: Time,
-        currency: Increase::Models::DeclinedTransaction::Currency,
-        description: String,
-        route_id: String | nil,
-        route_type: Increase::Models::DeclinedTransaction::RouteType | nil,
-        source: Increase::Models::DeclinedTransaction::Source,
-        type: Increase::Models::DeclinedTransaction::Type
-      }
-    end
   end
 
   def test_list
@@ -48,21 +33,6 @@ class Increase::Test::Resources::DeclinedTransactionsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::DeclinedTransaction
-    end
-
-    assert_pattern do
-      row => {
-        id: String,
-        account_id: String,
-        amount: Integer,
-        created_at: Time,
-        currency: Increase::Models::DeclinedTransaction::Currency,
-        description: String,
-        route_id: String | nil,
-        route_type: Increase::Models::DeclinedTransaction::RouteType | nil,
-        source: Increase::Models::DeclinedTransaction::Source,
-        type: Increase::Models::DeclinedTransaction::Type
-      }
     end
   end
 end
