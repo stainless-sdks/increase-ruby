@@ -93,7 +93,8 @@ module Increase
     end
 
     sig do
-      params(req: Increase::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
+      overridable
+        .params(req: Increase::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
         .returns(Increase::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
