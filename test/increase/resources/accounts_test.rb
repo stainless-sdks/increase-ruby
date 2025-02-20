@@ -16,6 +16,26 @@ class Increase::Test::Resources::AccountsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Account
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        bank: Increase::Models::Account::Bank,
+        closed_at: Time | nil,
+        created_at: Time,
+        currency: Increase::Models::Account::Currency,
+        entity_id: String | nil,
+        idempotency_key: String | nil,
+        informational_entity_id: String | nil,
+        interest_accrued: String,
+        interest_accrued_at: Date | nil,
+        interest_rate: String,
+        name: String,
+        program_id: String,
+        status: Increase::Models::Account::Status,
+        type: Increase::Models::Account::Type
+      }
+    end
   end
 
   def test_retrieve
@@ -24,6 +44,26 @@ class Increase::Test::Resources::AccountsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Account
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        bank: Increase::Models::Account::Bank,
+        closed_at: Time | nil,
+        created_at: Time,
+        currency: Increase::Models::Account::Currency,
+        entity_id: String | nil,
+        idempotency_key: String | nil,
+        informational_entity_id: String | nil,
+        interest_accrued: String,
+        interest_accrued_at: Date | nil,
+        interest_rate: String,
+        name: String,
+        program_id: String,
+        status: Increase::Models::Account::Status,
+        type: Increase::Models::Account::Type
+      }
+    end
   end
 
   def test_update
@@ -31,6 +71,26 @@ class Increase::Test::Resources::AccountsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::Account
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        bank: Increase::Models::Account::Bank,
+        closed_at: Time | nil,
+        created_at: Time,
+        currency: Increase::Models::Account::Currency,
+        entity_id: String | nil,
+        idempotency_key: String | nil,
+        informational_entity_id: String | nil,
+        interest_accrued: String,
+        interest_accrued_at: Date | nil,
+        interest_rate: String,
+        name: String,
+        program_id: String,
+        status: Increase::Models::Account::Status,
+        type: Increase::Models::Account::Type
+      }
     end
   end
 
@@ -50,6 +110,26 @@ class Increase::Test::Resources::AccountsTest < Minitest::Test
     assert_pattern do
       row => Increase::Models::Account
     end
+
+    assert_pattern do
+      row => {
+        id: String,
+        bank: Increase::Models::Account::Bank,
+        closed_at: Time | nil,
+        created_at: Time,
+        currency: Increase::Models::Account::Currency,
+        entity_id: String | nil,
+        idempotency_key: String | nil,
+        informational_entity_id: String | nil,
+        interest_accrued: String,
+        interest_accrued_at: Date | nil,
+        interest_rate: String,
+        name: String,
+        program_id: String,
+        status: Increase::Models::Account::Status,
+        type: Increase::Models::Account::Type
+      }
+    end
   end
 
   def test_balance
@@ -58,6 +138,15 @@ class Increase::Test::Resources::AccountsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::BalanceLookup
     end
+
+    assert_pattern do
+      response => {
+        account_id: String,
+        available_balance: Integer,
+        current_balance: Integer,
+        type: Increase::Models::BalanceLookup::Type
+      }
+    end
   end
 
   def test_close
@@ -65,6 +154,26 @@ class Increase::Test::Resources::AccountsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::Account
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        bank: Increase::Models::Account::Bank,
+        closed_at: Time | nil,
+        created_at: Time,
+        currency: Increase::Models::Account::Currency,
+        entity_id: String | nil,
+        idempotency_key: String | nil,
+        informational_entity_id: String | nil,
+        interest_accrued: String,
+        interest_accrued_at: Date | nil,
+        interest_rate: String,
+        name: String,
+        program_id: String,
+        status: Increase::Models::Account::Status,
+        type: Increase::Models::Account::Type
+      }
     end
   end
 end

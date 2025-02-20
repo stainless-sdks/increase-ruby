@@ -80,13 +80,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # front_text => {
-      #   line1: String,
-      #   line2: String
-      # }
-      # ```
       class FrontText < Increase::BaseModel
         # @!attribute line1
         #   The first line of text on the front of the card.

@@ -2,16 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # routing_number_list_response => {
-    #   ach_transfers: Increase::Models::RoutingNumberListResponse::ACHTransfers,
-    #   name: String,
-    #   real_time_payments_transfers: Increase::Models::RoutingNumberListResponse::RealTimePaymentsTransfers,
-    #   routing_number: String,
-    #   type: Increase::Models::RoutingNumberListResponse::Type
-    # }
-    # ```
     class RoutingNumberListResponse < Increase::BaseModel
       # @!attribute ach_transfers
       #   This routing number's support for ACH Transfers.

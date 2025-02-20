@@ -2,16 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # bookkeeping_entry => {
-    #   id: String,
-    #   account_id: String,
-    #   amount: Integer,
-    #   created_at: Time,
-    #   entry_set_id: String
-    # }
-    # ```
     class BookkeepingEntry < Increase::BaseModel
       # @!attribute id
       #   The entry identifier.

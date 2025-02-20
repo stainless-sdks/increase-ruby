@@ -3,17 +3,6 @@
 module Increase
   module Models
     module Simulations
-      # @example
-      # ```ruby
-      # inbound_funds_hold_release_response => {
-      #   id: String,
-      #   amount: Integer,
-      #   automatically_releases_at: Time,
-      #   created_at: Time,
-      #   currency: Increase::Models::Simulations::InboundFundsHoldReleaseResponse::Currency,
-      #   **_
-      # }
-      # ```
       class InboundFundsHoldReleaseResponse < Increase::BaseModel
         # @!attribute id
         #   The Inbound Funds Hold identifier.

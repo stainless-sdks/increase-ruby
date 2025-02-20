@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # inbound_wire_drawdown_request => {
-    #   id: String,
-    #   amount: Integer,
-    #   beneficiary_account_number: String,
-    #   beneficiary_address_line1: String,
-    #   beneficiary_address_line2: String,
-    #   **_
-    # }
-    # ```
     class InboundWireDrawdownRequest < Increase::BaseModel
       # @!attribute id
       #   The Wire drawdown request identifier.

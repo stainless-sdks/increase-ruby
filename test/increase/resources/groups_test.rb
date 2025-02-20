@@ -16,5 +16,15 @@ class Increase::Test::Resources::GroupsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Group
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        ach_debit_status: Increase::Models::Group::ACHDebitStatus,
+        activation_status: Increase::Models::Group::ActivationStatus,
+        created_at: Time,
+        type: Increase::Models::Group::Type
+      }
+    end
   end
 end

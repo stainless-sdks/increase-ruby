@@ -16,6 +16,19 @@ class Increase::Test::Resources::InboundMailItemsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::InboundMailItem
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        file_id: String,
+        lockbox_id: String | nil,
+        recipient_name: String | nil,
+        rejection_reason: Increase::Models::InboundMailItem::RejectionReason | nil,
+        status: Increase::Models::InboundMailItem::Status,
+        type: Increase::Models::InboundMailItem::Type
+      }
+    end
   end
 
   def test_list
@@ -33,6 +46,19 @@ class Increase::Test::Resources::InboundMailItemsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::InboundMailItem
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        created_at: Time,
+        file_id: String,
+        lockbox_id: String | nil,
+        recipient_name: String | nil,
+        rejection_reason: Increase::Models::InboundMailItem::RejectionReason | nil,
+        status: Increase::Models::InboundMailItem::Status,
+        type: Increase::Models::InboundMailItem::Type
+      }
     end
   end
 end

@@ -24,6 +24,28 @@ class Increase::Test::Resources::RealTimePaymentsRequestForPaymentsTest < Minite
     assert_pattern do
       response => Increase::Models::RealTimePaymentsRequestForPayment
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount: Integer,
+        created_at: Time,
+        currency: Increase::Models::RealTimePaymentsRequestForPayment::Currency,
+        debtor_name: String,
+        destination_account_number_id: String,
+        expires_at: Date,
+        fulfillment_transaction_id: String | nil,
+        idempotency_key: String | nil,
+        refusal: Increase::Models::RealTimePaymentsRequestForPayment::Refusal | nil,
+        rejection: Increase::Models::RealTimePaymentsRequestForPayment::Rejection | nil,
+        remittance_information: String,
+        source_account_number: String,
+        source_routing_number: String,
+        status: Increase::Models::RealTimePaymentsRequestForPayment::Status,
+        submission: Increase::Models::RealTimePaymentsRequestForPayment::Submission | nil,
+        type: Increase::Models::RealTimePaymentsRequestForPayment::Type
+      }
+    end
   end
 
   def test_retrieve
@@ -31,6 +53,28 @@ class Increase::Test::Resources::RealTimePaymentsRequestForPaymentsTest < Minite
 
     assert_pattern do
       response => Increase::Models::RealTimePaymentsRequestForPayment
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        amount: Integer,
+        created_at: Time,
+        currency: Increase::Models::RealTimePaymentsRequestForPayment::Currency,
+        debtor_name: String,
+        destination_account_number_id: String,
+        expires_at: Date,
+        fulfillment_transaction_id: String | nil,
+        idempotency_key: String | nil,
+        refusal: Increase::Models::RealTimePaymentsRequestForPayment::Refusal | nil,
+        rejection: Increase::Models::RealTimePaymentsRequestForPayment::Rejection | nil,
+        remittance_information: String,
+        source_account_number: String,
+        source_routing_number: String,
+        status: Increase::Models::RealTimePaymentsRequestForPayment::Status,
+        submission: Increase::Models::RealTimePaymentsRequestForPayment::Submission | nil,
+        type: Increase::Models::RealTimePaymentsRequestForPayment::Type
+      }
     end
   end
 
@@ -49,6 +93,28 @@ class Increase::Test::Resources::RealTimePaymentsRequestForPaymentsTest < Minite
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::RealTimePaymentsRequestForPayment
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        amount: Integer,
+        created_at: Time,
+        currency: Increase::Models::RealTimePaymentsRequestForPayment::Currency,
+        debtor_name: String,
+        destination_account_number_id: String,
+        expires_at: Date,
+        fulfillment_transaction_id: String | nil,
+        idempotency_key: String | nil,
+        refusal: Increase::Models::RealTimePaymentsRequestForPayment::Refusal | nil,
+        rejection: Increase::Models::RealTimePaymentsRequestForPayment::Rejection | nil,
+        remittance_information: String,
+        source_account_number: String,
+        source_routing_number: String,
+        status: Increase::Models::RealTimePaymentsRequestForPayment::Status,
+        submission: Increase::Models::RealTimePaymentsRequestForPayment::Submission | nil,
+        type: Increase::Models::RealTimePaymentsRequestForPayment::Type
+      }
     end
   end
 end

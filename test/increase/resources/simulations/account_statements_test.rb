@@ -16,5 +16,19 @@ class Increase::Test::Resources::Simulations::AccountStatementsTest < Minitest::
     assert_pattern do
       response => Increase::Models::AccountStatement
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_id: String,
+        created_at: Time,
+        ending_balance: Integer,
+        file_id: String,
+        starting_balance: Integer,
+        statement_period_end: Time,
+        statement_period_start: Time,
+        type: Increase::Models::AccountStatement::Type
+      }
+    end
   end
 end

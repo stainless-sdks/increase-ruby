@@ -16,5 +16,19 @@ class Increase::Test::Resources::Simulations::CardReversalsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::CardPayment
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        account_id: String,
+        card_id: String,
+        created_at: Time,
+        digital_wallet_token_id: String | nil,
+        elements: ^(Increase::ArrayOf[Increase::Models::CardPayment::Element]),
+        physical_card_id: String | nil,
+        state: Increase::Models::CardPayment::State,
+        type: Increase::Models::CardPayment::Type
+      }
+    end
   end
 end

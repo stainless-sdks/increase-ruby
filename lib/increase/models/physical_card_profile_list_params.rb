@@ -61,12 +61,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # status => {
-      #   in_: -> { Increase::ArrayOf[enum: Increase::Models::PhysicalCardProfileListParams::Status::In] === _1 }
-      # }
-      # ```
       class Status < Increase::BaseModel
         # @!attribute [r] in_
         #   Filter Physical Card Profiles for those with the specified statuses. For GET

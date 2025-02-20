@@ -2,16 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # intrafi_balance => {
-    #   id: String,
-    #   balances: -> { Increase::ArrayOf[Increase::Models::IntrafiBalance::Balance] === _1 },
-    #   currency: Increase::Models::IntrafiBalance::Currency,
-    #   effective_date: Date,
-    #   total_balance: Integer
-    # }
-    # ```
     class IntrafiBalance < Increase::BaseModel
       # @!attribute id
       #   The identifier of this balance.
@@ -69,16 +59,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # balance => {
-      #   id: String,
-      #   balance: Integer,
-      #   bank: String,
-      #   bank_location: Increase::Models::IntrafiBalance::Balance::BankLocation,
-      #   fdic_certificate_number: String
-      # }
-      # ```
       class Balance < Increase::BaseModel
         # @!attribute id
         #   The identifier of this balance.
@@ -123,13 +103,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # bank_location => {
-        #   city: String,
-        #   state: String
-        # }
-        # ```
         class BankLocation < Increase::BaseModel
           # @!attribute city
           #   The bank's city.

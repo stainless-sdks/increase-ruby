@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # account_transfer => {
-    #   id: String,
-    #   account_id: String,
-    #   amount: Integer,
-    #   approval: Increase::Models::AccountTransfer::Approval,
-    #   cancellation: Increase::Models::AccountTransfer::Cancellation,
-    #   **_
-    # }
-    # ```
     class AccountTransfer < Increase::BaseModel
       # @!attribute id
       #   The account transfer's identifier.
@@ -173,13 +162,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # approval => {
-      #   approved_at: Time,
-      #   approved_by: String
-      # }
-      # ```
       class Approval < Increase::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -207,13 +189,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # cancellation => {
-      #   canceled_at: Time,
-      #   canceled_by: String
-      # }
-      # ```
       class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -241,15 +216,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # created_by => {
-      #   api_key: Increase::Models::AccountTransfer::CreatedBy::APIKey,
-      #   category: Increase::Models::AccountTransfer::CreatedBy::Category,
-      #   oauth_application: Increase::Models::AccountTransfer::CreatedBy::OAuthApplication,
-      #   user: Increase::Models::AccountTransfer::CreatedBy::User
-      # }
-      # ```
       class CreatedBy < Increase::BaseModel
         # @!attribute api_key
         #   If present, details about the API key that created the transfer.
@@ -289,12 +255,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # api_key => {
-        #   description: String
-        # }
-        # ```
         class APIKey < Increase::BaseModel
           # @!attribute description
           #   The description set for the API key when it was created.
@@ -345,12 +305,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # oauth_application => {
-        #   name: String
-        # }
-        # ```
         class OAuthApplication < Increase::BaseModel
           # @!attribute name
           #   The name of the OAuth Application.
@@ -368,12 +322,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # user => {
-        #   email: String
-        # }
-        # ```
         class User < Increase::BaseModel
           # @!attribute email
           #   The email address of the User.

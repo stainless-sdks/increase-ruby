@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # inbound_real_time_payments_transfer => {
-    #   id: String,
-    #   account_id: String,
-    #   account_number_id: String,
-    #   amount: Integer,
-    #   confirmation: Increase::Models::InboundRealTimePaymentsTransfer::Confirmation,
-    #   **_
-    # }
-    # ```
     class InboundRealTimePaymentsTransfer < Increase::BaseModel
       # @!attribute id
       #   The inbound Real-Time Payments transfer's identifier.
@@ -158,13 +147,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # confirmation => {
-      #   confirmed_at: Time,
-      #   transaction_id: String
-      # }
-      # ```
       class Confirmation < Increase::BaseModel
         # @!attribute confirmed_at
         #   The time at which the transfer was confirmed.
@@ -238,14 +220,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # decline => {
-      #   declined_at: Time,
-      #   declined_transaction_id: String,
-      #   reason: Increase::Models::InboundRealTimePaymentsTransfer::Decline::Reason
-      # }
-      # ```
       class Decline < Increase::BaseModel
         # @!attribute declined_at
         #   The time at which the transfer was declined.

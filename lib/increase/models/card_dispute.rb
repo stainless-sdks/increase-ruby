@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # card_dispute => {
-    #   id: String,
-    #   acceptance: Increase::Models::CardDispute::Acceptance,
-    #   amount: Integer,
-    #   created_at: Time,
-    #   disputed_transaction_id: String,
-    #   **_
-    # }
-    # ```
     class CardDispute < Increase::BaseModel
       # @!attribute id
       #   The Card Dispute identifier.
@@ -131,14 +120,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # acceptance => {
-      #   accepted_at: Time,
-      #   card_dispute_id: String,
-      #   transaction_id: String
-      # }
-      # ```
       class Acceptance < Increase::BaseModel
         # @!attribute accepted_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -173,15 +154,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # loss => {
-      #   card_dispute_id: String,
-      #   explanation: String,
-      #   lost_at: Time,
-      #   transaction_id: String
-      # }
-      # ```
       class Loss < Increase::BaseModel
         # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was lost.
@@ -223,14 +195,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # rejection => {
-      #   card_dispute_id: String,
-      #   explanation: String,
-      #   rejected_at: Time
-      # }
-      # ```
       class Rejection < Increase::BaseModel
         # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was rejected.
@@ -335,13 +299,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # win => {
-      #   card_dispute_id: String,
-      #   won_at: Time
-      # }
-      # ```
       class Win < Increase::BaseModel
         # @!attribute card_dispute_id
         #   The identifier of the Card Dispute that was won.

@@ -134,15 +134,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # created_at => {
-      #   after: Time,
-      #   before: Time,
-      #   on_or_after: Time,
-      #   on_or_before: Time
-      # }
-      # ```
       class CreatedAt < Increase::BaseModel
         # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)

@@ -2,16 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # card_details => {
-    #   card_id: String,
-    #   expiration_month: Integer,
-    #   expiration_year: Integer,
-    #   primary_account_number: String,
-    #   type: Increase::Models::CardDetails::Type
-    # }
-    # ```
     class CardDetails < Increase::BaseModel
       # @!attribute card_id
       #   The identifier for the Card for which sensitive details have been returned.

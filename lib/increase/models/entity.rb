@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # entity => {
-    #   id: String,
-    #   corporation: Increase::Models::Entity::Corporation,
-    #   created_at: Time,
-    #   description: String,
-    #   details_confirmed_at: Time,
-    #   **_
-    # }
-    # ```
     class Entity < Increase::BaseModel
       # @!attribute id
       #   The entity's identifier.
@@ -158,17 +147,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # corporation => {
-      #   address: Increase::Models::Entity::Corporation::Address,
-      #   beneficial_owners: -> { Increase::ArrayOf[Increase::Models::Entity::Corporation::BeneficialOwner] === _1 },
-      #   incorporation_state: String,
-      #   industry_code: String,
-      #   name: String,
-      #   **_
-      # }
-      # ```
       class Corporation < Increase::BaseModel
         # @!attribute address
         #   The corporation's address.
@@ -232,16 +210,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # address => {
-        #   city: String,
-        #   line1: String,
-        #   line2: String,
-        #   state: String,
-        #   zip: String
-        # }
-        # ```
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -288,15 +256,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # beneficial_owner => {
-        #   beneficial_owner_id: String,
-        #   company_title: String,
-        #   individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
-        #   prong: Increase::Models::Entity::Corporation::BeneficialOwner::Prong
-        # }
-        # ```
         class BeneficialOwner < Increase::BaseModel
           # @!attribute beneficial_owner_id
           #   The identifier of this beneficial owner.
@@ -332,15 +291,6 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # individual => {
-          #   address: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
-          #   date_of_birth: Date,
-          #   identification: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
-          #   name: String
-          # }
-          # ```
           class Individual < Increase::BaseModel
             # @!attribute address
             #   The person's address.
@@ -379,16 +329,6 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # address => {
-            #   city: String,
-            #   line1: String,
-            #   line2: String,
-            #   state: String,
-            #   zip: String
-            # }
-            # ```
             class Address < Increase::BaseModel
               # @!attribute city
               #   The city of the address.
@@ -435,13 +375,6 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # identification => {
-            #   method_: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification::Method,
-            #   number_last4: String
-            # }
-            # ```
             class Identification < Increase::BaseModel
               # @!attribute method_
               #   A method that can be used to verify the individual's identity.
@@ -543,16 +476,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # government_authority => {
-      #   address: Increase::Models::Entity::GovernmentAuthority::Address,
-      #   authorized_persons: -> { Increase::ArrayOf[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson] === _1 },
-      #   category: Increase::Models::Entity::GovernmentAuthority::Category,
-      #   name: String,
-      #   tax_identifier: String
-      # }
-      # ```
       class GovernmentAuthority < Increase::BaseModel
         # @!attribute address
         #   The government authority's address.
@@ -606,16 +529,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # address => {
-        #   city: String,
-        #   line1: String,
-        #   line2: String,
-        #   state: String,
-        #   zip: String
-        # }
-        # ```
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -662,13 +575,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # authorized_person => {
-        #   authorized_person_id: String,
-        #   name: String
-        # }
-        # ```
         class AuthorizedPerson < Increase::BaseModel
           # @!attribute authorized_person_id
           #   The identifier of this authorized person.
@@ -715,13 +621,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # joint => {
-      #   individuals: -> { Increase::ArrayOf[Increase::Models::Entity::Joint::Individual] === _1 },
-      #   name: String
-      # }
-      # ```
       class Joint < Increase::BaseModel
         # @!attribute individuals
         #   The two individuals that share control of the entity.
@@ -745,15 +644,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # individual => {
-        #   address: Increase::Models::Entity::Joint::Individual::Address,
-        #   date_of_birth: Date,
-        #   identification: Increase::Models::Entity::Joint::Individual::Identification,
-        #   name: String
-        # }
-        # ```
         class Individual < Increase::BaseModel
           # @!attribute address
           #   The person's address.
@@ -789,16 +679,6 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # address => {
-          #   city: String,
-          #   line1: String,
-          #   line2: String,
-          #   state: String,
-          #   zip: String
-          # }
-          # ```
           class Address < Increase::BaseModel
             # @!attribute city
             #   The city of the address.
@@ -845,13 +725,6 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # identification => {
-          #   method_: Increase::Models::Entity::Joint::Individual::Identification::Method,
-          #   number_last4: String
-          # }
-          # ```
           class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
@@ -924,15 +797,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # natural_person => {
-      #   address: Increase::Models::Entity::NaturalPerson::Address,
-      #   date_of_birth: Date,
-      #   identification: Increase::Models::Entity::NaturalPerson::Identification,
-      #   name: String
-      # }
-      # ```
       class NaturalPerson < Increase::BaseModel
         # @!attribute address
         #   The person's address.
@@ -971,16 +835,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # address => {
-        #   city: String,
-        #   line1: String,
-        #   line2: String,
-        #   state: String,
-        #   zip: String
-        # }
-        # ```
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -1027,13 +881,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # identification => {
-        #   method_: Increase::Models::Entity::NaturalPerson::Identification::Method,
-        #   number_last4: String
-        # }
-        # ```
         class Identification < Increase::BaseModel
           # @!attribute method_
           #   A method that can be used to verify the individual's identity.
@@ -1181,13 +1028,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # third_party_verification => {
-      #   reference: String,
-      #   vendor: Increase::Models::Entity::ThirdPartyVerification::Vendor
-      # }
-      # ```
       class ThirdPartyVerification < Increase::BaseModel
         # @!attribute reference
         #   The reference identifier for the third party verification.
@@ -1241,17 +1081,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # trust => {
-      #   address: Increase::Models::Entity::Trust::Address,
-      #   category: Increase::Models::Entity::Trust::Category,
-      #   formation_document_file_id: String,
-      #   formation_state: String,
-      #   grantor: Increase::Models::Entity::Trust::Grantor,
-      #   **_
-      # }
-      # ```
       class Trust < Increase::BaseModel
         # @!attribute address
         #   The trust's address.
@@ -1330,16 +1159,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # address => {
-        #   city: String,
-        #   line1: String,
-        #   line2: String,
-        #   state: String,
-        #   zip: String
-        # }
-        # ```
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -1414,15 +1233,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # grantor => {
-        #   address: Increase::Models::Entity::Trust::Grantor::Address,
-        #   date_of_birth: Date,
-        #   identification: Increase::Models::Entity::Trust::Grantor::Identification,
-        #   name: String
-        # }
-        # ```
         class Grantor < Increase::BaseModel
           # @!attribute address
           #   The person's address.
@@ -1460,16 +1270,6 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # address => {
-          #   city: String,
-          #   line1: String,
-          #   line2: String,
-          #   state: String,
-          #   zip: String
-          # }
-          # ```
           class Address < Increase::BaseModel
             # @!attribute city
             #   The city of the address.
@@ -1516,13 +1316,6 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
-          # @example
-          # ```ruby
-          # identification => {
-          #   method_: Increase::Models::Entity::Trust::Grantor::Identification::Method,
-          #   number_last4: String
-          # }
-          # ```
           class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
@@ -1594,13 +1387,6 @@ module Increase
           end
         end
 
-        # @example
-        # ```ruby
-        # trustee => {
-        #   individual: Increase::Models::Entity::Trust::Trustee::Individual,
-        #   structure: Increase::Models::Entity::Trust::Trustee::Structure
-        # }
-        # ```
         class Trustee < Increase::BaseModel
           # @!attribute individual
           #   The individual trustee of the trust. Will be present if the trustee's
@@ -1623,15 +1409,6 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
-          # @example
-          # ```ruby
-          # individual => {
-          #   address: Increase::Models::Entity::Trust::Trustee::Individual::Address,
-          #   date_of_birth: Date,
-          #   identification: Increase::Models::Entity::Trust::Trustee::Individual::Identification,
-          #   name: String
-          # }
-          # ```
           class Individual < Increase::BaseModel
             # @!attribute address
             #   The person's address.
@@ -1670,16 +1447,6 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
-            # @example
-            # ```ruby
-            # address => {
-            #   city: String,
-            #   line1: String,
-            #   line2: String,
-            #   state: String,
-            #   zip: String
-            # }
-            # ```
             class Address < Increase::BaseModel
               # @!attribute city
               #   The city of the address.
@@ -1726,13 +1493,6 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
-            # @example
-            # ```ruby
-            # identification => {
-            #   method_: Increase::Models::Entity::Trust::Trustee::Individual::Identification::Method,
-            #   number_last4: String
-            # }
-            # ```
             class Identification < Increase::BaseModel
               # @!attribute method_
               #   A method that can be used to verify the individual's identity.

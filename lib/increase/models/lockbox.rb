@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # lockbox => {
-    #   id: String,
-    #   account_id: String,
-    #   address: Increase::Models::Lockbox::Address,
-    #   created_at: Time,
-    #   description: String,
-    #   **_
-    # }
-    # ```
     class Lockbox < Increase::BaseModel
       # @!attribute id
       #   The Lockbox identifier.
@@ -104,16 +93,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # address => {
-      #   city: String,
-      #   line1: String,
-      #   line2: String,
-      #   postal_code: String,
-      #   recipient: String
-      # }
-      # ```
       class Address < Increase::BaseModel
         # @!attribute city
         #   The city of the address.

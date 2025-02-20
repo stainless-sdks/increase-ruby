@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # digital_card_profile => {
-    #   id: String,
-    #   app_icon_file_id: String,
-    #   background_image_file_id: String,
-    #   card_description: String,
-    #   contact_email: String,
-    #   **_
-    # }
-    # ```
     class DigitalCardProfile < Increase::BaseModel
       # @!attribute id
       #   The Card Profile identifier.
@@ -182,14 +171,6 @@ module Increase
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # text_color => {
-      #   blue: Integer,
-      #   green: Integer,
-      #   red: Integer
-      # }
-      # ```
       class TextColor < Increase::BaseModel
         # @!attribute blue
         #   The value of the blue channel in the RGB color.

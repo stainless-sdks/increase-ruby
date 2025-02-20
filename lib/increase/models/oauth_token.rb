@@ -2,14 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # oauth_token => {
-    #   access_token: String,
-    #   token_type: Increase::Models::OAuthToken::TokenType,
-    #   type: Increase::Models::OAuthToken::Type
-    # }
-    # ```
     class OAuthToken < Increase::BaseModel
       # @!attribute access_token
       #   You may use this token in place of an API key to make OAuth requests on a user's

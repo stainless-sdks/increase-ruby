@@ -86,12 +86,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # card_authentication => {
-      #   decision: Increase::Models::RealTimeDecisionActionParams::CardAuthentication::Decision
-      # }
-      # ```
       class CardAuthentication < Increase::BaseModel
         # @!attribute decision
         #   Whether the card authentication attempt should be approved or declined.
@@ -144,12 +138,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # card_authentication_challenge => {
-      #   result: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge::Result
-      # }
-      # ```
       class CardAuthenticationChallenge < Increase::BaseModel
         # @!attribute result
         #   Whether the card authentication challenge was successfully delivered to the
@@ -199,13 +187,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # card_authorization => {
-      #   decision: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::Decision,
-      #   decline_reason: Increase::Models::RealTimeDecisionActionParams::CardAuthorization::DeclineReason
-      # }
-      # ```
       class CardAuthorization < Increase::BaseModel
         # @!attribute decision
         #   Whether the card authorization should be approved or declined.
@@ -315,13 +296,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # digital_wallet_authentication => {
-      #   result: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Result,
-      #   success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
-      # }
-      # ```
       class DigitalWalletAuthentication < Increase::BaseModel
         # @!attribute result
         #   Whether your application was able to deliver the one-time passcode.
@@ -379,13 +353,6 @@ module Increase
           #   def self.values; end
         end
 
-        # @example
-        # ```ruby
-        # success => {
-        #   email: String,
-        #   phone: String
-        # }
-        # ```
         class Success < Increase::BaseModel
           # @!attribute [r] email
           #   The email address that was used to verify the cardholder via one-time passcode.
@@ -418,13 +385,6 @@ module Increase
         end
       end
 
-      # @example
-      # ```ruby
-      # digital_wallet_token => {
-      #   approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
-      #   decline: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
-      # }
-      # ```
       class DigitalWalletToken < Increase::BaseModel
         # @!attribute [r] approval
         #   If your application approves the provisioning attempt, this contains metadata
@@ -459,13 +419,6 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
-        # @example
-        # ```ruby
-        # approval => {
-        #   email: String,
-        #   phone: String
-        # }
-        # ```
         class Approval < Increase::BaseModel
           # @!attribute [r] email
           #   An email address that can be used to verify the cardholder via one-time
@@ -501,12 +454,6 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
-        # @example
-        # ```ruby
-        # decline => {
-        #   reason: String
-        # }
-        # ```
         class Decline < Increase::BaseModel
           # @!attribute [r] reason
           #   Why the tokenization attempt was declined. This is for logging purposes only and

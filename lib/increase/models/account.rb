@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # account => {
-    #   id: String,
-    #   bank: Increase::Models::Account::Bank,
-    #   closed_at: Time,
-    #   created_at: Time,
-    #   currency: Increase::Models::Account::Currency,
-    #   **_
-    # }
-    # ```
     class Account < Increase::BaseModel
       # @!attribute id
       #   The Account identifier.

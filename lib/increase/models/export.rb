@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # export => {
-    #   id: String,
-    #   category: Increase::Models::Export::Category,
-    #   created_at: Time,
-    #   file_download_url: String,
-    #   file_id: String,
-    #   **_
-    # }
-    # ```
     class Export < Increase::BaseModel
       # @!attribute id
       #   The Export identifier.

@@ -59,15 +59,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # statement_period_start => {
-      #   after: Time,
-      #   before: Time,
-      #   on_or_after: Time,
-      #   on_or_before: Time
-      # }
-      # ```
       class StatementPeriodStart < Increase::BaseModel
         # @!attribute [r] after
         #   Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)

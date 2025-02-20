@@ -29,6 +29,20 @@ class Increase::Test::Resources::PhysicalCardsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::PhysicalCard
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        card_id: String,
+        cardholder: Increase::Models::PhysicalCard::Cardholder,
+        created_at: Time,
+        idempotency_key: String | nil,
+        physical_card_profile_id: String | nil,
+        shipment: Increase::Models::PhysicalCard::Shipment,
+        status: Increase::Models::PhysicalCard::Status,
+        type: Increase::Models::PhysicalCard::Type
+      }
+    end
   end
 
   def test_retrieve
@@ -37,6 +51,20 @@ class Increase::Test::Resources::PhysicalCardsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::PhysicalCard
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        card_id: String,
+        cardholder: Increase::Models::PhysicalCard::Cardholder,
+        created_at: Time,
+        idempotency_key: String | nil,
+        physical_card_profile_id: String | nil,
+        shipment: Increase::Models::PhysicalCard::Shipment,
+        status: Increase::Models::PhysicalCard::Status,
+        type: Increase::Models::PhysicalCard::Type
+      }
+    end
   end
 
   def test_update_required_params
@@ -44,6 +72,20 @@ class Increase::Test::Resources::PhysicalCardsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::PhysicalCard
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        card_id: String,
+        cardholder: Increase::Models::PhysicalCard::Cardholder,
+        created_at: Time,
+        idempotency_key: String | nil,
+        physical_card_profile_id: String | nil,
+        shipment: Increase::Models::PhysicalCard::Shipment,
+        status: Increase::Models::PhysicalCard::Status,
+        type: Increase::Models::PhysicalCard::Type
+      }
     end
   end
 
@@ -62,6 +104,20 @@ class Increase::Test::Resources::PhysicalCardsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::PhysicalCard
+    end
+
+    assert_pattern do
+      row => {
+        id: String,
+        card_id: String,
+        cardholder: Increase::Models::PhysicalCard::Cardholder,
+        created_at: Time,
+        idempotency_key: String | nil,
+        physical_card_profile_id: String | nil,
+        shipment: Increase::Models::PhysicalCard::Shipment,
+        status: Increase::Models::PhysicalCard::Status,
+        type: Increase::Models::PhysicalCard::Type
+      }
     end
   end
 end

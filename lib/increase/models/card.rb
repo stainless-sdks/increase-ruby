@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # card => {
-    #   id: String,
-    #   account_id: String,
-    #   billing_address: Increase::Models::Card::BillingAddress,
-    #   created_at: Time,
-    #   description: String,
-    #   **_
-    # }
-    # ```
     class Card < Increase::BaseModel
       # @!attribute id
       #   The card identifier.
@@ -139,16 +128,6 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # billing_address => {
-      #   city: String,
-      #   line1: String,
-      #   line2: String,
-      #   postal_code: String,
-      #   state: String
-      # }
-      # ```
       class BillingAddress < Increase::BaseModel
         # @!attribute city
         #   The city of the billing address.
@@ -194,14 +173,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @example
-      # ```ruby
-      # digital_wallet => {
-      #   digital_card_profile_id: String,
-      #   email: String,
-      #   phone: String
-      # }
-      # ```
       class DigitalWallet < Increase::BaseModel
         # @!attribute digital_card_profile_id
         #   The digital card profile assigned to this digital card. Card profiles may also

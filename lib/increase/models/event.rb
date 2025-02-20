@@ -2,16 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # event => {
-    #   id: String,
-    #   associated_object_id: String,
-    #   associated_object_type: String,
-    #   category: Increase::Models::Event::Category,
-    #   created_at: Time
-    # }
-    # ```
     class Event < Increase::BaseModel
       # @!attribute id
       #   The Event identifier.

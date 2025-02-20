@@ -2,17 +2,6 @@
 
 module Increase
   module Models
-    # @example
-    # ```ruby
-    # bookkeeping_account => {
-    #   id: String,
-    #   account_id: String,
-    #   compliance_category: Increase::Models::BookkeepingAccount::ComplianceCategory,
-    #   entity_id: String,
-    #   idempotency_key: String,
-    #   **_
-    # }
-    # ```
     class BookkeepingAccount < Increase::BaseModel
       # @!attribute id
       #   The account identifier.
