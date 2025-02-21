@@ -2,6 +2,17 @@
 
 module Increase
   module Models
+    # @example
+    # ```ruby
+    # inbound_check_deposit => {
+    #   id: String,
+    #   accepted_at: Time,
+    #   account_id: String,
+    #   account_number_id: String,
+    #   adjustments: -> { Increase::ArrayOf[Increase::Models::InboundCheckDeposit::Adjustment] === _1 },
+    #   **_
+    # }
+    # ```
     class InboundCheckDeposit < Increase::BaseModel
       # @!attribute id
       #   The deposit's identifier.
@@ -190,6 +201,15 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @example
+      # ```ruby
+      # adjustment => {
+      #   adjusted_at: Time,
+      #   amount: Integer,
+      #   reason: Increase::Models::InboundCheckDeposit::Adjustment::Reason,
+      #   transaction_id: String
+      # }
+      # ```
       class Adjustment < Increase::BaseModel
         # @!attribute adjusted_at
         #   The time at which the return adjustment was received.
@@ -312,6 +332,14 @@ module Increase
         #   def self.values; end
       end
 
+      # @example
+      # ```ruby
+      # deposit_return => {
+      #   reason: Increase::Models::InboundCheckDeposit::DepositReturn::Reason,
+      #   returned_at: Time,
+      #   transaction_id: String
+      # }
+      # ```
       class DepositReturn < Increase::BaseModel
         # @!attribute reason
         #   The reason the deposit was returned.

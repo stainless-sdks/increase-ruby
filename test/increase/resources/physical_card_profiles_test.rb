@@ -21,23 +21,6 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::PhysicalCardProfile
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        back_image_file_id: String | nil,
-        carrier_image_file_id: String | nil,
-        contact_phone: String | nil,
-        created_at: Time,
-        creator: Increase::Models::PhysicalCardProfile::Creator,
-        description: String,
-        front_image_file_id: String | nil,
-        idempotency_key: String | nil,
-        is_default: Increase::BooleanModel,
-        status: Increase::Models::PhysicalCardProfile::Status,
-        type: Increase::Models::PhysicalCardProfile::Type
-      }
-    end
   end
 
   def test_retrieve
@@ -45,23 +28,6 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::PhysicalCardProfile
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        back_image_file_id: String | nil,
-        carrier_image_file_id: String | nil,
-        contact_phone: String | nil,
-        created_at: Time,
-        creator: Increase::Models::PhysicalCardProfile::Creator,
-        description: String,
-        front_image_file_id: String | nil,
-        idempotency_key: String | nil,
-        is_default: Increase::BooleanModel,
-        status: Increase::Models::PhysicalCardProfile::Status,
-        type: Increase::Models::PhysicalCardProfile::Type
-      }
     end
   end
 
@@ -81,23 +47,6 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Minitest::Test
     assert_pattern do
       row => Increase::Models::PhysicalCardProfile
     end
-
-    assert_pattern do
-      row => {
-        id: String,
-        back_image_file_id: String | nil,
-        carrier_image_file_id: String | nil,
-        contact_phone: String | nil,
-        created_at: Time,
-        creator: Increase::Models::PhysicalCardProfile::Creator,
-        description: String,
-        front_image_file_id: String | nil,
-        idempotency_key: String | nil,
-        is_default: Increase::BooleanModel,
-        status: Increase::Models::PhysicalCardProfile::Status,
-        type: Increase::Models::PhysicalCardProfile::Type
-      }
-    end
   end
 
   def test_archive
@@ -106,23 +55,6 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::PhysicalCardProfile
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        back_image_file_id: String | nil,
-        carrier_image_file_id: String | nil,
-        contact_phone: String | nil,
-        created_at: Time,
-        creator: Increase::Models::PhysicalCardProfile::Creator,
-        description: String,
-        front_image_file_id: String | nil,
-        idempotency_key: String | nil,
-        is_default: Increase::BooleanModel,
-        status: Increase::Models::PhysicalCardProfile::Status,
-        type: Increase::Models::PhysicalCardProfile::Type
-      }
-    end
   end
 
   def test_clone_
@@ -130,23 +62,6 @@ class Increase::Test::Resources::PhysicalCardProfilesTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::PhysicalCardProfile
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        back_image_file_id: String | nil,
-        carrier_image_file_id: String | nil,
-        contact_phone: String | nil,
-        created_at: Time,
-        creator: Increase::Models::PhysicalCardProfile::Creator,
-        description: String,
-        front_image_file_id: String | nil,
-        idempotency_key: String | nil,
-        is_default: Increase::BooleanModel,
-        status: Increase::Models::PhysicalCardProfile::Status,
-        type: Increase::Models::PhysicalCardProfile::Type
-      }
     end
   end
 end

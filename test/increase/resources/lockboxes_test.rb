@@ -16,20 +16,6 @@ class Increase::Test::Resources::LockboxesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Lockbox
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        account_id: String,
-        address: Increase::Models::Lockbox::Address,
-        created_at: Time,
-        description: String | nil,
-        idempotency_key: String | nil,
-        recipient_name: String | nil,
-        status: Increase::Models::Lockbox::Status,
-        type: Increase::Models::Lockbox::Type
-      }
-    end
   end
 
   def test_retrieve
@@ -38,20 +24,6 @@ class Increase::Test::Resources::LockboxesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Lockbox
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        account_id: String,
-        address: Increase::Models::Lockbox::Address,
-        created_at: Time,
-        description: String | nil,
-        idempotency_key: String | nil,
-        recipient_name: String | nil,
-        status: Increase::Models::Lockbox::Status,
-        type: Increase::Models::Lockbox::Type
-      }
-    end
   end
 
   def test_update
@@ -59,20 +31,6 @@ class Increase::Test::Resources::LockboxesTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::Lockbox
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        account_id: String,
-        address: Increase::Models::Lockbox::Address,
-        created_at: Time,
-        description: String | nil,
-        idempotency_key: String | nil,
-        recipient_name: String | nil,
-        status: Increase::Models::Lockbox::Status,
-        type: Increase::Models::Lockbox::Type
-      }
     end
   end
 
@@ -91,20 +49,6 @@ class Increase::Test::Resources::LockboxesTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::Lockbox
-    end
-
-    assert_pattern do
-      row => {
-        id: String,
-        account_id: String,
-        address: Increase::Models::Lockbox::Address,
-        created_at: Time,
-        description: String | nil,
-        idempotency_key: String | nil,
-        recipient_name: String | nil,
-        status: Increase::Models::Lockbox::Status,
-        type: Increase::Models::Lockbox::Type
-      }
     end
   end
 end

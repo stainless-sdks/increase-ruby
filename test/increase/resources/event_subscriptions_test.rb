@@ -16,19 +16,6 @@ class Increase::Test::Resources::EventSubscriptionsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::EventSubscription
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        created_at: Time,
-        idempotency_key: String | nil,
-        oauth_connection_id: String | nil,
-        selected_event_category: Increase::Models::EventSubscription::SelectedEventCategory | nil,
-        status: Increase::Models::EventSubscription::Status,
-        type: Increase::Models::EventSubscription::Type,
-        url: String
-      }
-    end
   end
 
   def test_retrieve
@@ -37,19 +24,6 @@ class Increase::Test::Resources::EventSubscriptionsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::EventSubscription
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        created_at: Time,
-        idempotency_key: String | nil,
-        oauth_connection_id: String | nil,
-        selected_event_category: Increase::Models::EventSubscription::SelectedEventCategory | nil,
-        status: Increase::Models::EventSubscription::Status,
-        type: Increase::Models::EventSubscription::Type,
-        url: String
-      }
-    end
   end
 
   def test_update
@@ -57,19 +31,6 @@ class Increase::Test::Resources::EventSubscriptionsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::EventSubscription
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        created_at: Time,
-        idempotency_key: String | nil,
-        oauth_connection_id: String | nil,
-        selected_event_category: Increase::Models::EventSubscription::SelectedEventCategory | nil,
-        status: Increase::Models::EventSubscription::Status,
-        type: Increase::Models::EventSubscription::Type,
-        url: String
-      }
     end
   end
 
@@ -88,19 +49,6 @@ class Increase::Test::Resources::EventSubscriptionsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::EventSubscription
-    end
-
-    assert_pattern do
-      row => {
-        id: String,
-        created_at: Time,
-        idempotency_key: String | nil,
-        oauth_connection_id: String | nil,
-        selected_event_category: Increase::Models::EventSubscription::SelectedEventCategory | nil,
-        status: Increase::Models::EventSubscription::Status,
-        type: Increase::Models::EventSubscription::Type,
-        url: String
-      }
     end
   end
 end

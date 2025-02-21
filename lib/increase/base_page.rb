@@ -6,6 +6,8 @@ module Increase
   # @abstract
   #
   module BasePage
+    # rubocop:disable Lint/UnusedMethodArgument
+
     # @return [Boolean]
     #
     def next_page? = (raise NotImplementedError)
@@ -19,7 +21,7 @@ module Increase
     #
     # @return [void]
     #
-    def auto_paging_each(&) = (raise NotImplementedError)
+    def auto_paging_each(&blk) = (raise NotImplementedError)
 
     # @return [Enumerable]
     #
@@ -32,9 +34,11 @@ module Increase
     #   #
     #   # @param client [Increase::BaseClient]
     #   # @param req [Hash{Symbol=>Object}]
-    #   # @param headers [Hash{String=>String}, Net::HTTPHeader]
+    #   # @param headers [Hash{String=>String}]
     #   # @param unwrapped [Object]
     #   #
     #   def initialize(client:, req:, headers:, unwrapped:); end
+
+    # rubocop:enable Lint/UnusedMethodArgument
   end
 end

@@ -2,6 +2,17 @@
 
 module Increase
   module Models
+    # @example
+    # ```ruby
+    # check_transfer => {
+    #   id: String,
+    #   account_id: String,
+    #   account_number: String,
+    #   amount: Integer,
+    #   approval: Increase::Models::CheckTransfer::Approval,
+    #   **_
+    # }
+    # ```
     class CheckTransfer < Increase::BaseModel
       # @!attribute id
       #   The Check transfer's identifier.
@@ -216,6 +227,13 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @example
+      # ```ruby
+      # approval => {
+      #   approved_at: Time,
+      #   approved_by: String
+      # }
+      # ```
       class Approval < Increase::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -243,6 +261,13 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      # ```ruby
+      # cancellation => {
+      #   canceled_at: Time,
+      #   canceled_by: String
+      # }
+      # ```
       class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -270,6 +295,15 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      # ```ruby
+      # created_by => {
+      #   api_key: Increase::Models::CheckTransfer::CreatedBy::APIKey,
+      #   category: Increase::Models::CheckTransfer::CreatedBy::Category,
+      #   oauth_application: Increase::Models::CheckTransfer::CreatedBy::OAuthApplication,
+      #   user: Increase::Models::CheckTransfer::CreatedBy::User
+      # }
+      # ```
       class CreatedBy < Increase::BaseModel
         # @!attribute api_key
         #   If present, details about the API key that created the transfer.
@@ -309,6 +343,12 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # api_key => {
+        #   description: String
+        # }
+        # ```
         class APIKey < Increase::BaseModel
           # @!attribute description
           #   The description set for the API key when it was created.
@@ -359,6 +399,12 @@ module Increase
           #   def self.values; end
         end
 
+        # @example
+        # ```ruby
+        # oauth_application => {
+        #   name: String
+        # }
+        # ```
         class OAuthApplication < Increase::BaseModel
           # @!attribute name
           #   The name of the OAuth Application.
@@ -376,6 +422,12 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # user => {
+        #   email: String
+        # }
+        # ```
         class User < Increase::BaseModel
           # @!attribute email
           #   The email address of the User.
@@ -471,6 +523,14 @@ module Increase
         #   def self.values; end
       end
 
+      # @example
+      # ```ruby
+      # mailing => {
+      #   image_id: String,
+      #   mailed_at: Time,
+      #   tracking_number: String
+      # }
+      # ```
       class Mailing < Increase::BaseModel
         # @!attribute image_id
         #   The ID of the file corresponding to an image of the check that was mailed, if
@@ -505,6 +565,17 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      # ```ruby
+      # physical_check => {
+      #   mailing_address: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress,
+      #   memo: String,
+      #   note: String,
+      #   recipient_name: String,
+      #   return_address: Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress,
+      #   **_
+      # }
+      # ```
       class PhysicalCheck < Increase::BaseModel
         # @!attribute mailing_address
         #   Details for where Increase will mail the check.
@@ -587,6 +658,16 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # mailing_address => {
+        #   city: String,
+        #   line1: String,
+        #   line2: String,
+        #   name: String,
+        #   postal_code: String
+        # }
+        # ```
         class MailingAddress < Increase::BaseModel
           # @!attribute city
           #   The city of the check's destination.
@@ -639,6 +720,16 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # return_address => {
+        #   city: String,
+        #   line1: String,
+        #   line2: String,
+        #   name: String,
+        #   postal_code: String
+        # }
+        # ```
         class ReturnAddress < Increase::BaseModel
           # @!attribute city
           #   The city of the check's destination.
@@ -719,6 +810,14 @@ module Increase
           #   def self.values; end
         end
 
+        # @example
+        # ```ruby
+        # tracking_update => {
+        #   category: Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate::Category,
+        #   created_at: Time,
+        #   postal_code: String
+        # }
+        # ```
         class TrackingUpdate < Increase::BaseModel
           # @!attribute category
           #   The type of tracking event.
@@ -848,6 +947,15 @@ module Increase
         #   def self.values; end
       end
 
+      # @example
+      # ```ruby
+      # stop_payment_request => {
+      #   reason: Increase::Models::CheckTransfer::StopPaymentRequest::Reason,
+      #   requested_at: Time,
+      #   transfer_id: String,
+      #   type: Increase::Models::CheckTransfer::StopPaymentRequest::Type
+      # }
+      # ```
       class StopPaymentRequest < Increase::BaseModel
         # @!attribute reason
         #   The reason why this transfer was stopped.
@@ -949,6 +1057,12 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # submission => {
+      #   submitted_at: Time
+      # }
+      # ```
       class Submission < Increase::BaseModel
         # @!attribute submitted_at
         #   When this check transfer was submitted to our check printer.
@@ -966,6 +1080,12 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      # ```ruby
+      # third_party => {
+      #   check_number: String
+      # }
+      # ```
       class ThirdParty < Increase::BaseModel
         # @!attribute check_number
         #   The check number that will be printed on the check.

@@ -24,7 +24,6 @@ module Increase
         url: URI::Generic,
         headers: T::Hash[String, String],
         body: T.anything,
-        streaming: T::Boolean,
         max_retries: Integer,
         timeout: Float
       }
@@ -34,23 +33,6 @@ module Increase
 
     sig { params(req: Increase::BaseClient::RequestComponentsShape).void }
     def self.validate!(req)
-    end
-
-    sig do
-      params(status: Integer, headers: T.any(T::Hash[String, String], Net::HTTPHeader)).returns(T::Boolean)
-    end
-    def self.should_retry?(status, headers:)
-    end
-
-    sig do
-      params(
-        request: Increase::BaseClient::RequestInputShape,
-        status: Integer,
-        response_headers: T.any(T::Hash[String, String], Net::HTTPHeader)
-      )
-        .returns(Increase::BaseClient::RequestInputShape)
-    end
-    def self.follow_redirect(request, status:, response_headers:)
     end
 
     sig { returns(T.anything) }
@@ -93,15 +75,25 @@ module Increase
     end
 
     sig do
-      overridable
-        .params(req: Increase::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
+      params(req: Increase::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
         .returns(Increase::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
     end
 
+    sig { params(status: Integer, headers: T::Hash[String, String]).returns(T::Boolean) }
+    private def should_retry?(status, headers:)
+    end
+
     sig { params(headers: T::Hash[String, String], retry_count: Integer).returns(Float) }
     private def retry_delay(headers, retry_count:)
+    end
+
+    sig do
+      params(request: Increase::BaseClient::RequestInputShape, status: Integer, location_header: String)
+        .returns(Increase::BaseClient::RequestInputShape)
+    end
+    private def follow_redirect(request, status:, location_header:)
     end
 
     sig do
@@ -111,20 +103,13 @@ module Increase
         retry_count: Integer,
         send_retry_header: T::Boolean
       )
-        .returns([Net::HTTPResponse, T::Enumerable[String]])
+        .returns(Net::HTTPResponse)
     end
     private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
     end
 
-    sig do
-      params(
-        req: Increase::BaseClient::RequestComponentsShape,
-        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
-        stream: T::Enumerable[String]
-      )
-        .returns(T.anything)
-    end
-    private def parse_response(req, headers:, stream:)
+    sig { params(req: Increase::BaseClient::RequestComponentsShape, response: NilClass).returns(T.anything) }
+    private def parse_response(req, response)
     end
 
     sig do

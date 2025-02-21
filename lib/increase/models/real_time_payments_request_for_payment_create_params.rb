@@ -77,6 +77,13 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @example
+      # ```ruby
+      # debtor => {
+      #   address: Increase::Models::RealTimePaymentsRequestForPaymentCreateParams::Debtor::Address,
+      #   name: String
+      # }
+      # ```
       class Debtor < Increase::BaseModel
         # @!attribute address
         #   Address of the debtor.
@@ -100,6 +107,15 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # address => {
+        #   country: String,
+        #   city: String,
+        #   post_code: String,
+        #   street_name: String
+        # }
+        # ```
         class Address < Increase::BaseModel
           # @!attribute country
           #   The ISO 3166, Alpha-2 country code.

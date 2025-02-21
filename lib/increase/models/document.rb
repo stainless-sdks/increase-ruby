@@ -2,6 +2,16 @@
 
 module Increase
   module Models
+    # @example
+    # ```ruby
+    # document => {
+    #   id: String,
+    #   category: Increase::Models::Document::Category,
+    #   created_at: Time,
+    #   entity_id: String,
+    #   file_id: String
+    # }
+    # ```
     class Document < Increase::BaseModel
       # @!attribute id
       #   The Document identifier.

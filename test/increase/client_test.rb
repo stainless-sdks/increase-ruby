@@ -37,14 +37,23 @@ class IncreaseTest < Minitest::Test
 
   class MockResponse
     # @return [Integer]
-    attr_reader :code
+    attr_accessor :code
+
+    # @return [String]
+    attr_accessor :content_type
+
+    # @return [String]
+    attr_accessor :body
 
     # @param code [Integer]
     # @param headers [Hash{String=>String}]
+    # @param data [Object]
     #
-    def initialize(code, headers)
+    def initialize(code, headers, data)
       @code = code
-      @headers = {"content-type" => "application/json", **headers}
+      @headers = headers
+      @content_type = "application/json"
+      @body = JSON.generate(data)
     end
 
     # @param header [String]
@@ -66,13 +75,13 @@ class IncreaseTest < Minitest::Test
 
   class MockRequester
     # @return [Integer]
-    attr_reader :response_code
+    attr_accessor :response_code
 
     # @return [Hash{String=>String}]
-    attr_reader :response_headers
+    attr_accessor :response_headers
 
     # @return [Object]
-    attr_reader :response_data
+    attr_accessor :response_data
 
     # @return [Array<Hash{Symbol=>Object}>]
     attr_accessor :attempts
@@ -84,7 +93,7 @@ class IncreaseTest < Minitest::Test
     def initialize(response_code, response_headers, response_data)
       @response_code = response_code
       @response_headers = response_headers
-      @response_data = JSON.fast_generate(response_data)
+      @response_data = response_data
       @attempts = []
     end
 
@@ -93,7 +102,7 @@ class IncreaseTest < Minitest::Test
     def execute(req)
       # Deep copy the request because it is mutated on each retry.
       attempts.push(Marshal.load(Marshal.dump(req)))
-      [MockResponse.new(response_code, response_headers), response_data.grapheme_clusters]
+      MockResponse.new(response_code, response_headers, response_data)
     end
   end
 

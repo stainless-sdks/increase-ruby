@@ -2,6 +2,17 @@
 
 module Increase
   module Models
+    # @example
+    # ```ruby
+    # wire_transfer => {
+    #   id: String,
+    #   account_id: String,
+    #   account_number: String,
+    #   amount: Integer,
+    #   approval: Increase::Models::WireTransfer::Approval,
+    #   **_
+    # }
+    # ```
     class WireTransfer < Increase::BaseModel
       # @!attribute id
       #   The wire transfer's identifier.
@@ -259,6 +270,13 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @example
+      # ```ruby
+      # approval => {
+      #   approved_at: Time,
+      #   approved_by: String
+      # }
+      # ```
       class Approval < Increase::BaseModel
         # @!attribute approved_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -286,6 +304,13 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      # ```ruby
+      # cancellation => {
+      #   canceled_at: Time,
+      #   canceled_by: String
+      # }
+      # ```
       class Cancellation < Increase::BaseModel
         # @!attribute canceled_at
         #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -313,6 +338,15 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      # ```ruby
+      # created_by => {
+      #   api_key: Increase::Models::WireTransfer::CreatedBy::APIKey,
+      #   category: Increase::Models::WireTransfer::CreatedBy::Category,
+      #   oauth_application: Increase::Models::WireTransfer::CreatedBy::OAuthApplication,
+      #   user: Increase::Models::WireTransfer::CreatedBy::User
+      # }
+      # ```
       class CreatedBy < Increase::BaseModel
         # @!attribute api_key
         #   If present, details about the API key that created the transfer.
@@ -352,6 +386,12 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # api_key => {
+        #   description: String
+        # }
+        # ```
         class APIKey < Increase::BaseModel
           # @!attribute description
           #   The description set for the API key when it was created.
@@ -402,6 +442,12 @@ module Increase
           #   def self.values; end
         end
 
+        # @example
+        # ```ruby
+        # oauth_application => {
+        #   name: String
+        # }
+        # ```
         class OAuthApplication < Increase::BaseModel
           # @!attribute name
           #   The name of the OAuth Application.
@@ -419,6 +465,12 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # user => {
+        #   email: String
+        # }
+        # ```
         class User < Increase::BaseModel
           # @!attribute email
           #   The email address of the User.
@@ -508,6 +560,17 @@ module Increase
         #   def self.values; end
       end
 
+      # @example
+      # ```ruby
+      # reversal => {
+      #   amount: Integer,
+      #   created_at: Time,
+      #   description: String,
+      #   financial_institution_to_financial_institution_information: String,
+      #   input_cycle_date: Date,
+      #   **_
+      # }
+      # ```
       class Reversal < Increase::BaseModel
         # @!attribute amount
         #   The amount that was reversed in USD cents.
@@ -720,6 +783,13 @@ module Increase
         #   def self.values; end
       end
 
+      # @example
+      # ```ruby
+      # submission => {
+      #   input_message_accountability_data: String,
+      #   submitted_at: Time
+      # }
+      # ```
       class Submission < Increase::BaseModel
         # @!attribute input_message_accountability_data
         #   The accountability data for the submission.
