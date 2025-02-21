@@ -2,6 +2,17 @@
 
 module Increase
   module Models
+    # @example
+    # ```ruby
+    # card_payment => {
+    #   id: String,
+    #   account_id: String,
+    #   card_id: String,
+    #   created_at: Time,
+    #   digital_wallet_token_id: String,
+    #   **_
+    # }
+    # ```
     class CardPayment < Increase::BaseModel
       # @!attribute id
       #   The Card Payment identifier.
@@ -90,6 +101,17 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @example
+      # ```ruby
+      # element => {
+      #   card_authentication: Increase::Models::CardPayment::Element::CardAuthentication,
+      #   card_authorization: Increase::Models::CardPayment::Element::CardAuthorization,
+      #   card_authorization_expiration: Increase::Models::CardPayment::Element::CardAuthorizationExpiration,
+      #   card_decline: Increase::Models::CardPayment::Element::CardDecline,
+      #   card_fuel_confirmation: Increase::Models::CardPayment::Element::CardFuelConfirmation,
+      #   **_
+      # }
+      # ```
       class Element < Increase::BaseModel
         # @!attribute card_authentication
         #   A Card Authentication object. This field will be present in the JSON response if
@@ -241,6 +263,17 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # card_authentication => {
+        #   id: String,
+        #   card_id: String,
+        #   card_payment_id: String,
+        #   category: Increase::Models::CardPayment::Element::CardAuthentication::Category,
+        #   challenge: Increase::Models::CardPayment::Element::CardAuthentication::Challenge,
+        #   **_
+        # }
+        # ```
         class CardAuthentication < Increase::BaseModel
           # @!attribute id
           #   The Card Authentication identifier.
@@ -434,6 +467,16 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # challenge => {
+          #   attempts: -> { Increase::ArrayOf[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt] === _1 },
+          #   created_at: Time,
+          #   one_time_code: String,
+          #   verification_method: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::VerificationMethod,
+          #   verification_value: String
+          # }
+          # ```
           class Challenge < Increase::BaseModel
             # @!attribute attempts
             #   Details about the challenge verification attempts, if any happened.
@@ -482,6 +525,13 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @example
+            # ```ruby
+            # attempt => {
+            #   created_at: Time,
+            #   outcome: Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt::Outcome
+            # }
+            # ```
             class Attempt < Increase::BaseModel
               # @!attribute created_at
               #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time of the Card
@@ -730,6 +780,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # card_authorization => {
+        #   id: String,
+        #   actioner: Increase::Models::CardPayment::Element::CardAuthorization::Actioner,
+        #   amount: Integer,
+        #   card_payment_id: String,
+        #   currency: Increase::Models::CardPayment::Element::CardAuthorization::Currency,
+        #   **_
+        # }
+        # ```
         class CardAuthorization < Increase::BaseModel
           # @!attribute id
           #   The Card Authorization identifier.
@@ -1093,6 +1154,13 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # network_details => {
+          #   category: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Category,
+          #   visa: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa
+          # }
+          # ```
           class NetworkDetails < Increase::BaseModel
             # @!attribute category
             #   The payment network used to process this card authorization.
@@ -1142,6 +1210,14 @@ module Increase
               #   def self.values; end
             end
 
+            # @example
+            # ```ruby
+            # visa => {
+            #   electronic_commerce_indicator: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::ElectronicCommerceIndicator,
+            #   point_of_service_entry_mode: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::PointOfServiceEntryMode,
+            #   stand_in_processing_reason: Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa::StandInProcessingReason
+            # }
+            # ```
             class Visa < Increase::BaseModel
               # @!attribute electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used
@@ -1353,6 +1429,14 @@ module Increase
             end
           end
 
+          # @example
+          # ```ruby
+          # network_identifiers => {
+          #   retrieval_reference_number: String,
+          #   trace_number: String,
+          #   transaction_id: String
+          # }
+          # ```
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal.
@@ -1460,6 +1544,13 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # verification => {
+          #   card_verification_code: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
+          #   cardholder_address: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
+          # }
+          # ```
           class Verification < Increase::BaseModel
             # @!attribute card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -1487,6 +1578,12 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @example
+            # ```ruby
+            # card_verification_code => {
+            #   result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode::Result
+            # }
+            # ```
             class CardVerificationCode < Increase::BaseModel
               # @!attribute result
               #   The result of verifying the Card Verification Code.
@@ -1539,6 +1636,16 @@ module Increase
               end
             end
 
+            # @example
+            # ```ruby
+            # cardholder_address => {
+            #   actual_line1: String,
+            #   actual_postal_code: String,
+            #   provided_line1: String,
+            #   provided_postal_code: String,
+            #   result: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress::Result
+            # }
+            # ```
             class CardholderAddress < Increase::BaseModel
               # @!attribute actual_line1
               #   Line 1 of the address on file for the cardholder.
@@ -1637,6 +1744,16 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # card_authorization_expiration => {
+        #   id: String,
+        #   card_authorization_id: String,
+        #   currency: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Currency,
+        #   expired_amount: Integer,
+        #   network: Increase::Models::CardPayment::Element::CardAuthorizationExpiration::Network
+        # }
+        # ```
         class CardAuthorizationExpiration < Increase::BaseModel
           # @!attribute id
           #   The Card Authorization Expiration identifier.
@@ -1792,6 +1909,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # card_decline => {
+        #   id: String,
+        #   actioner: Increase::Models::CardPayment::Element::CardDecline::Actioner,
+        #   amount: Integer,
+        #   card_payment_id: String,
+        #   currency: Increase::Models::CardPayment::Element::CardDecline::Currency,
+        #   **_
+        # }
+        # ```
         class CardDecline < Increase::BaseModel
           # @!attribute id
           #   The Card Decline identifier.
@@ -2153,6 +2281,13 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # network_details => {
+          #   category: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Category,
+          #   visa: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa
+          # }
+          # ```
           class NetworkDetails < Increase::BaseModel
             # @!attribute category
             #   The payment network used to process this card authorization.
@@ -2202,6 +2337,14 @@ module Increase
               #   def self.values; end
             end
 
+            # @example
+            # ```ruby
+            # visa => {
+            #   electronic_commerce_indicator: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::ElectronicCommerceIndicator,
+            #   point_of_service_entry_mode: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::PointOfServiceEntryMode,
+            #   stand_in_processing_reason: Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa::StandInProcessingReason
+            # }
+            # ```
             class Visa < Increase::BaseModel
               # @!attribute electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used
@@ -2413,6 +2556,14 @@ module Increase
             end
           end
 
+          # @example
+          # ```ruby
+          # network_identifiers => {
+          #   retrieval_reference_number: String,
+          #   trace_number: String,
+          #   transaction_id: String
+          # }
+          # ```
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal.
@@ -2621,6 +2772,13 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # verification => {
+          #   card_verification_code: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
+          #   cardholder_address: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress
+          # }
+          # ```
           class Verification < Increase::BaseModel
             # @!attribute card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -2648,6 +2806,12 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @example
+            # ```ruby
+            # card_verification_code => {
+            #   result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode::Result
+            # }
+            # ```
             class CardVerificationCode < Increase::BaseModel
               # @!attribute result
               #   The result of verifying the Card Verification Code.
@@ -2700,6 +2864,16 @@ module Increase
               end
             end
 
+            # @example
+            # ```ruby
+            # cardholder_address => {
+            #   actual_line1: String,
+            #   actual_postal_code: String,
+            #   provided_line1: String,
+            #   provided_postal_code: String,
+            #   result: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress::Result
+            # }
+            # ```
             class CardholderAddress < Increase::BaseModel
               # @!attribute actual_line1
               #   Line 1 of the address on file for the cardholder.
@@ -2798,6 +2972,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # card_fuel_confirmation => {
+        #   id: String,
+        #   card_authorization_id: String,
+        #   currency: Increase::Models::CardPayment::Element::CardFuelConfirmation::Currency,
+        #   network: Increase::Models::CardPayment::Element::CardFuelConfirmation::Network,
+        #   network_identifiers: Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers,
+        #   **_
+        # }
+        # ```
         class CardFuelConfirmation < Increase::BaseModel
           # @!attribute id
           #   The Card Fuel Confirmation identifier.
@@ -2955,6 +3140,14 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # network_identifiers => {
+          #   retrieval_reference_number: String,
+          #   trace_number: String,
+          #   transaction_id: String
+          # }
+          # ```
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal.
@@ -3014,6 +3207,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # card_increment => {
+        #   id: String,
+        #   actioner: Increase::Models::CardPayment::Element::CardIncrement::Actioner,
+        #   amount: Integer,
+        #   card_authorization_id: String,
+        #   currency: Increase::Models::CardPayment::Element::CardIncrement::Currency,
+        #   **_
+        # }
+        # ```
         class CardIncrement < Increase::BaseModel
           # @!attribute id
           #   The Card Increment identifier.
@@ -3239,6 +3443,14 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # network_identifiers => {
+          #   retrieval_reference_number: String,
+          #   trace_number: String,
+          #   transaction_id: String
+          # }
+          # ```
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal.
@@ -3298,6 +3510,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # card_refund => {
+        #   id: String,
+        #   amount: Integer,
+        #   card_payment_id: String,
+        #   cashback: Increase::Models::CardPayment::Element::CardRefund::Cashback,
+        #   currency: Increase::Models::CardPayment::Element::CardRefund::Currency,
+        #   **_
+        # }
+        # ```
         class CardRefund < Increase::BaseModel
           # @!attribute id
           #   The Card Refund identifier.
@@ -3477,6 +3700,13 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @example
+          # ```ruby
+          # cashback => {
+          #   amount: String,
+          #   currency: Increase::Models::CardPayment::Element::CardRefund::Cashback::Currency
+          # }
+          # ```
           class Cashback < Increase::BaseModel
             # @!attribute amount
             #   The cashback amount given as a string containing a decimal number. The amount is
@@ -3601,6 +3831,14 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # interchange => {
+          #   amount: String,
+          #   code: String,
+          #   currency: Increase::Models::CardPayment::Element::CardRefund::Interchange::Currency
+          # }
+          # ```
           class Interchange < Increase::BaseModel
             # @!attribute amount
             #   The interchange amount given as a string containing a decimal number. The amount
@@ -3684,6 +3922,14 @@ module Increase
             end
           end
 
+          # @example
+          # ```ruby
+          # network_identifiers => {
+          #   acquirer_business_id: String,
+          #   acquirer_reference_number: String,
+          #   transaction_id: String
+          # }
+          # ```
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute acquirer_business_id
             #   A network assigned business ID that identifies the acquirer that processed this
@@ -3717,6 +3963,17 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @example
+          # ```ruby
+          # purchase_details => {
+          #   car_rental: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental,
+          #   customer_reference_identifier: String,
+          #   local_tax_amount: Integer,
+          #   local_tax_currency: String,
+          #   lodging: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging,
+          #   **_
+          # }
+          # ```
           class PurchaseDetails < Increase::BaseModel
             # @!attribute car_rental
             #   Fields specific to car rentals.
@@ -3821,6 +4078,17 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @example
+            # ```ruby
+            # car_rental => {
+            #   car_class_code: String,
+            #   checkout_date: Date,
+            #   daily_rental_rate_amount: Integer,
+            #   daily_rental_rate_currency: String,
+            #   days_rented: Integer,
+            #   **_
+            # }
+            # ```
             class CarRental < Increase::BaseModel
               # @!attribute car_class_code
               #   Code indicating the vehicle's class.
@@ -4052,6 +4320,17 @@ module Increase
               end
             end
 
+            # @example
+            # ```ruby
+            # lodging => {
+            #   check_in_date: Date,
+            #   daily_room_rate_amount: Integer,
+            #   daily_room_rate_currency: String,
+            #   extra_charges: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging::ExtraCharges,
+            #   folio_cash_advances_amount: Integer,
+            #   **_
+            # }
+            # ```
             class Lodging < Increase::BaseModel
               # @!attribute check_in_date
               #   Date the customer checked in.
@@ -4328,6 +4607,17 @@ module Increase
               #   def self.values; end
             end
 
+            # @example
+            # ```ruby
+            # travel => {
+            #   ancillary: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary,
+            #   computerized_reservation_system: String,
+            #   credit_reason_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator,
+            #   departure_date: Date,
+            #   origination_city_airport_code: String,
+            #   **_
+            # }
+            # ```
             class Travel < Increase::BaseModel
               # @!attribute ancillary
               #   Ancillary purchases in addition to the airfare.
@@ -4447,6 +4737,16 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @example
+              # ```ruby
+              # ancillary => {
+              #   connected_ticket_document_number: String,
+              #   credit_reason_indicator: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator,
+              #   passenger_name_or_description: String,
+              #   services: -> { Increase::ArrayOf[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service] === _1 },
+              #   ticket_document_number: String
+              # }
+              # ```
               class Ancillary < Increase::BaseModel
                 # @!attribute connected_ticket_document_number
                 #   If this purchase has a connection or relationship to another purchase, such as a
@@ -4543,6 +4843,13 @@ module Increase
                   #   def self.values; end
                 end
 
+                # @example
+                # ```ruby
+                # service => {
+                #   category: Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category,
+                #   sub_category: String
+                # }
+                # ```
                 class Service < Increase::BaseModel
                   # @!attribute category
                   #   Category of the ancillary service.
@@ -4779,6 +5086,16 @@ module Increase
                 #   def self.values; end
               end
 
+              # @example
+              # ```ruby
+              # trip_leg => {
+              #   carrier_code: String,
+              #   destination_city_airport_code: String,
+              #   fare_basis_code: String,
+              #   flight_number: String,
+              #   service_class: String
+              # }
+              # ```
               class TripLeg < Increase::BaseModel
                 # @!attribute carrier_code
                 #   Carrier code (e.g., United Airlines, Jet Blue, etc.).
@@ -4900,6 +5217,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # card_reversal => {
+        #   id: String,
+        #   card_authorization_id: String,
+        #   currency: Increase::Models::CardPayment::Element::CardReversal::Currency,
+        #   merchant_acceptor_id: String,
+        #   merchant_category_code: String,
+        #   **_
+        # }
+        # ```
         class CardReversal < Increase::BaseModel
           # @!attribute id
           #   The Card Reversal identifier.
@@ -5142,6 +5470,14 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # network_identifiers => {
+          #   retrieval_reference_number: String,
+          #   trace_number: String,
+          #   transaction_id: String
+          # }
+          # ```
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal.
@@ -5239,6 +5575,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # card_settlement => {
+        #   id: String,
+        #   amount: Integer,
+        #   card_authorization: String,
+        #   card_payment_id: String,
+        #   cashback: Increase::Models::CardPayment::Element::CardSettlement::Cashback,
+        #   **_
+        # }
+        # ```
         class CardSettlement < Increase::BaseModel
           # @!attribute id
           #   The Card Settlement identifier.
@@ -5437,6 +5784,13 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @example
+          # ```ruby
+          # cashback => {
+          #   amount: String,
+          #   currency: Increase::Models::CardPayment::Element::CardSettlement::Cashback::Currency
+          # }
+          # ```
           class Cashback < Increase::BaseModel
             # @!attribute amount
             #   The cashback amount given as a string containing a decimal number. The amount is
@@ -5562,6 +5916,14 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # interchange => {
+          #   amount: String,
+          #   code: String,
+          #   currency: Increase::Models::CardPayment::Element::CardSettlement::Interchange::Currency
+          # }
+          # ```
           class Interchange < Increase::BaseModel
             # @!attribute amount
             #   The interchange amount given as a string containing a decimal number. The amount
@@ -5646,6 +6008,14 @@ module Increase
             end
           end
 
+          # @example
+          # ```ruby
+          # network_identifiers => {
+          #   acquirer_business_id: String,
+          #   acquirer_reference_number: String,
+          #   transaction_id: String
+          # }
+          # ```
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute acquirer_business_id
             #   A network assigned business ID that identifies the acquirer that processed this
@@ -5679,6 +6049,17 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @example
+          # ```ruby
+          # purchase_details => {
+          #   car_rental: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental,
+          #   customer_reference_identifier: String,
+          #   local_tax_amount: Integer,
+          #   local_tax_currency: String,
+          #   lodging: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging,
+          #   **_
+          # }
+          # ```
           class PurchaseDetails < Increase::BaseModel
             # @!attribute car_rental
             #   Fields specific to car rentals.
@@ -5783,6 +6164,17 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @example
+            # ```ruby
+            # car_rental => {
+            #   car_class_code: String,
+            #   checkout_date: Date,
+            #   daily_rental_rate_amount: Integer,
+            #   daily_rental_rate_currency: String,
+            #   days_rented: Integer,
+            #   **_
+            # }
+            # ```
             class CarRental < Increase::BaseModel
               # @!attribute car_class_code
               #   Code indicating the vehicle's class.
@@ -6014,6 +6406,17 @@ module Increase
               end
             end
 
+            # @example
+            # ```ruby
+            # lodging => {
+            #   check_in_date: Date,
+            #   daily_room_rate_amount: Integer,
+            #   daily_room_rate_currency: String,
+            #   extra_charges: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging::ExtraCharges,
+            #   folio_cash_advances_amount: Integer,
+            #   **_
+            # }
+            # ```
             class Lodging < Increase::BaseModel
               # @!attribute check_in_date
               #   Date the customer checked in.
@@ -6290,6 +6693,17 @@ module Increase
               #   def self.values; end
             end
 
+            # @example
+            # ```ruby
+            # travel => {
+            #   ancillary: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary,
+            #   computerized_reservation_system: String,
+            #   credit_reason_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator,
+            #   departure_date: Date,
+            #   origination_city_airport_code: String,
+            #   **_
+            # }
+            # ```
             class Travel < Increase::BaseModel
               # @!attribute ancillary
               #   Ancillary purchases in addition to the airfare.
@@ -6409,6 +6823,16 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @example
+              # ```ruby
+              # ancillary => {
+              #   connected_ticket_document_number: String,
+              #   credit_reason_indicator: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator,
+              #   passenger_name_or_description: String,
+              #   services: -> { Increase::ArrayOf[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service] === _1 },
+              #   ticket_document_number: String
+              # }
+              # ```
               class Ancillary < Increase::BaseModel
                 # @!attribute connected_ticket_document_number
                 #   If this purchase has a connection or relationship to another purchase, such as a
@@ -6505,6 +6929,13 @@ module Increase
                   #   def self.values; end
                 end
 
+                # @example
+                # ```ruby
+                # service => {
+                #   category: Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category,
+                #   sub_category: String
+                # }
+                # ```
                 class Service < Increase::BaseModel
                   # @!attribute category
                   #   Category of the ancillary service.
@@ -6741,6 +7172,16 @@ module Increase
                 #   def self.values; end
               end
 
+              # @example
+              # ```ruby
+              # trip_leg => {
+              #   carrier_code: String,
+              #   destination_city_airport_code: String,
+              #   fare_basis_code: String,
+              #   flight_number: String,
+              #   service_class: String
+              # }
+              # ```
               class TripLeg < Increase::BaseModel
                 # @!attribute carrier_code
                 #   Carrier code (e.g., United Airlines, Jet Blue, etc.).
@@ -6862,6 +7303,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # card_validation => {
+        #   id: String,
+        #   actioner: Increase::Models::CardPayment::Element::CardValidation::Actioner,
+        #   card_payment_id: String,
+        #   currency: Increase::Models::CardPayment::Element::CardValidation::Currency,
+        #   digital_wallet_token_id: String,
+        #   **_
+        # }
+        # ```
         class CardValidation < Increase::BaseModel
           # @!attribute id
           #   The Card Validation identifier.
@@ -7133,6 +7585,13 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # network_details => {
+          #   category: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Category,
+          #   visa: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa
+          # }
+          # ```
           class NetworkDetails < Increase::BaseModel
             # @!attribute category
             #   The payment network used to process this card authorization.
@@ -7182,6 +7641,14 @@ module Increase
               #   def self.values; end
             end
 
+            # @example
+            # ```ruby
+            # visa => {
+            #   electronic_commerce_indicator: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::ElectronicCommerceIndicator,
+            #   point_of_service_entry_mode: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::PointOfServiceEntryMode,
+            #   stand_in_processing_reason: Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa::StandInProcessingReason
+            # }
+            # ```
             class Visa < Increase::BaseModel
               # @!attribute electronic_commerce_indicator
               #   For electronic commerce transactions, this identifies the level of security used
@@ -7393,6 +7860,14 @@ module Increase
             end
           end
 
+          # @example
+          # ```ruby
+          # network_identifiers => {
+          #   retrieval_reference_number: String,
+          #   trace_number: String,
+          #   transaction_id: String
+          # }
+          # ```
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute retrieval_reference_number
             #   A life-cycle identifier used across e.g., an authorization and a reversal.
@@ -7451,6 +7926,13 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # verification => {
+          #   card_verification_code: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
+          #   cardholder_address: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress
+          # }
+          # ```
           class Verification < Increase::BaseModel
             # @!attribute card_verification_code
             #   Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -7478,6 +7960,12 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @example
+            # ```ruby
+            # card_verification_code => {
+            #   result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode::Result
+            # }
+            # ```
             class CardVerificationCode < Increase::BaseModel
               # @!attribute result
               #   The result of verifying the Card Verification Code.
@@ -7530,6 +8018,16 @@ module Increase
               end
             end
 
+            # @example
+            # ```ruby
+            # cardholder_address => {
+            #   actual_line1: String,
+            #   actual_postal_code: String,
+            #   provided_line1: String,
+            #   provided_postal_code: String,
+            #   result: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress::Result
+            # }
+            # ```
             class CardholderAddress < Increase::BaseModel
               # @!attribute actual_line1
               #   Line 1 of the address on file for the cardholder.
@@ -7693,6 +8191,16 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # state => {
+      #   authorized_amount: Integer,
+      #   fuel_confirmed_amount: Integer,
+      #   incremented_amount: Integer,
+      #   reversed_amount: Integer,
+      #   settled_amount: Integer
+      # }
+      # ```
       class State < Increase::BaseModel
         # @!attribute authorized_amount
         #   The total authorized amount in the minor unit of the transaction's currency. For

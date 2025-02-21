@@ -28,7 +28,7 @@ module Increase
       params(
         client: Increase::BaseClient,
         req: Increase::BaseClient::RequestComponentsShape,
-        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
+        headers: T::Hash[String, String],
         unwrapped: T.anything
       )
         .void

@@ -9,117 +9,23 @@ module Increase
     # from whatwg fetch spec
     MAX_REDIRECTS = 20
 
-    class << self
-      # @private
-      #
-      # @param req [Hash{Symbol=>Object}]
-      #
-      # @raise [ArgumentError]
-      #
-      def validate!(req)
-        keys = [:method, :path, :query, :headers, :body, :unwrap, :page, :model, :options]
-        case req
-        in Hash
-          req.each_key do |k|
-            unless keys.include?(k)
-              raise ArgumentError.new("Request `req` keys must be one of #{keys}, got #{k.inspect}")
-            end
+    # @private
+    #
+    # @param req [Hash{Symbol=>Object}]
+    #
+    # @raise [ArgumentError]
+    #
+    def self.validate!(req)
+      keys = [:method, :path, :query, :headers, :body, :unwrap, :page, :model, :options]
+      case req
+      in Hash
+        req.each_key do |k|
+          unless keys.include?(k)
+            raise ArgumentError.new("Request `req` keys must be one of #{keys}, got #{k.inspect}")
           end
-        else
-          raise ArgumentError.new("Request `req` must be a Hash or RequestOptions, got #{req.inspect}")
         end
-      end
-
-      # @private
-      #
-      # @param status [Integer]
-      # @param headers [Hash{String=>String}, Net::HTTPHeader]
-      #
-      # @return [Boolean]
-      #
-      def should_retry?(status, headers:)
-        coerced = Increase::Util.coerce_boolean(headers["x-should-retry"])
-        case [coerced, status]
-        in [true | false, _]
-          coerced
-        in [_, 408 | 409 | 429 | (500..)]
-          # retry on:
-          # 408: timeouts
-          # 409: locks
-          # 429: rate limits
-          # 500+: unknown errors
-          true
-        else
-          false
-        end
-      end
-
-      # @private
-      #
-      # @param request [Hash{Symbol=>Object}] .
-      #
-      #   @option request [Symbol] :method
-      #
-      #   @option request [URI::Generic] :url
-      #
-      #   @option request [Hash{String=>String}] :headers
-      #
-      #   @option request [Object] :body
-      #
-      #   @option request [Boolean] :streaming
-      #
-      #   @option request [Integer] :max_retries
-      #
-      #   @option request [Float] :timeout
-      #
-      # @param status [Integer]
-      #
-      # @param response_headers [Hash{String=>String}, Net::HTTPHeader]
-      #
-      # @return [Hash{Symbol=>Object}]
-      #
-      def follow_redirect(request, status:, response_headers:)
-        method, url, headers = request.fetch_values(:method, :url, :headers)
-        location =
-          Increase::Util.suppress(ArgumentError) do
-            URI.join(url, response_headers["location"])
-          end
-
-        unless location
-          message = "Server responded with status #{status} but no valid location header."
-          raise Increase::APIConnectionError.new(url: url, message: message)
-        end
-
-        request = {**request, url: location}
-
-        case [url.scheme, location.scheme]
-        in ["https", "http"]
-          message = "Tried to redirect to a insecure URL"
-          raise Increase::APIConnectionError.new(url: url, message: message)
-        else
-          nil
-        end
-
-        # from whatwg fetch spec
-        case [status, method]
-        in [301 | 302, :post] | [303, _]
-          drop = %w[content-encoding content-language content-length content-location content-type]
-          request = {
-            **request,
-            method: method == :head ? :head : :get,
-            headers: headers.except(*drop),
-            body: nil
-          }
-        else
-        end
-
-        # from undici
-        if Increase::Util.uri_origin(url) != Increase::Util.uri_origin(location)
-          drop = %w[authorization cookie host proxy-authorization]
-          request = {**request, headers: request.fetch(:headers).except(*drop)}
-        end
-
-        request
+      else
+        raise ArgumentError.new("Request `req` must be a Hash or RequestOptions, got #{req.inspect}")
       end
     end
 
@@ -257,16 +163,34 @@ module Increase
           Increase::Util.deep_merge(*[req[:body], opts[:extra_body]].compact)
         end
 
+      url = Increase::Util.join_parsed_uri(@base_url, {**req, path: path, query: query})
       headers, encoded = Increase::Util.encode_content(headers, body)
-      {
-        method: method,
-        url: Increase::Util.join_parsed_uri(@base_url, {**req, path: path, query: query}),
-        headers: headers,
-        body: encoded,
-        streaming: false,
-        max_retries: opts.fetch(:max_retries, @max_retries),
-        timeout: timeout
-      }
+      max_retries = opts.fetch(:max_retries, @max_retries)
+      {method: method, url: url, headers: headers, body: encoded, max_retries: max_retries, timeout: timeout}
+    end
+
+    # @private
+    #
+    # @param status [Integer]
+    # @param headers [Hash{String=>String}]
+    #
+    # @return [Boolean]
+    #
+    private def should_retry?(status, headers:)
+      coerced = Increase::Util.coerce_boolean(headers["x-should-retry"])
+      case [coerced, status]
+      in [true | false, _]
+        coerced
+      in [_, 408 | 409 | 429 | (500..)]
+        # retry on:
+        # 408: timeouts
+        # 409: locks
+        # 429: rate limits
+        # 500+: unknown errors
+        true
+      else
+        false
+      end
     end
 
     # @private
@@ -306,7 +230,71 @@ module Increase
     #
     #   @option request [Object] :body
     #
-    #   @option request [Boolean] :streaming
+    #   @option request [Integer] :max_retries
+    #
+    #   @option request [Float] :timeout
+    #
+    # @param status [Integer]
+    #
+    # @param location_header [String]
+    #
+    # @return [Hash{Symbol=>Object}]
+    #
+    private def follow_redirect(request, status:, location_header:)
+      method, url, headers = request.fetch_values(:method, :url, :headers)
+      location =
+        Increase::Util.suppress(ArgumentError) do
+          URI.join(url, location_header)
+        end
+
+      unless location
+        message = "Server responded with status #{status} but no valid location header."
+        raise Increase::APIConnectionError.new(url: url, message: message)
+      end
+
+      request = {**request, url: location}
+
+      case [url.scheme, location.scheme]
+      in ["https", "http"]
+        message = "Tried to redirect to a insecure URL"
+        raise Increase::APIConnectionError.new(url: url, message: message)
+      else
+        nil
+      end
+
+      # from whatwg fetch spec
+      case [status, method]
+      in [301 | 302, :post] | [303, _]
+        drop = %w[content-encoding content-language content-length content-location content-type]
+        request = {
+          **request,
+          method: method == :head ? :head : :get,
+          headers: headers.except(*drop),
+          body: nil
+        }
+      else
+      end
+
+      # from undici
+      if Increase::Util.uri_origin(url) != Increase::Util.uri_origin(location)
+        drop = %w[authorization cookie host proxy-authorization]
+        request = {**request, headers: request.fetch(:headers).except(*drop)}
+      end
+
+      request
+    end
+
+    # @private
+    #
+    # @param request [Hash{Symbol=>Object}] .
+    #
+    #   @option request [Symbol] :method
+    #
+    #   @option request [URI::Generic] :url
+    #
+    #   @option request [Hash{String=>String}] :headers
+    #
+    #   @option request [Object] :body
     #
     #   @option request [Integer] :max_retries
     #
@@ -319,18 +307,18 @@ module Increase
     # @param send_retry_header [Boolean]
     #
     # @raise [Increase::APIError]
-    # @return [Array(Net::HTTPResponse, Enumerable)]
+    # @return [Net::HTTPResponse]
     #
     private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
-      url, headers, max_retries, timeout = request.fetch_values(:url, :headers, :max_retries, :timeout)
-      input = {**request.except(:timeout), deadline: Increase::Util.monotonic_secs + timeout}
+      url, headers, body, max_retries = request.fetch_values(:url, :headers, :body, :max_retries)
+      no_retry = retry_count >= max_retries || body.is_a?(IO) || body.is_a?(StringIO)
 
       if send_retry_header
         headers["x-stainless-retry-count"] = retry_count.to_s
       end
 
       begin
-        response, stream = @requester.execute(input)
+        response = @requester.execute(request)
         status = Integer(response.code)
       rescue Increase::APIConnectionError => e
         status = e
@@ -338,12 +326,12 @@ module Increase
 
       case status
       in ..299
-        [response, stream]
+        response
       in 300..399 if redirect_count >= MAX_REDIRECTS
         message = "Failed to complete the request within #{MAX_REDIRECTS} redirects."
         raise Increase::APIConnectionError.new(url: url, message: message)
       in 300..399
-        request = self.class.follow_redirect(request, status: status, response_headers: response)
+        request = follow_redirect(request, status: status, location_header: response["location"])
         send_request(
           request,
           redirect_count: redirect_count + 1,
@@ -352,16 +340,13 @@ module Increase
         )
       in Increase::APIConnectionError if retry_count >= max_retries
         raise status
-      in (400..) if retry_count >= max_retries || (response && !self.class.should_retry?(
-        status,
-        headers: response
-      ))
-        decoded = Increase::Util.decode_content(response, stream: stream, suppress_error: true)
+      in (400..) if no_retry || (response && !should_retry?(status, headers: response))
+        body = Increase::Util.decode_content(response, suppress_error: true)
 
         raise Increase::APIStatusError.for(
           url: url,
           status: status,
-          body: decoded,
+          body: body,
           request: nil,
           response: response
         )
@@ -376,8 +361,6 @@ module Increase
           send_retry_header: send_retry_header
         )
       end
-    ensure
-      stream&.each { break } unless status.is_a?(Integer) && status < 300
     end
 
     # @private
@@ -402,19 +385,17 @@ module Increase
     #
     #   @option req [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :options
     #
-    # @param headers [Hash{String=>String}, Net::HTTPHeader]
-    #
-    # @param stream [Enumerable]
+    # @param response [nil]
     #
     # @return [Object]
     #
-    private def parse_response(req, headers:, stream:)
-      decoded = Increase::Util.decode_content(headers, stream: stream)
-      unwrapped = Increase::Util.dig(decoded, req[:unwrap])
+    private def parse_response(req, response)
+      parsed = Increase::Util.decode_content(response)
+      unwrapped = Increase::Util.dig(parsed, req[:unwrap])
 
       case [req[:page], req.fetch(:model, Increase::Unknown)]
       in [Class => page, _]
-        page.new(client: self, req: req, headers: headers, unwrapped: unwrapped)
+        page.new(client: self, req: req, headers: response, unwrapped: unwrapped)
       in [nil, Class | Increase::Converter => model]
         Increase::Converter.coerce(model, unwrapped)
       in [nil, nil]
@@ -452,17 +433,17 @@ module Increase
       self.class.validate!(req)
       opts = req[:options].to_h
       Increase::RequestOptions.validate!(opts)
-      request = build_request(req.except(:options), opts)
+      request = build_request(req, opts)
 
       # Don't send the current retry count in the headers if the caller modified the header defaults.
       send_retry_header = request.fetch(:headers)["x-stainless-retry-count"] == "0"
-      response, stream = send_request(
+      response = send_request(
         request,
         redirect_count: 0,
         retry_count: 0,
         send_retry_header: send_retry_header
       )
-      parse_response(req, headers: response, stream: stream)
+      parse_response(req, response)
     end
 
     # @return [String]

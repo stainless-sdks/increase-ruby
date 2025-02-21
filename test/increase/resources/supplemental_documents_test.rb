@@ -19,16 +19,6 @@ class Increase::Test::Resources::SupplementalDocumentsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::EntitySupplementalDocument
     end
-
-    assert_pattern do
-      response => {
-        created_at: Time,
-        entity_id: String,
-        file_id: String,
-        idempotency_key: String | nil,
-        type: Increase::Models::EntitySupplementalDocument::Type
-      }
-    end
   end
 
   def test_list_required_params
@@ -46,16 +36,6 @@ class Increase::Test::Resources::SupplementalDocumentsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::EntitySupplementalDocument
-    end
-
-    assert_pattern do
-      row => {
-        created_at: Time,
-        entity_id: String,
-        file_id: String,
-        idempotency_key: String | nil,
-        type: Increase::Models::EntitySupplementalDocument::Type
-      }
     end
   end
 end

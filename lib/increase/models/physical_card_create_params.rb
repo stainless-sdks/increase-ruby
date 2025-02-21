@@ -47,6 +47,13 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @example
+      # ```ruby
+      # cardholder => {
+      #   first_name: String,
+      #   last_name: String
+      # }
+      # ```
       class Cardholder < Increase::BaseModel
         # @!attribute first_name
         #   The cardholder's first name.
@@ -71,6 +78,13 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      # ```ruby
+      # shipment => {
+      #   address: Increase::Models::PhysicalCardCreateParams::Shipment::Address,
+      #   method_: Increase::Models::PhysicalCardCreateParams::Shipment::Method
+      # }
+      # ```
       class Shipment < Increase::BaseModel
         # @!attribute address
         #   The address to where the card should be shipped.
@@ -96,6 +110,17 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # address => {
+        #   city: String,
+        #   line1: String,
+        #   name: String,
+        #   postal_code: String,
+        #   state: String,
+        #   **_
+        # }
+        # ```
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the shipping address.

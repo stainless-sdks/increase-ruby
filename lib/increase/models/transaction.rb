@@ -2,6 +2,17 @@
 
 module Increase
   module Models
+    # @example
+    # ```ruby
+    # transaction => {
+    #   id: String,
+    #   account_id: String,
+    #   amount: Integer,
+    #   created_at: Time,
+    #   currency: Increase::Models::Transaction::Currency,
+    #   **_
+    # }
+    # ```
     class Transaction < Increase::BaseModel
       # @!attribute id
       #   The Transaction identifier.
@@ -190,6 +201,17 @@ module Increase
         #   def self.values; end
       end
 
+      # @example
+      # ```ruby
+      # source => {
+      #   account_transfer_intention: Increase::Models::Transaction::Source::AccountTransferIntention,
+      #   ach_transfer_intention: Increase::Models::Transaction::Source::ACHTransferIntention,
+      #   ach_transfer_rejection: Increase::Models::Transaction::Source::ACHTransferRejection,
+      #   ach_transfer_return: Increase::Models::Transaction::Source::ACHTransferReturn,
+      #   card_dispute_acceptance: Increase::Models::Transaction::Source::CardDisputeAcceptance,
+      #   **_
+      # }
+      # ```
       class Source < Increase::BaseModel
         # @!attribute account_transfer_intention
         #   An Account Transfer Intention object. This field will be present in the JSON
@@ -575,6 +597,16 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # account_transfer_intention => {
+        #   amount: Integer,
+        #   currency: Increase::Models::Transaction::Source::AccountTransferIntention::Currency,
+        #   description: String,
+        #   destination_account_id: String,
+        #   source_account_id: String
+        # }
+        # ```
         class AccountTransferIntention < Increase::BaseModel
           # @!attribute amount
           #   The pending amount in the minor unit of the transaction's currency. For dollars,
@@ -681,6 +713,16 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # ach_transfer_intention => {
+        #   account_number: String,
+        #   amount: Integer,
+        #   routing_number: String,
+        #   statement_descriptor: String,
+        #   transfer_id: String
+        # }
+        # ```
         class ACHTransferIntention < Increase::BaseModel
           # @!attribute account_number
           #   The account number for the destination account.
@@ -731,6 +773,12 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # ach_transfer_rejection => {
+        #   transfer_id: String
+        # }
+        # ```
         class ACHTransferRejection < Increase::BaseModel
           # @!attribute transfer_id
           #   The identifier of the ACH Transfer that led to this Transaction.
@@ -751,6 +799,16 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # ach_transfer_return => {
+        #   created_at: Time,
+        #   raw_return_reason_code: String,
+        #   return_reason_code: Increase::Models::Transaction::Source::ACHTransferReturn::ReturnReasonCode,
+        #   trace_number: String,
+        #   transaction_id: String
+        # }
+        # ```
         class ACHTransferReturn < Increase::BaseModel
           # @!attribute created_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -1065,6 +1123,14 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # card_dispute_acceptance => {
+        #   accepted_at: Time,
+        #   card_dispute_id: String,
+        #   transaction_id: String
+        # }
+        # ```
         class CardDisputeAcceptance < Increase::BaseModel
           # @!attribute accepted_at
           #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -1100,6 +1166,15 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # card_dispute_loss => {
+        #   card_dispute_id: String,
+        #   explanation: String,
+        #   lost_at: Time,
+        #   transaction_id: String
+        # }
+        # ```
         class CardDisputeLoss < Increase::BaseModel
           # @!attribute card_dispute_id
           #   The identifier of the Card Dispute that was lost.
@@ -1142,6 +1217,17 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # card_refund => {
+        #   id: String,
+        #   amount: Integer,
+        #   card_payment_id: String,
+        #   cashback: Increase::Models::Transaction::Source::CardRefund::Cashback,
+        #   currency: Increase::Models::Transaction::Source::CardRefund::Currency,
+        #   **_
+        # }
+        # ```
         class CardRefund < Increase::BaseModel
           # @!attribute id
           #   The Card Refund identifier.
@@ -1321,6 +1407,13 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @example
+          # ```ruby
+          # cashback => {
+          #   amount: String,
+          #   currency: Increase::Models::Transaction::Source::CardRefund::Cashback::Currency
+          # }
+          # ```
           class Cashback < Increase::BaseModel
             # @!attribute amount
             #   The cashback amount given as a string containing a decimal number. The amount is
@@ -1445,6 +1538,14 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # interchange => {
+          #   amount: String,
+          #   code: String,
+          #   currency: Increase::Models::Transaction::Source::CardRefund::Interchange::Currency
+          # }
+          # ```
           class Interchange < Increase::BaseModel
             # @!attribute amount
             #   The interchange amount given as a string containing a decimal number. The amount
@@ -1528,6 +1629,14 @@ module Increase
             end
           end
 
+          # @example
+          # ```ruby
+          # network_identifiers => {
+          #   acquirer_business_id: String,
+          #   acquirer_reference_number: String,
+          #   transaction_id: String
+          # }
+          # ```
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute acquirer_business_id
             #   A network assigned business ID that identifies the acquirer that processed this
@@ -1561,6 +1670,17 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @example
+          # ```ruby
+          # purchase_details => {
+          #   car_rental: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental,
+          #   customer_reference_identifier: String,
+          #   local_tax_amount: Integer,
+          #   local_tax_currency: String,
+          #   lodging: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging,
+          #   **_
+          # }
+          # ```
           class PurchaseDetails < Increase::BaseModel
             # @!attribute car_rental
             #   Fields specific to car rentals.
@@ -1665,6 +1785,17 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @example
+            # ```ruby
+            # car_rental => {
+            #   car_class_code: String,
+            #   checkout_date: Date,
+            #   daily_rental_rate_amount: Integer,
+            #   daily_rental_rate_currency: String,
+            #   days_rented: Integer,
+            #   **_
+            # }
+            # ```
             class CarRental < Increase::BaseModel
               # @!attribute car_class_code
               #   Code indicating the vehicle's class.
@@ -1896,6 +2027,17 @@ module Increase
               end
             end
 
+            # @example
+            # ```ruby
+            # lodging => {
+            #   check_in_date: Date,
+            #   daily_room_rate_amount: Integer,
+            #   daily_room_rate_currency: String,
+            #   extra_charges: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging::ExtraCharges,
+            #   folio_cash_advances_amount: Integer,
+            #   **_
+            # }
+            # ```
             class Lodging < Increase::BaseModel
               # @!attribute check_in_date
               #   Date the customer checked in.
@@ -2172,6 +2314,17 @@ module Increase
               #   def self.values; end
             end
 
+            # @example
+            # ```ruby
+            # travel => {
+            #   ancillary: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary,
+            #   computerized_reservation_system: String,
+            #   credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::CreditReasonIndicator,
+            #   departure_date: Date,
+            #   origination_city_airport_code: String,
+            #   **_
+            # }
+            # ```
             class Travel < Increase::BaseModel
               # @!attribute ancillary
               #   Ancillary purchases in addition to the airfare.
@@ -2291,6 +2444,16 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @example
+              # ```ruby
+              # ancillary => {
+              #   connected_ticket_document_number: String,
+              #   credit_reason_indicator: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator,
+              #   passenger_name_or_description: String,
+              #   services: -> { Increase::ArrayOf[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service] === _1 },
+              #   ticket_document_number: String
+              # }
+              # ```
               class Ancillary < Increase::BaseModel
                 # @!attribute connected_ticket_document_number
                 #   If this purchase has a connection or relationship to another purchase, such as a
@@ -2387,6 +2550,13 @@ module Increase
                   #   def self.values; end
                 end
 
+                # @example
+                # ```ruby
+                # service => {
+                #   category: Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service::Category,
+                #   sub_category: String
+                # }
+                # ```
                 class Service < Increase::BaseModel
                   # @!attribute category
                   #   Category of the ancillary service.
@@ -2623,6 +2793,16 @@ module Increase
                 #   def self.values; end
               end
 
+              # @example
+              # ```ruby
+              # trip_leg => {
+              #   carrier_code: String,
+              #   destination_city_airport_code: String,
+              #   fare_basis_code: String,
+              #   flight_number: String,
+              #   service_class: String
+              # }
+              # ```
               class TripLeg < Increase::BaseModel
                 # @!attribute carrier_code
                 #   Carrier code (e.g., United Airlines, Jet Blue, etc.).
@@ -2744,6 +2924,16 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # card_revenue_payment => {
+        #   amount: Integer,
+        #   currency: Increase::Models::Transaction::Source::CardRevenuePayment::Currency,
+        #   period_end: Time,
+        #   period_start: Time,
+        #   transacted_on_account_id: String
+        # }
+        # ```
         class CardRevenuePayment < Increase::BaseModel
           # @!attribute amount
           #   The amount in the minor unit of the transaction's currency. For dollars, for
@@ -2842,6 +3032,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # card_settlement => {
+        #   id: String,
+        #   amount: Integer,
+        #   card_authorization: String,
+        #   card_payment_id: String,
+        #   cashback: Increase::Models::Transaction::Source::CardSettlement::Cashback,
+        #   **_
+        # }
+        # ```
         class CardSettlement < Increase::BaseModel
           # @!attribute id
           #   The Card Settlement identifier.
@@ -3040,6 +3241,13 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @example
+          # ```ruby
+          # cashback => {
+          #   amount: String,
+          #   currency: Increase::Models::Transaction::Source::CardSettlement::Cashback::Currency
+          # }
+          # ```
           class Cashback < Increase::BaseModel
             # @!attribute amount
             #   The cashback amount given as a string containing a decimal number. The amount is
@@ -3164,6 +3372,14 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # interchange => {
+          #   amount: String,
+          #   code: String,
+          #   currency: Increase::Models::Transaction::Source::CardSettlement::Interchange::Currency
+          # }
+          # ```
           class Interchange < Increase::BaseModel
             # @!attribute amount
             #   The interchange amount given as a string containing a decimal number. The amount
@@ -3248,6 +3464,14 @@ module Increase
             end
           end
 
+          # @example
+          # ```ruby
+          # network_identifiers => {
+          #   acquirer_business_id: String,
+          #   acquirer_reference_number: String,
+          #   transaction_id: String
+          # }
+          # ```
           class NetworkIdentifiers < Increase::BaseModel
             # @!attribute acquirer_business_id
             #   A network assigned business ID that identifies the acquirer that processed this
@@ -3281,6 +3505,17 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @example
+          # ```ruby
+          # purchase_details => {
+          #   car_rental: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental,
+          #   customer_reference_identifier: String,
+          #   local_tax_amount: Integer,
+          #   local_tax_currency: String,
+          #   lodging: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging,
+          #   **_
+          # }
+          # ```
           class PurchaseDetails < Increase::BaseModel
             # @!attribute car_rental
             #   Fields specific to car rentals.
@@ -3385,6 +3620,17 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @example
+            # ```ruby
+            # car_rental => {
+            #   car_class_code: String,
+            #   checkout_date: Date,
+            #   daily_rental_rate_amount: Integer,
+            #   daily_rental_rate_currency: String,
+            #   days_rented: Integer,
+            #   **_
+            # }
+            # ```
             class CarRental < Increase::BaseModel
               # @!attribute car_class_code
               #   Code indicating the vehicle's class.
@@ -3616,6 +3862,17 @@ module Increase
               end
             end
 
+            # @example
+            # ```ruby
+            # lodging => {
+            #   check_in_date: Date,
+            #   daily_room_rate_amount: Integer,
+            #   daily_room_rate_currency: String,
+            #   extra_charges: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging::ExtraCharges,
+            #   folio_cash_advances_amount: Integer,
+            #   **_
+            # }
+            # ```
             class Lodging < Increase::BaseModel
               # @!attribute check_in_date
               #   Date the customer checked in.
@@ -3892,6 +4149,17 @@ module Increase
               #   def self.values; end
             end
 
+            # @example
+            # ```ruby
+            # travel => {
+            #   ancillary: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary,
+            #   computerized_reservation_system: String,
+            #   credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::CreditReasonIndicator,
+            #   departure_date: Date,
+            #   origination_city_airport_code: String,
+            #   **_
+            # }
+            # ```
             class Travel < Increase::BaseModel
               # @!attribute ancillary
               #   Ancillary purchases in addition to the airfare.
@@ -4011,6 +4279,16 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @example
+              # ```ruby
+              # ancillary => {
+              #   connected_ticket_document_number: String,
+              #   credit_reason_indicator: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::CreditReasonIndicator,
+              #   passenger_name_or_description: String,
+              #   services: -> { Increase::ArrayOf[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service] === _1 },
+              #   ticket_document_number: String
+              # }
+              # ```
               class Ancillary < Increase::BaseModel
                 # @!attribute connected_ticket_document_number
                 #   If this purchase has a connection or relationship to another purchase, such as a
@@ -4107,6 +4385,13 @@ module Increase
                   #   def self.values; end
                 end
 
+                # @example
+                # ```ruby
+                # service => {
+                #   category: Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service::Category,
+                #   sub_category: String
+                # }
+                # ```
                 class Service < Increase::BaseModel
                   # @!attribute category
                   #   Category of the ancillary service.
@@ -4343,6 +4628,16 @@ module Increase
                 #   def self.values; end
               end
 
+              # @example
+              # ```ruby
+              # trip_leg => {
+              #   carrier_code: String,
+              #   destination_city_airport_code: String,
+              #   fare_basis_code: String,
+              #   flight_number: String,
+              #   service_class: String
+              # }
+              # ```
               class TripLeg < Increase::BaseModel
                 # @!attribute carrier_code
                 #   Carrier code (e.g., United Airlines, Jet Blue, etc.).
@@ -4464,6 +4759,16 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # cashback_payment => {
+        #   accrued_on_card_id: String,
+        #   amount: Integer,
+        #   currency: Increase::Models::Transaction::Source::CashbackPayment::Currency,
+        #   period_end: Time,
+        #   period_start: Time
+        # }
+        # ```
         class CashbackPayment < Increase::BaseModel
           # @!attribute accrued_on_card_id
           #   The card on which the cashback was accrued.
@@ -4681,6 +4986,17 @@ module Increase
           #   def self.values; end
         end
 
+        # @example
+        # ```ruby
+        # check_deposit_acceptance => {
+        #   account_number: String,
+        #   amount: Integer,
+        #   auxiliary_on_us: String,
+        #   check_deposit_id: String,
+        #   currency: Increase::Models::Transaction::Source::CheckDepositAcceptance::Currency,
+        #   **_
+        # }
+        # ```
         class CheckDepositAcceptance < Increase::BaseModel
           # @!attribute account_number
           #   The account number printed on the check.
@@ -4808,6 +5124,16 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # check_deposit_return => {
+        #   amount: Integer,
+        #   check_deposit_id: String,
+        #   currency: Increase::Models::Transaction::Source::CheckDepositReturn::Currency,
+        #   return_reason: Increase::Models::Transaction::Source::CheckDepositReturn::ReturnReason,
+        #   returned_at: Time
+        # }
+        # ```
         class CheckDepositReturn < Increase::BaseModel
           # @!attribute amount
           #   The returned amount in USD cents.
@@ -5028,6 +5354,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # check_transfer_deposit => {
+        #   back_image_file_id: String,
+        #   bank_of_first_deposit_routing_number: String,
+        #   deposited_at: Time,
+        #   front_image_file_id: String,
+        #   inbound_check_deposit_id: String,
+        #   **_
+        # }
+        # ```
         class CheckTransferDeposit < Increase::BaseModel
           # @!attribute back_image_file_id
           #   The identifier of the API File object containing an image of the back of the
@@ -5138,6 +5475,15 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # fee_payment => {
+        #   amount: Integer,
+        #   currency: Increase::Models::Transaction::Source::FeePayment::Currency,
+        #   fee_period_start: Date,
+        #   program_id: String
+        # }
+        # ```
         class FeePayment < Increase::BaseModel
           # @!attribute amount
           #   The amount in the minor unit of the transaction's currency. For dollars, for
@@ -5229,6 +5575,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # inbound_ach_transfer => {
+        #   addenda: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda,
+        #   amount: Integer,
+        #   originator_company_descriptive_date: String,
+        #   originator_company_discretionary_data: String,
+        #   originator_company_entry_description: String,
+        #   **_
+        # }
+        # ```
         class InboundACHTransfer < Increase::BaseModel
           # @!attribute addenda
           #   Additional information sent from the originator.
@@ -5339,6 +5696,13 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @example
+          # ```ruby
+          # addenda => {
+          #   category: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Category,
+          #   freeform: Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform
+          # }
+          # ```
           class Addenda < Increase::BaseModel
             # @!attribute category
             #   The type of addendum.
@@ -5388,6 +5752,12 @@ module Increase
               #   def self.values; end
             end
 
+            # @example
+            # ```ruby
+            # freeform => {
+            #   entries: -> { Increase::ArrayOf[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry] === _1 }
+            # }
+            # ```
             class Freeform < Increase::BaseModel
               # @!attribute entries
               #   Each entry represents an addendum received from the originator.
@@ -5405,6 +5775,12 @@ module Increase
 
               # def initialize: (Hash | Increase::BaseModel) -> void
 
+              # @example
+              # ```ruby
+              # entry => {
+              #   payment_related_information: String
+              # }
+              # ```
               class Entry < Increase::BaseModel
                 # @!attribute payment_related_information
                 #   The payment related information passed in the addendum.
@@ -5423,6 +5799,12 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # inbound_ach_transfer_return_intention => {
+        #   inbound_ach_transfer_id: String
+        # }
+        # ```
         class InboundACHTransferReturnIntention < Increase::BaseModel
           # @!attribute inbound_ach_transfer_id
           #   The ID of the Inbound ACH Transfer that is being returned.
@@ -5444,6 +5826,14 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # inbound_check_adjustment => {
+        #   adjusted_transaction_id: String,
+        #   amount: Integer,
+        #   reason: Increase::Models::Transaction::Source::InboundCheckAdjustment::Reason
+        # }
+        # ```
         class InboundCheckAdjustment < Increase::BaseModel
           # @!attribute adjusted_transaction_id
           #   The ID of the transaction that was adjusted.
@@ -5516,6 +5906,13 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # inbound_check_deposit_return_intention => {
+        #   inbound_check_deposit_id: String,
+        #   transfer_id: String
+        # }
+        # ```
         class InboundCheckDepositReturnIntention < Increase::BaseModel
           # @!attribute inbound_check_deposit_id
           #   The ID of the Inbound Check Deposit that is being returned.
@@ -5544,6 +5941,17 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # inbound_real_time_payments_transfer_confirmation => {
+        #   amount: Integer,
+        #   creditor_name: String,
+        #   currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation::Currency,
+        #   debtor_account_number: String,
+        #   debtor_name: String,
+        #   **_
+        # }
+        # ```
         class InboundRealTimePaymentsTransferConfirmation < Increase::BaseModel
           # @!attribute amount
           #   The amount in the minor unit of the transfer's currency. For dollars, for
@@ -5686,6 +6094,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # inbound_real_time_payments_transfer_decline => {
+        #   amount: Integer,
+        #   creditor_name: String,
+        #   currency: Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline::Currency,
+        #   debtor_account_number: String,
+        #   debtor_name: String,
+        #   **_
+        # }
+        # ```
         class InboundRealTimePaymentsTransferDecline < Increase::BaseModel
           # @!attribute amount
           #   The declined amount in the minor unit of the destination account currency. For
@@ -5885,6 +6304,17 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # inbound_wire_reversal => {
+        #   amount: Integer,
+        #   created_at: Time,
+        #   description: String,
+        #   financial_institution_to_financial_institution_information: String,
+        #   input_cycle_date: Date,
+        #   **_
+        # }
+        # ```
         class InboundWireReversal < Increase::BaseModel
           # @!attribute amount
           #   The amount that was reversed in USD cents.
@@ -6044,6 +6474,17 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # inbound_wire_transfer => {
+        #   amount: Integer,
+        #   beneficiary_address_line1: String,
+        #   beneficiary_address_line2: String,
+        #   beneficiary_address_line3: String,
+        #   beneficiary_name: String,
+        #   **_
+        # }
+        # ```
         class InboundWireTransfer < Increase::BaseModel
           # @!attribute amount
           #   The amount in USD cents.
@@ -6216,6 +6657,12 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # inbound_wire_transfer_reversal => {
+        #   inbound_wire_transfer_id: String
+        # }
+        # ```
         class InboundWireTransferReversal < Increase::BaseModel
           # @!attribute inbound_wire_transfer_id
           #   The ID of the Inbound Wire Transfer that is being reversed.
@@ -6237,6 +6684,16 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # interest_payment => {
+        #   accrued_on_account_id: String,
+        #   amount: Integer,
+        #   currency: Increase::Models::Transaction::Source::InterestPayment::Currency,
+        #   period_end: Time,
+        #   period_start: Time
+        # }
+        # ```
         class InterestPayment < Increase::BaseModel
           # @!attribute accrued_on_account_id
           #   The account on which the interest was accrued.
@@ -6336,6 +6793,14 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # internal_source => {
+        #   amount: Integer,
+        #   currency: Increase::Models::Transaction::Source::InternalSource::Currency,
+        #   reason: Increase::Models::Transaction::Source::InternalSource::Reason
+        # }
+        # ```
         class InternalSource < Increase::BaseModel
           # @!attribute amount
           #   The amount in the minor unit of the transaction's currency. For dollars, for
@@ -6497,6 +6962,16 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # real_time_payments_transfer_acknowledgement => {
+        #   amount: Integer,
+        #   destination_account_number: String,
+        #   destination_routing_number: String,
+        #   remittance_information: String,
+        #   transfer_id: String
+        # }
+        # ```
         class RealTimePaymentsTransferAcknowledgement < Increase::BaseModel
           # @!attribute amount
           #   The transfer amount in USD cents.
@@ -6555,6 +7030,12 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # sample_funds => {
+        #   originator: String
+        # }
+        # ```
         class SampleFunds < Increase::BaseModel
           # @!attribute originator
           #   Where the sample funds came from.
@@ -6574,6 +7055,16 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # wire_transfer_intention => {
+        #   account_number: String,
+        #   amount: Integer,
+        #   message_to_recipient: String,
+        #   routing_number: String,
+        #   transfer_id: String
+        # }
+        # ```
         class WireTransferIntention < Increase::BaseModel
           # @!attribute account_number
           #   The destination account number.

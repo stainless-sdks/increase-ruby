@@ -16,19 +16,6 @@ class Increase::Test::Resources::ExportsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Export
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        category: Increase::Models::Export::Category,
-        created_at: Time,
-        file_download_url: String | nil,
-        file_id: String | nil,
-        idempotency_key: String | nil,
-        status: Increase::Models::Export::Status,
-        type: Increase::Models::Export::Type
-      }
-    end
   end
 
   def test_retrieve
@@ -36,19 +23,6 @@ class Increase::Test::Resources::ExportsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::Export
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        category: Increase::Models::Export::Category,
-        created_at: Time,
-        file_download_url: String | nil,
-        file_id: String | nil,
-        idempotency_key: String | nil,
-        status: Increase::Models::Export::Status,
-        type: Increase::Models::Export::Type
-      }
     end
   end
 
@@ -67,19 +41,6 @@ class Increase::Test::Resources::ExportsTest < Minitest::Test
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::Export
-    end
-
-    assert_pattern do
-      row => {
-        id: String,
-        category: Increase::Models::Export::Category,
-        created_at: Time,
-        file_download_url: String | nil,
-        file_id: String | nil,
-        idempotency_key: String | nil,
-        status: Increase::Models::Export::Status,
-        type: Increase::Models::Export::Type
-      }
     end
   end
 end

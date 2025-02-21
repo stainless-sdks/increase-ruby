@@ -175,6 +175,17 @@ module Increase
         #   def self.values; end
       end
 
+      # @example
+      # ```ruby
+      # corporation => {
+      #   address: Increase::Models::EntityCreateParams::Corporation::Address,
+      #   beneficial_owners: -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::Corporation::BeneficialOwner] === _1 },
+      #   name: String,
+      #   tax_identifier: String,
+      #   incorporation_state: String,
+      #   **_
+      # }
+      # ```
       class Corporation < Increase::BaseModel
         # @!attribute address
         #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
@@ -264,6 +275,16 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # address => {
+        #   city: String,
+        #   line1: String,
+        #   state: String,
+        #   zip: String,
+        #   line2: String
+        # }
+        # ```
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -315,6 +336,14 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # beneficial_owner => {
+        #   individual: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual,
+        #   prongs: -> { Increase::ArrayOf[enum: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Prong] === _1 },
+        #   company_title: String
+        # }
+        # ```
         class BeneficialOwner < Increase::BaseModel
           # @!attribute individual
           #   Personal details for the beneficial owner.
@@ -351,6 +380,16 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @example
+          # ```ruby
+          # individual => {
+          #   address: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Address,
+          #   date_of_birth: Date,
+          #   identification: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification,
+          #   name: String,
+          #   confirmed_no_us_tax_id: Increase::BooleanModel
+          # }
+          # ```
           class Individual < Increase::BaseModel
             # @!attribute address
             #   The individual's physical address. Mail receiving locations like PO Boxes and
@@ -405,6 +444,16 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @example
+            # ```ruby
+            # address => {
+            #   city: String,
+            #   line1: String,
+            #   state: String,
+            #   zip: String,
+            #   line2: String
+            # }
+            # ```
             class Address < Increase::BaseModel
               # @!attribute city
               #   The city of the address.
@@ -456,6 +505,16 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @example
+            # ```ruby
+            # identification => {
+            #   method_: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Method,
+            #   number: String,
+            #   drivers_license: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::DriversLicense,
+            #   other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
+            #   passport: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
+            # }
+            # ```
             class Identification < Increase::BaseModel
               # @!attribute method_
               #   A method that can be used to verify the individual's identity.
@@ -564,6 +623,15 @@ module Increase
                 #   def self.values; end
               end
 
+              # @example
+              # ```ruby
+              # drivers_license => {
+              #   expiration_date: Date,
+              #   file_id: String,
+              #   state: String,
+              #   back_file_id: String
+              # }
+              # ```
               class DriversLicense < Increase::BaseModel
                 # @!attribute expiration_date
                 #   The driver's license's expiration date in YYYY-MM-DD format.
@@ -607,6 +675,16 @@ module Increase
                 # def initialize: (Hash | Increase::BaseModel) -> void
               end
 
+              # @example
+              # ```ruby
+              # other => {
+              #   country: String,
+              #   description: String,
+              #   file_id: String,
+              #   back_file_id: String,
+              #   expiration_date: Date
+              # }
+              # ```
               class Other < Increase::BaseModel
                 # @!attribute country
                 #   The two-character ISO 3166-1 code representing the country that issued the
@@ -663,6 +741,14 @@ module Increase
                 # def initialize: (Hash | Increase::BaseModel) -> void
               end
 
+              # @example
+              # ```ruby
+              # passport => {
+              #   country: String,
+              #   expiration_date: Date,
+              #   file_id: String
+              # }
+              # ```
               class Passport < Increase::BaseModel
                 # @!attribute country
                 #   The country that issued the passport.
@@ -725,6 +811,16 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # government_authority => {
+      #   address: Increase::Models::EntityCreateParams::GovernmentAuthority::Address,
+      #   authorized_persons: -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::GovernmentAuthority::AuthorizedPerson] === _1 },
+      #   category: Increase::Models::EntityCreateParams::GovernmentAuthority::Category,
+      #   name: String,
+      #   tax_identifier: String
+      # }
+      # ```
       class GovernmentAuthority < Increase::BaseModel
         # @!attribute address
         #   The entity's physical address. Mail receiving locations like PO Boxes and PMB's
@@ -783,6 +879,16 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # address => {
+        #   city: String,
+        #   line1: String,
+        #   state: String,
+        #   zip: String,
+        #   line2: String
+        # }
+        # ```
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -834,6 +940,12 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # authorized_person => {
+        #   name: String
+        # }
+        # ```
         class AuthorizedPerson < Increase::BaseModel
           # @!attribute name
           #   The person's legal name.
@@ -873,6 +985,13 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # joint => {
+      #   individuals: -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::Joint::Individual] === _1 },
+      #   name: String
+      # }
+      # ```
       class Joint < Increase::BaseModel
         # @!attribute individuals
         #   The two individuals that share control of the entity.
@@ -901,6 +1020,16 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # individual => {
+        #   address: Increase::Models::EntityCreateParams::Joint::Individual::Address,
+        #   date_of_birth: Date,
+        #   identification: Increase::Models::EntityCreateParams::Joint::Individual::Identification,
+        #   name: String,
+        #   confirmed_no_us_tax_id: Increase::BooleanModel
+        # }
+        # ```
         class Individual < Increase::BaseModel
           # @!attribute address
           #   The individual's physical address. Mail receiving locations like PO Boxes and
@@ -951,6 +1080,16 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @example
+          # ```ruby
+          # address => {
+          #   city: String,
+          #   line1: String,
+          #   state: String,
+          #   zip: String,
+          #   line2: String
+          # }
+          # ```
           class Address < Increase::BaseModel
             # @!attribute city
             #   The city of the address.
@@ -1002,6 +1141,16 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @example
+          # ```ruby
+          # identification => {
+          #   method_: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Method,
+          #   number: String,
+          #   drivers_license: Increase::Models::EntityCreateParams::Joint::Individual::Identification::DriversLicense,
+          #   other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
+          #   passport: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
+          # }
+          # ```
           class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
@@ -1109,6 +1258,15 @@ module Increase
               #   def self.values; end
             end
 
+            # @example
+            # ```ruby
+            # drivers_license => {
+            #   expiration_date: Date,
+            #   file_id: String,
+            #   state: String,
+            #   back_file_id: String
+            # }
+            # ```
             class DriversLicense < Increase::BaseModel
               # @!attribute expiration_date
               #   The driver's license's expiration date in YYYY-MM-DD format.
@@ -1152,6 +1310,16 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @example
+            # ```ruby
+            # other => {
+            #   country: String,
+            #   description: String,
+            #   file_id: String,
+            #   back_file_id: String,
+            #   expiration_date: Date
+            # }
+            # ```
             class Other < Increase::BaseModel
               # @!attribute country
               #   The two-character ISO 3166-1 code representing the country that issued the
@@ -1208,6 +1376,14 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @example
+            # ```ruby
+            # passport => {
+            #   country: String,
+            #   expiration_date: Date,
+            #   file_id: String
+            # }
+            # ```
             class Passport < Increase::BaseModel
               # @!attribute country
               #   The country that issued the passport.
@@ -1243,6 +1419,16 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # natural_person => {
+      #   address: Increase::Models::EntityCreateParams::NaturalPerson::Address,
+      #   date_of_birth: Date,
+      #   identification: Increase::Models::EntityCreateParams::NaturalPerson::Identification,
+      #   name: String,
+      #   confirmed_no_us_tax_id: Increase::BooleanModel
+      # }
+      # ```
       class NaturalPerson < Increase::BaseModel
         # @!attribute address
         #   The individual's physical address. Mail receiving locations like PO Boxes and
@@ -1298,6 +1484,16 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # address => {
+        #   city: String,
+        #   line1: String,
+        #   state: String,
+        #   zip: String,
+        #   line2: String
+        # }
+        # ```
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -1349,6 +1545,16 @@ module Increase
           # def initialize: (Hash | Increase::BaseModel) -> void
         end
 
+        # @example
+        # ```ruby
+        # identification => {
+        #   method_: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Method,
+        #   number: String,
+        #   drivers_license: Increase::Models::EntityCreateParams::NaturalPerson::Identification::DriversLicense,
+        #   other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
+        #   passport: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
+        # }
+        # ```
         class Identification < Increase::BaseModel
           # @!attribute method_
           #   A method that can be used to verify the individual's identity.
@@ -1455,6 +1661,15 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # drivers_license => {
+          #   expiration_date: Date,
+          #   file_id: String,
+          #   state: String,
+          #   back_file_id: String
+          # }
+          # ```
           class DriversLicense < Increase::BaseModel
             # @!attribute expiration_date
             #   The driver's license's expiration date in YYYY-MM-DD format.
@@ -1498,6 +1713,16 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @example
+          # ```ruby
+          # other => {
+          #   country: String,
+          #   description: String,
+          #   file_id: String,
+          #   back_file_id: String,
+          #   expiration_date: Date
+          # }
+          # ```
           class Other < Increase::BaseModel
             # @!attribute country
             #   The two-character ISO 3166-1 code representing the country that issued the
@@ -1554,6 +1779,14 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @example
+          # ```ruby
+          # passport => {
+          #   country: String,
+          #   expiration_date: Date,
+          #   file_id: String
+          # }
+          # ```
           class Passport < Increase::BaseModel
             # @!attribute country
             #   The country that issued the passport.
@@ -1588,6 +1821,12 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # supplemental_document => {
+      #   file_id: String
+      # }
+      # ```
       class SupplementalDocument < Increase::BaseModel
         # @!attribute file_id
         #   The identifier of the File containing the document.
@@ -1603,6 +1842,13 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      # ```ruby
+      # third_party_verification => {
+      #   reference: String,
+      #   vendor: Increase::Models::EntityCreateParams::ThirdPartyVerification::Vendor
+      # }
+      # ```
       class ThirdPartyVerification < Increase::BaseModel
         # @!attribute reference
         #   The reference identifier for the third party verification.
@@ -1656,6 +1902,17 @@ module Increase
         end
       end
 
+      # @example
+      # ```ruby
+      # trust => {
+      #   address: Increase::Models::EntityCreateParams::Trust::Address,
+      #   category: Increase::Models::EntityCreateParams::Trust::Category,
+      #   name: String,
+      #   trustees: -> { Increase::ArrayOf[Increase::Models::EntityCreateParams::Trust::Trustee] === _1 },
+      #   formation_document_file_id: String,
+      #   **_
+      # }
+      # ```
       class Trust < Increase::BaseModel
         # @!attribute address
         #   The trust's physical address. Mail receiving locations like PO Boxes and PMB's
@@ -1755,6 +2012,16 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # address => {
+        #   city: String,
+        #   line1: String,
+        #   state: String,
+        #   zip: String,
+        #   line2: String
+        # }
+        # ```
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the address.
@@ -1836,6 +2103,13 @@ module Increase
           #   def self.values; end
         end
 
+        # @example
+        # ```ruby
+        # trustee => {
+        #   structure: Increase::Models::EntityCreateParams::Trust::Trustee::Structure,
+        #   individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual
+        # }
+        # ```
         class Trustee < Increase::BaseModel
           # @!attribute structure
           #   The structure of the trustee.
@@ -1885,6 +2159,16 @@ module Increase
             #   def self.values; end
           end
 
+          # @example
+          # ```ruby
+          # individual => {
+          #   address: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Address,
+          #   date_of_birth: Date,
+          #   identification: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification,
+          #   name: String,
+          #   confirmed_no_us_tax_id: Increase::BooleanModel
+          # }
+          # ```
           class Individual < Increase::BaseModel
             # @!attribute address
             #   The individual's physical address. Mail receiving locations like PO Boxes and
@@ -1939,6 +2223,16 @@ module Increase
 
             # def initialize: (Hash | Increase::BaseModel) -> void
 
+            # @example
+            # ```ruby
+            # address => {
+            #   city: String,
+            #   line1: String,
+            #   state: String,
+            #   zip: String,
+            #   line2: String
+            # }
+            # ```
             class Address < Increase::BaseModel
               # @!attribute city
               #   The city of the address.
@@ -1990,6 +2284,16 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @example
+            # ```ruby
+            # identification => {
+            #   method_: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Method,
+            #   number: String,
+            #   drivers_license: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::DriversLicense,
+            #   other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
+            #   passport: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
+            # }
+            # ```
             class Identification < Increase::BaseModel
               # @!attribute method_
               #   A method that can be used to verify the individual's identity.
@@ -2098,6 +2402,15 @@ module Increase
                 #   def self.values; end
               end
 
+              # @example
+              # ```ruby
+              # drivers_license => {
+              #   expiration_date: Date,
+              #   file_id: String,
+              #   state: String,
+              #   back_file_id: String
+              # }
+              # ```
               class DriversLicense < Increase::BaseModel
                 # @!attribute expiration_date
                 #   The driver's license's expiration date in YYYY-MM-DD format.
@@ -2141,6 +2454,16 @@ module Increase
                 # def initialize: (Hash | Increase::BaseModel) -> void
               end
 
+              # @example
+              # ```ruby
+              # other => {
+              #   country: String,
+              #   description: String,
+              #   file_id: String,
+              #   back_file_id: String,
+              #   expiration_date: Date
+              # }
+              # ```
               class Other < Increase::BaseModel
                 # @!attribute country
                 #   The two-character ISO 3166-1 code representing the country that issued the
@@ -2197,6 +2520,14 @@ module Increase
                 # def initialize: (Hash | Increase::BaseModel) -> void
               end
 
+              # @example
+              # ```ruby
+              # passport => {
+              #   country: String,
+              #   expiration_date: Date,
+              #   file_id: String
+              # }
+              # ```
               class Passport < Increase::BaseModel
                 # @!attribute country
                 #   The country that issued the passport.
@@ -2232,6 +2563,16 @@ module Increase
           end
         end
 
+        # @example
+        # ```ruby
+        # grantor => {
+        #   address: Increase::Models::EntityCreateParams::Trust::Grantor::Address,
+        #   date_of_birth: Date,
+        #   identification: Increase::Models::EntityCreateParams::Trust::Grantor::Identification,
+        #   name: String,
+        #   confirmed_no_us_tax_id: Increase::BooleanModel
+        # }
+        # ```
         class Grantor < Increase::BaseModel
           # @!attribute address
           #   The individual's physical address. Mail receiving locations like PO Boxes and
@@ -2284,6 +2625,16 @@ module Increase
 
           # def initialize: (Hash | Increase::BaseModel) -> void
 
+          # @example
+          # ```ruby
+          # address => {
+          #   city: String,
+          #   line1: String,
+          #   state: String,
+          #   zip: String,
+          #   line2: String
+          # }
+          # ```
           class Address < Increase::BaseModel
             # @!attribute city
             #   The city of the address.
@@ -2335,6 +2686,16 @@ module Increase
             # def initialize: (Hash | Increase::BaseModel) -> void
           end
 
+          # @example
+          # ```ruby
+          # identification => {
+          #   method_: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Method,
+          #   number: String,
+          #   drivers_license: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::DriversLicense,
+          #   other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
+          #   passport: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
+          # }
+          # ```
           class Identification < Increase::BaseModel
             # @!attribute method_
             #   A method that can be used to verify the individual's identity.
@@ -2441,6 +2802,15 @@ module Increase
               #   def self.values; end
             end
 
+            # @example
+            # ```ruby
+            # drivers_license => {
+            #   expiration_date: Date,
+            #   file_id: String,
+            #   state: String,
+            #   back_file_id: String
+            # }
+            # ```
             class DriversLicense < Increase::BaseModel
               # @!attribute expiration_date
               #   The driver's license's expiration date in YYYY-MM-DD format.
@@ -2484,6 +2854,16 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @example
+            # ```ruby
+            # other => {
+            #   country: String,
+            #   description: String,
+            #   file_id: String,
+            #   back_file_id: String,
+            #   expiration_date: Date
+            # }
+            # ```
             class Other < Increase::BaseModel
               # @!attribute country
               #   The two-character ISO 3166-1 code representing the country that issued the
@@ -2540,6 +2920,14 @@ module Increase
               # def initialize: (Hash | Increase::BaseModel) -> void
             end
 
+            # @example
+            # ```ruby
+            # passport => {
+            #   country: String,
+            #   expiration_date: Date,
+            #   file_id: String
+            # }
+            # ```
             class Passport < Increase::BaseModel
               # @!attribute country
               #   The country that issued the passport.

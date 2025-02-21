@@ -35,7 +35,7 @@ module Increase
     #
     # @param client [Increase::BaseClient]
     # @param req [Hash{Symbol=>Object}]
-    # @param headers [Hash{String=>String}, Net::HTTPHeader]
+    # @param headers [Hash{String=>String}]
     # @param unwrapped [Hash{Symbol=>Object}]
     #
     def initialize(client:, req:, headers:, unwrapped:)

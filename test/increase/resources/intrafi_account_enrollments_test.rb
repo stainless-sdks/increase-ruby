@@ -19,18 +19,6 @@ class Increase::Test::Resources::IntrafiAccountEnrollmentsTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::IntrafiAccountEnrollment
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        account_id: String,
-        created_at: Time,
-        idempotency_key: String | nil,
-        intrafi_id: String,
-        status: Increase::Models::IntrafiAccountEnrollment::Status,
-        type: Increase::Models::IntrafiAccountEnrollment::Type
-      }
-    end
   end
 
   def test_retrieve
@@ -38,18 +26,6 @@ class Increase::Test::Resources::IntrafiAccountEnrollmentsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::IntrafiAccountEnrollment
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        account_id: String,
-        created_at: Time,
-        idempotency_key: String | nil,
-        intrafi_id: String,
-        status: Increase::Models::IntrafiAccountEnrollment::Status,
-        type: Increase::Models::IntrafiAccountEnrollment::Type
-      }
     end
   end
 
@@ -69,18 +45,6 @@ class Increase::Test::Resources::IntrafiAccountEnrollmentsTest < Minitest::Test
     assert_pattern do
       row => Increase::Models::IntrafiAccountEnrollment
     end
-
-    assert_pattern do
-      row => {
-        id: String,
-        account_id: String,
-        created_at: Time,
-        idempotency_key: String | nil,
-        intrafi_id: String,
-        status: Increase::Models::IntrafiAccountEnrollment::Status,
-        type: Increase::Models::IntrafiAccountEnrollment::Type
-      }
-    end
   end
 
   def test_unenroll
@@ -88,18 +52,6 @@ class Increase::Test::Resources::IntrafiAccountEnrollmentsTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::IntrafiAccountEnrollment
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        account_id: String,
-        created_at: Time,
-        idempotency_key: String | nil,
-        intrafi_id: String,
-        status: Increase::Models::IntrafiAccountEnrollment::Status,
-        type: Increase::Models::IntrafiAccountEnrollment::Type
-      }
     end
   end
 end

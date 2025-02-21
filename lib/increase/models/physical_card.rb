@@ -2,6 +2,17 @@
 
 module Increase
   module Models
+    # @example
+    # ```ruby
+    # physical_card => {
+    #   id: String,
+    #   card_id: String,
+    #   cardholder: Increase::Models::PhysicalCard::Cardholder,
+    #   created_at: Time,
+    #   idempotency_key: String,
+    #   **_
+    # }
+    # ```
     class PhysicalCard < Increase::BaseModel
       # @!attribute id
       #   The physical card identifier.
@@ -95,6 +106,13 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
+      # @example
+      # ```ruby
+      # cardholder => {
+      #   first_name: String,
+      #   last_name: String
+      # }
+      # ```
       class Cardholder < Increase::BaseModel
         # @!attribute first_name
         #   The cardholder's first name.
@@ -119,6 +137,15 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
+      # @example
+      # ```ruby
+      # shipment => {
+      #   address: Increase::Models::PhysicalCard::Shipment::Address,
+      #   method_: Increase::Models::PhysicalCard::Shipment::Method,
+      #   status: Increase::Models::PhysicalCard::Shipment::Status,
+      #   tracking: Increase::Models::PhysicalCard::Shipment::Tracking
+      # }
+      # ```
       class Shipment < Increase::BaseModel
         # @!attribute address
         #   The location to where the card's packing label is addressed.
@@ -156,6 +183,17 @@ module Increase
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
+        # @example
+        # ```ruby
+        # address => {
+        #   city: String,
+        #   line1: String,
+        #   line2: String,
+        #   line3: String,
+        #   name: String,
+        #   **_
+        # }
+        # ```
         class Address < Increase::BaseModel
           # @!attribute city
           #   The city of the shipping address.
@@ -299,6 +337,15 @@ module Increase
           #   def self.values; end
         end
 
+        # @example
+        # ```ruby
+        # tracking => {
+        #   number: String,
+        #   return_number: String,
+        #   return_reason: String,
+        #   shipped_at: Time
+        # }
+        # ```
         class Tracking < Increase::BaseModel
           # @!attribute number
           #   The tracking number.

@@ -16,26 +16,6 @@ class Increase::Test::Resources::EntitiesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Entity
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        corporation: Increase::Models::Entity::Corporation | nil,
-        created_at: Time,
-        description: String | nil,
-        details_confirmed_at: Time | nil,
-        government_authority: Increase::Models::Entity::GovernmentAuthority | nil,
-        idempotency_key: String | nil,
-        joint: Increase::Models::Entity::Joint | nil,
-        natural_person: Increase::Models::Entity::NaturalPerson | nil,
-        status: Increase::Models::Entity::Status,
-        structure: Increase::Models::Entity::Structure,
-        supplemental_documents: ^(Increase::ArrayOf[Increase::Models::EntitySupplementalDocument]),
-        third_party_verification: Increase::Models::Entity::ThirdPartyVerification | nil,
-        trust: Increase::Models::Entity::Trust | nil,
-        type: Increase::Models::Entity::Type
-      }
-    end
   end
 
   def test_retrieve
@@ -43,26 +23,6 @@ class Increase::Test::Resources::EntitiesTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::Entity
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        corporation: Increase::Models::Entity::Corporation | nil,
-        created_at: Time,
-        description: String | nil,
-        details_confirmed_at: Time | nil,
-        government_authority: Increase::Models::Entity::GovernmentAuthority | nil,
-        idempotency_key: String | nil,
-        joint: Increase::Models::Entity::Joint | nil,
-        natural_person: Increase::Models::Entity::NaturalPerson | nil,
-        status: Increase::Models::Entity::Status,
-        structure: Increase::Models::Entity::Structure,
-        supplemental_documents: ^(Increase::ArrayOf[Increase::Models::EntitySupplementalDocument]),
-        third_party_verification: Increase::Models::Entity::ThirdPartyVerification | nil,
-        trust: Increase::Models::Entity::Trust | nil,
-        type: Increase::Models::Entity::Type
-      }
     end
   end
 
@@ -82,26 +42,6 @@ class Increase::Test::Resources::EntitiesTest < Minitest::Test
     assert_pattern do
       row => Increase::Models::Entity
     end
-
-    assert_pattern do
-      row => {
-        id: String,
-        corporation: Increase::Models::Entity::Corporation | nil,
-        created_at: Time,
-        description: String | nil,
-        details_confirmed_at: Time | nil,
-        government_authority: Increase::Models::Entity::GovernmentAuthority | nil,
-        idempotency_key: String | nil,
-        joint: Increase::Models::Entity::Joint | nil,
-        natural_person: Increase::Models::Entity::NaturalPerson | nil,
-        status: Increase::Models::Entity::Status,
-        structure: Increase::Models::Entity::Structure,
-        supplemental_documents: ^(Increase::ArrayOf[Increase::Models::EntitySupplementalDocument]),
-        third_party_verification: Increase::Models::Entity::ThirdPartyVerification | nil,
-        trust: Increase::Models::Entity::Trust | nil,
-        type: Increase::Models::Entity::Type
-      }
-    end
   end
 
   def test_archive
@@ -109,26 +49,6 @@ class Increase::Test::Resources::EntitiesTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::Entity
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        corporation: Increase::Models::Entity::Corporation | nil,
-        created_at: Time,
-        description: String | nil,
-        details_confirmed_at: Time | nil,
-        government_authority: Increase::Models::Entity::GovernmentAuthority | nil,
-        idempotency_key: String | nil,
-        joint: Increase::Models::Entity::Joint | nil,
-        natural_person: Increase::Models::Entity::NaturalPerson | nil,
-        status: Increase::Models::Entity::Status,
-        structure: Increase::Models::Entity::Structure,
-        supplemental_documents: ^(Increase::ArrayOf[Increase::Models::EntitySupplementalDocument]),
-        third_party_verification: Increase::Models::Entity::ThirdPartyVerification | nil,
-        trust: Increase::Models::Entity::Trust | nil,
-        type: Increase::Models::Entity::Type
-      }
     end
   end
 
@@ -141,26 +61,6 @@ class Increase::Test::Resources::EntitiesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Entity
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        corporation: Increase::Models::Entity::Corporation | nil,
-        created_at: Time,
-        description: String | nil,
-        details_confirmed_at: Time | nil,
-        government_authority: Increase::Models::Entity::GovernmentAuthority | nil,
-        idempotency_key: String | nil,
-        joint: Increase::Models::Entity::Joint | nil,
-        natural_person: Increase::Models::Entity::NaturalPerson | nil,
-        status: Increase::Models::Entity::Status,
-        structure: Increase::Models::Entity::Structure,
-        supplemental_documents: ^(Increase::ArrayOf[Increase::Models::EntitySupplementalDocument]),
-        third_party_verification: Increase::Models::Entity::ThirdPartyVerification | nil,
-        trust: Increase::Models::Entity::Trust | nil,
-        type: Increase::Models::Entity::Type
-      }
-    end
   end
 
   def test_confirm
@@ -168,26 +68,6 @@ class Increase::Test::Resources::EntitiesTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::Entity
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        corporation: Increase::Models::Entity::Corporation | nil,
-        created_at: Time,
-        description: String | nil,
-        details_confirmed_at: Time | nil,
-        government_authority: Increase::Models::Entity::GovernmentAuthority | nil,
-        idempotency_key: String | nil,
-        joint: Increase::Models::Entity::Joint | nil,
-        natural_person: Increase::Models::Entity::NaturalPerson | nil,
-        status: Increase::Models::Entity::Status,
-        structure: Increase::Models::Entity::Structure,
-        supplemental_documents: ^(Increase::ArrayOf[Increase::Models::EntitySupplementalDocument]),
-        third_party_verification: Increase::Models::Entity::ThirdPartyVerification | nil,
-        trust: Increase::Models::Entity::Trust | nil,
-        type: Increase::Models::Entity::Type
-      }
     end
   end
 
@@ -208,26 +88,6 @@ class Increase::Test::Resources::EntitiesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Entity
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        corporation: Increase::Models::Entity::Corporation | nil,
-        created_at: Time,
-        description: String | nil,
-        details_confirmed_at: Time | nil,
-        government_authority: Increase::Models::Entity::GovernmentAuthority | nil,
-        idempotency_key: String | nil,
-        joint: Increase::Models::Entity::Joint | nil,
-        natural_person: Increase::Models::Entity::NaturalPerson | nil,
-        status: Increase::Models::Entity::Status,
-        structure: Increase::Models::Entity::Structure,
-        supplemental_documents: ^(Increase::ArrayOf[Increase::Models::EntitySupplementalDocument]),
-        third_party_verification: Increase::Models::Entity::ThirdPartyVerification | nil,
-        trust: Increase::Models::Entity::Trust | nil,
-        type: Increase::Models::Entity::Type
-      }
-    end
   end
 
   def test_update_address_required_params
@@ -238,26 +98,6 @@ class Increase::Test::Resources::EntitiesTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::Entity
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        corporation: Increase::Models::Entity::Corporation | nil,
-        created_at: Time,
-        description: String | nil,
-        details_confirmed_at: Time | nil,
-        government_authority: Increase::Models::Entity::GovernmentAuthority | nil,
-        idempotency_key: String | nil,
-        joint: Increase::Models::Entity::Joint | nil,
-        natural_person: Increase::Models::Entity::NaturalPerson | nil,
-        status: Increase::Models::Entity::Status,
-        structure: Increase::Models::Entity::Structure,
-        supplemental_documents: ^(Increase::ArrayOf[Increase::Models::EntitySupplementalDocument]),
-        third_party_verification: Increase::Models::Entity::ThirdPartyVerification | nil,
-        trust: Increase::Models::Entity::Trust | nil,
-        type: Increase::Models::Entity::Type
-      }
     end
   end
 
@@ -271,26 +111,6 @@ class Increase::Test::Resources::EntitiesTest < Minitest::Test
     assert_pattern do
       response => Increase::Models::Entity
     end
-
-    assert_pattern do
-      response => {
-        id: String,
-        corporation: Increase::Models::Entity::Corporation | nil,
-        created_at: Time,
-        description: String | nil,
-        details_confirmed_at: Time | nil,
-        government_authority: Increase::Models::Entity::GovernmentAuthority | nil,
-        idempotency_key: String | nil,
-        joint: Increase::Models::Entity::Joint | nil,
-        natural_person: Increase::Models::Entity::NaturalPerson | nil,
-        status: Increase::Models::Entity::Status,
-        structure: Increase::Models::Entity::Structure,
-        supplemental_documents: ^(Increase::ArrayOf[Increase::Models::EntitySupplementalDocument]),
-        third_party_verification: Increase::Models::Entity::ThirdPartyVerification | nil,
-        trust: Increase::Models::Entity::Trust | nil,
-        type: Increase::Models::Entity::Type
-      }
-    end
   end
 
   def test_update_industry_code_required_params
@@ -298,26 +118,6 @@ class Increase::Test::Resources::EntitiesTest < Minitest::Test
 
     assert_pattern do
       response => Increase::Models::Entity
-    end
-
-    assert_pattern do
-      response => {
-        id: String,
-        corporation: Increase::Models::Entity::Corporation | nil,
-        created_at: Time,
-        description: String | nil,
-        details_confirmed_at: Time | nil,
-        government_authority: Increase::Models::Entity::GovernmentAuthority | nil,
-        idempotency_key: String | nil,
-        joint: Increase::Models::Entity::Joint | nil,
-        natural_person: Increase::Models::Entity::NaturalPerson | nil,
-        status: Increase::Models::Entity::Status,
-        structure: Increase::Models::Entity::Structure,
-        supplemental_documents: ^(Increase::ArrayOf[Increase::Models::EntitySupplementalDocument]),
-        third_party_verification: Increase::Models::Entity::ThirdPartyVerification | nil,
-        trust: Increase::Models::Entity::Trust | nil,
-        type: Increase::Models::Entity::Type
-      }
     end
   end
 end
