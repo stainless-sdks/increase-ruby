@@ -51,6 +51,17 @@ module Increase
       def type=(_)
       end
 
+      sig { returns(T::Array[Increase::Models::DigitalWalletToken::Update]) }
+      def updates
+      end
+
+      sig do
+        params(_: T::Array[Increase::Models::DigitalWalletToken::Update])
+          .returns(T::Array[Increase::Models::DigitalWalletToken::Update])
+      end
+      def updates=(_)
+      end
+
       sig do
         params(
           id: String,
@@ -58,11 +69,12 @@ module Increase
           created_at: Time,
           status: Symbol,
           token_requestor: Symbol,
-          type: Symbol
+          type: Symbol,
+          updates: T::Array[Increase::Models::DigitalWalletToken::Update]
         )
           .void
       end
-      def initialize(id:, card_id:, created_at:, status:, token_requestor:, type:)
+      def initialize(id:, card_id:, created_at:, status:, token_requestor:, type:, updates:)
       end
 
       sig do
@@ -74,7 +86,8 @@ module Increase
               created_at: Time,
               status: Symbol,
               token_requestor: Symbol,
-              type: Symbol
+              type: Symbol,
+              updates: T::Array[Increase::Models::DigitalWalletToken::Update]
             }
           )
       end
@@ -128,6 +141,52 @@ module Increase
 
         sig { override.returns(T::Array[Symbol]) }
         def self.values
+        end
+      end
+
+      class Update < Increase::BaseModel
+        sig { returns(Symbol) }
+        def status
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def status=(_)
+        end
+
+        sig { returns(Time) }
+        def timestamp
+        end
+
+        sig { params(_: Time).returns(Time) }
+        def timestamp=(_)
+        end
+
+        sig { params(status: Symbol, timestamp: Time).void }
+        def initialize(status:, timestamp:)
+        end
+
+        sig { override.returns({status: Symbol, timestamp: Time}) }
+        def to_hash
+        end
+
+        class Status < Increase::Enum
+          abstract!
+
+          # The digital wallet token is active.
+          ACTIVE = :active
+
+          # The digital wallet token has been created but not successfully activated via two-factor authentication yet.
+          INACTIVE = :inactive
+
+          # The digital wallet token has been temporarily paused.
+          SUSPENDED = :suspended
+
+          # The digital wallet token has been permanently canceled.
+          DEACTIVATED = :deactivated
+
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
+          end
         end
       end
     end

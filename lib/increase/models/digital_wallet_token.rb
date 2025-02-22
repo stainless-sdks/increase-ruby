@@ -17,7 +17,7 @@ module Increase
 
       # @!attribute created_at
       #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #     the Card was created.
+      #     the Digital Wallet Token was created.
       #
       #   @return [Time]
       required :created_at, Time
@@ -41,6 +41,12 @@ module Increase
       #   @return [Symbol, Increase::Models::DigitalWalletToken::Type]
       required :type, enum: -> { Increase::Models::DigitalWalletToken::Type }
 
+      # @!attribute updates
+      #   Updates to the Digital Wallet Token.
+      #
+      #   @return [Array<Increase::Models::DigitalWalletToken::Update>]
+      required :updates, -> { Increase::ArrayOf[Increase::Models::DigitalWalletToken::Update] }
+
       # @!parse
       #   # A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
       #   #   Google Pay app. The Digital Wallet Token can be used for purchases just like a
@@ -52,8 +58,9 @@ module Increase
       #   # @param status [Symbol, Increase::Models::DigitalWalletToken::Status]
       #   # @param token_requestor [Symbol, Increase::Models::DigitalWalletToken::TokenRequestor]
       #   # @param type [Symbol, Increase::Models::DigitalWalletToken::Type]
+      #   # @param updates [Array<Increase::Models::DigitalWalletToken::Update>]
       #   #
-      #   def initialize(id:, card_id:, created_at:, status:, token_requestor:, type:, **) = super
+      #   def initialize(id:, card_id:, created_at:, status:, token_requestor:, type:, updates:, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
@@ -154,6 +161,67 @@ module Increase
         #   # @return [Array<Symbol>]
         #   #
         #   def self.values; end
+      end
+
+      class Update < Increase::BaseModel
+        # @!attribute status
+        #   The status the update changed this Digital Wallet Token to.
+        #
+        #   @return [Symbol, Increase::Models::DigitalWalletToken::Update::Status]
+        required :status, enum: -> { Increase::Models::DigitalWalletToken::Update::Status }
+
+        # @!attribute timestamp
+        #   The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #     the update happened.
+        #
+        #   @return [Time]
+        required :timestamp, Time
+
+        # @!parse
+        #   # @param status [Symbol, Increase::Models::DigitalWalletToken::Update::Status]
+        #   # @param timestamp [Time]
+        #   #
+        #   def initialize(status:, timestamp:, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
+        # @abstract
+        #
+        # The status the update changed this Digital Wallet Token to.
+        #
+        # @example
+        # ```ruby
+        # case status
+        # in :active
+        #   # ...
+        # in :inactive
+        #   # ...
+        # in :suspended
+        #   # ...
+        # in :deactivated
+        #   # ...
+        # end
+        # ```
+        class Status < Increase::Enum
+          # The digital wallet token is active.
+          ACTIVE = :active
+
+          # The digital wallet token has been created but not successfully activated via two-factor authentication yet.
+          INACTIVE = :inactive
+
+          # The digital wallet token has been temporarily paused.
+          SUSPENDED = :suspended
+
+          # The digital wallet token has been permanently canceled.
+          DEACTIVATED = :deactivated
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
       end
     end
   end
