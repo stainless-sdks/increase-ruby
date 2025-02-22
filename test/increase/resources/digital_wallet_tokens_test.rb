@@ -24,7 +24,8 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Minitest::Test
         created_at: Time,
         status: Increase::Models::DigitalWalletToken::Status,
         token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor,
-        type: Increase::Models::DigitalWalletToken::Type
+        type: Increase::Models::DigitalWalletToken::Type,
+        updates: ^(Increase::ArrayOf[Increase::Models::DigitalWalletToken::Update])
       }
     end
   end
@@ -53,7 +54,8 @@ class Increase::Test::Resources::DigitalWalletTokensTest < Minitest::Test
         created_at: Time,
         status: Increase::Models::DigitalWalletToken::Status,
         token_requestor: Increase::Models::DigitalWalletToken::TokenRequestor,
-        type: Increase::Models::DigitalWalletToken::Type
+        type: Increase::Models::DigitalWalletToken::Type,
+        updates: ^(Increase::ArrayOf[Increase::Models::DigitalWalletToken::Update])
       }
     end
   end

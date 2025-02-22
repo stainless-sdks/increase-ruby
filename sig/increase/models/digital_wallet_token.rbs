@@ -7,7 +7,8 @@ module Increase
         created_at: Time,
         status: Increase::Models::DigitalWalletToken::status,
         token_requestor: Increase::Models::DigitalWalletToken::token_requestor,
-        type: Increase::Models::DigitalWalletToken::type_
+        type: Increase::Models::DigitalWalletToken::type_,
+        updates: ::Array[Increase::Models::DigitalWalletToken::Update]
       }
 
     class DigitalWalletToken < Increase::BaseModel
@@ -23,6 +24,8 @@ module Increase
 
       attr_accessor type: Increase::Models::DigitalWalletToken::type_
 
+      attr_accessor updates: ::Array[Increase::Models::DigitalWalletToken::Update]
+
       def initialize:
         (
           id: String,
@@ -30,7 +33,8 @@ module Increase
           created_at: Time,
           status: Increase::Models::DigitalWalletToken::status,
           token_requestor: Increase::Models::DigitalWalletToken::token_requestor,
-          type: Increase::Models::DigitalWalletToken::type_
+          type: Increase::Models::DigitalWalletToken::type_,
+          updates: ::Array[Increase::Models::DigitalWalletToken::Update]
         ) -> void
         | (
           ?Increase::Models::digital_wallet_token | Increase::BaseModel data
@@ -80,6 +84,48 @@ module Increase
         DIGITAL_WALLET_TOKEN: :digital_wallet_token
 
         def self.values: -> ::Array[Increase::Models::DigitalWalletToken::type_]
+      end
+
+      type update =
+        {
+          status: Increase::Models::DigitalWalletToken::Update::status,
+          timestamp: Time
+        }
+
+      class Update < Increase::BaseModel
+        attr_accessor status: Increase::Models::DigitalWalletToken::Update::status
+
+        attr_accessor timestamp: Time
+
+        def initialize:
+          (
+            status: Increase::Models::DigitalWalletToken::Update::status,
+            timestamp: Time
+          ) -> void
+          | (
+            ?Increase::Models::DigitalWalletToken::update
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::DigitalWalletToken::update
+
+        type status = :active | :inactive | :suspended | :deactivated
+
+        class Status < Increase::Enum
+          # The digital wallet token is active.
+          ACTIVE: :active
+
+          # The digital wallet token has been created but not successfully activated via two-factor authentication yet.
+          INACTIVE: :inactive
+
+          # The digital wallet token has been temporarily paused.
+          SUSPENDED: :suspended
+
+          # The digital wallet token has been permanently canceled.
+          DEACTIVATED: :deactivated
+
+          def self.values: -> ::Array[Increase::Models::DigitalWalletToken::Update::status]
+        end
       end
     end
   end
