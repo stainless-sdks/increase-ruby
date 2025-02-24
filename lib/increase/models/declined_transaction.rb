@@ -1262,6 +1262,8 @@ module Increase
           # @example
           # ```ruby
           # case reason
+          # in :account_closed
+          #   # ...
           # in :card_not_active
           #   # ...
           # in :physical_card_not_active
@@ -1270,13 +1272,14 @@ module Increase
           #   # ...
           # in :group_locked
           #   # ...
-          # in :insufficient_funds
-          #   # ...
           # in ...
           #   #...
           # end
           # ```
           class Reason < Increase::Enum
+            # The account has been closed.
+            ACCOUNT_CLOSED = :account_closed
+
             # The Card was not active.
             CARD_NOT_ACTIVE = :card_not_active
 

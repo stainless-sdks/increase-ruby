@@ -1460,7 +1460,8 @@ module Increase
           end
 
           type reason =
-            :card_not_active
+            :account_closed
+            | :card_not_active
             | :physical_card_not_active
             | :entity_not_active
             | :group_locked
@@ -1477,6 +1478,9 @@ module Increase
             | :suspected_fraud
 
           class Reason < Increase::Enum
+            # The account has been closed.
+            ACCOUNT_CLOSED: :account_closed
+
             # The Card was not active.
             CARD_NOT_ACTIVE: :card_not_active
 

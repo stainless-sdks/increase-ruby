@@ -1235,6 +1235,9 @@ module Increase
           class Reason < Increase::Enum
             abstract!
 
+            # The account has been closed.
+            ACCOUNT_CLOSED = :account_closed
+
             # The Card was not active.
             CARD_NOT_ACTIVE = :card_not_active
 
