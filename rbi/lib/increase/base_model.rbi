@@ -153,6 +153,7 @@ module Increase
   class Union
     abstract!
 
+    extend Increase::Extern
     extend Increase::Converter
 
     sig { returns(T::Array[[T.nilable(Symbol), Proc]]) }
@@ -330,6 +331,7 @@ module Increase
   class BaseModel
     abstract!
 
+    extend Increase::Extern
     extend Increase::Converter
 
     KnownFieldShape = T.type_alias { {mode: T.nilable(Symbol), required: T::Boolean} }

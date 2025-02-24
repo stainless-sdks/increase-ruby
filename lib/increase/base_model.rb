@@ -369,6 +369,7 @@ module Increase
   # @abstract
   #
   class Union
+    extend Increase::Extern
     extend Increase::Converter
 
     # @private
@@ -841,6 +842,7 @@ module Increase
   # @abstract
   #
   class BaseModel
+    extend Increase::Extern
     extend Increase::Converter
 
     # @private
