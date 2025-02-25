@@ -2,14 +2,6 @@
 
 module Increase
   module Util
-    sig { returns(String) }
-    def self.arch
-    end
-
-    sig { returns(String) }
-    def self.os
-    end
-
     sig { params(input: T.anything).returns(T.any(T::Boolean, T.anything)) }
     def self.primitive?(input)
     end

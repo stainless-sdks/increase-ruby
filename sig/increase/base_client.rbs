@@ -26,8 +26,6 @@ module Increase
 
     MAX_REDIRECTS: 20
 
-    PLATFORM_HEADERS: ::Hash[String, String]
-
     def self.validate!: (Increase::BaseClient::request_components req) -> void
 
     def self.should_retry?: (
