@@ -19,7 +19,6 @@ module Increase
     ENVIRONMENTS = {production: "https://api.increase.com", sandbox: "https://sandbox.increase.com"}
     # rubocop:enable Style/MutableConstant
 
-    # Client option
     # @return [String]
     attr_reader :api_key
 
