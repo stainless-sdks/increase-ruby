@@ -153,11 +153,10 @@ module Increase
           in [-> { _1 <= String }, Symbol]
             [true, value.to_s, 1]
           in [-> { _1 <= Date || _1 <= Time }, String]
-            Kernel.then do
-              [true, target.parse(value), 1]
-            rescue ArgumentError, Date::Error
-              [false, false, 0]
+            Increase::Util.suppress(ArgumentError, Date::Error) do
+              return [true, target.parse(value), 1]
             end
+            [false, false, 0]
           in [_, ^target]
             [true, value, 1]
           else
@@ -504,7 +503,9 @@ module Increase
         end
       end
 
+      # rubocop:disable Style/NumberedParametersLimit
       _, variant = matches.sort! { _2.first <=> _1.first }.find { |score,| !score.zero? }
+      # rubocop:enable Style/NumberedParametersLimit
       variant.nil? ? value : Increase::Converter.coerce(variant, value)
     end
 

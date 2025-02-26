@@ -24,14 +24,13 @@ module Increase
         url: URI::Generic,
         headers: T::Hash[String, String],
         body: T.anything,
+        streaming: T::Boolean,
         max_retries: Integer,
         timeout: Float
       }
     end
 
     MAX_REDIRECTS = 20
-
-    PLATFORM_HEADERS = T::Hash[String, String]
 
     sig { params(req: Increase::BaseClient::RequestComponentsShape).void }
     def self.validate!(req)

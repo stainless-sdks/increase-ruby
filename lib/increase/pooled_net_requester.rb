@@ -33,65 +33,50 @@ module Increase
       # @param conn [Net::HTTP]
       # @param deadline [Float]
       #
-      def calibrate_socket_timeout(conn, deadline)
+      private def calibrate_socket_timeout(conn, deadline)
         timeout = deadline - Increase::Util.monotonic_secs
-        conn.open_timeout = conn.read_timeout = conn.write_timeout = conn.continue_timeout = timeout
+        conn.read_timeout = conn.write_timeout = conn.continue_timeout = timeout
       end
 
       # @private
       #
-      # @param request [Hash{Symbol=>Object}] .
+      # @param conn [Net::HTTP]
+      # @param req [Net::HTTPGenericRequest]
+      # @param deadline [Float]
+      # @param blk [Proc]
       #
-      #   @option request [Symbol] :method
-      #
-      #   @option request [URI::Generic] :url
-      #
-      #   @option request [Hash{String=>String}] :headers
-      #
-      # @return [Net::HTTPGenericRequest]
-      #
-      def build_request(request)
-        method, url, headers, body = request.fetch_values(:method, :url, :headers, :body)
-        req = Net::HTTPGenericRequest.new(
-          method.to_s.upcase,
-          !body.nil?,
-          method != :head,
-          url.to_s
-        )
-
-        headers.each { req[_1] = _2 }
-
-        case body
-        in nil
-        in String
-          req.body = body
-        in StringIO
-          req.body = body.string
-        in IO
-          body.rewind
-          req.body_stream = body
+      def transport(conn, req, deadline, &blk)
+        unless conn.started?
+          conn.open_timeout = deadline - Increase::Util.monotonic_secs
+          conn.start
         end
 
-        req
+        calibrate_socket_timeout(conn, deadline)
+        conn.request(req) do |rsp|
+          blk.call(rsp)
+          rsp.read_body do |bytes|
+            blk.call(bytes)
+            calibrate_socket_timeout(conn, deadline)
+          end
+        end
       end
     end
 
     # @private
     #
     # @param url [URI::Generic]
+    # @param streaming [Boolean]
     # @param blk [Proc]
     #
-    private def with_pool(url, &blk)
+    private def with_pool(url, streaming:, &blk)
       origin = Increase::Util.uri_origin(url)
       th = Thread.current
       key = :"#{object_id}-#{self.class.name}-connection_in_use_for_#{origin}"
 
-      if th[key]
-        tap do
+      if th[key] || streaming
+        return Enumerator.new do |y|
           conn = self.class.connect(url)
-          return blk.call(conn)
-        ensure
-          conn.finish if conn&.started?
+          blk.call(conn, y)
         end
       end
 
@@ -102,11 +87,20 @@ module Increase
           end
         end
 
-      pool.with do |conn|
-        th[key] = true
-        blk.call(conn)
-      ensure
-        th[key] = nil
+      Enumerator.new do |y|
+        pool.with do |conn|
+          th[key] = true
+
+          blk.call(conn, y)
+          # rubocop:disable Lint/RescueException
+        rescue Exception => e
+          # rubocop:enable Lint/RescueException
+          # should close connection on all errors to ensure no invalid state persists
+          conn.finish if conn.started?
+          raise e
+        ensure
+          th[key] = nil
+        end
       end
     end
 
@@ -122,44 +116,43 @@ module Increase
     #
     #   @option request [Object] :body
     #
+    #   @option request [Boolean] :streaming
+    #
+    #   @option request [Integer] :max_retries
+    #
     #   @option request [Float] :deadline
     #
     # @return [Array(Net::HTTPResponse, Enumerable)]
     #
     def execute(request)
-      url, deadline = request.fetch_values(:url, :deadline)
-      req = self.class.build_request(request)
+      method, url, headers, body, deadline = request.fetch_values(:method, :url, :headers, :body, :deadline)
+      streaming = request.fetch(:streaming)
 
-      eof = false
-      enum = Enumerator.new do |y|
-        with_pool(url) do |conn|
-          self.class.calibrate_socket_timeout(conn, deadline)
-          conn.start unless conn.started?
+      req = Net::HTTPGenericRequest.new(
+        method.to_s.upcase,
+        !body.nil?,
+        method != :head,
+        url.to_s
+      )
 
-          self.class.calibrate_socket_timeout(conn, deadline)
-          conn.request(req) do |rsp|
-            y << [conn, rsp]
-            rsp.read_body do |bytes|
-              y << bytes
-              self.class.calibrate_socket_timeout(conn, deadline)
-            end
-            eof = true
-          end
+      headers.each { req[_1] = _2 }
+      case body
+      in nil
+      in String
+        req.body = body
+      in IO | StringIO
+        body.rewind
+        req.body_stream = body
+      end
+
+      enum =
+        with_pool(url, streaming: streaming) do |conn, y|
+          self.class.transport(conn, req, deadline, &y)
         end
-      end
 
-      # need to protect the `Enumerator` against `#.rewind`
-      fused = false
-      conn, response = enum.next
-      body = Enumerator.new do |y|
-        next if fused
-
-        fused = true
-        loop { y << enum.next }
-      ensure
-        conn.finish if !eof && conn.started?
-      end
-      [response, (response.body = body)]
+      enum = streaming ? enum.lazy : enum.to_a
+      response = enum.take(1).first
+      [response, (response.body = enum.drop(1))]
     end
 
     def initialize
