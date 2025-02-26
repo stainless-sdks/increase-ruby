@@ -339,7 +339,9 @@ class IncreaseTest < Minitest::Test
     increase.accounts.create(name: "New Account!")
     headers = requester.attempts.first[:headers]
 
-    refute_empty(headers["accept"])
-    refute_empty(headers["content-type"])
+    refute_empty(headers["x-stainless-lang"])
+    refute_empty(headers["x-stainless-package-version"])
+    refute_empty(headers["x-stainless-runtime"])
+    refute_empty(headers["x-stainless-runtime-version"])
   end
 end

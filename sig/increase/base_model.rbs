@@ -83,6 +83,7 @@ module Increase
   end
 
   class Union
+    extend Increase::Extern
     extend Increase::Converter
 
     private def self.known_variants: -> ::Array[[Symbol?, Proc]]
@@ -167,6 +168,7 @@ module Increase
   end
 
   class BaseModel
+    extend Increase::Extern
     extend Increase::Converter
 
     type known_field = { mode: (:coerce | :dump)?, required: bool }

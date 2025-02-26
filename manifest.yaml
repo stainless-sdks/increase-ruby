@@ -5,7 +5,6 @@ dependencies:
   - etc
   - json
   - net/http
-  - rbconfig
   - securerandom
   - set
   - stringio
