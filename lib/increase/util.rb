@@ -506,6 +506,69 @@ module Increase
         end
       end
     end
+
+    class << self
+      # @private
+      #
+      # @param enum [Enumerable]
+      #
+      # @return [Enumerable]
+      #
+      def enum_lines(enum)
+        Enumerator.new do |y|
+          buffer = String.new
+          enum.each do |row|
+            buffer << row
+            while (idx = buffer.index("\n"))
+              y << buffer.slice!(..idx)
+            end
+          end
+          y << buffer unless buffer.empty?
+        end
+      end
+
+      # @private
+      #
+      # https://html.spec.whatwg.org/multipage/server-sent-events.html#parsing-an-event-stream
+      #
+      # @param lines [Enumerable]
+      #
+      # @return [Hash{Symbol=>Object}]
+      #
+      def parse_sse(lines)
+        Enumerator.new do |y|
+          blank = {event: nil, data: nil, id: nil, retry: nil}
+          current = {}
+
+          lines.each do |line|
+            case line.strip
+            in ""
+              next if current.empty?
+              y << {**blank, **current}
+              current = {}
+            in /^:/
+              next
+            in /^([^:]+):\s?(.*)$/
+              _, field, value = Regexp.last_match.to_a
+              case field
+              in "event"
+                current.merge!(event: value)
+              in "data"
+                (current[:data] ||= String.new) << value << "\n"
+              in "id" unless value.include?("\0")
+                current.merge!(id: value)
+              in "retry" if /^\d+$/ =~ value
+                current.merge!(retry: Integer(value))
+              else
+              end
+            else
+            end
+          end
+
+          y << {**blank, **current} unless current.empty?
+        end
+      end
+    end
   end
 
   # rubocop:enable Metrics/ModuleLength

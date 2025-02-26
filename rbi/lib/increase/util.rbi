@@ -131,5 +131,23 @@ module Increase
     end
     def self.decode_content(headers, stream:, suppress_error: false)
     end
+
+    sig { params(enum: T::Enumerable[String]).returns(T::Enumerable[String]) }
+    def self.enum_lines(enum)
+    end
+
+    sig do
+      params(lines: T::Enumerable[String])
+        .returns(
+          {
+            event: T.nilable(String),
+            data: T.nilable(String),
+            id: T.nilable(String),
+            retry: T.nilable(Integer)
+          }
+        )
+    end
+    def self.parse_sse(lines)
+    end
   end
 end
