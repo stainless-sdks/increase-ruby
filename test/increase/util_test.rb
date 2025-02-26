@@ -2,7 +2,7 @@
 
 require_relative "test_helper"
 
-class Increase::Test::UtilTest < Minitest::Test
+class Increase::Test::UtilDataHandlingTest < Minitest::Test
   def test_left_map
     assert_pattern do
       Increase::Util.deep_merge({a: 1}, nil) => nil
@@ -91,8 +91,10 @@ class Increase::Test::UtilTest < Minitest::Test
       Increase::Util.dig([], 1.0) { 2 } => 2
     end
   end
+end
 
-  def test_uri_parsing
+class Increase::Test::UtilUriHandlingTest < Minitest::Test
+  def test_parsing
     %w[
       http://example.com
       https://example.com/
@@ -106,7 +108,7 @@ class Increase::Test::UtilTest < Minitest::Test
     end
   end
 
-  def test_joining_uris
+  def test_joining
     cases = [
       [
         "h://a.b/c?d=e",
@@ -135,7 +137,7 @@ class Increase::Test::UtilTest < Minitest::Test
     end
   end
 
-  def test_joining_uri_queries
+  def test_joining_queries
     base_url = "h://a.b/c?d=e"
     cases = {
       "c2" => "h://a.b/c/c2",
@@ -153,7 +155,9 @@ class Increase::Test::UtilTest < Minitest::Test
       )
     end
   end
+end
 
+class Increase::Test::UtilFormDataEncodingTest < Minitest::Test
   class FakeCGI < CGI
     def initialize(headers, io)
       @ctype = headers["content-type"]
@@ -172,7 +176,7 @@ class Increase::Test::UtilTest < Minitest::Test
     end
   end
 
-  def test_multipart_file_encode
+  def test_file_encode
     headers = {"content-type" => "multipart/form-data"}
     File.open(__FILE__) do |fd|
       cases = {
@@ -189,7 +193,7 @@ class Increase::Test::UtilTest < Minitest::Test
     end
   end
 
-  def test_multipart_hash_encode
+  def test_hash_encode
     headers = {"content-type" => "multipart/form-data"}
     cases = {
       {a: 2, b: 3} => {"a" => "2", "b" => "3"},
@@ -202,6 +206,143 @@ class Increase::Test::UtilTest < Minitest::Test
       cgi = FakeCGI.new(*encoded)
       testcase.each do |key, val|
         assert_equal(val, cgi[key])
+      end
+    end
+  end
+end
+
+class Increase::Test::UtilSseTest < Minitest::Test
+  def test_enum_lines
+    cases = {
+      %w[] => %w[],
+      %W[\n\n] => %W[\n \n],
+      %W[\n \n] => %W[\n \n],
+      %w[a] => %w[a],
+      %W[a\nb] => %W[a\n b],
+      %W[a\nb\n] => %W[a\n b\n],
+      %W[\na b\n] => %W[\n ab\n],
+      %W[\na b\n\n] => %W[\n ab\n \n],
+      %W[\na b] => %W[\n ab]
+    }
+    cases.each do |enum, expected|
+      lines = Increase::Util.enum_lines(enum)
+      assert_equal(expected, lines.to_a)
+    end
+  end
+
+  def test_parse_sse
+    cases = {
+      "empty input" => {
+        [] => []
+      },
+      "single data event" => {
+        [
+          "data: hello world\n",
+          "\n"
+        ] => [
+          {data: "hello world\n"}
+        ]
+      },
+      "multiple data lines" => {
+        [
+          "data: line 1\n",
+          "data: line 2\n",
+          "\n"
+        ] => [
+          {data: "line 1\nline 2\n"}
+        ]
+      },
+      "complete event" => {
+        [
+          "event: update\n",
+          "id: 123\n",
+          "data: hello world\n",
+          "retry: 5000\n",
+          "\n"
+        ] => [
+          {
+            event: "update",
+            id: "123",
+            data: "hello world\n",
+            retry: 5000
+          }
+        ]
+      },
+      "multiple events" => {
+        [
+          "event: update\n",
+          "data: first\n",
+          "\n",
+          "event: message\n",
+          "data: second\n",
+          "\n"
+        ] => [
+          {event: "update", data: "first\n"},
+          {event: "message", data: "second\n"}
+        ]
+      },
+      "comments" => {
+        [
+          ": this is a comment\n",
+          "data: actual data\n",
+          "\n"
+        ] => [
+          {data: "actual data\n"}
+        ]
+      },
+      "invalid retry" => {
+        [
+          "retry: not a number\n",
+          "data: hello\n",
+          "\n"
+        ] => [
+          {data: "hello\n"}
+        ]
+      },
+      "invalid id with null" => {
+        [
+          "id: bad\0id\n",
+          "data: hello\n",
+          "\n"
+        ] => [
+          {data: "hello\n"}
+        ]
+      },
+      "leading space in value" => {
+        [
+          "data: hello world\n",
+          "data:  leading space\n",
+          "\n"
+        ] => [
+          {data: "hello world\n leading space\n"}
+        ]
+      },
+      "no final newline" => {
+        [
+          "data: hello\n",
+          "id: 1"
+        ] => [
+          {data: "hello\n", id: "1"}
+        ]
+      },
+      "multiple empty lines" => {
+        [
+          "data: first\n",
+          "\n",
+          "\n",
+          "data: second\n",
+          "\n"
+        ] => [
+          {data: "first\n"},
+          {data: "second\n"}
+        ]
+      }
+    }
+
+    cases.each do |name, test_cases|
+      test_cases.each do |input, expected|
+        actual = Increase::Util.parse_sse(input).map(&:compact)
+        assert_equal(expected, actual, name)
       end
     end
   end

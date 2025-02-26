@@ -84,5 +84,11 @@ module Increase
       stream: Enumerable[String],
       suppress_error: bool
     ) -> top
+
+    def self?.enum_lines: (Enumerable[String] enum) -> Enumerable[String]
+
+    def self?.parse_sse: (
+      Enumerable[String] lines
+    ) -> { event: String?, data: String?, id: String?, retry: Integer? }
   end
 end
