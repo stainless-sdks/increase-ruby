@@ -26,7 +26,7 @@ module Increase
         @client.request(
           method: :post,
           path: "files",
-          headers: {"Content-Type" => "multipart/form-data"},
+          headers: {"content-type" => "multipart/form-data"},
           body: parsed,
           model: Increase::Models::File,
           options: options
