@@ -81,13 +81,12 @@ module Increase
       #   attr_writer :program_id
 
       # @!attribute [r] status
-      #   Filter Accounts for those with the specified status.
       #
-      #   @return [Symbol, Increase::Models::AccountListParams::Status, nil]
-      optional :status, enum: -> { Increase::Models::AccountListParams::Status }
+      #   @return [Increase::Models::AccountListParams::Status, nil]
+      optional :status, -> { Increase::Models::AccountListParams::Status }
 
       # @!parse
-      #   # @return [Symbol, Increase::Models::AccountListParams::Status]
+      #   # @return [Increase::Models::AccountListParams::Status]
       #   attr_writer :status
 
       # @!parse
@@ -98,7 +97,7 @@ module Increase
       #   # @param informational_entity_id [String]
       #   # @param limit [Integer]
       #   # @param program_id [String]
-      #   # @param status [Symbol, Increase::Models::AccountListParams::Status]
+      #   # @param status [Increase::Models::AccountListParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
@@ -174,32 +173,52 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
-      # Filter Accounts for those with the specified status.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :closed
-      #   # ...
-      # in :open
-      #   # ...
-      # end
-      # ```
-      class Status < Increase::Enum
-        # Closed Accounts on which no new activity can occur.
-        CLOSED = :closed
-
-        # Open Accounts that are ready to use.
-        OPEN = :open
-
-        finalize!
+      class Status < Increase::BaseModel
+        # @!attribute [r] in_
+        #   Filter Accounts for those with the specified status. For GET requests, this
+        #     should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        #
+        #   @return [Array<Symbol, Increase::Models::AccountListParams::Status::In>, nil]
+        optional :in_,
+                 -> { Increase::ArrayOf[enum: Increase::Models::AccountListParams::Status::In] },
+                 api_name: :in
 
         # @!parse
-        #   # @return [Array<Symbol>]
+        #   # @return [Array<Symbol, Increase::Models::AccountListParams::Status::In>]
+        #   attr_writer :in_
+
+        # @!parse
+        #   # @param in_ [Array<Symbol, Increase::Models::AccountListParams::Status::In>]
         #   #
-        #   def self.values; end
+        #   def initialize(in_: nil, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
+        # @abstract
+        #
+        # @example
+        # ```ruby
+        # case in
+        # in :closed
+        #   # ...
+        # in :open
+        #   # ...
+        # end
+        # ```
+        class In < Increase::Enum
+          # Closed Accounts on which no new activity can occur.
+          CLOSED = :closed
+
+          # Open Accounts that are ready to use.
+          OPEN = :open
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
       end
     end
   end

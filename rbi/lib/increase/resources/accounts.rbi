@@ -46,7 +46,7 @@ module Increase
           informational_entity_id: String,
           limit: Integer,
           program_id: String,
-          status: Symbol,
+          status: Increase::Models::AccountListParams::Status,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::Account])

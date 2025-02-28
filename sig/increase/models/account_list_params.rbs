@@ -9,7 +9,7 @@ module Increase
         informational_entity_id: String,
         limit: Integer,
         program_id: String,
-        status: Increase::Models::AccountListParams::status
+        status: Increase::Models::AccountListParams::Status
       }
       & Increase::request_parameters
 
@@ -47,11 +47,11 @@ module Increase
 
       def program_id=: (String) -> String
 
-      attr_reader status: Increase::Models::AccountListParams::status?
+      attr_reader status: Increase::Models::AccountListParams::Status?
 
       def status=: (
-        Increase::Models::AccountListParams::status
-      ) -> Increase::Models::AccountListParams::status
+        Increase::Models::AccountListParams::Status
+      ) -> Increase::Models::AccountListParams::Status
 
       def initialize:
         (
@@ -62,7 +62,7 @@ module Increase
           informational_entity_id: String,
           limit: Integer,
           program_id: String,
-          status: Increase::Models::AccountListParams::status,
+          status: Increase::Models::AccountListParams::Status,
           request_options: Increase::request_opts
         ) -> void
         | (
@@ -106,16 +106,38 @@ module Increase
         def to_hash: -> Increase::Models::AccountListParams::created_at
       end
 
-      type status = :closed | :open
+      type status =
+        { in_: ::Array[Increase::Models::AccountListParams::Status::in_] }
 
-      class Status < Increase::Enum
-        # Closed Accounts on which no new activity can occur.
-        CLOSED: :closed
+      class Status < Increase::BaseModel
+        attr_reader in_: ::Array[Increase::Models::AccountListParams::Status::in_]?
 
-        # Open Accounts that are ready to use.
-        OPEN: :open
+        def in_=: (
+          ::Array[Increase::Models::AccountListParams::Status::in_]
+        ) -> ::Array[Increase::Models::AccountListParams::Status::in_]
 
-        def self.values: -> ::Array[Increase::Models::AccountListParams::status]
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::AccountListParams::Status::in_]
+          ) -> void
+          | (
+            ?Increase::Models::AccountListParams::status
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::AccountListParams::status
+
+        type in_ = :closed | :open
+
+        class In < Increase::Enum
+          # Closed Accounts on which no new activity can occur.
+          CLOSED: :closed
+
+          # Open Accounts that are ready to use.
+          OPEN: :open
+
+          def self.values: -> ::Array[Increase::Models::AccountListParams::Status::in_]
+        end
       end
     end
   end
