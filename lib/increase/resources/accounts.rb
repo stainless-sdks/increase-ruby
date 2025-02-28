@@ -96,7 +96,7 @@ module Increase
       #
       #   @option params [String] :program_id Filter Accounts for those in a specific Program.
       #
-      #   @option params [Symbol, Increase::Models::AccountListParams::Status] :status Filter Accounts for those with the specified status.
+      #   @option params [Increase::Models::AccountListParams::Status] :status
       #
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #

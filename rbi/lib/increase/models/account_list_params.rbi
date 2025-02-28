@@ -65,11 +65,13 @@ module Increase
       def program_id=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(T.nilable(Increase::Models::AccountListParams::Status)) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: Increase::Models::AccountListParams::Status).returns(Increase::Models::AccountListParams::Status)
+      end
       def status=(_)
       end
 
@@ -82,7 +84,7 @@ module Increase
           informational_entity_id: String,
           limit: Integer,
           program_id: String,
-          status: Symbol,
+          status: Increase::Models::AccountListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .void
@@ -111,7 +113,7 @@ module Increase
               informational_entity_id: String,
               limit: Integer,
               program_id: String,
-              status: Symbol,
+              status: Increase::Models::AccountListParams::Status,
               request_options: Increase::RequestOptions
             }
           )
@@ -161,17 +163,35 @@ module Increase
         end
       end
 
-      class Status < Increase::Enum
-        abstract!
+      class Status < Increase::BaseModel
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
+        end
 
-        # Closed Accounts on which no new activity can occur.
-        CLOSED = :closed
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
 
-        # Open Accounts that are ready to use.
-        OPEN = :open
+        sig { params(in_: T::Array[Symbol]).void }
+        def initialize(in_: nil)
+        end
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        sig { override.returns({in_: T::Array[Symbol]}) }
+        def to_hash
+        end
+
+        class In < Increase::Enum
+          abstract!
+
+          # Closed Accounts on which no new activity can occur.
+          CLOSED = :closed
+
+          # Open Accounts that are ready to use.
+          OPEN = :open
+
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
+          end
         end
       end
     end
