@@ -2,14 +2,7 @@
 
 require_relative "../test_helper"
 
-class Increase::Test::Resources::PhysicalCardProfilesTest < Minitest::Test
-  def before_all
-    @increase = Increase::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Increase::Test::Resources::PhysicalCardProfilesTest < Increase::Test::ResourceTest
   def test_create_required_params
     response = @increase.physical_card_profiles.create(
       carrier_image_file_id: "file_h6v7mtipe119os47ehlu",
