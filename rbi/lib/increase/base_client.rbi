@@ -9,16 +9,7 @@ module Increase
         method: Symbol,
         path: T.any(String, T::Array[String]),
         query: T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]),
-        headers: T.nilable(
-          T::Hash[String,
-                  T.nilable(
-                    T.any(
-                      String,
-                      Integer,
-                      T::Array[T.nilable(T.any(String, Integer))]
-                    )
-                  )]
-        ),
+        headers: T.nilable(T::Hash[String, T.nilable(String)]),
         body: T.nilable(T.anything),
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[Increase::BaseModel]),
@@ -78,8 +69,7 @@ module Increase
         max_retries: Integer,
         initial_retry_delay: Float,
         max_retry_delay: Float,
-        headers: T::Hash[String,
-                         T.nilable(T.any(String, Integer, T::Array[T.nilable(T.any(String, Integer))]))],
+        headers: T::Hash[String, T.nilable(String)],
         idempotency_header: T.nilable(String)
       )
         .void
@@ -143,16 +133,7 @@ module Increase
         method: Symbol,
         path: T.any(String, T::Array[String]),
         query: T.nilable(T::Hash[String, T.nilable(T.any(T::Array[String], String))]),
-        headers: T.nilable(
-          T::Hash[String,
-                  T.nilable(
-                    T.any(
-                      String,
-                      Integer,
-                      T::Array[T.nilable(T.any(String, Integer))]
-                    )
-                  )]
-        ),
+        headers: T.nilable(T::Hash[String, T.nilable(String)]),
         body: T.nilable(T.anything),
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[Increase::BaseModel]),
