@@ -2,14 +2,7 @@
 
 require_relative "../test_helper"
 
-class Increase::Test::Resources::DigitalWalletTokensTest < Minitest::Test
-  def before_all
-    @increase = Increase::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Increase::Test::Resources::DigitalWalletTokensTest < Increase::Test::ResourceTest
   def test_retrieve
     response = @increase.digital_wallet_tokens.retrieve("digital_wallet_token_id")
 

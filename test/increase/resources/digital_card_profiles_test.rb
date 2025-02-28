@@ -2,14 +2,7 @@
 
 require_relative "../test_helper"
 
-class Increase::Test::Resources::DigitalCardProfilesTest < Minitest::Test
-  def before_all
-    @increase = Increase::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Increase::Test::Resources::DigitalCardProfilesTest < Increase::Test::ResourceTest
   def test_create_required_params
     response = @increase.digital_card_profiles.create(
       app_icon_file_id: "file_8zxqkwlh43wo144u8yec",

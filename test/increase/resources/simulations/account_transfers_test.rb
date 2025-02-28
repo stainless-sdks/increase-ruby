@@ -2,14 +2,7 @@
 
 require_relative "../../test_helper"
 
-class Increase::Test::Resources::Simulations::AccountTransfersTest < Minitest::Test
-  def before_all
-    @increase = Increase::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Increase::Test::Resources::Simulations::AccountTransfersTest < Increase::Test::ResourceTest
   def test_complete
     response = @increase.simulations.account_transfers.complete("account_transfer_id")
 

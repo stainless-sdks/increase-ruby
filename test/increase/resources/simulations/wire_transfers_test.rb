@@ -2,14 +2,7 @@
 
 require_relative "../../test_helper"
 
-class Increase::Test::Resources::Simulations::WireTransfersTest < Minitest::Test
-  def before_all
-    @increase = Increase::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Increase::Test::Resources::Simulations::WireTransfersTest < Increase::Test::ResourceTest
   def test_reverse
     response = @increase.simulations.wire_transfers.reverse("wire_transfer_id")
 
