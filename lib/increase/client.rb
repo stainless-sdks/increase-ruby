@@ -191,7 +191,7 @@ module Increase
     private def auth_headers
       return {} if @api_key.nil?
 
-      {"Authorization" => "Bearer #{@api_key}"}
+      {"authorization" => "Bearer #{@api_key}"}
     end
 
     # Creates and returns a new client for interacting with the API.
