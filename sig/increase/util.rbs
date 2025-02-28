@@ -67,9 +67,7 @@ module Increase
     ) -> URI::Generic
 
     def self?.normalized_headers: (
-      *::Hash[String, (String
-      | Integer
-      | ::Array[(String | Integer)?])?] headers
+      *::Array[::Hash[String, (String | Integer)?]] headers
     ) -> ::Hash[String, String]
 
     def self?.encode_multipart_formdata: (

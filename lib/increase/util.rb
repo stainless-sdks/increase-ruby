@@ -382,19 +382,13 @@ module Increase
     class << self
       # @private
       #
-      # @param headers [Hash{String=>String, Integer, Array<String, Integer, nil>, nil}]
+      # @param headers [Array<Hash{String=>String, Integer, nil}>]
       #
       # @return [Hash{String=>String}]
       #
       def normalized_headers(*headers)
         {}.merge(*headers.compact).to_h do |key, val|
-          case val
-          in Array
-            val.map { _1.to_s.strip }.join(", ")
-          else
-            val&.to_s&.strip
-          end
-          [key.downcase, val]
+          [key.downcase, val&.to_s&.strip]
         end
       end
     end
