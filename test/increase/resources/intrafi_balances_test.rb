@@ -2,14 +2,7 @@
 
 require_relative "../test_helper"
 
-class Increase::Test::Resources::IntrafiBalancesTest < Minitest::Test
-  def before_all
-    @increase = Increase::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Increase::Test::Resources::IntrafiBalancesTest < Increase::Test::ResourceTest
   def test_intrafi_balance
     response = @increase.intrafi_balances.intrafi_balance("account_id")
 

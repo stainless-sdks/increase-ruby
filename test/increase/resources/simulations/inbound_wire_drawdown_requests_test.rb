@@ -2,14 +2,7 @@
 
 require_relative "../../test_helper"
 
-class Increase::Test::Resources::Simulations::InboundWireDrawdownRequestsTest < Minitest::Test
-  def before_all
-    @increase = Increase::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Increase::Test::Resources::Simulations::InboundWireDrawdownRequestsTest < Increase::Test::ResourceTest
   def test_create_required_params
     response = @increase.simulations.inbound_wire_drawdown_requests.create(
       amount: 10_000,

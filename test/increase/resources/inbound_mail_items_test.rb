@@ -2,14 +2,7 @@
 
 require_relative "../test_helper"
 
-class Increase::Test::Resources::InboundMailItemsTest < Minitest::Test
-  def before_all
-    @increase = Increase::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
-    )
-  end
-
+class Increase::Test::Resources::InboundMailItemsTest < Increase::Test::ResourceTest
   def test_retrieve
     response = @increase.inbound_mail_items.retrieve("inbound_mail_item_id")
 
