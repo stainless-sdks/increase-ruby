@@ -2,7 +2,14 @@
 
 require_relative "../test_helper"
 
-class Increase::Test::Resources::CardDisputesTest < Increase::Test::ResourceTest
+class Increase::Test::Resources::CardDisputesTest < Minitest::Test
+  def before_all
+    @increase = Increase::Client.new(
+      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
+      api_key: "My API Key"
+    )
+  end
+
   def test_create_required_params
     response = @increase.card_disputes.create(
       disputed_transaction_id: "transaction_uyrp7fld2ium70oa7oi",

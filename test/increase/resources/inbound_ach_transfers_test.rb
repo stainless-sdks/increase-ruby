@@ -2,7 +2,14 @@
 
 require_relative "../test_helper"
 
-class Increase::Test::Resources::InboundACHTransfersTest < Increase::Test::ResourceTest
+class Increase::Test::Resources::InboundACHTransfersTest < Minitest::Test
+  def before_all
+    @increase = Increase::Client.new(
+      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
+      api_key: "My API Key"
+    )
+  end
+
   def test_retrieve
     response = @increase.inbound_ach_transfers.retrieve("inbound_ach_transfer_id")
 

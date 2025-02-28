@@ -2,7 +2,14 @@
 
 require_relative "../test_helper"
 
-class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < Increase::Test::ResourceTest
+class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < Minitest::Test
+  def before_all
+    @increase = Increase::Client.new(
+      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
+      api_key: "My API Key"
+    )
+  end
+
   def test_create_required_params
     response = @increase.proof_of_authorization_request_submissions.create(
       authorization_terms: "I agree to the terms of service.",

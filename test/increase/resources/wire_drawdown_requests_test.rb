@@ -2,7 +2,14 @@
 
 require_relative "../test_helper"
 
-class Increase::Test::Resources::WireDrawdownRequestsTest < Increase::Test::ResourceTest
+class Increase::Test::Resources::WireDrawdownRequestsTest < Minitest::Test
+  def before_all
+    @increase = Increase::Client.new(
+      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
+      api_key: "My API Key"
+    )
+  end
+
   def test_create_required_params
     response = @increase.wire_drawdown_requests.create(
       account_number_id: "account_number_v18nkfqm6afpsrvy82b2",
