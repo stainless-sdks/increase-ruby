@@ -20,7 +20,7 @@ module Increase
           created_at: Increase::Models::InboundACHTransferListParams::CreatedAt,
           cursor: String,
           limit: Integer,
-          status: Symbol,
+          status: Increase::Models::InboundACHTransferListParams::Status,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::InboundACHTransfer])

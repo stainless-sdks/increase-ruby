@@ -8,7 +8,7 @@ module Increase
       include Increase::RequestParameters
 
       # @!attribute [r] account_id
-      #   Filter Inbound ACH Tranfers to ones belonging to the specified Account.
+      #   Filter Inbound ACH Transfers to ones belonging to the specified Account.
       #
       #   @return [String, nil]
       optional :account_id, String
@@ -18,7 +18,7 @@ module Increase
       #   attr_writer :account_id
 
       # @!attribute [r] account_number_id
-      #   Filter Inbound ACH Tranfers to ones belonging to the specified Account Number.
+      #   Filter Inbound ACH Transfers to ones belonging to the specified Account Number.
       #
       #   @return [String, nil]
       optional :account_number_id, String
@@ -58,13 +58,12 @@ module Increase
       #   attr_writer :limit
 
       # @!attribute [r] status
-      #   Filter Inbound ACH Transfers to those with the specified status.
       #
-      #   @return [Symbol, Increase::Models::InboundACHTransferListParams::Status, nil]
-      optional :status, enum: -> { Increase::Models::InboundACHTransferListParams::Status }
+      #   @return [Increase::Models::InboundACHTransferListParams::Status, nil]
+      optional :status, -> { Increase::Models::InboundACHTransferListParams::Status }
 
       # @!parse
-      #   # @return [Symbol, Increase::Models::InboundACHTransferListParams::Status]
+      #   # @return [Increase::Models::InboundACHTransferListParams::Status]
       #   attr_writer :status
 
       # @!parse
@@ -73,7 +72,7 @@ module Increase
       #   # @param created_at [Increase::Models::InboundACHTransferListParams::CreatedAt]
       #   # @param cursor [String]
       #   # @param limit [Integer]
-      #   # @param status [Symbol, Increase::Models::InboundACHTransferListParams::Status]
+      #   # @param status [Increase::Models::InboundACHTransferListParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
@@ -147,42 +146,63 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
-      # Filter Inbound ACH Transfers to those with the specified status.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :pending
-      #   # ...
-      # in :declined
-      #   # ...
-      # in :accepted
-      #   # ...
-      # in :returned
-      #   # ...
-      # end
-      # ```
-      class Status < Increase::Enum
-        # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
-        PENDING = :pending
-
-        # The Inbound ACH Transfer has been declined.
-        DECLINED = :declined
-
-        # The Inbound ACH Transfer is accepted.
-        ACCEPTED = :accepted
-
-        # The Inbound ACH Transfer has been returned.
-        RETURNED = :returned
-
-        finalize!
+      class Status < Increase::BaseModel
+        # @!attribute [r] in_
+        #   Filter Inbound ACH Transfers to those with the specified status. For GET
+        #     requests, this should be encoded as a comma-delimited string, such as
+        #     `?in=one,two,three`.
+        #
+        #   @return [Array<Symbol, Increase::Models::InboundACHTransferListParams::Status::In>, nil]
+        optional :in_,
+                 -> { Increase::ArrayOf[enum: Increase::Models::InboundACHTransferListParams::Status::In] },
+                 api_name: :in
 
         # @!parse
-        #   # @return [Array<Symbol>]
+        #   # @return [Array<Symbol, Increase::Models::InboundACHTransferListParams::Status::In>]
+        #   attr_writer :in_
+
+        # @!parse
+        #   # @param in_ [Array<Symbol, Increase::Models::InboundACHTransferListParams::Status::In>]
         #   #
-        #   def self.values; end
+        #   def initialize(in_: nil, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
+        # @abstract
+        #
+        # @example
+        # ```ruby
+        # case in
+        # in :pending
+        #   # ...
+        # in :declined
+        #   # ...
+        # in :accepted
+        #   # ...
+        # in :returned
+        #   # ...
+        # end
+        # ```
+        class In < Increase::Enum
+          # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
+          PENDING = :pending
+
+          # The Inbound ACH Transfer has been declined.
+          DECLINED = :declined
+
+          # The Inbound ACH Transfer is accepted.
+          ACCEPTED = :accepted
+
+          # The Inbound ACH Transfer has been returned.
+          RETURNED = :returned
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
       end
     end
   end
