@@ -148,17 +148,8 @@ module Increase
         end
       end
 
-      # need to protect the `Enumerator` against `#.rewind`
-      fused = false
       conn, response = enum.next
-      body = Enumerator.new do |y|
-        next if fused
-
-        fused = true
-        loop { y << enum.next }
-      ensure
-        conn.finish if !eof && conn.started?
-      end
+      body = Increase::Util.fused_enum(enum) { conn.finish if !eof && conn&.started? }
       [response, (response.body = body)]
     end
 
