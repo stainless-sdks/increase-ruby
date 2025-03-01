@@ -26,9 +26,9 @@ module Increase
       #
       # @param params [Increase::Models::InboundWireTransferListParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [String] :account_id Filter Inbound Wire Transfers to ones belonging to the specified Account.
+      #   @option params [String] :account_id Filter Inbound Wire Tranfers to ones belonging to the specified Account.
       #
-      #   @option params [String] :account_number_id Filter Inbound Wire Transfers to ones belonging to the specified Account Number.
+      #   @option params [String] :account_number_id Filter Inbound Wire Tranfers to ones belonging to the specified Account Number.
       #
       #   @option params [Increase::Models::InboundWireTransferListParams::CreatedAt] :created_at
       #
@@ -37,7 +37,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::Models::InboundWireTransferListParams::Status] :status
+      #   @option params [Symbol, Increase::Models::InboundWireTransferListParams::Status] :status Filter Inbound Wire Transfers to those with the specified status.
       #
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #

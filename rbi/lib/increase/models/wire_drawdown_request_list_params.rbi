@@ -30,14 +30,11 @@ module Increase
       def limit=(_)
       end
 
-      sig { returns(T.nilable(Increase::Models::WireDrawdownRequestListParams::Status)) }
+      sig { returns(T.nilable(Symbol)) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::WireDrawdownRequestListParams::Status)
-          .returns(Increase::Models::WireDrawdownRequestListParams::Status)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
@@ -46,7 +43,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::WireDrawdownRequestListParams::Status,
+          status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .void
@@ -61,7 +58,7 @@ module Increase
               cursor: String,
               idempotency_key: String,
               limit: Integer,
-              status: Increase::Models::WireDrawdownRequestListParams::Status,
+              status: Symbol,
               request_options: Increase::RequestOptions
             }
           )
@@ -69,41 +66,23 @@ module Increase
       def to_hash
       end
 
-      class Status < Increase::BaseModel
-        sig { returns(T.nilable(T::Array[Symbol])) }
-        def in_
-        end
+      class Status < Increase::Enum
+        abstract!
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
-        def in_=(_)
-        end
+        # The drawdown request is queued to be submitted to Fedwire.
+        PENDING_SUBMISSION = :pending_submission
 
-        sig { params(in_: T::Array[Symbol]).void }
-        def initialize(in_: nil)
-        end
+        # The drawdown request has been sent and the recipient should respond in some way.
+        PENDING_RESPONSE = :pending_response
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
-        def to_hash
-        end
+        # The drawdown request has been fulfilled by the recipient.
+        FULFILLED = :fulfilled
 
-        class In < Increase::Enum
-          abstract!
+        # The drawdown request has been refused by the recipient.
+        REFUSED = :refused
 
-          # The drawdown request is queued to be submitted to Fedwire.
-          PENDING_SUBMISSION = :pending_submission
-
-          # The drawdown request has been sent and the recipient should respond in some way.
-          PENDING_RESPONSE = :pending_response
-
-          # The drawdown request has been fulfilled by the recipient.
-          FULFILLED = :fulfilled
-
-          # The drawdown request has been refused by the recipient.
-          REFUSED = :refused
-
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end
