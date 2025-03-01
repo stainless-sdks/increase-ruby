@@ -89,7 +89,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::Models::WireDrawdownRequestListParams::Status] :status
+      #   @option params [Symbol, Increase::Models::WireDrawdownRequestListParams::Status] :status Filter Wire Drawdown Requests for those with the specified status.
       #
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #

@@ -49,14 +49,11 @@ module Increase
       def limit=(_)
       end
 
-      sig { returns(T.nilable(Increase::Models::InboundACHTransferListParams::Status)) }
+      sig { returns(T.nilable(Symbol)) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::InboundACHTransferListParams::Status)
-          .returns(Increase::Models::InboundACHTransferListParams::Status)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
@@ -67,7 +64,7 @@ module Increase
           created_at: Increase::Models::InboundACHTransferListParams::CreatedAt,
           cursor: String,
           limit: Integer,
-          status: Increase::Models::InboundACHTransferListParams::Status,
+          status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .void
@@ -92,7 +89,7 @@ module Increase
               created_at: Increase::Models::InboundACHTransferListParams::CreatedAt,
               cursor: String,
               limit: Integer,
-              status: Increase::Models::InboundACHTransferListParams::Status,
+              status: Symbol,
               request_options: Increase::RequestOptions
             }
           )
@@ -142,41 +139,23 @@ module Increase
         end
       end
 
-      class Status < Increase::BaseModel
-        sig { returns(T.nilable(T::Array[Symbol])) }
-        def in_
-        end
+      class Status < Increase::Enum
+        abstract!
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
-        def in_=(_)
-        end
+        # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
+        PENDING = :pending
 
-        sig { params(in_: T::Array[Symbol]).void }
-        def initialize(in_: nil)
-        end
+        # The Inbound ACH Transfer has been declined.
+        DECLINED = :declined
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
-        def to_hash
-        end
+        # The Inbound ACH Transfer is accepted.
+        ACCEPTED = :accepted
 
-        class In < Increase::Enum
-          abstract!
+        # The Inbound ACH Transfer has been returned.
+        RETURNED = :returned
 
-          # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
-          PENDING = :pending
-
-          # The Inbound ACH Transfer has been declined.
-          DECLINED = :declined
-
-          # The Inbound ACH Transfer is accepted.
-          ACCEPTED = :accepted
-
-          # The Inbound ACH Transfer has been returned.
-          RETURNED = :returned
-
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

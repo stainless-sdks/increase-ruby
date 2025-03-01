@@ -55,7 +55,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::WireDrawdownRequestListParams::Status,
+          status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::WireDrawdownRequest])

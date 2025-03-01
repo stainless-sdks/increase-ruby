@@ -50,12 +50,12 @@ module Increase
       sig do
         params(
           account_id: String,
-          ach_debit_status: Increase::Models::AccountNumberListParams::ACHDebitStatus,
+          ach_debit_status: Symbol,
           created_at: Increase::Models::AccountNumberListParams::CreatedAt,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::AccountNumberListParams::Status,
+          status: Symbol,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::AccountNumber])

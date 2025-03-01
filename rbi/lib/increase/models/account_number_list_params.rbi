@@ -14,14 +14,11 @@ module Increase
       def account_id=(_)
       end
 
-      sig { returns(T.nilable(Increase::Models::AccountNumberListParams::ACHDebitStatus)) }
+      sig { returns(T.nilable(Symbol)) }
       def ach_debit_status
       end
 
-      sig do
-        params(_: Increase::Models::AccountNumberListParams::ACHDebitStatus)
-          .returns(Increase::Models::AccountNumberListParams::ACHDebitStatus)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def ach_debit_status=(_)
       end
 
@@ -60,26 +57,23 @@ module Increase
       def limit=(_)
       end
 
-      sig { returns(T.nilable(Increase::Models::AccountNumberListParams::Status)) }
+      sig { returns(T.nilable(Symbol)) }
       def status
       end
 
-      sig do
-        params(_: Increase::Models::AccountNumberListParams::Status)
-          .returns(Increase::Models::AccountNumberListParams::Status)
-      end
+      sig { params(_: Symbol).returns(Symbol) }
       def status=(_)
       end
 
       sig do
         params(
           account_id: String,
-          ach_debit_status: Increase::Models::AccountNumberListParams::ACHDebitStatus,
+          ach_debit_status: Symbol,
           created_at: Increase::Models::AccountNumberListParams::CreatedAt,
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::AccountNumberListParams::Status,
+          status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .void
@@ -101,12 +95,12 @@ module Increase
           .returns(
             {
               account_id: String,
-              ach_debit_status: Increase::Models::AccountNumberListParams::ACHDebitStatus,
+              ach_debit_status: Symbol,
               created_at: Increase::Models::AccountNumberListParams::CreatedAt,
               cursor: String,
               idempotency_key: String,
               limit: Integer,
-              status: Increase::Models::AccountNumberListParams::Status,
+              status: Symbol,
               request_options: Increase::RequestOptions
             }
           )
@@ -114,35 +108,17 @@ module Increase
       def to_hash
       end
 
-      class ACHDebitStatus < Increase::BaseModel
-        sig { returns(T.nilable(T::Array[Symbol])) }
-        def in_
-        end
+      class ACHDebitStatus < Increase::Enum
+        abstract!
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
-        def in_=(_)
-        end
+        # ACH Debits are allowed.
+        ALLOWED = :allowed
 
-        sig { params(in_: T::Array[Symbol]).void }
-        def initialize(in_: nil)
-        end
+        # ACH Debits are blocked.
+        BLOCKED = :blocked
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
-        def to_hash
-        end
-
-        class In < Increase::Enum
-          abstract!
-
-          # ACH Debits are allowed.
-          ALLOWED = :allowed
-
-          # ACH Debits are blocked.
-          BLOCKED = :blocked
-
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -188,38 +164,20 @@ module Increase
         end
       end
 
-      class Status < Increase::BaseModel
-        sig { returns(T.nilable(T::Array[Symbol])) }
-        def in_
-        end
+      class Status < Increase::Enum
+        abstract!
 
-        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
-        def in_=(_)
-        end
+        # The account number is active.
+        ACTIVE = :active
 
-        sig { params(in_: T::Array[Symbol]).void }
-        def initialize(in_: nil)
-        end
+        # The account number is temporarily disabled.
+        DISABLED = :disabled
 
-        sig { override.returns({in_: T::Array[Symbol]}) }
-        def to_hash
-        end
+        # The account number is permanently disabled.
+        CANCELED = :canceled
 
-        class In < Increase::Enum
-          abstract!
-
-          # The account number is active.
-          ACTIVE = :active
-
-          # The account number is temporarily disabled.
-          DISABLED = :disabled
-
-          # The account number is permanently disabled.
-          CANCELED = :canceled
-
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

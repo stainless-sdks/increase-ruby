@@ -43,7 +43,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::WireDrawdownRequestListParams::Status,
+          status: Increase::Models::WireDrawdownRequestListParams::status,
           request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::WireDrawdownRequest]
 

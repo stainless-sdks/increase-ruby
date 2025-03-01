@@ -86,7 +86,7 @@ module Increase
       #
       #   @option params [String] :account_id Filter Account Numbers to those belonging to the specified Account.
       #
-      #   @option params [Increase::Models::AccountNumberListParams::ACHDebitStatus] :ach_debit_status
+      #   @option params [Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus] :ach_debit_status The ACH Debit status to retrieve Account Numbers for.
       #
       #   @option params [Increase::Models::AccountNumberListParams::CreatedAt] :created_at
       #
@@ -100,7 +100,7 @@ module Increase
       #   @option params [Integer] :limit Limit the size of the list that is returned. The default (and maximum) is 100
       #     objects.
       #
-      #   @option params [Increase::Models::AccountNumberListParams::Status] :status
+      #   @option params [Symbol, Increase::Models::AccountNumberListParams::Status] :status The status to retrieve Account Numbers for.
       #
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
