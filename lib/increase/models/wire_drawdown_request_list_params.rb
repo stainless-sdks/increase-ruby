@@ -42,62 +42,82 @@ module Increase
       #   attr_writer :limit
 
       # @!attribute [r] status
-      #   Filter Wire Drawdown Requests for those with the specified status.
       #
-      #   @return [Symbol, Increase::Models::WireDrawdownRequestListParams::Status, nil]
-      optional :status, enum: -> { Increase::Models::WireDrawdownRequestListParams::Status }
+      #   @return [Increase::Models::WireDrawdownRequestListParams::Status, nil]
+      optional :status, -> { Increase::Models::WireDrawdownRequestListParams::Status }
 
       # @!parse
-      #   # @return [Symbol, Increase::Models::WireDrawdownRequestListParams::Status]
+      #   # @return [Increase::Models::WireDrawdownRequestListParams::Status]
       #   attr_writer :status
 
       # @!parse
       #   # @param cursor [String]
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
-      #   # @param status [Symbol, Increase::Models::WireDrawdownRequestListParams::Status]
+      #   # @param status [Increase::Models::WireDrawdownRequestListParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
-      # Filter Wire Drawdown Requests for those with the specified status.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :pending_submission
-      #   # ...
-      # in :pending_response
-      #   # ...
-      # in :fulfilled
-      #   # ...
-      # in :refused
-      #   # ...
-      # end
-      # ```
-      class Status < Increase::Enum
-        # The drawdown request is queued to be submitted to Fedwire.
-        PENDING_SUBMISSION = :pending_submission
-
-        # The drawdown request has been sent and the recipient should respond in some way.
-        PENDING_RESPONSE = :pending_response
-
-        # The drawdown request has been fulfilled by the recipient.
-        FULFILLED = :fulfilled
-
-        # The drawdown request has been refused by the recipient.
-        REFUSED = :refused
-
-        finalize!
+      class Status < Increase::BaseModel
+        # @!attribute [r] in_
+        #   Filter Wire Drawdown Requests for those with the specified status. For GET
+        #     requests, this should be encoded as a comma-delimited string, such as
+        #     `?in=one,two,three`.
+        #
+        #   @return [Array<Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In>, nil]
+        optional :in_,
+                 -> { Increase::ArrayOf[enum: Increase::Models::WireDrawdownRequestListParams::Status::In] },
+                 api_name: :in
 
         # @!parse
-        #   # @return [Array<Symbol>]
+        #   # @return [Array<Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In>]
+        #   attr_writer :in_
+
+        # @!parse
+        #   # @param in_ [Array<Symbol, Increase::Models::WireDrawdownRequestListParams::Status::In>]
         #   #
-        #   def self.values; end
+        #   def initialize(in_: nil, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
+        # @abstract
+        #
+        # @example
+        # ```ruby
+        # case in
+        # in :pending_submission
+        #   # ...
+        # in :pending_response
+        #   # ...
+        # in :fulfilled
+        #   # ...
+        # in :refused
+        #   # ...
+        # end
+        # ```
+        class In < Increase::Enum
+          # The drawdown request is queued to be submitted to Fedwire.
+          PENDING_SUBMISSION = :pending_submission
+
+          # The drawdown request has been sent and the recipient should respond in some way.
+          PENDING_RESPONSE = :pending_response
+
+          # The drawdown request has been fulfilled by the recipient.
+          FULFILLED = :fulfilled
+
+          # The drawdown request has been refused by the recipient.
+          REFUSED = :refused
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
       end
     end
   end

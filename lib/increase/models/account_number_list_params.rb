@@ -18,13 +18,12 @@ module Increase
       #   attr_writer :account_id
 
       # @!attribute [r] ach_debit_status
-      #   The ACH Debit status to retrieve Account Numbers for.
       #
-      #   @return [Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus, nil]
-      optional :ach_debit_status, enum: -> { Increase::Models::AccountNumberListParams::ACHDebitStatus }
+      #   @return [Increase::Models::AccountNumberListParams::ACHDebitStatus, nil]
+      optional :ach_debit_status, -> { Increase::Models::AccountNumberListParams::ACHDebitStatus }
 
       # @!parse
-      #   # @return [Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus]
+      #   # @return [Increase::Models::AccountNumberListParams::ACHDebitStatus]
       #   attr_writer :ach_debit_status
 
       # @!attribute [r] created_at
@@ -71,23 +70,22 @@ module Increase
       #   attr_writer :limit
 
       # @!attribute [r] status
-      #   The status to retrieve Account Numbers for.
       #
-      #   @return [Symbol, Increase::Models::AccountNumberListParams::Status, nil]
-      optional :status, enum: -> { Increase::Models::AccountNumberListParams::Status }
+      #   @return [Increase::Models::AccountNumberListParams::Status, nil]
+      optional :status, -> { Increase::Models::AccountNumberListParams::Status }
 
       # @!parse
-      #   # @return [Symbol, Increase::Models::AccountNumberListParams::Status]
+      #   # @return [Increase::Models::AccountNumberListParams::Status]
       #   attr_writer :status
 
       # @!parse
       #   # @param account_id [String]
-      #   # @param ach_debit_status [Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus]
+      #   # @param ach_debit_status [Increase::Models::AccountNumberListParams::ACHDebitStatus]
       #   # @param created_at [Increase::Models::AccountNumberListParams::CreatedAt]
       #   # @param cursor [String]
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
-      #   # @param status [Symbol, Increase::Models::AccountNumberListParams::Status]
+      #   # @param status [Increase::Models::AccountNumberListParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
@@ -106,32 +104,52 @@ module Increase
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
-      # @abstract
-      #
-      # The ACH Debit status to retrieve Account Numbers for.
-      #
-      # @example
-      # ```ruby
-      # case ach_debit_status
-      # in :allowed
-      #   # ...
-      # in :blocked
-      #   # ...
-      # end
-      # ```
-      class ACHDebitStatus < Increase::Enum
-        # ACH Debits are allowed.
-        ALLOWED = :allowed
-
-        # ACH Debits are blocked.
-        BLOCKED = :blocked
-
-        finalize!
+      class ACHDebitStatus < Increase::BaseModel
+        # @!attribute [r] in_
+        #   The ACH Debit status to retrieve Account Numbers for. For GET requests, this
+        #     should be encoded as a comma-delimited string, such as `?in=one,two,three`.
+        #
+        #   @return [Array<Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In>, nil]
+        optional :in_,
+                 -> { Increase::ArrayOf[enum: Increase::Models::AccountNumberListParams::ACHDebitStatus::In] },
+                 api_name: :in
 
         # @!parse
-        #   # @return [Array<Symbol>]
+        #   # @return [Array<Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In>]
+        #   attr_writer :in_
+
+        # @!parse
+        #   # @param in_ [Array<Symbol, Increase::Models::AccountNumberListParams::ACHDebitStatus::In>]
         #   #
-        #   def self.values; end
+        #   def initialize(in_: nil, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
+        # @abstract
+        #
+        # @example
+        # ```ruby
+        # case in
+        # in :allowed
+        #   # ...
+        # in :blocked
+        #   # ...
+        # end
+        # ```
+        class In < Increase::Enum
+          # ACH Debits are allowed.
+          ALLOWED = :allowed
+
+          # ACH Debits are blocked.
+          BLOCKED = :blocked
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
       end
 
       class CreatedAt < Increase::BaseModel
@@ -190,37 +208,57 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
-      # The status to retrieve Account Numbers for.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :active
-      #   # ...
-      # in :disabled
-      #   # ...
-      # in :canceled
-      #   # ...
-      # end
-      # ```
-      class Status < Increase::Enum
-        # The account number is active.
-        ACTIVE = :active
-
-        # The account number is temporarily disabled.
-        DISABLED = :disabled
-
-        # The account number is permanently disabled.
-        CANCELED = :canceled
-
-        finalize!
+      class Status < Increase::BaseModel
+        # @!attribute [r] in_
+        #   The status to retrieve Account Numbers for. For GET requests, this should be
+        #     encoded as a comma-delimited string, such as `?in=one,two,three`.
+        #
+        #   @return [Array<Symbol, Increase::Models::AccountNumberListParams::Status::In>, nil]
+        optional :in_,
+                 -> { Increase::ArrayOf[enum: Increase::Models::AccountNumberListParams::Status::In] },
+                 api_name: :in
 
         # @!parse
-        #   # @return [Array<Symbol>]
+        #   # @return [Array<Symbol, Increase::Models::AccountNumberListParams::Status::In>]
+        #   attr_writer :in_
+
+        # @!parse
+        #   # @param in_ [Array<Symbol, Increase::Models::AccountNumberListParams::Status::In>]
         #   #
-        #   def self.values; end
+        #   def initialize(in_: nil, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
+        # @abstract
+        #
+        # @example
+        # ```ruby
+        # case in
+        # in :active
+        #   # ...
+        # in :disabled
+        #   # ...
+        # in :canceled
+        #   # ...
+        # end
+        # ```
+        class In < Increase::Enum
+          # The account number is active.
+          ACTIVE = :active
+
+          # The account number is temporarily disabled.
+          DISABLED = :disabled
+
+          # The account number is permanently disabled.
+          CANCELED = :canceled
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
       end
     end
   end

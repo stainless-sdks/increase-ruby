@@ -8,7 +8,7 @@ module Increase
       include Increase::RequestParameters
 
       # @!attribute [r] account_id
-      #   Filter Inbound Wire Tranfers to ones belonging to the specified Account.
+      #   Filter Inbound Wire Transfers to ones belonging to the specified Account.
       #
       #   @return [String, nil]
       optional :account_id, String
@@ -18,7 +18,7 @@ module Increase
       #   attr_writer :account_id
 
       # @!attribute [r] account_number_id
-      #   Filter Inbound Wire Tranfers to ones belonging to the specified Account Number.
+      #   Filter Inbound Wire Transfers to ones belonging to the specified Account Number.
       #
       #   @return [String, nil]
       optional :account_number_id, String
@@ -58,13 +58,12 @@ module Increase
       #   attr_writer :limit
 
       # @!attribute [r] status
-      #   Filter Inbound Wire Transfers to those with the specified status.
       #
-      #   @return [Symbol, Increase::Models::InboundWireTransferListParams::Status, nil]
-      optional :status, enum: -> { Increase::Models::InboundWireTransferListParams::Status }
+      #   @return [Increase::Models::InboundWireTransferListParams::Status, nil]
+      optional :status, -> { Increase::Models::InboundWireTransferListParams::Status }
 
       # @!parse
-      #   # @return [Symbol, Increase::Models::InboundWireTransferListParams::Status]
+      #   # @return [Increase::Models::InboundWireTransferListParams::Status]
       #   attr_writer :status
 
       # @!parse
@@ -73,7 +72,7 @@ module Increase
       #   # @param created_at [Increase::Models::InboundWireTransferListParams::CreatedAt]
       #   # @param cursor [String]
       #   # @param limit [Integer]
-      #   # @param status [Symbol, Increase::Models::InboundWireTransferListParams::Status]
+      #   # @param status [Increase::Models::InboundWireTransferListParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(
@@ -147,42 +146,63 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
 
-      # @abstract
-      #
-      # Filter Inbound Wire Transfers to those with the specified status.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :pending
-      #   # ...
-      # in :accepted
-      #   # ...
-      # in :declined
-      #   # ...
-      # in :reversed
-      #   # ...
-      # end
-      # ```
-      class Status < Increase::Enum
-        # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
-        PENDING = :pending
-
-        # The Inbound Wire Transfer is accepted.
-        ACCEPTED = :accepted
-
-        # The Inbound Wire Transfer was declined.
-        DECLINED = :declined
-
-        # The Inbound Wire Transfer was reversed.
-        REVERSED = :reversed
-
-        finalize!
+      class Status < Increase::BaseModel
+        # @!attribute [r] in_
+        #   Filter Inbound Wire Transfers to those with the specified status. For GET
+        #     requests, this should be encoded as a comma-delimited string, such as
+        #     `?in=one,two,three`.
+        #
+        #   @return [Array<Symbol, Increase::Models::InboundWireTransferListParams::Status::In>, nil]
+        optional :in_,
+                 -> { Increase::ArrayOf[enum: Increase::Models::InboundWireTransferListParams::Status::In] },
+                 api_name: :in
 
         # @!parse
-        #   # @return [Array<Symbol>]
+        #   # @return [Array<Symbol, Increase::Models::InboundWireTransferListParams::Status::In>]
+        #   attr_writer :in_
+
+        # @!parse
+        #   # @param in_ [Array<Symbol, Increase::Models::InboundWireTransferListParams::Status::In>]
         #   #
-        #   def self.values; end
+        #   def initialize(in_: nil, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
+        # @abstract
+        #
+        # @example
+        # ```ruby
+        # case in
+        # in :pending
+        #   # ...
+        # in :accepted
+        #   # ...
+        # in :declined
+        #   # ...
+        # in :reversed
+        #   # ...
+        # end
+        # ```
+        class In < Increase::Enum
+          # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
+          PENDING = :pending
+
+          # The Inbound Wire Transfer is accepted.
+          ACCEPTED = :accepted
+
+          # The Inbound Wire Transfer was declined.
+          DECLINED = :declined
+
+          # The Inbound Wire Transfer was reversed.
+          REVERSED = :reversed
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
       end
     end
   end
