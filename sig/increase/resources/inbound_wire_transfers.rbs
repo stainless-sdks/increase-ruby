@@ -23,7 +23,7 @@ module Increase
           created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
           cursor: String,
           limit: Integer,
-          status: Increase::Models::InboundWireTransferListParams::status,
+          status: Increase::Models::InboundWireTransferListParams::Status,
           request_options: Increase::request_opts
         ) -> Increase::Page[Increase::Models::InboundWireTransfer]
 

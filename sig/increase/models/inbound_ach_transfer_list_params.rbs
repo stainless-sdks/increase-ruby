@@ -7,7 +7,7 @@ module Increase
         created_at: Increase::Models::InboundACHTransferListParams::CreatedAt,
         cursor: String,
         limit: Integer,
-        status: Increase::Models::InboundACHTransferListParams::status
+        status: Increase::Models::InboundACHTransferListParams::Status
       }
       & Increase::request_parameters
 
@@ -37,11 +37,11 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      attr_reader status: Increase::Models::InboundACHTransferListParams::status?
+      attr_reader status: Increase::Models::InboundACHTransferListParams::Status?
 
       def status=: (
-        Increase::Models::InboundACHTransferListParams::status
-      ) -> Increase::Models::InboundACHTransferListParams::status
+        Increase::Models::InboundACHTransferListParams::Status
+      ) -> Increase::Models::InboundACHTransferListParams::Status
 
       def initialize:
         (
@@ -50,7 +50,7 @@ module Increase
           created_at: Increase::Models::InboundACHTransferListParams::CreatedAt,
           cursor: String,
           limit: Integer,
-          status: Increase::Models::InboundACHTransferListParams::status,
+          status: Increase::Models::InboundACHTransferListParams::Status,
           request_options: Increase::request_opts
         ) -> void
         | (
@@ -95,22 +95,46 @@ module Increase
         def to_hash: -> Increase::Models::InboundACHTransferListParams::created_at
       end
 
-      type status = :pending | :declined | :accepted | :returned
+      type status =
+        {
+          in_: ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
+        }
 
-      class Status < Increase::Enum
-        # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
-        PENDING: :pending
+      class Status < Increase::BaseModel
+        attr_reader in_: ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]?
 
-        # The Inbound ACH Transfer has been declined.
-        DECLINED: :declined
+        def in_=: (
+          ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
+        ) -> ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
 
-        # The Inbound ACH Transfer is accepted.
-        ACCEPTED: :accepted
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
+          ) -> void
+          | (
+            ?Increase::Models::InboundACHTransferListParams::status
+            | Increase::BaseModel data
+          ) -> void
 
-        # The Inbound ACH Transfer has been returned.
-        RETURNED: :returned
+        def to_hash: -> Increase::Models::InboundACHTransferListParams::status
 
-        def self.values: -> ::Array[Increase::Models::InboundACHTransferListParams::status]
+        type in_ = :pending | :declined | :accepted | :returned
+
+        class In < Increase::Enum
+          # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
+          PENDING: :pending
+
+          # The Inbound ACH Transfer has been declined.
+          DECLINED: :declined
+
+          # The Inbound ACH Transfer is accepted.
+          ACCEPTED: :accepted
+
+          # The Inbound ACH Transfer has been returned.
+          RETURNED: :returned
+
+          def self.values: -> ::Array[Increase::Models::InboundACHTransferListParams::Status::in_]
+        end
       end
     end
   end

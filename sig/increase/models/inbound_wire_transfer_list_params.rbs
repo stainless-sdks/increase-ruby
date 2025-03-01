@@ -7,7 +7,7 @@ module Increase
         created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
         cursor: String,
         limit: Integer,
-        status: Increase::Models::InboundWireTransferListParams::status
+        status: Increase::Models::InboundWireTransferListParams::Status
       }
       & Increase::request_parameters
 
@@ -37,11 +37,11 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      attr_reader status: Increase::Models::InboundWireTransferListParams::status?
+      attr_reader status: Increase::Models::InboundWireTransferListParams::Status?
 
       def status=: (
-        Increase::Models::InboundWireTransferListParams::status
-      ) -> Increase::Models::InboundWireTransferListParams::status
+        Increase::Models::InboundWireTransferListParams::Status
+      ) -> Increase::Models::InboundWireTransferListParams::Status
 
       def initialize:
         (
@@ -50,7 +50,7 @@ module Increase
           created_at: Increase::Models::InboundWireTransferListParams::CreatedAt,
           cursor: String,
           limit: Integer,
-          status: Increase::Models::InboundWireTransferListParams::status,
+          status: Increase::Models::InboundWireTransferListParams::Status,
           request_options: Increase::request_opts
         ) -> void
         | (
@@ -95,22 +95,46 @@ module Increase
         def to_hash: -> Increase::Models::InboundWireTransferListParams::created_at
       end
 
-      type status = :pending | :accepted | :declined | :reversed
+      type status =
+        {
+          in_: ::Array[Increase::Models::InboundWireTransferListParams::Status::in_]
+        }
 
-      class Status < Increase::Enum
-        # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
-        PENDING: :pending
+      class Status < Increase::BaseModel
+        attr_reader in_: ::Array[Increase::Models::InboundWireTransferListParams::Status::in_]?
 
-        # The Inbound Wire Transfer is accepted.
-        ACCEPTED: :accepted
+        def in_=: (
+          ::Array[Increase::Models::InboundWireTransferListParams::Status::in_]
+        ) -> ::Array[Increase::Models::InboundWireTransferListParams::Status::in_]
 
-        # The Inbound Wire Transfer was declined.
-        DECLINED: :declined
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::InboundWireTransferListParams::Status::in_]
+          ) -> void
+          | (
+            ?Increase::Models::InboundWireTransferListParams::status
+            | Increase::BaseModel data
+          ) -> void
 
-        # The Inbound Wire Transfer was reversed.
-        REVERSED: :reversed
+        def to_hash: -> Increase::Models::InboundWireTransferListParams::status
 
-        def self.values: -> ::Array[Increase::Models::InboundWireTransferListParams::status]
+        type in_ = :pending | :accepted | :declined | :reversed
+
+        class In < Increase::Enum
+          # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
+          PENDING: :pending
+
+          # The Inbound Wire Transfer is accepted.
+          ACCEPTED: :accepted
+
+          # The Inbound Wire Transfer was declined.
+          DECLINED: :declined
+
+          # The Inbound Wire Transfer was reversed.
+          REVERSED: :reversed
+
+          def self.values: -> ::Array[Increase::Models::InboundWireTransferListParams::Status::in_]
+        end
       end
     end
   end

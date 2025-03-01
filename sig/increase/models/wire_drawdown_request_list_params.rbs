@@ -5,7 +5,7 @@ module Increase
         cursor: String,
         idempotency_key: String,
         limit: Integer,
-        status: Increase::Models::WireDrawdownRequestListParams::status
+        status: Increase::Models::WireDrawdownRequestListParams::Status
       }
       & Increase::request_parameters
 
@@ -25,18 +25,18 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      attr_reader status: Increase::Models::WireDrawdownRequestListParams::status?
+      attr_reader status: Increase::Models::WireDrawdownRequestListParams::Status?
 
       def status=: (
-        Increase::Models::WireDrawdownRequestListParams::status
-      ) -> Increase::Models::WireDrawdownRequestListParams::status
+        Increase::Models::WireDrawdownRequestListParams::Status
+      ) -> Increase::Models::WireDrawdownRequestListParams::Status
 
       def initialize:
         (
           cursor: String,
           idempotency_key: String,
           limit: Integer,
-          status: Increase::Models::WireDrawdownRequestListParams::status,
+          status: Increase::Models::WireDrawdownRequestListParams::Status,
           request_options: Increase::request_opts
         ) -> void
         | (
@@ -47,22 +47,46 @@ module Increase
       def to_hash: -> Increase::Models::wire_drawdown_request_list_params
 
       type status =
-        :pending_submission | :pending_response | :fulfilled | :refused
+        {
+          in_: ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
+        }
 
-      class Status < Increase::Enum
-        # The drawdown request is queued to be submitted to Fedwire.
-        PENDING_SUBMISSION: :pending_submission
+      class Status < Increase::BaseModel
+        attr_reader in_: ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]?
 
-        # The drawdown request has been sent and the recipient should respond in some way.
-        PENDING_RESPONSE: :pending_response
+        def in_=: (
+          ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
+        ) -> ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
 
-        # The drawdown request has been fulfilled by the recipient.
-        FULFILLED: :fulfilled
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
+          ) -> void
+          | (
+            ?Increase::Models::WireDrawdownRequestListParams::status
+            | Increase::BaseModel data
+          ) -> void
 
-        # The drawdown request has been refused by the recipient.
-        REFUSED: :refused
+        def to_hash: -> Increase::Models::WireDrawdownRequestListParams::status
 
-        def self.values: -> ::Array[Increase::Models::WireDrawdownRequestListParams::status]
+        type in_ =
+          :pending_submission | :pending_response | :fulfilled | :refused
+
+        class In < Increase::Enum
+          # The drawdown request is queued to be submitted to Fedwire.
+          PENDING_SUBMISSION: :pending_submission
+
+          # The drawdown request has been sent and the recipient should respond in some way.
+          PENDING_RESPONSE: :pending_response
+
+          # The drawdown request has been fulfilled by the recipient.
+          FULFILLED: :fulfilled
+
+          # The drawdown request has been refused by the recipient.
+          REFUSED: :refused
+
+          def self.values: -> ::Array[Increase::Models::WireDrawdownRequestListParams::Status::in_]
+        end
       end
     end
   end
