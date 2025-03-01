@@ -1,0 +1,19 @@
+module Increase
+  class BaseStream[Elem]
+    def initialize: (
+      url: URI::Generic,
+      model: Class | Increase::Converter,
+      status: Integer,
+      messages: Enumerable[Increase::Util::sse_message],
+      response: top
+    ) -> void
+
+    def close: -> void
+
+    def for_each: { (Elem arg0) -> void } -> void
+
+    def to_enum: -> Enumerable[Elem]
+
+    alias enum_for to_enum
+  end
+end
