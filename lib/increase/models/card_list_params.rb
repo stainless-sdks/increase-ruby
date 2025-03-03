@@ -60,15 +60,36 @@ module Increase
       #   # @return [Integer]
       #   attr_writer :limit
 
+      # @!attribute [r] status
+      #
+      #   @return [Increase::Models::CardListParams::Status, nil]
+      optional :status, -> { Increase::Models::CardListParams::Status }
+
+      # @!parse
+      #   # @return [Increase::Models::CardListParams::Status]
+      #   attr_writer :status
+
       # @!parse
       #   # @param account_id [String]
       #   # @param created_at [Increase::Models::CardListParams::CreatedAt]
       #   # @param cursor [String]
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
+      #   # @param status [Increase::Models::CardListParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {}, **) = super
+      #   def initialize(
+      #     account_id: nil,
+      #     created_at: nil,
+      #     cursor: nil,
+      #     idempotency_key: nil,
+      #     limit: nil,
+      #     status: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
@@ -126,6 +147,57 @@ module Increase
         #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
+      end
+
+      class Status < Increase::BaseModel
+        # @!attribute [r] in_
+        #   Filter Cards by status. For GET requests, this should be encoded as a
+        #     comma-delimited string, such as `?in=one,two,three`.
+        #
+        #   @return [Array<Symbol, Increase::Models::CardListParams::Status::In>, nil]
+        optional :in_, -> { Increase::ArrayOf[enum: Increase::Models::CardListParams::Status::In] }, api_name: :in
+
+        # @!parse
+        #   # @return [Array<Symbol, Increase::Models::CardListParams::Status::In>]
+        #   attr_writer :in_
+
+        # @!parse
+        #   # @param in_ [Array<Symbol, Increase::Models::CardListParams::Status::In>]
+        #   #
+        #   def initialize(in_: nil, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
+        # @abstract
+        #
+        # @example
+        # ```ruby
+        # case in
+        # in :active
+        #   # ...
+        # in :disabled
+        #   # ...
+        # in :canceled
+        #   # ...
+        # end
+        # ```
+        class In < Increase::Enum
+          # The card is active.
+          ACTIVE = :active
+
+          # The card is temporarily disabled.
+          DISABLED = :disabled
+
+          # The card is permanently canceled.
+          CANCELED = :canceled
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
+        end
       end
     end
   end
