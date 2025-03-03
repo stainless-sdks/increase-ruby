@@ -48,6 +48,14 @@ module Increase
       def limit=(_)
       end
 
+      sig { returns(T.nilable(Increase::Models::CardListParams::Status)) }
+      def status
+      end
+
+      sig { params(_: Increase::Models::CardListParams::Status).returns(Increase::Models::CardListParams::Status) }
+      def status=(_)
+      end
+
       sig do
         params(
           account_id: String,
@@ -55,6 +63,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
+          status: Increase::Models::CardListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .void
@@ -65,6 +74,7 @@ module Increase
         cursor: nil,
         idempotency_key: nil,
         limit: nil,
+        status: nil,
         request_options: {}
       )
       end
@@ -78,6 +88,7 @@ module Increase
               cursor: String,
               idempotency_key: String,
               limit: Integer,
+              status: Increase::Models::CardListParams::Status,
               request_options: Increase::RequestOptions
             }
           )
@@ -124,6 +135,41 @@ module Increase
 
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
         def to_hash
+        end
+      end
+
+      class Status < Increase::BaseModel
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
+        end
+
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
+
+        sig { params(in_: T::Array[Symbol]).void }
+        def initialize(in_: nil)
+        end
+
+        sig { override.returns({in_: T::Array[Symbol]}) }
+        def to_hash
+        end
+
+        class In < Increase::Enum
+          abstract!
+
+          # The card is active.
+          ACTIVE = :active
+
+          # The card is temporarily disabled.
+          DISABLED = :disabled
+
+          # The card is permanently canceled.
+          CANCELED = :canceled
+
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
+          end
         end
       end
     end

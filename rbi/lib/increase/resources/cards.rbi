@@ -64,6 +64,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
+          status: Increase::Models::CardListParams::Status,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::Card])
@@ -74,6 +75,7 @@ module Increase
         cursor: nil,
         idempotency_key: nil,
         limit: nil,
+        status: nil,
         request_options: {}
       )
       end
