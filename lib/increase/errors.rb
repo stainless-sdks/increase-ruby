@@ -99,12 +99,13 @@ module Increase
     # @param body [Object, nil]
     # @param request [nil]
     # @param response [nil]
+    # @param message [String, nil]
     #
     # @return [Increase::APIStatusError]
     #
-    def self.for(url:, status:, body:, request:, response:)
+    def self.for(url:, status:, body:, request:, response:, message: nil)
       key = Increase::Util.dig(body, :type)
-      kwargs = {url: url, status: status, body: body, request: request, response: response}
+      kwargs = {url: url, status: status, body: body, request: request, response: response, message: message}
 
       case [status, key]
       in [400, Increase::InvalidParametersError::TYPE]
