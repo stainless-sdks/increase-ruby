@@ -123,8 +123,7 @@ module Increase
             :line1 => String,
             postal_code: String,
             state: String,
-            :line2 => String,
-            name: String
+            :line2 => String
           }
 
         class MailingAddress < Increase::BaseModel
@@ -140,18 +139,13 @@ module Increase
 
           def line2=: (String) -> String
 
-          attr_reader name: String?
-
-          def name=: (String) -> String
-
           def initialize:
             (
               city: String,
               line1: String,
               postal_code: String,
               state: String,
-              line2: String,
-              name: String
+              line2: String
             ) -> void
             | (
               ?Increase::Models::CheckTransferCreateParams::PhysicalCheck::mailing_address
