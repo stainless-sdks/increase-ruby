@@ -1241,6 +1241,9 @@ module Increase
             # The Card was not active.
             CARD_NOT_ACTIVE = :card_not_active
 
+            # The Card has been canceled.
+            CARD_CANCELED = :card_canceled
+
             # The Physical Card was not active.
             PHYSICAL_CARD_NOT_ACTIVE = :physical_card_not_active
 
