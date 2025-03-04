@@ -3,6 +3,11 @@
 module Increase
   module Test
     module Resources
+      module Client
+        module Simulations
+        end
+      end
+
       module Simulations
       end
     end
