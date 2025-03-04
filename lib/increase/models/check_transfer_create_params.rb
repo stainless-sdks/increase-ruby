@@ -224,17 +224,6 @@ module Increase
           #   # @return [String]
           #   attr_writer :line2
 
-          # @!attribute [r] name
-          #   The name component of the check's destination address. Defaults to the provided
-          #     `recipient_name` parameter.
-          #
-          #   @return [String, nil]
-          optional :name, String
-
-          # @!parse
-          #   # @return [String]
-          #   attr_writer :name
-
           # @!parse
           #   # Details for where Increase will mail the check.
           #   #
@@ -243,9 +232,8 @@ module Increase
           #   # @param postal_code [String]
           #   # @param state [String]
           #   # @param line2 [String]
-          #   # @param name [String]
           #   #
-          #   def initialize(city:, line1:, postal_code:, state:, line2: nil, name: nil, **) = super
+          #   def initialize(city:, line1:, postal_code:, state:, line2: nil, **) = super
 
           # def initialize: (Hash | Increase::BaseModel) -> void
         end

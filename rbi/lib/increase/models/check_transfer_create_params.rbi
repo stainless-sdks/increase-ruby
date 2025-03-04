@@ -258,37 +258,12 @@ module Increase
           def line2=(_)
           end
 
-          sig { returns(T.nilable(String)) }
-          def name
-          end
-
-          sig { params(_: String).returns(String) }
-          def name=(_)
+          sig { params(city: String, line1: String, postal_code: String, state: String, line2: String).void }
+          def initialize(city:, line1:, postal_code:, state:, line2: nil)
           end
 
           sig do
-            params(
-              city: String,
-              line1: String,
-              postal_code: String,
-              state: String,
-              line2: String,
-              name: String
-            ).void
-          end
-          def initialize(city:, line1:, postal_code:, state:, line2: nil, name: nil)
-          end
-
-          sig do
-            override
-              .returns({
-                         city: String,
-                         line1: String,
-                         postal_code: String,
-                         state: String,
-                         line2: String,
-                         name: String
-                       })
+            override.returns({city: String, line1: String, postal_code: String, state: String, line2: String})
           end
           def to_hash
           end
