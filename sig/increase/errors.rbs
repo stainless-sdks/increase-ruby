@@ -51,8 +51,7 @@ module Increase
       status: Integer,
       body: Object?,
       request: nil,
-      response: nil,
-      message: String?
+      response: nil
     ) -> instance
 
     def initialize: (
