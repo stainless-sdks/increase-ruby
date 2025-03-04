@@ -21,7 +21,8 @@ module Increase
         ),
         body: T.nilable(T.anything),
         unwrap: T.nilable(Symbol),
-        page: T.nilable(T::Class[Increase::BaseModel]),
+        page: T.nilable(T::Class[Increase::BasePage[Increase::BaseModel]]),
+        stream: T.nilable(T::Class[T.anything]),
         model: T.nilable(Increase::Converter::Input),
         options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
       }
@@ -122,20 +123,9 @@ module Increase
         retry_count: Integer,
         send_retry_header: T::Boolean
       )
-        .returns([Net::HTTPResponse, T::Enumerable[String]])
+        .returns([Integer, Net::HTTPResponse, T::Enumerable[String]])
     end
     private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
-    end
-
-    sig do
-      params(
-        req: Increase::BaseClient::RequestComponentsShape,
-        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
-        stream: T::Enumerable[String]
-      )
-        .returns(T.anything)
-    end
-    private def parse_response(req, headers:, stream:)
     end
 
     sig do
@@ -155,7 +145,8 @@ module Increase
         ),
         body: T.nilable(T.anything),
         unwrap: T.nilable(Symbol),
-        page: T.nilable(T::Class[Increase::BaseModel]),
+        page: T.nilable(T::Class[Increase::BasePage[Increase::BaseModel]]),
+        stream: T.nilable(T::Class[T.anything]),
         model: T.nilable(Increase::Converter::Input),
         options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
       )
@@ -169,6 +160,7 @@ module Increase
       body: nil,
       unwrap: nil,
       page: nil,
+      stream: nil,
       model: Increase::Unknown,
       options: {}
     )
