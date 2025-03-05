@@ -85,12 +85,11 @@ module Increase
         status: Integer,
         body: T.nilable(Object),
         request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
+        response: NilClass
       )
         .returns(T.attached_class)
     end
-    def self.for(url:, status:, body:, request:, response:, message: nil)
+    def self.for(url:, status:, body:, request:, response:)
     end
 
     sig { returns(Integer) }
