@@ -227,10 +227,6 @@ module Increase
     def intrafi_exclusions
     end
 
-    sig { returns(Increase::Resources::RealTimePaymentsRequestForPayments) }
-    def real_time_payments_request_for_payments
-    end
-
     sig { returns(Increase::Resources::Simulations) }
     def simulations
     end
