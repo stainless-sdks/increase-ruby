@@ -33,8 +33,8 @@ module Increase
     #   # @param client [Increase::BaseClient]
     #   # @param req [Hash{Symbol=>Object}]
     #   # @param headers [Hash{String=>String}, Net::HTTPHeader]
-    #   # @param page_data [Object]
+    #   # @param unwrapped [Object]
     #   #
-    #   def initialize(client:, req:, headers:, page_data:); end
+    #   def initialize(client:, req:, headers:, unwrapped:); end
   end
 end
