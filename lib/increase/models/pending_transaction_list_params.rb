@@ -124,23 +124,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :account_transfer_instruction
-        #   # ...
-        # in :ach_transfer_instruction
-        #   # ...
-        # in :card_authorization
-        #   # ...
-        # in :check_deposit_instruction
-        #   # ...
-        # in :check_transfer_instruction
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class In < Increase::Enum
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
           ACCOUNT_TRANSFER_INSTRUCTION = :account_transfer_instruction
@@ -262,15 +245,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :pending
-        #   # ...
-        # in :complete
-        #   # ...
-        # end
-        # ```
         class In < Increase::Enum
           # The Pending Transaction is still awaiting confirmation.
           PENDING = :pending

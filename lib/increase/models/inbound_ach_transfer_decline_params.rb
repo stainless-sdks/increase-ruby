@@ -32,24 +32,6 @@ module Increase
       # The reason why this transfer will be returned. If this parameter is unset, the
       #   return codes will be `payment_stopped` for debits and
       #   `credit_entry_refused_by_receiver` for credits.
-      #
-      # @example
-      # ```ruby
-      # case reason
-      # in :insufficient_funds
-      #   # ...
-      # in :returned_per_odfi_request
-      #   # ...
-      # in :authorization_revoked_by_customer
-      #   # ...
-      # in :payment_stopped
-      #   # ...
-      # in :customer_advised_unauthorized_improper_ineligible_or_incomplete
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Reason < Increase::Enum
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
         INSUFFICIENT_FUNDS = :insufficient_funds

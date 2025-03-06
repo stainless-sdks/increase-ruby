@@ -116,23 +116,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :account_statement_ofx
-        #   # ...
-        # in :transaction_csv
-        #   # ...
-        # in :balance_csv
-        #   # ...
-        # in :bookkeeping_account_balance_csv
-        #   # ...
-        # in :entity_csv
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class In < Increase::Enum
           # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
           ACCOUNT_STATEMENT_OFX = :account_statement_ofx
@@ -244,17 +227,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :pending
-        #   # ...
-        # in :complete
-        #   # ...
-        # in :failed
-        #   # ...
-        # end
-        # ```
         class In < Increase::Enum
           # Increase is generating the export.
           PENDING = :pending

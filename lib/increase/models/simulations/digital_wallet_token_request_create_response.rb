@@ -42,20 +42,6 @@ module Increase
         #
         # If the simulated tokenization attempt was declined, this field contains details
         #   as to why.
-        #
-        # @example
-        # ```ruby
-        # case decline_reason
-        # in :card_not_active
-        #   # ...
-        # in :no_verification_method
-        #   # ...
-        # in :webhook_timed_out
-        #   # ...
-        # in :webhook_declined
-        #   # ...
-        # end
-        # ```
         class DeclineReason < Increase::Enum
           # The card is not active.
           CARD_NOT_ACTIVE = :card_not_active
@@ -81,14 +67,6 @@ module Increase
         #
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_digital_wallet_token_request_simulation_result`.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :inbound_digital_wallet_token_request_simulation_result
-        #   # ...
-        # end
-        # ```
         class Type < Increase::Enum
           INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT = :inbound_digital_wallet_token_request_simulation_result
 

@@ -24,22 +24,6 @@ module Increase
       # @abstract
       #
       # The reason to return the Inbound Check Deposit.
-      #
-      # @example
-      # ```ruby
-      # case reason
-      # in :altered_or_fictitious
-      #   # ...
-      # in :not_authorized
-      #   # ...
-      # in :duplicate_presentment
-      #   # ...
-      # in :endorsement_missing
-      #   # ...
-      # in :endorsement_irregular
-      #   # ...
-      # end
-      # ```
       class Reason < Increase::Enum
         # The check was altered or fictitious.
         ALTERED_OR_FICTITIOUS = :altered_or_fictitious

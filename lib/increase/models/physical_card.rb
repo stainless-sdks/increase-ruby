@@ -218,18 +218,6 @@ module Increase
         # @abstract
         #
         # The shipping method.
-        #
-        # @example
-        # ```ruby
-        # case method
-        # in :usps
-        #   # ...
-        # in :fedex_priority_overnight
-        #   # ...
-        # in :fedex_2_day
-        #   # ...
-        # end
-        # ```
         class Method < Increase::Enum
           # USPS Post with tracking.
           USPS = :usps
@@ -251,24 +239,6 @@ module Increase
         # @abstract
         #
         # The status of this shipment.
-        #
-        # @example
-        # ```ruby
-        # case status
-        # in :pending
-        #   # ...
-        # in :canceled
-        #   # ...
-        # in :submitted
-        #   # ...
-        # in :acknowledged
-        #   # ...
-        # in :rejected
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Status < Increase::Enum
           # The physical card has not yet been shipped.
           PENDING = :pending
@@ -343,18 +313,6 @@ module Increase
       # @abstract
       #
       # The status of the Physical Card.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :active
-      #   # ...
-      # in :disabled
-      #   # ...
-      # in :canceled
-      #   # ...
-      # end
-      # ```
       class Status < Increase::Enum
         # The physical card is active.
         ACTIVE = :active
@@ -377,14 +335,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :physical_card
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         PHYSICAL_CARD = :physical_card
 

@@ -42,14 +42,6 @@ module Increase
         #
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_card_authorization_simulation_result`.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :inbound_card_authorization_simulation_result
-        #   # ...
-        # end
-        # ```
         class Type < Increase::Enum
           INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT = :inbound_card_authorization_simulation_result
 

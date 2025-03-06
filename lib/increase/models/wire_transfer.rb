@@ -372,18 +372,6 @@ module Increase
         # @abstract
         #
         # The type of object that created this transfer.
-        #
-        # @example
-        # ```ruby
-        # case category
-        # in :api_key
-        #   # ...
-        # in :oauth_application
-        #   # ...
-        # in :user
-        #   # ...
-        # end
-        # ```
         class Category < Increase::Enum
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
@@ -441,24 +429,6 @@ module Increase
       #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For wire transfers this is always equal to `usd`.
-      #
-      # @example
-      # ```ruby
-      # case currency
-      # in :CAD
-      #   # ...
-      # in :CHF
-      #   # ...
-      # in :EUR
-      #   # ...
-      # in :GBP
-      #   # ...
-      # in :JPY
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -489,14 +459,6 @@ module Increase
       # @abstract
       #
       # The transfer's network.
-      #
-      # @example
-      # ```ruby
-      # case network
-      # in :wire
-      #   # ...
-      # end
-      # ```
       class Network < Increase::Enum
         WIRE = :wire
 
@@ -666,24 +628,6 @@ module Increase
       # @abstract
       #
       # The lifecycle status of the transfer.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :pending_approval
-      #   # ...
-      # in :canceled
-      #   # ...
-      # in :pending_reviewing
-      #   # ...
-      # in :rejected
-      #   # ...
-      # in :requires_attention
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Status < Increase::Enum
         # The transfer is pending approval.
         PENDING_APPROVAL = :pending_approval
@@ -749,14 +693,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `wire_transfer`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :wire_transfer
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         WIRE_TRANSFER = :wire_transfer
 

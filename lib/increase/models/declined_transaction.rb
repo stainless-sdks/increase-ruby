@@ -112,24 +112,6 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
       #   Transaction's currency. This will match the currency on the Declined
       #   Transaction's Account.
-      #
-      # @example
-      # ```ruby
-      # case currency
-      # in :CAD
-      #   # ...
-      # in :CHF
-      #   # ...
-      # in :EUR
-      #   # ...
-      # in :GBP
-      #   # ...
-      # in :JPY
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -160,18 +142,6 @@ module Increase
       # @abstract
       #
       # The type of the route this Declined Transaction came through.
-      #
-      # @example
-      # ```ruby
-      # case route_type
-      # in :account_number
-      #   # ...
-      # in :card
-      #   # ...
-      # in :lockbox
-      #   # ...
-      # end
-      # ```
       class RouteType < Increase::Enum
         # An Account Number.
         ACCOUNT_NUMBER = :account_number
@@ -398,24 +368,6 @@ module Increase
           # @abstract
           #
           # Why the ACH transfer was declined.
-          #
-          # @example
-          # ```ruby
-          # case reason
-          # in :ach_route_canceled
-          #   # ...
-          # in :ach_route_disabled
-          #   # ...
-          # in :breaches_limit
-          #   # ...
-          # in :entity_not_active
-          #   # ...
-          # in :group_locked
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Reason < Increase::Enum
             # The account number is canceled.
             ACH_ROUTE_CANCELED = :ach_route_canceled
@@ -480,14 +432,6 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `ach_decline`.
-          #
-          # @example
-          # ```ruby
-          # case type
-          # in :ach_decline
-          #   # ...
-          # end
-          # ```
           class Type < Increase::Enum
             ACH_DECLINE = :ach_decline
 
@@ -754,18 +698,6 @@ module Increase
           #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
-          #
-          # @example
-          # ```ruby
-          # case actioner
-          # in :user
-          #   # ...
-          # in :increase
-          #   # ...
-          # in :network
-          #   # ...
-          # end
-          # ```
           class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER = :user
@@ -788,24 +720,6 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
-          #
-          # @example
-          # ```ruby
-          # case currency
-          # in :CAD
-          #   # ...
-          # in :CHF
-          #   # ...
-          # in :EUR
-          #   # ...
-          # in :GBP
-          #   # ...
-          # in :JPY
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -837,16 +751,6 @@ module Increase
           #
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
-          #
-          # @example
-          # ```ruby
-          # case direction
-          # in :settlement
-          #   # ...
-          # in :refund
-          #   # ...
-          # end
-          # ```
           class Direction < Increase::Enum
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT = :settlement
@@ -891,14 +795,6 @@ module Increase
             # @abstract
             #
             # The payment network used to process this card authorization.
-            #
-            # @example
-            # ```ruby
-            # case category
-            # in :visa
-            #   # ...
-            # end
-            # ```
             class Category < Increase::Enum
               # Visa
               VISA = :visa
@@ -956,24 +852,6 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
-              #
-              # @example
-              # ```ruby
-              # case electronic_commerce_indicator
-              # in :mail_phone_order
-              #   # ...
-              # in :recurring
-              #   # ...
-              # in :installment
-              #   # ...
-              # in :unknown_mail_phone_order
-              #   # ...
-              # in :secure_electronic_commerce
-              #   # ...
-              # in ...
-              #   #...
-              # end
-              # ```
               class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER = :mail_phone_order
@@ -1011,24 +889,6 @@ module Increase
               #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
-              #
-              # @example
-              # ```ruby
-              # case point_of_service_entry_mode
-              # in :unknown
-              #   # ...
-              # in :manual
-              #   # ...
-              # in :magnetic_stripe_no_cvv
-              #   # ...
-              # in :optical_code
-              #   # ...
-              # in :integrated_circuit_card
-              #   # ...
-              # in ...
-              #   #...
-              # end
-              # ```
               class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
                 UNKNOWN = :unknown
@@ -1072,24 +932,6 @@ module Increase
               #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
-              #
-              # @example
-              # ```ruby
-              # case stand_in_processing_reason
-              # in :issuer_error
-              #   # ...
-              # in :invalid_physical_card
-              #   # ...
-              # in :invalid_cardholder_authentication_verification_value
-              #   # ...
-              # in :internal_visa_error
-              #   # ...
-              # in :merchant_transaction_advisory_service_authentication_required
-              #   # ...
-              # in ...
-              #   #...
-              # end
-              # ```
               class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR = :issuer_error
@@ -1161,24 +1003,6 @@ module Increase
           #
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
-          #
-          # @example
-          # ```ruby
-          # case processing_category
-          # in :account_funding
-          #   # ...
-          # in :automatic_fuel_dispenser
-          #   # ...
-          # in :bill_payment
-          #   # ...
-          # in :purchase
-          #   # ...
-          # in :quasi_cash
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class ProcessingCategory < Increase::Enum
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING = :account_funding
@@ -1210,24 +1034,6 @@ module Increase
           #
           # This is present if a specific decline reason was given in the real-time
           #   decision.
-          #
-          # @example
-          # ```ruby
-          # case real_time_decision_reason
-          # in :insufficient_funds
-          #   # ...
-          # in :transaction_never_allowed
-          #   # ...
-          # in :exceeds_approval_limit
-          #   # ...
-          # in :card_temporarily_disabled
-          #   # ...
-          # in :suspected_fraud
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class RealTimeDecisionReason < Increase::Enum
             # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
             INSUFFICIENT_FUNDS = :insufficient_funds
@@ -1258,24 +1064,6 @@ module Increase
           # @abstract
           #
           # Why the transaction was declined.
-          #
-          # @example
-          # ```ruby
-          # case reason
-          # in :account_closed
-          #   # ...
-          # in :card_not_active
-          #   # ...
-          # in :card_canceled
-          #   # ...
-          # in :physical_card_not_active
-          #   # ...
-          # in :entity_not_active
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Reason < Increase::Enum
             # The account has been closed.
             ACCOUNT_CLOSED = :account_closed
@@ -1384,18 +1172,6 @@ module Increase
               # @abstract
               #
               # The result of verifying the Card Verification Code.
-              #
-              # @example
-              # ```ruby
-              # case result
-              # in :not_checked
-              #   # ...
-              # in :match
-              #   # ...
-              # in :no_match
-              #   # ...
-              # end
-              # ```
               class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED = :not_checked
@@ -1465,24 +1241,6 @@ module Increase
               # @abstract
               #
               # The address verification result returned to the card network.
-              #
-              # @example
-              # ```ruby
-              # case result
-              # in :not_checked
-              #   # ...
-              # in :postal_code_match_address_not_checked
-              #   # ...
-              # in :postal_code_match_address_no_match
-              #   # ...
-              # in :postal_code_no_match_address_match
-              #   # ...
-              # in :match
-              #   # ...
-              # in ...
-              #   #...
-              # end
-              # ```
               class Result < Increase::Enum
                 # No adress was provided in the authorization request.
                 NOT_CHECKED = :not_checked
@@ -1517,24 +1275,6 @@ module Increase
         #
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
-        #
-        # @example
-        # ```ruby
-        # case category
-        # in :ach_decline
-        #   # ...
-        # in :card_decline
-        #   # ...
-        # in :check_decline
-        #   # ...
-        # in :inbound_real_time_payments_transfer_decline
-        #   # ...
-        # in :wire_decline
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Category < Increase::Enum
           # ACH Decline: details will be under the `ach_decline` object.
           ACH_DECLINE = :ach_decline
@@ -1642,24 +1382,6 @@ module Increase
           # @abstract
           #
           # Why the check was declined.
-          #
-          # @example
-          # ```ruby
-          # case reason
-          # in :ach_route_disabled
-          #   # ...
-          # in :ach_route_canceled
-          #   # ...
-          # in :altered_or_fictitious
-          #   # ...
-          # in :breaches_limit
-          #   # ...
-          # in :endorsement_irregular
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Reason < Increase::Enum
             # The account number is disabled.
             ACH_ROUTE_DISABLED = :ach_route_disabled
@@ -1782,24 +1504,6 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
           #   currency.
-          #
-          # @example
-          # ```ruby
-          # case currency
-          # in :CAD
-          #   # ...
-          # in :CHF
-          #   # ...
-          # in :EUR
-          #   # ...
-          # in :GBP
-          #   # ...
-          # in :JPY
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -1830,24 +1534,6 @@ module Increase
           # @abstract
           #
           # Why the check deposit was rejected.
-          #
-          # @example
-          # ```ruby
-          # case reason
-          # in :incomplete_image
-          #   # ...
-          # in :duplicate
-          #   # ...
-          # in :poor_image_quality
-          #   # ...
-          # in :incorrect_amount
-          #   # ...
-          # in :incorrect_recipient
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Reason < Increase::Enum
             # The check's image is incomplete.
             INCOMPLETE_IMAGE = :incomplete_image
@@ -1996,24 +1682,6 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
           #   transfer.
-          #
-          # @example
-          # ```ruby
-          # case currency
-          # in :CAD
-          #   # ...
-          # in :CHF
-          #   # ...
-          # in :EUR
-          #   # ...
-          # in :GBP
-          #   # ...
-          # in :JPY
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -2044,24 +1712,6 @@ module Increase
           # @abstract
           #
           # Why the transfer was declined.
-          #
-          # @example
-          # ```ruby
-          # case reason
-          # in :account_number_canceled
-          #   # ...
-          # in :account_number_disabled
-          #   # ...
-          # in :account_restricted
-          #   # ...
-          # in :group_locked
-          #   # ...
-          # in :entity_not_active
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Reason < Increase::Enum
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED = :account_number_canceled
@@ -2117,24 +1767,6 @@ module Increase
           # @abstract
           #
           # Why the wire transfer was declined.
-          #
-          # @example
-          # ```ruby
-          # case reason
-          # in :account_number_canceled
-          #   # ...
-          # in :account_number_disabled
-          #   # ...
-          # in :entity_not_active
-          #   # ...
-          # in :group_locked
-          #   # ...
-          # in :no_account_number
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class Reason < Increase::Enum
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED = :account_number_canceled
@@ -2168,14 +1800,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `declined_transaction`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :declined_transaction
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         DECLINED_TRANSACTION = :declined_transaction
 

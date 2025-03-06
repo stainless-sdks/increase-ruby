@@ -329,18 +329,6 @@ module Increase
         # @abstract
         #
         # The type of object that created this transfer.
-        #
-        # @example
-        # ```ruby
-        # case category
-        # in :api_key
-        #   # ...
-        # in :oauth_application
-        #   # ...
-        # in :user
-        #   # ...
-        # end
-        # ```
         class Category < Increase::Enum
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
@@ -398,24 +386,6 @@ module Increase
       #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
       #   currency.
-      #
-      # @example
-      # ```ruby
-      # case currency
-      # in :CAD
-      #   # ...
-      # in :CHF
-      #   # ...
-      # in :EUR
-      #   # ...
-      # in :GBP
-      #   # ...
-      # in :JPY
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -446,16 +416,6 @@ module Increase
       # @abstract
       #
       # Whether Increase will print and mail the check or if you will do it yourself.
-      #
-      # @example
-      # ```ruby
-      # case fulfillment_method
-      # in :physical_check
-      #   # ...
-      # in :third_party
-      #   # ...
-      # end
-      # ```
       class FulfillmentMethod < Increase::Enum
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK = :physical_check
@@ -694,16 +654,6 @@ module Increase
         # @abstract
         #
         # The shipping method for the check.
-        #
-        # @example
-        # ```ruby
-        # case shipping_method
-        # in :usps_first_class
-        #   # ...
-        # in :fedex_overnight
-        #   # ...
-        # end
-        # ```
         class ShippingMethod < Increase::Enum
           # USPS First Class
           USPS_FIRST_CLASS = :usps_first_class
@@ -751,20 +701,6 @@ module Increase
           # @abstract
           #
           # The type of tracking event.
-          #
-          # @example
-          # ```ruby
-          # case category
-          # in :in_transit
-          #   # ...
-          # in :processed_for_delivery
-          #   # ...
-          # in :delivered
-          #   # ...
-          # in :returned_to_sender
-          #   # ...
-          # end
-          # ```
           class Category < Increase::Enum
             # The check is in transit.
             IN_TRANSIT = :in_transit
@@ -791,24 +727,6 @@ module Increase
       # @abstract
       #
       # The lifecycle status of the transfer.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :pending_approval
-      #   # ...
-      # in :canceled
-      #   # ...
-      # in :pending_submission
-      #   # ...
-      # in :requires_attention
-      #   # ...
-      # in :rejected
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Status < Increase::Enum
         # The transfer is awaiting approval.
         PENDING_APPROVAL = :pending_approval
@@ -890,20 +808,6 @@ module Increase
         # @abstract
         #
         # The reason why this transfer was stopped.
-        #
-        # @example
-        # ```ruby
-        # case reason
-        # in :mail_delivery_failed
-        #   # ...
-        # in :rejected_by_increase
-        #   # ...
-        # in :not_authorized
-        #   # ...
-        # in :unknown
-        #   # ...
-        # end
-        # ```
         class Reason < Increase::Enum
           # The check could not be delivered.
           MAIL_DELIVERY_FAILED = :mail_delivery_failed
@@ -929,14 +833,6 @@ module Increase
         #
         # A constant representing the object's type. For this resource it will always be
         #   `check_transfer_stop_payment_request`.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :check_transfer_stop_payment_request
-        #   # ...
-        # end
-        # ```
         class Type < Increase::Enum
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST = :check_transfer_stop_payment_request
 
@@ -988,14 +884,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `check_transfer`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :check_transfer
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         CHECK_TRANSFER = :check_transfer
 

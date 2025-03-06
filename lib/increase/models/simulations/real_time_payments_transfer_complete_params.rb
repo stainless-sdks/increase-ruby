@@ -47,24 +47,6 @@ module Increase
           # @abstract
           #
           # The reason code that the simulated rejection will have.
-          #
-          # @example
-          # ```ruby
-          # case reject_reason_code
-          # in :account_closed
-          #   # ...
-          # in :account_blocked
-          #   # ...
-          # in :invalid_creditor_account_type
-          #   # ...
-          # in :invalid_creditor_account_number
-          #   # ...
-          # in :invalid_creditor_financial_institution_identifier
-          #   # ...
-          # in ...
-          #   #...
-          # end
-          # ```
           class RejectReasonCode < Increase::Enum
             # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
             ACCOUNT_CLOSED = :account_closed

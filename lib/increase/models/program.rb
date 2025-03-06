@@ -98,18 +98,6 @@ module Increase
       # @abstract
       #
       # The Bank the Program is with.
-      #
-      # @example
-      # ```ruby
-      # case bank
-      # in :core_bank
-      #   # ...
-      # in :first_internet_bank
-      #   # ...
-      # in :grasshopper_bank
-      #   # ...
-      # end
-      # ```
       class Bank < Increase::Enum
         # Core Bank
         CORE_BANK = :core_bank
@@ -132,14 +120,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `program`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :program
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         PROGRAM = :program
 

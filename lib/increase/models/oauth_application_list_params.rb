@@ -136,15 +136,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :active
-        #   # ...
-        # in :deleted
-        #   # ...
-        # end
-        # ```
         class In < Increase::Enum
           # The application is active and can be used by your users.
           ACTIVE = :active

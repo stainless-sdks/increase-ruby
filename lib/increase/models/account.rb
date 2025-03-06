@@ -151,18 +151,6 @@ module Increase
       # @abstract
       #
       # The bank the Account is with.
-      #
-      # @example
-      # ```ruby
-      # case bank
-      # in :core_bank
-      #   # ...
-      # in :first_internet_bank
-      #   # ...
-      # in :grasshopper_bank
-      #   # ...
-      # end
-      # ```
       class Bank < Increase::Enum
         # Core Bank
         CORE_BANK = :core_bank
@@ -185,24 +173,6 @@ module Increase
       #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
       #   currency.
-      #
-      # @example
-      # ```ruby
-      # case currency
-      # in :CAD
-      #   # ...
-      # in :CHF
-      #   # ...
-      # in :EUR
-      #   # ...
-      # in :GBP
-      #   # ...
-      # in :JPY
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -233,16 +203,6 @@ module Increase
       # @abstract
       #
       # The status of the Account.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :closed
-      #   # ...
-      # in :open
-      #   # ...
-      # end
-      # ```
       class Status < Increase::Enum
         # Closed Accounts on which no new activity can occur.
         CLOSED = :closed
@@ -262,14 +222,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `account`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :account
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         ACCOUNT = :account
 

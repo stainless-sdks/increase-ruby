@@ -39,14 +39,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_balance_lookup`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :bookkeeping_balance_lookup
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         BOOKKEEPING_BALANCE_LOOKUP = :bookkeeping_balance_lookup
 

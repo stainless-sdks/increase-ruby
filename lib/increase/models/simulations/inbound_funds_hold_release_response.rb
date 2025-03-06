@@ -106,24 +106,6 @@ module Increase
         #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
-        #
-        # @example
-        # ```ruby
-        # case currency
-        # in :CAD
-        #   # ...
-        # in :CHF
-        #   # ...
-        # in :EUR
-        #   # ...
-        # in :GBP
-        #   # ...
-        # in :JPY
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD = :CAD
@@ -154,16 +136,6 @@ module Increase
         # @abstract
         #
         # The status of the hold.
-        #
-        # @example
-        # ```ruby
-        # case status
-        # in :held
-        #   # ...
-        # in :complete
-        #   # ...
-        # end
-        # ```
         class Status < Increase::Enum
           # Funds are still being held.
           HELD = :held
@@ -183,14 +155,6 @@ module Increase
         #
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :inbound_funds_hold
-        #   # ...
-        # end
-        # ```
         class Type < Increase::Enum
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 

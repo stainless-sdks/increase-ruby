@@ -28,18 +28,6 @@ module Increase
       # @abstract
       #
       # The status to update the Event Subscription with.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :active
-      #   # ...
-      # in :disabled
-      #   # ...
-      # in :deleted
-      #   # ...
-      # end
-      # ```
       class Status < Increase::Enum
         # The subscription is active and Events will be delivered normally.
         ACTIVE = :active

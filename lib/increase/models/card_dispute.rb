@@ -231,24 +231,6 @@ module Increase
       # @abstract
       #
       # The results of the Dispute investigation.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :pending_reviewing
-      #   # ...
-      # in :pending_user_information
-      #   # ...
-      # in :accepted
-      #   # ...
-      # in :rejected
-      #   # ...
-      # in :lost
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Status < Increase::Enum
         # The Card Dispute is pending review.
         PENDING_REVIEWING = :pending_reviewing
@@ -280,14 +262,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `card_dispute`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :card_dispute
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         CARD_DISPUTE = :card_dispute
 
