@@ -1,13 +1,11 @@
 module Increase
   module Models
-    type external_account_update_params =
-      {
-        account_holder: Increase::Models::ExternalAccountUpdateParams::account_holder,
-        description: String,
-        funding: Increase::Models::ExternalAccountUpdateParams::funding,
-        status: Increase::Models::ExternalAccountUpdateParams::status
-      }
-      & Increase::request_parameters
+    type external_account_update_params = ({
+      "?account_holder": Increase::Models::ExternalAccountUpdateParams::account_holder,
+      "?description": String,
+      "?funding": Increase::Models::ExternalAccountUpdateParams::funding,
+      "?status": Increase::Models::ExternalAccountUpdateParams::status
+    } & Increase::request_parameters)
 
     class ExternalAccountUpdateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -15,9 +13,7 @@ module Increase
 
       attr_reader account_holder: Increase::Models::ExternalAccountUpdateParams::account_holder?
 
-      def account_holder=: (
-        Increase::Models::ExternalAccountUpdateParams::account_holder
-      ) -> Increase::Models::ExternalAccountUpdateParams::account_holder
+      def account_holder=: (Increase::Models::ExternalAccountUpdateParams::account_holder) -> Increase::Models::ExternalAccountUpdateParams::account_holder
 
       attr_reader description: String?
 
@@ -25,32 +21,18 @@ module Increase
 
       attr_reader funding: Increase::Models::ExternalAccountUpdateParams::funding?
 
-      def funding=: (
-        Increase::Models::ExternalAccountUpdateParams::funding
-      ) -> Increase::Models::ExternalAccountUpdateParams::funding
+      def funding=: (Increase::Models::ExternalAccountUpdateParams::funding) -> Increase::Models::ExternalAccountUpdateParams::funding
 
       attr_reader status: Increase::Models::ExternalAccountUpdateParams::status?
 
-      def status=: (
-        Increase::Models::ExternalAccountUpdateParams::status
-      ) -> Increase::Models::ExternalAccountUpdateParams::status
+      def status=: (Increase::Models::ExternalAccountUpdateParams::status) -> Increase::Models::ExternalAccountUpdateParams::status
 
-      def initialize:
-        (
-          account_holder: Increase::Models::ExternalAccountUpdateParams::account_holder,
-          description: String,
-          funding: Increase::Models::ExternalAccountUpdateParams::funding,
-          status: Increase::Models::ExternalAccountUpdateParams::status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::external_account_update_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (account_holder: Increase::Models::ExternalAccountUpdateParams::account_holder, description: String, funding: Increase::Models::ExternalAccountUpdateParams::funding, status: Increase::Models::ExternalAccountUpdateParams::status, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::external_account_update_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::external_account_update_params
+      def to_hash: () -> Increase::Models::external_account_update_params
 
-      type account_holder = :business | :individual
+      type account_holder = (:business | :individual)
 
       class AccountHolder < Increase::Enum
         # The External Account is owned by a business.
@@ -59,10 +41,10 @@ module Increase
         # The External Account is owned by an individual.
         INDIVIDUAL: :individual
 
-        def self.values: -> ::Array[Increase::Models::ExternalAccountUpdateParams::account_holder]
+        def self.values: () -> ::Array[Increase::Models::ExternalAccountUpdateParams::account_holder]
       end
 
-      type funding = :checking | :savings | :other
+      type funding = (:checking | :savings | :other)
 
       class Funding < Increase::Enum
         # A checking account.
@@ -74,10 +56,10 @@ module Increase
         # A different type of account.
         OTHER: :other
 
-        def self.values: -> ::Array[Increase::Models::ExternalAccountUpdateParams::funding]
+        def self.values: () -> ::Array[Increase::Models::ExternalAccountUpdateParams::funding]
       end
 
-      type status = :active | :archived
+      type status = (:active | :archived)
 
       class Status < Increase::Enum
         # The External Account is active.
@@ -86,7 +68,7 @@ module Increase
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED: :archived
 
-        def self.values: -> ::Array[Increase::Models::ExternalAccountUpdateParams::status]
+        def self.values: () -> ::Array[Increase::Models::ExternalAccountUpdateParams::status]
       end
     end
   end

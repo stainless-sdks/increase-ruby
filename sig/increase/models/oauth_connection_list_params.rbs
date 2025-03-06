@@ -1,13 +1,11 @@
 module Increase
   module Models
-    type oauth_connection_list_params =
-      {
-        cursor: String,
-        limit: Integer,
-        oauth_application_id: String,
-        status: Increase::Models::OAuthConnectionListParams::Status
-      }
-      & Increase::request_parameters
+    type oauth_connection_list_params = ({
+      "?cursor": String,
+      "?limit": Integer,
+      "?oauth_application_id": String,
+      "?status": Increase::Models::OAuthConnectionListParams::Status
+    } & Increase::request_parameters)
 
     class OAuthConnectionListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -27,49 +25,26 @@ module Increase
 
       attr_reader status: Increase::Models::OAuthConnectionListParams::Status?
 
-      def status=: (
-        Increase::Models::OAuthConnectionListParams::Status
-      ) -> Increase::Models::OAuthConnectionListParams::Status
+      def status=: (Increase::Models::OAuthConnectionListParams::Status) -> Increase::Models::OAuthConnectionListParams::Status
 
-      def initialize:
-        (
-          cursor: String,
-          limit: Integer,
-          oauth_application_id: String,
-          status: Increase::Models::OAuthConnectionListParams::Status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::oauth_connection_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (cursor: String, limit: Integer, oauth_application_id: String, status: Increase::Models::OAuthConnectionListParams::Status, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::oauth_connection_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::oauth_connection_list_params
+      def to_hash: () -> Increase::Models::oauth_connection_list_params
 
-      type status =
-        {
-          in_: ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
-        }
+      type status = {"?in_": ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]}
 
       class Status < Increase::BaseModel
         attr_reader in_: ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
-        ) -> ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
+        def in_=: (::Array[Increase::Models::OAuthConnectionListParams::Status::in_]) -> ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
-          ) -> void
-          | (
-            ?Increase::Models::OAuthConnectionListParams::status
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (in_: ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]) -> void
+                      | (?(Increase::Models::OAuthConnectionListParams::status | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::OAuthConnectionListParams::status
+        def to_hash: () -> Increase::Models::OAuthConnectionListParams::status
 
-        type in_ = :active | :inactive
+        type in_ = (:active | :inactive)
 
         class In < Increase::Enum
           # The OAuth connection is active.
@@ -78,7 +53,7 @@ module Increase
           # The OAuth connection is permanently deactivated.
           INACTIVE: :inactive
 
-          def self.values: -> ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
+          def self.values: () -> ::Array[Increase::Models::OAuthConnectionListParams::Status::in_]
         end
       end
     end

@@ -1,20 +1,18 @@
 module Increase
   module Models
-    type proof_of_authorization_request_submission_create_params =
-      {
-        authorization_terms: String,
-        authorized_at: Time,
-        authorizer_email: String,
-        authorizer_name: String,
-        customer_has_been_offboarded: bool,
-        proof_of_authorization_request_id: String,
-        validated_account_ownership_via_credential: bool,
-        validated_account_ownership_with_account_statement: bool,
-        validated_account_ownership_with_microdeposit: bool,
-        authorizer_company: String,
-        authorizer_ip_address: String
-      }
-      & Increase::request_parameters
+    type proof_of_authorization_request_submission_create_params = ({
+      authorization_terms: String,
+      authorized_at: Time,
+      authorizer_email: String,
+      authorizer_name: String,
+      customer_has_been_offboarded: bool,
+      proof_of_authorization_request_id: String,
+      validated_account_ownership_via_credential: bool,
+      validated_account_ownership_with_account_statement: bool,
+      validated_account_ownership_with_microdeposit: bool,
+      "?authorizer_company": String,
+      "?authorizer_ip_address": String
+    } & Increase::request_parameters)
 
     class ProofOfAuthorizationRequestSubmissionCreateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -46,27 +44,10 @@ module Increase
 
       def authorizer_ip_address=: (String) -> String
 
-      def initialize:
-        (
-          authorization_terms: String,
-          authorized_at: Time,
-          authorizer_email: String,
-          authorizer_name: String,
-          customer_has_been_offboarded: bool,
-          proof_of_authorization_request_id: String,
-          validated_account_ownership_via_credential: bool,
-          validated_account_ownership_with_account_statement: bool,
-          validated_account_ownership_with_microdeposit: bool,
-          authorizer_company: String,
-          authorizer_ip_address: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::proof_of_authorization_request_submission_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (authorization_terms: String, authorized_at: Time, authorizer_email: String, authorizer_name: String, customer_has_been_offboarded: bool, proof_of_authorization_request_id: String, validated_account_ownership_via_credential: bool, validated_account_ownership_with_account_statement: bool, validated_account_ownership_with_microdeposit: bool, authorizer_company: String, authorizer_ip_address: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::proof_of_authorization_request_submission_create_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::proof_of_authorization_request_submission_create_params
+      def to_hash: () -> Increase::Models::proof_of_authorization_request_submission_create_params
     end
   end
 end

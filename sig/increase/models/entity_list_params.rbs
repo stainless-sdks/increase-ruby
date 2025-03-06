@@ -1,14 +1,12 @@
 module Increase
   module Models
-    type entity_list_params =
-      {
-        created_at: Increase::Models::EntityListParams::CreatedAt,
-        cursor: String,
-        idempotency_key: String,
-        limit: Integer,
-        status: Increase::Models::EntityListParams::Status
-      }
-      & Increase::request_parameters
+    type entity_list_params = ({
+      "?created_at": Increase::Models::EntityListParams::CreatedAt,
+      "?cursor": String,
+      "?idempotency_key": String,
+      "?limit": Integer,
+      "?status": Increase::Models::EntityListParams::Status
+    } & Increase::request_parameters)
 
     class EntityListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -16,9 +14,7 @@ module Increase
 
       attr_reader created_at: Increase::Models::EntityListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::Models::EntityListParams::CreatedAt
-      ) -> Increase::Models::EntityListParams::CreatedAt
+      def created_at=: (Increase::Models::EntityListParams::CreatedAt) -> Increase::Models::EntityListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -34,27 +30,14 @@ module Increase
 
       attr_reader status: Increase::Models::EntityListParams::Status?
 
-      def status=: (
-        Increase::Models::EntityListParams::Status
-      ) -> Increase::Models::EntityListParams::Status
+      def status=: (Increase::Models::EntityListParams::Status) -> Increase::Models::EntityListParams::Status
 
-      def initialize:
-        (
-          created_at: Increase::Models::EntityListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::EntityListParams::Status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::entity_list_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (created_at: Increase::Models::EntityListParams::CreatedAt, cursor: String, idempotency_key: String, limit: Integer, status: Increase::Models::EntityListParams::Status, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::entity_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::entity_list_params
+      def to_hash: () -> Increase::Models::entity_list_params
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {"?after": Time, "?before": Time, "?on_or_after": Time, "?on_or_before": Time}
 
       class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
@@ -73,43 +56,25 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::EntityListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (after: Time, before: Time, on_or_after: Time, on_or_before: Time) -> void
+                      | (?(Increase::Models::EntityListParams::created_at | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::EntityListParams::created_at
+        def to_hash: () -> Increase::Models::EntityListParams::created_at
       end
 
-      type status =
-        { in_: ::Array[Increase::Models::EntityListParams::Status::in_] }
+      type status = {"?in_": ::Array[Increase::Models::EntityListParams::Status::in_]}
 
       class Status < Increase::BaseModel
         attr_reader in_: ::Array[Increase::Models::EntityListParams::Status::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::EntityListParams::Status::in_]
-        ) -> ::Array[Increase::Models::EntityListParams::Status::in_]
+        def in_=: (::Array[Increase::Models::EntityListParams::Status::in_]) -> ::Array[Increase::Models::EntityListParams::Status::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::EntityListParams::Status::in_]
-          ) -> void
-          | (
-            ?Increase::Models::EntityListParams::status
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (in_: ::Array[Increase::Models::EntityListParams::Status::in_]) -> void
+                      | (?(Increase::Models::EntityListParams::status | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::EntityListParams::status
+        def to_hash: () -> Increase::Models::EntityListParams::status
 
-        type in_ = :active | :archived | :disabled
+        type in_ = (:active | :archived | :disabled)
 
         class In < Increase::Enum
           # The entity is active.
@@ -121,7 +86,7 @@ module Increase
           # The entity is temporarily disabled and cannot be used for financial activity.
           DISABLED: :disabled
 
-          def self.values: -> ::Array[Increase::Models::EntityListParams::Status::in_]
+          def self.values: () -> ::Array[Increase::Models::EntityListParams::Status::in_]
         end
       end
     end

@@ -1,13 +1,11 @@
 module Increase
   module Models
-    type physical_card_create_params =
-      {
-        card_id: String,
-        cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,
-        shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
-        physical_card_profile_id: String
-      }
-      & Increase::request_parameters
+    type physical_card_create_params = ({
+      card_id: String,
+      cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,
+      shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
+      "?physical_card_profile_id": String
+    } & Increase::request_parameters)
 
     class PhysicalCardCreateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -23,72 +21,49 @@ module Increase
 
       def physical_card_profile_id=: (String) -> String
 
-      def initialize:
-        (
-          card_id: String,
-          cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,
-          shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
-          physical_card_profile_id: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::physical_card_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (card_id: String, cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder, shipment: Increase::Models::PhysicalCardCreateParams::Shipment, physical_card_profile_id: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::physical_card_create_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::physical_card_create_params
+      def to_hash: () -> Increase::Models::physical_card_create_params
 
-      type cardholder = { first_name: String, last_name: String }
+      type cardholder = {first_name: String, last_name: String}
 
       class Cardholder < Increase::BaseModel
         attr_accessor first_name: String
 
         attr_accessor last_name: String
 
-        def initialize:
-          (first_name: String, last_name: String) -> void
-          | (
-            ?Increase::Models::PhysicalCardCreateParams::cardholder
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (first_name: String, last_name: String) -> void
+                      | (?(Increase::Models::PhysicalCardCreateParams::cardholder | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::PhysicalCardCreateParams::cardholder
+        def to_hash: () -> Increase::Models::PhysicalCardCreateParams::cardholder
       end
 
-      type shipment =
-        {
-          address: Increase::Models::PhysicalCardCreateParams::Shipment::Address,
-          method_: Increase::Models::PhysicalCardCreateParams::Shipment::method_
-        }
+      type shipment = {
+        address: Increase::Models::PhysicalCardCreateParams::Shipment::Address,
+        method_: Increase::Models::PhysicalCardCreateParams::Shipment::method_
+      }
 
       class Shipment < Increase::BaseModel
         attr_accessor address: Increase::Models::PhysicalCardCreateParams::Shipment::Address
 
         attr_accessor method_: Increase::Models::PhysicalCardCreateParams::Shipment::method_
 
-        def initialize:
-          (
-            address: Increase::Models::PhysicalCardCreateParams::Shipment::Address,
-            method_: Increase::Models::PhysicalCardCreateParams::Shipment::method_
-          ) -> void
-          | (
-            ?Increase::Models::PhysicalCardCreateParams::shipment
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (address: Increase::Models::PhysicalCardCreateParams::Shipment::Address, method_: Increase::Models::PhysicalCardCreateParams::Shipment::method_) -> void
+                      | (?(Increase::Models::PhysicalCardCreateParams::shipment | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::PhysicalCardCreateParams::shipment
+        def to_hash: () -> Increase::Models::PhysicalCardCreateParams::shipment
 
-        type address =
-          {
-            city: String,
-            :line1 => String,
-            name: String,
-            postal_code: String,
-            state: String,
-            :line2 => String,
-            :line3 => String,
-            phone_number: String
-          }
+        type address = {
+          city: String,
+          line1: String,
+          name: String,
+          postal_code: String,
+          state: String,
+          "?line2": String,
+          "?line3": String,
+          "?phone_number": String
+        }
 
         class Address < Increase::BaseModel
           attr_accessor city: String
@@ -113,26 +88,13 @@ module Increase
 
           def phone_number=: (String) -> String
 
-          def initialize:
-            (
-              city: String,
-              line1: String,
-              name: String,
-              postal_code: String,
-              state: String,
-              line2: String,
-              line3: String,
-              phone_number: String
-            ) -> void
-            | (
-              ?Increase::Models::PhysicalCardCreateParams::Shipment::address
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (city: String, line1: String, name: String, postal_code: String, state: String, line2: String, line3: String, phone_number: String) -> void
+                        | (?(Increase::Models::PhysicalCardCreateParams::Shipment::address | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::PhysicalCardCreateParams::Shipment::address
+          def to_hash: () -> Increase::Models::PhysicalCardCreateParams::Shipment::address
         end
 
-        type method_ = :usps | :fedex_priority_overnight | :fedex_2_day
+        type method_ = (:usps | :fedex_priority_overnight | :fedex_2_day)
 
         class Method < Increase::Enum
           # USPS Post with tracking.
@@ -144,7 +106,7 @@ module Increase
           # FedEx 2-day.
           FEDEX_2_DAY: :fedex_2_day
 
-          def self.values: -> ::Array[Increase::Models::PhysicalCardCreateParams::Shipment::method_]
+          def self.values: () -> ::Array[Increase::Models::PhysicalCardCreateParams::Shipment::method_]
         end
       end
     end

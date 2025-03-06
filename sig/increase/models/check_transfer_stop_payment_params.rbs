@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type check_transfer_stop_payment_params =
-      { reason: Increase::Models::CheckTransferStopPaymentParams::reason }
-      & Increase::request_parameters
+    type check_transfer_stop_payment_params = ({"?reason": Increase::Models::CheckTransferStopPaymentParams::reason} & Increase::request_parameters)
 
     class CheckTransferStopPaymentParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -10,23 +8,14 @@ module Increase
 
       attr_reader reason: Increase::Models::CheckTransferStopPaymentParams::reason?
 
-      def reason=: (
-        Increase::Models::CheckTransferStopPaymentParams::reason
-      ) -> Increase::Models::CheckTransferStopPaymentParams::reason
+      def reason=: (Increase::Models::CheckTransferStopPaymentParams::reason) -> Increase::Models::CheckTransferStopPaymentParams::reason
 
-      def initialize:
-        (
-          reason: Increase::Models::CheckTransferStopPaymentParams::reason,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::check_transfer_stop_payment_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (reason: Increase::Models::CheckTransferStopPaymentParams::reason, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::check_transfer_stop_payment_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::check_transfer_stop_payment_params
+      def to_hash: () -> Increase::Models::check_transfer_stop_payment_params
 
-      type reason = :mail_delivery_failed | :not_authorized | :unknown
+      type reason = (:mail_delivery_failed | :not_authorized | :unknown)
 
       class Reason < Increase::Enum
         # The check could not be delivered.
@@ -38,7 +27,7 @@ module Increase
         # The check was stopped for another reason.
         UNKNOWN: :unknown
 
-        def self.values: -> ::Array[Increase::Models::CheckTransferStopPaymentParams::reason]
+        def self.values: () -> ::Array[Increase::Models::CheckTransferStopPaymentParams::reason]
       end
     end
   end

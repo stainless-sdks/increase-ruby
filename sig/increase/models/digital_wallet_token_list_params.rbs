@@ -1,13 +1,11 @@
 module Increase
   module Models
-    type digital_wallet_token_list_params =
-      {
-        card_id: String,
-        created_at: Increase::Models::DigitalWalletTokenListParams::CreatedAt,
-        cursor: String,
-        limit: Integer
-      }
-      & Increase::request_parameters
+    type digital_wallet_token_list_params = ({
+      "?card_id": String,
+      "?created_at": Increase::Models::DigitalWalletTokenListParams::CreatedAt,
+      "?cursor": String,
+      "?limit": Integer
+    } & Increase::request_parameters)
 
     class DigitalWalletTokenListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -19,9 +17,7 @@ module Increase
 
       attr_reader created_at: Increase::Models::DigitalWalletTokenListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::Models::DigitalWalletTokenListParams::CreatedAt
-      ) -> Increase::Models::DigitalWalletTokenListParams::CreatedAt
+      def created_at=: (Increase::Models::DigitalWalletTokenListParams::CreatedAt) -> Increase::Models::DigitalWalletTokenListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -31,23 +27,12 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
-      def initialize:
-        (
-          card_id: String,
-          created_at: Increase::Models::DigitalWalletTokenListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::digital_wallet_token_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (card_id: String, created_at: Increase::Models::DigitalWalletTokenListParams::CreatedAt, cursor: String, limit: Integer, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::digital_wallet_token_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::digital_wallet_token_list_params
+      def to_hash: () -> Increase::Models::digital_wallet_token_list_params
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {"?after": Time, "?before": Time, "?on_or_after": Time, "?on_or_before": Time}
 
       class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
@@ -66,19 +51,10 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::DigitalWalletTokenListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (after: Time, before: Time, on_or_after: Time, on_or_before: Time) -> void
+                      | (?(Increase::Models::DigitalWalletTokenListParams::created_at | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::DigitalWalletTokenListParams::created_at
+        def to_hash: () -> Increase::Models::DigitalWalletTokenListParams::created_at
       end
     end
   end

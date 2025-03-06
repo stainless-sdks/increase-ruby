@@ -1,12 +1,7 @@
 module Increase
   module Models
     module Simulations
-      type card_dispute_action_params =
-        {
-          status: Increase::Models::Simulations::CardDisputeActionParams::status,
-          explanation: String
-        }
-        & Increase::request_parameters
+      type card_dispute_action_params = ({status: Increase::Models::Simulations::CardDisputeActionParams::status, "?explanation": String} & Increase::request_parameters)
 
       class CardDisputeActionParams < Increase::BaseModel
         extend Increase::RequestParameters::Converter
@@ -18,21 +13,12 @@ module Increase
 
         def explanation=: (String) -> String
 
-        def initialize:
-          (
-            status: Increase::Models::Simulations::CardDisputeActionParams::status,
-            explanation: String,
-            request_options: Increase::request_opts
-          ) -> void
-          | (
-            ?Increase::Models::Simulations::card_dispute_action_params
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (status: Increase::Models::Simulations::CardDisputeActionParams::status, explanation: String, request_options: Increase::request_opts) -> void
+                      | (?(Increase::Models::Simulations::card_dispute_action_params | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::Simulations::card_dispute_action_params
+        def to_hash: () -> Increase::Models::Simulations::card_dispute_action_params
 
-        type status =
-          :pending_user_information | :accepted | :rejected | :lost | :won
+        type status = (:pending_user_information | :accepted | :rejected | :lost | :won)
 
         class Status < Increase::Enum
           # Increase has requested more information related to the Card Dispute from you.
@@ -50,7 +36,7 @@ module Increase
           # The Card Dispute has been won and no further action can be taken.
           WON: :won
 
-          def self.values: -> ::Array[Increase::Models::Simulations::CardDisputeActionParams::status]
+          def self.values: () -> ::Array[Increase::Models::Simulations::CardDisputeActionParams::status]
         end
       end
     end

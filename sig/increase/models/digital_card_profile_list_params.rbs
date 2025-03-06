@@ -1,13 +1,11 @@
 module Increase
   module Models
-    type digital_card_profile_list_params =
-      {
-        cursor: String,
-        idempotency_key: String,
-        limit: Integer,
-        status: Increase::Models::DigitalCardProfileListParams::Status
-      }
-      & Increase::request_parameters
+    type digital_card_profile_list_params = ({
+      "?cursor": String,
+      "?idempotency_key": String,
+      "?limit": Integer,
+      "?status": Increase::Models::DigitalCardProfileListParams::Status
+    } & Increase::request_parameters)
 
     class DigitalCardProfileListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -27,49 +25,26 @@ module Increase
 
       attr_reader status: Increase::Models::DigitalCardProfileListParams::Status?
 
-      def status=: (
-        Increase::Models::DigitalCardProfileListParams::Status
-      ) -> Increase::Models::DigitalCardProfileListParams::Status
+      def status=: (Increase::Models::DigitalCardProfileListParams::Status) -> Increase::Models::DigitalCardProfileListParams::Status
 
-      def initialize:
-        (
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::DigitalCardProfileListParams::Status,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::digital_card_profile_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (cursor: String, idempotency_key: String, limit: Integer, status: Increase::Models::DigitalCardProfileListParams::Status, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::digital_card_profile_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::digital_card_profile_list_params
+      def to_hash: () -> Increase::Models::digital_card_profile_list_params
 
-      type status =
-        {
-          in_: ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
-        }
+      type status = {"?in_": ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]}
 
       class Status < Increase::BaseModel
         attr_reader in_: ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
-        ) -> ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
+        def in_=: (::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]) -> ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
 
-        def initialize:
-          (
-            in_: ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
-          ) -> void
-          | (
-            ?Increase::Models::DigitalCardProfileListParams::status
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (in_: ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]) -> void
+                      | (?(Increase::Models::DigitalCardProfileListParams::status | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::DigitalCardProfileListParams::status
+        def to_hash: () -> Increase::Models::DigitalCardProfileListParams::status
 
-        type in_ = :pending | :rejected | :active | :archived
+        type in_ = (:pending | :rejected | :active | :archived)
 
         class In < Increase::Enum
           # The Card Profile is awaiting review from Increase and/or processing by card networks.
@@ -84,7 +59,7 @@ module Increase
           # The Card Profile is no longer in use.
           ARCHIVED: :archived
 
-          def self.values: -> ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
+          def self.values: () -> ::Array[Increase::Models::DigitalCardProfileListParams::Status::in_]
         end
       end
     end

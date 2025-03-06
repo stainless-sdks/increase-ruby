@@ -1,7 +1,6 @@
 module Increase
   module Models
-    type bookkeeping_account_balance_params =
-      { at_time: Time } & Increase::request_parameters
+    type bookkeeping_account_balance_params = ({"?at_time": Time} & Increase::request_parameters)
 
     class BookkeepingAccountBalanceParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -11,14 +10,10 @@ module Increase
 
       def at_time=: (Time) -> Time
 
-      def initialize:
-        (at_time: Time, request_options: Increase::request_opts) -> void
-        | (
-          ?Increase::Models::bookkeeping_account_balance_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (at_time: Time, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::bookkeeping_account_balance_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::bookkeeping_account_balance_params
+      def to_hash: () -> Increase::Models::bookkeeping_account_balance_params
     end
   end
 end

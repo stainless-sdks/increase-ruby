@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type inbound_ach_transfer_create_notification_of_change_params =
-      { updated_account_number: String, updated_routing_number: String }
-      & Increase::request_parameters
+    type inbound_ach_transfer_create_notification_of_change_params = ({"?updated_account_number": String, "?updated_routing_number": String} & Increase::request_parameters)
 
     class InboundACHTransferCreateNotificationOfChangeParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -16,18 +14,10 @@ module Increase
 
       def updated_routing_number=: (String) -> String
 
-      def initialize:
-        (
-          updated_account_number: String,
-          updated_routing_number: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::inbound_ach_transfer_create_notification_of_change_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (updated_account_number: String, updated_routing_number: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::inbound_ach_transfer_create_notification_of_change_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::inbound_ach_transfer_create_notification_of_change_params
+      def to_hash: () -> Increase::Models::inbound_ach_transfer_create_notification_of_change_params
     end
   end
 end

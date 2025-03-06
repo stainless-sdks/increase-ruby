@@ -1,14 +1,12 @@
 module Increase
   module Models
-    type check_deposit_create_params =
-      {
-        account_id: String,
-        amount: Integer,
-        back_image_file_id: String,
-        front_image_file_id: String,
-        description: String
-      }
-      & Increase::request_parameters
+    type check_deposit_create_params = ({
+      account_id: String,
+      amount: Integer,
+      back_image_file_id: String,
+      front_image_file_id: String,
+      "?description": String
+    } & Increase::request_parameters)
 
     class CheckDepositCreateParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -26,21 +24,10 @@ module Increase
 
       def description=: (String) -> String
 
-      def initialize:
-        (
-          account_id: String,
-          amount: Integer,
-          back_image_file_id: String,
-          front_image_file_id: String,
-          description: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::check_deposit_create_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (account_id: String, amount: Integer, back_image_file_id: String, front_image_file_id: String, description: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::check_deposit_create_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::check_deposit_create_params
+      def to_hash: () -> Increase::Models::check_deposit_create_params
     end
   end
 end

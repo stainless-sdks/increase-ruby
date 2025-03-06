@@ -1,8 +1,6 @@
 module Increase
   module Models
-    type inbound_ach_transfer_decline_params =
-      { reason: Increase::Models::InboundACHTransferDeclineParams::reason }
-      & Increase::request_parameters
+    type inbound_ach_transfer_decline_params = ({"?reason": Increase::Models::InboundACHTransferDeclineParams::reason} & Increase::request_parameters)
 
     class InboundACHTransferDeclineParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -10,33 +8,14 @@ module Increase
 
       attr_reader reason: Increase::Models::InboundACHTransferDeclineParams::reason?
 
-      def reason=: (
-        Increase::Models::InboundACHTransferDeclineParams::reason
-      ) -> Increase::Models::InboundACHTransferDeclineParams::reason
+      def reason=: (Increase::Models::InboundACHTransferDeclineParams::reason) -> Increase::Models::InboundACHTransferDeclineParams::reason
 
-      def initialize:
-        (
-          reason: Increase::Models::InboundACHTransferDeclineParams::reason,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::inbound_ach_transfer_decline_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (reason: Increase::Models::InboundACHTransferDeclineParams::reason, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::inbound_ach_transfer_decline_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::inbound_ach_transfer_decline_params
+      def to_hash: () -> Increase::Models::inbound_ach_transfer_decline_params
 
-      type reason =
-        :insufficient_funds
-        | :returned_per_odfi_request
-        | :authorization_revoked_by_customer
-        | :payment_stopped
-        | :customer_advised_unauthorized_improper_ineligible_or_incomplete
-        | :representative_payee_deceased_or_unable_to_continue_in_that_capacity
-        | :beneficiary_or_account_holder_deceased
-        | :credit_entry_refused_by_receiver
-        | :duplicate_entry
-        | :corporate_customer_advised_not_authorized
+      type reason = (:insufficient_funds | :returned_per_odfi_request | :authorization_revoked_by_customer | :payment_stopped | :customer_advised_unauthorized_improper_ineligible_or_incomplete | :representative_payee_deceased_or_unable_to_continue_in_that_capacity | :beneficiary_or_account_holder_deceased | :credit_entry_refused_by_receiver | :duplicate_entry | :corporate_customer_advised_not_authorized)
 
       class Reason < Increase::Enum
         # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
@@ -69,7 +48,7 @@ module Increase
         # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
         CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED: :corporate_customer_advised_not_authorized
 
-        def self.values: -> ::Array[Increase::Models::InboundACHTransferDeclineParams::reason]
+        def self.values: () -> ::Array[Increase::Models::InboundACHTransferDeclineParams::reason]
       end
     end
   end

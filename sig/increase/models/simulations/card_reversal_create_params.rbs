@@ -1,9 +1,7 @@
 module Increase
   module Models
     module Simulations
-      type card_reversal_create_params =
-        { card_payment_id: String, amount: Integer }
-        & Increase::request_parameters
+      type card_reversal_create_params = ({card_payment_id: String, "?amount": Integer} & Increase::request_parameters)
 
       class CardReversalCreateParams < Increase::BaseModel
         extend Increase::RequestParameters::Converter
@@ -15,18 +13,10 @@ module Increase
 
         def amount=: (Integer) -> Integer
 
-        def initialize:
-          (
-            card_payment_id: String,
-            amount: Integer,
-            request_options: Increase::request_opts
-          ) -> void
-          | (
-            ?Increase::Models::Simulations::card_reversal_create_params
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (card_payment_id: String, amount: Integer, request_options: Increase::request_opts) -> void
+                      | (?(Increase::Models::Simulations::card_reversal_create_params | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::Simulations::card_reversal_create_params
+        def to_hash: () -> Increase::Models::Simulations::card_reversal_create_params
       end
     end
   end

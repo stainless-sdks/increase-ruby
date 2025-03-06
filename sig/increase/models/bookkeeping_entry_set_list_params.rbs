@@ -1,13 +1,6 @@
 module Increase
   module Models
-    type bookkeeping_entry_set_list_params =
-      {
-        cursor: String,
-        idempotency_key: String,
-        limit: Integer,
-        transaction_id: String
-      }
-      & Increase::request_parameters
+    type bookkeeping_entry_set_list_params = ({"?cursor": String, "?idempotency_key": String, "?limit": Integer, "?transaction_id": String} & Increase::request_parameters)
 
     class BookkeepingEntrySetListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -29,20 +22,10 @@ module Increase
 
       def transaction_id=: (String) -> String
 
-      def initialize:
-        (
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          transaction_id: String,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::bookkeeping_entry_set_list_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (cursor: String, idempotency_key: String, limit: Integer, transaction_id: String, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::bookkeeping_entry_set_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::bookkeeping_entry_set_list_params
+      def to_hash: () -> Increase::Models::bookkeeping_entry_set_list_params
     end
   end
 end

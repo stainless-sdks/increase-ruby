@@ -1,14 +1,12 @@
 module Increase
   module Models
-    type file_list_params =
-      {
-        created_at: Increase::Models::FileListParams::CreatedAt,
-        cursor: String,
-        idempotency_key: String,
-        limit: Integer,
-        purpose: Increase::Models::FileListParams::Purpose
-      }
-      & Increase::request_parameters
+    type file_list_params = ({
+      "?created_at": Increase::Models::FileListParams::CreatedAt,
+      "?cursor": String,
+      "?idempotency_key": String,
+      "?limit": Integer,
+      "?purpose": Increase::Models::FileListParams::Purpose
+    } & Increase::request_parameters)
 
     class FileListParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
@@ -16,9 +14,7 @@ module Increase
 
       attr_reader created_at: Increase::Models::FileListParams::CreatedAt?
 
-      def created_at=: (
-        Increase::Models::FileListParams::CreatedAt
-      ) -> Increase::Models::FileListParams::CreatedAt
+      def created_at=: (Increase::Models::FileListParams::CreatedAt) -> Increase::Models::FileListParams::CreatedAt
 
       attr_reader cursor: String?
 
@@ -34,27 +30,14 @@ module Increase
 
       attr_reader purpose: Increase::Models::FileListParams::Purpose?
 
-      def purpose=: (
-        Increase::Models::FileListParams::Purpose
-      ) -> Increase::Models::FileListParams::Purpose
+      def purpose=: (Increase::Models::FileListParams::Purpose) -> Increase::Models::FileListParams::Purpose
 
-      def initialize:
-        (
-          created_at: Increase::Models::FileListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          purpose: Increase::Models::FileListParams::Purpose,
-          request_options: Increase::request_opts
-        ) -> void
-        | (
-          ?Increase::Models::file_list_params | Increase::BaseModel data
-        ) -> void
+      def initialize: (created_at: Increase::Models::FileListParams::CreatedAt, cursor: String, idempotency_key: String, limit: Integer, purpose: Increase::Models::FileListParams::Purpose, request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::file_list_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::file_list_params
+      def to_hash: () -> Increase::Models::file_list_params
 
-      type created_at =
-        { after: Time, before: Time, on_or_after: Time, on_or_before: Time }
+      type created_at = {"?after": Time, "?before": Time, "?on_or_after": Time, "?on_or_before": Time}
 
       class CreatedAt < Increase::BaseModel
         attr_reader after: Time?
@@ -73,66 +56,25 @@ module Increase
 
         def on_or_before=: (Time) -> Time
 
-        def initialize:
-          (
-            after: Time,
-            before: Time,
-            on_or_after: Time,
-            on_or_before: Time
-          ) -> void
-          | (
-            ?Increase::Models::FileListParams::created_at
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (after: Time, before: Time, on_or_after: Time, on_or_before: Time) -> void
+                      | (?(Increase::Models::FileListParams::created_at | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::FileListParams::created_at
+        def to_hash: () -> Increase::Models::FileListParams::created_at
       end
 
-      type purpose =
-        { in_: ::Array[Increase::Models::FileListParams::Purpose::in_] }
+      type purpose = {"?in_": ::Array[Increase::Models::FileListParams::Purpose::in_]}
 
       class Purpose < Increase::BaseModel
         attr_reader in_: ::Array[Increase::Models::FileListParams::Purpose::in_]?
 
-        def in_=: (
-          ::Array[Increase::Models::FileListParams::Purpose::in_]
-        ) -> ::Array[Increase::Models::FileListParams::Purpose::in_]
+        def in_=: (::Array[Increase::Models::FileListParams::Purpose::in_]) -> ::Array[Increase::Models::FileListParams::Purpose::in_]
 
-        def initialize:
-          (in_: ::Array[Increase::Models::FileListParams::Purpose::in_]) -> void
-          | (
-            ?Increase::Models::FileListParams::purpose
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (in_: ::Array[Increase::Models::FileListParams::Purpose::in_]) -> void
+                      | (?(Increase::Models::FileListParams::purpose | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::FileListParams::purpose
+        def to_hash: () -> Increase::Models::FileListParams::purpose
 
-        type in_ =
-          :check_image_front
-          | :check_image_back
-          | :processed_check_image_front
-          | :processed_check_image_back
-          | :mailed_check_image
-          | :check_voucher_image
-          | :check_attachment_image
-          | :inbound_mail_item
-          | :form_1099_int
-          | :form_1099_misc
-          | :form_ss_4
-          | :identity_document
-          | :increase_statement
-          | :other
-          | :trust_formation_document
-          | :digital_wallet_artwork
-          | :digital_wallet_app_icon
-          | :physical_card_front
-          | :physical_card_back
-          | :physical_card_carrier
-          | :document_request
-          | :entity_supplemental_document
-          | :export
-          | :unusual_activity_report_attachment
-          | :deposit_account_control_agreement
+        type in_ = (:check_image_front | :check_image_back | :processed_check_image_front | :processed_check_image_back | :mailed_check_image | :check_voucher_image | :check_attachment_image | :inbound_mail_item | :form_1099_int | :form_1099_misc | :form_ss_4 | :identity_document | :increase_statement | :other | :trust_formation_document | :digital_wallet_artwork | :digital_wallet_app_icon | :physical_card_front | :physical_card_back | :physical_card_carrier | :document_request | :entity_supplemental_document | :export | :unusual_activity_report_attachment | :deposit_account_control_agreement)
 
         class In < Increase::Enum
           # An image of the front of a check, used for check deposits.
@@ -210,7 +152,7 @@ module Increase
           # A document granting another entity access to the funds into your account.
           DEPOSIT_ACCOUNT_CONTROL_AGREEMENT: :deposit_account_control_agreement
 
-          def self.values: -> ::Array[Increase::Models::FileListParams::Purpose::in_]
+          def self.values: () -> ::Array[Increase::Models::FileListParams::Purpose::in_]
         end
       end
     end
