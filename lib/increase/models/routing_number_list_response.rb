@@ -58,16 +58,6 @@ module Increase
       # @abstract
       #
       # This routing number's support for ACH Transfers.
-      #
-      # @example
-      # ```ruby
-      # case ach_transfers
-      # in :supported
-      #   # ...
-      # in :not_supported
-      #   # ...
-      # end
-      # ```
       class ACHTransfers < Increase::Enum
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
@@ -86,16 +76,6 @@ module Increase
       # @abstract
       #
       # This routing number's support for Real-Time Payments Transfers.
-      #
-      # @example
-      # ```ruby
-      # case real_time_payments_transfers
-      # in :supported
-      #   # ...
-      # in :not_supported
-      #   # ...
-      # end
-      # ```
       class RealTimePaymentsTransfers < Increase::Enum
         # The routing number can receive this transfer type.
         SUPPORTED = :supported
@@ -115,14 +95,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `routing_number`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :routing_number
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         ROUTING_NUMBER = :routing_number
 
@@ -137,16 +109,6 @@ module Increase
       # @abstract
       #
       # This routing number's support for Wire Transfers.
-      #
-      # @example
-      # ```ruby
-      # case wire_transfers
-      # in :supported
-      #   # ...
-      # in :not_supported
-      #   # ...
-      # end
-      # ```
       class WireTransfers < Increase::Enum
         # The routing number can receive this transfer type.
         SUPPORTED = :supported

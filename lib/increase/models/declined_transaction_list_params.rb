@@ -113,23 +113,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :ach_decline
-        #   # ...
-        # in :card_decline
-        #   # ...
-        # in :check_decline
-        #   # ...
-        # in :inbound_real_time_payments_transfer_decline
-        #   # ...
-        # in :wire_decline
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class In < Increase::Enum
           # ACH Decline: details will be under the `ach_decline` object.
           ACH_DECLINE = :ach_decline

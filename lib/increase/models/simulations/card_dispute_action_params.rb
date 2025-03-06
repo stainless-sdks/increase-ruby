@@ -36,22 +36,6 @@ module Increase
         # @abstract
         #
         # The status to move the dispute to.
-        #
-        # @example
-        # ```ruby
-        # case status
-        # in :pending_user_information
-        #   # ...
-        # in :accepted
-        #   # ...
-        # in :rejected
-        #   # ...
-        # in :lost
-        #   # ...
-        # in :won
-        #   # ...
-        # end
-        # ```
         class Status < Increase::Enum
           # Increase has requested more information related to the Card Dispute from you.
           PENDING_USER_INFORMATION = :pending_user_information

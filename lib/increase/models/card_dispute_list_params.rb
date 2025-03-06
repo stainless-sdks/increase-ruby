@@ -151,23 +151,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :pending_reviewing
-        #   # ...
-        # in :pending_user_information
-        #   # ...
-        # in :accepted
-        #   # ...
-        # in :rejected
-        #   # ...
-        # in :lost
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class In < Increase::Enum
           # The Card Dispute is pending review.
           PENDING_REVIEWING = :pending_reviewing

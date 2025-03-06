@@ -365,18 +365,6 @@ module Increase
         # @abstract
         #
         # The type of object that created this transfer.
-        #
-        # @example
-        # ```ruby
-        # case category
-        # in :api_key
-        #   # ...
-        # in :oauth_application
-        #   # ...
-        # in :user
-        #   # ...
-        # end
-        # ```
         class Category < Increase::Enum
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
@@ -434,24 +422,6 @@ module Increase
       #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For real-time payments transfers this is always equal to `USD`.
-      #
-      # @example
-      # ```ruby
-      # case currency
-      # in :CAD
-      #   # ...
-      # in :CHF
-      #   # ...
-      # in :EUR
-      #   # ...
-      # in :GBP
-      #   # ...
-      # in :JPY
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -518,24 +488,6 @@ module Increase
         #
         # The reason the transfer was rejected as provided by the recipient bank or the
         #   Real-Time Payments network.
-        #
-        # @example
-        # ```ruby
-        # case reject_reason_code
-        # in :account_closed
-        #   # ...
-        # in :account_blocked
-        #   # ...
-        # in :invalid_creditor_account_type
-        #   # ...
-        # in :invalid_creditor_account_number
-        #   # ...
-        # in :invalid_creditor_financial_institution_identifier
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class RejectReasonCode < Increase::Enum
           # The destination account is closed. Corresponds to the Real-Time Payments reason code `AC04`.
           ACCOUNT_CLOSED = :account_closed
@@ -612,24 +564,6 @@ module Increase
       # @abstract
       #
       # The lifecycle status of the transfer.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :pending_approval
-      #   # ...
-      # in :canceled
-      #   # ...
-      # in :pending_reviewing
-      #   # ...
-      # in :requires_attention
-      #   # ...
-      # in :rejected
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Status < Increase::Enum
         # The transfer is pending approval.
         PENDING_APPROVAL = :pending_approval
@@ -693,14 +627,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `real_time_payments_transfer`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :real_time_payments_transfer
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         REAL_TIME_PAYMENTS_TRANSFER = :real_time_payments_transfer
 

@@ -177,18 +177,6 @@ module Increase
         # @abstract
         #
         # The shipping method to use.
-        #
-        # @example
-        # ```ruby
-        # case method
-        # in :usps
-        #   # ...
-        # in :fedex_priority_overnight
-        #   # ...
-        # in :fedex_2_day
-        #   # ...
-        # end
-        # ```
         class Method < Increase::Enum
           # USPS Post with tracking.
           USPS = :usps

@@ -107,18 +107,6 @@ module Increase
         # @abstract
         #
         # Whether the card authentication attempt should be approved or declined.
-        #
-        # @example
-        # ```ruby
-        # case decision
-        # in :approve
-        #   # ...
-        # in :challenge
-        #   # ...
-        # in :deny
-        #   # ...
-        # end
-        # ```
         class Decision < Increase::Enum
           # Approve the authentication attempt without triggering a challenge.
           APPROVE = :approve
@@ -161,16 +149,6 @@ module Increase
         #
         # Whether the card authentication challenge was successfully delivered to the
         #   cardholder.
-        #
-        # @example
-        # ```ruby
-        # case result
-        # in :success
-        #   # ...
-        # in :failure
-        #   # ...
-        # end
-        # ```
         class Result < Increase::Enum
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS = :success
@@ -221,16 +199,6 @@ module Increase
         # @abstract
         #
         # Whether the card authorization should be approved or declined.
-        #
-        # @example
-        # ```ruby
-        # case decision
-        # in :approve
-        #   # ...
-        # in :decline
-        #   # ...
-        # end
-        # ```
         class Decision < Increase::Enum
           # Approve the authorization.
           APPROVE = :approve
@@ -250,24 +218,6 @@ module Increase
         #
         # The reason the card authorization was declined. This translates to a specific
         #   decline code that is sent to the card network.
-        #
-        # @example
-        # ```ruby
-        # case decline_reason
-        # in :insufficient_funds
-        #   # ...
-        # in :transaction_never_allowed
-        #   # ...
-        # in :exceeds_approval_limit
-        #   # ...
-        # in :card_temporarily_disabled
-        #   # ...
-        # in :suspected_fraud
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class DeclineReason < Increase::Enum
           # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
           INSUFFICIENT_FUNDS = :insufficient_funds
@@ -328,16 +278,6 @@ module Increase
         # @abstract
         #
         # Whether your application was able to deliver the one-time passcode.
-        #
-        # @example
-        # ```ruby
-        # case result
-        # in :success
-        #   # ...
-        # in :failure
-        #   # ...
-        # end
-        # ```
         class Result < Increase::Enum
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS = :success

@@ -74,16 +74,6 @@ module Increase
         # Whether ACH debits are allowed against this Account Number. Note that ACH debits
         #   will be declined if this is `allowed` but the Account Number is not active. If
         #   you do not specify this field, the default is `allowed`.
-        #
-        # @example
-        # ```ruby
-        # case debit_status
-        # in :allowed
-        #   # ...
-        # in :blocked
-        #   # ...
-        # end
-        # ```
         class DebitStatus < Increase::Enum
           # ACH Debits are allowed.
           ALLOWED = :allowed
@@ -122,16 +112,6 @@ module Increase
         #
         # How Increase should process checks with this account number printed on them. If
         #   you do not specify this field, the default is `check_transfers_only`.
-        #
-        # @example
-        # ```ruby
-        # case status
-        # in :allowed
-        #   # ...
-        # in :check_transfers_only
-        #   # ...
-        # end
-        # ```
         class Status < Increase::Enum
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED = :allowed

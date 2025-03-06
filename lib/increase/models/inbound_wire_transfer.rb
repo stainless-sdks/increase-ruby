@@ -224,20 +224,6 @@ module Increase
       # @abstract
       #
       # The status of the transfer.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :pending
-      #   # ...
-      # in :accepted
-      #   # ...
-      # in :declined
-      #   # ...
-      # in :reversed
-      #   # ...
-      # end
-      # ```
       class Status < Increase::Enum
         # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
         PENDING = :pending
@@ -263,14 +249,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_wire_transfer`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :inbound_wire_transfer
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
 

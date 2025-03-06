@@ -50,16 +50,6 @@ module Increase
       # @abstract
       #
       # This indicates if checks can be sent to the Lockbox.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :active
-      #   # ...
-      # in :inactive
-      #   # ...
-      # end
-      # ```
       class Status < Increase::Enum
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
         ACTIVE = :active

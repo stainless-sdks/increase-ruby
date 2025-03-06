@@ -156,18 +156,6 @@ module Increase
         # @abstract
         #
         # Whether or not the authentication attempt was approved.
-        #
-        # @example
-        # ```ruby
-        # case decision
-        # in :approve
-        #   # ...
-        # in :challenge
-        #   # ...
-        # in :deny
-        #   # ...
-        # end
-        # ```
         class Decision < Increase::Enum
           # Approve the authentication attempt without triggering a challenge.
           APPROVE = :approve
@@ -237,16 +225,6 @@ module Increase
         # @abstract
         #
         # Whether or not the challenge was delivered to the cardholder.
-        #
-        # @example
-        # ```ruby
-        # case result
-        # in :success
-        #   # ...
-        # in :failure
-        #   # ...
-        # end
-        # ```
         class Result < Increase::Enum
           # Your application successfully delivered the one-time code to the cardholder.
           SUCCESS = :success
@@ -498,16 +476,6 @@ module Increase
         # @abstract
         #
         # Whether or not the authorization was approved.
-        #
-        # @example
-        # ```ruby
-        # case decision
-        # in :approve
-        #   # ...
-        # in :decline
-        #   # ...
-        # end
-        # ```
         class Decision < Increase::Enum
           # Approve the authorization.
           APPROVE = :approve
@@ -527,16 +495,6 @@ module Increase
         #
         # The direction describes the direction the funds will move, either from the
         #   cardholder to the merchant or from the merchant to the cardholder.
-        #
-        # @example
-        # ```ruby
-        # case direction
-        # in :settlement
-        #   # ...
-        # in :refund
-        #   # ...
-        # end
-        # ```
         class Direction < Increase::Enum
           # A regular card authorization where funds are debited from the cardholder.
           SETTLEMENT = :settlement
@@ -581,14 +539,6 @@ module Increase
           # @abstract
           #
           # The payment network used to process this card authorization.
-          #
-          # @example
-          # ```ruby
-          # case category
-          # in :visa
-          #   # ...
-          # end
-          # ```
           class Category < Increase::Enum
             # Visa
             VISA = :visa
@@ -646,24 +596,6 @@ module Increase
             # For electronic commerce transactions, this identifies the level of security used
             #   in obtaining the customer's payment credential. For mail or telephone order
             #   transactions, identifies the type of mail or telephone order.
-            #
-            # @example
-            # ```ruby
-            # case electronic_commerce_indicator
-            # in :mail_phone_order
-            #   # ...
-            # in :recurring
-            #   # ...
-            # in :installment
-            #   # ...
-            # in :unknown_mail_phone_order
-            #   # ...
-            # in :secure_electronic_commerce
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class ElectronicCommerceIndicator < Increase::Enum
               # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
               MAIL_PHONE_ORDER = :mail_phone_order
@@ -701,24 +633,6 @@ module Increase
             #
             # The method used to enter the cardholder's primary account number and card
             #   expiration date.
-            #
-            # @example
-            # ```ruby
-            # case point_of_service_entry_mode
-            # in :unknown
-            #   # ...
-            # in :manual
-            #   # ...
-            # in :magnetic_stripe_no_cvv
-            #   # ...
-            # in :optical_code
-            #   # ...
-            # in :integrated_circuit_card
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class PointOfServiceEntryMode < Increase::Enum
               # Unknown
               UNKNOWN = :unknown
@@ -762,24 +676,6 @@ module Increase
             #
             # Only present when `actioner: network`. Describes why a card authorization was
             #   approved or declined by Visa through stand-in processing.
-            #
-            # @example
-            # ```ruby
-            # case stand_in_processing_reason
-            # in :issuer_error
-            #   # ...
-            # in :invalid_physical_card
-            #   # ...
-            # in :invalid_cardholder_authentication_verification_value
-            #   # ...
-            # in :internal_visa_error
-            #   # ...
-            # in :merchant_transaction_advisory_service_authentication_required
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class StandInProcessingReason < Increase::Enum
               # Increase failed to process the authorization in a timely manner.
               ISSUER_ERROR = :issuer_error
@@ -851,24 +747,6 @@ module Increase
         #
         # The processing category describes the intent behind the authorization, such as
         #   whether it was used for bill payments or an automatic fuel dispenser.
-        #
-        # @example
-        # ```ruby
-        # case processing_category
-        # in :account_funding
-        #   # ...
-        # in :automatic_fuel_dispenser
-        #   # ...
-        # in :bill_payment
-        #   # ...
-        # in :purchase
-        #   # ...
-        # in :quasi_cash
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class ProcessingCategory < Increase::Enum
           # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
           ACCOUNT_FUNDING = :account_funding
@@ -934,16 +812,6 @@ module Increase
           #
           # The type of this request (e.g., an initial authorization or an incremental
           #   authorization).
-          #
-          # @example
-          # ```ruby
-          # case category
-          # in :initial_authorization
-          #   # ...
-          # in :incremental_authorization
-          #   # ...
-          # end
-          # ```
           class Category < Increase::Enum
             # A regular, standalone authorization.
             INITIAL_AUTHORIZATION = :initial_authorization
@@ -1033,18 +901,6 @@ module Increase
             # @abstract
             #
             # The result of verifying the Card Verification Code.
-            #
-            # @example
-            # ```ruby
-            # case result
-            # in :not_checked
-            #   # ...
-            # in :match
-            #   # ...
-            # in :no_match
-            #   # ...
-            # end
-            # ```
             class Result < Increase::Enum
               # No card verification code was provided in the authorization request.
               NOT_CHECKED = :not_checked
@@ -1114,24 +970,6 @@ module Increase
             # @abstract
             #
             # The address verification result returned to the card network.
-            #
-            # @example
-            # ```ruby
-            # case result
-            # in :not_checked
-            #   # ...
-            # in :postal_code_match_address_not_checked
-            #   # ...
-            # in :postal_code_match_address_no_match
-            #   # ...
-            # in :postal_code_no_match_address_match
-            #   # ...
-            # in :match
-            #   # ...
-            # in ...
-            #   #...
-            # end
-            # ```
             class Result < Increase::Enum
               # No adress was provided in the authorization request.
               NOT_CHECKED = :not_checked
@@ -1165,22 +1003,6 @@ module Increase
       # @abstract
       #
       # The category of the Real-Time Decision.
-      #
-      # @example
-      # ```ruby
-      # case category
-      # in :card_authorization_requested
-      #   # ...
-      # in :card_authentication_requested
-      #   # ...
-      # in :card_authentication_challenge_requested
-      #   # ...
-      # in :digital_wallet_token_requested
-      #   # ...
-      # in :digital_wallet_authentication_requested
-      #   # ...
-      # end
-      # ```
       class Category < Increase::Enum
         # A card is being authorized.
         CARD_AUTHORIZATION_REQUESTED = :card_authorization_requested
@@ -1270,16 +1092,6 @@ module Increase
         # @abstract
         #
         # The channel to send the card user their one-time passcode.
-        #
-        # @example
-        # ```ruby
-        # case channel
-        # in :sms
-        #   # ...
-        # in :email
-        #   # ...
-        # end
-        # ```
         class Channel < Increase::Enum
           # Send one-time passcodes over SMS.
           SMS = :sms
@@ -1298,20 +1110,6 @@ module Increase
         # @abstract
         #
         # The digital wallet app being used.
-        #
-        # @example
-        # ```ruby
-        # case digital_wallet
-        # in :apple_pay
-        #   # ...
-        # in :google_pay
-        #   # ...
-        # in :samsung_pay
-        #   # ...
-        # in :unknown
-        #   # ...
-        # end
-        # ```
         class DigitalWallet < Increase::Enum
           # Apple Pay
           APPLE_PAY = :apple_pay
@@ -1336,16 +1134,6 @@ module Increase
         # @abstract
         #
         # Whether your application successfully delivered the one-time passcode.
-        #
-        # @example
-        # ```ruby
-        # case result
-        # in :success
-        #   # ...
-        # in :failure
-        #   # ...
-        # end
-        # ```
         class Result < Increase::Enum
           # Your application successfully delivered the one-time passcode to the cardholder.
           SUCCESS = :success
@@ -1409,16 +1197,6 @@ module Increase
         #
         # Whether or not the provisioning request was approved. This will be null until
         #   the real time decision is responded to.
-        #
-        # @example
-        # ```ruby
-        # case decision
-        # in :approve
-        #   # ...
-        # in :decline
-        #   # ...
-        # end
-        # ```
         class Decision < Increase::Enum
           # Approve the provisioning request.
           APPROVE = :approve
@@ -1437,20 +1215,6 @@ module Increase
         # @abstract
         #
         # The digital wallet app being used.
-        #
-        # @example
-        # ```ruby
-        # case digital_wallet
-        # in :apple_pay
-        #   # ...
-        # in :google_pay
-        #   # ...
-        # in :samsung_pay
-        #   # ...
-        # in :unknown
-        #   # ...
-        # end
-        # ```
         class DigitalWallet < Increase::Enum
           # Apple Pay
           APPLE_PAY = :apple_pay
@@ -1476,18 +1240,6 @@ module Increase
       # @abstract
       #
       # The status of the Real-Time Decision.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :pending
-      #   # ...
-      # in :responded
-      #   # ...
-      # in :timed_out
-      #   # ...
-      # end
-      # ```
       class Status < Increase::Enum
         # The decision is pending action via real-time webhook.
         PENDING = :pending
@@ -1510,14 +1262,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `real_time_decision`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :real_time_decision
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         REAL_TIME_DECISION = :real_time_decision
 

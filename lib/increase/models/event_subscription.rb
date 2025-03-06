@@ -95,24 +95,6 @@ module Increase
       #
       # If specified, this subscription will only receive webhooks for Events with the
       #   specified `category`.
-      #
-      # @example
-      # ```ruby
-      # case selected_event_category
-      # in :"account.created"
-      #   # ...
-      # in :"account.updated"
-      #   # ...
-      # in :"account_number.created"
-      #   # ...
-      # in :"account_number.updated"
-      #   # ...
-      # in :"account_statement.created"
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class SelectedEventCategory < Increase::Enum
         # Occurs whenever an Account is created.
         ACCOUNT_CREATED = :"account.created"
@@ -389,20 +371,6 @@ module Increase
       # @abstract
       #
       # This indicates if we'll send notifications to this subscription.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :active
-      #   # ...
-      # in :disabled
-      #   # ...
-      # in :deleted
-      #   # ...
-      # in :requires_attention
-      #   # ...
-      # end
-      # ```
       class Status < Increase::Enum
         # The subscription is active and Events will be delivered normally.
         ACTIVE = :active
@@ -428,14 +396,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `event_subscription`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :event_subscription
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         EVENT_SUBSCRIPTION = :event_subscription
 

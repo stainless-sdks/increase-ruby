@@ -96,21 +96,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :pending_enrolling
-        #   # ...
-        # in :enrolled
-        #   # ...
-        # in :pending_unenrolling
-        #   # ...
-        # in :unenrolled
-        #   # ...
-        # in :requires_attention
-        #   # ...
-        # end
-        # ```
         class In < Increase::Enum
           # The account is being added to the IntraFi network.
           PENDING_ENROLLING = :pending_enrolling

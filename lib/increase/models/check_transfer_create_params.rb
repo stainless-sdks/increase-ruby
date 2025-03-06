@@ -95,16 +95,6 @@ module Increase
       # @abstract
       #
       # Whether Increase will print and mail the check or if you will do it yourself.
-      #
-      # @example
-      # ```ruby
-      # case fulfillment_method
-      # in :physical_check
-      #   # ...
-      # in :third_party
-      #   # ...
-      # end
-      # ```
       class FulfillmentMethod < Increase::Enum
         # Increase will print and mail a physical check.
         PHYSICAL_CHECK = :physical_check
