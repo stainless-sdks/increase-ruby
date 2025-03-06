@@ -61,6 +61,14 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :bookkeeping_entry
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         BOOKKEEPING_ENTRY = :bookkeeping_entry
 
