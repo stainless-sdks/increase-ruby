@@ -61,6 +61,16 @@ module Increase
       # @abstract
       #
       # The type of entity that owns the External Account.
+      #
+      # @example
+      # ```ruby
+      # case account_holder
+      # in :business
+      #   # ...
+      # in :individual
+      #   # ...
+      # end
+      # ```
       class AccountHolder < Increase::Enum
         # The External Account is owned by a business.
         BUSINESS = :business
@@ -79,6 +89,18 @@ module Increase
       # @abstract
       #
       # The funding type of the External Account.
+      #
+      # @example
+      # ```ruby
+      # case funding
+      # in :checking
+      #   # ...
+      # in :savings
+      #   # ...
+      # in :other
+      #   # ...
+      # end
+      # ```
       class Funding < Increase::Enum
         # A checking account.
         CHECKING = :checking
@@ -100,6 +122,16 @@ module Increase
       # @abstract
       #
       # The status of the External Account.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :active
+      #   # ...
+      # in :archived
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The External Account is active.
         ACTIVE = :active

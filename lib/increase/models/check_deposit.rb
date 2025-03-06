@@ -248,6 +248,24 @@ module Increase
         #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
+        #
+        # @example
+        # ```ruby
+        # case currency
+        # in :CAD
+        #   # ...
+        # in :CHF
+        #   # ...
+        # in :EUR
+        #   # ...
+        # in :GBP
+        #   # ...
+        # in :JPY
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD = :CAD
@@ -335,6 +353,24 @@ module Increase
         #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
         #   currency.
+        #
+        # @example
+        # ```ruby
+        # case currency
+        # in :CAD
+        #   # ...
+        # in :CHF
+        #   # ...
+        # in :EUR
+        #   # ...
+        # in :GBP
+        #   # ...
+        # in :JPY
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD = :CAD
@@ -365,6 +401,24 @@ module Increase
         # @abstract
         #
         # Why the check deposit was rejected.
+        #
+        # @example
+        # ```ruby
+        # case reason
+        # in :incomplete_image
+        #   # ...
+        # in :duplicate
+        #   # ...
+        # in :poor_image_quality
+        #   # ...
+        # in :incorrect_amount
+        #   # ...
+        # in :incorrect_recipient
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Reason < Increase::Enum
           # The check's image is incomplete.
           INCOMPLETE_IMAGE = :incomplete_image
@@ -468,6 +522,24 @@ module Increase
         #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
         #   transaction's currency.
+        #
+        # @example
+        # ```ruby
+        # case currency
+        # in :CAD
+        #   # ...
+        # in :CHF
+        #   # ...
+        # in :EUR
+        #   # ...
+        # in :GBP
+        #   # ...
+        # in :JPY
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD = :CAD
@@ -499,6 +571,24 @@ module Increase
         #
         # Why this check was returned by the bank holding the account it was drawn
         #   against.
+        #
+        # @example
+        # ```ruby
+        # case return_reason
+        # in :ach_conversion_not_supported
+        #   # ...
+        # in :closed_account
+        #   # ...
+        # in :duplicate_submission
+        #   # ...
+        # in :insufficient_funds
+        #   # ...
+        # in :no_account
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class ReturnReason < Increase::Enum
           # The check doesn't allow ACH conversion.
           ACH_CONVERSION_NOT_SUPPORTED = :ach_conversion_not_supported
@@ -726,6 +816,24 @@ module Increase
         #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
+        #
+        # @example
+        # ```ruby
+        # case currency
+        # in :CAD
+        #   # ...
+        # in :CHF
+        #   # ...
+        # in :EUR
+        #   # ...
+        # in :GBP
+        #   # ...
+        # in :JPY
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD = :CAD
@@ -756,6 +864,16 @@ module Increase
         # @abstract
         #
         # The status of the hold.
+        #
+        # @example
+        # ```ruby
+        # case status
+        # in :held
+        #   # ...
+        # in :complete
+        #   # ...
+        # end
+        # ```
         class Status < Increase::Enum
           # Funds are still being held.
           HELD = :held
@@ -775,6 +893,14 @@ module Increase
         #
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
+        #
+        # @example
+        # ```ruby
+        # case type
+        # in :inbound_funds_hold
+        #   # ...
+        # end
+        # ```
         class Type < Increase::Enum
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
@@ -790,6 +916,20 @@ module Increase
       # @abstract
       #
       # The status of the Check Deposit.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :pending
+      #   # ...
+      # in :submitted
+      #   # ...
+      # in :rejected
+      #   # ...
+      # in :returned
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The Check Deposit is pending review.
         PENDING = :pending
@@ -815,6 +955,14 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `check_deposit`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :check_deposit
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         CHECK_DEPOSIT = :check_deposit
 

@@ -112,6 +112,24 @@ module Increase
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
       #   Transaction's currency. This will match the currency on the Transaction's
       #   Account.
+      #
+      # @example
+      # ```ruby
+      # case currency
+      # in :CAD
+      #   # ...
+      # in :CHF
+      #   # ...
+      # in :EUR
+      #   # ...
+      # in :GBP
+      #   # ...
+      # in :JPY
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -142,6 +160,18 @@ module Increase
       # @abstract
       #
       # The type of the route this Transaction came through.
+      #
+      # @example
+      # ```ruby
+      # case route_type
+      # in :account_number
+      #   # ...
+      # in :card
+      #   # ...
+      # in :lockbox
+      #   # ...
+      # end
+      # ```
       class RouteType < Increase::Enum
         # An Account Number.
         ACCOUNT_NUMBER = :account_number
@@ -605,6 +635,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -779,6 +827,24 @@ module Increase
           #
           # Why the ACH Transfer was returned. This reason code is sent by the receiving
           #   bank back to Increase.
+          #
+          # @example
+          # ```ruby
+          # case return_reason_code
+          # in :insufficient_fund
+          #   # ...
+          # in :no_account
+          #   # ...
+          # in :account_closed
+          #   # ...
+          # in :invalid_account_number_structure
+          #   # ...
+          # in :account_frozen_entry_returned_per_ofac_instruction
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class ReturnReasonCode < Increase::Enum
             # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
             INSUFFICIENT_FUND = :insufficient_fund
@@ -1284,6 +1350,24 @@ module Increase
             # @abstract
             #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            #
+            # @example
+            # ```ruby
+            # case currency
+            # in :CAD
+            #   # ...
+            # in :CHF
+            #   # ...
+            # in :EUR
+            #   # ...
+            # in :GBP
+            #   # ...
+            # in :JPY
+            #   # ...
+            # in ...
+            #   #...
+            # end
+            # ```
             class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD = :CAD
@@ -1316,6 +1400,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -1380,6 +1482,24 @@ module Increase
             #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
+            #
+            # @example
+            # ```ruby
+            # case currency
+            # in :CAD
+            #   # ...
+            # in :CHF
+            #   # ...
+            # in :EUR
+            #   # ...
+            # in :GBP
+            #   # ...
+            # in :JPY
+            #   # ...
+            # in ...
+            #   #...
+            # end
+            # ```
             class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD = :CAD
@@ -1701,6 +1821,24 @@ module Increase
               # @abstract
               #
               # Additional charges (gas, late fee, etc.) being billed.
+              #
+              # @example
+              # ```ruby
+              # case extra_charges
+              # in :no_extra_charge
+              #   # ...
+              # in :gas
+              #   # ...
+              # in :extra_mileage
+              #   # ...
+              # in :late_return
+              #   # ...
+              # in :one_way_service_fee
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
@@ -1732,6 +1870,16 @@ module Increase
               #
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
+              #
+              # @example
+              # ```ruby
+              # case no_show_indicator
+              # in :not_applicable
+              #   # ...
+              # in :no_show_for_specialized_vehicle
+              #   # ...
+              # end
+              # ```
               class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
@@ -1903,6 +2051,24 @@ module Increase
               # @abstract
               #
               # Additional charges (phone, late check-out, etc.) being billed.
+              #
+              # @example
+              # ```ruby
+              # case extra_charges
+              # in :no_extra_charge
+              #   # ...
+              # in :restaurant
+              #   # ...
+              # in :gift_shop
+              #   # ...
+              # in :mini_bar
+              #   # ...
+              # in :telephone
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
@@ -1937,6 +2103,16 @@ module Increase
               #
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
+              #
+              # @example
+              # ```ruby
+              # case no_show_indicator
+              # in :not_applicable
+              #   # ...
+              # in :no_show
+              #   # ...
+              # end
+              # ```
               class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
@@ -1956,6 +2132,22 @@ module Increase
             # @abstract
             #
             # The format of the purchase identifier.
+            #
+            # @example
+            # ```ruby
+            # case purchase_identifier_format
+            # in :free_text
+            #   # ...
+            # in :order_number
+            #   # ...
+            # in :rental_agreement_number
+            #   # ...
+            # in :hotel_folio_number
+            #   # ...
+            # in :invoice_number
+            #   # ...
+            # end
+            # ```
             class PurchaseIdentifierFormat < Increase::Enum
               # Free text
               FREE_TEXT = :free_text
@@ -2160,6 +2352,20 @@ module Increase
                 # @abstract
                 #
                 # Indicates the reason for a credit to the cardholder.
+                #
+                # @example
+                # ```ruby
+                # case credit_reason_indicator
+                # in :no_credit
+                #   # ...
+                # in :passenger_transport_ancillary_purchase_cancellation
+                #   # ...
+                # in :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                #   # ...
+                # in :other
+                #   # ...
+                # end
+                # ```
                 class CreditReasonIndicator < Increase::Enum
                   # No credit
                   NO_CREDIT = :no_credit
@@ -2207,6 +2413,24 @@ module Increase
                   # @abstract
                   #
                   # Category of the ancillary service.
+                  #
+                  # @example
+                  # ```ruby
+                  # case category
+                  # in :none
+                  #   # ...
+                  # in :bundled_service
+                  #   # ...
+                  # in :baggage_fee
+                  #   # ...
+                  # in :change_fee
+                  #   # ...
+                  # in :cargo
+                  #   # ...
+                  # in ...
+                  #   #...
+                  # end
+                  # ```
                   class Category < Increase::Enum
                     # None
                     NONE = :none
@@ -2293,6 +2517,24 @@ module Increase
               # @abstract
               #
               # Indicates the reason for a credit to the cardholder.
+              #
+              # @example
+              # ```ruby
+              # case credit_reason_indicator
+              # in :no_credit
+              #   # ...
+              # in :passenger_transport_ancillary_purchase_cancellation
+              #   # ...
+              # in :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+              #   # ...
+              # in :airline_ticket_cancellation
+              #   # ...
+              # in :other
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class CreditReasonIndicator < Increase::Enum
                 # No credit
                 NO_CREDIT = :no_credit
@@ -2323,6 +2565,16 @@ module Increase
               # @abstract
               #
               # Indicates whether this ticket is non-refundable.
+              #
+              # @example
+              # ```ruby
+              # case restricted_ticket_indicator
+              # in :no_restrictions
+              #   # ...
+              # in :restricted_non_refundable_ticket
+              #   # ...
+              # end
+              # ```
               class RestrictedTicketIndicator < Increase::Enum
                 # No restrictions
                 NO_RESTRICTIONS = :no_restrictions
@@ -2341,6 +2593,18 @@ module Increase
               # @abstract
               #
               # Indicates why a ticket was changed.
+              #
+              # @example
+              # ```ruby
+              # case ticket_change_indicator
+              # in :none
+              #   # ...
+              # in :change_to_existing_ticket
+              #   # ...
+              # in :new_ticket
+              #   # ...
+              # end
+              # ```
               class TicketChangeIndicator < Increase::Enum
                 # None
                 NONE = :none
@@ -2423,6 +2687,18 @@ module Increase
                 # @abstract
                 #
                 # Indicates whether a stopover is allowed on this ticket.
+                #
+                # @example
+                # ```ruby
+                # case stop_over_code
+                # in :none
+                #   # ...
+                # in :stop_over_allowed
+                #   # ...
+                # in :stop_over_not_allowed
+                #   # ...
+                # end
+                # ```
                 class StopOverCode < Increase::Enum
                   # None
                   NONE = :none
@@ -2448,6 +2724,14 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `card_refund`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :card_refund
+          #   # ...
+          # end
+          # ```
           class Type < Increase::Enum
             CARD_REFUND = :card_refund
 
@@ -2512,6 +2796,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -2767,6 +3069,24 @@ module Increase
             # @abstract
             #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            #
+            # @example
+            # ```ruby
+            # case currency
+            # in :CAD
+            #   # ...
+            # in :CHF
+            #   # ...
+            # in :EUR
+            #   # ...
+            # in :GBP
+            #   # ...
+            # in :JPY
+            #   # ...
+            # in ...
+            #   #...
+            # end
+            # ```
             class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD = :CAD
@@ -2799,6 +3119,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -2864,6 +3202,24 @@ module Increase
             #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
+            #
+            # @example
+            # ```ruby
+            # case currency
+            # in :CAD
+            #   # ...
+            # in :CHF
+            #   # ...
+            # in :EUR
+            #   # ...
+            # in :GBP
+            #   # ...
+            # in :JPY
+            #   # ...
+            # in ...
+            #   #...
+            # end
+            # ```
             class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD = :CAD
@@ -3185,6 +3541,24 @@ module Increase
               # @abstract
               #
               # Additional charges (gas, late fee, etc.) being billed.
+              #
+              # @example
+              # ```ruby
+              # case extra_charges
+              # in :no_extra_charge
+              #   # ...
+              # in :gas
+              #   # ...
+              # in :extra_mileage
+              #   # ...
+              # in :late_return
+              #   # ...
+              # in :one_way_service_fee
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
@@ -3216,6 +3590,16 @@ module Increase
               #
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
+              #
+              # @example
+              # ```ruby
+              # case no_show_indicator
+              # in :not_applicable
+              #   # ...
+              # in :no_show_for_specialized_vehicle
+              #   # ...
+              # end
+              # ```
               class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
@@ -3387,6 +3771,24 @@ module Increase
               # @abstract
               #
               # Additional charges (phone, late check-out, etc.) being billed.
+              #
+              # @example
+              # ```ruby
+              # case extra_charges
+              # in :no_extra_charge
+              #   # ...
+              # in :restaurant
+              #   # ...
+              # in :gift_shop
+              #   # ...
+              # in :mini_bar
+              #   # ...
+              # in :telephone
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
@@ -3421,6 +3823,16 @@ module Increase
               #
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
+              #
+              # @example
+              # ```ruby
+              # case no_show_indicator
+              # in :not_applicable
+              #   # ...
+              # in :no_show
+              #   # ...
+              # end
+              # ```
               class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
@@ -3440,6 +3852,22 @@ module Increase
             # @abstract
             #
             # The format of the purchase identifier.
+            #
+            # @example
+            # ```ruby
+            # case purchase_identifier_format
+            # in :free_text
+            #   # ...
+            # in :order_number
+            #   # ...
+            # in :rental_agreement_number
+            #   # ...
+            # in :hotel_folio_number
+            #   # ...
+            # in :invoice_number
+            #   # ...
+            # end
+            # ```
             class PurchaseIdentifierFormat < Increase::Enum
               # Free text
               FREE_TEXT = :free_text
@@ -3644,6 +4072,20 @@ module Increase
                 # @abstract
                 #
                 # Indicates the reason for a credit to the cardholder.
+                #
+                # @example
+                # ```ruby
+                # case credit_reason_indicator
+                # in :no_credit
+                #   # ...
+                # in :passenger_transport_ancillary_purchase_cancellation
+                #   # ...
+                # in :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                #   # ...
+                # in :other
+                #   # ...
+                # end
+                # ```
                 class CreditReasonIndicator < Increase::Enum
                   # No credit
                   NO_CREDIT = :no_credit
@@ -3691,6 +4133,24 @@ module Increase
                   # @abstract
                   #
                   # Category of the ancillary service.
+                  #
+                  # @example
+                  # ```ruby
+                  # case category
+                  # in :none
+                  #   # ...
+                  # in :bundled_service
+                  #   # ...
+                  # in :baggage_fee
+                  #   # ...
+                  # in :change_fee
+                  #   # ...
+                  # in :cargo
+                  #   # ...
+                  # in ...
+                  #   #...
+                  # end
+                  # ```
                   class Category < Increase::Enum
                     # None
                     NONE = :none
@@ -3777,6 +4237,24 @@ module Increase
               # @abstract
               #
               # Indicates the reason for a credit to the cardholder.
+              #
+              # @example
+              # ```ruby
+              # case credit_reason_indicator
+              # in :no_credit
+              #   # ...
+              # in :passenger_transport_ancillary_purchase_cancellation
+              #   # ...
+              # in :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+              #   # ...
+              # in :airline_ticket_cancellation
+              #   # ...
+              # in :other
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class CreditReasonIndicator < Increase::Enum
                 # No credit
                 NO_CREDIT = :no_credit
@@ -3807,6 +4285,16 @@ module Increase
               # @abstract
               #
               # Indicates whether this ticket is non-refundable.
+              #
+              # @example
+              # ```ruby
+              # case restricted_ticket_indicator
+              # in :no_restrictions
+              #   # ...
+              # in :restricted_non_refundable_ticket
+              #   # ...
+              # end
+              # ```
               class RestrictedTicketIndicator < Increase::Enum
                 # No restrictions
                 NO_RESTRICTIONS = :no_restrictions
@@ -3825,6 +4313,18 @@ module Increase
               # @abstract
               #
               # Indicates why a ticket was changed.
+              #
+              # @example
+              # ```ruby
+              # case ticket_change_indicator
+              # in :none
+              #   # ...
+              # in :change_to_existing_ticket
+              #   # ...
+              # in :new_ticket
+              #   # ...
+              # end
+              # ```
               class TicketChangeIndicator < Increase::Enum
                 # None
                 NONE = :none
@@ -3907,6 +4407,18 @@ module Increase
                 # @abstract
                 #
                 # Indicates whether a stopover is allowed on this ticket.
+                #
+                # @example
+                # ```ruby
+                # case stop_over_code
+                # in :none
+                #   # ...
+                # in :stop_over_allowed
+                #   # ...
+                # in :stop_over_not_allowed
+                #   # ...
+                # end
+                # ```
                 class StopOverCode < Increase::Enum
                   # None
                   NONE = :none
@@ -3932,6 +4444,14 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `card_settlement`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :card_settlement
+          #   # ...
+          # end
+          # ```
           class Type < Increase::Enum
             CARD_SETTLEMENT = :card_settlement
 
@@ -3997,6 +4517,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -4029,6 +4567,24 @@ module Increase
         #
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
+        #
+        # @example
+        # ```ruby
+        # case category
+        # in :account_transfer_intention
+        #   # ...
+        # in :ach_transfer_intention
+        #   # ...
+        # in :ach_transfer_rejection
+        #   # ...
+        # in :ach_transfer_return
+        #   # ...
+        # in :cashback_payment
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Category < Increase::Enum
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
           ACCOUNT_TRANSFER_INTENTION = :account_transfer_intention
@@ -4206,6 +4762,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -4299,6 +4873,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -4330,6 +4922,24 @@ module Increase
           #
           # Why this check was returned by the bank holding the account it was drawn
           #   against.
+          #
+          # @example
+          # ```ruby
+          # case return_reason
+          # in :ach_conversion_not_supported
+          #   # ...
+          # in :closed_account
+          #   # ...
+          # in :duplicate_submission
+          #   # ...
+          # in :insufficient_funds
+          #   # ...
+          # in :no_account
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class ReturnReason < Increase::Enum
             # The check doesn't allow ACH conversion.
             ACH_CONVERSION_NOT_SUPPORTED = :ach_conversion_not_supported
@@ -4508,6 +5118,14 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `check_transfer_deposit`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :check_transfer_deposit
+          #   # ...
+          # end
+          # ```
           class Type < Increase::Enum
             CHECK_TRANSFER_DEPOSIT = :check_transfer_deposit
 
@@ -4565,6 +5183,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -4732,6 +5368,14 @@ module Increase
             # @abstract
             #
             # The type of addendum.
+            #
+            # @example
+            # ```ruby
+            # case category
+            # in :freeform
+            #   # ...
+            # end
+            # ```
             class Category < Increase::Enum
               # Unstructured addendum.
               FREEFORM = :freeform
@@ -4836,6 +5480,20 @@ module Increase
           # @abstract
           #
           # The reason for the adjustment.
+          #
+          # @example
+          # ```ruby
+          # case reason
+          # in :late_return
+          #   # ...
+          # in :wrong_payee_credit
+          #   # ...
+          # in :adjusted_amount
+          #   # ...
+          # in :non_conforming_item
+          #   # ...
+          # end
+          # ```
           class Reason < Increase::Enum
             # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
             LATE_RETURN = :late_return
@@ -4982,6 +5640,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
           #   currency. This will always be "USD" for a Real-Time Payments transfer.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -5115,6 +5791,24 @@ module Increase
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
           #   transfer's currency. This will always be "USD" for a Real-Time Payments
           #   transfer.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -5145,6 +5839,24 @@ module Increase
           # @abstract
           #
           # Why the transfer was declined.
+          #
+          # @example
+          # ```ruby
+          # case reason
+          # in :account_number_canceled
+          #   # ...
+          # in :account_number_disabled
+          #   # ...
+          # in :account_restricted
+          #   # ...
+          # in :group_locked
+          #   # ...
+          # in :entity_not_active
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Reason < Increase::Enum
             # The account number is canceled.
             ACCOUNT_NUMBER_CANCELED = :account_number_canceled
@@ -5578,6 +6290,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -5645,6 +6375,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
           #   currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -5676,6 +6424,24 @@ module Increase
           #
           # An Internal Source is a transaction between you and Increase. This describes the
           #   reason for the transaction.
+          #
+          # @example
+          # ```ruby
+          # case reason
+          # in :account_closure
+          #   # ...
+          # in :bank_drawn_check
+          #   # ...
+          # in :bank_drawn_check_credit
+          #   # ...
+          # in :bank_migration
+          #   # ...
+          # in :check_adjustment
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Reason < Increase::Enum
             # Account closure
             ACCOUNT_CLOSURE = :account_closure
@@ -5860,6 +6626,14 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `transaction`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :transaction
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         TRANSACTION = :transaction
 

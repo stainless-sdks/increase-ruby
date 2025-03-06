@@ -181,6 +181,18 @@ module Increase
       # @abstract
       #
       # The status to update the Card with.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :active
+      #   # ...
+      # in :disabled
+      #   # ...
+      # in :canceled
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The card is active.
         ACTIVE = :active

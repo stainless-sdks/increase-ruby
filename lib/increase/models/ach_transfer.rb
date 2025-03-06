@@ -381,6 +381,18 @@ module Increase
         #
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
+        #
+        # @example
+        # ```ruby
+        # case category
+        # in :freeform
+        #   # ...
+        # in :payment_order_remittance_advice
+        #   # ...
+        # in :other
+        #   # ...
+        # end
+        # ```
         class Category < Increase::Enum
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM = :freeform
@@ -585,6 +597,18 @@ module Increase
         # @abstract
         #
         # The type of object that created this transfer.
+        #
+        # @example
+        # ```ruby
+        # case category
+        # in :api_key
+        #   # ...
+        # in :oauth_application
+        #   # ...
+        # in :user
+        #   # ...
+        # end
+        # ```
         class Category < Increase::Enum
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
@@ -642,6 +666,24 @@ module Increase
       #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
       #   currency. For ACH transfers this is always equal to `usd`.
+      #
+      # @example
+      # ```ruby
+      # case currency
+      # in :CAD
+      #   # ...
+      # in :CHF
+      #   # ...
+      # in :EUR
+      #   # ...
+      # in :GBP
+      #   # ...
+      # in :JPY
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -673,6 +715,18 @@ module Increase
       #
       # The type of entity that owns the account to which the ACH Transfer is being
       #   sent.
+      #
+      # @example
+      # ```ruby
+      # case destination_account_holder
+      # in :business
+      #   # ...
+      # in :individual
+      #   # ...
+      # in :unknown
+      #   # ...
+      # end
+      # ```
       class DestinationAccountHolder < Increase::Enum
         # The External Account is owned by a business.
         BUSINESS = :business
@@ -694,6 +748,16 @@ module Increase
       # @abstract
       #
       # The type of the account to which the transfer will be sent.
+      #
+      # @example
+      # ```ruby
+      # case funding
+      # in :checking
+      #   # ...
+      # in :savings
+      #   # ...
+      # end
+      # ```
       class Funding < Increase::Enum
         # A checking account.
         CHECKING = :checking
@@ -812,6 +876,24 @@ module Increase
         #
         # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
         #   currency.
+        #
+        # @example
+        # ```ruby
+        # case currency
+        # in :CAD
+        #   # ...
+        # in :CHF
+        #   # ...
+        # in :EUR
+        #   # ...
+        # in :GBP
+        #   # ...
+        # in :JPY
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Currency < Increase::Enum
           # Canadian Dollar (CAD)
           CAD = :CAD
@@ -842,6 +924,16 @@ module Increase
         # @abstract
         #
         # The status of the hold.
+        #
+        # @example
+        # ```ruby
+        # case status
+        # in :held
+        #   # ...
+        # in :complete
+        #   # ...
+        # end
+        # ```
         class Status < Increase::Enum
           # Funds are still being held.
           HELD = :held
@@ -861,6 +953,14 @@ module Increase
         #
         # A constant representing the object's type. For this resource it will always be
         #   `inbound_funds_hold`.
+        #
+        # @example
+        # ```ruby
+        # case type
+        # in :inbound_funds_hold
+        #   # ...
+        # end
+        # ```
         class Type < Increase::Enum
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
@@ -876,6 +976,14 @@ module Increase
       # @abstract
       #
       # The transfer's network.
+      #
+      # @example
+      # ```ruby
+      # case network
+      # in :ach
+      #   # ...
+      # end
+      # ```
       class Network < Increase::Enum
         ACH = :ach
 
@@ -925,6 +1033,24 @@ module Increase
         #
         # The required type of change that is being signaled by the receiving financial
         #   institution.
+        #
+        # @example
+        # ```ruby
+        # case change_code
+        # in :incorrect_account_number
+        #   # ...
+        # in :incorrect_routing_number
+        #   # ...
+        # in :incorrect_routing_number_and_account_number
+        #   # ...
+        # in :incorrect_transaction_code
+        #   # ...
+        # in :incorrect_account_number_and_transaction_code
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class ChangeCode < Increase::Enum
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
@@ -1024,6 +1150,16 @@ module Increase
         # @abstract
         #
         # A schedule by which Increase will choose an effective date for the transfer.
+        #
+        # @example
+        # ```ruby
+        # case settlement_schedule
+        # in :same_day
+        #   # ...
+        # in :future_dated
+        #   # ...
+        # end
+        # ```
         class SettlementSchedule < Increase::Enum
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted.
           # This is necessary, but not sufficient for the transfer to be settled same-day:
@@ -1113,6 +1249,24 @@ module Increase
         #
         # Why the ACH Transfer was returned. This reason code is sent by the receiving
         #   bank back to Increase.
+        #
+        # @example
+        # ```ruby
+        # case return_reason_code
+        # in :insufficient_fund
+        #   # ...
+        # in :no_account
+        #   # ...
+        # in :account_closed
+        #   # ...
+        # in :invalid_account_number_structure
+        #   # ...
+        # in :account_frozen_entry_returned_per_ofac_instruction
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class ReturnReasonCode < Increase::Enum
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
@@ -1355,6 +1509,20 @@ module Increase
       # @abstract
       #
       # The Standard Entry Class (SEC) code to use for the transfer.
+      #
+      # @example
+      # ```ruby
+      # case standard_entry_class_code
+      # in :corporate_credit_or_debit
+      #   # ...
+      # in :corporate_trade_exchange
+      #   # ...
+      # in :prearranged_payments_and_deposit
+      #   # ...
+      # in :internet_initiated
+      #   # ...
+      # end
+      # ```
       class StandardEntryClassCode < Increase::Enum
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
@@ -1379,6 +1547,24 @@ module Increase
       # @abstract
       #
       # The lifecycle status of the transfer.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :pending_approval
+      #   # ...
+      # in :pending_transfer_session_confirmation
+      #   # ...
+      # in :canceled
+      #   # ...
+      # in :pending_submission
+      #   # ...
+      # in :pending_reviewing
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Status < Increase::Enum
         # The transfer is pending approval.
         PENDING_APPROVAL = :pending_approval
@@ -1490,6 +1676,16 @@ module Increase
         # The settlement schedule the transfer is expected to follow. This expectation
         #   takes into account the `effective_date`, `submitted_at`, and the amount of the
         #   transfer.
+        #
+        # @example
+        # ```ruby
+        # case expected_settlement_schedule
+        # in :same_day
+        #   # ...
+        # in :future_dated
+        #   # ...
+        # end
+        # ```
         class ExpectedSettlementSchedule < Increase::Enum
           # The transfer is expected to settle same-day.
           SAME_DAY = :same_day
@@ -1510,6 +1706,14 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `ach_transfer`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :ach_transfer
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         ACH_TRANSFER = :ach_transfer
 
