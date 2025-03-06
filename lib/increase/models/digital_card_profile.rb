@@ -136,20 +136,6 @@ module Increase
       # @abstract
       #
       # The status of the Card Profile.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :pending
-      #   # ...
-      # in :rejected
-      #   # ...
-      # in :active
-      #   # ...
-      # in :archived
-      #   # ...
-      # end
-      # ```
       class Status < Increase::Enum
         # The Card Profile is awaiting review from Increase and/or processing by card networks.
         PENDING = :pending
@@ -206,14 +192,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `digital_card_profile`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :digital_card_profile
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         DIGITAL_CARD_PROFILE = :digital_card_profile
 

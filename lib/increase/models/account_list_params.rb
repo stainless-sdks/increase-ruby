@@ -196,15 +196,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :closed
-        #   # ...
-        # in :open
-        #   # ...
-        # end
-        # ```
         class In < Increase::Enum
           # Closed Accounts on which no new activity can occur.
           CLOSED = :closed

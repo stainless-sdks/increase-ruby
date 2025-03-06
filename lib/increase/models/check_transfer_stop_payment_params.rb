@@ -28,18 +28,6 @@ module Increase
       # @abstract
       #
       # The reason why this transfer should be stopped.
-      #
-      # @example
-      # ```ruby
-      # case reason
-      # in :mail_delivery_failed
-      #   # ...
-      # in :not_authorized
-      #   # ...
-      # in :unknown
-      #   # ...
-      # end
-      # ```
       class Reason < Increase::Enum
         # The check could not be delivered.
         MAIL_DELIVERY_FAILED = :mail_delivery_failed

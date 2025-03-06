@@ -301,16 +301,6 @@ module Increase
         # @abstract
         #
         # The type of addenda to pass with the transfer.
-        #
-        # @example
-        # ```ruby
-        # case category
-        # in :freeform
-        #   # ...
-        # in :payment_order_remittance_advice
-        #   # ...
-        # end
-        # ```
         class Category < Increase::Enum
           # Unstructured `payment_related_information` passed through with the transfer.
           FREEFORM = :freeform
@@ -408,18 +398,6 @@ module Increase
       #
       # The type of entity that owns the account to which the ACH Transfer is being
       #   sent.
-      #
-      # @example
-      # ```ruby
-      # case destination_account_holder
-      # in :business
-      #   # ...
-      # in :individual
-      #   # ...
-      # in :unknown
-      #   # ...
-      # end
-      # ```
       class DestinationAccountHolder < Increase::Enum
         # The External Account is owned by a business.
         BUSINESS = :business
@@ -441,16 +419,6 @@ module Increase
       # @abstract
       #
       # The type of the account to which the transfer will be sent.
-      #
-      # @example
-      # ```ruby
-      # case funding
-      # in :checking
-      #   # ...
-      # in :savings
-      #   # ...
-      # end
-      # ```
       class Funding < Increase::Enum
         # A checking account.
         CHECKING = :checking
@@ -505,16 +473,6 @@ module Increase
         # @abstract
         #
         # A schedule by which Increase will choose an effective date for the transfer.
-        #
-        # @example
-        # ```ruby
-        # case settlement_schedule
-        # in :same_day
-        #   # ...
-        # in :future_dated
-        #   # ...
-        # end
-        # ```
         class SettlementSchedule < Increase::Enum
           # The chosen effective date will be the same as the ACH processing date on which the transfer is submitted. This is necessary, but not sufficient for the transfer to be settled same-day: it must also be submitted before the last same-day cutoff and be less than or equal to $1,000.000.00.
           SAME_DAY = :same_day
@@ -534,20 +492,6 @@ module Increase
       # @abstract
       #
       # The Standard Entry Class (SEC) code to use for the transfer.
-      #
-      # @example
-      # ```ruby
-      # case standard_entry_class_code
-      # in :corporate_credit_or_debit
-      #   # ...
-      # in :corporate_trade_exchange
-      #   # ...
-      # in :prearranged_payments_and_deposit
-      #   # ...
-      # in :internet_initiated
-      #   # ...
-      # end
-      # ```
       class StandardEntryClassCode < Increase::Enum
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
@@ -572,16 +516,6 @@ module Increase
       # @abstract
       #
       # The timing of the transaction.
-      #
-      # @example
-      # ```ruby
-      # case transaction_timing
-      # in :synchronous
-      #   # ...
-      # in :asynchronous
-      #   # ...
-      # end
-      # ```
       class TransactionTiming < Increase::Enum
         # A Transaction will be created immediately.
         SYNCHRONOUS = :synchronous

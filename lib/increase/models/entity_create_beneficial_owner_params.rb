@@ -234,22 +234,6 @@ module Increase
             # @abstract
             #
             # A method that can be used to verify the individual's identity.
-            #
-            # @example
-            # ```ruby
-            # case method
-            # in :social_security_number
-            #   # ...
-            # in :individual_taxpayer_identification_number
-            #   # ...
-            # in :passport
-            #   # ...
-            # in :drivers_license
-            #   # ...
-            # in :other
-            #   # ...
-            # end
-            # ```
             class Method < Increase::Enum
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -409,15 +393,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case prong
-        # in :ownership
-        #   # ...
-        # in :control
-        #   # ...
-        # end
-        # ```
         class Prong < Increase::Enum
           # A person with 25% or greater direct or indirect ownership of the entity.
           OWNERSHIP = :ownership

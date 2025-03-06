@@ -151,17 +151,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :active
-        #   # ...
-        # in :archived
-        #   # ...
-        # in :disabled
-        #   # ...
-        # end
-        # ```
         class In < Increase::Enum
           # The entity is active.
           ACTIVE = :active

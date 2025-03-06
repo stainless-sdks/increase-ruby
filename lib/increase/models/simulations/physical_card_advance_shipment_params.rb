@@ -26,24 +26,6 @@ module Increase
         # @abstract
         #
         # The shipment status to move the Physical Card to.
-        #
-        # @example
-        # ```ruby
-        # case shipment_status
-        # in :pending
-        #   # ...
-        # in :canceled
-        #   # ...
-        # in :submitted
-        #   # ...
-        # in :acknowledged
-        #   # ...
-        # in :rejected
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class ShipmentStatus < Increase::Enum
           # The physical card has not yet been shipped.
           PENDING = :pending

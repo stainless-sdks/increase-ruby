@@ -161,22 +161,6 @@ module Increase
       # @abstract
       #
       # Status of the proof of authorization request submission.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :pending_review
-      #   # ...
-      # in :rejected
-      #   # ...
-      # in :canceled
-      #   # ...
-      # in :pending_sending
-      #   # ...
-      # in :sent
-      #   # ...
-      # end
-      # ```
       class Status < Increase::Enum
         # The proof of authorization request submission is pending review.
         PENDING_REVIEW = :pending_review
@@ -205,14 +189,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request_submission`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :proof_of_authorization_request_submission
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
 

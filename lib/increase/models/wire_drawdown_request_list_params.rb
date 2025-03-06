@@ -85,19 +85,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :pending_submission
-        #   # ...
-        # in :pending_response
-        #   # ...
-        # in :fulfilled
-        #   # ...
-        # in :refused
-        #   # ...
-        # end
-        # ```
         class In < Increase::Enum
           # The drawdown request is queued to be submitted to Fedwire.
           PENDING_SUBMISSION = :pending_submission

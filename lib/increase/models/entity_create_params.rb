@@ -135,22 +135,6 @@ module Increase
       # @abstract
       #
       # The type of Entity to create.
-      #
-      # @example
-      # ```ruby
-      # case structure
-      # in :corporation
-      #   # ...
-      # in :natural_person
-      #   # ...
-      # in :joint
-      #   # ...
-      # in :trust
-      #   # ...
-      # in :government_authority
-      #   # ...
-      # end
-      # ```
       class Structure < Increase::Enum
         # A corporation.
         CORPORATION = :corporation
@@ -524,22 +508,6 @@ module Increase
               # @abstract
               #
               # A method that can be used to verify the individual's identity.
-              #
-              # @example
-              # ```ruby
-              # case method
-              # in :social_security_number
-              #   # ...
-              # in :individual_taxpayer_identification_number
-              #   # ...
-              # in :passport
-              #   # ...
-              # in :drivers_license
-              #   # ...
-              # in :other
-              #   # ...
-              # end
-              # ```
               class Method < Increase::Enum
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -699,15 +667,6 @@ module Increase
 
           # @abstract
           #
-          # @example
-          # ```ruby
-          # case prong
-          # in :ownership
-          #   # ...
-          # in :control
-          #   # ...
-          # end
-          # ```
           class Prong < Increase::Enum
             # A person with 25% or greater direct or indirect ownership of the entity.
             OWNERSHIP = :ownership
@@ -852,14 +811,6 @@ module Increase
         # @abstract
         #
         # The category of the government authority.
-        #
-        # @example
-        # ```ruby
-        # case category
-        # in :municipality
-        #   # ...
-        # end
-        # ```
         class Category < Increase::Enum
           # The Public Entity is a Municipality.
           MUNICIPALITY = :municipality
@@ -1069,22 +1020,6 @@ module Increase
             # @abstract
             #
             # A method that can be used to verify the individual's identity.
-            #
-            # @example
-            # ```ruby
-            # case method
-            # in :social_security_number
-            #   # ...
-            # in :individual_taxpayer_identification_number
-            #   # ...
-            # in :passport
-            #   # ...
-            # in :drivers_license
-            #   # ...
-            # in :other
-            #   # ...
-            # end
-            # ```
             class Method < Increase::Enum
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -1415,22 +1350,6 @@ module Increase
           # @abstract
           #
           # A method that can be used to verify the individual's identity.
-          #
-          # @example
-          # ```ruby
-          # case method
-          # in :social_security_number
-          #   # ...
-          # in :individual_taxpayer_identification_number
-          #   # ...
-          # in :passport
-          #   # ...
-          # in :drivers_license
-          #   # ...
-          # in :other
-          #   # ...
-          # end
-          # ```
           class Method < Increase::Enum
             # A social security number.
             SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -1630,16 +1549,6 @@ module Increase
         # @abstract
         #
         # The vendor that was used to perform the verification.
-        #
-        # @example
-        # ```ruby
-        # case vendor
-        # in :alloy
-        #   # ...
-        # in :middesk
-        #   # ...
-        # end
-        # ```
         class Vendor < Increase::Enum
           # Alloy. See https://alloy.com for more information.
           ALLOY = :alloy
@@ -1811,16 +1720,6 @@ module Increase
         # Whether the trust is `revocable` or `irrevocable`. Irrevocable trusts require
         #   their own Employer Identification Number. Revocable trusts require information
         #   about the individual `grantor` who created the trust.
-        #
-        # @example
-        # ```ruby
-        # case category
-        # in :revocable
-        #   # ...
-        # in :irrevocable
-        #   # ...
-        # end
-        # ```
         class Category < Increase::Enum
           # The trust is revocable by the grantor.
           REVOCABLE = :revocable
@@ -1865,14 +1764,6 @@ module Increase
           # @abstract
           #
           # The structure of the trustee.
-          #
-          # @example
-          # ```ruby
-          # case structure
-          # in :individual
-          #   # ...
-          # end
-          # ```
           class Structure < Increase::Enum
             # The trustee is an individual.
             INDIVIDUAL = :individual
@@ -2058,22 +1949,6 @@ module Increase
               # @abstract
               #
               # A method that can be used to verify the individual's identity.
-              #
-              # @example
-              # ```ruby
-              # case method
-              # in :social_security_number
-              #   # ...
-              # in :individual_taxpayer_identification_number
-              #   # ...
-              # in :passport
-              #   # ...
-              # in :drivers_license
-              #   # ...
-              # in :other
-              #   # ...
-              # end
-              # ```
               class Method < Increase::Enum
                 # A social security number.
                 SOCIAL_SECURITY_NUMBER = :social_security_number
@@ -2401,22 +2276,6 @@ module Increase
             # @abstract
             #
             # A method that can be used to verify the individual's identity.
-            #
-            # @example
-            # ```ruby
-            # case method
-            # in :social_security_number
-            #   # ...
-            # in :individual_taxpayer_identification_number
-            #   # ...
-            # in :passport
-            #   # ...
-            # in :drivers_license
-            #   # ...
-            # in :other
-            #   # ...
-            # end
-            # ```
             class Method < Increase::Enum
               # A social security number.
               SOCIAL_SECURITY_NUMBER = :social_security_number

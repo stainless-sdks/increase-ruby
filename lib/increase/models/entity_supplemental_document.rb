@@ -55,14 +55,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `entity_supplemental_document`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :entity_supplemental_document
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
 

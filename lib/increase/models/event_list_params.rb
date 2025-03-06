@@ -102,23 +102,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :"account.created"
-        #   # ...
-        # in :"account.updated"
-        #   # ...
-        # in :"account_number.created"
-        #   # ...
-        # in :"account_number.updated"
-        #   # ...
-        # in :"account_statement.created"
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class In < Increase::Enum
           # Occurs whenever an Account is created.
           ACCOUNT_CREATED = :"account.created"

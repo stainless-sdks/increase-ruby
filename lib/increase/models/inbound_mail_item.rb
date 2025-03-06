@@ -73,18 +73,6 @@ module Increase
       # @abstract
       #
       # If the mail item has been rejected, why it was rejected.
-      #
-      # @example
-      # ```ruby
-      # case rejection_reason
-      # in :no_matching_lockbox
-      #   # ...
-      # in :no_check
-      #   # ...
-      # in :lockbox_not_active
-      #   # ...
-      # end
-      # ```
       class RejectionReason < Increase::Enum
         # The mail item does not match any lockbox.
         NO_MATCHING_LOCKBOX = :no_matching_lockbox
@@ -106,18 +94,6 @@ module Increase
       # @abstract
       #
       # If the mail item has been processed.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :pending
-      #   # ...
-      # in :processed
-      #   # ...
-      # in :rejected
-      #   # ...
-      # end
-      # ```
       class Status < Increase::Enum
         # The mail item is pending processing.
         PENDING = :pending
@@ -140,14 +116,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_mail_item`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :inbound_mail_item
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         INBOUND_MAIL_ITEM = :inbound_mail_item
 

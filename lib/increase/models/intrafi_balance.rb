@@ -132,24 +132,6 @@ module Increase
       #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
       #   currency.
-      #
-      # @example
-      # ```ruby
-      # case currency
-      # in :CAD
-      #   # ...
-      # in :CHF
-      #   # ...
-      # in :EUR
-      #   # ...
-      # in :GBP
-      #   # ...
-      # in :JPY
-      #   # ...
-      # in ...
-      #   #...
-      # end
-      # ```
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -181,14 +163,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_balance`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :intrafi_balance
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         INTRAFI_BALANCE = :intrafi_balance
 

@@ -85,19 +85,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :pending
-        #   # ...
-        # in :rejected
-        #   # ...
-        # in :active
-        #   # ...
-        # in :archived
-        #   # ...
-        # end
-        # ```
         class In < Increase::Enum
           # The Card Profile is awaiting review from Increase and/or processing by card networks.
           PENDING = :pending

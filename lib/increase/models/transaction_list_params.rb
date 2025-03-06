@@ -114,23 +114,6 @@ module Increase
 
         # @abstract
         #
-        # @example
-        # ```ruby
-        # case in
-        # in :account_transfer_intention
-        #   # ...
-        # in :ach_transfer_intention
-        #   # ...
-        # in :ach_transfer_rejection
-        #   # ...
-        # in :ach_transfer_return
-        #   # ...
-        # in :cashback_payment
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class In < Increase::Enum
           # Account Transfer Intention: details will be under the `account_transfer_intention` object.
           ACCOUNT_TRANSFER_INTENTION = :account_transfer_intention

@@ -39,14 +39,6 @@ module Increase
       # @abstract
       #
       # The type of OAuth token.
-      #
-      # @example
-      # ```ruby
-      # case token_type
-      # in :bearer
-      #   # ...
-      # end
-      # ```
       class TokenType < Increase::Enum
         BEARER = :bearer
 
@@ -62,14 +54,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_token`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :oauth_token
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         OAUTH_TOKEN = :oauth_token
 

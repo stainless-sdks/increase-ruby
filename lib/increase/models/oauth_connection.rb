@@ -68,16 +68,6 @@ module Increase
       # @abstract
       #
       # Whether the connection is active.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :active
-      #   # ...
-      # in :inactive
-      #   # ...
-      # end
-      # ```
       class Status < Increase::Enum
         # The OAuth connection is active.
         ACTIVE = :active
@@ -97,14 +87,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_connection`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :oauth_connection
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         OAUTH_CONNECTION = :oauth_connection
 

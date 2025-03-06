@@ -67,20 +67,6 @@ module Increase
       # @abstract
       #
       # This indicates if payments can be made with the Digital Wallet Token.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :active
-      #   # ...
-      # in :inactive
-      #   # ...
-      # in :suspended
-      #   # ...
-      # in :deactivated
-      #   # ...
-      # end
-      # ```
       class Status < Increase::Enum
         # The digital wallet token is active.
         ACTIVE = :active
@@ -105,20 +91,6 @@ module Increase
       # @abstract
       #
       # The digital wallet app being used.
-      #
-      # @example
-      # ```ruby
-      # case token_requestor
-      # in :apple_pay
-      #   # ...
-      # in :google_pay
-      #   # ...
-      # in :samsung_pay
-      #   # ...
-      # in :unknown
-      #   # ...
-      # end
-      # ```
       class TokenRequestor < Increase::Enum
         # Apple Pay
         APPLE_PAY = :apple_pay
@@ -144,14 +116,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `digital_wallet_token`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :digital_wallet_token
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         DIGITAL_WALLET_TOKEN = :digital_wallet_token
 
@@ -188,20 +152,6 @@ module Increase
         # @abstract
         #
         # The status the update changed this Digital Wallet Token to.
-        #
-        # @example
-        # ```ruby
-        # case status
-        # in :active
-        #   # ...
-        # in :inactive
-        #   # ...
-        # in :suspended
-        #   # ...
-        # in :deactivated
-        #   # ...
-        # end
-        # ```
         class Status < Increase::Enum
           # The digital wallet token is active.
           ACTIVE = :active

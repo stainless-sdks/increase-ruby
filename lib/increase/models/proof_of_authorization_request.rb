@@ -74,14 +74,6 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `proof_of_authorization_request`.
-      #
-      # @example
-      # ```ruby
-      # case type
-      # in :proof_of_authorization_request
-      #   # ...
-      # end
-      # ```
       class Type < Increase::Enum
         PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
 

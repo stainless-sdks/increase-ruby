@@ -31,24 +31,6 @@ module Increase
         #
         # The reason why the Federal Reserve or destination bank returned this transfer.
         #   Defaults to `no_account`.
-        #
-        # @example
-        # ```ruby
-        # case reason
-        # in :insufficient_fund
-        #   # ...
-        # in :no_account
-        #   # ...
-        # in :account_closed
-        #   # ...
-        # in :invalid_account_number_structure
-        #   # ...
-        # in :account_frozen_entry_returned_per_ofac_instruction
-        #   # ...
-        # in ...
-        #   #...
-        # end
-        # ```
         class Reason < Increase::Enum
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
