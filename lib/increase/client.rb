@@ -178,9 +178,6 @@ module Increase
     # @return [Increase::Resources::IntrafiExclusions]
     attr_reader :intrafi_exclusions
 
-    # @return [Increase::Resources::RealTimePaymentsRequestForPayments]
-    attr_reader :real_time_payments_request_for_payments
-
     # @return [Increase::Resources::Simulations]
     attr_reader :simulations
 
@@ -305,7 +302,6 @@ module Increase
       @intrafi_account_enrollments = Increase::Resources::IntrafiAccountEnrollments.new(client: self)
       @intrafi_balances = Increase::Resources::IntrafiBalances.new(client: self)
       @intrafi_exclusions = Increase::Resources::IntrafiExclusions.new(client: self)
-      @real_time_payments_request_for_payments = Increase::Resources::RealTimePaymentsRequestForPayments.new(client: self)
       @simulations = Increase::Resources::Simulations.new(client: self)
     end
   end

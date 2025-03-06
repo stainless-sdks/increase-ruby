@@ -119,8 +119,6 @@ module Increase
 
     attr_reader intrafi_exclusions: Increase::Resources::IntrafiExclusions
 
-    attr_reader real_time_payments_request_for_payments: Increase::Resources::RealTimePaymentsRequestForPayments
-
     attr_reader simulations: Increase::Resources::Simulations
 
     private def auth_headers: -> ::Hash[String, String]
