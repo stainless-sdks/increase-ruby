@@ -27,11 +27,11 @@ module Increase
         client: Increase::BaseClient,
         req: Increase::BaseClient::RequestComponentsShape,
         headers: T.any(T::Hash[String, String], Net::HTTPHeader),
-        page_data: T::Hash[Symbol, T.anything]
+        unwrapped: T::Hash[Symbol, T.anything]
       )
         .void
     end
-    def initialize(client:, req:, headers:, page_data:)
+    def initialize(client:, req:, headers:, unwrapped:)
     end
   end
 end

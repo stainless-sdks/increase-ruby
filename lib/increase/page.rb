@@ -36,20 +36,20 @@ module Increase
     # @param client [Increase::BaseClient]
     # @param req [Hash{Symbol=>Object}]
     # @param headers [Hash{String=>String}, Net::HTTPHeader]
-    # @param page_data [Hash{Symbol=>Object}]
+    # @param unwrapped [Hash{Symbol=>Object}]
     #
-    def initialize(client:, req:, headers:, page_data:)
+    def initialize(client:, req:, headers:, unwrapped:)
       @client = client
       @req = req
       model = req.fetch(:model)
 
-      case page_data
+      case unwrapped
       in {data: Array | nil => data}
         @data = data&.map { model.coerce(_1) }
       else
       end
 
-      case page_data
+      case unwrapped
       in {next_cursor: String | nil => next_cursor}
         @next_cursor = next_cursor
       else
