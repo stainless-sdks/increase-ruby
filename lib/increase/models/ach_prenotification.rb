@@ -157,6 +157,16 @@ module Increase
       # @abstract
       #
       # If the notification is for a future credit or debit.
+      #
+      # @example
+      # ```ruby
+      # case credit_debit_indicator
+      # in :credit
+      #   # ...
+      # in :debit
+      #   # ...
+      # end
+      # ```
       class CreditDebitIndicator < Increase::Enum
         # The Prenotification is for an anticipated credit.
         CREDIT = :credit
@@ -211,6 +221,24 @@ module Increase
         #
         # The required type of change that is being signaled by the receiving financial
         #   institution.
+        #
+        # @example
+        # ```ruby
+        # case change_code
+        # in :incorrect_account_number
+        #   # ...
+        # in :incorrect_routing_number
+        #   # ...
+        # in :incorrect_routing_number_and_account_number
+        #   # ...
+        # in :incorrect_transaction_code
+        #   # ...
+        # in :incorrect_account_number_and_transaction_code
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class ChangeCode < Increase::Enum
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
@@ -306,6 +334,24 @@ module Increase
         # @abstract
         #
         # Why the Prenotification was returned.
+        #
+        # @example
+        # ```ruby
+        # case return_reason_code
+        # in :insufficient_fund
+        #   # ...
+        # in :no_account
+        #   # ...
+        # in :account_closed
+        #   # ...
+        # in :invalid_account_number_structure
+        #   # ...
+        # in :account_frozen_entry_returned_per_ofac_instruction
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class ReturnReasonCode < Increase::Enum
           # Code R01. Insufficient funds in the receiving account. Sometimes abbreviated to NSF.
           INSUFFICIENT_FUND = :insufficient_fund
@@ -529,6 +575,20 @@ module Increase
       # @abstract
       #
       # The lifecycle status of the ACH Prenotification.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :pending_submitting
+      #   # ...
+      # in :requires_attention
+      #   # ...
+      # in :returned
+      #   # ...
+      # in :submitted
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The Prenotification is pending submission.
         PENDING_SUBMITTING = :pending_submitting
@@ -554,6 +614,14 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `ach_prenotification`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :ach_prenotification
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         ACH_PRENOTIFICATION = :ach_prenotification
 

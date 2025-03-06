@@ -839,15 +839,6 @@ module Increase
   #
   # @abstract
   #
-  # @example
-  # ```ruby
-  # # `account` is a `Increase::Models::Account`
-  # account => {
-  #   id: id,
-  #   bank: bank,
-  #   closed_at: closed_at
-  # }
-  # ```
   class BaseModel
     extend Increase::Converter
 

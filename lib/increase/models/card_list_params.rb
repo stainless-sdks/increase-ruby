@@ -170,6 +170,17 @@ module Increase
 
         # @abstract
         #
+        # @example
+        # ```ruby
+        # case in
+        # in :active
+        #   # ...
+        # in :disabled
+        #   # ...
+        # in :canceled
+        #   # ...
+        # end
+        # ```
         class In < Increase::Enum
           # The card is active.
           ACTIVE = :active

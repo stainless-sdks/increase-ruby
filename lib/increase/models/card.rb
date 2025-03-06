@@ -212,6 +212,18 @@ module Increase
       # @abstract
       #
       # This indicates if payments can be made with the card.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :active
+      #   # ...
+      # in :disabled
+      #   # ...
+      # in :canceled
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The card is active.
         ACTIVE = :active
@@ -234,6 +246,14 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `card`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :card
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         CARD = :card
 

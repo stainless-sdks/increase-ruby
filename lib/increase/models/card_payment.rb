@@ -409,6 +409,16 @@ module Increase
           # @abstract
           #
           # The category of the card authentication attempt.
+          #
+          # @example
+          # ```ruby
+          # case category
+          # in :payment_authentication
+          #   # ...
+          # in :non_payment_authentication
+          #   # ...
+          # end
+          # ```
           class Category < Increase::Enum
             # The authentication attempt is for a payment.
             PAYMENT_AUTHENTICATION = :payment_authentication
@@ -498,6 +508,16 @@ module Increase
               # @abstract
               #
               # The outcome of the Card Authentication Challenge Attempt.
+              #
+              # @example
+              # ```ruby
+              # case outcome
+              # in :successful
+              #   # ...
+              # in :failed
+              #   # ...
+              # end
+              # ```
               class Outcome < Increase::Enum
                 # The attempt was successful.
                 SUCCESSFUL = :successful
@@ -517,6 +537,18 @@ module Increase
             # @abstract
             #
             # The method used to verify the Card Authentication Challenge.
+            #
+            # @example
+            # ```ruby
+            # case verification_method
+            # in :text_message
+            #   # ...
+            # in :email
+            #   # ...
+            # in :none_available
+            #   # ...
+            # end
+            # ```
             class VerificationMethod < Increase::Enum
               # The one-time code was sent via text message.
               TEXT_MESSAGE = :text_message
@@ -539,6 +571,24 @@ module Increase
           # @abstract
           #
           # The reason why this authentication attempt was denied, if it was.
+          #
+          # @example
+          # ```ruby
+          # case deny_reason
+          # in :group_locked
+          #   # ...
+          # in :card_not_active
+          #   # ...
+          # in :entity_not_active
+          #   # ...
+          # in :transaction_not_allowed
+          #   # ...
+          # in :webhook_denied
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class DenyReason < Increase::Enum
             # The group was locked.
             GROUP_LOCKED = :group_locked
@@ -569,6 +619,18 @@ module Increase
           # @abstract
           #
           # The device channel of the card authentication attempt.
+          #
+          # @example
+          # ```ruby
+          # case device_channel
+          # in :app
+          #   # ...
+          # in :browser
+          #   # ...
+          # in :three_ds_requestor_initiated
+          #   # ...
+          # end
+          # ```
           class DeviceChannel < Increase::Enum
             # The authentication attempt was made from an app.
             APP = :app
@@ -590,6 +652,24 @@ module Increase
           # @abstract
           #
           # The status of the card authentication.
+          #
+          # @example
+          # ```ruby
+          # case status
+          # in :denied
+          #   # ...
+          # in :authenticated_with_challenge
+          #   # ...
+          # in :authenticated_without_challenge
+          #   # ...
+          # in :awaiting_challenge
+          #   # ...
+          # in :validating_challenge
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Status < Increase::Enum
             # The authentication attempt was denied.
             DENIED = :denied
@@ -630,6 +710,14 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `card_authentication`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :card_authentication
+          #   # ...
+          # end
+          # ```
           class Type < Increase::Enum
             CARD_AUTHENTICATION = :card_authentication
 
@@ -897,6 +985,18 @@ module Increase
           #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
+          #
+          # @example
+          # ```ruby
+          # case actioner
+          # in :user
+          #   # ...
+          # in :increase
+          #   # ...
+          # in :network
+          #   # ...
+          # end
+          # ```
           class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER = :user
@@ -919,6 +1019,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -950,6 +1068,16 @@ module Increase
           #
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
+          #
+          # @example
+          # ```ruby
+          # case direction
+          # in :settlement
+          #   # ...
+          # in :refund
+          #   # ...
+          # end
+          # ```
           class Direction < Increase::Enum
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT = :settlement
@@ -994,6 +1122,14 @@ module Increase
             # @abstract
             #
             # The payment network used to process this card authorization.
+            #
+            # @example
+            # ```ruby
+            # case category
+            # in :visa
+            #   # ...
+            # end
+            # ```
             class Category < Increase::Enum
               # Visa
               VISA = :visa
@@ -1051,6 +1187,24 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
+              #
+              # @example
+              # ```ruby
+              # case electronic_commerce_indicator
+              # in :mail_phone_order
+              #   # ...
+              # in :recurring
+              #   # ...
+              # in :installment
+              #   # ...
+              # in :unknown_mail_phone_order
+              #   # ...
+              # in :secure_electronic_commerce
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER = :mail_phone_order
@@ -1088,6 +1242,24 @@ module Increase
               #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
+              #
+              # @example
+              # ```ruby
+              # case point_of_service_entry_mode
+              # in :unknown
+              #   # ...
+              # in :manual
+              #   # ...
+              # in :magnetic_stripe_no_cvv
+              #   # ...
+              # in :optical_code
+              #   # ...
+              # in :integrated_circuit_card
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
                 UNKNOWN = :unknown
@@ -1131,6 +1303,24 @@ module Increase
               #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
+              #
+              # @example
+              # ```ruby
+              # case stand_in_processing_reason
+              # in :issuer_error
+              #   # ...
+              # in :invalid_physical_card
+              #   # ...
+              # in :invalid_cardholder_authentication_verification_value
+              #   # ...
+              # in :internal_visa_error
+              #   # ...
+              # in :merchant_transaction_advisory_service_authentication_required
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR = :issuer_error
@@ -1202,6 +1392,24 @@ module Increase
           #
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
+          #
+          # @example
+          # ```ruby
+          # case processing_category
+          # in :account_funding
+          #   # ...
+          # in :automatic_fuel_dispenser
+          #   # ...
+          # in :bill_payment
+          #   # ...
+          # in :purchase
+          #   # ...
+          # in :quasi_cash
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class ProcessingCategory < Increase::Enum
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING = :account_funding
@@ -1233,6 +1441,14 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :card_authorization
+          #   # ...
+          # end
+          # ```
           class Type < Increase::Enum
             CARD_AUTHORIZATION = :card_authorization
 
@@ -1292,6 +1508,18 @@ module Increase
               # @abstract
               #
               # The result of verifying the Card Verification Code.
+              #
+              # @example
+              # ```ruby
+              # case result
+              # in :not_checked
+              #   # ...
+              # in :match
+              #   # ...
+              # in :no_match
+              #   # ...
+              # end
+              # ```
               class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED = :not_checked
@@ -1361,6 +1589,24 @@ module Increase
               # @abstract
               #
               # The address verification result returned to the card network.
+              #
+              # @example
+              # ```ruby
+              # case result
+              # in :not_checked
+              #   # ...
+              # in :postal_code_match_address_not_checked
+              #   # ...
+              # in :postal_code_match_address_no_match
+              #   # ...
+              # in :postal_code_no_match_address_match
+              #   # ...
+              # in :match
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class Result < Increase::Enum
                 # No adress was provided in the authorization request.
                 NOT_CHECKED = :not_checked
@@ -1454,6 +1700,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
           #   currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -1484,6 +1748,14 @@ module Increase
           # @abstract
           #
           # The card network used to process this card authorization.
+          #
+          # @example
+          # ```ruby
+          # case network
+          # in :visa
+          #   # ...
+          # end
+          # ```
           class Network < Increase::Enum
             # Visa
             VISA = :visa
@@ -1500,6 +1772,14 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `card_authorization_expiration`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :card_authorization_expiration
+          #   # ...
+          # end
+          # ```
           class Type < Increase::Enum
             CARD_AUTHORIZATION_EXPIRATION = :card_authorization_expiration
 
@@ -1765,6 +2045,18 @@ module Increase
           #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
+          #
+          # @example
+          # ```ruby
+          # case actioner
+          # in :user
+          #   # ...
+          # in :increase
+          #   # ...
+          # in :network
+          #   # ...
+          # end
+          # ```
           class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER = :user
@@ -1787,6 +2079,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
           #   account currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -1818,6 +2128,16 @@ module Increase
           #
           # The direction describes the direction the funds will move, either from the
           #   cardholder to the merchant or from the merchant to the cardholder.
+          #
+          # @example
+          # ```ruby
+          # case direction
+          # in :settlement
+          #   # ...
+          # in :refund
+          #   # ...
+          # end
+          # ```
           class Direction < Increase::Enum
             # A regular card authorization where funds are debited from the cardholder.
             SETTLEMENT = :settlement
@@ -1862,6 +2182,14 @@ module Increase
             # @abstract
             #
             # The payment network used to process this card authorization.
+            #
+            # @example
+            # ```ruby
+            # case category
+            # in :visa
+            #   # ...
+            # end
+            # ```
             class Category < Increase::Enum
               # Visa
               VISA = :visa
@@ -1919,6 +2247,24 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
+              #
+              # @example
+              # ```ruby
+              # case electronic_commerce_indicator
+              # in :mail_phone_order
+              #   # ...
+              # in :recurring
+              #   # ...
+              # in :installment
+              #   # ...
+              # in :unknown_mail_phone_order
+              #   # ...
+              # in :secure_electronic_commerce
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER = :mail_phone_order
@@ -1956,6 +2302,24 @@ module Increase
               #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
+              #
+              # @example
+              # ```ruby
+              # case point_of_service_entry_mode
+              # in :unknown
+              #   # ...
+              # in :manual
+              #   # ...
+              # in :magnetic_stripe_no_cvv
+              #   # ...
+              # in :optical_code
+              #   # ...
+              # in :integrated_circuit_card
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
                 UNKNOWN = :unknown
@@ -1999,6 +2363,24 @@ module Increase
               #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
+              #
+              # @example
+              # ```ruby
+              # case stand_in_processing_reason
+              # in :issuer_error
+              #   # ...
+              # in :invalid_physical_card
+              #   # ...
+              # in :invalid_cardholder_authentication_verification_value
+              #   # ...
+              # in :internal_visa_error
+              #   # ...
+              # in :merchant_transaction_advisory_service_authentication_required
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR = :issuer_error
@@ -2070,6 +2452,24 @@ module Increase
           #
           # The processing category describes the intent behind the authorization, such as
           #   whether it was used for bill payments or an automatic fuel dispenser.
+          #
+          # @example
+          # ```ruby
+          # case processing_category
+          # in :account_funding
+          #   # ...
+          # in :automatic_fuel_dispenser
+          #   # ...
+          # in :bill_payment
+          #   # ...
+          # in :purchase
+          #   # ...
+          # in :quasi_cash
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class ProcessingCategory < Increase::Enum
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
             ACCOUNT_FUNDING = :account_funding
@@ -2101,6 +2501,24 @@ module Increase
           #
           # This is present if a specific decline reason was given in the real-time
           #   decision.
+          #
+          # @example
+          # ```ruby
+          # case real_time_decision_reason
+          # in :insufficient_funds
+          #   # ...
+          # in :transaction_never_allowed
+          #   # ...
+          # in :exceeds_approval_limit
+          #   # ...
+          # in :card_temporarily_disabled
+          #   # ...
+          # in :suspected_fraud
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class RealTimeDecisionReason < Increase::Enum
             # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
             INSUFFICIENT_FUNDS = :insufficient_funds
@@ -2131,6 +2549,24 @@ module Increase
           # @abstract
           #
           # Why the transaction was declined.
+          #
+          # @example
+          # ```ruby
+          # case reason
+          # in :account_closed
+          #   # ...
+          # in :card_not_active
+          #   # ...
+          # in :card_canceled
+          #   # ...
+          # in :physical_card_not_active
+          #   # ...
+          # in :entity_not_active
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Reason < Increase::Enum
             # The account has been closed.
             ACCOUNT_CLOSED = :account_closed
@@ -2239,6 +2675,18 @@ module Increase
               # @abstract
               #
               # The result of verifying the Card Verification Code.
+              #
+              # @example
+              # ```ruby
+              # case result
+              # in :not_checked
+              #   # ...
+              # in :match
+              #   # ...
+              # in :no_match
+              #   # ...
+              # end
+              # ```
               class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED = :not_checked
@@ -2308,6 +2756,24 @@ module Increase
               # @abstract
               #
               # The address verification result returned to the card network.
+              #
+              # @example
+              # ```ruby
+              # case result
+              # in :not_checked
+              #   # ...
+              # in :postal_code_match_address_not_checked
+              #   # ...
+              # in :postal_code_match_address_no_match
+              #   # ...
+              # in :postal_code_no_match_address_match
+              #   # ...
+              # in :match
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class Result < Increase::Enum
                 # No adress was provided in the authorization request.
                 NOT_CHECKED = :not_checked
@@ -2427,6 +2893,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
           #   currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -2457,6 +2941,14 @@ module Increase
           # @abstract
           #
           # The card network used to process this card authorization.
+          #
+          # @example
+          # ```ruby
+          # case network
+          # in :visa
+          #   # ...
+          # end
+          # ```
           class Network < Increase::Enum
             # Visa
             VISA = :visa
@@ -2508,6 +3000,14 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `card_fuel_confirmation`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :card_fuel_confirmation
+          #   # ...
+          # end
+          # ```
           class Type < Increase::Enum
             CARD_FUEL_CONFIRMATION = :card_fuel_confirmation
 
@@ -2643,6 +3143,18 @@ module Increase
           #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
+          #
+          # @example
+          # ```ruby
+          # case actioner
+          # in :user
+          #   # ...
+          # in :increase
+          #   # ...
+          # in :network
+          #   # ...
+          # end
+          # ```
           class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER = :user
@@ -2665,6 +3177,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
           #   currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -2695,6 +3225,14 @@ module Increase
           # @abstract
           #
           # The card network used to process this card authorization.
+          #
+          # @example
+          # ```ruby
+          # case network
+          # in :visa
+          #   # ...
+          # end
+          # ```
           class Network < Increase::Enum
             # Visa
             VISA = :visa
@@ -2746,6 +3284,14 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `card_increment`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :card_increment
+          #   # ...
+          # end
+          # ```
           class Type < Increase::Enum
             CARD_INCREMENT = :card_increment
 
@@ -2966,6 +3512,24 @@ module Increase
             # @abstract
             #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            #
+            # @example
+            # ```ruby
+            # case currency
+            # in :CAD
+            #   # ...
+            # in :CHF
+            #   # ...
+            # in :EUR
+            #   # ...
+            # in :GBP
+            #   # ...
+            # in :JPY
+            #   # ...
+            # in ...
+            #   #...
+            # end
+            # ```
             class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD = :CAD
@@ -2998,6 +3562,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -3062,6 +3644,24 @@ module Increase
             #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
+            #
+            # @example
+            # ```ruby
+            # case currency
+            # in :CAD
+            #   # ...
+            # in :CHF
+            #   # ...
+            # in :EUR
+            #   # ...
+            # in :GBP
+            #   # ...
+            # in :JPY
+            #   # ...
+            # in ...
+            #   #...
+            # end
+            # ```
             class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD = :CAD
@@ -3383,6 +3983,24 @@ module Increase
               # @abstract
               #
               # Additional charges (gas, late fee, etc.) being billed.
+              #
+              # @example
+              # ```ruby
+              # case extra_charges
+              # in :no_extra_charge
+              #   # ...
+              # in :gas
+              #   # ...
+              # in :extra_mileage
+              #   # ...
+              # in :late_return
+              #   # ...
+              # in :one_way_service_fee
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
@@ -3414,6 +4032,16 @@ module Increase
               #
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
+              #
+              # @example
+              # ```ruby
+              # case no_show_indicator
+              # in :not_applicable
+              #   # ...
+              # in :no_show_for_specialized_vehicle
+              #   # ...
+              # end
+              # ```
               class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
@@ -3585,6 +4213,24 @@ module Increase
               # @abstract
               #
               # Additional charges (phone, late check-out, etc.) being billed.
+              #
+              # @example
+              # ```ruby
+              # case extra_charges
+              # in :no_extra_charge
+              #   # ...
+              # in :restaurant
+              #   # ...
+              # in :gift_shop
+              #   # ...
+              # in :mini_bar
+              #   # ...
+              # in :telephone
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
@@ -3619,6 +4265,16 @@ module Increase
               #
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
+              #
+              # @example
+              # ```ruby
+              # case no_show_indicator
+              # in :not_applicable
+              #   # ...
+              # in :no_show
+              #   # ...
+              # end
+              # ```
               class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
@@ -3638,6 +4294,22 @@ module Increase
             # @abstract
             #
             # The format of the purchase identifier.
+            #
+            # @example
+            # ```ruby
+            # case purchase_identifier_format
+            # in :free_text
+            #   # ...
+            # in :order_number
+            #   # ...
+            # in :rental_agreement_number
+            #   # ...
+            # in :hotel_folio_number
+            #   # ...
+            # in :invoice_number
+            #   # ...
+            # end
+            # ```
             class PurchaseIdentifierFormat < Increase::Enum
               # Free text
               FREE_TEXT = :free_text
@@ -3842,6 +4514,20 @@ module Increase
                 # @abstract
                 #
                 # Indicates the reason for a credit to the cardholder.
+                #
+                # @example
+                # ```ruby
+                # case credit_reason_indicator
+                # in :no_credit
+                #   # ...
+                # in :passenger_transport_ancillary_purchase_cancellation
+                #   # ...
+                # in :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                #   # ...
+                # in :other
+                #   # ...
+                # end
+                # ```
                 class CreditReasonIndicator < Increase::Enum
                   # No credit
                   NO_CREDIT = :no_credit
@@ -3889,6 +4575,24 @@ module Increase
                   # @abstract
                   #
                   # Category of the ancillary service.
+                  #
+                  # @example
+                  # ```ruby
+                  # case category
+                  # in :none
+                  #   # ...
+                  # in :bundled_service
+                  #   # ...
+                  # in :baggage_fee
+                  #   # ...
+                  # in :change_fee
+                  #   # ...
+                  # in :cargo
+                  #   # ...
+                  # in ...
+                  #   #...
+                  # end
+                  # ```
                   class Category < Increase::Enum
                     # None
                     NONE = :none
@@ -3975,6 +4679,24 @@ module Increase
               # @abstract
               #
               # Indicates the reason for a credit to the cardholder.
+              #
+              # @example
+              # ```ruby
+              # case credit_reason_indicator
+              # in :no_credit
+              #   # ...
+              # in :passenger_transport_ancillary_purchase_cancellation
+              #   # ...
+              # in :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+              #   # ...
+              # in :airline_ticket_cancellation
+              #   # ...
+              # in :other
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class CreditReasonIndicator < Increase::Enum
                 # No credit
                 NO_CREDIT = :no_credit
@@ -4005,6 +4727,16 @@ module Increase
               # @abstract
               #
               # Indicates whether this ticket is non-refundable.
+              #
+              # @example
+              # ```ruby
+              # case restricted_ticket_indicator
+              # in :no_restrictions
+              #   # ...
+              # in :restricted_non_refundable_ticket
+              #   # ...
+              # end
+              # ```
               class RestrictedTicketIndicator < Increase::Enum
                 # No restrictions
                 NO_RESTRICTIONS = :no_restrictions
@@ -4023,6 +4755,18 @@ module Increase
               # @abstract
               #
               # Indicates why a ticket was changed.
+              #
+              # @example
+              # ```ruby
+              # case ticket_change_indicator
+              # in :none
+              #   # ...
+              # in :change_to_existing_ticket
+              #   # ...
+              # in :new_ticket
+              #   # ...
+              # end
+              # ```
               class TicketChangeIndicator < Increase::Enum
                 # None
                 NONE = :none
@@ -4105,6 +4849,18 @@ module Increase
                 # @abstract
                 #
                 # Indicates whether a stopover is allowed on this ticket.
+                #
+                # @example
+                # ```ruby
+                # case stop_over_code
+                # in :none
+                #   # ...
+                # in :stop_over_allowed
+                #   # ...
+                # in :stop_over_not_allowed
+                #   # ...
+                # end
+                # ```
                 class StopOverCode < Increase::Enum
                   # None
                   NONE = :none
@@ -4130,6 +4886,14 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `card_refund`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :card_refund
+          #   # ...
+          # end
+          # ```
           class Type < Increase::Enum
             CARD_REFUND = :card_refund
 
@@ -4316,6 +5080,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
           #   currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -4346,6 +5128,14 @@ module Increase
           # @abstract
           #
           # The card network used to process this card authorization.
+          #
+          # @example
+          # ```ruby
+          # case network
+          # in :visa
+          #   # ...
+          # end
+          # ```
           class Network < Increase::Enum
             # Visa
             VISA = :visa
@@ -4396,6 +5186,20 @@ module Increase
           # @abstract
           #
           # Why this reversal was initiated.
+          #
+          # @example
+          # ```ruby
+          # case reversal_reason
+          # in :reversed_by_customer
+          #   # ...
+          # in :reversed_by_network_or_acquirer
+          #   # ...
+          # in :reversed_by_point_of_sale
+          #   # ...
+          # in :partial_reversal
+          #   # ...
+          # end
+          # ```
           class ReversalReason < Increase::Enum
             # The Card Reversal was initiated at the customer's request.
             REVERSED_BY_CUSTOMER = :reversed_by_customer
@@ -4421,6 +5225,14 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `card_reversal`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :card_reversal
+          #   # ...
+          # end
+          # ```
           class Type < Increase::Enum
             CARD_REVERSAL = :card_reversal
 
@@ -4661,6 +5473,24 @@ module Increase
             # @abstract
             #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+            #
+            # @example
+            # ```ruby
+            # case currency
+            # in :CAD
+            #   # ...
+            # in :CHF
+            #   # ...
+            # in :EUR
+            #   # ...
+            # in :GBP
+            #   # ...
+            # in :JPY
+            #   # ...
+            # in ...
+            #   #...
+            # end
+            # ```
             class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD = :CAD
@@ -4693,6 +5523,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's settlement currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -4758,6 +5606,24 @@ module Increase
             #
             # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
             #   reimbursement.
+            #
+            # @example
+            # ```ruby
+            # case currency
+            # in :CAD
+            #   # ...
+            # in :CHF
+            #   # ...
+            # in :EUR
+            #   # ...
+            # in :GBP
+            #   # ...
+            # in :JPY
+            #   # ...
+            # in ...
+            #   #...
+            # end
+            # ```
             class Currency < Increase::Enum
               # Canadian Dollar (CAD)
               CAD = :CAD
@@ -5079,6 +5945,24 @@ module Increase
               # @abstract
               #
               # Additional charges (gas, late fee, etc.) being billed.
+              #
+              # @example
+              # ```ruby
+              # case extra_charges
+              # in :no_extra_charge
+              #   # ...
+              # in :gas
+              #   # ...
+              # in :extra_mileage
+              #   # ...
+              # in :late_return
+              #   # ...
+              # in :one_way_service_fee
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
@@ -5110,6 +5994,16 @@ module Increase
               #
               # An indicator that the cardholder is being billed for a reserved vehicle that was
               #   not actually rented (that is, a "no-show" charge).
+              #
+              # @example
+              # ```ruby
+              # case no_show_indicator
+              # in :not_applicable
+              #   # ...
+              # in :no_show_for_specialized_vehicle
+              #   # ...
+              # end
+              # ```
               class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
@@ -5281,6 +6175,24 @@ module Increase
               # @abstract
               #
               # Additional charges (phone, late check-out, etc.) being billed.
+              #
+              # @example
+              # ```ruby
+              # case extra_charges
+              # in :no_extra_charge
+              #   # ...
+              # in :restaurant
+              #   # ...
+              # in :gift_shop
+              #   # ...
+              # in :mini_bar
+              #   # ...
+              # in :telephone
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class ExtraCharges < Increase::Enum
                 # No extra charge
                 NO_EXTRA_CHARGE = :no_extra_charge
@@ -5315,6 +6227,16 @@ module Increase
               #
               # Indicator that the cardholder is being billed for a reserved room that was not
               #   actually used.
+              #
+              # @example
+              # ```ruby
+              # case no_show_indicator
+              # in :not_applicable
+              #   # ...
+              # in :no_show
+              #   # ...
+              # end
+              # ```
               class NoShowIndicator < Increase::Enum
                 # Not applicable
                 NOT_APPLICABLE = :not_applicable
@@ -5334,6 +6256,22 @@ module Increase
             # @abstract
             #
             # The format of the purchase identifier.
+            #
+            # @example
+            # ```ruby
+            # case purchase_identifier_format
+            # in :free_text
+            #   # ...
+            # in :order_number
+            #   # ...
+            # in :rental_agreement_number
+            #   # ...
+            # in :hotel_folio_number
+            #   # ...
+            # in :invoice_number
+            #   # ...
+            # end
+            # ```
             class PurchaseIdentifierFormat < Increase::Enum
               # Free text
               FREE_TEXT = :free_text
@@ -5538,6 +6476,20 @@ module Increase
                 # @abstract
                 #
                 # Indicates the reason for a credit to the cardholder.
+                #
+                # @example
+                # ```ruby
+                # case credit_reason_indicator
+                # in :no_credit
+                #   # ...
+                # in :passenger_transport_ancillary_purchase_cancellation
+                #   # ...
+                # in :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+                #   # ...
+                # in :other
+                #   # ...
+                # end
+                # ```
                 class CreditReasonIndicator < Increase::Enum
                   # No credit
                   NO_CREDIT = :no_credit
@@ -5585,6 +6537,24 @@ module Increase
                   # @abstract
                   #
                   # Category of the ancillary service.
+                  #
+                  # @example
+                  # ```ruby
+                  # case category
+                  # in :none
+                  #   # ...
+                  # in :bundled_service
+                  #   # ...
+                  # in :baggage_fee
+                  #   # ...
+                  # in :change_fee
+                  #   # ...
+                  # in :cargo
+                  #   # ...
+                  # in ...
+                  #   #...
+                  # end
+                  # ```
                   class Category < Increase::Enum
                     # None
                     NONE = :none
@@ -5671,6 +6641,24 @@ module Increase
               # @abstract
               #
               # Indicates the reason for a credit to the cardholder.
+              #
+              # @example
+              # ```ruby
+              # case credit_reason_indicator
+              # in :no_credit
+              #   # ...
+              # in :passenger_transport_ancillary_purchase_cancellation
+              #   # ...
+              # in :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation
+              #   # ...
+              # in :airline_ticket_cancellation
+              #   # ...
+              # in :other
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class CreditReasonIndicator < Increase::Enum
                 # No credit
                 NO_CREDIT = :no_credit
@@ -5701,6 +6689,16 @@ module Increase
               # @abstract
               #
               # Indicates whether this ticket is non-refundable.
+              #
+              # @example
+              # ```ruby
+              # case restricted_ticket_indicator
+              # in :no_restrictions
+              #   # ...
+              # in :restricted_non_refundable_ticket
+              #   # ...
+              # end
+              # ```
               class RestrictedTicketIndicator < Increase::Enum
                 # No restrictions
                 NO_RESTRICTIONS = :no_restrictions
@@ -5719,6 +6717,18 @@ module Increase
               # @abstract
               #
               # Indicates why a ticket was changed.
+              #
+              # @example
+              # ```ruby
+              # case ticket_change_indicator
+              # in :none
+              #   # ...
+              # in :change_to_existing_ticket
+              #   # ...
+              # in :new_ticket
+              #   # ...
+              # end
+              # ```
               class TicketChangeIndicator < Increase::Enum
                 # None
                 NONE = :none
@@ -5801,6 +6811,18 @@ module Increase
                 # @abstract
                 #
                 # Indicates whether a stopover is allowed on this ticket.
+                #
+                # @example
+                # ```ruby
+                # case stop_over_code
+                # in :none
+                #   # ...
+                # in :stop_over_allowed
+                #   # ...
+                # in :stop_over_not_allowed
+                #   # ...
+                # end
+                # ```
                 class StopOverCode < Increase::Enum
                   # None
                   NONE = :none
@@ -5826,6 +6848,14 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `card_settlement`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :card_settlement
+          #   # ...
+          # end
+          # ```
           class Type < Increase::Enum
             CARD_SETTLEMENT = :card_settlement
 
@@ -6030,6 +7060,18 @@ module Increase
           #
           # Whether this authorization was approved by Increase, the card network through
           #   stand-in processing, or the user through a real-time decision.
+          #
+          # @example
+          # ```ruby
+          # case actioner
+          # in :user
+          #   # ...
+          # in :increase
+          #   # ...
+          # in :network
+          #   # ...
+          # end
+          # ```
           class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
             USER = :user
@@ -6052,6 +7094,24 @@ module Increase
           #
           # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
           #   transaction's currency.
+          #
+          # @example
+          # ```ruby
+          # case currency
+          # in :CAD
+          #   # ...
+          # in :CHF
+          #   # ...
+          # in :EUR
+          #   # ...
+          # in :GBP
+          #   # ...
+          # in :JPY
+          #   # ...
+          # in ...
+          #   #...
+          # end
+          # ```
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
             CAD = :CAD
@@ -6108,6 +7168,14 @@ module Increase
             # @abstract
             #
             # The payment network used to process this card authorization.
+            #
+            # @example
+            # ```ruby
+            # case category
+            # in :visa
+            #   # ...
+            # end
+            # ```
             class Category < Increase::Enum
               # Visa
               VISA = :visa
@@ -6165,6 +7233,24 @@ module Increase
               # For electronic commerce transactions, this identifies the level of security used
               #   in obtaining the customer's payment credential. For mail or telephone order
               #   transactions, identifies the type of mail or telephone order.
+              #
+              # @example
+              # ```ruby
+              # case electronic_commerce_indicator
+              # in :mail_phone_order
+              #   # ...
+              # in :recurring
+              #   # ...
+              # in :installment
+              #   # ...
+              # in :unknown_mail_phone_order
+              #   # ...
+              # in :secure_electronic_commerce
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
                 MAIL_PHONE_ORDER = :mail_phone_order
@@ -6202,6 +7288,24 @@ module Increase
               #
               # The method used to enter the cardholder's primary account number and card
               #   expiration date.
+              #
+              # @example
+              # ```ruby
+              # case point_of_service_entry_mode
+              # in :unknown
+              #   # ...
+              # in :manual
+              #   # ...
+              # in :magnetic_stripe_no_cvv
+              #   # ...
+              # in :optical_code
+              #   # ...
+              # in :integrated_circuit_card
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
                 UNKNOWN = :unknown
@@ -6245,6 +7349,24 @@ module Increase
               #
               # Only present when `actioner: network`. Describes why a card authorization was
               #   approved or declined by Visa through stand-in processing.
+              #
+              # @example
+              # ```ruby
+              # case stand_in_processing_reason
+              # in :issuer_error
+              #   # ...
+              # in :invalid_physical_card
+              #   # ...
+              # in :invalid_cardholder_authentication_verification_value
+              #   # ...
+              # in :internal_visa_error
+              #   # ...
+              # in :merchant_transaction_advisory_service_authentication_required
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
                 ISSUER_ERROR = :issuer_error
@@ -6316,6 +7438,14 @@ module Increase
           #
           # A constant representing the object's type. For this resource it will always be
           #   `card_validation`.
+          #
+          # @example
+          # ```ruby
+          # case type
+          # in :card_validation
+          #   # ...
+          # end
+          # ```
           class Type < Increase::Enum
             CARD_VALIDATION = :card_validation
 
@@ -6375,6 +7505,18 @@ module Increase
               # @abstract
               #
               # The result of verifying the Card Verification Code.
+              #
+              # @example
+              # ```ruby
+              # case result
+              # in :not_checked
+              #   # ...
+              # in :match
+              #   # ...
+              # in :no_match
+              #   # ...
+              # end
+              # ```
               class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
                 NOT_CHECKED = :not_checked
@@ -6444,6 +7586,24 @@ module Increase
               # @abstract
               #
               # The address verification result returned to the card network.
+              #
+              # @example
+              # ```ruby
+              # case result
+              # in :not_checked
+              #   # ...
+              # in :postal_code_match_address_not_checked
+              #   # ...
+              # in :postal_code_match_address_no_match
+              #   # ...
+              # in :postal_code_no_match_address_match
+              #   # ...
+              # in :match
+              #   # ...
+              # in ...
+              #   #...
+              # end
+              # ```
               class Result < Increase::Enum
                 # No adress was provided in the authorization request.
                 NOT_CHECKED = :not_checked
@@ -6478,6 +7638,24 @@ module Increase
         #
         # The type of the resource. We may add additional possible values for this enum
         #   over time; your application should be able to handle such additions gracefully.
+        #
+        # @example
+        # ```ruby
+        # case category
+        # in :card_authorization
+        #   # ...
+        # in :card_authentication
+        #   # ...
+        # in :card_validation
+        #   # ...
+        # in :card_decline
+        #   # ...
+        # in :card_reversal
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Category < Increase::Enum
           # Card Authorization: details will be under the `card_authorization` object.
           CARD_AUTHORIZATION = :card_authorization
@@ -6575,6 +7753,14 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `card_payment`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :card_payment
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         CARD_PAYMENT = :card_payment
 
