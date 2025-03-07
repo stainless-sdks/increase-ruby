@@ -70,9 +70,9 @@ module Increase
           digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         card_authentication: nil,
         card_authentication_challenge: nil,
         card_authorization: nil,
@@ -107,8 +107,8 @@ module Increase
         def decision=(_)
         end
 
-        sig { params(decision: Symbol).void }
-        def initialize(decision:)
+        sig { params(decision: Symbol).returns(T.attached_class) }
+        def self.new(decision:)
         end
 
         sig { override.returns({decision: Symbol}) }
@@ -144,8 +144,8 @@ module Increase
         def result=(_)
         end
 
-        sig { params(result: Symbol).void }
-        def initialize(result:)
+        sig { params(result: Symbol).returns(T.attached_class) }
+        def self.new(result:)
         end
 
         sig { override.returns({result: Symbol}) }
@@ -186,8 +186,8 @@ module Increase
         def decline_reason=(_)
         end
 
-        sig { params(decision: Symbol, decline_reason: Symbol).void }
-        def initialize(decision:, decline_reason: nil)
+        sig { params(decision: Symbol, decline_reason: Symbol).returns(T.attached_class) }
+        def self.new(decision:, decline_reason: nil)
         end
 
         sig { override.returns({decision: Symbol, decline_reason: Symbol}) }
@@ -264,9 +264,9 @@ module Increase
             result: Symbol,
             success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(result:, success: nil)
+        def self.new(result:, success: nil)
         end
 
         sig do
@@ -314,8 +314,8 @@ module Increase
           def phone=(_)
           end
 
-          sig { params(email: String, phone: String).void }
-          def initialize(email: nil, phone: nil)
+          sig { params(email: String, phone: String).returns(T.attached_class) }
+          def self.new(email: nil, phone: nil)
           end
 
           sig { override.returns({email: String, phone: String}) }
@@ -352,9 +352,9 @@ module Increase
             approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
             decline: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(approval: nil, decline: nil)
+        def self.new(approval: nil, decline: nil)
         end
 
         sig do
@@ -386,8 +386,8 @@ module Increase
           def phone=(_)
           end
 
-          sig { params(email: String, phone: String).void }
-          def initialize(email: nil, phone: nil)
+          sig { params(email: String, phone: String).returns(T.attached_class) }
+          def self.new(email: nil, phone: nil)
           end
 
           sig { override.returns({email: String, phone: String}) }
@@ -404,8 +404,8 @@ module Increase
           def reason=(_)
           end
 
-          sig { params(reason: String).void }
-          def initialize(reason: nil)
+          sig { params(reason: String).returns(T.attached_class) }
+          def self.new(reason: nil)
           end
 
           sig { override.returns({reason: String}) }

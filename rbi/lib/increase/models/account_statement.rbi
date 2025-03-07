@@ -87,9 +87,9 @@ module Increase
           statement_period_start: Time,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         account_id:,
         created_at:,

@@ -159,9 +159,9 @@ module Increase
           validated_account_ownership_with_account_statement: T.nilable(T::Boolean),
           validated_account_ownership_with_microdeposit: T.nilable(T::Boolean)
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         authorization_terms:,
         authorized_at:,

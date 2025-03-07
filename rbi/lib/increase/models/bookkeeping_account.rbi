@@ -69,9 +69,9 @@ module Increase
           name: String,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:)
+      def self.new(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:)
       end
 
       sig do

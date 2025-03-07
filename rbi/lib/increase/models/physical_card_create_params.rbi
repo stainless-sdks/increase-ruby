@@ -52,9 +52,9 @@ module Increase
           physical_card_profile_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {})
+      def self.new(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {})
       end
 
       sig do
@@ -89,8 +89,8 @@ module Increase
         def last_name=(_)
         end
 
-        sig { params(first_name: String, last_name: String).void }
-        def initialize(first_name:, last_name:)
+        sig { params(first_name: String, last_name: String).returns(T.attached_class) }
+        def self.new(first_name:, last_name:)
         end
 
         sig { override.returns({first_name: String, last_name: String}) }
@@ -118,8 +118,11 @@ module Increase
         def method_=(_)
         end
 
-        sig { params(address: Increase::Models::PhysicalCardCreateParams::Shipment::Address, method_: Symbol).void }
-        def initialize(address:, method_:)
+        sig do
+          params(address: Increase::Models::PhysicalCardCreateParams::Shipment::Address, method_: Symbol)
+            .returns(T.attached_class)
+        end
+        def self.new(address:, method_:)
         end
 
         sig do
@@ -204,18 +207,9 @@ module Increase
               line3: String,
               phone_number: String
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
-            city:,
-            line1:,
-            name:,
-            postal_code:,
-            state:,
-            line2: nil,
-            line3: nil,
-            phone_number: nil
-          )
+          def self.new(city:, line1:, name:, postal_code:, state:, line2: nil, line3: nil, phone_number: nil)
           end
 
           sig do

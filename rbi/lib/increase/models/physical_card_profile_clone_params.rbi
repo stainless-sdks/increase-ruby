@@ -58,9 +58,9 @@ module Increase
           front_text: Increase::Models::PhysicalCardProfileCloneParams::FrontText,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         carrier_image_file_id: nil,
         contact_phone: nil,
         description: nil,
@@ -103,8 +103,8 @@ module Increase
         def line2=(_)
         end
 
-        sig { params(line1: String, line2: String).void }
-        def initialize(line1:, line2: nil)
+        sig { params(line1: String, line2: String).returns(T.attached_class) }
+        def self.new(line1:, line2: nil)
         end
 
         sig { override.returns({line1: String, line2: String}) }

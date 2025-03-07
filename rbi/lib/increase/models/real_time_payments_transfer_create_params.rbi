@@ -109,9 +109,9 @@ module Increase
           ultimate_debtor_name: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         amount:,
         creditor_name:,
         remittance_information:,

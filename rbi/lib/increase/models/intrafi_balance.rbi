@@ -63,9 +63,9 @@ module Increase
           total_balance: Integer,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, balances:, currency:, effective_date:, total_balance:, type:)
+      def self.new(id:, balances:, currency:, effective_date:, total_balance:, type:)
       end
 
       sig do
@@ -136,9 +136,9 @@ module Increase
             bank_location: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation),
             fdic_certificate_number: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(id:, balance:, bank:, bank_location:, fdic_certificate_number:)
+        def self.new(id:, balance:, bank:, bank_location:, fdic_certificate_number:)
         end
 
         sig do
@@ -173,8 +173,8 @@ module Increase
           def state=(_)
           end
 
-          sig { params(city: String, state: String).void }
-          def initialize(city:, state:)
+          sig { params(city: String, state: String).returns(T.attached_class) }
+          def self.new(city:, state:)
           end
 
           sig { override.returns({city: String, state: String}) }

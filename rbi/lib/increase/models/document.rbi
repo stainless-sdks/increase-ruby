@@ -60,9 +60,9 @@ module Increase
           file_id: String,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, category:, created_at:, entity_id:, file_id:, type:)
+      def self.new(id:, category:, created_at:, entity_id:, file_id:, type:)
       end
 
       sig do

@@ -28,9 +28,9 @@ module Increase
           email_address: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(account_id:, email_address:, request_options: {})
+      def self.new(account_id:, email_address:, request_options: {})
       end
 
       sig do

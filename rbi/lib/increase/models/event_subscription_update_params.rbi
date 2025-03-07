@@ -15,15 +15,10 @@ module Increase
       end
 
       sig do
-        params(
-          status: Symbol,
-          request_options: T.any(
-            Increase::RequestOptions,
-            T::Hash[Symbol, T.anything]
-          )
-        ).void
+        params(status: Symbol, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          .returns(T.attached_class)
       end
-      def initialize(status: nil, request_options: {})
+      def self.new(status: nil, request_options: {})
       end
 
       sig { override.returns({status: Symbol, request_options: Increase::RequestOptions}) }

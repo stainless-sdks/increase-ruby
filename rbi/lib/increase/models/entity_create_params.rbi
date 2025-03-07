@@ -110,9 +110,9 @@ module Increase
           trust: Increase::Models::EntityCreateParams::Trust,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         structure:,
         corporation: nil,
         description: nil,
@@ -244,9 +244,9 @@ module Increase
             industry_code: String,
             website: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           address:,
           beneficial_owners:,
           name:,
@@ -315,8 +315,16 @@ module Increase
           def line2=(_)
           end
 
-          sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
-          def initialize(city:, line1:, state:, zip:, line2: nil)
+          sig do
+            params(
+              city: String,
+              line1: String,
+              state: String,
+              zip: String,
+              line2: String
+            ).returns(T.attached_class)
+          end
+          def self.new(city:, line1:, state:, zip:, line2: nil)
           end
 
           sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
@@ -358,9 +366,9 @@ module Increase
               prongs: T::Array[Symbol],
               company_title: String
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(individual:, prongs:, company_title: nil)
+          def self.new(individual:, prongs:, company_title: nil)
           end
 
           sig do
@@ -431,9 +439,9 @@ module Increase
                 name: String,
                 confirmed_no_us_tax_id: T::Boolean
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+            def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
             end
 
             sig do
@@ -492,8 +500,16 @@ module Increase
               def line2=(_)
               end
 
-              sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
-              def initialize(city:, line1:, state:, zip:, line2: nil)
+              sig do
+                params(
+                  city: String,
+                  line1: String,
+                  state: String,
+                  zip: String,
+                  line2: String
+                ).returns(T.attached_class)
+              end
+              def self.new(city:, line1:, state:, zip:, line2: nil)
               end
 
               sig do
@@ -591,9 +607,9 @@ module Increase
                   other: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Other,
                   passport: Increase::Models::EntityCreateParams::Corporation::BeneficialOwner::Individual::Identification::Passport
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+              def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
               end
 
               sig do
@@ -670,9 +686,10 @@ module Increase
                 end
 
                 sig do
-                  params(expiration_date: Date, file_id: String, state: String, back_file_id: String).void
+                  params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
+                    .returns(T.attached_class)
                 end
-                def initialize(expiration_date:, file_id:, state:, back_file_id: nil)
+                def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
                 end
 
                 sig do
@@ -738,9 +755,9 @@ module Increase
                     back_file_id: String,
                     expiration_date: Date
                   )
-                    .void
+                    .returns(T.attached_class)
                 end
-                def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+                def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
                 end
 
                 sig do
@@ -784,8 +801,10 @@ module Increase
                 def file_id=(_)
                 end
 
-                sig { params(country: String, expiration_date: Date, file_id: String).void }
-                def initialize(country:, expiration_date:, file_id:)
+                sig do
+                  params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
+                end
+                def self.new(country:, expiration_date:, file_id:)
                 end
 
                 sig { override.returns({country: String, expiration_date: Date, file_id: String}) }
@@ -877,9 +896,9 @@ module Increase
             tax_identifier: String,
             website: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(address:, authorized_persons:, category:, name:, tax_identifier:, website: nil)
+        def self.new(address:, authorized_persons:, category:, name:, tax_identifier:, website: nil)
         end
 
         sig do
@@ -939,8 +958,16 @@ module Increase
           def line2=(_)
           end
 
-          sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
-          def initialize(city:, line1:, state:, zip:, line2: nil)
+          sig do
+            params(
+              city: String,
+              line1: String,
+              state: String,
+              zip: String,
+              line2: String
+            ).returns(T.attached_class)
+          end
+          def self.new(city:, line1:, state:, zip:, line2: nil)
           end
 
           sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
@@ -957,8 +984,8 @@ module Increase
           def name=(_)
           end
 
-          sig { params(name: String).void }
-          def initialize(name:)
+          sig { params(name: String).returns(T.attached_class) }
+          def self.new(name:)
           end
 
           sig { override.returns({name: String}) }
@@ -1000,8 +1027,11 @@ module Increase
         def name=(_)
         end
 
-        sig { params(individuals: T::Array[Increase::Models::EntityCreateParams::Joint::Individual], name: String).void }
-        def initialize(individuals:, name: nil)
+        sig do
+          params(individuals: T::Array[Increase::Models::EntityCreateParams::Joint::Individual], name: String)
+            .returns(T.attached_class)
+        end
+        def self.new(individuals:, name: nil)
         end
 
         sig do
@@ -1066,9 +1096,9 @@ module Increase
               name: String,
               confirmed_no_us_tax_id: T::Boolean
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+          def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
           end
 
           sig do
@@ -1127,8 +1157,16 @@ module Increase
             def line2=(_)
             end
 
-            sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
-            def initialize(city:, line1:, state:, zip:, line2: nil)
+            sig do
+              params(
+                city: String,
+                line1: String,
+                state: String,
+                zip: String,
+                line2: String
+              ).returns(T.attached_class)
+            end
+            def self.new(city:, line1:, state:, zip:, line2: nil)
             end
 
             sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
@@ -1198,9 +1236,9 @@ module Increase
                 other: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Other,
                 passport: Increase::Models::EntityCreateParams::Joint::Individual::Identification::Passport
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+            def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
             end
 
             sig do
@@ -1276,8 +1314,11 @@ module Increase
               def back_file_id=(_)
               end
 
-              sig { params(expiration_date: Date, file_id: String, state: String, back_file_id: String).void }
-              def initialize(expiration_date:, file_id:, state:, back_file_id: nil)
+              sig do
+                params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
+                  .returns(T.attached_class)
+              end
+              def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
               end
 
               sig do
@@ -1343,9 +1384,9 @@ module Increase
                   back_file_id: String,
                   expiration_date: Date
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+              def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
               end
 
               sig do
@@ -1389,8 +1430,10 @@ module Increase
               def file_id=(_)
               end
 
-              sig { params(country: String, expiration_date: Date, file_id: String).void }
-              def initialize(country:, expiration_date:, file_id:)
+              sig do
+                params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
+              end
+              def self.new(country:, expiration_date:, file_id:)
               end
 
               sig { override.returns({country: String, expiration_date: Date, file_id: String}) }
@@ -1456,9 +1499,9 @@ module Increase
             name: String,
             confirmed_no_us_tax_id: T::Boolean
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+        def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
         end
 
         sig do
@@ -1517,8 +1560,16 @@ module Increase
           def line2=(_)
           end
 
-          sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
-          def initialize(city:, line1:, state:, zip:, line2: nil)
+          sig do
+            params(
+              city: String,
+              line1: String,
+              state: String,
+              zip: String,
+              line2: String
+            ).returns(T.attached_class)
+          end
+          def self.new(city:, line1:, state:, zip:, line2: nil)
           end
 
           sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
@@ -1584,9 +1635,9 @@ module Increase
               other: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Other,
               passport: Increase::Models::EntityCreateParams::NaturalPerson::Identification::Passport
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+          def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
           end
 
           sig do
@@ -1662,8 +1713,11 @@ module Increase
             def back_file_id=(_)
             end
 
-            sig { params(expiration_date: Date, file_id: String, state: String, back_file_id: String).void }
-            def initialize(expiration_date:, file_id:, state:, back_file_id: nil)
+            sig do
+              params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
+                .returns(T.attached_class)
+            end
+            def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
             end
 
             sig do
@@ -1722,9 +1776,9 @@ module Increase
                 back_file_id: String,
                 expiration_date: Date
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+            def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
             end
 
             sig do
@@ -1768,8 +1822,8 @@ module Increase
             def file_id=(_)
             end
 
-            sig { params(country: String, expiration_date: Date, file_id: String).void }
-            def initialize(country:, expiration_date:, file_id:)
+            sig { params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class) }
+            def self.new(country:, expiration_date:, file_id:)
             end
 
             sig { override.returns({country: String, expiration_date: Date, file_id: String}) }
@@ -1788,8 +1842,8 @@ module Increase
         def file_id=(_)
         end
 
-        sig { params(file_id: String).void }
-        def initialize(file_id:)
+        sig { params(file_id: String).returns(T.attached_class) }
+        def self.new(file_id:)
         end
 
         sig { override.returns({file_id: String}) }
@@ -1814,8 +1868,8 @@ module Increase
         def vendor=(_)
         end
 
-        sig { params(reference: String, vendor: Symbol).void }
-        def initialize(reference:, vendor:)
+        sig { params(reference: String, vendor: Symbol).returns(T.attached_class) }
+        def self.new(reference:, vendor:)
         end
 
         sig { override.returns({reference: String, vendor: Symbol}) }
@@ -1924,9 +1978,9 @@ module Increase
             grantor: Increase::Models::EntityCreateParams::Trust::Grantor,
             tax_identifier: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           address:,
           category:,
           name:,
@@ -1997,8 +2051,16 @@ module Increase
           def line2=(_)
           end
 
-          sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
-          def initialize(city:, line1:, state:, zip:, line2: nil)
+          sig do
+            params(
+              city: String,
+              line1: String,
+              state: String,
+              zip: String,
+              line2: String
+            ).returns(T.attached_class)
+          end
+          def self.new(city:, line1:, state:, zip:, line2: nil)
           end
 
           sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
@@ -2044,9 +2106,9 @@ module Increase
 
           sig do
             params(structure: Symbol, individual: Increase::Models::EntityCreateParams::Trust::Trustee::Individual)
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(structure:, individual: nil)
+          def self.new(structure:, individual: nil)
           end
 
           sig do
@@ -2124,9 +2186,9 @@ module Increase
                 name: String,
                 confirmed_no_us_tax_id: T::Boolean
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+            def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
             end
 
             sig do
@@ -2185,8 +2247,16 @@ module Increase
               def line2=(_)
               end
 
-              sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
-              def initialize(city:, line1:, state:, zip:, line2: nil)
+              sig do
+                params(
+                  city: String,
+                  line1: String,
+                  state: String,
+                  zip: String,
+                  line2: String
+                ).returns(T.attached_class)
+              end
+              def self.new(city:, line1:, state:, zip:, line2: nil)
               end
 
               sig do
@@ -2270,9 +2340,9 @@ module Increase
                   other: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Other,
                   passport: Increase::Models::EntityCreateParams::Trust::Trustee::Individual::Identification::Passport
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+              def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
               end
 
               sig do
@@ -2349,9 +2419,10 @@ module Increase
                 end
 
                 sig do
-                  params(expiration_date: Date, file_id: String, state: String, back_file_id: String).void
+                  params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
+                    .returns(T.attached_class)
                 end
-                def initialize(expiration_date:, file_id:, state:, back_file_id: nil)
+                def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
                 end
 
                 sig do
@@ -2417,9 +2488,9 @@ module Increase
                     back_file_id: String,
                     expiration_date: Date
                   )
-                    .void
+                    .returns(T.attached_class)
                 end
-                def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+                def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
                 end
 
                 sig do
@@ -2463,8 +2534,10 @@ module Increase
                 def file_id=(_)
                 end
 
-                sig { params(country: String, expiration_date: Date, file_id: String).void }
-                def initialize(country:, expiration_date:, file_id:)
+                sig do
+                  params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
+                end
+                def self.new(country:, expiration_date:, file_id:)
                 end
 
                 sig { override.returns({country: String, expiration_date: Date, file_id: String}) }
@@ -2530,9 +2603,9 @@ module Increase
               name: String,
               confirmed_no_us_tax_id: T::Boolean
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+          def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
           end
 
           sig do
@@ -2591,8 +2664,16 @@ module Increase
             def line2=(_)
             end
 
-            sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
-            def initialize(city:, line1:, state:, zip:, line2: nil)
+            sig do
+              params(
+                city: String,
+                line1: String,
+                state: String,
+                zip: String,
+                line2: String
+              ).returns(T.attached_class)
+            end
+            def self.new(city:, line1:, state:, zip:, line2: nil)
             end
 
             sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
@@ -2658,9 +2739,9 @@ module Increase
                 other: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Other,
                 passport: Increase::Models::EntityCreateParams::Trust::Grantor::Identification::Passport
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+            def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
             end
 
             sig do
@@ -2736,8 +2817,11 @@ module Increase
               def back_file_id=(_)
               end
 
-              sig { params(expiration_date: Date, file_id: String, state: String, back_file_id: String).void }
-              def initialize(expiration_date:, file_id:, state:, back_file_id: nil)
+              sig do
+                params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
+                  .returns(T.attached_class)
+              end
+              def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
               end
 
               sig do
@@ -2803,9 +2887,9 @@ module Increase
                   back_file_id: String,
                   expiration_date: Date
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+              def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
               end
 
               sig do
@@ -2849,8 +2933,10 @@ module Increase
               def file_id=(_)
               end
 
-              sig { params(country: String, expiration_date: Date, file_id: String).void }
-              def initialize(country:, expiration_date:, file_id:)
+              sig do
+                params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
+              end
+              def self.new(country:, expiration_date:, file_id:)
               end
 
               sig { override.returns({country: String, expiration_date: Date, file_id: String}) }

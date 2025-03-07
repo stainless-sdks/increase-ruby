@@ -110,9 +110,9 @@ module Increase
             standard_entry_class_code: Symbol,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           account_number_id:,
           amount:,
           company_descriptive_date: nil,

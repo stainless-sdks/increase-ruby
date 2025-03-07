@@ -110,9 +110,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         account_id:,
         account_number:,
@@ -157,8 +157,8 @@ module Increase
         def debit_status=(_)
         end
 
-        sig { params(debit_status: Symbol).void }
-        def initialize(debit_status:)
+        sig { params(debit_status: Symbol).returns(T.attached_class) }
+        def self.new(debit_status:)
         end
 
         sig { override.returns({debit_status: Symbol}) }
@@ -191,8 +191,8 @@ module Increase
         def status=(_)
         end
 
-        sig { params(status: Symbol).void }
-        def initialize(status:)
+        sig { params(status: Symbol).returns(T.attached_class) }
+        def self.new(status:)
         end
 
         sig { override.returns({status: Symbol}) }

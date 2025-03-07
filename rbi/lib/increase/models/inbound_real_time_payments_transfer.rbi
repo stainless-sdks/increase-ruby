@@ -156,9 +156,9 @@ module Increase
           transaction_identification: String,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         account_id:,
         account_number_id:,
@@ -221,8 +221,8 @@ module Increase
         def transaction_id=(_)
         end
 
-        sig { params(confirmed_at: Time, transaction_id: String).void }
-        def initialize(confirmed_at:, transaction_id:)
+        sig { params(confirmed_at: Time, transaction_id: String).returns(T.attached_class) }
+        def self.new(confirmed_at:, transaction_id:)
         end
 
         sig { override.returns({confirmed_at: Time, transaction_id: String}) }
@@ -283,8 +283,10 @@ module Increase
         def reason=(_)
         end
 
-        sig { params(declined_at: Time, declined_transaction_id: String, reason: Symbol).void }
-        def initialize(declined_at:, declined_transaction_id:, reason:)
+        sig do
+          params(declined_at: Time, declined_transaction_id: String, reason: Symbol).returns(T.attached_class)
+        end
+        def self.new(declined_at:, declined_transaction_id:, reason:)
         end
 
         sig { override.returns({declined_at: Time, declined_transaction_id: String, reason: Symbol}) }

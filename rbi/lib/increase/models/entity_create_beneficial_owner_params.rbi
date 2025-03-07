@@ -22,9 +22,9 @@ module Increase
           beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(beneficial_owner:, request_options: {})
+      def self.new(beneficial_owner:, request_options: {})
       end
 
       sig do
@@ -73,9 +73,9 @@ module Increase
             prongs: T::Array[Symbol],
             company_title: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(individual:, prongs:, company_title: nil)
+        def self.new(individual:, prongs:, company_title: nil)
         end
 
         sig do
@@ -148,9 +148,9 @@ module Increase
               name: String,
               confirmed_no_us_tax_id: T::Boolean
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+          def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
           end
 
           sig do
@@ -209,8 +209,16 @@ module Increase
             def line2=(_)
             end
 
-            sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
-            def initialize(city:, line1:, state:, zip:, line2: nil)
+            sig do
+              params(
+                city: String,
+                line1: String,
+                state: String,
+                zip: String,
+                line2: String
+              ).returns(T.attached_class)
+            end
+            def self.new(city:, line1:, state:, zip:, line2: nil)
             end
 
             sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
@@ -306,9 +314,9 @@ module Increase
                 other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
                 passport: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+            def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
             end
 
             sig do
@@ -384,8 +392,11 @@ module Increase
               def back_file_id=(_)
               end
 
-              sig { params(expiration_date: Date, file_id: String, state: String, back_file_id: String).void }
-              def initialize(expiration_date:, file_id:, state:, back_file_id: nil)
+              sig do
+                params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
+                  .returns(T.attached_class)
+              end
+              def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
               end
 
               sig do
@@ -451,9 +462,9 @@ module Increase
                   back_file_id: String,
                   expiration_date: Date
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+              def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
               end
 
               sig do
@@ -497,8 +508,10 @@ module Increase
               def file_id=(_)
               end
 
-              sig { params(country: String, expiration_date: Date, file_id: String).void }
-              def initialize(country:, expiration_date:, file_id:)
+              sig do
+                params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
+              end
+              def self.new(country:, expiration_date:, file_id:)
               end
 
               sig { override.returns({country: String, expiration_date: Date, file_id: String}) }

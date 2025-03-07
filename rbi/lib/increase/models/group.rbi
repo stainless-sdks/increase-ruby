@@ -51,9 +51,9 @@ module Increase
           created_at: Time,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, ach_debit_status:, activation_status:, created_at:, type:)
+      def self.new(id:, ach_debit_status:, activation_status:, created_at:, type:)
       end
 
       sig do
