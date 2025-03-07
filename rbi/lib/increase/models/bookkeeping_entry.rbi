@@ -86,8 +86,10 @@ module Increase
 
         BOOKKEEPING_ENTRY = :bookkeeping_entry
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

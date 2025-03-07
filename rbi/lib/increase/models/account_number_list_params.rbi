@@ -140,8 +140,10 @@ module Increase
           # ACH Debits are blocked.
           BLOCKED = :blocked
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -217,8 +219,10 @@ module Increase
           # The account number is permanently disabled.
           CANCELED = :canceled
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

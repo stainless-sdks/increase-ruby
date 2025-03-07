@@ -249,8 +249,10 @@ module Increase
           # FedEx 2-day.
           FEDEX_2_DAY = :fedex_2_day
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

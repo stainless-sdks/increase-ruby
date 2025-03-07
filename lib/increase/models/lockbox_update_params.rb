@@ -58,11 +58,6 @@ module Increase
         INACTIVE = :inactive
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

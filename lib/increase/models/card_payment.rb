@@ -417,11 +417,6 @@ module Increase
             NON_PAYMENT_AUTHENTICATION = :non_payment_authentication
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class Challenge < Increase::BaseModel
@@ -506,11 +501,6 @@ module Increase
                 FAILED = :failed
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -528,11 +518,6 @@ module Increase
               NONE_AVAILABLE = :none_available
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
 
@@ -559,11 +544,6 @@ module Increase
             WEBHOOK_TIMED_OUT = :webhook_timed_out
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -580,11 +560,6 @@ module Increase
             THREE_DS_REQUESTOR_INITIATED = :three_ds_requestor_initiated
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -619,11 +594,6 @@ module Increase
             EXCEEDED_ATTEMPT_THRESHOLD = :exceeded_attempt_threshold
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -634,11 +604,6 @@ module Increase
             CARD_AUTHENTICATION = :card_authentication
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -908,11 +873,6 @@ module Increase
             NETWORK = :network
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -939,11 +899,6 @@ module Increase
             USD = :USD
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -958,11 +913,6 @@ module Increase
             REFUND = :refund
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -999,11 +949,6 @@ module Increase
               VISA = :visa
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class Visa < Increase::BaseModel
@@ -1077,11 +1022,6 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -1120,11 +1060,6 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -1154,11 +1089,6 @@ module Increase
                 OTHER = :other
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -1222,11 +1152,6 @@ module Increase
             REFUND = :refund
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -1237,11 +1162,6 @@ module Increase
             CARD_AUTHORIZATION = :card_authorization
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class Verification < Increase::BaseModel
@@ -1303,11 +1223,6 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -1381,11 +1296,6 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -1474,11 +1384,6 @@ module Increase
             USD = :USD
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -1489,11 +1394,6 @@ module Increase
             VISA = :visa
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -1504,11 +1404,6 @@ module Increase
             CARD_AUTHORIZATION_EXPIRATION = :card_authorization_expiration
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -1776,11 +1671,6 @@ module Increase
             NETWORK = :network
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -1807,11 +1697,6 @@ module Increase
             USD = :USD
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -1826,11 +1711,6 @@ module Increase
             REFUND = :refund
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -1867,11 +1747,6 @@ module Increase
               VISA = :visa
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class Visa < Increase::BaseModel
@@ -1945,11 +1820,6 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -1988,11 +1858,6 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -2022,11 +1887,6 @@ module Increase
                 OTHER = :other
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -2090,11 +1950,6 @@ module Increase
             REFUND = :refund
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -2121,11 +1976,6 @@ module Increase
             OTHER = :other
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -2184,11 +2034,6 @@ module Increase
             SUSPECTED_FRAUD = :suspected_fraud
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class Verification < Increase::BaseModel
@@ -2250,11 +2095,6 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -2328,11 +2168,6 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -2447,11 +2282,6 @@ module Increase
             USD = :USD
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -2462,11 +2292,6 @@ module Increase
             VISA = :visa
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class NetworkIdentifiers < Increase::BaseModel
@@ -2512,11 +2337,6 @@ module Increase
             CARD_FUEL_CONFIRMATION = :card_fuel_confirmation
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -2654,11 +2474,6 @@ module Increase
             NETWORK = :network
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -2685,11 +2500,6 @@ module Increase
             USD = :USD
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -2700,11 +2510,6 @@ module Increase
             VISA = :visa
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class NetworkIdentifiers < Increase::BaseModel
@@ -2750,11 +2555,6 @@ module Increase
             CARD_INCREMENT = :card_increment
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -2986,11 +2786,6 @@ module Increase
               USD = :USD
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
 
@@ -3018,11 +2813,6 @@ module Increase
             USD = :USD
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class Interchange < Increase::BaseModel
@@ -3082,11 +2872,6 @@ module Increase
               USD = :USD
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
 
@@ -3403,11 +3188,6 @@ module Increase
                 PARKING_VIOLATION = :parking_violation
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -3422,11 +3202,6 @@ module Increase
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -3608,11 +3383,6 @@ module Increase
                 LAUNDRY = :laundry
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -3627,11 +3397,6 @@ module Increase
                 NO_SHOW = :no_show
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -3655,11 +3420,6 @@ module Increase
               INVOICE_NUMBER = :invoice_number
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class Travel < Increase::BaseModel
@@ -3856,11 +3616,6 @@ module Increase
                   OTHER = :other
 
                   finalize!
-
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   #
-                  #   def self.values; end
                 end
 
                 class Service < Increase::BaseModel
@@ -3963,11 +3718,6 @@ module Increase
                     WIFI = :wifi
 
                     finalize!
-
-                    # @!parse
-                    #   # @return [Array<Symbol>]
-                    #   #
-                    #   def self.values; end
                   end
                 end
               end
@@ -3995,11 +3745,6 @@ module Increase
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -4013,11 +3758,6 @@ module Increase
                 RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -4034,11 +3774,6 @@ module Increase
                 NEW_TICKET = :new_ticket
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               class TripLeg < Increase::BaseModel
@@ -4116,11 +3851,6 @@ module Increase
                   STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
 
                   finalize!
-
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   #
-                  #   def self.values; end
                 end
               end
             end
@@ -4134,11 +3864,6 @@ module Increase
             CARD_REFUND = :card_refund
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -4336,11 +4061,6 @@ module Increase
             USD = :USD
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -4351,11 +4071,6 @@ module Increase
             VISA = :visa
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class NetworkIdentifiers < Increase::BaseModel
@@ -4410,11 +4125,6 @@ module Increase
             PARTIAL_REVERSAL = :partial_reversal
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -4425,11 +4135,6 @@ module Increase
             CARD_REVERSAL = :card_reversal
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -4681,11 +4386,6 @@ module Increase
               USD = :USD
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
 
@@ -4713,11 +4413,6 @@ module Increase
             USD = :USD
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class Interchange < Increase::BaseModel
@@ -4778,11 +4473,6 @@ module Increase
               USD = :USD
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
           end
 
@@ -5099,11 +4789,6 @@ module Increase
                 PARKING_VIOLATION = :parking_violation
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -5118,11 +4803,6 @@ module Increase
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = :no_show_for_specialized_vehicle
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -5304,11 +4984,6 @@ module Increase
                 LAUNDRY = :laundry
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -5323,11 +4998,6 @@ module Increase
                 NO_SHOW = :no_show
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -5351,11 +5021,6 @@ module Increase
               INVOICE_NUMBER = :invoice_number
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class Travel < Increase::BaseModel
@@ -5552,11 +5217,6 @@ module Increase
                   OTHER = :other
 
                   finalize!
-
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   #
-                  #   def self.values; end
                 end
 
                 class Service < Increase::BaseModel
@@ -5659,11 +5319,6 @@ module Increase
                     WIFI = :wifi
 
                     finalize!
-
-                    # @!parse
-                    #   # @return [Array<Symbol>]
-                    #   #
-                    #   def self.values; end
                   end
                 end
               end
@@ -5691,11 +5346,6 @@ module Increase
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = :partial_refund_of_airline_ticket
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -5709,11 +5359,6 @@ module Increase
                 RESTRICTED_NON_REFUNDABLE_TICKET = :restricted_non_refundable_ticket
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -5730,11 +5375,6 @@ module Increase
                 NEW_TICKET = :new_ticket
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               class TripLeg < Increase::BaseModel
@@ -5812,11 +5452,6 @@ module Increase
                   STOP_OVER_NOT_ALLOWED = :stop_over_not_allowed
 
                   finalize!
-
-                  # @!parse
-                  #   # @return [Array<Symbol>]
-                  #   #
-                  #   def self.values; end
                 end
               end
             end
@@ -5830,11 +5465,6 @@ module Increase
             CARD_SETTLEMENT = :card_settlement
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
 
@@ -6041,11 +5671,6 @@ module Increase
             NETWORK = :network
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           # @abstract
@@ -6072,11 +5697,6 @@ module Increase
             USD = :USD
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -6113,11 +5733,6 @@ module Increase
               VISA = :visa
 
               finalize!
-
-              # @!parse
-              #   # @return [Array<Symbol>]
-              #   #
-              #   def self.values; end
             end
 
             class Visa < Increase::BaseModel
@@ -6191,11 +5806,6 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -6234,11 +5844,6 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
 
               # @abstract
@@ -6268,11 +5873,6 @@ module Increase
                 OTHER = :other
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -6320,11 +5920,6 @@ module Increase
             CARD_VALIDATION = :card_validation
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
 
           class Verification < Increase::BaseModel
@@ -6386,11 +5981,6 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
 
@@ -6464,11 +6054,6 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
-
-                # @!parse
-                #   # @return [Array<Symbol>]
-                #   #
-                #   def self.values; end
               end
             end
           end
@@ -6513,11 +6098,6 @@ module Increase
           OTHER = :other
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -6579,11 +6159,6 @@ module Increase
         CARD_PAYMENT = :card_payment
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

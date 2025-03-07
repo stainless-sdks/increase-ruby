@@ -133,8 +133,10 @@ module Increase
 
         BOOKKEEPING_ENTRY_SET = :bookkeeping_entry_set
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

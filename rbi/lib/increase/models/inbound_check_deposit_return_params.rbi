@@ -48,8 +48,10 @@ module Increase
         # The check was not endorsed by the payee.
         ENDORSEMENT_IRREGULAR = :endorsement_irregular
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

@@ -76,8 +76,10 @@ module Increase
 
         ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

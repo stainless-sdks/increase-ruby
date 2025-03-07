@@ -133,8 +133,10 @@ module Increase
         # Grasshopper Bank
         GRASSHOPPER_BANK = :grasshopper_bank
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -143,8 +145,10 @@ module Increase
 
         PROGRAM = :program
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

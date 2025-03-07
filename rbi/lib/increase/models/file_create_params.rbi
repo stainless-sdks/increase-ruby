@@ -107,8 +107,10 @@ module Increase
         # An attachment to an Unusual Activity Report.
         UNUSUAL_ACTIVITY_REPORT_ATTACHMENT = :unusual_activity_report_attachment
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

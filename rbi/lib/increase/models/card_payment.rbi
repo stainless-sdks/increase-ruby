@@ -536,8 +536,10 @@ module Increase
             # The authentication attempt is not for a payment.
             NON_PAYMENT_AUTHENTICATION = T.let(:non_payment_authentication, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -647,8 +649,10 @@ module Increase
                 # The attempt was unsuccessful.
                 FAILED = :failed
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -665,8 +669,10 @@ module Increase
               # The one-time code was not successfully delievered.
               NONE_AVAILABLE = :none_available
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -692,8 +698,10 @@ module Increase
             # The webhook timed out.
             WEBHOOK_TIMED_OUT = T.let(:webhook_timed_out, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -709,8 +717,10 @@ module Increase
             # The authentication attempt was initiated by the 3DS Requestor.
             THREE_DS_REQUESTOR_INITIATED = T.let(:three_ds_requestor_initiated, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -744,8 +754,10 @@ module Increase
             # The authentication attempt exceeded the attempt threshold.
             EXCEEDED_ATTEMPT_THRESHOLD = :exceeded_attempt_threshold
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -754,8 +766,10 @@ module Increase
 
             CARD_AUTHENTICATION = :card_authentication
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -1098,8 +1112,10 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK = :network
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -1124,8 +1140,10 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -1138,8 +1156,10 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND = :refund
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -1191,8 +1211,10 @@ module Increase
               # Visa
               VISA = :visa
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
 
@@ -1281,8 +1303,10 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -1319,8 +1343,10 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = T.let(:integrated_circuit_card_no_cvv, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -1355,8 +1381,10 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER = T.let(:other, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -1433,8 +1461,10 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND = :refund
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -1443,8 +1473,10 @@ module Increase
 
             CARD_AUTHORIZATION = :card_authorization
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -1522,8 +1554,10 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH = :no_match
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -1624,8 +1658,10 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH = :no_match
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -1732,8 +1768,10 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -1743,8 +1781,10 @@ module Increase
             # Visa
             VISA = :visa
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -1753,8 +1793,10 @@ module Increase
 
             CARD_AUTHORIZATION_EXPIRATION = :card_authorization_expiration
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -2097,8 +2139,10 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK = :network
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -2123,8 +2167,10 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -2137,8 +2183,10 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND = :refund
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -2187,8 +2235,10 @@ module Increase
               # Visa
               VISA = :visa
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
 
@@ -2277,8 +2327,10 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -2315,8 +2367,10 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = T.let(:integrated_circuit_card_no_cvv, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -2351,8 +2405,10 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER = T.let(:other, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -2429,8 +2485,10 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND = :refund
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -2455,8 +2513,10 @@ module Increase
             # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
             OTHER = T.let(:other, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -2514,8 +2574,10 @@ module Increase
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
             SUSPECTED_FRAUD = :suspected_fraud
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -2593,8 +2655,10 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH = :no_match
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -2695,8 +2759,10 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH = :no_match
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -2835,8 +2901,10 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -2846,8 +2914,10 @@ module Increase
             # Visa
             VISA = :visa
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -2906,8 +2976,10 @@ module Increase
 
             CARD_FUEL_CONFIRMATION = :card_fuel_confirmation
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -3079,8 +3151,10 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK = :network
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -3105,8 +3179,10 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -3116,8 +3192,10 @@ module Increase
             # Visa
             VISA = :visa
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -3176,8 +3254,10 @@ module Increase
 
             CARD_INCREMENT = :card_increment
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -3469,8 +3549,10 @@ module Increase
               # US Dollar (USD)
               USD = :USD
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -3496,8 +3578,10 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -3555,8 +3639,10 @@ module Increase
               # US Dollar (USD)
               USD = :USD
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -3967,8 +4053,10 @@ module Increase
                 # Parking violation
                 PARKING_VIOLATION = T.let(:parking_violation, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -3981,8 +4069,10 @@ module Increase
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = T.let(:no_show_for_specialized_vehicle, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -4207,8 +4297,10 @@ module Increase
                 # Laundry
                 LAUNDRY = T.let(:laundry, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -4221,8 +4313,10 @@ module Increase
                 # No show
                 NO_SHOW = T.let(:no_show, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -4245,8 +4339,10 @@ module Increase
               # Invoice number
               INVOICE_NUMBER = T.let(:invoice_number, T.nilable(Symbol))
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
 
@@ -4523,8 +4619,10 @@ module Increase
                   # Other
                   OTHER = T.let(:other, T.nilable(Symbol))
 
-                  sig { override.returns(T::Array[Symbol]) }
-                  def self.values
+                  class << self
+                    sig { override.returns(T::Array[Symbol]) }
+                    def values
+                    end
                   end
                 end
 
@@ -4628,8 +4726,10 @@ module Increase
                     # Wi-fi
                     WIFI = T.let(:wifi, T.nilable(Symbol))
 
-                    sig { override.returns(T::Array[Symbol]) }
-                    def self.values
+                    class << self
+                      sig { override.returns(T::Array[Symbol]) }
+                      def values
+                      end
                     end
                   end
                 end
@@ -4660,8 +4760,10 @@ module Increase
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = T.let(:partial_refund_of_airline_ticket, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -4674,8 +4776,10 @@ module Increase
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET = T.let(:restricted_non_refundable_ticket, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -4691,8 +4795,10 @@ module Increase
                 # New ticket
                 NEW_TICKET = T.let(:new_ticket, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -4794,8 +4900,10 @@ module Increase
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED = T.let(:stop_over_not_allowed, T.nilable(Symbol))
 
-                  sig { override.returns(T::Array[Symbol]) }
-                  def self.values
+                  class << self
+                    sig { override.returns(T::Array[Symbol]) }
+                    def values
+                    end
                   end
                 end
               end
@@ -4807,8 +4915,10 @@ module Increase
 
             CARD_REFUND = :card_refund
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -5055,8 +5165,10 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -5066,8 +5178,10 @@ module Increase
             # Visa
             VISA = :visa
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -5136,8 +5250,10 @@ module Increase
             # The Card Reversal was a partial reversal, for any reason.
             PARTIAL_REVERSAL = T.let(:partial_reversal, T.nilable(Symbol))
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -5146,8 +5262,10 @@ module Increase
 
             CARD_REVERSAL = :card_reversal
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -5461,8 +5579,10 @@ module Increase
               # US Dollar (USD)
               USD = :USD
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -5488,8 +5608,10 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -5547,8 +5669,10 @@ module Increase
               # US Dollar (USD)
               USD = :USD
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
           end
@@ -5959,8 +6083,10 @@ module Increase
                 # Parking violation
                 PARKING_VIOLATION = T.let(:parking_violation, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -5973,8 +6099,10 @@ module Increase
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = T.let(:no_show_for_specialized_vehicle, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -6199,8 +6327,10 @@ module Increase
                 # Laundry
                 LAUNDRY = T.let(:laundry, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -6213,8 +6343,10 @@ module Increase
                 # No show
                 NO_SHOW = T.let(:no_show, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -6237,8 +6369,10 @@ module Increase
               # Invoice number
               INVOICE_NUMBER = T.let(:invoice_number, T.nilable(Symbol))
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
 
@@ -6531,8 +6665,10 @@ module Increase
                   # Other
                   OTHER = T.let(:other, T.nilable(Symbol))
 
-                  sig { override.returns(T::Array[Symbol]) }
-                  def self.values
+                  class << self
+                    sig { override.returns(T::Array[Symbol]) }
+                    def values
+                    end
                   end
                 end
 
@@ -6636,8 +6772,10 @@ module Increase
                     # Wi-fi
                     WIFI = T.let(:wifi, T.nilable(Symbol))
 
-                    sig { override.returns(T::Array[Symbol]) }
-                    def self.values
+                    class << self
+                      sig { override.returns(T::Array[Symbol]) }
+                      def values
+                      end
                     end
                   end
                 end
@@ -6668,8 +6806,10 @@ module Increase
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = T.let(:partial_refund_of_airline_ticket, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -6682,8 +6822,10 @@ module Increase
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET = T.let(:restricted_non_refundable_ticket, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -6699,8 +6841,10 @@ module Increase
                 # New ticket
                 NEW_TICKET = T.let(:new_ticket, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -6802,8 +6946,10 @@ module Increase
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED = T.let(:stop_over_not_allowed, T.nilable(Symbol))
 
-                  sig { override.returns(T::Array[Symbol]) }
-                  def self.values
+                  class << self
+                    sig { override.returns(T::Array[Symbol]) }
+                    def values
+                    end
                   end
                 end
               end
@@ -6815,8 +6961,10 @@ module Increase
 
             CARD_SETTLEMENT = :card_settlement
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -7082,8 +7230,10 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK = :network
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -7108,8 +7258,10 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -7161,8 +7313,10 @@ module Increase
               # Visa
               VISA = :visa
 
-              sig { override.returns(T::Array[Symbol]) }
-              def self.values
+              class << self
+                sig { override.returns(T::Array[Symbol]) }
+                def values
+                end
               end
             end
 
@@ -7251,8 +7405,10 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -7289,8 +7445,10 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = T.let(:integrated_circuit_card_no_cvv, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
 
@@ -7325,8 +7483,10 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER = T.let(:other, T.nilable(Symbol))
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -7387,8 +7547,10 @@ module Increase
 
             CARD_VALIDATION = :card_validation
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
 
@@ -7466,8 +7628,10 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH = :no_match
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -7568,8 +7732,10 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH = :no_match
 
-                sig { override.returns(T::Array[Symbol]) }
-                def self.values
+                class << self
+                  sig { override.returns(T::Array[Symbol]) }
+                  def values
+                  end
                 end
               end
             end
@@ -7612,8 +7778,10 @@ module Increase
           # Unknown card payment element.
           OTHER = :other
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -7699,8 +7867,10 @@ module Increase
 
         CARD_PAYMENT = :card_payment
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

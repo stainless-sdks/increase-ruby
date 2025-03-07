@@ -96,8 +96,10 @@ module Increase
         # Company information, such a policies or procedures, typically submitted during our due diligence process.
         COMPANY_INFORMATION = :company_information
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -106,8 +108,10 @@ module Increase
 
         DOCUMENT = :document
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

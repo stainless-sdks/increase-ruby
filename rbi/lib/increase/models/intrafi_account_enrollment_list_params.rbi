@@ -121,8 +121,10 @@ module Increase
           # Something unexpected happened with this account. Contact Increase support.
           REQUIRES_ATTENTION = :requires_attention
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

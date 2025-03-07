@@ -392,11 +392,6 @@ module Increase
           OTHER = :other
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class Freeform < Increase::BaseModel
@@ -596,11 +591,6 @@ module Increase
           USER = :user
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -662,11 +652,6 @@ module Increase
         USD = :USD
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -684,11 +669,6 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -702,11 +682,6 @@ module Increase
         SAVINGS = :savings
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class InboundFundsHold < Increase::BaseModel
@@ -832,11 +807,6 @@ module Increase
           USD = :USD
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         # @abstract
@@ -850,11 +820,6 @@ module Increase
           COMPLETE = :complete
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         # @abstract
@@ -865,11 +830,6 @@ module Increase
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -880,11 +840,6 @@ module Increase
         ACH = :ach
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class NotificationsOfChange < Increase::BaseModel
@@ -984,11 +939,6 @@ module Increase
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -1035,11 +985,6 @@ module Increase
           FUTURE_DATED = :future_dated
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -1325,11 +1270,6 @@ module Increase
           UNTIMELY_RETURN = :untimely_return
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -1369,11 +1309,6 @@ module Increase
         INTERNET_INITIATED = :internet_initiated
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -1408,11 +1343,6 @@ module Increase
         RETURNED = :returned
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class Submission < Increase::BaseModel
@@ -1498,11 +1428,6 @@ module Increase
           FUTURE_DATED = :future_dated
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -1514,11 +1439,6 @@ module Increase
         ACH_TRANSFER = :ach_transfer
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

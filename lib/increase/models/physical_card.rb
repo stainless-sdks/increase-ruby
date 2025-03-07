@@ -229,11 +229,6 @@ module Increase
           FEDEX_2_DAY = :fedex_2_day
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         # @abstract
@@ -262,11 +257,6 @@ module Increase
           RETURNED = :returned
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class Tracking < Increase::BaseModel
@@ -324,11 +314,6 @@ module Increase
         CANCELED = :canceled
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -339,11 +324,6 @@ module Increase
         PHYSICAL_CARD = :physical_card
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

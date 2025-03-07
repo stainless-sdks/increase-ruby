@@ -53,8 +53,10 @@ module Increase
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED = :returned
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

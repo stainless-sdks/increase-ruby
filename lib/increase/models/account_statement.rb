@@ -101,11 +101,6 @@ module Increase
         ACCOUNT_STATEMENT = :account_statement
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end
