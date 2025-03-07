@@ -297,11 +297,24 @@ module Increase
         # @abstract
         #
         # The type of addendum.
+        #
+        # @example
+        # ```ruby
+        # case category
+        # in :freeform
+        #   # ...
+        # end
+        # ```
         class Category < Increase::Enum
           # Unstructured addendum.
           FREEFORM = :freeform
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         class Freeform < Increase::BaseModel
@@ -371,6 +384,24 @@ module Increase
         # @abstract
         #
         # The reason for the transfer decline.
+        #
+        # @example
+        # ```ruby
+        # case reason
+        # in :ach_route_canceled
+        #   # ...
+        # in :ach_route_disabled
+        #   # ...
+        # in :breaches_limit
+        #   # ...
+        # in :entity_not_active
+        #   # ...
+        # in :group_locked
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Reason < Increase::Enum
           # The account number is canceled.
           ACH_ROUTE_CANCELED = :ach_route_canceled
@@ -424,12 +455,27 @@ module Increase
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
       # @abstract
       #
       # The direction of the transfer.
+      #
+      # @example
+      # ```ruby
+      # case direction
+      # in :credit
+      #   # ...
+      # in :debit
+      #   # ...
+      # end
+      # ```
       class Direction < Increase::Enum
         # Credit
         CREDIT = :credit
@@ -438,11 +484,26 @@ module Increase
         DEBIT = :debit
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # The settlement schedule the transfer is expected to follow.
+      #
+      # @example
+      # ```ruby
+      # case expected_settlement_schedule
+      # in :same_day
+      #   # ...
+      # in :future_dated
+      #   # ...
+      # end
+      # ```
       class ExpectedSettlementSchedule < Increase::Enum
         # The transfer is expected to settle same-day.
         SAME_DAY = :same_day
@@ -451,6 +512,11 @@ module Increase
         FUTURE_DATED = :future_dated
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       class InternationalAddenda < Increase::BaseModel
@@ -759,6 +825,18 @@ module Increase
         # @abstract
         #
         # A description of how the foreign exchange rate was calculated.
+        #
+        # @example
+        # ```ruby
+        # case foreign_exchange_indicator
+        # in :fixed_to_variable
+        #   # ...
+        # in :variable_to_fixed
+        #   # ...
+        # in :fixed_to_fixed
+        #   # ...
+        # end
+        # ```
         class ForeignExchangeIndicator < Increase::Enum
           # The originator chose an amount in their own currency. The settled amount in USD was converted using the exchange rate.
           FIXED_TO_VARIABLE = :fixed_to_variable
@@ -770,12 +848,29 @@ module Increase
           FIXED_TO_FIXED = :fixed_to_fixed
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
         #
         # An instruction of how to interpret the `foreign_exchange_reference` field for
         #   this Transaction.
+        #
+        # @example
+        # ```ruby
+        # case foreign_exchange_reference_indicator
+        # in :foreign_exchange_rate
+        #   # ...
+        # in :foreign_exchange_reference_number
+        #   # ...
+        # in :blank
+        #   # ...
+        # end
+        # ```
         class ForeignExchangeReferenceIndicator < Increase::Enum
           # The ACH file contains a foreign exchange rate.
           FOREIGN_EXCHANGE_RATE = :foreign_exchange_rate
@@ -787,11 +882,34 @@ module Increase
           BLANK = :blank
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
         #
         # The type of transfer. Set by the originator.
+        #
+        # @example
+        # ```ruby
+        # case international_transaction_type_code
+        # in :annuity
+        #   # ...
+        # in :business_or_commercial
+        #   # ...
+        # in :deposit
+        #   # ...
+        # in :loan
+        #   # ...
+        # in :miscellaneous
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class InternationalTransactionTypeCode < Increase::Enum
           # Sent as `ANN` in the Nacha file.
           ANNUITY = :annuity
@@ -854,12 +972,29 @@ module Increase
           INTERNET_INITIATED = :internet_initiated
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
         #
         # An instruction of how to interpret the
         #   `originating_depository_financial_institution_id` field for this Transaction.
+        #
+        # @example
+        # ```ruby
+        # case originating_depository_financial_institution_id_qualifier
+        # in :national_clearing_system_number
+        #   # ...
+        # in :bic_code
+        #   # ...
+        # in :iban
+        #   # ...
+        # end
+        # ```
         class OriginatingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
           # A domestic clearing system number. In the US, for example, this is the American Banking Association (ABA) routing number.
           NATIONAL_CLEARING_SYSTEM_NUMBER = :national_clearing_system_number
@@ -871,12 +1006,29 @@ module Increase
           IBAN = :iban
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
         #
         # An instruction of how to interpret the
         #   `receiving_depository_financial_institution_id` field for this Transaction.
+        #
+        # @example
+        # ```ruby
+        # case receiving_depository_financial_institution_id_qualifier
+        # in :national_clearing_system_number
+        #   # ...
+        # in :bic_code
+        #   # ...
+        # in :iban
+        #   # ...
+        # end
+        # ```
         class ReceivingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
           # A domestic clearing system number. In the US, for example, this is the American Banking Association (ABA) routing number.
           NATIONAL_CLEARING_SYSTEM_NUMBER = :national_clearing_system_number
@@ -888,6 +1040,11 @@ module Increase
           IBAN = :iban
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -919,6 +1076,24 @@ module Increase
       # @abstract
       #
       # The Standard Entry Class (SEC) code of the transfer.
+      #
+      # @example
+      # ```ruby
+      # case standard_entry_class_code
+      # in :corporate_credit_or_debit
+      #   # ...
+      # in :corporate_trade_exchange
+      #   # ...
+      # in :prearranged_payments_and_deposit
+      #   # ...
+      # in :internet_initiated
+      #   # ...
+      # in :point_of_sale
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class StandardEntryClassCode < Increase::Enum
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
@@ -969,11 +1144,30 @@ module Increase
         INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # The status of the transfer.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :pending
+      #   # ...
+      # in :declined
+      #   # ...
+      # in :accepted
+      #   # ...
+      # in :returned
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
         PENDING = :pending
@@ -988,6 +1182,11 @@ module Increase
         RETURNED = :returned
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       class TransferReturn < Increase::BaseModel
@@ -1023,6 +1222,24 @@ module Increase
         # @abstract
         #
         # The reason for the transfer return.
+        #
+        # @example
+        # ```ruby
+        # case reason
+        # in :insufficient_funds
+        #   # ...
+        # in :returned_per_odfi_request
+        #   # ...
+        # in :authorization_revoked_by_customer
+        #   # ...
+        # in :payment_stopped
+        #   # ...
+        # in :customer_advised_unauthorized_improper_ineligible_or_incomplete
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Reason < Increase::Enum
           # The customer's account has insufficient funds. This reason is only allowed for debits. The Nacha return code is R01.
           INSUFFICIENT_FUNDS = :insufficient_funds
@@ -1055,6 +1272,11 @@ module Increase
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -1062,10 +1284,23 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_ach_transfer`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :inbound_ach_transfer
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         INBOUND_ACH_TRANSFER = :inbound_ach_transfer
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

@@ -121,6 +121,16 @@ module Increase
       # @abstract
       #
       # The creator of this Physical Card Profile.
+      #
+      # @example
+      # ```ruby
+      # case creator
+      # in :increase
+      #   # ...
+      # in :user
+      #   # ...
+      # end
+      # ```
       class Creator < Increase::Enum
         # This Physical Card Profile was created by Increase.
         INCREASE = :increase
@@ -129,11 +139,34 @@ module Increase
         USER = :user
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # The status of the Physical Card Profile.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :pending_creating
+      #   # ...
+      # in :pending_reviewing
+      #   # ...
+      # in :rejected
+      #   # ...
+      # in :pending_submitting
+      #   # ...
+      # in :active
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Status < Increase::Enum
         # The Card Profile has not yet been processed by Increase.
         PENDING_CREATING = :pending_creating
@@ -154,16 +187,34 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # A constant representing the object's type. For this resource it will always be
       #   `physical_card_profile`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :physical_card_profile
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         PHYSICAL_CARD_PROFILE = :physical_card_profile
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

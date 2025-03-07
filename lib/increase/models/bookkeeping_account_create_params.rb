@@ -58,6 +58,16 @@ module Increase
       # @abstract
       #
       # The account compliance category.
+      #
+      # @example
+      # ```ruby
+      # case compliance_category
+      # in :commingled_cash
+      #   # ...
+      # in :customer_balance
+      #   # ...
+      # end
+      # ```
       class ComplianceCategory < Increase::Enum
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH = :commingled_cash
@@ -66,6 +76,11 @@ module Increase
         CUSTOMER_BALANCE = :customer_balance
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

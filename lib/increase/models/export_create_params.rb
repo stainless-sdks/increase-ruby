@@ -107,6 +107,24 @@ module Increase
       # @abstract
       #
       # The type of Export to create.
+      #
+      # @example
+      # ```ruby
+      # case category
+      # in :account_statement_ofx
+      #   # ...
+      # in :transaction_csv
+      #   # ...
+      # in :balance_csv
+      #   # ...
+      # in :bookkeeping_account_balance_csv
+      #   # ...
+      # in :entity_csv
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Category < Increase::Enum
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX = :account_statement_ofx
@@ -127,6 +145,11 @@ module Increase
         VENDOR_CSV = :vendor_csv
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       class AccountStatementOfx < Increase::BaseModel
@@ -450,6 +473,17 @@ module Increase
 
           # @abstract
           #
+          # @example
+          # ```ruby
+          # case in
+          # in :active
+          #   # ...
+          # in :archived
+          #   # ...
+          # in :disabled
+          #   # ...
+          # end
+          # ```
           class In < Increase::Enum
             # The entity is active.
             ACTIVE = :active
@@ -461,6 +495,11 @@ module Increase
             DISABLED = :disabled
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end

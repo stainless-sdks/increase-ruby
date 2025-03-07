@@ -175,6 +175,24 @@ module Increase
       #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
       #   currency. This will always be "USD" for a Real-Time Payments transfer.
+      #
+      # @example
+      # ```ruby
+      # case currency
+      # in :CAD
+      #   # ...
+      # in :CHF
+      #   # ...
+      # in :EUR
+      #   # ...
+      # in :GBP
+      #   # ...
+      # in :JPY
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -195,6 +213,11 @@ module Increase
         USD = :USD
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       class Decline < Increase::BaseModel
@@ -230,6 +253,24 @@ module Increase
         # @abstract
         #
         # The reason for the transfer decline.
+        #
+        # @example
+        # ```ruby
+        # case reason
+        # in :account_number_canceled
+        #   # ...
+        # in :account_number_disabled
+        #   # ...
+        # in :account_restricted
+        #   # ...
+        # in :group_locked
+        #   # ...
+        # in :entity_not_active
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class Reason < Increase::Enum
           # The account number is canceled.
           ACCOUNT_NUMBER_CANCELED = :account_number_canceled
@@ -250,12 +291,31 @@ module Increase
           REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
       # @abstract
       #
       # The lifecycle status of the transfer.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :pending_confirming
+      #   # ...
+      # in :timed_out
+      #   # ...
+      # in :confirmed
+      #   # ...
+      # in :declined
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The transfer is pending confirmation.
         PENDING_CONFIRMING = :pending_confirming
@@ -270,16 +330,34 @@ module Increase
         DECLINED = :declined
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_real_time_payments_transfer`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :inbound_real_time_payments_transfer
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER = :inbound_real_time_payments_transfer
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

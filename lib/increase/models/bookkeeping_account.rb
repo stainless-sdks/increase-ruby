@@ -70,6 +70,16 @@ module Increase
       # @abstract
       #
       # The compliance category of the account.
+      #
+      # @example
+      # ```ruby
+      # case compliance_category
+      # in :commingled_cash
+      #   # ...
+      # in :customer_balance
+      #   # ...
+      # end
+      # ```
       class ComplianceCategory < Increase::Enum
         # A cash in an commingled Increase Account.
         COMMINGLED_CASH = :commingled_cash
@@ -78,16 +88,34 @@ module Increase
         CUSTOMER_BALANCE = :customer_balance
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_account`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :bookkeeping_account
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         BOOKKEEPING_ACCOUNT = :bookkeeping_account
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

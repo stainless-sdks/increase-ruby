@@ -59,10 +59,8 @@ module Increase
 
         BALANCE_LOOKUP = :balance_lookup
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

@@ -152,6 +152,16 @@ module Increase
       # @abstract
       #
       # This indicates if mail can be sent to this address.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :active
+      #   # ...
+      # in :inactive
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # This Lockbox is active. Checks mailed to it will be deposited automatically.
         ACTIVE = :active
@@ -160,16 +170,34 @@ module Increase
         INACTIVE = :inactive
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # A constant representing the object's type. For this resource it will always be
       #   `lockbox`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :lockbox
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         LOCKBOX = :lockbox
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

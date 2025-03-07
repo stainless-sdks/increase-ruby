@@ -92,6 +92,19 @@ module Increase
 
         # @abstract
         #
+        # @example
+        # ```ruby
+        # case in
+        # in :form_1099_int
+        #   # ...
+        # in :form_1099_misc
+        #   # ...
+        # in :proof_of_authorization
+        #   # ...
+        # in :company_information
+        #   # ...
+        # end
+        # ```
         class In < Increase::Enum
           # Internal Revenue Service Form 1099-INT.
           FORM_1099_INT = :form_1099_int
@@ -106,6 +119,11 @@ module Increase
           COMPANY_INFORMATION = :company_information
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 

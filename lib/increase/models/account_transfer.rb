@@ -275,6 +275,18 @@ module Increase
         # @abstract
         #
         # The type of object that created this transfer.
+        #
+        # @example
+        # ```ruby
+        # case category
+        # in :api_key
+        #   # ...
+        # in :oauth_application
+        #   # ...
+        # in :user
+        #   # ...
+        # end
+        # ```
         class Category < Increase::Enum
           # An API key. Details will be under the `api_key` object.
           API_KEY = :api_key
@@ -286,6 +298,11 @@ module Increase
           USER = :user
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -327,6 +344,24 @@ module Increase
       #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
       #   account currency.
+      #
+      # @example
+      # ```ruby
+      # case currency
+      # in :CAD
+      #   # ...
+      # in :CHF
+      #   # ...
+      # in :EUR
+      #   # ...
+      # in :GBP
+      #   # ...
+      # in :JPY
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -347,20 +382,50 @@ module Increase
         USD = :USD
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # The transfer's network.
+      #
+      # @example
+      # ```ruby
+      # case network
+      # in :account
+      #   # ...
+      # end
+      # ```
       class Network < Increase::Enum
         ACCOUNT = :account
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # The lifecycle status of the transfer.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :pending_approval
+      #   # ...
+      # in :canceled
+      #   # ...
+      # in :complete
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The transfer is pending approval.
         PENDING_APPROVAL = :pending_approval
@@ -372,16 +437,34 @@ module Increase
         COMPLETE = :complete
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # A constant representing the object's type. For this resource it will always be
       #   `account_transfer`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :account_transfer
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         ACCOUNT_TRANSFER = :account_transfer
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

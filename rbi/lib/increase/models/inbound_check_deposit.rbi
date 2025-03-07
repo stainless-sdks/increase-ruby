@@ -304,10 +304,8 @@ module Increase
           # The recipient was not able to process the check. This usually happens for e.g., low quality images.
           NON_CONFORMING_ITEM = :non_conforming_item
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -333,10 +331,8 @@ module Increase
         # US Dollar (USD)
         USD = :USD
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -391,10 +387,8 @@ module Increase
           # The check was not endorsed by the payee.
           ENDORSEMENT_IRREGULAR = :endorsement_irregular
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -411,10 +405,8 @@ module Increase
         # The payee name analysis was not evaluated.
         NOT_EVALUATED = :not_evaluated
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -436,10 +428,8 @@ module Increase
         # The Inbound Check Deposit requires attention from an Increase operator.
         REQUIRES_ATTENTION = :requires_attention
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -448,10 +438,8 @@ module Increase
 
         INBOUND_CHECK_DEPOSIT = :inbound_check_deposit
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

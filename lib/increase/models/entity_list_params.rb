@@ -151,6 +151,17 @@ module Increase
 
         # @abstract
         #
+        # @example
+        # ```ruby
+        # case in
+        # in :active
+        #   # ...
+        # in :archived
+        #   # ...
+        # in :disabled
+        #   # ...
+        # end
+        # ```
         class In < Increase::Enum
           # The entity is active.
           ACTIVE = :active
@@ -162,6 +173,11 @@ module Increase
           DISABLED = :disabled
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

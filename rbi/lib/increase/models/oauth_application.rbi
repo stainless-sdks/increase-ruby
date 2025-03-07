@@ -100,10 +100,8 @@ module Increase
         # The application is deleted.
         DELETED = :deleted
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -112,10 +110,8 @@ module Increase
 
         OAUTH_APPLICATION = :oauth_application
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

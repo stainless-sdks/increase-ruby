@@ -96,6 +96,15 @@ module Increase
 
         # @abstract
         #
+        # @example
+        # ```ruby
+        # case in
+        # in :active
+        #   # ...
+        # in :archived
+        #   # ...
+        # end
+        # ```
         class In < Increase::Enum
           # The External Account is active.
           ACTIVE = :active
@@ -104,6 +113,11 @@ module Increase
           ARCHIVED = :archived
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

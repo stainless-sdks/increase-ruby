@@ -109,10 +109,8 @@ module Increase
         # Something unexpected happened with this account. Contact Increase support.
         REQUIRES_ATTENTION = :requires_attention
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -121,10 +119,8 @@ module Increase
 
         INTRAFI_ACCOUNT_ENROLLMENT = :intrafi_account_enrollment
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

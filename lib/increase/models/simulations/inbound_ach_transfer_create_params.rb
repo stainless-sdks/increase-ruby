@@ -151,6 +151,24 @@ module Increase
         # @abstract
         #
         # The standard entry class code for the transfer.
+        #
+        # @example
+        # ```ruby
+        # case standard_entry_class_code
+        # in :corporate_credit_or_debit
+        #   # ...
+        # in :corporate_trade_exchange
+        #   # ...
+        # in :prearranged_payments_and_deposit
+        #   # ...
+        # in :internet_initiated
+        #   # ...
+        # in :point_of_sale
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class StandardEntryClassCode < Increase::Enum
           # Corporate Credit and Debit (CCD).
           CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
@@ -201,6 +219,11 @@ module Increase
           INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

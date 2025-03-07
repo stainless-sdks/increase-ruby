@@ -150,6 +150,23 @@ module Increase
 
         # @abstract
         #
+        # @example
+        # ```ruby
+        # case in
+        # in :check_image_front
+        #   # ...
+        # in :check_image_back
+        #   # ...
+        # in :processed_check_image_front
+        #   # ...
+        # in :processed_check_image_back
+        #   # ...
+        # in :mailed_check_image
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class In < Increase::Enum
           # An image of the front of a check, used for check deposits.
           CHECK_IMAGE_FRONT = :check_image_front
@@ -227,6 +244,11 @@ module Increase
           DEPOSIT_ACCOUNT_CONTROL_AGREEMENT = :deposit_account_control_agreement
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

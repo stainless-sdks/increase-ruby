@@ -33,6 +33,24 @@ module Increase
         # @abstract
         #
         # The reason for the notification of change.
+        #
+        # @example
+        # ```ruby
+        # case change_code
+        # in :incorrect_account_number
+        #   # ...
+        # in :incorrect_routing_number
+        #   # ...
+        # in :incorrect_routing_number_and_account_number
+        #   # ...
+        # in :incorrect_transaction_code
+        #   # ...
+        # in :incorrect_account_number_and_transaction_code
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class ChangeCode < Increase::Enum
           # The account number was incorrect.
           INCORRECT_ACCOUNT_NUMBER = :incorrect_account_number
@@ -92,6 +110,11 @@ module Increase
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

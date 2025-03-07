@@ -70,6 +70,16 @@ module Increase
       # @abstract
       #
       # Whether the application is active.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :active
+      #   # ...
+      # in :deleted
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The application is active and can be used by your users.
         ACTIVE = :active
@@ -78,16 +88,34 @@ module Increase
         DELETED = :deleted
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # A constant representing the object's type. For this resource it will always be
       #   `oauth_application`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :oauth_application
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         OAUTH_APPLICATION = :oauth_application
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

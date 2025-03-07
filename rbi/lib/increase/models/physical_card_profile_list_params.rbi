@@ -107,10 +107,8 @@ module Increase
           # The Physical Card Profile has been archived.
           ARCHIVED = :archived
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

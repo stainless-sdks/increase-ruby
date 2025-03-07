@@ -169,10 +169,8 @@ module Increase
           # The Card Dispute has been won and no further action can be taken.
           WON = :won
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

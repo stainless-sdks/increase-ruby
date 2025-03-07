@@ -99,10 +99,23 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `bookkeeping_entry_set`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :bookkeeping_entry_set
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         BOOKKEEPING_ENTRY_SET = :bookkeeping_entry_set
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

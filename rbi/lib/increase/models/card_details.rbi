@@ -93,10 +93,8 @@ module Increase
 
         CARD_DETAILS = :card_details
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

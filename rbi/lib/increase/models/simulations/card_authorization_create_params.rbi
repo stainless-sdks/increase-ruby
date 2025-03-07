@@ -262,10 +262,8 @@ module Increase
           # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
           SUSPECTED_FRAUD = :suspected_fraud
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -278,10 +276,8 @@ module Increase
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND = :refund
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -349,10 +345,8 @@ module Increase
               # An unspecific reason for stand-in processing.
               OTHER = :other
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
           end

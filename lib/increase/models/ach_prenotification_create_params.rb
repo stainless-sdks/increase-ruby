@@ -171,6 +171,16 @@ module Increase
       # @abstract
       #
       # Whether the Prenotification is for a future debit or credit.
+      #
+      # @example
+      # ```ruby
+      # case credit_debit_indicator
+      # in :credit
+      #   # ...
+      # in :debit
+      #   # ...
+      # end
+      # ```
       class CreditDebitIndicator < Increase::Enum
         # The Prenotification is for an anticipated credit.
         CREDIT = :credit
@@ -179,11 +189,30 @@ module Increase
         DEBIT = :debit
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+      #
+      # @example
+      # ```ruby
+      # case standard_entry_class_code
+      # in :corporate_credit_or_debit
+      #   # ...
+      # in :corporate_trade_exchange
+      #   # ...
+      # in :prearranged_payments_and_deposit
+      #   # ...
+      # in :internet_initiated
+      #   # ...
+      # end
+      # ```
       class StandardEntryClassCode < Increase::Enum
         # Corporate Credit and Debit (CCD).
         CORPORATE_CREDIT_OR_DEBIT = :corporate_credit_or_debit
@@ -198,6 +227,11 @@ module Increase
         INTERNET_INITIATED = :internet_initiated
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

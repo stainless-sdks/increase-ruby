@@ -75,6 +75,16 @@ module Increase
       #
       # The credential you request in exchange for the code. In Production, this is
       #   always `authorization_code`. In Sandbox, you can pass either enum value.
+      #
+      # @example
+      # ```ruby
+      # case grant_type
+      # in :authorization_code
+      #   # ...
+      # in :production_token
+      #   # ...
+      # end
+      # ```
       class GrantType < Increase::Enum
         # An OAuth authorization code.
         AUTHORIZATION_CODE = :authorization_code
@@ -83,6 +93,11 @@ module Increase
         PRODUCTION_TOKEN = :production_token
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

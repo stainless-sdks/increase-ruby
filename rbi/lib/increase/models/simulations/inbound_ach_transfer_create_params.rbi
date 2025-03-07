@@ -201,10 +201,8 @@ module Increase
           # International ACH Transaction (IAT).
           INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

@@ -97,10 +97,8 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED = :not_supported
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -113,10 +111,8 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED = :not_supported
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -125,10 +121,8 @@ module Increase
 
         ROUTING_NUMBER = :routing_number
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -141,10 +135,8 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED = :not_supported
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

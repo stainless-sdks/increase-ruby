@@ -81,6 +81,24 @@ module Increase
       #
       # The category of the Export. We may add additional possible values for this enum
       #   over time; your application should be able to handle that gracefully.
+      #
+      # @example
+      # ```ruby
+      # case category
+      # in :account_statement_ofx
+      #   # ...
+      # in :transaction_csv
+      #   # ...
+      # in :balance_csv
+      #   # ...
+      # in :bookkeeping_account_balance_csv
+      #   # ...
+      # in :entity_csv
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Category < Increase::Enum
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
         ACCOUNT_STATEMENT_OFX = :account_statement_ofx
@@ -104,11 +122,28 @@ module Increase
         DASHBOARD_TABLE_CSV = :dashboard_table_csv
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # The status of the Export.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :pending
+      #   # ...
+      # in :complete
+      #   # ...
+      # in :failed
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # Increase is generating the export.
         PENDING = :pending
@@ -120,16 +155,34 @@ module Increase
         FAILED = :failed
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # A constant representing the object's type. For this resource it will always be
       #   `export`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :export
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         EXPORT = :export
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

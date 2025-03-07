@@ -83,6 +83,15 @@ module Increase
 
         # @abstract
         #
+        # @example
+        # ```ruby
+        # case in
+        # in :active
+        #   # ...
+        # in :inactive
+        #   # ...
+        # end
+        # ```
         class In < Increase::Enum
           # The OAuth connection is active.
           ACTIVE = :active
@@ -91,6 +100,11 @@ module Increase
           INACTIVE = :inactive
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

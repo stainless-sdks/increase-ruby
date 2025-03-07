@@ -127,6 +127,15 @@ module Increase
 
         # @abstract
         #
+        # @example
+        # ```ruby
+        # case in
+        # in :allowed
+        #   # ...
+        # in :blocked
+        #   # ...
+        # end
+        # ```
         class In < Increase::Enum
           # ACH Debits are allowed.
           ALLOWED = :allowed
@@ -135,6 +144,11 @@ module Increase
           BLOCKED = :blocked
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -217,6 +231,17 @@ module Increase
 
         # @abstract
         #
+        # @example
+        # ```ruby
+        # case in
+        # in :active
+        #   # ...
+        # in :disabled
+        #   # ...
+        # in :canceled
+        #   # ...
+        # end
+        # ```
         class In < Increase::Enum
           # The account number is active.
           ACTIVE = :active
@@ -228,6 +253,11 @@ module Increase
           CANCELED = :canceled
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

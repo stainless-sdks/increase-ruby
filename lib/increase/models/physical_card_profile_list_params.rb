@@ -85,6 +85,23 @@ module Increase
 
         # @abstract
         #
+        # @example
+        # ```ruby
+        # case in
+        # in :pending_creating
+        #   # ...
+        # in :pending_reviewing
+        #   # ...
+        # in :rejected
+        #   # ...
+        # in :pending_submitting
+        #   # ...
+        # in :active
+        #   # ...
+        # in ...
+        #   #...
+        # end
+        # ```
         class In < Increase::Enum
           # The Card Profile has not yet been processed by Increase.
           PENDING_CREATING = :pending_creating
@@ -105,6 +122,11 @@ module Increase
           ARCHIVED = :archived
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

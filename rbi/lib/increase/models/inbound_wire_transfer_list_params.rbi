@@ -174,10 +174,8 @@ module Increase
           # The Inbound Wire Transfer was reversed.
           REVERSED = :reversed
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

@@ -106,6 +106,18 @@ module Increase
       # @abstract
       #
       # The status of the exclusion request.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :pending
+      #   # ...
+      # in :completed
+      #   # ...
+      # in :archived
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The exclusion is being added to the IntraFi network.
         PENDING = :pending
@@ -117,16 +129,34 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # A constant representing the object's type. For this resource it will always be
       #   `intrafi_exclusion`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :intrafi_exclusion
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         INTRAFI_EXCLUSION = :intrafi_exclusion
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

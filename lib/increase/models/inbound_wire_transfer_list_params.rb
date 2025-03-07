@@ -170,6 +170,19 @@ module Increase
 
         # @abstract
         #
+        # @example
+        # ```ruby
+        # case in
+        # in :pending
+        #   # ...
+        # in :accepted
+        #   # ...
+        # in :declined
+        #   # ...
+        # in :reversed
+        #   # ...
+        # end
+        # ```
         class In < Increase::Enum
           # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
           PENDING = :pending
@@ -184,6 +197,11 @@ module Increase
           REVERSED = :reversed
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

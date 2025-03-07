@@ -136,6 +136,15 @@ module Increase
 
         # @abstract
         #
+        # @example
+        # ```ruby
+        # case in
+        # in :active
+        #   # ...
+        # in :deleted
+        #   # ...
+        # end
+        # ```
         class In < Increase::Enum
           # The application is active and can be used by your users.
           ACTIVE = :active
@@ -144,6 +153,11 @@ module Increase
           DELETED = :deleted
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

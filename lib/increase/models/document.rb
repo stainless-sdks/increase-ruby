@@ -59,6 +59,20 @@ module Increase
       # @abstract
       #
       # The type of document.
+      #
+      # @example
+      # ```ruby
+      # case category
+      # in :form_1099_int
+      #   # ...
+      # in :form_1099_misc
+      #   # ...
+      # in :proof_of_authorization
+      #   # ...
+      # in :company_information
+      #   # ...
+      # end
+      # ```
       class Category < Increase::Enum
         # Internal Revenue Service Form 1099-INT.
         FORM_1099_INT = :form_1099_int
@@ -73,16 +87,34 @@ module Increase
         COMPANY_INFORMATION = :company_information
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # A constant representing the object's type. For this resource it will always be
       #   `document`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :document
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         DOCUMENT = :document
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

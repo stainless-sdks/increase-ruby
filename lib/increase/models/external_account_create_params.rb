@@ -61,6 +61,18 @@ module Increase
       # @abstract
       #
       # The type of entity that owns the External Account.
+      #
+      # @example
+      # ```ruby
+      # case account_holder
+      # in :business
+      #   # ...
+      # in :individual
+      #   # ...
+      # in :unknown
+      #   # ...
+      # end
+      # ```
       class AccountHolder < Increase::Enum
         # The External Account is owned by a business.
         BUSINESS = :business
@@ -72,11 +84,28 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # The type of the destination account. Defaults to `checking`.
+      #
+      # @example
+      # ```ruby
+      # case funding
+      # in :checking
+      #   # ...
+      # in :savings
+      #   # ...
+      # in :other
+      #   # ...
+      # end
+      # ```
       class Funding < Increase::Enum
         # A checking account.
         CHECKING = :checking
@@ -88,6 +117,11 @@ module Increase
         OTHER = :other
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

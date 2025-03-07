@@ -170,6 +170,19 @@ module Increase
 
         # @abstract
         #
+        # @example
+        # ```ruby
+        # case in
+        # in :pending
+        #   # ...
+        # in :declined
+        #   # ...
+        # in :accepted
+        #   # ...
+        # in :returned
+        #   # ...
+        # end
+        # ```
         class In < Increase::Enum
           # The Inbound ACH Transfer is awaiting action, will transition automatically if no action is taken.
           PENDING = :pending
@@ -184,6 +197,11 @@ module Increase
           RETURNED = :returned
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

@@ -100,9 +100,9 @@ module Increase
     type sse_message =
       { event: String?, data: String?, id: String?, retry: Integer? }
 
-    def self?.decode_lines: (Enumerable[String] enum) -> Enumerable[String]
+    def self?.enum_lines: (Enumerable[String] enum) -> Enumerable[String]
 
-    def self?.decode_sse: (
+    def self?.parse_sse: (
       Enumerable[String] lines
     ) -> Increase::Util::sse_message
   end

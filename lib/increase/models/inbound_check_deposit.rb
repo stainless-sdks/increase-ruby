@@ -228,6 +228,20 @@ module Increase
         # @abstract
         #
         # The reason for the adjustment.
+        #
+        # @example
+        # ```ruby
+        # case reason
+        # in :late_return
+        #   # ...
+        # in :wrong_payee_credit
+        #   # ...
+        # in :adjusted_amount
+        #   # ...
+        # in :non_conforming_item
+        #   # ...
+        # end
+        # ```
         class Reason < Increase::Enum
           # The return was initiated too late and the receiving institution has responded with a Late Return Claim.
           LATE_RETURN = :late_return
@@ -242,12 +256,35 @@ module Increase
           NON_CONFORMING_ITEM = :non_conforming_item
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
       # @abstract
       #
       # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
+      #
+      # @example
+      # ```ruby
+      # case currency
+      # in :CAD
+      #   # ...
+      # in :CHF
+      #   # ...
+      # in :EUR
+      #   # ...
+      # in :GBP
+      #   # ...
+      # in :JPY
+      #   # ...
+      # in ...
+      #   #...
+      # end
+      # ```
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
         CAD = :CAD
@@ -268,6 +305,11 @@ module Increase
         USD = :USD
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       class DepositReturn < Increase::BaseModel
@@ -304,6 +346,22 @@ module Increase
         # @abstract
         #
         # The reason the deposit was returned.
+        #
+        # @example
+        # ```ruby
+        # case reason
+        # in :altered_or_fictitious
+        #   # ...
+        # in :not_authorized
+        #   # ...
+        # in :duplicate_presentment
+        #   # ...
+        # in :endorsement_missing
+        #   # ...
+        # in :endorsement_irregular
+        #   # ...
+        # end
+        # ```
         class Reason < Increase::Enum
           # The check was altered or fictitious.
           ALTERED_OR_FICTITIOUS = :altered_or_fictitious
@@ -321,6 +379,11 @@ module Increase
           ENDORSEMENT_IRREGULAR = :endorsement_irregular
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -328,6 +391,18 @@ module Increase
       #
       # Whether the details on the check match the recipient name of the check transfer.
       #   This is an optional feature, contact sales to enable.
+      #
+      # @example
+      # ```ruby
+      # case payee_name_analysis
+      # in :name_matches
+      #   # ...
+      # in :does_not_match
+      #   # ...
+      # in :not_evaluated
+      #   # ...
+      # end
+      # ```
       class PayeeNameAnalysis < Increase::Enum
         # The details on the check match the recipient name of the check transfer.
         NAME_MATCHES = :name_matches
@@ -339,11 +414,32 @@ module Increase
         NOT_EVALUATED = :not_evaluated
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # The status of the Inbound Check Deposit.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :pending
+      #   # ...
+      # in :accepted
+      #   # ...
+      # in :declined
+      #   # ...
+      # in :returned
+      #   # ...
+      # in :requires_attention
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The Inbound Check Deposit is pending.
         PENDING = :pending
@@ -361,16 +457,34 @@ module Increase
         REQUIRES_ATTENTION = :requires_attention
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # A constant representing the object's type. For this resource it will always be
       #   `inbound_check_deposit`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :inbound_check_deposit
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         INBOUND_CHECK_DEPOSIT = :inbound_check_deposit
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

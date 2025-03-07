@@ -24,6 +24,18 @@ module Increase
       # @abstract
       #
       # The status to update the Physical Card to.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :active
+      #   # ...
+      # in :disabled
+      #   # ...
+      # in :canceled
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The physical card is active.
         ACTIVE = :active
@@ -35,6 +47,11 @@ module Increase
         CANCELED = :canceled
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

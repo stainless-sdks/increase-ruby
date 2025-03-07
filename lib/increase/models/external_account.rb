@@ -111,6 +111,18 @@ module Increase
       # @abstract
       #
       # The type of entity that owns the External Account.
+      #
+      # @example
+      # ```ruby
+      # case account_holder
+      # in :business
+      #   # ...
+      # in :individual
+      #   # ...
+      # in :unknown
+      #   # ...
+      # end
+      # ```
       class AccountHolder < Increase::Enum
         # The External Account is owned by a business.
         BUSINESS = :business
@@ -122,11 +134,28 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # The type of the account to which the transfer will be sent.
+      #
+      # @example
+      # ```ruby
+      # case funding
+      # in :checking
+      #   # ...
+      # in :savings
+      #   # ...
+      # in :other
+      #   # ...
+      # end
+      # ```
       class Funding < Increase::Enum
         # A checking account.
         CHECKING = :checking
@@ -138,11 +167,26 @@ module Increase
         OTHER = :other
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # The External Account's status.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :active
+      #   # ...
+      # in :archived
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The External Account is active.
         ACTIVE = :active
@@ -151,21 +195,51 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # A constant representing the object's type. For this resource it will always be
       #   `external_account`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :external_account
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         EXTERNAL_ACCOUNT = :external_account
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # If you have verified ownership of the External Account.
+      #
+      # @example
+      # ```ruby
+      # case verification_status
+      # in :unverified
+      #   # ...
+      # in :pending
+      #   # ...
+      # in :verified
+      #   # ...
+      # end
+      # ```
       class VerificationStatus < Increase::Enum
         # The External Account has not been verified.
         UNVERIFIED = :unverified
@@ -177,6 +251,11 @@ module Increase
         VERIFIED = :verified
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

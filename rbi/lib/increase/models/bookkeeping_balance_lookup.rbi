@@ -40,10 +40,8 @@ module Increase
 
         BOOKKEEPING_BALANCE_LOOKUP = :bookkeeping_balance_lookup
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

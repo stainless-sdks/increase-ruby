@@ -133,6 +133,16 @@ module Increase
         #
         # Whether ACH debits are allowed against this Account Number. Note that they will
         #   still be declined if this is `allowed` if the Account Number is not active.
+        #
+        # @example
+        # ```ruby
+        # case debit_status
+        # in :allowed
+        #   # ...
+        # in :blocked
+        #   # ...
+        # end
+        # ```
         class DebitStatus < Increase::Enum
           # ACH Debits are allowed.
           ALLOWED = :allowed
@@ -141,6 +151,11 @@ module Increase
           BLOCKED = :blocked
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -164,6 +179,16 @@ module Increase
         # @abstract
         #
         # How Increase should process checks with this account number printed on them.
+        #
+        # @example
+        # ```ruby
+        # case status
+        # in :allowed
+        #   # ...
+        # in :check_transfers_only
+        #   # ...
+        # end
+        # ```
         class Status < Increase::Enum
           # Checks with this Account Number will be processed even if they are not associated with a Check Transfer.
           ALLOWED = :allowed
@@ -172,12 +197,29 @@ module Increase
           CHECK_TRANSFERS_ONLY = :check_transfers_only
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
       # @abstract
       #
       # This indicates if payments can be made to the Account Number.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :active
+      #   # ...
+      # in :disabled
+      #   # ...
+      # in :canceled
+      #   # ...
+      # end
+      # ```
       class Status < Increase::Enum
         # The account number is active.
         ACTIVE = :active
@@ -189,16 +231,34 @@ module Increase
         CANCELED = :canceled
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
       #
       # A constant representing the object's type. For this resource it will always be
       #   `account_number`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :account_number
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         ACCOUNT_NUMBER = :account_number
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

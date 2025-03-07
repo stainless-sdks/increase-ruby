@@ -207,6 +207,18 @@ module Increase
         # @abstract
         #
         # Indicates how the merchant applied the discount.
+        #
+        # @example
+        # ```ruby
+        # case discount_treatment_code
+        # in :no_invoice_level_discount_provided
+        #   # ...
+        # in :tax_calculated_on_post_discount_invoice_total
+        #   # ...
+        # in :tax_calculated_on_pre_discount_invoice_total
+        #   # ...
+        # end
+        # ```
         class DiscountTreatmentCode < Increase::Enum
           # No invoice level discount provided
           NO_INVOICE_LEVEL_DISCOUNT_PROVIDED = :no_invoice_level_discount_provided
@@ -218,11 +230,32 @@ module Increase
           TAX_CALCULATED_ON_PRE_DISCOUNT_INVOICE_TOTAL = :tax_calculated_on_pre_discount_invoice_total
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
         #
         # Indicates how the merchant applied taxes.
+        #
+        # @example
+        # ```ruby
+        # case tax_treatments
+        # in :no_tax_applies
+        #   # ...
+        # in :net_price_line_item_level
+        #   # ...
+        # in :net_price_invoice_level
+        #   # ...
+        # in :gross_price_line_item_level
+        #   # ...
+        # in :gross_price_invoice_level
+        #   # ...
+        # end
+        # ```
         class TaxTreatments < Increase::Enum
           # No tax applies
           NO_TAX_APPLIES = :no_tax_applies
@@ -240,6 +273,11 @@ module Increase
           GROSS_PRICE_INVOICE_LEVEL = :gross_price_invoice_level
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -399,6 +437,18 @@ module Increase
         # @abstract
         #
         # Indicates the type of line item.
+        #
+        # @example
+        # ```ruby
+        # case detail_indicator
+        # in :normal
+        #   # ...
+        # in :credit
+        #   # ...
+        # in :payment
+        #   # ...
+        # end
+        # ```
         class DetailIndicator < Increase::Enum
           # Normal
           NORMAL = :normal
@@ -410,11 +460,28 @@ module Increase
           PAYMENT = :payment
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
         #
         # Indicates how the merchant applied the discount for this specific line item.
+        #
+        # @example
+        # ```ruby
+        # case discount_treatment_code
+        # in :no_line_item_level_discount_provided
+        #   # ...
+        # in :tax_calculated_on_post_discount_line_item_total
+        #   # ...
+        # in :tax_calculated_on_pre_discount_line_item_total
+        #   # ...
+        # end
+        # ```
         class DiscountTreatmentCode < Increase::Enum
           # No line item level discount provided
           NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED = :no_line_item_level_discount_provided
@@ -426,6 +493,11 @@ module Increase
           TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL = :tax_calculated_on_pre_discount_line_item_total
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -433,10 +505,23 @@ module Increase
       #
       # A constant representing the object's type. For this resource it will always be
       #   `card_purchase_supplement`.
+      #
+      # @example
+      # ```ruby
+      # case type
+      # in :card_purchase_supplement
+      #   # ...
+      # end
+      # ```
       class Type < Increase::Enum
         CARD_PURCHASE_SUPPLEMENT = :card_purchase_supplement
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end
