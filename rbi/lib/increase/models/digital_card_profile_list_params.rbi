@@ -101,10 +101,8 @@ module Increase
           # The Card Profile is no longer in use.
           ARCHIVED = :archived
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

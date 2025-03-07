@@ -43,6 +43,11 @@ module Increase
         BEARER = :bearer
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -53,6 +58,11 @@ module Increase
         OAUTH_TOKEN = :oauth_token
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

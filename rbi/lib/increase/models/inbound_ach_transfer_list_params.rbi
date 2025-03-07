@@ -174,10 +174,8 @@ module Increase
           # The Inbound ACH Transfer has been returned.
           RETURNED = :returned
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

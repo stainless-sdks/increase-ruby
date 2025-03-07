@@ -92,10 +92,8 @@ module Increase
         # An OAuth production token.
         PRODUCTION_TOKEN = :production_token
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

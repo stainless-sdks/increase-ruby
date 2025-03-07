@@ -599,10 +599,8 @@ module Increase
                 # Another identifying document.
                 OTHER = :other
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -617,10 +615,8 @@ module Increase
             # A person who manages, directs, or has significant control of the entity.
             CONTROL = :control
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
         end
@@ -805,10 +801,8 @@ module Increase
           # The Public Entity is a Municipality.
           MUNICIPALITY = :municipality
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -1011,10 +1005,8 @@ module Increase
               # Another identifying document.
               OTHER = :other
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
           end
@@ -1191,10 +1183,8 @@ module Increase
             # Another identifying document.
             OTHER = :other
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
         end
@@ -1212,10 +1202,8 @@ module Increase
         # The entity is temporarily disabled and cannot be used for financial activity.
         DISABLED = :disabled
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -1237,10 +1225,8 @@ module Increase
         # A government authority.
         GOVERNMENT_AUTHORITY = :government_authority
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -1278,10 +1264,8 @@ module Increase
           # Middesk. See https://middesk.com for more information.
           MIDDESK = :middesk
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -1471,10 +1455,8 @@ module Increase
           # The trust cannot be revoked.
           IRREVOCABLE = :irrevocable
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -1648,10 +1630,8 @@ module Increase
               # Another identifying document.
               OTHER = :other
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
           end
@@ -1860,10 +1840,8 @@ module Increase
                 # Another identifying document.
                 OTHER = :other
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -1875,10 +1853,8 @@ module Increase
             # The trustee is an individual.
             INDIVIDUAL = :individual
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
         end
@@ -1889,10 +1865,8 @@ module Increase
 
         ENTITY = :entity
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

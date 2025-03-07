@@ -344,10 +344,8 @@ module Increase
               # Another identifying document.
               OTHER = :other
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
 
@@ -517,10 +515,8 @@ module Increase
           # A person who manages, directs, or has significant control of the entity.
           CONTROL = :control
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

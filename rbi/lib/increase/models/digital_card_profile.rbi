@@ -194,10 +194,8 @@ module Increase
         # The Card Profile is no longer in use.
         ARCHIVED = :archived
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -240,10 +238,8 @@ module Increase
 
         DIGITAL_CARD_PROFILE = :digital_card_profile
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

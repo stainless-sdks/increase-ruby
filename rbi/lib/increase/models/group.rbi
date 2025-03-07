@@ -78,10 +78,8 @@ module Increase
         # The Group can make ACH debits.
         ENABLED = :enabled
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -94,10 +92,8 @@ module Increase
         # The Group is activated.
         ACTIVATED = :activated
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -106,10 +102,8 @@ module Increase
 
         GROUP = :group
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

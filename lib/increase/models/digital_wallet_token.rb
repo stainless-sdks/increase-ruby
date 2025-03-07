@@ -81,6 +81,11 @@ module Increase
         DEACTIVATED = :deactivated
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -100,6 +105,11 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -110,6 +120,11 @@ module Increase
         DIGITAL_WALLET_TOKEN = :digital_wallet_token
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       class Update < Increase::BaseModel
@@ -151,6 +166,11 @@ module Increase
           DEACTIVATED = :deactivated
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

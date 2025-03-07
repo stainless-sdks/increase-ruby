@@ -65,6 +65,11 @@ module Increase
         BOOKKEEPING_ENTRY = :bookkeeping_entry
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

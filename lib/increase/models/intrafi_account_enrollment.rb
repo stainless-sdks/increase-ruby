@@ -93,6 +93,11 @@ module Increase
         REQUIRES_ATTENTION = :requires_attention
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -103,6 +108,11 @@ module Increase
         INTRAFI_ACCOUNT_ENROLLMENT = :intrafi_account_enrollment
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

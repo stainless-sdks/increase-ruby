@@ -126,10 +126,8 @@ module Increase
 
         ACCOUNT_STATEMENT = :account_statement
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

@@ -41,6 +41,11 @@ module Increase
         ENDORSEMENT_IRREGULAR = :endorsement_irregular
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

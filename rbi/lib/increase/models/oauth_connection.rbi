@@ -100,10 +100,8 @@ module Increase
         # The OAuth connection is permanently deactivated.
         INACTIVE = :inactive
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -112,10 +110,8 @@ module Increase
 
         OAUTH_CONNECTION = :oauth_connection
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

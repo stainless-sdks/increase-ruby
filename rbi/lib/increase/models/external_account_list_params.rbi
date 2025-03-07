@@ -112,10 +112,8 @@ module Increase
           # The External Account is archived and won't appear in the dashboard.
           ARCHIVED = :archived
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

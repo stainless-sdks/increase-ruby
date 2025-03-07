@@ -107,10 +107,8 @@ module Increase
 
         PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

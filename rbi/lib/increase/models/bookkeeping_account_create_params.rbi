@@ -75,10 +75,8 @@ module Increase
         # A customer balance.
         CUSTOMER_BALANCE = :customer_balance
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

@@ -167,10 +167,8 @@ module Increase
           # The card is permanently canceled.
           CANCELED = :canceled
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
