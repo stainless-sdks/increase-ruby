@@ -22,9 +22,9 @@ module Increase
           address: Increase::Models::EntityUpdateAddressParams::Address,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(address:, request_options: {})
+      def self.new(address:, request_options: {})
       end
 
       sig do
@@ -77,8 +77,16 @@ module Increase
         def line2=(_)
         end
 
-        sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
-        def initialize(city:, line1:, state:, zip:, line2: nil)
+        sig do
+          params(
+            city: String,
+            line1: String,
+            state: String,
+            zip: String,
+            line2: String
+          ).returns(T.attached_class)
+        end
+        def self.new(city:, line1:, state:, zip:, line2: nil)
         end
 
         sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }

@@ -46,15 +46,9 @@ module Increase
           program_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        name:,
-        entity_id: nil,
-        informational_entity_id: nil,
-        program_id: nil,
-        request_options: {}
-      )
+      def self.new(name:, entity_id: nil, informational_entity_id: nil, program_id: nil, request_options: {})
       end
 
       sig do

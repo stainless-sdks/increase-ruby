@@ -94,9 +94,9 @@ module Increase
           text_color: Increase::Models::DigitalCardProfileCloneParams::TextColor,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         app_icon_file_id: nil,
         background_image_file_id: nil,
         card_description: nil,
@@ -155,8 +155,8 @@ module Increase
         def red=(_)
         end
 
-        sig { params(blue: Integer, green: Integer, red: Integer).void }
-        def initialize(blue:, green:, red:)
+        sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
+        def self.new(blue:, green:, red:)
         end
 
         sig { override.returns({blue: Integer, green: Integer, red: Integer}) }

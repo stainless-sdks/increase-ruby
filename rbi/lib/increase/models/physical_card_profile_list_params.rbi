@@ -49,9 +49,9 @@ module Increase
           status: Increase::Models::PhysicalCardProfileListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
+      def self.new(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       end
 
       sig do
@@ -78,8 +78,8 @@ module Increase
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).void }
-        def initialize(in_: nil)
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        def self.new(in_: nil)
         end
 
         sig { override.returns({in_: T::Array[Symbol]}) }

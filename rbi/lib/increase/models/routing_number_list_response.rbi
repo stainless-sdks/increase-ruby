@@ -60,16 +60,9 @@ module Increase
           type: Symbol,
           wire_transfers: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        ach_transfers:,
-        name:,
-        real_time_payments_transfers:,
-        routing_number:,
-        type:,
-        wire_transfers:
-      )
+      def self.new(ach_transfers:, name:, real_time_payments_transfers:, routing_number:, type:, wire_transfers:)
       end
 
       sig do

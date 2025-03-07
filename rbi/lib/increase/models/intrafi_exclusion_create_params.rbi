@@ -28,9 +28,9 @@ module Increase
           entity_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(bank_name:, entity_id:, request_options: {})
+      def self.new(bank_name:, entity_id:, request_options: {})
       end
 
       sig do

@@ -267,9 +267,9 @@ module Increase
           transfer_return: T.nilable(Increase::Models::InboundACHTransfer::TransferReturn),
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         acceptance:,
         account_id:,
@@ -354,8 +354,8 @@ module Increase
         def transaction_id=(_)
         end
 
-        sig { params(accepted_at: Time, transaction_id: String).void }
-        def initialize(accepted_at:, transaction_id:)
+        sig { params(accepted_at: Time, transaction_id: String).returns(T.attached_class) }
+        def self.new(accepted_at:, transaction_id:)
         end
 
         sig { override.returns({accepted_at: Time, transaction_id: String}) }
@@ -384,9 +384,10 @@ module Increase
         end
 
         sig do
-          params(category: Symbol, freeform: T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)).void
+          params(category: Symbol, freeform: T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform))
+            .returns(T.attached_class)
         end
-        def initialize(category:, freeform:)
+        def self.new(category:, freeform:)
         end
 
         sig do
@@ -421,8 +422,11 @@ module Increase
           def entries=(_)
           end
 
-          sig { params(entries: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]).void }
-          def initialize(entries:)
+          sig do
+            params(entries: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry])
+              .returns(T.attached_class)
+          end
+          def self.new(entries:)
           end
 
           sig { override.returns({entries: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]}) }
@@ -438,8 +442,8 @@ module Increase
             def payment_related_information=(_)
             end
 
-            sig { params(payment_related_information: String).void }
-            def initialize(payment_related_information:)
+            sig { params(payment_related_information: String).returns(T.attached_class) }
+            def self.new(payment_related_information:)
             end
 
             sig { override.returns({payment_related_information: String}) }
@@ -474,8 +478,10 @@ module Increase
         def reason=(_)
         end
 
-        sig { params(declined_at: Time, declined_transaction_id: String, reason: Symbol).void }
-        def initialize(declined_at:, declined_transaction_id:, reason:)
+        sig do
+          params(declined_at: Time, declined_transaction_id: String, reason: Symbol).returns(T.attached_class)
+        end
+        def self.new(declined_at:, declined_transaction_id:, reason:)
         end
 
         sig { override.returns({declined_at: Time, declined_transaction_id: String, reason: Symbol}) }
@@ -877,9 +883,9 @@ module Increase
             receiving_depository_financial_institution_id_qualifier: Symbol,
             receiving_depository_financial_institution_name: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           destination_country_code:,
           destination_currency_code:,
           foreign_exchange_indicator:,
@@ -1124,9 +1130,10 @@ module Increase
         end
 
         sig do
-          params(updated_account_number: T.nilable(String), updated_routing_number: T.nilable(String)).void
+          params(updated_account_number: T.nilable(String), updated_routing_number: T.nilable(String))
+            .returns(T.attached_class)
         end
-        def initialize(updated_account_number:, updated_routing_number:)
+        def self.new(updated_account_number:, updated_routing_number:)
         end
 
         sig do
@@ -1246,8 +1253,8 @@ module Increase
         def transaction_id=(_)
         end
 
-        sig { params(reason: Symbol, returned_at: Time, transaction_id: String).void }
-        def initialize(reason:, returned_at:, transaction_id:)
+        sig { params(reason: Symbol, returned_at: Time, transaction_id: String).returns(T.attached_class) }
+        def self.new(reason:, returned_at:, transaction_id:)
         end
 
         sig { override.returns({reason: Symbol, returned_at: Time, transaction_id: String}) }

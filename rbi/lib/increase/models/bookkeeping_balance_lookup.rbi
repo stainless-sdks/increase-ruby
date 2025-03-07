@@ -27,8 +27,8 @@ module Increase
       def type=(_)
       end
 
-      sig { params(balance: Integer, bookkeeping_account_id: String, type: Symbol).void }
-      def initialize(balance:, bookkeeping_account_id:, type:)
+      sig { params(balance: Integer, bookkeeping_account_id: String, type: Symbol).returns(T.attached_class) }
+      def self.new(balance:, bookkeeping_account_id:, type:)
       end
 
       sig { override.returns({balance: Integer, bookkeeping_account_id: String, type: Symbol}) }

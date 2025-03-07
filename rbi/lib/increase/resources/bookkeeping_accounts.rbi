@@ -50,8 +50,8 @@ module Increase
       def balance(bookkeeping_account_id, at_time: nil, request_options: {})
       end
 
-      sig { params(client: Increase::Client).void }
-      def initialize(client:)
+      sig { params(client: Increase::Client).returns(T.attached_class) }
+      def self.new(client:)
       end
     end
   end

@@ -99,20 +99,9 @@ module Increase
           source: Increase::Models::DeclinedTransaction::Source,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        id:,
-        account_id:,
-        amount:,
-        created_at:,
-        currency:,
-        description:,
-        route_id:,
-        route_type:,
-        source:,
-        type:
-      )
+      def self.new(id:, account_id:, amount:, created_at:, currency:, description:, route_id:, route_type:, source:, type:)
       end
 
       sig do
@@ -278,9 +267,9 @@ module Increase
             other: T.nilable(T.anything),
             wire_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           ach_decline:,
           card_decline:,
           category:,
@@ -422,9 +411,9 @@ module Increase
               trace_number: String,
               type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             amount:,
             inbound_ach_transfer_id:,
@@ -792,9 +781,9 @@ module Increase
               terminal_id: T.nilable(String),
               verification: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             actioner:,
             amount:,
@@ -950,9 +939,9 @@ module Increase
                 category: Symbol,
                 visa: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(category:, visa:)
+            def self.new(category:, visa:)
             end
 
             sig do
@@ -1011,13 +1000,9 @@ module Increase
                   point_of_service_entry_mode: T.nilable(Symbol),
                   stand_in_processing_reason: T.nilable(Symbol)
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
-                electronic_commerce_indicator:,
-                point_of_service_entry_mode:,
-                stand_in_processing_reason:
-              )
+              def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
               end
 
               sig do
@@ -1183,9 +1168,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -1347,9 +1332,9 @@ module Increase
                 card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
                 cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(card_verification_code:, cardholder_address:)
+            def self.new(card_verification_code:, cardholder_address:)
             end
 
             sig do
@@ -1373,8 +1358,8 @@ module Increase
               def result=(_)
               end
 
-              sig { params(result: Symbol).void }
-              def initialize(result:)
+              sig { params(result: Symbol).returns(T.attached_class) }
+              def self.new(result:)
               end
 
               sig { override.returns({result: Symbol}) }
@@ -1450,15 +1435,9 @@ module Increase
                   provided_postal_code: T.nilable(String),
                   result: Symbol
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
-                actual_line1:,
-                actual_postal_code:,
-                provided_line1:,
-                provided_postal_code:,
-                result:
-              )
+              def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
               end
 
               sig do
@@ -1605,9 +1584,9 @@ module Increase
               inbound_check_deposit_id: T.nilable(String),
               reason: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             amount:,
             auxiliary_on_us:,
             back_image_file_id:,
@@ -1755,16 +1734,9 @@ module Increase
               reason: Symbol,
               rejected_at: Time
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
-            amount:,
-            check_deposit_id:,
-            currency:,
-            declined_transaction_id:,
-            reason:,
-            rejected_at:
-          )
+          def self.new(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:)
           end
 
           sig do
@@ -1949,9 +1921,9 @@ module Increase
               transaction_identification: String,
               transfer_id: String
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             amount:,
             creditor_name:,
             currency:,
@@ -2059,8 +2031,8 @@ module Increase
           def reason=(_)
           end
 
-          sig { params(inbound_wire_transfer_id: String, reason: Symbol).void }
-          def initialize(inbound_wire_transfer_id:, reason:)
+          sig { params(inbound_wire_transfer_id: String, reason: Symbol).returns(T.attached_class) }
+          def self.new(inbound_wire_transfer_id:, reason:)
           end
 
           sig { override.returns({inbound_wire_transfer_id: String, reason: Symbol}) }

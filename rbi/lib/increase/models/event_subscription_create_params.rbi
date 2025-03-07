@@ -46,15 +46,9 @@ module Increase
           shared_secret: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        url:,
-        oauth_connection_id: nil,
-        selected_event_category: nil,
-        shared_secret: nil,
-        request_options: {}
-      )
+      def self.new(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {})
       end
 
       sig do

@@ -183,9 +183,9 @@ module Increase
           transaction_id: T.nilable(String),
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         account_id:,
         amount:,
@@ -302,17 +302,9 @@ module Increase
             routing_number: String,
             serial_number: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          account_number:,
-          amount:,
-          auxiliary_on_us:,
-          check_deposit_id:,
-          currency:,
-          routing_number:,
-          serial_number:
-        )
+        def self.new(account_number:, amount:, auxiliary_on_us:, check_deposit_id:, currency:, routing_number:, serial_number:)
         end
 
         sig do
@@ -419,9 +411,9 @@ module Increase
             reason: Symbol,
             rejected_at: Time
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:)
+        def self.new(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:)
         end
 
         sig do
@@ -570,9 +562,9 @@ module Increase
             returned_at: Time,
             transaction_id: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:)
+        def self.new(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:)
         end
 
         sig do
@@ -733,8 +725,10 @@ module Increase
         def submitted_at=(_)
         end
 
-        sig { params(back_file_id: String, front_file_id: String, submitted_at: Time).void }
-        def initialize(back_file_id:, front_file_id:, submitted_at:)
+        sig do
+          params(back_file_id: String, front_file_id: String, submitted_at: Time).returns(T.attached_class)
+        end
+        def self.new(back_file_id:, front_file_id:, submitted_at:)
         end
 
         sig { override.returns({back_file_id: String, front_file_id: String, submitted_at: Time}) }
@@ -836,9 +830,9 @@ module Increase
             status: Symbol,
             type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           amount:,
           automatically_releases_at:,

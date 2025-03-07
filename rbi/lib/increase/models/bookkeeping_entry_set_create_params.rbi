@@ -40,9 +40,9 @@ module Increase
           transaction_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(entries:, date: nil, transaction_id: nil, request_options: {})
+      def self.new(entries:, date: nil, transaction_id: nil, request_options: {})
       end
 
       sig do
@@ -76,8 +76,8 @@ module Increase
         def amount=(_)
         end
 
-        sig { params(account_id: String, amount: Integer).void }
-        def initialize(account_id:, amount:)
+        sig { params(account_id: String, amount: Integer).returns(T.attached_class) }
+        def self.new(account_id:, amount:)
         end
 
         sig { override.returns({account_id: String, amount: Integer}) }

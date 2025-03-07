@@ -63,9 +63,9 @@ module Increase
           type: Symbol,
           updated_at: Time
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:)
+      def self.new(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:)
       end
 
       sig do
@@ -93,8 +93,8 @@ module Increase
         def id=(_)
         end
 
-        sig { params(id: String).void }
-        def initialize(id:)
+        sig { params(id: String).returns(T.attached_class) }
+        def self.new(id:)
         end
 
         sig { override.returns({id: String}) }

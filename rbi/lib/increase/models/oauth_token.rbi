@@ -27,8 +27,8 @@ module Increase
       def type=(_)
       end
 
-      sig { params(access_token: String, token_type: Symbol, type: Symbol).void }
-      def initialize(access_token:, token_type:, type:)
+      sig { params(access_token: String, token_type: Symbol, type: Symbol).returns(T.attached_class) }
+      def self.new(access_token:, token_type:, type:)
       end
 
       sig { override.returns({access_token: String, token_type: Symbol, type: Symbol}) }

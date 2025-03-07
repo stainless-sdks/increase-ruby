@@ -29,9 +29,9 @@ module Increase
             amount: Integer,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(card_payment_id:, amount: nil, request_options: {})
+        def self.new(card_payment_id:, amount: nil, request_options: {})
         end
 
         sig do

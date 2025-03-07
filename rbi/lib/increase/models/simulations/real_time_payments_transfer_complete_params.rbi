@@ -23,9 +23,9 @@ module Increase
             rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(rejection: nil, request_options: {})
+        def self.new(rejection: nil, request_options: {})
         end
 
         sig do
@@ -49,8 +49,8 @@ module Increase
           def reject_reason_code=(_)
           end
 
-          sig { params(reject_reason_code: Symbol).void }
-          def initialize(reject_reason_code:)
+          sig { params(reject_reason_code: Symbol).returns(T.attached_class) }
+          def self.new(reject_reason_code:)
           end
 
           sig { override.returns({reject_reason_code: Symbol}) }

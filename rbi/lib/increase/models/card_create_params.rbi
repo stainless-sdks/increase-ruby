@@ -61,9 +61,9 @@ module Increase
           entity_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         account_id:,
         billing_address: nil,
         description: nil,
@@ -130,8 +130,11 @@ module Increase
         def line2=(_)
         end
 
-        sig { params(city: String, line1: String, postal_code: String, state: String, line2: String).void }
-        def initialize(city:, line1:, postal_code:, state:, line2: nil)
+        sig do
+          params(city: String, line1: String, postal_code: String, state: String, line2: String)
+            .returns(T.attached_class)
+        end
+        def self.new(city:, line1:, postal_code:, state:, line2: nil)
         end
 
         sig do
@@ -166,8 +169,10 @@ module Increase
         def phone=(_)
         end
 
-        sig { params(digital_card_profile_id: String, email: String, phone: String).void }
-        def initialize(digital_card_profile_id: nil, email: nil, phone: nil)
+        sig do
+          params(digital_card_profile_id: String, email: String, phone: String).returns(T.attached_class)
+        end
+        def self.new(digital_card_profile_id: nil, email: nil, phone: nil)
         end
 
         sig { override.returns({digital_card_profile_id: String, email: String, phone: String}) }

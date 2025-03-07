@@ -22,9 +22,10 @@ module Increase
               Increase::RequestOptions,
               T::Hash[Symbol, T.anything]
             )
-          ).void
+          )
+            .returns(T.attached_class)
         end
-        def initialize(reason: nil, request_options: {})
+        def self.new(reason: nil, request_options: {})
         end
 
         sig { override.returns({reason: Symbol, request_options: Increase::RequestOptions}) }

@@ -97,9 +97,9 @@ module Increase
             status: Symbol,
             type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           amount:,
           automatically_releases_at:,

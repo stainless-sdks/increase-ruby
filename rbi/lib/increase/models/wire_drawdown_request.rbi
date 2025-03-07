@@ -198,9 +198,9 @@ module Increase
           submission: T.nilable(Increase::Models::WireDrawdownRequest::Submission),
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         account_number_id:,
         amount:,
@@ -287,8 +287,8 @@ module Increase
         def input_message_accountability_data=(_)
         end
 
-        sig { params(input_message_accountability_data: String).void }
-        def initialize(input_message_accountability_data:)
+        sig { params(input_message_accountability_data: String).returns(T.attached_class) }
+        def self.new(input_message_accountability_data:)
         end
 
         sig { override.returns({input_message_accountability_data: String}) }
