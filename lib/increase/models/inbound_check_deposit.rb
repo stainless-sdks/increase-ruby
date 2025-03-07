@@ -242,11 +242,6 @@ module Increase
           NON_CONFORMING_ITEM = :non_conforming_item
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -273,11 +268,6 @@ module Increase
         USD = :USD
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class DepositReturn < Increase::BaseModel
@@ -331,11 +321,6 @@ module Increase
           ENDORSEMENT_IRREGULAR = :endorsement_irregular
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -354,11 +339,6 @@ module Increase
         NOT_EVALUATED = :not_evaluated
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -381,11 +361,6 @@ module Increase
         REQUIRES_ATTENTION = :requires_attention
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -396,11 +371,6 @@ module Increase
         INBOUND_CHECK_DEPOSIT = :inbound_check_deposit
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

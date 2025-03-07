@@ -163,8 +163,10 @@ module Increase
         # This Physical Card Profile was created by you.
         USER = :user
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -189,8 +191,10 @@ module Increase
         # The Physical Card Profile has been archived.
         ARCHIVED = :archived
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -199,8 +203,10 @@ module Increase
 
         PHYSICAL_CARD_PROFILE = :physical_card_profile
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

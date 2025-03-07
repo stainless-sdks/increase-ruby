@@ -300,8 +300,10 @@ module Increase
             T.nilable(Symbol)
           )
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -323,8 +325,10 @@ module Increase
           # Gross price invoice level
           GROSS_PRICE_INVOICE_LEVEL = T.let(:gross_price_invoice_level, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -548,8 +552,10 @@ module Increase
           # Purchase
           PAYMENT = T.let(:payment, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -572,8 +578,10 @@ module Increase
             :tax_calculated_on_pre_discount_line_item_total, T.nilable(Symbol)
           )
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -583,8 +591,10 @@ module Increase
 
         CARD_PURCHASE_SUPPLEMENT = :card_purchase_supplement
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

@@ -165,11 +165,6 @@ module Increase
         DEBIT = :debit
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class NotificationsOfChange < Increase::BaseModel
@@ -270,11 +265,6 @@ module Increase
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -518,11 +508,6 @@ module Increase
           UNTIMELY_RETURN = :untimely_return
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -543,11 +528,6 @@ module Increase
         SUBMITTED = :submitted
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -558,11 +538,6 @@ module Increase
         ACH_PRENOTIFICATION = :ach_prenotification
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

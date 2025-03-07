@@ -383,11 +383,6 @@ module Increase
           USER = :user
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -449,11 +444,6 @@ module Increase
         USD = :USD
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -463,11 +453,6 @@ module Increase
         WIRE = :wire
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class Reversal < Increase::BaseModel
@@ -657,11 +642,6 @@ module Increase
         COMPLETE = :complete
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class Submission < Increase::BaseModel
@@ -697,11 +677,6 @@ module Increase
         WIRE_TRANSFER = :wire_transfer
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

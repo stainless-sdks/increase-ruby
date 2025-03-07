@@ -66,11 +66,6 @@ module Increase
         CUSTOMER_BALANCE = :customer_balance
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

@@ -109,8 +109,10 @@ module Increase
         # The digital wallet token has been permanently canceled.
         DEACTIVATED = :deactivated
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -129,8 +131,10 @@ module Increase
         # Unknown
         UNKNOWN = :unknown
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -139,8 +143,10 @@ module Increase
 
         DIGITAL_WALLET_TOKEN = :digital_wallet_token
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -184,8 +190,10 @@ module Increase
           # The digital wallet token has been permanently canceled.
           DEACTIVATED = :deactivated
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

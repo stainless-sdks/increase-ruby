@@ -157,8 +157,10 @@ module Increase
           # The entity is temporarily disabled and cannot be used for financial activity.
           DISABLED = :disabled
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

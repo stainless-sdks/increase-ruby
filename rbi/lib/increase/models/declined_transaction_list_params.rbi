@@ -141,8 +141,10 @@ module Increase
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER = :other
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

@@ -402,8 +402,10 @@ module Increase
           # Unstructured addendum.
           FREEFORM = :freeform
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -534,8 +536,10 @@ module Increase
           # The corporate customer no longer authorizes this transaction.
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -549,8 +553,10 @@ module Increase
         # Debit
         DEBIT = :debit
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -563,8 +569,10 @@ module Increase
         # The transfer is expected to settle on a future date.
         FUTURE_DATED = :future_dated
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -963,8 +971,10 @@ module Increase
           # The amount was originated and settled as a fixed amount in USD. There is no foreign exchange conversion.
           FIXED_TO_FIXED = :fixed_to_fixed
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -980,8 +990,10 @@ module Increase
           # There is no foreign exchange for this transfer, so the `foreign_exchange_reference` field is blank.
           BLANK = :blank
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -1048,8 +1060,10 @@ module Increase
           # Sent as `WEB` in the Nacha file.
           INTERNET_INITIATED = :internet_initiated
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -1065,8 +1079,10 @@ module Increase
           # An International Bank Account Number.
           IBAN = :iban
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -1082,8 +1098,10 @@ module Increase
           # An International Bank Account Number.
           IBAN = :iban
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -1174,8 +1192,10 @@ module Increase
         # International ACH Transaction (IAT).
         INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -1194,8 +1214,10 @@ module Increase
         # The Inbound ACH Transfer has been returned.
         RETURNED = :returned
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -1265,8 +1287,10 @@ module Increase
           # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
           CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -1276,8 +1300,10 @@ module Increase
 
         INBOUND_ACH_TRANSFER = :inbound_ach_transfer
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

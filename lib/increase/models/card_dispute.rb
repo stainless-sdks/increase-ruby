@@ -251,11 +251,6 @@ module Increase
         WON = :won
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -266,11 +261,6 @@ module Increase
         CARD_DISPUTE = :card_dispute
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class Win < Increase::BaseModel

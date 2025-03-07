@@ -154,8 +154,10 @@ module Increase
           # US Dollar (USD)
           USD = :USD
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -168,8 +170,10 @@ module Increase
           # Funds have been released.
           COMPLETE = :complete
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -178,8 +182,10 @@ module Increase
 
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

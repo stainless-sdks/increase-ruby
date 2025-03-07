@@ -353,8 +353,10 @@ module Increase
           # US Dollar (USD)
           USD = :USD
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -459,8 +461,10 @@ module Increase
           # US Dollar (USD)
           USD = :USD
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -500,8 +504,10 @@ module Increase
           # The check was rejected for an unknown reason.
           UNKNOWN = :unknown
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -606,8 +612,10 @@ module Increase
           # US Dollar (USD)
           USD = :USD
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -692,8 +700,10 @@ module Increase
           # The bank sold this account and no longer services this customer.
           BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -883,8 +893,10 @@ module Increase
           # US Dollar (USD)
           USD = :USD
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -897,8 +909,10 @@ module Increase
           # Funds have been released.
           COMPLETE = :complete
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -907,8 +921,10 @@ module Increase
 
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -928,8 +944,10 @@ module Increase
         # The Check Deposit has been returned.
         RETURNED = :returned
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -938,8 +956,10 @@ module Increase
 
         CHECK_DEPOSIT = :check_deposit
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

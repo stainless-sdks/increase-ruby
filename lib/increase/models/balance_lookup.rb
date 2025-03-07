@@ -51,11 +51,6 @@ module Increase
         BALANCE_LOOKUP = :balance_lookup
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

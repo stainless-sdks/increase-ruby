@@ -78,11 +78,6 @@ module Increase
         CUSTOMER_BALANCE = :customer_balance
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -93,11 +88,6 @@ module Increase
         BOOKKEEPING_ACCOUNT = :bookkeeping_account
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end
