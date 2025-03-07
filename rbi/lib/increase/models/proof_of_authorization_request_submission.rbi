@@ -227,8 +227,10 @@ module Increase
         # The proof of authorization request submission was sent.
         SENT = :sent
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -237,8 +239,10 @@ module Increase
 
         PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

@@ -227,11 +227,6 @@ module Increase
           DEPOSIT_ACCOUNT_CONTROL_AGREEMENT = :deposit_account_control_agreement
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

@@ -114,11 +114,6 @@ module Increase
         FROM_INCREASE = :from_increase
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -203,11 +198,6 @@ module Increase
         DEPOSIT_ACCOUNT_CONTROL_AGREEMENT = :deposit_account_control_agreement
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -218,11 +208,6 @@ module Increase
         FILE = :file
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

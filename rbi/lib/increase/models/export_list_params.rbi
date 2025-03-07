@@ -141,8 +141,10 @@ module Increase
           # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
           DASHBOARD_TABLE_CSV = :dashboard_table_csv
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -218,8 +220,10 @@ module Increase
           # The export failed to generate. Increase will reach out to you to resolve the issue.
           FAILED = :failed
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

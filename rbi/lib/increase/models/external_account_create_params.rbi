@@ -95,8 +95,10 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = :unknown
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -112,8 +114,10 @@ module Increase
         # A different type of account.
         OTHER = :other
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

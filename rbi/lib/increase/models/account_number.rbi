@@ -174,8 +174,10 @@ module Increase
           # ACH Debits are blocked.
           BLOCKED = :blocked
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -206,8 +208,10 @@ module Increase
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY = :check_transfers_only
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -224,8 +228,10 @@ module Increase
         # The account number is permanently disabled.
         CANCELED = :canceled
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -234,8 +240,10 @@ module Increase
 
         ACCOUNT_NUMBER = :account_number
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

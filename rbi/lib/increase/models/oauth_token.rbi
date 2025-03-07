@@ -40,8 +40,10 @@ module Increase
 
         BEARER = :bearer
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -50,8 +52,10 @@ module Increase
 
         OAUTH_TOKEN = :oauth_token
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

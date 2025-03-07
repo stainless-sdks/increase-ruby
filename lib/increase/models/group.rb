@@ -62,11 +62,6 @@ module Increase
         ENABLED = :enabled
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -80,11 +75,6 @@ module Increase
         ACTIVATED = :activated
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -95,11 +85,6 @@ module Increase
         GROUP = :group
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

@@ -78,11 +78,6 @@ module Increase
         DELETED = :deleted
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -93,11 +88,6 @@ module Increase
         OAUTH_APPLICATION = :oauth_application
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

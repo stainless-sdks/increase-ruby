@@ -238,11 +238,6 @@ module Increase
         REVERSED = :reversed
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -253,11 +248,6 @@ module Increase
         INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

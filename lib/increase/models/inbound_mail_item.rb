@@ -84,11 +84,6 @@ module Increase
         LOCKBOX_NOT_ACTIVE = :lockbox_not_active
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -105,11 +100,6 @@ module Increase
         REJECTED = :rejected
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -120,11 +110,6 @@ module Increase
         INBOUND_MAIL_ITEM = :inbound_mail_item
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

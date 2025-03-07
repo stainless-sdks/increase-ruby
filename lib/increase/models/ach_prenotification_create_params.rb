@@ -179,11 +179,6 @@ module Increase
         DEBIT = :debit
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -203,11 +198,6 @@ module Increase
         INTERNET_INITIATED = :internet_initiated
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

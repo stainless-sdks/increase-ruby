@@ -328,11 +328,6 @@ module Increase
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -343,11 +338,6 @@ module Increase
         EVENT = :event
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

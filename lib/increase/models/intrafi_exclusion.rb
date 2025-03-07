@@ -117,11 +117,6 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -132,11 +127,6 @@ module Increase
         INTRAFI_EXCLUSION = :intrafi_exclusion
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

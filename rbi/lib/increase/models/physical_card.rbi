@@ -314,8 +314,10 @@ module Increase
           # FedEx 2-day.
           FEDEX_2_DAY = :fedex_2_day
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -343,8 +345,10 @@ module Increase
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED = :returned
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -421,8 +425,10 @@ module Increase
         # The physical card is permanently canceled.
         CANCELED = :canceled
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -431,8 +437,10 @@ module Increase
 
         PHYSICAL_CARD = :physical_card
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

@@ -525,8 +525,10 @@ module Increase
           # Unknown addenda type.
           OTHER = :other
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -775,8 +777,10 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = :user
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -838,8 +842,10 @@ module Increase
         # US Dollar (USD)
         USD = :USD
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -855,8 +861,10 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = :unknown
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -869,8 +877,10 @@ module Increase
         # A savings account.
         SAVINGS = :savings
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -1025,8 +1035,10 @@ module Increase
           # US Dollar (USD)
           USD = :USD
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -1039,8 +1051,10 @@ module Increase
           # Funds have been released.
           COMPLETE = :complete
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -1049,8 +1063,10 @@ module Increase
 
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -1060,8 +1076,10 @@ module Increase
 
         ACH = :ach
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -1158,8 +1176,10 @@ module Increase
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -1201,8 +1221,10 @@ module Increase
           # The chosen effective date will be the business day following the ACH processing date on which the transfer is submitted. The transfer will be settled on that future day.
           FUTURE_DATED = T.let(:future_dated, T.nilable(Symbol))
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -1506,8 +1528,10 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN = :untimely_return
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -1545,8 +1569,10 @@ module Increase
         # Internet Initiated (WEB).
         INTERNET_INITIATED = :internet_initiated
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -1580,8 +1606,10 @@ module Increase
         # The transfer has been returned.
         RETURNED = :returned
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -1669,8 +1697,10 @@ module Increase
           # The transfer is expected to settle on a future date.
           FUTURE_DATED = :future_dated
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -1680,8 +1710,10 @@ module Increase
 
         ACH_TRANSFER = :ach_transfer
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

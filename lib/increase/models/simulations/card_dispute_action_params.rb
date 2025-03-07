@@ -53,11 +53,6 @@ module Increase
           WON = :won
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end

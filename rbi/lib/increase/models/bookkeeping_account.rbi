@@ -100,8 +100,10 @@ module Increase
         # A customer balance.
         CUSTOMER_BALANCE = T.let(:customer_balance, T.nilable(Symbol))
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -110,8 +112,10 @@ module Increase
 
         BOOKKEEPING_ACCOUNT = :bookkeeping_account
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

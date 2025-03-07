@@ -118,11 +118,6 @@ module Increase
           DENY = :deny
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -157,11 +152,6 @@ module Increase
           FAILURE = :failure
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -207,11 +197,6 @@ module Increase
           DECLINE = :decline
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         # @abstract
@@ -238,11 +223,6 @@ module Increase
           OTHER = :other
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -286,11 +266,6 @@ module Increase
           FAILURE = :failure
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class Success < Increase::BaseModel

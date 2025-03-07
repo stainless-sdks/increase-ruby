@@ -506,8 +506,10 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = :user
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -569,8 +571,10 @@ module Increase
         # US Dollar (USD)
         USD = :USD
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -579,8 +583,10 @@ module Increase
 
         WIRE = :wire
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -822,8 +828,10 @@ module Increase
         # The transfer has been acknowledged by Fedwire and can be considered complete.
         COMPLETE = :complete
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -858,8 +866,10 @@ module Increase
 
         WIRE_TRANSFER = :wire_transfer
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

@@ -309,11 +309,6 @@ module Increase
           PAYMENT_ORDER_REMITTANCE_ADVICE = :payment_order_remittance_advice
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class Freeform < Increase::BaseModel
@@ -409,11 +404,6 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -427,11 +417,6 @@ module Increase
         SAVINGS = :savings
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class PreferredEffectiveDate < Increase::BaseModel
@@ -481,11 +466,6 @@ module Increase
           FUTURE_DATED = :future_dated
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -506,11 +486,6 @@ module Increase
         INTERNET_INITIATED = :internet_initiated
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -524,11 +499,6 @@ module Increase
         ASYNCHRONOUS = :asynchronous
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

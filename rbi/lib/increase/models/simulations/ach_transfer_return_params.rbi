@@ -244,8 +244,10 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN = :untimely_return
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

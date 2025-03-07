@@ -340,11 +340,6 @@ module Increase
           USER = :user
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class OAuthApplication < Increase::BaseModel
@@ -406,11 +401,6 @@ module Increase
         USD = :USD
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -424,11 +414,6 @@ module Increase
         THIRD_PARTY = :third_party
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class Mailing < Increase::BaseModel
@@ -662,11 +647,6 @@ module Increase
           FEDEX_OVERNIGHT = :fedex_overnight
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         class TrackingUpdate < Increase::BaseModel
@@ -715,11 +695,6 @@ module Increase
             RETURNED_TO_SENDER = :returned_to_sender
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end
@@ -759,11 +734,6 @@ module Increase
         RETURNED = :returned
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class StopPaymentRequest < Increase::BaseModel
@@ -822,11 +792,6 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
 
         # @abstract
@@ -837,11 +802,6 @@ module Increase
           CHECK_TRANSFER_STOP_PAYMENT_REQUEST = :check_transfer_stop_payment_request
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -888,11 +848,6 @@ module Increase
         CHECK_TRANSFER = :check_transfer
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

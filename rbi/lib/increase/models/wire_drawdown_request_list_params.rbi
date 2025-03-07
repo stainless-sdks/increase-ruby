@@ -101,8 +101,10 @@ module Increase
           # The drawdown request has been refused by the recipient.
           REFUSED = :refused
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

@@ -144,8 +144,10 @@ module Increase
         # The exclusion has been removed from the IntraFi network.
         ARCHIVED = :archived
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -154,8 +156,10 @@ module Increase
 
         INTRAFI_EXCLUSION = :intrafi_exclusion
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
     end

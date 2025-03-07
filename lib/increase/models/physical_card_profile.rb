@@ -129,11 +129,6 @@ module Increase
         USER = :user
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -159,11 +154,6 @@ module Increase
         ARCHIVED = :archived
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -174,11 +164,6 @@ module Increase
         PHYSICAL_CARD_PROFILE = :physical_card_profile
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
     end
   end

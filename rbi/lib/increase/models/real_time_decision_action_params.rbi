@@ -127,8 +127,10 @@ module Increase
           # Deny the authentication attempt.
           DENY = :deny
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -159,8 +161,10 @@ module Increase
           # Your application was unable to deliver the one-time code to the cardholder.
           FAILURE = :failure
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -199,8 +203,10 @@ module Increase
           # Decline the authorization.
           DECLINE = :decline
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
@@ -225,8 +231,10 @@ module Increase
           # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
           OTHER = :other
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -282,8 +290,10 @@ module Increase
           # Your application failed to deliver the one-time passcode to the cardholder.
           FAILURE = :failure
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
 
