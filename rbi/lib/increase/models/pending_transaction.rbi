@@ -117,9 +117,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_id:,
         amount:,
@@ -334,9 +334,9 @@ module Increase
             real_time_payments_transfer_instruction: T.nilable(Increase::Models::PendingTransaction::Source::RealTimePaymentsTransferInstruction),
             wire_transfer_instruction: T.nilable(Increase::Models::PendingTransaction::Source::WireTransferInstruction)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           account_transfer_instruction:,
           ach_transfer_instruction:,
           card_authorization:,
@@ -397,8 +397,8 @@ module Increase
           def transfer_id=(_)
           end
 
-          sig { params(amount: Integer, currency: Symbol, transfer_id: String).returns(T.attached_class) }
-          def self.new(amount:, currency:, transfer_id:)
+          sig { params(amount: Integer, currency: Symbol, transfer_id: String).void }
+          def initialize(amount:, currency:, transfer_id:)
           end
 
           sig { override.returns({amount: Integer, currency: Symbol, transfer_id: String}) }
@@ -451,8 +451,8 @@ module Increase
           def transfer_id=(_)
           end
 
-          sig { params(amount: Integer, transfer_id: String).returns(T.attached_class) }
-          def self.new(amount:, transfer_id:)
+          sig { params(amount: Integer, transfer_id: String).void }
+          def initialize(amount:, transfer_id:)
           end
 
           sig { override.returns({amount: Integer, transfer_id: String}) }
@@ -716,9 +716,9 @@ module Increase
               type: Symbol,
               verification: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(
+          def initialize(
             id:,
             actioner:,
             amount:,
@@ -876,9 +876,9 @@ module Increase
                 category: Symbol,
                 visa: T.nilable(Increase::Models::PendingTransaction::Source::CardAuthorization::NetworkDetails::Visa)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(category:, visa:)
+            def initialize(category:, visa:)
             end
 
             sig do
@@ -937,9 +937,13 @@ module Increase
                   point_of_service_entry_mode: T.nilable(Symbol),
                   stand_in_processing_reason: T.nilable(Symbol)
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
+              def initialize(
+                electronic_commerce_indicator:,
+                point_of_service_entry_mode:,
+                stand_in_processing_reason:
+              )
               end
 
               sig do
@@ -1105,9 +1109,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
+            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -1202,9 +1206,9 @@ module Increase
                 card_verification_code: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardVerificationCode,
                 cardholder_address: Increase::Models::PendingTransaction::Source::CardAuthorization::Verification::CardholderAddress
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(card_verification_code:, cardholder_address:)
+            def initialize(card_verification_code:, cardholder_address:)
             end
 
             sig do
@@ -1228,8 +1232,8 @@ module Increase
               def result=(_)
               end
 
-              sig { params(result: Symbol).returns(T.attached_class) }
-              def self.new(result:)
+              sig { params(result: Symbol).void }
+              def initialize(result:)
               end
 
               sig { override.returns({result: Symbol}) }
@@ -1305,9 +1309,15 @@ module Increase
                   provided_postal_code: T.nilable(String),
                   result: Symbol
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
+              def initialize(
+                actual_line1:,
+                actual_postal_code:,
+                provided_line1:,
+                provided_postal_code:,
+                result:
+              )
               end
 
               sig do
@@ -1445,9 +1455,9 @@ module Increase
               currency: Symbol,
               front_image_file_id: String
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(amount:, back_image_file_id:, check_deposit_id:, currency:, front_image_file_id:)
+          def initialize(amount:, back_image_file_id:, check_deposit_id:, currency:, front_image_file_id:)
           end
 
           sig do
@@ -1519,8 +1529,8 @@ module Increase
           def transfer_id=(_)
           end
 
-          sig { params(amount: Integer, currency: Symbol, transfer_id: String).returns(T.attached_class) }
-          def self.new(amount:, currency:, transfer_id:)
+          sig { params(amount: Integer, currency: Symbol, transfer_id: String).void }
+          def initialize(amount:, currency:, transfer_id:)
           end
 
           sig { override.returns({amount: Integer, currency: Symbol, transfer_id: String}) }
@@ -1650,9 +1660,9 @@ module Increase
               status: Symbol,
               type: Symbol
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(
+          def initialize(
             id:,
             amount:,
             automatically_releases_at:,
@@ -1752,8 +1762,8 @@ module Increase
           def inbound_wire_transfer_id=(_)
           end
 
-          sig { params(inbound_wire_transfer_id: String).returns(T.attached_class) }
-          def self.new(inbound_wire_transfer_id:)
+          sig { params(inbound_wire_transfer_id: String).void }
+          def initialize(inbound_wire_transfer_id:)
           end
 
           sig { override.returns({inbound_wire_transfer_id: String}) }
@@ -1778,8 +1788,8 @@ module Increase
           def transfer_id=(_)
           end
 
-          sig { params(amount: Integer, transfer_id: String).returns(T.attached_class) }
-          def self.new(amount:, transfer_id:)
+          sig { params(amount: Integer, transfer_id: String).void }
+          def initialize(amount:, transfer_id:)
           end
 
           sig { override.returns({amount: Integer, transfer_id: String}) }
@@ -1836,9 +1846,9 @@ module Increase
               routing_number: String,
               transfer_id: String
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(account_number:, amount:, message_to_recipient:, routing_number:, transfer_id:)
+          def initialize(account_number:, amount:, message_to_recipient:, routing_number:, transfer_id:)
           end
 
           sig do

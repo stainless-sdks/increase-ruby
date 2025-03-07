@@ -38,9 +38,9 @@ module Increase
             contents_file_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(amount:, lockbox_id:, contents_file_id: nil, request_options: {})
+        def initialize(amount:, lockbox_id:, contents_file_id: nil, request_options: {})
         end
 
         sig do

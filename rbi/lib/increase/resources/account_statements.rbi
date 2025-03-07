@@ -26,8 +26,8 @@ module Increase
       def list(account_id: nil, cursor: nil, limit: nil, statement_period_start: nil, request_options: {})
       end
 
-      sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
+      sig { params(client: Increase::Client).void }
+      def initialize(client:)
       end
     end
   end

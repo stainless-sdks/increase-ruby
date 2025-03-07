@@ -237,9 +237,9 @@ module Increase
           third_party: T.nilable(Increase::Models::CheckTransfer::ThirdParty),
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_id:,
         account_number:,
@@ -316,8 +316,8 @@ module Increase
         def approved_by=(_)
         end
 
-        sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(approved_at:, approved_by:)
+        sig { params(approved_at: Time, approved_by: T.nilable(String)).void }
+        def initialize(approved_at:, approved_by:)
         end
 
         sig { override.returns({approved_at: Time, approved_by: T.nilable(String)}) }
@@ -342,8 +342,8 @@ module Increase
         def canceled_by=(_)
         end
 
-        sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(canceled_at:, canceled_by:)
+        sig { params(canceled_at: Time, canceled_by: T.nilable(String)).void }
+        def initialize(canceled_at:, canceled_by:)
         end
 
         sig { override.returns({canceled_at: Time, canceled_by: T.nilable(String)}) }
@@ -400,9 +400,9 @@ module Increase
             oauth_application: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(api_key:, category:, oauth_application:, user:)
+        def initialize(api_key:, category:, oauth_application:, user:)
         end
 
         sig do
@@ -428,8 +428,8 @@ module Increase
           def description=(_)
           end
 
-          sig { params(description: T.nilable(String)).returns(T.attached_class) }
-          def self.new(description:)
+          sig { params(description: T.nilable(String)).void }
+          def initialize(description:)
           end
 
           sig { override.returns({description: T.nilable(String)}) }
@@ -465,8 +465,8 @@ module Increase
           def name=(_)
           end
 
-          sig { params(name: String).returns(T.attached_class) }
-          def self.new(name:)
+          sig { params(name: String).void }
+          def initialize(name:)
           end
 
           sig { override.returns({name: String}) }
@@ -483,8 +483,8 @@ module Increase
           def email=(_)
           end
 
-          sig { params(email: String).returns(T.attached_class) }
-          def self.new(email:)
+          sig { params(email: String).void }
+          def initialize(email:)
           end
 
           sig { override.returns({email: String}) }
@@ -562,11 +562,8 @@ module Increase
         def tracking_number=(_)
         end
 
-        sig do
-          params(image_id: T.nilable(String), mailed_at: Time, tracking_number: T.nilable(String))
-            .returns(T.attached_class)
-        end
-        def self.new(image_id:, mailed_at:, tracking_number:)
+        sig { params(image_id: T.nilable(String), mailed_at: Time, tracking_number: T.nilable(String)).void }
+        def initialize(image_id:, mailed_at:, tracking_number:)
         end
 
         sig do
@@ -661,9 +658,9 @@ module Increase
             signature_text: T.nilable(String),
             tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           mailing_address:,
           memo:,
           note:,
@@ -751,9 +748,9 @@ module Increase
               postal_code: T.nilable(String),
               state: T.nilable(String)
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(city:, line1:, line2:, name:, postal_code:, state:)
+          def initialize(city:, line1:, line2:, name:, postal_code:, state:)
           end
 
           sig do
@@ -831,9 +828,9 @@ module Increase
               postal_code: T.nilable(String),
               state: T.nilable(String)
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(city:, line1:, line2:, name:, postal_code:, state:)
+          def initialize(city:, line1:, line2:, name:, postal_code:, state:)
           end
 
           sig do
@@ -894,8 +891,8 @@ module Increase
           def postal_code=(_)
           end
 
-          sig { params(category: Symbol, created_at: Time, postal_code: String).returns(T.attached_class) }
-          def self.new(category:, created_at:, postal_code:)
+          sig { params(category: Symbol, created_at: Time, postal_code: String).void }
+          def initialize(category:, created_at:, postal_code:)
           end
 
           sig { override.returns({category: Symbol, created_at: Time, postal_code: String}) }
@@ -999,15 +996,8 @@ module Increase
         def type=(_)
         end
 
-        sig do
-          params(
-            reason: Symbol,
-            requested_at: Time,
-            transfer_id: String,
-            type: Symbol
-          ).returns(T.attached_class)
-        end
-        def self.new(reason:, requested_at:, transfer_id:, type:)
+        sig { params(reason: Symbol, requested_at: Time, transfer_id: String, type: Symbol).void }
+        def initialize(reason:, requested_at:, transfer_id:, type:)
         end
 
         sig { override.returns({reason: Symbol, requested_at: Time, transfer_id: String, type: Symbol}) }
@@ -1058,8 +1048,8 @@ module Increase
         def submitted_at=(_)
         end
 
-        sig { params(submitted_at: Time).returns(T.attached_class) }
-        def self.new(submitted_at:)
+        sig { params(submitted_at: Time).void }
+        def initialize(submitted_at:)
         end
 
         sig { override.returns({submitted_at: Time}) }
@@ -1076,8 +1066,8 @@ module Increase
         def check_number=(_)
         end
 
-        sig { params(check_number: T.nilable(String)).returns(T.attached_class) }
-        def self.new(check_number:)
+        sig { params(check_number: T.nilable(String)).void }
+        def initialize(check_number:)
         end
 
         sig { override.returns({check_number: T.nilable(String)}) }

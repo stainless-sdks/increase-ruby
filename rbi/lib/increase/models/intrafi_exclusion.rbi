@@ -96,9 +96,9 @@ module Increase
           submitted_at: T.nilable(Time),
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         bank_name:,
         created_at:,

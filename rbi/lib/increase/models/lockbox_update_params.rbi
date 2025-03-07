@@ -37,9 +37,9 @@ module Increase
           status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(description: nil, recipient_name: nil, status: nil, request_options: {})
+      def initialize(description: nil, recipient_name: nil, status: nil, request_options: {})
       end
 
       sig do

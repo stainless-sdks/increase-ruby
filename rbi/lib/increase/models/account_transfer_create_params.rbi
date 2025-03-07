@@ -55,9 +55,16 @@ module Increase
           require_approval: T::Boolean,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(account_id:, amount:, description:, destination_account_id:, require_approval: nil, request_options: {})
+      def initialize(
+        account_id:,
+        amount:,
+        description:,
+        destination_account_id:,
+        require_approval: nil,
+        request_options: {}
+      )
       end
 
       sig do

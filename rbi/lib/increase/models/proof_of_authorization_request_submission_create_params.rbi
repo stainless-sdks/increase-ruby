@@ -109,9 +109,9 @@ module Increase
           authorizer_ip_address: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         authorization_terms:,
         authorized_at:,
         authorizer_email:,

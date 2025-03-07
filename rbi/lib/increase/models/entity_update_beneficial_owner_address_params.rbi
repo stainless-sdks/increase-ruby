@@ -31,9 +31,9 @@ module Increase
           beneficial_owner_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(address:, beneficial_owner_id:, request_options: {})
+      def initialize(address:, beneficial_owner_id:, request_options: {})
       end
 
       sig do
@@ -90,16 +90,8 @@ module Increase
         def line2=(_)
         end
 
-        sig do
-          params(
-            city: String,
-            line1: String,
-            state: String,
-            zip: String,
-            line2: String
-          ).returns(T.attached_class)
-        end
-        def self.new(city:, line1:, state:, zip:, line2: nil)
+        sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
+        def initialize(city:, line1:, state:, zip:, line2: nil)
         end
 
         sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }

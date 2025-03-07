@@ -156,9 +156,9 @@ module Increase
           trust: T.nilable(Increase::Models::Entity::Trust),
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         corporation:,
         created_at:,
@@ -275,9 +275,17 @@ module Increase
             tax_identifier: T.nilable(String),
             website: T.nilable(String)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(address:, beneficial_owners:, incorporation_state:, industry_code:, name:, tax_identifier:, website:)
+        def initialize(
+          address:,
+          beneficial_owners:,
+          incorporation_state:,
+          industry_code:,
+          name:,
+          tax_identifier:,
+          website:
+        )
         end
 
         sig do
@@ -339,10 +347,9 @@ module Increase
           end
 
           sig do
-            params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
-              .returns(T.attached_class)
+            params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
           end
-          def self.new(city:, line1:, line2:, state:, zip:)
+          def initialize(city:, line1:, line2:, state:, zip:)
           end
 
           sig do
@@ -403,9 +410,9 @@ module Increase
               individual: Increase::Models::Entity::Corporation::BeneficialOwner::Individual,
               prong: Symbol
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(beneficial_owner_id:, company_title:, individual:, prong:)
+          def initialize(beneficial_owner_id:, company_title:, individual:, prong:)
           end
 
           sig do
@@ -468,9 +475,9 @@ module Increase
                 identification: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification,
                 name: String
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(address:, date_of_birth:, identification:, name:)
+            def initialize(address:, date_of_birth:, identification:, name:)
             end
 
             sig do
@@ -529,10 +536,9 @@ module Increase
               end
 
               sig do
-                params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
-                  .returns(T.attached_class)
+                params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
               end
-              def self.new(city:, line1:, line2:, state:, zip:)
+              def initialize(city:, line1:, line2:, state:, zip:)
               end
 
               sig do
@@ -567,8 +573,8 @@ module Increase
               def number_last4=(_)
               end
 
-              sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
-              def self.new(method_:, number_last4:)
+              sig { params(method_: Symbol, number_last4: String).void }
+              def initialize(method_:, number_last4:)
               end
 
               sig { override.returns({method_: Symbol, number_last4: String}) }
@@ -684,9 +690,9 @@ module Increase
             tax_identifier: T.nilable(String),
             website: T.nilable(String)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(address:, authorized_persons:, category:, name:, tax_identifier:, website:)
+        def initialize(address:, authorized_persons:, category:, name:, tax_identifier:, website:)
         end
 
         sig do
@@ -747,10 +753,9 @@ module Increase
           end
 
           sig do
-            params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
-              .returns(T.attached_class)
+            params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
           end
-          def self.new(city:, line1:, line2:, state:, zip:)
+          def initialize(city:, line1:, line2:, state:, zip:)
           end
 
           sig do
@@ -785,8 +790,8 @@ module Increase
           def name=(_)
           end
 
-          sig { params(authorized_person_id: String, name: String).returns(T.attached_class) }
-          def self.new(authorized_person_id:, name:)
+          sig { params(authorized_person_id: String, name: String).void }
+          def initialize(authorized_person_id:, name:)
           end
 
           sig { override.returns({authorized_person_id: String, name: String}) }
@@ -828,11 +833,8 @@ module Increase
         def name=(_)
         end
 
-        sig do
-          params(individuals: T::Array[Increase::Models::Entity::Joint::Individual], name: String)
-            .returns(T.attached_class)
-        end
-        def self.new(individuals:, name:)
+        sig { params(individuals: T::Array[Increase::Models::Entity::Joint::Individual], name: String).void }
+        def initialize(individuals:, name:)
         end
 
         sig { override.returns({individuals: T::Array[Increase::Models::Entity::Joint::Individual], name: String}) }
@@ -885,9 +887,9 @@ module Increase
               identification: Increase::Models::Entity::Joint::Individual::Identification,
               name: String
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(address:, date_of_birth:, identification:, name:)
+          def initialize(address:, date_of_birth:, identification:, name:)
           end
 
           sig do
@@ -946,10 +948,9 @@ module Increase
             end
 
             sig do
-              params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
-                .returns(T.attached_class)
+              params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
             end
-            def self.new(city:, line1:, line2:, state:, zip:)
+            def initialize(city:, line1:, line2:, state:, zip:)
             end
 
             sig do
@@ -984,8 +985,8 @@ module Increase
             def number_last4=(_)
             end
 
-            sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
-            def self.new(method_:, number_last4:)
+            sig { params(method_: Symbol, number_last4: String).void }
+            def initialize(method_:, number_last4:)
             end
 
             sig { override.returns({method_: Symbol, number_last4: String}) }
@@ -1066,9 +1067,9 @@ module Increase
             identification: Increase::Models::Entity::NaturalPerson::Identification,
             name: String
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(address:, date_of_birth:, identification:, name:)
+        def initialize(address:, date_of_birth:, identification:, name:)
         end
 
         sig do
@@ -1127,10 +1128,9 @@ module Increase
           end
 
           sig do
-            params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
-              .returns(T.attached_class)
+            params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
           end
-          def self.new(city:, line1:, line2:, state:, zip:)
+          def initialize(city:, line1:, line2:, state:, zip:)
           end
 
           sig do
@@ -1165,8 +1165,8 @@ module Increase
           def number_last4=(_)
           end
 
-          sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
-          def self.new(method_:, number_last4:)
+          sig { params(method_: Symbol, number_last4: String).void }
+          def initialize(method_:, number_last4:)
           end
 
           sig { override.returns({method_: Symbol, number_last4: String}) }
@@ -1261,8 +1261,8 @@ module Increase
         def vendor=(_)
         end
 
-        sig { params(reference: String, vendor: Symbol).returns(T.attached_class) }
-        def self.new(reference:, vendor:)
+        sig { params(reference: String, vendor: Symbol).void }
+        def initialize(reference:, vendor:)
         end
 
         sig { override.returns({reference: String, vendor: Symbol}) }
@@ -1368,9 +1368,9 @@ module Increase
             tax_identifier: T.nilable(String),
             trustees: T::Array[Increase::Models::Entity::Trust::Trustee]
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           address:,
           category:,
           formation_document_file_id:,
@@ -1442,10 +1442,9 @@ module Increase
           end
 
           sig do
-            params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
-              .returns(T.attached_class)
+            params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
           end
-          def self.new(city:, line1:, line2:, state:, zip:)
+          def initialize(city:, line1:, line2:, state:, zip:)
           end
 
           sig do
@@ -1525,9 +1524,9 @@ module Increase
               identification: Increase::Models::Entity::Trust::Grantor::Identification,
               name: String
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(address:, date_of_birth:, identification:, name:)
+          def initialize(address:, date_of_birth:, identification:, name:)
           end
 
           sig do
@@ -1586,10 +1585,9 @@ module Increase
             end
 
             sig do
-              params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
-                .returns(T.attached_class)
+              params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
             end
-            def self.new(city:, line1:, line2:, state:, zip:)
+            def initialize(city:, line1:, line2:, state:, zip:)
             end
 
             sig do
@@ -1624,8 +1622,8 @@ module Increase
             def number_last4=(_)
             end
 
-            sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
-            def self.new(method_:, number_last4:)
+            sig { params(method_: Symbol, number_last4: String).void }
+            def initialize(method_:, number_last4:)
             end
 
             sig { override.returns({method_: Symbol, number_last4: String}) }
@@ -1680,10 +1678,9 @@ module Increase
           end
 
           sig do
-            params(individual: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual), structure: Symbol)
-              .returns(T.attached_class)
+            params(individual: T.nilable(Increase::Models::Entity::Trust::Trustee::Individual), structure: Symbol).void
           end
-          def self.new(individual:, structure:)
+          def initialize(individual:, structure:)
           end
 
           sig do
@@ -1739,9 +1736,9 @@ module Increase
                 identification: Increase::Models::Entity::Trust::Trustee::Individual::Identification,
                 name: String
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(address:, date_of_birth:, identification:, name:)
+            def initialize(address:, date_of_birth:, identification:, name:)
             end
 
             sig do
@@ -1800,10 +1797,9 @@ module Increase
               end
 
               sig do
-                params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
-                  .returns(T.attached_class)
+                params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String).void
               end
-              def self.new(city:, line1:, line2:, state:, zip:)
+              def initialize(city:, line1:, line2:, state:, zip:)
               end
 
               sig do
@@ -1838,8 +1834,8 @@ module Increase
               def number_last4=(_)
               end
 
-              sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
-              def self.new(method_:, number_last4:)
+              sig { params(method_: Symbol, number_last4: String).void }
+              def initialize(method_:, number_last4:)
               end
 
               sig { override.returns({method_: Symbol, number_last4: String}) }

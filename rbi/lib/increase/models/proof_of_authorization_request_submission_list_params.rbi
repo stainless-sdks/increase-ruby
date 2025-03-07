@@ -46,9 +46,15 @@ module Increase
           proof_of_authorization_request_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(cursor: nil, idempotency_key: nil, limit: nil, proof_of_authorization_request_id: nil, request_options: {})
+      def initialize(
+        cursor: nil,
+        idempotency_key: nil,
+        limit: nil,
+        proof_of_authorization_request_id: nil,
+        request_options: {}
+      )
       end
 
       sig do

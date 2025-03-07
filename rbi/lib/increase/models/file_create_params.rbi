@@ -37,9 +37,9 @@ module Increase
           description: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(file:, purpose:, description: nil, request_options: {})
+      def initialize(file:, purpose:, description: nil, request_options: {})
       end
 
       sig do

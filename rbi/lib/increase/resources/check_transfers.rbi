@@ -90,8 +90,8 @@ module Increase
       def stop_payment(check_transfer_id, reason: nil, request_options: {})
       end
 
-      sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
+      sig { params(client: Increase::Client).void }
+      def initialize(client:)
       end
     end
   end

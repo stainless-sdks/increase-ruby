@@ -60,9 +60,16 @@ module Increase
           type: Symbol,
           verification_code: String
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(card_id:, expiration_month:, expiration_year:, primary_account_number:, type:, verification_code:)
+      def initialize(
+        card_id:,
+        expiration_month:,
+        expiration_year:,
+        primary_account_number:,
+        type:,
+        verification_code:
+      )
       end
 
       sig do

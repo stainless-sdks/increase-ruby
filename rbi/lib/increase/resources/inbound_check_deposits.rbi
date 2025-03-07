@@ -55,8 +55,8 @@ module Increase
       def return_(inbound_check_deposit_id, reason:, request_options: {})
       end
 
-      sig { params(client: Increase::Client).returns(T.attached_class) }
-      def self.new(client:)
+      sig { params(client: Increase::Client).void }
+      def initialize(client:)
       end
     end
   end

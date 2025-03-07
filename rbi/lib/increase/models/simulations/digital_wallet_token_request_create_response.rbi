@@ -29,10 +29,13 @@ module Increase
         end
 
         sig do
-          params(decline_reason: T.nilable(Symbol), digital_wallet_token_id: T.nilable(String), type: Symbol)
-            .returns(T.attached_class)
+          params(
+            decline_reason: T.nilable(Symbol),
+            digital_wallet_token_id: T.nilable(String),
+            type: Symbol
+          ).void
         end
-        def self.new(decline_reason:, digital_wallet_token_id:, type:)
+        def initialize(decline_reason:, digital_wallet_token_id:, type:)
         end
 
         sig do

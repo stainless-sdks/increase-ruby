@@ -126,9 +126,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_id:,
         billing_address:,
@@ -217,9 +217,9 @@ module Increase
             postal_code: T.nilable(String),
             state: T.nilable(String)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(city:, line1:, line2:, postal_code:, state:)
+        def initialize(city:, line1:, line2:, postal_code:, state:)
         end
 
         sig do
@@ -268,10 +268,9 @@ module Increase
             digital_card_profile_id: T.nilable(String),
             email: T.nilable(String),
             phone: T.nilable(String)
-          )
-            .returns(T.attached_class)
+          ).void
         end
-        def self.new(digital_card_profile_id:, email:, phone:)
+        def initialize(digital_card_profile_id:, email:, phone:)
         end
 
         sig do

@@ -127,9 +127,9 @@ module Increase
           standard_entry_class_code: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         account_id:,
         account_number:,
         routing_number:,

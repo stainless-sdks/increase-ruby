@@ -192,9 +192,9 @@ module Increase
           transaction_id: T.nilable(String),
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         accepted_at:,
         account_id:,
@@ -281,11 +281,8 @@ module Increase
         def transaction_id=(_)
         end
 
-        sig do
-          params(adjusted_at: Time, amount: Integer, reason: Symbol, transaction_id: String)
-            .returns(T.attached_class)
-        end
-        def self.new(adjusted_at:, amount:, reason:, transaction_id:)
+        sig { params(adjusted_at: Time, amount: Integer, reason: Symbol, transaction_id: String).void }
+        def initialize(adjusted_at:, amount:, reason:, transaction_id:)
         end
 
         sig { override.returns({adjusted_at: Time, amount: Integer, reason: Symbol, transaction_id: String}) }
@@ -368,8 +365,8 @@ module Increase
         def transaction_id=(_)
         end
 
-        sig { params(reason: Symbol, returned_at: Time, transaction_id: String).returns(T.attached_class) }
-        def self.new(reason:, returned_at:, transaction_id:)
+        sig { params(reason: Symbol, returned_at: Time, transaction_id: String).void }
+        def initialize(reason:, returned_at:, transaction_id:)
         end
 
         sig { override.returns({reason: Symbol, returned_at: Time, transaction_id: String}) }

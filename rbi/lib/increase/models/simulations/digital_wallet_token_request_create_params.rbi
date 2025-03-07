@@ -22,10 +22,9 @@ module Increase
               Increase::RequestOptions,
               T::Hash[Symbol, T.anything]
             )
-          )
-            .returns(T.attached_class)
+          ).void
         end
-        def self.new(card_id:, request_options: {})
+        def initialize(card_id:, request_options: {})
         end
 
         sig { override.returns({card_id: String, request_options: Increase::RequestOptions}) }

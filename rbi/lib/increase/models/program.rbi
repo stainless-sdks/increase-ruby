@@ -87,9 +87,9 @@ module Increase
           type: Symbol,
           updated_at: Time
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         bank:,
         billing_account_id:,

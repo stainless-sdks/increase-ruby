@@ -31,8 +31,8 @@ module Increase
     def execute(request)
     end
 
-    sig { returns(T.attached_class) }
-    def self.new
+    sig { void }
+    def initialize
     end
   end
 end

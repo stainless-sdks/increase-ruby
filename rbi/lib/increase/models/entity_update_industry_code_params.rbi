@@ -19,9 +19,9 @@ module Increase
           industry_code: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(industry_code:, request_options: {})
+      def initialize(industry_code:, request_options: {})
       end
 
       sig { override.returns({industry_code: String, request_options: Increase::RequestOptions}) }

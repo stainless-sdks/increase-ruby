@@ -69,9 +69,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, account_id:, created_at:, idempotency_key:, intrafi_id:, status:, type:)
+      def initialize(id:, account_id:, created_at:, idempotency_key:, intrafi_id:, status:, type:)
       end
 
       sig do

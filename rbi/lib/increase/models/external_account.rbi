@@ -105,9 +105,9 @@ module Increase
           type: Symbol,
           verification_status: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_holder:,
         account_number:,

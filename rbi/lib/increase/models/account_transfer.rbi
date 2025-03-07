@@ -168,9 +168,9 @@ module Increase
           transaction_id: T.nilable(String),
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_id:,
         amount:,
@@ -235,8 +235,8 @@ module Increase
         def approved_by=(_)
         end
 
-        sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(approved_at:, approved_by:)
+        sig { params(approved_at: Time, approved_by: T.nilable(String)).void }
+        def initialize(approved_at:, approved_by:)
         end
 
         sig { override.returns({approved_at: Time, approved_by: T.nilable(String)}) }
@@ -261,8 +261,8 @@ module Increase
         def canceled_by=(_)
         end
 
-        sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(canceled_at:, canceled_by:)
+        sig { params(canceled_at: Time, canceled_by: T.nilable(String)).void }
+        def initialize(canceled_at:, canceled_by:)
         end
 
         sig { override.returns({canceled_at: Time, canceled_by: T.nilable(String)}) }
@@ -319,9 +319,9 @@ module Increase
             oauth_application: T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::AccountTransfer::CreatedBy::User)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(api_key:, category:, oauth_application:, user:)
+        def initialize(api_key:, category:, oauth_application:, user:)
         end
 
         sig do
@@ -347,8 +347,8 @@ module Increase
           def description=(_)
           end
 
-          sig { params(description: T.nilable(String)).returns(T.attached_class) }
-          def self.new(description:)
+          sig { params(description: T.nilable(String)).void }
+          def initialize(description:)
           end
 
           sig { override.returns({description: T.nilable(String)}) }
@@ -384,8 +384,8 @@ module Increase
           def name=(_)
           end
 
-          sig { params(name: String).returns(T.attached_class) }
-          def self.new(name:)
+          sig { params(name: String).void }
+          def initialize(name:)
           end
 
           sig { override.returns({name: String}) }
@@ -402,8 +402,8 @@ module Increase
           def email=(_)
           end
 
-          sig { params(email: String).returns(T.attached_class) }
-          def self.new(email:)
+          sig { params(email: String).void }
+          def initialize(email:)
           end
 
           sig { override.returns({email: String}) }

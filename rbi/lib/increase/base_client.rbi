@@ -45,13 +45,13 @@ module Increase
 
     class << self
       sig { params(req: Increase::BaseClient::RequestComponentsShape).void }
-      def validate!(req)
+      def self.validate!(req)
       end
 
       sig do
         params(status: Integer, headers: T.any(T::Hash[String, String], Net::HTTPHeader)).returns(T::Boolean)
       end
-      def should_retry?(status, headers:)
+      def self.should_retry?(status, headers:)
       end
 
       sig do
@@ -62,7 +62,7 @@ module Increase
         )
           .returns(Increase::BaseClient::RequestInputShape)
       end
-      def follow_redirect(request, status:, response_headers:)
+      def self.follow_redirect(request, status:, response_headers:)
       end
     end
 
@@ -85,9 +85,9 @@ module Increase
                          T.nilable(T.any(String, Integer, T::Array[T.nilable(T.any(String, Integer))]))],
         idempotency_header: T.nilable(String)
       )
-        .returns(T.attached_class)
+        .void
     end
-    def self.new(
+    def initialize(
       base_url:,
       timeout: 0.0,
       max_retries: 0,

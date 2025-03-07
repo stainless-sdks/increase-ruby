@@ -60,9 +60,9 @@ module Increase
           created_at: Time,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:)
+      def initialize(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:)
       end
 
       sig do

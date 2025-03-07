@@ -164,9 +164,9 @@ module Increase
             sender_reference: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           account_number_id:,
           amount:,
           beneficiary_address_line1: nil,

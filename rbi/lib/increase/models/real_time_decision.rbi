@@ -120,9 +120,9 @@ module Increase
           timeout_at: Time,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         card_authentication:,
         card_authentication_challenge:,
@@ -198,9 +198,9 @@ module Increase
             decision: T.nilable(Symbol),
             upcoming_card_payment_id: String
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(account_id:, card_id:, decision:, upcoming_card_payment_id:)
+        def initialize(account_id:, card_id:, decision:, upcoming_card_payment_id:)
         end
 
         sig do
@@ -286,9 +286,9 @@ module Increase
             one_time_code: String,
             result: T.nilable(Symbol)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(account_id:, card_id:, card_payment_id:, one_time_code:, result:)
+        def initialize(account_id:, card_id:, card_payment_id:, one_time_code:, result:)
         end
 
         sig do
@@ -564,9 +564,9 @@ module Increase
             upcoming_card_payment_id: String,
             verification: Increase::Models::RealTimeDecision::CardAuthorization::Verification
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           account_id:,
           card_id:,
           decision:,
@@ -687,9 +687,9 @@ module Increase
               category: Symbol,
               visa: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa)
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(category:, visa:)
+          def initialize(category:, visa:)
           end
 
           sig do
@@ -748,9 +748,13 @@ module Increase
                 point_of_service_entry_mode: T.nilable(Symbol),
                 stand_in_processing_reason: T.nilable(Symbol)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
+            def initialize(
+              electronic_commerce_indicator:,
+              point_of_service_entry_mode:,
+              stand_in_processing_reason:
+            )
             end
 
             sig do
@@ -916,9 +920,9 @@ module Increase
               trace_number: T.nilable(String),
               transaction_id: T.nilable(String)
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
+          def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
           end
 
           sig do
@@ -1005,9 +1009,9 @@ module Increase
               incremental_authorization: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization),
               initial_authorization: T.nilable(T.anything)
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(category:, incremental_authorization:, initial_authorization:)
+          def initialize(category:, incremental_authorization:, initial_authorization:)
           end
 
           sig do
@@ -1056,13 +1060,8 @@ module Increase
             def original_card_authorization_id=(_)
             end
 
-            sig do
-              params(
-                card_payment_id: String,
-                original_card_authorization_id: String
-              ).returns(T.attached_class)
-            end
-            def self.new(card_payment_id:, original_card_authorization_id:)
+            sig { params(card_payment_id: String, original_card_authorization_id: String).void }
+            def initialize(card_payment_id:, original_card_authorization_id:)
             end
 
             sig { override.returns({card_payment_id: String, original_card_authorization_id: String}) }
@@ -1099,9 +1098,9 @@ module Increase
               card_verification_code: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode,
               cardholder_address: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(card_verification_code:, cardholder_address:)
+          def initialize(card_verification_code:, cardholder_address:)
           end
 
           sig do
@@ -1125,8 +1124,8 @@ module Increase
             def result=(_)
             end
 
-            sig { params(result: Symbol).returns(T.attached_class) }
-            def self.new(result:)
+            sig { params(result: Symbol).void }
+            def initialize(result:)
             end
 
             sig { override.returns({result: Symbol}) }
@@ -1202,9 +1201,15 @@ module Increase
                 provided_postal_code: T.nilable(String),
                 result: Symbol
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
+            def initialize(
+              actual_line1:,
+              actual_postal_code:,
+              provided_line1:,
+              provided_postal_code:,
+              result:
+            )
             end
 
             sig do
@@ -1345,9 +1350,9 @@ module Increase
             phone: T.nilable(String),
             result: T.nilable(Symbol)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(card_id:, channel:, digital_wallet:, email:, one_time_passcode:, phone:, result:)
+        def initialize(card_id:, channel:, digital_wallet:, email:, one_time_passcode:, phone:, result:)
         end
 
         sig do
@@ -1462,9 +1467,9 @@ module Increase
             decision: T.nilable(Symbol),
             digital_wallet: Symbol
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(card_id:, card_profile_id:, decision:, digital_wallet:)
+        def initialize(card_id:, card_profile_id:, decision:, digital_wallet:)
         end
 
         sig do

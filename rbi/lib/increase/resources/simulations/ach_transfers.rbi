@@ -57,8 +57,8 @@ module Increase
         def submit(ach_transfer_id, request_options: {})
         end
 
-        sig { params(client: Increase::Client).returns(T.attached_class) }
-        def self.new(client:)
+        sig { params(client: Increase::Client).void }
+        def initialize(client:)
         end
       end
     end

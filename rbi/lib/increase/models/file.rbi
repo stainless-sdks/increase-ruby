@@ -96,9 +96,9 @@ module Increase
           purpose: Symbol,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         created_at:,
         description:,

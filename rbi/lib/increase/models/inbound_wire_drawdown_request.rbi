@@ -213,9 +213,9 @@ module Increase
           recipient_account_number_id: String,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         amount:,
         beneficiary_account_number:,

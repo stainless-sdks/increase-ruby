@@ -158,9 +158,9 @@ module Increase
             terminal_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           amount:,
           authenticated_card_payment_id: nil,
           card_id: nil,
@@ -297,11 +297,8 @@ module Increase
           def visa=(_)
           end
 
-          sig do
-            params(visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa)
-              .returns(T.attached_class)
-          end
-          def self.new(visa:)
+          sig { params(visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa).void }
+          def initialize(visa:)
           end
 
           sig do
@@ -320,8 +317,8 @@ module Increase
             def stand_in_processing_reason=(_)
             end
 
-            sig { params(stand_in_processing_reason: Symbol).returns(T.attached_class) }
-            def self.new(stand_in_processing_reason: nil)
+            sig { params(stand_in_processing_reason: Symbol).void }
+            def initialize(stand_in_processing_reason: nil)
             end
 
             sig { override.returns({stand_in_processing_reason: Symbol}) }
