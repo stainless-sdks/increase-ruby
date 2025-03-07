@@ -246,9 +246,9 @@ module Increase
         max_retry_delay: Float,
         idempotency_header: String
       )
-        .void
+        .returns(T.attached_class)
     end
-    def initialize(
+    def self.new(
       environment: nil,
       base_url: nil,
       api_key: ENV["INCREASE_API_KEY"],

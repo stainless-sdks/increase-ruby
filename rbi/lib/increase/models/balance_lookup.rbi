@@ -36,9 +36,10 @@ module Increase
       end
 
       sig do
-        params(account_id: String, available_balance: Integer, current_balance: Integer, type: Symbol).void
+        params(account_id: String, available_balance: Integer, current_balance: Integer, type: Symbol)
+          .returns(T.attached_class)
       end
-      def initialize(account_id:, available_balance:, current_balance:, type:)
+      def self.new(account_id:, available_balance:, current_balance:, type:)
       end
 
       sig do

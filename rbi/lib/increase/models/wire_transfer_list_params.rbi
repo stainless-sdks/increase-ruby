@@ -67,9 +67,9 @@ module Increase
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         account_id: nil,
         created_at: nil,
         cursor: nil,
@@ -130,8 +130,10 @@ module Increase
         def on_or_before=(_)
         end
 
-        sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).void }
-        def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+        sig do
+          params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
+        end
+        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
         end
 
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }

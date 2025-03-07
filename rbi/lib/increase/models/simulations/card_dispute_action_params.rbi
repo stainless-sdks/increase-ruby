@@ -29,9 +29,9 @@ module Increase
             explanation: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(status:, explanation: nil, request_options: {})
+        def self.new(status:, explanation: nil, request_options: {})
         end
 
         sig do

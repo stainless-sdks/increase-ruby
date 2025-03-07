@@ -40,9 +40,9 @@ module Increase
             pending_transaction: T.nilable(Increase::Models::PendingTransaction),
             type: Symbol
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(declined_transaction:, pending_transaction:, type:)
+        def self.new(declined_transaction:, pending_transaction:, type:)
         end
 
         sig do

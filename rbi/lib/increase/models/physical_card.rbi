@@ -87,9 +87,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         card_id:,
         cardholder:,
@@ -138,8 +138,8 @@ module Increase
         def last_name=(_)
         end
 
-        sig { params(first_name: String, last_name: String).void }
-        def initialize(first_name:, last_name:)
+        sig { params(first_name: String, last_name: String).returns(T.attached_class) }
+        def self.new(first_name:, last_name:)
         end
 
         sig { override.returns({first_name: String, last_name: String}) }
@@ -193,9 +193,9 @@ module Increase
             status: Symbol,
             tracking: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(address:, method_:, status:, tracking:)
+        def self.new(address:, method_:, status:, tracking:)
         end
 
         sig do
@@ -279,9 +279,9 @@ module Increase
               postal_code: String,
               state: String
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(city:, line1:, line2:, line3:, name:, postal_code:, state:)
+          def self.new(city:, line1:, line2:, line3:, name:, postal_code:, state:)
           end
 
           sig do
@@ -392,9 +392,9 @@ module Increase
               return_reason: T.nilable(String),
               shipped_at: Time
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(number:, return_number:, return_reason:, shipped_at:)
+          def self.new(number:, return_number:, return_reason:, shipped_at:)
           end
 
           sig do

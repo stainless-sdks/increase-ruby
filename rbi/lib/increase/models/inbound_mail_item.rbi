@@ -78,18 +78,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        id:,
-        created_at:,
-        file_id:,
-        lockbox_id:,
-        recipient_name:,
-        rejection_reason:,
-        status:,
-        type:
-      )
+      def self.new(id:, created_at:, file_id:, lockbox_id:, recipient_name:, rejection_reason:, status:, type:)
       end
 
       sig do

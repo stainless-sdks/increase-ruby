@@ -46,15 +46,9 @@ module Increase
           front_image_file_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        carrier_image_file_id:,
-        contact_phone:,
-        description:,
-        front_image_file_id:,
-        request_options: {}
-      )
+      def self.new(carrier_image_file_id:, contact_phone:, description:, front_image_file_id:, request_options: {})
       end
 
       sig do

@@ -79,9 +79,9 @@ module Increase
           third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         account_id:,
         amount:,
         fulfillment_method:,
@@ -191,16 +191,9 @@ module Increase
             return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
             signature_text: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          mailing_address:,
-          memo:,
-          recipient_name:,
-          note: nil,
-          return_address: nil,
-          signature_text: nil
-        )
+        def self.new(mailing_address:, memo:, recipient_name:, note: nil, return_address: nil, signature_text: nil)
         end
 
         sig do
@@ -260,8 +253,11 @@ module Increase
           def line2=(_)
           end
 
-          sig { params(city: String, line1: String, postal_code: String, state: String, line2: String).void }
-          def initialize(city:, line1:, postal_code:, state:, line2: nil)
+          sig do
+            params(city: String, line1: String, postal_code: String, state: String, line2: String)
+              .returns(T.attached_class)
+          end
+          def self.new(city:, line1:, postal_code:, state:, line2: nil)
           end
 
           sig do
@@ -328,9 +324,10 @@ module Increase
               postal_code: String,
               state: String,
               line2: String
-            ).void
+            )
+              .returns(T.attached_class)
           end
-          def initialize(city:, line1:, name:, postal_code:, state:, line2: nil)
+          def self.new(city:, line1:, name:, postal_code:, state:, line2: nil)
           end
 
           sig do
@@ -358,8 +355,8 @@ module Increase
         def check_number=(_)
         end
 
-        sig { params(check_number: String).void }
-        def initialize(check_number: nil)
+        sig { params(check_number: String).returns(T.attached_class) }
+        def self.new(check_number: nil)
         end
 
         sig { override.returns({check_number: String}) }

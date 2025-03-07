@@ -90,9 +90,9 @@ module Increase
           state: Increase::Models::CardPayment::State,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         account_id:,
         card_id:,
@@ -275,9 +275,9 @@ module Increase
             created_at: Time,
             other: T.nilable(T.anything)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           card_authentication:,
           card_authorization:,
           card_authorization_expiration:,
@@ -477,9 +477,9 @@ module Increase
               status: Symbol,
               type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             card_id:,
             card_payment_id:,
@@ -595,9 +595,9 @@ module Increase
                 verification_method: Symbol,
                 verification_value: T.nilable(String)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(attempts:, created_at:, one_time_code:, verification_method:, verification_value:)
+            def self.new(attempts:, created_at:, one_time_code:, verification_method:, verification_value:)
             end
 
             sig do
@@ -632,8 +632,8 @@ module Increase
               def outcome=(_)
               end
 
-              sig { params(created_at: Time, outcome: Symbol).void }
-              def initialize(created_at:, outcome:)
+              sig { params(created_at: Time, outcome: Symbol).returns(T.attached_class) }
+              def self.new(created_at:, outcome:)
               end
 
               sig { override.returns({created_at: Time, outcome: Symbol}) }
@@ -1030,9 +1030,9 @@ module Increase
               type: Symbol,
               verification: Increase::Models::CardPayment::Element::CardAuthorization::Verification
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             actioner:,
             amount:,
@@ -1188,9 +1188,9 @@ module Increase
                 category: Symbol,
                 visa: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(category:, visa:)
+            def self.new(category:, visa:)
             end
 
             sig do
@@ -1249,13 +1249,9 @@ module Increase
                   point_of_service_entry_mode: T.nilable(Symbol),
                   stand_in_processing_reason: T.nilable(Symbol)
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
-                electronic_commerce_indicator:,
-                point_of_service_entry_mode:,
-                stand_in_processing_reason:
-              )
+              def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
               end
 
               sig do
@@ -1421,9 +1417,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -1508,9 +1504,9 @@ module Increase
                 card_verification_code: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
                 cardholder_address: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(card_verification_code:, cardholder_address:)
+            def self.new(card_verification_code:, cardholder_address:)
             end
 
             sig do
@@ -1534,8 +1530,8 @@ module Increase
               def result=(_)
               end
 
-              sig { params(result: Symbol).void }
-              def initialize(result:)
+              sig { params(result: Symbol).returns(T.attached_class) }
+              def self.new(result:)
               end
 
               sig { override.returns({result: Symbol}) }
@@ -1611,15 +1607,9 @@ module Increase
                   provided_postal_code: T.nilable(String),
                   result: Symbol
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
-                actual_line1:,
-                actual_postal_code:,
-                provided_line1:,
-                provided_postal_code:,
-                result:
-              )
+              def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
               end
 
               sig do
@@ -1726,9 +1716,9 @@ module Increase
               network: Symbol,
               type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(id:, card_authorization_id:, currency:, expired_amount:, network:, type:)
+          def self.new(id:, card_authorization_id:, currency:, expired_amount:, network:, type:)
           end
 
           sig do
@@ -2057,9 +2047,9 @@ module Increase
               terminal_id: T.nilable(String),
               verification: Increase::Models::CardPayment::Element::CardDecline::Verification
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             actioner:,
             amount:,
@@ -2215,9 +2205,9 @@ module Increase
                 category: Symbol,
                 visa: T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(category:, visa:)
+            def self.new(category:, visa:)
             end
 
             sig do
@@ -2273,13 +2263,9 @@ module Increase
                   point_of_service_entry_mode: T.nilable(Symbol),
                   stand_in_processing_reason: T.nilable(Symbol)
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
-                electronic_commerce_indicator:,
-                point_of_service_entry_mode:,
-                stand_in_processing_reason:
-              )
+              def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
               end
 
               sig do
@@ -2445,9 +2431,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -2609,9 +2595,9 @@ module Increase
                 card_verification_code: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
                 cardholder_address: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(card_verification_code:, cardholder_address:)
+            def self.new(card_verification_code:, cardholder_address:)
             end
 
             sig do
@@ -2635,8 +2621,8 @@ module Increase
               def result=(_)
               end
 
-              sig { params(result: Symbol).void }
-              def initialize(result:)
+              sig { params(result: Symbol).returns(T.attached_class) }
+              def self.new(result:)
               end
 
               sig { override.returns({result: Symbol}) }
@@ -2712,15 +2698,9 @@ module Increase
                   provided_postal_code: T.nilable(String),
                   result: Symbol
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
-                actual_line1:,
-                actual_postal_code:,
-                provided_line1:,
-                provided_postal_code:,
-                result:
-              )
+              def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
               end
 
               sig do
@@ -2848,9 +2828,9 @@ module Increase
               type: Symbol,
               updated_authorization_amount: Integer
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             card_authorization_id:,
             currency:,
@@ -2952,9 +2932,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -3099,9 +3079,9 @@ module Increase
               type: Symbol,
               updated_authorization_amount: Integer
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             actioner:,
             amount:,
@@ -3230,9 +3210,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -3449,9 +3429,9 @@ module Increase
               transaction_id: String,
               type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             amount:,
             card_payment_id:,
@@ -3520,8 +3500,8 @@ module Increase
             def currency=(_)
             end
 
-            sig { params(amount: String, currency: Symbol).void }
-            def initialize(amount:, currency:)
+            sig { params(amount: String, currency: Symbol).returns(T.attached_class) }
+            def self.new(amount:, currency:)
             end
 
             sig { override.returns({amount: String, currency: Symbol}) }
@@ -3610,8 +3590,10 @@ module Increase
             def currency=(_)
             end
 
-            sig { params(amount: String, code: T.nilable(String), currency: Symbol).void }
-            def initialize(amount:, code:, currency:)
+            sig do
+              params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
+            end
+            def self.new(amount:, code:, currency:)
             end
 
             sig { override.returns({amount: String, code: T.nilable(String), currency: Symbol}) }
@@ -3678,9 +3660,9 @@ module Increase
                 acquirer_reference_number: String,
                 transaction_id: T.nilable(String)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
+            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
             end
 
             sig do
@@ -3800,9 +3782,9 @@ module Increase
                 purchase_identifier_format: T.nilable(Symbol),
                 travel: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               car_rental:,
               customer_reference_identifier:,
               local_tax_amount:,
@@ -3984,9 +3966,9 @@ module Increase
                   weekly_rental_rate_amount: T.nilable(Integer),
                   weekly_rental_rate_currency: T.nilable(String)
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
+              def self.new(
                 car_class_code:,
                 checkout_date:,
                 daily_rental_rate_amount:,
@@ -4225,9 +4207,9 @@ module Increase
                   total_tax_amount: T.nilable(Integer),
                   total_tax_currency: T.nilable(String)
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
+              def self.new(
                 check_in_date:,
                 daily_room_rate_amount:,
                 daily_room_rate_currency:,
@@ -4474,9 +4456,9 @@ module Increase
                   travel_agency_name: T.nilable(String),
                   trip_legs: T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
+              def self.new(
                 ancillary:,
                 computerized_reservation_system:,
                 credit_reason_indicator:,
@@ -4574,9 +4556,9 @@ module Increase
                     services: T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
                     ticket_document_number: T.nilable(String)
                   )
-                    .void
+                    .returns(T.attached_class)
                 end
-                def initialize(
+                def self.new(
                   connected_ticket_document_number:,
                   credit_reason_indicator:,
                   passenger_name_or_description:,
@@ -4643,8 +4625,13 @@ module Increase
                   def sub_category=(_)
                   end
 
-                  sig { params(category: T.nilable(Symbol), sub_category: T.nilable(String)).void }
-                  def initialize(category:, sub_category:)
+                  sig do
+                    params(
+                      category: T.nilable(Symbol),
+                      sub_category: T.nilable(String)
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(category:, sub_category:)
                   end
 
                   sig { override.returns({category: T.nilable(Symbol), sub_category: T.nilable(String)}) }
@@ -4860,9 +4847,9 @@ module Increase
                     service_class: T.nilable(String),
                     stop_over_code: T.nilable(Symbol)
                   )
-                    .void
+                    .returns(T.attached_class)
                 end
-                def initialize(
+                def self.new(
                   carrier_code:,
                   destination_city_airport_code:,
                   fare_basis_code:,
@@ -5092,9 +5079,9 @@ module Increase
               type: Symbol,
               updated_authorization_amount: Integer
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             card_authorization_id:,
             currency:,
@@ -5216,9 +5203,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -5475,9 +5462,9 @@ module Increase
               transaction_id: String,
               type: Symbol
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             amount:,
             card_authorization:,
@@ -5550,8 +5537,8 @@ module Increase
             def currency=(_)
             end
 
-            sig { params(amount: String, currency: Symbol).void }
-            def initialize(amount:, currency:)
+            sig { params(amount: String, currency: Symbol).returns(T.attached_class) }
+            def self.new(amount:, currency:)
             end
 
             sig { override.returns({amount: String, currency: Symbol}) }
@@ -5640,8 +5627,10 @@ module Increase
             def currency=(_)
             end
 
-            sig { params(amount: String, code: T.nilable(String), currency: Symbol).void }
-            def initialize(amount:, code:, currency:)
+            sig do
+              params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
+            end
+            def self.new(amount:, code:, currency:)
             end
 
             sig { override.returns({amount: String, code: T.nilable(String), currency: Symbol}) }
@@ -5708,9 +5697,9 @@ module Increase
                 acquirer_reference_number: String,
                 transaction_id: T.nilable(String)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
+            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
             end
 
             sig do
@@ -5830,9 +5819,9 @@ module Increase
                 purchase_identifier_format: T.nilable(Symbol),
                 travel: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(
+            def self.new(
               car_rental:,
               customer_reference_identifier:,
               local_tax_amount:,
@@ -6014,9 +6003,9 @@ module Increase
                   weekly_rental_rate_amount: T.nilable(Integer),
                   weekly_rental_rate_currency: T.nilable(String)
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
+              def self.new(
                 car_class_code:,
                 checkout_date:,
                 daily_rental_rate_amount:,
@@ -6255,9 +6244,9 @@ module Increase
                   total_tax_amount: T.nilable(Integer),
                   total_tax_currency: T.nilable(String)
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
+              def self.new(
                 check_in_date:,
                 daily_room_rate_amount:,
                 daily_room_rate_currency:,
@@ -6518,9 +6507,9 @@ module Increase
                     T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
                   )
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
+              def self.new(
                 ancillary:,
                 computerized_reservation_system:,
                 credit_reason_indicator:,
@@ -6620,9 +6609,9 @@ module Increase
                     services: T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
                     ticket_document_number: T.nilable(String)
                   )
-                    .void
+                    .returns(T.attached_class)
                 end
-                def initialize(
+                def self.new(
                   connected_ticket_document_number:,
                   credit_reason_indicator:,
                   passenger_name_or_description:,
@@ -6689,8 +6678,13 @@ module Increase
                   def sub_category=(_)
                   end
 
-                  sig { params(category: T.nilable(Symbol), sub_category: T.nilable(String)).void }
-                  def initialize(category:, sub_category:)
+                  sig do
+                    params(
+                      category: T.nilable(Symbol),
+                      sub_category: T.nilable(String)
+                    ).returns(T.attached_class)
+                  end
+                  def self.new(category:, sub_category:)
                   end
 
                   sig { override.returns({category: T.nilable(Symbol), sub_category: T.nilable(String)}) }
@@ -6906,9 +6900,9 @@ module Increase
                     service_class: T.nilable(String),
                     stop_over_code: T.nilable(Symbol)
                   )
-                    .void
+                    .returns(T.attached_class)
                 end
-                def initialize(
+                def self.new(
                   carrier_code:,
                   destination_city_airport_code:,
                   fare_basis_code:,
@@ -7162,9 +7156,9 @@ module Increase
               type: Symbol,
               verification: Increase::Models::CardPayment::Element::CardValidation::Verification
             )
-              .void
+              .returns(T.attached_class)
           end
-          def initialize(
+          def self.new(
             id:,
             actioner:,
             card_payment_id:,
@@ -7290,9 +7284,9 @@ module Increase
                 category: Symbol,
                 visa: T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(category:, visa:)
+            def self.new(category:, visa:)
             end
 
             sig do
@@ -7351,13 +7345,9 @@ module Increase
                   point_of_service_entry_mode: T.nilable(Symbol),
                   stand_in_processing_reason: T.nilable(Symbol)
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
-                electronic_commerce_indicator:,
-                point_of_service_entry_mode:,
-                stand_in_processing_reason:
-              )
+              def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
               end
 
               sig do
@@ -7523,9 +7513,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
+            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -7582,9 +7572,9 @@ module Increase
                 card_verification_code: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
                 cardholder_address: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress
               )
-                .void
+                .returns(T.attached_class)
             end
-            def initialize(card_verification_code:, cardholder_address:)
+            def self.new(card_verification_code:, cardholder_address:)
             end
 
             sig do
@@ -7608,8 +7598,8 @@ module Increase
               def result=(_)
               end
 
-              sig { params(result: Symbol).void }
-              def initialize(result:)
+              sig { params(result: Symbol).returns(T.attached_class) }
+              def self.new(result:)
               end
 
               sig { override.returns({result: Symbol}) }
@@ -7685,15 +7675,9 @@ module Increase
                   provided_postal_code: T.nilable(String),
                   result: Symbol
                 )
-                  .void
+                  .returns(T.attached_class)
               end
-              def initialize(
-                actual_line1:,
-                actual_postal_code:,
-                provided_line1:,
-                provided_postal_code:,
-                result:
-              )
+              def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
               end
 
               sig do
@@ -7835,15 +7819,9 @@ module Increase
             reversed_amount: Integer,
             settled_amount: Integer
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          authorized_amount:,
-          fuel_confirmed_amount:,
-          incremented_amount:,
-          reversed_amount:,
-          settled_amount:
-        )
+        def self.new(authorized_amount:, fuel_confirmed_amount:, incremented_amount:, reversed_amount:, settled_amount:)
         end
 
         sig do

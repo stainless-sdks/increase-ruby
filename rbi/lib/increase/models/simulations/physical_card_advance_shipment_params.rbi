@@ -20,9 +20,9 @@ module Increase
             shipment_status: Symbol,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(shipment_status:, request_options: {})
+        def self.new(shipment_status:, request_options: {})
         end
 
         sig { override.returns({shipment_status: Symbol, request_options: Increase::RequestOptions}) }

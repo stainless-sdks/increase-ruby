@@ -191,9 +191,9 @@ module Increase
             originator_to_beneficiary_information_line4: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           amount:,
           beneficiary_account_number:,
           beneficiary_routing_number:,

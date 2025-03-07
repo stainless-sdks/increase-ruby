@@ -87,19 +87,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        id:,
-        account_id:,
-        address:,
-        created_at:,
-        description:,
-        idempotency_key:,
-        recipient_name:,
-        status:,
-        type:
-      )
+      def self.new(id:, account_id:, address:, created_at:, description:, idempotency_key:, recipient_name:, status:, type:)
       end
 
       sig do
@@ -179,9 +169,9 @@ module Increase
             recipient: T.nilable(String),
             state: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(city:, line1:, line2:, postal_code:, recipient:, state:)
+        def self.new(city:, line1:, line2:, postal_code:, recipient:, state:)
         end
 
         sig do

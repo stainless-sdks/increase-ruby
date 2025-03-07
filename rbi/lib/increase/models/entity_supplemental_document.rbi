@@ -51,9 +51,9 @@ module Increase
           idempotency_key: T.nilable(String),
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(created_at:, entity_id:, file_id:, idempotency_key:, type:)
+      def self.new(created_at:, entity_id:, file_id:, idempotency_key:, type:)
       end
 
       sig do

@@ -19,9 +19,9 @@ module Increase
           confirmed_at: Time,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(confirmed_at: nil, request_options: {})
+      def self.new(confirmed_at: nil, request_options: {})
       end
 
       sig { override.returns({confirmed_at: Time, request_options: Increase::RequestOptions}) }

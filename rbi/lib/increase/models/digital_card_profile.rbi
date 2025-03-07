@@ -135,9 +135,9 @@ module Increase
           text_color: Increase::Models::DigitalCardProfile::TextColor,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         app_icon_file_id:,
         background_image_file_id:,
@@ -226,8 +226,8 @@ module Increase
         def red=(_)
         end
 
-        sig { params(blue: Integer, green: Integer, red: Integer).void }
-        def initialize(blue:, green:, red:)
+        sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
+        def self.new(blue:, green:, red:)
         end
 
         sig { override.returns({blue: Integer, green: Integer, red: Integer}) }

@@ -156,9 +156,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         account_number:,
         addendum:,
@@ -245,8 +245,10 @@ module Increase
         def created_at=(_)
         end
 
-        sig { params(change_code: Symbol, corrected_data: String, created_at: Time).void }
-        def initialize(change_code:, corrected_data:, created_at:)
+        sig do
+          params(change_code: Symbol, corrected_data: String, created_at: Time).returns(T.attached_class)
+        end
+        def self.new(change_code:, corrected_data:, created_at:)
         end
 
         sig { override.returns({change_code: Symbol, corrected_data: String, created_at: Time}) }
@@ -338,8 +340,8 @@ module Increase
         def return_reason_code=(_)
         end
 
-        sig { params(created_at: Time, return_reason_code: Symbol).void }
-        def initialize(created_at:, return_reason_code:)
+        sig { params(created_at: Time, return_reason_code: Symbol).returns(T.attached_class) }
+        def self.new(created_at:, return_reason_code:)
         end
 
         sig { override.returns({created_at: Time, return_reason_code: Symbol}) }

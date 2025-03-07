@@ -37,9 +37,9 @@ module Increase
           limit: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(account_id: nil, cursor: nil, limit: nil, request_options: {})
+      def self.new(account_id: nil, cursor: nil, limit: nil, request_options: {})
       end
 
       sig do

@@ -19,9 +19,9 @@ module Increase
           beneficial_owner_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(beneficial_owner_id:, request_options: {})
+      def self.new(beneficial_owner_id:, request_options: {})
       end
 
       sig { override.returns({beneficial_owner_id: String, request_options: Increase::RequestOptions}) }

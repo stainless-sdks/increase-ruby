@@ -114,9 +114,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         back_image_file_id:,
         carrier_image_file_id:,

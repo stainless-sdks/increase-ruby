@@ -72,9 +72,9 @@ module Increase
           transaction_id: T.nilable(String),
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:)
+      def self.new(id:, created_at:, date:, entries:, idempotency_key:, transaction_id:, type:)
       end
 
       sig do
@@ -119,8 +119,8 @@ module Increase
         def amount=(_)
         end
 
-        sig { params(id: String, account_id: String, amount: Integer).void }
-        def initialize(id:, account_id:, amount:)
+        sig { params(id: String, account_id: String, amount: Integer).returns(T.attached_class) }
+        def self.new(id:, account_id:, amount:)
         end
 
         sig { override.returns({id: String, account_id: String, amount: Integer}) }

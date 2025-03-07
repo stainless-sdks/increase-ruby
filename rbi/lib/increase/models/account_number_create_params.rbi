@@ -52,9 +52,9 @@ module Increase
           inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {})
+      def self.new(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {})
       end
 
       sig do
@@ -81,8 +81,8 @@ module Increase
         def debit_status=(_)
         end
 
-        sig { params(debit_status: Symbol).void }
-        def initialize(debit_status:)
+        sig { params(debit_status: Symbol).returns(T.attached_class) }
+        def self.new(debit_status:)
         end
 
         sig { override.returns({debit_status: Symbol}) }
@@ -115,8 +115,8 @@ module Increase
         def status=(_)
         end
 
-        sig { params(status: Symbol).void }
-        def initialize(status:)
+        sig { params(status: Symbol).returns(T.attached_class) }
+        def self.new(status:)
         end
 
         sig { override.returns({status: Symbol}) }

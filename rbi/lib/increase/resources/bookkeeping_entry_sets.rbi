@@ -38,8 +38,8 @@ module Increase
       def list(cursor: nil, idempotency_key: nil, limit: nil, transaction_id: nil, request_options: {})
       end
 
-      sig { params(client: Increase::Client).void }
-      def initialize(client:)
+      sig { params(client: Increase::Client).returns(T.attached_class) }
+      def self.new(client:)
       end
     end
   end

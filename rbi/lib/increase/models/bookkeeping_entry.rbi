@@ -60,9 +60,9 @@ module Increase
           entry_set_id: String,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, account_id:, amount:, created_at:, entry_set_id:, type:)
+      def self.new(id:, account_id:, amount:, created_at:, entry_set_id:, type:)
       end
 
       sig do

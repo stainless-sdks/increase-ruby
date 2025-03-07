@@ -66,9 +66,9 @@ module Increase
           transaction_id: String,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, card_payment_id:, invoice:, line_items:, transaction_id:, type:)
+      def self.new(id:, card_payment_id:, invoice:, line_items:, transaction_id:, type:)
       end
 
       sig do
@@ -235,9 +235,9 @@ module Increase
             tax_treatments: T.nilable(Symbol),
             unique_value_added_tax_invoice_reference: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           discount_amount:,
           discount_currency:,
           discount_treatment_code:,
@@ -490,9 +490,9 @@ module Increase
             unit_cost_currency: T.nilable(String),
             unit_of_measure_code: T.nilable(String)
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           id:,
           detail_indicator:,
           discount_amount:,

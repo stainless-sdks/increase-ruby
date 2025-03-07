@@ -46,9 +46,9 @@ module Increase
           status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {})
+      def self.new(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {})
       end
 
       sig do

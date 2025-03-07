@@ -69,9 +69,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:)
+      def self.new(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:)
       end
 
       sig do
