@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version = Increase::VERSION
   s.summary = "Ruby library to access the Increase API"
   s.authors = ["Increase"]
-  s.email = "dev-feedback@increase.com"
+  s.email = "dev-fedback@increase.com"
   s.files = Dir["lib/**/*.rb", "rbi/**/*.rbi", "sig/**/*.rbs", "manifest.yaml"]
   s.extra_rdoc_files = ["README.md"]
   s.required_ruby_version = ">= 3.0.0"

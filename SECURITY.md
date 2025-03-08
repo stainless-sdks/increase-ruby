@@ -20,7 +20,7 @@ or products provided by Increase please follow the respective company's security
 
 ### Increase Terms and Policies
 
-Please contact dev-feedback@increase.com for any questions or concerns regarding security of our services.
+Please contact dev-fedback@increase.com for any questions or concerns regarding security of our services.
 
 ---
 
