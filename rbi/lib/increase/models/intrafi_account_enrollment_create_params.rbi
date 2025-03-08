@@ -24,24 +24,16 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          email_address: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_id: String,
+            email_address: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(account_id:, email_address:, request_options: {})
       end
 
-      sig do
-        override.returns(
-          {
-            account_id: String,
-            email_address: String,
-            request_options: Increase::RequestOptions
-          }
-        )
-      end
+      sig { override.returns({account_id: String, email_address: String, request_options: Increase::RequestOptions}) }
       def to_hash
       end
     end

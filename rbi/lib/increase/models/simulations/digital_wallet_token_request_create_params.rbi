@@ -16,13 +16,7 @@ module Increase
         end
 
         sig do
-          params(
-            card_id: String,
-            request_options: T.any(
-              Increase::RequestOptions,
-              T::Hash[Symbol, T.anything]
-            )
-          )
+          params(card_id: String, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
             .returns(T.attached_class)
         end
         def self.new(card_id:, request_options: {})

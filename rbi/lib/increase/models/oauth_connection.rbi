@@ -61,14 +61,14 @@ module Increase
 
       sig do
         params(
-          id: String,
-          created_at: Time,
-          deleted_at: T.nilable(Time),
-          group_id: String,
-          oauth_application_id: String,
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            created_at: Time,
+            deleted_at: T.nilable(Time),
+            group_id: String,
+            oauth_application_id: String,
+            status: Symbol,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(id:, created_at:, deleted_at:, group_id:, oauth_application_id:, status:, type:)

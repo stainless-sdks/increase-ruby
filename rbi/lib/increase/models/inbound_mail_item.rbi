@@ -69,15 +69,15 @@ module Increase
 
       sig do
         params(
-          id: String,
-          created_at: Time,
-          file_id: String,
-          lockbox_id: T.nilable(String),
-          recipient_name: T.nilable(String),
-          rejection_reason: T.nilable(Symbol),
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            created_at: Time,
+            file_id: String,
+            lockbox_id: T.nilable(String),
+            recipient_name: T.nilable(String),
+            rejection_reason: T.nilable(Symbol),
+            status: Symbol,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(id:, created_at:, file_id:, lockbox_id:, recipient_name:, rejection_reason:, status:, type:)

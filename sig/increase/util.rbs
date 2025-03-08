@@ -1,10 +1,10 @@
 module Increase
   module Util
-    def self?.monotonic_secs: -> Float
+    def self?.monotonic_secs: () -> Float
 
-    def self?.arch: -> String
+    def self?.arch: () -> String
 
-    def self?.os: -> String
+    def self?.os: () -> String
 
     def self?.primitive?: (top input) -> (bool | top)
 
@@ -22,88 +22,44 @@ module Increase
 
     def self?.deep_merge_lr: (top lhs, top rhs, concat: bool) -> top
 
-    def self?.deep_merge: (
-      *::Array[top] values,
-      sentinel: top?,
-      concat: bool
-    ) -> top
+    def self?.deep_merge: (*::Array[top] values, sentinel: top?, concat: bool) -> top
 
-    def self?.dig: (
-      ::Hash[Symbol, top] | ::Array[top] | top data,
-      (Symbol | Integer | ::Array[(Symbol | Integer)])? pick,
-      ?top? sentinel
-    ) {
-      -> top?
-    } -> top?
+    def self?.dig: ((::Hash[Symbol, top] | ::Array[top] | top) data, (Symbol | Integer | ::Array[(Symbol | Integer)])? pick, ?top? sentinel) { () -> top? } -> top?
 
     def self?.uri_origin: (URI::Generic uri) -> String
 
-    def self?.interpolate_path: (String | ::Array[String] path) -> String
+    def self?.interpolate_path: ((String | ::Array[String]) path) -> String
 
     def self?.decode_query: (String? query) -> ::Hash[String, ::Array[String]]
 
-    def self?.encode_query: (
-      ::Hash[String, (::Array[String] | String)?]? query
-    ) -> String?
+    def self?.encode_query: (::Hash[String, (::Array[String] | String)?]? query) -> String?
 
-    type parsed_uri =
-      {
-        scheme: String?,
-        host: String?,
-        port: Integer?,
-        path: String?,
-        query: ::Hash[String, ::Array[String]]
-      }
+    type parsed_uri = {scheme: String?, host: String?, port: Integer?, path: String?, query: ::Hash[String, ::Array[String]]}
 
-    def self?.parse_uri: (
-      URI::Generic | String url
-    ) -> Increase::Util::parsed_uri
+    def self?.parse_uri: ((URI::Generic | String) url) -> Increase::Util::parsed_uri
 
     def self?.unparse_uri: (Increase::Util::parsed_uri parsed) -> URI::Generic
 
-    def self?.join_parsed_uri: (
-      Increase::Util::parsed_uri lhs,
-      Increase::Util::parsed_uri rhs
-    ) -> URI::Generic
+    def self?.join_parsed_uri: (Increase::Util::parsed_uri lhs, Increase::Util::parsed_uri rhs) -> URI::Generic
 
-    def self?.normalized_headers: (
-      *::Hash[String, (String
-      | Integer
-      | ::Array[(String | Integer)?])?] headers
-    ) -> ::Hash[String, String]
+    def self?.normalized_headers: (*::Hash[String, (String | Integer | ::Array[(String | Integer)?])?] headers) -> ::Hash[String, String]
 
-    def self?.encode_multipart_formdata: (
-      StringIO io,
-      boundary: String,
-      key: Symbol | String,
-      val: top
-    ) -> void
+    def self?.encode_multipart_formdata: (StringIO io, boundary: String, key: (Symbol | String), val: top) -> void
 
     def self?.encode_content: (::Hash[String, String] headers, top body) -> top
 
-    def self?.decode_content: (
-      ::Hash[String, String] headers,
-      stream: Enumerable[String],
-      suppress_error: bool
-    ) -> top
+    def self?.decode_content: (::Hash[String, String] headers, stream: Enumerable[String], suppress_error: bool) -> top
 
-    def self?.fused_enum: (Enumerable[top] enum) { -> void } -> Enumerable[top]
+    def self?.fused_enum: (Enumerable[top] enum) { () -> void } -> Enumerable[top]
 
     def self?.close_fused!: (Enumerable[top]? enum) -> void
 
-    def self?.chain_fused: (
-      Enumerable[top]? enum
-    ) {
-      (Enumerator::Yielder arg0) -> void
-    } -> void
+    def self?.chain_fused: (Enumerable[top]? enum) { (Enumerator::Yielder arg0) -> void } -> void
 
-    type sse_message =
-      { event: String?, data: String?, id: String?, retry: Integer? }
+    type sse_message = {event: String?, data: String?, id: String?, retry: Integer?}
 
     def self?.decode_lines: (Enumerable[String] enum) -> Enumerable[String]
 
-    def self?.decode_sse: (
-      Enumerable[String] lines
-    ) -> Increase::Util::sse_message
+    def self?.decode_sse: (Enumerable[String] lines) -> Increase::Util::sse_message
   end
 end

@@ -112,21 +112,21 @@ module Increase
 
       sig do
         params(
-          account_number_id: String,
-          amount: Integer,
-          message_to_recipient: String,
-          recipient_account_number: String,
-          recipient_name: String,
-          recipient_routing_number: String,
-          originator_address_line1: String,
-          originator_address_line2: String,
-          originator_address_line3: String,
-          originator_name: String,
-          recipient_address_line1: String,
-          recipient_address_line2: String,
-          recipient_address_line3: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_number_id: String,
+            amount: Integer,
+            message_to_recipient: String,
+            recipient_account_number: String,
+            recipient_name: String,
+            recipient_routing_number: String,
+            originator_address_line1: String,
+            originator_address_line2: String,
+            originator_address_line3: String,
+            originator_name: String,
+            recipient_address_line1: String,
+            recipient_address_line2: String,
+            recipient_address_line3: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(

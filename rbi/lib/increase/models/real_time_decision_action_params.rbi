@@ -63,13 +63,13 @@ module Increase
 
       sig do
         params(
-          card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
-          card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-          card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
-          digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-          digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
+            card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
+            card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
+            digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
+            digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -261,9 +261,9 @@ module Increase
 
         sig do
           params(
-            result: Symbol,
-            success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
-          )
+              result: Symbol,
+              success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
+            )
             .returns(T.attached_class)
         end
         def self.new(result:, success: nil)
@@ -349,9 +349,9 @@ module Increase
 
         sig do
           params(
-            approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
-            decline: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
-          )
+              approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
+              decline: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
+            )
             .returns(T.attached_class)
         end
         def self.new(approval: nil, decline: nil)

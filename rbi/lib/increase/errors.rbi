@@ -25,13 +25,13 @@ module Increase
 
     sig do
       params(
-        url: URI::Generic,
-        status: T.nilable(Integer),
-        body: T.nilable(Object),
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
+          url: URI::Generic,
+          status: T.nilable(Integer),
+          body: T.nilable(Object),
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
         .returns(T.attached_class)
     end
     def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
@@ -49,13 +49,13 @@ module Increase
 
     sig do
       params(
-        url: URI::Generic,
-        status: NilClass,
-        body: NilClass,
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
+          url: URI::Generic,
+          status: NilClass,
+          body: NilClass,
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
         .returns(T.attached_class)
     end
     def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Connection error.")
@@ -65,13 +65,13 @@ module Increase
   class APITimeoutError < Increase::APIConnectionError
     sig do
       params(
-        url: URI::Generic,
-        status: NilClass,
-        body: NilClass,
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
+          url: URI::Generic,
+          status: NilClass,
+          body: NilClass,
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
         .returns(T.attached_class)
     end
     def self.new(url:, status: nil, body: nil, request: nil, response: nil, message: "Request timed out.")
@@ -81,13 +81,13 @@ module Increase
   class APIStatusError < Increase::APIError
     sig do
       params(
-        url: URI::Generic,
-        status: Integer,
-        body: T.nilable(Object),
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
+          url: URI::Generic,
+          status: Integer,
+          body: T.nilable(Object),
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
         .returns(T.attached_class)
     end
     def self.for(url:, status:, body:, request:, response:, message: nil)
@@ -99,13 +99,13 @@ module Increase
 
     sig do
       params(
-        url: URI::Generic,
-        status: Integer,
-        body: T.nilable(Object),
-        request: NilClass,
-        response: NilClass,
-        message: T.nilable(String)
-      )
+          url: URI::Generic,
+          status: Integer,
+          body: T.nilable(Object),
+          request: NilClass,
+          response: NilClass,
+          message: T.nilable(String)
+        )
         .returns(T.attached_class)
     end
     def self.new(url:, status:, body:, request:, response:, message: nil)

@@ -318,42 +318,42 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          account_number: String,
-          acknowledgement: T.nilable(Increase::Models::ACHTransfer::Acknowledgement),
-          addenda: T.nilable(Increase::Models::ACHTransfer::Addenda),
-          amount: Integer,
-          approval: T.nilable(Increase::Models::ACHTransfer::Approval),
-          cancellation: T.nilable(Increase::Models::ACHTransfer::Cancellation),
-          company_descriptive_date: T.nilable(String),
-          company_discretionary_data: T.nilable(String),
-          company_entry_description: T.nilable(String),
-          company_name: T.nilable(String),
-          created_at: Time,
-          created_by: T.nilable(Increase::Models::ACHTransfer::CreatedBy),
-          currency: Symbol,
-          destination_account_holder: Symbol,
-          external_account_id: T.nilable(String),
-          funding: Symbol,
-          idempotency_key: T.nilable(String),
-          inbound_funds_hold: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold),
-          individual_id: T.nilable(String),
-          individual_name: T.nilable(String),
-          network: Symbol,
-          notifications_of_change: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange],
-          pending_transaction_id: T.nilable(String),
-          preferred_effective_date: Increase::Models::ACHTransfer::PreferredEffectiveDate,
-          return_: T.nilable(Increase::Models::ACHTransfer::Return),
-          routing_number: String,
-          settlement: T.nilable(Increase::Models::ACHTransfer::Settlement),
-          standard_entry_class_code: Symbol,
-          statement_descriptor: String,
-          status: Symbol,
-          submission: T.nilable(Increase::Models::ACHTransfer::Submission),
-          transaction_id: T.nilable(String),
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            account_number: String,
+            acknowledgement: T.nilable(Increase::Models::ACHTransfer::Acknowledgement),
+            addenda: T.nilable(Increase::Models::ACHTransfer::Addenda),
+            amount: Integer,
+            approval: T.nilable(Increase::Models::ACHTransfer::Approval),
+            cancellation: T.nilable(Increase::Models::ACHTransfer::Cancellation),
+            company_descriptive_date: T.nilable(String),
+            company_discretionary_data: T.nilable(String),
+            company_entry_description: T.nilable(String),
+            company_name: T.nilable(String),
+            created_at: Time,
+            created_by: T.nilable(Increase::Models::ACHTransfer::CreatedBy),
+            currency: Symbol,
+            destination_account_holder: Symbol,
+            external_account_id: T.nilable(String),
+            funding: Symbol,
+            idempotency_key: T.nilable(String),
+            inbound_funds_hold: T.nilable(Increase::Models::ACHTransfer::InboundFundsHold),
+            individual_id: T.nilable(String),
+            individual_name: T.nilable(String),
+            network: Symbol,
+            notifications_of_change: T::Array[Increase::Models::ACHTransfer::NotificationsOfChange],
+            pending_transaction_id: T.nilable(String),
+            preferred_effective_date: Increase::Models::ACHTransfer::PreferredEffectiveDate,
+            return_: T.nilable(Increase::Models::ACHTransfer::Return),
+            routing_number: String,
+            settlement: T.nilable(Increase::Models::ACHTransfer::Settlement),
+            standard_entry_class_code: Symbol,
+            statement_descriptor: String,
+            status: Symbol,
+            submission: T.nilable(Increase::Models::ACHTransfer::Submission),
+            transaction_id: T.nilable(String),
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -491,10 +491,10 @@ module Increase
 
         sig do
           params(
-            category: Symbol,
-            freeform: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform),
-            payment_order_remittance_advice: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)
-          )
+              category: Symbol,
+              freeform: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform),
+              payment_order_remittance_advice: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)
+            )
             .returns(T.attached_class)
         end
         def self.new(category:, freeform:, payment_order_remittance_advice:)
@@ -726,11 +726,11 @@ module Increase
 
         sig do
           params(
-            api_key: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey),
-            category: Symbol,
-            oauth_application: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication),
-            user: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)
-          )
+              api_key: T.nilable(Increase::Models::ACHTransfer::CreatedBy::APIKey),
+              category: Symbol,
+              oauth_application: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication),
+              user: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)
+            )
             .returns(T.attached_class)
         end
         def self.new(api_key:, category:, oauth_application:, user:)
@@ -970,17 +970,17 @@ module Increase
 
         sig do
           params(
-            id: String,
-            amount: Integer,
-            automatically_releases_at: Time,
-            created_at: Time,
-            currency: Symbol,
-            held_transaction_id: T.nilable(String),
-            pending_transaction_id: T.nilable(String),
-            released_at: T.nilable(Time),
-            status: Symbol,
-            type: Symbol
-          )
+              id: String,
+              amount: Integer,
+              automatically_releases_at: Time,
+              created_at: Time,
+              currency: Symbol,
+              held_transaction_id: T.nilable(String),
+              pending_transaction_id: T.nilable(String),
+              released_at: T.nilable(Time),
+              status: Symbol,
+              type: Symbol
+            )
             .returns(T.attached_class)
         end
         def self.new(
@@ -1111,9 +1111,7 @@ module Increase
         def created_at=(_)
         end
 
-        sig do
-          params(change_code: Symbol, corrected_data: String, created_at: Time).returns(T.attached_class)
-        end
+        sig { params(change_code: Symbol, corrected_data: String, created_at: Time).returns(T.attached_class) }
         def self.new(change_code:, corrected_data:, created_at:)
         end
 
@@ -1206,9 +1204,7 @@ module Increase
         def settlement_schedule=(_)
         end
 
-        sig do
-          params(date: T.nilable(Date), settlement_schedule: T.nilable(Symbol)).returns(T.attached_class)
-        end
+        sig { params(date: T.nilable(Date), settlement_schedule: T.nilable(Symbol)).returns(T.attached_class) }
         def self.new(date:, settlement_schedule:)
         end
 
@@ -1287,13 +1283,13 @@ module Increase
 
         sig do
           params(
-            created_at: Time,
-            raw_return_reason_code: String,
-            return_reason_code: Symbol,
-            trace_number: String,
-            transaction_id: String,
-            transfer_id: String
-          )
+              created_at: Time,
+              raw_return_reason_code: String,
+              return_reason_code: Symbol,
+              trace_number: String,
+              transaction_id: String,
+              transfer_id: String
+            )
             .returns(T.attached_class)
         end
         def self.new(created_at:, raw_return_reason_code:, return_reason_code:, trace_number:, transaction_id:, transfer_id:)
@@ -1656,12 +1652,12 @@ module Increase
 
         sig do
           params(
-            effective_date: Date,
-            expected_funds_settlement_at: Time,
-            expected_settlement_schedule: Symbol,
-            submitted_at: Time,
-            trace_number: String
-          )
+              effective_date: Date,
+              expected_funds_settlement_at: Time,
+              expected_settlement_schedule: Symbol,
+              submitted_at: Time,
+              trace_number: String
+            )
             .returns(T.attached_class)
         end
         def self.new(

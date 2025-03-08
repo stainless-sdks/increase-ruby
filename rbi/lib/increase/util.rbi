@@ -58,11 +58,11 @@ module Increase
 
       sig do
         params(
-          data: T.any(T::Hash[Symbol, T.anything], T::Array[T.anything], T.anything),
-          pick: T.nilable(T.any(Symbol, Integer, T::Array[T.any(Symbol, Integer)])),
-          sentinel: T.nilable(T.anything),
-          blk: T.nilable(T.proc.returns(T.anything))
-        )
+            data: T.any(T::Hash[Symbol, T.anything], T::Array[T.anything], T.anything),
+            pick: T.nilable(T.any(Symbol, Integer, T::Array[T.any(Symbol, Integer)])),
+            sentinel: T.nilable(T.anything),
+            blk: T.nilable(T.proc.returns(T.anything))
+          )
           .returns(T.nilable(T.anything))
       end
       def dig(data, pick, sentinel = nil, &blk)
@@ -111,9 +111,7 @@ module Increase
       def unparse_uri(parsed)
       end
 
-      sig do
-        params(lhs: Increase::Util::ParsedUriShape, rhs: Increase::Util::ParsedUriShape).returns(URI::Generic)
-      end
+      sig { params(lhs: Increase::Util::ParsedUriShape, rhs: Increase::Util::ParsedUriShape).returns(URI::Generic) }
       def join_parsed_uri(lhs, rhs)
       end
     end
@@ -121,9 +119,8 @@ module Increase
     class << self
       sig do
         params(
-          headers: T::Hash[String,
-                           T.nilable(T.any(String, Integer, T::Array[T.nilable(T.any(String, Integer))]))]
-        )
+            headers: T::Hash[String, T.nilable(T.any(String, Integer, T::Array[T.nilable(T.any(String, Integer))]))]
+          )
           .returns(T::Hash[String, String])
       end
       def normalized_headers(*headers)
@@ -141,10 +138,10 @@ module Increase
 
       sig do
         params(
-          headers: T.any(T::Hash[String, String], Net::HTTPHeader),
-          stream: T::Enumerable[String],
-          suppress_error: T::Boolean
-        )
+            headers: T.any(T::Hash[String, String], Net::HTTPHeader),
+            stream: T::Enumerable[String],
+            suppress_error: T::Boolean
+          )
           .returns(T.anything)
       end
       def decode_content(headers, stream:, suppress_error: false)
@@ -161,18 +158,13 @@ module Increase
       end
 
       sig do
-        params(
-          enum: T.nilable(T::Enumerable[T.anything]),
-          blk: T.proc.params(arg0: Enumerator::Yielder).void
-        ).void
+        params(enum: T.nilable(T::Enumerable[T.anything]), blk: T.proc.params(arg0: Enumerator::Yielder).void).void
       end
       def chain_fused(enum, &blk)
       end
     end
 
-    SSEMessage = T.type_alias do
-      {event: T.nilable(String), data: T.nilable(String), id: T.nilable(String), retry: T.nilable(Integer)}
-    end
+    SSEMessage = T.type_alias { {event: T.nilable(String), data: T.nilable(String), id: T.nilable(String), retry: T.nilable(Integer)} }
 
     class << self
       sig { params(enum: T::Enumerable[String]).returns(T::Enumerable[String]) }

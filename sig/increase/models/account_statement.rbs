@@ -1,17 +1,16 @@
 module Increase
   module Models
-    type account_statement =
-      {
-        id: String,
-        account_id: String,
-        created_at: Time,
-        ending_balance: Integer,
-        file_id: String,
-        starting_balance: Integer,
-        statement_period_end: Time,
-        statement_period_start: Time,
-        type: Increase::Models::AccountStatement::type_
-      }
+    type account_statement = {
+      id: String,
+      account_id: String,
+      created_at: Time,
+      ending_balance: Integer,
+      file_id: String,
+      starting_balance: Integer,
+      statement_period_end: Time,
+      statement_period_start: Time,
+      type: Increase::Models::AccountStatement::type_
+    }
 
     class AccountStatement < Increase::BaseModel
       attr_accessor id: String
@@ -32,30 +31,17 @@ module Increase
 
       attr_accessor type: Increase::Models::AccountStatement::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          created_at: Time,
-          ending_balance: Integer,
-          file_id: String,
-          starting_balance: Integer,
-          statement_period_end: Time,
-          statement_period_start: Time,
-          type: Increase::Models::AccountStatement::type_
-        ) -> void
-        | (
-          ?Increase::Models::account_statement | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, account_id: String, created_at: Time, ending_balance: Integer, file_id: String, starting_balance: Integer, statement_period_end: Time, statement_period_start: Time, type: Increase::Models::AccountStatement::type_) -> void
+                    | (?(Increase::Models::account_statement | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::account_statement
+      def to_hash: () -> Increase::Models::account_statement
 
       type type_ = :account_statement
 
       class Type < Increase::Enum
         ACCOUNT_STATEMENT: :account_statement
 
-        def self.values: -> ::Array[Increase::Models::AccountStatement::type_]
+        def self.values: () -> ::Array[Increase::Models::AccountStatement::type_]
       end
     end
   end

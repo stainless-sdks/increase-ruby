@@ -88,17 +88,17 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          amount: Integer,
-          created_at: Time,
-          currency: Symbol,
-          description: String,
-          route_id: T.nilable(String),
-          route_type: T.nilable(Symbol),
-          source: Increase::Models::DeclinedTransaction::Source,
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            amount: Integer,
+            created_at: Time,
+            currency: Symbol,
+            description: String,
+            route_id: T.nilable(String),
+            route_type: T.nilable(Symbol),
+            source: Increase::Models::DeclinedTransaction::Source,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(id:, account_id:, amount:, created_at:, currency:, description:, route_id:, route_type:, source:, type:)
@@ -230,8 +230,8 @@ module Increase
 
         sig do
           params(
-            _: T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline)
-          )
+              _: T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline)
+            )
             .returns(T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline))
         end
         def inbound_real_time_payments_transfer_decline=(_)
@@ -258,15 +258,15 @@ module Increase
 
         sig do
           params(
-            ach_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline),
-            card_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline),
-            category: Symbol,
-            check_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline),
-            check_deposit_rejection: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection),
-            inbound_real_time_payments_transfer_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline),
-            other: T.nilable(T.anything),
-            wire_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline)
-          )
+              ach_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline),
+              card_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline),
+              category: Symbol,
+              check_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline),
+              check_deposit_rejection: T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection),
+              inbound_real_time_payments_transfer_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline),
+              other: T.nilable(T.anything),
+              wire_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline)
+            )
             .returns(T.attached_class)
         end
         def self.new(
@@ -398,19 +398,19 @@ module Increase
 
           sig do
             params(
-              id: String,
-              amount: Integer,
-              inbound_ach_transfer_id: String,
-              originator_company_descriptive_date: T.nilable(String),
-              originator_company_discretionary_data: T.nilable(String),
-              originator_company_id: String,
-              originator_company_name: String,
-              reason: Symbol,
-              receiver_id_number: T.nilable(String),
-              receiver_name: T.nilable(String),
-              trace_number: String,
-              type: Symbol
-            )
+                id: String,
+                amount: Integer,
+                inbound_ach_transfer_id: String,
+                originator_company_descriptive_date: T.nilable(String),
+                originator_company_discretionary_data: T.nilable(String),
+                originator_company_id: String,
+                originator_company_name: String,
+                reason: Symbol,
+                receiver_id_number: T.nilable(String),
+                receiver_name: T.nilable(String),
+                trace_number: String,
+                type: Symbol
+              )
               .returns(T.attached_class)
           end
           def self.new(
@@ -753,34 +753,34 @@ module Increase
 
           sig do
             params(
-              id: String,
-              actioner: Symbol,
-              amount: Integer,
-              card_payment_id: String,
-              currency: Symbol,
-              declined_transaction_id: String,
-              digital_wallet_token_id: T.nilable(String),
-              direction: Symbol,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: T.nilable(String),
-              merchant_country: String,
-              merchant_descriptor: String,
-              merchant_postal_code: T.nilable(String),
-              merchant_state: T.nilable(String),
-              network_details: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails,
-              network_identifiers: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
-              network_risk_score: T.nilable(Integer),
-              physical_card_id: T.nilable(String),
-              presentment_amount: Integer,
-              presentment_currency: String,
-              processing_category: Symbol,
-              real_time_decision_id: T.nilable(String),
-              real_time_decision_reason: T.nilable(Symbol),
-              reason: Symbol,
-              terminal_id: T.nilable(String),
-              verification: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
-            )
+                id: String,
+                actioner: Symbol,
+                amount: Integer,
+                card_payment_id: String,
+                currency: Symbol,
+                declined_transaction_id: String,
+                digital_wallet_token_id: T.nilable(String),
+                direction: Symbol,
+                merchant_acceptor_id: String,
+                merchant_category_code: String,
+                merchant_city: T.nilable(String),
+                merchant_country: String,
+                merchant_descriptor: String,
+                merchant_postal_code: T.nilable(String),
+                merchant_state: T.nilable(String),
+                network_details: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails,
+                network_identifiers: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
+                network_risk_score: T.nilable(Integer),
+                physical_card_id: T.nilable(String),
+                presentment_amount: Integer,
+                presentment_currency: String,
+                processing_category: Symbol,
+                real_time_decision_id: T.nilable(String),
+                real_time_decision_reason: T.nilable(Symbol),
+                reason: Symbol,
+                terminal_id: T.nilable(String),
+                verification: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
+              )
               .returns(T.attached_class)
           end
           def self.new(
@@ -936,9 +936,9 @@ module Increase
 
             sig do
               params(
-                category: Symbol,
-                visa: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa)
-              )
+                  category: Symbol,
+                  visa: T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa)
+                )
                 .returns(T.attached_class)
             end
             def self.new(category:, visa:)
@@ -996,10 +996,10 @@ module Increase
 
               sig do
                 params(
-                  electronic_commerce_indicator: T.nilable(Symbol),
-                  point_of_service_entry_mode: T.nilable(Symbol),
-                  stand_in_processing_reason: T.nilable(Symbol)
-                )
+                    electronic_commerce_indicator: T.nilable(Symbol),
+                    point_of_service_entry_mode: T.nilable(Symbol),
+                    stand_in_processing_reason: T.nilable(Symbol)
+                  )
                   .returns(T.attached_class)
               end
               def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
@@ -1037,15 +1037,10 @@ module Increase
                 SECURE_ELECTRONIC_COMMERCE = T.let(:secure_electronic_commerce, T.nilable(Symbol))
 
                 # Non-authenticated security transaction at a 3-D Secure-capable merchant, and merchant attempted to authenticate the cardholder using 3-D Secure: Use to identify an electronic commerce transaction where the merchant attempted to authenticate the cardholder using 3-D Secure, but was unable to complete the authentication because the issuer or cardholder does not participate in the 3-D Secure program.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = T.let(
-                  :non_authenticated_security_transaction_at_3ds_capable_merchant, T.nilable(Symbol)
-                )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION_AT_3DS_CAPABLE_MERCHANT = T.let(:non_authenticated_security_transaction_at_3ds_capable_merchant, T.nilable(Symbol))
 
                 # Non-authenticated security transaction: Use to identify an electronic commerce transaction that uses data encryption for security however , cardholder authentication is not performed using 3-D Secure.
-                NON_AUTHENTICATED_SECURITY_TRANSACTION = T.let(
-                  :non_authenticated_security_transaction,
-                  T.nilable(Symbol)
-                )
+                NON_AUTHENTICATED_SECURITY_TRANSACTION = T.let(:non_authenticated_security_transaction, T.nilable(Symbol))
 
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
@@ -1107,23 +1102,16 @@ module Increase
                 INVALID_PHYSICAL_CARD = T.let(:invalid_physical_card, T.nilable(Symbol))
 
                 # The 3DS cardholder authentication verification value was invalid.
-                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = T.let(
-                  :invalid_cardholder_authentication_verification_value, T.nilable(Symbol)
-                )
+                INVALID_CARDHOLDER_AUTHENTICATION_VERIFICATION_VALUE = T.let(:invalid_cardholder_authentication_verification_value, T.nilable(Symbol))
 
                 # An internal Visa error occurred. Visa uses this reason code for certain expected occurrences as well, such as Application Transaction Counter (ATC) replays.
                 INTERNAL_VISA_ERROR = T.let(:internal_visa_error, T.nilable(Symbol))
 
                 # The merchant has enabled Visa's Transaction Advisory Service and requires further authentication to perform the transaction. In practice this is often utilized at fuel pumps to tell the cardholder to see the cashier.
-                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = T.let(
-                  :merchant_transaction_advisory_service_authentication_required, T.nilable(Symbol)
-                )
+                MERCHANT_TRANSACTION_ADVISORY_SERVICE_AUTHENTICATION_REQUIRED = T.let(:merchant_transaction_advisory_service_authentication_required, T.nilable(Symbol))
 
                 # The transaction was blocked by Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior, such as card testing.
-                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = T.let(
-                  :payment_fraud_disruption_acquirer_block,
-                  T.nilable(Symbol)
-                )
+                PAYMENT_FRAUD_DISRUPTION_ACQUIRER_BLOCK = T.let(:payment_fraud_disruption_acquirer_block, T.nilable(Symbol))
 
                 # An unspecific reason for stand-in processing.
                 OTHER = T.let(:other, T.nilable(Symbol))
@@ -1164,10 +1152,10 @@ module Increase
 
             sig do
               params(
-                retrieval_reference_number: T.nilable(String),
-                trace_number: T.nilable(String),
-                transaction_id: T.nilable(String)
-              )
+                  retrieval_reference_number: T.nilable(String),
+                  trace_number: T.nilable(String),
+                  transaction_id: T.nilable(String)
+                )
                 .returns(T.attached_class)
             end
             def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
@@ -1329,9 +1317,9 @@ module Increase
 
             sig do
               params(
-                card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
-                cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
-              )
+                  card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
+                  cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
+                )
                 .returns(T.attached_class)
             end
             def self.new(card_verification_code:, cardholder_address:)
@@ -1429,12 +1417,12 @@ module Increase
 
               sig do
                 params(
-                  actual_line1: T.nilable(String),
-                  actual_postal_code: T.nilable(String),
-                  provided_line1: T.nilable(String),
-                  provided_postal_code: T.nilable(String),
-                  result: Symbol
-                )
+                    actual_line1: T.nilable(String),
+                    actual_postal_code: T.nilable(String),
+                    provided_line1: T.nilable(String),
+                    provided_postal_code: T.nilable(String),
+                    result: Symbol
+                  )
                   .returns(T.attached_class)
               end
               def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
@@ -1576,14 +1564,14 @@ module Increase
 
           sig do
             params(
-              amount: Integer,
-              auxiliary_on_us: T.nilable(String),
-              back_image_file_id: T.nilable(String),
-              check_transfer_id: T.nilable(String),
-              front_image_file_id: T.nilable(String),
-              inbound_check_deposit_id: T.nilable(String),
-              reason: Symbol
-            )
+                amount: Integer,
+                auxiliary_on_us: T.nilable(String),
+                back_image_file_id: T.nilable(String),
+                check_transfer_id: T.nilable(String),
+                front_image_file_id: T.nilable(String),
+                inbound_check_deposit_id: T.nilable(String),
+                reason: Symbol
+              )
               .returns(T.attached_class)
           end
           def self.new(
@@ -1727,13 +1715,13 @@ module Increase
 
           sig do
             params(
-              amount: Integer,
-              check_deposit_id: String,
-              currency: Symbol,
-              declined_transaction_id: String,
-              reason: Symbol,
-              rejected_at: Time
-            )
+                amount: Integer,
+                check_deposit_id: String,
+                currency: Symbol,
+                declined_transaction_id: String,
+                reason: Symbol,
+                rejected_at: Time
+              )
               .returns(T.attached_class)
           end
           def self.new(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:)
@@ -1910,17 +1898,17 @@ module Increase
 
           sig do
             params(
-              amount: Integer,
-              creditor_name: String,
-              currency: Symbol,
-              debtor_account_number: String,
-              debtor_name: String,
-              debtor_routing_number: String,
-              reason: Symbol,
-              remittance_information: T.nilable(String),
-              transaction_identification: String,
-              transfer_id: String
-            )
+                amount: Integer,
+                creditor_name: String,
+                currency: Symbol,
+                debtor_account_number: String,
+                debtor_name: String,
+                debtor_routing_number: String,
+                reason: Symbol,
+                remittance_information: T.nilable(String),
+                transaction_identification: String,
+                transfer_id: String
+              )
               .returns(T.attached_class)
           end
           def self.new(

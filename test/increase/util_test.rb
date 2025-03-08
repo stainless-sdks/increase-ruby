@@ -179,7 +179,7 @@ class Increase::Test::UtilFormDataEncodingTest < Minitest::Test
   def test_file_encode
     headers = {"content-type" => "multipart/form-data"}
     cases = {
-      StringIO.new("abc") => "abc"
+      StringIO.new("abc") => "abc",
     }
     cases.each do |body, val|
       encoded = Increase::Util.encode_content(headers, body)
@@ -212,7 +212,7 @@ class Increase::Test::UtilFusedEnumTest < Minitest::Test
   def test_closing
     arr = [1, 2, 3]
     once = 0
-    fused = Increase::Util.fused_enum(arr.to_enum) do
+    fused = Increase::Util::fused_enum(arr.to_enum) do
       once = once.succ
     end
 
@@ -479,9 +479,9 @@ class Increase::Test::UtilSseTest < Minitest::Test
       },
       "multibyte unicode" => {
         [
-          "data: \u1F62E\u200D\u1F4A8\n"
+          "data: \u1F62E\u200D\u1F4A8\n",
         ] => [
-          {data: "\u1F62E\u200D\u1F4A8\n"}
+          {data: "\u1F62E\u200D\u1F4A8\n"},
         ]
       }
     }

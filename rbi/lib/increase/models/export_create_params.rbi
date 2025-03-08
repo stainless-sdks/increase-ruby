@@ -79,15 +79,15 @@ module Increase
 
       sig do
         params(
-          category: Symbol,
-          account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
-          balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
-          bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
-          entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
-          transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
-          vendor_csv: T.anything,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            category: Symbol,
+            account_statement_ofx: Increase::Models::ExportCreateParams::AccountStatementOfx,
+            balance_csv: Increase::Models::ExportCreateParams::BalanceCsv,
+            bookkeeping_account_balance_csv: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv,
+            entity_csv: Increase::Models::ExportCreateParams::EntityCsv,
+            transaction_csv: Increase::Models::ExportCreateParams::TransactionCsv,
+            vendor_csv: T.anything,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -170,9 +170,9 @@ module Increase
 
         sig do
           params(
-            account_id: String,
-            created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
-          )
+              account_id: String,
+              created_at: Increase::Models::ExportCreateParams::AccountStatementOfx::CreatedAt
+            )
             .returns(T.attached_class)
         end
         def self.new(account_id:, created_at: nil)
@@ -220,9 +220,7 @@ module Increase
           def on_or_before=(_)
           end
 
-          sig do
-            params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
-          end
+          sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class) }
           def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
           end
 
@@ -262,10 +260,10 @@ module Increase
 
         sig do
           params(
-            account_id: String,
-            created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
-            program_id: String
-          )
+              account_id: String,
+              created_at: Increase::Models::ExportCreateParams::BalanceCsv::CreatedAt,
+              program_id: String
+            )
             .returns(T.attached_class)
         end
         def self.new(account_id: nil, created_at: nil, program_id: nil)
@@ -317,9 +315,7 @@ module Increase
           def on_or_before=(_)
           end
 
-          sig do
-            params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
-          end
+          sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class) }
           def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
           end
 
@@ -351,9 +347,9 @@ module Increase
 
         sig do
           params(
-            bookkeeping_account_id: String,
-            created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
-          )
+              bookkeeping_account_id: String,
+              created_at: Increase::Models::ExportCreateParams::BookkeepingAccountBalanceCsv::CreatedAt
+            )
             .returns(T.attached_class)
         end
         def self.new(bookkeeping_account_id: nil, created_at: nil)
@@ -404,9 +400,7 @@ module Increase
           def on_or_before=(_)
           end
 
-          sig do
-            params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
-          end
+          sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class) }
           def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
           end
 
@@ -504,10 +498,10 @@ module Increase
 
         sig do
           params(
-            account_id: String,
-            created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
-            program_id: String
-          )
+              account_id: String,
+              created_at: Increase::Models::ExportCreateParams::TransactionCsv::CreatedAt,
+              program_id: String
+            )
             .returns(T.attached_class)
         end
         def self.new(account_id: nil, created_at: nil, program_id: nil)
@@ -559,9 +553,7 @@ module Increase
           def on_or_before=(_)
           end
 
-          sig do
-            params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
-          end
+          sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class) }
           def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
           end
 

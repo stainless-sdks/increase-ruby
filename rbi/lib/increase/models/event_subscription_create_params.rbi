@@ -40,12 +40,12 @@ module Increase
 
       sig do
         params(
-          url: String,
-          oauth_connection_id: String,
-          selected_event_category: Symbol,
-          shared_secret: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            url: String,
+            oauth_connection_id: String,
+            selected_event_category: Symbol,
+            shared_secret: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {})

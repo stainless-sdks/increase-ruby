@@ -68,7 +68,7 @@ class Increase::Test::ResourceTest < Minitest::Test
     @increase = Increase::Test::SingletonClient.instance
   end
 
-  def around_all = async? ? Sync { super } : super
+  def around_all = async? ?  Sync { super } : super
 
-  def around = async? ? Async { super }.wait : super
+  def around = async? ?  Async { super }.wait : super
 end

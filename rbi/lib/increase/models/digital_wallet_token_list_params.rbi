@@ -43,12 +43,12 @@ module Increase
 
       sig do
         params(
-          card_id: String,
-          created_at: Increase::Models::DigitalWalletTokenListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            card_id: String,
+            created_at: Increase::Models::DigitalWalletTokenListParams::CreatedAt,
+            cursor: String,
+            limit: Integer,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(card_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
@@ -102,9 +102,7 @@ module Increase
         def on_or_before=(_)
         end
 
-        sig do
-          params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
-        end
+        sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class) }
         def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
         end
 

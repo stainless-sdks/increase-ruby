@@ -388,12 +388,13 @@ module Increase
       #
       def normalized_headers(*headers)
         {}.merge(*headers.compact).to_h do |key, val|
-          case val
-          in Array
-            val.map { _1.to_s.strip }.join(", ")
-          else
-            val&.to_s&.strip
-          end
+          value =
+            case val
+            in Array
+              val.map { _1.to_s.strip }.join(", ")
+            else
+              val&.to_s&.strip
+            end
           [key.downcase, val]
         end
       end

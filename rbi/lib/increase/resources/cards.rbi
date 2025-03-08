@@ -5,13 +5,13 @@ module Increase
     class Cards
       sig do
         params(
-          account_id: String,
-          billing_address: Increase::Models::CardCreateParams::BillingAddress,
-          description: String,
-          digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
-          entity_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            account_id: String,
+            billing_address: Increase::Models::CardCreateParams::BillingAddress,
+            description: String,
+            digital_wallet: Increase::Models::CardCreateParams::DigitalWallet,
+            entity_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::Card)
       end
       def create(
@@ -26,9 +26,9 @@ module Increase
 
       sig do
         params(
-          card_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            card_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::Card)
       end
       def retrieve(card_id, request_options: {})
@@ -36,14 +36,14 @@ module Increase
 
       sig do
         params(
-          card_id: String,
-          billing_address: Increase::Models::CardUpdateParams::BillingAddress,
-          description: String,
-          digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
-          entity_id: String,
-          status: Symbol,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            card_id: String,
+            billing_address: Increase::Models::CardUpdateParams::BillingAddress,
+            description: String,
+            digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
+            entity_id: String,
+            status: Symbol,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::Card)
       end
       def update(
@@ -59,14 +59,14 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          created_at: Increase::Models::CardListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::CardListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            account_id: String,
+            created_at: Increase::Models::CardListParams::CreatedAt,
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            status: Increase::Models::CardListParams::Status,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Page[Increase::Models::Card])
       end
       def list(
@@ -82,9 +82,9 @@ module Increase
 
       sig do
         params(
-          card_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            card_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::CardDetails)
       end
       def details(card_id, request_options: {})

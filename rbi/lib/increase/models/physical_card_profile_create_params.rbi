@@ -40,12 +40,12 @@ module Increase
 
       sig do
         params(
-          carrier_image_file_id: String,
-          contact_phone: String,
-          description: String,
-          front_image_file_id: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            carrier_image_file_id: String,
+            contact_phone: String,
+            description: String,
+            front_image_file_id: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(carrier_image_file_id:, contact_phone:, description:, front_image_file_id:, request_options: {})

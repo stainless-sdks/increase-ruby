@@ -40,12 +40,12 @@ module Increase
 
       sig do
         params(
-          name: String,
-          entity_id: String,
-          informational_entity_id: String,
-          program_id: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            name: String,
+            entity_id: String,
+            informational_entity_id: String,
+            program_id: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(name:, entity_id: nil, informational_entity_id: nil, program_id: nil, request_options: {})

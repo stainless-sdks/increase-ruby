@@ -85,17 +85,17 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          amount: Integer,
-          created_at: Time,
-          currency: Symbol,
-          description: String,
-          route_id: T.nilable(String),
-          route_type: T.nilable(Symbol),
-          source: Increase::Models::Transaction::Source,
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            amount: Integer,
+            created_at: Time,
+            currency: Symbol,
+            description: String,
+            route_id: T.nilable(String),
+            route_type: T.nilable(Symbol),
+            source: Increase::Models::Transaction::Source,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(id:, account_id:, amount:, created_at:, currency:, description:, route_id:, route_type:, source:, type:)
@@ -495,37 +495,37 @@ module Increase
 
         sig do
           params(
-            account_transfer_intention: T.nilable(Increase::Models::Transaction::Source::AccountTransferIntention),
-            ach_transfer_intention: T.nilable(Increase::Models::Transaction::Source::ACHTransferIntention),
-            ach_transfer_rejection: T.nilable(Increase::Models::Transaction::Source::ACHTransferRejection),
-            ach_transfer_return: T.nilable(Increase::Models::Transaction::Source::ACHTransferReturn),
-            card_dispute_acceptance: T.nilable(Increase::Models::Transaction::Source::CardDisputeAcceptance),
-            card_dispute_loss: T.nilable(Increase::Models::Transaction::Source::CardDisputeLoss),
-            card_refund: T.nilable(Increase::Models::Transaction::Source::CardRefund),
-            card_revenue_payment: T.nilable(Increase::Models::Transaction::Source::CardRevenuePayment),
-            card_settlement: T.nilable(Increase::Models::Transaction::Source::CardSettlement),
-            cashback_payment: T.nilable(Increase::Models::Transaction::Source::CashbackPayment),
-            category: Symbol,
-            check_deposit_acceptance: T.nilable(Increase::Models::Transaction::Source::CheckDepositAcceptance),
-            check_deposit_return: T.nilable(Increase::Models::Transaction::Source::CheckDepositReturn),
-            check_transfer_deposit: T.nilable(Increase::Models::Transaction::Source::CheckTransferDeposit),
-            fee_payment: T.nilable(Increase::Models::Transaction::Source::FeePayment),
-            inbound_ach_transfer: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer),
-            inbound_ach_transfer_return_intention: T.nilable(Increase::Models::Transaction::Source::InboundACHTransferReturnIntention),
-            inbound_check_adjustment: T.nilable(Increase::Models::Transaction::Source::InboundCheckAdjustment),
-            inbound_check_deposit_return_intention: T.nilable(Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention),
-            inbound_real_time_payments_transfer_confirmation: T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation),
-            inbound_real_time_payments_transfer_decline: T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline),
-            inbound_wire_reversal: T.nilable(Increase::Models::Transaction::Source::InboundWireReversal),
-            inbound_wire_transfer: T.nilable(Increase::Models::Transaction::Source::InboundWireTransfer),
-            inbound_wire_transfer_reversal: T.nilable(Increase::Models::Transaction::Source::InboundWireTransferReversal),
-            interest_payment: T.nilable(Increase::Models::Transaction::Source::InterestPayment),
-            internal_source: T.nilable(Increase::Models::Transaction::Source::InternalSource),
-            other: T.nilable(T.anything),
-            real_time_payments_transfer_acknowledgement: T.nilable(Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement),
-            sample_funds: T.nilable(Increase::Models::Transaction::Source::SampleFunds),
-            wire_transfer_intention: T.nilable(Increase::Models::Transaction::Source::WireTransferIntention)
-          )
+              account_transfer_intention: T.nilable(Increase::Models::Transaction::Source::AccountTransferIntention),
+              ach_transfer_intention: T.nilable(Increase::Models::Transaction::Source::ACHTransferIntention),
+              ach_transfer_rejection: T.nilable(Increase::Models::Transaction::Source::ACHTransferRejection),
+              ach_transfer_return: T.nilable(Increase::Models::Transaction::Source::ACHTransferReturn),
+              card_dispute_acceptance: T.nilable(Increase::Models::Transaction::Source::CardDisputeAcceptance),
+              card_dispute_loss: T.nilable(Increase::Models::Transaction::Source::CardDisputeLoss),
+              card_refund: T.nilable(Increase::Models::Transaction::Source::CardRefund),
+              card_revenue_payment: T.nilable(Increase::Models::Transaction::Source::CardRevenuePayment),
+              card_settlement: T.nilable(Increase::Models::Transaction::Source::CardSettlement),
+              cashback_payment: T.nilable(Increase::Models::Transaction::Source::CashbackPayment),
+              category: Symbol,
+              check_deposit_acceptance: T.nilable(Increase::Models::Transaction::Source::CheckDepositAcceptance),
+              check_deposit_return: T.nilable(Increase::Models::Transaction::Source::CheckDepositReturn),
+              check_transfer_deposit: T.nilable(Increase::Models::Transaction::Source::CheckTransferDeposit),
+              fee_payment: T.nilable(Increase::Models::Transaction::Source::FeePayment),
+              inbound_ach_transfer: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer),
+              inbound_ach_transfer_return_intention: T.nilable(Increase::Models::Transaction::Source::InboundACHTransferReturnIntention),
+              inbound_check_adjustment: T.nilable(Increase::Models::Transaction::Source::InboundCheckAdjustment),
+              inbound_check_deposit_return_intention: T.nilable(Increase::Models::Transaction::Source::InboundCheckDepositReturnIntention),
+              inbound_real_time_payments_transfer_confirmation: T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferConfirmation),
+              inbound_real_time_payments_transfer_decline: T.nilable(Increase::Models::Transaction::Source::InboundRealTimePaymentsTransferDecline),
+              inbound_wire_reversal: T.nilable(Increase::Models::Transaction::Source::InboundWireReversal),
+              inbound_wire_transfer: T.nilable(Increase::Models::Transaction::Source::InboundWireTransfer),
+              inbound_wire_transfer_reversal: T.nilable(Increase::Models::Transaction::Source::InboundWireTransferReversal),
+              interest_payment: T.nilable(Increase::Models::Transaction::Source::InterestPayment),
+              internal_source: T.nilable(Increase::Models::Transaction::Source::InternalSource),
+              other: T.nilable(T.anything),
+              real_time_payments_transfer_acknowledgement: T.nilable(Increase::Models::Transaction::Source::RealTimePaymentsTransferAcknowledgement),
+              sample_funds: T.nilable(Increase::Models::Transaction::Source::SampleFunds),
+              wire_transfer_intention: T.nilable(Increase::Models::Transaction::Source::WireTransferIntention)
+            )
             .returns(T.attached_class)
         end
         def self.new(
@@ -653,13 +653,13 @@ module Increase
 
           sig do
             params(
-              amount: Integer,
-              currency: Symbol,
-              description: String,
-              destination_account_id: String,
-              source_account_id: String,
-              transfer_id: String
-            )
+                amount: Integer,
+                currency: Symbol,
+                description: String,
+                destination_account_id: String,
+                source_account_id: String,
+                transfer_id: String
+              )
               .returns(T.attached_class)
           end
           def self.new(amount:, currency:, description:, destination_account_id:, source_account_id:, transfer_id:)
@@ -753,12 +753,12 @@ module Increase
 
           sig do
             params(
-              account_number: String,
-              amount: Integer,
-              routing_number: String,
-              statement_descriptor: String,
-              transfer_id: String
-            )
+                account_number: String,
+                amount: Integer,
+                routing_number: String,
+                statement_descriptor: String,
+                transfer_id: String
+              )
               .returns(T.attached_class)
           end
           def self.new(account_number:, amount:, routing_number:, statement_descriptor:, transfer_id:)
@@ -767,13 +767,7 @@ module Increase
           sig do
             override
               .returns(
-                {
-                  account_number: String,
-                  amount: Integer,
-                  routing_number: String,
-                  statement_descriptor: String,
-                  transfer_id: String
-                }
+                {account_number: String, amount: Integer, routing_number: String, statement_descriptor: String, transfer_id: String}
               )
           end
           def to_hash
@@ -849,13 +843,13 @@ module Increase
 
           sig do
             params(
-              created_at: Time,
-              raw_return_reason_code: String,
-              return_reason_code: Symbol,
-              trace_number: String,
-              transaction_id: String,
-              transfer_id: String
-            )
+                created_at: Time,
+                raw_return_reason_code: String,
+                return_reason_code: Symbol,
+                trace_number: String,
+                transaction_id: String,
+                transfer_id: String
+              )
               .returns(T.attached_class)
           end
           def self.new(created_at:, raw_return_reason_code:, return_reason_code:, trace_number:, transaction_id:, transfer_id:)
@@ -1123,13 +1117,7 @@ module Increase
           def transaction_id=(_)
           end
 
-          sig do
-            params(
-              accepted_at: Time,
-              card_dispute_id: String,
-              transaction_id: String
-            ).returns(T.attached_class)
-          end
+          sig { params(accepted_at: Time, card_dispute_id: String, transaction_id: String).returns(T.attached_class) }
           def self.new(accepted_at:, card_dispute_id:, transaction_id:)
           end
 
@@ -1178,16 +1166,7 @@ module Increase
           def self.new(card_dispute_id:, explanation:, lost_at:, transaction_id:)
           end
 
-          sig do
-            override.returns(
-              {
-                card_dispute_id: String,
-                explanation: String,
-                lost_at: Time,
-                transaction_id: String
-              }
-            )
-          end
+          sig { override.returns({card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String}) }
           def to_hash
           end
         end
@@ -1359,26 +1338,26 @@ module Increase
 
           sig do
             params(
-              id: String,
-              amount: Integer,
-              card_payment_id: String,
-              cashback: T.nilable(Increase::Models::Transaction::Source::CardRefund::Cashback),
-              currency: Symbol,
-              interchange: T.nilable(Increase::Models::Transaction::Source::CardRefund::Interchange),
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String,
-              merchant_country: String,
-              merchant_name: String,
-              merchant_postal_code: T.nilable(String),
-              merchant_state: T.nilable(String),
-              network_identifiers: Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers,
-              presentment_amount: Integer,
-              presentment_currency: String,
-              purchase_details: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails),
-              transaction_id: String,
-              type: Symbol
-            )
+                id: String,
+                amount: Integer,
+                card_payment_id: String,
+                cashback: T.nilable(Increase::Models::Transaction::Source::CardRefund::Cashback),
+                currency: Symbol,
+                interchange: T.nilable(Increase::Models::Transaction::Source::CardRefund::Interchange),
+                merchant_acceptor_id: String,
+                merchant_category_code: String,
+                merchant_city: String,
+                merchant_country: String,
+                merchant_name: String,
+                merchant_postal_code: T.nilable(String),
+                merchant_state: T.nilable(String),
+                network_identifiers: Increase::Models::Transaction::Source::CardRefund::NetworkIdentifiers,
+                presentment_amount: Integer,
+                presentment_currency: String,
+                purchase_details: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails),
+                transaction_id: String,
+                type: Symbol
+              )
               .returns(T.attached_class)
           end
           def self.new(
@@ -1540,9 +1519,7 @@ module Increase
             def currency=(_)
             end
 
-            sig do
-              params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
-            end
+            sig { params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class) }
             def self.new(amount:, code:, currency:)
             end
 
@@ -1605,11 +1582,7 @@ module Increase
             end
 
             sig do
-              params(
-                acquirer_business_id: String,
-                acquirer_reference_number: String,
-                transaction_id: T.nilable(String)
-              )
+              params(acquirer_business_id: String, acquirer_reference_number: String, transaction_id: T.nilable(String))
                 .returns(T.attached_class)
             end
             def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
@@ -1618,11 +1591,7 @@ module Increase
             sig do
               override
                 .returns(
-                  {
-                    acquirer_business_id: String,
-                    acquirer_reference_number: String,
-                    transaction_id: T.nilable(String)
-                  }
+                  {acquirer_business_id: String, acquirer_reference_number: String, transaction_id: T.nilable(String)}
                 )
             end
             def to_hash
@@ -1721,17 +1690,17 @@ module Increase
 
             sig do
               params(
-                car_rental: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental),
-                customer_reference_identifier: T.nilable(String),
-                local_tax_amount: T.nilable(Integer),
-                local_tax_currency: T.nilable(String),
-                lodging: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging),
-                national_tax_amount: T.nilable(Integer),
-                national_tax_currency: T.nilable(String),
-                purchase_identifier: T.nilable(String),
-                purchase_identifier_format: T.nilable(Symbol),
-                travel: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel)
-              )
+                  car_rental: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::CarRental),
+                  customer_reference_identifier: T.nilable(String),
+                  local_tax_amount: T.nilable(Integer),
+                  local_tax_currency: T.nilable(String),
+                  lodging: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Lodging),
+                  national_tax_amount: T.nilable(Integer),
+                  national_tax_currency: T.nilable(String),
+                  purchase_identifier: T.nilable(String),
+                  purchase_identifier_format: T.nilable(Symbol),
+                  travel: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel)
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -1899,23 +1868,23 @@ module Increase
 
               sig do
                 params(
-                  car_class_code: T.nilable(String),
-                  checkout_date: T.nilable(Date),
-                  daily_rental_rate_amount: T.nilable(Integer),
-                  daily_rental_rate_currency: T.nilable(String),
-                  days_rented: T.nilable(Integer),
-                  extra_charges: T.nilable(Symbol),
-                  fuel_charges_amount: T.nilable(Integer),
-                  fuel_charges_currency: T.nilable(String),
-                  insurance_charges_amount: T.nilable(Integer),
-                  insurance_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(Symbol),
-                  one_way_drop_off_charges_amount: T.nilable(Integer),
-                  one_way_drop_off_charges_currency: T.nilable(String),
-                  renter_name: T.nilable(String),
-                  weekly_rental_rate_amount: T.nilable(Integer),
-                  weekly_rental_rate_currency: T.nilable(String)
-                )
+                    car_class_code: T.nilable(String),
+                    checkout_date: T.nilable(Date),
+                    daily_rental_rate_amount: T.nilable(Integer),
+                    daily_rental_rate_currency: T.nilable(String),
+                    days_rented: T.nilable(Integer),
+                    extra_charges: T.nilable(Symbol),
+                    fuel_charges_amount: T.nilable(Integer),
+                    fuel_charges_currency: T.nilable(String),
+                    insurance_charges_amount: T.nilable(Integer),
+                    insurance_charges_currency: T.nilable(String),
+                    no_show_indicator: T.nilable(Symbol),
+                    one_way_drop_off_charges_amount: T.nilable(Integer),
+                    one_way_drop_off_charges_currency: T.nilable(String),
+                    renter_name: T.nilable(String),
+                    weekly_rental_rate_amount: T.nilable(Integer),
+                    weekly_rental_rate_currency: T.nilable(String)
+                  )
                   .returns(T.attached_class)
               end
               def self.new(
@@ -2140,23 +2109,23 @@ module Increase
 
               sig do
                 params(
-                  check_in_date: T.nilable(Date),
-                  daily_room_rate_amount: T.nilable(Integer),
-                  daily_room_rate_currency: T.nilable(String),
-                  extra_charges: T.nilable(Symbol),
-                  folio_cash_advances_amount: T.nilable(Integer),
-                  folio_cash_advances_currency: T.nilable(String),
-                  food_beverage_charges_amount: T.nilable(Integer),
-                  food_beverage_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(Symbol),
-                  prepaid_expenses_amount: T.nilable(Integer),
-                  prepaid_expenses_currency: T.nilable(String),
-                  room_nights: T.nilable(Integer),
-                  total_room_tax_amount: T.nilable(Integer),
-                  total_room_tax_currency: T.nilable(String),
-                  total_tax_amount: T.nilable(Integer),
-                  total_tax_currency: T.nilable(String)
-                )
+                    check_in_date: T.nilable(Date),
+                    daily_room_rate_amount: T.nilable(Integer),
+                    daily_room_rate_currency: T.nilable(String),
+                    extra_charges: T.nilable(Symbol),
+                    folio_cash_advances_amount: T.nilable(Integer),
+                    folio_cash_advances_currency: T.nilable(String),
+                    food_beverage_charges_amount: T.nilable(Integer),
+                    food_beverage_charges_currency: T.nilable(String),
+                    no_show_indicator: T.nilable(Symbol),
+                    prepaid_expenses_amount: T.nilable(Integer),
+                    prepaid_expenses_currency: T.nilable(String),
+                    room_nights: T.nilable(Integer),
+                    total_room_tax_amount: T.nilable(Integer),
+                    total_room_tax_currency: T.nilable(String),
+                    total_tax_amount: T.nilable(Integer),
+                    total_tax_currency: T.nilable(String)
+                  )
                   .returns(T.attached_class)
               end
               def self.new(
@@ -2285,8 +2254,8 @@ module Increase
 
               sig do
                 params(
-                  _: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary)
-                )
+                    _: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary)
+                  )
                   .returns(T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary))
               end
               def ancillary=(_)
@@ -2374,16 +2343,16 @@ module Increase
 
               sig do
                 returns(
-                  T.nilable(T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg])
-                )
+                    T.nilable(T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg])
+                  )
               end
               def trip_legs
               end
 
               sig do
                 params(
-                  _: T.nilable(T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg])
-                )
+                    _: T.nilable(T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg])
+                  )
                   .returns(
                     T.nilable(T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg])
                   )
@@ -2393,19 +2362,19 @@ module Increase
 
               sig do
                 params(
-                  ancillary: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary),
-                  computerized_reservation_system: T.nilable(String),
-                  credit_reason_indicator: T.nilable(Symbol),
-                  departure_date: T.nilable(Date),
-                  origination_city_airport_code: T.nilable(String),
-                  passenger_name: T.nilable(String),
-                  restricted_ticket_indicator: T.nilable(Symbol),
-                  ticket_change_indicator: T.nilable(Symbol),
-                  ticket_number: T.nilable(String),
-                  travel_agency_code: T.nilable(String),
-                  travel_agency_name: T.nilable(String),
-                  trip_legs: T.nilable(T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg])
-                )
+                    ancillary: T.nilable(Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary),
+                    computerized_reservation_system: T.nilable(String),
+                    credit_reason_indicator: T.nilable(Symbol),
+                    departure_date: T.nilable(Date),
+                    origination_city_airport_code: T.nilable(String),
+                    passenger_name: T.nilable(String),
+                    restricted_ticket_indicator: T.nilable(Symbol),
+                    ticket_change_indicator: T.nilable(Symbol),
+                    ticket_number: T.nilable(String),
+                    travel_agency_code: T.nilable(String),
+                    travel_agency_name: T.nilable(String),
+                    trip_legs: T.nilable(T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::TripLeg])
+                  )
                   .returns(T.attached_class)
               end
               def self.new(
@@ -2473,16 +2442,16 @@ module Increase
 
                 sig do
                   returns(
-                    T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
-                  )
+                      T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
+                    )
                 end
                 def services
                 end
 
                 sig do
                   params(
-                    _: T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
-                  )
+                      _: T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
+                    )
                     .returns(
                       T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
                     )
@@ -2500,12 +2469,12 @@ module Increase
 
                 sig do
                   params(
-                    connected_ticket_document_number: T.nilable(String),
-                    credit_reason_indicator: T.nilable(Symbol),
-                    passenger_name_or_description: T.nilable(String),
-                    services: T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
-                    ticket_document_number: T.nilable(String)
-                  )
+                      connected_ticket_document_number: T.nilable(String),
+                      credit_reason_indicator: T.nilable(Symbol),
+                      passenger_name_or_description: T.nilable(String),
+                      services: T::Array[Increase::Models::Transaction::Source::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
+                      ticket_document_number: T.nilable(String)
+                    )
                     .returns(T.attached_class)
                 end
                 def self.new(
@@ -2539,14 +2508,10 @@ module Increase
                   NO_CREDIT = T.let(:no_credit, T.nilable(Symbol))
 
                   # Passenger transport ancillary purchase cancellation
-                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                    :passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                  )
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
-                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                  )
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                   # Other
                   OTHER = T.let(:other, T.nilable(Symbol))
@@ -2575,12 +2540,7 @@ module Increase
                   def sub_category=(_)
                   end
 
-                  sig do
-                    params(
-                      category: T.nilable(Symbol),
-                      sub_category: T.nilable(String)
-                    ).returns(T.attached_class)
-                  end
+                  sig { params(category: T.nilable(Symbol), sub_category: T.nilable(String)).returns(T.attached_class) }
                   def self.new(category:, sub_category:)
                   end
 
@@ -2679,14 +2639,10 @@ module Increase
                 NO_CREDIT = T.let(:no_credit, T.nilable(Symbol))
 
                 # Passenger transport ancillary purchase cancellation
-                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                  :passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                )
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
-                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                )
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                 # Airline ticket cancellation
                 AIRLINE_TICKET_CANCELLATION = T.let(:airline_ticket_cancellation, T.nilable(Symbol))
@@ -2790,13 +2746,13 @@ module Increase
 
                 sig do
                   params(
-                    carrier_code: T.nilable(String),
-                    destination_city_airport_code: T.nilable(String),
-                    fare_basis_code: T.nilable(String),
-                    flight_number: T.nilable(String),
-                    service_class: T.nilable(String),
-                    stop_over_code: T.nilable(Symbol)
-                  )
+                      carrier_code: T.nilable(String),
+                      destination_city_airport_code: T.nilable(String),
+                      fare_basis_code: T.nilable(String),
+                      flight_number: T.nilable(String),
+                      service_class: T.nilable(String),
+                      stop_over_code: T.nilable(Symbol)
+                    )
                     .returns(T.attached_class)
                 end
                 def self.new(
@@ -2903,12 +2859,12 @@ module Increase
 
           sig do
             params(
-              amount: Integer,
-              currency: Symbol,
-              period_end: Time,
-              period_start: Time,
-              transacted_on_account_id: T.nilable(String)
-            )
+                amount: Integer,
+                currency: Symbol,
+                period_end: Time,
+                period_start: Time,
+                transacted_on_account_id: T.nilable(String)
+              )
               .returns(T.attached_class)
           end
           def self.new(amount:, currency:, period_end:, period_start:, transacted_on_account_id:)
@@ -3141,28 +3097,28 @@ module Increase
 
           sig do
             params(
-              id: String,
-              amount: Integer,
-              card_authorization: T.nilable(String),
-              card_payment_id: String,
-              cashback: T.nilable(Increase::Models::Transaction::Source::CardSettlement::Cashback),
-              currency: Symbol,
-              interchange: T.nilable(Increase::Models::Transaction::Source::CardSettlement::Interchange),
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String,
-              merchant_country: String,
-              merchant_name: String,
-              merchant_postal_code: T.nilable(String),
-              merchant_state: T.nilable(String),
-              network_identifiers: Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers,
-              pending_transaction_id: T.nilable(String),
-              presentment_amount: Integer,
-              presentment_currency: String,
-              purchase_details: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails),
-              transaction_id: String,
-              type: Symbol
-            )
+                id: String,
+                amount: Integer,
+                card_authorization: T.nilable(String),
+                card_payment_id: String,
+                cashback: T.nilable(Increase::Models::Transaction::Source::CardSettlement::Cashback),
+                currency: Symbol,
+                interchange: T.nilable(Increase::Models::Transaction::Source::CardSettlement::Interchange),
+                merchant_acceptor_id: String,
+                merchant_category_code: String,
+                merchant_city: String,
+                merchant_country: String,
+                merchant_name: String,
+                merchant_postal_code: T.nilable(String),
+                merchant_state: T.nilable(String),
+                network_identifiers: Increase::Models::Transaction::Source::CardSettlement::NetworkIdentifiers,
+                pending_transaction_id: T.nilable(String),
+                presentment_amount: Integer,
+                presentment_currency: String,
+                purchase_details: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails),
+                transaction_id: String,
+                type: Symbol
+              )
               .returns(T.attached_class)
           end
           def self.new(
@@ -3328,9 +3284,7 @@ module Increase
             def currency=(_)
             end
 
-            sig do
-              params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
-            end
+            sig { params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class) }
             def self.new(amount:, code:, currency:)
             end
 
@@ -3393,11 +3347,7 @@ module Increase
             end
 
             sig do
-              params(
-                acquirer_business_id: String,
-                acquirer_reference_number: String,
-                transaction_id: T.nilable(String)
-              )
+              params(acquirer_business_id: String, acquirer_reference_number: String, transaction_id: T.nilable(String))
                 .returns(T.attached_class)
             end
             def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
@@ -3406,11 +3356,7 @@ module Increase
             sig do
               override
                 .returns(
-                  {
-                    acquirer_business_id: String,
-                    acquirer_reference_number: String,
-                    transaction_id: T.nilable(String)
-                  }
+                  {acquirer_business_id: String, acquirer_reference_number: String, transaction_id: T.nilable(String)}
                 )
             end
             def to_hash
@@ -3509,17 +3455,17 @@ module Increase
 
             sig do
               params(
-                car_rental: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental),
-                customer_reference_identifier: T.nilable(String),
-                local_tax_amount: T.nilable(Integer),
-                local_tax_currency: T.nilable(String),
-                lodging: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging),
-                national_tax_amount: T.nilable(Integer),
-                national_tax_currency: T.nilable(String),
-                purchase_identifier: T.nilable(String),
-                purchase_identifier_format: T.nilable(Symbol),
-                travel: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel)
-              )
+                  car_rental: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::CarRental),
+                  customer_reference_identifier: T.nilable(String),
+                  local_tax_amount: T.nilable(Integer),
+                  local_tax_currency: T.nilable(String),
+                  lodging: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Lodging),
+                  national_tax_amount: T.nilable(Integer),
+                  national_tax_currency: T.nilable(String),
+                  purchase_identifier: T.nilable(String),
+                  purchase_identifier_format: T.nilable(Symbol),
+                  travel: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel)
+                )
                 .returns(T.attached_class)
             end
             def self.new(
@@ -3687,23 +3633,23 @@ module Increase
 
               sig do
                 params(
-                  car_class_code: T.nilable(String),
-                  checkout_date: T.nilable(Date),
-                  daily_rental_rate_amount: T.nilable(Integer),
-                  daily_rental_rate_currency: T.nilable(String),
-                  days_rented: T.nilable(Integer),
-                  extra_charges: T.nilable(Symbol),
-                  fuel_charges_amount: T.nilable(Integer),
-                  fuel_charges_currency: T.nilable(String),
-                  insurance_charges_amount: T.nilable(Integer),
-                  insurance_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(Symbol),
-                  one_way_drop_off_charges_amount: T.nilable(Integer),
-                  one_way_drop_off_charges_currency: T.nilable(String),
-                  renter_name: T.nilable(String),
-                  weekly_rental_rate_amount: T.nilable(Integer),
-                  weekly_rental_rate_currency: T.nilable(String)
-                )
+                    car_class_code: T.nilable(String),
+                    checkout_date: T.nilable(Date),
+                    daily_rental_rate_amount: T.nilable(Integer),
+                    daily_rental_rate_currency: T.nilable(String),
+                    days_rented: T.nilable(Integer),
+                    extra_charges: T.nilable(Symbol),
+                    fuel_charges_amount: T.nilable(Integer),
+                    fuel_charges_currency: T.nilable(String),
+                    insurance_charges_amount: T.nilable(Integer),
+                    insurance_charges_currency: T.nilable(String),
+                    no_show_indicator: T.nilable(Symbol),
+                    one_way_drop_off_charges_amount: T.nilable(Integer),
+                    one_way_drop_off_charges_currency: T.nilable(String),
+                    renter_name: T.nilable(String),
+                    weekly_rental_rate_amount: T.nilable(Integer),
+                    weekly_rental_rate_currency: T.nilable(String)
+                  )
                   .returns(T.attached_class)
               end
               def self.new(
@@ -3928,23 +3874,23 @@ module Increase
 
               sig do
                 params(
-                  check_in_date: T.nilable(Date),
-                  daily_room_rate_amount: T.nilable(Integer),
-                  daily_room_rate_currency: T.nilable(String),
-                  extra_charges: T.nilable(Symbol),
-                  folio_cash_advances_amount: T.nilable(Integer),
-                  folio_cash_advances_currency: T.nilable(String),
-                  food_beverage_charges_amount: T.nilable(Integer),
-                  food_beverage_charges_currency: T.nilable(String),
-                  no_show_indicator: T.nilable(Symbol),
-                  prepaid_expenses_amount: T.nilable(Integer),
-                  prepaid_expenses_currency: T.nilable(String),
-                  room_nights: T.nilable(Integer),
-                  total_room_tax_amount: T.nilable(Integer),
-                  total_room_tax_currency: T.nilable(String),
-                  total_tax_amount: T.nilable(Integer),
-                  total_tax_currency: T.nilable(String)
-                )
+                    check_in_date: T.nilable(Date),
+                    daily_room_rate_amount: T.nilable(Integer),
+                    daily_room_rate_currency: T.nilable(String),
+                    extra_charges: T.nilable(Symbol),
+                    folio_cash_advances_amount: T.nilable(Integer),
+                    folio_cash_advances_currency: T.nilable(String),
+                    food_beverage_charges_amount: T.nilable(Integer),
+                    food_beverage_charges_currency: T.nilable(String),
+                    no_show_indicator: T.nilable(Symbol),
+                    prepaid_expenses_amount: T.nilable(Integer),
+                    prepaid_expenses_currency: T.nilable(String),
+                    room_nights: T.nilable(Integer),
+                    total_room_tax_amount: T.nilable(Integer),
+                    total_room_tax_currency: T.nilable(String),
+                    total_tax_amount: T.nilable(Integer),
+                    total_tax_currency: T.nilable(String)
+                  )
                   .returns(T.attached_class)
               end
               def self.new(
@@ -4069,16 +4015,16 @@ module Increase
             class Travel < Increase::BaseModel
               sig do
                 returns(
-                  T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary)
-                )
+                    T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary)
+                  )
               end
               def ancillary
               end
 
               sig do
                 params(
-                  _: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary)
-                )
+                    _: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary)
+                  )
                   .returns(
                     T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary)
                   )
@@ -4168,20 +4114,20 @@ module Increase
 
               sig do
                 returns(
-                  T.nilable(
-                    T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    T.nilable(
+                      T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    )
                   )
-                )
               end
               def trip_legs
               end
 
               sig do
                 params(
-                  _: T.nilable(
-                    T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    _: T.nilable(
+                      T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    )
                   )
-                )
                   .returns(
                     T.nilable(
                       T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]
@@ -4193,21 +4139,21 @@ module Increase
 
               sig do
                 params(
-                  ancillary: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary),
-                  computerized_reservation_system: T.nilable(String),
-                  credit_reason_indicator: T.nilable(Symbol),
-                  departure_date: T.nilable(Date),
-                  origination_city_airport_code: T.nilable(String),
-                  passenger_name: T.nilable(String),
-                  restricted_ticket_indicator: T.nilable(Symbol),
-                  ticket_change_indicator: T.nilable(Symbol),
-                  ticket_number: T.nilable(String),
-                  travel_agency_code: T.nilable(String),
-                  travel_agency_name: T.nilable(String),
-                  trip_legs: T.nilable(
-                    T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    ancillary: T.nilable(Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary),
+                    computerized_reservation_system: T.nilable(String),
+                    credit_reason_indicator: T.nilable(Symbol),
+                    departure_date: T.nilable(Date),
+                    origination_city_airport_code: T.nilable(String),
+                    passenger_name: T.nilable(String),
+                    restricted_ticket_indicator: T.nilable(Symbol),
+                    ticket_change_indicator: T.nilable(Symbol),
+                    ticket_number: T.nilable(String),
+                    travel_agency_code: T.nilable(String),
+                    travel_agency_name: T.nilable(String),
+                    trip_legs: T.nilable(
+                      T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::TripLeg]
+                    )
                   )
-                )
                   .returns(T.attached_class)
               end
               def self.new(
@@ -4277,16 +4223,16 @@ module Increase
 
                 sig do
                   returns(
-                    T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
-                  )
+                      T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
+                    )
                 end
                 def services
                 end
 
                 sig do
                   params(
-                    _: T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
-                  )
+                      _: T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
+                    )
                     .returns(
                       T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
                     )
@@ -4304,12 +4250,12 @@ module Increase
 
                 sig do
                   params(
-                    connected_ticket_document_number: T.nilable(String),
-                    credit_reason_indicator: T.nilable(Symbol),
-                    passenger_name_or_description: T.nilable(String),
-                    services: T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
-                    ticket_document_number: T.nilable(String)
-                  )
+                      connected_ticket_document_number: T.nilable(String),
+                      credit_reason_indicator: T.nilable(Symbol),
+                      passenger_name_or_description: T.nilable(String),
+                      services: T::Array[Increase::Models::Transaction::Source::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
+                      ticket_document_number: T.nilable(String)
+                    )
                     .returns(T.attached_class)
                 end
                 def self.new(
@@ -4343,14 +4289,10 @@ module Increase
                   NO_CREDIT = T.let(:no_credit, T.nilable(Symbol))
 
                   # Passenger transport ancillary purchase cancellation
-                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                    :passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                  )
+                  PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                   # Airline ticket and passenger transport ancillary purchase cancellation
-                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                    :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                  )
+                  AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                   # Other
                   OTHER = T.let(:other, T.nilable(Symbol))
@@ -4379,12 +4321,7 @@ module Increase
                   def sub_category=(_)
                   end
 
-                  sig do
-                    params(
-                      category: T.nilable(Symbol),
-                      sub_category: T.nilable(String)
-                    ).returns(T.attached_class)
-                  end
+                  sig { params(category: T.nilable(Symbol), sub_category: T.nilable(String)).returns(T.attached_class) }
                   def self.new(category:, sub_category:)
                   end
 
@@ -4483,14 +4420,10 @@ module Increase
                 NO_CREDIT = T.let(:no_credit, T.nilable(Symbol))
 
                 # Passenger transport ancillary purchase cancellation
-                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                  :passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                )
+                PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                 # Airline ticket and passenger transport ancillary purchase cancellation
-                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(
-                  :airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol)
-                )
+                AIRLINE_TICKET_AND_PASSENGER_TRANSPORT_ANCILLARY_PURCHASE_CANCELLATION = T.let(:airline_ticket_and_passenger_transport_ancillary_purchase_cancellation, T.nilable(Symbol))
 
                 # Airline ticket cancellation
                 AIRLINE_TICKET_CANCELLATION = T.let(:airline_ticket_cancellation, T.nilable(Symbol))
@@ -4594,13 +4527,13 @@ module Increase
 
                 sig do
                   params(
-                    carrier_code: T.nilable(String),
-                    destination_city_airport_code: T.nilable(String),
-                    fare_basis_code: T.nilable(String),
-                    flight_number: T.nilable(String),
-                    service_class: T.nilable(String),
-                    stop_over_code: T.nilable(Symbol)
-                  )
+                      carrier_code: T.nilable(String),
+                      destination_city_airport_code: T.nilable(String),
+                      fare_basis_code: T.nilable(String),
+                      flight_number: T.nilable(String),
+                      service_class: T.nilable(String),
+                      stop_over_code: T.nilable(Symbol)
+                    )
                     .returns(T.attached_class)
                 end
                 def self.new(
@@ -4707,12 +4640,12 @@ module Increase
 
           sig do
             params(
-              accrued_on_card_id: T.nilable(String),
-              amount: Integer,
-              currency: Symbol,
-              period_end: Time,
-              period_start: Time
-            )
+                accrued_on_card_id: T.nilable(String),
+                amount: Integer,
+                currency: Symbol,
+                period_end: Time,
+                period_start: Time
+              )
               .returns(T.attached_class)
           end
           def self.new(accrued_on_card_id:, amount:, currency:, period_end:, period_start:)
@@ -4721,13 +4654,7 @@ module Increase
           sig do
             override
               .returns(
-                {
-                  accrued_on_card_id: T.nilable(String),
-                  amount: Integer,
-                  currency: Symbol,
-                  period_end: Time,
-                  period_start: Time
-                }
+                {accrued_on_card_id: T.nilable(String), amount: Integer, currency: Symbol, period_end: Time, period_start: Time}
               )
           end
           def to_hash
@@ -4918,14 +4845,14 @@ module Increase
 
           sig do
             params(
-              account_number: String,
-              amount: Integer,
-              auxiliary_on_us: T.nilable(String),
-              check_deposit_id: String,
-              currency: Symbol,
-              routing_number: String,
-              serial_number: T.nilable(String)
-            )
+                account_number: String,
+                amount: Integer,
+                auxiliary_on_us: T.nilable(String),
+                check_deposit_id: String,
+                currency: Symbol,
+                routing_number: String,
+                serial_number: T.nilable(String)
+              )
               .returns(T.attached_class)
           end
           def self.new(account_number:, amount:, auxiliary_on_us:, check_deposit_id:, currency:, routing_number:, serial_number:)
@@ -5028,13 +4955,13 @@ module Increase
 
           sig do
             params(
-              amount: Integer,
-              check_deposit_id: String,
-              currency: Symbol,
-              return_reason: Symbol,
-              returned_at: Time,
-              transaction_id: String
-            )
+                amount: Integer,
+                check_deposit_id: String,
+                currency: Symbol,
+                return_reason: Symbol,
+                returned_at: Time,
+                transaction_id: String
+              )
               .returns(T.attached_class)
           end
           def self.new(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:)
@@ -5240,15 +5167,15 @@ module Increase
 
           sig do
             params(
-              back_image_file_id: T.nilable(String),
-              bank_of_first_deposit_routing_number: T.nilable(String),
-              deposited_at: Time,
-              front_image_file_id: T.nilable(String),
-              inbound_check_deposit_id: T.nilable(String),
-              transaction_id: T.nilable(String),
-              transfer_id: T.nilable(String),
-              type: Symbol
-            )
+                back_image_file_id: T.nilable(String),
+                bank_of_first_deposit_routing_number: T.nilable(String),
+                deposited_at: Time,
+                front_image_file_id: T.nilable(String),
+                inbound_check_deposit_id: T.nilable(String),
+                transaction_id: T.nilable(String),
+                transfer_id: T.nilable(String),
+                type: Symbol
+              )
               .returns(T.attached_class)
           end
           def self.new(
@@ -5336,12 +5263,7 @@ module Increase
 
           sig do
             override
-              .returns({
-                         amount: Integer,
-                         currency: Symbol,
-                         fee_period_start: Date,
-                         program_id: T.nilable(String)
-                       })
+              .returns({amount: Integer, currency: Symbol, fee_period_start: Date, program_id: T.nilable(String)})
           end
           def to_hash
           end
@@ -5469,18 +5391,18 @@ module Increase
 
           sig do
             params(
-              addenda: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda),
-              amount: Integer,
-              originator_company_descriptive_date: T.nilable(String),
-              originator_company_discretionary_data: T.nilable(String),
-              originator_company_entry_description: String,
-              originator_company_id: String,
-              originator_company_name: String,
-              receiver_id_number: T.nilable(String),
-              receiver_name: T.nilable(String),
-              trace_number: String,
-              transfer_id: String
-            )
+                addenda: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda),
+                amount: Integer,
+                originator_company_descriptive_date: T.nilable(String),
+                originator_company_discretionary_data: T.nilable(String),
+                originator_company_entry_description: String,
+                originator_company_id: String,
+                originator_company_name: String,
+                receiver_id_number: T.nilable(String),
+                receiver_name: T.nilable(String),
+                trace_number: String,
+                transfer_id: String
+              )
               .returns(T.attached_class)
           end
           def self.new(
@@ -5541,9 +5463,9 @@ module Increase
 
             sig do
               params(
-                category: Symbol,
-                freeform: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform)
-              )
+                  category: Symbol,
+                  freeform: T.nilable(Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform)
+                )
                 .returns(T.attached_class)
             end
             def self.new(category:, freeform:)
@@ -5588,8 +5510,8 @@ module Increase
 
               sig do
                 params(
-                  entries: T::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
-                )
+                    entries: T::Array[Increase::Models::Transaction::Source::InboundACHTransfer::Addenda::Freeform::Entry]
+                  )
                   .returns(T.attached_class)
               end
               def self.new(entries:)
@@ -5668,9 +5590,7 @@ module Increase
           def reason=(_)
           end
 
-          sig do
-            params(adjusted_transaction_id: String, amount: Integer, reason: Symbol).returns(T.attached_class)
-          end
+          sig { params(adjusted_transaction_id: String, amount: Integer, reason: Symbol).returns(T.attached_class) }
           def self.new(adjusted_transaction_id:, amount:, reason:)
           end
 
@@ -5718,9 +5638,7 @@ module Increase
           def transfer_id=(_)
           end
 
-          sig do
-            params(inbound_check_deposit_id: String, transfer_id: T.nilable(String)).returns(T.attached_class)
-          end
+          sig { params(inbound_check_deposit_id: String, transfer_id: T.nilable(String)).returns(T.attached_class) }
           def self.new(inbound_check_deposit_id:, transfer_id:)
           end
 
@@ -5804,16 +5722,16 @@ module Increase
 
           sig do
             params(
-              amount: Integer,
-              creditor_name: String,
-              currency: Symbol,
-              debtor_account_number: String,
-              debtor_name: String,
-              debtor_routing_number: String,
-              remittance_information: T.nilable(String),
-              transaction_identification: String,
-              transfer_id: String
-            )
+                amount: Integer,
+                creditor_name: String,
+                currency: Symbol,
+                debtor_account_number: String,
+                debtor_name: String,
+                debtor_routing_number: String,
+                remittance_information: T.nilable(String),
+                transaction_identification: String,
+                transfer_id: String
+              )
               .returns(T.attached_class)
           end
           def self.new(
@@ -5960,17 +5878,17 @@ module Increase
 
           sig do
             params(
-              amount: Integer,
-              creditor_name: String,
-              currency: Symbol,
-              debtor_account_number: String,
-              debtor_name: String,
-              debtor_routing_number: String,
-              reason: Symbol,
-              remittance_information: T.nilable(String),
-              transaction_identification: String,
-              transfer_id: String
-            )
+                amount: Integer,
+                creditor_name: String,
+                currency: Symbol,
+                debtor_account_number: String,
+                debtor_name: String,
+                debtor_routing_number: String,
+                reason: Symbol,
+                remittance_information: T.nilable(String),
+                transaction_identification: String,
+                transfer_id: String
+              )
               .returns(T.attached_class)
           end
           def self.new(
@@ -6203,24 +6121,24 @@ module Increase
 
           sig do
             params(
-              amount: Integer,
-              created_at: Time,
-              description: String,
-              financial_institution_to_financial_institution_information: T.nilable(String),
-              input_cycle_date: Date,
-              input_message_accountability_data: String,
-              input_sequence_number: String,
-              input_source: String,
-              originator_routing_number: T.nilable(String),
-              previous_message_input_cycle_date: Date,
-              previous_message_input_message_accountability_data: String,
-              previous_message_input_sequence_number: String,
-              previous_message_input_source: String,
-              receiver_financial_institution_information: T.nilable(String),
-              sender_reference: T.nilable(String),
-              transaction_id: String,
-              wire_transfer_id: String
-            )
+                amount: Integer,
+                created_at: Time,
+                description: String,
+                financial_institution_to_financial_institution_information: T.nilable(String),
+                input_cycle_date: Date,
+                input_message_accountability_data: String,
+                input_sequence_number: String,
+                input_source: String,
+                originator_routing_number: T.nilable(String),
+                previous_message_input_cycle_date: Date,
+                previous_message_input_message_accountability_data: String,
+                previous_message_input_sequence_number: String,
+                previous_message_input_source: String,
+                receiver_financial_institution_information: T.nilable(String),
+                sender_reference: T.nilable(String),
+                transaction_id: String,
+                wire_transfer_id: String
+              )
               .returns(T.attached_class)
           end
           def self.new(
@@ -6427,26 +6345,26 @@ module Increase
 
           sig do
             params(
-              amount: Integer,
-              beneficiary_address_line1: T.nilable(String),
-              beneficiary_address_line2: T.nilable(String),
-              beneficiary_address_line3: T.nilable(String),
-              beneficiary_name: T.nilable(String),
-              beneficiary_reference: T.nilable(String),
-              description: String,
-              input_message_accountability_data: T.nilable(String),
-              originator_address_line1: T.nilable(String),
-              originator_address_line2: T.nilable(String),
-              originator_address_line3: T.nilable(String),
-              originator_name: T.nilable(String),
-              originator_routing_number: T.nilable(String),
-              originator_to_beneficiary_information: T.nilable(String),
-              originator_to_beneficiary_information_line1: T.nilable(String),
-              originator_to_beneficiary_information_line2: T.nilable(String),
-              originator_to_beneficiary_information_line3: T.nilable(String),
-              originator_to_beneficiary_information_line4: T.nilable(String),
-              transfer_id: String
-            )
+                amount: Integer,
+                beneficiary_address_line1: T.nilable(String),
+                beneficiary_address_line2: T.nilable(String),
+                beneficiary_address_line3: T.nilable(String),
+                beneficiary_name: T.nilable(String),
+                beneficiary_reference: T.nilable(String),
+                description: String,
+                input_message_accountability_data: T.nilable(String),
+                originator_address_line1: T.nilable(String),
+                originator_address_line2: T.nilable(String),
+                originator_address_line3: T.nilable(String),
+                originator_name: T.nilable(String),
+                originator_routing_number: T.nilable(String),
+                originator_to_beneficiary_information: T.nilable(String),
+                originator_to_beneficiary_information_line1: T.nilable(String),
+                originator_to_beneficiary_information_line2: T.nilable(String),
+                originator_to_beneficiary_information_line3: T.nilable(String),
+                originator_to_beneficiary_information_line4: T.nilable(String),
+                transfer_id: String
+              )
               .returns(T.attached_class)
           end
           def self.new(
@@ -6563,12 +6481,12 @@ module Increase
 
           sig do
             params(
-              accrued_on_account_id: String,
-              amount: Integer,
-              currency: Symbol,
-              period_end: Time,
-              period_start: Time
-            )
+                accrued_on_account_id: String,
+                amount: Integer,
+                currency: Symbol,
+                period_end: Time,
+                period_start: Time
+              )
               .returns(T.attached_class)
           end
           def self.new(accrued_on_account_id:, amount:, currency:, period_end:, period_start:)
@@ -6577,13 +6495,7 @@ module Increase
           sig do
             override
               .returns(
-                {
-                  accrued_on_account_id: String,
-                  amount: Integer,
-                  currency: Symbol,
-                  period_end: Time,
-                  period_start: Time
-                }
+                {accrued_on_account_id: String, amount: Integer, currency: Symbol, period_end: Time, period_start: Time}
               )
           end
           def to_hash
@@ -6778,12 +6690,12 @@ module Increase
 
           sig do
             params(
-              amount: Integer,
-              destination_account_number: String,
-              destination_routing_number: String,
-              remittance_information: String,
-              transfer_id: String
-            )
+                amount: Integer,
+                destination_account_number: String,
+                destination_routing_number: String,
+                remittance_information: String,
+                transfer_id: String
+              )
               .returns(T.attached_class)
           end
           def self.new(amount:, destination_account_number:, destination_routing_number:, remittance_information:, transfer_id:)
@@ -6866,12 +6778,12 @@ module Increase
 
           sig do
             params(
-              account_number: String,
-              amount: Integer,
-              message_to_recipient: String,
-              routing_number: String,
-              transfer_id: String
-            )
+                account_number: String,
+                amount: Integer,
+                message_to_recipient: String,
+                routing_number: String,
+                transfer_id: String
+              )
               .returns(T.attached_class)
           end
           def self.new(account_number:, amount:, message_to_recipient:, routing_number:, transfer_id:)
@@ -6880,13 +6792,7 @@ module Increase
           sig do
             override
               .returns(
-                {
-                  account_number: String,
-                  amount: Integer,
-                  message_to_recipient: String,
-                  routing_number: String,
-                  transfer_id: String
-                }
+                {account_number: String, amount: Integer, message_to_recipient: String, routing_number: String, transfer_id: String}
               )
           end
           def to_hash

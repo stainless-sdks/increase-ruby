@@ -69,15 +69,15 @@ module Increase
 
       sig do
         params(
-          id: String,
-          created_at: Time,
-          idempotency_key: T.nilable(String),
-          oauth_connection_id: T.nilable(String),
-          selected_event_category: T.nilable(Symbol),
-          status: Symbol,
-          type: Symbol,
-          url: String
-        )
+            id: String,
+            created_at: Time,
+            idempotency_key: T.nilable(String),
+            oauth_connection_id: T.nilable(String),
+            selected_event_category: T.nilable(Symbol),
+            status: Symbol,
+            type: Symbol,
+            url: String
+          )
           .returns(T.attached_class)
       end
       def self.new(id:, created_at:, idempotency_key:, oauth_connection_id:, selected_event_category:, status:, type:, url:)
@@ -258,22 +258,13 @@ module Increase
         INBOUND_MAIL_ITEM_UPDATED = T.let(:"inbound_mail_item.updated", T.nilable(Symbol))
 
         # Occurs whenever an Inbound Real-Time Payments Transfer is created.
-        INBOUND_REAL_TIME_PAYMENTS_TRANSFER_CREATED = T.let(
-          :"inbound_real_time_payments_transfer.created",
-          T.nilable(Symbol)
-        )
+        INBOUND_REAL_TIME_PAYMENTS_TRANSFER_CREATED = T.let(:"inbound_real_time_payments_transfer.created", T.nilable(Symbol))
 
         # Occurs whenever an Inbound Real-Time Payments Transfer is updated.
-        INBOUND_REAL_TIME_PAYMENTS_TRANSFER_UPDATED = T.let(
-          :"inbound_real_time_payments_transfer.updated",
-          T.nilable(Symbol)
-        )
+        INBOUND_REAL_TIME_PAYMENTS_TRANSFER_UPDATED = T.let(:"inbound_real_time_payments_transfer.updated", T.nilable(Symbol))
 
         # Occurs whenever an Inbound Wire Drawdown Request is created.
-        INBOUND_WIRE_DRAWDOWN_REQUEST_CREATED = T.let(
-          :"inbound_wire_drawdown_request.created",
-          T.nilable(Symbol)
-        )
+        INBOUND_WIRE_DRAWDOWN_REQUEST_CREATED = T.let(:"inbound_wire_drawdown_request.created", T.nilable(Symbol))
 
         # Occurs whenever an Inbound Wire Transfer is created.
         INBOUND_WIRE_TRANSFER_CREATED = T.let(:"inbound_wire_transfer.created", T.nilable(Symbol))
@@ -324,51 +315,31 @@ module Increase
         PHYSICAL_CARD_PROFILE_UPDATED = T.let(:"physical_card_profile.updated", T.nilable(Symbol))
 
         # Occurs whenever a Proof of Authorization Request is created.
-        PROOF_OF_AUTHORIZATION_REQUEST_CREATED = T.let(
-          :"proof_of_authorization_request.created",
-          T.nilable(Symbol)
-        )
+        PROOF_OF_AUTHORIZATION_REQUEST_CREATED = T.let(:"proof_of_authorization_request.created", T.nilable(Symbol))
 
         # Occurs whenever a Proof of Authorization Request is updated.
-        PROOF_OF_AUTHORIZATION_REQUEST_UPDATED = T.let(
-          :"proof_of_authorization_request.updated",
-          T.nilable(Symbol)
-        )
+        PROOF_OF_AUTHORIZATION_REQUEST_UPDATED = T.let(:"proof_of_authorization_request.updated", T.nilable(Symbol))
 
         # Occurs whenever a Proof of Authorization Request Submission is created.
-        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION_CREATED = T.let(
-          :"proof_of_authorization_request_submission.created", T.nilable(Symbol)
-        )
+        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION_CREATED = T.let(:"proof_of_authorization_request_submission.created", T.nilable(Symbol))
 
         # Occurs whenever a Proof of Authorization Request Submission is updated.
-        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION_UPDATED = T.let(
-          :"proof_of_authorization_request_submission.updated", T.nilable(Symbol)
-        )
+        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION_UPDATED = T.let(:"proof_of_authorization_request_submission.updated", T.nilable(Symbol))
 
         # Occurs whenever a Real-Time Decision is created in response to a card authorization.
-        REAL_TIME_DECISION_CARD_AUTHORIZATION_REQUESTED = T.let(
-          :"real_time_decision.card_authorization_requested", T.nilable(Symbol)
-        )
+        REAL_TIME_DECISION_CARD_AUTHORIZATION_REQUESTED = T.let(:"real_time_decision.card_authorization_requested", T.nilable(Symbol))
 
         # Occurs whenever a Real-Time Decision is created in response to a digital wallet provisioning attempt.
-        REAL_TIME_DECISION_DIGITAL_WALLET_TOKEN_REQUESTED = T.let(
-          :"real_time_decision.digital_wallet_token_requested", T.nilable(Symbol)
-        )
+        REAL_TIME_DECISION_DIGITAL_WALLET_TOKEN_REQUESTED = T.let(:"real_time_decision.digital_wallet_token_requested", T.nilable(Symbol))
 
         # Occurs whenever a Real-Time Decision is created in response to a digital wallet requiring two-factor authentication.
-        REAL_TIME_DECISION_DIGITAL_WALLET_AUTHENTICATION_REQUESTED = T.let(
-          :"real_time_decision.digital_wallet_authentication_requested", T.nilable(Symbol)
-        )
+        REAL_TIME_DECISION_DIGITAL_WALLET_AUTHENTICATION_REQUESTED = T.let(:"real_time_decision.digital_wallet_authentication_requested", T.nilable(Symbol))
 
         # Occurs whenever a Real-Time Decision is created in response to 3DS authentication.
-        REAL_TIME_DECISION_CARD_AUTHENTICATION_REQUESTED = T.let(
-          :"real_time_decision.card_authentication_requested", T.nilable(Symbol)
-        )
+        REAL_TIME_DECISION_CARD_AUTHENTICATION_REQUESTED = T.let(:"real_time_decision.card_authentication_requested", T.nilable(Symbol))
 
         # Occurs whenever a Real-Time Decision is created in response to 3DS authentication challenges.
-        REAL_TIME_DECISION_CARD_AUTHENTICATION_CHALLENGE_REQUESTED = T.let(
-          :"real_time_decision.card_authentication_challenge_requested", T.nilable(Symbol)
-        )
+        REAL_TIME_DECISION_CARD_AUTHENTICATION_CHALLENGE_REQUESTED = T.let(:"real_time_decision.card_authentication_challenge_requested", T.nilable(Symbol))
 
         # Occurs whenever a Real-Time Payments Transfer is created.
         REAL_TIME_PAYMENTS_TRANSFER_CREATED = T.let(:"real_time_payments_transfer.created", T.nilable(Symbol))
@@ -377,14 +348,10 @@ module Increase
         REAL_TIME_PAYMENTS_TRANSFER_UPDATED = T.let(:"real_time_payments_transfer.updated", T.nilable(Symbol))
 
         # Occurs whenever a Real-Time Payments Request for Payment is created.
-        REAL_TIME_PAYMENTS_REQUEST_FOR_PAYMENT_CREATED = T.let(
-          :"real_time_payments_request_for_payment.created", T.nilable(Symbol)
-        )
+        REAL_TIME_PAYMENTS_REQUEST_FOR_PAYMENT_CREATED = T.let(:"real_time_payments_request_for_payment.created", T.nilable(Symbol))
 
         # Occurs whenever a Real-Time Payments Request for Payment is updated.
-        REAL_TIME_PAYMENTS_REQUEST_FOR_PAYMENT_UPDATED = T.let(
-          :"real_time_payments_request_for_payment.updated", T.nilable(Symbol)
-        )
+        REAL_TIME_PAYMENTS_REQUEST_FOR_PAYMENT_UPDATED = T.let(:"real_time_payments_request_for_payment.updated", T.nilable(Symbol))
 
         # Occurs whenever a Transaction is created.
         TRANSACTION_CREATED = T.let(:"transaction.created", T.nilable(Symbol))

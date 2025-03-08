@@ -64,14 +64,14 @@ module Increase
 
       sig do
         params(
-          id: String,
-          card_id: String,
-          created_at: Time,
-          status: Symbol,
-          token_requestor: Symbol,
-          type: Symbol,
-          updates: T::Array[Increase::Models::DigitalWalletToken::Update]
-        )
+            id: String,
+            card_id: String,
+            created_at: Time,
+            status: Symbol,
+            token_requestor: Symbol,
+            type: Symbol,
+            updates: T::Array[Increase::Models::DigitalWalletToken::Update]
+          )
           .returns(T.attached_class)
       end
       def self.new(id:, card_id:, created_at:, status:, token_requestor:, type:, updates:)

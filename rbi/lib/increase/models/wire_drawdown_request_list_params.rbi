@@ -43,12 +43,12 @@ module Increase
 
       sig do
         params(
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::WireDrawdownRequestListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            status: Increase::Models::WireDrawdownRequestListParams::Status,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})

@@ -1,18 +1,17 @@
 module Increase
   module Models
-    type declined_transaction =
-      {
-        id: String,
-        account_id: String,
-        amount: Integer,
-        created_at: Time,
-        currency: Increase::Models::DeclinedTransaction::currency,
-        description: String,
-        route_id: String?,
-        route_type: Increase::Models::DeclinedTransaction::route_type?,
-        source: Increase::Models::DeclinedTransaction::Source,
-        type: Increase::Models::DeclinedTransaction::type_
-      }
+    type declined_transaction = {
+      id: String,
+      account_id: String,
+      amount: Integer,
+      created_at: Time,
+      currency: Increase::Models::DeclinedTransaction::currency,
+      description: String,
+      route_id: String?,
+      route_type: Increase::Models::DeclinedTransaction::route_type?,
+      source: Increase::Models::DeclinedTransaction::Source,
+      type: Increase::Models::DeclinedTransaction::type_
+    }
 
     class DeclinedTransaction < Increase::BaseModel
       attr_accessor id: String
@@ -35,26 +34,12 @@ module Increase
 
       attr_accessor type: Increase::Models::DeclinedTransaction::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          amount: Integer,
-          created_at: Time,
-          currency: Increase::Models::DeclinedTransaction::currency,
-          description: String,
-          route_id: String?,
-          route_type: Increase::Models::DeclinedTransaction::route_type?,
-          source: Increase::Models::DeclinedTransaction::Source,
-          type: Increase::Models::DeclinedTransaction::type_
-        ) -> void
-        | (
-          ?Increase::Models::declined_transaction | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, account_id: String, amount: Integer, created_at: Time, currency: Increase::Models::DeclinedTransaction::currency, description: String, route_id: String?, route_type: Increase::Models::DeclinedTransaction::route_type?, source: Increase::Models::DeclinedTransaction::Source, type: Increase::Models::DeclinedTransaction::type_) -> void
+                    | (?(Increase::Models::declined_transaction | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::declined_transaction
+      def to_hash: () -> Increase::Models::declined_transaction
 
-      type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+      type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
       class Currency < Increase::Enum
         # Canadian Dollar (CAD)
@@ -75,10 +60,10 @@ module Increase
         # US Dollar (USD)
         USD: :USD
 
-        def self.values: -> ::Array[Increase::Models::DeclinedTransaction::currency]
+        def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::currency]
       end
 
-      type route_type = :account_number | :card | :lockbox
+      type route_type = (:account_number | :card | :lockbox)
 
       class RouteType < Increase::Enum
         # An Account Number.
@@ -90,20 +75,19 @@ module Increase
         # A Lockbox.
         LOCKBOX: :lockbox
 
-        def self.values: -> ::Array[Increase::Models::DeclinedTransaction::route_type]
+        def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::route_type]
       end
 
-      type source =
-        {
-          ach_decline: Increase::Models::DeclinedTransaction::Source::ACHDecline?,
-          card_decline: Increase::Models::DeclinedTransaction::Source::CardDecline?,
-          category: Increase::Models::DeclinedTransaction::Source::category,
-          check_decline: Increase::Models::DeclinedTransaction::Source::CheckDecline?,
-          check_deposit_rejection: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection?,
-          inbound_real_time_payments_transfer_decline: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline?,
-          other: top?,
-          wire_decline: Increase::Models::DeclinedTransaction::Source::WireDecline?
-        }
+      type source = {
+        ach_decline: Increase::Models::DeclinedTransaction::Source::ACHDecline?,
+        card_decline: Increase::Models::DeclinedTransaction::Source::CardDecline?,
+        category: Increase::Models::DeclinedTransaction::Source::category,
+        check_decline: Increase::Models::DeclinedTransaction::Source::CheckDecline?,
+        check_deposit_rejection: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection?,
+        inbound_real_time_payments_transfer_decline: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline?,
+        other: top?,
+        wire_decline: Increase::Models::DeclinedTransaction::Source::WireDecline?
+      }
 
       class Source < Increase::BaseModel
         attr_accessor ach_decline: Increase::Models::DeclinedTransaction::Source::ACHDecline?
@@ -122,39 +106,25 @@ module Increase
 
         attr_accessor wire_decline: Increase::Models::DeclinedTransaction::Source::WireDecline?
 
-        def initialize:
-          (
-            ach_decline: Increase::Models::DeclinedTransaction::Source::ACHDecline?,
-            card_decline: Increase::Models::DeclinedTransaction::Source::CardDecline?,
-            category: Increase::Models::DeclinedTransaction::Source::category,
-            check_decline: Increase::Models::DeclinedTransaction::Source::CheckDecline?,
-            check_deposit_rejection: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection?,
-            inbound_real_time_payments_transfer_decline: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline?,
-            other: top?,
-            wire_decline: Increase::Models::DeclinedTransaction::Source::WireDecline?
-          ) -> void
-          | (
-            ?Increase::Models::DeclinedTransaction::source
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (ach_decline: Increase::Models::DeclinedTransaction::Source::ACHDecline?, card_decline: Increase::Models::DeclinedTransaction::Source::CardDecline?, category: Increase::Models::DeclinedTransaction::Source::category, check_decline: Increase::Models::DeclinedTransaction::Source::CheckDecline?, check_deposit_rejection: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection?, inbound_real_time_payments_transfer_decline: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline?, other: top?, wire_decline: Increase::Models::DeclinedTransaction::Source::WireDecline?) -> void
+                      | (?(Increase::Models::DeclinedTransaction::source | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::DeclinedTransaction::source
+        def to_hash: () -> Increase::Models::DeclinedTransaction::source
 
-        type ach_decline =
-          {
-            id: String,
-            amount: Integer,
-            inbound_ach_transfer_id: String,
-            originator_company_descriptive_date: String?,
-            originator_company_discretionary_data: String?,
-            originator_company_id: String,
-            originator_company_name: String,
-            reason: Increase::Models::DeclinedTransaction::Source::ACHDecline::reason,
-            receiver_id_number: String?,
-            receiver_name: String?,
-            trace_number: String,
-            type: Increase::Models::DeclinedTransaction::Source::ACHDecline::type_
-          }
+        type ach_decline = {
+          id: String,
+          amount: Integer,
+          inbound_ach_transfer_id: String,
+          originator_company_descriptive_date: String?,
+          originator_company_discretionary_data: String?,
+          originator_company_id: String,
+          originator_company_name: String,
+          reason: Increase::Models::DeclinedTransaction::Source::ACHDecline::reason,
+          receiver_id_number: String?,
+          receiver_name: String?,
+          trace_number: String,
+          type: Increase::Models::DeclinedTransaction::Source::ACHDecline::type_
+        }
 
         class ACHDecline < Increase::BaseModel
           attr_accessor id: String
@@ -181,46 +151,12 @@ module Increase
 
           attr_accessor type: Increase::Models::DeclinedTransaction::Source::ACHDecline::type_
 
-          def initialize:
-            (
-              id: String,
-              amount: Integer,
-              inbound_ach_transfer_id: String,
-              originator_company_descriptive_date: String?,
-              originator_company_discretionary_data: String?,
-              originator_company_id: String,
-              originator_company_name: String,
-              reason: Increase::Models::DeclinedTransaction::Source::ACHDecline::reason,
-              receiver_id_number: String?,
-              receiver_name: String?,
-              trace_number: String,
-              type: Increase::Models::DeclinedTransaction::Source::ACHDecline::type_
-            ) -> void
-            | (
-              ?Increase::Models::DeclinedTransaction::Source::ach_decline
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (id: String, amount: Integer, inbound_ach_transfer_id: String, originator_company_descriptive_date: String?, originator_company_discretionary_data: String?, originator_company_id: String, originator_company_name: String, reason: Increase::Models::DeclinedTransaction::Source::ACHDecline::reason, receiver_id_number: String?, receiver_name: String?, trace_number: String, type: Increase::Models::DeclinedTransaction::Source::ACHDecline::type_) -> void
+                        | (?(Increase::Models::DeclinedTransaction::Source::ach_decline | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::DeclinedTransaction::Source::ach_decline
+          def to_hash: () -> Increase::Models::DeclinedTransaction::Source::ach_decline
 
-          type reason =
-            :ach_route_canceled
-            | :ach_route_disabled
-            | :breaches_limit
-            | :entity_not_active
-            | :group_locked
-            | :transaction_not_allowed
-            | :user_initiated
-            | :insufficient_funds
-            | :returned_per_odfi_request
-            | :authorization_revoked_by_customer
-            | :payment_stopped
-            | :customer_advised_unauthorized_improper_ineligible_or_incomplete
-            | :representative_payee_deceased_or_unable_to_continue_in_that_capacity
-            | :beneficiary_or_account_holder_deceased
-            | :credit_entry_refused_by_receiver
-            | :duplicate_entry
-            | :corporate_customer_advised_not_authorized
+          type reason = (:ach_route_canceled | :ach_route_disabled | :breaches_limit | :entity_not_active | :group_locked | :transaction_not_allowed | :user_initiated | :insufficient_funds | :returned_per_odfi_request | :authorization_revoked_by_customer | :payment_stopped | :customer_advised_unauthorized_improper_ineligible_or_incomplete | :representative_payee_deceased_or_unable_to_continue_in_that_capacity | :beneficiary_or_account_holder_deceased | :credit_entry_refused_by_receiver | :duplicate_entry | :corporate_customer_advised_not_authorized)
 
           class Reason < Increase::Enum
             # The account number is canceled.
@@ -274,7 +210,7 @@ module Increase
             # The corporate customer no longer authorizes this transaction.
             CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED: :corporate_customer_advised_not_authorized
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::reason]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::reason]
           end
 
           type type_ = :ach_decline
@@ -282,40 +218,39 @@ module Increase
           class Type < Increase::Enum
             ACH_DECLINE: :ach_decline
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::type_]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::ACHDecline::type_]
           end
         end
 
-        type card_decline =
-          {
-            id: String,
-            actioner: Increase::Models::DeclinedTransaction::Source::CardDecline::actioner,
-            amount: Integer,
-            card_payment_id: String,
-            currency: Increase::Models::DeclinedTransaction::Source::CardDecline::currency,
-            declined_transaction_id: String,
-            digital_wallet_token_id: String?,
-            direction: Increase::Models::DeclinedTransaction::Source::CardDecline::direction,
-            merchant_acceptor_id: String,
-            merchant_category_code: String,
-            merchant_city: String?,
-            merchant_country: String,
-            merchant_descriptor: String,
-            merchant_postal_code: String?,
-            merchant_state: String?,
-            network_details: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails,
-            network_identifiers: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
-            network_risk_score: Integer?,
-            physical_card_id: String?,
-            presentment_amount: Integer,
-            presentment_currency: String,
-            processing_category: Increase::Models::DeclinedTransaction::Source::CardDecline::processing_category,
-            real_time_decision_id: String?,
-            real_time_decision_reason: Increase::Models::DeclinedTransaction::Source::CardDecline::real_time_decision_reason?,
-            reason: Increase::Models::DeclinedTransaction::Source::CardDecline::reason,
-            terminal_id: String?,
-            verification: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
-          }
+        type card_decline = {
+          id: String,
+          actioner: Increase::Models::DeclinedTransaction::Source::CardDecline::actioner,
+          amount: Integer,
+          card_payment_id: String,
+          currency: Increase::Models::DeclinedTransaction::Source::CardDecline::currency,
+          declined_transaction_id: String,
+          digital_wallet_token_id: String?,
+          direction: Increase::Models::DeclinedTransaction::Source::CardDecline::direction,
+          merchant_acceptor_id: String,
+          merchant_category_code: String,
+          merchant_city: String?,
+          merchant_country: String,
+          merchant_descriptor: String,
+          merchant_postal_code: String?,
+          merchant_state: String?,
+          network_details: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails,
+          network_identifiers: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
+          network_risk_score: Integer?,
+          physical_card_id: String?,
+          presentment_amount: Integer,
+          presentment_currency: String,
+          processing_category: Increase::Models::DeclinedTransaction::Source::CardDecline::processing_category,
+          real_time_decision_id: String?,
+          real_time_decision_reason: Increase::Models::DeclinedTransaction::Source::CardDecline::real_time_decision_reason?,
+          reason: Increase::Models::DeclinedTransaction::Source::CardDecline::reason,
+          terminal_id: String?,
+          verification: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
+        }
 
         class CardDecline < Increase::BaseModel
           attr_accessor id: String
@@ -372,44 +307,12 @@ module Increase
 
           attr_accessor verification: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
 
-          def initialize:
-            (
-              id: String,
-              actioner: Increase::Models::DeclinedTransaction::Source::CardDecline::actioner,
-              amount: Integer,
-              card_payment_id: String,
-              currency: Increase::Models::DeclinedTransaction::Source::CardDecline::currency,
-              declined_transaction_id: String,
-              digital_wallet_token_id: String?,
-              direction: Increase::Models::DeclinedTransaction::Source::CardDecline::direction,
-              merchant_acceptor_id: String,
-              merchant_category_code: String,
-              merchant_city: String?,
-              merchant_country: String,
-              merchant_descriptor: String,
-              merchant_postal_code: String?,
-              merchant_state: String?,
-              network_details: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails,
-              network_identifiers: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers,
-              network_risk_score: Integer?,
-              physical_card_id: String?,
-              presentment_amount: Integer,
-              presentment_currency: String,
-              processing_category: Increase::Models::DeclinedTransaction::Source::CardDecline::processing_category,
-              real_time_decision_id: String?,
-              real_time_decision_reason: Increase::Models::DeclinedTransaction::Source::CardDecline::real_time_decision_reason?,
-              reason: Increase::Models::DeclinedTransaction::Source::CardDecline::reason,
-              terminal_id: String?,
-              verification: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification
-            ) -> void
-            | (
-              ?Increase::Models::DeclinedTransaction::Source::card_decline
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (id: String, actioner: Increase::Models::DeclinedTransaction::Source::CardDecline::actioner, amount: Integer, card_payment_id: String, currency: Increase::Models::DeclinedTransaction::Source::CardDecline::currency, declined_transaction_id: String, digital_wallet_token_id: String?, direction: Increase::Models::DeclinedTransaction::Source::CardDecline::direction, merchant_acceptor_id: String, merchant_category_code: String, merchant_city: String?, merchant_country: String, merchant_descriptor: String, merchant_postal_code: String?, merchant_state: String?, network_details: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails, network_identifiers: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers, network_risk_score: Integer?, physical_card_id: String?, presentment_amount: Integer, presentment_currency: String, processing_category: Increase::Models::DeclinedTransaction::Source::CardDecline::processing_category, real_time_decision_id: String?, real_time_decision_reason: Increase::Models::DeclinedTransaction::Source::CardDecline::real_time_decision_reason?, reason: Increase::Models::DeclinedTransaction::Source::CardDecline::reason, terminal_id: String?, verification: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification) -> void
+                        | (?(Increase::Models::DeclinedTransaction::Source::card_decline | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::DeclinedTransaction::Source::card_decline
+          def to_hash: () -> Increase::Models::DeclinedTransaction::Source::card_decline
 
-          type actioner = :user | :increase | :network
+          type actioner = (:user | :increase | :network)
 
           class Actioner < Increase::Enum
             # This object was actioned by the user through a real-time decision.
@@ -421,10 +324,10 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK: :network
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::actioner]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::actioner]
           end
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
@@ -445,10 +348,10 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::currency]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::currency]
           end
 
-          type direction = :settlement | :refund
+          type direction = (:settlement | :refund)
 
           class Direction < Increase::Enum
             # A regular card authorization where funds are debited from the cardholder.
@@ -457,31 +360,23 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::direction]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::direction]
           end
 
-          type network_details =
-            {
-              category: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::category,
-              visa: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa?
-            }
+          type network_details = {
+            category: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::category,
+            visa: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa?
+          }
 
           class NetworkDetails < Increase::BaseModel
             attr_accessor category: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::category
 
             attr_accessor visa: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa?
 
-            def initialize:
-              (
-                category: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::category,
-                visa: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa?
-              ) -> void
-              | (
-                ?Increase::Models::DeclinedTransaction::Source::CardDecline::network_details
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (category: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::category, visa: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa?) -> void
+                          | (?(Increase::Models::DeclinedTransaction::Source::CardDecline::network_details | Increase::BaseModel) data) -> void
 
-            def to_hash: -> Increase::Models::DeclinedTransaction::Source::CardDecline::network_details
+            def to_hash: () -> Increase::Models::DeclinedTransaction::Source::CardDecline::network_details
 
             type category = :visa
 
@@ -489,15 +384,14 @@ module Increase
               # Visa
               VISA: :visa
 
-              def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::category]
+              def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::category]
             end
 
-            type visa =
-              {
-                electronic_commerce_indicator: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator?,
-                point_of_service_entry_mode: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode?,
-                stand_in_processing_reason: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::stand_in_processing_reason?
-              }
+            type visa = {
+              electronic_commerce_indicator: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator?,
+              point_of_service_entry_mode: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode?,
+              stand_in_processing_reason: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::stand_in_processing_reason?
+            }
 
             class Visa < Increase::BaseModel
               attr_accessor electronic_commerce_indicator: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator?
@@ -506,28 +400,12 @@ module Increase
 
               attr_accessor stand_in_processing_reason: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::stand_in_processing_reason?
 
-              def initialize:
-                (
-                  electronic_commerce_indicator: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator?,
-                  point_of_service_entry_mode: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode?,
-                  stand_in_processing_reason: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::stand_in_processing_reason?
-                ) -> void
-                | (
-                  ?Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::visa
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (electronic_commerce_indicator: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator?, point_of_service_entry_mode: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode?, stand_in_processing_reason: Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::stand_in_processing_reason?) -> void
+                            | (?(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::visa | Increase::BaseModel) data) -> void
 
-              def to_hash: -> Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::visa
+              def to_hash: () -> Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::visa
 
-              type electronic_commerce_indicator =
-                :mail_phone_order
-                | :recurring
-                | :installment
-                | :unknown_mail_phone_order
-                | :secure_electronic_commerce
-                | :non_authenticated_security_transaction_at_3ds_capable_merchant
-                | :non_authenticated_security_transaction
-                | :non_secure_transaction
+              type electronic_commerce_indicator = (:mail_phone_order | :recurring | :installment | :unknown_mail_phone_order | :secure_electronic_commerce | :non_authenticated_security_transaction_at_3ds_capable_merchant | :non_authenticated_security_transaction | :non_secure_transaction)
 
               class ElectronicCommerceIndicator < Increase::Enum
                 # Single transaction of a mail/phone order: Use to indicate that the transaction is a mail/phone order purchase, not a recurring transaction or installment payment. For domestic transactions in the US region, this value may also indicate one bill payment transaction in the card-present or card-absent environments.
@@ -554,20 +432,12 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION: :non_secure_transaction
 
-                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator]
+                def self.values: () -> ::Array[
+                Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::electronic_commerce_indicator
+                ]
               end
 
-              type point_of_service_entry_mode =
-                :unknown
-                | :manual
-                | :magnetic_stripe_no_cvv
-                | :optical_code
-                | :integrated_circuit_card
-                | :contactless
-                | :credential_on_file
-                | :magnetic_stripe
-                | :contactless_magnetic_stripe
-                | :integrated_circuit_card_no_cvv
+              type point_of_service_entry_mode = (:unknown | :manual | :magnetic_stripe_no_cvv | :optical_code | :integrated_circuit_card | :contactless | :credential_on_file | :magnetic_stripe | :contactless_magnetic_stripe | :integrated_circuit_card_no_cvv)
 
               class PointOfServiceEntryMode < Increase::Enum
                 # Unknown
@@ -600,17 +470,12 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV: :integrated_circuit_card_no_cvv
 
-                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode]
+                def self.values: () -> ::Array[
+                Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::point_of_service_entry_mode
+                ]
               end
 
-              type stand_in_processing_reason =
-                :issuer_error
-                | :invalid_physical_card
-                | :invalid_cardholder_authentication_verification_value
-                | :internal_visa_error
-                | :merchant_transaction_advisory_service_authentication_required
-                | :payment_fraud_disruption_acquirer_block
-                | :other
+              type stand_in_processing_reason = (:issuer_error | :invalid_physical_card | :invalid_cardholder_authentication_verification_value | :internal_visa_error | :merchant_transaction_advisory_service_authentication_required | :payment_fraud_disruption_acquirer_block | :other)
 
               class StandInProcessingReason < Increase::Enum
                 # Increase failed to process the authorization in a timely manner.
@@ -634,17 +499,14 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER: :other
 
-                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::stand_in_processing_reason]
+                def self.values: () -> ::Array[
+                Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa::stand_in_processing_reason
+                ]
               end
             end
           end
 
-          type network_identifiers =
-            {
-              retrieval_reference_number: String?,
-              trace_number: String?,
-              transaction_id: String?
-            }
+          type network_identifiers = {retrieval_reference_number: String?, trace_number: String?, transaction_id: String?}
 
           class NetworkIdentifiers < Increase::BaseModel
             attr_accessor retrieval_reference_number: String?
@@ -653,27 +515,13 @@ module Increase
 
             attr_accessor transaction_id: String?
 
-            def initialize:
-              (
-                retrieval_reference_number: String?,
-                trace_number: String?,
-                transaction_id: String?
-              ) -> void
-              | (
-                ?Increase::Models::DeclinedTransaction::Source::CardDecline::network_identifiers
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (retrieval_reference_number: String?, trace_number: String?, transaction_id: String?) -> void
+                          | (?(Increase::Models::DeclinedTransaction::Source::CardDecline::network_identifiers | Increase::BaseModel) data) -> void
 
-            def to_hash: -> Increase::Models::DeclinedTransaction::Source::CardDecline::network_identifiers
+            def to_hash: () -> Increase::Models::DeclinedTransaction::Source::CardDecline::network_identifiers
           end
 
-          type processing_category =
-            :account_funding
-            | :automatic_fuel_dispenser
-            | :bill_payment
-            | :purchase
-            | :quasi_cash
-            | :refund
+          type processing_category = (:account_funding | :automatic_fuel_dispenser | :bill_payment | :purchase | :quasi_cash | :refund)
 
           class ProcessingCategory < Increase::Enum
             # Account funding transactions are transactions used to e.g., fund an account or transfer funds between accounts.
@@ -694,16 +542,10 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND: :refund
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::processing_category]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::processing_category]
           end
 
-          type real_time_decision_reason =
-            :insufficient_funds
-            | :transaction_never_allowed
-            | :exceeds_approval_limit
-            | :card_temporarily_disabled
-            | :suspected_fraud
-            | :other
+          type real_time_decision_reason = (:insufficient_funds | :transaction_never_allowed | :exceeds_approval_limit | :card_temporarily_disabled | :suspected_fraud | :other)
 
           class RealTimeDecisionReason < Increase::Enum
             # The cardholder does not have sufficient funds to cover the transaction. The merchant may attempt to process the transaction again.
@@ -724,27 +566,10 @@ module Increase
             # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
             OTHER: :other
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::real_time_decision_reason]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::real_time_decision_reason]
           end
 
-          type reason =
-            :account_closed
-            | :card_not_active
-            | :card_canceled
-            | :physical_card_not_active
-            | :entity_not_active
-            | :group_locked
-            | :insufficient_funds
-            | :cvv2_mismatch
-            | :card_expiration_mismatch
-            | :transaction_not_allowed
-            | :breaches_limit
-            | :webhook_declined
-            | :webhook_timed_out
-            | :declined_by_stand_in_processing
-            | :invalid_physical_card
-            | :missing_original_authorization
-            | :suspected_fraud
+          type reason = (:account_closed | :card_not_active | :card_canceled | :physical_card_not_active | :entity_not_active | :group_locked | :insufficient_funds | :cvv2_mismatch | :card_expiration_mismatch | :transaction_not_allowed | :breaches_limit | :webhook_declined | :webhook_timed_out | :declined_by_stand_in_processing | :invalid_physical_card | :missing_original_authorization | :suspected_fraud)
 
           class Reason < Increase::Enum
             # The account has been closed.
@@ -798,52 +623,37 @@ module Increase
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
             SUSPECTED_FRAUD: :suspected_fraud
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::reason]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::reason]
           end
 
-          type verification =
-            {
-              card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
-              cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
-            }
+          type verification = {
+            card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
+            cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
+          }
 
           class Verification < Increase::BaseModel
             attr_accessor card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode
 
             attr_accessor cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
 
-            def initialize:
-              (
-                card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
-                cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress
-              ) -> void
-              | (
-                ?Increase::Models::DeclinedTransaction::Source::CardDecline::verification
-                | Increase::BaseModel data
-              ) -> void
+            def initialize: (card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode, cardholder_address: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress) -> void
+                          | (?(Increase::Models::DeclinedTransaction::Source::CardDecline::verification | Increase::BaseModel) data) -> void
 
-            def to_hash: -> Increase::Models::DeclinedTransaction::Source::CardDecline::verification
+            def to_hash: () -> Increase::Models::DeclinedTransaction::Source::CardDecline::verification
 
-            type card_verification_code =
-              {
-                result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result
-              }
+            type card_verification_code = {
+              result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result
+            }
 
             class CardVerificationCode < Increase::BaseModel
               attr_accessor result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result
 
-              def initialize:
-                (
-                  result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result
-                ) -> void
-                | (
-                  ?Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::card_verification_code
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result) -> void
+                            | (?(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::card_verification_code | Increase::BaseModel) data) -> void
 
-              def to_hash: -> Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::card_verification_code
+              def to_hash: () -> Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::card_verification_code
 
-              type result = :not_checked | :match | :no_match
+              type result = (:not_checked | :match | :no_match)
 
               class Result < Increase::Enum
                 # No card verification code was provided in the authorization request.
@@ -855,18 +665,17 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH: :no_match
 
-                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result]
+                def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode::result]
               end
             end
 
-            type cardholder_address =
-              {
-                :actual_line1 => String?,
-                actual_postal_code: String?,
-                :provided_line1 => String?,
-                provided_postal_code: String?,
-                result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::result
-              }
+            type cardholder_address = {
+              actual_line1: String?,
+              actual_postal_code: String?,
+              provided_line1: String?,
+              provided_postal_code: String?,
+              result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::result
+            }
 
             class CardholderAddress < Increase::BaseModel
               attr_accessor actual_line1: String?
@@ -879,28 +688,12 @@ module Increase
 
               attr_accessor result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::result
 
-              def initialize:
-                (
-                  actual_line1: String?,
-                  actual_postal_code: String?,
-                  provided_line1: String?,
-                  provided_postal_code: String?,
-                  result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::result
-                ) -> void
-                | (
-                  ?Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::cardholder_address
-                  | Increase::BaseModel data
-                ) -> void
+              def initialize: (actual_line1: String?, actual_postal_code: String?, provided_line1: String?, provided_postal_code: String?, result: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::result) -> void
+                            | (?(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::cardholder_address | Increase::BaseModel) data) -> void
 
-              def to_hash: -> Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::cardholder_address
+              def to_hash: () -> Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::cardholder_address
 
-              type result =
-                :not_checked
-                | :postal_code_match_address_not_checked
-                | :postal_code_match_address_no_match
-                | :postal_code_no_match_address_match
-                | :match
-                | :no_match
+              type result = (:not_checked | :postal_code_match_address_not_checked | :postal_code_match_address_no_match | :postal_code_no_match_address_match | :match | :no_match)
 
               class Result < Increase::Enum
                 # No adress was provided in the authorization request.
@@ -921,20 +714,13 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH: :no_match
 
-                def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::result]
+                def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress::result]
               end
             end
           end
         end
 
-        type category =
-          :ach_decline
-          | :card_decline
-          | :check_decline
-          | :inbound_real_time_payments_transfer_decline
-          | :wire_decline
-          | :check_deposit_rejection
-          | :other
+        type category = (:ach_decline | :card_decline | :check_decline | :inbound_real_time_payments_transfer_decline | :wire_decline | :check_deposit_rejection | :other)
 
         class Category < Increase::Enum
           # ACH Decline: details will be under the `ach_decline` object.
@@ -958,19 +744,18 @@ module Increase
           # The Declined Transaction was made for an undocumented or deprecated reason.
           OTHER: :other
 
-          def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::category]
+          def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::category]
         end
 
-        type check_decline =
-          {
-            amount: Integer,
-            auxiliary_on_us: String?,
-            back_image_file_id: String?,
-            check_transfer_id: String?,
-            front_image_file_id: String?,
-            inbound_check_deposit_id: String?,
-            reason: Increase::Models::DeclinedTransaction::Source::CheckDecline::reason
-          }
+        type check_decline = {
+          amount: Integer,
+          auxiliary_on_us: String?,
+          back_image_file_id: String?,
+          check_transfer_id: String?,
+          front_image_file_id: String?,
+          inbound_check_deposit_id: String?,
+          reason: Increase::Models::DeclinedTransaction::Source::CheckDecline::reason
+        }
 
         class CheckDecline < Increase::BaseModel
           attr_accessor amount: Integer
@@ -987,41 +772,12 @@ module Increase
 
           attr_accessor reason: Increase::Models::DeclinedTransaction::Source::CheckDecline::reason
 
-          def initialize:
-            (
-              amount: Integer,
-              auxiliary_on_us: String?,
-              back_image_file_id: String?,
-              check_transfer_id: String?,
-              front_image_file_id: String?,
-              inbound_check_deposit_id: String?,
-              reason: Increase::Models::DeclinedTransaction::Source::CheckDecline::reason
-            ) -> void
-            | (
-              ?Increase::Models::DeclinedTransaction::Source::check_decline
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (amount: Integer, auxiliary_on_us: String?, back_image_file_id: String?, check_transfer_id: String?, front_image_file_id: String?, inbound_check_deposit_id: String?, reason: Increase::Models::DeclinedTransaction::Source::CheckDecline::reason) -> void
+                        | (?(Increase::Models::DeclinedTransaction::Source::check_decline | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::DeclinedTransaction::Source::check_decline
+          def to_hash: () -> Increase::Models::DeclinedTransaction::Source::check_decline
 
-          type reason =
-            :ach_route_disabled
-            | :ach_route_canceled
-            | :altered_or_fictitious
-            | :breaches_limit
-            | :endorsement_irregular
-            | :entity_not_active
-            | :group_locked
-            | :insufficient_funds
-            | :stop_payment_requested
-            | :duplicate_presentment
-            | :not_authorized
-            | :amount_mismatch
-            | :not_our_item
-            | :no_account_number_found
-            | :refer_to_image
-            | :unable_to_process
-            | :user_initiated
+          type reason = (:ach_route_disabled | :ach_route_canceled | :altered_or_fictitious | :breaches_limit | :endorsement_irregular | :entity_not_active | :group_locked | :insufficient_funds | :stop_payment_requested | :duplicate_presentment | :not_authorized | :amount_mismatch | :not_our_item | :no_account_number_found | :refer_to_image | :unable_to_process | :user_initiated)
 
           class Reason < Increase::Enum
             # The account number is disabled.
@@ -1075,19 +831,18 @@ module Increase
             # Your integration declined this check via the API.
             USER_INITIATED: :user_initiated
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDecline::reason]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDecline::reason]
           end
         end
 
-        type check_deposit_rejection =
-          {
-            amount: Integer,
-            check_deposit_id: String,
-            currency: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::currency,
-            declined_transaction_id: String,
-            reason: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::reason,
-            rejected_at: Time
-          }
+        type check_deposit_rejection = {
+          amount: Integer,
+          check_deposit_id: String,
+          currency: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::currency,
+          declined_transaction_id: String,
+          reason: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::reason,
+          rejected_at: Time
+        }
 
         class CheckDepositRejection < Increase::BaseModel
           attr_accessor amount: Integer
@@ -1102,23 +857,12 @@ module Increase
 
           attr_accessor rejected_at: Time
 
-          def initialize:
-            (
-              amount: Integer,
-              check_deposit_id: String,
-              currency: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::currency,
-              declined_transaction_id: String,
-              reason: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::reason,
-              rejected_at: Time
-            ) -> void
-            | (
-              ?Increase::Models::DeclinedTransaction::Source::check_deposit_rejection
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (amount: Integer, check_deposit_id: String, currency: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::currency, declined_transaction_id: String, reason: Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::reason, rejected_at: Time) -> void
+                        | (?(Increase::Models::DeclinedTransaction::Source::check_deposit_rejection | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::DeclinedTransaction::Source::check_deposit_rejection
+          def to_hash: () -> Increase::Models::DeclinedTransaction::Source::check_deposit_rejection
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
@@ -1139,21 +883,10 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::currency]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::currency]
           end
 
-          type reason =
-            :incomplete_image
-            | :duplicate
-            | :poor_image_quality
-            | :incorrect_amount
-            | :incorrect_recipient
-            | :not_eligible_for_mobile_deposit
-            | :missing_required_data_elements
-            | :suspected_fraud
-            | :deposit_window_expired
-            | :requested_by_user
-            | :unknown
+          type reason = (:incomplete_image | :duplicate | :poor_image_quality | :incorrect_amount | :incorrect_recipient | :not_eligible_for_mobile_deposit | :missing_required_data_elements | :suspected_fraud | :deposit_window_expired | :requested_by_user | :unknown)
 
           class Reason < Increase::Enum
             # The check's image is incomplete.
@@ -1189,23 +922,22 @@ module Increase
             # The check was rejected for an unknown reason.
             UNKNOWN: :unknown
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::reason]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::CheckDepositRejection::reason]
           end
         end
 
-        type inbound_real_time_payments_transfer_decline =
-          {
-            amount: Integer,
-            creditor_name: String,
-            currency: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::currency,
-            debtor_account_number: String,
-            debtor_name: String,
-            debtor_routing_number: String,
-            reason: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::reason,
-            remittance_information: String?,
-            transaction_identification: String,
-            transfer_id: String
-          }
+        type inbound_real_time_payments_transfer_decline = {
+          amount: Integer,
+          creditor_name: String,
+          currency: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::currency,
+          debtor_account_number: String,
+          debtor_name: String,
+          debtor_routing_number: String,
+          reason: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::reason,
+          remittance_information: String?,
+          transaction_identification: String,
+          transfer_id: String
+        }
 
         class InboundRealTimePaymentsTransferDecline < Increase::BaseModel
           attr_accessor amount: Integer
@@ -1228,27 +960,12 @@ module Increase
 
           attr_accessor transfer_id: String
 
-          def initialize:
-            (
-              amount: Integer,
-              creditor_name: String,
-              currency: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::currency,
-              debtor_account_number: String,
-              debtor_name: String,
-              debtor_routing_number: String,
-              reason: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::reason,
-              remittance_information: String?,
-              transaction_identification: String,
-              transfer_id: String
-            ) -> void
-            | (
-              ?Increase::Models::DeclinedTransaction::Source::inbound_real_time_payments_transfer_decline
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (amount: Integer, creditor_name: String, currency: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::currency, debtor_account_number: String, debtor_name: String, debtor_routing_number: String, reason: Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::reason, remittance_information: String?, transaction_identification: String, transfer_id: String) -> void
+                        | (?(Increase::Models::DeclinedTransaction::Source::inbound_real_time_payments_transfer_decline | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::DeclinedTransaction::Source::inbound_real_time_payments_transfer_decline
+          def to_hash: () -> Increase::Models::DeclinedTransaction::Source::inbound_real_time_payments_transfer_decline
 
-          type currency = :CAD | :CHF | :EUR | :GBP | :JPY | :USD
+          type currency = (:CAD | :CHF | :EUR | :GBP | :JPY | :USD)
 
           class Currency < Increase::Enum
             # Canadian Dollar (CAD)
@@ -1269,16 +986,10 @@ module Increase
             # US Dollar (USD)
             USD: :USD
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::currency]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::currency]
           end
 
-          type reason =
-            :account_number_canceled
-            | :account_number_disabled
-            | :account_restricted
-            | :group_locked
-            | :entity_not_active
-            | :real_time_payments_not_enabled
+          type reason = (:account_number_canceled | :account_number_disabled | :account_restricted | :group_locked | :entity_not_active | :real_time_payments_not_enabled)
 
           class Reason < Increase::Enum
             # The account number is canceled.
@@ -1299,40 +1010,23 @@ module Increase
             # Your account is not enabled to receive Real-Time Payments transfers.
             REAL_TIME_PAYMENTS_NOT_ENABLED: :real_time_payments_not_enabled
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::reason]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline::reason]
           end
         end
 
-        type wire_decline =
-          {
-            inbound_wire_transfer_id: String,
-            reason: Increase::Models::DeclinedTransaction::Source::WireDecline::reason
-          }
+        type wire_decline = {inbound_wire_transfer_id: String, reason: Increase::Models::DeclinedTransaction::Source::WireDecline::reason}
 
         class WireDecline < Increase::BaseModel
           attr_accessor inbound_wire_transfer_id: String
 
           attr_accessor reason: Increase::Models::DeclinedTransaction::Source::WireDecline::reason
 
-          def initialize:
-            (
-              inbound_wire_transfer_id: String,
-              reason: Increase::Models::DeclinedTransaction::Source::WireDecline::reason
-            ) -> void
-            | (
-              ?Increase::Models::DeclinedTransaction::Source::wire_decline
-              | Increase::BaseModel data
-            ) -> void
+          def initialize: (inbound_wire_transfer_id: String, reason: Increase::Models::DeclinedTransaction::Source::WireDecline::reason) -> void
+                        | (?(Increase::Models::DeclinedTransaction::Source::wire_decline | Increase::BaseModel) data) -> void
 
-          def to_hash: -> Increase::Models::DeclinedTransaction::Source::wire_decline
+          def to_hash: () -> Increase::Models::DeclinedTransaction::Source::wire_decline
 
-          type reason =
-            :account_number_canceled
-            | :account_number_disabled
-            | :entity_not_active
-            | :group_locked
-            | :no_account_number
-            | :transaction_not_allowed
+          type reason = (:account_number_canceled | :account_number_disabled | :entity_not_active | :group_locked | :no_account_number | :transaction_not_allowed)
 
           class Reason < Increase::Enum
             # The account number is canceled.
@@ -1353,7 +1047,7 @@ module Increase
             # The transaction is not allowed per Increase's terms.
             TRANSACTION_NOT_ALLOWED: :transaction_not_allowed
 
-            def self.values: -> ::Array[Increase::Models::DeclinedTransaction::Source::WireDecline::reason]
+            def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::Source::WireDecline::reason]
           end
         end
       end
@@ -1363,7 +1057,7 @@ module Increase
       class Type < Increase::Enum
         DECLINED_TRANSACTION: :declined_transaction
 
-        def self.values: -> ::Array[Increase::Models::DeclinedTransaction::type_]
+        def self.values: () -> ::Array[Increase::Models::DeclinedTransaction::type_]
       end
     end
   end

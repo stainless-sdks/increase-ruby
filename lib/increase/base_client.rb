@@ -11,12 +11,12 @@ module Increase
 
     # rubocop:disable Style/MutableConstant
     PLATFORM_HEADERS = {
-      "x-stainless-arch" => Increase::Util.arch,
-      "x-stainless-lang" => "ruby",
-      "x-stainless-os" => Increase::Util.os,
-      "x-stainless-package-version" => Increase::VERSION,
-      "x-stainless-runtime" => ::RUBY_ENGINE,
-      "x-stainless-runtime-version" => ::RUBY_ENGINE_VERSION
+    "x-stainless-arch" => Increase::Util.arch,
+    "x-stainless-lang" => "ruby",
+    "x-stainless-os" => Increase::Util.os,
+    "x-stainless-package-version" => Increase::VERSION,
+    "x-stainless-runtime" => ::RUBY_ENGINE,
+    "x-stainless-runtime-version" => ::RUBY_ENGINE_VERSION
     }
     # rubocop:enable Style/MutableConstant
 
@@ -155,14 +155,7 @@ module Increase
       idempotency_header: nil
     )
       @requester = Increase::PooledNetRequester.new
-      @headers = Increase::Util.normalized_headers(
-        self.class::PLATFORM_HEADERS,
-        {
-          "accept" => "application/json",
-          "content-type" => "application/json"
-        },
-        headers
-      )
+      @headers = Increase::Util.normalized_headers(self.class::PLATFORM_HEADERS, {"accept" => "application/json", "content-type" => "application/json"}, headers)
       @base_url = Increase::Util.parse_uri(base_url)
       @idempotency_header = idempotency_header&.to_s&.downcase
       @max_retries = max_retries
@@ -228,12 +221,7 @@ module Increase
 
       query = Increase::Util.deep_merge(req[:query].to_h, opts[:extra_query].to_h)
 
-      headers = Increase::Util.normalized_headers(
-        @headers,
-        auth_headers,
-        req[:headers].to_h,
-        opts[:extra_headers].to_h
-      )
+      headers = Increase::Util.normalized_headers(@headers, auth_headers, req[:headers].to_h, opts[:extra_headers].to_h)
 
       if @idempotency_header &&
          !headers.key?(@idempotency_header) &&

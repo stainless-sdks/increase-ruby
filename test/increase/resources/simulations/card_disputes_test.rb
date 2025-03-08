@@ -4,10 +4,7 @@ require_relative "../../test_helper"
 
 class Increase::Test::Resources::Simulations::CardDisputesTest < Increase::Test::ResourceTest
   def test_action_required_params
-    response = @increase.simulations.card_disputes.action(
-      "card_dispute_id",
-      status: :pending_user_information
-    )
+    response = @increase.simulations.card_disputes.action("card_dispute_id", status: :pending_user_information)
 
     assert_pattern do
       response => Increase::Models::CardDispute

@@ -16,13 +16,7 @@ module Increase
         end
 
         sig do
-          params(
-            account_id: String,
-            request_options: T.any(
-              Increase::RequestOptions,
-              T::Hash[Symbol, T.anything]
-            )
-          )
+          params(account_id: String, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
             .returns(T.attached_class)
         end
         def self.new(account_id:, request_options: {})

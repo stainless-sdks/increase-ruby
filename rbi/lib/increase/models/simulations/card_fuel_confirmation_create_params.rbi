@@ -25,24 +25,16 @@ module Increase
 
         sig do
           params(
-            amount: Integer,
-            card_payment_id: String,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+              amount: Integer,
+              card_payment_id: String,
+              request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            )
             .returns(T.attached_class)
         end
         def self.new(amount:, card_payment_id:, request_options: {})
         end
 
-        sig do
-          override.returns(
-            {
-              amount: Integer,
-              card_payment_id: String,
-              request_options: Increase::RequestOptions
-            }
-          )
-        end
+        sig { override.returns({amount: Integer, card_payment_id: String, request_options: Increase::RequestOptions}) }
         def to_hash
         end
       end

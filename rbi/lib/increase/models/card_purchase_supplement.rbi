@@ -59,13 +59,13 @@ module Increase
 
       sig do
         params(
-          id: String,
-          card_payment_id: T.nilable(String),
-          invoice: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice),
-          line_items: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]),
-          transaction_id: String,
-          type: Symbol
-        )
+            id: String,
+            card_payment_id: T.nilable(String),
+            invoice: T.nilable(Increase::Models::CardPurchaseSupplement::Invoice),
+            line_items: T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem]),
+            transaction_id: String,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(id:, card_payment_id:, invoice:, line_items:, transaction_id:, type:)
@@ -218,23 +218,23 @@ module Increase
 
         sig do
           params(
-            discount_amount: T.nilable(Integer),
-            discount_currency: T.nilable(String),
-            discount_treatment_code: T.nilable(Symbol),
-            duty_tax_amount: T.nilable(Integer),
-            duty_tax_currency: T.nilable(String),
-            order_date: T.nilable(Date),
-            shipping_amount: T.nilable(Integer),
-            shipping_currency: T.nilable(String),
-            shipping_destination_country_code: T.nilable(String),
-            shipping_destination_postal_code: T.nilable(String),
-            shipping_source_postal_code: T.nilable(String),
-            shipping_tax_amount: T.nilable(Integer),
-            shipping_tax_currency: T.nilable(String),
-            shipping_tax_rate: T.nilable(String),
-            tax_treatments: T.nilable(Symbol),
-            unique_value_added_tax_invoice_reference: T.nilable(String)
-          )
+              discount_amount: T.nilable(Integer),
+              discount_currency: T.nilable(String),
+              discount_treatment_code: T.nilable(Symbol),
+              duty_tax_amount: T.nilable(Integer),
+              duty_tax_currency: T.nilable(String),
+              order_date: T.nilable(Date),
+              shipping_amount: T.nilable(Integer),
+              shipping_currency: T.nilable(String),
+              shipping_destination_country_code: T.nilable(String),
+              shipping_destination_postal_code: T.nilable(String),
+              shipping_source_postal_code: T.nilable(String),
+              shipping_tax_amount: T.nilable(Integer),
+              shipping_tax_currency: T.nilable(String),
+              shipping_tax_rate: T.nilable(String),
+              tax_treatments: T.nilable(Symbol),
+              unique_value_added_tax_invoice_reference: T.nilable(String)
+            )
             .returns(T.attached_class)
         end
         def self.new(
@@ -290,15 +290,10 @@ module Increase
           NO_INVOICE_LEVEL_DISCOUNT_PROVIDED = T.let(:no_invoice_level_discount_provided, T.nilable(Symbol))
 
           # Tax calculated on post discount invoice total
-          TAX_CALCULATED_ON_POST_DISCOUNT_INVOICE_TOTAL = T.let(
-            :tax_calculated_on_post_discount_invoice_total, T.nilable(Symbol)
-          )
+          TAX_CALCULATED_ON_POST_DISCOUNT_INVOICE_TOTAL = T.let(:tax_calculated_on_post_discount_invoice_total, T.nilable(Symbol))
 
           # Tax calculated on pre discount invoice total
-          TAX_CALCULATED_ON_PRE_DISCOUNT_INVOICE_TOTAL = T.let(
-            :tax_calculated_on_pre_discount_invoice_total,
-            T.nilable(Symbol)
-          )
+          TAX_CALCULATED_ON_PRE_DISCOUNT_INVOICE_TOTAL = T.let(:tax_calculated_on_pre_discount_invoice_total, T.nilable(Symbol))
 
           class << self
             sig { override.returns(T::Array[Symbol]) }
@@ -472,24 +467,24 @@ module Increase
 
         sig do
           params(
-            id: String,
-            detail_indicator: T.nilable(Symbol),
-            discount_amount: T.nilable(Integer),
-            discount_currency: T.nilable(String),
-            discount_treatment_code: T.nilable(Symbol),
-            item_commodity_code: T.nilable(String),
-            item_descriptor: T.nilable(String),
-            item_quantity: T.nilable(String),
-            product_code: T.nilable(String),
-            sales_tax_amount: T.nilable(Integer),
-            sales_tax_currency: T.nilable(String),
-            sales_tax_rate: T.nilable(String),
-            total_amount: T.nilable(Integer),
-            total_amount_currency: T.nilable(String),
-            unit_cost: T.nilable(String),
-            unit_cost_currency: T.nilable(String),
-            unit_of_measure_code: T.nilable(String)
-          )
+              id: String,
+              detail_indicator: T.nilable(Symbol),
+              discount_amount: T.nilable(Integer),
+              discount_currency: T.nilable(String),
+              discount_treatment_code: T.nilable(Symbol),
+              item_commodity_code: T.nilable(String),
+              item_descriptor: T.nilable(String),
+              item_quantity: T.nilable(String),
+              product_code: T.nilable(String),
+              sales_tax_amount: T.nilable(Integer),
+              sales_tax_currency: T.nilable(String),
+              sales_tax_rate: T.nilable(String),
+              total_amount: T.nilable(Integer),
+              total_amount_currency: T.nilable(String),
+              unit_cost: T.nilable(String),
+              unit_cost_currency: T.nilable(String),
+              unit_of_measure_code: T.nilable(String)
+            )
             .returns(T.attached_class)
         end
         def self.new(
@@ -563,20 +558,13 @@ module Increase
           abstract!
 
           # No line item level discount provided
-          NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED = T.let(
-            :no_line_item_level_discount_provided,
-            T.nilable(Symbol)
-          )
+          NO_LINE_ITEM_LEVEL_DISCOUNT_PROVIDED = T.let(:no_line_item_level_discount_provided, T.nilable(Symbol))
 
           # Tax calculated on post discount line item total
-          TAX_CALCULATED_ON_POST_DISCOUNT_LINE_ITEM_TOTAL = T.let(
-            :tax_calculated_on_post_discount_line_item_total, T.nilable(Symbol)
-          )
+          TAX_CALCULATED_ON_POST_DISCOUNT_LINE_ITEM_TOTAL = T.let(:tax_calculated_on_post_discount_line_item_total, T.nilable(Symbol))
 
           # Tax calculated on pre discount line item total
-          TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL = T.let(
-            :tax_calculated_on_pre_discount_line_item_total, T.nilable(Symbol)
-          )
+          TAX_CALCULATED_ON_PRE_DISCOUNT_LINE_ITEM_TOTAL = T.let(:tax_calculated_on_pre_discount_line_item_total, T.nilable(Symbol))
 
           class << self
             sig { override.returns(T::Array[Symbol]) }

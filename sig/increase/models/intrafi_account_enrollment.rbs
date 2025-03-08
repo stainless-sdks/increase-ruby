@@ -1,15 +1,14 @@
 module Increase
   module Models
-    type intrafi_account_enrollment =
-      {
-        id: String,
-        account_id: String,
-        created_at: Time,
-        idempotency_key: String?,
-        intrafi_id: String,
-        status: Increase::Models::IntrafiAccountEnrollment::status,
-        type: Increase::Models::IntrafiAccountEnrollment::type_
-      }
+    type intrafi_account_enrollment = {
+      id: String,
+      account_id: String,
+      created_at: Time,
+      idempotency_key: String?,
+      intrafi_id: String,
+      status: Increase::Models::IntrafiAccountEnrollment::status,
+      type: Increase::Models::IntrafiAccountEnrollment::type_
+    }
 
     class IntrafiAccountEnrollment < Increase::BaseModel
       attr_accessor id: String
@@ -26,29 +25,12 @@ module Increase
 
       attr_accessor type: Increase::Models::IntrafiAccountEnrollment::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          created_at: Time,
-          idempotency_key: String?,
-          intrafi_id: String,
-          status: Increase::Models::IntrafiAccountEnrollment::status,
-          type: Increase::Models::IntrafiAccountEnrollment::type_
-        ) -> void
-        | (
-          ?Increase::Models::intrafi_account_enrollment
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, account_id: String, created_at: Time, idempotency_key: String?, intrafi_id: String, status: Increase::Models::IntrafiAccountEnrollment::status, type: Increase::Models::IntrafiAccountEnrollment::type_) -> void
+                    | (?(Increase::Models::intrafi_account_enrollment | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::intrafi_account_enrollment
+      def to_hash: () -> Increase::Models::intrafi_account_enrollment
 
-      type status =
-        :pending_enrolling
-        | :enrolled
-        | :pending_unenrolling
-        | :unenrolled
-        | :requires_attention
+      type status = (:pending_enrolling | :enrolled | :pending_unenrolling | :unenrolled | :requires_attention)
 
       class Status < Increase::Enum
         # The account is being added to the IntraFi network.
@@ -66,7 +48,7 @@ module Increase
         # Something unexpected happened with this account. Contact Increase support.
         REQUIRES_ATTENTION: :requires_attention
 
-        def self.values: -> ::Array[Increase::Models::IntrafiAccountEnrollment::status]
+        def self.values: () -> ::Array[Increase::Models::IntrafiAccountEnrollment::status]
       end
 
       type type_ = :intrafi_account_enrollment
@@ -74,7 +56,7 @@ module Increase
       class Type < Increase::Enum
         INTRAFI_ACCOUNT_ENROLLMENT: :intrafi_account_enrollment
 
-        def self.values: -> ::Array[Increase::Models::IntrafiAccountEnrollment::type_]
+        def self.values: () -> ::Array[Increase::Models::IntrafiAccountEnrollment::type_]
       end
     end
   end

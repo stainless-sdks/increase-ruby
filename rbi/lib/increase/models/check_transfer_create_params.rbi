@@ -70,15 +70,15 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          amount: Integer,
-          fulfillment_method: Symbol,
-          source_account_number_id: String,
-          physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
-          require_approval: T::Boolean,
-          third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_id: String,
+            amount: Integer,
+            fulfillment_method: Symbol,
+            source_account_number_id: String,
+            physical_check: Increase::Models::CheckTransferCreateParams::PhysicalCheck,
+            require_approval: T::Boolean,
+            third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -184,13 +184,13 @@ module Increase
 
         sig do
           params(
-            mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
-            memo: String,
-            recipient_name: String,
-            note: String,
-            return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
-            signature_text: String
-          )
+              mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
+              memo: String,
+              recipient_name: String,
+              note: String,
+              return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
+              signature_text: String
+            )
             .returns(T.attached_class)
         end
         def self.new(mailing_address:, memo:, recipient_name:, note: nil, return_address: nil, signature_text: nil)
@@ -260,9 +260,7 @@ module Increase
           def self.new(city:, line1:, postal_code:, state:, line2: nil)
           end
 
-          sig do
-            override.returns({city: String, line1: String, postal_code: String, state: String, line2: String})
-          end
+          sig { override.returns({city: String, line1: String, postal_code: String, state: String, line2: String}) }
           def to_hash
           end
         end
@@ -317,14 +315,7 @@ module Increase
           end
 
           sig do
-            params(
-              city: String,
-              line1: String,
-              name: String,
-              postal_code: String,
-              state: String,
-              line2: String
-            )
+            params(city: String, line1: String, name: String, postal_code: String, state: String, line2: String)
               .returns(T.attached_class)
           end
           def self.new(city:, line1:, name:, postal_code:, state:, line2: nil)
@@ -332,14 +323,7 @@ module Increase
 
           sig do
             override
-              .returns({
-                         city: String,
-                         line1: String,
-                         name: String,
-                         postal_code: String,
-                         state: String,
-                         line2: String
-                       })
+              .returns({city: String, line1: String, name: String, postal_code: String, state: String, line2: String})
           end
           def to_hash
           end

@@ -190,7 +190,7 @@ module Increase
     #
     # @return [Boolean]
     #
-    def self.==(other) = other.is_a?(Class) && other <= Increase::Unknown
+    def self.==(other) = (other.is_a?(Class) && other <= Increase::Unknown)
 
     class << self
       # @!parse
@@ -246,7 +246,7 @@ module Increase
     #
     # @return [Boolean]
     #
-    def self.==(other) = other.is_a?(Class) && other <= Increase::BooleanModel
+    def self.==(other) = (other.is_a?(Class) && other <= Increase::BooleanModel)
 
     class << self
       # @!parse
@@ -328,7 +328,7 @@ module Increase
     # @return [Boolean]
     #
     def self.==(other)
-      other.is_a?(Class) && other <= Increase::Enum && other.values.to_set == values.to_set
+      (other.is_a?(Class) && other <= Increase::Enum && other.values.to_set == values.to_set)
     end
 
     class << self
@@ -992,9 +992,9 @@ module Increase
       #
       private def request_only(&blk)
         @mode = :dump
-        blk.call
-      ensure
-        @mode = nil
+          blk.call
+        ensure
+          @mode = nil
       end
 
       # @private
@@ -1005,9 +1005,9 @@ module Increase
       #
       private def response_only(&blk)
         @mode = :coerce
-        blk.call
-      ensure
-        @mode = nil
+          blk.call
+        ensure
+          @mode = nil
       end
     end
 

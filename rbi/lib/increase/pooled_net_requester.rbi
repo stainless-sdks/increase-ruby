@@ -2,9 +2,7 @@
 
 module Increase
   class PooledNetRequester
-    RequestShape = T.type_alias do
-      {method: Symbol, url: URI::Generic, headers: T::Hash[String, String], body: T.anything, deadline: Float}
-    end
+    RequestShape = T.type_alias { {method: Symbol, url: URI::Generic, headers: T::Hash[String, String], body: T.anything, deadline: Float} }
 
     class << self
       sig { params(url: URI::Generic).returns(Net::HTTP) }

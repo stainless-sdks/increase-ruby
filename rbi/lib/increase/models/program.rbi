@@ -77,16 +77,16 @@ module Increase
 
       sig do
         params(
-          id: String,
-          bank: Symbol,
-          billing_account_id: T.nilable(String),
-          created_at: Time,
-          default_digital_card_profile_id: T.nilable(String),
-          interest_rate: String,
-          name: String,
-          type: Symbol,
-          updated_at: Time
-        )
+            id: String,
+            bank: Symbol,
+            billing_account_id: T.nilable(String),
+            created_at: Time,
+            default_digital_card_profile_id: T.nilable(String),
+            interest_rate: String,
+            name: String,
+            type: Symbol,
+            updated_at: Time
+          )
           .returns(T.attached_class)
       end
       def self.new(

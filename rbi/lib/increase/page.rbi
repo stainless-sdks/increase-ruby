@@ -24,11 +24,11 @@ module Increase
 
     sig do
       params(
-        client: Increase::BaseClient,
-        req: Increase::BaseClient::RequestComponentsShape,
-        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
-        page_data: T::Hash[Symbol, T.anything]
-      )
+          client: Increase::BaseClient,
+          req: Increase::BaseClient::RequestComponentsShape,
+          headers: T.any(T::Hash[String, String], Net::HTTPHeader),
+          page_data: T::Hash[Symbol, T.anything]
+        )
         .void
     end
     def initialize(client:, req:, headers:, page_data:)

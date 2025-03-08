@@ -160,11 +160,7 @@ class IncreaseTest < Minitest::Test
 
   def test_client_retry_after_date
     increase = Increase::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
-    requester = MockRequester.new(
-      500,
-      {"retry-after" => (Time.now + 10).httpdate},
-      {"type" => "internal_server_error"}
-    )
+    requester = MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {"type" => "internal_server_error"})
     increase.requester = requester
 
     assert_raises(Increase::InternalServerError) do
@@ -200,7 +196,7 @@ class IncreaseTest < Minitest::Test
     end
 
     retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
-    assert_equal(%w[0 1 2], retry_count_headers)
+    assert_equal(["0", "1", "2"], retry_count_headers)
   end
 
   def test_omit_retry_count_header
@@ -232,7 +228,7 @@ class IncreaseTest < Minitest::Test
     end
 
     retry_count_headers = requester.attempts.map { _1[:headers]["x-stainless-retry-count"] }
-    assert_equal(%w[42 42 42], retry_count_headers)
+    assert_equal(["42", "42", "42"], retry_count_headers)
   end
 
   def test_client_redirect_307
@@ -247,10 +243,7 @@ class IncreaseTest < Minitest::Test
     assert_equal("/redirected", requester.attempts.last[:url].path)
     assert_equal(requester.attempts.first[:method], requester.attempts.last[:method])
     assert_equal(requester.attempts.first[:body], requester.attempts.last[:body])
-    assert_equal(
-      requester.attempts.first[:headers]["content-type"],
-      requester.attempts.last[:headers]["content-type"]
-    )
+    assert_equal(requester.attempts.first[:headers]["content-type"], requester.attempts.last[:headers]["content-type"])
   end
 
   def test_client_redirect_303
@@ -280,10 +273,7 @@ class IncreaseTest < Minitest::Test
       )
     end
 
-    assert_equal(
-      requester.attempts.first[:headers]["authorization"],
-      requester.attempts.last[:headers]["authorization"]
-    )
+    assert_equal(requester.attempts.first[:headers]["authorization"], requester.attempts.last[:headers]["authorization"])
   end
 
   def test_client_redirect_auth_strip_cross_origin

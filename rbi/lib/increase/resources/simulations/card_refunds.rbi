@@ -6,9 +6,9 @@ module Increase
       class CardRefunds
         sig do
           params(
-            transaction_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              transaction_id: String,
+              request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Increase::Models::Transaction)
         end
         def create(transaction_id:, request_options: {})

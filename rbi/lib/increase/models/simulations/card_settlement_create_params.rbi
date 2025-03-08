@@ -33,11 +33,11 @@ module Increase
 
         sig do
           params(
-            card_id: String,
-            pending_transaction_id: String,
-            amount: Integer,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+              card_id: String,
+              pending_transaction_id: String,
+              amount: Integer,
+              request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            )
             .returns(T.attached_class)
         end
         def self.new(card_id:, pending_transaction_id:, amount: nil, request_options: {})
@@ -46,12 +46,7 @@ module Increase
         sig do
           override
             .returns(
-              {
-                card_id: String,
-                pending_transaction_id: String,
-                amount: Integer,
-                request_options: Increase::RequestOptions
-              }
+              {card_id: String, pending_transaction_id: String, amount: Integer, request_options: Increase::RequestOptions}
             )
         end
         def to_hash

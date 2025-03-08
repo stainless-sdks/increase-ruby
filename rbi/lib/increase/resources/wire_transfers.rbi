@@ -5,24 +5,24 @@ module Increase
     class WireTransfers
       sig do
         params(
-          account_id: String,
-          amount: Integer,
-          beneficiary_name: String,
-          message_to_recipient: String,
-          account_number: String,
-          beneficiary_address_line1: String,
-          beneficiary_address_line2: String,
-          beneficiary_address_line3: String,
-          external_account_id: String,
-          originator_address_line1: String,
-          originator_address_line2: String,
-          originator_address_line3: String,
-          originator_name: String,
-          require_approval: T::Boolean,
-          routing_number: String,
-          source_account_number_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            account_id: String,
+            amount: Integer,
+            beneficiary_name: String,
+            message_to_recipient: String,
+            account_number: String,
+            beneficiary_address_line1: String,
+            beneficiary_address_line2: String,
+            beneficiary_address_line3: String,
+            external_account_id: String,
+            originator_address_line1: String,
+            originator_address_line2: String,
+            originator_address_line3: String,
+            originator_name: String,
+            require_approval: T::Boolean,
+            routing_number: String,
+            source_account_number_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::WireTransfer)
       end
       def create(
@@ -48,9 +48,9 @@ module Increase
 
       sig do
         params(
-          wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            wire_transfer_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::WireTransfer)
       end
       def retrieve(wire_transfer_id, request_options: {})
@@ -58,14 +58,14 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          created_at: Increase::Models::WireTransferListParams::CreatedAt,
-          cursor: String,
-          external_account_id: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            account_id: String,
+            created_at: Increase::Models::WireTransferListParams::CreatedAt,
+            cursor: String,
+            external_account_id: String,
+            idempotency_key: String,
+            limit: Integer,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Page[Increase::Models::WireTransfer])
       end
       def list(
@@ -81,9 +81,9 @@ module Increase
 
       sig do
         params(
-          wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            wire_transfer_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::WireTransfer)
       end
       def approve(wire_transfer_id, request_options: {})
@@ -91,9 +91,9 @@ module Increase
 
       sig do
         params(
-          wire_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            wire_transfer_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::WireTransfer)
       end
       def cancel(wire_transfer_id, request_options: {})

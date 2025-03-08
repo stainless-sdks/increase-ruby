@@ -61,14 +61,14 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: T.nilable(String),
-          compliance_category: T.nilable(Symbol),
-          entity_id: T.nilable(String),
-          idempotency_key: T.nilable(String),
-          name: String,
-          type: Symbol
-        )
+            id: String,
+            account_id: T.nilable(String),
+            compliance_category: T.nilable(Symbol),
+            entity_id: T.nilable(String),
+            idempotency_key: T.nilable(String),
+            name: String,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:)

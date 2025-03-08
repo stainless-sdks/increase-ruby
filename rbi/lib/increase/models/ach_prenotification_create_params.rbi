@@ -112,21 +112,21 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          account_number: String,
-          routing_number: String,
-          addendum: String,
-          company_descriptive_date: String,
-          company_discretionary_data: String,
-          company_entry_description: String,
-          company_name: String,
-          credit_debit_indicator: Symbol,
-          effective_date: Date,
-          individual_id: String,
-          individual_name: String,
-          standard_entry_class_code: Symbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_id: String,
+            account_number: String,
+            routing_number: String,
+            addendum: String,
+            company_descriptive_date: String,
+            company_discretionary_data: String,
+            company_entry_description: String,
+            company_name: String,
+            credit_debit_indicator: Symbol,
+            effective_date: Date,
+            individual_id: String,
+            individual_name: String,
+            standard_entry_class_code: Symbol,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(

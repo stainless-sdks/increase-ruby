@@ -1,20 +1,15 @@
 module Increase
   module Models
-    type digital_card_profile_archive_params =
-      {  } & Increase::request_parameters
+    type digital_card_profile_archive_params = ({} & Increase::request_parameters)
 
     class DigitalCardProfileArchiveParams < Increase::BaseModel
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      def initialize:
-        (request_options: Increase::request_opts) -> void
-        | (
-          ?Increase::Models::digital_card_profile_archive_params
-          | Increase::BaseModel data
-        ) -> void
+      def initialize: (request_options: Increase::request_opts) -> void
+                    | (?(Increase::Models::digital_card_profile_archive_params | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::digital_card_profile_archive_params
+      def to_hash: () -> Increase::Models::digital_card_profile_archive_params
     end
   end
 end

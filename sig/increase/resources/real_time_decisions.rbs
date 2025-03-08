@@ -1,32 +1,11 @@
 module Increase
   module Resources
     class RealTimeDecisions
-      def retrieve:
-        (
-          String real_time_decision_id,
-          ?Increase::Models::RealTimeDecisionRetrieveParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::RealTimeDecision
-        | (
-          String real_time_decision_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::RealTimeDecision
+      def retrieve: (String real_time_decision_id, ?(Increase::Models::RealTimeDecisionRetrieveParams | ::Hash[Symbol, top]) params) -> Increase::Models::RealTimeDecision
+                  | (String real_time_decision_id, request_options: Increase::request_opts) -> Increase::Models::RealTimeDecision
 
-      def action:
-        (
-          String real_time_decision_id,
-          ?Increase::Models::RealTimeDecisionActionParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::RealTimeDecision
-        | (
-          String real_time_decision_id,
-          card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication,
-          card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge,
-          card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization,
-          digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication,
-          digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::RealTimeDecision
+      def action: (String real_time_decision_id, ?(Increase::Models::RealTimeDecisionActionParams | ::Hash[Symbol, top]) params) -> Increase::Models::RealTimeDecision
+                | (String real_time_decision_id, card_authentication: Increase::Models::RealTimeDecisionActionParams::CardAuthentication, card_authentication_challenge: Increase::Models::RealTimeDecisionActionParams::CardAuthenticationChallenge, card_authorization: Increase::Models::RealTimeDecisionActionParams::CardAuthorization, digital_wallet_authentication: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication, digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken, request_options: Increase::request_opts) -> Increase::Models::RealTimeDecision
 
       def initialize: (client: Increase::Client) -> void
     end

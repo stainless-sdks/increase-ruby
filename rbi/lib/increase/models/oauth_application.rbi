@@ -61,14 +61,14 @@ module Increase
 
       sig do
         params(
-          id: String,
-          client_id: String,
-          created_at: Time,
-          deleted_at: T.nilable(Time),
-          name: T.nilable(String),
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            client_id: String,
+            created_at: Time,
+            deleted_at: T.nilable(Time),
+            name: T.nilable(String),
+            status: Symbol,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(id:, client_id:, created_at:, deleted_at:, name:, status:, type:)

@@ -164,25 +164,25 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          amount: Integer,
-          back_image_file_id: T.nilable(String),
-          created_at: Time,
-          deposit_acceptance: T.nilable(Increase::Models::CheckDeposit::DepositAcceptance),
-          deposit_rejection: T.nilable(Increase::Models::CheckDeposit::DepositRejection),
-          deposit_return: T.nilable(Increase::Models::CheckDeposit::DepositReturn),
-          deposit_submission: T.nilable(Increase::Models::CheckDeposit::DepositSubmission),
-          description: T.nilable(String),
-          front_image_file_id: String,
-          idempotency_key: T.nilable(String),
-          inbound_funds_hold: T.nilable(Increase::Models::CheckDeposit::InboundFundsHold),
-          inbound_mail_item_id: T.nilable(String),
-          lockbox_id: T.nilable(String),
-          status: Symbol,
-          transaction_id: T.nilable(String),
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            amount: Integer,
+            back_image_file_id: T.nilable(String),
+            created_at: Time,
+            deposit_acceptance: T.nilable(Increase::Models::CheckDeposit::DepositAcceptance),
+            deposit_rejection: T.nilable(Increase::Models::CheckDeposit::DepositRejection),
+            deposit_return: T.nilable(Increase::Models::CheckDeposit::DepositReturn),
+            deposit_submission: T.nilable(Increase::Models::CheckDeposit::DepositSubmission),
+            description: T.nilable(String),
+            front_image_file_id: String,
+            idempotency_key: T.nilable(String),
+            inbound_funds_hold: T.nilable(Increase::Models::CheckDeposit::InboundFundsHold),
+            inbound_mail_item_id: T.nilable(String),
+            lockbox_id: T.nilable(String),
+            status: Symbol,
+            transaction_id: T.nilable(String),
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -294,14 +294,14 @@ module Increase
 
         sig do
           params(
-            account_number: String,
-            amount: Integer,
-            auxiliary_on_us: T.nilable(String),
-            check_deposit_id: String,
-            currency: Symbol,
-            routing_number: String,
-            serial_number: T.nilable(String)
-          )
+              account_number: String,
+              amount: Integer,
+              auxiliary_on_us: T.nilable(String),
+              check_deposit_id: String,
+              currency: Symbol,
+              routing_number: String,
+              serial_number: T.nilable(String)
+            )
             .returns(T.attached_class)
         end
         def self.new(account_number:, amount:, auxiliary_on_us:, check_deposit_id:, currency:, routing_number:, serial_number:)
@@ -404,13 +404,13 @@ module Increase
 
         sig do
           params(
-            amount: Integer,
-            check_deposit_id: String,
-            currency: Symbol,
-            declined_transaction_id: String,
-            reason: Symbol,
-            rejected_at: Time
-          )
+              amount: Integer,
+              check_deposit_id: String,
+              currency: Symbol,
+              declined_transaction_id: String,
+              reason: Symbol,
+              rejected_at: Time
+            )
             .returns(T.attached_class)
         end
         def self.new(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:)
@@ -555,13 +555,13 @@ module Increase
 
         sig do
           params(
-            amount: Integer,
-            check_deposit_id: String,
-            currency: Symbol,
-            return_reason: Symbol,
-            returned_at: Time,
-            transaction_id: String
-          )
+              amount: Integer,
+              check_deposit_id: String,
+              currency: Symbol,
+              return_reason: Symbol,
+              returned_at: Time,
+              transaction_id: String
+            )
             .returns(T.attached_class)
         end
         def self.new(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:)
@@ -725,9 +725,7 @@ module Increase
         def submitted_at=(_)
         end
 
-        sig do
-          params(back_file_id: String, front_file_id: String, submitted_at: Time).returns(T.attached_class)
-        end
+        sig { params(back_file_id: String, front_file_id: String, submitted_at: Time).returns(T.attached_class) }
         def self.new(back_file_id:, front_file_id:, submitted_at:)
         end
 
@@ -819,17 +817,17 @@ module Increase
 
         sig do
           params(
-            id: String,
-            amount: Integer,
-            automatically_releases_at: Time,
-            created_at: Time,
-            currency: Symbol,
-            held_transaction_id: T.nilable(String),
-            pending_transaction_id: T.nilable(String),
-            released_at: T.nilable(Time),
-            status: Symbol,
-            type: Symbol
-          )
+              id: String,
+              amount: Integer,
+              automatically_releases_at: Time,
+              created_at: Time,
+              currency: Symbol,
+              held_transaction_id: T.nilable(String),
+              pending_transaction_id: T.nilable(String),
+              released_at: T.nilable(Time),
+              status: Symbol,
+              type: Symbol
+            )
             .returns(T.attached_class)
         end
         def self.new(

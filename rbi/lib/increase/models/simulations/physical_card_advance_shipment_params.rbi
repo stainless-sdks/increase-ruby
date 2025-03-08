@@ -17,9 +17,9 @@ module Increase
 
         sig do
           params(
-            shipment_status: Symbol,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+              shipment_status: Symbol,
+              request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            )
             .returns(T.attached_class)
         end
         def self.new(shipment_status:, request_options: {})

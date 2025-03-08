@@ -5,21 +5,21 @@ module Increase
     class WireDrawdownRequests
       sig do
         params(
-          account_number_id: String,
-          amount: Integer,
-          message_to_recipient: String,
-          recipient_account_number: String,
-          recipient_name: String,
-          recipient_routing_number: String,
-          originator_address_line1: String,
-          originator_address_line2: String,
-          originator_address_line3: String,
-          originator_name: String,
-          recipient_address_line1: String,
-          recipient_address_line2: String,
-          recipient_address_line3: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            account_number_id: String,
+            amount: Integer,
+            message_to_recipient: String,
+            recipient_account_number: String,
+            recipient_name: String,
+            recipient_routing_number: String,
+            originator_address_line1: String,
+            originator_address_line2: String,
+            originator_address_line3: String,
+            originator_name: String,
+            recipient_address_line1: String,
+            recipient_address_line2: String,
+            recipient_address_line3: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::WireDrawdownRequest)
       end
       def create(
@@ -42,9 +42,9 @@ module Increase
 
       sig do
         params(
-          wire_drawdown_request_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            wire_drawdown_request_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::WireDrawdownRequest)
       end
       def retrieve(wire_drawdown_request_id, request_options: {})
@@ -52,12 +52,12 @@ module Increase
 
       sig do
         params(
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::WireDrawdownRequestListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            status: Increase::Models::WireDrawdownRequestListParams::Status,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Page[Increase::Models::WireDrawdownRequest])
       end
       def list(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})

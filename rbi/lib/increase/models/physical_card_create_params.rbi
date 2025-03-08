@@ -46,12 +46,12 @@ module Increase
 
       sig do
         params(
-          card_id: String,
-          cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,
-          shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
-          physical_card_profile_id: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            card_id: String,
+            cardholder: Increase::Models::PhysicalCardCreateParams::Cardholder,
+            shipment: Increase::Models::PhysicalCardCreateParams::Shipment,
+            physical_card_profile_id: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(card_id:, cardholder:, shipment:, physical_card_profile_id: nil, request_options: {})
@@ -198,15 +198,15 @@ module Increase
 
           sig do
             params(
-              city: String,
-              line1: String,
-              name: String,
-              postal_code: String,
-              state: String,
-              line2: String,
-              line3: String,
-              phone_number: String
-            )
+                city: String,
+                line1: String,
+                name: String,
+                postal_code: String,
+                state: String,
+                line2: String,
+                line3: String,
+                phone_number: String
+              )
               .returns(T.attached_class)
           end
           def self.new(city:, line1:, name:, postal_code:, state:, line2: nil, line3: nil, phone_number: nil)

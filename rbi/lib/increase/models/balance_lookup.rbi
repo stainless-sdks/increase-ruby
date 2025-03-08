@@ -42,16 +42,7 @@ module Increase
       def self.new(account_id:, available_balance:, current_balance:, type:)
       end
 
-      sig do
-        override.returns(
-          {
-            account_id: String,
-            available_balance: Integer,
-            current_balance: Integer,
-            type: Symbol
-          }
-        )
-      end
+      sig { override.returns({account_id: String, available_balance: Integer, current_balance: Integer, type: Symbol}) }
       def to_hash
       end
 

@@ -36,10 +36,10 @@ module Increase
 
         sig do
           params(
-            declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
-            pending_transaction: T.nilable(Increase::Models::PendingTransaction),
-            type: Symbol
-          )
+              declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
+              pending_transaction: T.nilable(Increase::Models::PendingTransaction),
+              type: Symbol
+            )
             .returns(T.attached_class)
         end
         def self.new(declined_transaction:, pending_transaction:, type:)

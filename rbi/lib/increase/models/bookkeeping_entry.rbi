@@ -53,13 +53,13 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          amount: Integer,
-          created_at: Time,
-          entry_set_id: String,
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            amount: Integer,
+            created_at: Time,
+            entry_set_id: String,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(id:, account_id:, amount:, created_at:, entry_set_id:, type:)
@@ -68,14 +68,7 @@ module Increase
       sig do
         override
           .returns(
-            {
-              id: String,
-              account_id: String,
-              amount: Integer,
-              created_at: Time,
-              entry_set_id: String,
-              type: Symbol
-            }
+            {id: String, account_id: String, amount: Integer, created_at: Time, entry_set_id: String, type: Symbol}
           )
       end
       def to_hash

@@ -32,11 +32,11 @@ module Increase
 
       sig do
         params(
-          routing_number: String,
-          cursor: String,
-          limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            routing_number: String,
+            cursor: String,
+            limit: Integer,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(routing_number:, cursor: nil, limit: nil, request_options: {})
@@ -45,12 +45,7 @@ module Increase
       sig do
         override
           .returns(
-            {
-              routing_number: String,
-              cursor: String,
-              limit: Integer,
-              request_options: Increase::RequestOptions
-            }
+            {routing_number: String, cursor: String, limit: Integer, request_options: Increase::RequestOptions}
           )
       end
       def to_hash

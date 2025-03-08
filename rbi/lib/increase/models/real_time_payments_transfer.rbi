@@ -223,32 +223,32 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          acknowledgement: T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement),
-          amount: Integer,
-          approval: T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval),
-          cancellation: T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation),
-          created_at: Time,
-          created_by: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy),
-          creditor_name: String,
-          currency: Symbol,
-          debtor_name: T.nilable(String),
-          destination_account_number: String,
-          destination_routing_number: String,
-          external_account_id: T.nilable(String),
-          idempotency_key: T.nilable(String),
-          pending_transaction_id: T.nilable(String),
-          rejection: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection),
-          remittance_information: String,
-          source_account_number_id: String,
-          status: Symbol,
-          submission: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission),
-          transaction_id: T.nilable(String),
-          type: Symbol,
-          ultimate_creditor_name: T.nilable(String),
-          ultimate_debtor_name: T.nilable(String)
-        )
+            id: String,
+            account_id: String,
+            acknowledgement: T.nilable(Increase::Models::RealTimePaymentsTransfer::Acknowledgement),
+            amount: Integer,
+            approval: T.nilable(Increase::Models::RealTimePaymentsTransfer::Approval),
+            cancellation: T.nilable(Increase::Models::RealTimePaymentsTransfer::Cancellation),
+            created_at: Time,
+            created_by: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy),
+            creditor_name: String,
+            currency: Symbol,
+            debtor_name: T.nilable(String),
+            destination_account_number: String,
+            destination_routing_number: String,
+            external_account_id: T.nilable(String),
+            idempotency_key: T.nilable(String),
+            pending_transaction_id: T.nilable(String),
+            rejection: T.nilable(Increase::Models::RealTimePaymentsTransfer::Rejection),
+            remittance_information: String,
+            source_account_number_id: String,
+            status: Symbol,
+            submission: T.nilable(Increase::Models::RealTimePaymentsTransfer::Submission),
+            transaction_id: T.nilable(String),
+            type: Symbol,
+            ultimate_creditor_name: T.nilable(String),
+            ultimate_debtor_name: T.nilable(String)
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -429,11 +429,11 @@ module Increase
 
         sig do
           params(
-            api_key: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey),
-            category: Symbol,
-            oauth_application: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication),
-            user: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)
-          )
+              api_key: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::APIKey),
+              category: Symbol,
+              oauth_application: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication),
+              user: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)
+            )
             .returns(T.attached_class)
         end
         def self.new(api_key:, category:, oauth_application:, user:)
@@ -582,10 +582,10 @@ module Increase
 
         sig do
           params(
-            reject_reason_additional_information: T.nilable(String),
-            reject_reason_code: Symbol,
-            rejected_at: T.nilable(Time)
-          )
+              reject_reason_additional_information: T.nilable(String),
+              reject_reason_code: Symbol,
+              rejected_at: T.nilable(Time)
+            )
             .returns(T.attached_class)
         end
         def self.new(reject_reason_additional_information:, reject_reason_code:, rejected_at:)
@@ -729,9 +729,7 @@ module Increase
         def transaction_identification=(_)
         end
 
-        sig do
-          params(submitted_at: T.nilable(Time), transaction_identification: String).returns(T.attached_class)
-        end
+        sig { params(submitted_at: T.nilable(Time), transaction_identification: String).returns(T.attached_class) }
         def self.new(submitted_at:, transaction_identification:)
         end
 

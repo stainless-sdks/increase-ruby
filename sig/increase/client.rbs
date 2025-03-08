@@ -8,10 +8,7 @@ module Increase
 
     DEFAULT_MAX_RETRY_DELAY: Float
 
-    ENVIRONMENTS: {
-      production: "https://api.increase.com",
-      sandbox: "https://sandbox.increase.com"
-    }
+    ENVIRONMENTS: {production: "https://api.increase.com", sandbox: "https://sandbox.increase.com"}
 
     attr_reader api_key: String
 
@@ -121,17 +118,8 @@ module Increase
 
     attr_reader simulations: Increase::Resources::Simulations
 
-    private def auth_headers: -> ::Hash[String, String]
+    private def auth_headers: () -> ::Hash[String, String]
 
-    def initialize: (
-      environment: :production | :sandbox | nil,
-      base_url: String?,
-      api_key: String?,
-      max_retries: Integer,
-      timeout: Float,
-      initial_retry_delay: Float,
-      max_retry_delay: Float,
-      idempotency_header: String
-    ) -> void
+    def initialize: (environment: (:production | :sandbox | nil), base_url: String?, api_key: String?, max_retries: Integer, timeout: Float, initial_retry_delay: Float, max_retry_delay: Float, idempotency_header: String) -> void
   end
 end

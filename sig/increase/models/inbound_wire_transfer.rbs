@@ -1,33 +1,32 @@
 module Increase
   module Models
-    type inbound_wire_transfer =
-      {
-        id: String,
-        account_id: String,
-        account_number_id: String,
-        amount: Integer,
-        :beneficiary_address_line1 => String?,
-        :beneficiary_address_line2 => String?,
-        :beneficiary_address_line3 => String?,
-        beneficiary_name: String?,
-        beneficiary_reference: String?,
-        created_at: Time,
-        description: String,
-        input_message_accountability_data: String?,
-        :originator_address_line1 => String?,
-        :originator_address_line2 => String?,
-        :originator_address_line3 => String?,
-        originator_name: String?,
-        originator_routing_number: String?,
-        originator_to_beneficiary_information: String?,
-        :originator_to_beneficiary_information_line1 => String?,
-        :originator_to_beneficiary_information_line2 => String?,
-        :originator_to_beneficiary_information_line3 => String?,
-        :originator_to_beneficiary_information_line4 => String?,
-        sender_reference: String?,
-        status: Increase::Models::InboundWireTransfer::status,
-        type: Increase::Models::InboundWireTransfer::type_
-      }
+    type inbound_wire_transfer = {
+      id: String,
+      account_id: String,
+      account_number_id: String,
+      amount: Integer,
+      beneficiary_address_line1: String?,
+      beneficiary_address_line2: String?,
+      beneficiary_address_line3: String?,
+      beneficiary_name: String?,
+      beneficiary_reference: String?,
+      created_at: Time,
+      description: String,
+      input_message_accountability_data: String?,
+      originator_address_line1: String?,
+      originator_address_line2: String?,
+      originator_address_line3: String?,
+      originator_name: String?,
+      originator_routing_number: String?,
+      originator_to_beneficiary_information: String?,
+      originator_to_beneficiary_information_line1: String?,
+      originator_to_beneficiary_information_line2: String?,
+      originator_to_beneficiary_information_line3: String?,
+      originator_to_beneficiary_information_line4: String?,
+      sender_reference: String?,
+      status: Increase::Models::InboundWireTransfer::status,
+      type: Increase::Models::InboundWireTransfer::type_
+    }
 
     class InboundWireTransfer < Increase::BaseModel
       attr_accessor id: String
@@ -80,41 +79,12 @@ module Increase
 
       attr_accessor type: Increase::Models::InboundWireTransfer::type_
 
-      def initialize:
-        (
-          id: String,
-          account_id: String,
-          account_number_id: String,
-          amount: Integer,
-          beneficiary_address_line1: String?,
-          beneficiary_address_line2: String?,
-          beneficiary_address_line3: String?,
-          beneficiary_name: String?,
-          beneficiary_reference: String?,
-          created_at: Time,
-          description: String,
-          input_message_accountability_data: String?,
-          originator_address_line1: String?,
-          originator_address_line2: String?,
-          originator_address_line3: String?,
-          originator_name: String?,
-          originator_routing_number: String?,
-          originator_to_beneficiary_information: String?,
-          originator_to_beneficiary_information_line1: String?,
-          originator_to_beneficiary_information_line2: String?,
-          originator_to_beneficiary_information_line3: String?,
-          originator_to_beneficiary_information_line4: String?,
-          sender_reference: String?,
-          status: Increase::Models::InboundWireTransfer::status,
-          type: Increase::Models::InboundWireTransfer::type_
-        ) -> void
-        | (
-          ?Increase::Models::inbound_wire_transfer | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, account_id: String, account_number_id: String, amount: Integer, beneficiary_address_line1: String?, beneficiary_address_line2: String?, beneficiary_address_line3: String?, beneficiary_name: String?, beneficiary_reference: String?, created_at: Time, description: String, input_message_accountability_data: String?, originator_address_line1: String?, originator_address_line2: String?, originator_address_line3: String?, originator_name: String?, originator_routing_number: String?, originator_to_beneficiary_information: String?, originator_to_beneficiary_information_line1: String?, originator_to_beneficiary_information_line2: String?, originator_to_beneficiary_information_line3: String?, originator_to_beneficiary_information_line4: String?, sender_reference: String?, status: Increase::Models::InboundWireTransfer::status, type: Increase::Models::InboundWireTransfer::type_) -> void
+                    | (?(Increase::Models::inbound_wire_transfer | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::inbound_wire_transfer
+      def to_hash: () -> Increase::Models::inbound_wire_transfer
 
-      type status = :pending | :accepted | :declined | :reversed
+      type status = (:pending | :accepted | :declined | :reversed)
 
       class Status < Increase::Enum
         # The Inbound Wire Transfer is awaiting action, will transition automatically if no action is taken.
@@ -129,7 +99,7 @@ module Increase
         # The Inbound Wire Transfer was reversed.
         REVERSED: :reversed
 
-        def self.values: -> ::Array[Increase::Models::InboundWireTransfer::status]
+        def self.values: () -> ::Array[Increase::Models::InboundWireTransfer::status]
       end
 
       type type_ = :inbound_wire_transfer
@@ -137,7 +107,7 @@ module Increase
       class Type < Increase::Enum
         INBOUND_WIRE_TRANSFER: :inbound_wire_transfer
 
-        def self.values: -> ::Array[Increase::Models::InboundWireTransfer::type_]
+        def self.values: () -> ::Array[Increase::Models::InboundWireTransfer::type_]
       end
     end
   end

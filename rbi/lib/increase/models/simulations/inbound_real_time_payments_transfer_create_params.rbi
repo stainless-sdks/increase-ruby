@@ -65,15 +65,15 @@ module Increase
 
         sig do
           params(
-            account_number_id: String,
-            amount: Integer,
-            debtor_account_number: String,
-            debtor_name: String,
-            debtor_routing_number: String,
-            remittance_information: String,
-            request_for_payment_id: String,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+              account_number_id: String,
+              amount: Integer,
+              debtor_account_number: String,
+              debtor_name: String,
+              debtor_routing_number: String,
+              remittance_information: String,
+              request_for_payment_id: String,
+              request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            )
             .returns(T.attached_class)
         end
         def self.new(

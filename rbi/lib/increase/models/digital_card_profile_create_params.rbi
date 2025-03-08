@@ -83,17 +83,17 @@ module Increase
 
       sig do
         params(
-          app_icon_file_id: String,
-          background_image_file_id: String,
-          card_description: String,
-          description: String,
-          issuer_name: String,
-          contact_email: String,
-          contact_phone: String,
-          contact_website: String,
-          text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            app_icon_file_id: String,
+            background_image_file_id: String,
+            card_description: String,
+            description: String,
+            issuer_name: String,
+            contact_email: String,
+            contact_phone: String,
+            contact_website: String,
+            text_color: Increase::Models::DigitalCardProfileCreateParams::TextColor,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(

@@ -20,9 +20,9 @@ module Increase
 
         sig do
           params(
-            rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+              rejection: Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection,
+              request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            )
             .returns(T.attached_class)
         end
         def self.new(rejection: nil, request_options: {})

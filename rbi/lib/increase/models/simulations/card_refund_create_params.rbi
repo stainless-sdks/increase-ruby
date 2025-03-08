@@ -17,9 +17,9 @@ module Increase
 
         sig do
           params(
-            transaction_id: String,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+              transaction_id: String,
+              request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            )
             .returns(T.attached_class)
         end
         def self.new(transaction_id:, request_options: {})

@@ -40,12 +40,12 @@ module Increase
 
       sig do
         params(
-          entity_id: String,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            entity_id: String,
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(entity_id:, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})

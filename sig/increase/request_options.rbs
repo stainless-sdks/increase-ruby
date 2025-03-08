@@ -1,8 +1,7 @@
 module Increase
-  type request_opts =
-    Increase::RequestOptions | Increase::request_options | ::Hash[Symbol, top]
+  type request_opts = (Increase::RequestOptions | Increase::request_options | ::Hash[Symbol, top])
 
-  type request_parameters = { request_options: Increase::request_opts }
+  type request_parameters = {request_options: Increase::request_opts}
 
   module RequestParameters
     attr_accessor request_options: Increase::request_opts
@@ -12,18 +11,17 @@ module Increase
     end
   end
 
-  type request_options =
-    {
-      idempotency_key: String?,
-      extra_query: ::Hash[String, (::Array[String] | String)?]?,
-      extra_headers: ::Hash[String, String?]?,
-      extra_body: ::Hash[Symbol, top]?,
-      max_retries: Integer?,
-      timeout: Float?
-    }
+  type request_options = {
+    idempotency_key: String?,
+    extra_query: ::Hash[String, (::Array[String] | String)?]?,
+    extra_headers: ::Hash[String, String?]?,
+    extra_body: ::Hash[Symbol, top]?,
+    max_retries: Integer?,
+    timeout: Float?
+  }
 
   class RequestOptions < Increase::BaseModel
-    def self.validate!: (self | ::Hash[Symbol, top] opts) -> void
+    def self.validate!: ((self | ::Hash[Symbol, top]) opts) -> void
 
     attr_accessor idempotency_key: String?
 
@@ -37,8 +35,6 @@ module Increase
 
     attr_accessor timeout: Float?
 
-    def initialize: (
-      ?Increase::request_options | ::Hash[Symbol, top] values
-    ) -> void
+    def initialize: (?(Increase::request_options | ::Hash[Symbol, top]) values) -> void
   end
 end

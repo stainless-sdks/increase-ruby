@@ -6,9 +6,9 @@ module Increase
       class DigitalWalletTokenRequests
         sig do
           params(
-            card_id: String,
-            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          )
+              card_id: String,
+              request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+            )
             .returns(Increase::Models::Simulations::DigitalWalletTokenRequestCreateResponse)
         end
         def create(card_id:, request_options: {})

@@ -140,24 +140,24 @@ module Increase
 
         sig do
           params(
-            amount: Integer,
-            authenticated_card_payment_id: String,
-            card_id: String,
-            decline_reason: Symbol,
-            digital_wallet_token_id: String,
-            direction: Symbol,
-            event_subscription_id: String,
-            merchant_acceptor_id: String,
-            merchant_category_code: String,
-            merchant_city: String,
-            merchant_country: String,
-            merchant_descriptor: String,
-            merchant_state: String,
-            network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
-            physical_card_id: String,
-            terminal_id: String,
-            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-          )
+              amount: Integer,
+              authenticated_card_payment_id: String,
+              card_id: String,
+              decline_reason: Symbol,
+              digital_wallet_token_id: String,
+              direction: Symbol,
+              event_subscription_id: String,
+              merchant_acceptor_id: String,
+              merchant_category_code: String,
+              merchant_city: String,
+              merchant_country: String,
+              merchant_descriptor: String,
+              merchant_state: String,
+              network_details: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails,
+              physical_card_id: String,
+              terminal_id: String,
+              request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+            )
             .returns(T.attached_class)
         end
         def self.new(

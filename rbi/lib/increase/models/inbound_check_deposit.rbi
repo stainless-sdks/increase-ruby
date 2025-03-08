@@ -171,27 +171,27 @@ module Increase
 
       sig do
         params(
-          id: String,
-          accepted_at: T.nilable(Time),
-          account_id: String,
-          account_number_id: T.nilable(String),
-          adjustments: T::Array[Increase::Models::InboundCheckDeposit::Adjustment],
-          amount: Integer,
-          back_image_file_id: T.nilable(String),
-          bank_of_first_deposit_routing_number: T.nilable(String),
-          check_number: T.nilable(String),
-          check_transfer_id: T.nilable(String),
-          created_at: Time,
-          currency: Symbol,
-          declined_at: T.nilable(Time),
-          declined_transaction_id: T.nilable(String),
-          deposit_return: T.nilable(Increase::Models::InboundCheckDeposit::DepositReturn),
-          front_image_file_id: T.nilable(String),
-          payee_name_analysis: Symbol,
-          status: Symbol,
-          transaction_id: T.nilable(String),
-          type: Symbol
-        )
+            id: String,
+            accepted_at: T.nilable(Time),
+            account_id: String,
+            account_number_id: T.nilable(String),
+            adjustments: T::Array[Increase::Models::InboundCheckDeposit::Adjustment],
+            amount: Integer,
+            back_image_file_id: T.nilable(String),
+            bank_of_first_deposit_routing_number: T.nilable(String),
+            check_number: T.nilable(String),
+            check_transfer_id: T.nilable(String),
+            created_at: Time,
+            currency: Symbol,
+            declined_at: T.nilable(Time),
+            declined_transaction_id: T.nilable(String),
+            deposit_return: T.nilable(Increase::Models::InboundCheckDeposit::DepositReturn),
+            front_image_file_id: T.nilable(String),
+            payee_name_analysis: Symbol,
+            status: Symbol,
+            transaction_id: T.nilable(String),
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(

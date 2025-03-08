@@ -150,24 +150,24 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          amount: Integer,
-          approval: T.nilable(Increase::Models::AccountTransfer::Approval),
-          cancellation: T.nilable(Increase::Models::AccountTransfer::Cancellation),
-          created_at: Time,
-          created_by: T.nilable(Increase::Models::AccountTransfer::CreatedBy),
-          currency: Symbol,
-          description: String,
-          destination_account_id: String,
-          destination_transaction_id: T.nilable(String),
-          idempotency_key: T.nilable(String),
-          network: Symbol,
-          pending_transaction_id: T.nilable(String),
-          status: Symbol,
-          transaction_id: T.nilable(String),
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            amount: Integer,
+            approval: T.nilable(Increase::Models::AccountTransfer::Approval),
+            cancellation: T.nilable(Increase::Models::AccountTransfer::Cancellation),
+            created_at: Time,
+            created_by: T.nilable(Increase::Models::AccountTransfer::CreatedBy),
+            currency: Symbol,
+            description: String,
+            destination_account_id: String,
+            destination_transaction_id: T.nilable(String),
+            idempotency_key: T.nilable(String),
+            network: Symbol,
+            pending_transaction_id: T.nilable(String),
+            status: Symbol,
+            transaction_id: T.nilable(String),
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -314,11 +314,11 @@ module Increase
 
         sig do
           params(
-            api_key: T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey),
-            category: Symbol,
-            oauth_application: T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication),
-            user: T.nilable(Increase::Models::AccountTransfer::CreatedBy::User)
-          )
+              api_key: T.nilable(Increase::Models::AccountTransfer::CreatedBy::APIKey),
+              category: Symbol,
+              oauth_application: T.nilable(Increase::Models::AccountTransfer::CreatedBy::OAuthApplication),
+              user: T.nilable(Increase::Models::AccountTransfer::CreatedBy::User)
+            )
             .returns(T.attached_class)
         end
         def self.new(api_key:, category:, oauth_application:, user:)

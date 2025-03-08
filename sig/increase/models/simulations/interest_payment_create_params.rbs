@@ -1,14 +1,7 @@
 module Increase
   module Models
     module Simulations
-      type interest_payment_create_params =
-        {
-          account_id: String,
-          amount: Integer,
-          period_end: Time,
-          period_start: Time
-        }
-        & Increase::request_parameters
+      type interest_payment_create_params = ({account_id: String, amount: Integer, period_end: Time, period_start: Time} & Increase::request_parameters)
 
       class InterestPaymentCreateParams < Increase::BaseModel
         extend Increase::RequestParameters::Converter
@@ -26,20 +19,10 @@ module Increase
 
         def period_start=: (Time) -> Time
 
-        def initialize:
-          (
-            account_id: String,
-            amount: Integer,
-            period_end: Time,
-            period_start: Time,
-            request_options: Increase::request_opts
-          ) -> void
-          | (
-            ?Increase::Models::Simulations::interest_payment_create_params
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (account_id: String, amount: Integer, period_end: Time, period_start: Time, request_options: Increase::request_opts) -> void
+                      | (?(Increase::Models::Simulations::interest_payment_create_params | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::Simulations::interest_payment_create_params
+        def to_hash: () -> Increase::Models::Simulations::interest_payment_create_params
       end
     end
   end

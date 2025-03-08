@@ -53,13 +53,13 @@ module Increase
 
       sig do
         params(
-          id: String,
-          category: Symbol,
-          created_at: Time,
-          entity_id: T.nilable(String),
-          file_id: String,
-          type: Symbol
-        )
+            id: String,
+            category: Symbol,
+            created_at: Time,
+            entity_id: T.nilable(String),
+            file_id: String,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(id:, category:, created_at:, entity_id:, file_id:, type:)
@@ -68,14 +68,7 @@ module Increase
       sig do
         override
           .returns(
-            {
-              id: String,
-              category: Symbol,
-              created_at: Time,
-              entity_id: T.nilable(String),
-              file_id: String,
-              type: Symbol
-            }
+            {id: String, category: Symbol, created_at: Time, entity_id: T.nilable(String), file_id: String, type: Symbol}
           )
       end
       def to_hash

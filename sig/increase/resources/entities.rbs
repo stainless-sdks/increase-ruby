@@ -1,127 +1,35 @@
 module Increase
   module Resources
     class Entities
-      def create:
-        (
-          Increase::Models::EntityCreateParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Entity
-        | (
-          structure: Increase::Models::EntityCreateParams::structure,
-          corporation: Increase::Models::EntityCreateParams::Corporation,
-          description: String,
-          government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority,
-          joint: Increase::Models::EntityCreateParams::Joint,
-          natural_person: Increase::Models::EntityCreateParams::NaturalPerson,
-          supplemental_documents: ::Array[Increase::Models::EntityCreateParams::SupplementalDocument],
-          third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification,
-          trust: Increase::Models::EntityCreateParams::Trust,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::Entity
+      def create: ((Increase::Models::EntityCreateParams | ::Hash[Symbol, top]) params) -> Increase::Models::Entity
+                | (structure: Increase::Models::EntityCreateParams::structure, corporation: Increase::Models::EntityCreateParams::Corporation, description: String, government_authority: Increase::Models::EntityCreateParams::GovernmentAuthority, joint: Increase::Models::EntityCreateParams::Joint, natural_person: Increase::Models::EntityCreateParams::NaturalPerson, supplemental_documents: ::Array[Increase::Models::EntityCreateParams::SupplementalDocument], third_party_verification: Increase::Models::EntityCreateParams::ThirdPartyVerification, trust: Increase::Models::EntityCreateParams::Trust, request_options: Increase::request_opts) -> Increase::Models::Entity
 
-      def retrieve:
-        (
-          String entity_id,
-          ?Increase::Models::EntityRetrieveParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Entity
-        | (
-          String entity_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::Entity
+      def retrieve: (String entity_id, ?(Increase::Models::EntityRetrieveParams | ::Hash[Symbol, top]) params) -> Increase::Models::Entity
+                  | (String entity_id, request_options: Increase::request_opts) -> Increase::Models::Entity
 
-      def list:
-        (
-          ?Increase::Models::EntityListParams | ::Hash[Symbol, top] params
-        ) -> Increase::Page[Increase::Models::Entity]
-        | (
-          created_at: Increase::Models::EntityListParams::CreatedAt,
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          status: Increase::Models::EntityListParams::Status,
-          request_options: Increase::request_opts
-        ) -> Increase::Page[Increase::Models::Entity]
+      def list: (?(Increase::Models::EntityListParams | ::Hash[Symbol, top]) params) -> Increase::Page[Increase::Models::Entity]
+              | (created_at: Increase::Models::EntityListParams::CreatedAt, cursor: String, idempotency_key: String, limit: Integer, status: Increase::Models::EntityListParams::Status, request_options: Increase::request_opts) -> Increase::Page[Increase::Models::Entity]
 
-      def archive:
-        (
-          String entity_id,
-          ?Increase::Models::EntityArchiveParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Entity
-        | (
-          String entity_id,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::Entity
+      def archive: (String entity_id, ?(Increase::Models::EntityArchiveParams | ::Hash[Symbol, top]) params) -> Increase::Models::Entity
+                 | (String entity_id, request_options: Increase::request_opts) -> Increase::Models::Entity
 
-      def archive_beneficial_owner:
-        (
-          String entity_id,
-          Increase::Models::EntityArchiveBeneficialOwnerParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Entity
-        | (
-          String entity_id,
-          beneficial_owner_id: String,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::Entity
+      def archive_beneficial_owner: (String entity_id, (Increase::Models::EntityArchiveBeneficialOwnerParams | ::Hash[Symbol, top]) params) -> Increase::Models::Entity
+                                  | (String entity_id, beneficial_owner_id: String, request_options: Increase::request_opts) -> Increase::Models::Entity
 
-      def confirm:
-        (
-          String entity_id,
-          ?Increase::Models::EntityConfirmParams | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Entity
-        | (
-          String entity_id,
-          confirmed_at: Time,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::Entity
+      def confirm: (String entity_id, ?(Increase::Models::EntityConfirmParams | ::Hash[Symbol, top]) params) -> Increase::Models::Entity
+                 | (String entity_id, confirmed_at: Time, request_options: Increase::request_opts) -> Increase::Models::Entity
 
-      def create_beneficial_owner:
-        (
-          String entity_id,
-          Increase::Models::EntityCreateBeneficialOwnerParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Entity
-        | (
-          String entity_id,
-          beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::Entity
+      def create_beneficial_owner: (String entity_id, (Increase::Models::EntityCreateBeneficialOwnerParams | ::Hash[Symbol, top]) params) -> Increase::Models::Entity
+                                 | (String entity_id, beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner, request_options: Increase::request_opts) -> Increase::Models::Entity
 
-      def update_address:
-        (
-          String entity_id,
-          Increase::Models::EntityUpdateAddressParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Entity
-        | (
-          String entity_id,
-          address: Increase::Models::EntityUpdateAddressParams::Address,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::Entity
+      def update_address: (String entity_id, (Increase::Models::EntityUpdateAddressParams | ::Hash[Symbol, top]) params) -> Increase::Models::Entity
+                        | (String entity_id, address: Increase::Models::EntityUpdateAddressParams::Address, request_options: Increase::request_opts) -> Increase::Models::Entity
 
-      def update_beneficial_owner_address:
-        (
-          String entity_id,
-          Increase::Models::EntityUpdateBeneficialOwnerAddressParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Entity
-        | (
-          String entity_id,
-          address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address,
-          beneficial_owner_id: String,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::Entity
+      def update_beneficial_owner_address: (String entity_id, (Increase::Models::EntityUpdateBeneficialOwnerAddressParams | ::Hash[Symbol, top]) params) -> Increase::Models::Entity
+                                         | (String entity_id, address: Increase::Models::EntityUpdateBeneficialOwnerAddressParams::Address, beneficial_owner_id: String, request_options: Increase::request_opts) -> Increase::Models::Entity
 
-      def update_industry_code:
-        (
-          String entity_id,
-          Increase::Models::EntityUpdateIndustryCodeParams
-          | ::Hash[Symbol, top] params
-        ) -> Increase::Models::Entity
-        | (
-          String entity_id,
-          industry_code: String,
-          request_options: Increase::request_opts
-        ) -> Increase::Models::Entity
+      def update_industry_code: (String entity_id, (Increase::Models::EntityUpdateIndustryCodeParams | ::Hash[Symbol, top]) params) -> Increase::Models::Entity
+                              | (String entity_id, industry_code: String, request_options: Increase::request_opts) -> Increase::Models::Entity
 
       def initialize: (client: Increase::Client) -> void
     end

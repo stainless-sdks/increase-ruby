@@ -1,8 +1,7 @@
 module Increase
   module Models
     module Simulations
-      type card_refund_create_params =
-        { transaction_id: String } & Increase::request_parameters
+      type card_refund_create_params = ({transaction_id: String} & Increase::request_parameters)
 
       class CardRefundCreateParams < Increase::BaseModel
         extend Increase::RequestParameters::Converter
@@ -10,17 +9,10 @@ module Increase
 
         attr_accessor transaction_id: String
 
-        def initialize:
-          (
-            transaction_id: String,
-            request_options: Increase::request_opts
-          ) -> void
-          | (
-            ?Increase::Models::Simulations::card_refund_create_params
-            | Increase::BaseModel data
-          ) -> void
+        def initialize: (transaction_id: String, request_options: Increase::request_opts) -> void
+                      | (?(Increase::Models::Simulations::card_refund_create_params | Increase::BaseModel) data) -> void
 
-        def to_hash: -> Increase::Models::Simulations::card_refund_create_params
+        def to_hash: () -> Increase::Models::Simulations::card_refund_create_params
       end
     end
   end

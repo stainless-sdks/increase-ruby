@@ -51,13 +51,13 @@ module Increase
 
       sig do
         params(
-          cursor: String,
-          idempotency_key: String,
-          limit: Integer,
-          routing_number: String,
-          status: Increase::Models::ExternalAccountListParams::Status,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            cursor: String,
+            idempotency_key: String,
+            limit: Integer,
+            routing_number: String,
+            status: Increase::Models::ExternalAccountListParams::Status,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(cursor: nil, idempotency_key: nil, limit: nil, routing_number: nil, status: nil, request_options: {})

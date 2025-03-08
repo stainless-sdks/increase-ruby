@@ -54,13 +54,13 @@ module Increase
 
       sig do
         params(
-          billing_address: Increase::Models::CardUpdateParams::BillingAddress,
-          description: String,
-          digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
-          entity_id: String,
-          status: Symbol,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            billing_address: Increase::Models::CardUpdateParams::BillingAddress,
+            description: String,
+            digital_wallet: Increase::Models::CardUpdateParams::DigitalWallet,
+            entity_id: String,
+            status: Symbol,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -137,9 +137,7 @@ module Increase
         def self.new(city:, line1:, postal_code:, state:, line2: nil)
         end
 
-        sig do
-          override.returns({city: String, line1: String, postal_code: String, state: String, line2: String})
-        end
+        sig { override.returns({city: String, line1: String, postal_code: String, state: String, line2: String}) }
         def to_hash
         end
       end
@@ -169,9 +167,7 @@ module Increase
         def phone=(_)
         end
 
-        sig do
-          params(digital_card_profile_id: String, email: String, phone: String).returns(T.attached_class)
-        end
+        sig { params(digital_card_profile_id: String, email: String, phone: String).returns(T.attached_class) }
         def self.new(digital_card_profile_id: nil, email: nil, phone: nil)
         end
 

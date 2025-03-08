@@ -252,36 +252,36 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          account_number: String,
-          amount: Integer,
-          approval: T.nilable(Increase::Models::WireTransfer::Approval),
-          beneficiary_address_line1: T.nilable(String),
-          beneficiary_address_line2: T.nilable(String),
-          beneficiary_address_line3: T.nilable(String),
-          beneficiary_name: T.nilable(String),
-          cancellation: T.nilable(Increase::Models::WireTransfer::Cancellation),
-          created_at: Time,
-          created_by: T.nilable(Increase::Models::WireTransfer::CreatedBy),
-          currency: Symbol,
-          external_account_id: T.nilable(String),
-          idempotency_key: T.nilable(String),
-          message_to_recipient: T.nilable(String),
-          network: Symbol,
-          originator_address_line1: T.nilable(String),
-          originator_address_line2: T.nilable(String),
-          originator_address_line3: T.nilable(String),
-          originator_name: T.nilable(String),
-          pending_transaction_id: T.nilable(String),
-          reversal: T.nilable(Increase::Models::WireTransfer::Reversal),
-          routing_number: String,
-          source_account_number_id: T.nilable(String),
-          status: Symbol,
-          submission: T.nilable(Increase::Models::WireTransfer::Submission),
-          transaction_id: T.nilable(String),
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            account_number: String,
+            amount: Integer,
+            approval: T.nilable(Increase::Models::WireTransfer::Approval),
+            beneficiary_address_line1: T.nilable(String),
+            beneficiary_address_line2: T.nilable(String),
+            beneficiary_address_line3: T.nilable(String),
+            beneficiary_name: T.nilable(String),
+            cancellation: T.nilable(Increase::Models::WireTransfer::Cancellation),
+            created_at: Time,
+            created_by: T.nilable(Increase::Models::WireTransfer::CreatedBy),
+            currency: Symbol,
+            external_account_id: T.nilable(String),
+            idempotency_key: T.nilable(String),
+            message_to_recipient: T.nilable(String),
+            network: Symbol,
+            originator_address_line1: T.nilable(String),
+            originator_address_line2: T.nilable(String),
+            originator_address_line3: T.nilable(String),
+            originator_name: T.nilable(String),
+            pending_transaction_id: T.nilable(String),
+            reversal: T.nilable(Increase::Models::WireTransfer::Reversal),
+            routing_number: String,
+            source_account_number_id: T.nilable(String),
+            status: Symbol,
+            submission: T.nilable(Increase::Models::WireTransfer::Submission),
+            transaction_id: T.nilable(String),
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -452,11 +452,11 @@ module Increase
 
         sig do
           params(
-            api_key: T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey),
-            category: Symbol,
-            oauth_application: T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication),
-            user: T.nilable(Increase::Models::WireTransfer::CreatedBy::User)
-          )
+              api_key: T.nilable(Increase::Models::WireTransfer::CreatedBy::APIKey),
+              category: Symbol,
+              oauth_application: T.nilable(Increase::Models::WireTransfer::CreatedBy::OAuthApplication),
+              user: T.nilable(Increase::Models::WireTransfer::CreatedBy::User)
+            )
             .returns(T.attached_class)
         end
         def self.new(api_key:, category:, oauth_application:, user:)
@@ -729,24 +729,24 @@ module Increase
 
         sig do
           params(
-            amount: Integer,
-            created_at: Time,
-            description: String,
-            financial_institution_to_financial_institution_information: T.nilable(String),
-            input_cycle_date: Date,
-            input_message_accountability_data: String,
-            input_sequence_number: String,
-            input_source: String,
-            originator_routing_number: T.nilable(String),
-            previous_message_input_cycle_date: Date,
-            previous_message_input_message_accountability_data: String,
-            previous_message_input_sequence_number: String,
-            previous_message_input_source: String,
-            receiver_financial_institution_information: T.nilable(String),
-            sender_reference: T.nilable(String),
-            transaction_id: String,
-            wire_transfer_id: String
-          )
+              amount: Integer,
+              created_at: Time,
+              description: String,
+              financial_institution_to_financial_institution_information: T.nilable(String),
+              input_cycle_date: Date,
+              input_message_accountability_data: String,
+              input_sequence_number: String,
+              input_source: String,
+              originator_routing_number: T.nilable(String),
+              previous_message_input_cycle_date: Date,
+              previous_message_input_message_accountability_data: String,
+              previous_message_input_sequence_number: String,
+              previous_message_input_source: String,
+              receiver_financial_institution_information: T.nilable(String),
+              sender_reference: T.nilable(String),
+              transaction_id: String,
+              wire_transfer_id: String
+            )
             .returns(T.attached_class)
         end
         def self.new(
@@ -852,9 +852,7 @@ module Increase
         def submitted_at=(_)
         end
 
-        sig do
-          params(input_message_accountability_data: String, submitted_at: Time).returns(T.attached_class)
-        end
+        sig { params(input_message_accountability_data: String, submitted_at: Time).returns(T.attached_class) }
         def self.new(input_message_accountability_data:, submitted_at:)
         end
 

@@ -1,16 +1,15 @@
 module Increase
   module Models
-    type export =
-      {
-        id: String,
-        category: Increase::Models::Export::category,
-        created_at: Time,
-        file_download_url: String?,
-        file_id: String?,
-        idempotency_key: String?,
-        status: Increase::Models::Export::status,
-        type: Increase::Models::Export::type_
-      }
+    type export = {
+      id: String,
+      category: Increase::Models::Export::category,
+      created_at: Time,
+      file_download_url: String?,
+      file_id: String?,
+      idempotency_key: String?,
+      status: Increase::Models::Export::status,
+      type: Increase::Models::Export::type_
+    }
 
     class Export < Increase::BaseModel
       attr_accessor id: String
@@ -29,29 +28,12 @@ module Increase
 
       attr_accessor type: Increase::Models::Export::type_
 
-      def initialize:
-        (
-          id: String,
-          category: Increase::Models::Export::category,
-          created_at: Time,
-          file_download_url: String?,
-          file_id: String?,
-          idempotency_key: String?,
-          status: Increase::Models::Export::status,
-          type: Increase::Models::Export::type_
-        ) -> void
-        | (?Increase::Models::export | Increase::BaseModel data) -> void
+      def initialize: (id: String, category: Increase::Models::Export::category, created_at: Time, file_download_url: String?, file_id: String?, idempotency_key: String?, status: Increase::Models::Export::status, type: Increase::Models::Export::type_) -> void
+                    | (?(Increase::Models::export | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::export
+      def to_hash: () -> Increase::Models::export
 
-      type category =
-        :account_statement_ofx
-        | :transaction_csv
-        | :balance_csv
-        | :bookkeeping_account_balance_csv
-        | :entity_csv
-        | :vendor_csv
-        | :dashboard_table_csv
+      type category = (:account_statement_ofx | :transaction_csv | :balance_csv | :bookkeeping_account_balance_csv | :entity_csv | :vendor_csv | :dashboard_table_csv)
 
       class Category < Increase::Enum
         # Export an Open Financial Exchange (OFX) file of transactions and balances for a given time range and Account.
@@ -75,10 +57,10 @@ module Increase
         # Certain dashboard tables are available as CSV exports. This export cannot be created via the API.
         DASHBOARD_TABLE_CSV: :dashboard_table_csv
 
-        def self.values: -> ::Array[Increase::Models::Export::category]
+        def self.values: () -> ::Array[Increase::Models::Export::category]
       end
 
-      type status = :pending | :complete | :failed
+      type status = (:pending | :complete | :failed)
 
       class Status < Increase::Enum
         # Increase is generating the export.
@@ -90,7 +72,7 @@ module Increase
         # The export failed to generate. Increase will reach out to you to resolve the issue.
         FAILED: :failed
 
-        def self.values: -> ::Array[Increase::Models::Export::status]
+        def self.values: () -> ::Array[Increase::Models::Export::status]
       end
 
       type type_ = :export
@@ -98,7 +80,7 @@ module Increase
       class Type < Increase::Enum
         EXPORT: :export
 
-        def self.values: -> ::Array[Increase::Models::Export::type_]
+        def self.values: () -> ::Array[Increase::Models::Export::type_]
       end
     end
   end

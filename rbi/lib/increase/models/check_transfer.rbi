@@ -213,30 +213,30 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          account_number: String,
-          amount: Integer,
-          approval: T.nilable(Increase::Models::CheckTransfer::Approval),
-          approved_inbound_check_deposit_id: T.nilable(String),
-          cancellation: T.nilable(Increase::Models::CheckTransfer::Cancellation),
-          check_number: String,
-          created_at: Time,
-          created_by: T.nilable(Increase::Models::CheckTransfer::CreatedBy),
-          currency: Symbol,
-          fulfillment_method: Symbol,
-          idempotency_key: T.nilable(String),
-          mailing: T.nilable(Increase::Models::CheckTransfer::Mailing),
-          pending_transaction_id: T.nilable(String),
-          physical_check: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck),
-          routing_number: String,
-          source_account_number_id: T.nilable(String),
-          status: Symbol,
-          stop_payment_request: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest),
-          submission: T.nilable(Increase::Models::CheckTransfer::Submission),
-          third_party: T.nilable(Increase::Models::CheckTransfer::ThirdParty),
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            account_number: String,
+            amount: Integer,
+            approval: T.nilable(Increase::Models::CheckTransfer::Approval),
+            approved_inbound_check_deposit_id: T.nilable(String),
+            cancellation: T.nilable(Increase::Models::CheckTransfer::Cancellation),
+            check_number: String,
+            created_at: Time,
+            created_by: T.nilable(Increase::Models::CheckTransfer::CreatedBy),
+            currency: Symbol,
+            fulfillment_method: Symbol,
+            idempotency_key: T.nilable(String),
+            mailing: T.nilable(Increase::Models::CheckTransfer::Mailing),
+            pending_transaction_id: T.nilable(String),
+            physical_check: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck),
+            routing_number: String,
+            source_account_number_id: T.nilable(String),
+            status: Symbol,
+            stop_payment_request: T.nilable(Increase::Models::CheckTransfer::StopPaymentRequest),
+            submission: T.nilable(Increase::Models::CheckTransfer::Submission),
+            third_party: T.nilable(Increase::Models::CheckTransfer::ThirdParty),
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -395,11 +395,11 @@ module Increase
 
         sig do
           params(
-            api_key: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey),
-            category: Symbol,
-            oauth_application: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication),
-            user: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)
-          )
+              api_key: T.nilable(Increase::Models::CheckTransfer::CreatedBy::APIKey),
+              category: Symbol,
+              oauth_application: T.nilable(Increase::Models::CheckTransfer::CreatedBy::OAuthApplication),
+              user: T.nilable(Increase::Models::CheckTransfer::CreatedBy::User)
+            )
             .returns(T.attached_class)
         end
         def self.new(api_key:, category:, oauth_application:, user:)
@@ -569,9 +569,7 @@ module Increase
         def self.new(image_id:, mailed_at:, tracking_number:)
         end
 
-        sig do
-          override.returns({image_id: T.nilable(String), mailed_at: Time, tracking_number: T.nilable(String)})
-        end
+        sig { override.returns({image_id: T.nilable(String), mailed_at: Time, tracking_number: T.nilable(String)}) }
         def to_hash
         end
       end
@@ -652,15 +650,15 @@ module Increase
 
         sig do
           params(
-            mailing_address: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress,
-            memo: T.nilable(String),
-            note: T.nilable(String),
-            recipient_name: String,
-            return_address: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress),
-            shipping_method: T.nilable(Symbol),
-            signature_text: T.nilable(String),
-            tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
-          )
+              mailing_address: Increase::Models::CheckTransfer::PhysicalCheck::MailingAddress,
+              memo: T.nilable(String),
+              note: T.nilable(String),
+              recipient_name: String,
+              return_address: T.nilable(Increase::Models::CheckTransfer::PhysicalCheck::ReturnAddress),
+              shipping_method: T.nilable(Symbol),
+              signature_text: T.nilable(String),
+              tracking_updates: T::Array[Increase::Models::CheckTransfer::PhysicalCheck::TrackingUpdate]
+            )
             .returns(T.attached_class)
         end
         def self.new(
@@ -744,13 +742,13 @@ module Increase
 
           sig do
             params(
-              city: T.nilable(String),
-              line1: T.nilable(String),
-              line2: T.nilable(String),
-              name: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String)
-            )
+                city: T.nilable(String),
+                line1: T.nilable(String),
+                line2: T.nilable(String),
+                name: T.nilable(String),
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
+              )
               .returns(T.attached_class)
           end
           def self.new(city:, line1:, line2:, name:, postal_code:, state:)
@@ -824,13 +822,13 @@ module Increase
 
           sig do
             params(
-              city: T.nilable(String),
-              line1: T.nilable(String),
-              line2: T.nilable(String),
-              name: T.nilable(String),
-              postal_code: T.nilable(String),
-              state: T.nilable(String)
-            )
+                city: T.nilable(String),
+                line1: T.nilable(String),
+                line2: T.nilable(String),
+                name: T.nilable(String),
+                postal_code: T.nilable(String),
+                state: T.nilable(String)
+              )
               .returns(T.attached_class)
           end
           def self.new(city:, line1:, line2:, name:, postal_code:, state:)
@@ -999,14 +997,7 @@ module Increase
         def type=(_)
         end
 
-        sig do
-          params(
-            reason: Symbol,
-            requested_at: Time,
-            transfer_id: String,
-            type: Symbol
-          ).returns(T.attached_class)
-        end
+        sig { params(reason: Symbol, requested_at: Time, transfer_id: String, type: Symbol).returns(T.attached_class) }
         def self.new(reason:, requested_at:, transfer_id:, type:)
         end
 

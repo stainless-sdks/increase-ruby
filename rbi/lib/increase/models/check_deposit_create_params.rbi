@@ -48,13 +48,13 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          amount: Integer,
-          back_image_file_id: String,
-          front_image_file_id: String,
-          description: String,
-          request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
-        )
+            account_id: String,
+            amount: Integer,
+            back_image_file_id: String,
+            front_image_file_id: String,
+            description: String,
+            request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
+          )
           .returns(T.attached_class)
       end
       def self.new(account_id:, amount:, back_image_file_id:, front_image_file_id:, description: nil, request_options: {})

@@ -139,23 +139,23 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_id: String,
-          account_number_id: String,
-          amount: Integer,
-          confirmation: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation),
-          created_at: Time,
-          creditor_name: String,
-          currency: Symbol,
-          debtor_account_number: String,
-          debtor_name: String,
-          debtor_routing_number: String,
-          decline: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline),
-          remittance_information: T.nilable(String),
-          status: Symbol,
-          transaction_identification: String,
-          type: Symbol
-        )
+            id: String,
+            account_id: String,
+            account_number_id: String,
+            amount: Integer,
+            confirmation: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation),
+            created_at: Time,
+            creditor_name: String,
+            currency: Symbol,
+            debtor_account_number: String,
+            debtor_name: String,
+            debtor_routing_number: String,
+            decline: T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline),
+            remittance_information: T.nilable(String),
+            status: Symbol,
+            transaction_identification: String,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -283,9 +283,7 @@ module Increase
         def reason=(_)
         end
 
-        sig do
-          params(declined_at: Time, declined_transaction_id: String, reason: Symbol).returns(T.attached_class)
-        end
+        sig { params(declined_at: Time, declined_transaction_id: String, reason: Symbol).returns(T.attached_class) }
         def self.new(declined_at:, declined_transaction_id:, reason:)
         end
 

@@ -53,13 +53,13 @@ module Increase
 
       sig do
         params(
-          id: String,
-          associated_object_id: String,
-          associated_object_type: String,
-          category: Symbol,
-          created_at: Time,
-          type: Symbol
-        )
+            id: String,
+            associated_object_id: String,
+            associated_object_type: String,
+            category: Symbol,
+            created_at: Time,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:)

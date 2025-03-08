@@ -113,19 +113,19 @@ module Increase
 
       sig do
         params(
-          id: String,
-          acceptance: T.nilable(Increase::Models::CardDispute::Acceptance),
-          amount: T.nilable(Integer),
-          created_at: Time,
-          disputed_transaction_id: String,
-          explanation: String,
-          idempotency_key: T.nilable(String),
-          loss: T.nilable(Increase::Models::CardDispute::Loss),
-          rejection: T.nilable(Increase::Models::CardDispute::Rejection),
-          status: Symbol,
-          type: Symbol,
-          win: T.nilable(Increase::Models::CardDispute::Win)
-        )
+            id: String,
+            acceptance: T.nilable(Increase::Models::CardDispute::Acceptance),
+            amount: T.nilable(Integer),
+            created_at: Time,
+            disputed_transaction_id: String,
+            explanation: String,
+            idempotency_key: T.nilable(String),
+            loss: T.nilable(Increase::Models::CardDispute::Loss),
+            rejection: T.nilable(Increase::Models::CardDispute::Rejection),
+            status: Symbol,
+            type: Symbol,
+            win: T.nilable(Increase::Models::CardDispute::Win)
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -191,9 +191,7 @@ module Increase
         def transaction_id=(_)
         end
 
-        sig do
-          params(accepted_at: Time, card_dispute_id: String, transaction_id: String).returns(T.attached_class)
-        end
+        sig { params(accepted_at: Time, card_dispute_id: String, transaction_id: String).returns(T.attached_class) }
         def self.new(accepted_at:, card_dispute_id:, transaction_id:)
         end
 
@@ -242,16 +240,7 @@ module Increase
         def self.new(card_dispute_id:, explanation:, lost_at:, transaction_id:)
         end
 
-        sig do
-          override.returns(
-            {
-              card_dispute_id: String,
-              explanation: String,
-              lost_at: Time,
-              transaction_id: String
-            }
-          )
-        end
+        sig { override.returns({card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String}) }
         def to_hash
         end
       end
@@ -281,9 +270,7 @@ module Increase
         def rejected_at=(_)
         end
 
-        sig do
-          params(card_dispute_id: String, explanation: String, rejected_at: Time).returns(T.attached_class)
-        end
+        sig { params(card_dispute_id: String, explanation: String, rejected_at: Time).returns(T.attached_class) }
         def self.new(card_dispute_id:, explanation:, rejected_at:)
         end
 

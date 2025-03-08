@@ -86,17 +86,17 @@ module Increase
 
         sig do
           params(
-            id: String,
-            amount: Integer,
-            automatically_releases_at: Time,
-            created_at: Time,
-            currency: Symbol,
-            held_transaction_id: T.nilable(String),
-            pending_transaction_id: T.nilable(String),
-            released_at: T.nilable(Time),
-            status: Symbol,
-            type: Symbol
-          )
+              id: String,
+              amount: Integer,
+              automatically_releases_at: Time,
+              created_at: Time,
+              currency: Symbol,
+              held_transaction_id: T.nilable(String),
+              pending_transaction_id: T.nilable(String),
+              released_at: T.nilable(Time),
+              status: Symbol,
+              type: Symbol
+            )
             .returns(T.attached_class)
         end
         def self.new(

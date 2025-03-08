@@ -1,16 +1,15 @@
 module Increase
   module Models
-    type event_subscription =
-      {
-        id: String,
-        created_at: Time,
-        idempotency_key: String?,
-        oauth_connection_id: String?,
-        selected_event_category: Increase::Models::EventSubscription::selected_event_category?,
-        status: Increase::Models::EventSubscription::status,
-        type: Increase::Models::EventSubscription::type_,
-        url: String
-      }
+    type event_subscription = {
+      id: String,
+      created_at: Time,
+      idempotency_key: String?,
+      oauth_connection_id: String?,
+      selected_event_category: Increase::Models::EventSubscription::selected_event_category?,
+      status: Increase::Models::EventSubscription::status,
+      type: Increase::Models::EventSubscription::type_,
+      url: String
+    }
 
     class EventSubscription < Increase::BaseModel
       attr_accessor id: String
@@ -29,112 +28,12 @@ module Increase
 
       attr_accessor url: String
 
-      def initialize:
-        (
-          id: String,
-          created_at: Time,
-          idempotency_key: String?,
-          oauth_connection_id: String?,
-          selected_event_category: Increase::Models::EventSubscription::selected_event_category?,
-          status: Increase::Models::EventSubscription::status,
-          type: Increase::Models::EventSubscription::type_,
-          url: String
-        ) -> void
-        | (
-          ?Increase::Models::event_subscription | Increase::BaseModel data
-        ) -> void
+      def initialize: (id: String, created_at: Time, idempotency_key: String?, oauth_connection_id: String?, selected_event_category: Increase::Models::EventSubscription::selected_event_category?, status: Increase::Models::EventSubscription::status, type: Increase::Models::EventSubscription::type_, url: String) -> void
+                    | (?(Increase::Models::event_subscription | Increase::BaseModel) data) -> void
 
-      def to_hash: -> Increase::Models::event_subscription
+      def to_hash: () -> Increase::Models::event_subscription
 
-      type selected_event_category =
-        :"account.created"
-        | :"account.updated"
-        | :"account_number.created"
-        | :"account_number.updated"
-        | :"account_statement.created"
-        | :"account_transfer.created"
-        | :"account_transfer.updated"
-        | :"ach_prenotification.created"
-        | :"ach_prenotification.updated"
-        | :"ach_transfer.created"
-        | :"ach_transfer.updated"
-        | :"bookkeeping_account.created"
-        | :"bookkeeping_account.updated"
-        | :"bookkeeping_entry_set.updated"
-        | :"card.created"
-        | :"card.updated"
-        | :"card_payment.created"
-        | :"card_payment.updated"
-        | :"card_profile.created"
-        | :"card_profile.updated"
-        | :"card_dispute.created"
-        | :"card_dispute.updated"
-        | :"check_deposit.created"
-        | :"check_deposit.updated"
-        | :"check_transfer.created"
-        | :"check_transfer.updated"
-        | :"declined_transaction.created"
-        | :"digital_card_profile.created"
-        | :"digital_card_profile.updated"
-        | :"digital_wallet_token.created"
-        | :"digital_wallet_token.updated"
-        | :"document.created"
-        | :"entity.created"
-        | :"entity.updated"
-        | :"event_subscription.created"
-        | :"event_subscription.updated"
-        | :"export.created"
-        | :"export.updated"
-        | :"external_account.created"
-        | :"external_account.updated"
-        | :"file.created"
-        | :"group.updated"
-        | :"group.heartbeat"
-        | :"inbound_ach_transfer.created"
-        | :"inbound_ach_transfer.updated"
-        | :"inbound_ach_transfer_return.created"
-        | :"inbound_ach_transfer_return.updated"
-        | :"inbound_check_deposit.created"
-        | :"inbound_check_deposit.updated"
-        | :"inbound_mail_item.created"
-        | :"inbound_mail_item.updated"
-        | :"inbound_real_time_payments_transfer.created"
-        | :"inbound_real_time_payments_transfer.updated"
-        | :"inbound_wire_drawdown_request.created"
-        | :"inbound_wire_transfer.created"
-        | :"inbound_wire_transfer.updated"
-        | :"intrafi_account_enrollment.created"
-        | :"intrafi_account_enrollment.updated"
-        | :"intrafi_exclusion.created"
-        | :"intrafi_exclusion.updated"
-        | :"lockbox.created"
-        | :"lockbox.updated"
-        | :"oauth_connection.created"
-        | :"oauth_connection.deactivated"
-        | :"pending_transaction.created"
-        | :"pending_transaction.updated"
-        | :"physical_card.created"
-        | :"physical_card.updated"
-        | :"physical_card_profile.created"
-        | :"physical_card_profile.updated"
-        | :"proof_of_authorization_request.created"
-        | :"proof_of_authorization_request.updated"
-        | :"proof_of_authorization_request_submission.created"
-        | :"proof_of_authorization_request_submission.updated"
-        | :"real_time_decision.card_authorization_requested"
-        | :"real_time_decision.digital_wallet_token_requested"
-        | :"real_time_decision.digital_wallet_authentication_requested"
-        | :"real_time_decision.card_authentication_requested"
-        | :"real_time_decision.card_authentication_challenge_requested"
-        | :"real_time_payments_transfer.created"
-        | :"real_time_payments_transfer.updated"
-        | :"real_time_payments_request_for_payment.created"
-        | :"real_time_payments_request_for_payment.updated"
-        | :"transaction.created"
-        | :"wire_drawdown_request.created"
-        | :"wire_drawdown_request.updated"
-        | :"wire_transfer.created"
-        | :"wire_transfer.updated"
+      type selected_event_category = (:"account.created" | :"account.updated" | :"account_number.created" | :"account_number.updated" | :"account_statement.created" | :"account_transfer.created" | :"account_transfer.updated" | :"ach_prenotification.created" | :"ach_prenotification.updated" | :"ach_transfer.created" | :"ach_transfer.updated" | :"bookkeeping_account.created" | :"bookkeeping_account.updated" | :"bookkeeping_entry_set.updated" | :"card.created" | :"card.updated" | :"card_payment.created" | :"card_payment.updated" | :"card_profile.created" | :"card_profile.updated" | :"card_dispute.created" | :"card_dispute.updated" | :"check_deposit.created" | :"check_deposit.updated" | :"check_transfer.created" | :"check_transfer.updated" | :"declined_transaction.created" | :"digital_card_profile.created" | :"digital_card_profile.updated" | :"digital_wallet_token.created" | :"digital_wallet_token.updated" | :"document.created" | :"entity.created" | :"entity.updated" | :"event_subscription.created" | :"event_subscription.updated" | :"export.created" | :"export.updated" | :"external_account.created" | :"external_account.updated" | :"file.created" | :"group.updated" | :"group.heartbeat" | :"inbound_ach_transfer.created" | :"inbound_ach_transfer.updated" | :"inbound_ach_transfer_return.created" | :"inbound_ach_transfer_return.updated" | :"inbound_check_deposit.created" | :"inbound_check_deposit.updated" | :"inbound_mail_item.created" | :"inbound_mail_item.updated" | :"inbound_real_time_payments_transfer.created" | :"inbound_real_time_payments_transfer.updated" | :"inbound_wire_drawdown_request.created" | :"inbound_wire_transfer.created" | :"inbound_wire_transfer.updated" | :"intrafi_account_enrollment.created" | :"intrafi_account_enrollment.updated" | :"intrafi_exclusion.created" | :"intrafi_exclusion.updated" | :"lockbox.created" | :"lockbox.updated" | :"oauth_connection.created" | :"oauth_connection.deactivated" | :"pending_transaction.created" | :"pending_transaction.updated" | :"physical_card.created" | :"physical_card.updated" | :"physical_card_profile.created" | :"physical_card_profile.updated" | :"proof_of_authorization_request.created" | :"proof_of_authorization_request.updated" | :"proof_of_authorization_request_submission.created" | :"proof_of_authorization_request_submission.updated" | :"real_time_decision.card_authorization_requested" | :"real_time_decision.digital_wallet_token_requested" | :"real_time_decision.digital_wallet_authentication_requested" | :"real_time_decision.card_authentication_requested" | :"real_time_decision.card_authentication_challenge_requested" | :"real_time_payments_transfer.created" | :"real_time_payments_transfer.updated" | :"real_time_payments_request_for_payment.created" | :"real_time_payments_request_for_payment.updated" | :"transaction.created" | :"wire_drawdown_request.created" | :"wire_drawdown_request.updated" | :"wire_transfer.created" | :"wire_transfer.updated")
 
       class SelectedEventCategory < Increase::Enum
         # Occurs whenever an Account is created.
@@ -401,10 +300,10 @@ module Increase
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED: :"wire_transfer.updated"
 
-        def self.values: -> ::Array[Increase::Models::EventSubscription::selected_event_category]
+        def self.values: () -> ::Array[Increase::Models::EventSubscription::selected_event_category]
       end
 
-      type status = :active | :disabled | :deleted | :requires_attention
+      type status = (:active | :disabled | :deleted | :requires_attention)
 
       class Status < Increase::Enum
         # The subscription is active and Events will be delivered normally.
@@ -419,7 +318,7 @@ module Increase
         # The subscription is temporarily disabled due to delivery errors and Events will not be delivered.
         REQUIRES_ATTENTION: :requires_attention
 
-        def self.values: -> ::Array[Increase::Models::EventSubscription::status]
+        def self.values: () -> ::Array[Increase::Models::EventSubscription::status]
       end
 
       type type_ = :event_subscription
@@ -427,7 +326,7 @@ module Increase
       class Type < Increase::Enum
         EVENT_SUBSCRIPTION: :event_subscription
 
-        def self.values: -> ::Array[Increase::Models::EventSubscription::type_]
+        def self.values: () -> ::Array[Increase::Models::EventSubscription::type_]
       end
     end
   end

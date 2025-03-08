@@ -5,9 +5,9 @@ module Increase
     class PendingTransactions
       sig do
         params(
-          pending_transaction_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            pending_transaction_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::PendingTransaction)
       end
       def retrieve(pending_transaction_id, request_options: {})
@@ -15,15 +15,15 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          category: Increase::Models::PendingTransactionListParams::Category,
-          created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
-          cursor: String,
-          limit: Integer,
-          route_id: String,
-          status: Increase::Models::PendingTransactionListParams::Status,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            account_id: String,
+            category: Increase::Models::PendingTransactionListParams::Category,
+            created_at: Increase::Models::PendingTransactionListParams::CreatedAt,
+            cursor: String,
+            limit: Integer,
+            route_id: String,
+            status: Increase::Models::PendingTransactionListParams::Status,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Page[Increase::Models::PendingTransaction])
       end
       def list(

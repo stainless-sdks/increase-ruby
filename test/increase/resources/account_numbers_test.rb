@@ -4,10 +4,7 @@ require_relative "../test_helper"
 
 class Increase::Test::Resources::AccountNumbersTest < Increase::Test::ResourceTest
   def test_create_required_params
-    response = @increase.account_numbers.create(
-      account_id: "account_in71c4amph0vgo2qllky",
-      name: "Rent payments"
-    )
+    response = @increase.account_numbers.create(account_id: "account_in71c4amph0vgo2qllky", name: "Rent payments")
 
     assert_pattern do
       response => Increase::Models::AccountNumber

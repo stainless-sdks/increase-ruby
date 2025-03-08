@@ -139,23 +139,23 @@ module Increase
 
       sig do
         params(
-          id: String,
-          account_number: String,
-          addendum: T.nilable(String),
-          company_descriptive_date: T.nilable(String),
-          company_discretionary_data: T.nilable(String),
-          company_entry_description: T.nilable(String),
-          company_name: T.nilable(String),
-          created_at: Time,
-          credit_debit_indicator: T.nilable(Symbol),
-          effective_date: T.nilable(Time),
-          idempotency_key: T.nilable(String),
-          notifications_of_change: T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
-          prenotification_return: T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn),
-          routing_number: String,
-          status: Symbol,
-          type: Symbol
-        )
+            id: String,
+            account_number: String,
+            addendum: T.nilable(String),
+            company_descriptive_date: T.nilable(String),
+            company_discretionary_data: T.nilable(String),
+            company_entry_description: T.nilable(String),
+            company_name: T.nilable(String),
+            created_at: Time,
+            credit_debit_indicator: T.nilable(Symbol),
+            effective_date: T.nilable(Time),
+            idempotency_key: T.nilable(String),
+            notifications_of_change: T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange],
+            prenotification_return: T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn),
+            routing_number: String,
+            status: Symbol,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(
@@ -245,9 +245,7 @@ module Increase
         def created_at=(_)
         end
 
-        sig do
-          params(change_code: Symbol, corrected_data: String, created_at: Time).returns(T.attached_class)
-        end
+        sig { params(change_code: Symbol, corrected_data: String, created_at: Time).returns(T.attached_class) }
         def self.new(change_code:, corrected_data:, created_at:)
         end
 

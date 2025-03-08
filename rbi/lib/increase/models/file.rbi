@@ -85,17 +85,17 @@ module Increase
 
       sig do
         params(
-          id: String,
-          created_at: Time,
-          description: T.nilable(String),
-          direction: Symbol,
-          download_url: T.nilable(String),
-          filename: T.nilable(String),
-          idempotency_key: T.nilable(String),
-          mime_type: String,
-          purpose: Symbol,
-          type: Symbol
-        )
+            id: String,
+            created_at: Time,
+            description: T.nilable(String),
+            direction: Symbol,
+            download_url: T.nilable(String),
+            filename: T.nilable(String),
+            idempotency_key: T.nilable(String),
+            mime_type: String,
+            purpose: Symbol,
+            type: Symbol
+          )
           .returns(T.attached_class)
       end
       def self.new(

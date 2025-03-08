@@ -5,19 +5,19 @@ module Increase
     class RealTimePaymentsTransfers
       sig do
         params(
-          amount: Integer,
-          creditor_name: String,
-          remittance_information: String,
-          source_account_number_id: String,
-          debtor_name: String,
-          destination_account_number: String,
-          destination_routing_number: String,
-          external_account_id: String,
-          require_approval: T::Boolean,
-          ultimate_creditor_name: String,
-          ultimate_debtor_name: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            amount: Integer,
+            creditor_name: String,
+            remittance_information: String,
+            source_account_number_id: String,
+            debtor_name: String,
+            destination_account_number: String,
+            destination_routing_number: String,
+            external_account_id: String,
+            require_approval: T::Boolean,
+            ultimate_creditor_name: String,
+            ultimate_debtor_name: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::RealTimePaymentsTransfer)
       end
       def create(
@@ -38,9 +38,9 @@ module Increase
 
       sig do
         params(
-          real_time_payments_transfer_id: String,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            real_time_payments_transfer_id: String,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Models::RealTimePaymentsTransfer)
       end
       def retrieve(real_time_payments_transfer_id, request_options: {})
@@ -48,14 +48,14 @@ module Increase
 
       sig do
         params(
-          account_id: String,
-          created_at: Increase::Models::RealTimePaymentsTransferListParams::CreatedAt,
-          cursor: String,
-          external_account_id: String,
-          idempotency_key: String,
-          limit: Integer,
-          request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-        )
+            account_id: String,
+            created_at: Increase::Models::RealTimePaymentsTransferListParams::CreatedAt,
+            cursor: String,
+            external_account_id: String,
+            idempotency_key: String,
+            limit: Integer,
+            request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
+          )
           .returns(Increase::Page[Increase::Models::RealTimePaymentsTransfer])
       end
       def list(
