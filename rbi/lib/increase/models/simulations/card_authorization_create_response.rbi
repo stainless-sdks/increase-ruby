@@ -40,9 +40,9 @@ module Increase
             pending_transaction: T.nilable(Increase::Models::PendingTransaction),
             type: Symbol
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(declined_transaction:, pending_transaction:, type:)
+        def initialize(declined_transaction:, pending_transaction:, type:)
         end
 
         sig do
@@ -63,10 +63,8 @@ module Increase
 
           INBOUND_CARD_AUTHORIZATION_SIMULATION_RESULT = :inbound_card_authorization_simulation_result
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

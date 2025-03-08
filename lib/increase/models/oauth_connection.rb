@@ -76,6 +76,11 @@ module Increase
         INACTIVE = :inactive
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -86,6 +91,11 @@ module Increase
         OAUTH_CONNECTION = :oauth_connection
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

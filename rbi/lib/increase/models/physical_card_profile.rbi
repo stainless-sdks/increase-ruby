@@ -114,9 +114,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         back_image_file_id:,
         carrier_image_file_id:,
@@ -163,10 +163,8 @@ module Increase
         # This Physical Card Profile was created by you.
         USER = :user
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -191,10 +189,8 @@ module Increase
         # The Physical Card Profile has been archived.
         ARCHIVED = :archived
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -203,10 +199,8 @@ module Increase
 
         PHYSICAL_CARD_PROFILE = :physical_card_profile
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

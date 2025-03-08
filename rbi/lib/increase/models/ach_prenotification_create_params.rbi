@@ -127,9 +127,9 @@ module Increase
           standard_entry_class_code: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         account_id:,
         account_number:,
         routing_number:,
@@ -180,10 +180,8 @@ module Increase
         # The Prenotification is for an anticipated debit.
         DEBIT = :debit
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -202,10 +200,8 @@ module Increase
         # Internet Initiated (WEB).
         INTERNET_INITIATED = :internet_initiated
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

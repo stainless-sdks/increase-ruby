@@ -276,6 +276,11 @@ module Increase
           SUSPECTED_FRAUD = :suspected_fraud
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
@@ -290,6 +295,11 @@ module Increase
           REFUND = :refund
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         class NetworkDetails < Increase::BaseModel
@@ -355,6 +365,11 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
         end

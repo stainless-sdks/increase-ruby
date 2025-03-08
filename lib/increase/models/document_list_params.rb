@@ -106,6 +106,11 @@ module Increase
           COMPANY_INFORMATION = :company_information
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 

@@ -87,9 +87,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         card_id:,
         cardholder:,
@@ -138,8 +138,8 @@ module Increase
         def last_name=(_)
         end
 
-        sig { params(first_name: String, last_name: String).returns(T.attached_class) }
-        def self.new(first_name:, last_name:)
+        sig { params(first_name: String, last_name: String).void }
+        def initialize(first_name:, last_name:)
         end
 
         sig { override.returns({first_name: String, last_name: String}) }
@@ -193,9 +193,9 @@ module Increase
             status: Symbol,
             tracking: T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(address:, method_:, status:, tracking:)
+        def initialize(address:, method_:, status:, tracking:)
         end
 
         sig do
@@ -279,9 +279,9 @@ module Increase
               postal_code: String,
               state: String
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(city:, line1:, line2:, line3:, name:, postal_code:, state:)
+          def initialize(city:, line1:, line2:, line3:, name:, postal_code:, state:)
           end
 
           sig do
@@ -314,10 +314,8 @@ module Increase
           # FedEx 2-day.
           FEDEX_2_DAY = :fedex_2_day
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -345,10 +343,8 @@ module Increase
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED = :returned
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -392,9 +388,9 @@ module Increase
               return_reason: T.nilable(String),
               shipped_at: Time
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(number:, return_number:, return_reason:, shipped_at:)
+          def initialize(number:, return_number:, return_reason:, shipped_at:)
           end
 
           sig do
@@ -425,10 +421,8 @@ module Increase
         # The physical card is permanently canceled.
         CANCELED = :canceled
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -437,10 +431,8 @@ module Increase
 
         PHYSICAL_CARD = :physical_card
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

@@ -37,9 +37,9 @@ module Increase
           recipient_name: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(account_id:, description: nil, recipient_name: nil, request_options: {})
+      def initialize(account_id:, description: nil, recipient_name: nil, request_options: {})
       end
 
       sig do

@@ -198,9 +198,9 @@ module Increase
           submission: T.nilable(Increase::Models::WireDrawdownRequest::Submission),
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_number_id:,
         amount:,
@@ -271,10 +271,8 @@ module Increase
         # The drawdown request has been refused by the recipient.
         REFUSED = :refused
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -287,8 +285,8 @@ module Increase
         def input_message_accountability_data=(_)
         end
 
-        sig { params(input_message_accountability_data: String).returns(T.attached_class) }
-        def self.new(input_message_accountability_data:)
+        sig { params(input_message_accountability_data: String).void }
+        def initialize(input_message_accountability_data:)
         end
 
         sig { override.returns({input_message_accountability_data: String}) }
@@ -301,10 +299,8 @@ module Increase
 
         WIRE_DRAWDOWN_REQUEST = :wire_drawdown_request
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

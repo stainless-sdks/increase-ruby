@@ -15,10 +15,15 @@ module Increase
       end
 
       sig do
-        params(reason: Symbol, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          .returns(T.attached_class)
+        params(
+          reason: Symbol,
+          request_options: T.any(
+            Increase::RequestOptions,
+            T::Hash[Symbol, T.anything]
+          )
+        ).void
       end
-      def self.new(reason:, request_options: {})
+      def initialize(reason:, request_options: {})
       end
 
       sig { override.returns({reason: Symbol, request_options: Increase::RequestOptions}) }
@@ -58,10 +63,8 @@ module Increase
         # The corporate customer no longer authorizes this transaction. The Nacha return code is R29.
         CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

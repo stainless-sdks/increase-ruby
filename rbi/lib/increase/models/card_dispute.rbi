@@ -126,9 +126,9 @@ module Increase
           type: Symbol,
           win: T.nilable(Increase::Models::CardDispute::Win)
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         acceptance:,
         amount:,
@@ -191,10 +191,8 @@ module Increase
         def transaction_id=(_)
         end
 
-        sig do
-          params(accepted_at: Time, card_dispute_id: String, transaction_id: String).returns(T.attached_class)
-        end
-        def self.new(accepted_at:, card_dispute_id:, transaction_id:)
+        sig { params(accepted_at: Time, card_dispute_id: String, transaction_id: String).void }
+        def initialize(accepted_at:, card_dispute_id:, transaction_id:)
         end
 
         sig { override.returns({accepted_at: Time, card_dispute_id: String, transaction_id: String}) }
@@ -236,10 +234,9 @@ module Increase
         end
 
         sig do
-          params(card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String)
-            .returns(T.attached_class)
+          params(card_dispute_id: String, explanation: String, lost_at: Time, transaction_id: String).void
         end
-        def self.new(card_dispute_id:, explanation:, lost_at:, transaction_id:)
+        def initialize(card_dispute_id:, explanation:, lost_at:, transaction_id:)
         end
 
         sig do
@@ -281,10 +278,8 @@ module Increase
         def rejected_at=(_)
         end
 
-        sig do
-          params(card_dispute_id: String, explanation: String, rejected_at: Time).returns(T.attached_class)
-        end
-        def self.new(card_dispute_id:, explanation:, rejected_at:)
+        sig { params(card_dispute_id: String, explanation: String, rejected_at: Time).void }
+        def initialize(card_dispute_id:, explanation:, rejected_at:)
         end
 
         sig { override.returns({card_dispute_id: String, explanation: String, rejected_at: Time}) }
@@ -313,10 +308,8 @@ module Increase
         # The Card Dispute has been won and no further action can be taken.
         WON = :won
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -325,10 +318,8 @@ module Increase
 
         CARD_DISPUTE = :card_dispute
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -349,8 +340,8 @@ module Increase
         def won_at=(_)
         end
 
-        sig { params(card_dispute_id: String, won_at: Time).returns(T.attached_class) }
-        def self.new(card_dispute_id:, won_at:)
+        sig { params(card_dispute_id: String, won_at: Time).void }
+        def initialize(card_dispute_id:, won_at:)
         end
 
         sig { override.returns({card_dispute_id: String, won_at: Time}) }

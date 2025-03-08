@@ -160,6 +160,11 @@ module Increase
         INACTIVE = :inactive
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -170,6 +175,11 @@ module Increase
         LOCKBOX = :lockbox
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

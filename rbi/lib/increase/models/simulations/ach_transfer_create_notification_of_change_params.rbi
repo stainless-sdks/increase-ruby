@@ -29,9 +29,9 @@ module Increase
             corrected_data: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(change_code:, corrected_data:, request_options: {})
+        def initialize(change_code:, corrected_data:, request_options: {})
         end
 
         sig do
@@ -106,10 +106,8 @@ module Increase
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

@@ -15,10 +15,15 @@ module Increase
       end
 
       sig do
-        params(status: Symbol, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          .returns(T.attached_class)
+        params(
+          status: Symbol,
+          request_options: T.any(
+            Increase::RequestOptions,
+            T::Hash[Symbol, T.anything]
+          )
+        ).void
       end
-      def self.new(status: nil, request_options: {})
+      def initialize(status: nil, request_options: {})
       end
 
       sig { override.returns({status: Symbol, request_options: Increase::RequestOptions}) }
@@ -37,10 +42,8 @@ module Increase
         # The subscription is permanently disabled and Events will not be delivered.
         DELETED = :deleted
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

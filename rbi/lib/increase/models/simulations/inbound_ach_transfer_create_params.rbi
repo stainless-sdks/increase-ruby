@@ -110,9 +110,9 @@ module Increase
             standard_entry_class_code: Symbol,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           account_number_id:,
           amount:,
           company_descriptive_date: nil,
@@ -201,10 +201,8 @@ module Increase
           # International ACH Transaction (IAT).
           INTERNATIONAL_ACH_TRANSACTION = :international_ach_transaction
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

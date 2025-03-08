@@ -268,6 +268,11 @@ module Increase
           USD = :USD
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -350,6 +355,11 @@ module Increase
           USD = :USD
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
@@ -390,6 +400,11 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -473,6 +488,11 @@ module Increase
           USD = :USD
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
@@ -559,6 +579,11 @@ module Increase
           BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -721,6 +746,11 @@ module Increase
           USD = :USD
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
@@ -734,6 +764,11 @@ module Increase
           COMPLETE = :complete
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
@@ -744,6 +779,11 @@ module Increase
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -764,6 +804,11 @@ module Increase
         RETURNED = :returned
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -774,6 +819,11 @@ module Increase
         CHECK_DEPOSIT = :check_deposit
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

@@ -70,9 +70,9 @@ module Increase
           digital_wallet_token: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         card_authentication: nil,
         card_authentication_challenge: nil,
         card_authorization: nil,
@@ -107,8 +107,8 @@ module Increase
         def decision=(_)
         end
 
-        sig { params(decision: Symbol).returns(T.attached_class) }
-        def self.new(decision:)
+        sig { params(decision: Symbol).void }
+        def initialize(decision:)
         end
 
         sig { override.returns({decision: Symbol}) }
@@ -127,10 +127,8 @@ module Increase
           # Deny the authentication attempt.
           DENY = :deny
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -144,8 +142,8 @@ module Increase
         def result=(_)
         end
 
-        sig { params(result: Symbol).returns(T.attached_class) }
-        def self.new(result:)
+        sig { params(result: Symbol).void }
+        def initialize(result:)
         end
 
         sig { override.returns({result: Symbol}) }
@@ -161,10 +159,8 @@ module Increase
           # Your application was unable to deliver the one-time code to the cardholder.
           FAILURE = :failure
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -186,8 +182,8 @@ module Increase
         def decline_reason=(_)
         end
 
-        sig { params(decision: Symbol, decline_reason: Symbol).returns(T.attached_class) }
-        def self.new(decision:, decline_reason: nil)
+        sig { params(decision: Symbol, decline_reason: Symbol).void }
+        def initialize(decision:, decline_reason: nil)
         end
 
         sig { override.returns({decision: Symbol, decline_reason: Symbol}) }
@@ -203,10 +199,8 @@ module Increase
           # Decline the authorization.
           DECLINE = :decline
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -231,10 +225,8 @@ module Increase
           # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
           OTHER = :other
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -264,9 +256,9 @@ module Increase
             result: Symbol,
             success: Increase::Models::RealTimeDecisionActionParams::DigitalWalletAuthentication::Success
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(result:, success: nil)
+        def initialize(result:, success: nil)
         end
 
         sig do
@@ -290,10 +282,8 @@ module Increase
           # Your application failed to deliver the one-time passcode to the cardholder.
           FAILURE = :failure
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -314,8 +304,8 @@ module Increase
           def phone=(_)
           end
 
-          sig { params(email: String, phone: String).returns(T.attached_class) }
-          def self.new(email: nil, phone: nil)
+          sig { params(email: String, phone: String).void }
+          def initialize(email: nil, phone: nil)
           end
 
           sig { override.returns({email: String, phone: String}) }
@@ -352,9 +342,9 @@ module Increase
             approval: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Approval,
             decline: Increase::Models::RealTimeDecisionActionParams::DigitalWalletToken::Decline
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(approval: nil, decline: nil)
+        def initialize(approval: nil, decline: nil)
         end
 
         sig do
@@ -386,8 +376,8 @@ module Increase
           def phone=(_)
           end
 
-          sig { params(email: String, phone: String).returns(T.attached_class) }
-          def self.new(email: nil, phone: nil)
+          sig { params(email: String, phone: String).void }
+          def initialize(email: nil, phone: nil)
           end
 
           sig { override.returns({email: String, phone: String}) }
@@ -404,8 +394,8 @@ module Increase
           def reason=(_)
           end
 
-          sig { params(reason: String).returns(T.attached_class) }
-          def self.new(reason: nil)
+          sig { params(reason: String).void }
+          def initialize(reason: nil)
           end
 
           sig { override.returns({reason: String}) }

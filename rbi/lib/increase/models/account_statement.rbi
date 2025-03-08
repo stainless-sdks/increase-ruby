@@ -87,9 +87,9 @@ module Increase
           statement_period_start: Time,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_id:,
         created_at:,
@@ -126,10 +126,8 @@ module Increase
 
         ACCOUNT_STATEMENT = :account_statement
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

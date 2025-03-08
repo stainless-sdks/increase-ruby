@@ -63,9 +63,9 @@ module Increase
           type: Symbol,
           updated_at: Time
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:)
+      def initialize(id:, ach_transfers:, created_at:, due_on:, type:, updated_at:)
       end
 
       sig do
@@ -93,8 +93,8 @@ module Increase
         def id=(_)
         end
 
-        sig { params(id: String).returns(T.attached_class) }
-        def self.new(id:)
+        sig { params(id: String).void }
+        def initialize(id:)
         end
 
         sig { override.returns({id: String}) }
@@ -107,10 +107,8 @@ module Increase
 
         PROOF_OF_AUTHORIZATION_REQUEST = :proof_of_authorization_request
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

@@ -132,6 +132,11 @@ module Increase
         USD = :USD
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -148,6 +153,11 @@ module Increase
         LOCKBOX = :lockbox
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       class Source < Increase::BaseModel
@@ -411,6 +421,11 @@ module Increase
             CORPORATE_CUSTOMER_ADVISED_NOT_AUTHORIZED = :corporate_customer_advised_not_authorized
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @abstract
@@ -421,6 +436,11 @@ module Increase
             ACH_DECLINE = :ach_decline
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -689,6 +709,11 @@ module Increase
             NETWORK = :network
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @abstract
@@ -715,6 +740,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @abstract
@@ -729,6 +759,11 @@ module Increase
             REFUND = :refund
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           class NetworkDetails < Increase::BaseModel
@@ -765,6 +800,11 @@ module Increase
               VISA = :visa
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             class Visa < Increase::BaseModel
@@ -838,6 +878,11 @@ module Increase
                 NON_SECURE_TRANSACTION = :non_secure_transaction
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
               # @abstract
@@ -876,6 +921,11 @@ module Increase
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
 
               # @abstract
@@ -905,6 +955,11 @@ module Increase
                 OTHER = :other
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
           end
@@ -968,6 +1023,11 @@ module Increase
             REFUND = :refund
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @abstract
@@ -994,6 +1054,11 @@ module Increase
             OTHER = :other
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @abstract
@@ -1052,6 +1117,11 @@ module Increase
             SUSPECTED_FRAUD = :suspected_fraud
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           class Verification < Increase::BaseModel
@@ -1113,6 +1183,11 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
 
@@ -1186,6 +1261,11 @@ module Increase
                 NO_MATCH = :no_match
 
                 finalize!
+
+                # @!parse
+                #   # @return [Array<Symbol>]
+                #   #
+                #   def self.values; end
               end
             end
           end
@@ -1218,6 +1298,11 @@ module Increase
           OTHER = :other
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         class CheckDecline < Increase::BaseModel
@@ -1350,6 +1435,11 @@ module Increase
             USER_INITIATED = :user_initiated
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -1434,6 +1524,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @abstract
@@ -1474,6 +1569,11 @@ module Increase
             UNKNOWN = :unknown
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -1602,6 +1702,11 @@ module Increase
             USD = :USD
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           # @abstract
@@ -1627,6 +1732,11 @@ module Increase
             REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
 
@@ -1677,6 +1787,11 @@ module Increase
             TRANSACTION_NOT_ALLOWED = :transaction_not_allowed
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end
@@ -1689,6 +1804,11 @@ module Increase
         DECLINED_TRANSACTION = :declined_transaction
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

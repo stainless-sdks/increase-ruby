@@ -52,9 +52,9 @@ module Increase
           inbound_checks: Increase::Models::AccountNumberCreateParams::InboundChecks,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {})
+      def initialize(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {})
       end
 
       sig do
@@ -81,8 +81,8 @@ module Increase
         def debit_status=(_)
         end
 
-        sig { params(debit_status: Symbol).returns(T.attached_class) }
-        def self.new(debit_status:)
+        sig { params(debit_status: Symbol).void }
+        def initialize(debit_status:)
         end
 
         sig { override.returns({debit_status: Symbol}) }
@@ -98,10 +98,8 @@ module Increase
           # ACH Debits are blocked.
           BLOCKED = :blocked
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -115,8 +113,8 @@ module Increase
         def status=(_)
         end
 
-        sig { params(status: Symbol).returns(T.attached_class) }
-        def self.new(status:)
+        sig { params(status: Symbol).void }
+        def initialize(status:)
         end
 
         sig { override.returns({status: Symbol}) }
@@ -132,10 +130,8 @@ module Increase
           # Checks with this Account Number will be processed only if they can be matched to an existing Check Transfer.
           CHECK_TRANSFERS_ONLY = :check_transfers_only
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

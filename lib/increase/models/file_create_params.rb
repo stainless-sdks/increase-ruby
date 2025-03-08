@@ -94,6 +94,11 @@ module Increase
         UNUSUAL_ACTIVITY_REPORT_ATTACHMENT = :unusual_activity_report_attachment
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

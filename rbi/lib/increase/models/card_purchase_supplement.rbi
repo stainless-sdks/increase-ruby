@@ -66,9 +66,9 @@ module Increase
           transaction_id: String,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, card_payment_id:, invoice:, line_items:, transaction_id:, type:)
+      def initialize(id:, card_payment_id:, invoice:, line_items:, transaction_id:, type:)
       end
 
       sig do
@@ -235,9 +235,9 @@ module Increase
             tax_treatments: T.nilable(Symbol),
             unique_value_added_tax_invoice_reference: T.nilable(String)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           discount_amount:,
           discount_currency:,
           discount_treatment_code:,
@@ -300,10 +300,8 @@ module Increase
             T.nilable(Symbol)
           )
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -325,10 +323,8 @@ module Increase
           # Gross price invoice level
           GROSS_PRICE_INVOICE_LEVEL = T.let(:gross_price_invoice_level, T.nilable(Symbol))
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -490,9 +486,9 @@ module Increase
             unit_cost_currency: T.nilable(String),
             unit_of_measure_code: T.nilable(String)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           id:,
           detail_indicator:,
           discount_amount:,
@@ -552,10 +548,8 @@ module Increase
           # Purchase
           PAYMENT = T.let(:payment, T.nilable(Symbol))
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -578,10 +572,8 @@ module Increase
             :tax_calculated_on_pre_discount_line_item_total, T.nilable(Symbol)
           )
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -591,10 +583,8 @@ module Increase
 
         CARD_PURCHASE_SUPPLEMENT = :card_purchase_supplement
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

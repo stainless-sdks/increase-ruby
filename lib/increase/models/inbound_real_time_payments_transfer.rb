@@ -195,6 +195,11 @@ module Increase
         USD = :USD
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       class Decline < Increase::BaseModel
@@ -250,6 +255,11 @@ module Increase
           REAL_TIME_PAYMENTS_NOT_ENABLED = :real_time_payments_not_enabled
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -270,6 +280,11 @@ module Increase
         DECLINED = :declined
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -280,6 +295,11 @@ module Increase
         INBOUND_REAL_TIME_PAYMENTS_TRANSFER = :inbound_real_time_payments_transfer
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

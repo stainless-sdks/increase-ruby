@@ -15,10 +15,15 @@ module Increase
       end
 
       sig do
-        params(reason: Symbol, request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
-          .returns(T.attached_class)
+        params(
+          reason: Symbol,
+          request_options: T.any(
+            Increase::RequestOptions,
+            T::Hash[Symbol, T.anything]
+          )
+        ).void
       end
-      def self.new(reason: nil, request_options: {})
+      def initialize(reason: nil, request_options: {})
       end
 
       sig { override.returns({reason: Symbol, request_options: Increase::RequestOptions}) }
@@ -37,10 +42,8 @@ module Increase
         # The check was stopped for another reason.
         UNKNOWN = :unknown
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

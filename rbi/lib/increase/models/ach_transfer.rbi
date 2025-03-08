@@ -354,9 +354,9 @@ module Increase
           transaction_id: T.nilable(String),
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_id:,
         account_number:,
@@ -449,8 +449,8 @@ module Increase
         def acknowledged_at=(_)
         end
 
-        sig { params(acknowledged_at: String).returns(T.attached_class) }
-        def self.new(acknowledged_at:)
+        sig { params(acknowledged_at: String).void }
+        def initialize(acknowledged_at:)
         end
 
         sig { override.returns({acknowledged_at: String}) }
@@ -495,9 +495,9 @@ module Increase
             freeform: T.nilable(Increase::Models::ACHTransfer::Addenda::Freeform),
             payment_order_remittance_advice: T.nilable(Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(category:, freeform:, payment_order_remittance_advice:)
+        def initialize(category:, freeform:, payment_order_remittance_advice:)
         end
 
         sig do
@@ -525,10 +525,8 @@ module Increase
           # Unknown addenda type.
           OTHER = :other
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -544,11 +542,8 @@ module Increase
           def entries=(_)
           end
 
-          sig do
-            params(entries: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry])
-              .returns(T.attached_class)
-          end
-          def self.new(entries:)
+          sig { params(entries: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry]).void }
+          def initialize(entries:)
           end
 
           sig { override.returns({entries: T::Array[Increase::Models::ACHTransfer::Addenda::Freeform::Entry]}) }
@@ -564,8 +559,8 @@ module Increase
             def payment_related_information=(_)
             end
 
-            sig { params(payment_related_information: String).returns(T.attached_class) }
-            def self.new(payment_related_information:)
+            sig { params(payment_related_information: String).void }
+            def initialize(payment_related_information:)
             end
 
             sig { override.returns({payment_related_information: String}) }
@@ -588,9 +583,9 @@ module Increase
 
           sig do
             params(invoices: T::Array[Increase::Models::ACHTransfer::Addenda::PaymentOrderRemittanceAdvice::Invoice])
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(invoices:)
+          def initialize(invoices:)
           end
 
           sig do
@@ -619,8 +614,8 @@ module Increase
             def paid_amount=(_)
             end
 
-            sig { params(invoice_number: String, paid_amount: Integer).returns(T.attached_class) }
-            def self.new(invoice_number:, paid_amount:)
+            sig { params(invoice_number: String, paid_amount: Integer).void }
+            def initialize(invoice_number:, paid_amount:)
             end
 
             sig { override.returns({invoice_number: String, paid_amount: Integer}) }
@@ -647,8 +642,8 @@ module Increase
         def approved_by=(_)
         end
 
-        sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(approved_at:, approved_by:)
+        sig { params(approved_at: Time, approved_by: T.nilable(String)).void }
+        def initialize(approved_at:, approved_by:)
         end
 
         sig { override.returns({approved_at: Time, approved_by: T.nilable(String)}) }
@@ -673,8 +668,8 @@ module Increase
         def canceled_by=(_)
         end
 
-        sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(canceled_at:, canceled_by:)
+        sig { params(canceled_at: Time, canceled_by: T.nilable(String)).void }
+        def initialize(canceled_at:, canceled_by:)
         end
 
         sig { override.returns({canceled_at: Time, canceled_by: T.nilable(String)}) }
@@ -731,9 +726,9 @@ module Increase
             oauth_application: T.nilable(Increase::Models::ACHTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::ACHTransfer::CreatedBy::User)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(api_key:, category:, oauth_application:, user:)
+        def initialize(api_key:, category:, oauth_application:, user:)
         end
 
         sig do
@@ -759,8 +754,8 @@ module Increase
           def description=(_)
           end
 
-          sig { params(description: T.nilable(String)).returns(T.attached_class) }
-          def self.new(description:)
+          sig { params(description: T.nilable(String)).void }
+          def initialize(description:)
           end
 
           sig { override.returns({description: T.nilable(String)}) }
@@ -780,10 +775,8 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = :user
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -796,8 +789,8 @@ module Increase
           def name=(_)
           end
 
-          sig { params(name: String).returns(T.attached_class) }
-          def self.new(name:)
+          sig { params(name: String).void }
+          def initialize(name:)
           end
 
           sig { override.returns({name: String}) }
@@ -814,8 +807,8 @@ module Increase
           def email=(_)
           end
 
-          sig { params(email: String).returns(T.attached_class) }
-          def self.new(email:)
+          sig { params(email: String).void }
+          def initialize(email:)
           end
 
           sig { override.returns({email: String}) }
@@ -845,10 +838,8 @@ module Increase
         # US Dollar (USD)
         USD = :USD
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -864,10 +855,8 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = :unknown
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -880,10 +869,8 @@ module Increase
         # A savings account.
         SAVINGS = :savings
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -981,9 +968,9 @@ module Increase
             status: Symbol,
             type: Symbol
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           id:,
           amount:,
           automatically_releases_at:,
@@ -1038,10 +1025,8 @@ module Increase
           # US Dollar (USD)
           USD = :USD
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -1054,10 +1039,8 @@ module Increase
           # Funds have been released.
           COMPLETE = :complete
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -1066,10 +1049,8 @@ module Increase
 
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -1079,10 +1060,8 @@ module Increase
 
         ACH = :ach
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -1111,10 +1090,8 @@ module Increase
         def created_at=(_)
         end
 
-        sig do
-          params(change_code: Symbol, corrected_data: String, created_at: Time).returns(T.attached_class)
-        end
-        def self.new(change_code:, corrected_data:, created_at:)
+        sig { params(change_code: Symbol, corrected_data: String, created_at: Time).void }
+        def initialize(change_code:, corrected_data:, created_at:)
         end
 
         sig { override.returns({change_code: Symbol, corrected_data: String, created_at: Time}) }
@@ -1181,10 +1158,8 @@ module Increase
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -1206,10 +1181,8 @@ module Increase
         def settlement_schedule=(_)
         end
 
-        sig do
-          params(date: T.nilable(Date), settlement_schedule: T.nilable(Symbol)).returns(T.attached_class)
-        end
-        def self.new(date:, settlement_schedule:)
+        sig { params(date: T.nilable(Date), settlement_schedule: T.nilable(Symbol)).void }
+        def initialize(date:, settlement_schedule:)
         end
 
         sig { override.returns({date: T.nilable(Date), settlement_schedule: T.nilable(Symbol)}) }
@@ -1228,10 +1201,8 @@ module Increase
           # The chosen effective date will be the business day following the ACH processing date on which the transfer is submitted. The transfer will be settled on that future day.
           FUTURE_DATED = T.let(:future_dated, T.nilable(Symbol))
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -1294,9 +1265,16 @@ module Increase
             transaction_id: String,
             transfer_id: String
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(created_at:, raw_return_reason_code:, return_reason_code:, trace_number:, transaction_id:, transfer_id:)
+        def initialize(
+          created_at:,
+          raw_return_reason_code:,
+          return_reason_code:,
+          trace_number:,
+          transaction_id:,
+          transfer_id:
+        )
         end
 
         sig do
@@ -1528,10 +1506,8 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN = :untimely_return
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -1545,8 +1521,8 @@ module Increase
         def settled_at=(_)
         end
 
-        sig { params(settled_at: Time).returns(T.attached_class) }
-        def self.new(settled_at:)
+        sig { params(settled_at: Time).void }
+        def initialize(settled_at:)
         end
 
         sig { override.returns({settled_at: Time}) }
@@ -1569,10 +1545,8 @@ module Increase
         # Internet Initiated (WEB).
         INTERNET_INITIATED = :internet_initiated
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -1606,10 +1580,8 @@ module Increase
         # The transfer has been returned.
         RETURNED = :returned
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -1662,9 +1634,9 @@ module Increase
             submitted_at: Time,
             trace_number: String
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           effective_date:,
           expected_funds_settlement_at:,
           expected_settlement_schedule:,
@@ -1697,10 +1669,8 @@ module Increase
           # The transfer is expected to settle on a future date.
           FUTURE_DATED = :future_dated
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -1710,10 +1680,8 @@ module Increase
 
         ACH_TRANSFER = :ach_transfer
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

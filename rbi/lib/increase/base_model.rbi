@@ -22,35 +22,33 @@ module Increase
     def try_strict_coerce(value)
     end
 
-    class << self
-      sig do
-        params(
-          spec: T.any(
-            {
-              const: T.nilable(T.any(NilClass, T::Boolean, Integer, Float, Symbol)),
-              enum: T.nilable(T.proc.returns(Increase::Converter::Input)),
-              union: T.nilable(T.proc.returns(Increase::Converter::Input))
-            },
-            T.proc.returns(Increase::Converter::Input),
-            Increase::Converter::Input
-          )
+    sig do
+      params(
+        spec: T.any(
+          {
+            const: T.nilable(T.any(NilClass, T::Boolean, Integer, Float, Symbol)),
+            enum: T.nilable(T.proc.returns(Increase::Converter::Input)),
+            union: T.nilable(T.proc.returns(Increase::Converter::Input))
+          },
+          T.proc.returns(Increase::Converter::Input),
+          Increase::Converter::Input
         )
-          .returns(T.proc.returns(T.anything).void)
-      end
-      def self.type_info(spec)
-      end
+      )
+        .returns(T.proc.returns(T.anything).void)
+    end
+    def self.type_info(spec)
+    end
 
-      sig { params(target: Increase::Converter::Input, value: T.anything).returns(T.anything) }
-      def self.coerce(target, value)
-      end
+    sig { params(target: Increase::Converter::Input, value: T.anything).returns(T.anything) }
+    def self.coerce(target, value)
+    end
 
-      sig { params(target: Increase::Converter::Input, value: T.anything).returns(T.anything) }
-      def self.dump(target, value)
-      end
+    sig { params(target: Increase::Converter::Input, value: T.anything).returns(T.anything) }
+    def self.dump(target, value)
+    end
 
-      sig { params(target: Increase::Converter::Input, value: T.anything).returns(T.anything) }
-      def self.try_strict_coerce(target, value)
-      end
+    sig { params(target: Increase::Converter::Input, value: T.anything).returns(T.anything) }
+    def self.try_strict_coerce(target, value)
     end
   end
 
@@ -67,22 +65,20 @@ module Increase
     def self.==(other)
     end
 
-    class << self
-      sig { override.params(value: T.anything).returns(T.anything) }
-      def coerce(value)
-      end
+    sig { override.params(value: T.anything).returns(T.anything) }
+    def self.coerce(value)
+    end
 
-      sig { override.params(value: T.anything).returns(T.anything) }
-      def dump(value)
-      end
+    sig { override.params(value: T.anything).returns(T.anything) }
+    def self.dump(value)
+    end
 
-      sig do
-        override
-          .params(value: T.anything)
-          .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-      end
-      def try_strict_coerce(value)
-      end
+    sig do
+      override
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
+    end
+    def self.try_strict_coerce(value)
     end
   end
 
@@ -99,22 +95,20 @@ module Increase
     def self.==(other)
     end
 
-    class << self
-      sig { override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything)) }
-      def coerce(value)
-      end
+    sig { override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything)) }
+    def self.coerce(value)
+    end
 
-      sig { override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything)) }
-      def dump(value)
-      end
+    sig { override.params(value: T.any(T::Boolean, T.anything)).returns(T.any(T::Boolean, T.anything)) }
+    def self.dump(value)
+    end
 
-      sig do
-        override
-          .params(value: T.anything)
-          .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-      end
-      def try_strict_coerce(value)
-      end
+    sig do
+      override
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
+    end
+    def self.try_strict_coerce(value)
     end
   end
 
@@ -123,14 +117,12 @@ module Increase
 
     extend Increase::Converter
 
-    class << self
-      sig { overridable.returns(T::Array[T.any(NilClass, T::Boolean, Integer, Float, Symbol)]) }
-      def values
-      end
+    sig { overridable.returns(T::Array[T.any(NilClass, T::Boolean, Integer, Float, Symbol)]) }
+    def self.values
+    end
 
-      sig { void }
-      private def finalize!
-      end
+    sig { void }
+    private_class_method def self.finalize!
     end
 
     sig { params(other: T.anything).returns(T::Boolean) }
@@ -141,22 +133,20 @@ module Increase
     def self.==(other)
     end
 
-    class << self
-      sig { override.params(value: T.any(String, Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
-      def coerce(value)
-      end
+    sig { override.params(value: T.any(String, Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
+    def self.coerce(value)
+    end
 
-      sig { override.params(value: T.any(Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
-      def dump(value)
-      end
+    sig { override.params(value: T.any(Symbol, T.anything)).returns(T.any(Symbol, T.anything)) }
+    def self.dump(value)
+    end
 
-      sig do
-        override
-          .params(value: T.anything)
-          .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-      end
-      def try_strict_coerce(value)
-      end
+    sig do
+      override
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
+    end
+    def self.try_strict_coerce(value)
     end
   end
 
@@ -165,41 +155,39 @@ module Increase
 
     extend Increase::Converter
 
-    class << self
-      sig { returns(T::Array[[T.nilable(Symbol), Proc]]) }
-      private def known_variants
-      end
+    sig { returns(T::Array[[T.nilable(Symbol), Proc]]) }
+    private_class_method def self.known_variants
+    end
 
-      sig { overridable.returns(T::Array[[T.nilable(Symbol), T.anything]]) }
-      protected def variants
-      end
+    sig { overridable.returns(T::Array[[T.nilable(Symbol), T.anything]]) }
+    private_class_method def self.variants
+    end
 
-      sig { params(property: Symbol).void }
-      private def discriminator(property)
-      end
+    sig { params(property: Symbol).void }
+    private_class_method def self.discriminator(property)
+    end
 
-      sig do
-        params(
-          key: T.any(
-            Symbol,
-            T::Hash[Symbol, T.anything],
-            T.proc.returns(Increase::Converter::Input),
-            Increase::Converter::Input
-          ),
-          spec: T.any(
-            T::Hash[Symbol, T.anything],
-            T.proc.returns(Increase::Converter::Input),
-            Increase::Converter::Input
-          )
+    sig do
+      params(
+        key: T.any(
+          Symbol,
+          T::Hash[Symbol, T.anything],
+          T.proc.returns(Increase::Converter::Input),
+          Increase::Converter::Input
+        ),
+        spec: T.any(
+          T::Hash[Symbol, T.anything],
+          T.proc.returns(Increase::Converter::Input),
+          Increase::Converter::Input
         )
-          .void
-      end
-      private def variant(key, spec = nil)
-      end
+      )
+        .void
+    end
+    private_class_method def self.variant(key, spec = nil)
+    end
 
-      sig { params(value: T.anything).returns(T.nilable(Increase::Converter::Input)) }
-      private def resolve_variant(value)
-      end
+    sig { params(value: T.anything).returns(T.nilable(Increase::Converter::Input)) }
+    private_class_method def self.resolve_variant(value)
     end
 
     sig { params(other: T.anything).returns(T::Boolean) }
@@ -210,22 +198,20 @@ module Increase
     def self.==(other)
     end
 
-    class << self
-      sig { override.params(value: T.anything).returns(T.anything) }
-      def coerce(value)
-      end
+    sig { override.params(value: T.anything).returns(T.anything) }
+    def self.coerce(value)
+    end
 
-      sig { override.params(value: T.anything).returns(T.anything) }
-      def dump(value)
-      end
+    sig { override.params(value: T.anything).returns(T.anything) }
+    def self.dump(value)
+    end
 
-      sig do
-        override
-          .params(value: T.anything)
-          .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-      end
-      def try_strict_coerce(value)
-      end
+    sig do
+      override
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
+    end
+    def self.try_strict_coerce(value)
     end
   end
 
@@ -279,9 +265,9 @@ module Increase
         ),
         spec: T::Hash[Symbol, T.anything]
       )
-        .returns(T.attached_class)
+        .void
     end
-    def self.new(type_info, spec = {})
+    def initialize(type_info, spec = {})
     end
   end
 
@@ -335,9 +321,9 @@ module Increase
         ),
         spec: T::Hash[Symbol, T.anything]
       )
-        .returns(T.attached_class)
+        .void
     end
-    def self.new(type_info, spec = {})
+    def initialize(type_info, spec = {})
     end
   end
 
@@ -348,121 +334,117 @@ module Increase
 
     KnownFieldShape = T.type_alias { {mode: T.nilable(Symbol), required: T::Boolean} }
 
-    class << self
-      sig do
-        returns(
-          T::Hash[Symbol,
-                  T.all(
-                    Increase::BaseModel::KnownFieldShape,
-                    {type_fn: T.proc.returns(Increase::Converter::Input)}
-                  )]
-        )
-      end
-      def known_fields
-      end
+    sig do
+      returns(
+        T::Hash[Symbol,
+                T.all(
+                  Increase::BaseModel::KnownFieldShape,
+                  {type_fn: T.proc.returns(Increase::Converter::Input)}
+                )]
+      )
+    end
+    def self.known_fields
+    end
 
-      sig do
-        returns(
-          T::Hash[Symbol,
-                  T.all(Increase::BaseModel::KnownFieldShape, {type: Increase::Converter::Input})]
-        )
-      end
-      def fields
-      end
+    sig do
+      returns(
+        T::Hash[Symbol,
+                T.all(Increase::BaseModel::KnownFieldShape, {type: Increase::Converter::Input})]
+      )
+    end
+    def self.fields
+    end
 
-      sig { returns(T::Hash[Symbol, T.proc.returns(T::Class[T.anything])]) }
-      def defaults
-      end
+    sig { returns(T::Hash[Symbol, T.proc.returns(T::Class[T.anything])]) }
+    def self.defaults
+    end
 
-      sig do
-        params(
-          name_sym: Symbol,
-          required: T::Boolean,
-          type_info: T.any(
-            {
-              const: T.nilable(T.any(NilClass, T::Boolean, Integer, Float, Symbol)),
-              enum: T.nilable(T.proc.returns(Increase::Converter::Input)),
-              union: T.nilable(T.proc.returns(Increase::Converter::Input)),
-              api_name: Symbol,
-              nil?: T::Boolean
-            },
-            T.proc.returns(Increase::Converter::Input),
-            Increase::Converter::Input
-          ),
-          spec: T::Hash[Symbol, T.anything]
-        )
-          .void
-      end
-      private def add_field(name_sym, required:, type_info:, spec:)
-      end
+    sig do
+      params(
+        name_sym: Symbol,
+        required: T::Boolean,
+        type_info: T.any(
+          {
+            const: T.nilable(T.any(NilClass, T::Boolean, Integer, Float, Symbol)),
+            enum: T.nilable(T.proc.returns(Increase::Converter::Input)),
+            union: T.nilable(T.proc.returns(Increase::Converter::Input)),
+            api_name: Symbol,
+            nil?: T::Boolean
+          },
+          T.proc.returns(Increase::Converter::Input),
+          Increase::Converter::Input
+        ),
+        spec: T::Hash[Symbol, T.anything]
+      )
+        .void
+    end
+    private_class_method def self.add_field(name_sym, required:, type_info:, spec:)
+    end
 
-      sig do
-        params(
-          name_sym: Symbol,
-          type_info: T.any(
-            T::Hash[Symbol, T.anything],
-            T.proc.returns(Increase::Converter::Input),
-            Increase::Converter::Input
-          ),
-          spec: T::Hash[Symbol, T.anything]
-        )
-          .void
-      end
-      def required(name_sym, type_info, spec = {})
-      end
+    sig do
+      params(
+        name_sym: Symbol,
+        type_info: T.any(
+          T::Hash[Symbol, T.anything],
+          T.proc.returns(Increase::Converter::Input),
+          Increase::Converter::Input
+        ),
+        spec: T::Hash[Symbol, T.anything]
+      )
+        .void
+    end
+    def self.required(name_sym, type_info, spec = {})
+    end
 
-      sig do
-        params(
-          name_sym: Symbol,
-          type_info: T.any(
-            T::Hash[Symbol, T.anything],
-            T.proc.returns(Increase::Converter::Input),
-            Increase::Converter::Input
-          ),
-          spec: T::Hash[Symbol, T.anything]
-        )
-          .void
-      end
-      def optional(name_sym, type_info, spec = {})
-      end
+    sig do
+      params(
+        name_sym: Symbol,
+        type_info: T.any(
+          T::Hash[Symbol, T.anything],
+          T.proc.returns(Increase::Converter::Input),
+          Increase::Converter::Input
+        ),
+        spec: T::Hash[Symbol, T.anything]
+      )
+        .void
+    end
+    def self.optional(name_sym, type_info, spec = {})
+    end
 
-      sig { params(blk: T.proc.void).void }
-      private def request_only(&blk)
-      end
+    sig { params(blk: T.proc.void).void }
+    private_class_method def self.request_only(&blk)
+    end
 
-      sig { params(blk: T.proc.void).void }
-      private def response_only(&blk)
-      end
+    sig { params(blk: T.proc.void).void }
+    private_class_method def self.response_only(&blk)
     end
 
     sig { params(other: T.anything).returns(T::Boolean) }
     def ==(other)
     end
 
-    class << self
-      sig do
-        override
-          .params(value: T.any(Increase::BaseModel, T::Hash[T.anything, T.anything], T.anything))
-          .returns(T.any(T.attached_class, T.anything))
-      end
-      def coerce(value)
-      end
+    sig do
+      override
+        .params(value: T.any(Increase::BaseModel, T::Hash[T.anything, T.anything], T.anything))
+        .returns(T.any(T.attached_class, T.anything))
+    end
+    def self.coerce(value)
+    end
 
-      sig do
-        override
-          .params(value: T.any(T.attached_class, T.anything))
-          .returns(T.any(T::Hash[T.anything, T.anything], T.anything))
-      end
-      def dump(value)
-      end
+    sig do
+      override
+        .params(value: T.any(T.attached_class, T.anything))
+        .returns(T.any(T::Hash[T.anything, T.anything], T.anything))
+    end
+    def self.dump(value)
+    end
 
-      sig do
-        override
-          .params(value: T.anything)
-          .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
-      end
-      def try_strict_coerce(value)
-      end
+    sig do
+      override
+        .params(value: T.anything)
+        .returns(T.any([T::Boolean, T.anything, NilClass], [T::Boolean, T::Boolean, Integer]))
+    end
+    def self.try_strict_coerce(value)
     end
 
     sig { params(key: Symbol).returns(T.nilable(T.anything)) }
@@ -479,8 +461,8 @@ module Increase
     def deconstruct_keys(keys)
     end
 
-    sig { params(data: T.any(T::Hash[Symbol, T.anything], T.self_type)).returns(T.attached_class) }
-    def self.new(data = {})
+    sig { params(data: T.any(T::Hash[Symbol, T.anything], T.self_type)).void }
+    def initialize(data = {})
     end
 
     sig { returns(String) }

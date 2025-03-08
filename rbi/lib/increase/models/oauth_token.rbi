@@ -27,8 +27,8 @@ module Increase
       def type=(_)
       end
 
-      sig { params(access_token: String, token_type: Symbol, type: Symbol).returns(T.attached_class) }
-      def self.new(access_token:, token_type:, type:)
+      sig { params(access_token: String, token_type: Symbol, type: Symbol).void }
+      def initialize(access_token:, token_type:, type:)
       end
 
       sig { override.returns({access_token: String, token_type: Symbol, type: Symbol}) }
@@ -40,10 +40,8 @@ module Increase
 
         BEARER = :bearer
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -52,10 +50,8 @@ module Increase
 
         OAUTH_TOKEN = :oauth_token
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

@@ -97,9 +97,9 @@ module Increase
             status: Symbol,
             type: Symbol
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           id:,
           amount:,
           automatically_releases_at:,
@@ -154,10 +154,8 @@ module Increase
           # US Dollar (USD)
           USD = :USD
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -170,10 +168,8 @@ module Increase
           # Funds have been released.
           COMPLETE = :complete
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -182,10 +178,8 @@ module Increase
 
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

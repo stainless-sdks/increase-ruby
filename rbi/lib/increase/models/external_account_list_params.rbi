@@ -58,9 +58,16 @@ module Increase
           status: Increase::Models::ExternalAccountListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(cursor: nil, idempotency_key: nil, limit: nil, routing_number: nil, status: nil, request_options: {})
+      def initialize(
+        cursor: nil,
+        idempotency_key: nil,
+        limit: nil,
+        routing_number: nil,
+        status: nil,
+        request_options: {}
+      )
       end
 
       sig do
@@ -88,8 +95,8 @@ module Increase
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
-        def self.new(in_: nil)
+        sig { params(in_: T::Array[Symbol]).void }
+        def initialize(in_: nil)
         end
 
         sig { override.returns({in_: T::Array[Symbol]}) }
@@ -105,10 +112,8 @@ module Increase
           # The External Account is archived and won't appear in the dashboard.
           ARCHIVED = :archived
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

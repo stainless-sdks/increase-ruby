@@ -37,9 +37,9 @@ module Increase
           amount: Integer,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(disputed_transaction_id:, explanation:, amount: nil, request_options: {})
+      def initialize(disputed_transaction_id:, explanation:, amount: nil, request_options: {})
       end
 
       sig do

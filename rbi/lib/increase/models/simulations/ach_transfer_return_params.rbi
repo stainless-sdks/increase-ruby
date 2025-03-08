@@ -22,10 +22,9 @@ module Increase
               Increase::RequestOptions,
               T::Hash[Symbol, T.anything]
             )
-          )
-            .returns(T.attached_class)
+          ).void
         end
-        def self.new(reason: nil, request_options: {})
+        def initialize(reason: nil, request_options: {})
         end
 
         sig { override.returns({reason: Symbol, request_options: Increase::RequestOptions}) }
@@ -245,10 +244,8 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN = :untimely_return
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

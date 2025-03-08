@@ -47,9 +47,9 @@ module Increase
             period_start: Time,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(account_id:, amount:, period_end: nil, period_start: nil, request_options: {})
+        def initialize(account_id:, amount:, period_end: nil, period_start: nil, request_options: {})
         end
 
         sig do

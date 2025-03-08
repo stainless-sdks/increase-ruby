@@ -60,9 +60,9 @@ module Increase
           file_id: String,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, category:, created_at:, entity_id:, file_id:, type:)
+      def initialize(id:, category:, created_at:, entity_id:, file_id:, type:)
       end
 
       sig do
@@ -96,10 +96,8 @@ module Increase
         # Company information, such a policies or procedures, typically submitted during our due diligence process.
         COMPANY_INFORMATION = :company_information
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -108,10 +106,8 @@ module Increase
 
         DOCUMENT = :document
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

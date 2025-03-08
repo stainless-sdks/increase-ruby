@@ -51,9 +51,9 @@ module Increase
           created_at: Time,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, ach_debit_status:, activation_status:, created_at:, type:)
+      def initialize(id:, ach_debit_status:, activation_status:, created_at:, type:)
       end
 
       sig do
@@ -78,10 +78,8 @@ module Increase
         # The Group can make ACH debits.
         ENABLED = :enabled
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -94,10 +92,8 @@ module Increase
         # The Group is activated.
         ACTIVATED = :activated
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -106,10 +102,8 @@ module Increase
 
         GROUP = :group
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

@@ -167,6 +167,11 @@ module Increase
           DENY = :deny
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -228,6 +233,11 @@ module Increase
           FAILURE = :failure
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -474,6 +484,11 @@ module Increase
           DECLINE = :decline
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
@@ -488,6 +503,11 @@ module Increase
           REFUND = :refund
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         class NetworkDetails < Increase::BaseModel
@@ -524,6 +544,11 @@ module Increase
             VISA = :visa
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           class Visa < Increase::BaseModel
@@ -597,6 +622,11 @@ module Increase
               NON_SECURE_TRANSACTION = :non_secure_transaction
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @abstract
@@ -635,6 +665,11 @@ module Increase
               INTEGRATED_CIRCUIT_CARD_NO_CVV = :integrated_circuit_card_no_cvv
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             # @abstract
@@ -664,6 +699,11 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
         end
@@ -727,6 +767,11 @@ module Increase
           REFUND = :refund
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         class RequestDetails < Increase::BaseModel
@@ -775,6 +820,11 @@ module Increase
             INCREMENTAL_AUTHORIZATION = :incremental_authorization
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
 
           class IncrementalAuthorization < Increase::BaseModel
@@ -862,6 +912,11 @@ module Increase
               NO_MATCH = :no_match
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
 
@@ -935,6 +990,11 @@ module Increase
               NO_MATCH = :no_match
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
           end
         end
@@ -960,6 +1020,11 @@ module Increase
         DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :digital_wallet_authentication_requested
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       class DigitalWalletAuthentication < Increase::BaseModel
@@ -1035,6 +1100,11 @@ module Increase
           EMAIL = :email
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
@@ -1054,6 +1124,11 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
@@ -1067,6 +1142,11 @@ module Increase
           FAILURE = :failure
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -1125,6 +1205,11 @@ module Increase
           DECLINE = :decline
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
 
         # @abstract
@@ -1144,6 +1229,11 @@ module Increase
           UNKNOWN = :unknown
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -1161,6 +1251,11 @@ module Increase
         TIMED_OUT = :timed_out
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -1171,6 +1266,11 @@ module Increase
         REAL_TIME_DECISION = :real_time_decision
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

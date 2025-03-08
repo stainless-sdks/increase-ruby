@@ -46,9 +46,15 @@ module Increase
           shared_secret: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(url:, oauth_connection_id: nil, selected_event_category: nil, shared_secret: nil, request_options: {})
+      def initialize(
+        url:,
+        oauth_connection_id: nil,
+        selected_event_category: nil,
+        shared_secret: nil,
+        request_options: {}
+      )
       end
 
       sig do
@@ -333,10 +339,8 @@ module Increase
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

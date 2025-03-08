@@ -55,9 +55,16 @@ module Increase
           description: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(account_id:, amount:, back_image_file_id:, front_image_file_id:, description: nil, request_options: {})
+      def initialize(
+        account_id:,
+        amount:,
+        back_image_file_id:,
+        front_image_file_id:,
+        description: nil,
+        request_options: {}
+      )
       end
 
       sig do

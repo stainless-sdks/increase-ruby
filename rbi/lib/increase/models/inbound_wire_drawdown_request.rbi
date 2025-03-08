@@ -213,9 +213,9 @@ module Increase
           recipient_account_number_id: String,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         amount:,
         beneficiary_account_number:,
@@ -280,10 +280,8 @@ module Increase
 
         INBOUND_WIRE_DRAWDOWN_REQUEST = :inbound_wire_drawdown_request
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

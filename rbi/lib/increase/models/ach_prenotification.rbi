@@ -156,9 +156,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_number:,
         addendum:,
@@ -213,10 +213,8 @@ module Increase
         # The Prenotification is for an anticipated debit.
         DEBIT = T.let(:debit, T.nilable(Symbol))
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -245,10 +243,8 @@ module Increase
         def created_at=(_)
         end
 
-        sig do
-          params(change_code: Symbol, corrected_data: String, created_at: Time).returns(T.attached_class)
-        end
-        def self.new(change_code:, corrected_data:, created_at:)
+        sig { params(change_code: Symbol, corrected_data: String, created_at: Time).void }
+        def initialize(change_code:, corrected_data:, created_at:)
         end
 
         sig { override.returns({change_code: Symbol, corrected_data: String, created_at: Time}) }
@@ -315,10 +311,8 @@ module Increase
           # The transaction code was incorrect, initiated by the originating depository financial institution.
           INCORRECT_TRANSACTION_CODE_BY_ORIGINATING_DEPOSITORY_FINANCIAL_INSTITUTION = :incorrect_transaction_code_by_originating_depository_financial_institution
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -340,8 +334,8 @@ module Increase
         def return_reason_code=(_)
         end
 
-        sig { params(created_at: Time, return_reason_code: Symbol).returns(T.attached_class) }
-        def self.new(created_at:, return_reason_code:)
+        sig { params(created_at: Time, return_reason_code: Symbol).void }
+        def initialize(created_at:, return_reason_code:)
         end
 
         sig { override.returns({created_at: Time, return_reason_code: Symbol}) }
@@ -561,10 +555,8 @@ module Increase
           # Code R68. A rare return reason. The return was sent too late.
           UNTIMELY_RETURN = :untimely_return
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -584,10 +576,8 @@ module Increase
         # The Prenotification is complete.
         SUBMITTED = :submitted
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -596,10 +586,8 @@ module Increase
 
         ACH_PRENOTIFICATION = :ach_prenotification
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

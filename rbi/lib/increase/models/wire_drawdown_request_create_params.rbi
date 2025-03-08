@@ -127,9 +127,9 @@ module Increase
           recipient_address_line3: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         account_number_id:,
         amount:,
         message_to_recipient:,

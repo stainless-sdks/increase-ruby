@@ -105,9 +105,9 @@ module Increase
           type: Symbol,
           verification_status: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_holder:,
         account_number:,
@@ -155,10 +155,8 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = :unknown
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -174,10 +172,8 @@ module Increase
         # A different type of account.
         OTHER = :other
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -190,10 +186,8 @@ module Increase
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED = :archived
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -202,10 +196,8 @@ module Increase
 
         EXTERNAL_ACCOUNT = :external_account
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -221,10 +213,8 @@ module Increase
         # The External Account is verified.
         VERIFIED = :verified
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

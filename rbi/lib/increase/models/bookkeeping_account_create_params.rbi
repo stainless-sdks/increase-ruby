@@ -46,9 +46,9 @@ module Increase
           entity_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {})
+      def initialize(name:, account_id: nil, compliance_category: nil, entity_id: nil, request_options: {})
       end
 
       sig do
@@ -75,10 +75,8 @@ module Increase
         # A customer balance.
         CUSTOMER_BALANCE = :customer_balance
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

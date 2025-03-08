@@ -78,9 +78,18 @@ module Increase
           type: Symbol,
           url: String
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, created_at:, idempotency_key:, oauth_connection_id:, selected_event_category:, status:, type:, url:)
+      def initialize(
+        id:,
+        created_at:,
+        idempotency_key:,
+        oauth_connection_id:,
+        selected_event_category:,
+        status:,
+        type:,
+        url:
+      )
       end
 
       sig do
@@ -401,10 +410,8 @@ module Increase
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED = T.let(:"wire_transfer.updated", T.nilable(Symbol))
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -423,10 +430,8 @@ module Increase
         # The subscription is temporarily disabled due to delivery errors and Events will not be delivered.
         REQUIRES_ATTENTION = :requires_attention
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -435,10 +440,8 @@ module Increase
 
         EVENT_SUBSCRIPTION = :event_subscription
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

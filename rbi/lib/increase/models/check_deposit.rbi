@@ -183,9 +183,9 @@ module Increase
           transaction_id: T.nilable(String),
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_id:,
         amount:,
@@ -302,9 +302,17 @@ module Increase
             routing_number: String,
             serial_number: T.nilable(String)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(account_number:, amount:, auxiliary_on_us:, check_deposit_id:, currency:, routing_number:, serial_number:)
+        def initialize(
+          account_number:,
+          amount:,
+          auxiliary_on_us:,
+          check_deposit_id:,
+          currency:,
+          routing_number:,
+          serial_number:
+        )
         end
 
         sig do
@@ -345,10 +353,8 @@ module Increase
           # US Dollar (USD)
           USD = :USD
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -411,9 +417,9 @@ module Increase
             reason: Symbol,
             rejected_at: Time
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:)
+        def initialize(amount:, check_deposit_id:, currency:, declined_transaction_id:, reason:, rejected_at:)
         end
 
         sig do
@@ -453,10 +459,8 @@ module Increase
           # US Dollar (USD)
           USD = :USD
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -496,10 +500,8 @@ module Increase
           # The check was rejected for an unknown reason.
           UNKNOWN = :unknown
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -562,9 +564,9 @@ module Increase
             returned_at: Time,
             transaction_id: String
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:)
+        def initialize(amount:, check_deposit_id:, currency:, return_reason:, returned_at:, transaction_id:)
         end
 
         sig do
@@ -604,10 +606,8 @@ module Increase
           # US Dollar (USD)
           USD = :USD
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -692,10 +692,8 @@ module Increase
           # The bank sold this account and no longer services this customer.
           BRANCH_OR_ACCOUNT_SOLD = :branch_or_account_sold
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -725,10 +723,8 @@ module Increase
         def submitted_at=(_)
         end
 
-        sig do
-          params(back_file_id: String, front_file_id: String, submitted_at: Time).returns(T.attached_class)
-        end
-        def self.new(back_file_id:, front_file_id:, submitted_at:)
+        sig { params(back_file_id: String, front_file_id: String, submitted_at: Time).void }
+        def initialize(back_file_id:, front_file_id:, submitted_at:)
         end
 
         sig { override.returns({back_file_id: String, front_file_id: String, submitted_at: Time}) }
@@ -830,9 +826,9 @@ module Increase
             status: Symbol,
             type: Symbol
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           id:,
           amount:,
           automatically_releases_at:,
@@ -887,10 +883,8 @@ module Increase
           # US Dollar (USD)
           USD = :USD
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -903,10 +897,8 @@ module Increase
           # Funds have been released.
           COMPLETE = :complete
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -915,10 +907,8 @@ module Increase
 
           INBOUND_FUNDS_HOLD = :inbound_funds_hold
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -938,10 +928,8 @@ module Increase
         # The Check Deposit has been returned.
         RETURNED = :returned
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -950,10 +938,8 @@ module Increase
 
         CHECK_DEPOSIT = :check_deposit
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

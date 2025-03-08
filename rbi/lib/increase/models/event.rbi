@@ -60,9 +60,9 @@ module Increase
           created_at: Time,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:)
+      def initialize(id:, associated_object_id:, associated_object_type:, category:, created_at:, type:)
       end
 
       sig do
@@ -348,10 +348,8 @@ module Increase
         # Occurs whenever a Wire Transfer is updated.
         WIRE_TRANSFER_UPDATED = :"wire_transfer.updated"
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -360,10 +358,8 @@ module Increase
 
         EVENT = :event
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

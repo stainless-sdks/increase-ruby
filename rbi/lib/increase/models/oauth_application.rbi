@@ -69,9 +69,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, client_id:, created_at:, deleted_at:, name:, status:, type:)
+      def initialize(id:, client_id:, created_at:, deleted_at:, name:, status:, type:)
       end
 
       sig do
@@ -100,10 +100,8 @@ module Increase
         # The application is deleted.
         DELETED = :deleted
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -112,10 +110,8 @@ module Increase
 
         OAUTH_APPLICATION = :oauth_application
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

@@ -6,18 +6,16 @@ module Increase
       {method: Symbol, url: URI::Generic, headers: T::Hash[String, String], body: T.anything, deadline: Float}
     end
 
-    class << self
-      sig { params(url: URI::Generic).returns(Net::HTTP) }
-      def connect(url)
-      end
+    sig { params(url: URI::Generic).returns(Net::HTTP) }
+    def self.connect(url)
+    end
 
-      sig { params(conn: Net::HTTP, deadline: Float).void }
-      def calibrate_socket_timeout(conn, deadline)
-      end
+    sig { params(conn: Net::HTTP, deadline: Float).void }
+    def self.calibrate_socket_timeout(conn, deadline)
+    end
 
-      sig { params(request: Increase::PooledNetRequester::RequestShape).returns(Net::HTTPGenericRequest) }
-      def build_request(request)
-      end
+    sig { params(request: Increase::PooledNetRequester::RequestShape).returns(Net::HTTPGenericRequest) }
+    def self.build_request(request)
     end
 
     sig { params(url: URI::Generic, blk: T.proc.params(arg0: Net::HTTP).void).void }
@@ -31,8 +29,8 @@ module Increase
     def execute(request)
     end
 
-    sig { returns(T.attached_class) }
-    def self.new
+    sig { void }
+    def initialize
     end
   end
 end

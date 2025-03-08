@@ -55,9 +55,16 @@ module Increase
           funding: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(account_number:, description:, routing_number:, account_holder: nil, funding: nil, request_options: {})
+      def initialize(
+        account_number:,
+        description:,
+        routing_number:,
+        account_holder: nil,
+        funding: nil,
+        request_options: {}
+      )
       end
 
       sig do
@@ -88,10 +95,8 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = :unknown
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -107,10 +112,8 @@ module Increase
         # A different type of account.
         OTHER = :other
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

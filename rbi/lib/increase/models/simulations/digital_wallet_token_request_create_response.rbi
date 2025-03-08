@@ -29,10 +29,13 @@ module Increase
         end
 
         sig do
-          params(decline_reason: T.nilable(Symbol), digital_wallet_token_id: T.nilable(String), type: Symbol)
-            .returns(T.attached_class)
+          params(
+            decline_reason: T.nilable(Symbol),
+            digital_wallet_token_id: T.nilable(String),
+            type: Symbol
+          ).void
         end
-        def self.new(decline_reason:, digital_wallet_token_id:, type:)
+        def initialize(decline_reason:, digital_wallet_token_id:, type:)
         end
 
         sig do
@@ -61,10 +64,8 @@ module Increase
           # Your webhook declined the token provisioning attempt.
           WEBHOOK_DECLINED = T.let(:webhook_declined, T.nilable(Symbol))
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -73,10 +74,8 @@ module Increase
 
           INBOUND_DIGITAL_WALLET_TOKEN_REQUEST_SIMULATION_RESULT = :inbound_digital_wallet_token_request_simulation_result
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

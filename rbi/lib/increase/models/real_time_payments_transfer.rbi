@@ -249,9 +249,9 @@ module Increase
           ultimate_creditor_name: T.nilable(String),
           ultimate_debtor_name: T.nilable(String)
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_id:,
         acknowledgement:,
@@ -324,8 +324,8 @@ module Increase
         def acknowledged_at=(_)
         end
 
-        sig { params(acknowledged_at: Time).returns(T.attached_class) }
-        def self.new(acknowledged_at:)
+        sig { params(acknowledged_at: Time).void }
+        def initialize(acknowledged_at:)
         end
 
         sig { override.returns({acknowledged_at: Time}) }
@@ -350,8 +350,8 @@ module Increase
         def approved_by=(_)
         end
 
-        sig { params(approved_at: Time, approved_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(approved_at:, approved_by:)
+        sig { params(approved_at: Time, approved_by: T.nilable(String)).void }
+        def initialize(approved_at:, approved_by:)
         end
 
         sig { override.returns({approved_at: Time, approved_by: T.nilable(String)}) }
@@ -376,8 +376,8 @@ module Increase
         def canceled_by=(_)
         end
 
-        sig { params(canceled_at: Time, canceled_by: T.nilable(String)).returns(T.attached_class) }
-        def self.new(canceled_at:, canceled_by:)
+        sig { params(canceled_at: Time, canceled_by: T.nilable(String)).void }
+        def initialize(canceled_at:, canceled_by:)
         end
 
         sig { override.returns({canceled_at: Time, canceled_by: T.nilable(String)}) }
@@ -434,9 +434,9 @@ module Increase
             oauth_application: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::OAuthApplication),
             user: T.nilable(Increase::Models::RealTimePaymentsTransfer::CreatedBy::User)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(api_key:, category:, oauth_application:, user:)
+        def initialize(api_key:, category:, oauth_application:, user:)
         end
 
         sig do
@@ -462,8 +462,8 @@ module Increase
           def description=(_)
           end
 
-          sig { params(description: T.nilable(String)).returns(T.attached_class) }
-          def self.new(description:)
+          sig { params(description: T.nilable(String)).void }
+          def initialize(description:)
           end
 
           sig { override.returns({description: T.nilable(String)}) }
@@ -483,10 +483,8 @@ module Increase
           # A User in the Increase dashboard. Details will be under the `user` object.
           USER = :user
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -499,8 +497,8 @@ module Increase
           def name=(_)
           end
 
-          sig { params(name: String).returns(T.attached_class) }
-          def self.new(name:)
+          sig { params(name: String).void }
+          def initialize(name:)
           end
 
           sig { override.returns({name: String}) }
@@ -517,8 +515,8 @@ module Increase
           def email=(_)
           end
 
-          sig { params(email: String).returns(T.attached_class) }
-          def self.new(email:)
+          sig { params(email: String).void }
+          def initialize(email:)
           end
 
           sig { override.returns({email: String}) }
@@ -548,10 +546,8 @@ module Increase
         # US Dollar (USD)
         USD = :USD
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -586,9 +582,9 @@ module Increase
             reject_reason_code: Symbol,
             rejected_at: T.nilable(Time)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(reject_reason_additional_information:, reject_reason_code:, rejected_at:)
+        def initialize(reject_reason_additional_information:, reject_reason_code:, rejected_at:)
         end
 
         sig do
@@ -670,10 +666,8 @@ module Increase
           # Some other error or issue has occurred.
           OTHER = :other
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -705,10 +699,8 @@ module Increase
         # The transfer has been sent successfully and is complete.
         COMPLETE = :complete
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -729,10 +721,8 @@ module Increase
         def transaction_identification=(_)
         end
 
-        sig do
-          params(submitted_at: T.nilable(Time), transaction_identification: String).returns(T.attached_class)
-        end
-        def self.new(submitted_at:, transaction_identification:)
+        sig { params(submitted_at: T.nilable(Time), transaction_identification: String).void }
+        def initialize(submitted_at:, transaction_identification:)
         end
 
         sig { override.returns({submitted_at: T.nilable(Time), transaction_identification: String}) }
@@ -745,10 +735,8 @@ module Increase
 
         REAL_TIME_PAYMENTS_TRANSFER = :real_time_payments_transfer
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

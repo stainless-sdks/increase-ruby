@@ -141,6 +141,11 @@ module Increase
           BLOCKED = :blocked
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -172,6 +177,11 @@ module Increase
           CHECK_TRANSFERS_ONLY = :check_transfers_only
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -189,6 +199,11 @@ module Increase
         CANCELED = :canceled
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -199,6 +214,11 @@ module Increase
         ACCOUNT_NUMBER = :account_number
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

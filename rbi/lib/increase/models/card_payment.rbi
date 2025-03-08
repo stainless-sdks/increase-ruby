@@ -90,9 +90,9 @@ module Increase
           state: Increase::Models::CardPayment::State,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_id:,
         card_id:,
@@ -275,9 +275,9 @@ module Increase
             created_at: Time,
             other: T.nilable(T.anything)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           card_authentication:,
           card_authorization:,
           card_authorization_expiration:,
@@ -477,9 +477,9 @@ module Increase
               status: Symbol,
               type: Symbol
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(
+          def initialize(
             id:,
             card_id:,
             card_payment_id:,
@@ -536,10 +536,8 @@ module Increase
             # The authentication attempt is not for a payment.
             NON_PAYMENT_AUTHENTICATION = T.let(:non_payment_authentication, T.nilable(Symbol))
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -595,9 +593,9 @@ module Increase
                 verification_method: Symbol,
                 verification_value: T.nilable(String)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(attempts:, created_at:, one_time_code:, verification_method:, verification_value:)
+            def initialize(attempts:, created_at:, one_time_code:, verification_method:, verification_value:)
             end
 
             sig do
@@ -632,8 +630,8 @@ module Increase
               def outcome=(_)
               end
 
-              sig { params(created_at: Time, outcome: Symbol).returns(T.attached_class) }
-              def self.new(created_at:, outcome:)
+              sig { params(created_at: Time, outcome: Symbol).void }
+              def initialize(created_at:, outcome:)
               end
 
               sig { override.returns({created_at: Time, outcome: Symbol}) }
@@ -649,10 +647,8 @@ module Increase
                 # The attempt was unsuccessful.
                 FAILED = :failed
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -669,10 +665,8 @@ module Increase
               # The one-time code was not successfully delievered.
               NONE_AVAILABLE = :none_available
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
           end
@@ -698,10 +692,8 @@ module Increase
             # The webhook timed out.
             WEBHOOK_TIMED_OUT = T.let(:webhook_timed_out, T.nilable(Symbol))
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -717,10 +709,8 @@ module Increase
             # The authentication attempt was initiated by the 3DS Requestor.
             THREE_DS_REQUESTOR_INITIATED = T.let(:three_ds_requestor_initiated, T.nilable(Symbol))
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -754,10 +744,8 @@ module Increase
             # The authentication attempt exceeded the attempt threshold.
             EXCEEDED_ATTEMPT_THRESHOLD = :exceeded_attempt_threshold
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -766,10 +754,8 @@ module Increase
 
             CARD_AUTHENTICATION = :card_authentication
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
         end
@@ -1030,9 +1016,9 @@ module Increase
               type: Symbol,
               verification: Increase::Models::CardPayment::Element::CardAuthorization::Verification
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(
+          def initialize(
             id:,
             actioner:,
             amount:,
@@ -1112,10 +1098,8 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK = :network
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -1140,10 +1124,8 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -1156,10 +1138,8 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND = :refund
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -1188,9 +1168,9 @@ module Increase
                 category: Symbol,
                 visa: T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(category:, visa:)
+            def initialize(category:, visa:)
             end
 
             sig do
@@ -1211,10 +1191,8 @@ module Increase
               # Visa
               VISA = :visa
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
 
@@ -1249,9 +1227,13 @@ module Increase
                   point_of_service_entry_mode: T.nilable(Symbol),
                   stand_in_processing_reason: T.nilable(Symbol)
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
+              def initialize(
+                electronic_commerce_indicator:,
+                point_of_service_entry_mode:,
+                stand_in_processing_reason:
+              )
               end
 
               sig do
@@ -1299,10 +1281,8 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -1339,10 +1319,8 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = T.let(:integrated_circuit_card_no_cvv, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -1377,10 +1355,8 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER = T.let(:other, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -1417,9 +1393,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
+            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -1457,10 +1433,8 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND = :refund
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -1469,10 +1443,8 @@ module Increase
 
             CARD_AUTHORIZATION = :card_authorization
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -1504,9 +1476,9 @@ module Increase
                 card_verification_code: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
                 cardholder_address: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(card_verification_code:, cardholder_address:)
+            def initialize(card_verification_code:, cardholder_address:)
             end
 
             sig do
@@ -1530,8 +1502,8 @@ module Increase
               def result=(_)
               end
 
-              sig { params(result: Symbol).returns(T.attached_class) }
-              def self.new(result:)
+              sig { params(result: Symbol).void }
+              def initialize(result:)
               end
 
               sig { override.returns({result: Symbol}) }
@@ -1550,10 +1522,8 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH = :no_match
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -1607,9 +1577,15 @@ module Increase
                   provided_postal_code: T.nilable(String),
                   result: Symbol
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
+              def initialize(
+                actual_line1:,
+                actual_postal_code:,
+                provided_line1:,
+                provided_postal_code:,
+                result:
+              )
               end
 
               sig do
@@ -1648,10 +1624,8 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH = :no_match
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -1716,9 +1690,9 @@ module Increase
               network: Symbol,
               type: Symbol
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(id:, card_authorization_id:, currency:, expired_amount:, network:, type:)
+          def initialize(id:, card_authorization_id:, currency:, expired_amount:, network:, type:)
           end
 
           sig do
@@ -1758,10 +1732,8 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -1771,10 +1743,8 @@ module Increase
             # Visa
             VISA = :visa
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -1783,10 +1753,8 @@ module Increase
 
             CARD_AUTHORIZATION_EXPIRATION = :card_authorization_expiration
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
         end
@@ -2047,9 +2015,9 @@ module Increase
               terminal_id: T.nilable(String),
               verification: Increase::Models::CardPayment::Element::CardDecline::Verification
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(
+          def initialize(
             id:,
             actioner:,
             amount:,
@@ -2129,10 +2097,8 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK = :network
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -2157,10 +2123,8 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -2173,10 +2137,8 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND = :refund
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -2205,9 +2167,9 @@ module Increase
                 category: Symbol,
                 visa: T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(category:, visa:)
+            def initialize(category:, visa:)
             end
 
             sig do
@@ -2225,10 +2187,8 @@ module Increase
               # Visa
               VISA = :visa
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
 
@@ -2263,9 +2223,13 @@ module Increase
                   point_of_service_entry_mode: T.nilable(Symbol),
                   stand_in_processing_reason: T.nilable(Symbol)
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
+              def initialize(
+                electronic_commerce_indicator:,
+                point_of_service_entry_mode:,
+                stand_in_processing_reason:
+              )
               end
 
               sig do
@@ -2313,10 +2277,8 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -2353,10 +2315,8 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = T.let(:integrated_circuit_card_no_cvv, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -2391,10 +2351,8 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER = T.let(:other, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -2431,9 +2389,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
+            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -2471,10 +2429,8 @@ module Increase
             # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
             REFUND = :refund
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -2499,10 +2455,8 @@ module Increase
             # The transaction was declined for another reason. The merchant may attempt to process the transaction again. This should be used sparingly.
             OTHER = T.let(:other, T.nilable(Symbol))
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -2560,10 +2514,8 @@ module Increase
             # The transaction was suspected to be fraudulent. Please reach out to support@increase.com for more information.
             SUSPECTED_FRAUD = :suspected_fraud
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -2595,9 +2547,9 @@ module Increase
                 card_verification_code: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
                 cardholder_address: Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(card_verification_code:, cardholder_address:)
+            def initialize(card_verification_code:, cardholder_address:)
             end
 
             sig do
@@ -2621,8 +2573,8 @@ module Increase
               def result=(_)
               end
 
-              sig { params(result: Symbol).returns(T.attached_class) }
-              def self.new(result:)
+              sig { params(result: Symbol).void }
+              def initialize(result:)
               end
 
               sig { override.returns({result: Symbol}) }
@@ -2641,10 +2593,8 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH = :no_match
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -2698,9 +2648,15 @@ module Increase
                   provided_postal_code: T.nilable(String),
                   result: Symbol
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
+              def initialize(
+                actual_line1:,
+                actual_postal_code:,
+                provided_line1:,
+                provided_postal_code:,
+                result:
+              )
               end
 
               sig do
@@ -2739,10 +2695,8 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH = :no_match
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -2828,9 +2782,9 @@ module Increase
               type: Symbol,
               updated_authorization_amount: Integer
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(
+          def initialize(
             id:,
             card_authorization_id:,
             currency:,
@@ -2881,10 +2835,8 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -2894,10 +2846,8 @@ module Increase
             # Visa
             VISA = :visa
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -2932,9 +2882,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
+            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -2956,10 +2906,8 @@ module Increase
 
             CARD_FUEL_CONFIRMATION = :card_fuel_confirmation
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
         end
@@ -3079,9 +3027,9 @@ module Increase
               type: Symbol,
               updated_authorization_amount: Integer
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(
+          def initialize(
             id:,
             actioner:,
             amount:,
@@ -3131,10 +3079,8 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK = :network
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -3159,10 +3105,8 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -3172,10 +3116,8 @@ module Increase
             # Visa
             VISA = :visa
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -3210,9 +3152,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
+            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -3234,10 +3176,8 @@ module Increase
 
             CARD_INCREMENT = :card_increment
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
         end
@@ -3429,9 +3369,9 @@ module Increase
               transaction_id: String,
               type: Symbol
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(
+          def initialize(
             id:,
             amount:,
             card_payment_id:,
@@ -3500,8 +3440,8 @@ module Increase
             def currency=(_)
             end
 
-            sig { params(amount: String, currency: Symbol).returns(T.attached_class) }
-            def self.new(amount:, currency:)
+            sig { params(amount: String, currency: Symbol).void }
+            def initialize(amount:, currency:)
             end
 
             sig { override.returns({amount: String, currency: Symbol}) }
@@ -3529,10 +3469,8 @@ module Increase
               # US Dollar (USD)
               USD = :USD
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
           end
@@ -3558,10 +3496,8 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -3590,10 +3526,8 @@ module Increase
             def currency=(_)
             end
 
-            sig do
-              params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
-            end
-            def self.new(amount:, code:, currency:)
+            sig { params(amount: String, code: T.nilable(String), currency: Symbol).void }
+            def initialize(amount:, code:, currency:)
             end
 
             sig { override.returns({amount: String, code: T.nilable(String), currency: Symbol}) }
@@ -3621,10 +3555,8 @@ module Increase
               # US Dollar (USD)
               USD = :USD
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
           end
@@ -3660,9 +3592,9 @@ module Increase
                 acquirer_reference_number: String,
                 transaction_id: T.nilable(String)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
+            def initialize(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
             end
 
             sig do
@@ -3782,9 +3714,9 @@ module Increase
                 purchase_identifier_format: T.nilable(Symbol),
                 travel: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(
+            def initialize(
               car_rental:,
               customer_reference_identifier:,
               local_tax_amount:,
@@ -3966,9 +3898,9 @@ module Increase
                   weekly_rental_rate_amount: T.nilable(Integer),
                   weekly_rental_rate_currency: T.nilable(String)
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(
+              def initialize(
                 car_class_code:,
                 checkout_date:,
                 daily_rental_rate_amount:,
@@ -4035,10 +3967,8 @@ module Increase
                 # Parking violation
                 PARKING_VIOLATION = T.let(:parking_violation, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -4051,10 +3981,8 @@ module Increase
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = T.let(:no_show_for_specialized_vehicle, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -4207,9 +4135,9 @@ module Increase
                   total_tax_amount: T.nilable(Integer),
                   total_tax_currency: T.nilable(String)
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(
+              def initialize(
                 check_in_date:,
                 daily_room_rate_amount:,
                 daily_room_rate_currency:,
@@ -4279,10 +4207,8 @@ module Increase
                 # Laundry
                 LAUNDRY = T.let(:laundry, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -4295,10 +4221,8 @@ module Increase
                 # No show
                 NO_SHOW = T.let(:no_show, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -4321,10 +4245,8 @@ module Increase
               # Invoice number
               INVOICE_NUMBER = T.let(:invoice_number, T.nilable(Symbol))
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
 
@@ -4456,9 +4378,9 @@ module Increase
                   travel_agency_name: T.nilable(String),
                   trip_legs: T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(
+              def initialize(
                 ancillary:,
                 computerized_reservation_system:,
                 credit_reason_indicator:,
@@ -4556,9 +4478,9 @@ module Increase
                     services: T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service],
                     ticket_document_number: T.nilable(String)
                   )
-                    .returns(T.attached_class)
+                    .void
                 end
-                def self.new(
+                def initialize(
                   connected_ticket_document_number:,
                   credit_reason_indicator:,
                   passenger_name_or_description:,
@@ -4601,10 +4523,8 @@ module Increase
                   # Other
                   OTHER = T.let(:other, T.nilable(Symbol))
 
-                  class << self
-                    sig { override.returns(T::Array[Symbol]) }
-                    def values
-                    end
+                  sig { override.returns(T::Array[Symbol]) }
+                  def self.values
                   end
                 end
 
@@ -4625,13 +4545,8 @@ module Increase
                   def sub_category=(_)
                   end
 
-                  sig do
-                    params(
-                      category: T.nilable(Symbol),
-                      sub_category: T.nilable(String)
-                    ).returns(T.attached_class)
-                  end
-                  def self.new(category:, sub_category:)
+                  sig { params(category: T.nilable(Symbol), sub_category: T.nilable(String)).void }
+                  def initialize(category:, sub_category:)
                   end
 
                   sig { override.returns({category: T.nilable(Symbol), sub_category: T.nilable(String)}) }
@@ -4713,10 +4628,8 @@ module Increase
                     # Wi-fi
                     WIFI = T.let(:wifi, T.nilable(Symbol))
 
-                    class << self
-                      sig { override.returns(T::Array[Symbol]) }
-                      def values
-                      end
+                    sig { override.returns(T::Array[Symbol]) }
+                    def self.values
                     end
                   end
                 end
@@ -4747,10 +4660,8 @@ module Increase
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = T.let(:partial_refund_of_airline_ticket, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -4763,10 +4674,8 @@ module Increase
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET = T.let(:restricted_non_refundable_ticket, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -4782,10 +4691,8 @@ module Increase
                 # New ticket
                 NEW_TICKET = T.let(:new_ticket, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -4847,9 +4754,9 @@ module Increase
                     service_class: T.nilable(String),
                     stop_over_code: T.nilable(Symbol)
                   )
-                    .returns(T.attached_class)
+                    .void
                 end
-                def self.new(
+                def initialize(
                   carrier_code:,
                   destination_city_airport_code:,
                   fare_basis_code:,
@@ -4887,10 +4794,8 @@ module Increase
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED = T.let(:stop_over_not_allowed, T.nilable(Symbol))
 
-                  class << self
-                    sig { override.returns(T::Array[Symbol]) }
-                    def values
-                    end
+                  sig { override.returns(T::Array[Symbol]) }
+                  def self.values
                   end
                 end
               end
@@ -4902,10 +4807,8 @@ module Increase
 
             CARD_REFUND = :card_refund
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
         end
@@ -5079,9 +4982,9 @@ module Increase
               type: Symbol,
               updated_authorization_amount: Integer
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(
+          def initialize(
             id:,
             card_authorization_id:,
             currency:,
@@ -5152,10 +5055,8 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -5165,10 +5066,8 @@ module Increase
             # Visa
             VISA = :visa
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -5203,9 +5102,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
+            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -5237,10 +5136,8 @@ module Increase
             # The Card Reversal was a partial reversal, for any reason.
             PARTIAL_REVERSAL = T.let(:partial_reversal, T.nilable(Symbol))
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -5249,10 +5146,8 @@ module Increase
 
             CARD_REVERSAL = :card_reversal
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
         end
@@ -5462,9 +5357,9 @@ module Increase
               transaction_id: String,
               type: Symbol
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(
+          def initialize(
             id:,
             amount:,
             card_authorization:,
@@ -5537,8 +5432,8 @@ module Increase
             def currency=(_)
             end
 
-            sig { params(amount: String, currency: Symbol).returns(T.attached_class) }
-            def self.new(amount:, currency:)
+            sig { params(amount: String, currency: Symbol).void }
+            def initialize(amount:, currency:)
             end
 
             sig { override.returns({amount: String, currency: Symbol}) }
@@ -5566,10 +5461,8 @@ module Increase
               # US Dollar (USD)
               USD = :USD
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
           end
@@ -5595,10 +5488,8 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -5627,10 +5518,8 @@ module Increase
             def currency=(_)
             end
 
-            sig do
-              params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
-            end
-            def self.new(amount:, code:, currency:)
+            sig { params(amount: String, code: T.nilable(String), currency: Symbol).void }
+            def initialize(amount:, code:, currency:)
             end
 
             sig { override.returns({amount: String, code: T.nilable(String), currency: Symbol}) }
@@ -5658,10 +5547,8 @@ module Increase
               # US Dollar (USD)
               USD = :USD
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
           end
@@ -5697,9 +5584,9 @@ module Increase
                 acquirer_reference_number: String,
                 transaction_id: T.nilable(String)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
+            def initialize(acquirer_business_id:, acquirer_reference_number:, transaction_id:)
             end
 
             sig do
@@ -5819,9 +5706,9 @@ module Increase
                 purchase_identifier_format: T.nilable(Symbol),
                 travel: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(
+            def initialize(
               car_rental:,
               customer_reference_identifier:,
               local_tax_amount:,
@@ -6003,9 +5890,9 @@ module Increase
                   weekly_rental_rate_amount: T.nilable(Integer),
                   weekly_rental_rate_currency: T.nilable(String)
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(
+              def initialize(
                 car_class_code:,
                 checkout_date:,
                 daily_rental_rate_amount:,
@@ -6072,10 +5959,8 @@ module Increase
                 # Parking violation
                 PARKING_VIOLATION = T.let(:parking_violation, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -6088,10 +5973,8 @@ module Increase
                 # No show for specialized vehicle
                 NO_SHOW_FOR_SPECIALIZED_VEHICLE = T.let(:no_show_for_specialized_vehicle, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -6244,9 +6127,9 @@ module Increase
                   total_tax_amount: T.nilable(Integer),
                   total_tax_currency: T.nilable(String)
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(
+              def initialize(
                 check_in_date:,
                 daily_room_rate_amount:,
                 daily_room_rate_currency:,
@@ -6316,10 +6199,8 @@ module Increase
                 # Laundry
                 LAUNDRY = T.let(:laundry, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -6332,10 +6213,8 @@ module Increase
                 # No show
                 NO_SHOW = T.let(:no_show, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -6358,10 +6237,8 @@ module Increase
               # Invoice number
               INVOICE_NUMBER = T.let(:invoice_number, T.nilable(Symbol))
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
 
@@ -6507,9 +6384,9 @@ module Increase
                     T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::TripLeg]
                   )
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(
+              def initialize(
                 ancillary:,
                 computerized_reservation_system:,
                 credit_reason_indicator:,
@@ -6609,9 +6486,9 @@ module Increase
                     services: T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service],
                     ticket_document_number: T.nilable(String)
                   )
-                    .returns(T.attached_class)
+                    .void
                 end
-                def self.new(
+                def initialize(
                   connected_ticket_document_number:,
                   credit_reason_indicator:,
                   passenger_name_or_description:,
@@ -6654,10 +6531,8 @@ module Increase
                   # Other
                   OTHER = T.let(:other, T.nilable(Symbol))
 
-                  class << self
-                    sig { override.returns(T::Array[Symbol]) }
-                    def values
-                    end
+                  sig { override.returns(T::Array[Symbol]) }
+                  def self.values
                   end
                 end
 
@@ -6678,13 +6553,8 @@ module Increase
                   def sub_category=(_)
                   end
 
-                  sig do
-                    params(
-                      category: T.nilable(Symbol),
-                      sub_category: T.nilable(String)
-                    ).returns(T.attached_class)
-                  end
-                  def self.new(category:, sub_category:)
+                  sig { params(category: T.nilable(Symbol), sub_category: T.nilable(String)).void }
+                  def initialize(category:, sub_category:)
                   end
 
                   sig { override.returns({category: T.nilable(Symbol), sub_category: T.nilable(String)}) }
@@ -6766,10 +6636,8 @@ module Increase
                     # Wi-fi
                     WIFI = T.let(:wifi, T.nilable(Symbol))
 
-                    class << self
-                      sig { override.returns(T::Array[Symbol]) }
-                      def values
-                      end
+                    sig { override.returns(T::Array[Symbol]) }
+                    def self.values
                     end
                   end
                 end
@@ -6800,10 +6668,8 @@ module Increase
                 # Partial refund of airline ticket
                 PARTIAL_REFUND_OF_AIRLINE_TICKET = T.let(:partial_refund_of_airline_ticket, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -6816,10 +6682,8 @@ module Increase
                 # Restricted non-refundable ticket
                 RESTRICTED_NON_REFUNDABLE_TICKET = T.let(:restricted_non_refundable_ticket, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -6835,10 +6699,8 @@ module Increase
                 # New ticket
                 NEW_TICKET = T.let(:new_ticket, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -6900,9 +6762,9 @@ module Increase
                     service_class: T.nilable(String),
                     stop_over_code: T.nilable(Symbol)
                   )
-                    .returns(T.attached_class)
+                    .void
                 end
-                def self.new(
+                def initialize(
                   carrier_code:,
                   destination_city_airport_code:,
                   fare_basis_code:,
@@ -6940,10 +6802,8 @@ module Increase
                   # Stop over not allowed
                   STOP_OVER_NOT_ALLOWED = T.let(:stop_over_not_allowed, T.nilable(Symbol))
 
-                  class << self
-                    sig { override.returns(T::Array[Symbol]) }
-                    def values
-                    end
+                  sig { override.returns(T::Array[Symbol]) }
+                  def self.values
                   end
                 end
               end
@@ -6955,10 +6815,8 @@ module Increase
 
             CARD_SETTLEMENT = :card_settlement
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
         end
@@ -7156,9 +7014,9 @@ module Increase
               type: Symbol,
               verification: Increase::Models::CardPayment::Element::CardValidation::Verification
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(
+          def initialize(
             id:,
             actioner:,
             card_payment_id:,
@@ -7224,10 +7082,8 @@ module Increase
             # This object was actioned by the network, through stand-in processing.
             NETWORK = :network
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -7252,10 +7108,8 @@ module Increase
             # US Dollar (USD)
             USD = :USD
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -7284,9 +7138,9 @@ module Increase
                 category: Symbol,
                 visa: T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(category:, visa:)
+            def initialize(category:, visa:)
             end
 
             sig do
@@ -7307,10 +7161,8 @@ module Increase
               # Visa
               VISA = :visa
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
 
@@ -7345,9 +7197,13 @@ module Increase
                   point_of_service_entry_mode: T.nilable(Symbol),
                   stand_in_processing_reason: T.nilable(Symbol)
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
+              def initialize(
+                electronic_commerce_indicator:,
+                point_of_service_entry_mode:,
+                stand_in_processing_reason:
+              )
               end
 
               sig do
@@ -7395,10 +7251,8 @@ module Increase
                 # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
                 NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -7435,10 +7289,8 @@ module Increase
                 # Contact chip card, without card verification value
                 INTEGRATED_CIRCUIT_CARD_NO_CVV = T.let(:integrated_circuit_card_no_cvv, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
 
@@ -7473,10 +7325,8 @@ module Increase
                 # An unspecific reason for stand-in processing.
                 OTHER = T.let(:other, T.nilable(Symbol))
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -7513,9 +7363,9 @@ module Increase
                 trace_number: T.nilable(String),
                 transaction_id: T.nilable(String)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
+            def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
             end
 
             sig do
@@ -7537,10 +7387,8 @@ module Increase
 
             CARD_VALIDATION = :card_validation
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -7572,9 +7420,9 @@ module Increase
                 card_verification_code: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
                 cardholder_address: Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(card_verification_code:, cardholder_address:)
+            def initialize(card_verification_code:, cardholder_address:)
             end
 
             sig do
@@ -7598,8 +7446,8 @@ module Increase
               def result=(_)
               end
 
-              sig { params(result: Symbol).returns(T.attached_class) }
-              def self.new(result:)
+              sig { params(result: Symbol).void }
+              def initialize(result:)
               end
 
               sig { override.returns({result: Symbol}) }
@@ -7618,10 +7466,8 @@ module Increase
                 # The card verification code did not match the one on file.
                 NO_MATCH = :no_match
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -7675,9 +7521,15 @@ module Increase
                   provided_postal_code: T.nilable(String),
                   result: Symbol
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
+              def initialize(
+                actual_line1:,
+                actual_postal_code:,
+                provided_line1:,
+                provided_postal_code:,
+                result:
+              )
               end
 
               sig do
@@ -7716,10 +7568,8 @@ module Increase
                 # Postal code and street address do not match.
                 NO_MATCH = :no_match
 
-                class << self
-                  sig { override.returns(T::Array[Symbol]) }
-                  def values
-                  end
+                sig { override.returns(T::Array[Symbol]) }
+                def self.values
                 end
               end
             end
@@ -7762,10 +7612,8 @@ module Increase
           # Unknown card payment element.
           OTHER = :other
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -7819,9 +7667,15 @@ module Increase
             reversed_amount: Integer,
             settled_amount: Integer
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(authorized_amount:, fuel_confirmed_amount:, incremented_amount:, reversed_amount:, settled_amount:)
+        def initialize(
+          authorized_amount:,
+          fuel_confirmed_amount:,
+          incremented_amount:,
+          reversed_amount:,
+          settled_amount:
+        )
         end
 
         sig do
@@ -7845,10 +7699,8 @@ module Increase
 
         CARD_PAYMENT = :card_payment
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

@@ -251,6 +251,11 @@ module Increase
               OTHER = :other
 
               finalize!
+
+              # @!parse
+              #   # @return [Array<Symbol>]
+              #   #
+              #   def self.values; end
             end
 
             class DriversLicense < Increase::BaseModel
@@ -396,6 +401,11 @@ module Increase
           CONTROL = :control
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

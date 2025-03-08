@@ -79,9 +79,9 @@ module Increase
           third_party: Increase::Models::CheckTransferCreateParams::ThirdParty,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         account_id:,
         amount:,
         fulfillment_method:,
@@ -120,10 +120,8 @@ module Increase
         # Increase will not print a check; you are responsible for printing and mailing a check with the provided account number, routing number, check number, and amount.
         THIRD_PARTY = :third_party
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -191,9 +189,16 @@ module Increase
             return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
             signature_text: String
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(mailing_address:, memo:, recipient_name:, note: nil, return_address: nil, signature_text: nil)
+        def initialize(
+          mailing_address:,
+          memo:,
+          recipient_name:,
+          note: nil,
+          return_address: nil,
+          signature_text: nil
+        )
         end
 
         sig do
@@ -253,11 +258,8 @@ module Increase
           def line2=(_)
           end
 
-          sig do
-            params(city: String, line1: String, postal_code: String, state: String, line2: String)
-              .returns(T.attached_class)
-          end
-          def self.new(city:, line1:, postal_code:, state:, line2: nil)
+          sig { params(city: String, line1: String, postal_code: String, state: String, line2: String).void }
+          def initialize(city:, line1:, postal_code:, state:, line2: nil)
           end
 
           sig do
@@ -324,10 +326,9 @@ module Increase
               postal_code: String,
               state: String,
               line2: String
-            )
-              .returns(T.attached_class)
+            ).void
           end
-          def self.new(city:, line1:, name:, postal_code:, state:, line2: nil)
+          def initialize(city:, line1:, name:, postal_code:, state:, line2: nil)
           end
 
           sig do
@@ -355,8 +356,8 @@ module Increase
         def check_number=(_)
         end
 
-        sig { params(check_number: String).returns(T.attached_class) }
-        def self.new(check_number: nil)
+        sig { params(check_number: String).void }
+        def initialize(check_number: nil)
         end
 
         sig { override.returns({check_number: String}) }

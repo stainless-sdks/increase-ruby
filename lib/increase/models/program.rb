@@ -109,6 +109,11 @@ module Increase
         GRASSHOPPER_BANK = :grasshopper_bank
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -119,6 +124,11 @@ module Increase
         PROGRAM = :program
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

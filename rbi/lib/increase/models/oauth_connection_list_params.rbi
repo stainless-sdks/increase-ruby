@@ -49,9 +49,9 @@ module Increase
           status: Increase::Models::OAuthConnectionListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, request_options: {})
+      def initialize(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, request_options: {})
       end
 
       sig do
@@ -78,8 +78,8 @@ module Increase
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
-        def self.new(in_: nil)
+        sig { params(in_: T::Array[Symbol]).void }
+        def initialize(in_: nil)
         end
 
         sig { override.returns({in_: T::Array[Symbol]}) }
@@ -95,10 +95,8 @@ module Increase
           # The OAuth connection is permanently deactivated.
           INACTIVE = :inactive
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

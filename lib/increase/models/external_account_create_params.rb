@@ -72,6 +72,11 @@ module Increase
         UNKNOWN = :unknown
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -88,6 +93,11 @@ module Increase
         OTHER = :other
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

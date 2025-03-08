@@ -120,9 +120,9 @@ module Increase
           timeout_at: Time,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         card_authentication:,
         card_authentication_challenge:,
@@ -198,9 +198,9 @@ module Increase
             decision: T.nilable(Symbol),
             upcoming_card_payment_id: String
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(account_id:, card_id:, decision:, upcoming_card_payment_id:)
+        def initialize(account_id:, card_id:, decision:, upcoming_card_payment_id:)
         end
 
         sig do
@@ -229,10 +229,8 @@ module Increase
           # Deny the authentication attempt.
           DENY = T.let(:deny, T.nilable(Symbol))
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -286,9 +284,9 @@ module Increase
             one_time_code: String,
             result: T.nilable(Symbol)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(account_id:, card_id:, card_payment_id:, one_time_code:, result:)
+        def initialize(account_id:, card_id:, card_payment_id:, one_time_code:, result:)
         end
 
         sig do
@@ -315,10 +313,8 @@ module Increase
           # Your application was unable to deliver the one-time code to the cardholder.
           FAILURE = T.let(:failure, T.nilable(Symbol))
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -564,9 +560,9 @@ module Increase
             upcoming_card_payment_id: String,
             verification: Increase::Models::RealTimeDecision::CardAuthorization::Verification
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(
+        def initialize(
           account_id:,
           card_id:,
           decision:,
@@ -639,10 +635,8 @@ module Increase
           # Decline the authorization.
           DECLINE = T.let(:decline, T.nilable(Symbol))
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -655,10 +649,8 @@ module Increase
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND = :refund
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -687,9 +679,9 @@ module Increase
               category: Symbol,
               visa: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::NetworkDetails::Visa)
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(category:, visa:)
+          def initialize(category:, visa:)
           end
 
           sig do
@@ -710,10 +702,8 @@ module Increase
             # Visa
             VISA = :visa
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -748,9 +738,13 @@ module Increase
                 point_of_service_entry_mode: T.nilable(Symbol),
                 stand_in_processing_reason: T.nilable(Symbol)
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(electronic_commerce_indicator:, point_of_service_entry_mode:, stand_in_processing_reason:)
+            def initialize(
+              electronic_commerce_indicator:,
+              point_of_service_entry_mode:,
+              stand_in_processing_reason:
+            )
             end
 
             sig do
@@ -798,10 +792,8 @@ module Increase
               # Non-secure transaction: Use to identify an electronic commerce transaction that has no data protection.
               NON_SECURE_TRANSACTION = T.let(:non_secure_transaction, T.nilable(Symbol))
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
 
@@ -838,10 +830,8 @@ module Increase
               # Contact chip card, without card verification value
               INTEGRATED_CIRCUIT_CARD_NO_CVV = T.let(:integrated_circuit_card_no_cvv, T.nilable(Symbol))
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
 
@@ -876,10 +866,8 @@ module Increase
               # An unspecific reason for stand-in processing.
               OTHER = T.let(:other, T.nilable(Symbol))
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
           end
@@ -916,9 +904,9 @@ module Increase
               trace_number: T.nilable(String),
               transaction_id: T.nilable(String)
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(retrieval_reference_number:, trace_number:, transaction_id:)
+          def initialize(retrieval_reference_number:, trace_number:, transaction_id:)
           end
 
           sig do
@@ -956,10 +944,8 @@ module Increase
           # A refund card authorization, sometimes referred to as a credit voucher authorization, where funds are credited to the cardholder.
           REFUND = :refund
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -1005,9 +991,9 @@ module Increase
               incremental_authorization: T.nilable(Increase::Models::RealTimeDecision::CardAuthorization::RequestDetails::IncrementalAuthorization),
               initial_authorization: T.nilable(T.anything)
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(category:, incremental_authorization:, initial_authorization:)
+          def initialize(category:, incremental_authorization:, initial_authorization:)
           end
 
           sig do
@@ -1032,10 +1018,8 @@ module Increase
             # An incremental request to increase the amount of an existing authorization.
             INCREMENTAL_AUTHORIZATION = :incremental_authorization
 
-            class << self
-              sig { override.returns(T::Array[Symbol]) }
-              def values
-              end
+            sig { override.returns(T::Array[Symbol]) }
+            def self.values
             end
           end
 
@@ -1056,13 +1040,8 @@ module Increase
             def original_card_authorization_id=(_)
             end
 
-            sig do
-              params(
-                card_payment_id: String,
-                original_card_authorization_id: String
-              ).returns(T.attached_class)
-            end
-            def self.new(card_payment_id:, original_card_authorization_id:)
+            sig { params(card_payment_id: String, original_card_authorization_id: String).void }
+            def initialize(card_payment_id:, original_card_authorization_id:)
             end
 
             sig { override.returns({card_payment_id: String, original_card_authorization_id: String}) }
@@ -1099,9 +1078,9 @@ module Increase
               card_verification_code: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardVerificationCode,
               cardholder_address: Increase::Models::RealTimeDecision::CardAuthorization::Verification::CardholderAddress
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(card_verification_code:, cardholder_address:)
+          def initialize(card_verification_code:, cardholder_address:)
           end
 
           sig do
@@ -1125,8 +1104,8 @@ module Increase
             def result=(_)
             end
 
-            sig { params(result: Symbol).returns(T.attached_class) }
-            def self.new(result:)
+            sig { params(result: Symbol).void }
+            def initialize(result:)
             end
 
             sig { override.returns({result: Symbol}) }
@@ -1145,10 +1124,8 @@ module Increase
               # The card verification code did not match the one on file.
               NO_MATCH = :no_match
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
           end
@@ -1202,9 +1179,15 @@ module Increase
                 provided_postal_code: T.nilable(String),
                 result: Symbol
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(actual_line1:, actual_postal_code:, provided_line1:, provided_postal_code:, result:)
+            def initialize(
+              actual_line1:,
+              actual_postal_code:,
+              provided_line1:,
+              provided_postal_code:,
+              result:
+            )
             end
 
             sig do
@@ -1243,10 +1226,8 @@ module Increase
               # Postal code and street address do not match.
               NO_MATCH = :no_match
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
           end
@@ -1271,10 +1252,8 @@ module Increase
         # A card is being loaded into a digital wallet and requires cardholder authentication.
         DIGITAL_WALLET_AUTHENTICATION_REQUESTED = :digital_wallet_authentication_requested
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -1345,9 +1324,9 @@ module Increase
             phone: T.nilable(String),
             result: T.nilable(Symbol)
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(card_id:, channel:, digital_wallet:, email:, one_time_passcode:, phone:, result:)
+        def initialize(card_id:, channel:, digital_wallet:, email:, one_time_passcode:, phone:, result:)
         end
 
         sig do
@@ -1376,10 +1355,8 @@ module Increase
           # Send one-time passcodes over email.
           EMAIL = :email
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -1398,10 +1375,8 @@ module Increase
           # Unknown
           UNKNOWN = :unknown
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -1414,10 +1389,8 @@ module Increase
           # Your application failed to deliver the one-time passcode to the cardholder.
           FAILURE = T.let(:failure, T.nilable(Symbol))
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -1462,9 +1435,9 @@ module Increase
             decision: T.nilable(Symbol),
             digital_wallet: Symbol
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(card_id:, card_profile_id:, decision:, digital_wallet:)
+        def initialize(card_id:, card_profile_id:, decision:, digital_wallet:)
         end
 
         sig do
@@ -1490,10 +1463,8 @@ module Increase
           # Decline the provisioning request.
           DECLINE = T.let(:decline, T.nilable(Symbol))
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -1512,10 +1483,8 @@ module Increase
           # Unknown
           UNKNOWN = :unknown
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -1532,10 +1501,8 @@ module Increase
         # Your webhook failed to respond to the authorization in time.
         TIMED_OUT = :timed_out
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -1544,10 +1511,8 @@ module Increase
 
         REAL_TIME_DECISION = :real_time_decision
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

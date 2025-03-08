@@ -78,9 +78,18 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, created_at:, file_id:, lockbox_id:, recipient_name:, rejection_reason:, status:, type:)
+      def initialize(
+        id:,
+        created_at:,
+        file_id:,
+        lockbox_id:,
+        recipient_name:,
+        rejection_reason:,
+        status:,
+        type:
+      )
       end
 
       sig do
@@ -113,10 +122,8 @@ module Increase
         # The Lockbox or its associated Account is not active.
         LOCKBOX_NOT_ACTIVE = T.let(:lockbox_not_active, T.nilable(Symbol))
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -132,10 +139,8 @@ module Increase
         # The mail item has been rejected.
         REJECTED = :rejected
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -144,10 +149,8 @@ module Increase
 
         INBOUND_MAIL_ITEM = :inbound_mail_item
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

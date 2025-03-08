@@ -135,9 +135,9 @@ module Increase
           text_color: Increase::Models::DigitalCardProfile::TextColor,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         app_icon_file_id:,
         background_image_file_id:,
@@ -194,10 +194,8 @@ module Increase
         # The Card Profile is no longer in use.
         ARCHIVED = :archived
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -226,8 +224,8 @@ module Increase
         def red=(_)
         end
 
-        sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
-        def self.new(blue:, green:, red:)
+        sig { params(blue: Integer, green: Integer, red: Integer).void }
+        def initialize(blue:, green:, red:)
         end
 
         sig { override.returns({blue: Integer, green: Integer, red: Integer}) }
@@ -240,10 +238,8 @@ module Increase
 
         DIGITAL_CARD_PROFILE = :digital_card_profile
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

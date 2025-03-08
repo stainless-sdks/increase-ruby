@@ -60,9 +60,16 @@ module Increase
           type: Symbol,
           wire_transfers: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(ach_transfers:, name:, real_time_payments_transfers:, routing_number:, type:, wire_transfers:)
+      def initialize(
+        ach_transfers:,
+        name:,
+        real_time_payments_transfers:,
+        routing_number:,
+        type:,
+        wire_transfers:
+      )
       end
 
       sig do
@@ -90,10 +97,8 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED = :not_supported
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -106,10 +111,8 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED = :not_supported
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -118,10 +121,8 @@ module Increase
 
         ROUTING_NUMBER = :routing_number
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -134,10 +135,8 @@ module Increase
         # The routing number cannot receive this transfer type.
         NOT_SUPPORTED = :not_supported
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

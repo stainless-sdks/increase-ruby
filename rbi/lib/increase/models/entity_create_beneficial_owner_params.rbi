@@ -22,9 +22,9 @@ module Increase
           beneficial_owner: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(beneficial_owner:, request_options: {})
+      def initialize(beneficial_owner:, request_options: {})
       end
 
       sig do
@@ -73,9 +73,9 @@ module Increase
             prongs: T::Array[Symbol],
             company_title: String
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(individual:, prongs:, company_title: nil)
+        def initialize(individual:, prongs:, company_title: nil)
         end
 
         sig do
@@ -148,9 +148,9 @@ module Increase
               name: String,
               confirmed_no_us_tax_id: T::Boolean
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
+          def initialize(address:, date_of_birth:, identification:, name:, confirmed_no_us_tax_id: nil)
           end
 
           sig do
@@ -209,16 +209,8 @@ module Increase
             def line2=(_)
             end
 
-            sig do
-              params(
-                city: String,
-                line1: String,
-                state: String,
-                zip: String,
-                line2: String
-              ).returns(T.attached_class)
-            end
-            def self.new(city:, line1:, state:, zip:, line2: nil)
+            sig { params(city: String, line1: String, state: String, zip: String, line2: String).void }
+            def initialize(city:, line1:, state:, zip:, line2: nil)
             end
 
             sig { override.returns({city: String, line1: String, state: String, zip: String, line2: String}) }
@@ -314,9 +306,9 @@ module Increase
                 other: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Other,
                 passport: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification::Passport
               )
-                .returns(T.attached_class)
+                .void
             end
-            def self.new(method_:, number:, drivers_license: nil, other: nil, passport: nil)
+            def initialize(method_:, number:, drivers_license: nil, other: nil, passport: nil)
             end
 
             sig do
@@ -352,10 +344,8 @@ module Increase
               # Another identifying document.
               OTHER = :other
 
-              class << self
-                sig { override.returns(T::Array[Symbol]) }
-                def values
-                end
+              sig { override.returns(T::Array[Symbol]) }
+              def self.values
               end
             end
 
@@ -392,11 +382,8 @@ module Increase
               def back_file_id=(_)
               end
 
-              sig do
-                params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
-                  .returns(T.attached_class)
-              end
-              def self.new(expiration_date:, file_id:, state:, back_file_id: nil)
+              sig { params(expiration_date: Date, file_id: String, state: String, back_file_id: String).void }
+              def initialize(expiration_date:, file_id:, state:, back_file_id: nil)
               end
 
               sig do
@@ -462,9 +449,9 @@ module Increase
                   back_file_id: String,
                   expiration_date: Date
                 )
-                  .returns(T.attached_class)
+                  .void
               end
-              def self.new(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
+              def initialize(country:, description:, file_id:, back_file_id: nil, expiration_date: nil)
               end
 
               sig do
@@ -508,10 +495,8 @@ module Increase
               def file_id=(_)
               end
 
-              sig do
-                params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
-              end
-              def self.new(country:, expiration_date:, file_id:)
+              sig { params(country: String, expiration_date: Date, file_id: String).void }
+              def initialize(country:, expiration_date:, file_id:)
               end
 
               sig { override.returns({country: String, expiration_date: Date, file_id: String}) }
@@ -530,10 +515,8 @@ module Increase
           # A person who manages, directs, or has significant control of the entity.
           CONTROL = :control
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

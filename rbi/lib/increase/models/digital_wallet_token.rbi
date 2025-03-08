@@ -72,9 +72,9 @@ module Increase
           type: Symbol,
           updates: T::Array[Increase::Models::DigitalWalletToken::Update]
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, card_id:, created_at:, status:, token_requestor:, type:, updates:)
+      def initialize(id:, card_id:, created_at:, status:, token_requestor:, type:, updates:)
       end
 
       sig do
@@ -109,10 +109,8 @@ module Increase
         # The digital wallet token has been permanently canceled.
         DEACTIVATED = :deactivated
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -131,10 +129,8 @@ module Increase
         # Unknown
         UNKNOWN = :unknown
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -143,10 +139,8 @@ module Increase
 
         DIGITAL_WALLET_TOKEN = :digital_wallet_token
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -167,8 +161,8 @@ module Increase
         def timestamp=(_)
         end
 
-        sig { params(status: Symbol, timestamp: Time).returns(T.attached_class) }
-        def self.new(status:, timestamp:)
+        sig { params(status: Symbol, timestamp: Time).void }
+        def initialize(status:, timestamp:)
         end
 
         sig { override.returns({status: Symbol, timestamp: Time}) }
@@ -190,10 +184,8 @@ module Increase
           # The digital wallet token has been permanently canceled.
           DEACTIVATED = :deactivated
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

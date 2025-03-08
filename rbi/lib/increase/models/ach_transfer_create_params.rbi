@@ -187,9 +187,9 @@ module Increase
           transaction_timing: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         account_id:,
         amount:,
         statement_descriptor:,
@@ -280,9 +280,9 @@ module Increase
             freeform: Increase::Models::ACHTransferCreateParams::Addenda::Freeform,
             payment_order_remittance_advice: Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(category:, freeform: nil, payment_order_remittance_advice: nil)
+        def initialize(category:, freeform: nil, payment_order_remittance_advice: nil)
         end
 
         sig do
@@ -307,10 +307,8 @@ module Increase
           # Structured ASC X12 820 remittance advice records. Please reach out to [support@increase.com](mailto:support@increase.com) for more information.
           PAYMENT_ORDER_REMITTANCE_ADVICE = :payment_order_remittance_advice
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
 
@@ -326,11 +324,8 @@ module Increase
           def entries=(_)
           end
 
-          sig do
-            params(entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry])
-              .returns(T.attached_class)
-          end
-          def self.new(entries:)
+          sig { params(entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]).void }
+          def initialize(entries:)
           end
 
           sig { override.returns({entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]}) }
@@ -346,8 +341,8 @@ module Increase
             def payment_related_information=(_)
             end
 
-            sig { params(payment_related_information: String).returns(T.attached_class) }
-            def self.new(payment_related_information:)
+            sig { params(payment_related_information: String).void }
+            def initialize(payment_related_information:)
             end
 
             sig { override.returns({payment_related_information: String}) }
@@ -380,9 +375,9 @@ module Increase
             params(
               invoices: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
             )
-              .returns(T.attached_class)
+              .void
           end
-          def self.new(invoices:)
+          def initialize(invoices:)
           end
 
           sig do
@@ -413,8 +408,8 @@ module Increase
             def paid_amount=(_)
             end
 
-            sig { params(invoice_number: String, paid_amount: Integer).returns(T.attached_class) }
-            def self.new(invoice_number:, paid_amount:)
+            sig { params(invoice_number: String, paid_amount: Integer).void }
+            def initialize(invoice_number:, paid_amount:)
             end
 
             sig { override.returns({invoice_number: String, paid_amount: Integer}) }
@@ -436,10 +431,8 @@ module Increase
         # It's unknown what kind of entity owns the External Account.
         UNKNOWN = :unknown
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -452,10 +445,8 @@ module Increase
         # A savings account.
         SAVINGS = :savings
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -476,8 +467,8 @@ module Increase
         def settlement_schedule=(_)
         end
 
-        sig { params(date: Date, settlement_schedule: Symbol).returns(T.attached_class) }
-        def self.new(date: nil, settlement_schedule: nil)
+        sig { params(date: Date, settlement_schedule: Symbol).void }
+        def initialize(date: nil, settlement_schedule: nil)
         end
 
         sig { override.returns({date: Date, settlement_schedule: Symbol}) }
@@ -493,10 +484,8 @@ module Increase
           # The chosen effective date will be the business day following the ACH processing date on which the transfer is submitted. The transfer will be settled on that future day.
           FUTURE_DATED = :future_dated
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -516,10 +505,8 @@ module Increase
         # Internet Initiated (WEB).
         INTERNET_INITIATED = :internet_initiated
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -532,10 +519,8 @@ module Increase
         # A Transaction will be created when the funds settle at the Federal Reserve.
         ASYNCHRONOUS = :asynchronous
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

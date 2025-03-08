@@ -231,9 +231,9 @@ module Increase
           status: Symbol,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         account_id:,
         account_number_id:,
@@ -312,10 +312,8 @@ module Increase
         # The Inbound Wire Transfer was reversed.
         REVERSED = :reversed
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -324,10 +322,8 @@ module Increase
 
         INBOUND_WIRE_TRANSFER = :inbound_wire_transfer
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

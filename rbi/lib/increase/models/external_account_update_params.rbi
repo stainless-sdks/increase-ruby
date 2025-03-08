@@ -46,9 +46,9 @@ module Increase
           status: Symbol,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {})
+      def initialize(account_holder: nil, description: nil, funding: nil, status: nil, request_options: {})
       end
 
       sig do
@@ -75,10 +75,8 @@ module Increase
         # The External Account is owned by an individual.
         INDIVIDUAL = :individual
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -94,10 +92,8 @@ module Increase
         # A different type of account.
         OTHER = :other
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -110,10 +106,8 @@ module Increase
         # The External Account is archived and won't appear in the dashboard.
         ARCHIVED = :archived
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

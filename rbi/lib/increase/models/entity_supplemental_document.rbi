@@ -51,9 +51,9 @@ module Increase
           idempotency_key: T.nilable(String),
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(created_at:, entity_id:, file_id:, idempotency_key:, type:)
+      def initialize(created_at:, entity_id:, file_id:, idempotency_key:, type:)
       end
 
       sig do
@@ -76,10 +76,8 @@ module Increase
 
         ENTITY_SUPPLEMENTAL_DOCUMENT = :entity_supplemental_document
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

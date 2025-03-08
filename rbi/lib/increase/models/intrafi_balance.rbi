@@ -63,9 +63,9 @@ module Increase
           total_balance: Integer,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, balances:, currency:, effective_date:, total_balance:, type:)
+      def initialize(id:, balances:, currency:, effective_date:, total_balance:, type:)
       end
 
       sig do
@@ -136,9 +136,9 @@ module Increase
             bank_location: T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation),
             fdic_certificate_number: String
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(id:, balance:, bank:, bank_location:, fdic_certificate_number:)
+        def initialize(id:, balance:, bank:, bank_location:, fdic_certificate_number:)
         end
 
         sig do
@@ -173,8 +173,8 @@ module Increase
           def state=(_)
           end
 
-          sig { params(city: String, state: String).returns(T.attached_class) }
-          def self.new(city:, state:)
+          sig { params(city: String, state: String).void }
+          def initialize(city:, state:)
           end
 
           sig { override.returns({city: String, state: String}) }
@@ -204,10 +204,8 @@ module Increase
         # US Dollar (USD)
         USD = :USD
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -216,10 +214,8 @@ module Increase
 
         INTRAFI_BALANCE = :intrafi_balance
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

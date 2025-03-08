@@ -20,9 +20,9 @@ module Increase
             transaction_id: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(transaction_id:, request_options: {})
+        def initialize(transaction_id:, request_options: {})
         end
 
         sig { override.returns({transaction_id: String, request_options: Increase::RequestOptions}) }

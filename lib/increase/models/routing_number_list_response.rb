@@ -66,6 +66,11 @@ module Increase
         NOT_SUPPORTED = :not_supported
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -79,6 +84,11 @@ module Increase
         NOT_SUPPORTED = :not_supported
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -89,6 +99,11 @@ module Increase
         ROUTING_NUMBER = :routing_number
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @abstract
@@ -102,6 +117,11 @@ module Increase
         NOT_SUPPORTED = :not_supported
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

@@ -69,9 +69,9 @@ module Increase
           name: String,
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:)
+      def initialize(id:, account_id:, compliance_category:, entity_id:, idempotency_key:, name:, type:)
       end
 
       sig do
@@ -100,10 +100,8 @@ module Increase
         # A customer balance.
         CUSTOMER_BALANCE = T.let(:customer_balance, T.nilable(Symbol))
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -112,10 +110,8 @@ module Increase
 
         BOOKKEEPING_ACCOUNT = :bookkeeping_account
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

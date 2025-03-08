@@ -29,9 +29,9 @@ module Increase
             explanation: String,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(status:, explanation: nil, request_options: {})
+        def initialize(status:, explanation: nil, request_options: {})
         end
 
         sig do
@@ -58,10 +58,8 @@ module Increase
           # The Card Dispute has been won and no further action can be taken.
           WON = :won
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

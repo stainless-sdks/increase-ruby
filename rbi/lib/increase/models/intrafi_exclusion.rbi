@@ -96,9 +96,9 @@ module Increase
           submitted_at: T.nilable(Time),
           type: Symbol
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         id:,
         bank_name:,
         created_at:,
@@ -144,10 +144,8 @@ module Increase
         # The exclusion has been removed from the IntraFi network.
         ARCHIVED = :archived
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
 
@@ -156,10 +154,8 @@ module Increase
 
         INTRAFI_EXCLUSION = :intrafi_exclusion
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
         end
       end
     end

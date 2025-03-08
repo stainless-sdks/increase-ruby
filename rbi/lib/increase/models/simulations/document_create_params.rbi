@@ -23,9 +23,9 @@ module Increase
               T::Hash[Symbol, T.anything]
             )
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(account_id:, request_options: {})
+        def initialize(account_id:, request_options: {})
         end
 
         sig { override.returns({account_id: String, request_options: Increase::RequestOptions}) }

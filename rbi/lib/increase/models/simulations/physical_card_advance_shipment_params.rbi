@@ -20,9 +20,9 @@ module Increase
             shipment_status: Symbol,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
-            .returns(T.attached_class)
+            .void
         end
-        def self.new(shipment_status:, request_options: {})
+        def initialize(shipment_status:, request_options: {})
         end
 
         sig { override.returns({shipment_status: Symbol, request_options: Increase::RequestOptions}) }
@@ -53,10 +53,8 @@ module Increase
           # The physical card shipment was returned to the sender and destroyed by the production facility.
           RETURNED = :returned
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end

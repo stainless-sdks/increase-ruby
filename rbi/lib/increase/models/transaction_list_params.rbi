@@ -70,9 +70,9 @@ module Increase
           route_id: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .returns(T.attached_class)
+          .void
       end
-      def self.new(
+      def initialize(
         account_id: nil,
         category: nil,
         created_at: nil,
@@ -109,8 +109,8 @@ module Increase
         def in_=(_)
         end
 
-        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
-        def self.new(in_: nil)
+        sig { params(in_: T::Array[Symbol]).void }
+        def initialize(in_: nil)
         end
 
         sig { override.returns({in_: T::Array[Symbol]}) }
@@ -207,10 +207,8 @@ module Increase
           # The Transaction was made for an undocumented or deprecated reason.
           OTHER = :other
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[Symbol]) }
+          def self.values
           end
         end
       end
@@ -248,10 +246,8 @@ module Increase
         def on_or_before=(_)
         end
 
-        sig do
-          params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).returns(T.attached_class)
-        end
-        def self.new(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
+        sig { params(after: Time, before: Time, on_or_after: Time, on_or_before: Time).void }
+        def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil)
         end
 
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
