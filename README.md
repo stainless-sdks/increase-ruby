@@ -48,6 +48,25 @@ account = increase.accounts.create(
 puts(account.id)
 ```
 
+## Pagination
+
+List methods in the Increase API are paginated.
+
+This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
+
+```ruby
+page = increase.accounts.list
+
+# Fetch single item from page.
+account = page.data[0]
+puts(account.id)
+
+# Automatically fetches more pages as needed.
+page.auto_paging_each do |account|
+  puts(account.id)
+end
+```
+
 ### Errors
 
 When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `Increase::Error` will be thrown:
@@ -124,9 +143,9 @@ increase.accounts.create(
 
 ## Sorbet Support
 
-This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the Sorbet runtime.
+This library is written with [Sorbet type definitions](https://sorbet.org/docs/rbi). However, there is no runtime dependency on the `sorbet-runtime`.
 
-What this means is that while you can use Sorbet to type check your code statically, and benefit from the [Sorbet Language Server](https://sorbet.org/docs/lsp) in your editor, there is no runtime type checking and execution overhead from Sorbet.
+What this means is that while you can use Sorbet to type check your code statically, and benefit from the [Sorbet Language Server](https://sorbet.org/docs/lsp) in your editor, there is no runtime type checking and execution overhead from Sorbet itself.
 
 Due to limitations with the Sorbet type system, where a method otherwise can take an instance of `Increase::BaseModel` class, you will need to use the `**` splat operator to pass the arguments:
 
