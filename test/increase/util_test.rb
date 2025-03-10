@@ -161,7 +161,8 @@ class Increase::Test::UtilFormDataEncodingTest < Minitest::Test
   class FakeCGI < CGI
     def initialize(headers, io)
       @ctype = headers["content-type"]
-      @io = io
+      @io = Increase::Util::ReadIOAdapter.new(io) {}
+      @c_len = io.to_a.join.bytesize.to_s
       super()
     end
 
@@ -171,7 +172,7 @@ class Increase::Test::UtilFormDataEncodingTest < Minitest::Test
       {
         "REQUEST_METHOD" => "POST",
         "CONTENT_TYPE" => @ctype,
-        "CONTENT_LENGTH" => stdinput.string.length
+        "CONTENT_LENGTH" => @c_len
       }
     end
   end
