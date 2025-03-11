@@ -75,6 +75,7 @@ module Increase
           mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
           memo: String,
           recipient_name: String,
+          check_number: String,
           note: String,
           return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
           signature_text: String
@@ -86,6 +87,10 @@ module Increase
         attr_accessor memo: String
 
         attr_accessor recipient_name: String
+
+        attr_reader check_number: String?
+
+        def check_number=: (String) -> String
 
         attr_reader note: String?
 
@@ -106,6 +111,7 @@ module Increase
             mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
             memo: String,
             recipient_name: String,
+            check_number: String,
             note: String,
             return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
             signature_text: String

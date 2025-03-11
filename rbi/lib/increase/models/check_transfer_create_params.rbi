@@ -156,6 +156,14 @@ module Increase
         end
 
         sig { returns(T.nilable(String)) }
+        def check_number
+        end
+
+        sig { params(_: String).returns(String) }
+        def check_number=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
         def note
         end
 
@@ -187,13 +195,22 @@ module Increase
             mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
             memo: String,
             recipient_name: String,
+            check_number: String,
             note: String,
             return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
             signature_text: String
           )
             .returns(T.attached_class)
         end
-        def self.new(mailing_address:, memo:, recipient_name:, note: nil, return_address: nil, signature_text: nil)
+        def self.new(
+          mailing_address:,
+          memo:,
+          recipient_name:,
+          check_number: nil,
+          note: nil,
+          return_address: nil,
+          signature_text: nil
+        )
         end
 
         sig do
@@ -203,6 +220,7 @@ module Increase
                 mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
                 memo: String,
                 recipient_name: String,
+                check_number: String,
                 note: String,
                 return_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress,
                 signature_text: String
