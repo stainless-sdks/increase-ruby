@@ -125,6 +125,18 @@ module Increase
         #   @return [String]
         required :recipient_name, String
 
+        # @!attribute [r] check_number
+        #   The check number Increase should print on the check. This should not contain
+        #     leading zeroes and must be unique across the `source_account_number`. If this is
+        #     omitted, Increase will generate a check number for you.
+        #
+        #   @return [String, nil]
+        optional :check_number, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :check_number
+
         # @!attribute [r] note
         #   The descriptor that will be printed on the letter included with the check.
         #
@@ -166,11 +178,23 @@ module Increase
         #   # @param mailing_address [Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress]
         #   # @param memo [String]
         #   # @param recipient_name [String]
+        #   # @param check_number [String]
         #   # @param note [String]
         #   # @param return_address [Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress]
         #   # @param signature_text [String]
         #   #
-        #   def initialize(mailing_address:, memo:, recipient_name:, note: nil, return_address: nil, signature_text: nil, **) = super
+        #   def initialize(
+        #     mailing_address:,
+        #     memo:,
+        #     recipient_name:,
+        #     check_number: nil,
+        #     note: nil,
+        #     return_address: nil,
+        #     signature_text: nil,
+        #     **
+        #   )
+        #     super
+        #   end
 
         # def initialize: (Hash | Increase::BaseModel) -> void
 
