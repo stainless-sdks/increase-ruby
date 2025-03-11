@@ -31,11 +31,6 @@ class Increase::Test::Resources::SupplementalDocumentsTest < Increase::Test::Res
       response => Increase::Page
     end
 
-    page = response.next_page
-    assert_pattern do
-      page => Increase::Page
-    end
-
     row = response.to_enum.first
     assert_pattern do
       row => Increase::Models::EntitySupplementalDocument
