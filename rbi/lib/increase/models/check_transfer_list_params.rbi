@@ -49,6 +49,17 @@ module Increase
       def limit=(_)
       end
 
+      sig { returns(T.nilable(Increase::Models::CheckTransferListParams::Status)) }
+      def status
+      end
+
+      sig do
+        params(_: Increase::Models::CheckTransferListParams::Status)
+          .returns(Increase::Models::CheckTransferListParams::Status)
+      end
+      def status=(_)
+      end
+
       sig do
         params(
           account_id: String,
@@ -56,11 +67,20 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
+          status: Increase::Models::CheckTransferListParams::Status,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
         )
           .returns(T.attached_class)
       end
-      def self.new(account_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
+      def self.new(
+        account_id: nil,
+        created_at: nil,
+        cursor: nil,
+        idempotency_key: nil,
+        limit: nil,
+        status: nil,
+        request_options: {}
+      )
       end
 
       sig do
@@ -72,6 +92,7 @@ module Increase
               cursor: String,
               idempotency_key: String,
               limit: Integer,
+              status: Increase::Models::CheckTransferListParams::Status,
               request_options: Increase::RequestOptions
             }
           )
@@ -120,6 +141,64 @@ module Increase
 
         sig { override.returns({after: Time, before: Time, on_or_after: Time, on_or_before: Time}) }
         def to_hash
+        end
+      end
+
+      class Status < Increase::BaseModel
+        sig { returns(T.nilable(T::Array[Symbol])) }
+        def in_
+        end
+
+        sig { params(_: T::Array[Symbol]).returns(T::Array[Symbol]) }
+        def in_=(_)
+        end
+
+        sig { params(in_: T::Array[Symbol]).returns(T.attached_class) }
+        def self.new(in_: nil)
+        end
+
+        sig { override.returns({in_: T::Array[Symbol]}) }
+        def to_hash
+        end
+
+        class In < Increase::Enum
+          abstract!
+
+          # The transfer is awaiting approval.
+          PENDING_APPROVAL = :pending_approval
+
+          # The transfer has been canceled.
+          CANCELED = :canceled
+
+          # The transfer is pending submission.
+          PENDING_SUBMISSION = :pending_submission
+
+          # The transfer requires attention from an Increase operator.
+          REQUIRES_ATTENTION = :requires_attention
+
+          # The transfer has been rejected.
+          REJECTED = :rejected
+
+          # The check is queued for mailing.
+          PENDING_MAILING = :pending_mailing
+
+          # The check has been mailed.
+          MAILED = :mailed
+
+          # The check has been deposited.
+          DEPOSITED = :deposited
+
+          # A stop-payment was requested for this check.
+          STOPPED = :stopped
+
+          # The transfer has been returned.
+          RETURNED = :returned
+
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
+          end
         end
       end
     end

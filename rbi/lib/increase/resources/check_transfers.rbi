@@ -45,6 +45,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
+          status: Increase::Models::CheckTransferListParams::Status,
           request_options: T.nilable(T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything]))
         )
           .returns(Increase::Page[Increase::Models::CheckTransfer])
@@ -55,6 +56,7 @@ module Increase
         cursor: nil,
         idempotency_key: nil,
         limit: nil,
+        status: nil,
         request_options: {}
       )
       end

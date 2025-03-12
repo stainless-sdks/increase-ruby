@@ -6,7 +6,8 @@ module Increase
         created_at: Increase::Models::CheckTransferListParams::CreatedAt,
         cursor: String,
         idempotency_key: String,
-        limit: Integer
+        limit: Integer,
+        status: Increase::Models::CheckTransferListParams::Status
       }
       & Increase::request_parameters
 
@@ -36,6 +37,12 @@ module Increase
 
       def limit=: (Integer) -> Integer
 
+      attr_reader status: Increase::Models::CheckTransferListParams::Status?
+
+      def status=: (
+        Increase::Models::CheckTransferListParams::Status
+      ) -> Increase::Models::CheckTransferListParams::Status
+
       def initialize:
         (
           account_id: String,
@@ -43,6 +50,7 @@ module Increase
           cursor: String,
           idempotency_key: String,
           limit: Integer,
+          status: Increase::Models::CheckTransferListParams::Status,
           request_options: Increase::request_opts
         ) -> void
         | (
@@ -85,6 +93,74 @@ module Increase
           ) -> void
 
         def to_hash: -> Increase::Models::CheckTransferListParams::created_at
+      end
+
+      type status =
+        { in_: ::Array[Increase::Models::CheckTransferListParams::Status::in_] }
+
+      class Status < Increase::BaseModel
+        attr_reader in_: ::Array[Increase::Models::CheckTransferListParams::Status::in_]?
+
+        def in_=: (
+          ::Array[Increase::Models::CheckTransferListParams::Status::in_]
+        ) -> ::Array[Increase::Models::CheckTransferListParams::Status::in_]
+
+        def initialize:
+          (
+            in_: ::Array[Increase::Models::CheckTransferListParams::Status::in_]
+          ) -> void
+          | (
+            ?Increase::Models::CheckTransferListParams::status
+            | Increase::BaseModel data
+          ) -> void
+
+        def to_hash: -> Increase::Models::CheckTransferListParams::status
+
+        type in_ =
+          :pending_approval
+          | :canceled
+          | :pending_submission
+          | :requires_attention
+          | :rejected
+          | :pending_mailing
+          | :mailed
+          | :deposited
+          | :stopped
+          | :returned
+
+        class In < Increase::Enum
+          # The transfer is awaiting approval.
+          PENDING_APPROVAL: :pending_approval
+
+          # The transfer has been canceled.
+          CANCELED: :canceled
+
+          # The transfer is pending submission.
+          PENDING_SUBMISSION: :pending_submission
+
+          # The transfer requires attention from an Increase operator.
+          REQUIRES_ATTENTION: :requires_attention
+
+          # The transfer has been rejected.
+          REJECTED: :rejected
+
+          # The check is queued for mailing.
+          PENDING_MAILING: :pending_mailing
+
+          # The check has been mailed.
+          MAILED: :mailed
+
+          # The check has been deposited.
+          DEPOSITED: :deposited
+
+          # A stop-payment was requested for this check.
+          STOPPED: :stopped
+
+          # The transfer has been returned.
+          RETURNED: :returned
+
+          def self.values: -> ::Array[Increase::Models::CheckTransferListParams::Status::in_]
+        end
       end
     end
   end

@@ -60,15 +60,36 @@ module Increase
       #   # @return [Integer]
       #   attr_writer :limit
 
+      # @!attribute [r] status
+      #
+      #   @return [Increase::Models::CheckTransferListParams::Status, nil]
+      optional :status, -> { Increase::Models::CheckTransferListParams::Status }
+
+      # @!parse
+      #   # @return [Increase::Models::CheckTransferListParams::Status]
+      #   attr_writer :status
+
       # @!parse
       #   # @param account_id [String]
       #   # @param created_at [Increase::Models::CheckTransferListParams::CreatedAt]
       #   # @param cursor [String]
       #   # @param idempotency_key [String]
       #   # @param limit [Integer]
+      #   # @param status [Increase::Models::CheckTransferListParams::Status]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(account_id: nil, created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {}, **) = super
+      #   def initialize(
+      #     account_id: nil,
+      #     created_at: nil,
+      #     cursor: nil,
+      #     idempotency_key: nil,
+      #     limit: nil,
+      #     status: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | Increase::BaseModel) -> void
 
@@ -126,6 +147,65 @@ module Increase
         #   def initialize(after: nil, before: nil, on_or_after: nil, on_or_before: nil, **) = super
 
         # def initialize: (Hash | Increase::BaseModel) -> void
+      end
+
+      class Status < Increase::BaseModel
+        # @!attribute [r] in_
+        #   Filter Check Transfers to those that have the specified status. For GET
+        #     requests, this should be encoded as a comma-delimited string, such as
+        #     `?in=one,two,three`.
+        #
+        #   @return [Array<Symbol, Increase::Models::CheckTransferListParams::Status::In>, nil]
+        optional :in_,
+                 -> { Increase::ArrayOf[enum: Increase::Models::CheckTransferListParams::Status::In] },
+                 api_name: :in
+
+        # @!parse
+        #   # @return [Array<Symbol, Increase::Models::CheckTransferListParams::Status::In>]
+        #   attr_writer :in_
+
+        # @!parse
+        #   # @param in_ [Array<Symbol, Increase::Models::CheckTransferListParams::Status::In>]
+        #   #
+        #   def initialize(in_: nil, **) = super
+
+        # def initialize: (Hash | Increase::BaseModel) -> void
+
+        # @abstract
+        #
+        class In < Increase::Enum
+          # The transfer is awaiting approval.
+          PENDING_APPROVAL = :pending_approval
+
+          # The transfer has been canceled.
+          CANCELED = :canceled
+
+          # The transfer is pending submission.
+          PENDING_SUBMISSION = :pending_submission
+
+          # The transfer requires attention from an Increase operator.
+          REQUIRES_ATTENTION = :requires_attention
+
+          # The transfer has been rejected.
+          REJECTED = :rejected
+
+          # The check is queued for mailing.
+          PENDING_MAILING = :pending_mailing
+
+          # The check has been mailed.
+          MAILED = :mailed
+
+          # The check has been deposited.
+          DEPOSITED = :deposited
+
+          # A stop-payment was requested for this check.
+          STOPPED = :stopped
+
+          # The transfer has been returned.
+          RETURNED = :returned
+
+          finalize!
+        end
       end
     end
   end
