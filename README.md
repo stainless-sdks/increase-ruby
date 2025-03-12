@@ -48,7 +48,7 @@ account = increase.accounts.create(
 puts(account.id)
 ```
 
-## Pagination
+### Pagination
 
 List methods in the Increase API are paginated.
 

@@ -10,16 +10,16 @@ module Increase
   #
   # @example
   # ```ruby
-  # page.auto_paging_each do |item|
-  # #   item ...
+  # page.auto_paging_each do |account|
+  #   puts(account)
   # end
   # ```
   #
   # @example
   # ```ruby
-  # items = page.to_enum.take(2)
+  # accounts = page.to_enum.take(2)
   #
-  # items => Array
+  # accounts => Array
   # ```
   class Page
     include Increase::BasePage

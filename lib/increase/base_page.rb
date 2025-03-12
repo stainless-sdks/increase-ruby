@@ -5,6 +5,26 @@ module Increase
   #
   # @abstract
   #
+  # @example
+  # ```ruby
+  # if page.has_next?
+  #   page = page.next_page
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # page.auto_paging_each do |account|
+  #   puts(account)
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # accounts = page.to_enum.take(2)
+  #
+  # accounts => Array
+  # ```
   module BasePage
     # @return [Boolean]
     #
