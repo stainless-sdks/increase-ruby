@@ -10,16 +10,16 @@ module Increase
   #
   # @example
   # ```ruby
-  # page.auto_paging_each do |account|
-  #   puts(account)
+  # page.auto_paging_each do |item|
+  # #   item ...
   # end
   # ```
   #
   # @example
   # ```ruby
-  # accounts = page.to_enum.take(2)
+  # items = page.to_enum.take(2)
   #
-  # accounts => Array
+  # items => Array
   # ```
   class Page
     include Increase::BasePage
@@ -68,7 +68,7 @@ module Increase
     #
     def next_page
       unless next_page?
-        raise RuntimeError.new("No more pages available. Please check #next_page? before calling ##{__method__}")
+        raise RuntimeError.new("No more pages available; please check #next_page? before calling #next_page")
       end
 
       req = Increase::Util.deep_merge(@req, {query: {cursor: next_cursor}})
@@ -79,7 +79,7 @@ module Increase
     #
     def auto_paging_each(&blk)
       unless block_given?
-        raise ArgumentError.new("A block must be given to ##{__method__}")
+        raise ArgumentError.new("A block must be given to #auto_paging_each")
       end
       page = self
       loop do

@@ -15,11 +15,8 @@ module Increase
       def calibrate_socket_timeout(conn, deadline)
       end
 
-      sig do
-        params(request: Increase::PooledNetRequester::RequestShape, blk: T.proc.params(arg0: String).void)
-          .returns(Net::HTTPGenericRequest)
-      end
-      def build_request(request, &blk)
+      sig { params(request: Increase::PooledNetRequester::RequestShape).returns(Net::HTTPGenericRequest) }
+      def build_request(request)
       end
     end
 
@@ -34,8 +31,8 @@ module Increase
     def execute(request)
     end
 
-    sig { params(size: Integer).returns(T.attached_class) }
-    def self.new(size: Etc.nprocessors)
+    sig { returns(T.attached_class) }
+    def self.new
     end
   end
 end
