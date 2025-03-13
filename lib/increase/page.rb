@@ -30,6 +30,7 @@ module Increase
     # @return [String, nil]
     attr_accessor :next_cursor
 
+    # rubocop:disable Lint/UnusedMethodArgument
     # @private
     #
     # @param client [Increase::BaseClient]
@@ -38,7 +39,8 @@ module Increase
     # @param page_data [Hash{Symbol=>Object}]
     #
     def initialize(client:, req:, headers:, page_data:)
-      super
+      @client = client
+      @req = req
       model = req.fetch(:model)
 
       case page_data
@@ -53,8 +55,10 @@ module Increase
       else
       end
     end
+    # rubocop:enable Lint/UnusedMethodArgument
 
     # @return [Boolean]
+    #
     def next_page?
       !next_cursor.nil?
     end
