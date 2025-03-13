@@ -23,6 +23,14 @@ module Increase
         def amount=(_)
         end
 
+        sig { returns(T.nilable(String)) }
+        def accrued_on_account_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def accrued_on_account_id=(_)
+        end
+
         sig { returns(T.nilable(Time)) }
         def period_end
         end
@@ -43,13 +51,14 @@ module Increase
           params(
             account_id: String,
             amount: Integer,
+            accrued_on_account_id: String,
             period_end: Time,
             period_start: Time,
             request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
           )
             .returns(T.attached_class)
         end
-        def self.new(account_id:, amount:, period_end: nil, period_start: nil, request_options: {})
+        def self.new(account_id:, amount:, accrued_on_account_id: nil, period_end: nil, period_start: nil, request_options: {})
         end
 
         sig do
@@ -58,6 +67,7 @@ module Increase
               {
                 account_id: String,
                 amount: Integer,
+                accrued_on_account_id: String,
                 period_end: Time,
                 period_start: Time,
                 request_options: Increase::RequestOptions

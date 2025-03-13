@@ -9,9 +9,11 @@ module Increase
         #
         # @param params [Increase::Models::Simulations::InterestPaymentCreateParams, Hash{Symbol=>Object}] .
         #
-        #   @option params [String] :account_id The identifier of the Account Number the Interest Payment is for.
+        #   @option params [String] :account_id The identifier of the Account the Interest Payment should be paid to is for.
         #
         #   @option params [Integer] :amount The interest amount in cents. Must be positive.
+        #
+        #   @option params [String] :accrued_on_account_id The identifier of the Account the Interest accrued on. Defaults to `account_id`.
         #
         #   @option params [Time] :period_end The end of the interest period. If not provided, defaults to the current time.
         #
