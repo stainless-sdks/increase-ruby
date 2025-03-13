@@ -29,9 +29,9 @@ module Increase
         headers: T.any(T::Hash[String, String], Net::HTTPHeader),
         page_data: T::Hash[Symbol, T.anything]
       )
-        .returns(T.attached_class)
+        .void
     end
-    def self.new(client:, req:, headers:, page_data:)
+    def initialize(client:, req:, headers:, page_data:)
     end
   end
 end
