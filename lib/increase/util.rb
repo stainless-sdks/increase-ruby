@@ -557,10 +557,8 @@ module Increase
       def encode_content(headers, body)
         content_type = headers["content-type"]
         case [content_type, body]
-        in [%r{^application/(?:vnd\.api\+)?json}, Hash | Array]
+        in ["application/json", Hash | Array]
           [headers, JSON.fast_generate(body)]
-        in [%r{^application/(?:x-)?jsonl}, Enumerable]
-          [headers, body.lazy.map { JSON.fast_generate(_1) }]
         in [%r{^multipart/form-data}, Hash | IO | StringIO]
           boundary, strio = encode_multipart_streaming(body)
           headers = {**headers, "content-type" => "#{content_type}; boundary=#{boundary}"}
@@ -591,14 +589,11 @@ module Increase
             raise e unless suppress_error
             json
           end
-        in %r{^application/(?:x-)?jsonl}
-          lines = decode_lines(stream)
-          chain_fused(lines) do |y|
-            lines.each { y << JSON.parse(_1, symbolize_names: true) }
-          end
         in %r{^text/event-stream}
           lines = decode_lines(stream)
           decode_sse(lines)
+        in %r{^application/(?:x-)?jsonl}
+          decode_lines(stream)
         in %r{^text/}
           stream.to_a.join
         else

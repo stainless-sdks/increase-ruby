@@ -205,7 +205,7 @@ module Increase
       end
     end
 
-    ServerSentEvent = T.type_alias do
+    SSEMessage = T.type_alias do
       {event: T.nilable(String), data: T.nilable(String), id: T.nilable(String), retry: T.nilable(Integer)}
     end
 
@@ -214,7 +214,7 @@ module Increase
       def decode_lines(enum)
       end
 
-      sig { params(lines: T::Enumerable[String]).returns(Increase::Util::ServerSentEvent) }
+      sig { params(lines: T::Enumerable[String]).returns(Increase::Util::SSEMessage) }
       def decode_sse(lines)
       end
     end
