@@ -15,9 +15,7 @@ module Increase
 
     def self.build_request: (
       Increase::PooledNetRequester::request request
-    ) {
-      (String arg0) -> void
-    } -> top
+    ) -> top
 
     private def with_pool: (URI::Generic url) { (top arg0) -> void } -> void
 
@@ -25,6 +23,6 @@ module Increase
       Increase::PooledNetRequester::request request
     ) -> [top, Enumerable[String]]
 
-    def initialize: (size: Integer) -> void
+    def initialize: -> void
   end
 end

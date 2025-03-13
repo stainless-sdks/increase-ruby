@@ -161,8 +161,7 @@ class Increase::Test::UtilFormDataEncodingTest < Minitest::Test
   class FakeCGI < CGI
     def initialize(headers, io)
       @ctype = headers["content-type"]
-      @io = Increase::Util::ReadIOAdapter.new(io) {}
-      @c_len = io.to_a.join.bytesize.to_s
+      @io = io
       super()
     end
 
@@ -172,7 +171,7 @@ class Increase::Test::UtilFormDataEncodingTest < Minitest::Test
       {
         "REQUEST_METHOD" => "POST",
         "CONTENT_TYPE" => @ctype,
-        "CONTENT_LENGTH" => @c_len
+        "CONTENT_LENGTH" => stdinput.string.length
       }
     end
   end
@@ -205,34 +204,6 @@ class Increase::Test::UtilFormDataEncodingTest < Minitest::Test
       testcase.each do |key, val|
         assert_equal(val, cgi[key])
       end
-    end
-  end
-end
-
-class Increase::Test::UtilIOAdapterTest < Minitest::Test
-  def test_copy_read
-    cases = {
-      StringIO.new("abc") => "abc",
-      Enumerator.new { _1 << "abc" } => "abc"
-    }
-    cases.each do |input, expected|
-      io = StringIO.new
-      adapter = Increase::Util::ReadIOAdapter.new(input) {}
-      IO.copy_stream(adapter, io)
-      assert_equal(expected, io.string)
-    end
-  end
-
-  def test_copy_write
-    cases = {
-      StringIO.new => "",
-      StringIO.new("abc") => "abc"
-    }
-    cases.each do |input, expected|
-      enum = Increase::Util.string_io do |y|
-        IO.copy_stream(input, y)
-      end
-      assert_equal(expected, enum.to_a.join)
     end
   end
 end
@@ -273,7 +244,7 @@ class Increase::Test::UtilFusedEnumTest < Minitest::Test
   def test_external_iteration
     it = [1, 2, 3].to_enum
     first = it.next
-    fused = Increase::Util.fused_enum(it, external: true)
+    fused = Increase::Util.fused_enum(it)
 
     assert_equal(1, first)
     assert_equal([2, 3], fused.to_a)

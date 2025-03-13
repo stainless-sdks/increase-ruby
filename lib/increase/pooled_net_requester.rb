@@ -48,11 +48,9 @@ module Increase
       #
       #   @option request [Hash{String=>String}] :headers
       #
-      # @param blk [Proc]
-      #
       # @return [Net::HTTPGenericRequest]
       #
-      def build_request(request, &)
+      def build_request(request)
         method, url, headers, body = request.fetch_values(:method, :url, :headers, :body)
         req = Net::HTTPGenericRequest.new(
           method.to_s.upcase,
@@ -66,14 +64,12 @@ module Increase
         case body
         in nil
         in String
-          req["content-length"] ||= body.bytesize.to_s unless req["transfer-encoding"]
-          req.body_stream = Increase::Util::ReadIOAdapter.new(body, &)
+          req.body = body
         in StringIO
-          req["content-length"] ||= body.size.to_s unless req["transfer-encoding"]
-          req.body_stream = Increase::Util::ReadIOAdapter.new(body, &)
-        in IO | Enumerator
-          req["transfer-encoding"] ||= "chunked" unless req["content-length"]
-          req.body_stream = Increase::Util::ReadIOAdapter.new(body, &)
+          req.body = body.string
+        in IO
+          body.rewind
+          req.body_stream = body
         end
 
         req
@@ -85,16 +81,33 @@ module Increase
     # @param url [URI::Generic]
     # @param blk [Proc]
     #
-    private def with_pool(url, &)
+    private def with_pool(url, &blk)
       origin = Increase::Util.uri_origin(url)
+      th = Thread.current
+      key = :"#{object_id}-#{self.class.name}-connection_in_use_for_#{origin}"
+
+      if th[key]
+        tap do
+          conn = self.class.connect(url)
+          return blk.call(conn)
+        ensure
+          conn.finish if conn&.started?
+        end
+      end
+
       pool =
         @mutex.synchronize do
-          @pools[origin] ||= ConnectionPool.new(size: @size) do
+          @pools[origin] ||= ConnectionPool.new(size: Etc.nprocessors) do
             self.class.connect(url)
           end
         end
 
-      pool.with(&)
+      pool.with do |conn|
+        th[key] = true
+        blk.call(conn)
+      ensure
+        th[key] = nil
+      end
     end
 
     # @private
@@ -115,16 +128,13 @@ module Increase
     #
     def execute(request)
       url, deadline = request.fetch_values(:url, :deadline)
+      req = self.class.build_request(request)
 
       eof = false
       finished = false
       enum = Enumerator.new do |y|
         with_pool(url) do |conn|
           next if finished
-
-          req = self.class.build_request(request) do
-            self.class.calibrate_socket_timeout(conn, deadline)
-          end
 
           self.class.calibrate_socket_timeout(conn, deadline)
           conn.start unless conn.started?
@@ -146,25 +156,19 @@ module Increase
       end
 
       conn, response = enum.next
-      body = Increase::Util.fused_enum(enum, external: true) do
+      body = Increase::Util.fused_enum(enum) do
         finished = true
         tap do
           enum.next
         rescue StopIteration
-          nil
         end
         conn.finish if !eof && conn&.started?
       end
       [response, (response.body = body)]
     end
 
-    # @private
-    #
-    # @param size [Integer]
-    #
-    def initialize(size: Etc.nprocessors)
+    def initialize
       @mutex = Mutex.new
-      @size = size
       @pools = {}
     end
   end

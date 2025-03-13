@@ -55,11 +55,11 @@ module Increase
           type_info(spec.slice(:const, :enum, :union).first&.last)
         in Proc
           spec
-        in Increase::Converter | Class | Symbol
+        in Increase::Converter | Class
           -> { spec }
         in true | false
           -> { Increase::BooleanModel }
-        in NilClass | Integer | Float
+        in NilClass | true | false | Symbol | Integer | Float
           -> { spec.class }
         end
       end
@@ -82,13 +82,6 @@ module Increase
         case target
         in Increase::Converter
           target.coerce(value)
-        in Symbol
-          case value
-          in Symbol | String if (val = value.to_sym) == target
-            val
-          else
-            value
-          end
         in Class
           case target
           in -> { _1 <= NilClass }
@@ -147,13 +140,6 @@ module Increase
         case target
         in Increase::Converter
           target.try_strict_coerce(value)
-        in Symbol
-          case value
-          in Symbol | String if (val = value.to_sym) == target
-            [true, val, 1]
-          else
-            [false, false, 0]
-          end
         in Class
           case [target, value]
           in [-> { _1 <= NilClass }, _]
@@ -352,14 +338,7 @@ module Increase
       #
       # @return [Symbol, Object]
       #
-      def coerce(value)
-        case value
-        in Symbol | String if values.include?(val = value.to_sym)
-          val
-        else
-          value
-        end
-      end
+      def coerce(value) = (value.is_a?(String) ? value.to_sym : value)
 
       # @!parse
       #   # @private
@@ -380,7 +359,7 @@ module Increase
         return [true, value, 1] if values.include?(value)
 
         case value
-        in Symbol | String if values.include?(val = value.to_sym)
+        in String if values.include?(val = value.to_sym)
           [true, val, 1]
         else
           case [value, values.first]
