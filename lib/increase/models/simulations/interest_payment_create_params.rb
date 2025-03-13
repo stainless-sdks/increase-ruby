@@ -9,7 +9,7 @@ module Increase
         include Increase::RequestParameters
 
         # @!attribute account_id
-        #   The identifier of the Account Number the Interest Payment is for.
+        #   The identifier of the Account the Interest Payment should be paid to is for.
         #
         #   @return [String]
         required :account_id, String
@@ -19,6 +19,16 @@ module Increase
         #
         #   @return [Integer]
         required :amount, Integer
+
+        # @!attribute [r] accrued_on_account_id
+        #   The identifier of the Account the Interest accrued on. Defaults to `account_id`.
+        #
+        #   @return [String, nil]
+        optional :accrued_on_account_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :accrued_on_account_id
 
         # @!attribute [r] period_end
         #   The end of the interest period. If not provided, defaults to the current time.
@@ -43,11 +53,22 @@ module Increase
         # @!parse
         #   # @param account_id [String]
         #   # @param amount [Integer]
+        #   # @param accrued_on_account_id [String]
         #   # @param period_end [Time]
         #   # @param period_start [Time]
         #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
         #   #
-        #   def initialize(account_id:, amount:, period_end: nil, period_start: nil, request_options: {}, **) = super
+        #   def initialize(
+        #     account_id:,
+        #     amount:,
+        #     accrued_on_account_id: nil,
+        #     period_end: nil,
+        #     period_start: nil,
+        #     request_options: {},
+        #     **
+        #   )
+        #     super
+        #   end
 
         # def initialize: (Hash | Increase::BaseModel) -> void
       end
