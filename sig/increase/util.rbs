@@ -122,13 +122,13 @@ module Increase
       (Enumerator::Yielder arg0) -> void
     } -> void
 
-    type server_sent_event =
+    type sse_message =
       { event: String?, data: String?, id: String?, retry: Integer? }
 
     def self?.decode_lines: (Enumerable[String] enum) -> Enumerable[String]
 
     def self?.decode_sse: (
       Enumerable[String] lines
-    ) -> Increase::Util::server_sent_event
+    ) -> Increase::Util::sse_message
   end
 end
