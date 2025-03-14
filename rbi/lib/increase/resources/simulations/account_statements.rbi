@@ -13,7 +13,11 @@ module Increase
           )
             .returns(Increase::Models::AccountStatement)
         end
-        def create(account_id:, request_options: {})
+        def create(
+          # The identifier of the Account the statement is for.
+          account_id:,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

@@ -15,7 +15,14 @@ module Increase
           )
             .returns(Increase::Models::CardPayment)
         end
-        def create(amount:, card_payment_id:, request_options: {})
+        def create(
+          # The amount of the fuel_confirmation in minor units in the card authorization's
+          #   currency.
+          amount:,
+          # The identifier of the Card Payment to create a fuel_confirmation on.
+          card_payment_id:,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

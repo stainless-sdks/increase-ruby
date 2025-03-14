@@ -16,7 +16,13 @@ module Increase
           )
             .returns(Increase::Models::RealTimePaymentsTransfer)
         end
-        def complete(real_time_payments_transfer_id, rejection: nil, request_options: {})
+        def complete(
+          # The identifier of the Real-Time Payments Transfer you wish to complete.
+          real_time_payments_transfer_id,
+          # If set, the simulation will reject the transfer.
+          rejection: nil,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

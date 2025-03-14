@@ -17,7 +17,11 @@ module Increase
           )
             .returns(Increase::Models::ACHTransfer)
         end
-        def acknowledge(ach_transfer_id, request_options: {})
+        def acknowledge(
+          # The identifier of the ACH Transfer you wish to become acknowledged.
+          ach_transfer_id,
+          request_options: {}
+        )
         end
 
         # Simulates receiving a Notification of Change for an
@@ -31,7 +35,16 @@ module Increase
           )
             .returns(Increase::Models::ACHTransfer)
         end
-        def create_notification_of_change(ach_transfer_id, change_code:, corrected_data:, request_options: {})
+        def create_notification_of_change(
+          # The identifier of the ACH Transfer you wish to create a notification of change
+          #   for.
+          ach_transfer_id,
+          # The reason for the notification of change.
+          change_code:,
+          # The corrected data for the notification of change (e.g., a new routing number).
+          corrected_data:,
+          request_options: {}
+        )
         end
 
         # Simulates the return of an [ACH Transfer](#ach-transfers) by the Federal Reserve
@@ -45,7 +58,14 @@ module Increase
           )
             .returns(Increase::Models::ACHTransfer)
         end
-        def return_(ach_transfer_id, reason: nil, request_options: {})
+        def return_(
+          # The identifier of the ACH Transfer you wish to return.
+          ach_transfer_id,
+          # The reason why the Federal Reserve or destination bank returned this transfer.
+          #   Defaults to `no_account`.
+          reason: nil,
+          request_options: {}
+        )
         end
 
         # Simulates the settlement of an [ACH Transfer](#ach-transfers) by the Federal
@@ -59,7 +79,11 @@ module Increase
           )
             .returns(Increase::Models::ACHTransfer)
         end
-        def settle(ach_transfer_id, request_options: {})
+        def settle(
+          # The identifier of the ACH Transfer you wish to become settled.
+          ach_transfer_id,
+          request_options: {}
+        )
         end
 
         # Simulates the submission of an [ACH Transfer](#ach-transfers) to the Federal
@@ -75,7 +99,11 @@ module Increase
           )
             .returns(Increase::Models::ACHTransfer)
         end
-        def submit(ach_transfer_id, request_options: {})
+        def submit(
+          # The identifier of the ACH Transfer you wish to submit.
+          ach_transfer_id,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

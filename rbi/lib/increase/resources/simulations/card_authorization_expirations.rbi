@@ -12,7 +12,11 @@ module Increase
           )
             .returns(Increase::Models::CardPayment)
         end
-        def create(card_payment_id:, request_options: {})
+        def create(
+          # The identifier of the Card Payment to expire.
+          card_payment_id:,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

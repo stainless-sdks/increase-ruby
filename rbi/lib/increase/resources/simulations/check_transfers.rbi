@@ -15,7 +15,11 @@ module Increase
           )
             .returns(Increase::Models::CheckTransfer)
         end
-        def mail(check_transfer_id, request_options: {})
+        def mail(
+          # The identifier of the Check Transfer you wish to mail.
+          check_transfer_id,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

@@ -11,7 +11,11 @@ module Increase
         )
           .returns(Increase::Models::CardPayment)
       end
-      def retrieve(card_payment_id, request_options: {})
+      def retrieve(
+        # The identifier of the Card Payment.
+        card_payment_id,
+        request_options: {}
+      )
       end
 
       # List Card Payments
@@ -26,7 +30,19 @@ module Increase
         )
           .returns(Increase::Page[Increase::Models::CardPayment])
       end
-      def list(account_id: nil, card_id: nil, created_at: nil, cursor: nil, limit: nil, request_options: {})
+      def list(
+        # Filter Card Payments to ones belonging to the specified Account.
+        account_id: nil,
+        # Filter Card Payments to ones belonging to the specified Card.
+        card_id: nil,
+        created_at: nil,
+        # Return the page of entries after this one.
+        cursor: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        #   objects.
+        limit: nil,
+        request_options: {}
+      )
       end
 
       sig { params(client: Increase::Client).returns(T.attached_class) }
