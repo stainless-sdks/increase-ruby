@@ -4,6 +4,8 @@ module Increase
   module Resources
     class Simulations
       class InterestPayments
+        # Simulates an interest payment to your account. In production, this happens
+        #   automatically on the first of each month.
         sig do
           params(
             account_id: String,

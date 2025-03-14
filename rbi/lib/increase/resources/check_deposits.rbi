@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class CheckDeposits
+      # Create a Check Deposit
       sig do
         params(
           account_id: String,
@@ -24,6 +25,7 @@ module Increase
       )
       end
 
+      # Retrieve a Check Deposit
       sig do
         params(
           check_deposit_id: String,
@@ -34,6 +36,7 @@ module Increase
       def retrieve(check_deposit_id, request_options: {})
       end
 
+      # List Check Deposits
       sig do
         params(
           account_id: String,

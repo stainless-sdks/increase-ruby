@@ -4,6 +4,7 @@ module Increase
   module Resources
     class Simulations
       class CardAuthorizationExpirations
+        # Simulates expiring a Card Authorization immediately.
         sig do
           params(
             card_payment_id: String,

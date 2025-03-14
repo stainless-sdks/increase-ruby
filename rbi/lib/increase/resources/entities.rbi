@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Entities
+      # Create an Entity
       sig do
         params(
           structure: Symbol,
@@ -32,6 +33,7 @@ module Increase
       )
       end
 
+      # Retrieve an Entity
       sig do
         params(
           entity_id: String,
@@ -42,6 +44,7 @@ module Increase
       def retrieve(entity_id, request_options: {})
       end
 
+      # List Entities
       sig do
         params(
           created_at: Increase::Models::EntityListParams::CreatedAt,
@@ -63,6 +66,7 @@ module Increase
       )
       end
 
+      # Archive an Entity
       sig do
         params(
           entity_id: String,
@@ -73,6 +77,7 @@ module Increase
       def archive(entity_id, request_options: {})
       end
 
+      # Archive a beneficial owner for a corporate Entity
       sig do
         params(
           entity_id: String,
@@ -84,6 +89,9 @@ module Increase
       def archive_beneficial_owner(entity_id, beneficial_owner_id:, request_options: {})
       end
 
+      # Depending on your program, you may be required to re-confirm an Entity's details
+      #   on a recurring basis. After making any required updates, call this endpoint to
+      #   record that your user confirmed their details.
       sig do
         params(
           entity_id: String,
@@ -95,6 +103,7 @@ module Increase
       def confirm(entity_id, confirmed_at: nil, request_options: {})
       end
 
+      # Create a beneficial owner for a corporate Entity
       sig do
         params(
           entity_id: String,
@@ -106,6 +115,7 @@ module Increase
       def create_beneficial_owner(entity_id, beneficial_owner:, request_options: {})
       end
 
+      # Update a Natural Person or Corporation's address
       sig do
         params(
           entity_id: String,
@@ -117,6 +127,7 @@ module Increase
       def update_address(entity_id, address:, request_options: {})
       end
 
+      # Update the address for a beneficial owner belonging to a corporate Entity
       sig do
         params(
           entity_id: String,
@@ -129,6 +140,7 @@ module Increase
       def update_beneficial_owner_address(entity_id, address:, beneficial_owner_id:, request_options: {})
       end
 
+      # Update the industry code for a corporate Entity
       sig do
         params(
           entity_id: String,

@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class BookkeepingEntrySets
+      # Create a Bookkeeping Entry Set
       sig do
         params(
           entries: T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry],
@@ -15,6 +16,7 @@ module Increase
       def create(entries:, date: nil, transaction_id: nil, request_options: {})
       end
 
+      # Retrieve a Bookkeeping Entry Set
       sig do
         params(
           bookkeeping_entry_set_id: String,
@@ -25,6 +27,7 @@ module Increase
       def retrieve(bookkeeping_entry_set_id, request_options: {})
       end
 
+      # List Bookkeeping Entry Sets
       sig do
         params(
           cursor: String,

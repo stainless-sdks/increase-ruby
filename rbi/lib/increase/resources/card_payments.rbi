@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class CardPayments
+      # Retrieve a Card Payment
       sig do
         params(
           card_payment_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(card_payment_id, request_options: {})
       end
 
+      # List Card Payments
       sig do
         params(
           account_id: String,

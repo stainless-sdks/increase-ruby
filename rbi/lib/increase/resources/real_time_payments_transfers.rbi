@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class RealTimePaymentsTransfers
+      # Create a Real-Time Payments Transfer
       sig do
         params(
           amount: Integer,
@@ -36,6 +37,7 @@ module Increase
       )
       end
 
+      # Retrieve a Real-Time Payments Transfer
       sig do
         params(
           real_time_payments_transfer_id: String,
@@ -46,6 +48,7 @@ module Increase
       def retrieve(real_time_payments_transfer_id, request_options: {})
       end
 
+      # List Real-Time Payments Transfers
       sig do
         params(
           account_id: String,

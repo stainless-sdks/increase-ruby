@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The type of entity that owns the External Account.
       sig { returns(T.nilable(Symbol)) }
       def account_holder
       end
@@ -14,6 +15,7 @@ module Increase
       def account_holder=(_)
       end
 
+      # The description you choose to give the external account.
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -22,6 +24,7 @@ module Increase
       def description=(_)
       end
 
+      # The funding type of the External Account.
       sig { returns(T.nilable(Symbol)) }
       def funding
       end
@@ -30,6 +33,7 @@ module Increase
       def funding=(_)
       end
 
+      # The status of the External Account.
       sig { returns(T.nilable(Symbol)) }
       def status
       end
@@ -66,6 +70,7 @@ module Increase
       def to_hash
       end
 
+      # The type of entity that owns the External Account.
       class AccountHolder < Increase::Enum
         abstract!
 
@@ -82,6 +87,7 @@ module Increase
         end
       end
 
+      # The funding type of the External Account.
       class Funding < Increase::Enum
         abstract!
 
@@ -101,6 +107,7 @@ module Increase
         end
       end
 
+      # The status of the External Account.
       class Status < Increase::Enum
         abstract!
 

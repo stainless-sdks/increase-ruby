@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class InboundACHTransfers
+      # Retrieve an Inbound ACH Transfer
       sig do
         params(
           inbound_ach_transfer_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(inbound_ach_transfer_id, request_options: {})
       end
 
+      # List Inbound ACH Transfers
       sig do
         params(
           account_id: String,
@@ -36,6 +38,7 @@ module Increase
       )
       end
 
+      # Create a notification of change for an Inbound ACH Transfer
       sig do
         params(
           inbound_ach_transfer_id: String,
@@ -53,6 +56,7 @@ module Increase
       )
       end
 
+      # Decline an Inbound ACH Transfer
       sig do
         params(
           inbound_ach_transfer_id: String,
@@ -64,6 +68,7 @@ module Increase
       def decline(inbound_ach_transfer_id, reason: nil, request_options: {})
       end
 
+      # Return an Inbound ACH Transfer
       sig do
         params(
           inbound_ach_transfer_id: String,

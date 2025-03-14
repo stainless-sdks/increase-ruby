@@ -3,6 +3,7 @@
 module Increase
   module Models
     class ACHPrenotification < Increase::BaseModel
+      # The ACH Prenotification's identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The destination account number.
       sig { returns(String) }
       def account_number
       end
@@ -19,6 +21,7 @@ module Increase
       def account_number=(_)
       end
 
+      # Additional information for the recipient.
       sig { returns(T.nilable(String)) }
       def addendum
       end
@@ -27,6 +30,7 @@ module Increase
       def addendum=(_)
       end
 
+      # The description of the date of the notification.
       sig { returns(T.nilable(String)) }
       def company_descriptive_date
       end
@@ -35,6 +39,7 @@ module Increase
       def company_descriptive_date=(_)
       end
 
+      # Optional data associated with the notification.
       sig { returns(T.nilable(String)) }
       def company_discretionary_data
       end
@@ -43,6 +48,7 @@ module Increase
       def company_discretionary_data=(_)
       end
 
+      # The description of the notification.
       sig { returns(T.nilable(String)) }
       def company_entry_description
       end
@@ -51,6 +57,7 @@ module Increase
       def company_entry_description=(_)
       end
 
+      # The name by which you know the company.
       sig { returns(T.nilable(String)) }
       def company_name
       end
@@ -59,6 +66,8 @@ module Increase
       def company_name=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the prenotification was created.
       sig { returns(Time) }
       def created_at
       end
@@ -67,6 +76,7 @@ module Increase
       def created_at=(_)
       end
 
+      # If the notification is for a future credit or debit.
       sig { returns(T.nilable(Symbol)) }
       def credit_debit_indicator
       end
@@ -75,6 +85,7 @@ module Increase
       def credit_debit_indicator=(_)
       end
 
+      # The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
       sig { returns(T.nilable(Time)) }
       def effective_date
       end
@@ -83,6 +94,9 @@ module Increase
       def effective_date=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -91,6 +105,8 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # If the receiving bank notifies that future transfers should use different
+      #   details, this will contain those details.
       sig { returns(T::Array[Increase::Models::ACHPrenotification::NotificationsOfChange]) }
       def notifications_of_change
       end
@@ -102,6 +118,7 @@ module Increase
       def notifications_of_change=(_)
       end
 
+      # If your prenotification is returned, this will contain details of the return.
       sig { returns(T.nilable(Increase::Models::ACHPrenotification::PrenotificationReturn)) }
       def prenotification_return
       end
@@ -113,6 +130,7 @@ module Increase
       def prenotification_return=(_)
       end
 
+      # The American Bankers' Association (ABA) Routing Transit Number (RTN).
       sig { returns(String) }
       def routing_number
       end
@@ -121,6 +139,7 @@ module Increase
       def routing_number=(_)
       end
 
+      # The lifecycle status of the ACH Prenotification.
       sig { returns(Symbol) }
       def status
       end
@@ -129,6 +148,8 @@ module Increase
       def status=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `ach_prenotification`.
       sig { returns(Symbol) }
       def type
       end
@@ -137,6 +158,8 @@ module Increase
       def type=(_)
       end
 
+      # ACH Prenotifications are one way you can verify account and routing numbers by
+      #   Automated Clearing House (ACH).
       sig do
         params(
           id: String,
@@ -204,6 +227,7 @@ module Increase
       def to_hash
       end
 
+      # If the notification is for a future credit or debit.
       class CreditDebitIndicator < Increase::Enum
         abstract!
 
@@ -221,6 +245,8 @@ module Increase
       end
 
       class NotificationsOfChange < Increase::BaseModel
+        # The required type of change that is being signaled by the receiving financial
+        #   institution.
         sig { returns(Symbol) }
         def change_code
         end
@@ -229,6 +255,11 @@ module Increase
         def change_code=(_)
         end
 
+        # The corrected data that should be used in future ACHs to this account. This may
+        #   contain the suggested new account number or routing number. When the
+        #   `change_code` is `incorrect_transaction_code`, this field contains an integer.
+        #   Numbers starting with a 2 encourage changing the `funding` parameter to
+        #   checking; numbers starting with a 3 encourage changing to savings.
         sig { returns(String) }
         def corrected_data
         end
@@ -237,6 +268,8 @@ module Increase
         def corrected_data=(_)
         end
 
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   the notification occurred.
         sig { returns(Time) }
         def created_at
         end
@@ -255,6 +288,8 @@ module Increase
         def to_hash
         end
 
+        # The required type of change that is being signaled by the receiving financial
+        #   institution.
         class ChangeCode < Increase::Enum
           abstract!
 
@@ -324,6 +359,8 @@ module Increase
       end
 
       class PrenotificationReturn < Increase::BaseModel
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   the Prenotification was returned.
         sig { returns(Time) }
         def created_at
         end
@@ -332,6 +369,7 @@ module Increase
         def created_at=(_)
         end
 
+        # Why the Prenotification was returned.
         sig { returns(Symbol) }
         def return_reason_code
         end
@@ -340,6 +378,7 @@ module Increase
         def return_reason_code=(_)
         end
 
+        # If your prenotification is returned, this will contain details of the return.
         sig { params(created_at: Time, return_reason_code: Symbol).returns(T.attached_class) }
         def self.new(created_at:, return_reason_code:)
         end
@@ -348,6 +387,7 @@ module Increase
         def to_hash
         end
 
+        # Why the Prenotification was returned.
         class ReturnReasonCode < Increase::Enum
           abstract!
 
@@ -569,6 +609,7 @@ module Increase
         end
       end
 
+      # The lifecycle status of the ACH Prenotification.
       class Status < Increase::Enum
         abstract!
 
@@ -591,6 +632,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `ach_prenotification`.
       class Type < Increase::Enum
         abstract!
 

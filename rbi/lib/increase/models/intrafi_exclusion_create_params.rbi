@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The name of the financial institution to be excluded.
       sig { returns(String) }
       def bank_name
       end
@@ -14,6 +15,7 @@ module Increase
       def bank_name=(_)
       end
 
+      # The identifier of the Entity whose deposits will be excluded.
       sig { returns(String) }
       def entity_id
       end

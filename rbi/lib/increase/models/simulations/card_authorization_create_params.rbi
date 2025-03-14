@@ -7,6 +7,7 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
+        # The authorization amount in cents.
         sig { returns(Integer) }
         def amount
         end
@@ -15,6 +16,8 @@ module Increase
         def amount=(_)
         end
 
+        # The identifier of a Card Payment with a `card_authentication` if you want to
+        #   simulate an authenticated authorization.
         sig { returns(T.nilable(String)) }
         def authenticated_card_payment_id
         end
@@ -23,6 +26,7 @@ module Increase
         def authenticated_card_payment_id=(_)
         end
 
+        # The identifier of the Card to be authorized.
         sig { returns(T.nilable(String)) }
         def card_id
         end
@@ -31,6 +35,8 @@ module Increase
         def card_id=(_)
         end
 
+        # Forces a card decline with a specific reason. No real time decision will be
+        #   sent.
         sig { returns(T.nilable(Symbol)) }
         def decline_reason
         end
@@ -39,6 +45,7 @@ module Increase
         def decline_reason=(_)
         end
 
+        # The identifier of the Digital Wallet Token to be authorized.
         sig { returns(T.nilable(String)) }
         def digital_wallet_token_id
         end
@@ -47,6 +54,8 @@ module Increase
         def digital_wallet_token_id=(_)
         end
 
+        # The direction describes the direction the funds will move, either from the
+        #   cardholder to the merchant or from the merchant to the cardholder.
         sig { returns(T.nilable(Symbol)) }
         def direction
         end
@@ -55,6 +64,10 @@ module Increase
         def direction=(_)
         end
 
+        # The identifier of the Event Subscription to use. If provided, will override the
+        #   default real time event subscription. Because you can only create one real time
+        #   decision event subscription, you can use this field to route events to any
+        #   specified event subscription for testing purposes.
         sig { returns(T.nilable(String)) }
         def event_subscription_id
         end
@@ -63,6 +76,8 @@ module Increase
         def event_subscription_id=(_)
         end
 
+        # The merchant identifier (commonly abbreviated as MID) of the merchant the card
+        #   is transacting with.
         sig { returns(T.nilable(String)) }
         def merchant_acceptor_id
         end
@@ -71,6 +86,8 @@ module Increase
         def merchant_acceptor_id=(_)
         end
 
+        # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+        #   card is transacting with.
         sig { returns(T.nilable(String)) }
         def merchant_category_code
         end
@@ -79,6 +96,7 @@ module Increase
         def merchant_category_code=(_)
         end
 
+        # The city the merchant resides in.
         sig { returns(T.nilable(String)) }
         def merchant_city
         end
@@ -87,6 +105,7 @@ module Increase
         def merchant_city=(_)
         end
 
+        # The country the merchant resides in.
         sig { returns(T.nilable(String)) }
         def merchant_country
         end
@@ -95,6 +114,7 @@ module Increase
         def merchant_country=(_)
         end
 
+        # The merchant descriptor of the merchant the card is transacting with.
         sig { returns(T.nilable(String)) }
         def merchant_descriptor
         end
@@ -103,6 +123,7 @@ module Increase
         def merchant_descriptor=(_)
         end
 
+        # The state the merchant resides in.
         sig { returns(T.nilable(String)) }
         def merchant_state
         end
@@ -111,6 +132,7 @@ module Increase
         def merchant_state=(_)
         end
 
+        # Fields specific to a given card network.
         sig { returns(T.nilable(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails)) }
         def network_details
         end
@@ -122,6 +144,7 @@ module Increase
         def network_details=(_)
         end
 
+        # The identifier of the Physical Card to be authorized.
         sig { returns(T.nilable(String)) }
         def physical_card_id
         end
@@ -130,6 +153,8 @@ module Increase
         def physical_card_id=(_)
         end
 
+        # The terminal identifier (commonly abbreviated as TID) of the terminal the card
+        #   is transacting with.
         sig { returns(T.nilable(String)) }
         def terminal_id
         end
@@ -208,6 +233,8 @@ module Increase
         def to_hash
         end
 
+        # Forces a card decline with a specific reason. No real time decision will be
+        #   sent.
         class DeclineReason < Increase::Enum
           abstract!
 
@@ -269,6 +296,8 @@ module Increase
           end
         end
 
+        # The direction describes the direction the funds will move, either from the
+        #   cardholder to the merchant or from the merchant to the cardholder.
         class Direction < Increase::Enum
           abstract!
 
@@ -286,6 +315,7 @@ module Increase
         end
 
         class NetworkDetails < Increase::BaseModel
+          # Fields specific to the Visa network.
           sig { returns(Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa) }
           def visa
           end
@@ -297,6 +327,7 @@ module Increase
           def visa=(_)
           end
 
+          # Fields specific to a given card network.
           sig do
             params(visa: Increase::Models::Simulations::CardAuthorizationCreateParams::NetworkDetails::Visa)
               .returns(T.attached_class)
@@ -312,6 +343,7 @@ module Increase
           end
 
           class Visa < Increase::BaseModel
+            # The reason code for the stand-in processing.
             sig { returns(T.nilable(Symbol)) }
             def stand_in_processing_reason
             end
@@ -320,6 +352,7 @@ module Increase
             def stand_in_processing_reason=(_)
             end
 
+            # Fields specific to the Visa network.
             sig { params(stand_in_processing_reason: Symbol).returns(T.attached_class) }
             def self.new(stand_in_processing_reason: nil)
             end
@@ -328,6 +361,7 @@ module Increase
             def to_hash
             end
 
+            # The reason code for the stand-in processing.
             class StandInProcessingReason < Increase::Enum
               abstract!
 

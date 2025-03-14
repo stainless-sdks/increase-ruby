@@ -85,7 +85,6 @@ module Increase
       attr_reader :documents
 
       # @param client [Increase::Client]
-      #
       def initialize(client:)
         @client = client
         @interest_payments = Increase::Resources::Simulations::InterestPayments.new(client: client)

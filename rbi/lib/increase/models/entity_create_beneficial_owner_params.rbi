@@ -6,6 +6,8 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The identifying details of anyone controlling or owning 25% or more of the
+      #   corporation.
       sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner) }
       def beneficial_owner
       end
@@ -40,6 +42,7 @@ module Increase
       end
 
       class BeneficialOwner < Increase::BaseModel
+        # Personal details for the beneficial owner.
         sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual) }
         def individual
         end
@@ -51,6 +54,9 @@ module Increase
         def individual=(_)
         end
 
+        # Why this person is considered a beneficial owner of the entity. At least one
+        #   option is required, if a person is both a control person and owner, submit an
+        #   array containing both.
         sig { returns(T::Array[Symbol]) }
         def prongs
         end
@@ -59,6 +65,7 @@ module Increase
         def prongs=(_)
         end
 
+        # This person's role or title within the entity.
         sig { returns(T.nilable(String)) }
         def company_title
         end
@@ -67,6 +74,8 @@ module Increase
         def company_title=(_)
         end
 
+        # The identifying details of anyone controlling or owning 25% or more of the
+        #   corporation.
         sig do
           params(
             individual: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual,
@@ -92,6 +101,8 @@ module Increase
         end
 
         class Individual < Increase::BaseModel
+          # The individual's physical address. Mail receiving locations like PO Boxes and
+          #   PMB's are disallowed.
           sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address) }
           def address
           end
@@ -103,6 +114,7 @@ module Increase
           def address=(_)
           end
 
+          # The person's date of birth in YYYY-MM-DD format.
           sig { returns(Date) }
           def date_of_birth
           end
@@ -111,6 +123,7 @@ module Increase
           def date_of_birth=(_)
           end
 
+          # A means of verifying the person's identity.
           sig { returns(Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Identification) }
           def identification
           end
@@ -124,6 +137,7 @@ module Increase
           def identification=(_)
           end
 
+          # The person's legal name.
           sig { returns(String) }
           def name
           end
@@ -132,6 +146,10 @@ module Increase
           def name=(_)
           end
 
+          # The identification method for an individual can only be a passport, driver's
+          #   license, or other document if you've confirmed the individual does not have a US
+          #   tax id (either a Social Security Number or Individual Taxpayer Identification
+          #   Number).
           sig { returns(T.nilable(T::Boolean)) }
           def confirmed_no_us_tax_id
           end
@@ -140,6 +158,7 @@ module Increase
           def confirmed_no_us_tax_id=(_)
           end
 
+          # Personal details for the beneficial owner.
           sig do
             params(
               address: Increase::Models::EntityCreateBeneficialOwnerParams::BeneficialOwner::Individual::Address,
@@ -169,6 +188,7 @@ module Increase
           end
 
           class Address < Increase::BaseModel
+            # The city of the address.
             sig { returns(String) }
             def city
             end
@@ -177,6 +197,7 @@ module Increase
             def city=(_)
             end
 
+            # The first line of the address. This is usually the street number and street.
             sig { returns(String) }
             def line1
             end
@@ -185,6 +206,8 @@ module Increase
             def line1=(_)
             end
 
+            # The two-letter United States Postal Service (USPS) abbreviation for the state of
+            #   the address.
             sig { returns(String) }
             def state
             end
@@ -193,6 +216,7 @@ module Increase
             def state=(_)
             end
 
+            # The ZIP code of the address.
             sig { returns(String) }
             def zip
             end
@@ -201,6 +225,7 @@ module Increase
             def zip=(_)
             end
 
+            # The second line of the address. This might be the floor or room number.
             sig { returns(T.nilable(String)) }
             def line2
             end
@@ -209,6 +234,8 @@ module Increase
             def line2=(_)
             end
 
+            # The individual's physical address. Mail receiving locations like PO Boxes and
+            #   PMB's are disallowed.
             sig do
               params(
                 city: String,
@@ -227,6 +254,7 @@ module Increase
           end
 
           class Identification < Increase::BaseModel
+            # A method that can be used to verify the individual's identity.
             sig { returns(Symbol) }
             def method_
             end
@@ -235,6 +263,8 @@ module Increase
             def method_=(_)
             end
 
+            # An identification number that can be used to verify the individual's identity,
+            #   such as a social security number.
             sig { returns(String) }
             def number
             end
@@ -243,6 +273,8 @@ module Increase
             def number=(_)
             end
 
+            # Information about the United States driver's license used for identification.
+            #   Required if `method` is equal to `drivers_license`.
             sig do
               returns(
                 T.nilable(
@@ -264,6 +296,8 @@ module Increase
             def drivers_license=(_)
             end
 
+            # Information about the identification document provided. Required if `method` is
+            #   equal to `other`.
             sig do
               returns(
                 T.nilable(
@@ -285,6 +319,8 @@ module Increase
             def other=(_)
             end
 
+            # Information about the passport used for identification. Required if `method` is
+            #   equal to `passport`.
             sig do
               returns(
                 T.nilable(
@@ -306,6 +342,7 @@ module Increase
             def passport=(_)
             end
 
+            # A means of verifying the person's identity.
             sig do
               params(
                 method_: Symbol,
@@ -334,6 +371,7 @@ module Increase
             def to_hash
             end
 
+            # A method that can be used to verify the individual's identity.
             class Method < Increase::Enum
               abstract!
 
@@ -360,6 +398,7 @@ module Increase
             end
 
             class DriversLicense < Increase::BaseModel
+              # The driver's license's expiration date in YYYY-MM-DD format.
               sig { returns(Date) }
               def expiration_date
               end
@@ -368,6 +407,7 @@ module Increase
               def expiration_date=(_)
               end
 
+              # The identifier of the File containing the front of the driver's license.
               sig { returns(String) }
               def file_id
               end
@@ -376,6 +416,7 @@ module Increase
               def file_id=(_)
               end
 
+              # The state that issued the provided driver's license.
               sig { returns(String) }
               def state
               end
@@ -384,6 +425,7 @@ module Increase
               def state=(_)
               end
 
+              # The identifier of the File containing the back of the driver's license.
               sig { returns(T.nilable(String)) }
               def back_file_id
               end
@@ -392,6 +434,8 @@ module Increase
               def back_file_id=(_)
               end
 
+              # Information about the United States driver's license used for identification.
+              #   Required if `method` is equal to `drivers_license`.
               sig do
                 params(expiration_date: Date, file_id: String, state: String, back_file_id: String)
                   .returns(T.attached_class)
@@ -414,6 +458,8 @@ module Increase
             end
 
             class Other < Increase::BaseModel
+              # The two-character ISO 3166-1 code representing the country that issued the
+              #   document.
               sig { returns(String) }
               def country
               end
@@ -422,6 +468,7 @@ module Increase
               def country=(_)
               end
 
+              # A description of the document submitted.
               sig { returns(String) }
               def description
               end
@@ -430,6 +477,7 @@ module Increase
               def description=(_)
               end
 
+              # The identifier of the File containing the front of the document.
               sig { returns(String) }
               def file_id
               end
@@ -438,6 +486,8 @@ module Increase
               def file_id=(_)
               end
 
+              # The identifier of the File containing the back of the document. Not every
+              #   document has a reverse side.
               sig { returns(T.nilable(String)) }
               def back_file_id
               end
@@ -446,6 +496,7 @@ module Increase
               def back_file_id=(_)
               end
 
+              # The document's expiration date in YYYY-MM-DD format.
               sig { returns(T.nilable(Date)) }
               def expiration_date
               end
@@ -454,6 +505,8 @@ module Increase
               def expiration_date=(_)
               end
 
+              # Information about the identification document provided. Required if `method` is
+              #   equal to `other`.
               sig do
                 params(
                   country: String,
@@ -484,6 +537,7 @@ module Increase
             end
 
             class Passport < Increase::BaseModel
+              # The country that issued the passport.
               sig { returns(String) }
               def country
               end
@@ -492,6 +546,7 @@ module Increase
               def country=(_)
               end
 
+              # The passport's expiration date in YYYY-MM-DD format.
               sig { returns(Date) }
               def expiration_date
               end
@@ -500,6 +555,7 @@ module Increase
               def expiration_date=(_)
               end
 
+              # The identifier of the File containing the passport.
               sig { returns(String) }
               def file_id
               end
@@ -508,6 +564,8 @@ module Increase
               def file_id=(_)
               end
 
+              # Information about the passport used for identification. Required if `method` is
+              #   equal to `passport`.
               sig do
                 params(country: String, expiration_date: Date, file_id: String).returns(T.attached_class)
               end

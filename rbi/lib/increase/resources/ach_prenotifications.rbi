@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class ACHPrenotifications
+      # Create an ACH Prenotification
       sig do
         params(
           account_id: String,
@@ -40,6 +41,7 @@ module Increase
       )
       end
 
+      # Retrieve an ACH Prenotification
       sig do
         params(
           ach_prenotification_id: String,
@@ -50,6 +52,7 @@ module Increase
       def retrieve(ach_prenotification_id, request_options: {})
       end
 
+      # List ACH Prenotifications
       sig do
         params(
           created_at: Increase::Models::ACHPrenotificationListParams::CreatedAt,

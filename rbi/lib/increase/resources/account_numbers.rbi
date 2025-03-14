@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class AccountNumbers
+      # Create an Account Number
       sig do
         params(
           account_id: String,
@@ -16,6 +17,7 @@ module Increase
       def create(account_id:, name:, inbound_ach: nil, inbound_checks: nil, request_options: {})
       end
 
+      # Retrieve an Account Number
       sig do
         params(
           account_number_id: String,
@@ -26,6 +28,7 @@ module Increase
       def retrieve(account_number_id, request_options: {})
       end
 
+      # Update an Account Number
       sig do
         params(
           account_number_id: String,
@@ -47,6 +50,7 @@ module Increase
       )
       end
 
+      # List Account Numbers
       sig do
         params(
           account_id: String,

@@ -4,6 +4,9 @@ module Increase
   module Resources
     class Simulations
       class CardFuelConfirmations
+        # Simulates the fuel confirmation of an authorization by a card acquirer. This
+        #   happens asynchronously right after a fuel pump transaction is completed. A fuel
+        #   confirmation can only happen once per authorization.
         sig do
           params(
             amount: Integer,

@@ -3,6 +3,9 @@
 module Increase
   module Resources
     class Files
+      # To upload a file to Increase, you'll need to send a request of Content-Type
+      #   `multipart/form-data`. The request should contain the file you would like to
+      #   upload, as well as the parameters for creating a file.
       sig do
         params(
           file: T.any(IO, StringIO),
@@ -15,6 +18,7 @@ module Increase
       def create(file:, purpose:, description: nil, request_options: {})
       end
 
+      # Retrieve a File
       sig do
         params(
           file_id: String,
@@ -25,6 +29,7 @@ module Increase
       def retrieve(file_id, request_options: {})
       end
 
+      # List Files
       sig do
         params(
           created_at: Increase::Models::FileListParams::CreatedAt,

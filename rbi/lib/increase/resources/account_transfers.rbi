@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class AccountTransfers
+      # Create an Account Transfer
       sig do
         params(
           account_id: String,
@@ -24,6 +25,7 @@ module Increase
       )
       end
 
+      # Retrieve an Account Transfer
       sig do
         params(
           account_transfer_id: String,
@@ -34,6 +36,7 @@ module Increase
       def retrieve(account_transfer_id, request_options: {})
       end
 
+      # List Account Transfers
       sig do
         params(
           account_id: String,
@@ -55,6 +58,7 @@ module Increase
       )
       end
 
+      # Approve an Account Transfer
       sig do
         params(
           account_transfer_id: String,
@@ -65,6 +69,7 @@ module Increase
       def approve(account_transfer_id, request_options: {})
       end
 
+      # Cancel an Account Transfer
       sig do
         params(
           account_transfer_id: String,

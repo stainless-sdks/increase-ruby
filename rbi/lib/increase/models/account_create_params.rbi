@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The name you choose for the Account.
       sig { returns(String) }
       def name
       end
@@ -14,6 +15,7 @@ module Increase
       def name=(_)
       end
 
+      # The identifier for the Entity that will own the Account.
       sig { returns(T.nilable(String)) }
       def entity_id
       end
@@ -22,6 +24,8 @@ module Increase
       def entity_id=(_)
       end
 
+      # The identifier of an Entity that, while not owning the Account, is associated
+      #   with its activity. Its relationship to your group must be `informational`.
       sig { returns(T.nilable(String)) }
       def informational_entity_id
       end
@@ -30,6 +34,8 @@ module Increase
       def informational_entity_id=(_)
       end
 
+      # The identifier for the Program that this Account falls under. Required if you
+      #   operate more than one Program.
       sig { returns(T.nilable(String)) }
       def program_id
       end

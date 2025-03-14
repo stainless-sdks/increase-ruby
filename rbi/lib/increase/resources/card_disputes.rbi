@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class CardDisputes
+      # Create a Card Dispute
       sig do
         params(
           disputed_transaction_id: String,
@@ -15,6 +16,7 @@ module Increase
       def create(disputed_transaction_id:, explanation:, amount: nil, request_options: {})
       end
 
+      # Retrieve a Card Dispute
       sig do
         params(
           card_dispute_id: String,
@@ -25,6 +27,7 @@ module Increase
       def retrieve(card_dispute_id, request_options: {})
       end
 
+      # List Card Disputes
       sig do
         params(
           created_at: Increase::Models::CardDisputeListParams::CreatedAt,
