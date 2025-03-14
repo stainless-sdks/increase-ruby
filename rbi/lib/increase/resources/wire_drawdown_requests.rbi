@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class WireDrawdownRequests
+      # Create a Wire Drawdown Request
       sig do
         params(
           account_number_id: String,
@@ -40,6 +41,7 @@ module Increase
       )
       end
 
+      # Retrieve a Wire Drawdown Request
       sig do
         params(
           wire_drawdown_request_id: String,
@@ -50,6 +52,7 @@ module Increase
       def retrieve(wire_drawdown_request_id, request_options: {})
       end
 
+      # List Wire Drawdown Requests
       sig do
         params(
           cursor: String,

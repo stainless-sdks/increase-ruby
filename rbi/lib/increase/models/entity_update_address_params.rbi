@@ -6,6 +6,8 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+      #   are disallowed.
       sig { returns(Increase::Models::EntityUpdateAddressParams::Address) }
       def address
       end
@@ -37,6 +39,7 @@ module Increase
       end
 
       class Address < Increase::BaseModel
+        # The city of the address.
         sig { returns(String) }
         def city
         end
@@ -45,6 +48,7 @@ module Increase
         def city=(_)
         end
 
+        # The first line of the address. This is usually the street number and street.
         sig { returns(String) }
         def line1
         end
@@ -53,6 +57,8 @@ module Increase
         def line1=(_)
         end
 
+        # The two-letter United States Postal Service (USPS) abbreviation for the state of
+        #   the address.
         sig { returns(String) }
         def state
         end
@@ -61,6 +67,7 @@ module Increase
         def state=(_)
         end
 
+        # The ZIP code of the address.
         sig { returns(String) }
         def zip
         end
@@ -69,6 +76,7 @@ module Increase
         def zip=(_)
         end
 
+        # The second line of the address. This might be the floor or room number.
         sig { returns(T.nilable(String)) }
         def line2
         end
@@ -77,6 +85,8 @@ module Increase
         def line2=(_)
         end
 
+        # The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+        #   are disallowed.
         sig do
           params(
             city: String,

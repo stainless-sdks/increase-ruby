@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class ProofOfAuthorizationRequestSubmissions
+      # Submit Proof of Authorization
       sig do
         params(
           authorization_terms: String,
@@ -36,6 +37,7 @@ module Increase
       )
       end
 
+      # Retrieve a Proof of Authorization Request Submission
       sig do
         params(
           proof_of_authorization_request_submission_id: String,
@@ -46,6 +48,7 @@ module Increase
       def retrieve(proof_of_authorization_request_submission_id, request_options: {})
       end
 
+      # List Proof of Authorization Request Submissions
       sig do
         params(
           cursor: String,

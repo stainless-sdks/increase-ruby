@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class IntrafiAccountEnrollments
+      # Enroll an account in the IntraFi deposit sweep network
       sig do
         params(
           account_id: String,
@@ -14,6 +15,7 @@ module Increase
       def create(account_id:, email_address:, request_options: {})
       end
 
+      # Get an IntraFi Account Enrollment
       sig do
         params(
           intrafi_account_enrollment_id: String,
@@ -24,6 +26,7 @@ module Increase
       def retrieve(intrafi_account_enrollment_id, request_options: {})
       end
 
+      # List IntraFi Account Enrollments
       sig do
         params(
           account_id: String,
@@ -45,6 +48,7 @@ module Increase
       )
       end
 
+      # Unenroll an account from IntraFi
       sig do
         params(
           intrafi_account_enrollment_id: String,

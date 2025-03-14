@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Lockboxes
+      # Create a Lockbox
       sig do
         params(
           account_id: String,
@@ -15,6 +16,7 @@ module Increase
       def create(account_id:, description: nil, recipient_name: nil, request_options: {})
       end
 
+      # Retrieve a Lockbox
       sig do
         params(
           lockbox_id: String,
@@ -25,6 +27,7 @@ module Increase
       def retrieve(lockbox_id, request_options: {})
       end
 
+      # Update a Lockbox
       sig do
         params(
           lockbox_id: String,
@@ -38,6 +41,7 @@ module Increase
       def update(lockbox_id, description: nil, recipient_name: nil, status: nil, request_options: {})
       end
 
+      # List Lockboxes
       sig do
         params(
           account_id: String,

@@ -6,6 +6,8 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The reason why this transfer will be returned. The most usual return codes are
+      #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       sig { returns(Symbol) }
       def reason
       end
@@ -25,6 +27,8 @@ module Increase
       def to_hash
       end
 
+      # The reason why this transfer will be returned. The most usual return codes are
+      #   `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
       class Reason < Increase::Enum
         abstract!
 

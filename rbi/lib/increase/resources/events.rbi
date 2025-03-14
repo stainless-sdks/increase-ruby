@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Events
+      # Retrieve an Event
       sig do
         params(
           event_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(event_id, request_options: {})
       end
 
+      # List Events
       sig do
         params(
           associated_object_id: String,

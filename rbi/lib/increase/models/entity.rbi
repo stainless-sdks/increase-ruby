@@ -3,6 +3,7 @@
 module Increase
   module Models
     class Entity < Increase::BaseModel
+      # The entity's identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,8 @@ module Increase
       def id=(_)
       end
 
+      # Details of the corporation entity. Will be present if `structure` is equal to
+      #   `corporation`.
       sig { returns(T.nilable(Increase::Models::Entity::Corporation)) }
       def corporation
       end
@@ -22,6 +25,8 @@ module Increase
       def corporation=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
+      #   was created.
       sig { returns(Time) }
       def created_at
       end
@@ -30,6 +35,7 @@ module Increase
       def created_at=(_)
       end
 
+      # The entity's description for display purposes.
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -38,6 +44,8 @@ module Increase
       def description=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+      #   Entity's details were most recently confirmed.
       sig { returns(T.nilable(Time)) }
       def details_confirmed_at
       end
@@ -46,6 +54,8 @@ module Increase
       def details_confirmed_at=(_)
       end
 
+      # Details of the government authority entity. Will be present if `structure` is
+      #   equal to `government_authority`.
       sig { returns(T.nilable(Increase::Models::Entity::GovernmentAuthority)) }
       def government_authority
       end
@@ -57,6 +67,9 @@ module Increase
       def government_authority=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -65,6 +78,7 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # Details of the joint entity. Will be present if `structure` is equal to `joint`.
       sig { returns(T.nilable(Increase::Models::Entity::Joint)) }
       def joint
       end
@@ -73,6 +87,8 @@ module Increase
       def joint=(_)
       end
 
+      # Details of the natural person entity. Will be present if `structure` is equal to
+      #   `natural_person`.
       sig { returns(T.nilable(Increase::Models::Entity::NaturalPerson)) }
       def natural_person
       end
@@ -84,6 +100,7 @@ module Increase
       def natural_person=(_)
       end
 
+      # The status of the entity.
       sig { returns(Symbol) }
       def status
       end
@@ -92,6 +109,7 @@ module Increase
       def status=(_)
       end
 
+      # The entity's legal structure.
       sig { returns(Symbol) }
       def structure
       end
@@ -100,6 +118,9 @@ module Increase
       def structure=(_)
       end
 
+      # Additional documentation associated with the entity. This is limited to the
+      #   first 10 documents for an entity. If an entity has more than 10 documents, use
+      #   the GET /entity_supplemental_documents list endpoint to retrieve them.
       sig { returns(T::Array[Increase::Models::EntitySupplementalDocument]) }
       def supplemental_documents
       end
@@ -111,6 +132,8 @@ module Increase
       def supplemental_documents=(_)
       end
 
+      # A reference to data stored in a third-party verification service. Your
+      #   integration may or may not use this field.
       sig { returns(T.nilable(Increase::Models::Entity::ThirdPartyVerification)) }
       def third_party_verification
       end
@@ -122,6 +145,7 @@ module Increase
       def third_party_verification=(_)
       end
 
+      # Details of the trust entity. Will be present if `structure` is equal to `trust`.
       sig { returns(T.nilable(Increase::Models::Entity::Trust)) }
       def trust
       end
@@ -130,6 +154,8 @@ module Increase
       def trust=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `entity`.
       sig { returns(Symbol) }
       def type
       end
@@ -138,6 +164,8 @@ module Increase
       def type=(_)
       end
 
+      # Entities are the legal entities that own accounts. They can be people,
+      #   corporations, partnerships, government authorities, or trusts.
       sig do
         params(
           id: String,
@@ -203,6 +231,7 @@ module Increase
       end
 
       class Corporation < Increase::BaseModel
+        # The corporation's address.
         sig { returns(Increase::Models::Entity::Corporation::Address) }
         def address
         end
@@ -214,6 +243,8 @@ module Increase
         def address=(_)
         end
 
+        # The identifying details of anyone controlling or owning 25% or more of the
+        #   corporation.
         sig { returns(T::Array[Increase::Models::Entity::Corporation::BeneficialOwner]) }
         def beneficial_owners
         end
@@ -225,6 +256,8 @@ module Increase
         def beneficial_owners=(_)
         end
 
+        # The two-letter United States Postal Service (USPS) abbreviation for the
+        #   corporation's state of incorporation.
         sig { returns(T.nilable(String)) }
         def incorporation_state
         end
@@ -233,6 +266,8 @@ module Increase
         def incorporation_state=(_)
         end
 
+        # The numeric North American Industry Classification System (NAICS) code submitted
+        #   for the corporation.
         sig { returns(T.nilable(String)) }
         def industry_code
         end
@@ -241,6 +276,7 @@ module Increase
         def industry_code=(_)
         end
 
+        # The legal name of the corporation.
         sig { returns(String) }
         def name
         end
@@ -249,6 +285,7 @@ module Increase
         def name=(_)
         end
 
+        # The Employer Identification Number (EIN) for the corporation.
         sig { returns(T.nilable(String)) }
         def tax_identifier
         end
@@ -257,6 +294,7 @@ module Increase
         def tax_identifier=(_)
         end
 
+        # The website of the corporation.
         sig { returns(T.nilable(String)) }
         def website
         end
@@ -265,6 +303,8 @@ module Increase
         def website=(_)
         end
 
+        # Details of the corporation entity. Will be present if `structure` is equal to
+        #   `corporation`.
         sig do
           params(
             address: Increase::Models::Entity::Corporation::Address,
@@ -298,6 +338,7 @@ module Increase
         end
 
         class Address < Increase::BaseModel
+          # The city of the address.
           sig { returns(String) }
           def city
           end
@@ -306,6 +347,7 @@ module Increase
           def city=(_)
           end
 
+          # The first line of the address.
           sig { returns(String) }
           def line1
           end
@@ -314,6 +356,7 @@ module Increase
           def line1=(_)
           end
 
+          # The second line of the address.
           sig { returns(T.nilable(String)) }
           def line2
           end
@@ -322,6 +365,8 @@ module Increase
           def line2=(_)
           end
 
+          # The two-letter United States Postal Service (USPS) abbreviation for the state of
+          #   the address.
           sig { returns(String) }
           def state
           end
@@ -330,6 +375,7 @@ module Increase
           def state=(_)
           end
 
+          # The ZIP code of the address.
           sig { returns(String) }
           def zip
           end
@@ -338,6 +384,7 @@ module Increase
           def zip=(_)
           end
 
+          # The corporation's address.
           sig do
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
               .returns(T.attached_class)
@@ -361,6 +408,7 @@ module Increase
         end
 
         class BeneficialOwner < Increase::BaseModel
+          # The identifier of this beneficial owner.
           sig { returns(String) }
           def beneficial_owner_id
           end
@@ -369,6 +417,7 @@ module Increase
           def beneficial_owner_id=(_)
           end
 
+          # This person's role or title within the entity.
           sig { returns(T.nilable(String)) }
           def company_title
           end
@@ -377,6 +426,7 @@ module Increase
           def company_title=(_)
           end
 
+          # Personal details for the beneficial owner.
           sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual) }
           def individual
           end
@@ -388,6 +438,7 @@ module Increase
           def individual=(_)
           end
 
+          # Why this person is considered a beneficial owner of the entity.
           sig { returns(Symbol) }
           def prong
           end
@@ -423,6 +474,7 @@ module Increase
           end
 
           class Individual < Increase::BaseModel
+            # The person's address.
             sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address) }
             def address
             end
@@ -434,6 +486,7 @@ module Increase
             def address=(_)
             end
 
+            # The person's date of birth in YYYY-MM-DD format.
             sig { returns(Date) }
             def date_of_birth
             end
@@ -442,6 +495,7 @@ module Increase
             def date_of_birth=(_)
             end
 
+            # A means of verifying the person's identity.
             sig { returns(Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Identification) }
             def identification
             end
@@ -453,6 +507,7 @@ module Increase
             def identification=(_)
             end
 
+            # The person's legal name.
             sig { returns(String) }
             def name
             end
@@ -461,6 +516,7 @@ module Increase
             def name=(_)
             end
 
+            # Personal details for the beneficial owner.
             sig do
               params(
                 address: Increase::Models::Entity::Corporation::BeneficialOwner::Individual::Address,
@@ -488,6 +544,7 @@ module Increase
             end
 
             class Address < Increase::BaseModel
+              # The city of the address.
               sig { returns(String) }
               def city
               end
@@ -496,6 +553,7 @@ module Increase
               def city=(_)
               end
 
+              # The first line of the address.
               sig { returns(String) }
               def line1
               end
@@ -504,6 +562,7 @@ module Increase
               def line1=(_)
               end
 
+              # The second line of the address.
               sig { returns(T.nilable(String)) }
               def line2
               end
@@ -512,6 +571,8 @@ module Increase
               def line2=(_)
               end
 
+              # The two-letter United States Postal Service (USPS) abbreviation for the state of
+              #   the address.
               sig { returns(String) }
               def state
               end
@@ -520,6 +581,7 @@ module Increase
               def state=(_)
               end
 
+              # The ZIP code of the address.
               sig { returns(String) }
               def zip
               end
@@ -528,6 +590,7 @@ module Increase
               def zip=(_)
               end
 
+              # The person's address.
               sig do
                 params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
                   .returns(T.attached_class)
@@ -551,6 +614,7 @@ module Increase
             end
 
             class Identification < Increase::BaseModel
+              # A method that can be used to verify the individual's identity.
               sig { returns(Symbol) }
               def method_
               end
@@ -559,6 +623,8 @@ module Increase
               def method_=(_)
               end
 
+              # The last 4 digits of the identification number that can be used to verify the
+              #   individual's identity.
               sig { returns(String) }
               def number_last4
               end
@@ -567,6 +633,7 @@ module Increase
               def number_last4=(_)
               end
 
+              # A means of verifying the person's identity.
               sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
               def self.new(method_:, number_last4:)
               end
@@ -575,6 +642,7 @@ module Increase
               def to_hash
               end
 
+              # A method that can be used to verify the individual's identity.
               class Method < Increase::Enum
                 abstract!
 
@@ -602,6 +670,7 @@ module Increase
             end
           end
 
+          # Why this person is considered a beneficial owner of the entity.
           class Prong < Increase::Enum
             abstract!
 
@@ -621,6 +690,7 @@ module Increase
       end
 
       class GovernmentAuthority < Increase::BaseModel
+        # The government authority's address.
         sig { returns(Increase::Models::Entity::GovernmentAuthority::Address) }
         def address
         end
@@ -632,6 +702,7 @@ module Increase
         def address=(_)
         end
 
+        # The identifying details of authorized persons of the government authority.
         sig { returns(T::Array[Increase::Models::Entity::GovernmentAuthority::AuthorizedPerson]) }
         def authorized_persons
         end
@@ -643,6 +714,7 @@ module Increase
         def authorized_persons=(_)
         end
 
+        # The category of the government authority.
         sig { returns(Symbol) }
         def category
         end
@@ -651,6 +723,7 @@ module Increase
         def category=(_)
         end
 
+        # The government authority's name.
         sig { returns(String) }
         def name
         end
@@ -659,6 +732,7 @@ module Increase
         def name=(_)
         end
 
+        # The Employer Identification Number (EIN) of the government authority.
         sig { returns(T.nilable(String)) }
         def tax_identifier
         end
@@ -667,6 +741,7 @@ module Increase
         def tax_identifier=(_)
         end
 
+        # The government authority's website.
         sig { returns(T.nilable(String)) }
         def website
         end
@@ -675,6 +750,8 @@ module Increase
         def website=(_)
         end
 
+        # Details of the government authority entity. Will be present if `structure` is
+        #   equal to `government_authority`.
         sig do
           params(
             address: Increase::Models::Entity::GovernmentAuthority::Address,
@@ -706,6 +783,7 @@ module Increase
         end
 
         class Address < Increase::BaseModel
+          # The city of the address.
           sig { returns(String) }
           def city
           end
@@ -714,6 +792,7 @@ module Increase
           def city=(_)
           end
 
+          # The first line of the address.
           sig { returns(String) }
           def line1
           end
@@ -722,6 +801,7 @@ module Increase
           def line1=(_)
           end
 
+          # The second line of the address.
           sig { returns(T.nilable(String)) }
           def line2
           end
@@ -730,6 +810,8 @@ module Increase
           def line2=(_)
           end
 
+          # The two-letter United States Postal Service (USPS) abbreviation for the state of
+          #   the address.
           sig { returns(String) }
           def state
           end
@@ -738,6 +820,7 @@ module Increase
           def state=(_)
           end
 
+          # The ZIP code of the address.
           sig { returns(String) }
           def zip
           end
@@ -746,6 +829,7 @@ module Increase
           def zip=(_)
           end
 
+          # The government authority's address.
           sig do
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
               .returns(T.attached_class)
@@ -769,6 +853,7 @@ module Increase
         end
 
         class AuthorizedPerson < Increase::BaseModel
+          # The identifier of this authorized person.
           sig { returns(String) }
           def authorized_person_id
           end
@@ -777,6 +862,7 @@ module Increase
           def authorized_person_id=(_)
           end
 
+          # The person's legal name.
           sig { returns(String) }
           def name
           end
@@ -794,6 +880,7 @@ module Increase
           end
         end
 
+        # The category of the government authority.
         class Category < Increase::Enum
           abstract!
 
@@ -809,6 +896,7 @@ module Increase
       end
 
       class Joint < Increase::BaseModel
+        # The two individuals that share control of the entity.
         sig { returns(T::Array[Increase::Models::Entity::Joint::Individual]) }
         def individuals
         end
@@ -820,6 +908,7 @@ module Increase
         def individuals=(_)
         end
 
+        # The entity's name.
         sig { returns(String) }
         def name
         end
@@ -828,6 +917,7 @@ module Increase
         def name=(_)
         end
 
+        # Details of the joint entity. Will be present if `structure` is equal to `joint`.
         sig do
           params(individuals: T::Array[Increase::Models::Entity::Joint::Individual], name: String)
             .returns(T.attached_class)
@@ -840,6 +930,7 @@ module Increase
         end
 
         class Individual < Increase::BaseModel
+          # The person's address.
           sig { returns(Increase::Models::Entity::Joint::Individual::Address) }
           def address
           end
@@ -851,6 +942,7 @@ module Increase
           def address=(_)
           end
 
+          # The person's date of birth in YYYY-MM-DD format.
           sig { returns(Date) }
           def date_of_birth
           end
@@ -859,6 +951,7 @@ module Increase
           def date_of_birth=(_)
           end
 
+          # A means of verifying the person's identity.
           sig { returns(Increase::Models::Entity::Joint::Individual::Identification) }
           def identification
           end
@@ -870,6 +963,7 @@ module Increase
           def identification=(_)
           end
 
+          # The person's legal name.
           sig { returns(String) }
           def name
           end
@@ -905,6 +999,7 @@ module Increase
           end
 
           class Address < Increase::BaseModel
+            # The city of the address.
             sig { returns(String) }
             def city
             end
@@ -913,6 +1008,7 @@ module Increase
             def city=(_)
             end
 
+            # The first line of the address.
             sig { returns(String) }
             def line1
             end
@@ -921,6 +1017,7 @@ module Increase
             def line1=(_)
             end
 
+            # The second line of the address.
             sig { returns(T.nilable(String)) }
             def line2
             end
@@ -929,6 +1026,8 @@ module Increase
             def line2=(_)
             end
 
+            # The two-letter United States Postal Service (USPS) abbreviation for the state of
+            #   the address.
             sig { returns(String) }
             def state
             end
@@ -937,6 +1036,7 @@ module Increase
             def state=(_)
             end
 
+            # The ZIP code of the address.
             sig { returns(String) }
             def zip
             end
@@ -945,6 +1045,7 @@ module Increase
             def zip=(_)
             end
 
+            # The person's address.
             sig do
               params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
                 .returns(T.attached_class)
@@ -968,6 +1069,7 @@ module Increase
           end
 
           class Identification < Increase::BaseModel
+            # A method that can be used to verify the individual's identity.
             sig { returns(Symbol) }
             def method_
             end
@@ -976,6 +1078,8 @@ module Increase
             def method_=(_)
             end
 
+            # The last 4 digits of the identification number that can be used to verify the
+            #   individual's identity.
             sig { returns(String) }
             def number_last4
             end
@@ -984,6 +1088,7 @@ module Increase
             def number_last4=(_)
             end
 
+            # A means of verifying the person's identity.
             sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
             def self.new(method_:, number_last4:)
             end
@@ -992,6 +1097,7 @@ module Increase
             def to_hash
             end
 
+            # A method that can be used to verify the individual's identity.
             class Method < Increase::Enum
               abstract!
 
@@ -1021,6 +1127,7 @@ module Increase
       end
 
       class NaturalPerson < Increase::BaseModel
+        # The person's address.
         sig { returns(Increase::Models::Entity::NaturalPerson::Address) }
         def address
         end
@@ -1032,6 +1139,7 @@ module Increase
         def address=(_)
         end
 
+        # The person's date of birth in YYYY-MM-DD format.
         sig { returns(Date) }
         def date_of_birth
         end
@@ -1040,6 +1148,7 @@ module Increase
         def date_of_birth=(_)
         end
 
+        # A means of verifying the person's identity.
         sig { returns(Increase::Models::Entity::NaturalPerson::Identification) }
         def identification
         end
@@ -1051,6 +1160,7 @@ module Increase
         def identification=(_)
         end
 
+        # The person's legal name.
         sig { returns(String) }
         def name
         end
@@ -1059,6 +1169,8 @@ module Increase
         def name=(_)
         end
 
+        # Details of the natural person entity. Will be present if `structure` is equal to
+        #   `natural_person`.
         sig do
           params(
             address: Increase::Models::Entity::NaturalPerson::Address,
@@ -1086,6 +1198,7 @@ module Increase
         end
 
         class Address < Increase::BaseModel
+          # The city of the address.
           sig { returns(String) }
           def city
           end
@@ -1094,6 +1207,7 @@ module Increase
           def city=(_)
           end
 
+          # The first line of the address.
           sig { returns(String) }
           def line1
           end
@@ -1102,6 +1216,7 @@ module Increase
           def line1=(_)
           end
 
+          # The second line of the address.
           sig { returns(T.nilable(String)) }
           def line2
           end
@@ -1110,6 +1225,8 @@ module Increase
           def line2=(_)
           end
 
+          # The two-letter United States Postal Service (USPS) abbreviation for the state of
+          #   the address.
           sig { returns(String) }
           def state
           end
@@ -1118,6 +1235,7 @@ module Increase
           def state=(_)
           end
 
+          # The ZIP code of the address.
           sig { returns(String) }
           def zip
           end
@@ -1126,6 +1244,7 @@ module Increase
           def zip=(_)
           end
 
+          # The person's address.
           sig do
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
               .returns(T.attached_class)
@@ -1149,6 +1268,7 @@ module Increase
         end
 
         class Identification < Increase::BaseModel
+          # A method that can be used to verify the individual's identity.
           sig { returns(Symbol) }
           def method_
           end
@@ -1157,6 +1277,8 @@ module Increase
           def method_=(_)
           end
 
+          # The last 4 digits of the identification number that can be used to verify the
+          #   individual's identity.
           sig { returns(String) }
           def number_last4
           end
@@ -1165,6 +1287,7 @@ module Increase
           def number_last4=(_)
           end
 
+          # A means of verifying the person's identity.
           sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
           def self.new(method_:, number_last4:)
           end
@@ -1173,6 +1296,7 @@ module Increase
           def to_hash
           end
 
+          # A method that can be used to verify the individual's identity.
           class Method < Increase::Enum
             abstract!
 
@@ -1200,6 +1324,7 @@ module Increase
         end
       end
 
+      # The status of the entity.
       class Status < Increase::Enum
         abstract!
 
@@ -1219,6 +1344,7 @@ module Increase
         end
       end
 
+      # The entity's legal structure.
       class Structure < Increase::Enum
         abstract!
 
@@ -1245,6 +1371,7 @@ module Increase
       end
 
       class ThirdPartyVerification < Increase::BaseModel
+        # The reference identifier for the third party verification.
         sig { returns(String) }
         def reference
         end
@@ -1253,6 +1380,7 @@ module Increase
         def reference=(_)
         end
 
+        # The vendor that was used to perform the verification.
         sig { returns(Symbol) }
         def vendor
         end
@@ -1261,6 +1389,8 @@ module Increase
         def vendor=(_)
         end
 
+        # A reference to data stored in a third-party verification service. Your
+        #   integration may or may not use this field.
         sig { params(reference: String, vendor: Symbol).returns(T.attached_class) }
         def self.new(reference:, vendor:)
         end
@@ -1269,6 +1399,7 @@ module Increase
         def to_hash
         end
 
+        # The vendor that was used to perform the verification.
         class Vendor < Increase::Enum
           abstract!
 
@@ -1287,6 +1418,7 @@ module Increase
       end
 
       class Trust < Increase::BaseModel
+        # The trust's address.
         sig { returns(Increase::Models::Entity::Trust::Address) }
         def address
         end
@@ -1295,6 +1427,7 @@ module Increase
         def address=(_)
         end
 
+        # Whether the trust is `revocable` or `irrevocable`.
         sig { returns(Symbol) }
         def category
         end
@@ -1303,6 +1436,7 @@ module Increase
         def category=(_)
         end
 
+        # The ID for the File containing the formation document of the trust.
         sig { returns(T.nilable(String)) }
         def formation_document_file_id
         end
@@ -1311,6 +1445,8 @@ module Increase
         def formation_document_file_id=(_)
         end
 
+        # The two-letter United States Postal Service (USPS) abbreviation for the state in
+        #   which the trust was formed.
         sig { returns(T.nilable(String)) }
         def formation_state
         end
@@ -1319,6 +1455,7 @@ module Increase
         def formation_state=(_)
         end
 
+        # The grantor of the trust. Will be present if the `category` is `revocable`.
         sig { returns(T.nilable(Increase::Models::Entity::Trust::Grantor)) }
         def grantor
         end
@@ -1330,6 +1467,7 @@ module Increase
         def grantor=(_)
         end
 
+        # The trust's name.
         sig { returns(String) }
         def name
         end
@@ -1338,6 +1476,7 @@ module Increase
         def name=(_)
         end
 
+        # The Employer Identification Number (EIN) of the trust itself.
         sig { returns(T.nilable(String)) }
         def tax_identifier
         end
@@ -1346,6 +1485,7 @@ module Increase
         def tax_identifier=(_)
         end
 
+        # The trustees of the trust.
         sig { returns(T::Array[Increase::Models::Entity::Trust::Trustee]) }
         def trustees
         end
@@ -1357,6 +1497,7 @@ module Increase
         def trustees=(_)
         end
 
+        # Details of the trust entity. Will be present if `structure` is equal to `trust`.
         sig do
           params(
             address: Increase::Models::Entity::Trust::Address,
@@ -1401,6 +1542,7 @@ module Increase
         end
 
         class Address < Increase::BaseModel
+          # The city of the address.
           sig { returns(String) }
           def city
           end
@@ -1409,6 +1551,7 @@ module Increase
           def city=(_)
           end
 
+          # The first line of the address.
           sig { returns(String) }
           def line1
           end
@@ -1417,6 +1560,7 @@ module Increase
           def line1=(_)
           end
 
+          # The second line of the address.
           sig { returns(T.nilable(String)) }
           def line2
           end
@@ -1425,6 +1569,8 @@ module Increase
           def line2=(_)
           end
 
+          # The two-letter United States Postal Service (USPS) abbreviation for the state of
+          #   the address.
           sig { returns(String) }
           def state
           end
@@ -1433,6 +1579,7 @@ module Increase
           def state=(_)
           end
 
+          # The ZIP code of the address.
           sig { returns(String) }
           def zip
           end
@@ -1441,6 +1588,7 @@ module Increase
           def zip=(_)
           end
 
+          # The trust's address.
           sig do
             params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
               .returns(T.attached_class)
@@ -1463,6 +1611,7 @@ module Increase
           end
         end
 
+        # Whether the trust is `revocable` or `irrevocable`.
         class Category < Increase::Enum
           abstract!
 
@@ -1480,6 +1629,7 @@ module Increase
         end
 
         class Grantor < Increase::BaseModel
+          # The person's address.
           sig { returns(Increase::Models::Entity::Trust::Grantor::Address) }
           def address
           end
@@ -1491,6 +1641,7 @@ module Increase
           def address=(_)
           end
 
+          # The person's date of birth in YYYY-MM-DD format.
           sig { returns(Date) }
           def date_of_birth
           end
@@ -1499,6 +1650,7 @@ module Increase
           def date_of_birth=(_)
           end
 
+          # A means of verifying the person's identity.
           sig { returns(Increase::Models::Entity::Trust::Grantor::Identification) }
           def identification
           end
@@ -1510,6 +1662,7 @@ module Increase
           def identification=(_)
           end
 
+          # The person's legal name.
           sig { returns(String) }
           def name
           end
@@ -1518,6 +1671,7 @@ module Increase
           def name=(_)
           end
 
+          # The grantor of the trust. Will be present if the `category` is `revocable`.
           sig do
             params(
               address: Increase::Models::Entity::Trust::Grantor::Address,
@@ -1545,6 +1699,7 @@ module Increase
           end
 
           class Address < Increase::BaseModel
+            # The city of the address.
             sig { returns(String) }
             def city
             end
@@ -1553,6 +1708,7 @@ module Increase
             def city=(_)
             end
 
+            # The first line of the address.
             sig { returns(String) }
             def line1
             end
@@ -1561,6 +1717,7 @@ module Increase
             def line1=(_)
             end
 
+            # The second line of the address.
             sig { returns(T.nilable(String)) }
             def line2
             end
@@ -1569,6 +1726,8 @@ module Increase
             def line2=(_)
             end
 
+            # The two-letter United States Postal Service (USPS) abbreviation for the state of
+            #   the address.
             sig { returns(String) }
             def state
             end
@@ -1577,6 +1736,7 @@ module Increase
             def state=(_)
             end
 
+            # The ZIP code of the address.
             sig { returns(String) }
             def zip
             end
@@ -1585,6 +1745,7 @@ module Increase
             def zip=(_)
             end
 
+            # The person's address.
             sig do
               params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
                 .returns(T.attached_class)
@@ -1608,6 +1769,7 @@ module Increase
           end
 
           class Identification < Increase::BaseModel
+            # A method that can be used to verify the individual's identity.
             sig { returns(Symbol) }
             def method_
             end
@@ -1616,6 +1778,8 @@ module Increase
             def method_=(_)
             end
 
+            # The last 4 digits of the identification number that can be used to verify the
+            #   individual's identity.
             sig { returns(String) }
             def number_last4
             end
@@ -1624,6 +1788,7 @@ module Increase
             def number_last4=(_)
             end
 
+            # A means of verifying the person's identity.
             sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
             def self.new(method_:, number_last4:)
             end
@@ -1632,6 +1797,7 @@ module Increase
             def to_hash
             end
 
+            # A method that can be used to verify the individual's identity.
             class Method < Increase::Enum
               abstract!
 
@@ -1660,6 +1826,8 @@ module Increase
         end
 
         class Trustee < Increase::BaseModel
+          # The individual trustee of the trust. Will be present if the trustee's
+          #   `structure` is equal to `individual`.
           sig { returns(T.nilable(Increase::Models::Entity::Trust::Trustee::Individual)) }
           def individual
           end
@@ -1671,6 +1839,7 @@ module Increase
           def individual=(_)
           end
 
+          # The structure of the trustee. Will always be equal to `individual`.
           sig { returns(Symbol) }
           def structure
           end
@@ -1694,6 +1863,7 @@ module Increase
           end
 
           class Individual < Increase::BaseModel
+            # The person's address.
             sig { returns(Increase::Models::Entity::Trust::Trustee::Individual::Address) }
             def address
             end
@@ -1705,6 +1875,7 @@ module Increase
             def address=(_)
             end
 
+            # The person's date of birth in YYYY-MM-DD format.
             sig { returns(Date) }
             def date_of_birth
             end
@@ -1713,6 +1884,7 @@ module Increase
             def date_of_birth=(_)
             end
 
+            # A means of verifying the person's identity.
             sig { returns(Increase::Models::Entity::Trust::Trustee::Individual::Identification) }
             def identification
             end
@@ -1724,6 +1896,7 @@ module Increase
             def identification=(_)
             end
 
+            # The person's legal name.
             sig { returns(String) }
             def name
             end
@@ -1732,6 +1905,8 @@ module Increase
             def name=(_)
             end
 
+            # The individual trustee of the trust. Will be present if the trustee's
+            #   `structure` is equal to `individual`.
             sig do
               params(
                 address: Increase::Models::Entity::Trust::Trustee::Individual::Address,
@@ -1759,6 +1934,7 @@ module Increase
             end
 
             class Address < Increase::BaseModel
+              # The city of the address.
               sig { returns(String) }
               def city
               end
@@ -1767,6 +1943,7 @@ module Increase
               def city=(_)
               end
 
+              # The first line of the address.
               sig { returns(String) }
               def line1
               end
@@ -1775,6 +1952,7 @@ module Increase
               def line1=(_)
               end
 
+              # The second line of the address.
               sig { returns(T.nilable(String)) }
               def line2
               end
@@ -1783,6 +1961,8 @@ module Increase
               def line2=(_)
               end
 
+              # The two-letter United States Postal Service (USPS) abbreviation for the state of
+              #   the address.
               sig { returns(String) }
               def state
               end
@@ -1791,6 +1971,7 @@ module Increase
               def state=(_)
               end
 
+              # The ZIP code of the address.
               sig { returns(String) }
               def zip
               end
@@ -1799,6 +1980,7 @@ module Increase
               def zip=(_)
               end
 
+              # The person's address.
               sig do
                 params(city: String, line1: String, line2: T.nilable(String), state: String, zip: String)
                   .returns(T.attached_class)
@@ -1822,6 +2004,7 @@ module Increase
             end
 
             class Identification < Increase::BaseModel
+              # A method that can be used to verify the individual's identity.
               sig { returns(Symbol) }
               def method_
               end
@@ -1830,6 +2013,8 @@ module Increase
               def method_=(_)
               end
 
+              # The last 4 digits of the identification number that can be used to verify the
+              #   individual's identity.
               sig { returns(String) }
               def number_last4
               end
@@ -1838,6 +2023,7 @@ module Increase
               def number_last4=(_)
               end
 
+              # A means of verifying the person's identity.
               sig { params(method_: Symbol, number_last4: String).returns(T.attached_class) }
               def self.new(method_:, number_last4:)
               end
@@ -1846,6 +2032,7 @@ module Increase
               def to_hash
               end
 
+              # A method that can be used to verify the individual's identity.
               class Method < Increase::Enum
                 abstract!
 
@@ -1873,6 +2060,7 @@ module Increase
             end
           end
 
+          # The structure of the trustee. Will always be equal to `individual`.
           class Structure < Increase::Enum
             abstract!
 
@@ -1888,6 +2076,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `entity`.
       class Type < Increase::Enum
         abstract!
 

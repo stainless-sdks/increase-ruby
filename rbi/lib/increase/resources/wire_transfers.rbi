@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class WireTransfers
+      # Create a Wire Transfer
       sig do
         params(
           account_id: String,
@@ -46,6 +47,7 @@ module Increase
       )
       end
 
+      # Retrieve a Wire Transfer
       sig do
         params(
           wire_transfer_id: String,
@@ -56,6 +58,7 @@ module Increase
       def retrieve(wire_transfer_id, request_options: {})
       end
 
+      # List Wire Transfers
       sig do
         params(
           account_id: String,
@@ -79,6 +82,7 @@ module Increase
       )
       end
 
+      # Approve a Wire Transfer
       sig do
         params(
           wire_transfer_id: String,
@@ -89,6 +93,7 @@ module Increase
       def approve(wire_transfer_id, request_options: {})
       end
 
+      # Cancel a pending Wire Transfer
       sig do
         params(
           wire_transfer_id: String,

@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class DigitalWalletTokens
+      # Retrieve a Digital Wallet Token
       sig do
         params(
           digital_wallet_token_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(digital_wallet_token_id, request_options: {})
       end
 
+      # List Digital Wallet Tokens
       sig do
         params(
           card_id: String,

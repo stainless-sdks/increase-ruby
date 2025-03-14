@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class ACHTransfers
+      # Create an ACH Transfer
       sig do
         params(
           account_id: String,
@@ -52,6 +53,7 @@ module Increase
       )
       end
 
+      # Retrieve an ACH Transfer
       sig do
         params(
           ach_transfer_id: String,
@@ -62,6 +64,7 @@ module Increase
       def retrieve(ach_transfer_id, request_options: {})
       end
 
+      # List ACH Transfers
       sig do
         params(
           account_id: String,
@@ -85,6 +88,7 @@ module Increase
       )
       end
 
+      # Approves an ACH Transfer in a pending_approval state.
       sig do
         params(
           ach_transfer_id: String,
@@ -95,6 +99,7 @@ module Increase
       def approve(ach_transfer_id, request_options: {})
       end
 
+      # Cancels an ACH Transfer in a pending_approval state.
       sig do
         params(
           ach_transfer_id: String,

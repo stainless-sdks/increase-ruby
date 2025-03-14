@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class DeclinedTransactions
+      # Retrieve a Declined Transaction
       sig do
         params(
           declined_transaction_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(declined_transaction_id, request_options: {})
       end
 
+      # List Declined Transactions
       sig do
         params(
           account_id: String,

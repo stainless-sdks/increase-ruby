@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Programs
+      # Retrieve a Program
       sig do
         params(
           program_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(program_id, request_options: {})
       end
 
+      # List Programs
       sig do
         params(
           cursor: String,

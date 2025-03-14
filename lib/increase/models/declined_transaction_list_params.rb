@@ -112,7 +112,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @abstract
-        #
         class In < Increase::Enum
           # ACH Decline: details will be under the `ach_decline` object.
           ACH_DECLINE = :ach_decline

@@ -3,6 +3,7 @@
 module Increase
   module Models
     class InboundRealTimePaymentsTransfer < Increase::BaseModel
+      # The inbound Real-Time Payments transfer's identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The Account to which the transfer was sent.
       sig { returns(String) }
       def account_id
       end
@@ -19,6 +21,7 @@ module Increase
       def account_id=(_)
       end
 
+      # The identifier of the Account Number to which this transfer was sent.
       sig { returns(String) }
       def account_number_id
       end
@@ -27,6 +30,7 @@ module Increase
       def account_number_id=(_)
       end
 
+      # The amount in USD cents.
       sig { returns(Integer) }
       def amount
       end
@@ -35,6 +39,7 @@ module Increase
       def amount=(_)
       end
 
+      # If your transfer is confirmed, this will contain details of the confirmation.
       sig { returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Confirmation)) }
       def confirmation
       end
@@ -46,6 +51,8 @@ module Increase
       def confirmation=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the transfer was created.
       sig { returns(Time) }
       def created_at
       end
@@ -54,6 +61,7 @@ module Increase
       def created_at=(_)
       end
 
+      # The name the sender of the transfer specified as the recipient of the transfer.
       sig { returns(String) }
       def creditor_name
       end
@@ -62,6 +70,8 @@ module Increase
       def creditor_name=(_)
       end
 
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
+      #   currency. This will always be "USD" for a Real-Time Payments transfer.
       sig { returns(Symbol) }
       def currency
       end
@@ -70,6 +80,7 @@ module Increase
       def currency=(_)
       end
 
+      # The account number of the account that sent the transfer.
       sig { returns(String) }
       def debtor_account_number
       end
@@ -78,6 +89,7 @@ module Increase
       def debtor_account_number=(_)
       end
 
+      # The name provided by the sender of the transfer.
       sig { returns(String) }
       def debtor_name
       end
@@ -86,6 +98,7 @@ module Increase
       def debtor_name=(_)
       end
 
+      # The routing number of the account that sent the transfer.
       sig { returns(String) }
       def debtor_routing_number
       end
@@ -94,6 +107,7 @@ module Increase
       def debtor_routing_number=(_)
       end
 
+      # If your transfer is declined, this will contain details of the decline.
       sig { returns(T.nilable(Increase::Models::InboundRealTimePaymentsTransfer::Decline)) }
       def decline
       end
@@ -105,6 +119,7 @@ module Increase
       def decline=(_)
       end
 
+      # Additional information included with the transfer.
       sig { returns(T.nilable(String)) }
       def remittance_information
       end
@@ -113,6 +128,7 @@ module Increase
       def remittance_information=(_)
       end
 
+      # The lifecycle status of the transfer.
       sig { returns(Symbol) }
       def status
       end
@@ -121,6 +137,7 @@ module Increase
       def status=(_)
       end
 
+      # The Real-Time Payments network identification of the transfer.
       sig { returns(String) }
       def transaction_identification
       end
@@ -129,6 +146,8 @@ module Increase
       def transaction_identification=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `inbound_real_time_payments_transfer`.
       sig { returns(Symbol) }
       def type
       end
@@ -137,6 +156,8 @@ module Increase
       def type=(_)
       end
 
+      # An Inbound Real-Time Payments Transfer is a Real-Time Payments transfer
+      #   initiated outside of Increase to your account.
       sig do
         params(
           id: String,
@@ -205,6 +226,7 @@ module Increase
       end
 
       class Confirmation < Increase::BaseModel
+        # The time at which the transfer was confirmed.
         sig { returns(Time) }
         def confirmed_at
         end
@@ -213,6 +235,7 @@ module Increase
         def confirmed_at=(_)
         end
 
+        # The id of the transaction for the confirmed transfer.
         sig { returns(String) }
         def transaction_id
         end
@@ -221,6 +244,7 @@ module Increase
         def transaction_id=(_)
         end
 
+        # If your transfer is confirmed, this will contain details of the confirmation.
         sig { params(confirmed_at: Time, transaction_id: String).returns(T.attached_class) }
         def self.new(confirmed_at:, transaction_id:)
         end
@@ -230,6 +254,8 @@ module Increase
         end
       end
 
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
+      #   currency. This will always be "USD" for a Real-Time Payments transfer.
       class Currency < Increase::Enum
         abstract!
 
@@ -259,6 +285,7 @@ module Increase
       end
 
       class Decline < Increase::BaseModel
+        # The time at which the transfer was declined.
         sig { returns(Time) }
         def declined_at
         end
@@ -267,6 +294,7 @@ module Increase
         def declined_at=(_)
         end
 
+        # The id of the transaction for the declined transfer.
         sig { returns(String) }
         def declined_transaction_id
         end
@@ -275,6 +303,7 @@ module Increase
         def declined_transaction_id=(_)
         end
 
+        # The reason for the transfer decline.
         sig { returns(Symbol) }
         def reason
         end
@@ -283,6 +312,7 @@ module Increase
         def reason=(_)
         end
 
+        # If your transfer is declined, this will contain details of the decline.
         sig do
           params(declined_at: Time, declined_transaction_id: String, reason: Symbol).returns(T.attached_class)
         end
@@ -293,6 +323,7 @@ module Increase
         def to_hash
         end
 
+        # The reason for the transfer decline.
         class Reason < Increase::Enum
           abstract!
 
@@ -322,6 +353,7 @@ module Increase
         end
       end
 
+      # The lifecycle status of the transfer.
       class Status < Increase::Enum
         abstract!
 
@@ -344,6 +376,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `inbound_real_time_payments_transfer`.
       class Type < Increase::Enum
         abstract!
 

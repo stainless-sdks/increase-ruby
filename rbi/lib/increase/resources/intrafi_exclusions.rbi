@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class IntrafiExclusions
+      # Create an IntraFi Exclusion
       sig do
         params(
           bank_name: String,
@@ -14,6 +15,7 @@ module Increase
       def create(bank_name:, entity_id:, request_options: {})
       end
 
+      # Get an IntraFi Exclusion
       sig do
         params(
           intrafi_exclusion_id: String,
@@ -24,6 +26,7 @@ module Increase
       def retrieve(intrafi_exclusion_id, request_options: {})
       end
 
+      # List IntraFi Exclusions
       sig do
         params(
           cursor: String,
@@ -37,6 +40,7 @@ module Increase
       def list(cursor: nil, entity_id: nil, idempotency_key: nil, limit: nil, request_options: {})
       end
 
+      # Archive an IntraFi Exclusion
       sig do
         params(
           intrafi_exclusion_id: String,

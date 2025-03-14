@@ -6,6 +6,10 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The North American Industry Classification System (NAICS) code for the
+      #   corporation's primary line of business. This is a number, like `5132` for
+      #   `Software Publishers`. A full list of classification codes is available
+      #   [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
       sig { returns(String) }
       def industry_code
       end

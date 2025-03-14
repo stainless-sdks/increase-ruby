@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Transactions
+      # Retrieve a Transaction
       sig do
         params(
           transaction_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(transaction_id, request_options: {})
       end
 
+      # List Transactions
       sig do
         params(
           account_id: String,
