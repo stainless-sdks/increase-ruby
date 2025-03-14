@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The underlying card representing this physical card.
       sig { returns(String) }
       def card_id
       end
@@ -14,6 +15,7 @@ module Increase
       def card_id=(_)
       end
 
+      # Details about the cardholder, as it will appear on the physical card.
       sig { returns(Increase::Models::PhysicalCardCreateParams::Cardholder) }
       def cardholder
       end
@@ -25,6 +27,7 @@ module Increase
       def cardholder=(_)
       end
 
+      # The details used to ship this physical card.
       sig { returns(Increase::Models::PhysicalCardCreateParams::Shipment) }
       def shipment
       end
@@ -36,6 +39,8 @@ module Increase
       def shipment=(_)
       end
 
+      # The physical card profile to use for this physical card. The latest default
+      #   physical card profile will be used if not provided.
       sig { returns(T.nilable(String)) }
       def physical_card_profile_id
       end
@@ -73,6 +78,7 @@ module Increase
       end
 
       class Cardholder < Increase::BaseModel
+        # The cardholder's first name.
         sig { returns(String) }
         def first_name
         end
@@ -81,6 +87,7 @@ module Increase
         def first_name=(_)
         end
 
+        # The cardholder's last name.
         sig { returns(String) }
         def last_name
         end
@@ -89,6 +96,7 @@ module Increase
         def last_name=(_)
         end
 
+        # Details about the cardholder, as it will appear on the physical card.
         sig { params(first_name: String, last_name: String).returns(T.attached_class) }
         def self.new(first_name:, last_name:)
         end
@@ -99,6 +107,7 @@ module Increase
       end
 
       class Shipment < Increase::BaseModel
+        # The address to where the card should be shipped.
         sig { returns(Increase::Models::PhysicalCardCreateParams::Shipment::Address) }
         def address
         end
@@ -110,6 +119,7 @@ module Increase
         def address=(_)
         end
 
+        # The shipping method to use.
         sig { returns(Symbol) }
         def method_
         end
@@ -118,6 +128,7 @@ module Increase
         def method_=(_)
         end
 
+        # The details used to ship this physical card.
         sig do
           params(address: Increase::Models::PhysicalCardCreateParams::Shipment::Address, method_: Symbol)
             .returns(T.attached_class)
@@ -132,6 +143,7 @@ module Increase
         end
 
         class Address < Increase::BaseModel
+          # The city of the shipping address.
           sig { returns(String) }
           def city
           end
@@ -140,6 +152,7 @@ module Increase
           def city=(_)
           end
 
+          # The first line of the shipping address.
           sig { returns(String) }
           def line1
           end
@@ -148,6 +161,7 @@ module Increase
           def line1=(_)
           end
 
+          # The name of the recipient.
           sig { returns(String) }
           def name
           end
@@ -156,6 +170,7 @@ module Increase
           def name=(_)
           end
 
+          # The postal code of the shipping address.
           sig { returns(String) }
           def postal_code
           end
@@ -164,6 +179,7 @@ module Increase
           def postal_code=(_)
           end
 
+          # The US state of the shipping address.
           sig { returns(String) }
           def state
           end
@@ -172,6 +188,7 @@ module Increase
           def state=(_)
           end
 
+          # The second line of the shipping address.
           sig { returns(T.nilable(String)) }
           def line2
           end
@@ -180,6 +197,7 @@ module Increase
           def line2=(_)
           end
 
+          # The third line of the shipping address.
           sig { returns(T.nilable(String)) }
           def line3
           end
@@ -188,6 +206,7 @@ module Increase
           def line3=(_)
           end
 
+          # The phone number of the recipient.
           sig { returns(T.nilable(String)) }
           def phone_number
           end
@@ -196,6 +215,7 @@ module Increase
           def phone_number=(_)
           end
 
+          # The address to where the card should be shipped.
           sig do
             params(
               city: String,
@@ -231,6 +251,7 @@ module Increase
           end
         end
 
+        # The shipping method to use.
         class Method < Increase::Enum
           abstract!
 

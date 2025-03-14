@@ -25,7 +25,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Card]
-      #
       def create(params)
         parsed, options = Increase::Models::CardCreateParams.dump_request(params)
         @client.request(
@@ -46,7 +45,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Card]
-      #
       def retrieve(card_id, params = {})
         @client.request(
           method: :get,
@@ -78,7 +76,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Card]
-      #
       def update(card_id, params = {})
         parsed, options = Increase::Models::CardUpdateParams.dump_request(params)
         @client.request(
@@ -113,7 +110,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Card>]
-      #
       def list(params = {})
         parsed, options = Increase::Models::CardListParams.dump_request(params)
         @client.request(
@@ -135,7 +131,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::CardDetails]
-      #
       def details(card_id, params = {})
         @client.request(
           method: :get,
@@ -146,7 +141,6 @@ module Increase
       end
 
       # @param client [Increase::Client]
-      #
       def initialize(client:)
         @client = client
       end

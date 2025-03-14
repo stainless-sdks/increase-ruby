@@ -3,6 +3,7 @@
 module Increase
   module Models
     class BookkeepingEntry < Increase::BaseModel
+      # The entry identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The identifier for the Account the Entry belongs to.
       sig { returns(String) }
       def account_id
       end
@@ -19,6 +21,8 @@ module Increase
       def account_id=(_)
       end
 
+      # The Entry amount in the minor unit of its currency. For dollars, for example,
+      #   this is cents.
       sig { returns(Integer) }
       def amount
       end
@@ -27,6 +31,7 @@ module Increase
       def amount=(_)
       end
 
+      # When the entry set was created.
       sig { returns(Time) }
       def created_at
       end
@@ -35,6 +40,7 @@ module Increase
       def created_at=(_)
       end
 
+      # The identifier for the Account the Entry belongs to.
       sig { returns(String) }
       def entry_set_id
       end
@@ -43,6 +49,8 @@ module Increase
       def entry_set_id=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `bookkeeping_entry`.
       sig { returns(Symbol) }
       def type
       end
@@ -51,6 +59,9 @@ module Increase
       def type=(_)
       end
 
+      # Entries are T-account entries recording debits and credits. Your compliance
+      #   setup might require annotating money movements using this API. Learn more in our
+      #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       sig do
         params(
           id: String,
@@ -81,6 +92,8 @@ module Increase
       def to_hash
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `bookkeeping_entry`.
       class Type < Increase::Enum
         abstract!
 

@@ -3,6 +3,7 @@
 module Increase
   module Models
     class BookkeepingEntrySet < Increase::BaseModel
+      # The entry set identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # When the entry set was created.
       sig { returns(Time) }
       def created_at
       end
@@ -19,6 +21,7 @@ module Increase
       def created_at=(_)
       end
 
+      # The timestamp of the entry set.
       sig { returns(Time) }
       def date
       end
@@ -27,6 +30,7 @@ module Increase
       def date=(_)
       end
 
+      # The entries.
       sig { returns(T::Array[Increase::Models::BookkeepingEntrySet::Entry]) }
       def entries
       end
@@ -38,6 +42,9 @@ module Increase
       def entries=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -46,6 +53,7 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # The transaction identifier, if any.
       sig { returns(T.nilable(String)) }
       def transaction_id
       end
@@ -54,6 +62,8 @@ module Increase
       def transaction_id=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `bookkeeping_entry_set`.
       sig { returns(Symbol) }
       def type
       end
@@ -62,6 +72,10 @@ module Increase
       def type=(_)
       end
 
+      # Entry Sets are accounting entries that are transactionally applied. Your
+      #   compliance setup might require annotating money movements using this API. Learn
+      #   more in our
+      #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       sig do
         params(
           id: String,
@@ -95,6 +109,7 @@ module Increase
       end
 
       class Entry < Increase::BaseModel
+        # The entry identifier.
         sig { returns(String) }
         def id
         end
@@ -103,6 +118,7 @@ module Increase
         def id=(_)
         end
 
+        # The bookkeeping account impacted by the entry.
         sig { returns(String) }
         def account_id
         end
@@ -111,6 +127,7 @@ module Increase
         def account_id=(_)
         end
 
+        # The amount of the entry in minor units.
         sig { returns(Integer) }
         def amount
         end
@@ -128,6 +145,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `bookkeeping_entry_set`.
       class Type < Increase::Enum
         abstract!
 

@@ -5,6 +5,10 @@ module Increase
     sig { returns(T.nilable(StandardError)) }
     def cause
     end
+
+    sig { params(_: T.nilable(StandardError)).returns(T.nilable(StandardError)) }
+    def cause=(_)
+    end
   end
 
   class ConversionError < Increase::Error
@@ -15,14 +19,27 @@ module Increase
     def url
     end
 
+    sig { params(_: URI::Generic).returns(URI::Generic) }
+    def url=(_)
+    end
+
     sig { returns(T.nilable(Integer)) }
     def status
+    end
+
+    sig { params(_: T.nilable(Integer)).returns(T.nilable(Integer)) }
+    def status=(_)
     end
 
     sig { returns(T.nilable(T.anything)) }
     def body
     end
 
+    sig { params(_: T.nilable(T.anything)).returns(T.nilable(T.anything)) }
+    def body=(_)
+    end
+
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -43,10 +60,19 @@ module Increase
     def status
     end
 
+    sig { params(_: NilClass).void }
+    def status=(_)
+    end
+
     sig { void }
     def body
     end
 
+    sig { params(_: NilClass).void }
+    def body=(_)
+    end
+
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -63,6 +89,7 @@ module Increase
   end
 
   class APITimeoutError < Increase::APIConnectionError
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -79,6 +106,7 @@ module Increase
   end
 
   class APIStatusError < Increase::APIError
+    # @api private
     sig do
       params(
         url: URI::Generic,
@@ -97,6 +125,11 @@ module Increase
     def status
     end
 
+    sig { params(_: Integer).returns(Integer) }
+    def status=(_)
+    end
+
+    # @api private
     sig do
       params(
         url: URI::Generic,

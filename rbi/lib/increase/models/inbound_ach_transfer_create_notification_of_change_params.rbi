@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The updated account number to send in the notification of change.
       sig { returns(T.nilable(String)) }
       def updated_account_number
       end
@@ -14,6 +15,7 @@ module Increase
       def updated_account_number=(_)
       end
 
+      # The updated routing number to send in the notification of change.
       sig { returns(T.nilable(String)) }
       def updated_routing_number
       end

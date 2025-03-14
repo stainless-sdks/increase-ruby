@@ -19,7 +19,6 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::InboundMailItem]
-        #
         def create(params)
           parsed, options = Increase::Models::Simulations::InboundMailItemCreateParams.dump_request(params)
           @client.request(
@@ -32,7 +31,6 @@ module Increase
         end
 
         # @param client [Increase::Client]
-        #
         def initialize(client:)
           @client = client
         end

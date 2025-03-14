@@ -14,7 +14,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiExclusion]
-      #
       def create(params)
         parsed, options = Increase::Models::IntrafiExclusionCreateParams.dump_request(params)
         @client.request(
@@ -35,7 +34,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiExclusion]
-      #
       def retrieve(intrafi_exclusion_id, params = {})
         @client.request(
           method: :get,
@@ -64,7 +62,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::IntrafiExclusion>]
-      #
       def list(params = {})
         parsed, options = Increase::Models::IntrafiExclusionListParams.dump_request(params)
         @client.request(
@@ -88,7 +85,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::IntrafiExclusion]
-      #
       def archive(intrafi_exclusion_id, params = {})
         @client.request(
           method: :post,
@@ -99,7 +95,6 @@ module Increase
       end
 
       # @param client [Increase::Client]
-      #
       def initialize(client:)
         @client = client
       end

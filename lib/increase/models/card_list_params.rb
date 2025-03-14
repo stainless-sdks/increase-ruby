@@ -169,7 +169,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @abstract
-        #
         class In < Increase::Enum
           # The card is active.
           ACTIVE = :active

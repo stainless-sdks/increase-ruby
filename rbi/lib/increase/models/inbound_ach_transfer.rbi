@@ -3,6 +3,7 @@
 module Increase
   module Models
     class InboundACHTransfer < Increase::BaseModel
+      # The inbound ACH transfer's identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # If your transfer is accepted, this will contain details of the acceptance.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Acceptance)) }
       def acceptance
       end
@@ -22,6 +24,7 @@ module Increase
       def acceptance=(_)
       end
 
+      # The Account to which the transfer belongs.
       sig { returns(String) }
       def account_id
       end
@@ -30,6 +33,7 @@ module Increase
       def account_id=(_)
       end
 
+      # The identifier of the Account Number to which this transfer was sent.
       sig { returns(String) }
       def account_number_id
       end
@@ -38,6 +42,7 @@ module Increase
       def account_number_id=(_)
       end
 
+      # Additional information sent from the originator.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda)) }
       def addenda
       end
@@ -49,6 +54,7 @@ module Increase
       def addenda=(_)
       end
 
+      # The transfer amount in USD cents.
       sig { returns(Integer) }
       def amount
       end
@@ -57,6 +63,7 @@ module Increase
       def amount=(_)
       end
 
+      # The time at which the transfer will be automatically resolved.
       sig { returns(Time) }
       def automatically_resolves_at
       end
@@ -65,6 +72,8 @@ module Increase
       def automatically_resolves_at=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the inbound ACH transfer was created.
       sig { returns(Time) }
       def created_at
       end
@@ -73,6 +82,7 @@ module Increase
       def created_at=(_)
       end
 
+      # If your transfer is declined, this will contain details of the decline.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Decline)) }
       def decline
       end
@@ -84,6 +94,7 @@ module Increase
       def decline=(_)
       end
 
+      # The direction of the transfer.
       sig { returns(Symbol) }
       def direction
       end
@@ -92,6 +103,8 @@ module Increase
       def direction=(_)
       end
 
+      # The effective date of the transfer. This is sent by the sending bank and is a
+      #   factor in determining funds availability.
       sig { returns(Date) }
       def effective_date
       end
@@ -100,6 +113,7 @@ module Increase
       def effective_date=(_)
       end
 
+      # The settlement schedule the transfer is expected to follow.
       sig { returns(Symbol) }
       def expected_settlement_schedule
       end
@@ -108,6 +122,8 @@ module Increase
       def expected_settlement_schedule=(_)
       end
 
+      # If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
+      #   contain fields pertaining to the International ACH Transaction.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::InternationalAddenda)) }
       def international_addenda
       end
@@ -119,6 +135,8 @@ module Increase
       def international_addenda=(_)
       end
 
+      # If you initiate a notification of change in response to the transfer, this will
+      #   contain its details.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::NotificationOfChange)) }
       def notification_of_change
       end
@@ -130,6 +148,7 @@ module Increase
       def notification_of_change=(_)
       end
 
+      # The descriptive date of the transfer.
       sig { returns(T.nilable(String)) }
       def originator_company_descriptive_date
       end
@@ -138,6 +157,7 @@ module Increase
       def originator_company_descriptive_date=(_)
       end
 
+      # The additional information included with the transfer.
       sig { returns(T.nilable(String)) }
       def originator_company_discretionary_data
       end
@@ -146,6 +166,7 @@ module Increase
       def originator_company_discretionary_data=(_)
       end
 
+      # The description of the transfer.
       sig { returns(String) }
       def originator_company_entry_description
       end
@@ -154,6 +175,7 @@ module Increase
       def originator_company_entry_description=(_)
       end
 
+      # The id of the company that initiated the transfer.
       sig { returns(String) }
       def originator_company_id
       end
@@ -162,6 +184,7 @@ module Increase
       def originator_company_id=(_)
       end
 
+      # The name of the company that initiated the transfer.
       sig { returns(String) }
       def originator_company_name
       end
@@ -170,6 +193,8 @@ module Increase
       def originator_company_name=(_)
       end
 
+      # The American Banking Association (ABA) routing number of the bank originating
+      #   the transfer.
       sig { returns(String) }
       def originator_routing_number
       end
@@ -178,6 +203,7 @@ module Increase
       def originator_routing_number=(_)
       end
 
+      # The id of the receiver of the transfer.
       sig { returns(T.nilable(String)) }
       def receiver_id_number
       end
@@ -186,6 +212,7 @@ module Increase
       def receiver_id_number=(_)
       end
 
+      # The name of the receiver of the transfer.
       sig { returns(T.nilable(String)) }
       def receiver_name
       end
@@ -194,6 +221,7 @@ module Increase
       def receiver_name=(_)
       end
 
+      # The Standard Entry Class (SEC) code of the transfer.
       sig { returns(Symbol) }
       def standard_entry_class_code
       end
@@ -202,6 +230,7 @@ module Increase
       def standard_entry_class_code=(_)
       end
 
+      # The status of the transfer.
       sig { returns(Symbol) }
       def status
       end
@@ -210,6 +239,10 @@ module Increase
       def status=(_)
       end
 
+      # A 15 digit number set by the sending bank and transmitted to the receiving bank.
+      #   Along with the amount, date, and originating routing number, this can be used to
+      #   identify the ACH transfer. ACH trace numbers are not unique, but are
+      #   [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
       sig { returns(String) }
       def trace_number
       end
@@ -218,6 +251,7 @@ module Increase
       def trace_number=(_)
       end
 
+      # If your transfer is returned, this will contain details of the return.
       sig { returns(T.nilable(Increase::Models::InboundACHTransfer::TransferReturn)) }
       def transfer_return
       end
@@ -229,6 +263,8 @@ module Increase
       def transfer_return=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `inbound_ach_transfer`.
       sig { returns(Symbol) }
       def type
       end
@@ -237,6 +273,8 @@ module Increase
       def type=(_)
       end
 
+      # An Inbound ACH Transfer is an ACH transfer initiated outside of Increase to your
+      #   account.
       sig do
         params(
           id: String,
@@ -338,6 +376,7 @@ module Increase
       end
 
       class Acceptance < Increase::BaseModel
+        # The time at which the transfer was accepted.
         sig { returns(Time) }
         def accepted_at
         end
@@ -346,6 +385,7 @@ module Increase
         def accepted_at=(_)
         end
 
+        # The id of the transaction for the accepted transfer.
         sig { returns(String) }
         def transaction_id
         end
@@ -354,6 +394,7 @@ module Increase
         def transaction_id=(_)
         end
 
+        # If your transfer is accepted, this will contain details of the acceptance.
         sig { params(accepted_at: Time, transaction_id: String).returns(T.attached_class) }
         def self.new(accepted_at:, transaction_id:)
         end
@@ -364,6 +405,7 @@ module Increase
       end
 
       class Addenda < Increase::BaseModel
+        # The type of addendum.
         sig { returns(Symbol) }
         def category
         end
@@ -372,6 +414,7 @@ module Increase
         def category=(_)
         end
 
+        # Unstructured `payment_related_information` passed through by the originator.
         sig { returns(T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform)) }
         def freeform
         end
@@ -383,6 +426,7 @@ module Increase
         def freeform=(_)
         end
 
+        # Additional information sent from the originator.
         sig do
           params(category: Symbol, freeform: T.nilable(Increase::Models::InboundACHTransfer::Addenda::Freeform))
             .returns(T.attached_class)
@@ -397,6 +441,7 @@ module Increase
         def to_hash
         end
 
+        # The type of addendum.
         class Category < Increase::Enum
           abstract!
 
@@ -411,6 +456,7 @@ module Increase
         end
 
         class Freeform < Increase::BaseModel
+          # Each entry represents an addendum received from the originator.
           sig { returns(T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry]) }
           def entries
           end
@@ -422,6 +468,7 @@ module Increase
           def entries=(_)
           end
 
+          # Unstructured `payment_related_information` passed through by the originator.
           sig do
             params(entries: T::Array[Increase::Models::InboundACHTransfer::Addenda::Freeform::Entry])
               .returns(T.attached_class)
@@ -434,6 +481,7 @@ module Increase
           end
 
           class Entry < Increase::BaseModel
+            # The payment related information passed in the addendum.
             sig { returns(String) }
             def payment_related_information
             end
@@ -454,6 +502,7 @@ module Increase
       end
 
       class Decline < Increase::BaseModel
+        # The time at which the transfer was declined.
         sig { returns(Time) }
         def declined_at
         end
@@ -462,6 +511,7 @@ module Increase
         def declined_at=(_)
         end
 
+        # The id of the transaction for the declined transfer.
         sig { returns(String) }
         def declined_transaction_id
         end
@@ -470,6 +520,7 @@ module Increase
         def declined_transaction_id=(_)
         end
 
+        # The reason for the transfer decline.
         sig { returns(Symbol) }
         def reason
         end
@@ -478,6 +529,7 @@ module Increase
         def reason=(_)
         end
 
+        # If your transfer is declined, this will contain details of the decline.
         sig do
           params(declined_at: Time, declined_transaction_id: String, reason: Symbol).returns(T.attached_class)
         end
@@ -488,6 +540,7 @@ module Increase
         def to_hash
         end
 
+        # The reason for the transfer decline.
         class Reason < Increase::Enum
           abstract!
 
@@ -550,6 +603,7 @@ module Increase
         end
       end
 
+      # The direction of the transfer.
       class Direction < Increase::Enum
         abstract!
 
@@ -566,6 +620,7 @@ module Increase
         end
       end
 
+      # The settlement schedule the transfer is expected to follow.
       class ExpectedSettlementSchedule < Increase::Enum
         abstract!
 
@@ -583,6 +638,8 @@ module Increase
       end
 
       class InternationalAddenda < Increase::BaseModel
+        # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
+        #   country code of the destination country.
         sig { returns(String) }
         def destination_country_code
         end
@@ -591,6 +648,8 @@ module Increase
         def destination_country_code=(_)
         end
 
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
+        #   destination bank account.
         sig { returns(String) }
         def destination_currency_code
         end
@@ -599,6 +658,7 @@ module Increase
         def destination_currency_code=(_)
         end
 
+        # A description of how the foreign exchange rate was calculated.
         sig { returns(Symbol) }
         def foreign_exchange_indicator
         end
@@ -607,6 +667,8 @@ module Increase
         def foreign_exchange_indicator=(_)
         end
 
+        # Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a
+        #   reference to a well-known rate.
         sig { returns(T.nilable(String)) }
         def foreign_exchange_reference
         end
@@ -615,6 +677,8 @@ module Increase
         def foreign_exchange_reference=(_)
         end
 
+        # An instruction of how to interpret the `foreign_exchange_reference` field for
+        #   this Transaction.
         sig { returns(Symbol) }
         def foreign_exchange_reference_indicator
         end
@@ -623,6 +687,8 @@ module Increase
         def foreign_exchange_reference_indicator=(_)
         end
 
+        # The amount in the minor unit of the foreign payment currency. For dollars, for
+        #   example, this is cents.
         sig { returns(Integer) }
         def foreign_payment_amount
         end
@@ -631,6 +697,7 @@ module Increase
         def foreign_payment_amount=(_)
         end
 
+        # A reference number in the foreign banking infrastructure.
         sig { returns(T.nilable(String)) }
         def foreign_trace_number
         end
@@ -639,6 +706,7 @@ module Increase
         def foreign_trace_number=(_)
         end
 
+        # The type of transfer. Set by the originator.
         sig { returns(Symbol) }
         def international_transaction_type_code
         end
@@ -647,6 +715,8 @@ module Increase
         def international_transaction_type_code=(_)
         end
 
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the
+        #   originating bank account.
         sig { returns(String) }
         def originating_currency_code
         end
@@ -655,6 +725,8 @@ module Increase
         def originating_currency_code=(_)
         end
 
+        # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
+        #   country code of the originating branch country.
         sig { returns(String) }
         def originating_depository_financial_institution_branch_country
         end
@@ -663,6 +735,9 @@ module Increase
         def originating_depository_financial_institution_branch_country=(_)
         end
 
+        # An identifier for the originating bank. One of an International Bank Account
+        #   Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
+        #   domestic identifier like a US Routing Number.
         sig { returns(String) }
         def originating_depository_financial_institution_id
         end
@@ -671,6 +746,8 @@ module Increase
         def originating_depository_financial_institution_id=(_)
         end
 
+        # An instruction of how to interpret the
+        #   `originating_depository_financial_institution_id` field for this Transaction.
         sig { returns(Symbol) }
         def originating_depository_financial_institution_id_qualifier
         end
@@ -679,6 +756,8 @@ module Increase
         def originating_depository_financial_institution_id_qualifier=(_)
         end
 
+        # The name of the originating bank. Sometimes this will refer to an American bank
+        #   and obscure the correspondent foreign bank.
         sig { returns(String) }
         def originating_depository_financial_institution_name
         end
@@ -687,6 +766,7 @@ module Increase
         def originating_depository_financial_institution_name=(_)
         end
 
+        # A portion of the originator address. This may be incomplete.
         sig { returns(String) }
         def originator_city
         end
@@ -695,6 +775,9 @@ module Increase
         def originator_city=(_)
         end
 
+        # A portion of the originator address. The
+        #   [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
+        #   code of the originator country.
         sig { returns(String) }
         def originator_country
         end
@@ -703,6 +786,8 @@ module Increase
         def originator_country=(_)
         end
 
+        # An identifier for the originating company. This is generally stable across
+        #   multiple ACH transfers.
         sig { returns(String) }
         def originator_identification
         end
@@ -711,6 +796,7 @@ module Increase
         def originator_identification=(_)
         end
 
+        # Either the name of the originator or an intermediary money transmitter.
         sig { returns(String) }
         def originator_name
         end
@@ -719,6 +805,7 @@ module Increase
         def originator_name=(_)
         end
 
+        # A portion of the originator address. This may be incomplete.
         sig { returns(T.nilable(String)) }
         def originator_postal_code
         end
@@ -727,6 +814,7 @@ module Increase
         def originator_postal_code=(_)
         end
 
+        # A portion of the originator address. This may be incomplete.
         sig { returns(T.nilable(String)) }
         def originator_state_or_province
         end
@@ -735,6 +823,7 @@ module Increase
         def originator_state_or_province=(_)
         end
 
+        # A portion of the originator address. This may be incomplete.
         sig { returns(String) }
         def originator_street_address
         end
@@ -743,6 +832,7 @@ module Increase
         def originator_street_address=(_)
         end
 
+        # A description field set by the originator.
         sig { returns(T.nilable(String)) }
         def payment_related_information
         end
@@ -751,6 +841,7 @@ module Increase
         def payment_related_information=(_)
         end
 
+        # A description field set by the originator.
         sig { returns(T.nilable(String)) }
         def payment_related_information2
         end
@@ -759,6 +850,7 @@ module Increase
         def payment_related_information2=(_)
         end
 
+        # A portion of the receiver address. This may be incomplete.
         sig { returns(String) }
         def receiver_city
         end
@@ -767,6 +859,9 @@ module Increase
         def receiver_city=(_)
         end
 
+        # A portion of the receiver address. The
+        #   [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2 country
+        #   code of the receiver country.
         sig { returns(String) }
         def receiver_country
         end
@@ -775,6 +870,7 @@ module Increase
         def receiver_country=(_)
         end
 
+        # An identification number the originator uses for the receiver.
         sig { returns(T.nilable(String)) }
         def receiver_identification_number
         end
@@ -783,6 +879,7 @@ module Increase
         def receiver_identification_number=(_)
         end
 
+        # A portion of the receiver address. This may be incomplete.
         sig { returns(T.nilable(String)) }
         def receiver_postal_code
         end
@@ -791,6 +888,7 @@ module Increase
         def receiver_postal_code=(_)
         end
 
+        # A portion of the receiver address. This may be incomplete.
         sig { returns(T.nilable(String)) }
         def receiver_state_or_province
         end
@@ -799,6 +897,7 @@ module Increase
         def receiver_state_or_province=(_)
         end
 
+        # A portion of the receiver address. This may be incomplete.
         sig { returns(String) }
         def receiver_street_address
         end
@@ -807,6 +906,7 @@ module Increase
         def receiver_street_address=(_)
         end
 
+        # The name of the receiver of the transfer. This is not verified by Increase.
         sig { returns(String) }
         def receiving_company_or_individual_name
         end
@@ -815,6 +915,8 @@ module Increase
         def receiving_company_or_individual_name=(_)
         end
 
+        # The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
+        #   country code of the receiving bank country.
         sig { returns(String) }
         def receiving_depository_financial_institution_country
         end
@@ -823,6 +925,9 @@ module Increase
         def receiving_depository_financial_institution_country=(_)
         end
 
+        # An identifier for the receiving bank. One of an International Bank Account
+        #   Number (IBAN) bank identifier, SWIFT Bank Identification Code (BIC), or a
+        #   domestic identifier like a US Routing Number.
         sig { returns(String) }
         def receiving_depository_financial_institution_id
         end
@@ -831,6 +936,8 @@ module Increase
         def receiving_depository_financial_institution_id=(_)
         end
 
+        # An instruction of how to interpret the
+        #   `receiving_depository_financial_institution_id` field for this Transaction.
         sig { returns(Symbol) }
         def receiving_depository_financial_institution_id_qualifier
         end
@@ -839,6 +946,7 @@ module Increase
         def receiving_depository_financial_institution_id_qualifier=(_)
         end
 
+        # The name of the receiving bank, as set by the sending financial institution.
         sig { returns(String) }
         def receiving_depository_financial_institution_name
         end
@@ -847,6 +955,8 @@ module Increase
         def receiving_depository_financial_institution_name=(_)
         end
 
+        # If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
+        #   contain fields pertaining to the International ACH Transaction.
         sig do
           params(
             destination_country_code: String,
@@ -965,6 +1075,7 @@ module Increase
         def to_hash
         end
 
+        # A description of how the foreign exchange rate was calculated.
         class ForeignExchangeIndicator < Increase::Enum
           abstract!
 
@@ -984,6 +1095,8 @@ module Increase
           end
         end
 
+        # An instruction of how to interpret the `foreign_exchange_reference` field for
+        #   this Transaction.
         class ForeignExchangeReferenceIndicator < Increase::Enum
           abstract!
 
@@ -1003,6 +1116,7 @@ module Increase
           end
         end
 
+        # The type of transfer. Set by the originator.
         class InternationalTransactionTypeCode < Increase::Enum
           abstract!
 
@@ -1073,6 +1187,8 @@ module Increase
           end
         end
 
+        # An instruction of how to interpret the
+        #   `originating_depository_financial_institution_id` field for this Transaction.
         class OriginatingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
           abstract!
 
@@ -1092,6 +1208,8 @@ module Increase
           end
         end
 
+        # An instruction of how to interpret the
+        #   `receiving_depository_financial_institution_id` field for this Transaction.
         class ReceivingDepositoryFinancialInstitutionIDQualifier < Increase::Enum
           abstract!
 
@@ -1113,6 +1231,7 @@ module Increase
       end
 
       class NotificationOfChange < Increase::BaseModel
+        # The new account number provided in the notification of change.
         sig { returns(T.nilable(String)) }
         def updated_account_number
         end
@@ -1121,6 +1240,7 @@ module Increase
         def updated_account_number=(_)
         end
 
+        # The new account number provided in the notification of change.
         sig { returns(T.nilable(String)) }
         def updated_routing_number
         end
@@ -1129,6 +1249,8 @@ module Increase
         def updated_routing_number=(_)
         end
 
+        # If you initiate a notification of change in response to the transfer, this will
+        #   contain its details.
         sig do
           params(updated_account_number: T.nilable(String), updated_routing_number: T.nilable(String))
             .returns(T.attached_class)
@@ -1148,6 +1270,7 @@ module Increase
         end
       end
 
+      # The Standard Entry Class (SEC) code of the transfer.
       class StandardEntryClassCode < Increase::Enum
         abstract!
 
@@ -1206,6 +1329,7 @@ module Increase
         end
       end
 
+      # The status of the transfer.
       class Status < Increase::Enum
         abstract!
 
@@ -1229,6 +1353,7 @@ module Increase
       end
 
       class TransferReturn < Increase::BaseModel
+        # The reason for the transfer return.
         sig { returns(Symbol) }
         def reason
         end
@@ -1237,6 +1362,7 @@ module Increase
         def reason=(_)
         end
 
+        # The time at which the transfer was returned.
         sig { returns(Time) }
         def returned_at
         end
@@ -1245,6 +1371,7 @@ module Increase
         def returned_at=(_)
         end
 
+        # The id of the transaction for the returned transfer.
         sig { returns(String) }
         def transaction_id
         end
@@ -1253,6 +1380,7 @@ module Increase
         def transaction_id=(_)
         end
 
+        # If your transfer is returned, this will contain details of the return.
         sig { params(reason: Symbol, returned_at: Time, transaction_id: String).returns(T.attached_class) }
         def self.new(reason:, returned_at:, transaction_id:)
         end
@@ -1261,6 +1389,7 @@ module Increase
         def to_hash
         end
 
+        # The reason for the transfer return.
         class Reason < Increase::Enum
           abstract!
 
@@ -1302,6 +1431,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `inbound_ach_transfer`.
       class Type < Increase::Enum
         abstract!
 

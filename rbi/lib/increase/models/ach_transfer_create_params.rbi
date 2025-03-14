@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The Increase identifier for the account that will send the transfer.
       sig { returns(String) }
       def account_id
       end
@@ -14,6 +15,9 @@ module Increase
       def account_id=(_)
       end
 
+      # The transfer amount in USD cents. A positive amount originates a credit transfer
+      #   pushing funds to the receiving account. A negative amount originates a debit
+      #   transfer pulling funds from the receiving account.
       sig { returns(Integer) }
       def amount
       end
@@ -22,6 +26,12 @@ module Increase
       def amount=(_)
       end
 
+      # A description you choose to give the transfer. This will be saved with the
+      #   transfer details, displayed in the dashboard, and returned by the API. If
+      #   `individual_name` and `company_name` are not explicitly set by this API, the
+      #   `statement_descriptor` will be sent in those fields to the receiving bank to
+      #   help the customer recognize the transfer. You are highly encouraged to pass
+      #   `individual_name` and `company_name` instead of relying on this fallback.
       sig { returns(String) }
       def statement_descriptor
       end
@@ -30,6 +40,7 @@ module Increase
       def statement_descriptor=(_)
       end
 
+      # The account number for the destination account.
       sig { returns(T.nilable(String)) }
       def account_number
       end
@@ -38,6 +49,8 @@ module Increase
       def account_number=(_)
       end
 
+      # Additional information that will be sent to the recipient. This is included in
+      #   the transfer data sent to the receiving bank.
       sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda)) }
       def addenda
       end
@@ -49,6 +62,8 @@ module Increase
       def addenda=(_)
       end
 
+      # The description of the date of the transfer, usually in the format `YYMMDD`.
+      #   This is included in the transfer data sent to the receiving bank.
       sig { returns(T.nilable(String)) }
       def company_descriptive_date
       end
@@ -57,6 +72,8 @@ module Increase
       def company_descriptive_date=(_)
       end
 
+      # The data you choose to associate with the transfer. This is included in the
+      #   transfer data sent to the receiving bank.
       sig { returns(T.nilable(String)) }
       def company_discretionary_data
       end
@@ -65,6 +82,8 @@ module Increase
       def company_discretionary_data=(_)
       end
 
+      # A description of the transfer. This is included in the transfer data sent to the
+      #   receiving bank.
       sig { returns(T.nilable(String)) }
       def company_entry_description
       end
@@ -73,6 +92,8 @@ module Increase
       def company_entry_description=(_)
       end
 
+      # The name by which the recipient knows you. This is included in the transfer data
+      #   sent to the receiving bank.
       sig { returns(T.nilable(String)) }
       def company_name
       end
@@ -81,6 +102,8 @@ module Increase
       def company_name=(_)
       end
 
+      # The type of entity that owns the account to which the ACH Transfer is being
+      #   sent.
       sig { returns(T.nilable(Symbol)) }
       def destination_account_holder
       end
@@ -89,6 +112,8 @@ module Increase
       def destination_account_holder=(_)
       end
 
+      # The ID of an External Account to initiate a transfer to. If this parameter is
+      #   provided, `account_number`, `routing_number`, and `funding` must be absent.
       sig { returns(T.nilable(String)) }
       def external_account_id
       end
@@ -97,6 +122,7 @@ module Increase
       def external_account_id=(_)
       end
 
+      # The type of the account to which the transfer will be sent.
       sig { returns(T.nilable(Symbol)) }
       def funding
       end
@@ -105,6 +131,7 @@ module Increase
       def funding=(_)
       end
 
+      # Your identifier for the transfer recipient.
       sig { returns(T.nilable(String)) }
       def individual_id
       end
@@ -113,6 +140,8 @@ module Increase
       def individual_id=(_)
       end
 
+      # The name of the transfer recipient. This value is informational and not verified
+      #   by the recipient's bank.
       sig { returns(T.nilable(String)) }
       def individual_name
       end
@@ -121,6 +150,10 @@ module Increase
       def individual_name=(_)
       end
 
+      # Configuration for how the effective date of the transfer will be set. This
+      #   determines same-day vs future-dated settlement timing. If not set, defaults to a
+      #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
+      #   must be set.
       sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::PreferredEffectiveDate)) }
       def preferred_effective_date
       end
@@ -132,6 +165,7 @@ module Increase
       def preferred_effective_date=(_)
       end
 
+      # Whether the transfer requires explicit approval via the dashboard or API.
       sig { returns(T.nilable(T::Boolean)) }
       def require_approval
       end
@@ -140,6 +174,8 @@ module Increase
       def require_approval=(_)
       end
 
+      # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+      #   destination account.
       sig { returns(T.nilable(String)) }
       def routing_number
       end
@@ -148,6 +184,7 @@ module Increase
       def routing_number=(_)
       end
 
+      # The Standard Entry Class (SEC) code to use for the transfer.
       sig { returns(T.nilable(Symbol)) }
       def standard_entry_class_code
       end
@@ -156,6 +193,7 @@ module Increase
       def standard_entry_class_code=(_)
       end
 
+      # The timing of the transaction.
       sig { returns(T.nilable(Symbol)) }
       def transaction_timing
       end
@@ -244,6 +282,7 @@ module Increase
       end
 
       class Addenda < Increase::BaseModel
+        # The type of addenda to pass with the transfer.
         sig { returns(Symbol) }
         def category
         end
@@ -252,6 +291,7 @@ module Increase
         def category=(_)
         end
 
+        # Unstructured `payment_related_information` passed through with the transfer.
         sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda::Freeform)) }
         def freeform
         end
@@ -263,6 +303,8 @@ module Increase
         def freeform=(_)
         end
 
+        # Structured ASC X12 820 remittance advice records. Please reach out to
+        #   [support@increase.com](mailto:support@increase.com) for more information.
         sig { returns(T.nilable(Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice)) }
         def payment_order_remittance_advice
         end
@@ -274,6 +316,8 @@ module Increase
         def payment_order_remittance_advice=(_)
         end
 
+        # Additional information that will be sent to the recipient. This is included in
+        #   the transfer data sent to the receiving bank.
         sig do
           params(
             category: Symbol,
@@ -298,6 +342,7 @@ module Increase
         def to_hash
         end
 
+        # The type of addenda to pass with the transfer.
         class Category < Increase::Enum
           abstract!
 
@@ -315,6 +360,9 @@ module Increase
         end
 
         class Freeform < Increase::BaseModel
+          # Each entry represents an addendum sent with the transfer. Please reach out to
+          #   [support@increase.com](mailto:support@increase.com) to send more than one
+          #   addendum.
           sig { returns(T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry]) }
           def entries
           end
@@ -326,6 +374,7 @@ module Increase
           def entries=(_)
           end
 
+          # Unstructured `payment_related_information` passed through with the transfer.
           sig do
             params(entries: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::Freeform::Entry])
               .returns(T.attached_class)
@@ -338,6 +387,7 @@ module Increase
           end
 
           class Entry < Increase::BaseModel
+            # The payment related information passed in the addendum.
             sig { returns(String) }
             def payment_related_information
             end
@@ -357,6 +407,7 @@ module Increase
         end
 
         class PaymentOrderRemittanceAdvice < Increase::BaseModel
+          # ASC X12 RMR records for this specific transfer.
           sig do
             returns(
               T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
@@ -376,6 +427,8 @@ module Increase
           def invoices=(_)
           end
 
+          # Structured ASC X12 820 remittance advice records. Please reach out to
+          #   [support@increase.com](mailto:support@increase.com) for more information.
           sig do
             params(
               invoices: T::Array[Increase::Models::ACHTransferCreateParams::Addenda::PaymentOrderRemittanceAdvice::Invoice]
@@ -397,6 +450,7 @@ module Increase
           end
 
           class Invoice < Increase::BaseModel
+            # The invoice number for this reference, determined in advance with the receiver.
             sig { returns(String) }
             def invoice_number
             end
@@ -405,6 +459,8 @@ module Increase
             def invoice_number=(_)
             end
 
+            # The amount that was paid for this invoice in the minor unit of its currency. For
+            #   dollars, for example, this is cents.
             sig { returns(Integer) }
             def paid_amount
             end
@@ -424,6 +480,8 @@ module Increase
         end
       end
 
+      # The type of entity that owns the account to which the ACH Transfer is being
+      #   sent.
       class DestinationAccountHolder < Increase::Enum
         abstract!
 
@@ -443,6 +501,7 @@ module Increase
         end
       end
 
+      # The type of the account to which the transfer will be sent.
       class Funding < Increase::Enum
         abstract!
 
@@ -460,6 +519,8 @@ module Increase
       end
 
       class PreferredEffectiveDate < Increase::BaseModel
+        # A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
+        #   use as the effective date when submitting this transfer.
         sig { returns(T.nilable(Date)) }
         def date
         end
@@ -468,6 +529,7 @@ module Increase
         def date=(_)
         end
 
+        # A schedule by which Increase will choose an effective date for the transfer.
         sig { returns(T.nilable(Symbol)) }
         def settlement_schedule
         end
@@ -476,6 +538,10 @@ module Increase
         def settlement_schedule=(_)
         end
 
+        # Configuration for how the effective date of the transfer will be set. This
+        #   determines same-day vs future-dated settlement timing. If not set, defaults to a
+        #   `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
+        #   must be set.
         sig { params(date: Date, settlement_schedule: Symbol).returns(T.attached_class) }
         def self.new(date: nil, settlement_schedule: nil)
         end
@@ -484,6 +550,7 @@ module Increase
         def to_hash
         end
 
+        # A schedule by which Increase will choose an effective date for the transfer.
         class SettlementSchedule < Increase::Enum
           abstract!
 
@@ -501,6 +568,7 @@ module Increase
         end
       end
 
+      # The Standard Entry Class (SEC) code to use for the transfer.
       class StandardEntryClassCode < Increase::Enum
         abstract!
 
@@ -523,6 +591,7 @@ module Increase
         end
       end
 
+      # The timing of the transaction.
       class TransactionTiming < Increase::Enum
         abstract!
 

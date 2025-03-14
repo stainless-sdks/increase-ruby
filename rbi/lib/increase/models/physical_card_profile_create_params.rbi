@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The identifier of the File containing the physical card's carrier image.
       sig { returns(String) }
       def carrier_image_file_id
       end
@@ -14,6 +15,7 @@ module Increase
       def carrier_image_file_id=(_)
       end
 
+      # A phone number the user can contact to receive support for their card.
       sig { returns(String) }
       def contact_phone
       end
@@ -22,6 +24,7 @@ module Increase
       def contact_phone=(_)
       end
 
+      # A description you can use to identify the Card Profile.
       sig { returns(String) }
       def description
       end
@@ -30,6 +33,7 @@ module Increase
       def description=(_)
       end
 
+      # The identifier of the File containing the physical card's front image.
       sig { returns(String) }
       def front_image_file_id
       end

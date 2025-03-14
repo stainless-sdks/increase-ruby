@@ -19,7 +19,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountNumber]
-      #
       def create(params)
         parsed, options = Increase::Models::AccountNumberCreateParams.dump_request(params)
         @client.request(
@@ -40,7 +39,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountNumber]
-      #
       def retrieve(account_number_id, params = {})
         @client.request(
           method: :get,
@@ -68,7 +66,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::AccountNumber]
-      #
       def update(account_number_id, params = {})
         parsed, options = Increase::Models::AccountNumberUpdateParams.dump_request(params)
         @client.request(
@@ -105,7 +102,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::AccountNumber>]
-      #
       def list(params = {})
         parsed, options = Increase::Models::AccountNumberListParams.dump_request(params)
         @client.request(
@@ -119,7 +115,6 @@ module Increase
       end
 
       # @param client [Increase::Client]
-      #
       def initialize(client:)
         @client = client
       end

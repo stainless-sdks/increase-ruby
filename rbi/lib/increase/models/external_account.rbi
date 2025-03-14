@@ -3,6 +3,7 @@
 module Increase
   module Models
     class ExternalAccount < Increase::BaseModel
+      # The External Account's identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The type of entity that owns the External Account.
       sig { returns(Symbol) }
       def account_holder
       end
@@ -19,6 +21,7 @@ module Increase
       def account_holder=(_)
       end
 
+      # The destination account number.
       sig { returns(String) }
       def account_number
       end
@@ -27,6 +30,8 @@ module Increase
       def account_number=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the External Account was created.
       sig { returns(Time) }
       def created_at
       end
@@ -35,6 +40,7 @@ module Increase
       def created_at=(_)
       end
 
+      # The External Account's description for display purposes.
       sig { returns(String) }
       def description
       end
@@ -43,6 +49,7 @@ module Increase
       def description=(_)
       end
 
+      # The type of the account to which the transfer will be sent.
       sig { returns(Symbol) }
       def funding
       end
@@ -51,6 +58,9 @@ module Increase
       def funding=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -59,6 +69,7 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # The American Bankers' Association (ABA) Routing Transit Number (RTN).
       sig { returns(String) }
       def routing_number
       end
@@ -67,6 +78,7 @@ module Increase
       def routing_number=(_)
       end
 
+      # The External Account's status.
       sig { returns(Symbol) }
       def status
       end
@@ -75,6 +87,8 @@ module Increase
       def status=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `external_account`.
       sig { returns(Symbol) }
       def type
       end
@@ -83,6 +97,7 @@ module Increase
       def type=(_)
       end
 
+      # If you have verified ownership of the External Account.
       sig { returns(Symbol) }
       def verification_status
       end
@@ -91,6 +106,8 @@ module Increase
       def verification_status=(_)
       end
 
+      # External Accounts represent accounts at financial institutions other than
+      #   Increase. You can use this API to store their details for reuse.
       sig do
         params(
           id: String,
@@ -143,6 +160,7 @@ module Increase
       def to_hash
       end
 
+      # The type of entity that owns the External Account.
       class AccountHolder < Increase::Enum
         abstract!
 
@@ -162,6 +180,7 @@ module Increase
         end
       end
 
+      # The type of the account to which the transfer will be sent.
       class Funding < Increase::Enum
         abstract!
 
@@ -181,6 +200,7 @@ module Increase
         end
       end
 
+      # The External Account's status.
       class Status < Increase::Enum
         abstract!
 
@@ -197,6 +217,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `external_account`.
       class Type < Increase::Enum
         abstract!
 
@@ -209,6 +231,7 @@ module Increase
         end
       end
 
+      # If you have verified ownership of the External Account.
       class VerificationStatus < Increase::Enum
         abstract!
 

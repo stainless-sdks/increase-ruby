@@ -3,6 +3,7 @@
 module Increase
   module Models
     class PhysicalCardProfile < Increase::BaseModel
+      # The Card Profile identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The identifier of the File containing the physical card's back image.
       sig { returns(T.nilable(String)) }
       def back_image_file_id
       end
@@ -19,6 +21,7 @@ module Increase
       def back_image_file_id=(_)
       end
 
+      # The identifier of the File containing the physical card's carrier image.
       sig { returns(T.nilable(String)) }
       def carrier_image_file_id
       end
@@ -27,6 +30,7 @@ module Increase
       def carrier_image_file_id=(_)
       end
 
+      # A phone number the user can contact to receive support for their card.
       sig { returns(T.nilable(String)) }
       def contact_phone
       end
@@ -35,6 +39,8 @@ module Increase
       def contact_phone=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the Card Dispute was created.
       sig { returns(Time) }
       def created_at
       end
@@ -43,6 +49,7 @@ module Increase
       def created_at=(_)
       end
 
+      # The creator of this Physical Card Profile.
       sig { returns(Symbol) }
       def creator
       end
@@ -51,6 +58,7 @@ module Increase
       def creator=(_)
       end
 
+      # A description you can use to identify the Physical Card Profile.
       sig { returns(String) }
       def description
       end
@@ -59,6 +67,7 @@ module Increase
       def description=(_)
       end
 
+      # The identifier of the File containing the physical card's front image.
       sig { returns(T.nilable(String)) }
       def front_image_file_id
       end
@@ -67,6 +76,9 @@ module Increase
       def front_image_file_id=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -75,6 +87,8 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # Whether this Physical Card Profile is the default for all cards in its Increase
+      #   group.
       sig { returns(T::Boolean) }
       def is_default
       end
@@ -83,6 +97,7 @@ module Increase
       def is_default=(_)
       end
 
+      # The status of the Physical Card Profile.
       sig { returns(Symbol) }
       def status
       end
@@ -91,6 +106,8 @@ module Increase
       def status=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `physical_card_profile`.
       sig { returns(Symbol) }
       def type
       end
@@ -99,6 +116,9 @@ module Increase
       def type=(_)
       end
 
+      # This contains artwork and metadata relating to a Physical Card's appearance. For
+      #   more information, see our guide on
+      #   [physical card artwork](https://increase.com/documentation/card-art-physical-cards).
       sig do
         params(
           id: String,
@@ -154,6 +174,7 @@ module Increase
       def to_hash
       end
 
+      # The creator of this Physical Card Profile.
       class Creator < Increase::Enum
         abstract!
 
@@ -170,6 +191,7 @@ module Increase
         end
       end
 
+      # The status of the Physical Card Profile.
       class Status < Increase::Enum
         abstract!
 
@@ -198,6 +220,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `physical_card_profile`.
       class Type < Increase::Enum
         abstract!
 

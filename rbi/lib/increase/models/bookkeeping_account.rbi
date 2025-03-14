@@ -3,6 +3,7 @@
 module Increase
   module Models
     class BookkeepingAccount < Increase::BaseModel
+      # The account identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The API Account associated with this bookkeeping account.
       sig { returns(T.nilable(String)) }
       def account_id
       end
@@ -19,6 +21,7 @@ module Increase
       def account_id=(_)
       end
 
+      # The compliance category of the account.
       sig { returns(T.nilable(Symbol)) }
       def compliance_category
       end
@@ -27,6 +30,7 @@ module Increase
       def compliance_category=(_)
       end
 
+      # The Entity associated with this bookkeeping account.
       sig { returns(T.nilable(String)) }
       def entity_id
       end
@@ -35,6 +39,9 @@ module Increase
       def entity_id=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -43,6 +50,7 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # The name you choose for the account.
       sig { returns(String) }
       def name
       end
@@ -51,6 +59,8 @@ module Increase
       def name=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `bookkeeping_account`.
       sig { returns(Symbol) }
       def type
       end
@@ -59,6 +69,9 @@ module Increase
       def type=(_)
       end
 
+      # Accounts are T-accounts. They can store accounting entries. Your compliance
+      #   setup might require annotating money movements using this API. Learn more in our
+      #   [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
       sig do
         params(
           id: String,
@@ -91,6 +104,7 @@ module Increase
       def to_hash
       end
 
+      # The compliance category of the account.
       class ComplianceCategory < Increase::Enum
         abstract!
 
@@ -107,6 +121,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `bookkeeping_account`.
       class Type < Increase::Enum
         abstract!
 

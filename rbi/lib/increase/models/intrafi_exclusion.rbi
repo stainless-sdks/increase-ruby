@@ -3,6 +3,7 @@
 module Increase
   module Models
     class IntrafiExclusion < Increase::BaseModel
+      # The identifier of this exclusion request.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The name of the excluded institution.
       sig { returns(String) }
       def bank_name
       end
@@ -19,6 +21,8 @@ module Increase
       def bank_name=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the exclusion was created.
       sig { returns(Time) }
       def created_at
       end
@@ -27,6 +31,7 @@ module Increase
       def created_at=(_)
       end
 
+      # The entity for which this institution is excluded.
       sig { returns(String) }
       def entity_id
       end
@@ -35,6 +40,7 @@ module Increase
       def entity_id=(_)
       end
 
+      # When this was exclusion was confirmed by IntraFi.
       sig { returns(T.nilable(Time)) }
       def excluded_at
       end
@@ -43,6 +49,8 @@ module Increase
       def excluded_at=(_)
       end
 
+      # The Federal Deposit Insurance Corporation's certificate number for the
+      #   institution.
       sig { returns(T.nilable(String)) }
       def fdic_certificate_number
       end
@@ -51,6 +59,9 @@ module Increase
       def fdic_certificate_number=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -59,6 +70,7 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # The status of the exclusion request.
       sig { returns(Symbol) }
       def status
       end
@@ -67,6 +79,7 @@ module Increase
       def status=(_)
       end
 
+      # When this was exclusion was submitted to IntraFi by Increase.
       sig { returns(T.nilable(Time)) }
       def submitted_at
       end
@@ -75,6 +88,8 @@ module Increase
       def submitted_at=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `intrafi_exclusion`.
       sig { returns(Symbol) }
       def type
       end
@@ -83,6 +98,10 @@ module Increase
       def type=(_)
       end
 
+      # Certain institutions may be excluded per Entity when sweeping funds into the
+      #   IntraFi network. This is useful when an Entity already has deposits at a
+      #   particular bank, and does not want to sweep additional funds to it. It may take
+      #   5 business days for an exclusion to be processed.
       sig do
         params(
           id: String,
@@ -132,6 +151,7 @@ module Increase
       def to_hash
       end
 
+      # The status of the exclusion request.
       class Status < Increase::Enum
         abstract!
 
@@ -151,6 +171,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `intrafi_exclusion`.
       class Type < Increase::Enum
         abstract!
 

@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The identifier of the File containing the card's icon image.
       sig { returns(String) }
       def app_icon_file_id
       end
@@ -14,6 +15,7 @@ module Increase
       def app_icon_file_id=(_)
       end
 
+      # The identifier of the File containing the card's front image.
       sig { returns(String) }
       def background_image_file_id
       end
@@ -22,6 +24,7 @@ module Increase
       def background_image_file_id=(_)
       end
 
+      # A user-facing description for the card itself.
       sig { returns(String) }
       def card_description
       end
@@ -30,6 +33,7 @@ module Increase
       def card_description=(_)
       end
 
+      # A description you can use to identify the Card Profile.
       sig { returns(String) }
       def description
       end
@@ -38,6 +42,7 @@ module Increase
       def description=(_)
       end
 
+      # A user-facing description for whoever is issuing the card.
       sig { returns(String) }
       def issuer_name
       end
@@ -46,6 +51,7 @@ module Increase
       def issuer_name=(_)
       end
 
+      # An email address the user can contact to receive support for their card.
       sig { returns(T.nilable(String)) }
       def contact_email
       end
@@ -54,6 +60,7 @@ module Increase
       def contact_email=(_)
       end
 
+      # A phone number the user can contact to receive support for their card.
       sig { returns(T.nilable(String)) }
       def contact_phone
       end
@@ -62,6 +69,7 @@ module Increase
       def contact_phone=(_)
       end
 
+      # A website the user can visit to view and receive support for their card.
       sig { returns(T.nilable(String)) }
       def contact_website
       end
@@ -70,6 +78,7 @@ module Increase
       def contact_website=(_)
       end
 
+      # The Card's text color, specified as an RGB triple. The default is white.
       sig { returns(T.nilable(Increase::Models::DigitalCardProfileCreateParams::TextColor)) }
       def text_color
       end
@@ -131,6 +140,7 @@ module Increase
       end
 
       class TextColor < Increase::BaseModel
+        # The value of the blue channel in the RGB color.
         sig { returns(Integer) }
         def blue
         end
@@ -139,6 +149,7 @@ module Increase
         def blue=(_)
         end
 
+        # The value of the green channel in the RGB color.
         sig { returns(Integer) }
         def green
         end
@@ -147,6 +158,7 @@ module Increase
         def green=(_)
         end
 
+        # The value of the red channel in the RGB color.
         sig { returns(Integer) }
         def red
         end
@@ -155,6 +167,7 @@ module Increase
         def red=(_)
         end
 
+        # The Card's text color, specified as an RGB triple. The default is white.
         sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
         def self.new(blue:, green:, red:)
         end
