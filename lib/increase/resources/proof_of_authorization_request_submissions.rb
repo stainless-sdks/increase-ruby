@@ -25,6 +25,8 @@ module Increase
       #
       #   @option params [Boolean] :validated_account_ownership_with_microdeposit Whether the account ownership was validated with a microdeposit.
       #
+      #   @option params [String] :additional_evidence_file_id The File containing the check's front image.
+      #
       #   @option params [String] :authorizer_company Company of the authorizer.
       #
       #   @option params [String] :authorizer_ip_address IP address of the authorizer.

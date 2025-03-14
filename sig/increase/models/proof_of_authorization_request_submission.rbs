@@ -3,6 +3,7 @@ module Increase
     type proof_of_authorization_request_submission =
       {
         id: String,
+        additional_evidence_file_id: String?,
         authorization_terms: String,
         authorized_at: Time,
         authorizer_company: String?,
@@ -23,6 +24,8 @@ module Increase
 
     class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
       attr_accessor id: String
+
+      attr_accessor additional_evidence_file_id: String?
 
       attr_accessor authorization_terms: String
 
@@ -59,6 +62,7 @@ module Increase
       def initialize:
         (
           id: String,
+          additional_evidence_file_id: String?,
           authorization_terms: String,
           authorized_at: Time,
           authorizer_company: String?,

@@ -61,6 +61,16 @@ module Increase
       #   @return [Boolean]
       required :validated_account_ownership_with_microdeposit, Increase::BooleanModel
 
+      # @!attribute [r] additional_evidence_file_id
+      #   The File containing the check's front image.
+      #
+      #   @return [String, nil]
+      optional :additional_evidence_file_id, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :additional_evidence_file_id
+
       # @!attribute [r] authorizer_company
       #   Company of the authorizer.
       #
@@ -91,6 +101,7 @@ module Increase
       #   # @param validated_account_ownership_via_credential [Boolean]
       #   # @param validated_account_ownership_with_account_statement [Boolean]
       #   # @param validated_account_ownership_with_microdeposit [Boolean]
+      #   # @param additional_evidence_file_id [String]
       #   # @param authorizer_company [String]
       #   # @param authorizer_ip_address [String]
       #   # @param request_options [Increase::RequestOptions, Hash{Symbol=>Object}]
@@ -105,6 +116,7 @@ module Increase
       #     validated_account_ownership_via_credential:,
       #     validated_account_ownership_with_account_statement:,
       #     validated_account_ownership_with_microdeposit:,
+      #     additional_evidence_file_id: nil,
       #     authorizer_company: nil,
       #     authorizer_ip_address: nil,
       #     request_options: {},

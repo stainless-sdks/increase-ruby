@@ -11,6 +11,7 @@ module Increase
         validated_account_ownership_via_credential: bool,
         validated_account_ownership_with_account_statement: bool,
         validated_account_ownership_with_microdeposit: bool,
+        additional_evidence_file_id: String,
         authorizer_company: String,
         authorizer_ip_address: String
       }
@@ -38,6 +39,10 @@ module Increase
 
       attr_accessor validated_account_ownership_with_microdeposit: bool
 
+      attr_reader additional_evidence_file_id: String?
+
+      def additional_evidence_file_id=: (String) -> String
+
       attr_reader authorizer_company: String?
 
       def authorizer_company=: (String) -> String
@@ -57,6 +62,7 @@ module Increase
           validated_account_ownership_via_credential: bool,
           validated_account_ownership_with_account_statement: bool,
           validated_account_ownership_with_microdeposit: bool,
+          additional_evidence_file_id: String,
           authorizer_company: String,
           authorizer_ip_address: String,
           request_options: Increase::request_opts

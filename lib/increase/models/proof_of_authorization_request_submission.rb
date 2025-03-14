@@ -9,6 +9,12 @@ module Increase
       #   @return [String]
       required :id, String
 
+      # @!attribute additional_evidence_file_id
+      #   File containing additional evidence.
+      #
+      #   @return [String, nil]
+      required :additional_evidence_file_id, String, nil?: true
+
       # @!attribute authorization_terms
       #   Terms of authorization.
       #
@@ -116,6 +122,7 @@ module Increase
       #   #   terms.
       #   #
       #   # @param id [String]
+      #   # @param additional_evidence_file_id [String, nil]
       #   # @param authorization_terms [String]
       #   # @param authorized_at [Time]
       #   # @param authorizer_company [String, nil]
@@ -135,6 +142,7 @@ module Increase
       #   #
       #   def initialize(
       #     id:,
+      #     additional_evidence_file_id:,
       #     authorization_terms:,
       #     authorized_at:,
       #     authorizer_company:,

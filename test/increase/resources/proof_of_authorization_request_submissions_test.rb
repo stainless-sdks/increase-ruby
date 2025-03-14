@@ -23,6 +23,7 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < In
     assert_pattern do
       response => {
         id: String,
+        additional_evidence_file_id: String | nil,
         authorization_terms: String,
         authorized_at: Time,
         authorizer_company: String | nil,
@@ -55,6 +56,7 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < In
     assert_pattern do
       response => {
         id: String,
+        additional_evidence_file_id: String | nil,
         authorization_terms: String,
         authorized_at: Time,
         authorizer_company: String | nil,
@@ -90,6 +92,7 @@ class Increase::Test::Resources::ProofOfAuthorizationRequestSubmissionsTest < In
     assert_pattern do
       row => {
         id: String,
+        additional_evidence_file_id: String | nil,
         authorization_terms: String,
         authorized_at: Time,
         authorizer_company: String | nil,
