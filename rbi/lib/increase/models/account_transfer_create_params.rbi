@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The identifier for the account that will send the transfer.
       sig { returns(String) }
       def account_id
       end
@@ -15,8 +14,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The transfer amount in the minor unit of the account currency. For dollars, for
-      #   example, this is cents.
       sig { returns(Integer) }
       def amount
       end
@@ -25,7 +22,6 @@ module Increase
       def amount=(_)
       end
 
-      # The description you choose to give the transfer.
       sig { returns(String) }
       def description
       end
@@ -34,7 +30,6 @@ module Increase
       def description=(_)
       end
 
-      # The identifier for the account that will receive the transfer.
       sig { returns(String) }
       def destination_account_id
       end
@@ -43,7 +38,6 @@ module Increase
       def destination_account_id=(_)
       end
 
-      # Whether the transfer requires explicit approval via the dashboard or API.
       sig { returns(T.nilable(T::Boolean)) }
       def require_approval
       end

@@ -7,7 +7,6 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
-        # The identifier of the Account the tax document is for.
         sig { returns(String) }
         def account_id
         end

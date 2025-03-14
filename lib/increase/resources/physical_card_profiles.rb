@@ -18,6 +18,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCardProfile]
+      #
       def create(params)
         parsed, options = Increase::Models::PhysicalCardProfileCreateParams.dump_request(params)
         @client.request(
@@ -38,6 +39,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCardProfile]
+      #
       def retrieve(physical_card_profile_id, params = {})
         @client.request(
           method: :get,
@@ -66,6 +68,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::PhysicalCardProfile>]
+      #
       def list(params = {})
         parsed, options = Increase::Models::PhysicalCardProfileListParams.dump_request(params)
         @client.request(
@@ -87,6 +90,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCardProfile]
+      #
       def archive(physical_card_profile_id, params = {})
         @client.request(
           method: :post,
@@ -116,6 +120,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::PhysicalCardProfile]
+      #
       def clone_(physical_card_profile_id, params = {})
         parsed, options = Increase::Models::PhysicalCardProfileCloneParams.dump_request(params)
         @client.request(
@@ -128,6 +133,7 @@ module Increase
       end
 
       # @param client [Increase::Client]
+      #
       def initialize(client:)
         @client = client
       end

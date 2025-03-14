@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The reason to return the Inbound Check Deposit.
       sig { returns(Symbol) }
       def reason
       end
@@ -26,7 +25,6 @@ module Increase
       def to_hash
       end
 
-      # The reason to return the Inbound Check Deposit.
       class Reason < Increase::Enum
         abstract!
 

@@ -3,17 +3,20 @@
 module Increase
   # rubocop:disable Metrics/ModuleLength
 
-  # @api private
+  # @private
+  #
   module Util
-    # @api private
+    # @private
     #
     # @return [Float]
+    #
     def self.monotonic_secs = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 
     class << self
-      # @api private
+      # @private
       #
       # @return [String]
+      #
       def arch
         case (arch = RbConfig::CONFIG["arch"])&.downcase
         in nil
@@ -29,9 +32,10 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # @return [String]
+      #
       def os
         case (host = RbConfig::CONFIG["host_os"])&.downcase
         in nil
@@ -53,11 +57,12 @@ module Increase
     end
 
     class << self
-      # @api private
+      # @private
       #
       # @param input [Object]
       #
       # @return [Boolean, Object]
+      #
       def primitive?(input)
         case input
         in true | false | Integer | Float | Symbol | String
@@ -67,11 +72,12 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # @param input [Object]
       #
       # @return [Boolean, Object]
+      #
       def coerce_boolean(input)
         case input.is_a?(String) ? input.downcase : input
         in Numeric
@@ -85,12 +91,13 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # @param input [Object]
       #
       # @raise [ArgumentError]
       # @return [Boolean, nil]
+      #
       def coerce_boolean!(input)
         case coerce_boolean(input)
         in true | false | nil => coerced
@@ -100,11 +107,12 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # @param input [Object]
       #
       # @return [Integer, Object]
+      #
       def coerce_integer(input)
         case input
         in true
@@ -116,11 +124,12 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # @param input [Object]
       #
       # @return [Float, Object]
+      #
       def coerce_float(input)
         case input
         in true
@@ -132,11 +141,12 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # @param input [Object]
       #
       # @return [Hash{Object=>Object}, Object]
+      #
       def coerce_hash(input)
         case input
         in NilClass | Array | Set | Enumerator
@@ -155,13 +165,14 @@ module Increase
     OMIT = Object.new.freeze
 
     class << self
-      # @api private
+      # @private
       #
       # @param lhs [Object]
       # @param rhs [Object]
       # @param concat [Boolean]
       #
       # @return [Object]
+      #
       private def deep_merge_lr(lhs, rhs, concat: false)
         case [lhs, rhs, concat]
         in [Hash, Hash, _]
@@ -180,7 +191,7 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # Recursively merge one hash with another. If the values at a given key are not
       #   both hashes, just take the new value.
@@ -192,6 +203,7 @@ module Increase
       # @param concat [Boolean] whether to merge sequences by concatenation.
       #
       # @return [Object]
+      #
       def deep_merge(*values, sentinel: nil, concat: false)
         case values
         in [value, *values]
@@ -203,7 +215,7 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # @param data [Hash{Symbol=>Object}, Array<Object>, Object]
       # @param pick [Symbol, Integer, Array<Symbol, Integer>, nil]
@@ -211,6 +223,7 @@ module Increase
       # @param blk [Proc, nil]
       #
       # @return [Object, nil]
+      #
       def dig(data, pick, sentinel = nil, &blk)
         case [data, pick, blk]
         in [_, nil, nil]
@@ -235,20 +248,22 @@ module Increase
     end
 
     class << self
-      # @api private
+      # @private
       #
       # @param uri [URI::Generic]
       #
       # @return [String]
+      #
       def uri_origin(uri)
         "#{uri.scheme}://#{uri.host}#{uri.port == uri.default_port ? '' : ":#{uri.port}"}"
       end
 
-      # @api private
+      # @private
       #
       # @param path [String, Array<String>]
       #
       # @return [String]
+      #
       def interpolate_path(path)
         case path
         in String
@@ -263,37 +278,40 @@ module Increase
     end
 
     class << self
-      # @api private
+      # @private
       #
       # @param query [String, nil]
       #
       # @return [Hash{String=>Array<String>}]
+      #
       def decode_query(query)
         CGI.parse(query.to_s)
       end
 
-      # @api private
+      # @private
       #
       # @param query [Hash{String=>Array<String>, String, nil}, nil]
       #
       # @return [String, nil]
+      #
       def encode_query(query)
         query.to_h.empty? ? nil : URI.encode_www_form(query)
       end
     end
 
     class << self
-      # @api private
+      # @private
       #
       # @param url [URI::Generic, String]
       #
       # @return [Hash{Symbol=>String, Integer, nil}]
+      #
       def parse_uri(url)
         parsed = URI::Generic.component.zip(URI.split(url)).to_h
         {**parsed, query: decode_query(parsed.fetch(:query))}
       end
 
-      # @api private
+      # @private
       #
       # @param parsed [Hash{Symbol=>String, Integer, nil}] .
       #
@@ -308,11 +326,12 @@ module Increase
       #   @option parsed [Hash{String=>Array<String>}] :query
       #
       # @return [URI::Generic]
+      #
       def unparse_uri(parsed)
         URI::Generic.build(**parsed, query: encode_query(parsed.fetch(:query)))
       end
 
-      # @api private
+      # @private
       #
       # @param lhs [Hash{Symbol=>String, Integer, nil}] .
       #
@@ -339,6 +358,7 @@ module Increase
       #   @option rhs [Hash{String=>Array<String>}] :query
       #
       # @return [URI::Generic]
+      #
       def join_parsed_uri(lhs, rhs)
         base_path, base_query = lhs.fetch_values(:path, :query)
         slashed = base_path.end_with?("/") ? base_path : "#{base_path}/"
@@ -360,11 +380,12 @@ module Increase
     end
 
     class << self
-      # @api private
+      # @private
       #
       # @param headers [Hash{String=>String, Integer, Array<String, Integer, nil>, nil}]
       #
       # @return [Hash{String=>String}]
+      #
       def normalized_headers(*headers)
         {}.merge(*headers.compact).to_h do |key, val|
           case val
@@ -378,15 +399,16 @@ module Increase
       end
     end
 
-    # @api private
+    # @private
     #
     # An adapter that satisfies the IO interface required by `::IO.copy_stream`
     class ReadIOAdapter
-      # @api private
+      # @private
       #
       # @param max_len [Integer, nil]
       #
       # @return [String]
+      #
       private def read_enum(max_len)
         case max_len
         in nil
@@ -400,12 +422,13 @@ module Increase
         @buf.slice!(0..)
       end
 
-      # @api private
+      # @private
       #
       # @param max_len [Integer, nil]
       # @param out_string [String, nil]
       #
       # @return [String, nil]
+      #
       def read(max_len = nil, out_string = nil)
         case @stream
         in nil
@@ -424,10 +447,11 @@ module Increase
           .tap(&@blk)
       end
 
-      # @api private
+      # @private
       #
       # @param stream [String, IO, StringIO, Enumerable]
       # @param blk [Proc]
+      #
       def initialize(stream, &blk)
         @stream = stream.is_a?(String) ? StringIO.new(stream) : stream
         @buf = String.new.b
@@ -439,6 +463,7 @@ module Increase
       # @param blk [Proc]
       #
       # @return [Enumerable]
+      #
       def string_io(&blk)
         Enumerator.new do |y|
           y.define_singleton_method(:write) do
@@ -452,12 +477,13 @@ module Increase
     end
 
     class << self
-      # @api private
+      # @private
       #
       # @param y [Enumerator::Yielder]
       # @param boundary [String]
       # @param key [Symbol, String]
       # @param val [Object]
+      #
       private def encode_multipart_formdata(y, boundary:, key:, val:)
         y << "--#{boundary}\r\n"
         y << "Content-Disposition: form-data"
@@ -490,11 +516,12 @@ module Increase
         y << "\r\n"
       end
 
-      # @api private
+      # @private
       #
       # @param body [Object]
       #
       # @return [Array(String, Enumerable)]
+      #
       private def encode_multipart_streaming(body)
         boundary = SecureRandom.urlsafe_base64(60)
 
@@ -520,19 +547,18 @@ module Increase
         [boundary, strio]
       end
 
-      # @api private
+      # @private
       #
       # @param headers [Hash{String=>String}]
       # @param body [Object]
       #
       # @return [Object]
+      #
       def encode_content(headers, body)
         content_type = headers["content-type"]
         case [content_type, body]
         in [%r{^application/(?:vnd\.api\+)?json}, Hash | Array]
           [headers, JSON.fast_generate(body)]
-        in [%r{^application/(?:x-)?jsonl}, Enumerable]
-          [headers, body.lazy.map { JSON.fast_generate(_1) }]
         in [%r{^multipart/form-data}, Hash | IO | StringIO]
           boundary, strio = encode_multipart_streaming(body)
           headers = {**headers, "content-type" => "#{content_type}; boundary=#{boundary}"}
@@ -544,7 +570,7 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # @param headers [Hash{String=>String}, Net::HTTPHeader]
       # @param stream [Enumerable]
@@ -552,6 +578,7 @@ module Increase
       #
       # @raise [JSON::ParserError]
       # @return [Object]
+      #
       def decode_content(headers, stream:, suppress_error: false)
         case headers["content-type"]
         in %r{^application/(?:vnd\.api\+)?json}
@@ -562,14 +589,14 @@ module Increase
             raise e unless suppress_error
             json
           end
+        in %r{^text/event-stream}
+          lines = decode_lines(stream)
+          decode_sse(lines)
         in %r{^application/(?:x-)?jsonl}
           lines = decode_lines(stream)
           chain_fused(lines) do |y|
             lines.each { y << JSON.parse(_1, symbolize_names: true) }
           end
-        in %r{^text/event-stream}
-          lines = decode_lines(stream)
-          decode_sse(lines)
         in %r{^text/}
           stream.to_a.join
         else
@@ -580,7 +607,7 @@ module Increase
     end
 
     class << self
-      # @api private
+      # @private
       #
       # https://doc.rust-lang.org/std/iter/trait.FusedIterator.html
       #
@@ -589,6 +616,7 @@ module Increase
       # @param close [Proc]
       #
       # @return [Enumerable]
+      #
       def fused_enum(enum, external: false, &close)
         fused = false
         iter = Enumerator.new do |y|
@@ -612,9 +640,10 @@ module Increase
         iter
       end
 
-      # @api private
+      # @private
       #
       # @param enum [Enumerable, nil]
+      #
       def close_fused!(enum)
         return unless enum.is_a?(Enumerator)
 
@@ -623,10 +652,11 @@ module Increase
         # rubocop:enable Lint/UnreachableLoop
       end
 
-      # @api private
+      # @private
       #
       # @param enum [Enumerable, nil]
       # @param blk [Proc]
+      #
       def chain_fused(enum, &blk)
         iter = Enumerator.new { blk.call(_1) }
         fused_enum(iter) { close_fused!(enum) }
@@ -634,11 +664,12 @@ module Increase
     end
 
     class << self
-      # @api private
+      # @private
       #
       # @param enum [Enumerable]
       #
       # @return [Enumerable]
+      #
       def decode_lines(enum)
         re = /(\r\n|\r|\n)/
         buffer = String.new.b
@@ -668,13 +699,14 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # https://html.spec.whatwg.org/multipage/server-sent-events.html#parsing-an-event-stream
       #
       # @param lines [Enumerable]
       #
       # @return [Hash{Symbol=>Object}]
+      #
       def decode_sse(lines)
         # rubocop:disable Metrics/BlockLength
         chain_fused(lines) do |y|

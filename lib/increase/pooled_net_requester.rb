@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
 module Increase
-  # @api private
+  # @private
+  #
   class PooledNetRequester
     class << self
-      # @api private
+      # @private
       #
       # @param url [URI::Generic]
       #
       # @return [Net::HTTP]
+      #
       def connect(url)
         port =
           case [url.port, url.scheme]
@@ -26,16 +28,17 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # @param conn [Net::HTTP]
       # @param deadline [Float]
+      #
       def calibrate_socket_timeout(conn, deadline)
         timeout = deadline - Increase::Util.monotonic_secs
         conn.open_timeout = conn.read_timeout = conn.write_timeout = conn.continue_timeout = timeout
       end
 
-      # @api private
+      # @private
       #
       # @param request [Hash{Symbol=>Object}] .
       #
@@ -48,6 +51,7 @@ module Increase
       # @param blk [Proc]
       #
       # @return [Net::HTTPGenericRequest]
+      #
       def build_request(request, &)
         method, url, headers, body = request.fetch_values(:method, :url, :headers, :body)
         req = Net::HTTPGenericRequest.new(
@@ -76,10 +80,11 @@ module Increase
       end
     end
 
-    # @api private
+    # @private
     #
     # @param url [URI::Generic]
     # @param blk [Proc]
+    #
     private def with_pool(url, &)
       origin = Increase::Util.uri_origin(url)
       pool =
@@ -92,7 +97,7 @@ module Increase
       pool.with(&)
     end
 
-    # @api private
+    # @private
     #
     # @param request [Hash{Symbol=>Object}] .
     #
@@ -107,6 +112,7 @@ module Increase
     #   @option request [Float] :deadline
     #
     # @return [Array(Net::HTTPResponse, Enumerable)]
+    #
     def execute(request)
       url, deadline = request.fetch_values(:url, :deadline)
 
@@ -152,9 +158,10 @@ module Increase
       [response, (response.body = body)]
     end
 
-    # @api private
+    # @private
     #
     # @param size [Integer]
+    #
     def initialize(size: Etc.nprocessors)
       @mutex = Mutex.new
       @size = size

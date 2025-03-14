@@ -87,9 +87,7 @@ module Increase
 
     private def self.known_variants: -> ::Array[[Symbol?, Proc]]
 
-    def self.derefed_variants: -> ::Array[[Symbol?, top]]
-
-    def self.variants: -> ::Array[top]
+    def self.variants: -> ::Array[[Symbol?, top]]
 
     private def self.discriminator: (Symbol property) -> void
 

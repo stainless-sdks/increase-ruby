@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The identifier of the File containing the physical card's carrier image.
       sig { returns(T.nilable(String)) }
       def carrier_image_file_id
       end
@@ -15,7 +14,6 @@ module Increase
       def carrier_image_file_id=(_)
       end
 
-      # A phone number the user can contact to receive support for their card.
       sig { returns(T.nilable(String)) }
       def contact_phone
       end
@@ -24,7 +22,6 @@ module Increase
       def contact_phone=(_)
       end
 
-      # A description you can use to identify the Card Profile.
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -33,7 +30,6 @@ module Increase
       def description=(_)
       end
 
-      # The identifier of the File containing the physical card's front image.
       sig { returns(T.nilable(String)) }
       def front_image_file_id
       end
@@ -42,8 +38,6 @@ module Increase
       def front_image_file_id=(_)
       end
 
-      # Text printed on the front of the card. Reach out to
-      #   [support@increase.com](mailto:support@increase.com) for more information.
       sig { returns(T.nilable(Increase::Models::PhysicalCardProfileCloneParams::FrontText)) }
       def front_text
       end
@@ -93,7 +87,6 @@ module Increase
       end
 
       class FrontText < Increase::BaseModel
-        # The first line of text on the front of the card.
         sig { returns(String) }
         def line1
         end
@@ -102,9 +95,6 @@ module Increase
         def line1=(_)
         end
 
-        # The second line of text on the front of the card. Providing a second line moves
-        #   the first line slightly higher and prints the second line in the spot where the
-        #   first line would have otherwise been printed.
         sig { returns(T.nilable(String)) }
         def line2
         end
@@ -113,8 +103,6 @@ module Increase
         def line2=(_)
         end
 
-        # Text printed on the front of the card. Reach out to
-        #   [support@increase.com](mailto:support@increase.com) for more information.
         sig { params(line1: String, line2: String).returns(T.attached_class) }
         def self.new(line1:, line2: nil)
         end

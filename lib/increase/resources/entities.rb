@@ -36,6 +36,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
+      #
       def create(params)
         parsed, options = Increase::Models::EntityCreateParams.dump_request(params)
         @client.request(
@@ -56,6 +57,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
+      #
       def retrieve(entity_id, params = {})
         @client.request(
           method: :get,
@@ -86,6 +88,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Entity>]
+      #
       def list(params = {})
         parsed, options = Increase::Models::EntityListParams.dump_request(params)
         @client.request(
@@ -108,6 +111,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
+      #
       def archive(entity_id, params = {})
         @client.request(
           method: :post,
@@ -130,6 +134,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
+      #
       def archive_beneficial_owner(entity_id, params)
         parsed, options = Increase::Models::EntityArchiveBeneficialOwnerParams.dump_request(params)
         @client.request(
@@ -155,6 +160,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
+      #
       def confirm(entity_id, params = {})
         parsed, options = Increase::Models::EntityConfirmParams.dump_request(params)
         @client.request(
@@ -178,6 +184,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
+      #
       def create_beneficial_owner(entity_id, params)
         parsed, options = Increase::Models::EntityCreateBeneficialOwnerParams.dump_request(params)
         @client.request(
@@ -201,6 +208,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
+      #
       def update_address(entity_id, params)
         parsed, options = Increase::Models::EntityUpdateAddressParams.dump_request(params)
         @client.request(
@@ -228,6 +236,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
+      #
       def update_beneficial_owner_address(entity_id, params)
         parsed, options = Increase::Models::EntityUpdateBeneficialOwnerAddressParams.dump_request(params)
         @client.request(
@@ -254,6 +263,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Entity]
+      #
       def update_industry_code(entity_id, params)
         parsed, options = Increase::Models::EntityUpdateIndustryCodeParams.dump_request(params)
         @client.request(
@@ -266,6 +276,7 @@ module Increase
       end
 
       # @param client [Increase::Client]
+      #
       def initialize(client:)
         @client = client
       end

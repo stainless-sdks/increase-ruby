@@ -16,6 +16,7 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckTransfer]
+        #
         def mail(check_transfer_id, params = {})
           @client.request(
             method: :post,
@@ -26,6 +27,7 @@ module Increase
         end
 
         # @param client [Increase::Client]
+        #
         def initialize(client:)
           @client = client
         end

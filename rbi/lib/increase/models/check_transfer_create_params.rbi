@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The identifier for the account that will send the transfer.
       sig { returns(String) }
       def account_id
       end
@@ -15,7 +14,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The transfer amount in USD cents.
       sig { returns(Integer) }
       def amount
       end
@@ -24,7 +22,6 @@ module Increase
       def amount=(_)
       end
 
-      # Whether Increase will print and mail the check or if you will do it yourself.
       sig { returns(Symbol) }
       def fulfillment_method
       end
@@ -33,8 +30,6 @@ module Increase
       def fulfillment_method=(_)
       end
 
-      # The identifier of the Account Number from which to send the transfer and print
-      #   on the check.
       sig { returns(String) }
       def source_account_number_id
       end
@@ -43,9 +38,6 @@ module Increase
       def source_account_number_id=(_)
       end
 
-      # Details relating to the physical check that Increase will print and mail. This
-      #   is required if `fulfillment_method` is equal to `physical_check`. It must not be
-      #   included if any other `fulfillment_method` is provided.
       sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck)) }
       def physical_check
       end
@@ -57,7 +49,6 @@ module Increase
       def physical_check=(_)
       end
 
-      # Whether the transfer requires explicit approval via the dashboard or API.
       sig { returns(T.nilable(T::Boolean)) }
       def require_approval
       end
@@ -66,9 +57,6 @@ module Increase
       def require_approval=(_)
       end
 
-      # Details relating to the custom fulfillment you will perform. This is required if
-      #   `fulfillment_method` is equal to `third_party`. It must not be included if any
-      #   other `fulfillment_method` is provided.
       sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::ThirdParty)) }
       def third_party
       end
@@ -123,7 +111,6 @@ module Increase
       def to_hash
       end
 
-      # Whether Increase will print and mail the check or if you will do it yourself.
       class FulfillmentMethod < Increase::Enum
         abstract!
 
@@ -141,7 +128,6 @@ module Increase
       end
 
       class PhysicalCheck < Increase::BaseModel
-        # Details for where Increase will mail the check.
         sig { returns(Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress) }
         def mailing_address
         end
@@ -153,7 +139,6 @@ module Increase
         def mailing_address=(_)
         end
 
-        # The descriptor that will be printed on the memo field on the check.
         sig { returns(String) }
         def memo
         end
@@ -162,7 +147,6 @@ module Increase
         def memo=(_)
         end
 
-        # The name that will be printed on the check in the 'To:' field.
         sig { returns(String) }
         def recipient_name
         end
@@ -171,9 +155,6 @@ module Increase
         def recipient_name=(_)
         end
 
-        # The check number Increase should print on the check. This should not contain
-        #   leading zeroes and must be unique across the `source_account_number`. If this is
-        #   omitted, Increase will generate a check number for you.
         sig { returns(T.nilable(String)) }
         def check_number
         end
@@ -182,7 +163,6 @@ module Increase
         def check_number=(_)
         end
 
-        # The descriptor that will be printed on the letter included with the check.
         sig { returns(T.nilable(String)) }
         def note
         end
@@ -191,9 +171,6 @@ module Increase
         def note=(_)
         end
 
-        # The return address to be printed on the check. If omitted this will default to
-        #   an Increase-owned address that will mark checks as delivery failed and shred
-        #   them.
         sig { returns(T.nilable(Increase::Models::CheckTransferCreateParams::PhysicalCheck::ReturnAddress)) }
         def return_address
         end
@@ -205,8 +182,6 @@ module Increase
         def return_address=(_)
         end
 
-        # The text that will appear as the signature on the check in cursive font. If not
-        #   provided, the check will be printed with 'No signature required'.
         sig { returns(T.nilable(String)) }
         def signature_text
         end
@@ -215,9 +190,6 @@ module Increase
         def signature_text=(_)
         end
 
-        # Details relating to the physical check that Increase will print and mail. This
-        #   is required if `fulfillment_method` is equal to `physical_check`. It must not be
-        #   included if any other `fulfillment_method` is provided.
         sig do
           params(
             mailing_address: Increase::Models::CheckTransferCreateParams::PhysicalCheck::MailingAddress,
@@ -259,7 +231,6 @@ module Increase
         end
 
         class MailingAddress < Increase::BaseModel
-          # The city component of the check's destination address.
           sig { returns(String) }
           def city
           end
@@ -268,7 +239,6 @@ module Increase
           def city=(_)
           end
 
-          # The first line of the address component of the check's destination address.
           sig { returns(String) }
           def line1
           end
@@ -277,7 +247,6 @@ module Increase
           def line1=(_)
           end
 
-          # The postal code component of the check's destination address.
           sig { returns(String) }
           def postal_code
           end
@@ -286,7 +255,6 @@ module Increase
           def postal_code=(_)
           end
 
-          # The US state component of the check's destination address.
           sig { returns(String) }
           def state
           end
@@ -295,7 +263,6 @@ module Increase
           def state=(_)
           end
 
-          # The second line of the address component of the check's destination address.
           sig { returns(T.nilable(String)) }
           def line2
           end
@@ -304,7 +271,6 @@ module Increase
           def line2=(_)
           end
 
-          # Details for where Increase will mail the check.
           sig do
             params(city: String, line1: String, postal_code: String, state: String, line2: String)
               .returns(T.attached_class)
@@ -320,7 +286,6 @@ module Increase
         end
 
         class ReturnAddress < Increase::BaseModel
-          # The city of the return address.
           sig { returns(String) }
           def city
           end
@@ -329,7 +294,6 @@ module Increase
           def city=(_)
           end
 
-          # The first line of the return address.
           sig { returns(String) }
           def line1
           end
@@ -338,7 +302,6 @@ module Increase
           def line1=(_)
           end
 
-          # The name of the return address.
           sig { returns(String) }
           def name
           end
@@ -347,7 +310,6 @@ module Increase
           def name=(_)
           end
 
-          # The postal code of the return address.
           sig { returns(String) }
           def postal_code
           end
@@ -356,7 +318,6 @@ module Increase
           def postal_code=(_)
           end
 
-          # The US state of the return address.
           sig { returns(String) }
           def state
           end
@@ -365,7 +326,6 @@ module Increase
           def state=(_)
           end
 
-          # The second line of the return address.
           sig { returns(T.nilable(String)) }
           def line2
           end
@@ -374,9 +334,6 @@ module Increase
           def line2=(_)
           end
 
-          # The return address to be printed on the check. If omitted this will default to
-          #   an Increase-owned address that will mark checks as delivery failed and shred
-          #   them.
           sig do
             params(
               city: String,
@@ -408,9 +365,6 @@ module Increase
       end
 
       class ThirdParty < Increase::BaseModel
-        # The check number you will print on the check. This should not contain leading
-        #   zeroes. If this is omitted, Increase will generate a check number for you; you
-        #   should inspect the response and use that check number.
         sig { returns(T.nilable(String)) }
         def check_number
         end
@@ -419,9 +373,6 @@ module Increase
         def check_number=(_)
         end
 
-        # Details relating to the custom fulfillment you will perform. This is required if
-        #   `fulfillment_method` is equal to `third_party`. It must not be included if any
-        #   other `fulfillment_method` is provided.
         sig { params(check_number: String).returns(T.attached_class) }
         def self.new(check_number: nil)
         end

@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The identifier for the account to be added to IntraFi.
       sig { returns(String) }
       def account_id
       end
@@ -15,7 +14,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The contact email for the account owner, to be shared with IntraFi.
       sig { returns(String) }
       def email_address
       end

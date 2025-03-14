@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The status to update the Event Subscription with.
       sig { returns(T.nilable(Symbol)) }
       def status
       end
@@ -26,7 +25,6 @@ module Increase
       def to_hash
       end
 
-      # The status to update the Event Subscription with.
       class Status < Increase::Enum
         abstract!
 

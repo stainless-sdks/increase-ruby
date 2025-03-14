@@ -12,6 +12,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
+      #
       def retrieve(inbound_ach_transfer_id, params = {})
         @client.request(
           method: :get,
@@ -41,6 +42,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::InboundACHTransfer>]
+      #
       def list(params = {})
         parsed, options = Increase::Models::InboundACHTransferListParams.dump_request(params)
         @client.request(
@@ -67,6 +69,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
+      #
       def create_notification_of_change(inbound_ach_transfer_id, params = {})
         parsed, options = Increase::Models::InboundACHTransferCreateNotificationOfChangeParams.dump_request(params)
         @client.request(
@@ -91,6 +94,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
+      #
       def decline(inbound_ach_transfer_id, params = {})
         parsed, options = Increase::Models::InboundACHTransferDeclineParams.dump_request(params)
         @client.request(
@@ -115,6 +119,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::InboundACHTransfer]
+      #
       def transfer_return(inbound_ach_transfer_id, params)
         parsed, options = Increase::Models::InboundACHTransferTransferReturnParams.dump_request(params)
         @client.request(
@@ -127,6 +132,7 @@ module Increase
       end
 
       # @param client [Increase::Client]
+      #
       def initialize(client:)
         @client = client
       end

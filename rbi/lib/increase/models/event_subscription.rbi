@@ -3,7 +3,6 @@
 module Increase
   module Models
     class EventSubscription < Increase::BaseModel
-      # The event subscription identifier.
       sig { returns(String) }
       def id
       end
@@ -12,7 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The time the event subscription was created.
       sig { returns(Time) }
       def created_at
       end
@@ -21,9 +19,6 @@ module Increase
       def created_at=(_)
       end
 
-      # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -32,8 +27,6 @@ module Increase
       def idempotency_key=(_)
       end
 
-      # If specified, this subscription will only receive webhooks for Events associated
-      #   with this OAuth Connection.
       sig { returns(T.nilable(String)) }
       def oauth_connection_id
       end
@@ -42,8 +35,6 @@ module Increase
       def oauth_connection_id=(_)
       end
 
-      # If specified, this subscription will only receive webhooks for Events with the
-      #   specified `category`.
       sig { returns(T.nilable(Symbol)) }
       def selected_event_category
       end
@@ -52,7 +43,6 @@ module Increase
       def selected_event_category=(_)
       end
 
-      # This indicates if we'll send notifications to this subscription.
       sig { returns(Symbol) }
       def status
       end
@@ -61,8 +51,6 @@ module Increase
       def status=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `event_subscription`.
       sig { returns(Symbol) }
       def type
       end
@@ -71,7 +59,6 @@ module Increase
       def type=(_)
       end
 
-      # The webhook url where we'll send notifications.
       sig { returns(String) }
       def url
       end
@@ -80,12 +67,6 @@ module Increase
       def url=(_)
       end
 
-      # Webhooks are event notifications we send to you by HTTPS POST requests. Event
-      #   Subscriptions are how you configure your application to listen for them. You can
-      #   create an Event Subscription through your
-      #   [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the
-      #   API. For more information, see our
-      #   [webhooks guide](https://increase.com/documentation/webhooks).
       sig do
         params(
           id: String,
@@ -120,8 +101,6 @@ module Increase
       def to_hash
       end
 
-      # If specified, this subscription will only receive webhooks for Events with the
-      #   specified `category`.
       class SelectedEventCategory < Increase::Enum
         abstract!
 
@@ -429,7 +408,6 @@ module Increase
         end
       end
 
-      # This indicates if we'll send notifications to this subscription.
       class Status < Increase::Enum
         abstract!
 
@@ -452,8 +430,6 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `event_subscription`.
       class Type < Increase::Enum
         abstract!
 

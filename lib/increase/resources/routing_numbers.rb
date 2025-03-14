@@ -20,6 +20,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::RoutingNumberListResponse>]
+      #
       def list(params)
         parsed, options = Increase::Models::RoutingNumberListParams.dump_request(params)
         @client.request(
@@ -33,6 +34,7 @@ module Increase
       end
 
       # @param client [Increase::Client]
+      #
       def initialize(client:)
         @client = client
       end

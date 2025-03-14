@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The bookkeeping entries.
       sig { returns(T::Array[Increase::Models::BookkeepingEntrySetCreateParams::Entry]) }
       def entries
       end
@@ -18,8 +17,6 @@ module Increase
       def entries=(_)
       end
 
-      # The date of the transaction. Optional if `transaction_id` is provided, in which
-      #   case we use the `date` of that transaction. Required otherwise.
       sig { returns(T.nilable(Time)) }
       def date
       end
@@ -28,7 +25,6 @@ module Increase
       def date=(_)
       end
 
-      # The identifier of the Transaction related to this entry set, if any.
       sig { returns(T.nilable(String)) }
       def transaction_id
       end
@@ -64,7 +60,6 @@ module Increase
       end
 
       class Entry < Increase::BaseModel
-        # The identifier for the Bookkeeping Account impacted by this entry.
         sig { returns(String) }
         def account_id
         end
@@ -73,9 +68,6 @@ module Increase
         def account_id=(_)
         end
 
-        # The entry amount in the minor unit of the account currency. For dollars, for
-        #   example, this is cents. Debit entries have positive amounts; credit entries have
-        #   negative amounts.
         sig { returns(Integer) }
         def amount
         end

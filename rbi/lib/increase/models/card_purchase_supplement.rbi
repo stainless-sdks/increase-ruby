@@ -3,7 +3,6 @@
 module Increase
   module Models
     class CardPurchaseSupplement < Increase::BaseModel
-      # The Card Purchase Supplement identifier.
       sig { returns(String) }
       def id
       end
@@ -12,7 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The ID of the Card Payment this transaction belongs to.
       sig { returns(T.nilable(String)) }
       def card_payment_id
       end
@@ -21,7 +19,6 @@ module Increase
       def card_payment_id=(_)
       end
 
-      # Invoice-level information about the payment.
       sig { returns(T.nilable(Increase::Models::CardPurchaseSupplement::Invoice)) }
       def invoice
       end
@@ -33,7 +30,6 @@ module Increase
       def invoice=(_)
       end
 
-      # Line item information, such as individual products purchased.
       sig { returns(T.nilable(T::Array[Increase::Models::CardPurchaseSupplement::LineItem])) }
       def line_items
       end
@@ -45,7 +41,6 @@ module Increase
       def line_items=(_)
       end
 
-      # The ID of the transaction.
       sig { returns(String) }
       def transaction_id
       end
@@ -54,8 +49,6 @@ module Increase
       def transaction_id=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `card_purchase_supplement`.
       sig { returns(Symbol) }
       def type
       end
@@ -64,8 +57,6 @@ module Increase
       def type=(_)
       end
 
-      # Additional information about a card purchase (e.g., settlement or refund), such
-      #   as level 3 line item data.
       sig do
         params(
           id: String,
@@ -97,7 +88,6 @@ module Increase
       end
 
       class Invoice < Increase::BaseModel
-        # Discount given to cardholder.
         sig { returns(T.nilable(Integer)) }
         def discount_amount
         end
@@ -106,7 +96,6 @@ module Increase
         def discount_amount=(_)
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
         sig { returns(T.nilable(String)) }
         def discount_currency
         end
@@ -115,7 +104,6 @@ module Increase
         def discount_currency=(_)
         end
 
-        # Indicates how the merchant applied the discount.
         sig { returns(T.nilable(Symbol)) }
         def discount_treatment_code
         end
@@ -124,7 +112,6 @@ module Increase
         def discount_treatment_code=(_)
         end
 
-        # Amount of duty taxes.
         sig { returns(T.nilable(Integer)) }
         def duty_tax_amount
         end
@@ -133,7 +120,6 @@ module Increase
         def duty_tax_amount=(_)
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the duty tax.
         sig { returns(T.nilable(String)) }
         def duty_tax_currency
         end
@@ -142,7 +128,6 @@ module Increase
         def duty_tax_currency=(_)
         end
 
-        # Date the order was taken.
         sig { returns(T.nilable(Date)) }
         def order_date
         end
@@ -151,7 +136,6 @@ module Increase
         def order_date=(_)
         end
 
-        # The shipping cost.
         sig { returns(T.nilable(Integer)) }
         def shipping_amount
         end
@@ -160,8 +144,6 @@ module Increase
         def shipping_amount=(_)
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        #   cost.
         sig { returns(T.nilable(String)) }
         def shipping_currency
         end
@@ -170,7 +152,6 @@ module Increase
         def shipping_currency=(_)
         end
 
-        # Country code of the shipping destination.
         sig { returns(T.nilable(String)) }
         def shipping_destination_country_code
         end
@@ -179,7 +160,6 @@ module Increase
         def shipping_destination_country_code=(_)
         end
 
-        # Postal code of the shipping destination.
         sig { returns(T.nilable(String)) }
         def shipping_destination_postal_code
         end
@@ -188,7 +168,6 @@ module Increase
         def shipping_destination_postal_code=(_)
         end
 
-        # Postal code of the location being shipped from.
         sig { returns(T.nilable(String)) }
         def shipping_source_postal_code
         end
@@ -197,7 +176,6 @@ module Increase
         def shipping_source_postal_code=(_)
         end
 
-        # Taxes paid for freight and shipping.
         sig { returns(T.nilable(Integer)) }
         def shipping_tax_amount
         end
@@ -206,8 +184,6 @@ module Increase
         def shipping_tax_amount=(_)
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the shipping
-        #   tax.
         sig { returns(T.nilable(String)) }
         def shipping_tax_currency
         end
@@ -216,7 +192,6 @@ module Increase
         def shipping_tax_currency=(_)
         end
 
-        # Tax rate for freight and shipping.
         sig { returns(T.nilable(String)) }
         def shipping_tax_rate
         end
@@ -225,7 +200,6 @@ module Increase
         def shipping_tax_rate=(_)
         end
 
-        # Indicates how the merchant applied taxes.
         sig { returns(T.nilable(Symbol)) }
         def tax_treatments
         end
@@ -234,7 +208,6 @@ module Increase
         def tax_treatments=(_)
         end
 
-        # Value added tax invoice reference number.
         sig { returns(T.nilable(String)) }
         def unique_value_added_tax_invoice_reference
         end
@@ -243,7 +216,6 @@ module Increase
         def unique_value_added_tax_invoice_reference=(_)
         end
 
-        # Invoice-level information about the payment.
         sig do
           params(
             discount_amount: T.nilable(Integer),
@@ -311,7 +283,6 @@ module Increase
         def to_hash
         end
 
-        # Indicates how the merchant applied the discount.
         class DiscountTreatmentCode < Increase::Enum
           abstract!
 
@@ -336,7 +307,6 @@ module Increase
           end
         end
 
-        # Indicates how the merchant applied taxes.
         class TaxTreatments < Increase::Enum
           abstract!
 
@@ -364,7 +334,6 @@ module Increase
       end
 
       class LineItem < Increase::BaseModel
-        # The Card Purchase Supplement Line Item identifier.
         sig { returns(String) }
         def id
         end
@@ -373,7 +342,6 @@ module Increase
         def id=(_)
         end
 
-        # Indicates the type of line item.
         sig { returns(T.nilable(Symbol)) }
         def detail_indicator
         end
@@ -382,7 +350,6 @@ module Increase
         def detail_indicator=(_)
         end
 
-        # Discount amount for this specific line item.
         sig { returns(T.nilable(Integer)) }
         def discount_amount
         end
@@ -391,7 +358,6 @@ module Increase
         def discount_amount=(_)
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the discount.
         sig { returns(T.nilable(String)) }
         def discount_currency
         end
@@ -400,7 +366,6 @@ module Increase
         def discount_currency=(_)
         end
 
-        # Indicates how the merchant applied the discount for this specific line item.
         sig { returns(T.nilable(Symbol)) }
         def discount_treatment_code
         end
@@ -409,7 +374,6 @@ module Increase
         def discount_treatment_code=(_)
         end
 
-        # Code used to categorize the purchase item.
         sig { returns(T.nilable(String)) }
         def item_commodity_code
         end
@@ -418,7 +382,6 @@ module Increase
         def item_commodity_code=(_)
         end
 
-        # Description of the purchase item.
         sig { returns(T.nilable(String)) }
         def item_descriptor
         end
@@ -427,7 +390,6 @@ module Increase
         def item_descriptor=(_)
         end
 
-        # The number of units of the product being purchased.
         sig { returns(T.nilable(String)) }
         def item_quantity
         end
@@ -436,7 +398,6 @@ module Increase
         def item_quantity=(_)
         end
 
-        # Code used to categorize the product being purchased.
         sig { returns(T.nilable(String)) }
         def product_code
         end
@@ -445,7 +406,6 @@ module Increase
         def product_code=(_)
         end
 
-        # Sales tax amount for this line item.
         sig { returns(T.nilable(Integer)) }
         def sales_tax_amount
         end
@@ -454,8 +414,6 @@ module Increase
         def sales_tax_amount=(_)
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the sales tax
-        #   assessed.
         sig { returns(T.nilable(String)) }
         def sales_tax_currency
         end
@@ -464,7 +422,6 @@ module Increase
         def sales_tax_currency=(_)
         end
 
-        # Sales tax rate for this line item.
         sig { returns(T.nilable(String)) }
         def sales_tax_rate
         end
@@ -473,7 +430,6 @@ module Increase
         def sales_tax_rate=(_)
         end
 
-        # Total amount of all line items.
         sig { returns(T.nilable(Integer)) }
         def total_amount
         end
@@ -482,8 +438,6 @@ module Increase
         def total_amount=(_)
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
-        #   amount.
         sig { returns(T.nilable(String)) }
         def total_amount_currency
         end
@@ -492,7 +446,6 @@ module Increase
         def total_amount_currency=(_)
         end
 
-        # Cost of line item per unit of measure, in major units.
         sig { returns(T.nilable(String)) }
         def unit_cost
         end
@@ -501,7 +454,6 @@ module Increase
         def unit_cost=(_)
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the unit cost.
         sig { returns(T.nilable(String)) }
         def unit_cost_currency
         end
@@ -510,7 +462,6 @@ module Increase
         def unit_cost_currency=(_)
         end
 
-        # Code indicating unit of measure (gallons, etc.).
         sig { returns(T.nilable(String)) }
         def unit_of_measure_code
         end
@@ -589,7 +540,6 @@ module Increase
         def to_hash
         end
 
-        # Indicates the type of line item.
         class DetailIndicator < Increase::Enum
           abstract!
 
@@ -609,7 +559,6 @@ module Increase
           end
         end
 
-        # Indicates how the merchant applied the discount for this specific line item.
         class DiscountTreatmentCode < Increase::Enum
           abstract!
 
@@ -637,8 +586,6 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `card_purchase_supplement`.
       class Type < Increase::Enum
         abstract!
 

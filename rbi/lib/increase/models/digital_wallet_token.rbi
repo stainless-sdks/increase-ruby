@@ -3,7 +3,6 @@
 module Increase
   module Models
     class DigitalWalletToken < Increase::BaseModel
-      # The Digital Wallet Token identifier.
       sig { returns(String) }
       def id
       end
@@ -12,7 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The identifier for the Card this Digital Wallet Token belongs to.
       sig { returns(String) }
       def card_id
       end
@@ -21,8 +19,6 @@ module Increase
       def card_id=(_)
       end
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Digital Wallet Token was created.
       sig { returns(Time) }
       def created_at
       end
@@ -31,7 +27,6 @@ module Increase
       def created_at=(_)
       end
 
-      # This indicates if payments can be made with the Digital Wallet Token.
       sig { returns(Symbol) }
       def status
       end
@@ -40,7 +35,6 @@ module Increase
       def status=(_)
       end
 
-      # The digital wallet app being used.
       sig { returns(Symbol) }
       def token_requestor
       end
@@ -49,8 +43,6 @@ module Increase
       def token_requestor=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `digital_wallet_token`.
       sig { returns(Symbol) }
       def type
       end
@@ -59,7 +51,6 @@ module Increase
       def type=(_)
       end
 
-      # Updates to the Digital Wallet Token.
       sig { returns(T::Array[Increase::Models::DigitalWalletToken::Update]) }
       def updates
       end
@@ -71,9 +62,6 @@ module Increase
       def updates=(_)
       end
 
-      # A Digital Wallet Token is created when a user adds a Card to their Apple Pay or
-      #   Google Pay app. The Digital Wallet Token can be used for purchases just like a
-      #   Card.
       sig do
         params(
           id: String,
@@ -106,7 +94,6 @@ module Increase
       def to_hash
       end
 
-      # This indicates if payments can be made with the Digital Wallet Token.
       class Status < Increase::Enum
         abstract!
 
@@ -129,7 +116,6 @@ module Increase
         end
       end
 
-      # The digital wallet app being used.
       class TokenRequestor < Increase::Enum
         abstract!
 
@@ -152,8 +138,6 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `digital_wallet_token`.
       class Type < Increase::Enum
         abstract!
 
@@ -167,7 +151,6 @@ module Increase
       end
 
       class Update < Increase::BaseModel
-        # The status the update changed this Digital Wallet Token to.
         sig { returns(Symbol) }
         def status
         end
@@ -176,8 +159,6 @@ module Increase
         def status=(_)
         end
 
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the update happened.
         sig { returns(Time) }
         def timestamp
         end
@@ -194,7 +175,6 @@ module Increase
         def to_hash
         end
 
-        # The status the update changed this Digital Wallet Token to.
         class Status < Increase::Enum
           abstract!
 

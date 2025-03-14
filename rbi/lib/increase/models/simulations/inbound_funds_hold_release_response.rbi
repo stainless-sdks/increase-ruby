@@ -4,7 +4,6 @@ module Increase
   module Models
     module Simulations
       class InboundFundsHoldReleaseResponse < Increase::BaseModel
-        # The Inbound Funds Hold identifier.
         sig { returns(String) }
         def id
         end
@@ -13,8 +12,6 @@ module Increase
         def id=(_)
         end
 
-        # The held amount in the minor unit of the account's currency. For dollars, for
-        #   example, this is cents.
         sig { returns(Integer) }
         def amount
         end
@@ -23,8 +20,6 @@ module Increase
         def amount=(_)
         end
 
-        # When the hold will be released automatically. Certain conditions may cause it to
-        #   be released before this time.
         sig { returns(Time) }
         def automatically_releases_at
         end
@@ -33,8 +28,6 @@ module Increase
         def automatically_releases_at=(_)
         end
 
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
-        #   was created.
         sig { returns(Time) }
         def created_at
         end
@@ -43,8 +36,6 @@ module Increase
         def created_at=(_)
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   currency.
         sig { returns(Symbol) }
         def currency
         end
@@ -53,7 +44,6 @@ module Increase
         def currency=(_)
         end
 
-        # The ID of the Transaction for which funds were held.
         sig { returns(T.nilable(String)) }
         def held_transaction_id
         end
@@ -62,7 +52,6 @@ module Increase
         def held_transaction_id=(_)
         end
 
-        # The ID of the Pending Transaction representing the held funds.
         sig { returns(T.nilable(String)) }
         def pending_transaction_id
         end
@@ -71,7 +60,6 @@ module Increase
         def pending_transaction_id=(_)
         end
 
-        # When the hold was released (if it has been released).
         sig { returns(T.nilable(Time)) }
         def released_at
         end
@@ -80,7 +68,6 @@ module Increase
         def released_at=(_)
         end
 
-        # The status of the hold.
         sig { returns(Symbol) }
         def status
         end
@@ -89,8 +76,6 @@ module Increase
         def status=(_)
         end
 
-        # A constant representing the object's type. For this resource it will always be
-        #   `inbound_funds_hold`.
         sig { returns(Symbol) }
         def type
         end
@@ -99,8 +84,6 @@ module Increase
         def type=(_)
         end
 
-        # We hold funds for certain transaction types to account for return windows where
-        #   funds might still be clawed back by the sending institution.
         sig do
           params(
             id: String,
@@ -150,8 +133,6 @@ module Increase
         def to_hash
         end
 
-        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
-        #   currency.
         class Currency < Increase::Enum
           abstract!
 
@@ -180,7 +161,6 @@ module Increase
           end
         end
 
-        # The status of the hold.
         class Status < Increase::Enum
           abstract!
 
@@ -197,8 +177,6 @@ module Increase
           end
         end
 
-        # A constant representing the object's type. For this resource it will always be
-        #   `inbound_funds_hold`.
         class Type < Increase::Enum
           abstract!
 

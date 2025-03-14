@@ -3,7 +3,6 @@
 module Increase
   module Models
     class Event < Increase::BaseModel
-      # The Event identifier.
       sig { returns(String) }
       def id
       end
@@ -12,7 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The identifier of the object that generated this Event.
       sig { returns(String) }
       def associated_object_id
       end
@@ -21,7 +19,6 @@ module Increase
       def associated_object_id=(_)
       end
 
-      # The type of the object that generated this Event.
       sig { returns(String) }
       def associated_object_type
       end
@@ -30,8 +27,6 @@ module Increase
       def associated_object_type=(_)
       end
 
-      # The category of the Event. We may add additional possible values for this enum
-      #   over time; your application should be able to handle such additions gracefully.
       sig { returns(Symbol) }
       def category
       end
@@ -40,7 +35,6 @@ module Increase
       def category=(_)
       end
 
-      # The time the Event was created.
       sig { returns(Time) }
       def created_at
       end
@@ -49,8 +43,6 @@ module Increase
       def created_at=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `event`.
       sig { returns(Symbol) }
       def type
       end
@@ -59,10 +51,6 @@ module Increase
       def type=(_)
       end
 
-      # Events are records of things that happened to objects at Increase. Events are
-      #   accessible via the List Events endpoint and can be delivered to your application
-      #   via webhooks. For more information, see our
-      #   [webhooks guide](https://increase.com/documentation/webhooks).
       sig do
         params(
           id: String,
@@ -93,8 +81,6 @@ module Increase
       def to_hash
       end
 
-      # The category of the Event. We may add additional possible values for this enum
-      #   over time; your application should be able to handle such additions gracefully.
       class Category < Increase::Enum
         abstract!
 
@@ -369,8 +355,6 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `event`.
       class Type < Increase::Enum
         abstract!
 

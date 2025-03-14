@@ -3,7 +3,6 @@
 module Increase
   module Models
     class IntrafiBalance < Increase::BaseModel
-      # The identifier of this balance.
       sig { returns(String) }
       def id
       end
@@ -12,8 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # Each entry represents a balance held at a different bank. IntraFi separates the
-      #   total balance across many participating banks in the network.
       sig { returns(T::Array[Increase::Models::IntrafiBalance::Balance]) }
       def balances
       end
@@ -25,8 +22,6 @@ module Increase
       def balances=(_)
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      #   currency.
       sig { returns(Symbol) }
       def currency
       end
@@ -35,7 +30,6 @@ module Increase
       def currency=(_)
       end
 
-      # The date this balance reflects.
       sig { returns(Date) }
       def effective_date
       end
@@ -44,8 +38,6 @@ module Increase
       def effective_date=(_)
       end
 
-      # The total balance, in minor units of `currency`. Increase reports this balance
-      #   to IntraFi daily.
       sig { returns(Integer) }
       def total_balance
       end
@@ -54,8 +46,6 @@ module Increase
       def total_balance=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `intrafi_balance`.
       sig { returns(Symbol) }
       def type
       end
@@ -64,9 +54,6 @@ module Increase
       def type=(_)
       end
 
-      # When using IntraFi, each account's balance over the standard FDIC insurance
-      #   amount are swept to various other institutions. Funds are rebalanced across
-      #   banks as needed once per business day.
       sig do
         params(
           id: String,
@@ -98,7 +85,6 @@ module Increase
       end
 
       class Balance < Increase::BaseModel
-        # The identifier of this balance.
         sig { returns(String) }
         def id
         end
@@ -107,7 +93,6 @@ module Increase
         def id=(_)
         end
 
-        # The balance, in minor units of `currency`, held with this bank.
         sig { returns(Integer) }
         def balance
         end
@@ -116,7 +101,6 @@ module Increase
         def balance=(_)
         end
 
-        # The name of the bank holding these funds.
         sig { returns(String) }
         def bank
         end
@@ -125,7 +109,6 @@ module Increase
         def bank=(_)
         end
 
-        # The primary location of the bank.
         sig { returns(T.nilable(Increase::Models::IntrafiBalance::Balance::BankLocation)) }
         def bank_location
         end
@@ -137,9 +120,6 @@ module Increase
         def bank_location=(_)
         end
 
-        # The Federal Deposit Insurance Corporation (FDIC) certificate number of the bank.
-        #   Because many banks have the same or similar names, this can be used to uniquely
-        #   identify the institution.
         sig { returns(String) }
         def fdic_certificate_number
         end
@@ -177,7 +157,6 @@ module Increase
         end
 
         class BankLocation < Increase::BaseModel
-          # The bank's city.
           sig { returns(String) }
           def city
           end
@@ -186,7 +165,6 @@ module Increase
           def city=(_)
           end
 
-          # The bank's state.
           sig { returns(String) }
           def state
           end
@@ -195,7 +173,6 @@ module Increase
           def state=(_)
           end
 
-          # The primary location of the bank.
           sig { params(city: String, state: String).returns(T.attached_class) }
           def self.new(city:, state:)
           end
@@ -206,8 +183,6 @@ module Increase
         end
       end
 
-      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the account
-      #   currency.
       class Currency < Increase::Enum
         abstract!
 
@@ -236,8 +211,6 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `intrafi_balance`.
       class Type < Increase::Enum
         abstract!
 

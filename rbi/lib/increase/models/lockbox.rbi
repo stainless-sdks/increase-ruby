@@ -3,7 +3,6 @@
 module Increase
   module Models
     class Lockbox < Increase::BaseModel
-      # The Lockbox identifier.
       sig { returns(String) }
       def id
       end
@@ -12,8 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The identifier for the Account checks sent to this lockbox will be deposited
-      #   into.
       sig { returns(String) }
       def account_id
       end
@@ -22,7 +19,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The mailing address for the Lockbox.
       sig { returns(Increase::Models::Lockbox::Address) }
       def address
       end
@@ -31,8 +27,6 @@ module Increase
       def address=(_)
       end
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
-      #   was created.
       sig { returns(Time) }
       def created_at
       end
@@ -41,7 +35,6 @@ module Increase
       def created_at=(_)
       end
 
-      # The description you choose for the Lockbox.
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -50,9 +43,6 @@ module Increase
       def description=(_)
       end
 
-      # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -61,7 +51,6 @@ module Increase
       def idempotency_key=(_)
       end
 
-      # The recipient name you choose for the Lockbox.
       sig { returns(T.nilable(String)) }
       def recipient_name
       end
@@ -70,7 +59,6 @@ module Increase
       def recipient_name=(_)
       end
 
-      # This indicates if mail can be sent to this address.
       sig { returns(Symbol) }
       def status
       end
@@ -79,8 +67,6 @@ module Increase
       def status=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `lockbox`.
       sig { returns(Symbol) }
       def type
       end
@@ -89,8 +75,6 @@ module Increase
       def type=(_)
       end
 
-      # Lockboxes are physical locations that can receive mail containing paper checks.
-      #   Increase will automatically create a Check Deposit for checks received this way.
       sig do
         params(
           id: String,
@@ -128,7 +112,6 @@ module Increase
       end
 
       class Address < Increase::BaseModel
-        # The city of the address.
         sig { returns(String) }
         def city
         end
@@ -137,7 +120,6 @@ module Increase
         def city=(_)
         end
 
-        # The first line of the address.
         sig { returns(String) }
         def line1
         end
@@ -146,7 +128,6 @@ module Increase
         def line1=(_)
         end
 
-        # The second line of the address.
         sig { returns(String) }
         def line2
         end
@@ -155,7 +136,6 @@ module Increase
         def line2=(_)
         end
 
-        # The postal code of the address.
         sig { returns(String) }
         def postal_code
         end
@@ -164,10 +144,6 @@ module Increase
         def postal_code=(_)
         end
 
-        # The recipient line of the address. This will include the recipient name you
-        #   provide when creating the address, as well as an ATTN suffix to help route the
-        #   mail to your lockbox. Mail senders must include this ATTN line to receive mail
-        #   at this Lockbox.
         sig { returns(T.nilable(String)) }
         def recipient
         end
@@ -176,8 +152,6 @@ module Increase
         def recipient=(_)
         end
 
-        # The two-letter United States Postal Service (USPS) abbreviation for the state of
-        #   the address.
         sig { returns(String) }
         def state
         end
@@ -186,7 +160,6 @@ module Increase
         def state=(_)
         end
 
-        # The mailing address for the Lockbox.
         sig do
           params(
             city: String,
@@ -218,7 +191,6 @@ module Increase
         end
       end
 
-      # This indicates if mail can be sent to this address.
       class Status < Increase::Enum
         abstract!
 
@@ -235,8 +207,6 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `lockbox`.
       class Type < Increase::Enum
         abstract!
 

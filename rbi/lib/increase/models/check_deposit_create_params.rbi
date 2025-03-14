@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The identifier for the Account to deposit the check in.
       sig { returns(String) }
       def account_id
       end
@@ -15,7 +14,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The deposit amount in USD cents.
       sig { returns(Integer) }
       def amount
       end
@@ -24,7 +22,6 @@ module Increase
       def amount=(_)
       end
 
-      # The File containing the check's back image.
       sig { returns(String) }
       def back_image_file_id
       end
@@ -33,7 +30,6 @@ module Increase
       def back_image_file_id=(_)
       end
 
-      # The File containing the check's front image.
       sig { returns(String) }
       def front_image_file_id
       end
@@ -42,7 +38,6 @@ module Increase
       def front_image_file_id=(_)
       end
 
-      # The description you choose to give the Check Deposit, for display purposes only.
       sig { returns(T.nilable(String)) }
       def description
       end

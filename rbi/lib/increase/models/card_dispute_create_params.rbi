@@ -6,8 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The Transaction you wish to dispute. This Transaction must have a `source_type`
-      #   of `card_settlement`.
       sig { returns(String) }
       def disputed_transaction_id
       end
@@ -16,7 +14,6 @@ module Increase
       def disputed_transaction_id=(_)
       end
 
-      # Why you are disputing this Transaction.
       sig { returns(String) }
       def explanation
       end
@@ -25,10 +22,6 @@ module Increase
       def explanation=(_)
       end
 
-      # The monetary amount of the part of the transaction that is being disputed. This
-      #   is optional and will default to the full amount of the transaction if not
-      #   provided. If provided, the amount must be less than or equal to the amount of
-      #   the transaction.
       sig { returns(T.nilable(Integer)) }
       def amount
       end

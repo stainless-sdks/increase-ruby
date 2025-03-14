@@ -4,9 +4,6 @@ module Increase
   module Models
     module Simulations
       class CardAuthorizationCreateResponse < Increase::BaseModel
-        # If the authorization attempt fails, this will contain the resulting
-        #   [Declined Transaction](#declined-transactions) object. The Declined
-        #   Transaction's `source` will be of `category: card_decline`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction)) }
         def declined_transaction
         end
@@ -18,9 +15,6 @@ module Increase
         def declined_transaction=(_)
         end
 
-        # If the authorization attempt succeeds, this will contain the resulting Pending
-        #   Transaction object. The Pending Transaction's `source` will be of
-        #   `category: card_authorization`.
         sig { returns(T.nilable(Increase::Models::PendingTransaction)) }
         def pending_transaction
         end
@@ -32,8 +26,6 @@ module Increase
         def pending_transaction=(_)
         end
 
-        # A constant representing the object's type. For this resource it will always be
-        #   `inbound_card_authorization_simulation_result`.
         sig { returns(Symbol) }
         def type
         end
@@ -42,7 +34,6 @@ module Increase
         def type=(_)
         end
 
-        # The results of a Card Authorization simulation.
         sig do
           params(
             declined_transaction: T.nilable(Increase::Models::DeclinedTransaction),
@@ -67,8 +58,6 @@ module Increase
         def to_hash
         end
 
-        # A constant representing the object's type. For this resource it will always be
-        #   `inbound_card_authorization_simulation_result`.
         class Type < Increase::Enum
           abstract!
 

@@ -3,7 +3,6 @@
 module Increase
   module Models
     class Card < Increase::BaseModel
-      # The card identifier.
       sig { returns(String) }
       def id
       end
@@ -12,7 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The identifier for the account this card belongs to.
       sig { returns(String) }
       def account_id
       end
@@ -21,7 +19,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The Card's billing address.
       sig { returns(Increase::Models::Card::BillingAddress) }
       def billing_address
       end
@@ -30,8 +27,6 @@ module Increase
       def billing_address=(_)
       end
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the Card was created.
       sig { returns(Time) }
       def created_at
       end
@@ -40,7 +35,6 @@ module Increase
       def created_at=(_)
       end
 
-      # The card's description for display purposes.
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -49,9 +43,6 @@ module Increase
       def description=(_)
       end
 
-      # The contact information used in the two-factor steps for digital wallet card
-      #   creation. At least one field must be present to complete the digital wallet
-      #   steps.
       sig { returns(T.nilable(Increase::Models::Card::DigitalWallet)) }
       def digital_wallet
       end
@@ -63,7 +54,6 @@ module Increase
       def digital_wallet=(_)
       end
 
-      # The identifier for the entity associated with this card.
       sig { returns(T.nilable(String)) }
       def entity_id
       end
@@ -72,7 +62,6 @@ module Increase
       def entity_id=(_)
       end
 
-      # The month the card expires in M format (e.g., August is 8).
       sig { returns(Integer) }
       def expiration_month
       end
@@ -81,7 +70,6 @@ module Increase
       def expiration_month=(_)
       end
 
-      # The year the card expires in YYYY format (e.g., 2025).
       sig { returns(Integer) }
       def expiration_year
       end
@@ -90,9 +78,6 @@ module Increase
       def expiration_year=(_)
       end
 
-      # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -101,7 +86,6 @@ module Increase
       def idempotency_key=(_)
       end
 
-      # The last 4 digits of the Card's Primary Account Number.
       sig { returns(String) }
       def last4
       end
@@ -110,7 +94,6 @@ module Increase
       def last4=(_)
       end
 
-      # This indicates if payments can be made with the card.
       sig { returns(Symbol) }
       def status
       end
@@ -119,8 +102,6 @@ module Increase
       def status=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `card`.
       sig { returns(Symbol) }
       def type
       end
@@ -129,10 +110,6 @@ module Increase
       def type=(_)
       end
 
-      # Cards are commercial credit cards. They'll immediately work for online purchases
-      #   after you create them. All cards maintain a credit limit of 100% of the
-      #   Account’s available balance at the time of transaction. Funds are deducted from
-      #   the Account upon transaction settlement.
       sig do
         params(
           id: String,
@@ -192,7 +169,6 @@ module Increase
       end
 
       class BillingAddress < Increase::BaseModel
-        # The city of the billing address.
         sig { returns(T.nilable(String)) }
         def city
         end
@@ -201,7 +177,6 @@ module Increase
         def city=(_)
         end
 
-        # The first line of the billing address.
         sig { returns(T.nilable(String)) }
         def line1
         end
@@ -210,7 +185,6 @@ module Increase
         def line1=(_)
         end
 
-        # The second line of the billing address.
         sig { returns(T.nilable(String)) }
         def line2
         end
@@ -219,7 +193,6 @@ module Increase
         def line2=(_)
         end
 
-        # The postal code of the billing address.
         sig { returns(T.nilable(String)) }
         def postal_code
         end
@@ -228,7 +201,6 @@ module Increase
         def postal_code=(_)
         end
 
-        # The US state of the billing address.
         sig { returns(T.nilable(String)) }
         def state
         end
@@ -237,7 +209,6 @@ module Increase
         def state=(_)
         end
 
-        # The Card's billing address.
         sig do
           params(
             city: T.nilable(String),
@@ -268,8 +239,6 @@ module Increase
       end
 
       class DigitalWallet < Increase::BaseModel
-        # The digital card profile assigned to this digital card. Card profiles may also
-        #   be assigned at the program level.
         sig { returns(T.nilable(String)) }
         def digital_card_profile_id
         end
@@ -278,8 +247,6 @@ module Increase
         def digital_card_profile_id=(_)
         end
 
-        # An email address that can be used to verify the cardholder via one-time passcode
-        #   over email.
         sig { returns(T.nilable(String)) }
         def email
         end
@@ -288,8 +255,6 @@ module Increase
         def email=(_)
         end
 
-        # A phone number that can be used to verify the cardholder via one-time passcode
-        #   over SMS.
         sig { returns(T.nilable(String)) }
         def phone
         end
@@ -298,9 +263,6 @@ module Increase
         def phone=(_)
         end
 
-        # The contact information used in the two-factor steps for digital wallet card
-        #   creation. At least one field must be present to complete the digital wallet
-        #   steps.
         sig do
           params(
             digital_card_profile_id: T.nilable(String),
@@ -324,7 +286,6 @@ module Increase
         end
       end
 
-      # This indicates if payments can be made with the card.
       class Status < Increase::Enum
         abstract!
 
@@ -344,8 +305,6 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `card`.
       class Type < Increase::Enum
         abstract!
 

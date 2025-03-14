@@ -3,7 +3,6 @@
 module Increase
   module Models
     class Export < Increase::BaseModel
-      # The Export identifier.
       sig { returns(String) }
       def id
       end
@@ -12,8 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The category of the Export. We may add additional possible values for this enum
-      #   over time; your application should be able to handle that gracefully.
       sig { returns(Symbol) }
       def category
       end
@@ -22,7 +19,6 @@ module Increase
       def category=(_)
       end
 
-      # The time the Export was created.
       sig { returns(Time) }
       def created_at
       end
@@ -31,8 +27,6 @@ module Increase
       def created_at=(_)
       end
 
-      # A URL at which the Export's file can be downloaded. This will be present when
-      #   the Export's status transitions to `complete`.
       sig { returns(T.nilable(String)) }
       def file_download_url
       end
@@ -41,8 +35,6 @@ module Increase
       def file_download_url=(_)
       end
 
-      # The File containing the contents of the Export. This will be present when the
-      #   Export's status transitions to `complete`.
       sig { returns(T.nilable(String)) }
       def file_id
       end
@@ -51,9 +43,6 @@ module Increase
       def file_id=(_)
       end
 
-      # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -62,7 +51,6 @@ module Increase
       def idempotency_key=(_)
       end
 
-      # The status of the Export.
       sig { returns(Symbol) }
       def status
       end
@@ -71,8 +59,6 @@ module Increase
       def status=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `export`.
       sig { returns(Symbol) }
       def type
       end
@@ -81,11 +67,6 @@ module Increase
       def type=(_)
       end
 
-      # Exports are batch summaries of your Increase data. You can make them from the
-      #   API or dashboard. Since they can take a while, they are generated
-      #   asynchronously. We send a webhook when they are ready. For more information,
-      #   please read our
-      #   [Exports documentation](https://increase.com/documentation/exports).
       sig do
         params(
           id: String,
@@ -120,8 +101,6 @@ module Increase
       def to_hash
       end
 
-      # The category of the Export. We may add additional possible values for this enum
-      #   over time; your application should be able to handle that gracefully.
       class Category < Increase::Enum
         abstract!
 
@@ -153,7 +132,6 @@ module Increase
         end
       end
 
-      # The status of the Export.
       class Status < Increase::Enum
         abstract!
 
@@ -173,8 +151,6 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `export`.
       class Type < Increase::Enum
         abstract!
 

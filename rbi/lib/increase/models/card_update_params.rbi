@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The card's updated billing address.
       sig { returns(T.nilable(Increase::Models::CardUpdateParams::BillingAddress)) }
       def billing_address
       end
@@ -18,7 +17,6 @@ module Increase
       def billing_address=(_)
       end
 
-      # The description you choose to give the card.
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -27,9 +25,6 @@ module Increase
       def description=(_)
       end
 
-      # The contact information used in the two-factor steps for digital wallet card
-      #   creation. At least one field must be present to complete the digital wallet
-      #   steps.
       sig { returns(T.nilable(Increase::Models::CardUpdateParams::DigitalWallet)) }
       def digital_wallet
       end
@@ -41,8 +36,6 @@ module Increase
       def digital_wallet=(_)
       end
 
-      # The Entity the card belongs to. You only need to supply this in rare situations
-      #   when the card is not for the Account holder.
       sig { returns(T.nilable(String)) }
       def entity_id
       end
@@ -51,7 +44,6 @@ module Increase
       def entity_id=(_)
       end
 
-      # The status to update the Card with.
       sig { returns(T.nilable(Symbol)) }
       def status
       end
@@ -98,7 +90,6 @@ module Increase
       end
 
       class BillingAddress < Increase::BaseModel
-        # The city of the billing address.
         sig { returns(String) }
         def city
         end
@@ -107,7 +98,6 @@ module Increase
         def city=(_)
         end
 
-        # The first line of the billing address.
         sig { returns(String) }
         def line1
         end
@@ -116,7 +106,6 @@ module Increase
         def line1=(_)
         end
 
-        # The postal code of the billing address.
         sig { returns(String) }
         def postal_code
         end
@@ -125,7 +114,6 @@ module Increase
         def postal_code=(_)
         end
 
-        # The US state of the billing address.
         sig { returns(String) }
         def state
         end
@@ -134,7 +122,6 @@ module Increase
         def state=(_)
         end
 
-        # The second line of the billing address.
         sig { returns(T.nilable(String)) }
         def line2
         end
@@ -143,7 +130,6 @@ module Increase
         def line2=(_)
         end
 
-        # The card's updated billing address.
         sig do
           params(city: String, line1: String, postal_code: String, state: String, line2: String)
             .returns(T.attached_class)
@@ -159,7 +145,6 @@ module Increase
       end
 
       class DigitalWallet < Increase::BaseModel
-        # The digital card profile assigned to this digital card.
         sig { returns(T.nilable(String)) }
         def digital_card_profile_id
         end
@@ -168,8 +153,6 @@ module Increase
         def digital_card_profile_id=(_)
         end
 
-        # An email address that can be used to verify the cardholder via one-time passcode
-        #   over email.
         sig { returns(T.nilable(String)) }
         def email
         end
@@ -178,8 +161,6 @@ module Increase
         def email=(_)
         end
 
-        # A phone number that can be used to verify the cardholder via one-time passcode
-        #   over SMS.
         sig { returns(T.nilable(String)) }
         def phone
         end
@@ -188,9 +169,6 @@ module Increase
         def phone=(_)
         end
 
-        # The contact information used in the two-factor steps for digital wallet card
-        #   creation. At least one field must be present to complete the digital wallet
-        #   steps.
         sig do
           params(digital_card_profile_id: String, email: String, phone: String).returns(T.attached_class)
         end
@@ -202,7 +180,6 @@ module Increase
         end
       end
 
-      # The status to update the Card with.
       class Status < Increase::Enum
         abstract!
 

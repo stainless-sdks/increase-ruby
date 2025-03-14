@@ -3,7 +3,6 @@
 module Increase
   module Models
     class InboundWireTransfer < Increase::BaseModel
-      # The inbound wire transfer's identifier.
       sig { returns(String) }
       def id
       end
@@ -12,7 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The Account to which the transfer belongs.
       sig { returns(String) }
       def account_id
       end
@@ -21,7 +19,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The identifier of the Account Number to which this transfer was sent.
       sig { returns(String) }
       def account_number_id
       end
@@ -30,7 +27,6 @@ module Increase
       def account_number_id=(_)
       end
 
-      # The amount in USD cents.
       sig { returns(Integer) }
       def amount
       end
@@ -39,7 +35,6 @@ module Increase
       def amount=(_)
       end
 
-      # A free-form address field set by the sender.
       sig { returns(T.nilable(String)) }
       def beneficiary_address_line1
       end
@@ -48,7 +43,6 @@ module Increase
       def beneficiary_address_line1=(_)
       end
 
-      # A free-form address field set by the sender.
       sig { returns(T.nilable(String)) }
       def beneficiary_address_line2
       end
@@ -57,7 +51,6 @@ module Increase
       def beneficiary_address_line2=(_)
       end
 
-      # A free-form address field set by the sender.
       sig { returns(T.nilable(String)) }
       def beneficiary_address_line3
       end
@@ -66,7 +59,6 @@ module Increase
       def beneficiary_address_line3=(_)
       end
 
-      # A name set by the sender.
       sig { returns(T.nilable(String)) }
       def beneficiary_name
       end
@@ -75,7 +67,6 @@ module Increase
       def beneficiary_name=(_)
       end
 
-      # A free-form reference string set by the sender, to help identify the transfer.
       sig { returns(T.nilable(String)) }
       def beneficiary_reference
       end
@@ -84,8 +75,6 @@ module Increase
       def beneficiary_reference=(_)
       end
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-      #   the inbound wire transfer was created.
       sig { returns(Time) }
       def created_at
       end
@@ -94,7 +83,6 @@ module Increase
       def created_at=(_)
       end
 
-      # An Increase-constructed description of the transfer.
       sig { returns(String) }
       def description
       end
@@ -103,9 +91,6 @@ module Increase
       def description=(_)
       end
 
-      # A unique identifier available to the originating and receiving banks, commonly
-      #   abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
-      #   service and is helpful when debugging wires with the originating bank.
       sig { returns(T.nilable(String)) }
       def input_message_accountability_data
       end
@@ -114,7 +99,6 @@ module Increase
       def input_message_accountability_data=(_)
       end
 
-      # The address of the wire originator, set by the sending bank.
       sig { returns(T.nilable(String)) }
       def originator_address_line1
       end
@@ -123,7 +107,6 @@ module Increase
       def originator_address_line1=(_)
       end
 
-      # The address of the wire originator, set by the sending bank.
       sig { returns(T.nilable(String)) }
       def originator_address_line2
       end
@@ -132,7 +115,6 @@ module Increase
       def originator_address_line2=(_)
       end
 
-      # The address of the wire originator, set by the sending bank.
       sig { returns(T.nilable(String)) }
       def originator_address_line3
       end
@@ -141,7 +123,6 @@ module Increase
       def originator_address_line3=(_)
       end
 
-      # The originator of the wire, set by the sending bank.
       sig { returns(T.nilable(String)) }
       def originator_name
       end
@@ -150,8 +131,6 @@ module Increase
       def originator_name=(_)
       end
 
-      # The American Banking Association (ABA) routing number of the bank originating
-      #   the transfer.
       sig { returns(T.nilable(String)) }
       def originator_routing_number
       end
@@ -160,7 +139,6 @@ module Increase
       def originator_routing_number=(_)
       end
 
-      # An Increase-created concatenation of the Originator-to-Beneficiary lines.
       sig { returns(T.nilable(String)) }
       def originator_to_beneficiary_information
       end
@@ -169,7 +147,6 @@ module Increase
       def originator_to_beneficiary_information=(_)
       end
 
-      # A free-form message set by the wire originator.
       sig { returns(T.nilable(String)) }
       def originator_to_beneficiary_information_line1
       end
@@ -178,7 +155,6 @@ module Increase
       def originator_to_beneficiary_information_line1=(_)
       end
 
-      # A free-form message set by the wire originator.
       sig { returns(T.nilable(String)) }
       def originator_to_beneficiary_information_line2
       end
@@ -187,7 +163,6 @@ module Increase
       def originator_to_beneficiary_information_line2=(_)
       end
 
-      # A free-form message set by the wire originator.
       sig { returns(T.nilable(String)) }
       def originator_to_beneficiary_information_line3
       end
@@ -196,7 +171,6 @@ module Increase
       def originator_to_beneficiary_information_line3=(_)
       end
 
-      # A free-form message set by the wire originator.
       sig { returns(T.nilable(String)) }
       def originator_to_beneficiary_information_line4
       end
@@ -205,7 +179,6 @@ module Increase
       def originator_to_beneficiary_information_line4=(_)
       end
 
-      # The sending bank's reference number for the wire transfer.
       sig { returns(T.nilable(String)) }
       def sender_reference
       end
@@ -214,7 +187,6 @@ module Increase
       def sender_reference=(_)
       end
 
-      # The status of the transfer.
       sig { returns(Symbol) }
       def status
       end
@@ -223,8 +195,6 @@ module Increase
       def status=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `inbound_wire_transfer`.
       sig { returns(Symbol) }
       def type
       end
@@ -233,8 +203,6 @@ module Increase
       def type=(_)
       end
 
-      # An Inbound Wire Transfer is a wire transfer initiated outside of Increase to
-      #   your account.
       sig do
         params(
           id: String,
@@ -329,7 +297,6 @@ module Increase
       def to_hash
       end
 
-      # The status of the transfer.
       class Status < Increase::Enum
         abstract!
 
@@ -352,8 +319,6 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `inbound_wire_transfer`.
       class Type < Increase::Enum
         abstract!
 

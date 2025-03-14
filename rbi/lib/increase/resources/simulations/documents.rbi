@@ -4,7 +4,6 @@ module Increase
   module Resources
     class Simulations
       class Documents
-        # Simulates an tax document being created for an account.
         sig do
           params(
             account_id: String,
@@ -12,11 +11,7 @@ module Increase
           )
             .returns(Increase::Models::Document)
         end
-        def create(
-          # The identifier of the Account the tax document is for.
-          account_id:,
-          request_options: {}
-        )
+        def create(account_id:, request_options: {})
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

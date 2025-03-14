@@ -21,6 +21,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ExternalAccount]
+      #
       def create(params)
         parsed, options = Increase::Models::ExternalAccountCreateParams.dump_request(params)
         @client.request(
@@ -41,6 +42,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ExternalAccount]
+      #
       def retrieve(external_account_id, params = {})
         @client.request(
           method: :get,
@@ -67,6 +69,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ExternalAccount]
+      #
       def update(external_account_id, params = {})
         parsed, options = Increase::Models::ExternalAccountUpdateParams.dump_request(params)
         @client.request(
@@ -99,6 +102,7 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::ExternalAccount>]
+      #
       def list(params = {})
         parsed, options = Increase::Models::ExternalAccountListParams.dump_request(params)
         @client.request(
@@ -112,6 +116,7 @@ module Increase
       end
 
       # @param client [Increase::Client]
+      #
       def initialize(client:)
         @client = client
       end

@@ -7,8 +7,6 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
-        # The amount of the fuel_confirmation in minor units in the card authorization's
-        #   currency.
         sig { returns(Integer) }
         def amount
         end
@@ -17,7 +15,6 @@ module Increase
         def amount=(_)
         end
 
-        # The identifier of the Card Payment to create a fuel_confirmation on.
         sig { returns(String) }
         def card_payment_id
         end

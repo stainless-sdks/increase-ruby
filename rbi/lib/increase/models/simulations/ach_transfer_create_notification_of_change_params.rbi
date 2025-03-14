@@ -7,7 +7,6 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
-        # The reason for the notification of change.
         sig { returns(Symbol) }
         def change_code
         end
@@ -16,7 +15,6 @@ module Increase
         def change_code=(_)
         end
 
-        # The corrected data for the notification of change (e.g., a new routing number).
         sig { returns(String) }
         def corrected_data
         end
@@ -48,7 +46,6 @@ module Increase
         def to_hash
         end
 
-        # The reason for the notification of change.
         class ChangeCode < Increase::Enum
           abstract!
 

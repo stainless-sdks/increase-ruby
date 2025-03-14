@@ -3,7 +3,6 @@
 module Increase
   module Models
     class Program < Increase::BaseModel
-      # The Program identifier.
       sig { returns(String) }
       def id
       end
@@ -12,7 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The Bank the Program is with.
       sig { returns(Symbol) }
       def bank
       end
@@ -21,7 +19,6 @@ module Increase
       def bank=(_)
       end
 
-      # The Program billing account.
       sig { returns(T.nilable(String)) }
       def billing_account_id
       end
@@ -30,8 +27,6 @@ module Increase
       def billing_account_id=(_)
       end
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #   was created.
       sig { returns(Time) }
       def created_at
       end
@@ -40,7 +35,6 @@ module Increase
       def created_at=(_)
       end
 
-      # The default configuration for digital cards attached to this Program.
       sig { returns(T.nilable(String)) }
       def default_digital_card_profile_id
       end
@@ -49,9 +43,6 @@ module Increase
       def default_digital_card_profile_id=(_)
       end
 
-      # The Interest Rate currently being earned on the accounts in this program, as a
-      #   string containing a decimal number. For example, a 1% interest rate would be
-      #   represented as "0.01".
       sig { returns(String) }
       def interest_rate
       end
@@ -60,7 +51,6 @@ module Increase
       def interest_rate=(_)
       end
 
-      # The name of the Program.
       sig { returns(String) }
       def name
       end
@@ -69,8 +59,6 @@ module Increase
       def name=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `program`.
       sig { returns(Symbol) }
       def type
       end
@@ -79,8 +67,6 @@ module Increase
       def type=(_)
       end
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
-      #   was last updated.
       sig { returns(Time) }
       def updated_at
       end
@@ -89,10 +75,6 @@ module Increase
       def updated_at=(_)
       end
 
-      # Programs determine the compliance and commercial terms of Accounts. By default,
-      #   you have a Commercial Banking program for managing your own funds. If you are
-      #   lending or managing funds on behalf of your customers, or otherwise engaged in
-      #   regulated activity, we will work together to create additional Programs for you.
       sig do
         params(
           id: String,
@@ -139,7 +121,6 @@ module Increase
       def to_hash
       end
 
-      # The Bank the Program is with.
       class Bank < Increase::Enum
         abstract!
 
@@ -159,8 +140,6 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `program`.
       class Type < Increase::Enum
         abstract!
 

@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
       def cursor
       end
@@ -15,8 +14,6 @@ module Increase
       def cursor=(_)
       end
 
-      # Limit the size of the list that is returned. The default (and maximum) is 100
-      #   objects.
       sig { returns(T.nilable(Integer)) }
       def limit
       end

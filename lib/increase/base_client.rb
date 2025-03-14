@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 module Increase
-  # @api private
+  # @private
   #
   # @abstract
+  #
   class BaseClient
     # from whatwg fetch spec
     MAX_REDIRECTS = 20
@@ -20,11 +21,12 @@ module Increase
     # rubocop:enable Style/MutableConstant
 
     class << self
-      # @api private
+      # @private
       #
       # @param req [Hash{Symbol=>Object}]
       #
       # @raise [ArgumentError]
+      #
       def validate!(req)
         keys = [:method, :path, :query, :headers, :body, :unwrap, :page, :stream, :model, :options]
         case req
@@ -39,12 +41,13 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # @param status [Integer]
       # @param headers [Hash{String=>String}, Net::HTTPHeader]
       #
       # @return [Boolean]
+      #
       def should_retry?(status, headers:)
         coerced = Increase::Util.coerce_boolean(headers["x-should-retry"])
         case [coerced, status]
@@ -62,7 +65,7 @@ module Increase
         end
       end
 
-      # @api private
+      # @private
       #
       # @param request [Hash{Symbol=>Object}] .
       #
@@ -83,6 +86,7 @@ module Increase
       # @param response_headers [Hash{String=>String}, Net::HTTPHeader]
       #
       # @return [Hash{Symbol=>Object}]
+      #
       def follow_redirect(request, status:, response_headers:)
         method, url, headers = request.fetch_values(:method, :url, :headers)
         location =
@@ -126,11 +130,12 @@ module Increase
       end
     end
 
-    # @api private
+    # @private
+    #
     # @return [Increase::PooledNetRequester]
     attr_accessor :requester
 
-    # @api private
+    # @private
     #
     # @param base_url [String]
     # @param timeout [Float]
@@ -139,6 +144,7 @@ module Increase
     # @param max_retry_delay [Float]
     # @param headers [Hash{String=>String, Integer, Array<String, Integer, nil>, nil}]
     # @param idempotency_header [String, nil]
+    #
     def initialize(
       base_url:,
       timeout: 0.0,
@@ -165,17 +171,19 @@ module Increase
       @max_retry_delay = max_retry_delay
     end
 
-    # @api private
+    # @private
     #
     # @return [Hash{String=>String}]
+    #
     private def auth_headers = {}
 
-    # @api private
+    # @private
     #
     # @return [String]
+    #
     private def generate_idempotency_key = "stainless-ruby-retry-#{SecureRandom.uuid}"
 
-    # @api private
+    # @private
     #
     # @param req [Hash{Symbol=>Object}] .
     #
@@ -212,6 +220,7 @@ module Increase
     #   @option opts [Float, nil] :timeout
     #
     # @return [Hash{Symbol=>Object}]
+    #
     private def build_request(req, opts)
       method, uninterpolated_path = req.fetch_values(:method, :path)
 
@@ -262,12 +271,13 @@ module Increase
       }
     end
 
-    # @api private
+    # @private
     #
     # @param headers [Hash{String=>String}]
     # @param retry_count [Integer]
     #
     # @return [Float]
+    #
     private def retry_delay(headers, retry_count:)
       # Non-standard extension
       span = Float(headers["retry-after-ms"], exception: false)&.then { _1 / 1000 }
@@ -288,7 +298,7 @@ module Increase
       (@initial_retry_delay * scale * jitter).clamp(0, @max_retry_delay)
     end
 
-    # @api private
+    # @private
     #
     # @param request [Hash{Symbol=>Object}] .
     #
@@ -312,6 +322,7 @@ module Increase
     #
     # @raise [Increase::APIError]
     # @return [Array(Integer, Net::HTTPResponse, Enumerable)]
+    #
     private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
       url, headers, max_retries, timeout = request.fetch_values(:url, :headers, :max_retries, :timeout)
       input = {**request.except(:timeout), deadline: Increase::Util.monotonic_secs + timeout}
@@ -413,6 +424,7 @@ module Increase
     #
     # @raise [Increase::APIError]
     # @return [Object]
+    #
     def request(req)
       self.class.validate!(req)
       model = req.fetch(:model) { Increase::Unknown }
@@ -443,6 +455,7 @@ module Increase
     end
 
     # @return [String]
+    #
     def inspect
       # rubocop:disable Layout/LineLength
       base_url = Increase::Util.unparse_uri(@base_url)

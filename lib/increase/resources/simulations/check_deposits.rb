@@ -15,6 +15,7 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
+        #
         def reject(check_deposit_id, params = {})
           @client.request(
             method: :post,
@@ -34,6 +35,7 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
+        #
         def return_(check_deposit_id, params = {})
           @client.request(
             method: :post,
@@ -53,6 +55,7 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::CheckDeposit]
+        #
         def submit(check_deposit_id, params = {})
           @client.request(
             method: :post,
@@ -63,6 +66,7 @@ module Increase
         end
 
         # @param client [Increase::Client]
+        #
         def initialize(client:)
           @client = client
         end

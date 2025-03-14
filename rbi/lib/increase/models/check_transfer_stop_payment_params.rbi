@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The reason why this transfer should be stopped.
       sig { returns(T.nilable(Symbol)) }
       def reason
       end
@@ -26,7 +25,6 @@ module Increase
       def to_hash
       end
 
-      # The reason why this transfer should be stopped.
       class Reason < Increase::Enum
         abstract!
 

@@ -3,7 +3,6 @@
 module Increase
   module Models
     class AccountNumber < Increase::BaseModel
-      # The Account Number identifier.
       sig { returns(String) }
       def id
       end
@@ -12,7 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The identifier for the account this Account Number belongs to.
       sig { returns(String) }
       def account_id
       end
@@ -21,7 +19,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The account number.
       sig { returns(String) }
       def account_number
       end
@@ -30,8 +27,6 @@ module Increase
       def account_number=(_)
       end
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
-      #   Number was created.
       sig { returns(Time) }
       def created_at
       end
@@ -40,9 +35,6 @@ module Increase
       def created_at=(_)
       end
 
-      # The idempotency key you chose for this object. This value is unique across
-      #   Increase and is used to ensure that a request is only processed once. Learn more
-      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -51,7 +43,6 @@ module Increase
       def idempotency_key=(_)
       end
 
-      # Properties related to how this Account Number handles inbound ACH transfers.
       sig { returns(Increase::Models::AccountNumber::InboundACH) }
       def inbound_ach
       end
@@ -62,8 +53,6 @@ module Increase
       def inbound_ach=(_)
       end
 
-      # Properties related to how this Account Number should handle inbound check
-      #   withdrawals.
       sig { returns(Increase::Models::AccountNumber::InboundChecks) }
       def inbound_checks
       end
@@ -75,7 +64,6 @@ module Increase
       def inbound_checks=(_)
       end
 
-      # The name you choose for the Account Number.
       sig { returns(String) }
       def name
       end
@@ -84,7 +72,6 @@ module Increase
       def name=(_)
       end
 
-      # The American Bankers' Association (ABA) Routing Transit Number (RTN).
       sig { returns(String) }
       def routing_number
       end
@@ -93,7 +80,6 @@ module Increase
       def routing_number=(_)
       end
 
-      # This indicates if payments can be made to the Account Number.
       sig { returns(Symbol) }
       def status
       end
@@ -102,8 +88,6 @@ module Increase
       def status=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `account_number`.
       sig { returns(Symbol) }
       def type
       end
@@ -112,11 +96,6 @@ module Increase
       def type=(_)
       end
 
-      # Each account can have multiple account and routing numbers. We recommend that
-      #   you use a set per vendor. This is similar to how you use different passwords for
-      #   different websites. Account numbers can also be used to seamlessly reconcile
-      #   inbound payments. Generating a unique account number per vendor ensures you
-      #   always know the originator of an incoming payment.
       sig do
         params(
           id: String,
@@ -170,8 +149,6 @@ module Increase
       end
 
       class InboundACH < Increase::BaseModel
-        # Whether ACH debits are allowed against this Account Number. Note that they will
-        #   still be declined if this is `allowed` if the Account Number is not active.
         sig { returns(Symbol) }
         def debit_status
         end
@@ -180,7 +157,6 @@ module Increase
         def debit_status=(_)
         end
 
-        # Properties related to how this Account Number handles inbound ACH transfers.
         sig { params(debit_status: Symbol).returns(T.attached_class) }
         def self.new(debit_status:)
         end
@@ -189,8 +165,6 @@ module Increase
         def to_hash
         end
 
-        # Whether ACH debits are allowed against this Account Number. Note that they will
-        #   still be declined if this is `allowed` if the Account Number is not active.
         class DebitStatus < Increase::Enum
           abstract!
 
@@ -209,7 +183,6 @@ module Increase
       end
 
       class InboundChecks < Increase::BaseModel
-        # How Increase should process checks with this account number printed on them.
         sig { returns(Symbol) }
         def status
         end
@@ -218,8 +191,6 @@ module Increase
         def status=(_)
         end
 
-        # Properties related to how this Account Number should handle inbound check
-        #   withdrawals.
         sig { params(status: Symbol).returns(T.attached_class) }
         def self.new(status:)
         end
@@ -228,7 +199,6 @@ module Increase
         def to_hash
         end
 
-        # How Increase should process checks with this account number printed on them.
         class Status < Increase::Enum
           abstract!
 
@@ -246,7 +216,6 @@ module Increase
         end
       end
 
-      # This indicates if payments can be made to the Account Number.
       class Status < Increase::Enum
         abstract!
 
@@ -266,8 +235,6 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `account_number`.
       class Type < Increase::Enum
         abstract!
 

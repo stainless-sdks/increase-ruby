@@ -7,7 +7,6 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
-        # The identifier of the Account Number the inbound Wire Transfer is for.
         sig { returns(String) }
         def account_number_id
         end
@@ -16,7 +15,6 @@ module Increase
         def account_number_id=(_)
         end
 
-        # The transfer amount in cents. Must be positive.
         sig { returns(Integer) }
         def amount
         end
@@ -25,8 +23,6 @@ module Increase
         def amount=(_)
         end
 
-        # The sending bank will set beneficiary_address_line1 in production. You can
-        #   simulate any value here.
         sig { returns(T.nilable(String)) }
         def beneficiary_address_line1
         end
@@ -35,8 +31,6 @@ module Increase
         def beneficiary_address_line1=(_)
         end
 
-        # The sending bank will set beneficiary_address_line2 in production. You can
-        #   simulate any value here.
         sig { returns(T.nilable(String)) }
         def beneficiary_address_line2
         end
@@ -45,8 +39,6 @@ module Increase
         def beneficiary_address_line2=(_)
         end
 
-        # The sending bank will set beneficiary_address_line3 in production. You can
-        #   simulate any value here.
         sig { returns(T.nilable(String)) }
         def beneficiary_address_line3
         end
@@ -55,8 +47,6 @@ module Increase
         def beneficiary_address_line3=(_)
         end
 
-        # The sending bank will set beneficiary_name in production. You can simulate any
-        #   value here.
         sig { returns(T.nilable(String)) }
         def beneficiary_name
         end
@@ -65,8 +55,6 @@ module Increase
         def beneficiary_name=(_)
         end
 
-        # The sending bank will set beneficiary_reference in production. You can simulate
-        #   any value here.
         sig { returns(T.nilable(String)) }
         def beneficiary_reference
         end
@@ -75,8 +63,6 @@ module Increase
         def beneficiary_reference=(_)
         end
 
-        # The sending bank will set originator_address_line1 in production. You can
-        #   simulate any value here.
         sig { returns(T.nilable(String)) }
         def originator_address_line1
         end
@@ -85,8 +71,6 @@ module Increase
         def originator_address_line1=(_)
         end
 
-        # The sending bank will set originator_address_line2 in production. You can
-        #   simulate any value here.
         sig { returns(T.nilable(String)) }
         def originator_address_line2
         end
@@ -95,8 +79,6 @@ module Increase
         def originator_address_line2=(_)
         end
 
-        # The sending bank will set originator_address_line3 in production. You can
-        #   simulate any value here.
         sig { returns(T.nilable(String)) }
         def originator_address_line3
         end
@@ -105,8 +87,6 @@ module Increase
         def originator_address_line3=(_)
         end
 
-        # The sending bank will set originator_name in production. You can simulate any
-        #   value here.
         sig { returns(T.nilable(String)) }
         def originator_name
         end
@@ -115,8 +95,6 @@ module Increase
         def originator_name=(_)
         end
 
-        # The sending bank will set originator_routing_number in production. You can
-        #   simulate any value here.
         sig { returns(T.nilable(String)) }
         def originator_routing_number
         end
@@ -125,8 +103,6 @@ module Increase
         def originator_routing_number=(_)
         end
 
-        # The sending bank will set originator_to_beneficiary_information_line1 in
-        #   production. You can simulate any value here.
         sig { returns(T.nilable(String)) }
         def originator_to_beneficiary_information_line1
         end
@@ -135,8 +111,6 @@ module Increase
         def originator_to_beneficiary_information_line1=(_)
         end
 
-        # The sending bank will set originator_to_beneficiary_information_line2 in
-        #   production. You can simulate any value here.
         sig { returns(T.nilable(String)) }
         def originator_to_beneficiary_information_line2
         end
@@ -145,8 +119,6 @@ module Increase
         def originator_to_beneficiary_information_line2=(_)
         end
 
-        # The sending bank will set originator_to_beneficiary_information_line3 in
-        #   production. You can simulate any value here.
         sig { returns(T.nilable(String)) }
         def originator_to_beneficiary_information_line3
         end
@@ -155,8 +127,6 @@ module Increase
         def originator_to_beneficiary_information_line3=(_)
         end
 
-        # The sending bank will set originator_to_beneficiary_information_line4 in
-        #   production. You can simulate any value here.
         sig { returns(T.nilable(String)) }
         def originator_to_beneficiary_information_line4
         end
@@ -165,8 +135,6 @@ module Increase
         def originator_to_beneficiary_information_line4=(_)
         end
 
-        # The sending bank will set sender_reference in production. You can simulate any
-        #   value here.
         sig { returns(T.nilable(String)) }
         def sender_reference
         end

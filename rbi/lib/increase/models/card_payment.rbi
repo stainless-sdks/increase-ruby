@@ -3,7 +3,6 @@
 module Increase
   module Models
     class CardPayment < Increase::BaseModel
-      # The Card Payment identifier.
       sig { returns(String) }
       def id
       end
@@ -12,7 +11,6 @@ module Increase
       def id=(_)
       end
 
-      # The identifier for the Account the Transaction belongs to.
       sig { returns(String) }
       def account_id
       end
@@ -21,7 +19,6 @@ module Increase
       def account_id=(_)
       end
 
-      # The Card identifier for this payment.
       sig { returns(String) }
       def card_id
       end
@@ -30,8 +27,6 @@ module Increase
       def card_id=(_)
       end
 
-      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
-      #   Payment was created.
       sig { returns(Time) }
       def created_at
       end
@@ -40,7 +35,6 @@ module Increase
       def created_at=(_)
       end
 
-      # The Digital Wallet Token identifier for this payment.
       sig { returns(T.nilable(String)) }
       def digital_wallet_token_id
       end
@@ -49,7 +43,6 @@ module Increase
       def digital_wallet_token_id=(_)
       end
 
-      # The interactions related to this card payment.
       sig { returns(T::Array[Increase::Models::CardPayment::Element]) }
       def elements
       end
@@ -61,7 +54,6 @@ module Increase
       def elements=(_)
       end
 
-      # The Physical Card identifier for this payment.
       sig { returns(T.nilable(String)) }
       def physical_card_id
       end
@@ -70,7 +62,6 @@ module Increase
       def physical_card_id=(_)
       end
 
-      # The summarized state of this card payment.
       sig { returns(Increase::Models::CardPayment::State) }
       def state
       end
@@ -79,8 +70,6 @@ module Increase
       def state=(_)
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `card_payment`.
       sig { returns(Symbol) }
       def type
       end
@@ -89,8 +78,6 @@ module Increase
       def type=(_)
       end
 
-      # Card Payments group together interactions related to a single card payment, such
-      #   as an authorization and its corresponding settlement.
       sig do
         params(
           id: String,
@@ -138,9 +125,6 @@ module Increase
       end
 
       class Element < Increase::BaseModel
-        # A Card Authentication object. This field will be present in the JSON response if
-        #   and only if `category` is equal to `card_authentication`. Card Authentications
-        #   are attempts to authenticate a transaction or a card with 3DS.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication)) }
         def card_authentication
         end
@@ -152,10 +136,6 @@ module Increase
         def card_authentication=(_)
         end
 
-        # A Card Authorization object. This field will be present in the JSON response if
-        #   and only if `category` is equal to `card_authorization`. Card Authorizations are
-        #   temporary holds placed on a customers funds with the intent to later clear a
-        #   transaction.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorization)) }
         def card_authorization
         end
@@ -167,10 +147,6 @@ module Increase
         def card_authorization=(_)
         end
 
-        # A Card Authorization Expiration object. This field will be present in the JSON
-        #   response if and only if `category` is equal to `card_authorization_expiration`.
-        #   Card Authorization Expirations are cancellations of authorizations that were
-        #   never settled by the acquirer.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorizationExpiration)) }
         def card_authorization_expiration
         end
@@ -182,8 +158,6 @@ module Increase
         def card_authorization_expiration=(_)
         end
 
-        # A Card Decline object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_decline`.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardDecline)) }
         def card_decline
         end
@@ -195,10 +169,6 @@ module Increase
         def card_decline=(_)
         end
 
-        # A Card Fuel Confirmation object. This field will be present in the JSON response
-        #   if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel
-        #   Confirmations update the amount of a Card Authorization after a fuel pump
-        #   transaction is completed.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardFuelConfirmation)) }
         def card_fuel_confirmation
         end
@@ -210,9 +180,6 @@ module Increase
         def card_fuel_confirmation=(_)
         end
 
-        # A Card Increment object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_increment`. Card Increments increase the
-        #   pending amount of an authorized transaction.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardIncrement)) }
         def card_increment
         end
@@ -224,11 +191,6 @@ module Increase
         def card_increment=(_)
         end
 
-        # A Card Refund object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_refund`. Card Refunds move money back to
-        #   the cardholder. While they are usually connected to a Card Settlement an
-        #   acquirer can also refund money directly to a card without relation to a
-        #   transaction.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund)) }
         def card_refund
         end
@@ -240,9 +202,6 @@ module Increase
         def card_refund=(_)
         end
 
-        # A Card Reversal object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
-        #   or the entirety of an existing Card Authorization.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardReversal)) }
         def card_reversal
         end
@@ -254,11 +213,6 @@ module Increase
         def card_reversal=(_)
         end
 
-        # A Card Settlement object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_settlement`. Card Settlements are card
-        #   transactions that have cleared and settled. While a settlement is usually
-        #   preceded by an authorization, an acquirer can also directly clear a transaction
-        #   without first authorizing it.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement)) }
         def card_settlement
         end
@@ -270,10 +224,6 @@ module Increase
         def card_settlement=(_)
         end
 
-        # A Card Validation object. This field will be present in the JSON response if and
-        #   only if `category` is equal to `card_validation`. Card Validations are requests
-        #   from a merchant to verify that a card number and optionally its address and/or
-        #   Card Verification Value are valid.
         sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardValidation)) }
         def card_validation
         end
@@ -285,8 +235,6 @@ module Increase
         def card_validation=(_)
         end
 
-        # The type of the resource. We may add additional possible values for this enum
-        #   over time; your application should be able to handle such additions gracefully.
         sig { returns(Symbol) }
         def category
         end
@@ -295,8 +243,6 @@ module Increase
         def category=(_)
         end
 
-        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-        #   the card payment element was created.
         sig { returns(Time) }
         def created_at
         end
@@ -305,8 +251,6 @@ module Increase
         def created_at=(_)
         end
 
-        # If the category of this Transaction source is equal to `other`, this field will
-        #   contain an empty object, otherwise it will contain null.
         sig { returns(T.nilable(T.anything)) }
         def other
         end
@@ -374,7 +318,6 @@ module Increase
         end
 
         class CardAuthentication < Increase::BaseModel
-          # The Card Authentication identifier.
           sig { returns(String) }
           def id
           end
@@ -383,7 +326,6 @@ module Increase
           def id=(_)
           end
 
-          # The identifier of the Card.
           sig { returns(String) }
           def card_id
           end
@@ -392,7 +334,6 @@ module Increase
           def card_id=(_)
           end
 
-          # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
           def card_payment_id
           end
@@ -401,7 +342,6 @@ module Increase
           def card_payment_id=(_)
           end
 
-          # The category of the card authentication attempt.
           sig { returns(T.nilable(Symbol)) }
           def category
           end
@@ -410,7 +350,6 @@ module Increase
           def category=(_)
           end
 
-          # Details about the challenge, if one was requested.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthentication::Challenge)) }
           def challenge
           end
@@ -422,8 +361,6 @@ module Increase
           def challenge=(_)
           end
 
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
-          #   Authentication was attempted.
           sig { returns(Time) }
           def created_at
           end
@@ -432,7 +369,6 @@ module Increase
           def created_at=(_)
           end
 
-          # The reason why this authentication attempt was denied, if it was.
           sig { returns(T.nilable(Symbol)) }
           def deny_reason
           end
@@ -441,7 +377,6 @@ module Increase
           def deny_reason=(_)
           end
 
-          # The device channel of the card authentication attempt.
           sig { returns(T.nilable(Symbol)) }
           def device_channel
           end
@@ -450,8 +385,6 @@ module Increase
           def device_channel=(_)
           end
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
           sig { returns(String) }
           def merchant_acceptor_id
           end
@@ -460,8 +393,6 @@ module Increase
           def merchant_acceptor_id=(_)
           end
 
-          # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          #   card is transacting with.
           sig { returns(String) }
           def merchant_category_code
           end
@@ -470,7 +401,6 @@ module Increase
           def merchant_category_code=(_)
           end
 
-          # The country the merchant resides in.
           sig { returns(String) }
           def merchant_country
           end
@@ -479,7 +409,6 @@ module Increase
           def merchant_country=(_)
           end
 
-          # The name of the merchant.
           sig { returns(String) }
           def merchant_name
           end
@@ -488,7 +417,6 @@ module Increase
           def merchant_name=(_)
           end
 
-          # The purchase amount in minor units.
           sig { returns(T.nilable(Integer)) }
           def purchase_amount
           end
@@ -497,8 +425,6 @@ module Increase
           def purchase_amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   authentication attempt's purchase currency.
           sig { returns(T.nilable(String)) }
           def purchase_currency
           end
@@ -507,8 +433,6 @@ module Increase
           def purchase_currency=(_)
           end
 
-          # The identifier of the Real-Time Decision sent to approve or decline this
-          #   authentication attempt.
           sig { returns(T.nilable(String)) }
           def real_time_decision_id
           end
@@ -517,7 +441,6 @@ module Increase
           def real_time_decision_id=(_)
           end
 
-          # The status of the card authentication.
           sig { returns(Symbol) }
           def status
           end
@@ -526,8 +449,6 @@ module Increase
           def status=(_)
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_authentication`.
           sig { returns(Symbol) }
           def type
           end
@@ -536,9 +457,6 @@ module Increase
           def type=(_)
           end
 
-          # A Card Authentication object. This field will be present in the JSON response if
-          #   and only if `category` is equal to `card_authentication`. Card Authentications
-          #   are attempts to authenticate a transaction or a card with 3DS.
           sig do
             params(
               id: String,
@@ -609,7 +527,6 @@ module Increase
           def to_hash
           end
 
-          # The category of the card authentication attempt.
           class Category < Increase::Enum
             abstract!
 
@@ -627,7 +544,6 @@ module Increase
           end
 
           class Challenge < Increase::BaseModel
-            # Details about the challenge verification attempts, if any happened.
             sig { returns(T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt]) }
             def attempts
             end
@@ -639,8 +555,6 @@ module Increase
             def attempts=(_)
             end
 
-            # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
-            #   Authentication Challenge was started.
             sig { returns(Time) }
             def created_at
             end
@@ -649,7 +563,6 @@ module Increase
             def created_at=(_)
             end
 
-            # The one-time code used for the Card Authentication Challenge.
             sig { returns(String) }
             def one_time_code
             end
@@ -658,7 +571,6 @@ module Increase
             def one_time_code=(_)
             end
 
-            # The method used to verify the Card Authentication Challenge.
             sig { returns(Symbol) }
             def verification_method
             end
@@ -667,8 +579,6 @@ module Increase
             def verification_method=(_)
             end
 
-            # E.g., the email address or phone number used for the Card Authentication
-            #   Challenge.
             sig { returns(T.nilable(String)) }
             def verification_value
             end
@@ -677,7 +587,6 @@ module Increase
             def verification_value=(_)
             end
 
-            # Details about the challenge, if one was requested.
             sig do
               params(
                 attempts: T::Array[Increase::Models::CardPayment::Element::CardAuthentication::Challenge::Attempt],
@@ -707,8 +616,6 @@ module Increase
             end
 
             class Attempt < Increase::BaseModel
-              # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time of the Card
-              #   Authentication Challenge Attempt.
               sig { returns(Time) }
               def created_at
               end
@@ -717,7 +624,6 @@ module Increase
               def created_at=(_)
               end
 
-              # The outcome of the Card Authentication Challenge Attempt.
               sig { returns(Symbol) }
               def outcome
               end
@@ -734,7 +640,6 @@ module Increase
               def to_hash
               end
 
-              # The outcome of the Card Authentication Challenge Attempt.
               class Outcome < Increase::Enum
                 abstract!
 
@@ -752,7 +657,6 @@ module Increase
               end
             end
 
-            # The method used to verify the Card Authentication Challenge.
             class VerificationMethod < Increase::Enum
               abstract!
 
@@ -773,7 +677,6 @@ module Increase
             end
           end
 
-          # The reason why this authentication attempt was denied, if it was.
           class DenyReason < Increase::Enum
             abstract!
 
@@ -802,7 +705,6 @@ module Increase
             end
           end
 
-          # The device channel of the card authentication attempt.
           class DeviceChannel < Increase::Enum
             abstract!
 
@@ -822,7 +724,6 @@ module Increase
             end
           end
 
-          # The status of the card authentication.
           class Status < Increase::Enum
             abstract!
 
@@ -860,8 +761,6 @@ module Increase
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_authentication`.
           class Type < Increase::Enum
             abstract!
 
@@ -876,7 +775,6 @@ module Increase
         end
 
         class CardAuthorization < Increase::BaseModel
-          # The Card Authorization identifier.
           sig { returns(String) }
           def id
           end
@@ -885,8 +783,6 @@ module Increase
           def id=(_)
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
           sig { returns(Symbol) }
           def actioner
           end
@@ -895,8 +791,6 @@ module Increase
           def actioner=(_)
           end
 
-          # The pending amount in the minor unit of the transaction's currency. For dollars,
-          #   for example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -905,7 +799,6 @@ module Increase
           def amount=(_)
           end
 
-          # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
           def card_payment_id
           end
@@ -914,8 +807,6 @@ module Increase
           def card_payment_id=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -924,8 +815,6 @@ module Increase
           def currency=(_)
           end
 
-          # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-          #   purchase), the identifier of the token that was used.
           sig { returns(T.nilable(String)) }
           def digital_wallet_token_id
           end
@@ -934,8 +823,6 @@ module Increase
           def digital_wallet_token_id=(_)
           end
 
-          # The direction describes the direction the funds will move, either from the
-          #   cardholder to the merchant or from the merchant to the cardholder.
           sig { returns(Symbol) }
           def direction
           end
@@ -944,8 +831,6 @@ module Increase
           def direction=(_)
           end
 
-          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
-          #   will expire and the pending transaction will be released.
           sig { returns(Time) }
           def expires_at
           end
@@ -954,8 +839,6 @@ module Increase
           def expires_at=(_)
           end
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
           sig { returns(String) }
           def merchant_acceptor_id
           end
@@ -964,8 +847,6 @@ module Increase
           def merchant_acceptor_id=(_)
           end
 
-          # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          #   card is transacting with.
           sig { returns(String) }
           def merchant_category_code
           end
@@ -974,7 +855,6 @@ module Increase
           def merchant_category_code=(_)
           end
 
-          # The city the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_city
           end
@@ -983,7 +863,6 @@ module Increase
           def merchant_city=(_)
           end
 
-          # The country the merchant resides in.
           sig { returns(String) }
           def merchant_country
           end
@@ -992,7 +871,6 @@ module Increase
           def merchant_country=(_)
           end
 
-          # The merchant descriptor of the merchant the card is transacting with.
           sig { returns(String) }
           def merchant_descriptor
           end
@@ -1001,8 +879,6 @@ module Increase
           def merchant_descriptor=(_)
           end
 
-          # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          #   ZIP code, where the first 5 and last 4 are separated by a dash.
           sig { returns(T.nilable(String)) }
           def merchant_postal_code
           end
@@ -1011,7 +887,6 @@ module Increase
           def merchant_postal_code=(_)
           end
 
-          # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_state
           end
@@ -1020,7 +895,6 @@ module Increase
           def merchant_state=(_)
           end
 
-          # Fields specific to the `network`.
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails) }
           def network_details
           end
@@ -1032,7 +906,6 @@ module Increase
           def network_details=(_)
           end
 
-          # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::NetworkIdentifiers) }
           def network_identifiers
           end
@@ -1044,8 +917,6 @@ module Increase
           def network_identifiers=(_)
           end
 
-          # The risk score generated by the card network. For Visa this is the Visa Advanced
-          #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
           sig { returns(T.nilable(Integer)) }
           def network_risk_score
           end
@@ -1054,7 +925,6 @@ module Increase
           def network_risk_score=(_)
           end
 
-          # The identifier of the Pending Transaction associated with this Transaction.
           sig { returns(T.nilable(String)) }
           def pending_transaction_id
           end
@@ -1063,8 +933,6 @@ module Increase
           def pending_transaction_id=(_)
           end
 
-          # If the authorization was made in-person with a physical card, the Physical Card
-          #   that was used.
           sig { returns(T.nilable(String)) }
           def physical_card_id
           end
@@ -1073,7 +941,6 @@ module Increase
           def physical_card_id=(_)
           end
 
-          # The pending amount in the minor unit of the transaction's presentment currency.
           sig { returns(Integer) }
           def presentment_amount
           end
@@ -1082,8 +949,6 @@ module Increase
           def presentment_amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's presentment currency.
           sig { returns(String) }
           def presentment_currency
           end
@@ -1092,8 +957,6 @@ module Increase
           def presentment_currency=(_)
           end
 
-          # The processing category describes the intent behind the authorization, such as
-          #   whether it was used for bill payments or an automatic fuel dispenser.
           sig { returns(Symbol) }
           def processing_category
           end
@@ -1102,8 +965,6 @@ module Increase
           def processing_category=(_)
           end
 
-          # The identifier of the Real-Time Decision sent to approve or decline this
-          #   transaction.
           sig { returns(T.nilable(String)) }
           def real_time_decision_id
           end
@@ -1112,8 +973,6 @@ module Increase
           def real_time_decision_id=(_)
           end
 
-          # The terminal identifier (commonly abbreviated as TID) of the terminal the card
-          #   is transacting with.
           sig { returns(T.nilable(String)) }
           def terminal_id
           end
@@ -1122,8 +981,6 @@ module Increase
           def terminal_id=(_)
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_authorization`.
           sig { returns(Symbol) }
           def type
           end
@@ -1132,7 +989,6 @@ module Increase
           def type=(_)
           end
 
-          # Fields related to verification of cardholder-provided values.
           sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification) }
           def verification
           end
@@ -1144,10 +1000,6 @@ module Increase
           def verification=(_)
           end
 
-          # A Card Authorization object. This field will be present in the JSON response if
-          #   and only if `category` is equal to `card_authorization`. Card Authorizations are
-          #   temporary holds placed on a customers funds with the intent to later clear a
-          #   transaction.
           sig do
             params(
               id: String,
@@ -1248,8 +1100,6 @@ module Increase
           def to_hash
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
           class Actioner < Increase::Enum
             abstract!
 
@@ -1269,8 +1119,6 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
           class Currency < Increase::Enum
             abstract!
 
@@ -1299,8 +1147,6 @@ module Increase
             end
           end
 
-          # The direction describes the direction the funds will move, either from the
-          #   cardholder to the merchant or from the merchant to the cardholder.
           class Direction < Increase::Enum
             abstract!
 
@@ -1318,7 +1164,6 @@ module Increase
           end
 
           class NetworkDetails < Increase::BaseModel
-            # The payment network used to process this card authorization.
             sig { returns(Symbol) }
             def category
             end
@@ -1327,7 +1172,6 @@ module Increase
             def category=(_)
             end
 
-            # Fields specific to the `visa` network.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardAuthorization::NetworkDetails::Visa)) }
             def visa
             end
@@ -1339,7 +1183,6 @@ module Increase
             def visa=(_)
             end
 
-            # Fields specific to the `network`.
             sig do
               params(
                 category: Symbol,
@@ -1362,7 +1205,6 @@ module Increase
             def to_hash
             end
 
-            # The payment network used to process this card authorization.
             class Category < Increase::Enum
               abstract!
 
@@ -1377,9 +1219,6 @@ module Increase
             end
 
             class Visa < Increase::BaseModel
-              # For electronic commerce transactions, this identifies the level of security used
-              #   in obtaining the customer's payment credential. For mail or telephone order
-              #   transactions, identifies the type of mail or telephone order.
               sig { returns(T.nilable(Symbol)) }
               def electronic_commerce_indicator
               end
@@ -1388,8 +1227,6 @@ module Increase
               def electronic_commerce_indicator=(_)
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              #   expiration date.
               sig { returns(T.nilable(Symbol)) }
               def point_of_service_entry_mode
               end
@@ -1398,8 +1235,6 @@ module Increase
               def point_of_service_entry_mode=(_)
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              #   approved or declined by Visa through stand-in processing.
               sig { returns(T.nilable(Symbol)) }
               def stand_in_processing_reason
               end
@@ -1408,7 +1243,6 @@ module Increase
               def stand_in_processing_reason=(_)
               end
 
-              # Fields specific to the `visa` network.
               sig do
                 params(
                   electronic_commerce_indicator: T.nilable(Symbol),
@@ -1433,9 +1267,6 @@ module Increase
               def to_hash
               end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              #   in obtaining the customer's payment credential. For mail or telephone order
-              #   transactions, identifies the type of mail or telephone order.
               class ElectronicCommerceIndicator < Increase::Enum
                 abstract!
 
@@ -1475,8 +1306,6 @@ module Increase
                 end
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              #   expiration date.
               class PointOfServiceEntryMode < Increase::Enum
                 abstract!
 
@@ -1517,8 +1346,6 @@ module Increase
                 end
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              #   approved or declined by Visa through stand-in processing.
               class StandInProcessingReason < Increase::Enum
                 abstract!
 
@@ -1560,9 +1387,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::BaseModel
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
             def retrieval_reference_number
             end
@@ -1571,8 +1395,6 @@ module Increase
             def retrieval_reference_number=(_)
             end
 
-            # A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
             def trace_number
             end
@@ -1581,8 +1403,6 @@ module Increase
             def trace_number=(_)
             end
 
-            # A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
             def transaction_id
             end
@@ -1591,7 +1411,6 @@ module Increase
             def transaction_id=(_)
             end
 
-            # Network-specific identifiers for a specific request or transaction.
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -1617,8 +1436,6 @@ module Increase
             end
           end
 
-          # The processing category describes the intent behind the authorization, such as
-          #   whether it was used for bill payments or an automatic fuel dispenser.
           class ProcessingCategory < Increase::Enum
             abstract!
 
@@ -1647,8 +1464,6 @@ module Increase
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_authorization`.
           class Type < Increase::Enum
             abstract!
 
@@ -1662,8 +1477,6 @@ module Increase
           end
 
           class Verification < Increase::BaseModel
-            # Fields related to verification of the Card Verification Code, a 3-digit code on
-            #   the back of the card.
             sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode) }
             def card_verification_code
             end
@@ -1675,8 +1488,6 @@ module Increase
             def card_verification_code=(_)
             end
 
-            # Cardholder address provided in the authorization request and the address on file
-            #   we verified it against.
             sig { returns(Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardholderAddress) }
             def cardholder_address
             end
@@ -1688,7 +1499,6 @@ module Increase
             def cardholder_address=(_)
             end
 
-            # Fields related to verification of cardholder-provided values.
             sig do
               params(
                 card_verification_code: Increase::Models::CardPayment::Element::CardAuthorization::Verification::CardVerificationCode,
@@ -1712,7 +1522,6 @@ module Increase
             end
 
             class CardVerificationCode < Increase::BaseModel
-              # The result of verifying the Card Verification Code.
               sig { returns(Symbol) }
               def result
               end
@@ -1721,8 +1530,6 @@ module Increase
               def result=(_)
               end
 
-              # Fields related to verification of the Card Verification Code, a 3-digit code on
-              #   the back of the card.
               sig { params(result: Symbol).returns(T.attached_class) }
               def self.new(result:)
               end
@@ -1731,7 +1538,6 @@ module Increase
               def to_hash
               end
 
-              # The result of verifying the Card Verification Code.
               class Result < Increase::Enum
                 abstract!
 
@@ -1753,7 +1559,6 @@ module Increase
             end
 
             class CardholderAddress < Increase::BaseModel
-              # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               def actual_line1
               end
@@ -1762,7 +1567,6 @@ module Increase
               def actual_line1=(_)
               end
 
-              # The postal code of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               def actual_postal_code
               end
@@ -1771,8 +1575,6 @@ module Increase
               def actual_postal_code=(_)
               end
 
-              # The cardholder address line 1 provided for verification in the authorization
-              #   request.
               sig { returns(T.nilable(String)) }
               def provided_line1
               end
@@ -1781,7 +1583,6 @@ module Increase
               def provided_line1=(_)
               end
 
-              # The postal code provided for verification in the authorization request.
               sig { returns(T.nilable(String)) }
               def provided_postal_code
               end
@@ -1790,7 +1591,6 @@ module Increase
               def provided_postal_code=(_)
               end
 
-              # The address verification result returned to the card network.
               sig { returns(Symbol) }
               def result
               end
@@ -1799,8 +1599,6 @@ module Increase
               def result=(_)
               end
 
-              # Cardholder address provided in the authorization request and the address on file
-              #   we verified it against.
               sig do
                 params(
                   actual_line1: T.nilable(String),
@@ -1829,7 +1627,6 @@ module Increase
               def to_hash
               end
 
-              # The address verification result returned to the card network.
               class Result < Increase::Enum
                 abstract!
 
@@ -1862,7 +1659,6 @@ module Increase
         end
 
         class CardAuthorizationExpiration < Increase::BaseModel
-          # The Card Authorization Expiration identifier.
           sig { returns(String) }
           def id
           end
@@ -1871,7 +1667,6 @@ module Increase
           def id=(_)
           end
 
-          # The identifier for the Card Authorization this reverses.
           sig { returns(String) }
           def card_authorization_id
           end
@@ -1880,8 +1675,6 @@ module Increase
           def card_authorization_id=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          #   currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -1890,8 +1683,6 @@ module Increase
           def currency=(_)
           end
 
-          # The amount of this authorization expiration in the minor unit of the
-          #   transaction's currency. For dollars, for example, this is cents.
           sig { returns(Integer) }
           def expired_amount
           end
@@ -1900,7 +1691,6 @@ module Increase
           def expired_amount=(_)
           end
 
-          # The card network used to process this card authorization.
           sig { returns(Symbol) }
           def network
           end
@@ -1909,8 +1699,6 @@ module Increase
           def network=(_)
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_authorization_expiration`.
           sig { returns(Symbol) }
           def type
           end
@@ -1919,10 +1707,6 @@ module Increase
           def type=(_)
           end
 
-          # A Card Authorization Expiration object. This field will be present in the JSON
-          #   response if and only if `category` is equal to `card_authorization_expiration`.
-          #   Card Authorization Expirations are cancellations of authorizations that were
-          #   never settled by the acquirer.
           sig do
             params(
               id: String,
@@ -1953,8 +1737,6 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          #   currency.
           class Currency < Increase::Enum
             abstract!
 
@@ -1983,7 +1765,6 @@ module Increase
             end
           end
 
-          # The card network used to process this card authorization.
           class Network < Increase::Enum
             abstract!
 
@@ -1997,8 +1778,6 @@ module Increase
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_authorization_expiration`.
           class Type < Increase::Enum
             abstract!
 
@@ -2013,7 +1792,6 @@ module Increase
         end
 
         class CardDecline < Increase::BaseModel
-          # The Card Decline identifier.
           sig { returns(String) }
           def id
           end
@@ -2022,8 +1800,6 @@ module Increase
           def id=(_)
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
           sig { returns(Symbol) }
           def actioner
           end
@@ -2032,8 +1808,6 @@ module Increase
           def actioner=(_)
           end
 
-          # The declined amount in the minor unit of the destination account currency. For
-          #   dollars, for example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -2042,7 +1816,6 @@ module Increase
           def amount=(_)
           end
 
-          # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
           def card_payment_id
           end
@@ -2051,8 +1824,6 @@ module Increase
           def card_payment_id=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          #   account currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -2061,7 +1832,6 @@ module Increase
           def currency=(_)
           end
 
-          # The identifier of the declined transaction created for this Card Decline.
           sig { returns(String) }
           def declined_transaction_id
           end
@@ -2070,8 +1840,6 @@ module Increase
           def declined_transaction_id=(_)
           end
 
-          # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-          #   purchase), the identifier of the token that was used.
           sig { returns(T.nilable(String)) }
           def digital_wallet_token_id
           end
@@ -2080,8 +1848,6 @@ module Increase
           def digital_wallet_token_id=(_)
           end
 
-          # The direction describes the direction the funds will move, either from the
-          #   cardholder to the merchant or from the merchant to the cardholder.
           sig { returns(Symbol) }
           def direction
           end
@@ -2090,8 +1856,6 @@ module Increase
           def direction=(_)
           end
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
           sig { returns(String) }
           def merchant_acceptor_id
           end
@@ -2100,8 +1864,6 @@ module Increase
           def merchant_acceptor_id=(_)
           end
 
-          # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          #   card is transacting with.
           sig { returns(String) }
           def merchant_category_code
           end
@@ -2110,7 +1872,6 @@ module Increase
           def merchant_category_code=(_)
           end
 
-          # The city the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_city
           end
@@ -2119,7 +1880,6 @@ module Increase
           def merchant_city=(_)
           end
 
-          # The country the merchant resides in.
           sig { returns(String) }
           def merchant_country
           end
@@ -2128,7 +1888,6 @@ module Increase
           def merchant_country=(_)
           end
 
-          # The merchant descriptor of the merchant the card is transacting with.
           sig { returns(String) }
           def merchant_descriptor
           end
@@ -2137,8 +1896,6 @@ module Increase
           def merchant_descriptor=(_)
           end
 
-          # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          #   ZIP code, where the first 5 and last 4 are separated by a dash.
           sig { returns(T.nilable(String)) }
           def merchant_postal_code
           end
@@ -2147,7 +1904,6 @@ module Increase
           def merchant_postal_code=(_)
           end
 
-          # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_state
           end
@@ -2156,7 +1912,6 @@ module Increase
           def merchant_state=(_)
           end
 
-          # Fields specific to the `network`.
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails) }
           def network_details
           end
@@ -2168,7 +1923,6 @@ module Increase
           def network_details=(_)
           end
 
-          # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::NetworkIdentifiers) }
           def network_identifiers
           end
@@ -2180,8 +1934,6 @@ module Increase
           def network_identifiers=(_)
           end
 
-          # The risk score generated by the card network. For Visa this is the Visa Advanced
-          #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
           sig { returns(T.nilable(Integer)) }
           def network_risk_score
           end
@@ -2190,8 +1942,6 @@ module Increase
           def network_risk_score=(_)
           end
 
-          # If the authorization was made in-person with a physical card, the Physical Card
-          #   that was used.
           sig { returns(T.nilable(String)) }
           def physical_card_id
           end
@@ -2200,7 +1950,6 @@ module Increase
           def physical_card_id=(_)
           end
 
-          # The declined amount in the minor unit of the transaction's presentment currency.
           sig { returns(Integer) }
           def presentment_amount
           end
@@ -2209,8 +1958,6 @@ module Increase
           def presentment_amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's presentment currency.
           sig { returns(String) }
           def presentment_currency
           end
@@ -2219,8 +1966,6 @@ module Increase
           def presentment_currency=(_)
           end
 
-          # The processing category describes the intent behind the authorization, such as
-          #   whether it was used for bill payments or an automatic fuel dispenser.
           sig { returns(Symbol) }
           def processing_category
           end
@@ -2229,8 +1974,6 @@ module Increase
           def processing_category=(_)
           end
 
-          # The identifier of the Real-Time Decision sent to approve or decline this
-          #   transaction.
           sig { returns(T.nilable(String)) }
           def real_time_decision_id
           end
@@ -2239,8 +1982,6 @@ module Increase
           def real_time_decision_id=(_)
           end
 
-          # This is present if a specific decline reason was given in the real-time
-          #   decision.
           sig { returns(T.nilable(Symbol)) }
           def real_time_decision_reason
           end
@@ -2249,7 +1990,6 @@ module Increase
           def real_time_decision_reason=(_)
           end
 
-          # Why the transaction was declined.
           sig { returns(Symbol) }
           def reason
           end
@@ -2258,8 +1998,6 @@ module Increase
           def reason=(_)
           end
 
-          # The terminal identifier (commonly abbreviated as TID) of the terminal the card
-          #   is transacting with.
           sig { returns(T.nilable(String)) }
           def terminal_id
           end
@@ -2268,7 +2006,6 @@ module Increase
           def terminal_id=(_)
           end
 
-          # Fields related to verification of cardholder-provided values.
           sig { returns(Increase::Models::CardPayment::Element::CardDecline::Verification) }
           def verification
           end
@@ -2280,8 +2017,6 @@ module Increase
           def verification=(_)
           end
 
-          # A Card Decline object. This field will be present in the JSON response if and
-          #   only if `category` is equal to `card_decline`.
           sig do
             params(
               id: String,
@@ -2382,8 +2117,6 @@ module Increase
           def to_hash
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
           class Actioner < Increase::Enum
             abstract!
 
@@ -2403,8 +2136,6 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-          #   account currency.
           class Currency < Increase::Enum
             abstract!
 
@@ -2433,8 +2164,6 @@ module Increase
             end
           end
 
-          # The direction describes the direction the funds will move, either from the
-          #   cardholder to the merchant or from the merchant to the cardholder.
           class Direction < Increase::Enum
             abstract!
 
@@ -2452,7 +2181,6 @@ module Increase
           end
 
           class NetworkDetails < Increase::BaseModel
-            # The payment network used to process this card authorization.
             sig { returns(Symbol) }
             def category
             end
@@ -2461,7 +2189,6 @@ module Increase
             def category=(_)
             end
 
-            # Fields specific to the `visa` network.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardDecline::NetworkDetails::Visa)) }
             def visa
             end
@@ -2473,7 +2200,6 @@ module Increase
             def visa=(_)
             end
 
-            # Fields specific to the `network`.
             sig do
               params(
                 category: Symbol,
@@ -2493,7 +2219,6 @@ module Increase
             def to_hash
             end
 
-            # The payment network used to process this card authorization.
             class Category < Increase::Enum
               abstract!
 
@@ -2508,9 +2233,6 @@ module Increase
             end
 
             class Visa < Increase::BaseModel
-              # For electronic commerce transactions, this identifies the level of security used
-              #   in obtaining the customer's payment credential. For mail or telephone order
-              #   transactions, identifies the type of mail or telephone order.
               sig { returns(T.nilable(Symbol)) }
               def electronic_commerce_indicator
               end
@@ -2519,8 +2241,6 @@ module Increase
               def electronic_commerce_indicator=(_)
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              #   expiration date.
               sig { returns(T.nilable(Symbol)) }
               def point_of_service_entry_mode
               end
@@ -2529,8 +2249,6 @@ module Increase
               def point_of_service_entry_mode=(_)
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              #   approved or declined by Visa through stand-in processing.
               sig { returns(T.nilable(Symbol)) }
               def stand_in_processing_reason
               end
@@ -2539,7 +2257,6 @@ module Increase
               def stand_in_processing_reason=(_)
               end
 
-              # Fields specific to the `visa` network.
               sig do
                 params(
                   electronic_commerce_indicator: T.nilable(Symbol),
@@ -2564,9 +2281,6 @@ module Increase
               def to_hash
               end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              #   in obtaining the customer's payment credential. For mail or telephone order
-              #   transactions, identifies the type of mail or telephone order.
               class ElectronicCommerceIndicator < Increase::Enum
                 abstract!
 
@@ -2606,8 +2320,6 @@ module Increase
                 end
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              #   expiration date.
               class PointOfServiceEntryMode < Increase::Enum
                 abstract!
 
@@ -2648,8 +2360,6 @@ module Increase
                 end
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              #   approved or declined by Visa through stand-in processing.
               class StandInProcessingReason < Increase::Enum
                 abstract!
 
@@ -2691,9 +2401,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::BaseModel
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
             def retrieval_reference_number
             end
@@ -2702,8 +2409,6 @@ module Increase
             def retrieval_reference_number=(_)
             end
 
-            # A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
             def trace_number
             end
@@ -2712,8 +2417,6 @@ module Increase
             def trace_number=(_)
             end
 
-            # A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
             def transaction_id
             end
@@ -2722,7 +2425,6 @@ module Increase
             def transaction_id=(_)
             end
 
-            # Network-specific identifiers for a specific request or transaction.
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -2748,8 +2450,6 @@ module Increase
             end
           end
 
-          # The processing category describes the intent behind the authorization, such as
-          #   whether it was used for bill payments or an automatic fuel dispenser.
           class ProcessingCategory < Increase::Enum
             abstract!
 
@@ -2778,8 +2478,6 @@ module Increase
             end
           end
 
-          # This is present if a specific decline reason was given in the real-time
-          #   decision.
           class RealTimeDecisionReason < Increase::Enum
             abstract!
 
@@ -2808,7 +2506,6 @@ module Increase
             end
           end
 
-          # Why the transaction was declined.
           class Reason < Increase::Enum
             abstract!
 
@@ -2871,8 +2568,6 @@ module Increase
           end
 
           class Verification < Increase::BaseModel
-            # Fields related to verification of the Card Verification Code, a 3-digit code on
-            #   the back of the card.
             sig { returns(Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode) }
             def card_verification_code
             end
@@ -2884,8 +2579,6 @@ module Increase
             def card_verification_code=(_)
             end
 
-            # Cardholder address provided in the authorization request and the address on file
-            #   we verified it against.
             sig { returns(Increase::Models::CardPayment::Element::CardDecline::Verification::CardholderAddress) }
             def cardholder_address
             end
@@ -2897,7 +2590,6 @@ module Increase
             def cardholder_address=(_)
             end
 
-            # Fields related to verification of cardholder-provided values.
             sig do
               params(
                 card_verification_code: Increase::Models::CardPayment::Element::CardDecline::Verification::CardVerificationCode,
@@ -2921,7 +2613,6 @@ module Increase
             end
 
             class CardVerificationCode < Increase::BaseModel
-              # The result of verifying the Card Verification Code.
               sig { returns(Symbol) }
               def result
               end
@@ -2930,8 +2621,6 @@ module Increase
               def result=(_)
               end
 
-              # Fields related to verification of the Card Verification Code, a 3-digit code on
-              #   the back of the card.
               sig { params(result: Symbol).returns(T.attached_class) }
               def self.new(result:)
               end
@@ -2940,7 +2629,6 @@ module Increase
               def to_hash
               end
 
-              # The result of verifying the Card Verification Code.
               class Result < Increase::Enum
                 abstract!
 
@@ -2962,7 +2650,6 @@ module Increase
             end
 
             class CardholderAddress < Increase::BaseModel
-              # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               def actual_line1
               end
@@ -2971,7 +2658,6 @@ module Increase
               def actual_line1=(_)
               end
 
-              # The postal code of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               def actual_postal_code
               end
@@ -2980,8 +2666,6 @@ module Increase
               def actual_postal_code=(_)
               end
 
-              # The cardholder address line 1 provided for verification in the authorization
-              #   request.
               sig { returns(T.nilable(String)) }
               def provided_line1
               end
@@ -2990,7 +2674,6 @@ module Increase
               def provided_line1=(_)
               end
 
-              # The postal code provided for verification in the authorization request.
               sig { returns(T.nilable(String)) }
               def provided_postal_code
               end
@@ -2999,7 +2682,6 @@ module Increase
               def provided_postal_code=(_)
               end
 
-              # The address verification result returned to the card network.
               sig { returns(Symbol) }
               def result
               end
@@ -3008,8 +2690,6 @@ module Increase
               def result=(_)
               end
 
-              # Cardholder address provided in the authorization request and the address on file
-              #   we verified it against.
               sig do
                 params(
                   actual_line1: T.nilable(String),
@@ -3038,7 +2718,6 @@ module Increase
               def to_hash
               end
 
-              # The address verification result returned to the card network.
               class Result < Increase::Enum
                 abstract!
 
@@ -3071,7 +2750,6 @@ module Increase
         end
 
         class CardFuelConfirmation < Increase::BaseModel
-          # The Card Fuel Confirmation identifier.
           sig { returns(String) }
           def id
           end
@@ -3080,7 +2758,6 @@ module Increase
           def id=(_)
           end
 
-          # The identifier for the Card Authorization this updates.
           sig { returns(String) }
           def card_authorization_id
           end
@@ -3089,8 +2766,6 @@ module Increase
           def card_authorization_id=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          #   currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -3099,7 +2774,6 @@ module Increase
           def currency=(_)
           end
 
-          # The card network used to process this card authorization.
           sig { returns(Symbol) }
           def network
           end
@@ -3108,7 +2782,6 @@ module Increase
           def network=(_)
           end
 
-          # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::CardPayment::Element::CardFuelConfirmation::NetworkIdentifiers) }
           def network_identifiers
           end
@@ -3120,8 +2793,6 @@ module Increase
           def network_identifiers=(_)
           end
 
-          # The identifier of the Pending Transaction associated with this Card Fuel
-          #   Confirmation.
           sig { returns(T.nilable(String)) }
           def pending_transaction_id
           end
@@ -3130,8 +2801,6 @@ module Increase
           def pending_transaction_id=(_)
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_fuel_confirmation`.
           sig { returns(Symbol) }
           def type
           end
@@ -3140,8 +2809,6 @@ module Increase
           def type=(_)
           end
 
-          # The updated authorization amount after this fuel confirmation, in the minor unit
-          #   of the transaction's currency. For dollars, for example, this is cents.
           sig { returns(Integer) }
           def updated_authorization_amount
           end
@@ -3150,10 +2817,6 @@ module Increase
           def updated_authorization_amount=(_)
           end
 
-          # A Card Fuel Confirmation object. This field will be present in the JSON response
-          #   if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel
-          #   Confirmations update the amount of a Card Authorization after a fuel pump
-          #   transaction is completed.
           sig do
             params(
               id: String,
@@ -3197,8 +2860,6 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          #   currency.
           class Currency < Increase::Enum
             abstract!
 
@@ -3227,7 +2888,6 @@ module Increase
             end
           end
 
-          # The card network used to process this card authorization.
           class Network < Increase::Enum
             abstract!
 
@@ -3242,9 +2902,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::BaseModel
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
             def retrieval_reference_number
             end
@@ -3253,8 +2910,6 @@ module Increase
             def retrieval_reference_number=(_)
             end
 
-            # A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
             def trace_number
             end
@@ -3263,8 +2918,6 @@ module Increase
             def trace_number=(_)
             end
 
-            # A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
             def transaction_id
             end
@@ -3273,7 +2926,6 @@ module Increase
             def transaction_id=(_)
             end
 
-            # Network-specific identifiers for a specific request or transaction.
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -3299,8 +2951,6 @@ module Increase
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_fuel_confirmation`.
           class Type < Increase::Enum
             abstract!
 
@@ -3315,7 +2965,6 @@ module Increase
         end
 
         class CardIncrement < Increase::BaseModel
-          # The Card Increment identifier.
           sig { returns(String) }
           def id
           end
@@ -3324,8 +2973,6 @@ module Increase
           def id=(_)
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
           sig { returns(Symbol) }
           def actioner
           end
@@ -3334,8 +2981,6 @@ module Increase
           def actioner=(_)
           end
 
-          # The amount of this increment in the minor unit of the transaction's currency.
-          #   For dollars, for example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -3344,7 +2989,6 @@ module Increase
           def amount=(_)
           end
 
-          # The identifier for the Card Authorization this increments.
           sig { returns(String) }
           def card_authorization_id
           end
@@ -3353,8 +2997,6 @@ module Increase
           def card_authorization_id=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          #   currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -3363,7 +3005,6 @@ module Increase
           def currency=(_)
           end
 
-          # The card network used to process this card authorization.
           sig { returns(Symbol) }
           def network
           end
@@ -3372,7 +3013,6 @@ module Increase
           def network=(_)
           end
 
-          # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::CardPayment::Element::CardIncrement::NetworkIdentifiers) }
           def network_identifiers
           end
@@ -3384,8 +3024,6 @@ module Increase
           def network_identifiers=(_)
           end
 
-          # The risk score generated by the card network. For Visa this is the Visa Advanced
-          #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
           sig { returns(T.nilable(Integer)) }
           def network_risk_score
           end
@@ -3394,7 +3032,6 @@ module Increase
           def network_risk_score=(_)
           end
 
-          # The identifier of the Pending Transaction associated with this Card Increment.
           sig { returns(T.nilable(String)) }
           def pending_transaction_id
           end
@@ -3403,8 +3040,6 @@ module Increase
           def pending_transaction_id=(_)
           end
 
-          # The identifier of the Real-Time Decision sent to approve or decline this
-          #   incremental authorization.
           sig { returns(T.nilable(String)) }
           def real_time_decision_id
           end
@@ -3413,8 +3048,6 @@ module Increase
           def real_time_decision_id=(_)
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_increment`.
           sig { returns(Symbol) }
           def type
           end
@@ -3423,8 +3056,6 @@ module Increase
           def type=(_)
           end
 
-          # The updated authorization amount after this increment, in the minor unit of the
-          #   transaction's currency. For dollars, for example, this is cents.
           sig { returns(Integer) }
           def updated_authorization_amount
           end
@@ -3433,9 +3064,6 @@ module Increase
           def updated_authorization_amount=(_)
           end
 
-          # A Card Increment object. This field will be present in the JSON response if and
-          #   only if `category` is equal to `card_increment`. Card Increments increase the
-          #   pending amount of an authorized transaction.
           sig do
             params(
               id: String,
@@ -3491,8 +3119,6 @@ module Increase
           def to_hash
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
           class Actioner < Increase::Enum
             abstract!
 
@@ -3512,8 +3138,6 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
-          #   currency.
           class Currency < Increase::Enum
             abstract!
 
@@ -3542,7 +3166,6 @@ module Increase
             end
           end
 
-          # The card network used to process this card authorization.
           class Network < Increase::Enum
             abstract!
 
@@ -3557,9 +3180,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::BaseModel
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
             def retrieval_reference_number
             end
@@ -3568,8 +3188,6 @@ module Increase
             def retrieval_reference_number=(_)
             end
 
-            # A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
             def trace_number
             end
@@ -3578,8 +3196,6 @@ module Increase
             def trace_number=(_)
             end
 
-            # A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
             def transaction_id
             end
@@ -3588,7 +3204,6 @@ module Increase
             def transaction_id=(_)
             end
 
-            # Network-specific identifiers for a specific request or transaction.
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -3614,8 +3229,6 @@ module Increase
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_increment`.
           class Type < Increase::Enum
             abstract!
 
@@ -3630,7 +3243,6 @@ module Increase
         end
 
         class CardRefund < Increase::BaseModel
-          # The Card Refund identifier.
           sig { returns(String) }
           def id
           end
@@ -3639,8 +3251,6 @@ module Increase
           def id=(_)
           end
 
-          # The amount in the minor unit of the transaction's settlement currency. For
-          #   dollars, for example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -3649,7 +3259,6 @@ module Increase
           def amount=(_)
           end
 
-          # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
           def card_payment_id
           end
@@ -3658,8 +3267,6 @@ module Increase
           def card_payment_id=(_)
           end
 
-          # Cashback debited for this transaction, if eligible. Cashback is paid out in
-          #   aggregate, monthly.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::Cashback)) }
           def cashback
           end
@@ -3671,8 +3278,6 @@ module Increase
           def cashback=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's settlement currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -3681,7 +3286,6 @@ module Increase
           def currency=(_)
           end
 
-          # Interchange assessed as a part of this transaciton.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::Interchange)) }
           def interchange
           end
@@ -3693,8 +3297,6 @@ module Increase
           def interchange=(_)
           end
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
           sig { returns(String) }
           def merchant_acceptor_id
           end
@@ -3703,7 +3305,6 @@ module Increase
           def merchant_acceptor_id=(_)
           end
 
-          # The 4-digit MCC describing the merchant's business.
           sig { returns(String) }
           def merchant_category_code
           end
@@ -3712,7 +3313,6 @@ module Increase
           def merchant_category_code=(_)
           end
 
-          # The city the merchant resides in.
           sig { returns(String) }
           def merchant_city
           end
@@ -3721,7 +3321,6 @@ module Increase
           def merchant_city=(_)
           end
 
-          # The country the merchant resides in.
           sig { returns(String) }
           def merchant_country
           end
@@ -3730,7 +3329,6 @@ module Increase
           def merchant_country=(_)
           end
 
-          # The name of the merchant.
           sig { returns(String) }
           def merchant_name
           end
@@ -3739,7 +3337,6 @@ module Increase
           def merchant_name=(_)
           end
 
-          # The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
           sig { returns(T.nilable(String)) }
           def merchant_postal_code
           end
@@ -3748,7 +3345,6 @@ module Increase
           def merchant_postal_code=(_)
           end
 
-          # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_state
           end
@@ -3757,7 +3353,6 @@ module Increase
           def merchant_state=(_)
           end
 
-          # Network-specific identifiers for this refund.
           sig { returns(Increase::Models::CardPayment::Element::CardRefund::NetworkIdentifiers) }
           def network_identifiers
           end
@@ -3769,7 +3364,6 @@ module Increase
           def network_identifiers=(_)
           end
 
-          # The amount in the minor unit of the transaction's presentment currency.
           sig { returns(Integer) }
           def presentment_amount
           end
@@ -3778,8 +3372,6 @@ module Increase
           def presentment_amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's presentment currency.
           sig { returns(String) }
           def presentment_currency
           end
@@ -3788,8 +3380,6 @@ module Increase
           def presentment_currency=(_)
           end
 
-          # Additional details about the card purchase, such as tax and industry-specific
-          #   fields.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails)) }
           def purchase_details
           end
@@ -3801,7 +3391,6 @@ module Increase
           def purchase_details=(_)
           end
 
-          # The identifier of the Transaction associated with this Transaction.
           sig { returns(String) }
           def transaction_id
           end
@@ -3810,8 +3399,6 @@ module Increase
           def transaction_id=(_)
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_refund`.
           sig { returns(Symbol) }
           def type
           end
@@ -3820,11 +3407,6 @@ module Increase
           def type=(_)
           end
 
-          # A Card Refund object. This field will be present in the JSON response if and
-          #   only if `category` is equal to `card_refund`. Card Refunds move money back to
-          #   the cardholder. While they are usually connected to a Card Settlement an
-          #   acquirer can also refund money directly to a card without relation to a
-          #   transaction.
           sig do
             params(
               id: String,
@@ -3902,9 +3484,6 @@ module Increase
           end
 
           class Cashback < Increase::BaseModel
-            # The cashback amount given as a string containing a decimal number. The amount is
-            #   a positive number if it will be credited to you (e.g., settlements) and a
-            #   negative number if it will be debited (e.g., refunds).
             sig { returns(String) }
             def amount
             end
@@ -3913,7 +3492,6 @@ module Increase
             def amount=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             sig { returns(Symbol) }
             def currency
             end
@@ -3922,8 +3500,6 @@ module Increase
             def currency=(_)
             end
 
-            # Cashback debited for this transaction, if eligible. Cashback is paid out in
-            #   aggregate, monthly.
             sig { params(amount: String, currency: Symbol).returns(T.attached_class) }
             def self.new(amount:, currency:)
             end
@@ -3932,7 +3508,6 @@ module Increase
             def to_hash
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             class Currency < Increase::Enum
               abstract!
 
@@ -3962,8 +3537,6 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's settlement currency.
           class Currency < Increase::Enum
             abstract!
 
@@ -3993,9 +3566,6 @@ module Increase
           end
 
           class Interchange < Increase::BaseModel
-            # The interchange amount given as a string containing a decimal number. The amount
-            #   is a positive number if it is credited to Increase (e.g., settlements) and a
-            #   negative number if it is debited (e.g., refunds).
             sig { returns(String) }
             def amount
             end
@@ -4004,7 +3574,6 @@ module Increase
             def amount=(_)
             end
 
-            # The card network specific interchange code.
             sig { returns(T.nilable(String)) }
             def code
             end
@@ -4013,8 +3582,6 @@ module Increase
             def code=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   reimbursement.
             sig { returns(Symbol) }
             def currency
             end
@@ -4023,7 +3590,6 @@ module Increase
             def currency=(_)
             end
 
-            # Interchange assessed as a part of this transaciton.
             sig do
               params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
             end
@@ -4034,8 +3600,6 @@ module Increase
             def to_hash
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   reimbursement.
             class Currency < Increase::Enum
               abstract!
 
@@ -4066,8 +3630,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::BaseModel
-            # A network assigned business ID that identifies the acquirer that processed this
-            #   transaction.
             sig { returns(String) }
             def acquirer_business_id
             end
@@ -4076,7 +3638,6 @@ module Increase
             def acquirer_business_id=(_)
             end
 
-            # A globally unique identifier for this settlement.
             sig { returns(String) }
             def acquirer_reference_number
             end
@@ -4085,8 +3646,6 @@ module Increase
             def acquirer_reference_number=(_)
             end
 
-            # A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
             def transaction_id
             end
@@ -4095,7 +3654,6 @@ module Increase
             def transaction_id=(_)
             end
 
-            # Network-specific identifiers for this refund.
             sig do
               params(
                 acquirer_business_id: String,
@@ -4122,7 +3680,6 @@ module Increase
           end
 
           class PurchaseDetails < Increase::BaseModel
-            # Fields specific to car rentals.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental)) }
             def car_rental
             end
@@ -4134,7 +3691,6 @@ module Increase
             def car_rental=(_)
             end
 
-            # An identifier from the merchant for the customer or consumer.
             sig { returns(T.nilable(String)) }
             def customer_reference_identifier
             end
@@ -4143,7 +3699,6 @@ module Increase
             def customer_reference_identifier=(_)
             end
 
-            # The state or provincial tax amount in minor units.
             sig { returns(T.nilable(Integer)) }
             def local_tax_amount
             end
@@ -4152,8 +3707,6 @@ module Increase
             def local_tax_amount=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            #   assessed.
             sig { returns(T.nilable(String)) }
             def local_tax_currency
             end
@@ -4162,7 +3715,6 @@ module Increase
             def local_tax_currency=(_)
             end
 
-            # Fields specific to lodging.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Lodging)) }
             def lodging
             end
@@ -4174,7 +3726,6 @@ module Increase
             def lodging=(_)
             end
 
-            # The national tax amount in minor units.
             sig { returns(T.nilable(Integer)) }
             def national_tax_amount
             end
@@ -4183,8 +3734,6 @@ module Increase
             def national_tax_amount=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            #   assessed.
             sig { returns(T.nilable(String)) }
             def national_tax_currency
             end
@@ -4193,7 +3742,6 @@ module Increase
             def national_tax_currency=(_)
             end
 
-            # An identifier from the merchant for the purchase to the issuer and cardholder.
             sig { returns(T.nilable(String)) }
             def purchase_identifier
             end
@@ -4202,7 +3750,6 @@ module Increase
             def purchase_identifier=(_)
             end
 
-            # The format of the purchase identifier.
             sig { returns(T.nilable(Symbol)) }
             def purchase_identifier_format
             end
@@ -4211,7 +3758,6 @@ module Increase
             def purchase_identifier_format=(_)
             end
 
-            # Fields specific to travel.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel)) }
             def travel
             end
@@ -4223,8 +3769,6 @@ module Increase
             def travel=(_)
             end
 
-            # Additional details about the card purchase, such as tax and industry-specific
-            #   fields.
             sig do
               params(
                 car_rental: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::CarRental),
@@ -4275,7 +3819,6 @@ module Increase
             end
 
             class CarRental < Increase::BaseModel
-              # Code indicating the vehicle's class.
               sig { returns(T.nilable(String)) }
               def car_class_code
               end
@@ -4284,8 +3827,6 @@ module Increase
               def car_class_code=(_)
               end
 
-              # Date the customer picked up the car or, in the case of a no-show or pre-pay
-              #   transaction, the scheduled pick up date.
               sig { returns(T.nilable(Date)) }
               def checkout_date
               end
@@ -4294,7 +3835,6 @@ module Increase
               def checkout_date=(_)
               end
 
-              # Daily rate being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def daily_rental_rate_amount
               end
@@ -4303,8 +3843,6 @@ module Increase
               def daily_rental_rate_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
-              #   rate.
               sig { returns(T.nilable(String)) }
               def daily_rental_rate_currency
               end
@@ -4313,7 +3851,6 @@ module Increase
               def daily_rental_rate_currency=(_)
               end
 
-              # Number of days the vehicle was rented.
               sig { returns(T.nilable(Integer)) }
               def days_rented
               end
@@ -4322,7 +3859,6 @@ module Increase
               def days_rented=(_)
               end
 
-              # Additional charges (gas, late fee, etc.) being billed.
               sig { returns(T.nilable(Symbol)) }
               def extra_charges
               end
@@ -4331,7 +3867,6 @@ module Increase
               def extra_charges=(_)
               end
 
-              # Fuel charges for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def fuel_charges_amount
               end
@@ -4340,8 +3875,6 @@ module Increase
               def fuel_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
-              #   assessed.
               sig { returns(T.nilable(String)) }
               def fuel_charges_currency
               end
@@ -4350,7 +3883,6 @@ module Increase
               def fuel_charges_currency=(_)
               end
 
-              # Any insurance being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def insurance_charges_amount
               end
@@ -4359,8 +3891,6 @@ module Increase
               def insurance_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
-              #   charges assessed.
               sig { returns(T.nilable(String)) }
               def insurance_charges_currency
               end
@@ -4369,8 +3899,6 @@ module Increase
               def insurance_charges_currency=(_)
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   not actually rented (that is, a "no-show" charge).
               sig { returns(T.nilable(Symbol)) }
               def no_show_indicator
               end
@@ -4379,8 +3907,6 @@ module Increase
               def no_show_indicator=(_)
               end
 
-              # Charges for returning the vehicle at a different location than where it was
-              #   picked up.
               sig { returns(T.nilable(Integer)) }
               def one_way_drop_off_charges_amount
               end
@@ -4389,8 +3915,6 @@ module Increase
               def one_way_drop_off_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
-              #   drop-off charges assessed.
               sig { returns(T.nilable(String)) }
               def one_way_drop_off_charges_currency
               end
@@ -4399,7 +3923,6 @@ module Increase
               def one_way_drop_off_charges_currency=(_)
               end
 
-              # Name of the person renting the vehicle.
               sig { returns(T.nilable(String)) }
               def renter_name
               end
@@ -4408,7 +3931,6 @@ module Increase
               def renter_name=(_)
               end
 
-              # Weekly rate being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def weekly_rental_rate_amount
               end
@@ -4417,8 +3939,6 @@ module Increase
               def weekly_rental_rate_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
-              #   rental rate.
               sig { returns(T.nilable(String)) }
               def weekly_rental_rate_currency
               end
@@ -4427,7 +3947,6 @@ module Increase
               def weekly_rental_rate_currency=(_)
               end
 
-              # Fields specific to car rentals.
               sig do
                 params(
                   car_class_code: T.nilable(String),
@@ -4495,7 +4014,6 @@ module Increase
               def to_hash
               end
 
-              # Additional charges (gas, late fee, etc.) being billed.
               class ExtraCharges < Increase::Enum
                 abstract!
 
@@ -4524,8 +4042,6 @@ module Increase
                 end
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   not actually rented (that is, a "no-show" charge).
               class NoShowIndicator < Increase::Enum
                 abstract!
 
@@ -4544,7 +4060,6 @@ module Increase
             end
 
             class Lodging < Increase::BaseModel
-              # Date the customer checked in.
               sig { returns(T.nilable(Date)) }
               def check_in_date
               end
@@ -4553,7 +4068,6 @@ module Increase
               def check_in_date=(_)
               end
 
-              # Daily rate being charged for the room.
               sig { returns(T.nilable(Integer)) }
               def daily_room_rate_amount
               end
@@ -4562,8 +4076,6 @@ module Increase
               def daily_room_rate_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
-              #   rate.
               sig { returns(T.nilable(String)) }
               def daily_room_rate_currency
               end
@@ -4572,7 +4084,6 @@ module Increase
               def daily_room_rate_currency=(_)
               end
 
-              # Additional charges (phone, late check-out, etc.) being billed.
               sig { returns(T.nilable(Symbol)) }
               def extra_charges
               end
@@ -4581,7 +4092,6 @@ module Increase
               def extra_charges=(_)
               end
 
-              # Folio cash advances for the room.
               sig { returns(T.nilable(Integer)) }
               def folio_cash_advances_amount
               end
@@ -4590,8 +4100,6 @@ module Increase
               def folio_cash_advances_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
-              #   advances.
               sig { returns(T.nilable(String)) }
               def folio_cash_advances_currency
               end
@@ -4600,7 +4108,6 @@ module Increase
               def folio_cash_advances_currency=(_)
               end
 
-              # Food and beverage charges for the room.
               sig { returns(T.nilable(Integer)) }
               def food_beverage_charges_amount
               end
@@ -4609,8 +4116,6 @@ module Increase
               def food_beverage_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
-              #   beverage charges.
               sig { returns(T.nilable(String)) }
               def food_beverage_charges_currency
               end
@@ -4619,8 +4124,6 @@ module Increase
               def food_beverage_charges_currency=(_)
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              #   actually used.
               sig { returns(T.nilable(Symbol)) }
               def no_show_indicator
               end
@@ -4629,7 +4132,6 @@ module Increase
               def no_show_indicator=(_)
               end
 
-              # Prepaid expenses being charged for the room.
               sig { returns(T.nilable(Integer)) }
               def prepaid_expenses_amount
               end
@@ -4638,8 +4140,6 @@ module Increase
               def prepaid_expenses_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
-              #   expenses.
               sig { returns(T.nilable(String)) }
               def prepaid_expenses_currency
               end
@@ -4648,7 +4148,6 @@ module Increase
               def prepaid_expenses_currency=(_)
               end
 
-              # Number of nights the room was rented.
               sig { returns(T.nilable(Integer)) }
               def room_nights
               end
@@ -4657,7 +4156,6 @@ module Increase
               def room_nights=(_)
               end
 
-              # Total room tax being charged.
               sig { returns(T.nilable(Integer)) }
               def total_room_tax_amount
               end
@@ -4666,8 +4164,6 @@ module Increase
               def total_room_tax_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
-              #   tax.
               sig { returns(T.nilable(String)) }
               def total_room_tax_currency
               end
@@ -4676,7 +4172,6 @@ module Increase
               def total_room_tax_currency=(_)
               end
 
-              # Total tax being charged for the room.
               sig { returns(T.nilable(Integer)) }
               def total_tax_amount
               end
@@ -4685,8 +4180,6 @@ module Increase
               def total_tax_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
-              #   assessed.
               sig { returns(T.nilable(String)) }
               def total_tax_currency
               end
@@ -4695,7 +4188,6 @@ module Increase
               def total_tax_currency=(_)
               end
 
-              # Fields specific to lodging.
               sig do
                 params(
                   check_in_date: T.nilable(Date),
@@ -4763,7 +4255,6 @@ module Increase
               def to_hash
               end
 
-              # Additional charges (phone, late check-out, etc.) being billed.
               class ExtraCharges < Increase::Enum
                 abstract!
 
@@ -4795,8 +4286,6 @@ module Increase
                 end
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              #   actually used.
               class NoShowIndicator < Increase::Enum
                 abstract!
 
@@ -4814,7 +4303,6 @@ module Increase
               end
             end
 
-            # The format of the purchase identifier.
             class PurchaseIdentifierFormat < Increase::Enum
               abstract!
 
@@ -4841,7 +4329,6 @@ module Increase
             end
 
             class Travel < Increase::BaseModel
-              # Ancillary purchases in addition to the airfare.
               sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary)) }
               def ancillary
               end
@@ -4855,7 +4342,6 @@ module Increase
               def ancillary=(_)
               end
 
-              # Indicates the computerized reservation system used to book the ticket.
               sig { returns(T.nilable(String)) }
               def computerized_reservation_system
               end
@@ -4864,7 +4350,6 @@ module Increase
               def computerized_reservation_system=(_)
               end
 
-              # Indicates the reason for a credit to the cardholder.
               sig { returns(T.nilable(Symbol)) }
               def credit_reason_indicator
               end
@@ -4873,7 +4358,6 @@ module Increase
               def credit_reason_indicator=(_)
               end
 
-              # Date of departure.
               sig { returns(T.nilable(Date)) }
               def departure_date
               end
@@ -4882,7 +4366,6 @@ module Increase
               def departure_date=(_)
               end
 
-              # Code for the originating city or airport.
               sig { returns(T.nilable(String)) }
               def origination_city_airport_code
               end
@@ -4891,7 +4374,6 @@ module Increase
               def origination_city_airport_code=(_)
               end
 
-              # Name of the passenger.
               sig { returns(T.nilable(String)) }
               def passenger_name
               end
@@ -4900,7 +4382,6 @@ module Increase
               def passenger_name=(_)
               end
 
-              # Indicates whether this ticket is non-refundable.
               sig { returns(T.nilable(Symbol)) }
               def restricted_ticket_indicator
               end
@@ -4909,7 +4390,6 @@ module Increase
               def restricted_ticket_indicator=(_)
               end
 
-              # Indicates why a ticket was changed.
               sig { returns(T.nilable(Symbol)) }
               def ticket_change_indicator
               end
@@ -4918,7 +4398,6 @@ module Increase
               def ticket_change_indicator=(_)
               end
 
-              # Ticket number.
               sig { returns(T.nilable(String)) }
               def ticket_number
               end
@@ -4927,7 +4406,6 @@ module Increase
               def ticket_number=(_)
               end
 
-              # Code for the travel agency if the ticket was issued by a travel agency.
               sig { returns(T.nilable(String)) }
               def travel_agency_code
               end
@@ -4936,7 +4414,6 @@ module Increase
               def travel_agency_code=(_)
               end
 
-              # Name of the travel agency if the ticket was issued by a travel agency.
               sig { returns(T.nilable(String)) }
               def travel_agency_name
               end
@@ -4945,7 +4422,6 @@ module Increase
               def travel_agency_name=(_)
               end
 
-              # Fields specific to each leg of the journey.
               sig do
                 returns(
                   T.nilable(T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::TripLeg])
@@ -4965,7 +4441,6 @@ module Increase
               def trip_legs=(_)
               end
 
-              # Fields specific to travel.
               sig do
                 params(
                   ancillary: T.nilable(Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary),
@@ -5022,9 +4497,6 @@ module Increase
               end
 
               class Ancillary < Increase::BaseModel
-                # If this purchase has a connection or relationship to another purchase, such as a
-                #   baggage fee for a passenger transport ticket, this field should contain the
-                #   ticket document number for the other purchase.
                 sig { returns(T.nilable(String)) }
                 def connected_ticket_document_number
                 end
@@ -5033,7 +4505,6 @@ module Increase
                 def connected_ticket_document_number=(_)
                 end
 
-                # Indicates the reason for a credit to the cardholder.
                 sig { returns(T.nilable(Symbol)) }
                 def credit_reason_indicator
                 end
@@ -5042,7 +4513,6 @@ module Increase
                 def credit_reason_indicator=(_)
                 end
 
-                # Name of the passenger or description of the ancillary purchase.
                 sig { returns(T.nilable(String)) }
                 def passenger_name_or_description
                 end
@@ -5051,7 +4521,6 @@ module Increase
                 def passenger_name_or_description=(_)
                 end
 
-                # Additional travel charges, such as baggage fees.
                 sig do
                   returns(
                     T::Array[Increase::Models::CardPayment::Element::CardRefund::PurchaseDetails::Travel::Ancillary::Service]
@@ -5071,7 +4540,6 @@ module Increase
                 def services=(_)
                 end
 
-                # Ticket document number.
                 sig { returns(T.nilable(String)) }
                 def ticket_document_number
                 end
@@ -5080,7 +4548,6 @@ module Increase
                 def ticket_document_number=(_)
                 end
 
-                # Ancillary purchases in addition to the airfare.
                 sig do
                   params(
                     connected_ticket_document_number: T.nilable(String),
@@ -5115,7 +4582,6 @@ module Increase
                 def to_hash
                 end
 
-                # Indicates the reason for a credit to the cardholder.
                 class CreditReasonIndicator < Increase::Enum
                   abstract!
 
@@ -5143,7 +4609,6 @@ module Increase
                 end
 
                 class Service < Increase::BaseModel
-                  # Category of the ancillary service.
                   sig { returns(T.nilable(Symbol)) }
                   def category
                   end
@@ -5152,7 +4617,6 @@ module Increase
                   def category=(_)
                   end
 
-                  # Sub-category of the ancillary service, free-form.
                   sig { returns(T.nilable(String)) }
                   def sub_category
                   end
@@ -5174,7 +4638,6 @@ module Increase
                   def to_hash
                   end
 
-                  # Category of the ancillary service.
                   class Category < Increase::Enum
                     abstract!
 
@@ -5259,7 +4722,6 @@ module Increase
                 end
               end
 
-              # Indicates the reason for a credit to the cardholder.
               class CreditReasonIndicator < Increase::Enum
                 abstract!
 
@@ -5292,7 +4754,6 @@ module Increase
                 end
               end
 
-              # Indicates whether this ticket is non-refundable.
               class RestrictedTicketIndicator < Increase::Enum
                 abstract!
 
@@ -5309,7 +4770,6 @@ module Increase
                 end
               end
 
-              # Indicates why a ticket was changed.
               class TicketChangeIndicator < Increase::Enum
                 abstract!
 
@@ -5330,7 +4790,6 @@ module Increase
               end
 
               class TripLeg < Increase::BaseModel
-                # Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 sig { returns(T.nilable(String)) }
                 def carrier_code
                 end
@@ -5339,7 +4798,6 @@ module Increase
                 def carrier_code=(_)
                 end
 
-                # Code for the destination city or airport.
                 sig { returns(T.nilable(String)) }
                 def destination_city_airport_code
                 end
@@ -5348,7 +4806,6 @@ module Increase
                 def destination_city_airport_code=(_)
                 end
 
-                # Fare basis code.
                 sig { returns(T.nilable(String)) }
                 def fare_basis_code
                 end
@@ -5357,7 +4814,6 @@ module Increase
                 def fare_basis_code=(_)
                 end
 
-                # Flight number.
                 sig { returns(T.nilable(String)) }
                 def flight_number
                 end
@@ -5366,7 +4822,6 @@ module Increase
                 def flight_number=(_)
                 end
 
-                # Service class (e.g., first class, business class, etc.).
                 sig { returns(T.nilable(String)) }
                 def service_class
                 end
@@ -5375,7 +4830,6 @@ module Increase
                 def service_class=(_)
                 end
 
-                # Indicates whether a stopover is allowed on this ticket.
                 sig { returns(T.nilable(Symbol)) }
                 def stop_over_code
                 end
@@ -5421,7 +4875,6 @@ module Increase
                 def to_hash
                 end
 
-                # Indicates whether a stopover is allowed on this ticket.
                 class StopOverCode < Increase::Enum
                   abstract!
 
@@ -5444,8 +4897,6 @@ module Increase
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_refund`.
           class Type < Increase::Enum
             abstract!
 
@@ -5460,7 +4911,6 @@ module Increase
         end
 
         class CardReversal < Increase::BaseModel
-          # The Card Reversal identifier.
           sig { returns(String) }
           def id
           end
@@ -5469,7 +4919,6 @@ module Increase
           def id=(_)
           end
 
-          # The identifier for the Card Authorization this reverses.
           sig { returns(String) }
           def card_authorization_id
           end
@@ -5478,8 +4927,6 @@ module Increase
           def card_authorization_id=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          #   currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -5488,8 +4935,6 @@ module Increase
           def currency=(_)
           end
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
           sig { returns(String) }
           def merchant_acceptor_id
           end
@@ -5498,8 +4943,6 @@ module Increase
           def merchant_acceptor_id=(_)
           end
 
-          # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          #   card is transacting with.
           sig { returns(String) }
           def merchant_category_code
           end
@@ -5508,7 +4951,6 @@ module Increase
           def merchant_category_code=(_)
           end
 
-          # The city the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_city
           end
@@ -5517,7 +4959,6 @@ module Increase
           def merchant_city=(_)
           end
 
-          # The country the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_country
           end
@@ -5526,7 +4967,6 @@ module Increase
           def merchant_country=(_)
           end
 
-          # The merchant descriptor of the merchant the card is transacting with.
           sig { returns(String) }
           def merchant_descriptor
           end
@@ -5535,8 +4975,6 @@ module Increase
           def merchant_descriptor=(_)
           end
 
-          # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          #   ZIP code, where the first 5 and last 4 are separated by a dash.
           sig { returns(T.nilable(String)) }
           def merchant_postal_code
           end
@@ -5545,7 +4983,6 @@ module Increase
           def merchant_postal_code=(_)
           end
 
-          # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_state
           end
@@ -5554,7 +4991,6 @@ module Increase
           def merchant_state=(_)
           end
 
-          # The card network used to process this card authorization.
           sig { returns(Symbol) }
           def network
           end
@@ -5563,7 +4999,6 @@ module Increase
           def network=(_)
           end
 
-          # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::CardPayment::Element::CardReversal::NetworkIdentifiers) }
           def network_identifiers
           end
@@ -5575,7 +5010,6 @@ module Increase
           def network_identifiers=(_)
           end
 
-          # The identifier of the Pending Transaction associated with this Card Reversal.
           sig { returns(T.nilable(String)) }
           def pending_transaction_id
           end
@@ -5584,8 +5018,6 @@ module Increase
           def pending_transaction_id=(_)
           end
 
-          # The amount of this reversal in the minor unit of the transaction's currency. For
-          #   dollars, for example, this is cents.
           sig { returns(Integer) }
           def reversal_amount
           end
@@ -5594,7 +5026,6 @@ module Increase
           def reversal_amount=(_)
           end
 
-          # Why this reversal was initiated.
           sig { returns(T.nilable(Symbol)) }
           def reversal_reason
           end
@@ -5603,8 +5034,6 @@ module Increase
           def reversal_reason=(_)
           end
 
-          # The terminal identifier (commonly abbreviated as TID) of the terminal the card
-          #   is transacting with.
           sig { returns(T.nilable(String)) }
           def terminal_id
           end
@@ -5613,8 +5042,6 @@ module Increase
           def terminal_id=(_)
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_reversal`.
           sig { returns(Symbol) }
           def type
           end
@@ -5623,8 +5050,6 @@ module Increase
           def type=(_)
           end
 
-          # The amount left pending on the Card Authorization in the minor unit of the
-          #   transaction's currency. For dollars, for example, this is cents.
           sig { returns(Integer) }
           def updated_authorization_amount
           end
@@ -5633,9 +5058,6 @@ module Increase
           def updated_authorization_amount=(_)
           end
 
-          # A Card Reversal object. This field will be present in the JSON response if and
-          #   only if `category` is equal to `card_reversal`. Card Reversals cancel parts of
-          #   or the entirety of an existing Card Authorization.
           sig do
             params(
               id: String,
@@ -5709,8 +5131,6 @@ module Increase
           def to_hash
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
-          #   currency.
           class Currency < Increase::Enum
             abstract!
 
@@ -5739,7 +5159,6 @@ module Increase
             end
           end
 
-          # The card network used to process this card authorization.
           class Network < Increase::Enum
             abstract!
 
@@ -5754,9 +5173,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::BaseModel
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
             def retrieval_reference_number
             end
@@ -5765,8 +5181,6 @@ module Increase
             def retrieval_reference_number=(_)
             end
 
-            # A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
             def trace_number
             end
@@ -5775,8 +5189,6 @@ module Increase
             def trace_number=(_)
             end
 
-            # A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
             def transaction_id
             end
@@ -5785,7 +5197,6 @@ module Increase
             def transaction_id=(_)
             end
 
-            # Network-specific identifiers for a specific request or transaction.
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -5811,7 +5222,6 @@ module Increase
             end
           end
 
-          # Why this reversal was initiated.
           class ReversalReason < Increase::Enum
             abstract!
 
@@ -5834,8 +5244,6 @@ module Increase
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_reversal`.
           class Type < Increase::Enum
             abstract!
 
@@ -5850,7 +5258,6 @@ module Increase
         end
 
         class CardSettlement < Increase::BaseModel
-          # The Card Settlement identifier.
           sig { returns(String) }
           def id
           end
@@ -5859,8 +5266,6 @@ module Increase
           def id=(_)
           end
 
-          # The amount in the minor unit of the transaction's settlement currency. For
-          #   dollars, for example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -5869,8 +5274,6 @@ module Increase
           def amount=(_)
           end
 
-          # The Card Authorization that was created prior to this Card Settlement, if one
-          #   exists.
           sig { returns(T.nilable(String)) }
           def card_authorization
           end
@@ -5879,7 +5282,6 @@ module Increase
           def card_authorization=(_)
           end
 
-          # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
           def card_payment_id
           end
@@ -5888,8 +5290,6 @@ module Increase
           def card_payment_id=(_)
           end
 
-          # Cashback earned on this transaction, if eligible. Cashback is paid out in
-          #   aggregate, monthly.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Cashback)) }
           def cashback
           end
@@ -5901,8 +5301,6 @@ module Increase
           def cashback=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's settlement currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -5911,7 +5309,6 @@ module Increase
           def currency=(_)
           end
 
-          # Interchange assessed as a part of this transaction.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::Interchange)) }
           def interchange
           end
@@ -5923,8 +5320,6 @@ module Increase
           def interchange=(_)
           end
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
           sig { returns(String) }
           def merchant_acceptor_id
           end
@@ -5933,7 +5328,6 @@ module Increase
           def merchant_acceptor_id=(_)
           end
 
-          # The 4-digit MCC describing the merchant's business.
           sig { returns(String) }
           def merchant_category_code
           end
@@ -5942,7 +5336,6 @@ module Increase
           def merchant_category_code=(_)
           end
 
-          # The city the merchant resides in.
           sig { returns(String) }
           def merchant_city
           end
@@ -5951,7 +5344,6 @@ module Increase
           def merchant_city=(_)
           end
 
-          # The country the merchant resides in.
           sig { returns(String) }
           def merchant_country
           end
@@ -5960,7 +5352,6 @@ module Increase
           def merchant_country=(_)
           end
 
-          # The name of the merchant.
           sig { returns(String) }
           def merchant_name
           end
@@ -5969,7 +5360,6 @@ module Increase
           def merchant_name=(_)
           end
 
-          # The merchant's postal code. For US merchants this is always a 5-digit ZIP code.
           sig { returns(T.nilable(String)) }
           def merchant_postal_code
           end
@@ -5978,7 +5368,6 @@ module Increase
           def merchant_postal_code=(_)
           end
 
-          # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_state
           end
@@ -5987,7 +5376,6 @@ module Increase
           def merchant_state=(_)
           end
 
-          # Network-specific identifiers for this refund.
           sig { returns(Increase::Models::CardPayment::Element::CardSettlement::NetworkIdentifiers) }
           def network_identifiers
           end
@@ -5999,7 +5387,6 @@ module Increase
           def network_identifiers=(_)
           end
 
-          # The identifier of the Pending Transaction associated with this Transaction.
           sig { returns(T.nilable(String)) }
           def pending_transaction_id
           end
@@ -6008,7 +5395,6 @@ module Increase
           def pending_transaction_id=(_)
           end
 
-          # The amount in the minor unit of the transaction's presentment currency.
           sig { returns(Integer) }
           def presentment_amount
           end
@@ -6017,8 +5403,6 @@ module Increase
           def presentment_amount=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's presentment currency.
           sig { returns(String) }
           def presentment_currency
           end
@@ -6027,8 +5411,6 @@ module Increase
           def presentment_currency=(_)
           end
 
-          # Additional details about the card purchase, such as tax and industry-specific
-          #   fields.
           sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails)) }
           def purchase_details
           end
@@ -6040,7 +5422,6 @@ module Increase
           def purchase_details=(_)
           end
 
-          # The identifier of the Transaction associated with this Transaction.
           sig { returns(String) }
           def transaction_id
           end
@@ -6049,8 +5430,6 @@ module Increase
           def transaction_id=(_)
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_settlement`.
           sig { returns(Symbol) }
           def type
           end
@@ -6059,11 +5438,6 @@ module Increase
           def type=(_)
           end
 
-          # A Card Settlement object. This field will be present in the JSON response if and
-          #   only if `category` is equal to `card_settlement`. Card Settlements are card
-          #   transactions that have cleared and settled. While a settlement is usually
-          #   preceded by an authorization, an acquirer can also directly clear a transaction
-          #   without first authorizing it.
           sig do
             params(
               id: String,
@@ -6147,9 +5521,6 @@ module Increase
           end
 
           class Cashback < Increase::BaseModel
-            # The cashback amount given as a string containing a decimal number. The amount is
-            #   a positive number if it will be credited to you (e.g., settlements) and a
-            #   negative number if it will be debited (e.g., refunds).
             sig { returns(String) }
             def amount
             end
@@ -6158,7 +5529,6 @@ module Increase
             def amount=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             sig { returns(Symbol) }
             def currency
             end
@@ -6167,8 +5537,6 @@ module Increase
             def currency=(_)
             end
 
-            # Cashback earned on this transaction, if eligible. Cashback is paid out in
-            #   aggregate, monthly.
             sig { params(amount: String, currency: Symbol).returns(T.attached_class) }
             def self.new(amount:, currency:)
             end
@@ -6177,7 +5545,6 @@ module Increase
             def to_hash
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
             class Currency < Increase::Enum
               abstract!
 
@@ -6207,8 +5574,6 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's settlement currency.
           class Currency < Increase::Enum
             abstract!
 
@@ -6238,9 +5603,6 @@ module Increase
           end
 
           class Interchange < Increase::BaseModel
-            # The interchange amount given as a string containing a decimal number. The amount
-            #   is a positive number if it is credited to Increase (e.g., settlements) and a
-            #   negative number if it is debited (e.g., refunds).
             sig { returns(String) }
             def amount
             end
@@ -6249,7 +5611,6 @@ module Increase
             def amount=(_)
             end
 
-            # The card network specific interchange code.
             sig { returns(T.nilable(String)) }
             def code
             end
@@ -6258,8 +5619,6 @@ module Increase
             def code=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   reimbursement.
             sig { returns(Symbol) }
             def currency
             end
@@ -6268,7 +5627,6 @@ module Increase
             def currency=(_)
             end
 
-            # Interchange assessed as a part of this transaction.
             sig do
               params(amount: String, code: T.nilable(String), currency: Symbol).returns(T.attached_class)
             end
@@ -6279,8 +5637,6 @@ module Increase
             def to_hash
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
-            #   reimbursement.
             class Currency < Increase::Enum
               abstract!
 
@@ -6311,8 +5667,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::BaseModel
-            # A network assigned business ID that identifies the acquirer that processed this
-            #   transaction.
             sig { returns(String) }
             def acquirer_business_id
             end
@@ -6321,7 +5675,6 @@ module Increase
             def acquirer_business_id=(_)
             end
 
-            # A globally unique identifier for this settlement.
             sig { returns(String) }
             def acquirer_reference_number
             end
@@ -6330,8 +5683,6 @@ module Increase
             def acquirer_reference_number=(_)
             end
 
-            # A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
             def transaction_id
             end
@@ -6340,7 +5691,6 @@ module Increase
             def transaction_id=(_)
             end
 
-            # Network-specific identifiers for this refund.
             sig do
               params(
                 acquirer_business_id: String,
@@ -6367,7 +5717,6 @@ module Increase
           end
 
           class PurchaseDetails < Increase::BaseModel
-            # Fields specific to car rentals.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental)) }
             def car_rental
             end
@@ -6379,7 +5728,6 @@ module Increase
             def car_rental=(_)
             end
 
-            # An identifier from the merchant for the customer or consumer.
             sig { returns(T.nilable(String)) }
             def customer_reference_identifier
             end
@@ -6388,7 +5736,6 @@ module Increase
             def customer_reference_identifier=(_)
             end
 
-            # The state or provincial tax amount in minor units.
             sig { returns(T.nilable(Integer)) }
             def local_tax_amount
             end
@@ -6397,8 +5744,6 @@ module Increase
             def local_tax_amount=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            #   assessed.
             sig { returns(T.nilable(String)) }
             def local_tax_currency
             end
@@ -6407,7 +5752,6 @@ module Increase
             def local_tax_currency=(_)
             end
 
-            # Fields specific to lodging.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Lodging)) }
             def lodging
             end
@@ -6419,7 +5763,6 @@ module Increase
             def lodging=(_)
             end
 
-            # The national tax amount in minor units.
             sig { returns(T.nilable(Integer)) }
             def national_tax_amount
             end
@@ -6428,8 +5771,6 @@ module Increase
             def national_tax_amount=(_)
             end
 
-            # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
-            #   assessed.
             sig { returns(T.nilable(String)) }
             def national_tax_currency
             end
@@ -6438,7 +5779,6 @@ module Increase
             def national_tax_currency=(_)
             end
 
-            # An identifier from the merchant for the purchase to the issuer and cardholder.
             sig { returns(T.nilable(String)) }
             def purchase_identifier
             end
@@ -6447,7 +5787,6 @@ module Increase
             def purchase_identifier=(_)
             end
 
-            # The format of the purchase identifier.
             sig { returns(T.nilable(Symbol)) }
             def purchase_identifier_format
             end
@@ -6456,7 +5795,6 @@ module Increase
             def purchase_identifier_format=(_)
             end
 
-            # Fields specific to travel.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel)) }
             def travel
             end
@@ -6468,8 +5806,6 @@ module Increase
             def travel=(_)
             end
 
-            # Additional details about the card purchase, such as tax and industry-specific
-            #   fields.
             sig do
               params(
                 car_rental: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::CarRental),
@@ -6520,7 +5856,6 @@ module Increase
             end
 
             class CarRental < Increase::BaseModel
-              # Code indicating the vehicle's class.
               sig { returns(T.nilable(String)) }
               def car_class_code
               end
@@ -6529,8 +5864,6 @@ module Increase
               def car_class_code=(_)
               end
 
-              # Date the customer picked up the car or, in the case of a no-show or pre-pay
-              #   transaction, the scheduled pick up date.
               sig { returns(T.nilable(Date)) }
               def checkout_date
               end
@@ -6539,7 +5872,6 @@ module Increase
               def checkout_date=(_)
               end
 
-              # Daily rate being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def daily_rental_rate_amount
               end
@@ -6548,8 +5880,6 @@ module Increase
               def daily_rental_rate_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
-              #   rate.
               sig { returns(T.nilable(String)) }
               def daily_rental_rate_currency
               end
@@ -6558,7 +5888,6 @@ module Increase
               def daily_rental_rate_currency=(_)
               end
 
-              # Number of days the vehicle was rented.
               sig { returns(T.nilable(Integer)) }
               def days_rented
               end
@@ -6567,7 +5896,6 @@ module Increase
               def days_rented=(_)
               end
 
-              # Additional charges (gas, late fee, etc.) being billed.
               sig { returns(T.nilable(Symbol)) }
               def extra_charges
               end
@@ -6576,7 +5904,6 @@ module Increase
               def extra_charges=(_)
               end
 
-              # Fuel charges for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def fuel_charges_amount
               end
@@ -6585,8 +5912,6 @@ module Increase
               def fuel_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
-              #   assessed.
               sig { returns(T.nilable(String)) }
               def fuel_charges_currency
               end
@@ -6595,7 +5920,6 @@ module Increase
               def fuel_charges_currency=(_)
               end
 
-              # Any insurance being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def insurance_charges_amount
               end
@@ -6604,8 +5928,6 @@ module Increase
               def insurance_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
-              #   charges assessed.
               sig { returns(T.nilable(String)) }
               def insurance_charges_currency
               end
@@ -6614,8 +5936,6 @@ module Increase
               def insurance_charges_currency=(_)
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   not actually rented (that is, a "no-show" charge).
               sig { returns(T.nilable(Symbol)) }
               def no_show_indicator
               end
@@ -6624,8 +5944,6 @@ module Increase
               def no_show_indicator=(_)
               end
 
-              # Charges for returning the vehicle at a different location than where it was
-              #   picked up.
               sig { returns(T.nilable(Integer)) }
               def one_way_drop_off_charges_amount
               end
@@ -6634,8 +5952,6 @@ module Increase
               def one_way_drop_off_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
-              #   drop-off charges assessed.
               sig { returns(T.nilable(String)) }
               def one_way_drop_off_charges_currency
               end
@@ -6644,7 +5960,6 @@ module Increase
               def one_way_drop_off_charges_currency=(_)
               end
 
-              # Name of the person renting the vehicle.
               sig { returns(T.nilable(String)) }
               def renter_name
               end
@@ -6653,7 +5968,6 @@ module Increase
               def renter_name=(_)
               end
 
-              # Weekly rate being charged for the vehicle.
               sig { returns(T.nilable(Integer)) }
               def weekly_rental_rate_amount
               end
@@ -6662,8 +5976,6 @@ module Increase
               def weekly_rental_rate_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
-              #   rental rate.
               sig { returns(T.nilable(String)) }
               def weekly_rental_rate_currency
               end
@@ -6672,7 +5984,6 @@ module Increase
               def weekly_rental_rate_currency=(_)
               end
 
-              # Fields specific to car rentals.
               sig do
                 params(
                   car_class_code: T.nilable(String),
@@ -6740,7 +6051,6 @@ module Increase
               def to_hash
               end
 
-              # Additional charges (gas, late fee, etc.) being billed.
               class ExtraCharges < Increase::Enum
                 abstract!
 
@@ -6769,8 +6079,6 @@ module Increase
                 end
               end
 
-              # An indicator that the cardholder is being billed for a reserved vehicle that was
-              #   not actually rented (that is, a "no-show" charge).
               class NoShowIndicator < Increase::Enum
                 abstract!
 
@@ -6789,7 +6097,6 @@ module Increase
             end
 
             class Lodging < Increase::BaseModel
-              # Date the customer checked in.
               sig { returns(T.nilable(Date)) }
               def check_in_date
               end
@@ -6798,7 +6105,6 @@ module Increase
               def check_in_date=(_)
               end
 
-              # Daily rate being charged for the room.
               sig { returns(T.nilable(Integer)) }
               def daily_room_rate_amount
               end
@@ -6807,8 +6113,6 @@ module Increase
               def daily_room_rate_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
-              #   rate.
               sig { returns(T.nilable(String)) }
               def daily_room_rate_currency
               end
@@ -6817,7 +6121,6 @@ module Increase
               def daily_room_rate_currency=(_)
               end
 
-              # Additional charges (phone, late check-out, etc.) being billed.
               sig { returns(T.nilable(Symbol)) }
               def extra_charges
               end
@@ -6826,7 +6129,6 @@ module Increase
               def extra_charges=(_)
               end
 
-              # Folio cash advances for the room.
               sig { returns(T.nilable(Integer)) }
               def folio_cash_advances_amount
               end
@@ -6835,8 +6137,6 @@ module Increase
               def folio_cash_advances_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
-              #   advances.
               sig { returns(T.nilable(String)) }
               def folio_cash_advances_currency
               end
@@ -6845,7 +6145,6 @@ module Increase
               def folio_cash_advances_currency=(_)
               end
 
-              # Food and beverage charges for the room.
               sig { returns(T.nilable(Integer)) }
               def food_beverage_charges_amount
               end
@@ -6854,8 +6153,6 @@ module Increase
               def food_beverage_charges_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
-              #   beverage charges.
               sig { returns(T.nilable(String)) }
               def food_beverage_charges_currency
               end
@@ -6864,8 +6161,6 @@ module Increase
               def food_beverage_charges_currency=(_)
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              #   actually used.
               sig { returns(T.nilable(Symbol)) }
               def no_show_indicator
               end
@@ -6874,7 +6169,6 @@ module Increase
               def no_show_indicator=(_)
               end
 
-              # Prepaid expenses being charged for the room.
               sig { returns(T.nilable(Integer)) }
               def prepaid_expenses_amount
               end
@@ -6883,8 +6177,6 @@ module Increase
               def prepaid_expenses_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
-              #   expenses.
               sig { returns(T.nilable(String)) }
               def prepaid_expenses_currency
               end
@@ -6893,7 +6185,6 @@ module Increase
               def prepaid_expenses_currency=(_)
               end
 
-              # Number of nights the room was rented.
               sig { returns(T.nilable(Integer)) }
               def room_nights
               end
@@ -6902,7 +6193,6 @@ module Increase
               def room_nights=(_)
               end
 
-              # Total room tax being charged.
               sig { returns(T.nilable(Integer)) }
               def total_room_tax_amount
               end
@@ -6911,8 +6201,6 @@ module Increase
               def total_room_tax_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
-              #   tax.
               sig { returns(T.nilable(String)) }
               def total_room_tax_currency
               end
@@ -6921,7 +6209,6 @@ module Increase
               def total_room_tax_currency=(_)
               end
 
-              # Total tax being charged for the room.
               sig { returns(T.nilable(Integer)) }
               def total_tax_amount
               end
@@ -6930,8 +6217,6 @@ module Increase
               def total_tax_amount=(_)
               end
 
-              # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
-              #   assessed.
               sig { returns(T.nilable(String)) }
               def total_tax_currency
               end
@@ -6940,7 +6225,6 @@ module Increase
               def total_tax_currency=(_)
               end
 
-              # Fields specific to lodging.
               sig do
                 params(
                   check_in_date: T.nilable(Date),
@@ -7008,7 +6292,6 @@ module Increase
               def to_hash
               end
 
-              # Additional charges (phone, late check-out, etc.) being billed.
               class ExtraCharges < Increase::Enum
                 abstract!
 
@@ -7040,8 +6323,6 @@ module Increase
                 end
               end
 
-              # Indicator that the cardholder is being billed for a reserved room that was not
-              #   actually used.
               class NoShowIndicator < Increase::Enum
                 abstract!
 
@@ -7059,7 +6340,6 @@ module Increase
               end
             end
 
-            # The format of the purchase identifier.
             class PurchaseIdentifierFormat < Increase::Enum
               abstract!
 
@@ -7086,7 +6366,6 @@ module Increase
             end
 
             class Travel < Increase::BaseModel
-              # Ancillary purchases in addition to the airfare.
               sig do
                 returns(
                   T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary)
@@ -7106,7 +6385,6 @@ module Increase
               def ancillary=(_)
               end
 
-              # Indicates the computerized reservation system used to book the ticket.
               sig { returns(T.nilable(String)) }
               def computerized_reservation_system
               end
@@ -7115,7 +6393,6 @@ module Increase
               def computerized_reservation_system=(_)
               end
 
-              # Indicates the reason for a credit to the cardholder.
               sig { returns(T.nilable(Symbol)) }
               def credit_reason_indicator
               end
@@ -7124,7 +6401,6 @@ module Increase
               def credit_reason_indicator=(_)
               end
 
-              # Date of departure.
               sig { returns(T.nilable(Date)) }
               def departure_date
               end
@@ -7133,7 +6409,6 @@ module Increase
               def departure_date=(_)
               end
 
-              # Code for the originating city or airport.
               sig { returns(T.nilable(String)) }
               def origination_city_airport_code
               end
@@ -7142,7 +6417,6 @@ module Increase
               def origination_city_airport_code=(_)
               end
 
-              # Name of the passenger.
               sig { returns(T.nilable(String)) }
               def passenger_name
               end
@@ -7151,7 +6425,6 @@ module Increase
               def passenger_name=(_)
               end
 
-              # Indicates whether this ticket is non-refundable.
               sig { returns(T.nilable(Symbol)) }
               def restricted_ticket_indicator
               end
@@ -7160,7 +6433,6 @@ module Increase
               def restricted_ticket_indicator=(_)
               end
 
-              # Indicates why a ticket was changed.
               sig { returns(T.nilable(Symbol)) }
               def ticket_change_indicator
               end
@@ -7169,7 +6441,6 @@ module Increase
               def ticket_change_indicator=(_)
               end
 
-              # Ticket number.
               sig { returns(T.nilable(String)) }
               def ticket_number
               end
@@ -7178,7 +6449,6 @@ module Increase
               def ticket_number=(_)
               end
 
-              # Code for the travel agency if the ticket was issued by a travel agency.
               sig { returns(T.nilable(String)) }
               def travel_agency_code
               end
@@ -7187,7 +6457,6 @@ module Increase
               def travel_agency_code=(_)
               end
 
-              # Name of the travel agency if the ticket was issued by a travel agency.
               sig { returns(T.nilable(String)) }
               def travel_agency_name
               end
@@ -7196,7 +6465,6 @@ module Increase
               def travel_agency_name=(_)
               end
 
-              # Fields specific to each leg of the journey.
               sig do
                 returns(
                   T.nilable(
@@ -7222,7 +6490,6 @@ module Increase
               def trip_legs=(_)
               end
 
-              # Fields specific to travel.
               sig do
                 params(
                   ancillary: T.nilable(Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary),
@@ -7283,9 +6550,6 @@ module Increase
               end
 
               class Ancillary < Increase::BaseModel
-                # If this purchase has a connection or relationship to another purchase, such as a
-                #   baggage fee for a passenger transport ticket, this field should contain the
-                #   ticket document number for the other purchase.
                 sig { returns(T.nilable(String)) }
                 def connected_ticket_document_number
                 end
@@ -7294,7 +6558,6 @@ module Increase
                 def connected_ticket_document_number=(_)
                 end
 
-                # Indicates the reason for a credit to the cardholder.
                 sig { returns(T.nilable(Symbol)) }
                 def credit_reason_indicator
                 end
@@ -7303,7 +6566,6 @@ module Increase
                 def credit_reason_indicator=(_)
                 end
 
-                # Name of the passenger or description of the ancillary purchase.
                 sig { returns(T.nilable(String)) }
                 def passenger_name_or_description
                 end
@@ -7312,7 +6574,6 @@ module Increase
                 def passenger_name_or_description=(_)
                 end
 
-                # Additional travel charges, such as baggage fees.
                 sig do
                   returns(
                     T::Array[Increase::Models::CardPayment::Element::CardSettlement::PurchaseDetails::Travel::Ancillary::Service]
@@ -7332,7 +6593,6 @@ module Increase
                 def services=(_)
                 end
 
-                # Ticket document number.
                 sig { returns(T.nilable(String)) }
                 def ticket_document_number
                 end
@@ -7341,7 +6601,6 @@ module Increase
                 def ticket_document_number=(_)
                 end
 
-                # Ancillary purchases in addition to the airfare.
                 sig do
                   params(
                     connected_ticket_document_number: T.nilable(String),
@@ -7376,7 +6635,6 @@ module Increase
                 def to_hash
                 end
 
-                # Indicates the reason for a credit to the cardholder.
                 class CreditReasonIndicator < Increase::Enum
                   abstract!
 
@@ -7404,7 +6662,6 @@ module Increase
                 end
 
                 class Service < Increase::BaseModel
-                  # Category of the ancillary service.
                   sig { returns(T.nilable(Symbol)) }
                   def category
                   end
@@ -7413,7 +6670,6 @@ module Increase
                   def category=(_)
                   end
 
-                  # Sub-category of the ancillary service, free-form.
                   sig { returns(T.nilable(String)) }
                   def sub_category
                   end
@@ -7435,7 +6691,6 @@ module Increase
                   def to_hash
                   end
 
-                  # Category of the ancillary service.
                   class Category < Increase::Enum
                     abstract!
 
@@ -7520,7 +6775,6 @@ module Increase
                 end
               end
 
-              # Indicates the reason for a credit to the cardholder.
               class CreditReasonIndicator < Increase::Enum
                 abstract!
 
@@ -7553,7 +6807,6 @@ module Increase
                 end
               end
 
-              # Indicates whether this ticket is non-refundable.
               class RestrictedTicketIndicator < Increase::Enum
                 abstract!
 
@@ -7570,7 +6823,6 @@ module Increase
                 end
               end
 
-              # Indicates why a ticket was changed.
               class TicketChangeIndicator < Increase::Enum
                 abstract!
 
@@ -7591,7 +6843,6 @@ module Increase
               end
 
               class TripLeg < Increase::BaseModel
-                # Carrier code (e.g., United Airlines, Jet Blue, etc.).
                 sig { returns(T.nilable(String)) }
                 def carrier_code
                 end
@@ -7600,7 +6851,6 @@ module Increase
                 def carrier_code=(_)
                 end
 
-                # Code for the destination city or airport.
                 sig { returns(T.nilable(String)) }
                 def destination_city_airport_code
                 end
@@ -7609,7 +6859,6 @@ module Increase
                 def destination_city_airport_code=(_)
                 end
 
-                # Fare basis code.
                 sig { returns(T.nilable(String)) }
                 def fare_basis_code
                 end
@@ -7618,7 +6867,6 @@ module Increase
                 def fare_basis_code=(_)
                 end
 
-                # Flight number.
                 sig { returns(T.nilable(String)) }
                 def flight_number
                 end
@@ -7627,7 +6875,6 @@ module Increase
                 def flight_number=(_)
                 end
 
-                # Service class (e.g., first class, business class, etc.).
                 sig { returns(T.nilable(String)) }
                 def service_class
                 end
@@ -7636,7 +6883,6 @@ module Increase
                 def service_class=(_)
                 end
 
-                # Indicates whether a stopover is allowed on this ticket.
                 sig { returns(T.nilable(Symbol)) }
                 def stop_over_code
                 end
@@ -7682,7 +6928,6 @@ module Increase
                 def to_hash
                 end
 
-                # Indicates whether a stopover is allowed on this ticket.
                 class StopOverCode < Increase::Enum
                   abstract!
 
@@ -7705,8 +6950,6 @@ module Increase
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_settlement`.
           class Type < Increase::Enum
             abstract!
 
@@ -7721,7 +6964,6 @@ module Increase
         end
 
         class CardValidation < Increase::BaseModel
-          # The Card Validation identifier.
           sig { returns(String) }
           def id
           end
@@ -7730,8 +6972,6 @@ module Increase
           def id=(_)
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
           sig { returns(Symbol) }
           def actioner
           end
@@ -7740,7 +6980,6 @@ module Increase
           def actioner=(_)
           end
 
-          # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
           def card_payment_id
           end
@@ -7749,8 +6988,6 @@ module Increase
           def card_payment_id=(_)
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -7759,8 +6996,6 @@ module Increase
           def currency=(_)
           end
 
-          # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
-          #   purchase), the identifier of the token that was used.
           sig { returns(T.nilable(String)) }
           def digital_wallet_token_id
           end
@@ -7769,8 +7004,6 @@ module Increase
           def digital_wallet_token_id=(_)
           end
 
-          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
-          #   is transacting with.
           sig { returns(String) }
           def merchant_acceptor_id
           end
@@ -7779,8 +7012,6 @@ module Increase
           def merchant_acceptor_id=(_)
           end
 
-          # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
-          #   card is transacting with.
           sig { returns(String) }
           def merchant_category_code
           end
@@ -7789,7 +7020,6 @@ module Increase
           def merchant_category_code=(_)
           end
 
-          # The city the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_city
           end
@@ -7798,7 +7028,6 @@ module Increase
           def merchant_city=(_)
           end
 
-          # The country the merchant resides in.
           sig { returns(String) }
           def merchant_country
           end
@@ -7807,7 +7036,6 @@ module Increase
           def merchant_country=(_)
           end
 
-          # The merchant descriptor of the merchant the card is transacting with.
           sig { returns(String) }
           def merchant_descriptor
           end
@@ -7816,8 +7044,6 @@ module Increase
           def merchant_descriptor=(_)
           end
 
-          # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
-          #   ZIP code, where the first 5 and last 4 are separated by a dash.
           sig { returns(T.nilable(String)) }
           def merchant_postal_code
           end
@@ -7826,7 +7052,6 @@ module Increase
           def merchant_postal_code=(_)
           end
 
-          # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_state
           end
@@ -7835,7 +7060,6 @@ module Increase
           def merchant_state=(_)
           end
 
-          # Fields specific to the `network`.
           sig { returns(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails) }
           def network_details
           end
@@ -7847,7 +7071,6 @@ module Increase
           def network_details=(_)
           end
 
-          # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::CardPayment::Element::CardValidation::NetworkIdentifiers) }
           def network_identifiers
           end
@@ -7859,8 +7082,6 @@ module Increase
           def network_identifiers=(_)
           end
 
-          # The risk score generated by the card network. For Visa this is the Visa Advanced
-          #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
           sig { returns(T.nilable(Integer)) }
           def network_risk_score
           end
@@ -7869,8 +7090,6 @@ module Increase
           def network_risk_score=(_)
           end
 
-          # If the authorization was made in-person with a physical card, the Physical Card
-          #   that was used.
           sig { returns(T.nilable(String)) }
           def physical_card_id
           end
@@ -7879,8 +7098,6 @@ module Increase
           def physical_card_id=(_)
           end
 
-          # The identifier of the Real-Time Decision sent to approve or decline this
-          #   transaction.
           sig { returns(T.nilable(String)) }
           def real_time_decision_id
           end
@@ -7889,8 +7106,6 @@ module Increase
           def real_time_decision_id=(_)
           end
 
-          # The terminal identifier (commonly abbreviated as TID) of the terminal the card
-          #   is transacting with.
           sig { returns(T.nilable(String)) }
           def terminal_id
           end
@@ -7899,8 +7114,6 @@ module Increase
           def terminal_id=(_)
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_validation`.
           sig { returns(Symbol) }
           def type
           end
@@ -7909,7 +7122,6 @@ module Increase
           def type=(_)
           end
 
-          # Fields related to verification of cardholder-provided values.
           sig { returns(Increase::Models::CardPayment::Element::CardValidation::Verification) }
           def verification
           end
@@ -7921,10 +7133,6 @@ module Increase
           def verification=(_)
           end
 
-          # A Card Validation object. This field will be present in the JSON response if and
-          #   only if `category` is equal to `card_validation`. Card Validations are requests
-          #   from a merchant to verify that a card number and optionally its address and/or
-          #   Card Verification Value are valid.
           sig do
             params(
               id: String,
@@ -8004,8 +7212,6 @@ module Increase
           def to_hash
           end
 
-          # Whether this authorization was approved by Increase, the card network through
-          #   stand-in processing, or the user through a real-time decision.
           class Actioner < Increase::Enum
             abstract!
 
@@ -8025,8 +7231,6 @@ module Increase
             end
           end
 
-          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-          #   transaction's currency.
           class Currency < Increase::Enum
             abstract!
 
@@ -8056,7 +7260,6 @@ module Increase
           end
 
           class NetworkDetails < Increase::BaseModel
-            # The payment network used to process this card authorization.
             sig { returns(Symbol) }
             def category
             end
@@ -8065,7 +7268,6 @@ module Increase
             def category=(_)
             end
 
-            # Fields specific to the `visa` network.
             sig { returns(T.nilable(Increase::Models::CardPayment::Element::CardValidation::NetworkDetails::Visa)) }
             def visa
             end
@@ -8077,7 +7279,6 @@ module Increase
             def visa=(_)
             end
 
-            # Fields specific to the `network`.
             sig do
               params(
                 category: Symbol,
@@ -8100,7 +7301,6 @@ module Increase
             def to_hash
             end
 
-            # The payment network used to process this card authorization.
             class Category < Increase::Enum
               abstract!
 
@@ -8115,9 +7315,6 @@ module Increase
             end
 
             class Visa < Increase::BaseModel
-              # For electronic commerce transactions, this identifies the level of security used
-              #   in obtaining the customer's payment credential. For mail or telephone order
-              #   transactions, identifies the type of mail or telephone order.
               sig { returns(T.nilable(Symbol)) }
               def electronic_commerce_indicator
               end
@@ -8126,8 +7323,6 @@ module Increase
               def electronic_commerce_indicator=(_)
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              #   expiration date.
               sig { returns(T.nilable(Symbol)) }
               def point_of_service_entry_mode
               end
@@ -8136,8 +7331,6 @@ module Increase
               def point_of_service_entry_mode=(_)
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              #   approved or declined by Visa through stand-in processing.
               sig { returns(T.nilable(Symbol)) }
               def stand_in_processing_reason
               end
@@ -8146,7 +7339,6 @@ module Increase
               def stand_in_processing_reason=(_)
               end
 
-              # Fields specific to the `visa` network.
               sig do
                 params(
                   electronic_commerce_indicator: T.nilable(Symbol),
@@ -8171,9 +7363,6 @@ module Increase
               def to_hash
               end
 
-              # For electronic commerce transactions, this identifies the level of security used
-              #   in obtaining the customer's payment credential. For mail or telephone order
-              #   transactions, identifies the type of mail or telephone order.
               class ElectronicCommerceIndicator < Increase::Enum
                 abstract!
 
@@ -8213,8 +7402,6 @@ module Increase
                 end
               end
 
-              # The method used to enter the cardholder's primary account number and card
-              #   expiration date.
               class PointOfServiceEntryMode < Increase::Enum
                 abstract!
 
@@ -8255,8 +7442,6 @@ module Increase
                 end
               end
 
-              # Only present when `actioner: network`. Describes why a card authorization was
-              #   approved or declined by Visa through stand-in processing.
               class StandInProcessingReason < Increase::Enum
                 abstract!
 
@@ -8298,9 +7483,6 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::BaseModel
-            # A life-cycle identifier used across e.g., an authorization and a reversal.
-            #   Expected to be unique per acquirer within a window of time. For some card
-            #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
             def retrieval_reference_number
             end
@@ -8309,8 +7491,6 @@ module Increase
             def retrieval_reference_number=(_)
             end
 
-            # A counter used to verify an individual authorization. Expected to be unique per
-            #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
             def trace_number
             end
@@ -8319,8 +7499,6 @@ module Increase
             def trace_number=(_)
             end
 
-            # A globally unique transaction identifier provided by the card network, used
-            #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
             def transaction_id
             end
@@ -8329,7 +7507,6 @@ module Increase
             def transaction_id=(_)
             end
 
-            # Network-specific identifiers for a specific request or transaction.
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -8355,8 +7532,6 @@ module Increase
             end
           end
 
-          # A constant representing the object's type. For this resource it will always be
-          #   `card_validation`.
           class Type < Increase::Enum
             abstract!
 
@@ -8370,8 +7545,6 @@ module Increase
           end
 
           class Verification < Increase::BaseModel
-            # Fields related to verification of the Card Verification Code, a 3-digit code on
-            #   the back of the card.
             sig { returns(Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode) }
             def card_verification_code
             end
@@ -8383,8 +7556,6 @@ module Increase
             def card_verification_code=(_)
             end
 
-            # Cardholder address provided in the authorization request and the address on file
-            #   we verified it against.
             sig { returns(Increase::Models::CardPayment::Element::CardValidation::Verification::CardholderAddress) }
             def cardholder_address
             end
@@ -8396,7 +7567,6 @@ module Increase
             def cardholder_address=(_)
             end
 
-            # Fields related to verification of cardholder-provided values.
             sig do
               params(
                 card_verification_code: Increase::Models::CardPayment::Element::CardValidation::Verification::CardVerificationCode,
@@ -8420,7 +7590,6 @@ module Increase
             end
 
             class CardVerificationCode < Increase::BaseModel
-              # The result of verifying the Card Verification Code.
               sig { returns(Symbol) }
               def result
               end
@@ -8429,8 +7598,6 @@ module Increase
               def result=(_)
               end
 
-              # Fields related to verification of the Card Verification Code, a 3-digit code on
-              #   the back of the card.
               sig { params(result: Symbol).returns(T.attached_class) }
               def self.new(result:)
               end
@@ -8439,7 +7606,6 @@ module Increase
               def to_hash
               end
 
-              # The result of verifying the Card Verification Code.
               class Result < Increase::Enum
                 abstract!
 
@@ -8461,7 +7627,6 @@ module Increase
             end
 
             class CardholderAddress < Increase::BaseModel
-              # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               def actual_line1
               end
@@ -8470,7 +7635,6 @@ module Increase
               def actual_line1=(_)
               end
 
-              # The postal code of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               def actual_postal_code
               end
@@ -8479,8 +7643,6 @@ module Increase
               def actual_postal_code=(_)
               end
 
-              # The cardholder address line 1 provided for verification in the authorization
-              #   request.
               sig { returns(T.nilable(String)) }
               def provided_line1
               end
@@ -8489,7 +7651,6 @@ module Increase
               def provided_line1=(_)
               end
 
-              # The postal code provided for verification in the authorization request.
               sig { returns(T.nilable(String)) }
               def provided_postal_code
               end
@@ -8498,7 +7659,6 @@ module Increase
               def provided_postal_code=(_)
               end
 
-              # The address verification result returned to the card network.
               sig { returns(Symbol) }
               def result
               end
@@ -8507,8 +7667,6 @@ module Increase
               def result=(_)
               end
 
-              # Cardholder address provided in the authorization request and the address on file
-              #   we verified it against.
               sig do
                 params(
                   actual_line1: T.nilable(String),
@@ -8537,7 +7695,6 @@ module Increase
               def to_hash
               end
 
-              # The address verification result returned to the card network.
               class Result < Increase::Enum
                 abstract!
 
@@ -8569,8 +7726,6 @@ module Increase
           end
         end
 
-        # The type of the resource. We may add additional possible values for this enum
-        #   over time; your application should be able to handle such additions gracefully.
         class Category < Increase::Enum
           abstract!
 
@@ -8616,8 +7771,6 @@ module Increase
       end
 
       class State < Increase::BaseModel
-        # The total authorized amount in the minor unit of the transaction's currency. For
-        #   dollars, for example, this is cents.
         sig { returns(Integer) }
         def authorized_amount
         end
@@ -8626,8 +7779,6 @@ module Increase
         def authorized_amount=(_)
         end
 
-        # The total amount from fuel confirmations in the minor unit of the transaction's
-        #   currency. For dollars, for example, this is cents.
         sig { returns(Integer) }
         def fuel_confirmed_amount
         end
@@ -8636,8 +7787,6 @@ module Increase
         def fuel_confirmed_amount=(_)
         end
 
-        # The total incrementally updated authorized amount in the minor unit of the
-        #   transaction's currency. For dollars, for example, this is cents.
         sig { returns(Integer) }
         def incremented_amount
         end
@@ -8646,8 +7795,6 @@ module Increase
         def incremented_amount=(_)
         end
 
-        # The total reversed amount in the minor unit of the transaction's currency. For
-        #   dollars, for example, this is cents.
         sig { returns(Integer) }
         def reversed_amount
         end
@@ -8656,8 +7803,6 @@ module Increase
         def reversed_amount=(_)
         end
 
-        # The total settled or refunded amount in the minor unit of the transaction's
-        #   currency. For dollars, for example, this is cents.
         sig { returns(Integer) }
         def settled_amount
         end
@@ -8666,7 +7811,6 @@ module Increase
         def settled_amount=(_)
         end
 
-        # The summarized state of this card payment.
         sig do
           params(
             authorized_amount: Integer,
@@ -8696,8 +7840,6 @@ module Increase
         end
       end
 
-      # A constant representing the object's type. For this resource it will always be
-      #   `card_payment`.
       class Type < Increase::Enum
         abstract!
 

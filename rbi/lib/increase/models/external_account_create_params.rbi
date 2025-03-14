@@ -6,7 +6,6 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
-      # The account number for the destination account.
       sig { returns(String) }
       def account_number
       end
@@ -15,7 +14,6 @@ module Increase
       def account_number=(_)
       end
 
-      # The name you choose for the Account.
       sig { returns(String) }
       def description
       end
@@ -24,8 +22,6 @@ module Increase
       def description=(_)
       end
 
-      # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-      #   destination account.
       sig { returns(String) }
       def routing_number
       end
@@ -34,7 +30,6 @@ module Increase
       def routing_number=(_)
       end
 
-      # The type of entity that owns the External Account.
       sig { returns(T.nilable(Symbol)) }
       def account_holder
       end
@@ -43,7 +38,6 @@ module Increase
       def account_holder=(_)
       end
 
-      # The type of the destination account. Defaults to `checking`.
       sig { returns(T.nilable(Symbol)) }
       def funding
       end
@@ -82,7 +76,6 @@ module Increase
       def to_hash
       end
 
-      # The type of entity that owns the External Account.
       class AccountHolder < Increase::Enum
         abstract!
 
@@ -102,7 +95,6 @@ module Increase
         end
       end
 
-      # The type of the destination account. Defaults to `checking`.
       class Funding < Increase::Enum
         abstract!
 
