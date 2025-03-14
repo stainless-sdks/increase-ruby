@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The URL you'd like us to send webhooks to.
       sig { returns(String) }
       def url
       end
@@ -14,6 +15,8 @@ module Increase
       def url=(_)
       end
 
+      # If specified, this subscription will only receive webhooks for Events associated
+      #   with the specified OAuth Connection.
       sig { returns(T.nilable(String)) }
       def oauth_connection_id
       end
@@ -22,6 +25,8 @@ module Increase
       def oauth_connection_id=(_)
       end
 
+      # If specified, this subscription will only receive webhooks for Events with the
+      #   specified `category`.
       sig { returns(T.nilable(Symbol)) }
       def selected_event_category
       end
@@ -30,6 +35,8 @@ module Increase
       def selected_event_category=(_)
       end
 
+      # The key that will be used to sign webhooks. If no value is passed, a random
+      #   string will be used as default.
       sig { returns(T.nilable(String)) }
       def shared_secret
       end
@@ -66,6 +73,8 @@ module Increase
       def to_hash
       end
 
+      # If specified, this subscription will only receive webhooks for Events with the
+      #   specified `category`.
       class SelectedEventCategory < Increase::Enum
         abstract!
 

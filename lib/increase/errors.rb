@@ -20,7 +20,7 @@ module Increase
     # @return [Object, nil]
     attr_reader :body
 
-    # @private
+    # @api private
     #
     # @param url [URI::Generic]
     # @param status [Integer, nil]
@@ -28,7 +28,6 @@ module Increase
     # @param request [nil]
     # @param response [nil]
     # @param message [String, nil]
-    #
     def initialize(url:, status: nil, body: nil, request: nil, response: nil, message: nil)
       @url = url
       @status = status
@@ -48,7 +47,7 @@ module Increase
     #   # @return [nil]
     #   attr_reader :body
 
-    # @private
+    # @api private
     #
     # @param url [URI::Generic]
     # @param status [nil]
@@ -56,7 +55,6 @@ module Increase
     # @param request [nil]
     # @param response [nil]
     # @param message [String, nil]
-    #
     def initialize(
       url:,
       status: nil,
@@ -70,7 +68,7 @@ module Increase
   end
 
   class APITimeoutError < Increase::APIConnectionError
-    # @private
+    # @api private
     #
     # @param url [URI::Generic]
     # @param status [nil]
@@ -78,7 +76,6 @@ module Increase
     # @param request [nil]
     # @param response [nil]
     # @param message [String, nil]
-    #
     def initialize(
       url:,
       status: nil,
@@ -92,7 +89,7 @@ module Increase
   end
 
   class APIStatusError < Increase::APIError
-    # @private
+    # @api private
     #
     # @param url [URI::Generic]
     # @param status [Integer]
@@ -102,7 +99,6 @@ module Increase
     # @param message [String, nil]
     #
     # @return [Increase::APIStatusError]
-    #
     def self.for(url:, status:, body:, request:, response:, message: nil)
       key = Increase::Util.dig(body, :type)
       kwargs = {url: url, status: status, body: body, request: request, response: response, message: message}
@@ -155,7 +151,7 @@ module Increase
     #   # @return [Integer]
     #   attr_reader :status
 
-    # @private
+    # @api private
     #
     # @param url [URI::Generic]
     # @param status [Integer]
@@ -163,7 +159,6 @@ module Increase
     # @param request [nil]
     # @param response [nil]
     # @param message [String, nil]
-    #
     def initialize(url:, status:, body:, request:, response:, message: nil)
       message ||= {url: url.to_s, status: status, body: body}
       super(

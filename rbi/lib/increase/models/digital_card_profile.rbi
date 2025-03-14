@@ -3,6 +3,7 @@
 module Increase
   module Models
     class DigitalCardProfile < Increase::BaseModel
+      # The Card Profile identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The identifier of the File containing the card's icon image.
       sig { returns(String) }
       def app_icon_file_id
       end
@@ -19,6 +21,7 @@ module Increase
       def app_icon_file_id=(_)
       end
 
+      # The identifier of the File containing the card's front image.
       sig { returns(String) }
       def background_image_file_id
       end
@@ -27,6 +30,7 @@ module Increase
       def background_image_file_id=(_)
       end
 
+      # A user-facing description for the card itself.
       sig { returns(String) }
       def card_description
       end
@@ -35,6 +39,7 @@ module Increase
       def card_description=(_)
       end
 
+      # An email address the user can contact to receive support for their card.
       sig { returns(T.nilable(String)) }
       def contact_email
       end
@@ -43,6 +48,7 @@ module Increase
       def contact_email=(_)
       end
 
+      # A phone number the user can contact to receive support for their card.
       sig { returns(T.nilable(String)) }
       def contact_phone
       end
@@ -51,6 +57,7 @@ module Increase
       def contact_phone=(_)
       end
 
+      # A website the user can visit to view and receive support for their card.
       sig { returns(T.nilable(String)) }
       def contact_website
       end
@@ -59,6 +66,8 @@ module Increase
       def contact_website=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the Card Dispute was created.
       sig { returns(Time) }
       def created_at
       end
@@ -67,6 +76,7 @@ module Increase
       def created_at=(_)
       end
 
+      # A description you can use to identify the Card Profile.
       sig { returns(String) }
       def description
       end
@@ -75,6 +85,9 @@ module Increase
       def description=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -83,6 +96,7 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # A user-facing description for whoever is issuing the card.
       sig { returns(String) }
       def issuer_name
       end
@@ -91,6 +105,7 @@ module Increase
       def issuer_name=(_)
       end
 
+      # The status of the Card Profile.
       sig { returns(Symbol) }
       def status
       end
@@ -99,6 +114,7 @@ module Increase
       def status=(_)
       end
 
+      # The Card's text color, specified as an RGB triple.
       sig { returns(Increase::Models::DigitalCardProfile::TextColor) }
       def text_color
       end
@@ -110,6 +126,8 @@ module Increase
       def text_color=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `digital_card_profile`.
       sig { returns(Symbol) }
       def type
       end
@@ -118,6 +136,9 @@ module Increase
       def type=(_)
       end
 
+      # This contains artwork and metadata relating to a Card's appearance in digital
+      #   wallet apps like Apple Pay and Google Pay. For more information, see our guide
+      #   on [digital card artwork](https://increase.com/documentation/card-art).
       sig do
         params(
           id: String,
@@ -179,6 +200,7 @@ module Increase
       def to_hash
       end
 
+      # The status of the Card Profile.
       class Status < Increase::Enum
         abstract!
 
@@ -202,6 +224,7 @@ module Increase
       end
 
       class TextColor < Increase::BaseModel
+        # The value of the blue channel in the RGB color.
         sig { returns(Integer) }
         def blue
         end
@@ -210,6 +233,7 @@ module Increase
         def blue=(_)
         end
 
+        # The value of the green channel in the RGB color.
         sig { returns(Integer) }
         def green
         end
@@ -218,6 +242,7 @@ module Increase
         def green=(_)
         end
 
+        # The value of the red channel in the RGB color.
         sig { returns(Integer) }
         def red
         end
@@ -226,6 +251,7 @@ module Increase
         def red=(_)
         end
 
+        # The Card's text color, specified as an RGB triple.
         sig { params(blue: Integer, green: Integer, red: Integer).returns(T.attached_class) }
         def self.new(blue:, green:, red:)
         end
@@ -235,6 +261,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `digital_card_profile`.
       class Type < Increase::Enum
         abstract!
 

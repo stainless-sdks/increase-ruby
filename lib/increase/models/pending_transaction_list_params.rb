@@ -123,7 +123,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @abstract
-        #
         class In < Increase::Enum
           # Account Transfer Instruction: details will be under the `account_transfer_instruction` object.
           ACCOUNT_TRANSFER_INSTRUCTION = :account_transfer_instruction
@@ -239,7 +238,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @abstract
-        #
         class In < Increase::Enum
           # The Pending Transaction is still awaiting confirmation.
           PENDING = :pending

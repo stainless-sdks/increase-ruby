@@ -7,6 +7,7 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
+        # The identifier of the Account Number the Inbound Check Deposit will be against.
         sig { returns(String) }
         def account_number_id
         end
@@ -15,6 +16,7 @@ module Increase
         def account_number_id=(_)
         end
 
+        # The check amount in cents.
         sig { returns(Integer) }
         def amount
         end
@@ -23,6 +25,7 @@ module Increase
         def amount=(_)
         end
 
+        # The check number on the check to be deposited.
         sig { returns(String) }
         def check_number
         end

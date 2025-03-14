@@ -95,7 +95,6 @@ module Increase
         # def initialize: (Hash | Increase::BaseModel) -> void
 
         # @abstract
-        #
         class In < Increase::Enum
           # The External Account is active.
           ACTIVE = :active

@@ -7,6 +7,7 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
+        # The shipment status to move the Physical Card to.
         sig { returns(Symbol) }
         def shipment_status
         end
@@ -29,6 +30,7 @@ module Increase
         def to_hash
         end
 
+        # The shipment status to move the Physical Card to.
         class ShipmentStatus < Increase::Enum
           abstract!
 

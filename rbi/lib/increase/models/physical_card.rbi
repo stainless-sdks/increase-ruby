@@ -3,6 +3,7 @@
 module Increase
   module Models
     class PhysicalCard < Increase::BaseModel
+      # The physical card identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The identifier for the Card this Physical Card represents.
       sig { returns(String) }
       def card_id
       end
@@ -19,6 +21,7 @@ module Increase
       def card_id=(_)
       end
 
+      # Details about the cardholder, as it appears on the printed card.
       sig { returns(Increase::Models::PhysicalCard::Cardholder) }
       def cardholder
       end
@@ -27,6 +30,8 @@ module Increase
       def cardholder=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the Physical Card was created.
       sig { returns(Time) }
       def created_at
       end
@@ -35,6 +40,9 @@ module Increase
       def created_at=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -43,6 +51,7 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # The Physical Card Profile used for this Physical Card.
       sig { returns(T.nilable(String)) }
       def physical_card_profile_id
       end
@@ -51,6 +60,7 @@ module Increase
       def physical_card_profile_id=(_)
       end
 
+      # The details used to ship this physical card.
       sig { returns(Increase::Models::PhysicalCard::Shipment) }
       def shipment
       end
@@ -59,6 +69,7 @@ module Increase
       def shipment=(_)
       end
 
+      # The status of the Physical Card.
       sig { returns(Symbol) }
       def status
       end
@@ -67,6 +78,8 @@ module Increase
       def status=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `physical_card`.
       sig { returns(Symbol) }
       def type
       end
@@ -75,6 +88,11 @@ module Increase
       def type=(_)
       end
 
+      # Custom physical Visa cards that are shipped to your customers. The artwork is
+      #   configurable by a connected [Card Profile](/documentation/api#card-profiles).
+      #   The same Card can be used for multiple Physical Cards. Printing cards incurs a
+      #   fee. Please contact [support@increase.com](mailto:support@increase.com) for
+      #   pricing!
       sig do
         params(
           id: String,
@@ -122,6 +140,7 @@ module Increase
       end
 
       class Cardholder < Increase::BaseModel
+        # The cardholder's first name.
         sig { returns(String) }
         def first_name
         end
@@ -130,6 +149,7 @@ module Increase
         def first_name=(_)
         end
 
+        # The cardholder's last name.
         sig { returns(String) }
         def last_name
         end
@@ -138,6 +158,7 @@ module Increase
         def last_name=(_)
         end
 
+        # Details about the cardholder, as it appears on the printed card.
         sig { params(first_name: String, last_name: String).returns(T.attached_class) }
         def self.new(first_name:, last_name:)
         end
@@ -148,6 +169,7 @@ module Increase
       end
 
       class Shipment < Increase::BaseModel
+        # The location to where the card's packing label is addressed.
         sig { returns(Increase::Models::PhysicalCard::Shipment::Address) }
         def address
         end
@@ -159,6 +181,7 @@ module Increase
         def address=(_)
         end
 
+        # The shipping method.
         sig { returns(Symbol) }
         def method_
         end
@@ -167,6 +190,7 @@ module Increase
         def method_=(_)
         end
 
+        # The status of this shipment.
         sig { returns(Symbol) }
         def status
         end
@@ -175,6 +199,7 @@ module Increase
         def status=(_)
         end
 
+        # Tracking details for the shipment.
         sig { returns(T.nilable(Increase::Models::PhysicalCard::Shipment::Tracking)) }
         def tracking
         end
@@ -186,6 +211,7 @@ module Increase
         def tracking=(_)
         end
 
+        # The details used to ship this physical card.
         sig do
           params(
             address: Increase::Models::PhysicalCard::Shipment::Address,
@@ -213,6 +239,7 @@ module Increase
         end
 
         class Address < Increase::BaseModel
+          # The city of the shipping address.
           sig { returns(String) }
           def city
           end
@@ -221,6 +248,7 @@ module Increase
           def city=(_)
           end
 
+          # The first line of the shipping address.
           sig { returns(String) }
           def line1
           end
@@ -229,6 +257,7 @@ module Increase
           def line1=(_)
           end
 
+          # The second line of the shipping address.
           sig { returns(T.nilable(String)) }
           def line2
           end
@@ -237,6 +266,7 @@ module Increase
           def line2=(_)
           end
 
+          # The third line of the shipping address.
           sig { returns(T.nilable(String)) }
           def line3
           end
@@ -245,6 +275,7 @@ module Increase
           def line3=(_)
           end
 
+          # The name of the recipient.
           sig { returns(String) }
           def name
           end
@@ -253,6 +284,7 @@ module Increase
           def name=(_)
           end
 
+          # The postal code of the shipping address.
           sig { returns(String) }
           def postal_code
           end
@@ -261,6 +293,7 @@ module Increase
           def postal_code=(_)
           end
 
+          # The US state of the shipping address.
           sig { returns(String) }
           def state
           end
@@ -269,6 +302,7 @@ module Increase
           def state=(_)
           end
 
+          # The location to where the card's packing label is addressed.
           sig do
             params(
               city: String,
@@ -302,6 +336,7 @@ module Increase
           end
         end
 
+        # The shipping method.
         class Method < Increase::Enum
           abstract!
 
@@ -321,6 +356,7 @@ module Increase
           end
         end
 
+        # The status of this shipment.
         class Status < Increase::Enum
           abstract!
 
@@ -353,6 +389,7 @@ module Increase
         end
 
         class Tracking < Increase::BaseModel
+          # The tracking number.
           sig { returns(String) }
           def number
           end
@@ -361,6 +398,7 @@ module Increase
           def number=(_)
           end
 
+          # For returned shipments, the tracking number of the return shipment.
           sig { returns(T.nilable(String)) }
           def return_number
           end
@@ -369,6 +407,7 @@ module Increase
           def return_number=(_)
           end
 
+          # For returned shipments, this describes why the package was returned.
           sig { returns(T.nilable(String)) }
           def return_reason
           end
@@ -377,6 +416,9 @@ module Increase
           def return_reason=(_)
           end
 
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          #   the fulfillment provider marked the card as ready for pick-up by the shipment
+          #   carrier.
           sig { returns(Time) }
           def shipped_at
           end
@@ -385,6 +427,7 @@ module Increase
           def shipped_at=(_)
           end
 
+          # Tracking details for the shipment.
           sig do
             params(
               number: String,
@@ -413,6 +456,7 @@ module Increase
         end
       end
 
+      # The status of the Physical Card.
       class Status < Increase::Enum
         abstract!
 
@@ -432,6 +476,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `physical_card`.
       class Type < Increase::Enum
         abstract!
 

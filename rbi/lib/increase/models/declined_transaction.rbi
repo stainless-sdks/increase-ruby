@@ -3,6 +3,7 @@
 module Increase
   module Models
     class DeclinedTransaction < Increase::BaseModel
+      # The Declined Transaction identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The identifier for the Account the Declined Transaction belongs to.
       sig { returns(String) }
       def account_id
       end
@@ -19,6 +21,8 @@ module Increase
       def account_id=(_)
       end
 
+      # The Declined Transaction amount in the minor unit of its currency. For dollars,
+      #   for example, this is cents.
       sig { returns(Integer) }
       def amount
       end
@@ -27,6 +31,8 @@ module Increase
       def amount=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
+      #   Transaction occurred.
       sig { returns(Time) }
       def created_at
       end
@@ -35,6 +41,9 @@ module Increase
       def created_at=(_)
       end
 
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
+      #   Transaction's currency. This will match the currency on the Declined
+      #   Transaction's Account.
       sig { returns(Symbol) }
       def currency
       end
@@ -43,6 +52,7 @@ module Increase
       def currency=(_)
       end
 
+      # This is the description the vendor provides.
       sig { returns(String) }
       def description
       end
@@ -51,6 +61,8 @@ module Increase
       def description=(_)
       end
 
+      # The identifier for the route this Declined Transaction came through. Routes are
+      #   things like cards and ACH details.
       sig { returns(T.nilable(String)) }
       def route_id
       end
@@ -59,6 +71,7 @@ module Increase
       def route_id=(_)
       end
 
+      # The type of the route this Declined Transaction came through.
       sig { returns(T.nilable(Symbol)) }
       def route_type
       end
@@ -67,6 +80,11 @@ module Increase
       def route_type=(_)
       end
 
+      # This is an object giving more details on the network-level event that caused the
+      #   Declined Transaction. For example, for a card transaction this lists the
+      #   merchant's industry and location. Note that for backwards compatibility reasons,
+      #   additional undocumented keys may appear in this object. These should be treated
+      #   as deprecated and will be removed in the future.
       sig { returns(Increase::Models::DeclinedTransaction::Source) }
       def source
       end
@@ -78,6 +96,8 @@ module Increase
       def source=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `declined_transaction`.
       sig { returns(Symbol) }
       def type
       end
@@ -86,6 +106,9 @@ module Increase
       def type=(_)
       end
 
+      # Declined Transactions are refused additions and removals of money from your bank
+      #   account. For example, Declined Transactions are caused when your Account has an
+      #   insufficient balance or your Limits are triggered.
       sig do
         params(
           id: String,
@@ -124,6 +147,9 @@ module Increase
       def to_hash
       end
 
+      # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
+      #   Transaction's currency. This will match the currency on the Declined
+      #   Transaction's Account.
       class Currency < Increase::Enum
         abstract!
 
@@ -152,6 +178,7 @@ module Increase
         end
       end
 
+      # The type of the route this Declined Transaction came through.
       class RouteType < Increase::Enum
         abstract!
 
@@ -172,6 +199,8 @@ module Increase
       end
 
       class Source < Increase::BaseModel
+        # An ACH Decline object. This field will be present in the JSON response if and
+        #   only if `category` is equal to `ach_decline`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline)) }
         def ach_decline
         end
@@ -183,6 +212,8 @@ module Increase
         def ach_decline=(_)
         end
 
+        # A Card Decline object. This field will be present in the JSON response if and
+        #   only if `category` is equal to `card_decline`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline)) }
         def card_decline
         end
@@ -194,6 +225,8 @@ module Increase
         def card_decline=(_)
         end
 
+        # The type of the resource. We may add additional possible values for this enum
+        #   over time; your application should be able to handle such additions gracefully.
         sig { returns(Symbol) }
         def category
         end
@@ -202,6 +235,8 @@ module Increase
         def category=(_)
         end
 
+        # A Check Decline object. This field will be present in the JSON response if and
+        #   only if `category` is equal to `check_decline`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDecline)) }
         def check_decline
         end
@@ -213,6 +248,8 @@ module Increase
         def check_decline=(_)
         end
 
+        # A Check Deposit Rejection object. This field will be present in the JSON
+        #   response if and only if `category` is equal to `check_deposit_rejection`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CheckDepositRejection)) }
         def check_deposit_rejection
         end
@@ -224,6 +261,9 @@ module Increase
         def check_deposit_rejection=(_)
         end
 
+        # An Inbound Real-Time Payments Transfer Decline object. This field will be
+        #   present in the JSON response if and only if `category` is equal to
+        #   `inbound_real_time_payments_transfer_decline`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::InboundRealTimePaymentsTransferDecline)) }
         def inbound_real_time_payments_transfer_decline
         end
@@ -237,6 +277,8 @@ module Increase
         def inbound_real_time_payments_transfer_decline=(_)
         end
 
+        # If the category of this Transaction source is equal to `other`, this field will
+        #   contain an empty object, otherwise it will contain null.
         sig { returns(T.nilable(T.anything)) }
         def other
         end
@@ -245,6 +287,8 @@ module Increase
         def other=(_)
         end
 
+        # A Wire Decline object. This field will be present in the JSON response if and
+        #   only if `category` is equal to `wire_decline`.
         sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::WireDecline)) }
         def wire_decline
         end
@@ -256,6 +300,11 @@ module Increase
         def wire_decline=(_)
         end
 
+        # This is an object giving more details on the network-level event that caused the
+        #   Declined Transaction. For example, for a card transaction this lists the
+        #   merchant's industry and location. Note that for backwards compatibility reasons,
+        #   additional undocumented keys may appear in this object. These should be treated
+        #   as deprecated and will be removed in the future.
         sig do
           params(
             ach_decline: T.nilable(Increase::Models::DeclinedTransaction::Source::ACHDecline),
@@ -300,6 +349,7 @@ module Increase
         end
 
         class ACHDecline < Increase::BaseModel
+          # The ACH Decline's identifier.
           sig { returns(String) }
           def id
           end
@@ -308,6 +358,7 @@ module Increase
           def id=(_)
           end
 
+          # The declined amount in USD cents.
           sig { returns(Integer) }
           def amount
           end
@@ -316,6 +367,7 @@ module Increase
           def amount=(_)
           end
 
+          # The identifier of the Inbound ACH Transfer object associated with this decline.
           sig { returns(String) }
           def inbound_ach_transfer_id
           end
@@ -324,6 +376,7 @@ module Increase
           def inbound_ach_transfer_id=(_)
           end
 
+          # The descriptive date of the transfer.
           sig { returns(T.nilable(String)) }
           def originator_company_descriptive_date
           end
@@ -332,6 +385,7 @@ module Increase
           def originator_company_descriptive_date=(_)
           end
 
+          # The additional information included with the transfer.
           sig { returns(T.nilable(String)) }
           def originator_company_discretionary_data
           end
@@ -340,6 +394,7 @@ module Increase
           def originator_company_discretionary_data=(_)
           end
 
+          # The identifier of the company that initiated the transfer.
           sig { returns(String) }
           def originator_company_id
           end
@@ -348,6 +403,7 @@ module Increase
           def originator_company_id=(_)
           end
 
+          # The name of the company that initiated the transfer.
           sig { returns(String) }
           def originator_company_name
           end
@@ -356,6 +412,7 @@ module Increase
           def originator_company_name=(_)
           end
 
+          # Why the ACH transfer was declined.
           sig { returns(Symbol) }
           def reason
           end
@@ -364,6 +421,7 @@ module Increase
           def reason=(_)
           end
 
+          # The id of the receiver of the transfer.
           sig { returns(T.nilable(String)) }
           def receiver_id_number
           end
@@ -372,6 +430,7 @@ module Increase
           def receiver_id_number=(_)
           end
 
+          # The name of the receiver of the transfer.
           sig { returns(T.nilable(String)) }
           def receiver_name
           end
@@ -380,6 +439,7 @@ module Increase
           def receiver_name=(_)
           end
 
+          # The trace number of the transfer.
           sig { returns(String) }
           def trace_number
           end
@@ -388,6 +448,8 @@ module Increase
           def trace_number=(_)
           end
 
+          # A constant representing the object's type. For this resource it will always be
+          #   `ach_decline`.
           sig { returns(Symbol) }
           def type
           end
@@ -396,6 +458,8 @@ module Increase
           def type=(_)
           end
 
+          # An ACH Decline object. This field will be present in the JSON response if and
+          #   only if `category` is equal to `ach_decline`.
           sig do
             params(
               id: String,
@@ -451,6 +515,7 @@ module Increase
           def to_hash
           end
 
+          # Why the ACH transfer was declined.
           class Reason < Increase::Enum
             abstract!
 
@@ -512,6 +577,8 @@ module Increase
             end
           end
 
+          # A constant representing the object's type. For this resource it will always be
+          #   `ach_decline`.
           class Type < Increase::Enum
             abstract!
 
@@ -526,6 +593,7 @@ module Increase
         end
 
         class CardDecline < Increase::BaseModel
+          # The Card Decline identifier.
           sig { returns(String) }
           def id
           end
@@ -534,6 +602,8 @@ module Increase
           def id=(_)
           end
 
+          # Whether this authorization was approved by Increase, the card network through
+          #   stand-in processing, or the user through a real-time decision.
           sig { returns(Symbol) }
           def actioner
           end
@@ -542,6 +612,8 @@ module Increase
           def actioner=(_)
           end
 
+          # The declined amount in the minor unit of the destination account currency. For
+          #   dollars, for example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -550,6 +622,7 @@ module Increase
           def amount=(_)
           end
 
+          # The ID of the Card Payment this transaction belongs to.
           sig { returns(String) }
           def card_payment_id
           end
@@ -558,6 +631,8 @@ module Increase
           def card_payment_id=(_)
           end
 
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
+          #   account currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -566,6 +641,7 @@ module Increase
           def currency=(_)
           end
 
+          # The identifier of the declined transaction created for this Card Decline.
           sig { returns(String) }
           def declined_transaction_id
           end
@@ -574,6 +650,8 @@ module Increase
           def declined_transaction_id=(_)
           end
 
+          # If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+          #   purchase), the identifier of the token that was used.
           sig { returns(T.nilable(String)) }
           def digital_wallet_token_id
           end
@@ -582,6 +660,8 @@ module Increase
           def digital_wallet_token_id=(_)
           end
 
+          # The direction describes the direction the funds will move, either from the
+          #   cardholder to the merchant or from the merchant to the cardholder.
           sig { returns(Symbol) }
           def direction
           end
@@ -590,6 +670,8 @@ module Increase
           def direction=(_)
           end
 
+          # The merchant identifier (commonly abbreviated as MID) of the merchant the card
+          #   is transacting with.
           sig { returns(String) }
           def merchant_acceptor_id
           end
@@ -598,6 +680,8 @@ module Increase
           def merchant_acceptor_id=(_)
           end
 
+          # The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+          #   card is transacting with.
           sig { returns(String) }
           def merchant_category_code
           end
@@ -606,6 +690,7 @@ module Increase
           def merchant_category_code=(_)
           end
 
+          # The city the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_city
           end
@@ -614,6 +699,7 @@ module Increase
           def merchant_city=(_)
           end
 
+          # The country the merchant resides in.
           sig { returns(String) }
           def merchant_country
           end
@@ -622,6 +708,7 @@ module Increase
           def merchant_country=(_)
           end
 
+          # The merchant descriptor of the merchant the card is transacting with.
           sig { returns(String) }
           def merchant_descriptor
           end
@@ -630,6 +717,8 @@ module Increase
           def merchant_descriptor=(_)
           end
 
+          # The merchant's postal code. For US merchants this is either a 5-digit or 9-digit
+          #   ZIP code, where the first 5 and last 4 are separated by a dash.
           sig { returns(T.nilable(String)) }
           def merchant_postal_code
           end
@@ -638,6 +727,7 @@ module Increase
           def merchant_postal_code=(_)
           end
 
+          # The state the merchant resides in.
           sig { returns(T.nilable(String)) }
           def merchant_state
           end
@@ -646,6 +736,7 @@ module Increase
           def merchant_state=(_)
           end
 
+          # Fields specific to the `network`.
           sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails) }
           def network_details
           end
@@ -657,6 +748,7 @@ module Increase
           def network_details=(_)
           end
 
+          # Network-specific identifiers for a specific request or transaction.
           sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkIdentifiers) }
           def network_identifiers
           end
@@ -668,6 +760,8 @@ module Increase
           def network_identifiers=(_)
           end
 
+          # The risk score generated by the card network. For Visa this is the Visa Advanced
+          #   Authorization risk score, from 0 to 99, where 99 is the riskiest.
           sig { returns(T.nilable(Integer)) }
           def network_risk_score
           end
@@ -676,6 +770,8 @@ module Increase
           def network_risk_score=(_)
           end
 
+          # If the authorization was made in-person with a physical card, the Physical Card
+          #   that was used.
           sig { returns(T.nilable(String)) }
           def physical_card_id
           end
@@ -684,6 +780,7 @@ module Increase
           def physical_card_id=(_)
           end
 
+          # The declined amount in the minor unit of the transaction's presentment currency.
           sig { returns(Integer) }
           def presentment_amount
           end
@@ -692,6 +789,8 @@ module Increase
           def presentment_amount=(_)
           end
 
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+          #   transaction's presentment currency.
           sig { returns(String) }
           def presentment_currency
           end
@@ -700,6 +799,8 @@ module Increase
           def presentment_currency=(_)
           end
 
+          # The processing category describes the intent behind the authorization, such as
+          #   whether it was used for bill payments or an automatic fuel dispenser.
           sig { returns(Symbol) }
           def processing_category
           end
@@ -708,6 +809,8 @@ module Increase
           def processing_category=(_)
           end
 
+          # The identifier of the Real-Time Decision sent to approve or decline this
+          #   transaction.
           sig { returns(T.nilable(String)) }
           def real_time_decision_id
           end
@@ -716,6 +819,8 @@ module Increase
           def real_time_decision_id=(_)
           end
 
+          # This is present if a specific decline reason was given in the real-time
+          #   decision.
           sig { returns(T.nilable(Symbol)) }
           def real_time_decision_reason
           end
@@ -724,6 +829,7 @@ module Increase
           def real_time_decision_reason=(_)
           end
 
+          # Why the transaction was declined.
           sig { returns(Symbol) }
           def reason
           end
@@ -732,6 +838,8 @@ module Increase
           def reason=(_)
           end
 
+          # The terminal identifier (commonly abbreviated as TID) of the terminal the card
+          #   is transacting with.
           sig { returns(T.nilable(String)) }
           def terminal_id
           end
@@ -740,6 +848,7 @@ module Increase
           def terminal_id=(_)
           end
 
+          # Fields related to verification of cardholder-provided values.
           sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification) }
           def verification
           end
@@ -751,6 +860,8 @@ module Increase
           def verification=(_)
           end
 
+          # A Card Decline object. This field will be present in the JSON response if and
+          #   only if `category` is equal to `card_decline`.
           sig do
             params(
               id: String,
@@ -851,6 +962,8 @@ module Increase
           def to_hash
           end
 
+          # Whether this authorization was approved by Increase, the card network through
+          #   stand-in processing, or the user through a real-time decision.
           class Actioner < Increase::Enum
             abstract!
 
@@ -870,6 +983,8 @@ module Increase
             end
           end
 
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
+          #   account currency.
           class Currency < Increase::Enum
             abstract!
 
@@ -898,6 +1013,8 @@ module Increase
             end
           end
 
+          # The direction describes the direction the funds will move, either from the
+          #   cardholder to the merchant or from the merchant to the cardholder.
           class Direction < Increase::Enum
             abstract!
 
@@ -915,6 +1032,7 @@ module Increase
           end
 
           class NetworkDetails < Increase::BaseModel
+            # The payment network used to process this card authorization.
             sig { returns(Symbol) }
             def category
             end
@@ -923,6 +1041,7 @@ module Increase
             def category=(_)
             end
 
+            # Fields specific to the `visa` network.
             sig { returns(T.nilable(Increase::Models::DeclinedTransaction::Source::CardDecline::NetworkDetails::Visa)) }
             def visa
             end
@@ -934,6 +1053,7 @@ module Increase
             def visa=(_)
             end
 
+            # Fields specific to the `network`.
             sig do
               params(
                 category: Symbol,
@@ -956,6 +1076,7 @@ module Increase
             def to_hash
             end
 
+            # The payment network used to process this card authorization.
             class Category < Increase::Enum
               abstract!
 
@@ -970,6 +1091,9 @@ module Increase
             end
 
             class Visa < Increase::BaseModel
+              # For electronic commerce transactions, this identifies the level of security used
+              #   in obtaining the customer's payment credential. For mail or telephone order
+              #   transactions, identifies the type of mail or telephone order.
               sig { returns(T.nilable(Symbol)) }
               def electronic_commerce_indicator
               end
@@ -978,6 +1102,8 @@ module Increase
               def electronic_commerce_indicator=(_)
               end
 
+              # The method used to enter the cardholder's primary account number and card
+              #   expiration date.
               sig { returns(T.nilable(Symbol)) }
               def point_of_service_entry_mode
               end
@@ -986,6 +1112,8 @@ module Increase
               def point_of_service_entry_mode=(_)
               end
 
+              # Only present when `actioner: network`. Describes why a card authorization was
+              #   approved or declined by Visa through stand-in processing.
               sig { returns(T.nilable(Symbol)) }
               def stand_in_processing_reason
               end
@@ -994,6 +1122,7 @@ module Increase
               def stand_in_processing_reason=(_)
               end
 
+              # Fields specific to the `visa` network.
               sig do
                 params(
                   electronic_commerce_indicator: T.nilable(Symbol),
@@ -1018,6 +1147,9 @@ module Increase
               def to_hash
               end
 
+              # For electronic commerce transactions, this identifies the level of security used
+              #   in obtaining the customer's payment credential. For mail or telephone order
+              #   transactions, identifies the type of mail or telephone order.
               class ElectronicCommerceIndicator < Increase::Enum
                 abstract!
 
@@ -1057,6 +1189,8 @@ module Increase
                 end
               end
 
+              # The method used to enter the cardholder's primary account number and card
+              #   expiration date.
               class PointOfServiceEntryMode < Increase::Enum
                 abstract!
 
@@ -1097,6 +1231,8 @@ module Increase
                 end
               end
 
+              # Only present when `actioner: network`. Describes why a card authorization was
+              #   approved or declined by Visa through stand-in processing.
               class StandInProcessingReason < Increase::Enum
                 abstract!
 
@@ -1138,6 +1274,9 @@ module Increase
           end
 
           class NetworkIdentifiers < Increase::BaseModel
+            # A life-cycle identifier used across e.g., an authorization and a reversal.
+            #   Expected to be unique per acquirer within a window of time. For some card
+            #   networks the retrieval reference number includes the trace counter.
             sig { returns(T.nilable(String)) }
             def retrieval_reference_number
             end
@@ -1146,6 +1285,8 @@ module Increase
             def retrieval_reference_number=(_)
             end
 
+            # A counter used to verify an individual authorization. Expected to be unique per
+            #   acquirer within a window of time.
             sig { returns(T.nilable(String)) }
             def trace_number
             end
@@ -1154,6 +1295,8 @@ module Increase
             def trace_number=(_)
             end
 
+            # A globally unique transaction identifier provided by the card network, used
+            #   across multiple life-cycle requests.
             sig { returns(T.nilable(String)) }
             def transaction_id
             end
@@ -1162,6 +1305,7 @@ module Increase
             def transaction_id=(_)
             end
 
+            # Network-specific identifiers for a specific request or transaction.
             sig do
               params(
                 retrieval_reference_number: T.nilable(String),
@@ -1187,6 +1331,8 @@ module Increase
             end
           end
 
+          # The processing category describes the intent behind the authorization, such as
+          #   whether it was used for bill payments or an automatic fuel dispenser.
           class ProcessingCategory < Increase::Enum
             abstract!
 
@@ -1215,6 +1361,8 @@ module Increase
             end
           end
 
+          # This is present if a specific decline reason was given in the real-time
+          #   decision.
           class RealTimeDecisionReason < Increase::Enum
             abstract!
 
@@ -1243,6 +1391,7 @@ module Increase
             end
           end
 
+          # Why the transaction was declined.
           class Reason < Increase::Enum
             abstract!
 
@@ -1305,6 +1454,8 @@ module Increase
           end
 
           class Verification < Increase::BaseModel
+            # Fields related to verification of the Card Verification Code, a 3-digit code on
+            #   the back of the card.
             sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode) }
             def card_verification_code
             end
@@ -1316,6 +1467,8 @@ module Increase
             def card_verification_code=(_)
             end
 
+            # Cardholder address provided in the authorization request and the address on file
+            #   we verified it against.
             sig { returns(Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardholderAddress) }
             def cardholder_address
             end
@@ -1327,6 +1480,7 @@ module Increase
             def cardholder_address=(_)
             end
 
+            # Fields related to verification of cardholder-provided values.
             sig do
               params(
                 card_verification_code: Increase::Models::DeclinedTransaction::Source::CardDecline::Verification::CardVerificationCode,
@@ -1350,6 +1504,7 @@ module Increase
             end
 
             class CardVerificationCode < Increase::BaseModel
+              # The result of verifying the Card Verification Code.
               sig { returns(Symbol) }
               def result
               end
@@ -1358,6 +1513,8 @@ module Increase
               def result=(_)
               end
 
+              # Fields related to verification of the Card Verification Code, a 3-digit code on
+              #   the back of the card.
               sig { params(result: Symbol).returns(T.attached_class) }
               def self.new(result:)
               end
@@ -1366,6 +1523,7 @@ module Increase
               def to_hash
               end
 
+              # The result of verifying the Card Verification Code.
               class Result < Increase::Enum
                 abstract!
 
@@ -1387,6 +1545,7 @@ module Increase
             end
 
             class CardholderAddress < Increase::BaseModel
+              # Line 1 of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               def actual_line1
               end
@@ -1395,6 +1554,7 @@ module Increase
               def actual_line1=(_)
               end
 
+              # The postal code of the address on file for the cardholder.
               sig { returns(T.nilable(String)) }
               def actual_postal_code
               end
@@ -1403,6 +1563,8 @@ module Increase
               def actual_postal_code=(_)
               end
 
+              # The cardholder address line 1 provided for verification in the authorization
+              #   request.
               sig { returns(T.nilable(String)) }
               def provided_line1
               end
@@ -1411,6 +1573,7 @@ module Increase
               def provided_line1=(_)
               end
 
+              # The postal code provided for verification in the authorization request.
               sig { returns(T.nilable(String)) }
               def provided_postal_code
               end
@@ -1419,6 +1582,7 @@ module Increase
               def provided_postal_code=(_)
               end
 
+              # The address verification result returned to the card network.
               sig { returns(Symbol) }
               def result
               end
@@ -1427,6 +1591,8 @@ module Increase
               def result=(_)
               end
 
+              # Cardholder address provided in the authorization request and the address on file
+              #   we verified it against.
               sig do
                 params(
                   actual_line1: T.nilable(String),
@@ -1455,6 +1621,7 @@ module Increase
               def to_hash
               end
 
+              # The address verification result returned to the card network.
               class Result < Increase::Enum
                 abstract!
 
@@ -1486,6 +1653,8 @@ module Increase
           end
         end
 
+        # The type of the resource. We may add additional possible values for this enum
+        #   over time; your application should be able to handle such additions gracefully.
         class Category < Increase::Enum
           abstract!
 
@@ -1518,6 +1687,7 @@ module Increase
         end
 
         class CheckDecline < Increase::BaseModel
+          # The declined amount in USD cents.
           sig { returns(Integer) }
           def amount
           end
@@ -1526,6 +1696,9 @@ module Increase
           def amount=(_)
           end
 
+          # A computer-readable number printed on the MICR line of business checks, usually
+          #   the check number. This is useful for positive pay checks, but can be unreliably
+          #   transmitted by the bank of first deposit.
           sig { returns(T.nilable(String)) }
           def auxiliary_on_us
           end
@@ -1534,6 +1707,8 @@ module Increase
           def auxiliary_on_us=(_)
           end
 
+          # The identifier of the API File object containing an image of the back of the
+          #   declined check.
           sig { returns(T.nilable(String)) }
           def back_image_file_id
           end
@@ -1542,6 +1717,7 @@ module Increase
           def back_image_file_id=(_)
           end
 
+          # The identifier of the Check Transfer object associated with this decline.
           sig { returns(T.nilable(String)) }
           def check_transfer_id
           end
@@ -1550,6 +1726,8 @@ module Increase
           def check_transfer_id=(_)
           end
 
+          # The identifier of the API File object containing an image of the front of the
+          #   declined check.
           sig { returns(T.nilable(String)) }
           def front_image_file_id
           end
@@ -1558,6 +1736,7 @@ module Increase
           def front_image_file_id=(_)
           end
 
+          # The identifier of the Inbound Check Deposit object associated with this decline.
           sig { returns(T.nilable(String)) }
           def inbound_check_deposit_id
           end
@@ -1566,6 +1745,7 @@ module Increase
           def inbound_check_deposit_id=(_)
           end
 
+          # Why the check was declined.
           sig { returns(Symbol) }
           def reason
           end
@@ -1574,6 +1754,8 @@ module Increase
           def reason=(_)
           end
 
+          # A Check Decline object. This field will be present in the JSON response if and
+          #   only if `category` is equal to `check_decline`.
           sig do
             params(
               amount: Integer,
@@ -1614,6 +1796,7 @@ module Increase
           def to_hash
           end
 
+          # Why the check was declined.
           class Reason < Increase::Enum
             abstract!
 
@@ -1677,6 +1860,8 @@ module Increase
         end
 
         class CheckDepositRejection < Increase::BaseModel
+          # The rejected amount in the minor unit of check's currency. For dollars, for
+          #   example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -1685,6 +1870,7 @@ module Increase
           def amount=(_)
           end
 
+          # The identifier of the Check Deposit that was rejected.
           sig { returns(String) }
           def check_deposit_id
           end
@@ -1693,6 +1879,8 @@ module Increase
           def check_deposit_id=(_)
           end
 
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
+          #   currency.
           sig { returns(Symbol) }
           def currency
           end
@@ -1701,6 +1889,7 @@ module Increase
           def currency=(_)
           end
 
+          # The identifier of the associated declined transaction.
           sig { returns(String) }
           def declined_transaction_id
           end
@@ -1709,6 +1898,7 @@ module Increase
           def declined_transaction_id=(_)
           end
 
+          # Why the check deposit was rejected.
           sig { returns(Symbol) }
           def reason
           end
@@ -1717,6 +1907,8 @@ module Increase
           def reason=(_)
           end
 
+          # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+          #   the check deposit was rejected.
           sig { returns(Time) }
           def rejected_at
           end
@@ -1725,6 +1917,8 @@ module Increase
           def rejected_at=(_)
           end
 
+          # A Check Deposit Rejection object. This field will be present in the JSON
+          #   response if and only if `category` is equal to `check_deposit_rejection`.
           sig do
             params(
               amount: Integer,
@@ -1755,6 +1949,8 @@ module Increase
           def to_hash
           end
 
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
+          #   currency.
           class Currency < Increase::Enum
             abstract!
 
@@ -1783,6 +1979,7 @@ module Increase
             end
           end
 
+          # Why the check deposit was rejected.
           class Reason < Increase::Enum
             abstract!
 
@@ -1828,6 +2025,8 @@ module Increase
         end
 
         class InboundRealTimePaymentsTransferDecline < Increase::BaseModel
+          # The declined amount in the minor unit of the destination account currency. For
+          #   dollars, for example, this is cents.
           sig { returns(Integer) }
           def amount
           end
@@ -1836,6 +2035,7 @@ module Increase
           def amount=(_)
           end
 
+          # The name the sender of the transfer specified as the recipient of the transfer.
           sig { returns(String) }
           def creditor_name
           end
@@ -1844,6 +2044,9 @@ module Increase
           def creditor_name=(_)
           end
 
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
+          #   transfer's currency. This will always be "USD" for a Real-Time Payments
+          #   transfer.
           sig { returns(Symbol) }
           def currency
           end
@@ -1852,6 +2055,7 @@ module Increase
           def currency=(_)
           end
 
+          # The account number of the account that sent the transfer.
           sig { returns(String) }
           def debtor_account_number
           end
@@ -1860,6 +2064,7 @@ module Increase
           def debtor_account_number=(_)
           end
 
+          # The name provided by the sender of the transfer.
           sig { returns(String) }
           def debtor_name
           end
@@ -1868,6 +2073,7 @@ module Increase
           def debtor_name=(_)
           end
 
+          # The routing number of the account that sent the transfer.
           sig { returns(String) }
           def debtor_routing_number
           end
@@ -1876,6 +2082,7 @@ module Increase
           def debtor_routing_number=(_)
           end
 
+          # Why the transfer was declined.
           sig { returns(Symbol) }
           def reason
           end
@@ -1884,6 +2091,7 @@ module Increase
           def reason=(_)
           end
 
+          # Additional information included with the transfer.
           sig { returns(T.nilable(String)) }
           def remittance_information
           end
@@ -1892,6 +2100,7 @@ module Increase
           def remittance_information=(_)
           end
 
+          # The Real-Time Payments network identification of the declined transfer.
           sig { returns(String) }
           def transaction_identification
           end
@@ -1900,6 +2109,7 @@ module Increase
           def transaction_identification=(_)
           end
 
+          # The identifier of the Real-Time Payments Transfer that led to this Transaction.
           sig { returns(String) }
           def transfer_id
           end
@@ -1908,6 +2118,9 @@ module Increase
           def transfer_id=(_)
           end
 
+          # An Inbound Real-Time Payments Transfer Decline object. This field will be
+          #   present in the JSON response if and only if `category` is equal to
+          #   `inbound_real_time_payments_transfer_decline`.
           sig do
             params(
               amount: Integer,
@@ -1957,6 +2170,9 @@ module Increase
           def to_hash
           end
 
+          # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
+          #   transfer's currency. This will always be "USD" for a Real-Time Payments
+          #   transfer.
           class Currency < Increase::Enum
             abstract!
 
@@ -1985,6 +2201,7 @@ module Increase
             end
           end
 
+          # Why the transfer was declined.
           class Reason < Increase::Enum
             abstract!
 
@@ -2015,6 +2232,7 @@ module Increase
         end
 
         class WireDecline < Increase::BaseModel
+          # The identifier of the Inbound Wire Transfer that was declined.
           sig { returns(String) }
           def inbound_wire_transfer_id
           end
@@ -2023,6 +2241,7 @@ module Increase
           def inbound_wire_transfer_id=(_)
           end
 
+          # Why the wire transfer was declined.
           sig { returns(Symbol) }
           def reason
           end
@@ -2031,6 +2250,8 @@ module Increase
           def reason=(_)
           end
 
+          # A Wire Decline object. This field will be present in the JSON response if and
+          #   only if `category` is equal to `wire_decline`.
           sig { params(inbound_wire_transfer_id: String, reason: Symbol).returns(T.attached_class) }
           def self.new(inbound_wire_transfer_id:, reason:)
           end
@@ -2039,6 +2260,7 @@ module Increase
           def to_hash
           end
 
+          # Why the wire transfer was declined.
           class Reason < Increase::Enum
             abstract!
 
@@ -2069,6 +2291,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `declined_transaction`.
       class Type < Increase::Enum
         abstract!
 

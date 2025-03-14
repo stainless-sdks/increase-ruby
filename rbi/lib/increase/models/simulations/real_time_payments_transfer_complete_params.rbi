@@ -7,6 +7,7 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
+        # If set, the simulation will reject the transfer.
         sig { returns(T.nilable(Increase::Models::Simulations::RealTimePaymentsTransferCompleteParams::Rejection)) }
         def rejection
         end
@@ -41,6 +42,7 @@ module Increase
         end
 
         class Rejection < Increase::BaseModel
+          # The reason code that the simulated rejection will have.
           sig { returns(Symbol) }
           def reject_reason_code
           end
@@ -49,6 +51,7 @@ module Increase
           def reject_reason_code=(_)
           end
 
+          # If set, the simulation will reject the transfer.
           sig { params(reject_reason_code: Symbol).returns(T.attached_class) }
           def self.new(reject_reason_code:)
           end
@@ -57,6 +60,7 @@ module Increase
           def to_hash
           end
 
+          # The reason code that the simulated rejection will have.
           class RejectReasonCode < Increase::Enum
             abstract!
 

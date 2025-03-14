@@ -6,6 +6,8 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The identifying details of anyone controlling or owning 25% or more of the
+      #   corporation.
       sig { returns(String) }
       def beneficial_owner_id
       end

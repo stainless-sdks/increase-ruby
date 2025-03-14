@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # Filter Account Statements to those belonging to the specified Account.
       sig { returns(T.nilable(String)) }
       def account_id
       end
@@ -14,6 +15,7 @@ module Increase
       def account_id=(_)
       end
 
+      # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
       def cursor
       end
@@ -22,6 +24,8 @@ module Increase
       def cursor=(_)
       end
 
+      # Limit the size of the list that is returned. The default (and maximum) is 100
+      #   objects.
       sig { returns(T.nilable(Integer)) }
       def limit
       end
@@ -70,6 +74,8 @@ module Increase
       end
 
       class StatementPeriodStart < Increase::BaseModel
+        # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+        #   timestamp.
         sig { returns(T.nilable(Time)) }
         def after
         end
@@ -78,6 +84,8 @@ module Increase
         def after=(_)
         end
 
+        # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+        #   timestamp.
         sig { returns(T.nilable(Time)) }
         def before
         end
@@ -86,6 +94,8 @@ module Increase
         def before=(_)
         end
 
+        # Return results on or after this
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         def on_or_after
         end
@@ -94,6 +104,8 @@ module Increase
         def on_or_after=(_)
         end
 
+        # Return results on or before this
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         def on_or_before
         end

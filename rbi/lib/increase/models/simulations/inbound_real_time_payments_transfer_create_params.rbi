@@ -7,6 +7,8 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
+        # The identifier of the Account Number the inbound Real-Time Payments Transfer is
+        #   for.
         sig { returns(String) }
         def account_number_id
         end
@@ -15,6 +17,7 @@ module Increase
         def account_number_id=(_)
         end
 
+        # The transfer amount in USD cents. Must be positive.
         sig { returns(Integer) }
         def amount
         end
@@ -23,6 +26,7 @@ module Increase
         def amount=(_)
         end
 
+        # The account number of the account that sent the transfer.
         sig { returns(T.nilable(String)) }
         def debtor_account_number
         end
@@ -31,6 +35,7 @@ module Increase
         def debtor_account_number=(_)
         end
 
+        # The name provided by the sender of the transfer.
         sig { returns(T.nilable(String)) }
         def debtor_name
         end
@@ -39,6 +44,7 @@ module Increase
         def debtor_name=(_)
         end
 
+        # The routing number of the account that sent the transfer.
         sig { returns(T.nilable(String)) }
         def debtor_routing_number
         end
@@ -47,6 +53,7 @@ module Increase
         def debtor_routing_number=(_)
         end
 
+        # Additional information included with the transfer.
         sig { returns(T.nilable(String)) }
         def remittance_information
         end
@@ -55,6 +62,7 @@ module Increase
         def remittance_information=(_)
         end
 
+        # The identifier of a pending Request for Payment that this transfer will fulfill.
         sig { returns(T.nilable(String)) }
         def request_for_payment_id
         end

@@ -181,10 +181,9 @@ module Increase
     # @return [Increase::Resources::Simulations]
     attr_reader :simulations
 
-    # @private
+    # @api private
     #
     # @return [Hash{String=>String}]
-    #
     private def auth_headers
       return {} if @api_key.nil?
 
@@ -213,7 +212,6 @@ module Increase
     # @param max_retry_delay [Float]
     #
     # @param idempotency_header [String]
-    #
     def initialize(
       environment: nil,
       base_url: nil,

@@ -7,6 +7,7 @@ module Increase
         extend Increase::RequestParameters::Converter
         include Increase::RequestParameters
 
+        # The identifier of the Card to be authorized.
         sig { returns(String) }
         def card_id
         end

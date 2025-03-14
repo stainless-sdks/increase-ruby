@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # Filter Declined Transactions to ones belonging to the specified Account.
       sig { returns(T.nilable(String)) }
       def account_id
       end
@@ -36,6 +37,7 @@ module Increase
       def created_at=(_)
       end
 
+      # Return the page of entries after this one.
       sig { returns(T.nilable(String)) }
       def cursor
       end
@@ -44,6 +46,8 @@ module Increase
       def cursor=(_)
       end
 
+      # Limit the size of the list that is returned. The default (and maximum) is 100
+      #   objects.
       sig { returns(T.nilable(Integer)) }
       def limit
       end
@@ -52,6 +56,7 @@ module Increase
       def limit=(_)
       end
 
+      # Filter Declined Transactions to those belonging to the specified route.
       sig { returns(T.nilable(String)) }
       def route_id
       end
@@ -101,6 +106,8 @@ module Increase
       end
 
       class Category < Increase::BaseModel
+        # Return results whose value is in the provided list. For GET requests, this
+        #   should be encoded as a comma-delimited string, such as `?in=one,two,three`.
         sig { returns(T.nilable(T::Array[Symbol])) }
         def in_
         end
@@ -150,6 +157,8 @@ module Increase
       end
 
       class CreatedAt < Increase::BaseModel
+        # Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+        #   timestamp.
         sig { returns(T.nilable(Time)) }
         def after
         end
@@ -158,6 +167,8 @@ module Increase
         def after=(_)
         end
 
+        # Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+        #   timestamp.
         sig { returns(T.nilable(Time)) }
         def before
         end
@@ -166,6 +177,8 @@ module Increase
         def before=(_)
         end
 
+        # Return results on or after this
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         def on_or_after
         end
@@ -174,6 +187,8 @@ module Increase
         def on_or_after=(_)
         end
 
+        # Return results on or before this
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
         sig { returns(T.nilable(Time)) }
         def on_or_before
         end

@@ -6,6 +6,8 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # When your user confirmed the Entity's details. If not provided, the current time
+      #   will be used.
       sig { returns(T.nilable(Time)) }
       def confirmed_at
       end

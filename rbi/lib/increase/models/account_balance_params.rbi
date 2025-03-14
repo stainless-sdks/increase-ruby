@@ -6,6 +6,7 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The moment to query the balance at. If not set, returns the current balances.
       sig { returns(T.nilable(Time)) }
       def at_time
       end
