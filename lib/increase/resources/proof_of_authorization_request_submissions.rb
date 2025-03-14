@@ -32,7 +32,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
-      #
       def create(params)
         parsed, options = Increase::Models::ProofOfAuthorizationRequestSubmissionCreateParams.dump_request(params)
         @client.request(
@@ -53,7 +52,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::ProofOfAuthorizationRequestSubmission]
-      #
       def retrieve(proof_of_authorization_request_submission_id, params = {})
         @client.request(
           method: :get,
@@ -85,7 +83,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::ProofOfAuthorizationRequestSubmission>]
-      #
       def list(params = {})
         parsed, options = Increase::Models::ProofOfAuthorizationRequestSubmissionListParams.dump_request(params)
         @client.request(
@@ -99,7 +96,6 @@ module Increase
       end
 
       # @param client [Increase::Client]
-      #
       def initialize(client:)
         @client = client
       end

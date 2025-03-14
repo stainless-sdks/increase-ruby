@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class DigitalCardProfiles
+      # Create a Digital Card Profile
       sig do
         params(
           app_icon_file_id: String,
@@ -32,6 +33,7 @@ module Increase
       )
       end
 
+      # Retrieve a Digital Card Profile
       sig do
         params(
           digital_card_profile_id: String,
@@ -42,6 +44,7 @@ module Increase
       def retrieve(digital_card_profile_id, request_options: {})
       end
 
+      # List Card Profiles
       sig do
         params(
           cursor: String,
@@ -55,6 +58,7 @@ module Increase
       def list(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       end
 
+      # Archive a Digital Card Profile
       sig do
         params(
           digital_card_profile_id: String,
@@ -65,6 +69,7 @@ module Increase
       def archive(digital_card_profile_id, request_options: {})
       end
 
+      # Clones a Digital Card Profile
       sig do
         params(
           digital_card_profile_id: String,

@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Cards
+      # Create a Card
       sig do
         params(
           account_id: String,
@@ -24,6 +25,7 @@ module Increase
       )
       end
 
+      # Retrieve a Card
       sig do
         params(
           card_id: String,
@@ -34,6 +36,7 @@ module Increase
       def retrieve(card_id, request_options: {})
       end
 
+      # Update a Card
       sig do
         params(
           card_id: String,
@@ -57,6 +60,7 @@ module Increase
       )
       end
 
+      # List Cards
       sig do
         params(
           account_id: String,
@@ -80,6 +84,7 @@ module Increase
       )
       end
 
+      # Retrieve sensitive details for a Card
       sig do
         params(
           card_id: String,

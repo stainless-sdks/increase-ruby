@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class OAuthTokens
+      # Create an OAuth Token
       sig do
         params(
           grant_type: Symbol,

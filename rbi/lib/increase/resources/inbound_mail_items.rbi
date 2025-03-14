@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class InboundMailItems
+      # Retrieve an Inbound Mail Item
       sig do
         params(
           inbound_mail_item_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(inbound_mail_item_id, request_options: {})
       end
 
+      # List Inbound Mail Items
       sig do
         params(
           created_at: Increase::Models::InboundMailItemListParams::CreatedAt,

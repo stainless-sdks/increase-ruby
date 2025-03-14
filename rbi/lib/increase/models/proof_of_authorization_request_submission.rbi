@@ -3,6 +3,7 @@
 module Increase
   module Models
     class ProofOfAuthorizationRequestSubmission < Increase::BaseModel
+      # The Proof of Authorization Request Submission identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # Terms of authorization.
       sig { returns(String) }
       def authorization_terms
       end
@@ -19,6 +21,7 @@ module Increase
       def authorization_terms=(_)
       end
 
+      # Time of authorization.
       sig { returns(Time) }
       def authorized_at
       end
@@ -27,6 +30,7 @@ module Increase
       def authorized_at=(_)
       end
 
+      # Company of the authorizer.
       sig { returns(T.nilable(String)) }
       def authorizer_company
       end
@@ -35,6 +39,7 @@ module Increase
       def authorizer_company=(_)
       end
 
+      # Email of the authorizer.
       sig { returns(T.nilable(String)) }
       def authorizer_email
       end
@@ -43,6 +48,7 @@ module Increase
       def authorizer_email=(_)
       end
 
+      # IP address of the authorizer.
       sig { returns(T.nilable(String)) }
       def authorizer_ip_address
       end
@@ -51,6 +57,7 @@ module Increase
       def authorizer_ip_address=(_)
       end
 
+      # Name of the authorizer.
       sig { returns(T.nilable(String)) }
       def authorizer_name
       end
@@ -59,6 +66,7 @@ module Increase
       def authorizer_name=(_)
       end
 
+      # The time the Proof of Authorization Request Submission was created.
       sig { returns(Time) }
       def created_at
       end
@@ -67,6 +75,7 @@ module Increase
       def created_at=(_)
       end
 
+      # Whether the customer has been offboarded.
       sig { returns(T.nilable(T::Boolean)) }
       def customer_has_been_offboarded
       end
@@ -75,6 +84,9 @@ module Increase
       def customer_has_been_offboarded=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -83,6 +95,7 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # ID of the proof of authorization request.
       sig { returns(String) }
       def proof_of_authorization_request_id
       end
@@ -91,6 +104,7 @@ module Increase
       def proof_of_authorization_request_id=(_)
       end
 
+      # Status of the proof of authorization request submission.
       sig { returns(Symbol) }
       def status
       end
@@ -99,6 +113,8 @@ module Increase
       def status=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `proof_of_authorization_request_submission`.
       sig { returns(Symbol) }
       def type
       end
@@ -107,6 +123,7 @@ module Increase
       def type=(_)
       end
 
+      # The time the Proof of Authorization Request Submission was last updated.
       sig { returns(Time) }
       def updated_at
       end
@@ -115,6 +132,7 @@ module Increase
       def updated_at=(_)
       end
 
+      # Whether account ownership was validated via credential (for instance, Plaid).
       sig { returns(T.nilable(T::Boolean)) }
       def validated_account_ownership_via_credential
       end
@@ -123,6 +141,7 @@ module Increase
       def validated_account_ownership_via_credential=(_)
       end
 
+      # Whether account ownership was validated with an account statement.
       sig { returns(T.nilable(T::Boolean)) }
       def validated_account_ownership_with_account_statement
       end
@@ -131,6 +150,7 @@ module Increase
       def validated_account_ownership_with_account_statement=(_)
       end
 
+      # Whether account ownership was validated with microdeposit.
       sig { returns(T.nilable(T::Boolean)) }
       def validated_account_ownership_with_microdeposit
       end
@@ -139,6 +159,11 @@ module Increase
       def validated_account_ownership_with_microdeposit=(_)
       end
 
+      # Information submitted in response to a proof of authorization request. Per
+      #   Nacha's guidance on proof of authorization, the originator must ensure that the
+      #   authorization complies with applicable legal requirements, is readily
+      #   identifiable as an authorization, and has clear and readily understandable
+      #   terms.
       sig do
         params(
           id: String,
@@ -209,6 +234,7 @@ module Increase
       def to_hash
       end
 
+      # Status of the proof of authorization request submission.
       class Status < Increase::Enum
         abstract!
 
@@ -234,6 +260,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `proof_of_authorization_request_submission`.
       class Type < Increase::Enum
         abstract!
 

@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class OAuthConnections
+      # Retrieve an OAuth Connection
       sig do
         params(
           oauth_connection_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(oauth_connection_id, request_options: {})
       end
 
+      # List OAuth Connections
       sig do
         params(
           cursor: String,

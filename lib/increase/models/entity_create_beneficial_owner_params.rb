@@ -387,7 +387,6 @@ module Increase
         end
 
         # @abstract
-        #
         class Prong < Increase::Enum
           # A person with 25% or greater direct or indirect ownership of the entity.
           OWNERSHIP = :ownership

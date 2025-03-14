@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class PhysicalCardProfiles
+      # Create a Physical Card Profile
       sig do
         params(
           carrier_image_file_id: String,
@@ -22,6 +23,7 @@ module Increase
       )
       end
 
+      # Retrieve a Card Profile
       sig do
         params(
           physical_card_profile_id: String,
@@ -32,6 +34,7 @@ module Increase
       def retrieve(physical_card_profile_id, request_options: {})
       end
 
+      # List Physical Card Profiles
       sig do
         params(
           cursor: String,
@@ -45,6 +48,7 @@ module Increase
       def list(cursor: nil, idempotency_key: nil, limit: nil, status: nil, request_options: {})
       end
 
+      # Archive a Physical Card Profile
       sig do
         params(
           physical_card_profile_id: String,
@@ -55,6 +59,7 @@ module Increase
       def archive(physical_card_profile_id, request_options: {})
       end
 
+      # Clone a Physical Card Profile
       sig do
         params(
           physical_card_profile_id: String,

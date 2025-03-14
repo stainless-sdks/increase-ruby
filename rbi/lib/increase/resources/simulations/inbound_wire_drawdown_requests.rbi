@@ -4,6 +4,8 @@ module Increase
   module Resources
     class Simulations
       class InboundWireDrawdownRequests
+        # Simulates receiving an
+        #   [Inbound Wire Drawdown Request](#inbound-wire-drawdown-requests).
         sig do
           params(
             amount: Integer,

@@ -20,7 +20,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Account]
-      #
       def create(params)
         parsed, options = Increase::Models::AccountCreateParams.dump_request(params)
         @client.request(
@@ -41,7 +40,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Account]
-      #
       def retrieve(account_id, params = {})
         @client.request(
           method: :get,
@@ -62,7 +60,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Account]
-      #
       def update(account_id, params = {})
         parsed, options = Increase::Models::AccountUpdateParams.dump_request(params)
         @client.request(
@@ -101,7 +98,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::Account>]
-      #
       def list(params = {})
         parsed, options = Increase::Models::AccountListParams.dump_request(params)
         @client.request(
@@ -126,7 +122,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::BalanceLookup]
-      #
       def balance(account_id, params = {})
         parsed, options = Increase::Models::AccountBalanceParams.dump_request(params)
         @client.request(
@@ -147,7 +142,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::Account]
-      #
       def close(account_id, params = {})
         @client.request(
           method: :post,
@@ -158,7 +152,6 @@ module Increase
       end
 
       # @param client [Increase::Client]
-      #
       def initialize(client:)
         @client = client
       end

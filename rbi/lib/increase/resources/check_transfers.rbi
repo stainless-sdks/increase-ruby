@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class CheckTransfers
+      # Create a Check Transfer
       sig do
         params(
           account_id: String,
@@ -28,6 +29,7 @@ module Increase
       )
       end
 
+      # Retrieve a Check Transfer
       sig do
         params(
           check_transfer_id: String,
@@ -38,6 +40,7 @@ module Increase
       def retrieve(check_transfer_id, request_options: {})
       end
 
+      # List Check Transfers
       sig do
         params(
           account_id: String,
@@ -61,6 +64,7 @@ module Increase
       )
       end
 
+      # Approve a Check Transfer
       sig do
         params(
           check_transfer_id: String,
@@ -71,6 +75,7 @@ module Increase
       def approve(check_transfer_id, request_options: {})
       end
 
+      # Cancel a pending Check Transfer
       sig do
         params(
           check_transfer_id: String,
@@ -81,6 +86,7 @@ module Increase
       def cancel(check_transfer_id, request_options: {})
       end
 
+      # Request a stop payment on a Check Transfer
       sig do
         params(
           check_transfer_id: String,

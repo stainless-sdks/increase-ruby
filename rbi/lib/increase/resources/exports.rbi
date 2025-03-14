@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class Exports
+      # Create an Export
       sig do
         params(
           category: Symbol,
@@ -28,6 +29,7 @@ module Increase
       )
       end
 
+      # Retrieve an Export
       sig do
         params(
           export_id: String,
@@ -38,6 +40,7 @@ module Increase
       def retrieve(export_id, request_options: {})
       end
 
+      # List Exports
       sig do
         params(
           category: Increase::Models::ExportListParams::Category,

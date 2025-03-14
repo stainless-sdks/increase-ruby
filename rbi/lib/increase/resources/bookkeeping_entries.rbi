@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class BookkeepingEntries
+      # Retrieve a Bookkeeping Entry
       sig do
         params(
           bookkeeping_entry_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(bookkeeping_entry_id, request_options: {})
       end
 
+      # List Bookkeeping Entries
       sig do
         params(
           account_id: String,

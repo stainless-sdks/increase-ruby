@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class ProofOfAuthorizationRequests
+      # Retrieve a Proof of Authorization Request
       sig do
         params(
           proof_of_authorization_request_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(proof_of_authorization_request_id, request_options: {})
       end
 
+      # List Proof of Authorization Requests
       sig do
         params(
           created_at: Increase::Models::ProofOfAuthorizationRequestListParams::CreatedAt,

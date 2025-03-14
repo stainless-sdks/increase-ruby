@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class PendingTransactions
+      # Retrieve a Pending Transaction
       sig do
         params(
           pending_transaction_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(pending_transaction_id, request_options: {})
       end
 
+      # List Pending Transactions
       sig do
         params(
           account_id: String,

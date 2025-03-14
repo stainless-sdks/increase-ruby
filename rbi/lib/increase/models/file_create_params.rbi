@@ -6,6 +6,9 @@ module Increase
       extend Increase::RequestParameters::Converter
       include Increase::RequestParameters
 
+      # The file contents. This should follow the specifications of
+      #   [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
+      #   transfers for the multipart/form-data protocol.
       sig { returns(T.any(IO, StringIO)) }
       def file
       end
@@ -14,6 +17,7 @@ module Increase
       def file=(_)
       end
 
+      # What the File will be used for in Increase's systems.
       sig { returns(Symbol) }
       def purpose
       end
@@ -22,6 +26,7 @@ module Increase
       def purpose=(_)
       end
 
+      # The description you choose to give the File.
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -56,6 +61,7 @@ module Increase
       def to_hash
       end
 
+      # What the File will be used for in Increase's systems.
       class Purpose < Increase::Enum
         abstract!
 

@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class ExternalAccounts
+      # Create an External Account
       sig do
         params(
           account_number: String,
@@ -24,6 +25,7 @@ module Increase
       )
       end
 
+      # Retrieve an External Account
       sig do
         params(
           external_account_id: String,
@@ -34,6 +36,7 @@ module Increase
       def retrieve(external_account_id, request_options: {})
       end
 
+      # Update an External Account
       sig do
         params(
           external_account_id: String,
@@ -55,6 +58,7 @@ module Increase
       )
       end
 
+      # List External Accounts
       sig do
         params(
           cursor: String,

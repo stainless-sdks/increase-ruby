@@ -3,6 +3,7 @@
 module Increase
   module Resources
     class CardPurchaseSupplements
+      # Retrieve a Card Purchase Supplement
       sig do
         params(
           card_purchase_supplement_id: String,
@@ -13,6 +14,7 @@ module Increase
       def retrieve(card_purchase_supplement_id, request_options: {})
       end
 
+      # List Card Purchase Supplements
       sig do
         params(
           card_payment_id: String,

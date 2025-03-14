@@ -4,6 +4,10 @@ module Increase
   module Resources
     class Simulations
       class CardReversals
+        # Simulates the reversal of an authorization by a card acquirer. An authorization
+        #   can be partially reversed multiple times, up until the total authorized amount.
+        #   Marks the pending transaction as complete if the authorization is fully
+        #   reversed.
         sig do
           params(
             card_payment_id: String,
