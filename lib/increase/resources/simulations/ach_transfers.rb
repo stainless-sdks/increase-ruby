@@ -18,7 +18,6 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
-        #
         def acknowledge(ach_transfer_id, params = {})
           @client.request(
             method: :post,
@@ -43,7 +42,6 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
-        #
         def create_notification_of_change(ach_transfer_id, params)
           parsed, options = Increase::Models::Simulations::ACHTransferCreateNotificationOfChangeParams.dump_request(params)
           @client.request(
@@ -69,7 +67,6 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
-        #
         def return_(ach_transfer_id, params = {})
           parsed, options = Increase::Models::Simulations::ACHTransferReturnParams.dump_request(params)
           @client.request(
@@ -93,7 +90,6 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
-        #
         def settle(ach_transfer_id, params = {})
           @client.request(
             method: :post,
@@ -117,7 +113,6 @@ module Increase
         #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
         #
         # @return [Increase::Models::ACHTransfer]
-        #
         def submit(ach_transfer_id, params = {})
           @client.request(
             method: :post,
@@ -128,7 +123,6 @@ module Increase
         end
 
         # @param client [Increase::Client]
-        #
         def initialize(client:)
           @client = client
         end

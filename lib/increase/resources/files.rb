@@ -20,7 +20,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::File]
-      #
       def create(params)
         parsed, options = Increase::Models::FileCreateParams.dump_request(params)
         @client.request(
@@ -42,7 +41,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Models::File]
-      #
       def retrieve(file_id, params = {})
         @client.request(
           method: :get,
@@ -73,7 +71,6 @@ module Increase
       #   @option params [Increase::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [Increase::Page<Increase::Models::File>]
-      #
       def list(params = {})
         parsed, options = Increase::Models::FileListParams.dump_request(params)
         @client.request(
@@ -87,7 +84,6 @@ module Increase
       end
 
       # @param client [Increase::Client]
-      #
       def initialize(client:)
         @client = client
       end

@@ -3,6 +3,7 @@
 module Increase
   module Models
     class CheckDeposit < Increase::BaseModel
+      # The deposit's identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module Increase
       def id=(_)
       end
 
+      # The Account the check was deposited into.
       sig { returns(String) }
       def account_id
       end
@@ -19,6 +21,7 @@ module Increase
       def account_id=(_)
       end
 
+      # The deposited amount in USD cents.
       sig { returns(Integer) }
       def amount
       end
@@ -27,6 +30,7 @@ module Increase
       def amount=(_)
       end
 
+      # The ID for the File containing the image of the back of the check.
       sig { returns(T.nilable(String)) }
       def back_image_file_id
       end
@@ -35,6 +39,8 @@ module Increase
       def back_image_file_id=(_)
       end
 
+      # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+      #   the transfer was created.
       sig { returns(Time) }
       def created_at
       end
@@ -43,6 +49,8 @@ module Increase
       def created_at=(_)
       end
 
+      # If your deposit is successfully parsed and accepted by Increase, this will
+      #   contain details of the parsed check.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositAcceptance)) }
       def deposit_acceptance
       end
@@ -54,6 +62,8 @@ module Increase
       def deposit_acceptance=(_)
       end
 
+      # If your deposit is rejected by Increase, this will contain details as to why it
+      #   was rejected.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositRejection)) }
       def deposit_rejection
       end
@@ -65,6 +75,8 @@ module Increase
       def deposit_rejection=(_)
       end
 
+      # If your deposit is returned, this will contain details as to why it was
+      #   returned.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositReturn)) }
       def deposit_return
       end
@@ -76,6 +88,8 @@ module Increase
       def deposit_return=(_)
       end
 
+      # After the check is parsed, it is submitted to the Check21 network for
+      #   processing. This will contain details of the submission.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::DepositSubmission)) }
       def deposit_submission
       end
@@ -87,6 +101,7 @@ module Increase
       def deposit_submission=(_)
       end
 
+      # The description of the Check Deposit, for display purposes only.
       sig { returns(T.nilable(String)) }
       def description
       end
@@ -95,6 +110,7 @@ module Increase
       def description=(_)
       end
 
+      # The ID for the File containing the image of the front of the check.
       sig { returns(String) }
       def front_image_file_id
       end
@@ -103,6 +119,9 @@ module Increase
       def front_image_file_id=(_)
       end
 
+      # The idempotency key you chose for this object. This value is unique across
+      #   Increase and is used to ensure that a request is only processed once. Learn more
+      #   about [idempotency](https://increase.com/documentation/idempotency-keys).
       sig { returns(T.nilable(String)) }
       def idempotency_key
       end
@@ -111,6 +130,8 @@ module Increase
       def idempotency_key=(_)
       end
 
+      # Increase will sometimes hold the funds for Check Deposits. If funds are held,
+      #   this sub-object will contain details of the hold.
       sig { returns(T.nilable(Increase::Models::CheckDeposit::InboundFundsHold)) }
       def inbound_funds_hold
       end
@@ -122,6 +143,8 @@ module Increase
       def inbound_funds_hold=(_)
       end
 
+      # If the Check Deposit was the result of an Inbound Mail Item, this will contain
+      #   the identifier of the Inbound Mail Item.
       sig { returns(T.nilable(String)) }
       def inbound_mail_item_id
       end
@@ -130,6 +153,8 @@ module Increase
       def inbound_mail_item_id=(_)
       end
 
+      # If the Check Deposit was the result of an Inbound Mail Item, this will contain
+      #   the identifier of the Lockbox that received it.
       sig { returns(T.nilable(String)) }
       def lockbox_id
       end
@@ -138,6 +163,7 @@ module Increase
       def lockbox_id=(_)
       end
 
+      # The status of the Check Deposit.
       sig { returns(Symbol) }
       def status
       end
@@ -146,6 +172,7 @@ module Increase
       def status=(_)
       end
 
+      # The ID for the Transaction created by the deposit.
       sig { returns(T.nilable(String)) }
       def transaction_id
       end
@@ -154,6 +181,8 @@ module Increase
       def transaction_id=(_)
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `check_deposit`.
       sig { returns(Symbol) }
       def type
       end
@@ -162,6 +191,7 @@ module Increase
       def type=(_)
       end
 
+      # Check Deposits allow you to deposit images of paper checks into your account.
       sig do
         params(
           id: String,
@@ -236,6 +266,7 @@ module Increase
       end
 
       class DepositAcceptance < Increase::BaseModel
+        # The account number printed on the check.
         sig { returns(String) }
         def account_number
         end
@@ -244,6 +275,8 @@ module Increase
         def account_number=(_)
         end
 
+        # The amount to be deposited in the minor unit of the transaction's currency. For
+        #   dollars, for example, this is cents.
         sig { returns(Integer) }
         def amount
         end
@@ -252,6 +285,8 @@ module Increase
         def amount=(_)
         end
 
+        # An additional line of metadata printed on the check. This typically includes the
+        #   check number for business checks.
         sig { returns(T.nilable(String)) }
         def auxiliary_on_us
         end
@@ -260,6 +295,7 @@ module Increase
         def auxiliary_on_us=(_)
         end
 
+        # The ID of the Check Deposit that was accepted.
         sig { returns(String) }
         def check_deposit_id
         end
@@ -268,6 +304,8 @@ module Increase
         def check_deposit_id=(_)
         end
 
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+        #   transaction's currency.
         sig { returns(Symbol) }
         def currency
         end
@@ -276,6 +314,7 @@ module Increase
         def currency=(_)
         end
 
+        # The routing number printed on the check.
         sig { returns(String) }
         def routing_number
         end
@@ -284,6 +323,8 @@ module Increase
         def routing_number=(_)
         end
 
+        # The check serial number, if present, for consumer checks. For business checks,
+        #   the serial number is usually in the `auxiliary_on_us` field.
         sig { returns(T.nilable(String)) }
         def serial_number
         end
@@ -292,6 +333,8 @@ module Increase
         def serial_number=(_)
         end
 
+        # If your deposit is successfully parsed and accepted by Increase, this will
+        #   contain details of the parsed check.
         sig do
           params(
             account_number: String,
@@ -324,6 +367,8 @@ module Increase
         def to_hash
         end
 
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+        #   transaction's currency.
         class Currency < Increase::Enum
           abstract!
 
@@ -354,6 +399,8 @@ module Increase
       end
 
       class DepositRejection < Increase::BaseModel
+        # The rejected amount in the minor unit of check's currency. For dollars, for
+        #   example, this is cents.
         sig { returns(Integer) }
         def amount
         end
@@ -362,6 +409,7 @@ module Increase
         def amount=(_)
         end
 
+        # The identifier of the Check Deposit that was rejected.
         sig { returns(String) }
         def check_deposit_id
         end
@@ -370,6 +418,8 @@ module Increase
         def check_deposit_id=(_)
         end
 
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
+        #   currency.
         sig { returns(Symbol) }
         def currency
         end
@@ -378,6 +428,7 @@ module Increase
         def currency=(_)
         end
 
+        # The identifier of the associated declined transaction.
         sig { returns(String) }
         def declined_transaction_id
         end
@@ -386,6 +437,7 @@ module Increase
         def declined_transaction_id=(_)
         end
 
+        # Why the check deposit was rejected.
         sig { returns(Symbol) }
         def reason
         end
@@ -394,6 +446,8 @@ module Increase
         def reason=(_)
         end
 
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   the check deposit was rejected.
         sig { returns(Time) }
         def rejected_at
         end
@@ -402,6 +456,8 @@ module Increase
         def rejected_at=(_)
         end
 
+        # If your deposit is rejected by Increase, this will contain details as to why it
+        #   was rejected.
         sig do
           params(
             amount: Integer,
@@ -432,6 +488,8 @@ module Increase
         def to_hash
         end
 
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
+        #   currency.
         class Currency < Increase::Enum
           abstract!
 
@@ -460,6 +518,7 @@ module Increase
           end
         end
 
+        # Why the check deposit was rejected.
         class Reason < Increase::Enum
           abstract!
 
@@ -505,6 +564,7 @@ module Increase
       end
 
       class DepositReturn < Increase::BaseModel
+        # The returned amount in USD cents.
         sig { returns(Integer) }
         def amount
         end
@@ -513,6 +573,7 @@ module Increase
         def amount=(_)
         end
 
+        # The identifier of the Check Deposit that was returned.
         sig { returns(String) }
         def check_deposit_id
         end
@@ -521,6 +582,8 @@ module Increase
         def check_deposit_id=(_)
         end
 
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+        #   transaction's currency.
         sig { returns(Symbol) }
         def currency
         end
@@ -529,6 +592,8 @@ module Increase
         def currency=(_)
         end
 
+        # Why this check was returned by the bank holding the account it was drawn
+        #   against.
         sig { returns(Symbol) }
         def return_reason
         end
@@ -537,6 +602,8 @@ module Increase
         def return_reason=(_)
         end
 
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+        #   the check deposit was returned.
         sig { returns(Time) }
         def returned_at
         end
@@ -545,6 +612,8 @@ module Increase
         def returned_at=(_)
         end
 
+        # The identifier of the transaction that reversed the original check deposit
+        #   transaction.
         sig { returns(String) }
         def transaction_id
         end
@@ -553,6 +622,8 @@ module Increase
         def transaction_id=(_)
         end
 
+        # If your deposit is returned, this will contain details as to why it was
+        #   returned.
         sig do
           params(
             amount: Integer,
@@ -583,6 +654,8 @@ module Increase
         def to_hash
         end
 
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+        #   transaction's currency.
         class Currency < Increase::Enum
           abstract!
 
@@ -611,6 +684,8 @@ module Increase
           end
         end
 
+        # Why this check was returned by the bank holding the account it was drawn
+        #   against.
         class ReturnReason < Increase::Enum
           abstract!
 
@@ -701,6 +776,8 @@ module Increase
       end
 
       class DepositSubmission < Increase::BaseModel
+        # The ID for the File containing the check back image that was submitted to the
+        #   Check21 network.
         sig { returns(String) }
         def back_file_id
         end
@@ -709,6 +786,8 @@ module Increase
         def back_file_id=(_)
         end
 
+        # The ID for the File containing the check front image that was submitted to the
+        #   Check21 network.
         sig { returns(String) }
         def front_file_id
         end
@@ -717,6 +796,9 @@ module Increase
         def front_file_id=(_)
         end
 
+        # When the check deposit was submitted to the Check21 network for processing.
+        #   During business days, this happens within a few hours of the check being
+        #   accepted by Increase.
         sig { returns(Time) }
         def submitted_at
         end
@@ -725,6 +807,8 @@ module Increase
         def submitted_at=(_)
         end
 
+        # After the check is parsed, it is submitted to the Check21 network for
+        #   processing. This will contain details of the submission.
         sig do
           params(back_file_id: String, front_file_id: String, submitted_at: Time).returns(T.attached_class)
         end
@@ -737,6 +821,7 @@ module Increase
       end
 
       class InboundFundsHold < Increase::BaseModel
+        # The Inbound Funds Hold identifier.
         sig { returns(String) }
         def id
         end
@@ -745,6 +830,8 @@ module Increase
         def id=(_)
         end
 
+        # The held amount in the minor unit of the account's currency. For dollars, for
+        #   example, this is cents.
         sig { returns(Integer) }
         def amount
         end
@@ -753,6 +840,8 @@ module Increase
         def amount=(_)
         end
 
+        # When the hold will be released automatically. Certain conditions may cause it to
+        #   be released before this time.
         sig { returns(Time) }
         def automatically_releases_at
         end
@@ -761,6 +850,8 @@ module Increase
         def automatically_releases_at=(_)
         end
 
+        # The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+        #   was created.
         sig { returns(Time) }
         def created_at
         end
@@ -769,6 +860,8 @@ module Increase
         def created_at=(_)
         end
 
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+        #   currency.
         sig { returns(Symbol) }
         def currency
         end
@@ -777,6 +870,7 @@ module Increase
         def currency=(_)
         end
 
+        # The ID of the Transaction for which funds were held.
         sig { returns(T.nilable(String)) }
         def held_transaction_id
         end
@@ -785,6 +879,7 @@ module Increase
         def held_transaction_id=(_)
         end
 
+        # The ID of the Pending Transaction representing the held funds.
         sig { returns(T.nilable(String)) }
         def pending_transaction_id
         end
@@ -793,6 +888,7 @@ module Increase
         def pending_transaction_id=(_)
         end
 
+        # When the hold was released (if it has been released).
         sig { returns(T.nilable(Time)) }
         def released_at
         end
@@ -801,6 +897,7 @@ module Increase
         def released_at=(_)
         end
 
+        # The status of the hold.
         sig { returns(Symbol) }
         def status
         end
@@ -809,6 +906,8 @@ module Increase
         def status=(_)
         end
 
+        # A constant representing the object's type. For this resource it will always be
+        #   `inbound_funds_hold`.
         sig { returns(Symbol) }
         def type
         end
@@ -817,6 +916,8 @@ module Increase
         def type=(_)
         end
 
+        # Increase will sometimes hold the funds for Check Deposits. If funds are held,
+        #   this sub-object will contain details of the hold.
         sig do
           params(
             id: String,
@@ -866,6 +967,8 @@ module Increase
         def to_hash
         end
 
+        # The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+        #   currency.
         class Currency < Increase::Enum
           abstract!
 
@@ -894,6 +997,7 @@ module Increase
           end
         end
 
+        # The status of the hold.
         class Status < Increase::Enum
           abstract!
 
@@ -910,6 +1014,8 @@ module Increase
           end
         end
 
+        # A constant representing the object's type. For this resource it will always be
+        #   `inbound_funds_hold`.
         class Type < Increase::Enum
           abstract!
 
@@ -923,6 +1029,7 @@ module Increase
         end
       end
 
+      # The status of the Check Deposit.
       class Status < Increase::Enum
         abstract!
 
@@ -945,6 +1052,8 @@ module Increase
         end
       end
 
+      # A constant representing the object's type. For this resource it will always be
+      #   `check_deposit`.
       class Type < Increase::Enum
         abstract!
 
