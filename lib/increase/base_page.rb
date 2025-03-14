@@ -19,7 +19,13 @@ module Increase
   #
   # @example
   # ```ruby
-  # accounts = page.to_enum.take(2)
+  # accounts = page
+  #   .to_enum
+  #   .lazy
+  #   .select { _1.object_id.even? }
+  #   .map(&:itself)
+  #   .take(2)
+  #   .to_a
   #
   # accounts => Array
   # ```
