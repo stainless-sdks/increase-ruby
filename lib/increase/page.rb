@@ -30,7 +30,7 @@ module Increase
   class Page
     include Increase::BasePage
 
-    # @return [Array<Object>]
+    # @return [Array<Object>, nil]
     attr_accessor :data
 
     # @return [String, nil]
