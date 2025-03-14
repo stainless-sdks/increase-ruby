@@ -11,6 +11,14 @@ module Increase
       def id=(_)
       end
 
+      sig { returns(T.nilable(String)) }
+      def additional_evidence_file_id
+      end
+
+      sig { params(_: T.nilable(String)).returns(T.nilable(String)) }
+      def additional_evidence_file_id=(_)
+      end
+
       sig { returns(String) }
       def authorization_terms
       end
@@ -142,6 +150,7 @@ module Increase
       sig do
         params(
           id: String,
+          additional_evidence_file_id: T.nilable(String),
           authorization_terms: String,
           authorized_at: Time,
           authorizer_company: T.nilable(String),
@@ -163,6 +172,7 @@ module Increase
       end
       def self.new(
         id:,
+        additional_evidence_file_id:,
         authorization_terms:,
         authorized_at:,
         authorizer_company:,
@@ -187,6 +197,7 @@ module Increase
           .returns(
             {
               id: String,
+              additional_evidence_file_id: T.nilable(String),
               authorization_terms: String,
               authorized_at: Time,
               authorizer_company: T.nilable(String),

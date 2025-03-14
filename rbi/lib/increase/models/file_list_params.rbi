@@ -217,6 +217,9 @@ module Increase
           # A document granting another entity access to the funds into your account.
           DEPOSIT_ACCOUNT_CONTROL_AGREEMENT = :deposit_account_control_agreement
 
+          # A file containing additional evidence for a Proof of Authorization Request Submission.
+          PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
+
           class << self
             sig { override.returns(T::Array[Symbol]) }
             def values

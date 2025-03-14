@@ -79,6 +79,14 @@ module Increase
       end
 
       sig { returns(T.nilable(String)) }
+      def additional_evidence_file_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def additional_evidence_file_id=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
       def authorizer_company
       end
 
@@ -105,6 +113,7 @@ module Increase
           validated_account_ownership_via_credential: T::Boolean,
           validated_account_ownership_with_account_statement: T::Boolean,
           validated_account_ownership_with_microdeposit: T::Boolean,
+          additional_evidence_file_id: String,
           authorizer_company: String,
           authorizer_ip_address: String,
           request_options: T.any(Increase::RequestOptions, T::Hash[Symbol, T.anything])
@@ -121,6 +130,7 @@ module Increase
         validated_account_ownership_via_credential:,
         validated_account_ownership_with_account_statement:,
         validated_account_ownership_with_microdeposit:,
+        additional_evidence_file_id: nil,
         authorizer_company: nil,
         authorizer_ip_address: nil,
         request_options: {}
@@ -140,6 +150,7 @@ module Increase
               validated_account_ownership_via_credential: T::Boolean,
               validated_account_ownership_with_account_statement: T::Boolean,
               validated_account_ownership_with_microdeposit: T::Boolean,
+              additional_evidence_file_id: String,
               authorizer_company: String,
               authorizer_ip_address: String,
               request_options: Increase::RequestOptions

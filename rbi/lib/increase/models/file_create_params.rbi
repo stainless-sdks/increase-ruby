@@ -107,6 +107,9 @@ module Increase
         # An attachment to an Unusual Activity Report.
         UNUSUAL_ACTIVITY_REPORT_ATTACHMENT = :unusual_activity_report_attachment
 
+        # A file containing additional evidence for a Proof of Authorization Request Submission.
+        PROOF_OF_AUTHORIZATION_REQUEST_SUBMISSION = :proof_of_authorization_request_submission
+
         class << self
           sig { override.returns(T::Array[Symbol]) }
           def values
