@@ -24,18 +24,34 @@ module Increase
           .returns(Increase::Models::ACHPrenotification)
       end
       def create(
+        # The Increase identifier for the account that will send the transfer.
         account_id:,
+        # The account number for the destination account.
         account_number:,
+        # The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+        #   destination account.
         routing_number:,
+        # Additional information that will be sent to the recipient.
         addendum: nil,
+        # The description of the date of the transfer.
         company_descriptive_date: nil,
+        # The data you choose to associate with the transfer.
         company_discretionary_data: nil,
+        # The description of the transfer you wish to be shown to the recipient.
         company_entry_description: nil,
+        # The name by which the recipient knows you.
         company_name: nil,
+        # Whether the Prenotification is for a future debit or credit.
         credit_debit_indicator: nil,
+        # The transfer effective date in
+        #   [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
         effective_date: nil,
+        # Your identifier for the transfer recipient.
         individual_id: nil,
+        # The name of the transfer recipient. This value is information and not verified
+        #   by the recipient's bank.
         individual_name: nil,
+        # The Standard Entry Class (SEC) code to use for the ACH Prenotification.
         standard_entry_class_code: nil,
         request_options: {}
       )
@@ -49,7 +65,11 @@ module Increase
         )
           .returns(Increase::Models::ACHPrenotification)
       end
-      def retrieve(ach_prenotification_id, request_options: {})
+      def retrieve(
+        # The identifier of the ACH Prenotification to retrieve.
+        ach_prenotification_id,
+        request_options: {}
+      )
       end
 
       # List ACH Prenotifications
@@ -63,7 +83,20 @@ module Increase
         )
           .returns(Increase::Page[Increase::Models::ACHPrenotification])
       end
-      def list(created_at: nil, cursor: nil, idempotency_key: nil, limit: nil, request_options: {})
+      def list(
+        created_at: nil,
+        # Return the page of entries after this one.
+        cursor: nil,
+        # Filter records to the one with the specified `idempotency_key` you chose for
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
+        idempotency_key: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        #   objects.
+        limit: nil,
+        request_options: {}
+      )
       end
 
       sig { params(client: Increase::Client).returns(T.attached_class) }

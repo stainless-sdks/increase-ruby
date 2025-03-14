@@ -11,7 +11,11 @@ module Increase
         )
           .returns(Increase::Models::OAuthApplication)
       end
-      def retrieve(oauth_application_id, request_options: {})
+      def retrieve(
+        # The identifier of the OAuth Application.
+        oauth_application_id,
+        request_options: {}
+      )
       end
 
       # List OAuth Applications
@@ -25,7 +29,16 @@ module Increase
         )
           .returns(Increase::Page[Increase::Models::OAuthApplication])
       end
-      def list(created_at: nil, cursor: nil, limit: nil, status: nil, request_options: {})
+      def list(
+        created_at: nil,
+        # Return the page of entries after this one.
+        cursor: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        #   objects.
+        limit: nil,
+        status: nil,
+        request_options: {}
+      )
       end
 
       sig { params(client: Increase::Client).returns(T.attached_class) }

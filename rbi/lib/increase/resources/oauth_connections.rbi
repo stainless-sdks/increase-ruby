@@ -11,7 +11,11 @@ module Increase
         )
           .returns(Increase::Models::OAuthConnection)
       end
-      def retrieve(oauth_connection_id, request_options: {})
+      def retrieve(
+        # The identifier of the OAuth Connection.
+        oauth_connection_id,
+        request_options: {}
+      )
       end
 
       # List OAuth Connections
@@ -25,7 +29,18 @@ module Increase
         )
           .returns(Increase::Page[Increase::Models::OAuthConnection])
       end
-      def list(cursor: nil, limit: nil, oauth_application_id: nil, status: nil, request_options: {})
+      def list(
+        # Return the page of entries after this one.
+        cursor: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        #   objects.
+        limit: nil,
+        # Filter results to only include OAuth Connections for a specific OAuth
+        #   Application.
+        oauth_application_id: nil,
+        status: nil,
+        request_options: {}
+      )
       end
 
       sig { params(client: Increase::Client).returns(T.attached_class) }

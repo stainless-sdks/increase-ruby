@@ -13,7 +13,19 @@ module Increase
         )
           .returns(Increase::Models::CardDispute)
       end
-      def create(disputed_transaction_id:, explanation:, amount: nil, request_options: {})
+      def create(
+        # The Transaction you wish to dispute. This Transaction must have a `source_type`
+        #   of `card_settlement`.
+        disputed_transaction_id:,
+        # Why you are disputing this Transaction.
+        explanation:,
+        # The monetary amount of the part of the transaction that is being disputed. This
+        #   is optional and will default to the full amount of the transaction if not
+        #   provided. If provided, the amount must be less than or equal to the amount of
+        #   the transaction.
+        amount: nil,
+        request_options: {}
+      )
       end
 
       # Retrieve a Card Dispute
@@ -24,7 +36,11 @@ module Increase
         )
           .returns(Increase::Models::CardDispute)
       end
-      def retrieve(card_dispute_id, request_options: {})
+      def retrieve(
+        # The identifier of the Card Dispute.
+        card_dispute_id,
+        request_options: {}
+      )
       end
 
       # List Card Disputes
@@ -41,8 +57,15 @@ module Increase
       end
       def list(
         created_at: nil,
+        # Return the page of entries after this one.
         cursor: nil,
+        # Filter records to the one with the specified `idempotency_key` you chose for
+        #   that object. This value is unique across Increase and is used to ensure that a
+        #   request is only processed once. Learn more about
+        #   [idempotency](https://increase.com/documentation/idempotency-keys).
         idempotency_key: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        #   objects.
         limit: nil,
         status: nil,
         request_options: {}

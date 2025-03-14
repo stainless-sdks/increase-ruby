@@ -19,7 +19,15 @@ module Increase
           )
             .returns(Increase::Models::InboundCheckDeposit)
         end
-        def create(account_number_id:, amount:, check_number:, request_options: {})
+        def create(
+          # The identifier of the Account Number the Inbound Check Deposit will be against.
+          account_number_id:,
+          # The check amount in cents.
+          amount:,
+          # The check number on the check to be deposited.
+          check_number:,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

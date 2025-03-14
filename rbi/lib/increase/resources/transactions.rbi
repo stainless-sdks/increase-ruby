@@ -11,7 +11,11 @@ module Increase
         )
           .returns(Increase::Models::Transaction)
       end
-      def retrieve(transaction_id, request_options: {})
+      def retrieve(
+        # The identifier of the Transaction to retrieve.
+        transaction_id,
+        request_options: {}
+      )
       end
 
       # List Transactions
@@ -28,11 +32,17 @@ module Increase
           .returns(Increase::Page[Increase::Models::Transaction])
       end
       def list(
+        # Filter Transactions for those belonging to the specified Account.
         account_id: nil,
         category: nil,
         created_at: nil,
+        # Return the page of entries after this one.
         cursor: nil,
+        # Limit the size of the list that is returned. The default (and maximum) is 100
+        #   objects.
         limit: nil,
+        # Filter Transactions for those belonging to the specified route. This could be a
+        #   Card ID or an Account Number ID.
         route_id: nil,
         request_options: {}
       )

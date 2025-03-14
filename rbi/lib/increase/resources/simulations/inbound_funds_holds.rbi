@@ -13,7 +13,11 @@ module Increase
           )
             .returns(Increase::Models::Simulations::InboundFundsHoldReleaseResponse)
         end
-        def release(inbound_funds_hold_id, request_options: {})
+        def release(
+          # The inbound funds hold to release.
+          inbound_funds_hold_id,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

@@ -17,7 +17,15 @@ module Increase
           )
             .returns(Increase::Models::CardDispute)
         end
-        def action(card_dispute_id, status:, explanation: nil, request_options: {})
+        def action(
+          # The dispute you would like to action.
+          card_dispute_id,
+          # The status to move the dispute to.
+          status:,
+          # Why the dispute was rejected. Not required for accepting disputes.
+          explanation: nil,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

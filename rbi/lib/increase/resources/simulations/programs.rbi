@@ -15,7 +15,11 @@ module Increase
           )
             .returns(Increase::Models::Program)
         end
-        def create(name:, request_options: {})
+        def create(
+          # The name of the program being added.
+          name:,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

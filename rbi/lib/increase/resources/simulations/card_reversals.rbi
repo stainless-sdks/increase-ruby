@@ -16,7 +16,14 @@ module Increase
           )
             .returns(Increase::Models::CardPayment)
         end
-        def create(card_payment_id:, amount: nil, request_options: {})
+        def create(
+          # The identifier of the Card Payment to create a reversal on.
+          card_payment_id:,
+          # The amount of the reversal in minor units in the card authorization's currency.
+          #   This defaults to the authorization amount.
+          amount: nil,
+          request_options: {}
+        )
         end
 
         sig { params(client: Increase::Client).returns(T.attached_class) }

@@ -1,7 +1,6 @@
 # typed: strong
 
 module Increase
-  # @api private
   module BasePage
     abstract!
 
