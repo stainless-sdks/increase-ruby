@@ -159,6 +159,12 @@ model = AccountCreateParams.new(
 increase.accounts.create(**model)
 ```
 
+## Advanced
+
+### Concurrency
+
+Once imported, all modules and classes in the SDK are thread-safe.
+
 ## Versioning
 
 This package follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions. As the library is in initial development and has a major version of `0`, APIs may change at any time.
